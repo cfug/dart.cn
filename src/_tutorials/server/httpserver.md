@@ -12,10 +12,16 @@ prevpage:
 
 ### Communicate over the internet
 
+### 网络社区
+
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
+  <h4>重点是什么？</h4>
 
   * Knowledge of Futures and Streams is a prerequisite.
+
+    首先要了解 Futures 和 Streams。
+
   * The HTTP protocol allows clients and servers to communicate.
   * The dart:io package has classes for writing HTTP programs.
   * Servers listen for requests on a host and port.
@@ -24,12 +30,19 @@ prevpage:
 </div>
 
 <aside class="alert alert-info" markdown="1">
+
   <strong>Prerequisite:</strong> HTTP servers and clients rely heavily on
   [Futures][Future] and [Streams][Stream], which are not explained in this
   tutorial. Refer to
   [Asynchronous Programming: Futures](/tutorials/language/futures) and
   [Asynchronous Programming: Streams](/tutorials/language/streams)
   for information about using these classes.
+
+  <strong>先决条件：</strong> HTTP 服务器和客户端重度依赖 [Futures][Future] 和 [Streams][Stream]，但本教程不会解释它们。参见
+  [异步编程: Futures](/tutorials/language/futures) 和
+  [异步编程: Streams](/tutorials/language/streams)
+  以了解如何使用它们。  
+
 </aside>
 
 HTTP (Hypertext Transfer Protocol) is a communication protocol used
@@ -174,8 +187,10 @@ Alternatively, you can specify the host using these predefined values
 provided by the [InternetAddress][] class:
 
 | Value | Use case |
+| 值 | 用例 |
 |---|---|
 | LOOPBACK_IP_V4<br/>_or_<br/>LOOPBACK_IP_V6 | The server listens for client activity on the loopback address, which is effectively localhost. Uses either version 4 or 6 of the IP protocol. These are used primarily for testing. We recommend that you use these values instead of `localhost` or `127.0.0.1`. |
+| LOOPBACK_IP_V4<br/> *或* <br/>LOOPBACK_IP_V6 | 该服务器在回环地址（它在本机有效）上监听客户端的活动。使用 IPv4 或者 IPv6。它们主要供测试用。我们建议你使用这些值来代替 `localhost` 或 `127.0.0.1`。 |
 | ANY_IP_V4<br/>_or_<br/>ANY_IP_V6 | The server listens for client activity on the specified port on any IP address. Uses either version 4 or 6 of the IP protocol. |
 {: .table}
 
