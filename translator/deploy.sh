@@ -3,6 +3,8 @@
 set -x
 set -e
 
+./translator/translate.sh
+
 commitSha=$(git rev-parse --short HEAD)
 commitMessage=$(git log --oneline -n 1)
 

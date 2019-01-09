@@ -40,7 +40,6 @@ script:
 
 after_script:
   - if [[ $TASK == *build* ]]; then ./tool/shared/check-links.sh || travis_terminate 1; fi
-  - if [[ $TASK == *build* ]]; then ./translator/translate.sh || travis_terminate 1; fi
   # Just FYI test. Won't fail the build if it has errors.
   # - if [[ $TASK == *build* ]]; then ./deploy/check_sitemap.rb; fi
   # - if [[ $TASK == *build* ]]; then ./deploy/html_proof.rb; fi
