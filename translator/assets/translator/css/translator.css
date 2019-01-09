@@ -1,0 +1,28 @@
+body[translation-debug] [translation-result] {
+    display: none;
+}
+
+[translation-origin=on] {
+    border-top: 1px dashed lightgray !important;
+}
+
+[translation-origin=off] {
+    display: none !important;
+}
+
+h1[translation-result] + h1[translation-origin=on] {
+    margin-top: -6px;
+}
+
+h2[translation-result] + h2[translation-origin=on] {
+    margin-top: -6px;
+}
+
+h3[translation-result] + h3[translation-origin=on] {
+    margin-top: -6px;
+}
+
+h4[translation-result] + h4[translation-origin=on] {
+    margin-top: -6px;
+}
+

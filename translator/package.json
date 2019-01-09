@@ -1,0 +1,15 @@
+{
+  "name": "translator",
+  "version": "1.0.0",
+  "description": "对照翻译处理工具",
+  "main": "translate.js",
+  "scripts": {
+    "start": "node translate.js"
+  },
+  "author": "Zhicheng WANG<asnowwolf@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@awesome-fe/translate": "0.0.18",
+    "shelljs": "^0.8.3"
+  }
+}
