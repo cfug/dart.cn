@@ -14,7 +14,11 @@ since Dart was open sourced. For other questions and answers, see:
 
 ## General
 
+## 一般性问题
+
 ### Q. Is Dart an open standard?
+
+### Q. Dart 是开放的标准吗？
 
 Yes. [Ecma TC52][tc52] owns, evolves, and publishes the [standard
 specification][spec] of the Dart language.  In addition, Google's Dart team

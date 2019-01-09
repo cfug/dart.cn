@@ -1,10 +1,10 @@
 ---
 layout: tutorial
-title: "Write HTTP Clients & Servers"
-description: Communicate over the internet
+title: "编写 HTTP 客户端和服务器"
+description: 通过网络进行通讯
 prevpage:
   url: /tutorials/server/cmdline
-  title: "Write Command-Line Apps"
+  title: "编写命令行应用"
 ---
 {% capture gh-path -%}
   https://github.com/dart-lang/dart-tutorials-samples/blob/master/httpserver
