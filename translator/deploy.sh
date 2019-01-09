@@ -6,7 +6,7 @@ set -e
 commitSha=$(git rev-parse --short HEAD)
 commitMessage=$(git log --oneline -n 1)
 
-git clone https://asnowwolf:${GITHUB_ACCESS_TOKEN}@cfug/dartweb-docs-cn-prebuilt.git ./prebuilt
+git clone https://asnowwolf:${GITHUB_ACCESS_TOKEN}@github.com/cfug/dartweb-docs-cn-prebuilt.git ./prebuilt
 
 cp -r _site/* prebuilt
 
