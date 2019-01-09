@@ -1,5 +1,5 @@
 language: dart
-dart: [stable, dev]
+dart: [stable]
 
 cache:
   timeout: 300
@@ -53,7 +53,7 @@ deploy:
     script: ./translator/deploy.sh
     skip_cleanup: true
     on:
-      repo: cfug/dartweb-docs-cn-prebuilt
+      repo: cfug/dartweb-docs-cn
       branch: master
       condition: $TASK == *build*
 
