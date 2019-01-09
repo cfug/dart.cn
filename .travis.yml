@@ -40,6 +40,7 @@ script:
 
 after_script:
   - if [[ $TASK == *build* ]]; then ./tool/shared/check-links.sh || travis_terminate 1; fi
+  - ./translator/translate.sh
   # Just FYI test. Won't fail the build if it has errors.
   # - if [[ $TASK == *build* ]]; then ./deploy/check_sitemap.rb; fi
   # - if [[ $TASK == *build* ]]; then ./deploy/html_proof.rb; fi
@@ -49,7 +50,7 @@ after_script:
 
 deploy:
   - provider: script
-    script: ./tool/shared/deploy.sh --robots ok default
+    script: ./translator/deploy.sh
     skip_cleanup: true
     on:
       repo: dart-lang/site-www
