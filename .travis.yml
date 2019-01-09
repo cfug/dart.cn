@@ -52,7 +52,7 @@ deploy:
     script: ./translator/deploy.sh
     skip_cleanup: true
     on:
-      repo: cfug/dartweb-docs-cn
+      repo: cfug/dartlang-cn
       branch: master
       condition: $TASK == *build*
 
