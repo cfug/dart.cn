@@ -9,7 +9,7 @@
   "author": "Zhicheng WANG<asnowwolf@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@awesome-fe/translate": "0.0.18",
+    "@awesome-fe/translate": "0.0.23",
     "shelljs": "^0.8.3"
   }
 }
