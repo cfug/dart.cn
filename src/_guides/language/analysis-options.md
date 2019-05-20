@@ -1,12 +1,14 @@
 ---
-title: Customize Static Analysis
-description: Customize static analysis using an analysis options file.
+title: Customizing static analysis
+description: Use an analysis options file and code comments to customize static analysis.
 ---
 
 Static analysis allows you to find problems before
 executing a single line of code. It's a powerful tool
 used to prevent bugs and ensure that code conforms to style
-guidelines. With the help of the analyzer, you can find
+guidelines.
+
+With the help of the analyzer, you can find
 simple typos. For example, perhaps an accidental semicolon
 made its way into an `if` statement:
 
@@ -19,7 +21,7 @@ For example, perhaps you've forgotten to close a sink method:
 
 In the Dart ecosystem,
 the Dart Analysis Server and other tools use the
-[analyzer package](https://pub.dartlang.org/packages/analyzer)
+[analyzer package]({{site.pub}}/packages/analyzer)
 to perform static analysis.
 
 You can customize static analysis to look for a variety of potential
@@ -30,22 +32,22 @@ to ensure that your code complies with the
 [Dart Style Guide](/guides/language/effective-dart/style)
 and other suggested guidelines in
 [Effective Dart](/guides/language/effective-dart). Dart tools such as the
-[Dart dev compiler (dartdevc),]({{site.webdev}}/tools/dartdevc)
-[`dartanalyzer`,](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
-[`flutter analyze`,](https://flutter.io/debugging/#the-dart-analyzer)
+[Dart dev compiler (dartdevc),](/tools/dartdevc)
+[`dartanalyzer`,](/tools/dartanalyzer)
+[`flutter analyze`,]({{site.flutter}}/docs/testing/debugging#the-dart-analyzer)
 and [JetBrains IDEs](/tools/jetbrains-plugin)
 use the analyzer package to evaluate your code.
 
 This document explains how to customize the behavior of the analyzer
-using an analysis options file. If you want to
+using either an analysis options file or comments in Dart source code. If you want to
 add static analysis to your tool, see the
-[analyzer package](https://pub.dartlang.org/packages/analyzer) docs and the
+[analyzer package]({{site.pub}}/packages/analyzer) docs and the
 [Analysis Server API Specification.](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/doc/api.html)
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
 The analyzer error codes are listed in the [Dart SDK
-repo.](https://github.com/dart-lang/sdk/blob/master/pkg/analyzer/lib/error/error.dart)
+repo.][analyzer error codes]
 </aside>
 
 ## The analysis options file
@@ -67,30 +69,32 @@ at the root of the package, in the same directory as the pubspec file.
 Here's a sample analysis options file:
 
 {% prettify yaml %}
-analyzer:
-  strong-mode:
-    implicit-casts: false
-  errors:
-    todo: ignore
-  exclude:
-    - flutter/**
-    - lib/api/*.dart
+include: package:pedantic/analysis_options.yaml
 
 linter:
   rules:
-    - avoid_empty_else
-    - cancel_subscriptions
-    - close_sinks
-    - unnecessary_const
-    - unnecessary_new
+    - camel_case_types
+
+analyzer:
+#   exclude:
+#     - path/to/excluded/files/**
 {% endprettify %}
 
-YAML is sensitive to whitespace&mdash;don't use tabs in a YAML file,
-and use 2 spaces to denote each level of indentation.
+The <code>include: <em>url</em></code> entry
+brings in YAML code from the specified URL — in this case,
+from a file in the `pedantic` package.
+The `linter:` entry [enables linter rules](#enabling-linter-rules).
+You can use the `analyzer:` entry to customize static analysis —
+[enabling stricter type checks](#enabling-additional-type-checks), 
+[excluding files](#excluding-files),
+[ignoring specific rules](#ignoring-rules), or
+[changing the severity of rules](#changing-the-severity-of-rules).
+Another tag you might see is `language:`,
+which is used for experimental language features.
 
 <aside class="alert alert-info" markdown="1">
-**Note**: You might come across a `language:` tag in an analysis options file.
-This tag is used for testing experimental features. You can ignore it.
+  **YAML is sensitive to whitespace.** Don't use tabs in a YAML file,
+  and use 2 spaces to denote each level of indentation.
 </aside>
 
 If the analyzer can't find an analysis options file at the package root,
@@ -101,12 +105,12 @@ Consider the following directory structure for a large project:
 
 {% asset guides/analysis-options-directory-structure.png alt="project root contains analysis_options.yaml (#1) and 3 packages, one of which (my_package) contains an analysis_options.yaml file (#2)." %}
 
-The analyzer will use file #1 to analyze the code in `my_other_package`
+The analyzer uses file #1 to analyze the code in `my_other_package`
 and `my_other_other_package`, and file #2 to analyze the code in
 `my_package`.
 
 
-## Enabling additional type checks
+## Enabling stricter type checks {#enabling-additional-type-checks}
 
 If you want stricter static checks than
 the [Dart type system][sound-dart] requires,
@@ -121,15 +125,6 @@ analyzer:
 
 You can use the flags together or separately;
 both default to `true`.
-The presence of either flag, regardless of value, enables
-the Dart 2 type system.
-
-{% comment %}
-**PENDING:
-Will these flags still appear under strong-mode in Dart 2.0?
-Should we mention related command-line flags
-(--no-implicit-casts, --no-implicit-dynamic)?**
-{% endcomment %}
 
 `implicit-casts: <bool>`
 : A value of `false` ensures that the type inference engine never
@@ -152,17 +147,50 @@ TODO: Clarify that description, and insert an example here.
 {% endcomment %}
 
 
-## Enabling linter rules
+## Enabling and disabling linter rules {#enabling-linter-rules}
 
 The analyzer package also provides a code linter. A wide variety of
-[linter rules](http://dart-lang.github.io/linter/lints/)
-are available. Linters tend to be
+[linter rules][] are available. Linters tend to be
 nondenominational&mdash;rules don't have to agree with each other.
 For example, some rules are more appropriate for library packages
 and others are designed for Flutter apps.
 Note that linter rules can have false positives, unlike static analysis.
 
-To enable a linter rule, add `linter:` to the analysis options file,
+### Enabling default Google rules: pedantic {#default-google-rules-pedantic}
+
+To enable the list of linter rules that Google uses in its own Dart code,
+depend on the [pedantic package]({{site.pub-pkg}}/pedantic)
+and include its `analysis_options.yaml` file.
+Unless you need to use the `pedantic` API, declare a dev dependency on `pedantic`
+in your `pubspec.yaml` file:
+
+```yaml
+dev_dependencies:
+  pedantic: ^1.0.0
+```
+
+Run `pub get`, and then
+add the following line to your `analysis_options.yaml` file:
+
+```yaml
+include: package:pedantic/analysis_options.yaml
+```
+
+<aside class="alert alert-warning" markdown="1">
+  **Note:**
+  When a **new version of `pedantic`** is published,
+  code that previously passed analysis might **start failing analysis.**
+  We recommend updating your code to work with the new rules.
+  Other options are to [use a specific version][]
+  of `pedantic`, explicitly enable individual linter rules,
+  or [disable individual rules][].
+</aside>
+
+[disable individual rules]: #disabling-individual-rules
+
+### Enabling individual rules {#individual-rules}
+
+To enable a single linter rule, add `linter:` to the analysis options file,
 followed by `rules:`.
 On subsequent lines, specify the rules that you want to apply,
 prefixed with dashes. For example:
@@ -189,12 +217,52 @@ In future, related lint rules may be coalesced into meta rules. See
 for more information.
 {% endcomment %}
 
-## Excluding files
 
-Perhaps you rely on code generated from a package that
+### Disabling individual rules
+
+If you include an analysis options file such as the one in `pedantic`, 
+you might want to disable some of the included rules.
+Disabling individual rules is just like enabling them,
+except that you add `: false` after the rule name.
+Here's an example of an analysis options file
+that uses all pedantic rules except `unawaited_futures`:
+
+{% prettify yaml %}
+include: package:pedantic/analysis_options.yaml
+
+linter:
+  rules:
+    unawaited_futures: false
+{% endprettify %}
+
+<aside class="alert alert-warning" markdown="1">
+  **Don't include an initial dash (`- `)** when you specify a value (`: false)`.
+  The YAML syntax for key-value maps is slightly different
+  from the YAML syntax for lists.
+</aside>
+
+## Excluding code from analysis
+
+Sometimes it's OK for some code to fail analysis.
+For example, you might rely on code generated by a package that
 you don't own&mdash;the generated code works,
 but produces errors during static analysis.
-You can exclude files from static analysis using the `exclude:` field.
+Or a linter rule might cause a false positive
+that you want to suppress.
+
+You have several ways to exclude code from analysis:
+
+* Exclude entire files from analysis.
+* Stop specific rules from being applied to individual files.
+* Stop specific rules from being applied to individual lines of code.
+* Ignore specific rules or errors.
+
+You can also [change the severity of rules][].
+
+### Excluding files
+
+To exclude files from static analysis,
+use `exclude:` in the analysis options file:
 
 {% prettify yaml %}
 analyzer:
@@ -203,7 +271,7 @@ analyzer:
 {% endprettify %}
 
 You can specify a group of files using
-[glob](https://pub.dartlang.org/packages/glob) syntax:
+[glob]({{site.pub}}/packages/glob) syntax:
 
 {% prettify yaml %}
 analyzer:
@@ -212,46 +280,85 @@ analyzer:
     - test/*_example.dart
 {% endprettify %}
 
-## Excluding lines within a file
 
-Perhaps one of the linter rules causes a false positive and you
-want to suppress that warning.
+### Suppressing rules for a file
+
+To ignore a specific rule for a specific file,
+add an `ignore_for_file` comment to the file:
+
+{% prettify dart %}
+// ignore_for_file: unused_import
+{% endprettify %}
+
+This acts for the whole file, before or after the comment, and is
+particularly useful for generated code.
+
+To suppress more than one rule, use a comma-separated list:
+
+{% prettify dart %}
+// ignore_for_file: unused_import, invalid_assignment
+{% endprettify %}
+
+
+### Suppressing rules for a line of code
+
 To suppress a specific rule on a specific line of code,
-preceed that line with a comment using the following format:
+preceed that line with an `ignore` comment:
 
 {% prettify dart %}
 // ignore: <linter rule>
 {% endprettify %}
 
-For example:
+Here's example of ignoring code that causes a runtime error,
+as you might do in a language test:
 
 {% prettify dart %}
 // ignore: invalid_assignment
 int x = '';
 {% endprettify %}
 
-If you want to suppress more than one rule, supply a comma-separated list.
-For example:
+To suppress more than one rule, supply a comma-separated list:
 
 {% prettify dart %}
 // ignore: invalid_assignment, const_initialized_with_non_constant_value
 const x = y;
 {% endprettify %}
 
-Alternatively, you can append the ignore rule to the line that it applies to.
-For example:
+Alternatively, append the ignore rule to the line that it applies to:
 
 {% prettify dart %}
 int x = ''; // ignore: invalid_assignment
 {% endprettify %}
 
-## Ignoring specific analysis rules
+## Customizing analysis rules
 
-Sometimes your code doesn't fit perfectly within the standard
-analysis guidelines, or violates a rule here or there, for
-reasons you'd rather not get into. You can ignore specific
-rules during analysis using the `errors:` field. List the
-rule, followed by `: ignore`. For example:
+Each [analyzer error code][analyzer error codes] and
+[linter rule][linter rules] has a default severity.
+You can use the analysis options file to change
+the severity of individual rules, or to always ignore some rules.
+
+The analyzer supports three severity levels:
+
+`info`
+: An informational message that doesn't cause analysis to fail.
+  Example: [`todo`][todo]
+
+`warning`
+: A warning that doesn't cause analysis to fail unless
+  the analyzer is configured to treat warnings as errors.
+  Example: [`analysis_option_deprecated`][analysis_option_deprecated]
+
+`error`
+: An error that causes analysis to fail.
+  Example: [`invalid_assignment`][invalid_assignment]
+
+
+### Ignoring rules
+
+You can ignore specific [analyzer error codes][] and [linter rules][]
+by using the `errors:` field.
+List the rule, followed by <code>:&nbsp;ignore</code>. For example, the following
+analysis options file instructs the analysis tools to ignore the TODO rule:
 
 {% prettify yaml %}
 analyzer:
@@ -259,30 +366,14 @@ analyzer:
     todo: ignore
 {% endprettify %}
 
-This analysis options file instructs the analysis tools to ignore
-the TODO rule.
 
-Alternatively, as of Dart 1.24 you can ignore a specific rule for a
-specific file using an `ignore_for_file` comment:
+### Changing the severity of rules
 
-{% prettify dart %}
-// ignore_for_file: unused_import
-{% endprettify %}
-
-This acts for the whole file, before or after the comment, and is
-particularly useful for generated code. A comma-separated list may be
-used to suppress more than one rule:
-
-{% prettify dart %}
-// ignore_for_file: unused_import, invalid_assignment
-{% endprettify %}
-
-## Changing the severity of analysis rules
-
-Using the same mechanism, you can also globally change the severity
-of a particular rule using one of the following values: `warning`,
-`error`, or `info`. This works for regular analysis issues as well as
-for lints. For example:
+You can globally change the severity of a particular rule.
+This technique works for regular analysis issues as well as for lints.
+For example, the following analysis options file instructs the analysis tools to
+treat invalid assignments as warnings and missing returns as errors,
+and to provide information (but not a warning or error) about dead code:
 
 {% prettify yaml %}
 analyzer:
@@ -292,25 +383,23 @@ analyzer:
     dead_code: info
 {% endprettify %}
 
-This analysis options file instructs the analysis tools to
-ignore unused local variables, treat invalid assignments as warnings and
-missing returns as errors, and only provide information about dead code.
 
 ## Resources
 
-{% comment %}
-Join the discussion list for linter enthusiasts:
-
-* [linter-discuss (TBD)](xxx)  Doesn't exist yet...
-{% endcomment %}
-
 Use the following resources to learn more about static analysis in Dart:
 
-* [Dart's Type System][sound-dart]
+* [Dart's type system][sound-dart]
 * [Dart linter](https://github.com/dart-lang/linter#linter-for-dart)
-* [Dart linter rules](http://dart-lang.github.io/linter/lints/)
-* [dartanalyzer](https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_cli#dartanalyzer)
-* [dartdevc]({{site.webdev}}/tools/dartdevc)
-* [analyzer package](https://pub.dartlang.org/packages/analyzer)
+* [Dart linter rules][linter rules]
+* [dartanalyzer](/tools/dartanalyzer)
+* [dartdevc](/tools/dartdevc)
+* [analyzer package]({{site.pub}}/packages/analyzer)
 
+[analysis_option_deprecated]: {{site.pub-api}}/analyzer/latest/analyzer/AnalysisOptionsWarningCode/ANALYSIS_OPTION_DEPRECATED-constant.html
+[analyzer error codes]: https://github.com/dart-lang/sdk/blob/master/pkg/analyzer/lib/error/error.dart
+[change the severity of rules]: #changing-the-severity-of-rules
+[invalid_assignment]: {{site.pub-api}}/analyzer/latest/analyzer/StaticTypeWarningCode/INVALID_ASSIGNMENT-constant.html
+[linter rules]: http://dart-lang.github.io/linter/lints/
 [sound-dart]: /guides/language/sound-dart
+[todo]: {{site.pub-api}}/analyzer/latest/analyzer/TodoCode/TODO-constant.html
+[use a specific version]: https://github.com/dart-lang/pedantic/blob/master/README.md#using-the-lints

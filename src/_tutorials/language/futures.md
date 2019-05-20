@@ -1,12 +1,16 @@
 ---
-title: "Asynchronous Programming: Futures"
-description: A first look at futures and how to use them to make your asynchronous code better.
+title: "Asynchronous programming: futures & async-await"
+description: How to write asynchronous Dart code that uses futures and the async and await keywords.
 nextpage:
   url: /tutorials/language/streams
-  title: "Asynchronous Programming: Streams"
+  title: "Asynchronous programming: streams"
 ---
 <?code-excerpt replace="/\b_(gather|print)/$1/g; /Async\w*\(\)/()/g"?>
 <?code-excerpt plaster="none"?>
+
+{% comment %}
+[PENDING: This page might be replaced by the Futures codelab.]
+{% endcomment %}
 
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
@@ -16,9 +20,8 @@ nextpage:
   * `Future` objects (_futures_) represent the results of
     _asynchronous operations_ — processing or I/O to be completed later.
   * To suspend execution until a future completes,
-    use `await` in an async function (or use `then()`).
-  * To catch errors, use try-catch expressions in async functions
-    (or use `catchError()`).
+    use `await` in an async function.
+  * To catch errors, use try-catch expressions in async functions.
   * To run code concurrently, create an _isolate_
     (or for a web app, a _worker_).
 </div>
@@ -120,7 +123,7 @@ before its body. The `await` keyword works only in async functions.
 {% include async-await-2.0.md %}
 
 The following app simulates reading the news by using `async` and `await`
-to read the contents of a file on www.dartlang.org.
+to read the contents of a file on this site.
 Click run {% asset red-run.png alt="" %} to start the app.
 Or open a
 [DartPad window containing the app,]({{site.custom.dartpad.direct-link}}/477fb799d21401f46f8c04462fd249c4){: target="_blank"}
@@ -258,6 +261,10 @@ The try-catch code behaves in the same way with asynchronous code as it does
 with synchronous code: if the code within the `try` block throws an exception,
 the code inside the `catch` clause executes.
 
+{% comment %}
+[PENDING: say something about finally?]
+{% endcomment %}
+
 ### Sequential processing {#sequential-processing-async}
 
 You can use multiple `await` expressions to ensure that each statement
@@ -276,7 +283,9 @@ main() async {
 The `expensiveB()` function doesn't execute until `expensiveA()` has
 finished, and so on.
 
----
+{% comment %}
+
+[PENDING: Move this to the error handling page?]
 
 ## The Future API
 
@@ -289,7 +298,7 @@ To write asynchronous code using the `Future` API, you use the `then()` method
 to register a callback.  This callback fires when the `Future` completes.
 
 The following app simulates reading the news by using the `Future` API to read
-the contents of a file on www.dartlang.org.
+the contents of a file on this site.
 Click run {% asset red-run.png %} to start the app.
 Or open a
 [DartPad window containing the app,]({{site.custom.dartpad.direct-link}}/5ceabe371903b6672026bd3fb30cdf5b){: target="_blank"}
@@ -343,7 +352,6 @@ Future<String> gatherNewsReports() =>
 //      'https://www.dartlang.org/f/dailyNewsDigest.txt',
 //    );
 {% endprettify %}
-
 {% endcomment %}
 
 <iframe
@@ -495,15 +503,13 @@ If any of the invoked functions completes with an error, the `Future` returned
 by `Future.wait()` also completes with an error. Use `catchError()` to handle
 the error.
 
+{% endcomment %}
+
 ## Other resources {#other-resources}
 
 Read the following documentation for more details on using futures and
 asynchronous programming in Dart:
 
-* [Futures and Error Handling][], an article that starts where this tutorial
-  ends.
-* [The Event Loop and Dart,]({{site.webdev}}/articles/performance/event-loop)
-  an article that describes how to schedule tasks using futures.
 * [Asynchrony support](/guides/language/language-tour#asynchrony-support),
   a section in the [language tour](/guides/language/language-tour).
 * API reference documentation for
@@ -513,7 +519,7 @@ asynchronous programming in Dart:
 
 ## What next? {#what-next}
 
-* The next tutorial, [Asynchronous Programming: Streams](streams), shows you
+* Read the [streams tutorial](streams), which shows you
   how to work with an event stream.
 
 [Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html

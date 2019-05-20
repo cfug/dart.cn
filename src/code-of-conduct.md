@@ -1,5 +1,5 @@
 ---
-title: Code of Conduct
+title: Code of conduct
 description: Be excellent to each other.
 toc: false
 ---
@@ -21,4 +21,4 @@ comments, and PRs or blocking accounts as deemed appropriate.
 
 If you are subject to or witness unacceptable behavior,
 or have any other concerns,
-please email us at [conduct@dartlang.org](mailto:conduct@dartlang.org).
+please [email us](mailto:conduct@dartlang.org).

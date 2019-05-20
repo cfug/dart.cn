@@ -1,11 +1,9 @@
 ---
 title: pub upgrade
 description: Use pub upgrade to get the latest versions of all dependencies used by your Dart application.
-permalink: /tools/pub/cmd/pub-upgrade
 ---
 
-_Upgrade_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub).
+_Upgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 {% prettify nocode %}
 $ pub upgrade [args] [dependencies]
@@ -19,7 +17,7 @@ so that pub can get the latest versions of all dependencies.
 
 Without any additional arguments, `pub upgrade` gets the latest
 versions of all the dependencies listed in the
-[`pubspec.yaml`](/tools/pub/pubspec.html) file in the current working
+[`pubspec.yaml`](/tools/pub/pubspec) file in the current working
 directory, as well as their [transitive
 dependencies](/tools/pub/glossary#transitive-dependency).
 For example:
@@ -40,15 +38,8 @@ because libraries are expected to work with a range of dependency versions.
 If a lockfile already exists, `pub upgrade` ignores it and generates a new
 one from scratch, using the latest versions of all dependencies.
 
-{% include pub-in-prereleases.html %}
-
 See the [`pub get` documentation](/tools/pub/cmd/pub-get) for more information
 on package resolution and the system package cache.
-
-<aside class="alert alert-info" markdown="1">
-**Note:** In earlier releases of Dart, _pub upgrade_ was called _pub update_.
-</aside>
-
 
 ## Upgrading specific dependencies
 

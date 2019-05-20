@@ -30,8 +30,8 @@ void miscDeclAnalyzedButNotTested() {
     return
         // #docregion string-interpolation-avoid-curly
         'Hi, $name!'
-        "Wear your wildest $decade's outfit."
-        'Wear your wildest ${decade}s outfit.'
+            "Wear your wildest $decade's outfit."
+            'Wear your wildest ${decade}s outfit.'
         // #enddocregion string-interpolation-avoid-curly
         ;
   };
@@ -371,6 +371,21 @@ class Box2 {
   }
 }
 // #enddocregion this-dot
+
+//----------------------------------------------------------------------------
+
+// #docregion this-dot-constructor
+class ShadeOfGray {
+  final int brightness;
+
+  ShadeOfGray(int val) : brightness = val;
+
+  ShadeOfGray.black() : this(0);
+
+  // But now it will!
+  ShadeOfGray.alsoBlack() : this.black();
+}
+// #enddocregion this-dot-constructor
 
 //----------------------------------------------------------------------------
 

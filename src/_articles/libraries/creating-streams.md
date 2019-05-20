@@ -1,5 +1,5 @@
 ---
-title: Creating Streams in Dart
+title: Creating streams in Dart
 description: A stream is a sequence of results; learn how to create your own.
 original-date: 2013-04-08
 date: 2018-09-26
@@ -156,8 +156,10 @@ Stream<int> timedCounter(Duration interval, [int maxCount]) async* {
 }
 {% endprettify %}
 
-**[PENDING: show code that uses it, so we have some context for
-the mention of StreamSubscription?]**
+{% comment %}
+[PENDING: show code that uses it, so we have some context for
+the mention of StreamSubscription?]
+{% endcomment %}
 
 This function returns a `Stream`.
 When that stream is listened to, the body starts running.

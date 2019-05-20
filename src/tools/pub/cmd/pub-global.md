@@ -1,11 +1,9 @@
 ---
 title: pub global
-description: Use pub global to run Dart scripts hosted on pub.dartlang.org from the command line.
-permalink: /tools/pub/cmd/pub-global
+description: Use pub global to run Dart scripts hosted on the Pub site from the command line.
 ---
 
-_Global_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub).
+_Global_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 Pub's `global` option allows you to run Dart scripts from the
 command line when you are not currently inside a package.
@@ -15,7 +13,7 @@ After [activating a package](#activating-a-package), you can
 your list of globally available packages.
 
 For example, say you want to run
-[Stagehand](https://pub.dartlang.org/packages/stagehand)
+[Stagehand]({{site.pub}}/packages/stagehand)
 the Dart project generator, from the command line.
 
 ```terminal
@@ -35,8 +33,8 @@ package that your package depends on, see [pub run](/tools/pub/cmd/pub-run).
 pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [constraint]
 ```
 
-You can activate packages that live on
-[pub.dartlang.org](https://pub.dartlang.org/), a Git repository,
+You can activate packages that live on the
+[Pub site]({{site.pub}}), a Git repository,
 or your local machine.
 Once you have activated a package, see [Running a
 script](#running-a-script) to run scripts from the package's
@@ -45,13 +43,13 @@ script](#running-a-script) to run scripts from the package's
 When you activate a package you can specify an optional version
 constraint.  See the [constraint](#options) flag for usage examples.
 
-### Activating a package on pub.dartlang.org
+### Activating a package on the Pub site
 
 ```terminal
 $ pub global activate <pub.dartlang package>
 ```
 
-Specify a package on pub.dartlang.org to activate it. For example:
+Specify a package on the Pub site to activate it. For example:
 
 ```terminal
 $ pub global activate markdown
@@ -168,7 +166,7 @@ If you are not a package developer, you can skip this section.
 A package can expose some of its scripts as executables
 that can be run directly from the command line. The script or scripts
 must be listed in the
-[`executables`](/tools/pub/pubspec.html#executables)
+[`executables`](/tools/pub/pubspec#executables)
 entry of the pubspec file.  For example, the following pubspec file
 identifies `bin/helloworld.dart` as an executable for the helloworld
 package:
@@ -254,5 +252,5 @@ For options that apply to all pub commands, see
   the new executable overwrites the previously activated executable.
 
 <aside class="alert alert-info" markdown="1">
-  *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).
+  *Problems?* See [Troubleshooting pub](/tools/pub/troubleshoot).
 </aside>

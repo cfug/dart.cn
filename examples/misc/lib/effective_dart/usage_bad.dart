@@ -23,7 +23,7 @@ void miscDeclAnalyzedButNotTested() {
     return
         // #docregion string-interpolation-avoid-curly
         'Hi, ${name}!'
-        "Wear your wildest ${decade}'s outfit."
+            "Wear your wildest ${decade}'s outfit."
         // #enddocregion string-interpolation-avoid-curly
         ;
   };
@@ -198,6 +198,19 @@ void miscDeclAnalyzedButNotTested() {
     // #enddocregion arrow-long
   };
 }
+
+// #docregion this-dot-constructor
+class ShadeOfGray {
+  final int brightness;
+
+  ShadeOfGray(int val) : brightness = val;
+
+  ShadeOfGray.black() : this(0);
+
+  // This won't parse or compile!
+  // ShadeOfGray.alsoBlack() : black();
+}
+// #enddocregion this-dot-constructor
 
 //----------------------------------------------------------------------------
 

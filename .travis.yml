@@ -1,5 +1,6 @@
 language: dart
-dart: [stable]
+# dart: [stable, dev]
+dart: [stable/raw/2.3.0, dev]
 
 cache:
   timeout: 300
@@ -22,7 +23,7 @@ env:
 matrix:
   # allow_failures:
     # - env: TASK="./tool/analyze-and-test-examples.sh"
-      # dart: dev
+      # dart: stable
   exclude:
     - env: TASK="bundle exec jekyll build"
       dart: dev
