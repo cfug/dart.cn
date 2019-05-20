@@ -1,9 +1,9 @@
-# The Dart language site (www.dartlang.org)
+# The Dart language site (dart.dev)
 
 [![Build Status SVG][]][Repo on Travis]
 [![first-timers SVG][]][first-timers]
 
-The www.dartlang.org site, built with [Jekyll][] and hosted on [Firebase][].
+The https://dart.dev site, built with [Jekyll][] and hosted on [Firebase][].
 
 [We welcome contributions](CONTRIBUTING.md), and we're [first-timer friendly][first-timers]!
 
@@ -105,7 +105,7 @@ If you've made changes to the example code run the following commands:
 
 - `./tool/dartfmt.sh`
 - `./tool/refresh-code-excerpts.sh`
-- `./tool/analyze-and-test-examples.sh -q`
+- `./tool/analyze-and-test-examples.sh --quick`
 
 If the last command reports failed tests and you'd like to know which
 test failed, then rerun the command without the `-q` flag.
@@ -131,14 +131,25 @@ with the `--external` (or `-e`, for short) option.
 With this tool you can check any URL by simply specifying it as a parameter:
 
 ```
+pub global activate linkcheck
 linkcheck https://www.dartlang.org
 ```
 
 To check for valid HTML, good images, and broken links (though not as well
 as linkcheck.dart), run this from the top of the repo:
+**NOTE: As of April 16, 2019, this doesn't work. See
+[issue #1461](https://github.com/dart-lang/site-www/issues/1461).**
 
 ```
 ./deploy/html_proof.rb
+```
+
+To check which old links (from the site version before this one) are broken,
+use these commands:
+
+```
+./tool/serve.sh &
+linkcheck -i deploy/urls/old_site_urls.txt
 ```
 
 ## Staging the site
@@ -222,6 +233,10 @@ git stash
 You can later retrieve the stashed file, if you need to stage again,
 using `git stash pop`.
 
+## Troubleshooting the build
+
+See the [Troubleshooting wiki page].
+
 
 [Build Status SVG]: https://travis-ci.org/dart-lang/site-www.svg?branch=master
 [Cloning a repository]: https://help.github.com/articles/cloning-a-repository
@@ -235,3 +250,4 @@ using `git stash pop`.
 [Repo on Travis]: https://travis-ci.org/dart-lang/site-www
 [rvm]: https://rvm.io/rvm/install#installation
 [site-www]: https://github.com/dart-lang/site-www
+[Troubleshooting wiki page]: https://github.com/dart-lang/site-www/wiki/Troubleshooting

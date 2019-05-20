@@ -1,27 +1,24 @@
 ---
-layout: tutorial
+title: "Write HTTP clients & servers"
 title: "编写 HTTP 客户端和服务器"
+description: Communicate over the internet
 description: 通过网络进行通讯
 prevpage:
   url: /tutorials/server/cmdline
+  title: "Write command-line apps"
   title: "编写命令行应用"
 ---
 {% capture gh-path -%}
   https://github.com/dart-lang/dart-tutorials-samples/blob/master/httpserver
 {%- endcapture -%}
 
-### Communicate over the internet
-
-### 网络社区
 
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
   <h4>重点是什么？</h4>
 
-  * Knowledge of Futures and Streams is a prerequisite.
-
-    首先要了解 Futures 和 Streams。
-
+  * Knowledge of asynchronous programming with futures and streams
+    is a prerequisite.
   * The HTTP protocol allows clients and servers to communicate.
   * The dart:io package has classes for writing HTTP programs.
   * Servers listen for requests on a host and port.
@@ -32,17 +29,10 @@ prevpage:
 <aside class="alert alert-info" markdown="1">
 
   <strong>Prerequisite:</strong> HTTP servers and clients rely heavily on
-  [Futures][Future] and [Streams][Stream], which are not explained in this
-  tutorial. Refer to
-  [Asynchronous Programming: Futures](/tutorials/language/futures) and
-  [Asynchronous Programming: Streams](/tutorials/language/streams)
-  for information about using these classes.
-
-  <strong>先决条件：</strong> HTTP 服务器和客户端重度依赖 [Futures][Future] 和 [Streams][Stream]，但本教程不会解释它们。参见
-  [异步编程: Futures](/tutorials/language/futures) 和
-  [异步编程: Streams](/tutorials/language/streams)
-  以了解如何使用它们。  
-
+  futures and streams, which are not explained in this tutorial.
+  You can learn about them from the
+  [futures tutorial](/tutorials/language/futures) and the
+  [streams tutorial](/tutorials/language/streams).
 </aside>
 
 HTTP (Hypertext Transfer Protocol) is a communication protocol used
@@ -187,11 +177,9 @@ Alternatively, you can specify the host using these predefined values
 provided by the [InternetAddress][] class:
 
 | Value | Use case |
-| 值 | 用例 |
 |---|---|
-| LOOPBACK_IP_V4<br/>_or_<br/>LOOPBACK_IP_V6 | The server listens for client activity on the loopback address, which is effectively localhost. Uses either version 4 or 6 of the IP protocol. These are used primarily for testing. We recommend that you use these values instead of `localhost` or `127.0.0.1`. |
-| LOOPBACK_IP_V4<br/> *或* <br/>LOOPBACK_IP_V6 | 该服务器在回环地址（它在本机有效）上监听客户端的活动。使用 IPv4 或者 IPv6。它们主要供测试用。我们建议你使用这些值来代替 `localhost` 或 `127.0.0.1`。 |
-| ANY_IP_V4<br/>_or_<br/>ANY_IP_V6 | The server listens for client activity on the specified port on any IP address. Uses either version 4 or 6 of the IP protocol. |
+| loopbackIPv4<br/>_or_<br/>loopbackIPv6 | The server listens for client activity on the loopback address, which is effectively localhost. Uses either version 4 or 6 of the IP protocol. These are used primarily for testing. We recommend that you use these values instead of `localhost` or `127.0.0.1`. |
+| anyIPv4<br/>_or_<br/>anyIPv6 | The server listens for client activity on the specified port on any IP address. Uses either version 4 or 6 of the IP protocol. |
 {: .table}
 
 By default, when using a V6 internet address,
@@ -442,10 +430,10 @@ This example uses `q` to identify the guessed number.
 
 The server should set the status code to indicate the success or
 failure of the request. Earlier you saw the number thinker set
-the status code to `METHOD_NOT_ALLOWED` to reject non-GET requests.
+the status code to `methodNotAllowed` to reject non-GET requests.
 Later in the code,
 to indicate that the request was successful and the response is complete,
-the number thinker server sets the HttpResponse status code to `HttpStatus.OK`.
+the number thinker server sets the HttpResponse status code to `HttpStatus.ok`.
 
 <?code-excerpt "httpserver/bin/number_thinker.dart (statusCode)" replace="/response.statusCode.*?;/[!$&!]/g"?>
 {% prettify dart %}
@@ -458,10 +446,10 @@ void handleGet(HttpRequest request) {
 {% endprettify %}
 <div class="prettify-filename">number_thinker.dart</div>
 
-`HttpStatus.OK` and `HttpStatus.METHOD_NOT_ALLOWED` are
+`HttpStatus.ok` and `HttpStatus.methodNotAllowed` are
 two of many predefined status codes in the [HttpStatus][] class.
 Another useful predefined status code is
-`HttpStatus.NOT_FOUND` (your classic 404).
+`HttpStatus.notFound` (your classic 404).
 
 In addition to `statusCode`,
 the HttpResponse object has other useful properties:
@@ -752,7 +740,7 @@ _Example files for this section:_
 
 For some higher-level building blocks,
 we recommend that you try the
-[http_server](https://pub.dartlang.org/packages/http_server)
+[http_server]({{site.pub}}/packages/http_server)
 pub package,
 which contains a set of classes that,
 together with the HttpServer class in the `dart:io` library,
@@ -1015,7 +1003,7 @@ for further details about the classes and libraries discussed in this tutorial.
 [dart:io]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
 [Encoding]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/Encoding-class.html
 [Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
-[http_server]: https://pub.dartlang.org/packages/http_server
+[http_server]: {{site.pub}}/packages/http_server
 [HttpClient]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpClient-class.html
 [HttpClientRequest]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpClientRequest-class.html
 [HttpClientResponse]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/HttpClientResponse-class.html
@@ -1029,4 +1017,4 @@ for further details about the classes and libraries discussed in this tutorial.
 [SecurityContext]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/SecurityContext-class.html
 [Stream]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [Uri]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri-class.html
-[VirtualDirectory]: https://www.dartdocs.org/documentation/http_server/latest/http_server/VirtualDirectory-class.html
+[VirtualDirectory]: {{site.pub-api}}/http_server/latest/http_server/VirtualDirectory-class.html

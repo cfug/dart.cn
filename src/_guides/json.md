@@ -1,5 +1,5 @@
 ---
-title: JSON Support
+title: Using JSON
 description: Dart solutions for reading and writing JSON.
 ---
 
@@ -17,32 +17,32 @@ The following libraries and packages are useful across Dart platforms:
   Converters for both JSON and UTF-8
   (the character encoding that JSON requires).
 
-* [package:json_serializable](https://pub.dartlang.org/packages/json_serializable)<br>
+* [package:json_serializable]({{site.pub}}/packages/json_serializable)<br>
   An easy-to-use code generation package.
   When you add some metadata annotations
   and use the builder provided by this package,
   the Dart build system generates serialization and deserialization code for you.
 
-* [package:built_value](https://pub.dartlang.org/packages/built_value)<br>
+* [package:built_value]({{site.pub}}/packages/built_value)<br>
   A powerful, opinionated alternative to json_serializable.
 
 
 ## Flutter resources
 
-[JSON and serialization](https://flutter.io/json/)
+[JSON and serialization]({{site.flutter}}/docs/development/data-and-backend/json)
 : Shows how Flutter apps can serialize and deserialize both
   with dart:convert and with json_serializable.
 
 
 ## Web app resources
 
-[AngularDart Tutorial, part 6: HTTP]({{site.webdev}}/angular/tutorial/toh-pt6)
+[AngularDart Tutorial, part 6: HTTP]({{site.angulardart}}/tutorial/toh-pt6)
 : Illustrates how a Dart web app can interact with a
   RESTful backend using JSON data.
 
-[Using HTTP resources with HttpRequest]({{site.webdev}}/guides/html-library-tour#using-http-resources-with-httprequest)
+[Using HTTP resources with HttpRequest](/guides/libraries/library-tour#using-http-resources-with-httprequest)
 : Demonstrates how to use HttpRequest to exchange data with a web server.
-  Part of the [HTML library tour.]({{site.webdev}}/guides/html-library-tour)
+  Part of the [dart:html library tour.](/guides/libraries/library-tour#darthtml)
 
 
 ## VM resources

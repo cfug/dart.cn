@@ -11,6 +11,9 @@ Here's what DartPad looks like:
 
 <img src="{% asset dartpad-hello.png @path %}" alt="DartPad Hello World" />
 
+<aside class="alert alert-info" markdown="1">
+  **Tip:** If you're in China, try [dartpad.cn.](https://dartpad.cn)
+</aside>
 
 ## Library support
 
@@ -21,7 +24,7 @@ that work with web apps; it doesn't support
 libraries from [packages.]({{site.pub}})
 If you want to use dart:io, use the [Dart SDK](/tools/sdk) instead.
 If you want to use a package, get the SDK for a
-[platform](/guides/platforms) that the package supports.
+[platform](/platforms) that the package supports.
 
 ## Getting started
 
@@ -33,7 +36,7 @@ try running some samples and then creating a simple command-line app.
 
 <ol markdown="1">
   <li markdown="1">
-  Go to <a href="{{site.custom.dartpad.direct-link}}" target="_blank">dartpad.dartlang.org.</a>
+  Go to <a href="{{site.custom.dartpad.direct-link}}" target="_blank">DartPad.</a>
 
   A sample appears on the left and the output appears on the right.
   If you've played with DartPad before,

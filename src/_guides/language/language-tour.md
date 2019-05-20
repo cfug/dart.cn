@@ -1,7 +1,7 @@
 ---
-title: A Tour of the Dart Language
+title: A tour of the Dart language
 description: A tour of all of the major Dart language features.
-short-title: Language Tour
+short-title: Language tour
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 
@@ -9,10 +9,10 @@ This page shows you how to use each major Dart feature, from
 variables and operators to classes and libraries, with the assumption
 that you already know how to program in another language.
 
-To learn more about Dart's core libraries, see
-[A Tour of the Dart Libraries](/guides/libraries/library-tour).
+To learn more about Dart's core libraries, see the
+[library tour](/guides/libraries/library-tour).
 Whenever you want more details about a language feature,
-consult the [Dart Language Specification](/guides/language/spec).
+consult the [Dart language specification][].
 
 <div class="alert alert-info" markdown="1">
 **Tip:**
@@ -406,6 +406,7 @@ The Dart language has special support for the following types:
 - strings
 - booleans
 - lists (also known as *arrays*)
+- sets
 - maps
 - runes (for expressing Unicode characters in a string)
 - symbols
@@ -582,7 +583,7 @@ var s1 = 'String '
     " works even over line breaks.";
 assert(s1 ==
     'String concatenation works even over '
-    'line breaks.');
+        'line breaks.');
 
 var s2 = 'The + operator ' + 'works, as well.';
 assert(s2 == 'The + operator works, as well.');
@@ -684,7 +685,7 @@ var list = [1, 2, 3];
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
-  The analyzer infers that `list` has type `List<int>`.
+  Dart infers that `list` has type `List<int>`.
   If you try to add non-integer objects to this list,
   the analyzer or runtime raises an error.
   For more information, read about
@@ -715,10 +716,166 @@ var constantList = const [1, 2, 3];
 // constantList[1] = 1; // Uncommenting this causes an error.
 {% endprettify %}
 
+<a id="spread-operator"> </a>
+Dart 2.3 introduced the **spread operator** (`...`) and the
+**null-aware spread operator** (`...?`),
+which provide a concise way to insert multiple elements into a collection.
+
+For example, you can use the spread operator (`...`) to insert
+all the elements of a list into another list:
+
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-spread)"?>
+{% prettify dart %}
+var list = [1, 2, 3];
+var list2 = [0, ...list];
+assert(list2.length == 4);
+{% endprettify %}
+
+If the expression to the right of the spread operator might be null,
+you can avoid exceptions by using a null-aware spread operator (`...?`):
+
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-null-spread)"?>
+{% prettify dart %}
+var list;
+var list2 = [0, ...?list];
+assert(list2.length == 1);
+{% endprettify %}
+
+For more details and examples of using the spread operator, see the 
+[spread operator proposal.][spread proposal]
+
+<a id="collection-operators"> </a>
+Dart 2.3 also introduced **collection if** and **collection for**,
+which you can use to build collections using conditionals (`if`)
+and repetition (`for`).
+
+Here's an example of using **collection if**
+to create a list with three or four items in it:
+
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-if)"?>
+{% prettify dart %}
+var nav = [
+  'Home',
+  'Furniture',
+  'Plants',
+  if (promoActive) 'Outlet'
+];
+{% endprettify %}
+
+Here's an example of using **collection for**
+to manipulate the items of a list before
+adding them to another list:
+
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-for)"?>
+{% prettify dart %}
+var listOfInts = [1, 2, 3];
+var listOfStrings = [
+  '#0',
+  for (var i in listOfInts) '#$i'
+];
+assert(listOfStrings[1] == '#1');
+{% endprettify %}
+
+For more details and examples of using collection if and for, see the 
+[control flow collections proposal.][collections proposal]
+
+[collections proposal]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/control-flow-collections/feature-specification.md
+
+[spread proposal]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/spread-collections/feature-specification.md
+
 The List type has many handy methods for manipulating lists. For more
 information about lists, see [Generics](#generics) and
 [Collections](/guides/libraries/library-tour#collections).
 
+
+### Sets
+
+A set in Dart is an unordered collection of unique items.
+Dart support for sets is provided by set literals and the [Set][] type.
+
+<aside class="alert alert-info" markdown="1">
+  **Version note:** Although the Set _type_ has always been a core part of Dart,
+  set _literals_ were introduced in Dart 2.2.
+</aside>
+
+Here is a simple Dart set, created using a set literal:
+
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-literal)"?>
+{% prettify dart %}
+var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+{% endprettify %}
+
+<aside class="alert alert-info" markdown="1">
+  **Note:**
+  Dart infers that `halogens` has the type
+  `Set<String>`. If you try to add the wrong type of value
+  to the set, the analyzer or runtime raises an error.
+  For more information, read about
+  [type inference.](/guides/language/sound-dart#type-inference)
+</aside>
+
+To create an empty set, use `{}` preceded by a type argument,
+or assign `{}` to a variable of type `Set`:
+
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-vs-map)"?>
+{% prettify dart %}
+var names = <String>{};
+// Set<String> names = {}; // This works, too.
+// var names = {}; // Creates a map, not a set.
+{% endprettify %}
+
+<aside class="alert alert-info" markdown="1">
+  **Set or map?**
+  The syntax for map literals is similar to that for set literals.
+  Because map literals came first, `{}` defaults to the `Map` type.
+  If you forget the type annotation on `{}` or the variable it's assigned to,
+  then Dart creates an object of type `Map<dynamic, dynamic>`.
+</aside>
+
+Add items to an existing set using the `add()` or `addAll()` methods:
+
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-add-items)"?>
+{% prettify dart %}
+var elements = <String>{};
+elements.add('fluorine');
+elements.addAll(halogens);
+{% endprettify %}
+
+Use `.length` to get the number of items in the set:
+
+<?code-excerpt "misc/test/language_tour/built_in_types_test.dart (set-length)"?>
+{% prettify dart %}
+var elements = <String>{};
+elements.add('fluorine');
+elements.addAll(halogens);
+assert(elements.length == 5);
+{% endprettify %}
+
+To create a set that's a compile-time constant,
+add `const` before the set literal:
+
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-set)"?>
+{% prettify dart %}
+final constantSet = const {
+  'fluorine',
+  'chlorine',
+  'bromine',
+  'iodine',
+  'astatine',
+};
+// constantSet.add('helium'); // Uncommenting this causes an error.
+{% endprettify %}
+
+As of Dart 2.3, sets support spread operators (`...` and `...?`)
+and collection ifs and fors,
+just like lists do.
+For more information, see the
+[list spread operator](#spread-operator) and
+[list collection operator](#collection-operators) discussions.
+
+For more information about sets, see
+[Generics](#generics) and
+[Sets](/guides/libraries/library-tour#sets).
 
 ### Maps
 
@@ -747,7 +904,7 @@ var nobleGases = {
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
-  The analyzer infers that `gifts` has the type
+  Dart infers that `gifts` has the type
   `Map<String, String>` and `nobleGases` has the type
   `Map<int, String>`. If you try to add the wrong type of value
   to either map, the analyzer or runtime raises an error.
@@ -825,6 +982,12 @@ final constantMap = const {
 // constantMap[2] = 'Helium'; // Uncommenting this causes an error.
 {% endprettify %}
 
+As of Dart 2.3, maps support spread operators (`...` and `...?`)
+and collection if and for, just like lists do.
+For details and examples, see the
+[spread operator proposal][spread proposal] and the
+[control flow collections proposal.][collections proposal]
+
 For more information about maps, see
 [Generics](#generics) and
 [Maps](/guides/libraries/library-tour#maps).
@@ -858,7 +1021,7 @@ to see runes in action.
 
 {% comment %}
 https://gist.github.com/589bc5c95318696cefe5
-https://dartpad.dartlang.org/589bc5c95318696cefe5
+{{site.dartpad}}/589bc5c95318696cefe5
 Unicode emoji: http://unicode.org/emoji/charts/full-emoji-list.html
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (runes)"?>
@@ -1141,7 +1304,7 @@ void doStuff(
 
 {% comment %}
 https://gist.github.com/d988cfce0a54c6853799
-https://dartpad.dartlang.org/d988cfce0a54c6853799
+{{site.dartpad}}/d988cfce0a54c6853799
 (The gist needs updating: see https://github.com/dart-lang/site-www/issues/189)
 <iframe
 src="{{site.custom.dartpad.embed-inline-prefix}}?id=d988cfce0a54c6853799&verticalRatio=70"
@@ -1191,7 +1354,7 @@ void main(List<String> arguments) {
 }
 {% endprettify %}
 
-You can use the [args library](https://pub.dartlang.org/packages/args) to
+You can use the [args library]({{site.pub}}/packages/args) to
 define and parse command-line arguments.
 
 ### Functions as first-class objects
@@ -1257,7 +1420,7 @@ Click the run button {% asset red-run.png alt="" %} to execute the code.
 
 {% comment %}
 https://gist.github.com/chalin/5d70bc1889d055c7a18d35d77874af88
-https://dartpad.dartlang.org/5d70bc1889d055c7a18d35d77874af88
+{{site.dartpad}}/5d70bc1889d055c7a18d35d77874af88
 {% endcomment %}
 
 <iframe
@@ -1413,7 +1576,7 @@ You can override many of these operators, as described in
 | unary prefix             | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>   |
 | multiplicative           | `*`    `/`    `%`    `~/`                      |
 | additive                 | `+`    `-`                                     |
-| shift                    | `<<`    `>>`                                   |
+| shift                    | `<<`    `>>`    `>>>`                          |
 | bitwise AND              | `&`                                            |
 | bitwise XOR              | `^`                                            |
 | bitwise OR               | `|`                                            |
@@ -1424,8 +1587,15 @@ You can override many of these operators, as described in
 | if null                  | `??`                                           |
 | conditional              | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code> |
 | cascade                  | `..`                                           |
-| assignment               | `=`    `*=`    `/=`    `~/=`    `%=`    `+=`    `-=`    `<<=`    `>>=`    `&=`    `^=`    `|=`    `??=` |
+| assignment               | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em> |
 {:.table .table-striped}
+
+<aside class="alert alert-warning" markdown="1">
+  **Warning:**
+  Operator precedence is an approximation of the behavior of a Dart parser.
+  For definitive answers, consult the grammar in the
+  [Dart language specification][].
+</aside>
 
 When you use operators, you create expressions. Here are some examples
 of operator expressions:
@@ -1637,7 +1807,7 @@ b ??= value;
 {% comment %}
 <!-- embed a dartpad when we can hide code -->
 https://gist.github.com/9de887c4daf76d39e524
-https://dartpad.dartlang.org/9de887c4daf76d39e524
+{{site.dartpad}}/9de887c4daf76d39e524
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (assignment-gist-main-body)" plaster="none"?>
 {% prettify dart %}
@@ -2355,7 +2525,7 @@ Use `?.` instead of `.` to avoid an exception
 when the leftmost operand is null:
 
 {% comment %}
-https://dartpad.dartlang.org/0cb25997742ed5382e4a
+{{site.dartpad}}/0cb25997742ed5382e4a
 https://gist.github.com/0cb25997742ed5382e4a
 {% endcomment %}
 
@@ -2613,7 +2783,7 @@ Click the run button {% asset red-run.png alt="" %} to execute the code.
 
 {% comment %}
 https://gist.github.com/Sfshaza/e57aa06401e6618d4eb8
-https://dartpad.dartlang.org/e57aa06401e6618d4eb8
+{{site.dartpad}}/e57aa06401e6618d4eb8
 
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart" plaster="none"?>
 {% prettify dart %}
@@ -2719,7 +2889,7 @@ Click the run button {% asset red-run.png alt="" %} to execute the code.
 
 {% comment %}
 https://gist.github.com/Sfshaza/7a9764702c0608711e08
-https://dartpad.dartlang.org/7a9764702c0608711e08
+{{site.dartpad}}/a9764702c0608711e08
 
 <?code-excerpt "misc/lib/language_tour/classes/point_with_distance_field.dart"?>
 {% prettify dart %}
@@ -3203,8 +3373,7 @@ Enumerated types have the following limits:
 * You can't subclass, mix in, or implement an enum.
 * You can't explicitly instantiate an enum.
 
-For more information, see the
-[Dart Language Specification](/guides/language/spec).
+For more information, see the [Dart language specification][].
 
 
 ### Adding features to a class: mixins
@@ -3428,9 +3597,9 @@ think of as a type that a developer will define later.
 
 ### Using collection literals
 
-List and map literals can be parameterized. Parameterized literals are
+List, set, and map literals can be parameterized. Parameterized literals are
 just like the literals you’ve already seen, except that you add
-<code>&lt;<em>type</em>></code> (for lists) or
+<code>&lt;<em>type</em>></code> (for lists and sets) or
 <code>&lt;<em>keyType</em>, <em>valueType</em>></code> (for maps)
 before the opening bracket. Here
 is example of using typed literals:
@@ -3438,6 +3607,7 @@ is example of using typed literals:
 <?code-excerpt "misc/lib/language_tour/generics/misc.dart (collection-literals)"?>
 {% prettify dart %}
 var names = <String>['Seth', 'Kathy', 'Lars'];
+var uniqueNames = <String>{'Seth', 'Kathy', 'Lars'};
 var pages = <String, String>{
   'index.html': 'Homepage',
   'robots.txt': 'Hints for web robots',
@@ -3453,10 +3623,10 @@ angle brackets (`<...>`) just after the class name. For example:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (constructor-1)"?>
 {% prettify dart %}
-var names = List<String>();
-names.addAll(['Seth', 'Kathy', 'Lars']);
 var nameSet = Set<String>.from(names);
 {% endprettify %}
+
+{% comment %}[PENDING: update this sample; it ]{% endcomment %}
 
 The following code creates a map that has integer keys and values of
 type View:
@@ -3534,7 +3704,7 @@ var foo = [!Foo<Object>!]();
 Initially, Dart's generic support was limited to classes.
 A newer syntax, called _generic methods_, allows type arguments on methods and functions:
 
-<!-- https://dartpad.dartlang.org/a02c53b001977efa4d803109900f21bb -->
+<!-- {{site.dartpad}}/a02c53b001977efa4d803109900f21bb -->
 <!-- https://gist.github.com/a02c53b001977efa4d803109900f21bb -->
 <?code-excerpt "misc/test/language_tour/generics_test.dart (method)" replace="/<T.(?=\()|T/[!$&!]/g"?>
 {% prettify dart %}
@@ -3565,10 +3735,7 @@ are a unit of privacy: identifiers that start with an underscore (\_)
 are visible only inside the library. *Every Dart app is a library*, even
 if it doesn’t use a `library` directive.
 
-Libraries can be distributed using packages. See
-[Pub Package and Asset Manager](/tools/pub)
-for information about
-pub, a package manager included in the SDK.
+Libraries can be distributed using [packages](/guides/packages).
 
 
 ### Using libraries
@@ -3906,11 +4073,6 @@ Future main() [!async!] {
 For more information about asynchronous programming, in general, see the
 [dart:async](/guides/libraries/library-tour#dartasync---asynchronous-programming)
 section of the library tour.
-Also see the articles
-[Dart Language Asynchrony Support: Phase 1](/articles/language/await-async)
-and
-[Dart Language Asynchrony Support: Phase 2](/articles/language/beyond-async),
-and the [Dart language specification](/guides/language/spec).
 
 
 <a id="generator"></a>
@@ -3960,13 +4122,10 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 }
 {% endprettify %}
 
-For more information about generators, see the article
-[Dart Language Asynchrony Support: Phase 2](/articles/language/beyond-async).
-
 
 ## Callable classes
 
-To allow your Dart class to be called like a function,
+To allow an instance of your Dart class to be called like a function,
 implement the `call()` method.
 
 In the following example, the `WannabeFunction` class defines
@@ -3976,7 +4135,7 @@ Click the run button {% asset red-run.png alt="" %} to execute the code.
 
 {% comment %}
 https://gist.github.com/405379bacf30335f3aed
-https://dartpad.dartlang.org/405379bacf30335f3aed
+{{site.dartpad}}/405379bacf30335f3aed
 
 <?code-excerpt "misc/lib/language_tour/callable_classes.dart"?>
 {% prettify dart %}
@@ -3998,8 +4157,6 @@ src="{{site.custom.dartpad.embed-inline-prefix}}?id=405379bacf30335f3aed&vertica
     style="border: 1px solid #ccc;">
 </iframe>
 
-For more information on treating classes like functions, see
-[Emulating Functions in Dart](/articles/language/emulating-functions).
 
 ## Isolates
 
@@ -4249,26 +4406,26 @@ your comments, see
 
 This page summarized the commonly used features in the Dart language.
 More features are being implemented, but we expect that they won’t break
-existing code. For more information, see the [Dart Language
-Specification](/guides/language/spec) and
+existing code. For more information, see the [Dart language specification][] and
 [Effective Dart](/guides/language/effective-dart).
 
 To learn more about Dart's core libraries, see
 [A Tour of the Dart Libraries](/guides/libraries/library-tour).
 
 [AssertionError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html
-[dart2js]: {{site.webdev}}/tools/dart2js
+[dart2js]: /tools/dart2js
 [dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html
 [dart:isolate]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate
 [dart:math]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math
 [dart]: /server/tools/dart-vm
-[dartdevc]: {{site.webdev}}/tools/dartdevc
+[Dart language specification]: /guides/language/spec
+[dartdevc]: /tools/dartdevc
 [DON’T use const redundantly]: /guides/language/effective-dart/usage#dont-use-const-redundantly
 [double]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
 [Error]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
 [Exception]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
-[Flutter]: https://flutter.io
-[Flutter debug mode]: https://flutter.io/debugging/#debug-mode-assertions
+[Flutter]: {{site.flutter}}
+[Flutter debug mode]: {{site.flutter}}/docs/testing/debugging#debug-mode-assertions
 [forEach()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
 [Function API reference]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 [Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
@@ -4283,6 +4440,7 @@ To learn more about Dart's core libraries, see
 [@required]: {{site.pub-api}}/meta/latest/meta/required-constant.html
 [Object]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
 [ObjectVsDynamic]: /guides/language/effective-dart/design#do-annotate-with-object-instead-of-dynamic-to-indicate-any-object-is-allowed
+[Set]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
 [StackTrace]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackTrace-class.html
 [Stream]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [String]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html

@@ -1,5 +1,6 @@
 ---
-title: Dart Language Specification
+title: Dart language specification
+short-title: Language specification
 description: The formal specification for the Dart language.
 ---
 
@@ -9,26 +10,28 @@ For a gentler introduction to Dart, see the
 
 ## Dart 2
 
-Dart 2 has changed the Dart language in many ways,
-some of which are not backward-compatible.
-For details, see the [Dart 2 page](/dart-2).
+A formal Dart 2 specification is available in PDF format:
 
-The formal language specification is not yet up-to-date.
-For information about Dart 2 changes, see the following resources.
+  * [Dart Programming Language Specification (Version 2.2)](/guides/language/specifications/DartLangSpec-v2.2.pdf)
 
-* Feature specifications in the dart-lang/sdk repo:
-  * [docs/language/informal](https://github.com/dart-lang/sdk/tree/master/docs/language/informal)
-* Feature specifications in the dart-lang/language repo:
-  * [accepted](https://github.com/dart-lang/language/tree/master/accepted)
-  * [working](https://github.com/dart-lang/language/tree/master/working)
-* Dart language specification work in progress:
-  * [Source file (LaTeX format)](https://github.com/dart-lang/sdk/blob/master/docs/language/dartLangSpec.tex)
-  * [Community-contributed PDF built from the source file](https://github.com/chalin/dart-spec-and-grammar/blob/master/doc/dartLangSpec.pdf)
+Note: Dart 2 has changed the Dart language in many ways, some of which are not
+backward-compatible. For details, see the [Dart 2 page](/dart-2).
+
+### In-progress specification
+
+The in-progress formal Dart language specification is written as a
+[LaTeX file,](https://github.com/dart-lang/sdk/blob/master/docs/language/dartLangSpec.tex)
+and is available as a [draft specification in PDF format.](https://spec.dart.dev/DartLangSpecDraft.pdf)
+
+New language features are typically described using informal language feature specifications in the dart-lang/language repo:
+  * [Accepted informal proposals](https://github.com/dart-lang/language/tree/master/accepted)
+  * [Drafts of potential features](https://github.com/dart-lang/language/tree/master/working)
+
 
 ## Dart 1.x
 
-Download the formal language specification from the Ecma International
-website:
+The formal Dart 1.x language specification is available from
+the Ecma International website:
 
 * <a href="http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-408.pdf"
    target="_blank" rel="noopener">Dart Programming Language Specification, 4<sup>th</sup> Edition</a>

@@ -3,8 +3,7 @@ title: pub get
 description: Use pub get to retrieve the dependencies used by your Dart application.
 ---
 
-_Get_ is one of the commands of the _pub_ tool.
-[Learn more about pub](/tools/pub).
+_Get_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 {% prettify nocode %}
 $ pub get [--offline]
@@ -99,8 +98,8 @@ already-acquired dependencies.
 
 ## The system package cache
 
-Dependencies downloaded over the internet, such as those from Git and
-[pub.dartlang.org](https://pub.dartlang.org), are stored in a
+Dependencies downloaded over the internet, such as those from Git and the
+[Pub site]({{site.pub}}), are stored in a
 [system-wide cache](/tools/pub/glossary#system-cache).
 This means that if multiple packages use the same version of the
 same dependency, it only needs to be

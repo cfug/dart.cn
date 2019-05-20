@@ -2,7 +2,6 @@
 title: Effective Dart
 description: Best practices for building consistent, maintainable, efficient Dart libraries.
 permalink: /guides/language/effective-dart
-toc: true
 nextpage:
   url: /guides/language/effective-dart/style
   title: Style
@@ -33,6 +32,18 @@ write consistent, robust, fast code too. There are two overarching themes:
     *economical*, not *dense*.
 
 [code golf]: https://en.wikipedia.org/wiki/Code_golf
+
+The Dart analyzer has a linter to help you write good, consistent code.
+If a linter rule exists that can help you follow a guideline,
+then the guideline links to that rule. Here's an example:
+
+{% include linter-rule.html rule="prefer_collection_literals" %}
+
+For help on
+[enabling linter rules](/guides/language/analysis-options#enabling-linter-rules),
+see the documentation for
+[customizing static analysis](/guides/language/analysis-options).
+
 
 ## The guides
 

@@ -3,7 +3,6 @@
 import 'dart:async';
 import 'dart:collection';
 import 'dart:isolate';
-import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:dartlang_examples_util/ellipsis.dart';
@@ -426,18 +425,6 @@ typedef Predicate<E> = bool Function(E element);
 
 //----------------------------------------------------------------------------
 
-// #docregion named-ctr
-class Point {
-  num x, y;
-  Point(this.x, this.y);
-  Point.polar(num theta, num radius)
-      : x = radius * cos(theta),
-        y = radius * sin(theta);
-}
-// #enddocregion named-ctr
-
-//----------------------------------------------------------------------------
-
 class C<Foo> {
   // #docregion avoid_return_types_on_setters
   set foo(Foo value) {/* ... */}
@@ -488,7 +475,7 @@ class Person {
   // #enddocregion eq-dont-check-for-null
   Person(this.name);
   // #docregion eq-dont-check-for-null
-  operator ==(other) => other is Person && name == other.name;
+  bool operator ==(other) => other is Person && name == other.name;
 
   int get hashCode => name.hashCode;
 }

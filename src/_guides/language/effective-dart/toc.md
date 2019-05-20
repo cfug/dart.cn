@@ -15,7 +15,7 @@
 **Identifiers**
 
 * <a href='/guides/language/effective-dart/style#do-name-types-using-uppercamelcase'>DO name types using <code>UpperCamelCase</code>.</a>
-* <a href='/guides/language/effective-dart/style#do-name-libraries-and-source-files-using-lowercase_with_underscores'>DO name libraries and source files using <code>lowercase_with_underscores</code>.</a>
+* <a href='/guides/language/effective-dart/style#do-name-libraries-and-source-files-using-lowercase_with_underscores'>DO name libraries, packages, directories, and source files using <code>lowercase_with_underscores</code>.</a>
 * <a href='/guides/language/effective-dart/style#do-name-import-prefixes-using-lowercase_with_underscores'>DO name import prefixes using <code>lowercase_with_underscores</code>.</a>
 * <a href='/guides/language/effective-dart/style#do-name-other-identifiers-using-lowercamelcase'>DO name other identifiers using <code>lowerCamelCase</code>.</a>
 * <a href='/guides/language/effective-dart/style#prefer-using-lowercamelcase-for-constant-names'>PREFER using <code>lowerCamelCase</code> for constant names.</a>
@@ -26,7 +26,7 @@
 
 * <a href='/guides/language/effective-dart/style#do-place-dart-imports-before-other-imports'>DO place "dart:" imports before other imports.</a>
 * <a href='/guides/language/effective-dart/style#do-place-package-imports-before-relative-imports'>DO place "package:" imports before relative imports.</a>
-* <a href='/guides/language/effective-dart/style#prefer-placing-third-party-package-imports-before-other-imports'>PREFER placing "third-party" "package:" imports before other imports.</a>
+* <a href='/guides/language/effective-dart/style#prefer-placing-third-party-package-imports-before-other-imports'>PREFER placing external "package:" imports before other imports.</a>
 * <a href='/guides/language/effective-dart/style#do-specify-exports-in-a-separate-section-after-all-imports'>DO specify exports in a separate section after all imports.</a>
 * <a href='/guides/language/effective-dart/style#do-sort-sections-alphabetically'>DO sort sections alphabetically.</a>
 
@@ -129,7 +129,7 @@
 * <a href='/guides/language/effective-dart/usage#dont-wrap-a-field-in-a-getter-and-setter-unnecessarily'>DON'T wrap a field in a getter and setter unnecessarily.</a>
 * <a href='/guides/language/effective-dart/usage#prefer-using-a-final-field-to-make-a-read-only-property'>PREFER using a <code>final</code> field to make a read-only property.</a>
 * <a href='/guides/language/effective-dart/usage#consider-using--for-simple-members'>CONSIDER using <code>=&gt;</code> for simple members.</a>
-* <a href='/guides/language/effective-dart/usage#dont-use-this-when-not-needed-to-avoid-shadowing'>DON'T use <code>this.</code> when not needed to avoid shadowing.</a>
+* <a href='/guides/language/effective-dart/usage#dont-use-this-when-not-needed-to-avoid-shadowing'>DON'T use <code>this.</code> except to redirect to a named constructor or to avoid shadowing.</a>
 * <a href='/guides/language/effective-dart/usage#do-initialize-fields-at-their-declaration-when-possible'>DO initialize fields at their declaration when possible.</a>
 
 **Constructors**
@@ -200,7 +200,6 @@
 
 **Constructors**
 
-* <a href='/guides/language/effective-dart/design#prefer-defining-constructors-instead-of-static-methods-to-create-instances'>PREFER defining constructors instead of static methods to create instances.</a>
 * <a href='/guides/language/effective-dart/design#consider-making-your-constructor-const-if-the-class-supports-it'>CONSIDER making your constructor <code>const</code> if the class supports it.</a>
 
 **Members**

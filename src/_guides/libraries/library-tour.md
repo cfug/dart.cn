@@ -1,16 +1,15 @@
 ---
-title: A Tour of the Dart Libraries
+title: A tour of the core libraries
 description: Learn about the major features in Dart's libraries.
-short-title: Library Tour
+short-title: Library tour
 ---
 <?code-excerpt plaster="none"?>
 
-This tour shows how to use the main features of the following libraries,
-which are included in all Dart platforms:
+This page shows you how to use the major features in Dart’s core libraries.
+It’s just an overview, and by no means comprehensive.
+Whenever you need more details about a class,
+consult the [Dart API reference.][Dart API]
 
-{% comment %}
-[CHECK: is "all" guaranteed to stay true?]
-{% endcomment %}
 
 [dart:core](#dartcore---numbers-collections-strings-and-more)
 : Built-in types, collections, and other core functionality.
@@ -19,29 +18,29 @@ which are included in all Dart platforms:
 [dart:async](#dartasync---asynchronous-programming)
 : Support for asynchronous programming, with classes such as Future and Stream.
 
-{% comment %}
-update-for-dart-2
-Q: When will Future move to dart:core?
-{% endcomment %}
-
 [dart:math](#dartmath---math-and-random)
 : Mathematical constants and functions, plus a random number generator.
 
 [dart:convert](#dartconvert---decoding-and-encoding-json-utf-8-and-more)
 : Encoders and decoders for converting between different data representations, including JSON and UTF-8.
 
+[dart:html](#darthtml)
+: DOM and other APIs for browser-based apps.
+
+[dart:io](#dartio)
+: I/O for programs that can use the Dart VM,
+  including Flutter apps, servers, and command-line scripts.
+
 This page is just an overview;
 it covers only a few dart:* libraries
 and no third-party libraries.
-The platform-specific dart:io and dart:html libraries
-are covered in the [dart:io tour][] and the [dart:html tour.][dart:html tour]
 
-Other places to find library information are
-[pub.dartlang.org][pub.dartlang.org] and the
-[Dart web developer library guide.][webdev libraries]
+Other places to find library information are the
+[Pub site][pub.dartlang] and the
+[Dart web developer library guide][webdev libraries].
 You can find API documentation for all dart:* libraries in the
 [Dart API reference][Dart API] or, if you're using Flutter,
-the [Flutter API reference.][docs.flutter.io]
+the [Flutter API reference.][docs.flutter]
 
 <aside class="alert alert-info" markdown="1">
   **DartPad tip:** You can play with the code in this page by copying it into a
@@ -1386,14 +1385,17 @@ inputStream
 ### More information
 
 For some examples of using Future and Stream in command-line apps,
-see the [dart:io tour.][dart:io tour]
+see the [dart:io tour][dart:io tour].
 Also see these articles and tutorials:
 
 -   [Asynchronous Programming: Futures](/tutorials/language/futures)
 -   [Futures and Error Handling](/guides/libraries/futures-error-handling)
--   [The Event Loop and Dart]({{site.webdev}}/articles/performance/event-loop)
 -   [Asynchronous Programming: Streams](/tutorials/language/streams)
 -   [Creating Streams in Dart](/articles/libraries/creating-streams)
+{% comment %}
+[PENDING: update/remove article link]
+-   [The Event Loop and Dart](/articles/performance/event-loop)
+{% endcomment %}
 
 
 ## dart:math - math and random
@@ -1542,8 +1544,8 @@ var scores = [
 var jsonText = jsonEncode(scores);
 assert(jsonText ==
     '[{"score":40},{"score":80},'
-    '{"score":100,"overtime":true,'
-    '"special_guest":null}]');
+        '{"score":100,"overtime":true,'
+        '"special_guest":null}]');
 {% endprettify %}
 
 Only objects of type int, double, String, bool, null, List, or Map (with
@@ -1555,6 +1557,9 @@ encodable. The first is to invoke `encode()` with a second argument: a
 function that returns an object that is directly encodable. Your second
 option is to omit the second argument, in which case the encoder calls
 the object's `toJson()` method.
+
+For more examples and links to JSON-related packages, see
+[JSON Support](/guides/json).
 
 
 ### Decoding and encoding UTF-8 characters
@@ -1614,6 +1619,16 @@ The dart:convert library also has converters for ASCII and ISO-8859-1
 (Latin1). For details, see the [API reference for the dart:convert library.][dart:convert]
 
 
+## dart:html - browser-based apps {#darthtml}
+
+{% include dart-html-tour.md %}
+
+
+## dart:io - I/O for servers and command-line apps {#dartio}
+
+{% include dart-io-tour.md %}
+
+
 ## Summary
 
 This page introduced you to the most commonly used functionality in
@@ -1622,24 +1637,23 @@ libraries, however. Others that you might want to look into include
 [dart:collection][] and [dart:typed\_data,][dart:typed\_data]
 as well as platform-specific libaries like the
 [Dart web development libraries][webdev libraries]
-and the [Flutter libraries.][docs.flutter.io]
+and the [Flutter libraries.][docs.flutter]
 
-You can get yet more libraries by using the [pub tool](/tools/pub). The
-[collection,](https://pub.dartlang.org/packages/collection)
-[crypto,](https://pub.dartlang.org/packages/crypto)
-[http,](https://pub.dartlang.org/packages/http)
-[intl,](https://pub.dartlang.org/packages/intl) and
-[test](https://pub.dartlang.org/packages/test) libraries are just a
+You can get yet more libraries by using the [pub package manager](/guides/packages). The
+[collection,]({{site.pub}}/packages/collection)
+[crypto,]({{site.pub}}/packages/crypto)
+[http,]({{site.pub}}/packages/http)
+[intl,]({{site.pub}}/packages/intl) and
+[test]({{site.pub}}/packages/test) libraries are just a
 sampling of what you can install using pub.
 
 To learn more about the Dart language, see the
 [language tour][].
 
 [language tour]: /guides/language/language-tour
-[docs.flutter.io]: https://docs.flutter.io/
-[dartdocs.org]: https://www.dartdocs.org/
-[pub.dartlang.org]: https://pub.dartlang.org
-[DartPad]: https://dartpad.dartlang.org
+[docs.flutter]: {{site.flutter_api}}
+[pub.dartlang]: {{site.pub}}
+[DartPad]: {{site.dartpad}}
 [Assert]: /guides/language/language-tour#assert
 [ArgumentError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
 [Comparable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Comparable-class.html
@@ -1647,8 +1661,7 @@ To learn more about the Dart language, see the
 [dart:async]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html
 [dart:collection]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html
 [dart:convert]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
-[dart:html tour]: {{site.webdev}}/guides/html-library-tour
-[dart:io tour]: /server/io-library-tour
+[dart:io tour]: #dartio
 [dart:math]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
 [dart:typed\_data]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
 [Dart API]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}
@@ -1682,4 +1695,4 @@ To learn more about the Dart language, see the
 [UTF-8]: https://en.wikipedia.org/wiki/UTF-8
 [web audio]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
 [Uri]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri-class.html
-[webdev libraries]: {{site.webdev}}/guides/web-programming
+[webdev libraries]: /web/libraries

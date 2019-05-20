@@ -1,6 +1,6 @@
 ---
-title: "An Introduction to the dart:io Library"
-description: "An introduction to the Dart I/O library, which is aimed at code that runs in Flutter and the standalone Dart VM."
+title: "An introduction to the dart:io library"
+description: An introduction to the Dart I/O library, which is aimed at code that runs in Flutter and the standalone Dart VM.
 original-date: 2012-03-01
 date: 2018-09-04
 category: libraries
@@ -18,9 +18,9 @@ by going through a couple of examples.
 <aside class="alert alert-info" markdown="1">
   **Note:**
   When writing a Flutter app, use
-  [Flutter-specific APIs](https://docs.flutter.io)
+  [Flutter-specific APIs]({{site.flutter_api}})
   instead of dart:io whenever possible. For example, use the
-  [Flutter asset support](https://flutter.io/assets-and-images/) to load
+  [Flutter asset support]({{site.flutter}}/assets-and-images) to load
   images and other assets into your app.
 </aside>
 
@@ -377,9 +377,7 @@ class.
 ## Feature requests welcome
 
 The dart:io library is already capable of performing a lot of tasks.
-For example, the
-[pub.dartlang.org site](https://github.com/dart-lang/pub-dartlang-dart)
-uses dart:io.
+For example, the [Pub site]({{site.pub}}) uses dart:io.
 
 Please give dart:io a spin and let us know what you think.
 Feature requests are very welcome!

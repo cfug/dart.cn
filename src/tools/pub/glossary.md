@@ -1,10 +1,11 @@
 ---
-title: Glossary of Pub Terms
+title: Glossary of package terms
 description: A glossary of terms relating to Dart's package management tool, pub.
 ---
 
-The following terms are used in the documentation for the [pub](/tools/pub)
-tool.
+The following terms are used in the documentation for
+[packagement management](/guides/packages) and
+the [pub tool](/tools/pub/cmd).
 
 ## Application package
 
@@ -112,7 +113,7 @@ section [in the pubspec](/tools/pub/pubspec#sdk-constraints).
 ## Source
 
 A kind of place that pub can get packages from. A source isn't a specific place
-like pub.dartlang.org or some specific Git URL. Each source describes a general
+like the Pub site or some specific Git URL. Each source describes a general
 procedure for accessing a package in some way. For example, _git_ is one source.
 The git source knows how to download packages given a Git URL. Several
 different [supported sources](/tools/pub/dependencies#dependency-sources) are available.
