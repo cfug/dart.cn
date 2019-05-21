@@ -8,7 +8,7 @@ set -e
 commitSha=$(git rev-parse --short HEAD)
 commitMessage=$(git log --oneline -n 1)
 
-git clone https://asnowwolf:${GITHUB_ACCESS_TOKEN}@github.com/cfug-dev/dartlang-cn-prebuilt.git ./prebuilt
+git clone https://cfug-deploy:${CFUG_DEPLOY_KEY}@github.com/cfug-deploy/dartlang-cn-prebuilt.git ./prebuilt
 
 cp -r _site/* prebuilt
 
