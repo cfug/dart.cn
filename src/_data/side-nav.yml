@@ -4,7 +4,14 @@
     - title: Language samples
       permalink: /samples
     - title: Codelabs
-      permalink: /codelabs
+      expanded: true
+      children:
+        - title: Overview
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /codelabs
+        - title: Cheatsheet codelab
+          permalink: /codelabs/dart-cheatsheet
     - title: Tutorials
       urlExactMatch: true
       match-page-url-exactly: true
@@ -20,7 +27,20 @@
     - title: Specification
       permalink: /guides/language/spec
     - title: Effective Dart
-      permalink: /guides/language/effective-dart
+      expanded: false
+      children:
+        - title: Overview
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /guides/language/effective-dart
+        - title: Style
+          permalink: /guides/language/effective-dart/style
+        - title: Documentation
+          permalink: /guides/language/effective-dart/documentation
+        - title: Usage
+          permalink: /guides/language/effective-dart/usage
+        - title: Design
+          permalink: /guides/language/effective-dart/design
 
 - title: Core libraries
   expanded: false
@@ -207,7 +227,7 @@
   expanded: true
   children:
     - title: API reference
-      permalink: https://api.dartlang.org
+      permalink: https://api.dart.dev
     - title: Blog
       permalink: https://medium.com/dartlang
     - title: DartPad (online editor)
