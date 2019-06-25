@@ -45,7 +45,7 @@ Dart plugins exist for these commonly used IDEs.
 <ul class="col2">
 <li>
 <img src="{% asset tools/android_studio.png @path %}"
-     width="48" alt="IntelliJ logo">
+     width="48" alt="Android Studio logo">
 <a href="/tools/jetbrains-plugin"><b>Android Studio</b></a>
 </li>
 <li>
@@ -71,6 +71,10 @@ thanks to the Dart community.
 <li>
 <img src="{% asset tools/vim.png @path %}" alt="Vim logo">
 <a class="no-automatic-external" href="https://github.com/dart-lang/dart-vim-plugin"><b>Vim</b></a>
+</li>
+<li>
+<img src="{% asset tools/atom-logo.png @path %}" alt="Atom logo">
+<a class="no-automatic-external" href="https://github.com/dart-atom/dart"><b>Atom</b></a>
 </li>
 </ul>
 
@@ -144,13 +148,16 @@ The following tools are especially for developing web apps:
 The following tools have special support for developing or running
 command line apps and servers:
 
-[Standalone Dart VM: `dart`](/server/tools/dart-vm)
+[Standalone Dart VM: `dart`](/tools/dart-vm)
 : Executes Dart code.
   IDEs that support Dart,
   and some of the `pub` commands, use this
   command behind-the-scenes to execute Dart scripts.
   Note that you must configure your IDE with the location of
   the `dart` binary.
+
+[AOT compiler and runtime: `dart2aot`, `dartaotruntime`](/tools/dart2aot)
+: Support ahead-of-time compilation of Dart code to native x64 machine code.
 
 [Pub package manager: `pub`](/tools/pub/cmd)
 : Simplifies downloading and running scripts,
