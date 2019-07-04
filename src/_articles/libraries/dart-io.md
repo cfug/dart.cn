@@ -1,6 +1,8 @@
 ---
 title: "An introduction to the dart:io library"
+title: "介绍 dart:io 库的使用方式"
 description: An introduction to the Dart I/O library, which is aimed at code that runs in Flutter and the standalone Dart VM.
+description: 介绍 Dart 的输入和输出库。
 original-date: 2012-03-01
 date: 2018-09-04
 category: libraries

@@ -1,5 +1,5 @@
-- name: Language samples
-  description: A brief, example-based introduction to the Dart language.
+- name: 语言概览
+  description: 基于代码样例的 Dart 语言简要说明。
   url: /samples
 - name: Language tour
   description: A more thorough (yet still example-based) introduction to the Dart language.
