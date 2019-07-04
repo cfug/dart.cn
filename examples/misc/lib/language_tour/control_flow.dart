@@ -1,5 +1,3 @@
-// ignore_for_file: non_bool_expression
-
 typedef Pred0 = bool Function();
 typedef Void0 = void Function();
 
