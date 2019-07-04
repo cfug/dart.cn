@@ -1,6 +1,8 @@
 ---
 title: Creating streams in Dart
+title: 在 Dart 里使用 streams
 description: A stream is a sequence of results; learn how to create your own.
+description: Stream 是一个结果序列，本篇带你学会如何创建自己的 stream。
 original-date: 2013-04-08
 date: 2018-09-26
 category: libraries
