@@ -253,7 +253,6 @@ class Spacecraft {
   }
 
   // Named constructor that forwards to the default one.
-  // 命名构造函数，最终调用默认构造函数。
   Spacecraft.unlaunched(String name) : this(name, null);
 
   int get launchYear =>
