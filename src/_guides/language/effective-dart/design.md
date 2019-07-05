@@ -1,9 +1,12 @@
 ---
 title: "Effective Dart: Design"
+title: 高效 Dart 语言指南：API 设计
 description: Design consistent, usable libraries.
+description: 库的 API 设计。
 prevpage:
   url: /guides/language/effective-dart/usage
   title: Usage
+  title: 用法示例
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 <?code-excerpt plaster="none"?>

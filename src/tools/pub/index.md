@@ -1,6 +1,8 @@
 ---
 title: The pub tool
+title: Pub 工具
 description: Pub, a package management tool for Dart, supports a variety of commands.
+description: Pub 是 Dart 的 package 管理工具，下面是其包含了的一些命令。
 ---
 
 The `pub` tool has commands for managing packages

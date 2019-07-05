@@ -1,6 +1,8 @@
 ---
 title: Debugging Dart web apps
+title: 调试 Dart Web 应用
 description: Learn how to use DevTools to debug your Dart web app.
+description: 如果使用 Dart 开发者工具调试 Web 应用。
 ---
 
 You can use [Chrome DevTools][] and the

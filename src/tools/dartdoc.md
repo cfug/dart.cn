@@ -1,6 +1,8 @@
 ---
 title: dartdoc
+title: dartdoc 命令
 description: API reference generation tool.
+description: Dart 语言的 API 生成命令。
 toc: false
 ---
 

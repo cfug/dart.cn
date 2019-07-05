@@ -1,6 +1,8 @@
 ---
 title: Core libraries
+title: Dart 语言核心库
 description: Learn about Dart's core libraries and APIs.
+description: 学习使用 Dart 的核心库和 API。
 toc: false
 ---
 

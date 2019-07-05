@@ -1,6 +1,8 @@
 ---
 title: A tour of the core libraries
+title: Dart 语言核心库一览
 description: Learn about the major features in Dart's libraries.
+description: 学习更多关于 Dart 语言核心库的特性。
 short-title: Library tour
 ---
 <?code-excerpt plaster="none"?>

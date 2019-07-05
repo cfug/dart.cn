@@ -1,7 +1,9 @@
 ---
 title: "dart2js: Dart-to-JavaScript compiler"
+title: dart2js 命令 (Dart 生成 JS 编译器)
 short-title: dart2js
 description: The dart2js tool compiles Dart code to deployable JavaScript.
+description: 将 Dart 代码编译成 JavaScr 代码。
 ---
 
 Use the _dart2js_ tool to compile Dart code to deployable JavaScript.

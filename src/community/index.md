@@ -1,6 +1,7 @@
 ---
 permalink: /community
 title: Community and support
+title: 社区和支持
 description: Communities, mailing lists, and bug databases for the Dart project.
 ---
 

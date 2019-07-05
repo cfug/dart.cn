@@ -1,13 +1,16 @@
 ---
 title: "Add elements to the DOM"
+title: 向 DOM 添加元素
 description: "You have an Element object, now what?"
-
+description: 向 DOM 里添加元素。
 nextpage:
   url: /tutorials/web/low-level-html/remove-elements
   title: "Remove DOM elements"
+  title: 移除 DOM 元素
 prevpage:
   url: /tutorials/web/low-level-html/connect-dart-html
   title: "Connect Dart & HTML"
+  title: Dart 与 HTML 关联
 ---
 
 {% comment %}

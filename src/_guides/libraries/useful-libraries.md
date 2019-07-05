@@ -1,6 +1,8 @@
 ---
 title: Commonly used packages
+title: 常用 package 介绍
 description: Some of the most useful and popular packages, and where you can learn more.
+description: 一些常用的 package 的列表。
 ---
 
 This page lists some of the most popular and useful

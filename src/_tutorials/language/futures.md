@@ -1,9 +1,12 @@
 ---
 title: "Asynchronous programming: futures & async-await"
+title: 异步编程：使用 futures 和 async-await
 description: How to write asynchronous Dart code that uses futures and the async and await keywords.
+description: 如何使用 futures、async、await 编写异步代码。
 nextpage:
   url: /tutorials/language/streams
   title: "Asynchronous programming: streams"
+  title: 异步编程：使用 streams
 ---
 <?code-excerpt replace="/\b_(gather|print)/$1/g; /Async\w*\(\)/()/g"?>
 <?code-excerpt plaster="none"?>

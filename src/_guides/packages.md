@@ -1,7 +1,9 @@
 ---
 title: How to use packages
+title: 如何使用 package
 short-title: Packages
 description: Learn more about pub, Dart's tool for managing packages.
+description: 关于 pub 命令的更多介绍，这是 Dart 里用于管理 package 的工具。
 ---
 
 The Dart ecosystem uses _packages_ to manage shared software

@@ -1,6 +1,8 @@
 ---
 title: Visual Studio Code
+title: 在 VS Code 里编辑 Dart
 description: You can use VS Code to develop Dart apps.
+description: 在 VS Code 里开发 Dart 应用。
 toc: false
 ---
 

@@ -1,7 +1,9 @@
 ---
 title: Dart FAQ
+title: Dart 常见问题和解答
 short-title: FAQ
 description: You have questions about Dart, we have answers.
+description: Dart 常见问题和解答。
 ---
 
 _Updated June 2019_

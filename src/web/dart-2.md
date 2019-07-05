@@ -1,6 +1,8 @@
 ---
 title: Dart 2 migration guide for web apps
+title: Dart 1 Web 应用迁移到 Dart 2
 description: Tips for migrating your web app from Dart 1.x to Dart 2.
+description: 从 Dart 1.x 版本升级到 Dart 2。
 ---
 
 <style>

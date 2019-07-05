@@ -1,6 +1,8 @@
 ---
 title: "dartdevc: FAQ"
+title: 与 dartdevc 相关的常见问题和解答
 description: FAQ and other tips for using dartdevc.
+description: 与 dartdevc 相关的常见问题和解答。
 ---
 
 This page answers common questions about the Dart dev compiler (dartdevc).

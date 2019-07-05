@@ -1,12 +1,15 @@
 ---
 title: "Effective Dart: Style"
+title: 高效 Dart 语言指南：代码风格
 description: Formatting and naming rules for consistent, readable code.
 nextpage:
   url: /guides/language/effective-dart/documentation
   title: Documentation
+  title: 文档
 prevpage:
   url: /guides/language/effective-dart
   title: Overview
+  title: 概览
 ---
 <?code-excerpt plaster="none"?>
 

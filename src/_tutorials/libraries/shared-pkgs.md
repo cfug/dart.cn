@@ -1,6 +1,8 @@
 ---
 title: Install shared packages
-description: Packages are bundles of source code, tools, and resources that help you to organize and share code
+title: 使用共享的 package
+description: Packages are bundles of source code, tools, and resources that help you to organize and share code.
+description: Package 是用于在 Dart 语言里打包代码、工具和资源的东西，可以帮助你更好的组织和分享代码。
 ---
 
 ### Borrow and share code.

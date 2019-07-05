@@ -1,6 +1,8 @@
 ---
 title: Dart 2 migration guide
+title: Dart 2 迁移指南
 description: How Dart 2 is different from Dart 1.x, and how you can convert your code to work with Dart 2.
+description: Dart 2 和 1.x 版本的区别，以及如何迁移到 Dart 2。
 ---
 
 Dart 2 has a few key differences from earlier versions of Dart.

@@ -1,6 +1,8 @@
 ---
 title: Platforms
+title: 平台
 description: "You can use Dart to write mobile apps, web apps, command-line apps, backends, and more."
+description: 你可以使用 Dart 编写移动应用、Web 应用、命令行应用和服务端应用等。
 toc: true
 ---
 

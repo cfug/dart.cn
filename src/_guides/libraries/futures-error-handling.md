@@ -1,6 +1,8 @@
 ---
 title: Futures and error handling
+title: Future 和错误处理
 description: Everything you wanted to know about handling errors and exceptions when writing asynchronous code. And then some.
+description: 错误处理和在异步应用时候的异常捕捉。
 ---
 
 In Dart SDK version 1.9,

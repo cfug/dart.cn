@@ -1,6 +1,8 @@
 ---
 title: Glossary of package terms
+title: Package 术语表
 description: A glossary of terms relating to Dart's package management tool, pub.
+description: Dart 的 package 管理工具 pub 命令的术语表。
 ---
 
 The following terms are used in the documentation for

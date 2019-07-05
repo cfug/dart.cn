@@ -22,7 +22,7 @@
   children:
     - title: 概览
       permalink: /guides/language/language-tour
-    - title: 类型系统
+    - title: 类型体系
       permalink: /guides/language/sound-dart
     - title: 规范
       permalink: /guides/language/spec
@@ -63,9 +63,9 @@
   children:
     - title: 如何使用 package
       permalink: /guides/packages
-    - title: 常用 packages 介绍
+    - title: 常用 package 介绍
       permalink: /guides/libraries/useful-libraries
-    - title: 创建 packages
+    - title: 创建 package
       permalink: /guides/libraries/create-library-packages
     - title: 发布 package
       permalink: /tools/pub/publishing
@@ -78,11 +78,11 @@
           permalink: /tools/pub/glossary
         - title: Package 文件结构
           permalink: /tools/pub/package-layout
-        - title: 为 pub 命令设置环境变量
+        - title: 设置环境变量
           permalink: /tools/pub/environment-variables
         - title: Pubspec 文件
           permalink: /tools/pub/pubspec
-        - title: Pub 命令问题排查
+        - title: 问题排查
           permalink: /tools/pub/troubleshoot
         - title: 版本管理
           permalink: /tools/pub/versioning
@@ -104,7 +104,7 @@
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /server
-        - title: 开始使用
+        - title: 起步教程
           permalink: /tutorials/server/get-started
         - title: 编写命令行应用
           permalink: /tutorials/server/cmdline
@@ -196,7 +196,7 @@
     children:
       - title: 自定义静态分析
         permalink: /guides/language/analysis-options
-      - title: 修复常见的
+      - title: 修复常见的类型问题
         permalink: /guides/language/sound-problems
   - title: 测试和调优
     children:

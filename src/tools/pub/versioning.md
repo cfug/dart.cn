@@ -1,6 +1,8 @@
 ---
 title: Package versioning
+title: Package 的版本管理
 description: "How Dart's package management tool, pub, handles versioning of packages."
+description: 使用 pub 命令管理 package 的版本。
 ---
 
 One of the main jobs of the [pub package manager](/guides/packages)

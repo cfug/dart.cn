@@ -1,6 +1,8 @@
 ---
 title: Obsolete pub features
+title: 已失效的 pub 命令和功能
 description: As of Dart 2, pub no longer supports pub build/serve or transformers.
+description: 在 Dart 2 里，有些 pub 功能和命令被移除。
 ---
 
 As of Dart 2, pub no longer supports `pub build`, `pub serve`, or transformers.

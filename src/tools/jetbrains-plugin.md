@@ -1,6 +1,8 @@
 ---
 title: IntelliJ & Android Studio
+title: 在 IntelliJ 和 Android Studio 编辑 Dart
 description: Use Dart with a variety of IDEs and editors from JetBrains.
+description: 在 IntelliJ 和 Android Studio 编辑 Dart。
 ---
 
 The Dart plugin adds Dart support to JetBrains IDEs such as

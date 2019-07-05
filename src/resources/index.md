@@ -1,5 +1,6 @@
 ---
 title: Resources
+title: 资源
 description: Landing page for dartlang's resources.
 toc: false
 ---

@@ -1,6 +1,8 @@
 ---
 title: Creating packages
+title: 创建 package
 description: Learn how to create library packages in Dart.
+description: 学习如何在 Dart 里创建可复用的库。
 ---
 
 The Dart ecosystem uses [packages][]

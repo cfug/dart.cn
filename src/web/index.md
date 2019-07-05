@@ -1,7 +1,9 @@
 ---
 title: Web apps
+title: Web 应用
 short-title: Web
 description: Resources for developing Dart web apps.
+description: 开发 Dart Web 应用时候需要的资源列表。
 toc: false
 ---
 

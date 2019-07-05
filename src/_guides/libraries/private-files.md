@@ -1,6 +1,8 @@
 ---
 title: What not to commit
+title: 发布 package 的时候避免提交的内容
 description: Your development tools generate a bunch of files. Not all of them should be committed.
+description: 开发工具会生成很多文件，在发布的时候，并非其中所有的内容都要提交。
 ---
 
 When you put Dart source code in a repository—using the

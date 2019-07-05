@@ -1,6 +1,8 @@
 ---
 title: Dart language cheatsheet
+title: Dart 语言速查表
 description: A one-page summary of some of Dart's most useful, interesting features.
+description: 介绍 Dart 里最有用和有意思的特性。
 ---
 
 This cheatsheet is based on an internal document

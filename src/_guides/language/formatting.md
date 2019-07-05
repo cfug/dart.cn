@@ -1,6 +1,8 @@
 ---
 title: Formatting code
+title: 代码格式化
 description: Use dartfmt to format your code, and follow Effective Dart guidelines for what dartfmt doesn't cover.
+description: 使用 dartfmt 来格式化你的代码，包括 Dart 高效指南 (Effective Dart) 里提到的 dartfmt 没有包含的内容。
 toc: false
 ---
 

@@ -1,12 +1,16 @@
 ---
 title: "Get started: command-line and server apps"
+title: 起步教程：编写命令行和服务端应用
 description: Get Dart, run and compile a small app
+description: 获取 Dart SDK，运行和编译一个小应用
 nextpage:
   url: /tutorials/server/cmdline
   title: Write command-line apps
+  title: 编写命令行应用
 prevpage:
   url: /tutorials/server
   title: Dart command-line and server tutorials
+  title: 教程目录：使用 Dart 编写命令行和服务端应用
 ---
 
 Follow these steps to start using the Dart SDK to develop command-line and server apps.

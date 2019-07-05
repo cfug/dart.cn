@@ -1,6 +1,8 @@
 ---
 title: Fetch data dynamically
+title: 动态获取数据
 description: Use HttpRequest to fetch data from a file or a server.
+description: 使用 HttpRequest 从服务器或文件里获得数据。
 ---
 <!--?code-excerpt path-base="examples/fetch_data"?-->
 

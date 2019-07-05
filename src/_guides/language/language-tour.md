@@ -1,6 +1,8 @@
 ---
 title: A tour of the Dart language
+title: Dart 开发语言概览
 description: A tour of all of the major Dart language features.
+description: Dart 开发语言的主要特性概览。
 short-title: Language tour
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>

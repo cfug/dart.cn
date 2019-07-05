@@ -1,6 +1,8 @@
 ---
 title: Get the Dart SDK
+title: 获取 Dart SDK
 description: Get the Dart SDK
+description: 获取 Dart SDK
 js:
 - url: /tools/sdk/archive/assets/install.js
   defer: true

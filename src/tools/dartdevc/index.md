@@ -1,7 +1,9 @@
 ---
 title: "dartdevc: the Dart dev compiler"
+title: dartdevc 命令
 short-title: dartdevc
 description: Fast, modular compilation of Dart code to JavaScript.
+description: 快速、模块化地把 Dart 代码编译成 JavaScript 代码。
 ---
 
 The Dart development compiler _(dartdevc_, also known as _DDC)_

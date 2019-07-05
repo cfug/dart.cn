@@ -1,5 +1,6 @@
 ---
 title: The pubspec file
+title: Pubspec 文件
 ---
 
 Every [pub package](/guides/packages) needs some metadata so it can specify its

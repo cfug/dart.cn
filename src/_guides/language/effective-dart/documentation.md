@@ -1,12 +1,16 @@
 ---
 title: "Effective Dart: Documentation"
+title: 高效 Dart 语言指南：文档
 description: Clear, helpful comments and documentation.
+description: 简洁实用的注释以及文档。
 nextpage:
   url: /guides/language/effective-dart/usage
   title: Usage
+  title: 用法示例
 prevpage:
   url: /guides/language/effective-dart/style
   title: Style
+  title: 代码风格
 ---
 
 It's easy to think your code is obvious today without realizing how much you

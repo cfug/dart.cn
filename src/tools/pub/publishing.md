@@ -1,6 +1,8 @@
 ---
 title: Publishing packages
+title: 发布 package
 description: Learn how to publish a Dart package to the Pub site.
+description: 学习如何将 Dart package 发布到 Pub site。
 ---
 
 [The pub package manager](/guides/packages) isn't just for using other people's packages.

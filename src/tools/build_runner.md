@@ -1,6 +1,8 @@
 ---
 title: build_runner
+title: build_runner 命令
 description: A tool for building, testing, and running Dart code.
+description: 编译、测试、运行 Dart 代码的工具。
 ---
 
 The [build_runner][] package provides general-purpose commands for generating files,

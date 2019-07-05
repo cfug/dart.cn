@@ -1,6 +1,7 @@
 ---
 permalink: /resources/books
 title: Books about Dart
+title: 与 Dart 相关的书籍
 description: Read all about it! Here's a collection of publications about Dart.
 toc: false
 ---

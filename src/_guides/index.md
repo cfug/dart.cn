@@ -1,11 +1,16 @@
 ---
 title: Dart documentation
+title: Dart 语言开发文档
 description: Learn to use the Dart language and libraries.
+description: 学习 Dart 语言。
 toc: false
 ---
 
 Welcome to the Dart documentation!
 Here are some of the most visited pages:
+
+欢迎来到 Dart 语言开发文档页面！
+如下是大家最经常访问的页面：
 
 {% comment %}
 To update these cards, edit src/_data/docs_cards.yml.
@@ -27,6 +32,8 @@ To update these cards, edit src/_data/docs_cards.yml.
 [flutter.dev/docs.](https://flutter.dev/docs)]
 
 ## What's new on the site
+
+## 网站更新日志
 
 **May 7, 2019**
 

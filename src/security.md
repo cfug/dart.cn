@@ -1,5 +1,6 @@
 ---
 title: Security
+title: 安全
 ---
 
 The Dart team takes the security of Dart and the applications
