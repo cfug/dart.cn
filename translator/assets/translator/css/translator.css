@@ -4,6 +4,8 @@ body[translation-debug] [translation-result] {
 
 [translation-origin=on] {
     border-top: 1px dashed lightgray !important;
+    font-family: Roboto, "Helvetica Neue", "Helvetica", Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+
 }
 
 [translation-origin=off] {
