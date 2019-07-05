@@ -12,28 +12,54 @@ ensure that a variable's value always matches the variable's static type.
 Although _types_ are mandatory, type _annotations_ are optional
 because of [type inference](#type-inference).
 
+Dart 是类型安全的编程语言：Dart 使用静态类型检查和
+[运行时检查](#runtime-checks)
+的组合来确保变量的值始终与变量的静态类型匹配。尽管类型是必需的，但由于
+[类型推断](#type-inference)，类型的注释是可选的。
+
 This page concentrates on the type safety features added in Dart 2.
 For a full introduction to the Dart language, including types, see the
 [language tour](/guides/language/language-tour).
 
+本章重点介绍 Dart 2 中添加的类型安全功能。有关 Dart 语言的完整介绍（包括类型），
+请参阅[语言概览](/guides/language/language-tour)。
+
 <aside class="alert alert-info" markdown="1">
+  
   **Terminology note:**
+  
+  **术语说明：**
+  
   The terms **sound** Dart and **type safe** Dart
   are often used interchangeably.
   You might also see the term **strong mode**.
   Strong mode was an opt-in Dart 1.x feature
   that provided partial support for type safety.
+  
+  术语 **sound** Dart 和 **type safe** Dart 通常可互换使用。
+  你可能还会看到术语 **strong mode** 。 
+  **strong mode** 是一种在Dart 1.x中可选的功能，
+  可为类型安全提供部分支持。
 </aside>
 
 One benefit of static type checking is the ability to find bugs
 at compile time using Dart's [static analyzer.][analysis]
 
+静态类型检查的一个好处是能够使用 Dart 的
+[静态分析器][analysis] 在编译时找到错误。
+
 You can fix most static analysis errors by adding type annotations to generic
 classes. The most common generic classes are the collection types
 `List<T>` and `Map<K,V>`.
 
+可以向泛型类添加类型注释来修复大多数静态分析错误。
+最常见的泛型类是集合类型 `List<T>` 和 `Map<K,V>` 。
+
 For example, in the following code the `printInts()` function prints an integer list,
 and `main()` creates a list and passes it to `printInts()`.
+
+例如，在下面的代码中，`main()` 创建一个列表并将其传递给 `printInts()`，
+由 `printInts()` 函数打印这个整数列表。
 
 {:.fails-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (opening-example)" replace="/list(?=\))/[!$&!]/g"?>
@@ -51,6 +77,8 @@ void main() {
 The preceding code results in a type error on `list` (highlighted
 above) at the call of `printInts(list)`:
 
+上面的代码在调用 `printInts(list)` 时会在 `list` （高亮提示）上产生类型错误：
+
 {:.console-output}
 <?code-excerpt "strong/analyzer-2-results.txt" retain="/List.*strong_analysis.*argument_type_not_assignable/" replace="/ at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 ```nocode
@@ -64,10 +92,18 @@ enough information for it to infer a type argument more specific than `dynamic`.
 The `printInts()` function expects a parameter of type `List<int>`,
 causing a mismatch of types.
 
+高亮错误是因为产生了从 `List<dynamic>` 到 `List<int>` 的不正确的隐式转换。
+`list` 变量是 `List<dynamic>` 静态类型。这是因为 `list` 变量的初始化声明 `var list = []`
+没有为分析器提供足够的信息来推断比 `dynamic` 更具体的类型参数。
+`printInts()` 函数需要 `List<int>` 类型的参数，因此导致类型不匹配。
+
 When adding a type annotation (`<int>`) on creation of the list
 (highlighted below) the analyzer complains that a string argument can't be assigned to
 an `int` parameter. Removing the quotes in `list.add("2")` results
 in code that passes static analysis and runs with no errors or warnings.
+
+在创建 `list` 时添加类型注释 `<int>`（代码中高亮显示部分）后，分析器会提示无法将字符串参数分配给 `int` 参数。
+删除 `list.add("2")` 中的字符串引号使代码通过静态分析并能够正常执行。
 
 {:.passes-sa}
 <?code-excerpt "strong/test/strong_test.dart (opening-example)" replace="/<int.(?=\[)|2/[!$&!]/g"?>
@@ -88,6 +124,9 @@ void main() {
 {% endcomment -%}
 
 [Try it in DartPad]({{site.dartpad}}/f64e963cb5f894e2146c2b28d5efa4ed).
+
+[尝试在 DartPad 中练习]({{site.dartpad}}/f64e963cb5f894e2146c2b28d5efa4ed).
+
 
 ## What is soundness?
 
