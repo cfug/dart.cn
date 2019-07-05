@@ -6,7 +6,7 @@
     - title: Codelabs
       expanded: true
       children:
-        - title: 综述
+        - title: Codelabs 列表
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /codelabs
