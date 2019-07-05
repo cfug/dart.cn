@@ -257,7 +257,7 @@ img {
     }
 
     @media(min-width: 1024px) {
-      margin-left: 226px;
+      margin-left: 280px;
     }
 
     @media(min-width: 1200px) {
@@ -1313,6 +1313,7 @@ ul.nav-list {
 
 #page-github-links {
   float: right;
+  margin-top: 20px;
   .btn {
     color: $site-color-body;
     $padding-x: $btn-padding-x / 2;
