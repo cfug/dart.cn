@@ -86,6 +86,7 @@ var image = {
 [阅读更多](/guides/language/language-tour#variables) Dart 中关于变量的内容，
 包含默认值， `final` 和 `const` 关键字，以及静态类型等。
 
+
 ## Control flow statements
 
 ## 流程控制语句
@@ -120,6 +121,7 @@ including `break` and `continue`, `switch` and `case`, and `assert`.
 
 [阅读更多](/guides/language/language-tour#control-flow-statements) Dart 中关于控制流程语句的内容，
 包括 `break`  和 `continue`，`switch` 和 `case`，以及 `assert`。
+
 
 ## Functions
 
@@ -166,29 +168,26 @@ including optional parameters, default parameter values, and lexical scope.
 [阅读更多](/guides/language/language-tour#函数) Dart 中关于函数的内容,
 包括可选参数，默认参数值，以及词法作用于。
 
+
 ## Comments
 
 ## 注释
 
 Dart comments usually start with `//`.
 
-Dart 通常使用 `//` 作为注释的开始。
+Dart 通常使用 `//` 作为注释的开始，双斜杠是一个标准的单行注释，
+三斜杠 `///` 是一个文档注释，用来为库，类，以及它们的成员提供文档，
+像 IDEs 和 dartdoc 的工具会专门处理这些注释来生成文档。
+也支持使用 `/* */`斜杠 + 星号 类似的方式添加注释。
 
 {% prettify dart %}
 // This is a normal, one-line comment.
-
-// 双斜杠 ——这是一个标准的单行注释
 
 /// This is a documentation comment, used to document libraries,
 /// classes, and their members. Tools like IDEs and dartdoc treat
 /// doc comments specially.
 
-/// 三斜杠 ——这是一个文档注释，用来为库，类，以及它们的成员提供文档。
-/// 像 IDEs 和 dartdoc 的工具会专门处理这些注释来生成文档。
-
 /* Comments like these are also supported. */
-
-/* 也支持使用 斜杠+星号 类似的方式注释 */
 {% endprettify %}
 
 [Read more](/guides/language/language-tour#comments) about comments in Dart,
@@ -197,23 +196,25 @@ including how the documentation tooling works.
 [阅读更多](/guides/language/language-tour#comments) 在 Dart 中关于注释的内容，
 包括文档工具的工作原理。
 
+
 ## Imports
 
 ## 导入 (import)
 
 To access APIs defined in other libraries, use `import`.
 
-使用 `import` 来访问其他库中的 API 。
+使用 `import` 来访问其他库中的 API，下面展示了三种导入的方式，导入核心库、
+从外部的 package 导入库和从文件中导入。
 
 <?code-excerpt "misc/test/samples_test.dart (import)" plaster="none"?>
 {% prettify dart %}
-// Importing core libraries (导入核心库)
+// Importing core libraries
 import 'dart:math';
 
-// Importing libraries from external packages (从外部的 package 导入库)
+// Importing libraries from external packages
 import 'package:test/test.dart';
 
-// Importing files (从文件中导入)
+// Importing files
 import 'path/to/my_other_file.dart';
 {% endprettify %}
 
@@ -222,6 +223,7 @@ including library prefixes, `show` and `hide`, and lazy loading through the `def
 
 [阅读更多](/guides/language/language-tour#库和可见性) Dart 中关于库和可见性的内容,
 包括库前缀，`show` 和 `hide` ，以及通过 `deferred` 关键字的懒加载。
+
 
 ## Classes
 
@@ -246,7 +248,6 @@ class Spacecraft {
   DateTime launchDate;
 
   // Constructor, with syntactic sugar for assignment to members.
-  // 构造函数，使用语法糖设置成员变量。
   Spacecraft(this.name, this.launchDate) {
     // Initialization code goes here.
   }
@@ -256,9 +257,9 @@ class Spacecraft {
   Spacecraft.unlaunched(String name) : this(name, null);
 
   int get launchYear =>
-      launchDate?.year; // read-only non-final property (属性)
+      launchDate?.year; // read-only non-final property
 
-  // Method (方法).
+  // Method.
   void describe() {
     print('Spacecraft: $name');
     if (launchDate != null) {
@@ -293,6 +294,7 @@ including initializer lists, optional `new` and `const`, redirecting constructor
 [阅读更多](/guides/language/language-tour#classes)  Dart 中关于类的内容,
 包括初始化列表，可选关键字 `new` 和 `const` ，重定向构造函数， `factory` 
 构造函数， getter 方法， setter 方法，以及更多类似部分。
+
 
 ## Inheritance
 
@@ -351,6 +353,7 @@ class PilotedCraft extends Spacecraft [!with!] Piloted {
 [Read more](/guides/language/language-tour#adding-features-to-a-class-mixins) about mixins.
 
 [阅读更多](/guides/language/language-tour#adding-features-to-a-class-mixins) 关于 mixin 的内容。
+
 
 ## Interfaces and abstract classes
 
@@ -475,6 +478,7 @@ and the asynchronous loop (`await for`).
 [阅读更多](/guides/language/language-tour#异步支持) 关于异步支持的内容，
 包括异步函数，`Future`，`Stream`，以及异步循环 (`await for`)。
 
+
 ## Exceptions
 
 ## 异常 (exception)
@@ -519,6 +523,7 @@ Error and Exception.
 
 [阅读更多](/guides/language/language-tour#异常) 关于异常的内容，
 包括栈跟踪（stack traces）、`rethrow`、以及 Error 和 Exception 的区别。
+
 
 ## Other topics
 
