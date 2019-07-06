@@ -1,6 +1,6 @@
 ---
 title: dartfmt
-title: dartfmt 命令
+title: dartfmt 命令 (Dart 代码格式化命令)
 description: Command-line tool for formatting Dart source code.
 description: 格式化 Dart 代码的命令。
 toc: false

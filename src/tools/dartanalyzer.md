@@ -1,6 +1,6 @@
 ---
 title: dartanalyzer
-title: dartanalyzer 命令
+title: dartanalyzer 命令 (Dart 静态分析)
 description: Command-line tool for static analysis.
 description: Dart 语言的静态分析命令。
 toc: false

@@ -1,6 +1,6 @@
 ---
 title: dart2aot
-title: dart2aot 命令
+title: dart2aot 命令 (以 AOT 模式运行 Dart 代码)
 description: Command-line tool for AOT-compiling Dart source code.
 toc: false
 ---

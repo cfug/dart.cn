@@ -106,9 +106,9 @@
           permalink: /server
         - title: 起步教程
           permalink: /tutorials/server/get-started
-        - title: 编写命令行应用
+        - title: 命令行应用
           permalink: /tutorials/server/cmdline
-        - title: 编写 HTTP 客户端和服务端应用
+        - title: HTTP 客户端和服务端应用
           permalink: /tutorials/server/httpserver
         - title: 与 C 和 C++ 互调
           permalink: /server/c-interop
@@ -132,14 +132,14 @@
             permalink: /tutorials/web/low-level-html/add-elements 
           - title: 移除 DOM 元素
             permalink: /tutorials/web/low-level-html/remove-elements
-        - title: Web 上与 JS/TS 互调
+        - title: 与 JS/TS 互调
           permalink: /web/js-interop
         - title: 部署
           permalink: /web/deployment
         - title: 常用 Web 库和 package
           permalink: /web/libraries
 
-- title: 开发工具介绍和使用技巧
+- title: 开发工具和使用技巧
   expanded: false
   children:
   - title: 综述
@@ -150,11 +150,11 @@
     children:
       - title: Dart 开发者工具
         permalink: /tools/dart-devtools
-      - title: DartPad 在线运行 Dart 代码
+      - title: 在线运行 Dart 代码
         permalink: /tools/dartpad
-      - title: 在 IntelliJ 和 Android Studio 编辑 Dart
+      - title: 使用 IntelliJ 和 Android Studio
         permalink: /tools/jetbrains-plugin
-      - title: 在 VS Code 里编辑 Dart
+      - title: 使用 VS Code
         permalink: /tools/vs-code
   - title: 命令行工具
     children:
@@ -163,21 +163,21 @@
       children:
         - title: 综述
           permalink: /tools/sdk
-        - title: dart (DartVM 运行环境)
+        - title: dart 命令
           permalink: /tools/dart-vm
-        - title: dart2aot (以 AOT 模式运行 Dart 代码)
+        - title: dart2aot 命令
           permalink: /tools/dart2aot
-        - title: dart2js (Dart 生成 JS)
+        - title: dart2js 命令
           permalink: /tools/dart2js
-        - title: dartanalyzer (Dart 静态分析)
+        - title: dartanalyzer 命令
           permalink: /tools/dartanalyzer
-        - title: dartdevc (Dev 模式下以 JS 方式在浏览器运行)
+        - title: dartdevc 命令
           permalink: /tools/dartdevc
-        - title: dartdoc (Dart API 文档生成命令)
+        - title: dartdoc 命令
           permalink: /tools/dartdoc
-        - title: dartfmt (Dart 代码格式化命令)
+        - title: dartfmt 命令
           permalink: /tools/dartfmt
-        - title: pub (pub 命令和工具)
+        - title: pub 命令
           permalink: /tools/pub/cmd
     - title: 其他的命令行工具
       expanded: true
@@ -218,7 +218,7 @@
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /dart-2
-        - title: 将 Web 应用迁移到 Dart&nbsp;2 版本
+        - title: Web 应用迁移到 Dart&nbsp;2
           permalink: /web/dart-2
         - title: 已失效的 pub 命令
           permalink: /tools/pub/obsolete
@@ -237,7 +237,7 @@
     - title: Package 网站
       permalink: https://pub.flutter-io.cn
 
-- title: 关于 Dart 中文文档站
+- title: 关于 Dart 中文文档
   expanded: false
   children:
     - title: 关于本站 (WIP)
