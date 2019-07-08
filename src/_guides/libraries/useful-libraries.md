@@ -11,15 +11,32 @@ To find more packages —
 and search [core libraries](/guides/libraries), as well —
 use the [Pub site.]({{site.pub}})
 
+本章列出了一些 Dart 开发者发布的非常流行的有用的 [包](/guides/packages)。
+到 [Pub 网站]({{site.pub}}) 发现更多包及 [核心库](/guides/libraries)。
+
 Commonly used packages fall into three groups:
 
+常用包分为以下三组：
+
 * [General-purpose packages](#general-purpose-packages)
+
+  [通用包](#general-purpose-packages)
+
 * [Packages that expand on Dart core libraries](#packages-that-correspond-to-sdk-libraries)
+  
+  [在 Dart 核心库上的扩展包](#packages-that-correspond-to-sdk-libraries)
+
 * [Specialized packages](#specialized-packages)
+  
+  [专业包](#specialized-packages)
 
 ## General-purpose packages
 
+## 通用包
+
 The following packages are useful for a wide range of projects.
+
+以下包被广泛的应用于项目中。
 
 | **Package** | **Description** | **Commonly used APIs** |
 | [archive]({{site.pub-pkg}}/archive) | Encodes and decodes various archive and compression formats. | Archive, ArchiveFile, TarEncoder, TarDecoder, ZipEncoder, ZipDecoder |
@@ -40,8 +57,13 @@ The following packages are useful for a wide range of projects.
 
 ## Packages that expand on Dart core libraries {#packages-that-correspond-to-sdk-libraries}
 
+## 在 Dart 核心库上的扩展包 {#packages-that-correspond-to-sdk-libraries}
+
 Each of the following packages builds upon a [core library](/guides/libraries),
 adding functionality and filling in missing features:
+
+以下包基于 [核心库](/guides/libraries) 构建，
+添加功能，并补全缺少的功能：
 
 | **Package** | **Description** | **Commonly used APIs** |
 | [async]({{site.pub-pkg}}/async) | Expands on dart:async, adding utility classes to work with asynchronous computations. For more information, see [Unboxing Packages: async part 1]({{site.news}}/2016/03/unboxing-packages-async-part-1.html), [part 2]({{site.news}}/2016/03/unboxing-packages-async-part-2.html), and [part 3.]({{site.news}}/2016/04/unboxing-packages-async-part-3.html) | AsyncMemoizer, CancelableOperation, FutureGroup, LazyStream, Result, StreamCompleter, StreamGroup, StreamSplitter |
@@ -53,21 +75,41 @@ adding functionality and filling in missing features:
 
 ## Specialized packages
 
+## 专业包
+
 Here are some tips for finding packages that are more specialized,
 such as packages for mobile (Flutter) and web development.
 
+以下是一些查找更专业软件包的技巧，例如用于移动开发（Flutter）和 Web 开发的包。
+
+
 ### Flutter packages
+
+### Flutter 包
 
 See [Using packages]({{site.flutter}}/docs/development/packages-and-plugins/using-packages)
 on the Flutter site.
 Or use the Pub site to [search for Flutter packages.]({{site.pub}}/flutter)
 
+在 Flutter 网站，查看 [包的使用]({{site.flutter}}/docs/development/packages-and-plugins/using-packages)。
+或者使用 Pub 网站 [查找 Flutter 包]({{site.pub}}/flutter)。
+
 ### Web packages
+
+### Web 包
 
 See [Web libraries and packages](/web/libraries).
 Or use the Pub site to [search for web packages.]({{site.pub}}/web)
 
+查看 [Web 库和包](/web/libraries)。
+或者使用 Pub 网站 [查找用于 Web 的包]({{site.pub}}/web)。
+
 ### Command-line and server packages
+
+### 命令行和服务器包
 
 See [Command-line and server libraries and packages](/server/libraries).
 Or use the Pub site to [search for other packages.]({{site.pub}})
+
+查看 [命令行和服务器的库和包](/server/libraries)。
+或者使用 Pub 网站 [查找用于其它应用的包]({{site.pub}})。
