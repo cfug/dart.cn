@@ -12,8 +12,14 @@ programming tasks such as working on collections of objects
 data (`dart:convert`). Additional APIs are available in
 [community contributed packages](/guides/libraries/useful-libraries).
 
+Dart 拥有丰富的核心库，他们为许多日常编程任务提供支持，例如处理对象集合的 (`dart:collection`) ，
+进行计算的 (`dart:math`) 以及编/解码数据的 (`dart:convert`) 。
+[社区贡献的包](/guides/libraries/useful-libraries) 中提供了额外的 API 。
+
 The following table lists all of the Dart core libraries.
 Each library works on at least one [platform](/platforms).
+
+下表列出了所有 Dart 核心库。每个库至少可以工作在其中一个 [平台](/platforms)上。
 
 <div class="table-wrapper" markdown="1">
 |-----------------------------------------------+-------------------------------|
