@@ -13,10 +13,10 @@ nt inject '_site/**/*.html' -c /assets/translator/css/translator.css -s /assets/
 
 nt mark '_site/**/*.html'
 
+cp tool/translator/robots.txt _site
+
 cd tool/translator
 
 npm i
 
 npx gulp
-
-cp robots.txt _site
