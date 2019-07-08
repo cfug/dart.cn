@@ -16,7 +16,7 @@ env:
 
 matrix:
   include:
-    - env: TASK="bundle exec jekyll build"
+    - env: TASK="./tool/translator/build.sh"
       dart: stable
     - env: TASK="./tool/check-code.sh"
       dart: stable
@@ -57,7 +57,7 @@ after_script:
 
 deploy:
   - provider: script
-    script: ./translator/deploy.sh
+    script: ./tool/translator/deploy-cn.sh
     skip_cleanup: true
     on:
       repo: cfug/dartlang-cn
