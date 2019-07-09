@@ -18,23 +18,6 @@ matrix:
   include:
     - env: TASK="./tool/translator/build.sh"
       dart: stable
-    - env: TASK="./tool/check-code.sh"
-      dart: stable
-    - env: TASK="./tool/check-code.sh"
-      dart: dev
-    - env: TASK="./tool/analyze-and-test-examples.sh"
-      dart: stable
-    - env: TASK="./tool/analyze-and-test-examples.sh"
-      dart: dev
-    - env: TASK="./tool/build-and-check-links.sh"
-      dart: stable
-  allow_failures:
-    - env: TASK="./tool/analyze-and-test-examples.sh"
-      dart: dev
-    - env: TASK="./tool/check-code.sh"
-      dart: dev
-    - env: TASK="./tool/build-and-check-links.sh"
-      dart: stable
 
 before_install:
   - source ./tool/env-set.sh

@@ -14,7 +14,6 @@ cp -r _site/* /tmp/dartlang.cn-prebuilt/
 
 cd /tmp/dartlang.cn-prebuilt
 
-git init
 git add .
 git commit --allow-empty -am "${commitMessage}"
 
