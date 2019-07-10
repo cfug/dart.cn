@@ -7,16 +7,16 @@ bundle exec jekyll build
 
 cp -r tool/translator/assets/*  _site/assets/
 
-npm i -g @awesome-fe/translate@0.3.4
-
-nt inject '_site/**/*.html' -c /assets/translator/css/translator.css -s /assets/translator/js/translator.js -m ./tool/translator/url-map.json -t ./tool/translator/text-map.json
-
-nt mark '_site/**/*.html'
-
 cp tool/translator/robots.txt _site
 
 cd tool/translator
 
 npm i
 
-npx gulp
+npx gulp mark-side-toc
+
+npx nt inject '../../_site/**/*.html' -c /assets/translator/css/translator.css -s /assets/translator/js/translator.js -m ./tool/translator/url-map.json -t ./tool/translator/text-map.json
+
+npx nt mark '../../_site/**/*.html'
+
+npx gulp remove-space
