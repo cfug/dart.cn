@@ -12,5 +12,17 @@ h1[translation-result] + h1[translation-origin=on] {
 }
 
 h2[translation-result] + h2[translation-origin=on] {
-    margin-top: -12px;
+    margin-top: -6px;
+}
+
+h3[translation-result] + h3[translation-origin=on] {
+    margin-top: -6px;
+}
+
+h4[translation-result] + h4[translation-origin=on] {
+    margin-top: -6px;
+}
+
+.section-nav .toc-entry.nav-item p {
+    margin-bottom: 0;
 }

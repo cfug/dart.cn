@@ -20,3 +20,5 @@ npx nt inject '../../_site/**/*.html' -c /assets/translator/css/translator.css -
 npx nt mark '../../_site/**/*.html'
 
 npx gulp remove-space
+
+cd -
