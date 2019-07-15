@@ -5,7 +5,7 @@ description: The tool that lets you interactively play with Dart in a browser.
 description: 在浏览器里体验 Dart 编程。
 ---
 
-<a href="{{site.custom.dartpad.direct-link}}"
+<a href="{{site.dartpad}}"
 target="_blank">DartPad (dartpad.dev)</a>
 is an open-source tool that
 lets you play with the Dart language in any modern browser.
@@ -38,7 +38,7 @@ try running some samples and then creating a simple command-line app.
 
 <ol markdown="1">
   <li markdown="1">
-  Go to <a href="{{site.custom.dartpad.direct-link}}" target="_blank">DartPad.</a>
+  Go to <a href="{{site.dartpad}}" target="_blank">DartPad.</a>
 
   A sample appears on the left and the output appears on the right.
   If you've played with DartPad before,
