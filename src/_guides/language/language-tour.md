@@ -31,11 +31,16 @@ consult the [Dart language specification][].
 You can play with most of Dart's language features using DartPad
 ([learn more](/tools/dartpad)).
 
+<<<<<<< HEAD
 使用 DartPad 可以体验 Dart 的大部分语言功能
 ([了解更多](/tools/dartpad))。
 
 
 **<a href="{{ site.custom.dartpad.direct-link }}" target="_blank">Open DartPad</a>**
+=======
+**<a href="{{ site.dartpad }}" target="_blank">Open DartPad</a>**
+</div>
+>>>>>>> 76d4c36ea7c56b6ef0930039ed9815df53987ce7
 
 **<a href="{{ site.custom.dartpad.direct-link }}" target="_blank">打开 DartPad</a>**
 </div>
@@ -5263,16 +5268,15 @@ import 'package:lib2/lib2.dart' hide foo;
 #### 延迟加载库
 
 _Deferred loading_ (also called _lazy loading_)
-allows an application to load a library on demand,
-if and when it's needed.
+allows a web app to load a library on demand,
+if and when the library is needed.
 Here are some cases when you might use deferred loading:
-
 
 _Deferred loading_ (也称之为 _lazy loading_)
 可以让应用在需要的时候再加载库。
 下面是一些使用延迟加载库的场景：
 
-* To reduce an app's initial startup time.
+* To reduce a web app's initial startup time.
 
   减少 APP 的启动时间。
 
@@ -5285,6 +5289,21 @@ _Deferred loading_ (也称之为 _lazy loading_)
 * To load rarely used functionality, such as optional screens and dialogs.
 
   加载很少使用的功能，例如可选的屏幕和对话框。
+  
+<aside class="alert alert-warning" markdown="1">
+
+**Only dart2js supports deferred loading.**
+Flutter, the Dart VM, and dartdevc don't support deferred loading.
+For more information, see
+[issue #33118](https://github.com/dart-lang/sdk/issues/33118) and
+[issue #27776.](https://github.com/dart-lang/sdk/issues/27776)
+
+**只有 dart2js 目前支持延迟加载**
+Flutter、Dart 运行环境以及 dartdevc 目前都不支持延迟加载。
+更多信息可参见 [issue #33118](https://github.com/dart-lang/sdk/issues/33118) 
+和 [issue #27776](https://github.com/dart-lang/sdk/issues/27776)。
+
+</aside>
 
 To lazily load a library, you must first
 import it using `deferred as`.
@@ -5345,6 +5364,7 @@ Keep in mind the following when you use deferred loading:
   using <code>deferred as <em>namespace</em></code>.
   The `loadLibrary()` function returns a [Future](/guides/libraries/library-tour#future).
 
+<<<<<<< HEAD
   Dart 隐含的把 `loadLibrary()` 函数导入到使用
   <code>deferred as <em>的命名空间</em></code> 中。
   `loadLibrary()` 方法返回一个 [Future](/guides/libraries/library-tour#future)。
@@ -5357,6 +5377,8 @@ This behavior might change, so
 **don't depend on the current VM behavior.**
 For details, see [issue #33118.](https://github.com/dart-lang/sdk/issues/33118)
 </aside>
+=======
+>>>>>>> 76d4c36ea7c56b6ef0930039ed9815df53987ce7
 
 ### Implementing libraries
 

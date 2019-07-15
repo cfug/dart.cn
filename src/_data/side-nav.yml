@@ -148,14 +148,14 @@
     permalink: /tools
   - title: 编辑器和调试工具
     children:
-      - title: Dart 开发者工具
-        permalink: /tools/dart-devtools
-      - title: 在线运行 Dart 代码
-        permalink: /tools/dartpad
       - title: 使用 IntelliJ 和 Android Studio
         permalink: /tools/jetbrains-plugin
       - title: 使用 VS Code
         permalink: /tools/vs-code
+      - title: Dart 开发者工具
+        permalink: /tools/dart-devtools
+      - title: 在线运行 Dart 代码
+        permalink: /tools/dartpad
   - title: 命令行工具
     children:
     - title: Dart SDK
@@ -231,7 +231,7 @@
     - title: Dart 团队官方博客
       permalink: https://medium.com/dartlang
     - title: DartPad (在线编辑器)
-      permalink: https://dartpad.dartlang.org
+      permalink: https://dartpad.cn
     - title: Flutter
       permalink: https://flutter.cn
     - title: Package 网站
