@@ -140,7 +140,12 @@ The `async` and `await` keywords are part of the Dart language's [asynchrony sup
 
 {% include async-await-2.0.md %}
 
-The following app simulates reading the news by using `async` and `await` to read the contents of a file on this site. Click run {% asset red-run.png alt="" %} to start the app. Or open a [DartPad window containing the app,]({{site.custom.dartpad.direct-link}}/477fb799d21401f46f8c04462fd249c4){: target="_blank"} run the app, and click CONSOLE to see the app's output.
+The following app simulates reading the news by using `async` and `await`
+to read the contents of a file on this site.
+Click run {% asset red-run.png alt="" %} to start the app.
+Or open a
+[DartPad window containing the app,]({{site.dartpad}}/477fb799d21401f46f8c04462fd249c4){: target="_blank"}
+run the app, and click CONSOLE to see the app's output.
 
 接下来的应用使用关键字 `async` 和 `await` 读取本网站上文件的内容来模拟读取新闻。点击运行按钮{% asset red-run.png alt="" %}开始运行该应用。或者打开一个[包含该应用的DartPad窗口,]({{site.custom.dartpad.direct-link}}/477fb799d21401f46f8c04462fd249c4){: target="_blank"} 来运行该应用，请点击CONSOLE查看应用的运行结果输出。
 
@@ -318,7 +323,12 @@ To write asynchronous code using the `Future` API, you use the `then()` method t
 
 使用 `Future` 类相关的API编写异步代码的第一步是使用其 `then()` 方法来注册一个回调，该回调会在 `Future` 完成时触发。
 
-The following app simulates reading the news by using the `Future` API to read the contents of a file on this site. Click run {% asset red-run.png %} to start the app. Or open a [DartPad window containing the app,]({{site.custom.dartpad.direct-link}}/5ceabe371903b6672026bd3fb30cdf5b){: target="_blank"} run the app, and click CONSOLE to see the app's output.
+The following app simulates reading the news by using the `Future` API to read
+the contents of a file on this site.
+Click run {% asset red-run.png %} to start the app.
+Or open a
+[DartPad window containing the app,]({{site.dartpad}}/5ceabe371903b6672026bd3fb30cdf5b){: target="_blank"}
+run the app, and click CONSOLE to see the app's output.
 
 接下来的应用使用 `Future` 类的相关API读取本网站上文件的内容来模拟读取新闻。点击运行按钮{% asset red-run.png alt="" %}开始运行该应用。或者打开一个[包含该应用的DartPad窗口,]({{site.custom.dartpad.direct-link}}/477fb799d21401f46f8c04462fd249c4){: target="_blank"} 来运行该应用，请点击CONSOLE查看应用的运行结果输出。
 
