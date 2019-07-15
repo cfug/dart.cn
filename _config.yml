@@ -61,16 +61,10 @@ defaults:
 
 custom:
   dartpad:
-<<<<<<< HEAD
     embed-dart-prefix: https://dartpad.cn/embed-dart.html
     embed-html-prefix: https://dartpad.cn/embed-html.html
     embed-inline-prefix: https://dartpad.cn/embed-inline.html
     direct-link: https://dartpad.cn
-=======
-    embed-dart-prefix: https://dartpad.dev/embed-dart.html
-    embed-html-prefix: https://dartpad.dev/embed-html.html
-    embed-inline-prefix: https://dartpad.dev/embed-inline.html
->>>>>>> 76d4c36ea7c56b6ef0930039ed9815df53987ce7
   downloads:
     dartarchive-be-url-prefix: https://storage.flutter-io.cn/dart-archive/channels/be/raw
     dartarchive-dev-url-prefix: https://storage.flutter-io.cn/dart-archive/channels/dev/release
