@@ -31,18 +31,12 @@ consult the [Dart language specification][].
 You can play with most of Dart's language features using DartPad
 ([learn more](/tools/dartpad)).
 
-<<<<<<< HEAD
 使用 DartPad 可以体验 Dart 的大部分语言功能
 ([了解更多](/tools/dartpad))。
 
-
-**<a href="{{ site.custom.dartpad.direct-link }}" target="_blank">Open DartPad</a>**
-=======
 **<a href="{{ site.dartpad }}" target="_blank">Open DartPad</a>**
-</div>
->>>>>>> 76d4c36ea7c56b6ef0930039ed9815df53987ce7
 
-**<a href="{{ site.custom.dartpad.direct-link }}" target="_blank">打开 DartPad</a>**
+**<a href="{{ site.dartpad }}"" target="_blank">打开 DartPad</a>**
 </div>
 
 ## A basic Dart program
