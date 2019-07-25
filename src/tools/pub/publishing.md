@@ -38,10 +38,10 @@ are a few additional requirements for uploading a package:
   it's too large, consider splitting it into multiple packages, or cutting down
   on the number of included resources or examples.
 
-* Your package should only have hosted dependencies. Git dependencies are
-  allowed but strongly discouraged; not everyone using Dart has Git installed,
-  and Git dependencies don't support version resolution as well as hosted
-  dependencies do.
+* Your package should depend only on hosted dependencies (from the default pub
+  package server) and SDK dependencies (`sdk: flutter`). These restrictions
+  ensure that dependencies of your packages cannot become unavailable in the
+  future.
 
 Be aware that the email address associated with your Google account is
 displayed on the [Pub site]({{site.pub}}) along with any
@@ -50,7 +50,7 @@ packages you upload.
 ### Important files
 
 Pub uses the contents of a few files to create a page for your
-package at `<package site>/packages/<your_package>`. Here are the files that
+package at `pub.dev/packages/<your_package>`. Here are the files that
 affect how your package's page looks:
 
 * **README**: The README file (`README`, `README.md`, `README.mdown`,
