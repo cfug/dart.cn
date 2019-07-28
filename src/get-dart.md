@@ -37,6 +37,11 @@ To learn about what's in the SDK, see [Dart SDK overview](/tools/sdk).
   **Dart SDK**[{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external} 版本。
 </aside>
 
+
+To learn about what's in the SDK, see [Dart SDK overview](/tools/sdk).
+
+了解更多关于 SDK 里的最新更新，查看 [Dart SDK 概览页面](/tools/sdk)。
+
 ## Install the Dart SDK {#install}
 
 ## 安装 Dart SDK {#install}

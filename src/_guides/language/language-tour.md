@@ -1604,6 +1604,7 @@ The <code>=> <em>expr</em></code> syntax is a shorthand for
 <code>{ return <em>expr</em>; }</code>. The `=>` notation
 is sometimes referred to as _arrow_ syntax.
 
+<<<<<<< HEAD
 <code>=> <em>expr</em></code> 语法是
 <code>{ return <em>expr</em>; }</code> 的简写。 `=>` 符号
 有时也被称为 _箭头_ 语法。
@@ -1623,12 +1624,21 @@ expression](#conditional-expressions).
 语句](#if-和-else) ，但是可以是用 
 [条件表达式](#conditional-expressions).
 </div>
+=======
+<aside class="alert alert-info" markdown="1">
+  **Note:**
+  Only an *expression*—not a *statement*—can appear between the arrow
+  (=\>) and the semicolon (;). For example, you can’t put an [if
+  statement](#if-and-else) there, but you can use a [conditional
+  expression](#conditional-expressions).
+</aside>
+>>>>>>> f26718e0e9d8b8ecf13131688ad7d0ab11a6c3ec
 
-A function can have two types of parameters: required and optional. The
-required parameters are listed first, followed by any optional
-parameters. Named optional parameters can also be marked as `@required`.
-See the next section for details.
+A function can have two types of parameters: _required_ and _optional_.
+The required parameters are listed first, followed by any optional parameters.
+Optional parameters can be _named_ or _positional_.
 
+<<<<<<< HEAD
 函数有两种参数类型: required 和 optional。
 required 类型参数在参数最前面， 随后是 optional 类型参数。
 命名的可选参数也可以标记为 “@ required” 。
@@ -1643,6 +1653,21 @@ Optional parameters can be either positional or named, but not both.
 可选参数可以是命名参数或者位置参数，但一个参数只能选择其中一种方式修饰。
 
 #### Optional named parameters
+=======
+<aside class="alert alert-info" markdown="1">
+  **Note:**
+  Some APIs — notably [Flutter][] widget constructors —
+  use only named parameters,
+  even for parameters that are mandatory.
+  See the next section for details.
+</aside>
+
+### Optional parameters
+
+Optional parameters can be either named or positional, but not both.
+
+#### Named parameters
+>>>>>>> f26718e0e9d8b8ecf13131688ad7d0ab11a6c3ec
 
 #### 命名可选参数
 
@@ -1671,6 +1696,7 @@ to specify named parameters:
 void enableFlags({bool bold, bool hidden}) {...}
 {% endprettify %}
 
+<<<<<<< HEAD
 [Flutter][] instance creation expressions can get complex, so widget
 constructors use named parameters exclusively. This makes instance creation
 expressions easier to read.
@@ -1681,6 +1707,13 @@ expressions easier to read.
 
 You can annotate a named parameter in any Dart code (not just Flutter) with
 [@required][] to indicate that it is a _required_ parameter. For example:
+=======
+Although named parameters are a kind of optional parameter,
+you can annotate them with [@required][] to indicate
+that the parameter is mandatory —
+that users must provide a value for the parameter.
+For example:
+>>>>>>> f26718e0e9d8b8ecf13131688ad7d0ab11a6c3ec
 
 使用 [@required][] 注释表示参数是 _required_ 性质的命名参数，
 该方式可以在任何 Dart 代码中使用（不仅仅是Flutter）。
@@ -1690,9 +1723,11 @@ You can annotate a named parameter in any Dart code (not just Flutter) with
 const Scrollbar({Key key, [!@required!] Widget child})
 {% endprettify %}
 
-When a `Scrollbar` is constructed, the analyzer reports an issue when the
-`child` argument is absent.
+If someone tries to create a `Scrollbar`
+without specifying the `child` argument,
+then the analyzer reports an issue.
 
+<<<<<<< HEAD
 此时 `Scrollbar` 是一个构造函数， 当 `child` 参数缺少时，分析器会提示错误。
 
 [Required][@required] is defined in the [meta][] package. Either import
@@ -1704,6 +1739,12 @@ When a `Scrollbar` is constructed, the analyzer reports an issue when the
 `meta`，比如 Flutter 的 `package:flutter/material.dart`。
 
 #### Optional positional parameters
+=======
+To use the [@required][] annotation,
+depend on the [meta][] package and import `package:meta/meta.dart`.
+
+#### Positional parameters
+>>>>>>> f26718e0e9d8b8ecf13131688ad7d0ab11a6c3ec
 
 #### 位置可选参数
 
@@ -1777,8 +1818,9 @@ enableFlags(bold: true);
 Old code might use a colon (`:`) instead of `=`
 to set default values of named parameters.
 The reason is that originally, only `:` was supported for named parameters.
-That support is likely to be deprecated,
+That support might be deprecated,
 so we recommend that you
+<<<<<<< HEAD
 **[use `=` to specify default values.](/tools/pub/pubspec#sdk-constraints)**
 
 旧版本代码中可能使用的是冒号 (`:`) 而不是 `=` 
@@ -1787,6 +1829,9 @@ so we recommend that you
 这种支持可能会被弃用。
 建议
 **[使用 `=` 指定默认值。](/tools/pub/pubspec#sdk-constraints)**
+=======
+**[use `=` to specify default values.](/guides/language/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value)**
+>>>>>>> f26718e0e9d8b8ecf13131688ad7d0ab11a6c3ec
 </div>
 
 {% comment %}
@@ -3219,7 +3264,7 @@ the arguments to `assert` aren't evaluated.
 
 Your Dart code can throw and catch exceptions. Exceptions are errors
 indicating that something unexpected happened. If the exception isn’t
-caught, the isolate that raised the exception is suspended, and
+caught, the [isolate](#isolates) that raised the exception is suspended, and
 typically the isolate and its program are terminated.
 
 
@@ -5845,11 +5890,25 @@ Instead of threads, all Dart code runs inside of *isolates*. Each
 isolate has its own memory heap, ensuring that no isolate’s state is
 accessible from any other isolate.
 
+<<<<<<< HEAD
 所有 Dart 代码都在*隔离区*（ isolates ）内运行，而不是线程。
 每个隔离区都有自己的内存堆，确保每个隔离区的状态都不会被其他隔离区访问。
 
 For more information, see the
 [dart:isolate library documentation.][dart:isolate]
+=======
+For more information, see the following:
+* [Dart asynchronous programming: Isolates and event loops][isolates article]
+* [dart:isolate API reference,][dart:isolate]
+  including [Isolate.spawn()][] and
+  [TransferableTypedData][]
+* [Background parsing][background json] cookbook on the Flutter site
+
+[isolates article]: https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
+[Isolate.spawn()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
+[TransferableTypedData]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/TransferableTypedData-class.html
+[background json]: {{site.flutter}}/docs/cookbook/networking/background-parsing
+>>>>>>> f26718e0e9d8b8ecf13131688ad7d0ab11a6c3ec
 
 有关更多信息，请参考
 [dart:isolate library documentation.][dart:isolate]。

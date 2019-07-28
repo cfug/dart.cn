@@ -190,6 +190,10 @@ Each guideline starts with one of these words:
 
   **考虑**  准则所描述的内容可以遵守，也可以不遵守。
   取决于具体的情况、先前的做法以及自己的偏好。
+  
+Some guidelines describe an **exception** where the rule does *not* apply. When
+listed, the exceptions may not be exhaustive&mdash;you might still need to use
+your judgement on other cases.
 
 This sounds like the police are going to beat down your door if you don't have
 your laces tied correctly. Things aren't that bad. Most of the guidelines here
