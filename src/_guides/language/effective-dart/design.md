@@ -275,16 +275,14 @@ closingWindow // Returns a bool or a window?
 showPopup     // Sounds like it shows the popup.
 {% endprettify %}
 
-<aside class="alert alert-info" markdown="1">
-There is one exception to this rule. Input properties in [Angular][]
-components sometimes use imperative verbs for boolean setters because these
-setters are invoked in templates, not from other Dart code.
+**Exception:** Input properties in [Angular][] components sometimes use
+imperative verbs for boolean setters because these setters are invoked in
+templates, not from other Dart code.
 
 这条规则有一个例外。[Angular][] 组件中的输入属性有时会使用命令式动词来表示布尔设置器，
 因为这些 setter 是在模板中调用的，而不是从其它 Dart 代码中调用的。
 
 [angular]: {{site.angulardart}}
-</aside>
 
 
 ### CONSIDER omitting the verb for a named boolean *parameter*.
@@ -355,15 +353,6 @@ if (!socket.isDisconnected && !database.isEmpty) {
 }
 {% endprettify %}
 
-An exception to this rule is properties where the negative form is what users
-overwhelmingly need to use. Choosing the positive case would force them to
-negate the property with `!` everywhere. Instead, it may be better to use the
-negative case for that property.
-
-上面规则中有一个例外，就是“否定”用户绝大多数用到的形式是。
-选择“肯定”方式，将会迫使在他们到处使用 `!` 对属性进行取反操作。
-这样相反，属性应该使用“否定”形式进行命名。
-
 For some properties, there is no obvious positive form. Is a document that has
 been flushed to disk "saved" or "*un*-changed"? Is a document that *hasn't* been
 flushed "*un*-saved" or "changed"? In ambiguous cases, lean towards the choice
@@ -373,6 +362,15 @@ that is less likely to be negated by users or has the shorter name.
 文档已经刷新 “saved” 到磁盘，或者 "*un*-changed"？
 文档还未属性 “*un*-saved” 到磁盘，或者 "changed"？
 在模棱两可的情况下，倾向于选择不太可能被用户否定或较短的名字。
+
+**Exception:** With some properties, the negative form is what users
+overwhelmingly need to use. Choosing the positive case would force them to
+negate the property with `!` everywhere. Instead, it may be better to use the
+negative case for that property.
+
+**例外:**  “否定”用户绝大多数用到的形式。
+选择“肯定”方式，将会迫使在他们到处使用 `!` 对属性进行取反操作。
+这样相反，属性应该使用“否定”形式进行命名。
 
 
 ### PREFER an imperative verb phrase for a function or method whose main purpose is a side effect.
@@ -783,7 +781,7 @@ class in a single library.
 的类可以互相访问彼此的私有成员，但库以外的代码无法发访问。
 
 
-## Classes
+## Classes and mixins
 
 ## 类
 
@@ -994,39 +992,55 @@ comment.
 如果你的类可以被用作接口，那么将这个情况注明到类的文档中。
 
 
-### AVOID mixing in a class that isn't intended to be a mixin.
-
-### **避免** 去 mixin 一个不期望被 mixin 的类
-
-If a constructor is added to a class that previously did not define any, that
-breaks any other classes that are mixing it in. This is a seemingly innocuous
-change in the class, and the restrictions around mixins aren't widely known.
-It's likely an author may add a constructor without realizing it will break your
-class that's mixing it in.
-
-如果在一个类中定义了一个之前从来没有被定义过的构造函数，那么这会破坏已被混入的其他类。
-在类中，这样看似无害的变化，并且对 mixin 的限制和并不为其他人说知。作者可能会添加一
-个构造函数但并没有意识到它会破坏你 mixin 到它里的类。
-
-Like with subclassing, this means a class needs to be deliberate about whether
-or not it wants to allow being used as a mixin. If the class doesn't have a doc
-comment or an obvious name like `IterableMixin`, you should assume you cannot
-mix in the class.
-
-与子类化一样，这意味着需要考虑一个类是否允许用于 mixin。如果该类没有文档注释或明显的名称，
-如 `IterableMixin` ，你应该假设你不能 mix 这个类。
-
-
-### DO document if your class supports being used as a mixin.
+### DO use `mixin` to define a mixin type.
 
 ### **要** 对支持 mixin 的类在文档注明
 
-Mention in the class's doc comment whether the class can or must be used as a
-mixin. If your class is designed for use only as a mixin, then consider adding
-`Mixin` to the end of the class name.
+Dart originally didn't have a separate syntax for declaring a class intended to
+be mixed in to other classes. Instead, any class that met certain restrictions
+(no non-default constructor, no superclass, etc.) could be used as a mixin. This
+was confusing because the author of the class might not have intended it to be
+mixed in.
 
-在类的文档中要提到，这个类是否可以或必须用于 mixin 。如果你的类被设计只作为 mixin 使用，
-那么考虑在类名以 `Mixin` 结尾。
+Dart 2.1.0 added a `mixin` keyword for explicitly declaring a mixin. Types
+created using that can *only* be used as mixins, and the language also ensures
+that your mixin stays within the restrictions. When defining a new type that you
+intend to be used as a mixin, use this syntax.
+
+{:.good-style}
+<?code-excerpt "misc/lib/effective_dart/design_good.dart (mixin)"?>
+{% prettify dart %}
+mixin ClickableMixin implements Control {
+  bool _isDown = false;
+
+  void click();
+
+  void mouseDown() {
+    _isDown = true;
+  }
+
+  void mouseUp() {
+    if (_isDown) click();
+    _isDown = false;
+  }
+}
+{% endprettify %}
+
+You might still encounter older code using `class` to define mixins, but the new
+syntax is preferred.
+
+### AVOID mixing in a type that isn't intended to be a mixin.
+
+### **避免** 去 mixin 一个不期望被 mixin 的类
+
+For compatibility, Dart still allows you to mix in classes that aren't defined
+using `mixin`. However, that's risky. If the author of the class doesn't intend
+the class to be used as a mixin, they might change the class in a way that
+breaks the mixin restrictions. For example, if they add a constructor, your
+class will break.
+
+If the class doesn't have a doc comment or an obvious name like `IterableMixin`,
+assume you cannot mix in the class if it isn't declared using `mixin`.
 
 ## Constructors
 
@@ -1306,19 +1320,17 @@ exposed in the same way, use a method instead.
 本规则意义并*不*是说，你需要先添加一个 getter 才被允许添加 setter ，对象通常不应该暴露出
 多余的状态。如果某个对象的某个状态可以修改但不能以相同的方式访问，请改用方法实现。
 
-<aside class="alert alert-info" markdown="1">
-There is one exception to this rule. An [Angular][] component class may expose
-setters that are invoked from a template to initialize the component. Often,
-these setters are not intended to be invoked from Dart code and don't need a
-corresponding getter. (If they are used from Dart code, they *should* have a
-getter.)
+**Exception:** An [Angular][] component class may expose setters that are
+invoked from a template to initialize the component. Often, these setters are
+not intended to be invoked from Dart code and don't need a corresponding getter.
+(If they are used from Dart code, they *should* have a getter.)
 
-这条规则有一处例外。在 [Angular][] 组件类上，从模板调用的初始化组件 setter 可以公开。
+**例外：** 在 [Angular][] 组件类上，从模板调用的初始化组件 setter 可以公开。
 通常，这些 setter 是不打算在 Dart 中调用的，也就不需要相应的 getter。（如果在 Dart 代码
 中使用它们，那么它们*应该*有一个对应的 getter 。）
 
 [angular]: {{site.angulardart}}
-</aside>
+
 
 ### AVOID returning `null` from members whose return type is `bool`, `double`, `int`, or `num`.
 
@@ -1551,7 +1563,7 @@ The remaining guidelines cover other more specific questions around types.
 
 ### **推荐** 为类型不明显的公共字段和公共顶级变量指定类型注解。
 
-{% include linter-rule.html rule="prefer_typing_uninitialized_variables" %}
+{% include linter-rule.html rule="type_annotate_public_apis" %}
 
 Type annotations are important documentation for how a library should be used.
 They form boundaries between regions of a program to isolate the source of a
@@ -1930,11 +1942,11 @@ bool isValid(String value, [!Function!] test) => ...
 
 [fn syntax]: #prefer-inline-function-types-over-typedefs
 
-One exception to this guideline is if you want a type that represents the union
-of multiple different function types. For example, you may accept a function
-that takes one parameter or a function that takes two. Since we don't have union
-types, there's no way to precisely type that and you'd normally have to use
-`dynamic`. `Function` is at least a little more helpful than that:
+**Exception:** Sometimes, you want a type that represents the union of multiple
+different function types. For example, you may accept a function that takes one
+parameter or a function that takes two. Since we don't have union types, there's
+no way to precisely type that and you'd normally have to use `dynamic`.
+`Function` is at least a little more helpful than that:
 
 此条规则有个例外，如果期望一个类型能够表示多种函数类型的集合。例如，我们希望接受的可能是一个参数
 的函数，也可能是两个参数的函数。由于 Dart 没有集合类型，所以没有办法为类似成员精确的指定类型，
