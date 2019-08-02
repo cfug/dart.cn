@@ -64,13 +64,13 @@ apps:
 
 <code>// <em>This is a comment.</em> </code>
 
-<code>// <em>代码注释。</em> </code>
+<code>// <em>注释。</em> </code>
 
 :   A single-line comment.
     Dart also supports multi-line and document comments.
     For details, see [Comments](#comments).
 
-    单行注释。Dart 同样支持多行注释和文档注释。查阅[注释](#comments)获取更多相关信息。
+    以双斜杠开头的一行语句称为单行注释。Dart 同样支持多行注释和文档注释。查阅[注释](#comments)获取更多相关信息。
 
 `int`
 
@@ -89,21 +89,21 @@ apps:
 
 :   A handy way to display output.
 
-    一种方便的将信息输出显示的方式。
+    一种便利的将信息输出显示的方式。
 
-`'...'` (or `"..."`)
+`'...'` (或 `"..."`)
 
 :   A string literal.
 
-    表示字符串常量。
+    表示字符串字面量。
 
-<code>$<em>variableName</em></code> (or <code>${<em>expression</em>}</code>)
+<code>$<em>variableName</em></code> (或 <code>${<em>expression</em>}</code>)
 
 :   String interpolation: including a variable or expression’s string
     equivalent inside of a string literal. For more information, see
     [Strings](#strings).
 
-    表示字符串插值：包括字符串文字内部的变量或表达式的字符串。查阅 [Strings](#strings) 获取更多相关信息。
+    表示字符串插值：字符串字面量中包含的变量或表达式。查阅[字符串](#strings)获取更多相关信息。
 
 `main()`
 
@@ -111,7 +111,7 @@ apps:
     starts. For more information, see
     [The main() function](#the-main-function).
 
-    程序开始执行函数，该函数是特定的、*必须的*、顶级函数。有关更多信息，参考 [The main() function](#the-main-function)。
+    一个特殊且 *必须的* 顶级函数，Dart 应用程序总是会从该函数开始执行。查阅 [main() 函数](#the-main-function) 获取更多相关信息。
 
 `var`
 
