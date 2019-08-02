@@ -335,7 +335,7 @@ which can't be identifiers.
 
 Here’s an example of creating a variable and initializing it:
 
-创建一个变量并进行初始化:
+下面的示例代码将创建一个变量并将其初始化：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-decl)"?>
 {% prettify dart %}
@@ -345,8 +345,7 @@ var name = 'Bob';
 Variables store references. The variable called `name` contains a
 reference to a `String` object with a value of “Bob”.
 
-变量仅存储对象引用，这里的变量是 `name` 存储了一个 `String` 类型的对象引用。
-“Bob” 是这个 `String` 类型对象的值。
+变量仅存储对象的引用。这里名为 `name` 的变量存储了一个 `String` 类型对象的引用，“Bob” 则是该对象的值。
 
 The type of the `name` variable is inferred to be `String`,
 but you can change that type by specifying it.
@@ -354,10 +353,7 @@ If an object isn't restricted to a single type,
 specify the `Object` or `dynamic` type, following
 [design guidelines][ObjectVsDynamic].
 
-`name` 变量的类型被推断为 `String` 。
-但是也可以通过指定类型的方式，来改变变量类型。
-如果对象不限定为单个类型，可以指定为 `对象类型` 或 `动态类型`，
-参考 [设计指南][ObjectVsDynamic]。
+`name` 变量的类型被推断为 `String`，但是你可以为其指定类型。如果一个对象的引用不局限于单一的类型，可以根据[设计指南][ObjectVsDynamic]将其指定为 `Object` 或 `dynamic` 类型。
 
 {% comment %}
 **[PENDING: check on Object vs. dynamic guidance.]**
@@ -370,7 +366,7 @@ dynamic name = 'Bob';
 
 Another option is to explicitly declare the type that would be inferred:
 
-另一种方式是显式声明可以推断出的类型：
+除此之外你也可以指定类型：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (static-types)"?>
 {% prettify dart %}
@@ -386,9 +382,7 @@ This page follows the
 [style guide recommendation](/guides/language/effective-dart/design#types)
 of using `var`, rather than type annotations, for local variables.
 
-本页局部变量遵守
-[风格建议指南](/guides/language/effective-dart/design#types)
-使用 `var`。 没有使用指定类型的方式。
+本文遵循[风格建议指南](/guides/language/effective-dart/design#types)中的建议，通过 `var` 声明局部变量而非使用指定的类型。
 </div>
 
 ### Default value
@@ -399,9 +393,7 @@ Uninitialized variables have an initial value of `null`. Even variables
 with numeric types are initially null, because numbers—like everything
 else in Dart—are objects.
 
-未初始化的变量默认值是 `null`。即使变量是数字
-类型默认值也是 null，因为在 Dart 中一切都是对象，数字类型
-也不例外。
+在 Dart 中，未初始化的变量拥有一个默认的初始化值： `null`。即便数字也是如此，因为在 Dart 中一切皆为对象，数字也不例外。
 
 <?code-excerpt "misc/test/language_tour/variables_test.dart (var-null-init)"?>
 {% prettify dart %}
@@ -420,10 +412,7 @@ During development, on the other hand,
 _condition_ is false.
 For details, see [Assert](#assert).
 
-在生产环境的代码中 `assert()` 调用会被忽略。
-反过来，在开发过程中,
-在_条件_为 fasle 的情况下 <code>assert(<em>condition</em>)</code> 会抛出异常。
-更多详情，参考 [Assert](#assert) 。
+`assert()` 的调用将会在生产环境的代码中被忽略掉。在开发过程中，<code>assert(<em>condition</em>)</code> 将会在 _条件判断_ 为 false 时抛出一个异常。详情请查阅 [Assert](#assert)。
 </div>
 
 
@@ -437,10 +426,7 @@ only once; a const variable is a compile-time constant. (Const variables
 are implicitly final.) A final top-level or class variable is initialized
 the first time it's used.
 
-使用过程中从来不会被修改的变量， 可以使用 `final` 或 `const`, 而不是 `var` 或者其他类型，
-Final 变量的值只能被设置一次；
-Const 变量在编译时就已经固定 (Const 变量
-是隐式 Final 的类型.) 最高级 final 变量或类变量在第一次使用时被初始化。
+如果你不想更改一个变量，可以使用关键字 `final` 或者 `const` 修饰变量，这两个关键字可以替代 `var` 关键字或者加在一个具体的类型前。一个 final 变量只可以被赋值一次；一个 const 变量是一个编译时常量（const 变量同时也是 final 的）。顶层的 final 变量或者类的 final 变量在其第一次使用的时候被初始化。
 
 <div class="alert alert-info" markdown="1">
 **Note:**
@@ -453,29 +439,27 @@ the constructor body starts —
 at the variable declaration, by a constructor parameter,
 or in the constructor's [initializer list](#initializer-list).
 
-实例变量可以是 `final` 类型但不能是 `const` 类型。
-必须在构造函数体执行之前初始化 final 实例变量 ——
-在变量声明中，参数构造函数中或构造函数的[初始化列表](#initializer-list)中进行初始化。
+实例变量可以是 `final` 的但不可以是 `const` 的，final 实例变量必须在构造器开始前被初始化，比如在声明实例变量时初始化，或者作为构造器参数，或者将其置于构造器的[初始化列表](#initializer-list)中。
 </div>
 
 Here's an example of creating and setting a final variable:
 
-创建和设置一个 Final 变量：
+下面的示例中我们创建并设置两个 final 变量：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (final)"?>
 {% prettify dart %}
-final name = 'Bob'; // Without a type annotation
-final String nickname = 'Bobby';
+final name = 'Bob'; // 此时 final 替代 var 用于修饰变量名
+final String nickname = 'Bobby';// 将 final 加在具体的类型前
 {% endprettify %}
 
 You can't change the value of a final variable:
 
-final 不能被修改:
+你不能修改一个 final 变量的值：
 
 {:.fails-sa}
 <?code-excerpt "misc/lib/language_tour/variables.dart (cant-assign-to-final)"?>
 {% prettify dart %}
-name = 'Alice'; // Error: a final variable can only be set once.
+name = 'Alice'; // 错误：final 变量只能被设置一次。
 {% endprettify %}
 
 Use `const` for variables that you want to be **compile-time constants**. If
@@ -484,15 +468,12 @@ Where you declare the variable, set the value to a compile-time constant
 such as a number or string literal, a const
 variable, or the result of an arithmetic operation on constant numbers:
 
-如果需要在**编译时**就固定变量的值，可以使用 `const` 类型变量。
-如果 Const 变量是类级别的，需要标记为 `static const`。
-在这些地方可以使用在编译时就已经固定不变的值，字面量的数字和字符串，
-固定的变量，或者是用于计算的固定数字：
+使用关键字 `const` 修饰变量表示该变量为 **编译时常量**。如果使用 const 修饰类中的变量，则必须加上 static 关键字，即 `static const`（注意：顺序不能颠倒（译者注））。在声明 const 变量时可以直接为其赋值，也可以使用其它的 const 变量为其赋值：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const)"?>
 {% prettify dart %}
-const bar = 1000000; // Unit of pressure (dynes/cm2)
-const double atm = 1.01325 * bar; // Standard atmosphere
+const bar = 1000000; // 直接赋值
+const double atm = 1.01325 * bar; // 利用其它 const 变量赋值
 {% endprettify %}
 
 The `const` keyword isn't just for declaring constant variables.
@@ -500,49 +481,44 @@ You can also use it to create constant _values_,
 as well as to declare constructors that _create_ constant values.
 Any variable can have a constant value.
 
-`const` 关键字不仅可以用于声明常量变量。
-还可以用来创建 _常量值_，以及声明 _创建_ 常量值的构造函数。
-任何变量都可以拥有常量值。
+`const` 关键字不仅仅可以用来定义常量，还可以用来创建 _常量值_，该常量值可以赋予给任何变量。你也可以将构造函数声明为 const 的，这种类型的构造函数创建的对象是不可改变的。
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const-vs-final)"?>
 {% prettify dart %}
 var foo = const [];
 final bar = const [];
-const baz = []; // Equivalent to `const []`
+const baz = []; // 相当于 `const []`
 {% endprettify %}
 
 You can omit `const` from the initializing expression of a `const` declaration,
 like for `baz` above. For details, see [DON’T use const redundantly][].
 
-声明 `const` 的初始化表达式中 `const` 可以被省略。
-比如上面的 `baz`。 有关更多信息，参考 [DON’T use const redundantly][]。
+如果使用初始化表达式为常量赋值可以省略掉关键字 `const`，比如上面的常量 `baz` 的赋值就省略掉了 `const`。详情请查阅[DON’T use const redundantly][]
 
 You can change the value of a non-final, non-const variable,
 even if it used to have a const value:
 
-非 Final ， 非 const 的变量是可以被修改的，即使这些变量
-曾经引用过 const 值：
+没有使用 final 或 const 修饰的变量的值是可以被更改的，即使这些变量之前引用过 const 的值。
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (reassign-to-non-final)"?>
 {% prettify dart %}
-foo = [1, 2, 3]; // Was const []
+foo = [1, 2, 3]; // foo 的值之前为 const []
 {% endprettify %}
 
 You can't change the value of a const variable:
 
-Const 变量的值不可以修改：
+常量的值不可以被修改：
 
 {:.fails-sa}
 <?code-excerpt "misc/lib/language_tour/variables.dart (cant-assign-to-const)"?>
 {% prettify dart %}
-baz = [42]; // Error: Constant variables can't be assigned a value.
+baz = [42]; // 错误：常量不可以被赋值。
 {% endprettify %}
 
 For more information on using `const` to create constant values, see
 [Lists](#lists), [Maps](#maps), and [Classes](#classes).
 
-更多关于使用 `const` 创建常量值，参考
-[Lists](#lists)， [Maps](#maps)， 和 [Classes](#classes)。
+可以查阅 [Lists](#lists)、[Maps](#maps) 和 [Classes](#classes) 获取更多关于使用 `const` 创建常量值的信息。
 
 ## Built-in types
 
