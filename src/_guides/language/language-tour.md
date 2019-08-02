@@ -41,27 +41,26 @@ You can play with most of Dart's language features using DartPad
 
 The following code uses many of Dart’s most basic features:
 
-下面的代码用到了很多 Dart 的基本功能：
+下面的应用程序代码用到了很多 Dart 的基本功能：
 
 <?code-excerpt "misc/test/language_tour/basic_test.dart"?>
 {% prettify dart %}
-// Define a function.
+// 定义一个函数。
 printInteger(int aNumber) {
-  print('The number is $aNumber.'); // Print to console.
+  print('The number is $aNumber.'); // 打印输出到控制台。
 }
 
-// This is where the app starts executing.
+// Dart 程序从 main() 函数开始执行。
 main() {
-  var number = 42; // Declare and initialize a variable.
-  printInteger(number); // Call a function.
+  var number = 42; // 声明并初始化一个变量。
+  printInteger(number); // 调用一个函数。
 }
 {% endprettify %}
 
 Here’s what this program uses that applies to all (or almost all) Dart
 apps:
 
-以下是此程序使用的代码，这些代码适用于所有（或几乎所有）的 Dart
-应用：
+下面是上述应用程序中使用到的代码片段，这些代码片段适用于所有（或几乎所有）的 Dart 应用：
 
 <code>// <em>This is a comment.</em> </code>
 
@@ -71,35 +70,32 @@ apps:
     Dart also supports multi-line and document comments.
     For details, see [Comments](#comments).
 
-    单行注释。
-    Dart 同样支持多行注释和文档注释。
-    有关更多信息，参考 [注释](#comments).
+    单行注释。Dart 同样支持多行注释和文档注释。查阅[注释](#comments)获取更多相关信息。
 
 `int`
 
 :   A type. Some of the other [built-in types](#built-in-types)
     are `String`, `List`, and `bool`.
 
-    数据类型。一些其他 [内置类型](#built-in-types)
-    包括 `String` , `List` , 和 `bool` 。
+    表示一种数据类型。Dart 中一些其他的[内置类型](#built-in-types)包括 `String`、`List` 和 `bool`。
 
 `42`
 
 :   A number literal. Number literals are a kind of compile-time constant.
 
-    字面量。字面量是一种编译型常量。
+    表示一个数字字面量。数字字面量是一种编译时常量。
 
 `print()`
 
 :   A handy way to display output.
 
-    便利输出方式。
+    一种方便的将信息输出显示的方式。
 
 `'...'` (or `"..."`)
 
 :   A string literal.
 
-    字符串常量。
+    表示字符串常量。
 
 <code>$<em>variableName</em></code> (or <code>${<em>expression</em>}</code>)
 
@@ -107,9 +103,7 @@ apps:
     equivalent inside of a string literal. For more information, see
     [Strings](#strings).
 
-    字符串插值： 包括字符串文字内部的变量或表达式的字符串。
-    有关更多信息，参考
-    [Strings](#strings)。
+    表示字符串插值：包括字符串文字内部的变量或表达式的字符串。查阅 [Strings](#strings) 获取更多相关信息。
 
 `main()`
 
@@ -117,15 +111,13 @@ apps:
     starts. For more information, see
     [The main() function](#the-main-function).
 
-    程序开始执行函数，该函数是特定的、*必须的*、顶级函数。
-    有关更多信息，参考
-    [The main() function](#the-main-function).
+    程序开始执行函数，该函数是特定的、*必须的*、顶级函数。有关更多信息，参考 [The main() function](#the-main-function)。
 
 `var`
 
 :   A way to declare a variable without specifying its type.
 
-    定义变量，通过这种方式定义变量不需要指定变量类型。
+    用于定义变量，通过这种方式定义变量不需要指定变量类型。
 
 <div class="alert alert-info" markdown="1">
 **Note:**
@@ -135,8 +127,7 @@ apps:
 This site's code follows the conventions in the
 [Dart style guide](/guides/language/effective-dart/style).
 
-本站的代码遵循 Dart 风格指南中的约定。
-[Dart 风格指南](/guides/language/effective-dart/style)。
+本站的代码遵循 [Dart 风格指南](/guides/language/effective-dart/style)中的约定。
 </div>
 
 
