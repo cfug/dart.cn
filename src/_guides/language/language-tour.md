@@ -18,7 +18,7 @@ To learn more about Dart's core libraries, see the
 Whenever you want more details about a language feature,
 consult the [Dart language specification][].
 
-你可以通过查看 [Dart 库概览](/guides/libraries/library-tour) 学习更多关于 Dart 核心库的知识。若还想了解更多有关语言功能的详细内容，请参阅 [Dart 编程语言规范][/guides/language/spec]
+你可以通过查看 [Dart 库概览](/guides/libraries/library-tour) 学习更多关于 Dart 核心库的知识。若还想了解更多有关语言功能的详细内容，请参阅 [Dart 编程语言规范][/guides/language/spec]。
 
 <div class="alert alert-info" markdown="1">
 **Tip:**
@@ -30,9 +30,7 @@ You can play with most of Dart's language features using DartPad
 
 使用 DartPad 可以体验 Dart 的大部分语言功能([了解更多](/tools/dartpad))。
 
-**<a href="{{ site.dartpad }}" target="_blank">Open DartPad</a>**
-
-**<a href="{{ site.dartpad }}"" target="_blank">打开 DartPad</a>**
+**<a href="{{ site.dartpad }}" target="_blank">打开 DartPad</a>**
 </div>
 
 ## A basic Dart program
