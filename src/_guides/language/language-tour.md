@@ -11,28 +11,24 @@ This page shows you how to use each major Dart feature, from
 variables and operators to classes and libraries, with the assumption
 that you already know how to program in another language.
 
-这里将介绍 Dart 编程语言的主要功能，从变量和运算符到类和库，这里假设您已经了解如何使用其他的语言编程。
+本文将从变量和运算符开始到类和库的使用来向你介绍 Dart 编程语言的主要功能，这里假设你已经有使用其它语言进行编程的经验。
 
 To learn more about Dart's core libraries, see the
 [library tour](/guides/libraries/library-tour).
 Whenever you want more details about a language feature,
 consult the [Dart language specification][].
 
-学习更多 Dart 核心库, 参考
-[Dart 库概览](/guides/libraries/library-tour)。
-想了解更多有关语言功能的详细内容,
-参见 [Dart language specification][](Dart 编程语言规范)。
+你可以通过查看 [Dart 库概览](/guides/libraries/library-tour) 学习更多关于 Dart 核心库的知识。若还想了解更多有关语言功能的详细内容，请参阅 [Dart 编程语言规范][/guides/language/spec]
 
 <div class="alert alert-info" markdown="1">
 **Tip:**
 
-**提示:**
+**提示：**
 
 You can play with most of Dart's language features using DartPad
 ([learn more](/tools/dartpad)).
 
-使用 DartPad 可以体验 Dart 的大部分语言功能
-([了解更多](/tools/dartpad))。
+使用 DartPad 可以体验 Dart 的大部分语言功能([了解更多](/tools/dartpad))。
 
 **<a href="{{ site.dartpad }}" target="_blank">Open DartPad</a>**
 
@@ -64,7 +60,7 @@ main() {
 Here’s what this program uses that applies to all (or almost all) Dart
 apps:
 
-以下是此程序使用的代码，这些代码适用于所有（或几乎所有）的 Dart 
+以下是此程序使用的代码，这些代码适用于所有（或几乎所有）的 Dart
 应用：
 
 <code>// <em>This is a comment.</em> </code>
@@ -111,7 +107,7 @@ apps:
     equivalent inside of a string literal. For more information, see
     [Strings](#strings).
 
-    字符串插值： 包括字符串文字内部的变量或表达式的字符串。 
+    字符串插值： 包括字符串文字内部的变量或表达式的字符串。
     有关更多信息，参考
     [Strings](#strings)。
 
@@ -166,8 +162,8 @@ mind:
     that no type is expected,
     [use the special type `dynamic`][ObjectVsDynamic].
 
-    尽管 Dart 是强类型的，但是 Dart 可以推断类型，所以类型注释是可选的。 
-    在上面的代码中， `number` 被推断为 `int` 类型。 
+    尽管 Dart 是强类型的，但是 Dart 可以推断类型，所以类型注释是可选的。
+    在上面的代码中， `number` 被推断为 `int` 类型。
     如果要明确说明不需要任何类型，
     [需要使用特殊类型 `dynamic`] [ObjectVsDynamic]。
 
@@ -190,7 +186,7 @@ mind:
     variables are sometimes known as fields or properties.
 
     类似地， Dart 支持顶级*变量* ，
-    同样变量绑定在类或对象上（静态变量和实例变量）。 
+    同样变量绑定在类或对象上（静态变量和实例变量）。
     实例变量有时称为字段或属性。
 
 -   Unlike Java, Dart doesn’t have the keywords `public`, `protected`,
@@ -198,8 +194,8 @@ mind:
     private to its library. For details, see
     [Libraries and visibility](#libraries-and-visibility).
 
-    与 Java 不同，Dart 没有关键字 `public`， `protected` 和 `private`。 
-    如果标识符以下划线（\_）开头，则它相对于库是私有的。 
+    与 Java 不同，Dart 没有关键字 `public`， `protected` 和 `private`。
+    如果标识符以下划线（\_）开头，则它相对于库是私有的。
     有关更多信息，参考 [库和可见性](#libraries-and-visibility)。
 
 -   *Identifiers* can start with a letter or underscore (\_), followed by any
@@ -228,9 +224,9 @@ mind:
     from executing at all; a run-time error results in an
     [exception](#exceptions) being raised while the code executes.
 
-    Dart 工具提示两种类型问题：_警告_和_错误_。 
-    警告只是表明代码可能无法正常工作，但不会阻止程序的执行。 
-    错误可能是编译时错误或者运行时错误。 
+    Dart 工具提示两种类型问题：_警告_和_错误_。
+    警告只是表明代码可能无法正常工作，但不会阻止程序的执行。
+    错误可能是编译时错误或者运行时错误。
     编译时错误会阻止代码的执行;
     运行时错误会导致代码在执行过程中引发 [异常]（#exception）。
 
@@ -334,7 +330,7 @@ Dart 语言关键字列表。
 Avoid using these words as identifiers.
 However, if necessary, the keywords marked with superscripts can be identifiers:
 
-避免使用这些单词作为标识符。 
+避免使用这些单词作为标识符。
 但是，如有必要，标有上标的关键字可以用作标识符：
 
 * Words with the superscript **1** are **contextual keywords**,
@@ -342,7 +338,7 @@ However, if necessary, the keywords marked with superscripts can be identifiers:
   They're valid identifiers everywhere.
 
   带有 **1** 上标的单词为 **上下文关键字**，
-  仅在特定位置具有含义。 
+  仅在特定位置具有含义。
   他们在任何地方都是有效的标识符。
 
 * Words with the superscript **2** are **built-in identifiers**.
@@ -396,7 +392,7 @@ specify the `Object` or `dynamic` type, following
 [design guidelines][ObjectVsDynamic].
 
 `name` 变量的类型被推断为 `String` 。
-但是也可以通过指定类型的方式，来改变变量类型。 
+但是也可以通过指定类型的方式，来改变变量类型。
 如果对象不限定为单个类型，可以指定为 `对象类型` 或 `动态类型`，
 参考 [设计指南][ObjectVsDynamic]。
 
@@ -462,7 +458,7 @@ _condition_ is false.
 For details, see [Assert](#assert).
 
 在生产环境的代码中 `assert()` 调用会被忽略。
-反过来，在开发过程中, 
+反过来，在开发过程中,
 在_条件_为 fasle 的情况下 <code>assert(<em>condition</em>)</code> 会抛出异常。
 更多详情，参考 [Assert](#assert) 。
 </div>
@@ -495,7 +491,7 @@ at the variable declaration, by a constructor parameter,
 or in the constructor's [initializer list](#initializer-list).
 
 实例变量可以是 `final` 类型但不能是 `const` 类型。
-必须在构造函数体执行之前初始化 final 实例变量 —— 
+必须在构造函数体执行之前初始化 final 实例变量 ——
 在变量声明中，参数构造函数中或构造函数的[初始化列表](#initializer-list)中进行初始化。
 </div>
 
@@ -541,7 +537,7 @@ You can also use it to create constant _values_,
 as well as to declare constructors that _create_ constant values.
 Any variable can have a constant value.
 
-`const` 关键字不仅可以用于声明常量变量。 
+`const` 关键字不仅可以用于声明常量变量。
 还可以用来创建 _常量值_，以及声明 _创建_ 常量值的构造函数。
 任何变量都可以拥有常量值。
 
@@ -605,7 +601,7 @@ Dart 语言支持以下内建类型：
 - runes (for expressing Unicode characters in a string)
 
   runes (用于在字符串中表示 Unicode 字符)
-  
+
 - symbols
 
 You can initialize an object of any of these special types using a
@@ -701,7 +697,7 @@ var hex = 0xDEADBEEF;
 If a number includes a decimal, it is a double. Here are some examples
 of defining double literals:
 
-如果一个数字包含小数点，那么就是小数类型。 
+如果一个数字包含小数点，那么就是小数类型。
 下面是定义小数类型字面量的例子:
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (double-literals)"?>
@@ -773,7 +769,7 @@ as long as their operands are
 compile-time constants that evaluate to numbers.
 
 数字类型字面量是编译时常量。
-在算术表达式中，只要参与计算的因子是编译时常量， 
+在算术表达式中，只要参与计算的因子是编译时常量，
 那么算术表达式的结果也是编译时常量。
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-num)"?>
@@ -882,7 +878,7 @@ var s = r'In a raw string, not even \n gets special treatment.';
 See [Runes](#runes) for details on how to express Unicode
 characters in a string.
 
-参考 [Runes](#runes) 来了解如何在字符串中表达 Unicode 
+参考 [Runes](#runes) 来了解如何在字符串中表达 Unicode
 字符。
 
 Literal strings are compile-time constants,
@@ -923,7 +919,7 @@ To represent boolean values, Dart has a type named `bool`. Only two
 objects have type bool: the boolean literals `true` and `false`,
 which are both compile-time constants.
 
-Dart 使用 `bool` 类型表示布尔值。 
+Dart 使用 `bool` 类型表示布尔值。
 Dart 只有字面量 `true` and `false` 是布尔类型，
 这两个对象都是编译时常量。
 
@@ -970,7 +966,7 @@ is the *array*, or ordered group of objects. In Dart, arrays are
 Dart list literals look like JavaScript array literals. Here’s a simple
 Dart list:
 
-Dart 中的 List 字面量非常像 JavaScript 中的 array 字面量。 
+Dart 中的 List 字面量非常像 JavaScript 中的 array 字面量。
 下面是一个 Dart List 的示例：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (list-literal)"?>
@@ -989,9 +985,9 @@ var list = [1, 2, 3];
   For more information, read about
   [type inference.](/guides/language/sound-dart#type-inference)
 
-  Dart 推断 `list` 的类型为 `List<int>` 。 
+  Dart 推断 `list` 的类型为 `List<int>` 。
   如果尝试将非整数对象添加到此 List 中，
-  则分析器或运行时会引发错误。 
+  则分析器或运行时会引发错误。
   有关更多信息，请阅读
   [类型推断。](/guides/language/sound-dart#type-inference)
 </aside>
@@ -1001,7 +997,7 @@ and `list.length - 1` is the index of the last element. You can get a
 list’s length and refer to list elements just as you would in
 JavaScript:
 
-Lists 的下标索引从 0 开始，第一个元素的索引是 0。`list.length - 1` 是最后一个元素的索引。 
+Lists 的下标索引从 0 开始，第一个元素的索引是 0。`list.length - 1` 是最后一个元素的索引。
 访问 List 的长度和元素与 JavaScript 中的用法一样：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-indexing)"?>
@@ -1059,7 +1055,7 @@ var list2 = [0, ...?list];
 assert(list2.length == 1);
 {% endprettify %}
 
-For more details and examples of using the spread operator, see the 
+For more details and examples of using the spread operator, see the
 [spread operator proposal.][spread proposal]
 
 更多 Spread 操作符的内容和使用示例，参见 [Spread 操作符提案。][spread proposal]
@@ -1104,10 +1100,10 @@ var listOfStrings = [
 assert(listOfStrings[1] == '#1');
 {% endprettify %}
 
-For more details and examples of using collection if and for, see the 
+For more details and examples of using collection if and for, see the
 [control flow collections proposal.][collections proposal]
 
-更多 **Collection If** 和 **Collection For** 的内容和使用示例，参阅 
+更多 **Collection If** 和 **Collection For** 的内容和使用示例，参阅
 [集合的流控制提案。][collections proposal]
 
 [collections proposal]: https://github.com/dart-lang/language/blob/master/accepted/2.3/control-flow-collections/feature-specification.md
@@ -1118,7 +1114,7 @@ The List type has many handy methods for manipulating lists. For more
 information about lists, see [Generics](#generics) and
 [Collections](/guides/libraries/library-tour#collections).
 
-List 类型包含了很多 List 的操作函数。 
+List 类型包含了很多 List 的操作函数。
 更多信息参考 [泛型](#generics) 和
 [集合](/guides/libraries/library-tour#collections).
 
@@ -1294,8 +1290,8 @@ var nobleGases = {
   [type inference.](/guides/language/sound-dart#type-inference)
 
   Dart 会将 `gifts` 的类型推断为 `Map<String, String>`，
-  `nobleGases` 的类型推断为 `Map<int, String>` 。 
-  如果尝试在上面的 map 中添加错误类型，那么分析器或者运行时会引发错误。 
+  `nobleGases` 的类型推断为 `Map<int, String>` 。
+  如果尝试在上面的 map 中添加错误类型，那么分析器或者运行时会引发错误。
   有关更多信息，请阅读[类型推断。](/guides/language/sound-dart#type-inference)。
 </aside>
 
@@ -1511,7 +1507,7 @@ might never need to use symbols, but they're invaluable for APIs that
 refer to identifiers by name, because minification changes identifier
 names but not identifier symbols.
 
-一个 Symbol 对象表示 Dart 程序中声明的运算符或者标识符。 
+一个 Symbol 对象表示 Dart 程序中声明的运算符或者标识符。
 你也许永远都不需要使用 Symbol ，但要按名称引用标识符的 API 时， Symbol 就非常有用了。因为代码压缩后会改变标识符的名称，但不会改变标识符的符号。
 
 To get the symbol for an identifier, use a symbol literal, which is just
@@ -1558,7 +1554,7 @@ to other functions. You can also call an instance of a Dart class as if
 it were a function. For details, see [Callable classes](#callable-classes).
 
 Dart 是一门真正面向对象的语言，
-甚至其中的函数也是对象，并且有它的类型 
+甚至其中的函数也是对象，并且有它的类型
 [Function][Function API reference] 。
 这也意味着函数可以被赋值给变量或者作为参数传递给其他函数。
 也可以把 Dart 类的实例当做方法来调用。
@@ -1621,7 +1617,7 @@ expression](#conditional-expressions).
 
 在箭头 (=\>) 和分号 (;) 之间只能使用一个 *表达式* ，不能是 *语句* 。
 例如：不能使用 [if
-语句](#if-和-else) ，但是可以是用 
+语句](#if-和-else) ，但是可以是用
 [条件表达式](#conditional-expressions).
 </div>
 =======
@@ -1702,7 +1698,7 @@ constructors use named parameters exclusively. This makes instance creation
 expressions easier to read.
 
 [Flutter][] 创建实例的表达式可能很复杂，
-因此窗口小部件构造函数仅使用命名参数。 
+因此窗口小部件构造函数仅使用命名参数。
 这样创建实例的表达式更易于阅读。
 
 You can annotate a named parameter in any Dart code (not just Flutter) with
@@ -1794,7 +1790,7 @@ parameters. The default values must be compile-time constants.
 If no default value is provided, the default value is `null`.
 
 在定义方法的时候，可以使用 `=` 来定义可选参数的默认值。
-默认值只能是编译时常量。 
+默认值只能是编译时常量。
 如果没有提供默认值，则默认值为 null。
 
 Here's an example of setting default values for named parameters:
@@ -1823,7 +1819,7 @@ so we recommend that you
 <<<<<<< HEAD
 **[use `=` to specify default values.](/tools/pub/pubspec#sdk-constraints)**
 
-旧版本代码中可能使用的是冒号 (`:`) 而不是 `=` 
+旧版本代码中可能使用的是冒号 (`:`) 而不是 `=`
 来设置参数默认值。
 原因是起初命名参数只支持 `:`。
 这种支持可能会被弃用。
@@ -1938,7 +1934,7 @@ The `..` syntax in the preceding code is called a [cascade](#cascade-notation-).
 With cascades,
 you can perform multiple operations on the members of a single object.
 
-以上代码中的 `..` 语法为 [级联调用](#cascade-notation-) （cascade）。 
+以上代码中的 `..` 语法为 [级联调用](#cascade-notation-) （cascade）。
 使用级联调用， 可以简化在一个对象上执行的多个操作。
 </div>
 
@@ -2020,7 +2016,7 @@ An anonymous function looks similar to a named function&mdash;
 zero or more parameters, separated by commas
 and optional type annotations, between parentheses.
 
-匿名函数和命名函数看起来类似&mdash; 
+匿名函数和命名函数看起来类似&mdash;
 在括号之间可以定义一些参数或可选参数，参数使用逗号分割。
 
 The code block that follows contains the function's body:
@@ -2068,7 +2064,7 @@ If the function contains only one statement, you can shorten it using
 arrow notation. Paste the following line into DartPad
 and click run to verify that it is functionally equivalent.
 
-如果函数只有一条语句， 
+如果函数只有一条语句，
 可以使用箭头简写。粘贴下面代码到 DartPad 中
 并点击运行按钮，验证两个函数是等价性。
 
@@ -2122,7 +2118,7 @@ void main() {
 Notice how `nestedFunction()` can use variables from every level, all
 the way up to the top level.
 
-注意 `nestedFunction()` 可以访问所有的变量， 
+注意 `nestedFunction()` 可以访问所有的变量，
 一直到顶级作用域变量。
 
 ### Lexical closures
@@ -2141,7 +2137,7 @@ following example, `makeAdder()` captures the variable `addBy`. Wherever the
 returned function goes, it remembers `addBy`.
 
 函数可以封闭定义到它作用域内的变量。 接下来的示例中，
-`makeAdder()` 捕获了变量 `addBy`。 
+`makeAdder()` 捕获了变量 `addBy`。
 无论在什么时候执行返回函数，函数都会使用捕获的 `addBy` 变量。
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (function-closure)"?>
@@ -2278,7 +2274,7 @@ You can override many of these operators, as described in
 When you use operators, you create expressions. Here are some examples
 of operator expressions:
 
-创建表达式的时候会用到运算符。 
+创建表达式的时候会用到运算符。
 下面是一些运算符表达式的实例：
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (expressions)" replace="/,//g"?>
@@ -2449,7 +2445,7 @@ function instead.) Here’s how the `==` operator works:
     (如上所见,
     `==` 运算符执行的是第一个运算符的函数。
     我们甚至可以重写很多运算符，包括 `==`，
-    运算符的重写，参考 
+    运算符的重写，参考
     [重写运算符](#overridable-operators)）
 
 Here’s an example of using each of the equality and relational
@@ -2496,7 +2492,7 @@ general, you should use it as a shorthand for an `is` test on an object
 following by an expression using that object. For example, consider the
 following code:
 
-使用 `as` 运算符将对象强制转换为特定类型。 
+使用 `as` 运算符将对象强制转换为特定类型。
 通常，可以认为是 `is` 类型判定后，被判定对象调用函数的一种缩写形式。
 请考虑以下代码：
 
@@ -2876,7 +2872,7 @@ For more information about the `.`, `?.`, and `..` operators, see
 
 You can control the flow of your Dart code using any of the following:
 
-使用 `try-catch` 和 `throw` 也可以改变程序流程， 
+使用 `try-catch` 和 `throw` 也可以改变程序流程，
 详见 [Exceptions](#exceptions)。
 
 -   `if` and `else`
@@ -2897,7 +2893,7 @@ explained in [Exceptions](#exceptions).
 Dart supports `if` statements with optional `else` statements, as the
 next sample shows. Also see [conditional expressions](#conditional-expressions).
 
-Dart 支持 `if - else` 语句，其中 `else` 是可选的， 
+Dart 支持 `if - else` 语句，其中 `else` 是可选的，
 比如下面的例子， 另参考 [conditional expressions](#conditional-expressions).
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (if-else)"?>
@@ -2914,7 +2910,7 @@ if (isRaining()) {
 Unlike JavaScript, conditions must use boolean values, nothing else. See
 [Booleans](#booleans) for more information.
 
-Dart 支持 `if - else` 语句，其中 `else` 是可选的， 
+Dart 支持 `if - else` 语句，其中 `else` 是可选的，
 比如下面的例子， 另参考 [conditional expressions](#conditional-expressions).
 
 
@@ -2952,15 +2948,15 @@ callbacks.forEach((c) => c());
 The output is `0` and then `1`, as expected. In contrast, the example
 would print `2` and then `2` in JavaScript.
 
-和期望一样，输出的是 `0` 和 `1`。 
+和期望一样，输出的是 `0` 和 `1`。
 但是示例中的代码在 JavaScript 中会连续输出两个 `2` 。
 
 If the object that you are iterating over is an Iterable, you can use the
 [forEach()][] method. Using `forEach()` is a good option if you don’t need to
 know the current iteration counter:
 
-I如果要迭代一个实现了 Iterable 接口的对象， 
-可以使用 [forEach()][] 方法， 
+I如果要迭代一个实现了 Iterable 接口的对象，
+可以使用 [forEach()][] 方法，
 如果不需要使用当前计数值，
 使用 `forEach()` 是非常棒的选择：
 
@@ -3086,7 +3082,7 @@ Each non-empty `case` clause ends with a `break` statement, as a rule.
 Other valid ways to end a non-empty `case` clause are a `continue`,
 `throw`, or `return` statement.
 
-在 `case` 语句中，每个非空的 `case` 语句结尾需要跟一个 `break` 语句。 
+在 `case` 语句中，每个非空的 `case` 语句结尾需要跟一个 `break` 语句。
 除 `break` 以外，还有可以使用 `continue`, `throw`，者 `return`。
 
 Use a `default` clause to execute code when no `case` clause matches:
@@ -3268,7 +3264,7 @@ caught, the [isolate](#isolates) that raised the exception is suspended, and
 typically the isolate and its program are terminated.
 
 
-Dart 代码可以抛出和捕获异常。 
+Dart 代码可以抛出和捕获异常。
 异常表示一些未知的错误情况。
 如果异常没有被捕获， 则异常会抛出，
 导致抛出异常的代码终止执行。
@@ -3279,7 +3275,7 @@ not required to catch any exceptions.
 
 和 Java 有所不同， Dart 中的所有异常是非检查异常。
 方法不会声明它们抛出的异常，
-也不要求捕获任何异常。 
+也不要求捕获任何异常。
 
 Dart provides [Exception][] and [Error][]
 types, as well as numerous predefined subtypes. You can, of course,
@@ -3287,7 +3283,7 @@ define your own exceptions. However, Dart programs can throw any
 non-null object—not just Exception and Error objects—as an exception.
 
 Dart 提供了 [Exception][] 和 [Error][] 类型，
-以及一些子类型。 
+以及一些子类型。
 当然也可以定义自己的异常类型。
 但是，此外 Dart 程序可以抛出任何非 null 对象， 不仅限 Exception 和 Error 对象。
 
@@ -3336,7 +3332,7 @@ Catching, or capturing, an exception stops the exception from
 propagating (unless you rethrow the exception).
 Catching an exception gives you a chance to handle it:
 
-捕获异常可以避免异常继续传递（除非重新抛出（ rethrow ）异常）。 
+捕获异常可以避免异常继续传递（除非重新抛出（ rethrow ）异常）。
 可以通过捕获异常的机会来处理该异常：
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try)"?>
@@ -3354,7 +3350,7 @@ thrown object’s type handles the exception. If the catch clause does not
 specify a type, that clause can handle any type of thrown object:
 
 通过指定多个 catch 语句，可以处理可能抛出多种类型异常的代码。
-与抛出异常类型匹配的第一个 catch 语句处理异常。 
+与抛出异常类型匹配的第一个 catch 语句处理异常。
 如果 catch 语句未指定类型，
 则该语句可以处理任何类型的抛出对象：
 
@@ -3387,7 +3383,7 @@ The first is the exception that was thrown,
 and the second is the stack trace (a [StackTrace][] object).
 
 `catch()` 函数可以指定1到2个参数，
-第一个参数为抛出的异常对象， 
+第一个参数为抛出的异常对象，
 第二个为堆栈信息 ( 一个 [StackTrace][] 对象 )。
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try-catch-2)" replace="/\(e.*?\)/[!$&!]/g"?>
@@ -3499,7 +3495,7 @@ Objects have *members* consisting of functions and data (*methods* and
 it on an object: the method has access to that object’s functions and
 data.
 
-对象的*成员*由函数和数据（即*方法*和*实例变量*）组成。 
+对象的*成员*由函数和数据（即*方法*和*实例变量*）组成。
 方法的*调用*要通过对象来完成：
 调用的方法可以访问其对象的其他函数和数据。
 
@@ -3677,7 +3673,7 @@ print('The type of a is ${a.runtimeType}');
 Up to here, you've seen how to _use_ classes.
 The rest of this section shows how to _implement_ classes.
 
-到目前为止，我们已经解了如何_使用_类。 
+到目前为止，我们已经解了如何_使用_类。
 本节的其余部分将介绍如何_实现_一个类。
 
 ### Instance variables
@@ -3705,7 +3701,7 @@ All instance variables generate an implicit *getter* method. Non-final
 instance variables also generate an implicit *setter* method. For details,
 see [Getters and setters](#getters-and-setters).
 
-所有实例变量都生成隐式 *getter* 方法。 
+所有实例变量都生成隐式 *getter* 方法。
 非 final 的实例变量同样会生成隐式 *setter* 方法。
 有关更多信息，参考 [Getters 和 setters](#getters-和-setters)。
 
@@ -3745,7 +3741,7 @@ The most common form of constructor, the generative constructor, creates
 a new instance of a class:
 
 通过创建一个与其类同名的函数来声明构造函数
-（另外，还可以附加一个额外的可选标识符，如 [命名构造函数](#named-constructors) 中所述）。 
+（另外，还可以附加一个额外的可选标识符，如 [命名构造函数](#named-constructors) 中所述）。
 下面通过最常见的构造函数形式，
 即生成构造函数，
 创建一个类的实例：
@@ -3848,7 +3844,7 @@ want a subclass to be created with a named constructor defined in the
 superclass, you must implement that constructor in the subclass.
 
 切记，构造函数不能够被继承，
-这意味着父类的命名构造函数不会被子类继承。 
+这意味着父类的命名构造函数不会被子类继承。
 如果希望使用父类中定义的命名构造函数创建子类，
 就必须在子类中实现该构造函数。
 
@@ -3866,7 +3862,7 @@ In summary, the order of execution is as follows:
 默认情况下，子类的构造函数会自动调用父类的默认构造函数（匿名，无参数）。
 父类的构造函数在子类构造函数体开始执行的位置被调用。
 如果提供了一个 [initializer list](#initializer-list)（初始化参数列表），
-则初始化参数列表在父类构造函数执行之前执行。 
+则初始化参数列表在父类构造函数执行之前执行。
 总之，执行顺序如下：
 
 1. initializer list
@@ -3886,15 +3882,15 @@ then you must manually call one of the constructors in the
 superclass. Specify the superclass constructor after a colon (`:`), just
 before the constructor body (if any).
 
-如果父类中没有匿名无参的构造函数， 
-则需要手工调用父类的其他构造函数。 
+如果父类中没有匿名无参的构造函数，
+则需要手工调用父类的其他构造函数。
 在当前构造函数冒号 (`:`) 之后，函数体之前，声明调用父类构造函数。
 
 In the following example, the constructor for the Employee class
 calls the named constructor for its superclass, Person.
 Click the run button {% asset red-run.png alt="" %} to execute the code.
 
-下面的示例中，Employee 类的构造函数调用了父类 Person 的命名构造函数。 
+下面的示例中，Employee 类的构造函数调用了父类 Person 的命名构造函数。
 点击运行按钮{% asset red-run.png alt="" %} 执行示例代码。
 
 {% comment %}
@@ -3964,7 +3960,7 @@ class Employee extends Person {
 Arguments to the superclass constructor do not have access to `this`.
 For example, arguments can call static methods but not instance methods.
 
-调用父类构造函数的参数无法访问 this。 
+调用父类构造函数的参数无法访问 this。
 例如，参数可以为静态函数但是不能是实例函数。
 </div>
 
@@ -4072,7 +4068,7 @@ Sometimes a constructor’s only purpose is to redirect to another
 constructor in the same class. A redirecting constructor’s body is
 empty, with the constructor call appearing after a colon (:).
 
-有时构造函数的唯一目的是重定向到同一个类中的另一个构造函数。 
+有时构造函数的唯一目的是重定向到同一个类中的另一个构造函数。
 重定向构造函数的函数体为空，
 构造函数的调用在冒号 (:) 之后。
 
@@ -4238,7 +4234,7 @@ additional properties by implementing getters and setters, using the
 `get` and `set` keywords:
 
 
-Getter 和 Setter 是用于对象属性读和写的特殊方法。 
+Getter 和 Setter 是用于对象属性读和写的特殊方法。
 回想之前的例子，每个实例变量都有一个隐式 Getter ，通常情况下还会有一个 Setter 。
 使用 `get` 和 `set` 关键字实现 Getter 和 Setter ，能够为实例创建额外的属性。
 
@@ -4282,7 +4278,7 @@ not a getter is explicitly defined. To avoid any unexpected side
 effects, the operator calls the getter exactly once, saving its value
 in a temporary variable.
 
-类似 (++) 之类操作符不管是否定义了 getter 方法，都能够正确的执行。 
+类似 (++) 之类操作符不管是否定义了 getter 方法，都能够正确的执行。
 为了避免一些问题，操作符只调用一次 getter 方法，
 然后把值保存到一个临时的变量中。
 </div>
@@ -4295,8 +4291,8 @@ Instance, getter, and setter methods can be abstract, defining an
 interface but leaving its implementation up to other classes.
 Abstract methods can only exist in [abstract classes](#abstract-classes).
 
-实例方法， getter， 和 setter 方法可以是抽象的， 
-只定义接口不进行实现，而是留给其他类去实现。 
+实例方法， getter， 和 setter 方法可以是抽象的，
+只定义接口不进行实现，而是留给其他类去实现。
 抽象方法只存在于 [抽象类](#abstract-classes) 中。
 
 To make a method abstract, use a semicolon (;) instead of a method body:
@@ -4370,7 +4366,7 @@ A class implements one or more interfaces by declaring them in an
 `implements` clause and then providing the APIs required by the
 interfaces. For example:
 
-一个类可以通过 `implements` 关键字来实现一个或者多个接口， 
+一个类可以通过 `implements` 关键字来实现一个或者多个接口，
 并实现每个接口要求的 API。
 例如：
 
@@ -4421,7 +4417,7 @@ class Point implements Comparable, Location {...}
 Use `extends` to create a subclass, and `super` to refer to the
 superclass:
 
-使用 `extends` 关键字来创建子类，使用 `super` 关键字来引用父类： 
+使用 `extends` 关键字来创建子类，使用 `super` 关键字来引用父类：
 
 <?code-excerpt "misc/lib/language_tour/classes/extends.dart" replace="/extends|super/[!$&!]/g"?>
 {% prettify dart %}
@@ -4744,8 +4740,8 @@ To specify that only certain types can use the mixin — for example,
 so your mixin can invoke a method that it doesn't define —
 use `on` to specify the required superclass:
 
-指定只有某些类型可以使用的 Mixin - 
-比如， Mixin 可以调用 Mixin 自身没有定义的方法 - 
+指定只有某些类型可以使用的 Mixin -
+比如， Mixin 可以调用 Mixin 自身没有定义的方法 -
 使用 `on` 来指定可以使用 Mixin 的父类类型：
 
 
@@ -4921,7 +4917,7 @@ the list is probably a mistake. Here’s an example:
 
 如果想让 List 仅仅支持字符串类型，
 可以将其声明为 `List<String>` （读作“字符串类型的 list ”）。
-那么，当一个非字符串被赋值给了这个 list 时，开发工具就能够检测到这样的做法可能存在错误。 
+那么，当一个非字符串被赋值给了这个 list 时，开发工具就能够检测到这样的做法可能存在错误。
 例如：
 
 {:.fails-sa}
@@ -4938,7 +4934,7 @@ many types, while still taking advantage of static
 analysis. For example, say you create an interface for
 caching an object:
 
-另外一个使用泛型的原因是减少重复的代码。 
+另外一个使用泛型的原因是减少重复的代码。
 泛型可以在多种类型之间定义同一个实现，
 同时还可以继续使用检查模式和静态分析工具提供的代码分析功能。
 例如，假设你创建了一个用于缓存对象的接口：
@@ -4967,7 +4963,7 @@ abstract class StringCache {
 Later, you decide you want a number-specific version of this
 interface... You get the idea.
 
-后来，又发现需要一个相同功能的数字类型接口 ... 
+后来，又发现需要一个相同功能的数字类型接口 ...
 这里你应该明白了。
 
 Generic types can save you the trouble of creating all these interfaces.
@@ -5004,9 +5000,9 @@ is example of using typed literals:
 
 List , Set 和 Map 字面量也是可以参数化的。
 参数化字面量和之前的字面量定义类似，
-对于 List 或 Set 只需要在声明语句前加 
+对于 List 或 Set 只需要在声明语句前加
 <code>&lt;<em>type</em>></code> 前缀，
-对于 Map 只需要在声明语句前加 
+对于 Map 只需要在声明语句前加
 <code>&lt;<em>keyType</em>, <em>valueType</em>></code> 前缀，
 下面是参数化字面量的示例：
 
@@ -5058,7 +5054,7 @@ Dart generic types are *reified*, which means that they carry their type
 information around at runtime. For example, you can test the type of a
 collection:
 
-Dart 中泛型类型是 *固化的*，也就是说它们在运行时是携带着类型信息的。 
+Dart 中泛型类型是 *固化的*，也就是说它们在运行时是携带着类型信息的。
 例如，
 在运行时检测集合的类型：
 
@@ -5078,7 +5074,7 @@ In contrast, generics in Java use *erasure*, which means that generic
 type parameters are removed at runtime. In Java, you can test whether
 an object is a List, but you can’t test whether it’s a `List<String>`.
 
-相反，Java中的泛型会被 *擦除* ，也就是说在运行时泛型类型参数的信息是不存在的。 
+相反，Java中的泛型会被 *擦除* ，也就是说在运行时泛型类型参数的信息是不存在的。
 在Java中，可以测试对象是否为 List 类型，
 但无法测试它是否为 `List<String>` 。
 </div>
@@ -5162,11 +5158,11 @@ A newer syntax, called _generic methods_, allows type arguments on methods and f
 Here the generic type parameter on `first` (`<T>`)
 allows you to use the type argument `T` in several places:
 
-这里的 `first` (`<T>`) 
+这里的 `first` (`<T>`)
 泛型可以在如下地方使用参数 `T` ：
 
 * In the function's return type (`T`).
-  
+
   函数的返回值类型 (`T`)。
 
 * In the type of an argument (`List<T>`).
@@ -5328,7 +5324,7 @@ _Deferred loading_ (也称之为 _lazy loading_)
 * To load rarely used functionality, such as optional screens and dialogs.
 
   加载很少使用的功能，例如可选的屏幕和对话框。
-  
+
 <aside class="alert alert-warning" markdown="1">
 
 **Only dart2js supports deferred loading.**
@@ -5339,7 +5335,7 @@ For more information, see
 
 **只有 dart2js 目前支持延迟加载**
 Flutter、Dart 运行环境以及 dartdevc 目前都不支持延迟加载。
-更多信息可参见 [issue #33118](https://github.com/dart-lang/sdk/issues/33118) 
+更多信息可参见 [issue #33118](https://github.com/dart-lang/sdk/issues/33118)
 和 [issue #27776](https://github.com/dart-lang/sdk/issues/27776)。
 
 </aside>
@@ -5427,14 +5423,14 @@ See
 [Create Library Packages](/guides/libraries/create-library-packages)
 for advice on how to implement a library package, including:
 
-有关如何实现库包的建议，请参考 
+有关如何实现库包的建议，请参考
 [Create Library Packages](/guides/libraries/create-library-packages)
 这里面包括：
 
 * How to organize library source code.
 
   如何组织库的源文件。
-  
+
 * How to use the `export` directive.
 
   如何使用 `export` 命令。
@@ -5483,7 +5479,7 @@ you have two options:
 可以通过下面两种方式，获得 Future 执行完成的结果：
 
 * Use `async` and `await`.
-  
+
   使用 `async` 和 `await`。
 
 * Use the Future API, as described
@@ -5581,7 +5577,7 @@ The await expression makes execution pause until that object is available.
 在 <code>await <em>表达式</em></code> 中，
 <code><em>表达式</em></code> 的值通常是一个 Future 对象；
 如果不是，这是表达式的值会被自动包装成一个 Future 对象。
-Future 对象指明返回一个对象的承诺（promise）。 
+Future 对象指明返回一个对象的承诺（promise）。
 <code>await <em>表达式</em></code> 执行的结果为这个返回的对象。
 await 表达式会阻塞代码的执行，直到需要的对象返回为止。
 
@@ -5707,7 +5703,7 @@ await for (varOrType identifier in expression) {
 The value of <code><em>expression</em></code> must have type Stream.
 Execution proceeds as follows:
 
-上面 <code><em>表达式</em></code> 返回的值必须是 Stream 类型。 
+上面 <code><em>表达式</em></code> 返回的值必须是 Stream 类型。
 执行流程如下：
 
 1. Wait until the stream emits a value.
@@ -5758,7 +5754,7 @@ For more information about asynchronous programming, in general, see the
 section of the library tour.
 
 有关异步编程的更多信息，请参考
-[dart:async](/guides/libraries/library-tour#dartasync---asynchronous-programming) 
+[dart:async](/guides/libraries/library-tour#dartasync---asynchronous-programming)
 部分。
 
 
@@ -5776,7 +5772,7 @@ Dart has built-in support for two kinds of generator functions:
 Dart 内置支持两种生成器函数：
 
 * **Synchronous** generator: Returns an **[Iterable]** object.
-  
+
   **Synchronous** 生成器： 返回一个 **[Iterable]** 对象。
 
 * **Asynchronous** generator: Returns a **[Stream]** object.
@@ -6108,7 +6104,7 @@ Dart 支持单行注释、多行注释和文档注释。
 A single-line comment begins with `//`. Everything between `//` and the
 end of line is ignored by the Dart compiler.
 
-单行注释以 `//` 开始。 
+单行注释以 `//` 开始。
 所有在 `//` 和改行结尾之间的内容被编译器忽略。
 
 <?code-excerpt "misc/lib/language_tour/comments.dart (single-line-comments)"?>
@@ -6217,7 +6213,7 @@ your comments, see
 [documentation generation tool.](https://github.com/dart-lang/dartdoc#dartdoc)
 关于生成文档的实例，请参考 [Dart API
 documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
-关于文档结构的建议，请参考 
+关于文档结构的建议，请参考
 [Guidelines for Dart Doc Comments.](/guides/language/effective-dart/documentation)
 
 
