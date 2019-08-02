@@ -131,19 +131,18 @@ This site's code follows the conventions in the
 
 ## Important concepts
 
-## 重要的概念
+## 重要概念
 
 As you learn about the Dart language, keep these facts and concepts in
 mind:
 
-在学习 Dart 语言时, 应该基于以下事实和概念：
+当你在学习 Dart 语言时, 应该牢记以下几点：
 
 -   Everything you can place in a variable is an *object*, and every
     object is an instance of a *class*. Even numbers, functions, and
     `null` are objects. All objects inherit from the [Object][] class.
 
-    任何保存在变量中的都是一个 *对象* ， 并且所有的对象都是对应一个 *类* 的实例。
-    无论是数字，函数和 `null` 都是对象。所有对象继承自 [Object][] 类。
+    所有变量引用的都是 *对象*，每个对象都是一个 *类* 的实例。数字、函数以及 `null` 都是对象。所有的类都继承于 [Object][] 类。
 
 -   Although Dart is strongly typed, type annotations are optional
     because Dart can infer types. In the code above, `number`
@@ -151,46 +150,37 @@ mind:
     that no type is expected,
     [use the special type `dynamic`][ObjectVsDynamic].
 
-    尽管 Dart 是强类型的，但是 Dart 可以推断类型，所以类型注释是可选的。
-    在上面的代码中， `number` 被推断为 `int` 类型。
-    如果要明确说明不需要任何类型，
-    [需要使用特殊类型 `dynamic`] [ObjectVsDynamic]。
+    尽管 Dart 是强类型语言，但是在声明变量时指定类型是可选的，因为 Dart 可以进行类型推断。在上述代码中，变量 `number` 的类型被推断为 `int` 类型。如果想显式地声明一个不确定的类型，可以[使用特殊类型 `dynamic`][ObjectVsDynamic]。
 
 -   Dart supports generic types, like `List<int>` (a list of integers)
     or `List<dynamic>` (a list of objects of any type).
 
-    Dart 支持泛型，如 `List <int>` （整数列表）或 `List <dynamic>` （任何类型的对象列表）。
+    Dart 支持泛型，比如 `List<int>`（表示一组由 int 对象组成的列表）或 `List<dynamic>`（表示一组由任何类型对象组成的列表）。
 
 -   Dart supports top-level functions (such as `main()`), as well as
     functions tied to a class or object (*static* and *instance
     methods*, respectively). You can also create functions within
     functions (*nested* or *local functions*).
 
-    Dart 支持顶级函数（例如 `main（）`），
-    同样函数绑定在类或对象上（分别是*静态函数*和*实例函数*）。
-    以及支持函数内创建函数（*嵌套*或*局部函数*）。
+    Dart 支持顶级函数（例如 `main` 方法），同时还支持定义属于类或对象的函数（即 *静态* 和 *实例方法*）。你还可以在函数中定义函数（*嵌套* 或 *局部函数*）。
 
 -   Similarly, Dart supports top-level *variables*, as well as variables
     tied to a class or object (static and instance variables). Instance
     variables are sometimes known as fields or properties.
 
-    类似地， Dart 支持顶级*变量* ，
-    同样变量绑定在类或对象上（静态变量和实例变量）。
-    实例变量有时称为字段或属性。
+    Dart 支持顶级 *变量*，以及定义属于类或对象的变量（静态和实例变量）。实例变量有时称之为域或属性。
 
 -   Unlike Java, Dart doesn’t have the keywords `public`, `protected`,
     and `private`. If an identifier starts with an underscore (\_), it’s
     private to its library. For details, see
     [Libraries and visibility](#libraries-and-visibility).
 
-    与 Java 不同，Dart 没有关键字 `public`， `protected` 和 `private`。
-    如果标识符以下划线（\_）开头，则它相对于库是私有的。
-    有关更多信息，参考 [库和可见性](#libraries-and-visibility)。
+    Dart 没有类似于 Java 那样的 `public`、`protected` 和 `private` 成员访问限定符。如果一个标识符以下划线 (\_) 开头则表示该标识符在库内是私有的。可以查阅 [库和可见性](#libraries-and-visibility) 获取更多相关信息。
 
 -   *Identifiers* can start with a letter or underscore (\_), followed by any
     combination of those characters plus digits.
 
-    *标识符* 以字母或下划线（\_）开头，后跟任意字母和数字组合。
+    *标识符* 可以以字母或者下划线 (\_) 开头，其后可跟字符和数字的组合。
 
 -   Dart has both *expressions* (which have runtime values) and
     *statements* (which don't).
@@ -200,11 +190,7 @@ mind:
     A statement often contains one or more expressions,
     but an expression can't directly contain a statement.
 
-    Dart 语法中包含*表达式（expressions）*（有运行时值）和*语句（ statements）*（没有运行时值）。
-    例如，[条件表达式](#conditional-expressions)
-    `condition ? expr1 : expr2` 的值可能是 `expr1` 或 `expr2` 。
-    将其与 [if-else 语句](#if-和-else) 相比较，if-else 语句没有值。
-    一条语句通常包含一个或多个表达式，相反表达式不能直接包含语句。
+    Dart 中 *表达式* 和 *语句* 是有区别的，表达式有值而语句没有。比如[条件表达式](#conditional-expressions) `expression condition ? expr1 : expr2` 中含有值 `expr1` 或 `expr2`。与 [if-else 分支语句](#if-and-else)相比，`if-else` 分支语句则没有值。一个语句通常包含一个或多个表达式，但是一个表达式不能只包含一个语句。
 
 -   Dart tools can report two kinds of problems: _warnings_ and _errors_.
     Warnings are just indications that your code might not work, but
@@ -213,11 +199,7 @@ mind:
     from executing at all; a run-time error results in an
     [exception](#exceptions) being raised while the code executes.
 
-    Dart 工具提示两种类型问题：_警告_和_错误_。
-    警告只是表明代码可能无法正常工作，但不会阻止程序的执行。
-    错误可能是编译时错误或者运行时错误。
-    编译时错误会阻止代码的执行;
-    运行时错误会导致代码在执行过程中引发 [异常]（#exception）。
+    Dart 工具可以显示 _警告_ 和 _错误_ 两种类型的问题。警告表明代码可能有问题但不会阻止其运行。错误分为编译时错误和运行时错误；编译时错误代码无法运行；运行时错误会在代码运行时导致[异常](#exceptions)。
 
 
 ## Keywords
@@ -226,7 +208,7 @@ mind:
 
 The following table lists the words that the Dart language treats specially.
 
-Dart 语言关键字列表。
+下面的表格中列出了 Dart 语言所使用的关键字。
 
 {% assign ckw = '&nbsp;<sup title="contextual keyword" alt="contextual keyword">1</sup>' %}
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">2</sup>' %}
@@ -319,26 +301,20 @@ Dart 语言关键字列表。
 Avoid using these words as identifiers.
 However, if necessary, the keywords marked with superscripts can be identifiers:
 
-避免使用这些单词作为标识符。
-但是，如有必要，标有上标的关键字可以用作标识符：
+应该避免使用这些单词作为标识符。但是，带有上标的单词可以在必要的情况下作为标识符：
 
 * Words with the superscript **1** are **contextual keywords**,
   which have meaning only in specific places.
   They're valid identifiers everywhere.
 
-  带有 **1** 上标的单词为 **上下文关键字**，
-  仅在特定位置具有含义。
-  他们在任何地方都是有效的标识符。
+  带有上标 **1** 的关键字为 **上下文关键字**，只有在特定的场景才有意义，它们可以在任何地方作为有效的标识符。
 
 * Words with the superscript **2** are **built-in identifiers**.
   To simplify the task of porting JavaScript code to Dart,
   these keywords are valid identifiers in most places,
   but they can't be used as class or type names, or as import prefixes.
 
-  带有 **2** 上标的单词为 **内置标识符**，
-  为了简化将 JavaScript 代码移植到 Dart 的工作，
-  这些关键字在大多数地方都是有效的标识符，
-  但它们不能用作类或类型名称，也不能用作 import 前缀。
+  带有上标 **2** 的关键字为 **内置标识符**，其作用只是在JavaScript代码转为Dart代码时更简单，这些关键字在大多数时候都可以作为有效的标识符，但是它们不能用作类名或者类型名或者作为导入前缀使用。
 
 * Words with the superscript **3** are newer, limited reserved words related to
   the [asynchrony support](#asynchrony-support) that was added
@@ -346,14 +322,12 @@ However, if necessary, the keywords marked with superscripts can be identifiers:
   You can't use `await` or `yield` as an identifier
   in any function body marked with `async`, `async*`, or `sync*`.
 
-  带有 **3** 上标的单词是与 Dart 1.0 发布后添加的 [异步支持](#asynchrony-support) 相关的更新，作为限制类保留字。  
-  不能在标记为 `async`，`async*` 或 `sync*` 的任何函数体中使用 `await` 或 `yield` 作为标识符。
+  带有上标 **3** 的关键字为 Dart1.0 发布后用于[支持异步](#asynchrony-support)相关的特性新加的。不能在由关键字 `async`、`async*` 或 `sync*` 标识的方法体中使用 `await` 或 `yield` 作为标识符。
 
 All other words in the table are **reserved words**,
 which can't be identifiers.
 
-关键字表中的剩余单词都是**保留字**。
-不能将保留字用作标识符。
+其它没有上标的关键字为 **保留字**，均不能用作标识符。
 
 ## Variables
 
