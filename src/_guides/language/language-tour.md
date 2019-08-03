@@ -1395,16 +1395,11 @@ This means that functions can be assigned to variables or passed as arguments
 to other functions. You can also call an instance of a Dart class as if
 it were a function. For details, see [Callable classes](#callable-classes).
 
-Dart 是一门真正面向对象的语言，
-甚至其中的函数也是对象，并且有它的类型
-[Function][Function API reference] 。
-这也意味着函数可以被赋值给变量或者作为参数传递给其他函数。
-也可以把 Dart 类的实例当做方法来调用。
-有关更多信息，参考 [Callable classes](#callable-classes)。
+Dart 是一种真正面向对象的语言，所以即便函数也是对象并且类型为 [Function][Function API reference]，这意味着函数可以被赋值给变量或者作为其它函数的参数。你也可以像调用函数一样调用 Dart 类的实例。详情请查阅 [可调用的类](#callable-classes)。
 
 Here’s an example of implementing a function:
 
-已下是函数实现的示例：
+下面是定义一个函数的例子：
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function)"?>
 {% prettify dart %}
@@ -1417,9 +1412,7 @@ Although Effective Dart recommends
 [type annotations for public APIs](/guides/language/effective-dart/design#prefer-type-annotating-public-fields-and-top-level-variables-if-the-type-isnt-obvious),
 the function still works if you omit the types:
 
-虽然在 Effective Dart 中推荐
-[公共API中声明类型](/guides/language/effective-dart/design#prefer-type-annotating-public-fields-and-top-level-variables-if-the-type-isnt-obvious),
-但是省略了类型声明，函数依旧是可以正常使用的：
+虽然高效 Dart 指南建议在[公开的 API 上定义返回类型](/guides/language/effective-dart/design#prefer-type-annotating-public-fields-and-top-level-variables-if-the-type-isnt-obvious)，不过即便不定义，该函数也依然有效：
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function-omitting-types)"?>
 {% prettify dart %}
@@ -1431,7 +1424,7 @@ isNoble(atomicNumber) {
 For functions that contain just one expression, you can use a shorthand
 syntax:
 
-如果函数中只有一句表达式，可以使用简写语法：
+如果函数体内只包含一个表达式，你可以使用简写语法：
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function-shorthand)"?>
 {% prettify dart %}
@@ -1442,39 +1435,56 @@ The <code>=> <em>expr</em></code> syntax is a shorthand for
 <code>{ return <em>expr</em>; }</code>. The `=>` notation
 is sometimes referred to as _arrow_ syntax.
 
+语法 <code>=> <em>表达式</em></code> 是 <code>{ return <em>表达式</em>; }</code> 的简写，`=>` 有时也称之为胖箭头语法。
+
 <aside class="alert alert-info" markdown="1">
   **Note:**
+
+  **注意：**
+
   Only an *expression*—not a *statement*—can appear between the arrow
   (=\>) and the semicolon (;). For example, you can’t put an [if
   statement](#if-and-else) there, but you can use a [conditional
   expression](#conditional-expressions).
+
+  在 =\> 与 ; 之间的只能是 *表达式* 而非 *语句*。比如你不能将一个 [if语句](#if-and-else) 放在其中，但是可以放置 [条件表达式](#conditional-expressions)。
 </aside>
 
 A function can have two types of parameters: _required_ and _optional_.
 The required parameters are listed first, followed by any optional parameters.
 Optional parameters can be _named_ or _positional_.
 
+函数可以有两种形式的参数：_必要参数_ 和 _可选参数_。必要参数定义在参数列表前面，可选参数则定义在必要参数后面。可选参数可以是 _命名的_ 或 _位置的_。
+
 <aside class="alert alert-info" markdown="1">
   **Note:**
+
+  **注意：**
+
   Some APIs — notably [Flutter][] widget constructors —
   use only named parameters,
   even for parameters that are mandatory.
   See the next section for details.
+
+  某些 API，特别是 [Flutter][] 控件的构造器，只使用命名参数，即便参数是强制性的。可以查阅下一节获取更多信息。
 </aside>
 
 ### Optional parameters
 
+### 可选参数
+
 Optional parameters can be either named or positional, but not both.
+
+可选参数分为命名参数和位置参数，可在参数列表中任选其一使用，但两者不能同时出现在参数列表中。
 
 #### Named parameters
 
-#### 命名可选参数
+#### 命名参数
 
 When calling a function, you can specify named parameters using
 <code><em>paramName</em>: <em>value</em></code>. For example:
 
-调用函数时，可以使用指定命名参数
-<code><em>paramName</em>: <em>value</em></code>。 例如：
+当你调用函数时，可以使用 <code><em>参数名</em>: <em>参数值</em></code> 的形式来指定命名参数。例如：
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (use-named-parameters)"?>
 {% prettify dart %}
@@ -1482,16 +1492,14 @@ enableFlags(bold: true, hidden: false);
 {% endprettify %}
 
 When defining a function, use
-<code>{<em>param1</em>, <em>param2</em>, …}</code>
+<code>{<em>参数1</em>, <em>参数2</em>, …}</code>
 to specify named parameters:
 
-定义函数是，使用
-<code>{<em>param1</em>, <em>param2</em>, …}</code>
-来指定命名参数：
+定义函数时，使用 <code>{<em>param1</em>, <em>param2</em>, …}</code> 来指定命名参数：
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (specify-named-parameters)"?>
 {% prettify dart %}
-/// Sets the [bold] and [hidden] flags ...
+/// 设置 [bold] 和 [hidden] 标识……
 void enableFlags({bool bold, bool hidden}) {...}
 {% endprettify %}
 
@@ -1501,8 +1509,7 @@ that the parameter is mandatory —
 that users must provide a value for the parameter.
 For example:
 
-使用 [@required][] 注释表示参数是 _required_ 性质的命名参数，
-该方式可以在任何 Dart 代码中使用（不仅仅是Flutter）。
+虽然命名参数是可选参数的一种类型，但是你仍然可以使用 [@required][] 注解来标识一个命名参数是必须的参数，此时调用者则必须为该参数提供一个值。例如：
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/@required/[!$&!]/g"?>
 {% prettify dart %}
@@ -1513,17 +1520,21 @@ If someone tries to create a `Scrollbar`
 without specifying the `child` argument,
 then the analyzer reports an issue.
 
+如果调用者想要通过 `Scrollbar` 的构造函数构造一个 Scrollbar 对象而不提供 `child` 参数，则会导致编译错误。
+
 To use the [@required][] annotation,
 depend on the [meta][] package and import `package:meta/meta.dart`.
 
+[@required][] 注解定义在 [meta][] 包中，可以直接导入 `package:meta/meta.dart` 包使用。
+
 #### Positional parameters
 
-#### 位置可选参数
+#### 位置参数
 
 Wrapping a set of function parameters in `[]` marks them as optional
 positional parameters:
 
-将参数放到 `[]` 中来标记参数是可选的：
+使用 `[]` 将一系列参数包裹起来作为位置参数：
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-parameters)"?>
 {% prettify dart %}
@@ -1539,7 +1550,7 @@ String say(String from, String msg, [String device]) {
 Here’s an example of calling this function without the optional
 parameter:
 
-下面是不使用可选参数调用上面方法的示例：
+下面是不使用可选参数调用上述函数的示例：
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (call-without-optional-param)"?>
 {% prettify dart %}
@@ -1548,7 +1559,7 @@ assert(say('Bob', 'Howdy') == 'Bob says Howdy');
 
 And here’s an example of calling this function with the third parameter:
 
-下面是使用可选参数调用上面方法的示例：
+下面是使用可选参数调用上述函数的示例：
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (call-with-optional-param)"?>
 {% prettify dart %}
@@ -1565,9 +1576,7 @@ Your function can use `=` to define default values for both named and positional
 parameters. The default values must be compile-time constants.
 If no default value is provided, the default value is `null`.
 
-在定义方法的时候，可以使用 `=` 来定义可选参数的默认值。
-默认值只能是编译时常量。
-如果没有提供默认值，则默认值为 null。
+可以用 `=` 为函数的命名和位置参数定义默认值，默认值必须为编译时常量，没有指定默认值的情况下默认值为 `null`。
 
 Here's an example of setting default values for named parameters:
 
@@ -1575,17 +1584,17 @@ Here's an example of setting default values for named parameters:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (named-parameter-default-values)"?>
 {% prettify dart %}
-/// Sets the [bold] and [hidden] flags ...
+/// 设置 [bold] 和 [hidden] 标识……
 void enableFlags({bool bold = false, bool hidden = false}) {...}
 
-// bold will be true; hidden will be false.
+// bold 的值将为 true；而 hidden 将为 false。
 enableFlags(bold: true);
 {% endprettify %}
 
 <div class="alert alert-info" markdown="1">
 **Deprecation note:**
 
-**不推荐：**
+**注意：**
 
 Old code might use a colon (`:`) instead of `=`
 to set default values of named parameters.
@@ -1593,6 +1602,8 @@ The reason is that originally, only `:` was supported for named parameters.
 That support might be deprecated,
 so we recommend that you
 **[use `=` to specify default values.](/guides/language/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value)**
+
+在老版本的 Dart 代码中会使用 冒号（`:`）而不是 `=` 来设置命名参数的默认值。原因在于刚开始的时候命名参数只支持 `:`。不过现在这个支持已经过时，所以我们建议你现在都 **[使用 `=` 来指定默认值。](/guides/language/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value)**
 </div>
 
 {% comment %}
@@ -1603,7 +1614,7 @@ See `defaultNamedParameter` in the language spec.
 
 The next example shows how to set default values for positional parameters:
 
-下面示例演示了如何为位置参数设置默认值：
+下一个示例将向你展示如何为位置参数设置默认值：
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-param-default)"?>
 {% prettify dart %}
@@ -1628,10 +1639,7 @@ The following example defines a function, `doStuff()`,
 that specifies a default list for the `list`
 parameter and a default map for the `gifts` parameter.
 
-list 或 map 可以作为默认值传递。
-下面的示例定义了一个方法 `doStuff()`，
-并分别指定参数 `list` 和 `gifts`
-的默认值。
+List 或 Map 同样也可以作为默认值。下面的示例定义了一个名为 `doStuff()` 的函数，并为其名为 `list` 和 `gifts` 的参数指定了一个 List 类型的值和 Map 类型的值。
 
 {% comment %}
 The function is called three times with different values.
@@ -1674,12 +1682,11 @@ Every app must have a top-level `main()` function, which serves as the
 entrypoint to the app. The `main()` function returns `void` and has an
 optional `List<String>` parameter for arguments.
 
-任何应用都必须有一个顶级 `main()` 函数，作为应用服务的入口。
-`main()` 函数返回值为空，参数为一个可选的 `List<String>` 。
+每个 Dart 程序都必须有一个 `main()` 顶级函数作为程序的入口，`main()` 函数返回值为 `void` 并且有一个 `List<String>` 类型的可选参数。
 
 Here's an example of the `main()` function for a web app:
 
-下面是 web 应用的 `main()` 函数：
+下面是一个 Web 应用的 `main()` 函数示例：
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (simple-web-main-function)"?>
 {% prettify dart %}
@@ -1693,24 +1700,23 @@ void main() {
 <div class="alert alert-info" markdown="1">
 **Note:**
 
-**提示：**
+**注意：**
 
 The `..` syntax in the preceding code is called a [cascade](#cascade-notation-).
 With cascades,
 you can perform multiple operations on the members of a single object.
 
-以上代码中的 `..` 语法为 [级联调用](#cascade-notation-) （cascade）。
-使用级联调用， 可以简化在一个对象上执行的多个操作。
+上述代码中的 `..` 语法称之为 [级联调用](#cascade-notation-)。使用级联访问可以在一个对象上执行多个操作。
 </div>
 
 Here's an example of the `main()` function for a command-line app that
 takes arguments:
 
-下面是一个命令行应用的 `main()` 方法，并且使用了输入参数：
+下面是使用命令行访问带参数的 `main()` 函数示例：
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (main-args)"?>
 {% prettify dart %}
-// Run the app like this: dart args.dart 1 test
+// 使用命令 dart args.dart 1 test 运行该应用
 void main(List<String> arguments) {
   print(arguments);
 
@@ -1723,15 +1729,15 @@ void main(List<String> arguments) {
 You can use the [args library]({{site.pub}}/packages/args) to
 define and parse command-line arguments.
 
-使用 [args library]({{site.pub}}/packages/args) 可以定义和解析命令行参数。
+你可以通过使用 [参数库]({{site.pub}}/packages/args) 来定义和解析命令行参数。
 
 ### Functions as first-class objects
 
-### 函数是一等对象
+### 函数作为一级对象
 
 You can pass a function as a parameter to another function. For example:
 
-一个函数可以作为另一个函数的参数。 例如：
+可以将函数作为参数传递给另一个函数。例如：
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function-as-param)"?>
 {% prettify dart %}
@@ -1741,13 +1747,13 @@ void printElement(int element) {
 
 var list = [1, 2, 3];
 
-// Pass printElement as a parameter.
+// 将 printElement 函数作为参数传递。
 list.forEach(printElement);
 {% endprettify %}
 
 You can also assign a function to a variable, such as:
 
-同样可以将一个函数赋值给一个变量，例如：
+你也可以将函数赋值给一个变量，比如：
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (function-as-var)"?>
 {% prettify dart %}
@@ -1758,8 +1764,7 @@ assert(loudify('hello') == '!!! HELLO !!!');
 This example uses an anonymous function.
 More about those in the next section.
 
-示例中使用了匿名函数。
-下一章节会有更多介绍。
+该示例中使用了匿名函数。下一节会有更多与其相关的介绍。
 
 ### Anonymous functions
 
@@ -1771,26 +1776,21 @@ called an _anonymous function_, or sometimes a _lambda_ or _closure_.
 You might assign an anonymous function to a variable so that,
 for example, you can add or remove it from a collection.
 
-多数函数是有名字的， 比如 `main()` 和 `printElement()`。
-也可以创建没有名字的函数，这种函数被称为 _匿名函数_，
-有时候也被称为 _lambda_ 或者 _closure_ 。
-匿名函数可以赋值到一个变量中，
-举个例子，在一个集合中可以添加或者删除一个匿名函数。
+大多数方法都是有名字的，比如 `main()` 或 `printElement()`。你可以创建一个没有名字的方法，称之为 _匿名函数_，或 _Lambda表达式_ 或 _Closure闭包_。你可以将匿名方法赋值给一个变量然后使用它，比如将该变量添加到集合或从中删除。
 
 An anonymous function looks similar to a named function&mdash;
 zero or more parameters, separated by commas
 and optional type annotations, between parentheses.
 
-匿名函数和命名函数看起来类似&mdash;
-在括号之间可以定义一些参数或可选参数，参数使用逗号分割。
+匿名方法看起来与命名方法类似，在括号之间可以定义参数，参数之间用逗号分割。
 
 The code block that follows contains the function's body:
 
-后面大括号中的代码为函数体：
+后面大括号中的内容则为函数体：
 
 <code>
-([[<em>Type</em>] <em>param1</em>[, …]]) { <br>
-&nbsp;&nbsp;<em>codeBlock</em>; <br>
+([[<em>类型</em>] <em>参数</em>[, …]]) { <br>
+&nbsp;&nbsp;<em>函数体</em>; <br>
 }; <br>
 </code>
 
@@ -1798,8 +1798,7 @@ The following example defines an anonymous function with an untyped parameter, `
 The function, invoked for each item in the list,
 prints a string that includes the value at the specified index.
 
-下面例子中定义了一个包含一个无类型参数 `item` 的匿名函数。
-list 中的每个元素都会调用这个函数，打印元素位置和值的字符串。
+下面代码定义了只有一个参数 `item` 且没有参数类型的匿名方法。List 中的每个元素都会调用这个函数，打印元素位置和值的字符串：
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function)"?>
 {% prettify dart %}
@@ -1829,9 +1828,7 @@ If the function contains only one statement, you can shorten it using
 arrow notation. Paste the following line into DartPad
 and click run to verify that it is functionally equivalent.
 
-如果函数只有一条语句，
-可以使用箭头简写。粘贴下面代码到 DartPad 中
-并点击运行按钮，验证两个函数是等价性。
+如果函数体内只有一行语句，你可以使用胖箭头缩写法。粘贴下面代码到 DartPad 中并点击运行按钮，验证两个函数是否一致。
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anon-func)"?>
 {% prettify dart %}
@@ -1849,14 +1846,12 @@ variables is determined statically, simply by the layout of the code.
 You can “follow the curly braces outwards” to see if a variable is in
 scope.
 
-Dart 是一门词法作用域的编程语言，就意味着变量的作用域是固定的，
-简单说变量的作用域在编写代码的时候就已经确定了。
-花括号内的是变量可见的作用域。
+Dart 是词法有作用域语言，变量的作用域在写代码的时候就确定了，大括号内定义的变量只能在大括号内访问，与 Java 类似。
 
 Here is an example of nested functions with variables at each scope
 level:
 
-下面示例关于多个嵌套函数的变量作用域：
+下面是一个嵌套函数中变量在多个作用域中的示例：
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (nested-functions)"?>
 {% prettify dart %}
@@ -1883,8 +1878,7 @@ void main() {
 Notice how `nestedFunction()` can use variables from every level, all
 the way up to the top level.
 
-注意 `nestedFunction()` 可以访问所有的变量，
-一直到顶级作用域变量。
+注意 `nestedFunction()` 函数可以访问包括顶层变量在内的所有的变量。
 
 ### Lexical closures
 
@@ -1894,30 +1888,26 @@ A *closure* is a function object that has access to variables in its
 lexical scope, even when the function is used outside of its original
 scope.
 
-*闭包* 即一个函数对象，即使函数对象的调用在它原始作用域之外，
-依然能够访问在它词法作用域内的变量。
+*闭包* 即一个函数对象，即使函数对象的调用在它原始作用域之外，依然能够访问在它词法作用域内的变量。
 
 Functions can close over variables defined in surrounding scopes. In the
 following example, `makeAdder()` captures the variable `addBy`. Wherever the
 returned function goes, it remembers `addBy`.
 
-函数可以封闭定义到它作用域内的变量。 接下来的示例中，
-`makeAdder()` 捕获了变量 `addBy`。
-无论在什么时候执行返回函数，函数都会使用捕获的 `addBy` 变量。
+函数可以封闭定义到它作用域内的变量。接下来的示例中，函数 `makeAdder()` 捕获了变量 `addBy`。无论函数在什么时候返回，它都可以使用捕获的 `addBy` 变量。
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (function-closure)"?>
 {% prettify dart %}
-/// Returns a function that adds [addBy] to the
-/// function's argument.
+/// 返回一个将 [addBy] 添加到该函数参数的函数。
 Function makeAdder(num addBy) {
   return (num i) => addBy + i;
 }
 
 void main() {
-  // Create a function that adds 2.
+  // 生成加 2 的函数。
   var add2 = makeAdder(2);
 
-  // Create a function that adds 4.
+  // 生成加 4 的函数。
   var add4 = makeAdder(4);
 
   assert(add2(3) == 5);
@@ -1937,36 +1927,34 @@ instance methods for equality:
 
 <?code-excerpt "misc/lib/language_tour/function_equality.dart"?>
 {% prettify dart %}
-void foo() {} // A top-level function
+void foo() {} // 定义顶层函数
 
 class A {
-  static void bar() {} // A static method
-  void baz() {} // An instance method
+  static void bar() {} // 定义静态方法
+  void baz() {} // 定义实例方法
 }
 
 void main() {
   var x;
 
-  // Comparing top-level functions.
+  // 比较顶层函数是否相等。
   x = foo;
   assert(foo == x);
 
-  // Comparing static methods.
+  // 比较静态方法是否相等。
   x = A.bar;
   assert(A.bar == x);
 
-  // Comparing instance methods.
-  var v = A(); // Instance #1 of A
-  var w = A(); // Instance #2 of A
+  // 比较实例方法是否相等。
+  var v = A(); // A 的实例 #1
+  var w = A(); // A 的实例 #2
   var y = w;
   x = w.baz;
 
-  // These closures refer to the same instance (#2),
-  // so they're equal.
+  // 这两个闭包引用了相同的实例对象，因此它们相等。
   assert(y.baz == x);
 
-  // These closures refer to different instances,
-  // so they're unequal.
+  // 这两个闭包引用了不同的实例对象，因此它们不相等。
   assert(v.baz != w.baz);
 }
 {% endprettify %}
@@ -1979,8 +1967,7 @@ void main() {
 All functions return a value. If no return value is specified, the
 statement `return null;` is implicitly appended to the function body.
 
-所有函数都会返回一个值。 如果没有明确指定返回值，
-函数体会被隐式的添加 `return null;` 语句。
+所有的函数都有返回值。没有显示返回语句的函数最后一行默认为执行 `return null;`。
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (implicit-return-null)"?>
 {% prettify dart %}
