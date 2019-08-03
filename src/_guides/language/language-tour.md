@@ -1442,27 +1442,6 @@ The <code>=> <em>expr</em></code> syntax is a shorthand for
 <code>{ return <em>expr</em>; }</code>. The `=>` notation
 is sometimes referred to as _arrow_ syntax.
 
-<<<<<<< HEAD
-<code>=> <em>expr</em></code> 语法是
-<code>{ return <em>expr</em>; }</code> 的简写。 `=>` 符号
-有时也被称为 _箭头_ 语法。
-
-<div class="alert alert-info" markdown="1">
-**Note:**
-
-**提示：**
-
-Only an *expression*—not a *statement*—can appear between the arrow
-(=\>) and the semicolon (;). For example, you can’t put an [if
-statement](#if-and-else) there, but you can use a [conditional
-expression](#conditional-expressions).
-
-在箭头 (=\>) 和分号 (;) 之间只能使用一个 *表达式* ，不能是 *语句* 。
-例如：不能使用 [if
-语句](#if-和-else) ，但是可以是用
-[条件表达式](#conditional-expressions).
-</div>
-=======
 <aside class="alert alert-info" markdown="1">
   **Note:**
   Only an *expression*—not a *statement*—can appear between the arrow
@@ -1470,28 +1449,11 @@ expression](#conditional-expressions).
   statement](#if-and-else) there, but you can use a [conditional
   expression](#conditional-expressions).
 </aside>
->>>>>>> f26718e0e9d8b8ecf13131688ad7d0ab11a6c3ec
 
 A function can have two types of parameters: _required_ and _optional_.
 The required parameters are listed first, followed by any optional parameters.
 Optional parameters can be _named_ or _positional_.
 
-<<<<<<< HEAD
-函数有两种参数类型: required 和 optional。
-required 类型参数在参数最前面， 随后是 optional 类型参数。
-命名的可选参数也可以标记为 “@ required” 。
-参考下一章节，了解更多细节。
-
-### Optional parameters
-
-### 可选参数
-
-Optional parameters can be either positional or named, but not both.
-
-可选参数可以是命名参数或者位置参数，但一个参数只能选择其中一种方式修饰。
-
-#### Optional named parameters
-=======
 <aside class="alert alert-info" markdown="1">
   **Note:**
   Some APIs — notably [Flutter][] widget constructors —
@@ -1505,7 +1467,6 @@ Optional parameters can be either positional or named, but not both.
 Optional parameters can be either named or positional, but not both.
 
 #### Named parameters
->>>>>>> f26718e0e9d8b8ecf13131688ad7d0ab11a6c3ec
 
 #### 命名可选参数
 
@@ -1534,24 +1495,11 @@ to specify named parameters:
 void enableFlags({bool bold, bool hidden}) {...}
 {% endprettify %}
 
-<<<<<<< HEAD
-[Flutter][] instance creation expressions can get complex, so widget
-constructors use named parameters exclusively. This makes instance creation
-expressions easier to read.
-
-[Flutter][] 创建实例的表达式可能很复杂，
-因此窗口小部件构造函数仅使用命名参数。
-这样创建实例的表达式更易于阅读。
-
-You can annotate a named parameter in any Dart code (not just Flutter) with
-[@required][] to indicate that it is a _required_ parameter. For example:
-=======
 Although named parameters are a kind of optional parameter,
 you can annotate them with [@required][] to indicate
 that the parameter is mandatory —
 that users must provide a value for the parameter.
 For example:
->>>>>>> f26718e0e9d8b8ecf13131688ad7d0ab11a6c3ec
 
 使用 [@required][] 注释表示参数是 _required_ 性质的命名参数，
 该方式可以在任何 Dart 代码中使用（不仅仅是Flutter）。
@@ -1565,24 +1513,10 @@ If someone tries to create a `Scrollbar`
 without specifying the `child` argument,
 then the analyzer reports an issue.
 
-<<<<<<< HEAD
-此时 `Scrollbar` 是一个构造函数， 当 `child` 参数缺少时，分析器会提示错误。
-
-[Required][@required] is defined in the [meta][] package. Either import
-`package:meta/meta.dart` directly, or import another package that exports
-`meta`, such as Flutter's `package:flutter/material.dart`.
-
-[Required][@required] 被定义在 [meta][] package。 无论是直接引入（import）
-`package:meta/meta.dart` ，或者引入了其他 package，而这个 package 输出（export）了
-`meta`，比如 Flutter 的 `package:flutter/material.dart`。
-
-#### Optional positional parameters
-=======
 To use the [@required][] annotation,
 depend on the [meta][] package and import `package:meta/meta.dart`.
 
 #### Positional parameters
->>>>>>> f26718e0e9d8b8ecf13131688ad7d0ab11a6c3ec
 
 #### 位置可选参数
 
@@ -1658,18 +1592,7 @@ to set default values of named parameters.
 The reason is that originally, only `:` was supported for named parameters.
 That support might be deprecated,
 so we recommend that you
-<<<<<<< HEAD
-**[use `=` to specify default values.](/tools/pub/pubspec#sdk-constraints)**
-
-旧版本代码中可能使用的是冒号 (`:`) 而不是 `=`
-来设置参数默认值。
-原因是起初命名参数只支持 `:`。
-这种支持可能会被弃用。
-建议
-**[使用 `=` 指定默认值。](/tools/pub/pubspec#sdk-constraints)**
-=======
 **[use `=` to specify default values.](/guides/language/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value)**
->>>>>>> f26718e0e9d8b8ecf13131688ad7d0ab11a6c3ec
 </div>
 
 {% comment %}
@@ -5241,22 +5164,6 @@ Keep in mind the following when you use deferred loading:
   using <code>deferred as <em>namespace</em></code>.
   The `loadLibrary()` function returns a [Future](/guides/libraries/library-tour#future).
 
-<<<<<<< HEAD
-  Dart 隐含的把 `loadLibrary()` 函数导入到使用
-  <code>deferred as <em>的命名空间</em></code> 中。
-  `loadLibrary()` 方法返回一个 [Future](/guides/libraries/library-tour#future)。
-
-<aside class="alert alert-warning" markdown="1">
-**Dart VM difference:**
-The Dart VM allows access to members of deferred libraries
-even before the call to `loadLibrary()`.
-This behavior might change, so
-**don't depend on the current VM behavior.**
-For details, see [issue #33118.](https://github.com/dart-lang/sdk/issues/33118)
-</aside>
-=======
->>>>>>> 76d4c36ea7c56b6ef0930039ed9815df53987ce7
-
 ### Implementing libraries
 
 ### 实现库
@@ -5728,13 +5635,6 @@ Instead of threads, all Dart code runs inside of *isolates*. Each
 isolate has its own memory heap, ensuring that no isolate’s state is
 accessible from any other isolate.
 
-<<<<<<< HEAD
-所有 Dart 代码都在*隔离区*（ isolates ）内运行，而不是线程。
-每个隔离区都有自己的内存堆，确保每个隔离区的状态都不会被其他隔离区访问。
-
-For more information, see the
-[dart:isolate library documentation.][dart:isolate]
-=======
 For more information, see the following:
 * [Dart asynchronous programming: Isolates and event loops][isolates article]
 * [dart:isolate API reference,][dart:isolate]
@@ -5746,7 +5646,6 @@ For more information, see the following:
 [Isolate.spawn()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
 [TransferableTypedData]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/TransferableTypedData-class.html
 [background json]: {{site.flutter}}/docs/cookbook/networking/background-parsing
->>>>>>> f26718e0e9d8b8ecf13131688ad7d0ab11a6c3ec
 
 有关更多信息，请参考
 [dart:isolate library documentation.][dart:isolate]。
