@@ -522,11 +522,11 @@ For more information on using `const` to create constant values, see
 
 ## Built-in types
 
-## 内建类型
+## 内置类型
 
 The Dart language has special support for the following types:
 
-Dart 语言支持以下内建类型：
+Dart 语言支持下列的类型：
 
 - numbers
 - strings
@@ -547,9 +547,7 @@ You can initialize an object of any of these special types using a
 literal. For example, `'this is a string'` is a string literal,
 and `true` is a boolean literal.
 
-这些类型都可以被初始化为字面量。
-例如, `'this is a string'` 是一个字符串的字面量，
-`true` 是一个布尔的字面量。
+可以直接使用字面量来初始化上述类型。例如 `'This is a string'` 是一个字符串字面量，`true` 是一个布尔字面量。
 
 {% comment %}
 PENDING: add info about support for Iterable, Future, Stream?
@@ -561,17 +559,14 @@ Because every variable in Dart refers to an object—an instance of a
 of the built-in types have their own constructors. For example, you can
 use the `Map()` constructor to create a map.
 
-因为在 Dart 所有的变量终究是一个对象（一个类的实例），
-所以变量可以使用 *构造涵数* 进行初始化。
-一些内建类型拥有自己的构造函数。
-例如， 通过 `Map()` 来构造一个 map 变量。
+由于 Dart 中每个变量引用都指向一个对象（一个 *类* 的实例），你通常也可以使用 *构造器* 来初始化变量。一些内置的类型有它们自己的构造器。例如你可以使用 `Map()` 来创建一个 map 对象。
 
 
 ### Numbers
 
 Dart numbers come in two flavors:
 
-Dart 语言的 Number 有两种类型:
+Dart 支持两种 Number 类型：
 
 [int][]
 
@@ -583,13 +578,7 @@ Dart 语言的 Number 有两种类型:
     [JavaScript numbers,][js numbers]
     allowing values from -2<sup>53</sup> to 2<sup>53</sup> - 1.
 
-    整数值不大于64位，
-    具体取决于平台。
-    在 Dart VM 上， 值的范围从
-    -2<sup>63</sup> 到 2<sup>63</sup> - 1。
-    Dart 被编译为 JavaScript 时，使用
-    [JavaScript numbers,][js numbers]
-    值的范围从 -2<sup>53</sup> 到 2<sup>53</sup> - 1。
+    整数值；长度不超过 64位，具体取值范围依赖于不同的平台。在 DartVM 上其取值位于 -2<sup>63</sup> 至 2<sup>63</sup> - 1 之间。编译成 JavaScript 的 Dart 使用 [JavaScript 数字][js numbers]，其允许的取值范围在 -2<sup>53</sup> 至 2<sup>53</sup> - 1 之间。
 
 {% comment %}
 [PENDING: What about values on Android & iOS?
@@ -602,7 +591,7 @@ https://github.com/dart-lang/sdk/blob/master/docs/language/informal/int64.md.
 :   64-bit (double-precision) floating-point numbers, as specified by
     the IEEE 754 standard.
 
-    64位（双精度）浮点数，依据 IEEE 754 标准。
+    64位的双精度浮点数字，且符合 IEEE 754 标准。
 
 
 Both `int` and `double` are subtypes of [`num`.][num]
@@ -613,19 +602,12 @@ and `floor()`, among other methods.
 If num and its subtypes don’t have what you’re looking for, the
 [dart:math][] library might.
 
-`int` 和 `double` 都是 [`num`.][num] 的亚类型。
-num 类型包括基本运算 +， -， /， 和 \*，
-以及 `abs()`，` ceil()`，
-和 `floor()`， 等函数方法。
-（按位运算符，例如>>，定义在 int 类中。）
-如果 num 及其亚类型找不到你想要的方法，
-尝试查找使用 [dart:math][] 库。
+`int` 和 `double` 都是 [`num`][num] 的子类。num 中定义了一些基本的运算符比如 +、-、\*、/ 等，还定义了 `abs()`、`ceil()` 和 `floor()` 等方法（位运算符，比如 >> 定义在 int 中）。如果 num 及其子类不满足你的要求，可以查看 [dart:math][] 库中的 API。
 
 Integers are numbers without a decimal point. Here are some examples of
 defining integer literals:
 
-整数类型不包含小数点。
-下面是定义整数类型字面量的例子:
+整数是不带小数点的数字。下面是一些定义整数字面量的例子：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (integer-literals)"?>
 {% prettify dart %}
@@ -636,8 +618,7 @@ var hex = 0xDEADBEEF;
 If a number includes a decimal, it is a double. Here are some examples
 of defining double literals:
 
-如果一个数字包含小数点，那么就是小数类型。
-下面是定义小数类型字面量的例子:
+如果一个数字包含了小数点，那么它就是浮点型的。下面是一些定义浮点数字面量的例子：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (double-literals)"?>
 {% prettify dart %}
@@ -648,11 +629,11 @@ var exponents = 1.42e5;
 As of Dart 2.1, integer literals are automatically converted to doubles
 when necessary:
 
-从 Dart 2.1 开始，必要的时候 int 字面量会自动转换成 double 类型。
+从 Dart 2.1 开始，整型字面量将会在必要的时候自动转换成浮点数字面量：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (int-to-double)"?>
 {% prettify dart %}
-double z = 1; // Equivalent to double z = 1.0.
+double z = 1; // 相当于 double z = 1.0.
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
@@ -663,12 +644,12 @@ double z = 1; // Equivalent to double z = 1.0.
   Before Dart 2.1, it was an error to use an integer literal
   in a double context.
 
-  在 2.1 之前，在 double 上下文中使用 int 字面量是错误的。
+  在 Dart 2.1 之前，在浮点数上下文中使用整数字面量是错误的。
 </aside>
 
 Here’s how you turn a string into a number, or vice versa:
 
-以下是将字符串转换为数字的方法，反之亦然：
+下面是字符串和数字之间转换的方式：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (number-conversion)"?>
 {% prettify dart %}
@@ -692,8 +673,7 @@ assert(piAsString == '3.14');
 The int type specifies the traditional bitwise shift (\<\<, \>\>), AND
 (&), and OR (|) operators. For example:
 
-int 特有的传统按位运算操作，移位（\<\<， \>\>），按位与（&）以及 按位或（|）。
-例如：
+整型支持传统的位移操作，比如移位（\<\<、\>\>）、按位与（&）、按位或（|），例如：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (bit-shifting)"?>
 {% prettify dart %}
@@ -707,9 +687,7 @@ Many arithmetic expressions are also compile-time constants,
 as long as their operands are
 compile-time constants that evaluate to numbers.
 
-数字类型字面量是编译时常量。
-在算术表达式中，只要参与计算的因子是编译时常量，
-那么算术表达式的结果也是编译时常量。
+数字字面量为编译时常量。很多算术表达式只要其操作数是常量，则表达式结果也是编译时常量。
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-num)"?>
 {% prettify dart %}
@@ -724,15 +702,14 @@ const msUntilRetry = secondsUntilRetry * msPerSecond;
 A Dart string is a sequence of UTF-16 code units. You can use either
 single or double quotes to create a string:
 
-Dart 字符串是一组 UTF-16 单元序列。
-字符串通过单引号或者双引号创建。
+Dart 字符串是 UTF-16 编码的字符序列。可以使用单引号或者双引号来创建字符串：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (quoting)"?>
 {% prettify dart %}
-var s1 = 'Single quotes work well for string literals.';
-var s2 = "Double quotes work just as well.";
-var s3 = 'It\'s easy to escape the string delimiter.';
-var s4 = "It's even easier to use the other delimiter.";
+var s1 = '使用单引号创建字符串字面量。';
+var s2 = "双引号也可以用于创建字符串字面量。";
+var s3 = '使用单引号创建字符串时可以使用斜杠来转义那些与单引号冲突的字符串：\'。';
+var s4 = "而在双引号中则不需要使用转义与单引号冲突的字符串：'";
 {% endprettify %}
 
 You can put the value of an expression inside a string by using
@@ -740,21 +717,14 @@ You can put the value of an expression inside a string by using
 the {}. To get the string corresponding to an object, Dart calls the
 object’s `toString()` method.
 
-字符串可以通过 `${`*`expression`*`}` 的方式内嵌表达式。
-如果表达式是一个标识符，则 {} 可以省略。
-在 Dart 中通过调用就对象的 `toString()` 方法来得到对象相应的字符串。
+可以在字符串中以 `${`*`表达式`*`}` 的形式使用表达式，如果表达式是一个标识符，可以省略掉 {}。如果表达式的结果为一个对象，则 Dart 会调用该对象的 `toString` 方法来获取一个字符串。
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (string-interpolation)"?>
 {% prettify dart %}
-var s = 'string interpolation';
+var s = '字符串插值';
 
-assert('Dart has $s, which is very handy.' ==
-    'Dart has string interpolation, ' +
-        'which is very handy.');
-assert('That deserves all caps. ' +
-        '${s.toUpperCase()} is very handy!' ==
-    'That deserves all caps. ' +
-        'STRING INTERPOLATION is very handy!');
+assert('Dart 有$s，使用起来非常方便。' == 'Dart 有字符串插值，使用起来非常方便。');
+assert('使用${s.substring(3,5)}表达式也非常方便' == '使用插值表达式也非常方便。');
 {% endprettify %}
 
 <div class="alert alert-info" markdown="1">
@@ -766,76 +736,69 @@ The `==` operator tests whether two objects are equivalent. Two
 strings are equivalent if they contain the same sequence of code
 units.
 
-`==` 运算符用来测试两个对象是否相等。
-在字符串中，如果两个字符串包含了相同的编码序列，那么这两个字符串相等。
-units。
+`==` 运算符判断两个对象的内容是否一样。如果两个字符串包含一样的字符编码序列，则表示相等。
 </div>
 
 You can concatenate strings using adjacent string literals or the `+`
 operator:
 
-可以使用 `+` 运算符来把多个字符串连接为一个，也可以把多个字面量字符串写在一起来实现字符串连接：
+可以使用 `+` 运算符将两个字符串连接为一个，也可以将多个字符串挨着放一起变为一个：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (adjacent-string-literals)"?>
 {% prettify dart %}
-var s1 = 'String '
-    'concatenation'
-    " works even over line breaks.";
-assert(s1 ==
-    'String concatenation works even over '
-        'line breaks.');
+var s1 = '可以拼接'
+    '字符串'
+    "即便它们不在同一行。";
+assert(s1 == '可以拼接字符串即便它们不在同一行。');
 
-var s2 = 'The + operator ' + 'works, as well.';
-assert(s2 == 'The + operator works, as well.');
+var s2 = '使用加号 + 运算符' + '也可以达到相同的效果。';
+assert(s2 == '使用加号 + 运算符也可以达到相同的效果。');
 {% endprettify %}
 
 Another way to create a multi-line string: use a triple quote with
 either single or double quotation marks:
 
-使用连续三个单引号或者三个双引号实现多行字符串对象的创建：
+可以使用三个单引号或者三个双引号创建多行字符串：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (triple-quotes)"?>
 {% prettify dart %}
 var s1 = '''
-You can create
-multi-line strings like this one.
+你可以像这样创建
+多行字符串。
 ''';
 
-var s2 = """This is also a
-multi-line string.""";
+var s2 = """这也是一个
+多行字符串。""";
 {% endprettify %}
 
 You can create a “raw” string by prefixing it with `r`:
 
-使用 `r` 前缀，可以创建 “原始 raw” 字符串：
+在字符串前加上 `r` 作为前缀创建 “raw” 字符串（即不会被做任何处理（比如转义）的字符串）：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (raw-strings)"?>
 {% prettify dart %}
-var s = r'In a raw string, not even \n gets special treatment.';
+var s = r'在 raw 字符串中，转义字符串 \n 会直接输出 “\n” 而不是转义为换行。';
 {% endprettify %}
 
 See [Runes](#runes) for details on how to express Unicode
 characters in a string.
 
-参考 [Runes](#runes) 来了解如何在字符串中表达 Unicode
-字符。
+你可以查阅 [Runes](#runes) 获取更多关于如何在字符串中表示 Unicode 字符的信息。
 
 Literal strings are compile-time constants,
 as long as any interpolated expression is a compile-time constant
 that evaluates to null or a numeric, string, or boolean value.
 
-一个编译时常量的字面量字符串中，如果存在插值表达式，表达式内容也是编译时常量，
-那么该字符串依旧是编译时常量。
-插入的常量值类型可以是 null，数值，字符串或布尔值。
+字符串字面量是一个编译时常量，只要是编译时常量都可以作为字符串字面量的插值表达式：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (string-literals)"?>
 {% prettify dart %}
-// These work in a const string.
+// 可以将下面三个常量作为字符串插值拼接到字符串字面量中。
 const aConstNum = 0;
 const aConstBool = true;
 const aConstString = 'a constant string';
 
-// These do NOT work in a const string.
+// 而下面三个常量则不能作为字符串插值拼接到字符串字面量。
 var aNum = 0;
 var aBool = true;
 var aString = 'a string';
@@ -848,8 +811,7 @@ const validConstString = '$aConstNum $aConstBool $aConstString';
 For more information on using strings, see
 [Strings and regular expressions](/guides/libraries/library-tour#strings-and-regular-expressions).
 
-更多关于 string 的使用, 参考
-[字符串和正则表达式](/guides/libraries/library-tour#strings-and-regular-expressions)。
+可以查阅 [字符串和正则表达式](/guides/libraries/library-tour#strings-and-regular-expressions) 获取更多关于如何使用字符串的信息。
 
 
 ### Booleans
@@ -858,35 +820,30 @@ To represent boolean values, Dart has a type named `bool`. Only two
 objects have type bool: the boolean literals `true` and `false`,
 which are both compile-time constants.
 
-Dart 使用 `bool` 类型表示布尔值。
-Dart 只有字面量 `true` and `false` 是布尔类型，
-这两个对象都是编译时常量。
+Dart 使用 `bool` 关键字表示布尔类型，布尔类型只有两个对象 `true` 和 `false`，两者都是编译时常量。
 
 Dart's type safety means that you can't use code like
 <code>if (<em>nonbooleanValue</em>)</code> or
 <code>assert (<em>nonbooleanValue</em>)</code>.
 Instead, explicitly check for values, like this:
 
-Dart 的类型安全意味着不能使用
-<code>if (<em>nonbooleanValue</em>)</code> 或者
-<code>assert (<em>nonbooleanValue</em>)</code>。
-而是应该像下面这样，明确的进行值检查：
+Dart 的类型安全不允许你使用类似 <code>if (<em>nonbooleanValue</em>)</code> 或者 <code>assert (<em>nonbooleanValue</em>)</code> 这样的代码检查布尔值。相反，你应该总是显示地检查布尔值，比如像下面的代码这样：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (no-truthy)"?>
 {% prettify dart %}
-// Check for an empty string.
+// 检查是否为空字符串。
 var fullName = '';
 assert(fullName.isEmpty);
 
-// Check for zero.
+// 检查是否小于等于零。
 var hitPoints = 0;
 assert(hitPoints <= 0);
 
-// Check for null.
+// 检查是否为 null。
 var unicorn;
 assert(unicorn == null);
 
-// Check for NaN.
+// 检查是否为 NaN。
 var iMeantToDoThis = 0 / 0;
 assert(iMeantToDoThis.isNaN);
 {% endprettify %}
@@ -898,15 +855,12 @@ Perhaps the most common collection in nearly every programming language
 is the *array*, or ordered group of objects. In Dart, arrays are
 [List][] objects, so most people just call them *lists*.
 
-几乎每种编程语言中最常见的集合可能是 *array* 或有序的对象集合。
-在 Dart 中的 *array* 就是 [List][] 对象，
-通常称之为 *lists*。
+数组 *Array* 是几乎所有编程语言中最常见的集合类型，在 Dart 中数组由 [List][] 对象表示。通常称之为 *List*。
 
 Dart list literals look like JavaScript array literals. Here’s a simple
 Dart list:
 
-Dart 中的 List 字面量非常像 JavaScript 中的 array 字面量。
-下面是一个 Dart List 的示例：
+Dart 中 List 字面量看起来与 JavaScript 中数组字面量一样。下面是一个 Dart List 的示例：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (list-literal)"?>
 {% prettify dart %}
@@ -924,11 +878,7 @@ var list = [1, 2, 3];
   For more information, read about
   [type inference.](/guides/language/sound-dart#type-inference)
 
-  Dart 推断 `list` 的类型为 `List<int>` 。
-  如果尝试将非整数对象添加到此 List 中，
-  则分析器或运行时会引发错误。
-  有关更多信息，请阅读
-  [类型推断。](/guides/language/sound-dart#type-inference)
+  这里 Dart 推断出 `list` 的类型为 `List<int>`，如果往该数组中添加一个非 int 类型的对象则会报错。你可以阅读[类型推断](/guides/language/sound-dart#type-inference)获取更多相关信息。
 </aside>
 
 Lists use zero-based indexing, where 0 is the index of the first element
@@ -936,8 +886,7 @@ and `list.length - 1` is the index of the last element. You can get a
 list’s length and refer to list elements just as you would in
 JavaScript:
 
-Lists 的下标索引从 0 开始，第一个元素的索引是 0。`list.length - 1` 是最后一个元素的索引。
-访问 List 的长度和元素与 JavaScript 中的用法一样：
+List 的下标索引从 0 开始，第一个元素的下标为 0，最后一个元素的下标为 `list.length - 1`。你可以像 JavaScript 中的用法那样获取 Dart 中 List 的长度以及元素：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-indexing)"?>
 {% prettify dart %}
@@ -952,12 +901,12 @@ assert(list[1] == 1);
 To create a list that's a compile-time constant,
 add `const` before the list literal:
 
-在 List 字面量之前添加 `const` 关键字，可以定义 List 类型的编译时常量：
+如果想要创建一个编译时常量的 List，在 List 字面量前添加 `const` 关键字即可：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-list)"?>
 {% prettify dart %}
 var constantList = const [1, 2, 3];
-// constantList[1] = 1; // Uncommenting this causes an error.
+// constantList[1] = 1; // 取消注释将导致出错。
 {% endprettify %}
 
 <a id="spread-operator"> </a>
@@ -965,15 +914,12 @@ Dart 2.3 introduced the **spread operator** (`...`) and the
 **null-aware spread operator** (`...?`),
 which provide a concise way to insert multiple elements into a collection.
 
-Dart 在 2.3 引入了 **Spread 操作符** (`...`) 和
-**null-aware Spread 操作符** (`...?`)，
-它提供了一种将多个元素插入集合的简洁方法。
+Dart 在 2.3 引入了 **扩展操作符**（`...`）和 **null-aware 扩展操作符**（`...?`），它们提供了一种将多个元素插入集合的简洁方法。
 
 For example, you can use the spread operator (`...`) to insert
 all the elements of a list into another list:
 
-例如，你可以使用 Spread 操作符 (`...`) 将一个 List 中的所有元素插入到
-另一个 List 中：
+例如，你可以使用扩展操作符（`...`）将一个 List 中的所有元素插入到另一个 List 中：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-spread)"?>
 {% prettify dart %}
@@ -985,7 +931,7 @@ assert(list2.length == 4);
 If the expression to the right of the spread operator might be null,
 you can avoid exceptions by using a null-aware spread operator (`...?`):
 
-如果 Spread 操作符右边可能为 null ，你可以使用 null-aware Spread 操作符 (`...?`) 来避免产生异常：
+如果扩展操作符右边可能为 null ，你可以使用 null-aware 扩展操作符（`...?`）来避免产生异常：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-null-spread)"?>
 {% prettify dart %}
@@ -997,21 +943,19 @@ assert(list2.length == 1);
 For more details and examples of using the spread operator, see the
 [spread operator proposal.][spread proposal]
 
-更多 Spread 操作符的内容和使用示例，参见 [Spread 操作符提案。][spread proposal]
+可以查阅[扩展操作符建议][spread proposal]获取更多关于如何使用扩展操作符的信息。
 
 <a id="collection-operators"> </a>
 Dart 2.3 also introduced **collection if** and **collection for**,
 which you can use to build collections using conditionals (`if`)
 and repetition (`for`).
 
-Dart 在 2.3 还同时引入了 **Collection If** 和 **Collection For**，
-在构建集合时，可以使用条件判断 (`if`) 和循环 (`for`) 。
+Dart 在 2.3 还同时引入了 **Collection If** 和 **Collection For**，在构建集合时，可以使用条件判断（`if`）和循环（`for`）。
 
 Here's an example of using **collection if**
 to create a list with three or four items in it:
 
-下面示例是使用 **Collection If** 来创建一个 List ， 它可能包含
-3 个或 4 个元素：
+下面示例是使用 **Collection If** 来创建一个 List 的示例， 它可能包含 3 个或 4 个元素：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-if)"?>
 {% prettify dart %}
@@ -1027,7 +971,7 @@ Here's an example of using **collection for**
 to manipulate the items of a list before
 adding them to another list:
 
-下面示例是使用 **Collection For** 将列表中的元素修改后添加到另一个列表中：
+下面示例是使用 **Collection For** 将列表中的元素修改后添加到另一个列表中的示例：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-for)"?>
 {% prettify dart %}
@@ -1042,8 +986,7 @@ assert(listOfStrings[1] == '#1');
 For more details and examples of using collection if and for, see the
 [control flow collections proposal.][collections proposal]
 
-更多 **Collection If** 和 **Collection For** 的内容和使用示例，参阅
-[集合的流控制提案。][collections proposal]
+你可以查阅[集合中使用控制流建议][collections proposal]获取更多关于使用 **Collection If** 和 **Collection For** 的细节内容和示例。
 
 [collections proposal]: https://github.com/dart-lang/language/blob/master/accepted/2.3/control-flow-collections/feature-specification.md
 
@@ -1053,9 +996,7 @@ The List type has many handy methods for manipulating lists. For more
 information about lists, see [Generics](#generics) and
 [Collections](/guides/libraries/library-tour#collections).
 
-List 类型包含了很多 List 的操作函数。
-更多信息参考 [泛型](#generics) 和
-[集合](/guides/libraries/library-tour#collections).
+List 类中有许多用于操作 List 的便捷方法，你可以查阅[泛型](#generics)和[集合](/guides/libraries/library-tour#collections)获取更多与之相关的信息。
 
 
 ### Sets
@@ -1063,20 +1004,18 @@ List 类型包含了很多 List 的操作函数。
 A set in Dart is an unordered collection of unique items.
 Dart support for sets is provided by set literals and the [Set][] type.
 
-在 Dart 中 Set 是一个元素唯一且无需的集合。
-Dart 为 Set 提供了 Set 字面量和 [Set][] 类型。
+Dart 中使用 Set 来表示无序且元素唯一的集合，Dart 支持 Set 字面量以及 [Set][] 类型两种形式的 Set。
 
 <aside class="alert alert-info" markdown="1">
   **Version note:** Although the Set _type_ has always been a core part of Dart,
   set _literals_ were introduced in Dart 2.2.
 
-  **版本提示：** 虽然 Set _类型_ 一直是 Dart 的核心部分，
-  但在 Dart2.2 中才引入了 Set _字面量_ 。
+  **版本提示：** 尽管 Set _类型_ 一直都是 Dart 的一项核心功能，但是 Set _字面量_ 却是在 Dart2.2 中才加入的。
 </aside>
 
 Here is a simple Dart set, created using a set literal:
 
-下面是通过字面量创建 Set 的一个简单示例：
+下面是使用 Set 字面量来创建一个 Set 集合的方法：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-literal)"?>
 {% prettify dart %}
@@ -1086,7 +1025,7 @@ var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
 <aside class="alert alert-info" markdown="1">
   **Note:**
 
-  **注意:**
+  **注意：**
 
   Dart infers that `halogens` has the type
   `Set<String>`. If you try to add the wrong type of value
@@ -1094,41 +1033,37 @@ var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
   For more information, read about
   [type inference.](/guides/language/sound-dart#type-inference)
 
-  Dart 推断 `halogens` 类型为 `Set<String>` 。如果尝试为它添加一个错误类型的值，分析器或执行时会抛出错误。
-  更多内容，参阅 [类型推断](/guides/language/sound-dart#type-inference)。
+  Dart 推断 `halogens` 变量是一个 `Set<String>` 类型的集合，如果往该 Set 中添加类型不正确的对象则会报错。你可以查阅[类型推断](/guides/language/sound-dart#type-inference)获取更多与之相关的内容。
 </aside>
 
 To create an empty set, use `{}` preceded by a type argument,
 or assign `{}` to a variable of type `Set`:
 
-要创建一个空集，使用前面带有类型参数的 `{}` ，或者将 `{}` 赋值给 `Set` 类型的变量：
+可以使用在 `{}` 前加上类型参数的方式创建一个空的 Set，或者将 `{}` 赋值给一个 Set 类型的变量：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-vs-map)"?>
 {% prettify dart %}
-var names = <String>{};
-// Set<String> names = {}; // This works, too.
-// var names = {}; // Creates a map, not a set.
+var names = <String>{};// 类型+{}的形式创建Set。
+// Set<String> names = {}; // 声明类型变量的形式创建 Set。
+// var names = {}; // 这样的形式将创建一个 Map 而不是 Set。
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
   **Set or map?**
 
-  **是 Set 还是 Map ？**
+  **是 Set 还是 Map？**
 
   The syntax for map literals is similar to that for set literals.
   Because map literals came first, `{}` defaults to the `Map` type.
   If you forget the type annotation on `{}` or the variable it's assigned to,
   then Dart creates an object of type `Map<dynamic, dynamic>`.
 
-  Map 字面量语法同 Set 字面量语法非常相似。
-  因为先有的 Map 字母量语法，所以 `{}` 默认是 `Map` 类型。
-  如果忘记在 `{}` 上注释类型或赋值到一个未声明类型的变量上，
-  那么 Dart 会创建一个类型为 `Map<dynamic, dynamic>` 的对象。
+  Map 字面量语法同 Set 字面量语法非常相似。因为先有的 Map 字面量语法，所以 `{}` 默认是 `Map` 类型。如果忘记在 `{}` 上注释类型或赋值到一个未声明类型的变量上， 那么 Dart 会创建一个类型为 `Map<dynamic, dynamic>` 的对象。
 </aside>
 
 Add items to an existing set using the `add()` or `addAll()` methods:
 
-使用 `add()` 或 `addAll()` 为已有的 Set 添加元素：
+向一个已存在的 Set 中添加项目可以使用 `add()` 方法或 `addAll()` 方法：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-add-items)"?>
 {% prettify dart %}
@@ -1139,7 +1074,7 @@ elements.addAll(halogens);
 
 Use `.length` to get the number of items in the set:
 
-使用 `.length` 来获取 Set 中元素的个数：
+使用 `.length` 可以获取 Set 中元素的数量：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (set-length)"?>
 {% prettify dart %}
@@ -1152,6 +1087,8 @@ assert(elements.length == 5);
 To create a set that's a compile-time constant,
 add `const` before the set literal:
 
+可以在 Set 字面量前添加 `const` 关键字创建一个 Set 编译时常量：
+
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-set)"?>
 {% prettify dart %}
 final constantSet = const {
@@ -1161,7 +1098,7 @@ final constantSet = const {
   'iodine',
   'astatine',
 };
-// constantSet.add('helium'); // Uncommenting this causes an error.
+// constantSet.add('helium'); // 取消注释将导致出错。
 {% endprettify %}
 
 As of Dart 2.3, sets support spread operators (`...` and `...?`)
@@ -1171,19 +1108,13 @@ For more information, see the
 [list spread operator](#spread-operator) and
 [list collection operator](#collection-operators) discussions.
 
-在 Dart 2.3 中，Set 支持 Spread 操作符 (`...` and `...?`) 和
-Collection If 和 Collection For ,就像 List 一样。
-更多内容，参阅
-[list spread operator](#spread-operator) 和
-[list collection operator](#collection-operators) 相关讨论。
+从 Dart 2.3 开始，Set 可以像 List 一样支持使用扩展操作符（`...` 和 `...?`）以及 Collection If 和 Collection For 操作。你可以查阅 [List 扩展操作符](#spread-operator)和[List 集合操作符](#collection-operators)获取更多相关信息。
 
 For more information about sets, see
 [Generics](#generics) and
 [Sets](/guides/libraries/library-tour#sets).
 
-更多关于 Set 的内容，参阅
-[Generic](#generics) 及
-[Set](/guides/libraries/library-tour#sets)。
+你也可以查阅[泛型](#generics)以及 [Set](/guides/libraries/library-tour#sets) 获取更多相关信息。
 
 ### Maps
 
@@ -1195,15 +1126,16 @@ is provided by map literals and the [Map][] type.
 通常来说， Map 是用来关联 keys 和 values 的对象。
 keys 和 values 可以是任何类型的对象。在一个 Map 对象中一个 *key* 只能出现一次。
 但是 *value* 可以出现多次。 Dart 中 Map 通过 Map 字面量 和 [Map][] 类型来实现。
+通常来说，Map 是一个键值对相关的对象。其中键和值都可以是任何类型的对象。每个 *键* 只能出现一次但是 *值* 可以重复出现多次。Dart 中 Map 提供了 Map 字面量以及 [Map][] 类型两种形式的 Map。
 
 Here are a couple of simple Dart maps, created using map literals:
 
-下面是使用 Map 字面量的两个简单例子：
+下面是一对使用 Map 字面量创建 Map 的例子：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (map-literal)"?>
 {% prettify dart %}
 var gifts = {
-  // Key:    Value
+  // 键:    值
   'first': 'partridge',
   'second': 'turtledoves',
   'fifth': 'golden rings'
@@ -1228,15 +1160,12 @@ var nobleGases = {
   For more information, read about
   [type inference.](/guides/language/sound-dart#type-inference)
 
-  Dart 会将 `gifts` 的类型推断为 `Map<String, String>`，
-  `nobleGases` 的类型推断为 `Map<int, String>` 。
-  如果尝试在上面的 map 中添加错误类型，那么分析器或者运行时会引发错误。
-  有关更多信息，请阅读[类型推断。](/guides/language/sound-dart#type-inference)。
+  Dart 将 `gifts` 变量的类型推断为 `Map<String, String>`，而降 `nobleGases` 的类型推断为 `Map<int, String>`。如果你向这两个 Map 对象中添加不正确的类型值，将导致运行时异常。你可以阅读[类型推断](/guides/language/sound-dart#type-inference)获取更多相关信息。
 </aside>
 
 You can create the same objects using a Map constructor:
 
-以上 Map 对象也可以使用 Map 构造函数创建：
+你也可以使用 Map 的构造器创建 Map：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (map-constructor)"?>
 {% prettify dart %}
@@ -1254,31 +1183,29 @@ nobleGases[18] = 'argon';
 <aside class="alert alert-info" markdown="1">
 **Note:**
 
-**提示:**
+**提示：**
 
 You might expect to see `new Map()` instead of just `Map()`.
 As of Dart 2, the `new` keyword is optional.
 For details, see [Using constructors](#using-constructors).
 
-这里为什么只有 `Map()` ，而不是使用 `new Map()`。
-因为在 Dart 2 中，`new` 关键字是可选的。
-有关更多信息，参考 [构造函数的使用](#using-constructors)。
+这里为什么使用 `Map()` 而不是使用 `new Map()` 构造 Map 对象。因为从 Dart2 开始，构造对象的 `new` 关键字可以被省略掉。你可以查阅[构造函数的使用](#using-constructors)获取更多相关信息。
 </aside>
 
 Add a new key-value pair to an existing map just as you would in
 JavaScript:
 
-类似 JavaScript ，添加 key-value 对到已有的 Map 中：
+向现有的 Map 中添加键值对与 JavaScript 的操作类似：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (map-add-item)"?>
 {% prettify dart %}
 var gifts = {'first': 'partridge'};
-gifts['fourth'] = 'calling birds'; // Add a key-value pair
+gifts['fourth'] = 'calling birds'; // 添加键值对
 {% endprettify %}
 
 Retrieve a value from a map the same way you would in JavaScript:
 
-类似 JavaScript ，从一个 Map 中获取一个 value：
+从一个 Map 中获取一个值的操作也与 JavaScript 类似。
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-retrieve-item)"?>
 {% prettify dart %}
@@ -1288,7 +1215,7 @@ assert(gifts['first'] == 'partridge');
 
 If you look for a key that isn’t in a map, you get a null in return:
 
-如果 Map 中不包含所要查找的 key，那么 Map 返回 null：
+如果检索的 Key 不存在于 Map 中则会返回一个 null：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-missing-key)"?>
 {% prettify dart %}
@@ -1298,7 +1225,7 @@ assert(gifts['fifth'] == null);
 
 Use `.length` to get the number of key-value pairs in the map:
 
-使用 `.length` 函数获取当前 Map 中的 key-value 对数量：
+使用 `.length` 可以获取 Map 中键值对的数量：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (map-length)"?>
 {% prettify dart %}
@@ -1310,7 +1237,7 @@ assert(gifts.length == 2);
 To create a map that's a compile-time constant,
 add `const` before the map literal:
 
-创建 Map 类型运行时常量，要在 Map 字面量前加上关键字 `const`。
+在一个 Map 字面量前添加 `const` 关键字可以创建一个 Map 编译时常量：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-map)"?>
 {% prettify dart %}
@@ -1320,7 +1247,7 @@ final constantMap = const {
   18: 'argon',
 };
 
-// constantMap[2] = 'Helium'; // Uncommenting this causes an error.
+// constantMap[2] = 'Helium'; // 取消注释将导致出错。
 {% endprettify %}
 
 As of Dart 2.3, maps support spread operators (`...` and `...?`)
@@ -1329,25 +1256,19 @@ For details and examples, see the
 [spread operator proposal][spread proposal] and the
 [control flow collections proposal.][collections proposal]
 
-在 Dart 2.3 中，Map 支持 Spread 操作符 (`...` and `...?`) 和
-Collection If 和 Collection For ,就像 List 一样。
-更多内容和示例，参阅
-[list spread operator][spread proposal] 和
-[list collection operator][collections proposal] 相关讨论。
+从 Dart 2.3 Map 可以像 List 一样支持使用扩展操作符（`...` 和 `...?`）以及 Collection If 和 Collection For 操作。你可以查阅 [List 扩展操作符](#spread-operator)和 [List 集合操作符](#collection-operators)获取更多相关信息。
 
 For more information about maps, see
 [Generics](#generics) and
 [Maps](/guides/libraries/library-tour#maps).
 
-更名多关于 Map 的内容，参考
-[Generics](#generics) and
-[Maps](/guides/libraries/library-tour#maps)。
+你也可以查阅[泛型](#generics)以及 [Maps](/guides/libraries/library-tour#maps) 获取更多相关信息。
 
 ### Runes
 
 In Dart, runes are the UTF-32 code points of a string.
 
-在 Dart 中， Rune 用来表示字符串中的 UTF-32 编码字符。
+Dart 使用 Runes 符文来表示 UTF-32 编码的字符串。
 
 Unicode defines a unique numeric value for each letter, digit,
 and symbol used in all of the world's writing systems.
@@ -1355,10 +1276,7 @@ Because a Dart string is a sequence of UTF-16 code units,
 expressing 32-bit Unicode values within a string requires
 special syntax.
 
-Unicode 定义了一个全球的书写系统编码，
-系统中使用的所有字母，数字和符号都对应唯一的数值编码。
-由于 Dart 字符串是一系列 UTF-16 编码单元，
-因此要在字符串中表示32位 Unicode 值需要特殊语法支持。
+Unicode 编码为每一个字母、数字和符号都定义了一个唯一的数值。因为 Dart 中的字符串是一个 UTF-16 的字符序列，所以如果想要表示 32 位的 Unicode 数值则需要一种特殊的语法。
 
 The usual way to express a Unicode code point is
 `\uXXXX`, where XXXX is a 4-digit hexadecimal value.
@@ -1367,31 +1285,21 @@ To specify more or less than 4 hex digits,
 place the value in curly brackets.
 For example, the laughing emoji (😆) is `\u{1f600}`.
 
-表示 Unicode 编码的常用方法是，
-`\uXXXX`, 这里 XXXX 是一个4位的16进制数。
-例如，心形符号 (♥) 是 `\u2665`。
-对于特殊的非 4 个数值的情况，
-把编码值放到大括号中即可。
-例如，emoji 的笑脸(😆) 是 `\u{1f600}`。
+通常使用 `\uXXXX` 来表示 Unicode 字符，XXXX 是一个四位数的 16 进制数字。例如心形字符（♥）的 Unicode 为 `\u2665`。对于不是四位数的 16 进制数字，需要使用大括号将其括起来。例如大笑的 emoji 表情（😆）的 Unicode 为 `\u{1f600}`。
 
 The [String][]
 class has several properties you can use to extract rune information.
 The `codeUnitAt` and `codeUnit` properties return 16-bit code
 units. Use the `runes` property to get the runes of a string.
 
-[String][] 类有一些属性可以获得 rune 数据。
-属性 `codeUnitAt` 和 `codeUnit` 返回16位编码数据。
-属性 `runes` 获取字符串中的 Rune 。
+[String][] 类中有一些属性可以用来提取字符串的 Rune 符文信息。`codeUnitAt` 和 `codeUnit` 属性返回 16 位代码单元。`runes` 属性可以获取字符串的 Runes 符文。
 
 The following example illustrates the relationship between runes,
 16-bit code units, and 32-bit code points.
 Click the run button {% asset red-run.png alt="" %}
 to see runes in action.
 
-下面是示例演示了 Rune 、 16-bit code units、
-和 32-bit code points 之间的关系。
-点击运行按钮 {% asset red-run.png alt="" %}
-查看 runes 结果。
+下面的例子说明了 Rune、16位代码单元、32位代码单元之间的关系。点击运行按钮 {% asset red-run.png alt="" %} 查看 Rune 结果。
 
 {% comment %}
 https://gist.github.com/589bc5c95318696cefe5
@@ -1431,11 +1339,7 @@ depending on the particular language, character set, and operation.
 For more information, see
 [How do I reverse a String in Dart?](http://stackoverflow.com/questions/21521729/how-do-i-reverse-a-string-in-dart) on Stack Overflow.
 
-谨慎使用 list 方式操作 Rune 。
-这种方法很容易引发崩溃，
-具体原因取决于特定的语言，字符集和操作。
-有关更多信息，参考
-[How do I reverse a String in Dart?](http://stackoverflow.com/questions/21521729/how-do-i-reverse-a-string-in-dart) on Stack Overflow.
+在使用 List 操作 Rune 的时候需要小心，根据所操作的语种、字符集等不同可能会导致字符串出现问题，具体可参考 Stack Overflow 中的提问：[我如何在 Dart 中反转一个字符串？](http://stackoverflow.com/questions/21521729/how-do-i-reverse-a-string-in-dart)。
 </div>
 
 ### Symbols
@@ -1446,13 +1350,12 @@ might never need to use symbols, but they're invaluable for APIs that
 refer to identifiers by name, because minification changes identifier
 names but not identifier symbols.
 
-一个 Symbol 对象表示 Dart 程序中声明的运算符或者标识符。
-你也许永远都不需要使用 Symbol ，但要按名称引用标识符的 API 时， Symbol 就非常有用了。因为代码压缩后会改变标识符的名称，但不会改变标识符的符号。
+Symbol 表示 Dart 中声明的操作符或者标识符，该类型的对象几乎不会被使用到，但是如果需要按名称引用它们的 API 时就非常有用。因为代码压缩后会改变这些符号的名称但不会改变具体的符号。
 
 To get the symbol for an identifier, use a symbol literal, which is just
 `#` followed by the identifier:
 
-通过字面量 Symbol ，也就是标识符前面添加一个 `#` 号，来获取标识符的 Symbol：
+可以使用在标识符前加 `#` 前缀来获取 Symbol：
 
 ```nocode
 #radix
