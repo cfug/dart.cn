@@ -2047,10 +2047,10 @@ way:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (precedence)"?>
 {% prettify dart %}
-// Parentheses improve readability.
+// 括号提高了可读性。
 if ((n % i == 0) && (d % i == 0)) ...
 
-// Harder to read, but equivalent.
+// 难以理解，但是与上面的代码效果一样。
 if (n % i == 0 && d % i == 0) ...
 {% endprettify %}
 
@@ -2097,9 +2097,9 @@ Example:
 assert(2 + 3 == 5);
 assert(2 - 3 == -1);
 assert(2 * 3 == 6);
-assert(5 / 2 == 2.5); // Result is a double
-assert(5 ~/ 2 == 2); // Result is an int
-assert(5 % 2 == 1); // Remainder
+assert(5 / 2 == 2.5); // 结果是一个浮点数
+assert(5 ~/ 2 == 2); // 结果是一个整数
+assert(5 % 2 == 1); // 取余
 
 assert('5/2 = ${5 ~/ 2} r ${5 % 2}' == '5/2 = 2 r 1');
 {% endprettify %}
@@ -2127,19 +2127,19 @@ Example:
 var a, b;
 
 a = 0;
-b = ++a; // Increment a before b gets its value.
+b = ++a; // 在 b 赋值前将 a 增加 1。
 assert(a == b); // 1 == 1
 
 a = 0;
-b = a++; // Increment a AFTER b gets its value.
+b = a++; // 在 b 赋值后将 a 增加 1。
 assert(a != b); // 1 != 0
 
 a = 0;
-b = --a; // Decrement a before b gets its value.
+b = --a; // 在 b 赋值前将 a 减少 1。
 assert(a == b); // -1 == -1
 
 a = 0;
-b = a--; // Decrement a AFTER b gets its value.
+b = a--; // 在 b 赋值后将 a 减少 1。
 assert(a != b); // -1 != 0
 {% endprettify %}
 
@@ -2232,7 +2232,7 @@ following code:
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp is Person)"?>
 {% prettify dart %}
 if (emp is Person) {
-  // Type check
+  // 类型检查
   emp.firstName = 'Bob';
 }
 {% endprettify %}
@@ -2270,9 +2270,9 @@ use the `??=` operator.
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (assignment)"?>
 {% prettify dart %}
-// Assign value to a
+// 将 value 赋值给 a
 a = value;
-// Assign value to b if b is null; otherwise, b stays the same
+// 当且仅当 b 为 null 时才赋值
 b ??= value;
 {% endprettify %}
 
@@ -2285,9 +2285,9 @@ https://gist.github.com/9de887c4daf76d39e524
 {% prettify dart %}
 void assignValues(int a, int b, int value) {
   print('Initially: a == $a, b == $b');
-  // Assign value to a
+  // 将 value 赋值给 a
   a = value;
-  // Assign value to b if b is null; otherwise, b stays the same
+  // 当且仅当 b 为 null 时才赋值
   b ??= value;
   print('After: a == $a, b == $b');
 }
@@ -2326,8 +2326,8 @@ operators:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (op-assign)"?>
 {% prettify dart %}
-var a = 2; // Assign using =
-a *= 3; // Assign and multiply: a = a * 3
+var a = 2; // 使用 = 赋值
+a *= 3; // 赋值并做乘法运算：a = a * 3
 assert(a == 6);
 {% endprettify %}
 
@@ -2390,12 +2390,12 @@ Here’s an example of using bitwise and shift operators:
 final value = 0x22;
 final bitmask = 0x0f;
 
-assert((value & bitmask) == 0x02); // AND
-assert((value & ~bitmask) == 0x20); // AND NOT
-assert((value | bitmask) == 0x2f); // OR
-assert((value ^ bitmask) == 0x2d); // XOR
-assert((value << 4) == 0x220); // Shift left
-assert((value >> 4) == 0x02); // Shift right
+assert((value & bitmask) == 0x02); // 按位与
+assert((value & ~bitmask) == 0x20); // 取反后按位与
+assert((value | bitmask) == 0x2f); // 按位或
+assert((value ^ bitmask) == 0x2d); // 按位异或
+assert((value << 4) == 0x220); // 位左移
+assert((value >> 4) == 0x02); // 位右移
 {% endprettify %}
 
 
@@ -2448,10 +2448,10 @@ but not as succinctly:
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (if-null-alt)"?>
 {% prettify dart %}
-// Slightly longer version uses ?: operator.
+// 相对使用 ?: 运算符来说稍微长了点。
 String playerName(String name) => name != null ? name : 'Guest';
 
-// Very long version uses if-else statement.
+// 如果使用 if-else 则更长。
 String playerName(String name) {
   if (name != null) {
     return name;
@@ -2480,8 +2480,8 @@ Consider the following code:
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (cascade-operator)"?>
 {% prettify dart %}
-querySelector('#confirm') // Get an object.
-  ..text = 'Confirm' // Use its members.
+querySelector('#confirm') // 获取对象。
+  ..text = 'Confirm' // 使用对象的成员。
   ..classes.add('important')
   ..onClick.listen((e) => window.alert('Confirmed!'));
 {% endprettify %}
@@ -2530,7 +2530,7 @@ an actual object. For example, the following code fails:
 {% prettify dart %}
 var sb = StringBuffer();
 sb.write('foo')
-  ..write('bar'); // Error: method 'write' isn't defined for 'void'.
+  ..write('bar'); // 出错：void 对象中没有方法 write。
 {% endprettify %}
 
 The `sb.write()` call returns void,
