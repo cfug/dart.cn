@@ -1985,9 +1985,7 @@ Dart defines the operators shown in the following table.
 You can override many of these operators, as described in
 [Overridable operators](#overridable-operators).
 
-下表是 Dart 定义的运算符。
-多数运算符可以被重载，详情参考
-[重写运算符](#overridable-operators)。
+下表是 Dart 中定义的运算符，很多运算符都可以重写。详情参考[重写运算符](#overridable-operators)。
 
 |--------------------------+------------------------------------------------|
 |Description               | Operator                                       |
@@ -2013,21 +2011,19 @@ You can override many of these operators, as described in
 <aside class="alert alert-warning" markdown="1">
   **Warning:**
 
-  **提示：**
+  **警告：**
 
   Operator precedence is an approximation of the behavior of a Dart parser.
   For definitive answers, consult the grammar in the
   [Dart language specification][].
 
-  上述表格中描述的运算符优先级近似于Dart 解析器实际行为。
-  更准确的描述，请参阅 [Dart language specification][] 中的语法。
+  上述运算符优先级是对 Dart 解析器行为的效仿。更准确的描述，请参阅 [Dart 语言规范][] 中的语法。
 </aside>
 
 When you use operators, you create expressions. Here are some examples
 of operator expressions:
 
-创建表达式的时候会用到运算符。
-下面是一些运算符表达式的实例：
+一旦你使用了运算符，就创建了表达式。下面是一些运算符表达式的示例：
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (expressions)" replace="/,//g"?>
 {% prettify dart %}
@@ -2047,12 +2043,7 @@ which has higher precedence than the logical AND operator `&&`. That
 precedence means that the following two lines of code execute the same
 way:
 
-在 [运算符表](#operators) 中，
-每一行的运算符优先级，由上到下依次排列，第一行优先级最高，最后一行优先级最低。
-例如
-`%` 运算符优先级高于 `==` ，
-而 `==` 高于 `&&`。
-根据优先级规则，那么意味着以下两行代码执行的方式相同：
+在[运算符表](#operators) 中，运算符的优先级按先后排列，即第一行优先级最高，最后一行优先级最低，而同一行中，最左边的优先级最高，最右边的优先级最低。例如：`%` 运算符优先级高于 `==` ，而 `==` 高于 `&&`。根据优先级规则，那么意味着以下两行代码执行的效果相同：
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (precedence)"?>
 {% prettify dart %}
@@ -2073,10 +2064,7 @@ determines which version of the operator is used. For example, if you
 have a Vector object and a Point object, `aVector + aPoint` uses the
 Vector version of +.
 
-对于有两个操作数的运算符，运算符的功能由左边的操作数决定。
-例如,
-如果有两个操作数 Vector 和 Point，
-`aVector + aPoint` 使用的是 Vector 中定义的 + 运算符。
+对于有两个操作数的运算符，左边的操作数决定了运算符的功能。比如如果有一个 Vector 对象和一个 Point 对象，表达式 `aVector + aPoint` 中所使用的是 Vector 对象中定义的 + 运算符。
 </div>
 
 
@@ -2086,7 +2074,7 @@ Vector version of +.
 
 Dart supports the usual arithmetic operators, as shown in the following table.
 
-Dart 支持常用的运算运算符，如下表所示：
+Dart 支持常用的算术运算符：
 
 |-----------------------------+-------------------------------------------|
 | Operator                    | Meaning                                   |
@@ -2102,6 +2090,8 @@ Dart 支持常用的运算运算符，如下表所示：
 
 Example:
 
+示例：
+
 <?code-excerpt "misc/test/language_tour/operators_test.dart (arithmetic)"?>
 {% prettify dart %}
 assert(2 + 3 == 5);
@@ -2116,6 +2106,8 @@ assert('5/2 = ${5 ~/ 2} r ${5 % 2}' == '5/2 = 2 r 1');
 
 Dart also supports both prefix and postfix increment and decrement
 operators.
+
+Dart 还支持自增自减操作。
 
 |-----------------------------+-------------------------------------------|
 | Operator                    | Meaning                                   |
@@ -2176,15 +2168,12 @@ To test whether two objects x and y represent the same thing, use the
 objects are the exact same object, use the [identical()][]
 function instead.) Here’s how the `==` operator works:
 
-要测试两个对象x和y是否表示相同的事物，
-使用 `==` 运算符。 (在极少数情况下，
-要确定两个对象是否完全相同，需要使用 [identical()][] 函数。)
-下面给出 `==` 运算符的工作原理：
+要判断两个对象 x 和 y 是否表示相同的事物使用 `==` 即可。（在极少数情况下，可能需要使用 [identical()][] 函数来确定两个对象是否完全相同。）。下面是 `==` 运算符的一些规则：
 
 1.  If *x* or *y* is null, return true if both are null, and false if only
     one is null.
 
-    如果 *x* 或 *y* 可以 null，都为 null 时返回 true ，其中一个为 null 时返回 false。
+    假设有变量 *x* 和 *y*，且 x 和 y 至少有一个为 null，则当且仅当 x 和 y 均为 null 时 x == y 才会返回 true，否则只有一个为 null 则返回 false。
 
 2.  Return the result of the method invocation
     <code><em>x</em>.==(<em>y</em>)</code>. (That’s right,
@@ -2193,17 +2182,12 @@ function instead.) Here’s how the `==` operator works:
     you’ll see in
     [Overridable operators](#overridable-operators).)
 
-    结果为函数 <code><em>x</em>.==(<em>y</em>)</code> 的返回值。
-    (如上所见,
-    `==` 运算符执行的是第一个运算符的函数。
-    我们甚至可以重写很多运算符，包括 `==`，
-    运算符的重写，参考
-    [重写运算符](#overridable-operators)）
+    <code><em>x</em>.==(<em>y</em>)</code> 将会返回值，这里不管有没有 y，即 y 是可选的。也就是说 `==` 其实是 x 中的一个方法，并且可以被重写。详情请查阅[重写运算符](#overridable-operators)。
 
 Here’s an example of using each of the equality and relational
 operators:
 
-这里列出了每种关系运算符的示例：
+下面的代码给出了每一种关系运算符的示例：
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (relational)"?>
 {% prettify dart %}
@@ -2218,12 +2202,12 @@ assert(2 <= 3);
 
 ### Type test operators
 
-### 类型判定运算符
+### 类型判断运算符
 
 The `as`, `is`, and `is!` operators are handy for checking types at
 runtime.
 
-`as`， `is`， 和 `is!` 运算符用于在运行时处理类型检查。
+`as`、`is`、`is!` 运算符是在运行时判断对象类型的运算符。
 
 |-----------+-------------------------------------------|
 | Operator  | Meaning                                   |
@@ -2236,17 +2220,14 @@ runtime.
 The result of `obj is T` is true if `obj` implements the interface
 specified by `T`. For example, `obj is Object` is always true.
 
-例如， `obj is Object` 总是 true。
-但是只有 `obj` 实现了 `T` 的接口时， `obj is T` 才是 true。
+当且仅当 `obj` 实现了 `T` 的接口，`obj is T` 才是 true。例如 `obj is Object` 总为 true，因为所有类都是 Object 的子类。
 
 Use the `as` operator to cast an object to a particular type. In
 general, you should use it as a shorthand for an `is` test on an object
 following by an expression using that object. For example, consider the
 following code:
 
-使用 `as` 运算符将对象强制转换为特定类型。
-通常，可以认为是 `is` 类型判定后，被判定对象调用函数的一种缩写形式。
-请考虑以下代码：
+使用 `as` 操作符可以把对象转换为特定的类型。一般情况下可以将其当做 `is` 判定类型后调用所判定对象的函数的缩写形式。假设有如下代码：
 
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp is Person)"?>
 {% prettify dart %}
@@ -2258,7 +2239,7 @@ if (emp is Person) {
 
 You can make the code shorter using the `as` operator:
 
-使用 `as` 运算符进行缩写：
+你可以使用 `as` 运算符进行缩写：
 
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp as Person)"?>
 {% prettify dart %}
@@ -2268,16 +2249,13 @@ You can make the code shorter using the `as` operator:
 <div class="alert alert-info" markdown="1">
 **Note:**
 
-**提示：**
+**注意：**
 
 The code isn’t equivalent. If `emp` is null or not a Person, the
 first example (with `is`) does nothing; the second (with `as`) throws
 an exception.
 
-以上代码并不是等价的。
-如果 `emp` 为 null 或者不是 Person 对象，
-那么第一个 `is` 的示例，后面将不回执行；
-第二个 `as` 的示例会抛出异常。
+上述两种方式是有区别的：如果 `emp` 为 null 或者不为 Person 类型，则第一种方式最多只是不执行条件内代码，但是第二种方式则会抛出异常。
 </div>
 
 ### Assignment operators
@@ -2288,8 +2266,7 @@ As you’ve already seen, you can assign values using the `=` operator.
 To assign only if the assigned-to variable is null,
 use the `??=` operator.
 
-使用 `=` 为变量赋值。
-使用 `??=` 运算符时，只有当被赋值的变量为 null 时才会赋值给它。
+可以使用 `=` 来赋值，同时也可以使用 `??=` 来为值为 null 的变量赋值。
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (assignment)"?>
 {% prettify dart %}
@@ -2325,7 +2302,7 @@ main() {
 Compound assignment operators such as `+=` combine
 an operation with an assignment.
 
-复合赋值运算符（如 `+=` ）将算术运算符和赋值运算符组合在了一起。
+像 `+=` 这样的赋值运算符将算数运算符和赋值运算符组合在了一起。
 
 | `=`  | `–=` | `/=`  | `%=`  | `>>=` | `^=`
 | `+=` | `*=` | `~/=` | `<<=` | `&=`  | `|=`
@@ -2333,7 +2310,7 @@ an operation with an assignment.
 
 Here’s how compound assignment operators work:
 
-以下说明复合赋值运算符的作用：
+下表解释了符合运算符的原理：
 
 |-----------+----------------------+-----------------------|
 |           | Compound assignment  | Equivalent expression |
@@ -2345,7 +2322,7 @@ Here’s how compound assignment operators work:
 The following example uses assignment and compound assignment
 operators:
 
-以下示例使用赋值和复合赋值运算符：
+下面的例子展示了如何使用赋值以及复合赋值运算符：
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (op-assign)"?>
 {% prettify dart %}
@@ -2362,7 +2339,7 @@ assert(a == 6);
 You can invert or combine boolean expressions using the logical
 operators.
 
-### 逻辑运算符
+使用逻辑运算符你可以反转或组合布尔表达式。
 
 |-----------------------------+-------------------------------------------|
 | Operator                    | Meaning                                   |
@@ -2374,7 +2351,7 @@ operators.
 
 Here’s an example of using the logical operators:
 
-下面是关于逻辑表达式的示例：
+下面是使用逻辑表达式的示例：
 
 <?code-excerpt "misc/lib/language_tour/operators.dart (op-logical)"?>
 {% prettify dart %}
@@ -2391,8 +2368,7 @@ if (!done && (col == 0 || col == 3)) {
 You can manipulate the individual bits of numbers in Dart. Usually,
 you’d use these bitwise and shift operators with integers.
 
-在 Dart 中，可以单独操作数字的某一位。
-通常情况下整数类型使用按位和移位运算符来操作。
+在 Dart 中，二进制位运算符可以操作二进制的某一位，但仅适用于整数。
 
 |-----------------------------+-------------------------------------------|
 | Operator                    | Meaning                                   |
@@ -2407,7 +2383,7 @@ you’d use these bitwise and shift operators with integers.
 
 Here’s an example of using bitwise and shift operators:
 
-下面是关于按位和移位运算符的示例：
+下面是使用按位和移位运算符的示例：
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (op-bitwise)"?>
 {% prettify dart %}
@@ -2430,32 +2406,25 @@ assert((value >> 4) == 0x02); // Shift right
 Dart has two operators that let you concisely evaluate expressions
 that might otherwise require [if-else](#if-and-else) statements:
 
-Dart有两个运算符，有时可以替换 [if-else](#if-和-else) 表达式，
-让表达式更简洁：
+Dart 有两个特殊的运算符可以用来替代 [if-else](#if-和-else) 语句：
 
 <code><em>condition</em> ? <em>expr1</em> : <em>expr2</em>
 : If _condition_ is true, evaluates _expr1_ (and returns its value);
   otherwise, evaluates and returns the value of _expr2_.
 
-<code><em>condition</em> ? <em>expr1</em> : <em>expr2</em>
-: 如果条件为 true, 执行 _expr1_ (并返回它的值)：
-  否则, 执行并返回 _expr2_ 的值。
+<code><em>条件</em> ? <em>表达式 1</em> : <em>表达式 2</em>：如果条件为 true，执行表达式 1并返回执行结果，否则执行表达式 2 并返回执行结果。
 
 <code><em>expr1</em> ?? <em>expr2</em></code>
 : If _expr1_ is non-null, returns its value;
   otherwise, evaluates and returns the value of _expr2_.
 
-<code><em>expr1</em> ?? <em>expr2</em></code>
-: 如果 _expr1_ 是 non-null， 返回 _expr1_ 的值；
-  否则, 执行并返回 _expr2_ 的值。
+<code><em>表达式 1</em> ?? <em>表达式 2</em></code>：如果表达式 1 为非 null 则返回其值，否则执行表达式 2 并返回其值。
 
 When you need to assign a value
 based on a boolean expression,
 consider using `?:`.
 
-如果赋值是根据布尔值，
-考虑使用
- `?:`。
+如果赋值是根据布尔表达式则考虑使用 `?:`。
 
 <?code-excerpt "misc/lib/language_tour/operators.dart (if-then-else-operator)"?>
 {% prettify dart %}
@@ -2465,9 +2434,7 @@ var visibility = isPublic ? 'public' : 'private';
 If the boolean expression tests for null,
 consider using `??`.
 
-如果赋值是基于判定是否为 null，
-考虑使用
- `??`。
+如果赋值是根据判定是否为 null 则考虑使用 `??`。
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (if-null)"?>
 {% prettify dart %}
@@ -2477,8 +2444,7 @@ String playerName(String name) => name ?? 'Guest';
 The previous example could have been written at least two other ways,
 but not as succinctly:
 
-下面给出了其他两种实现方式，
-但并不简洁：
+上述示例还可以写成至少下面两种不同的形式，只是不够简洁：
 
 <?code-excerpt "misc/test/language_tour/operators_test.dart (if-null-alt)"?>
 {% prettify dart %}
@@ -2498,7 +2464,7 @@ String playerName(String name) {
 <a id="cascade"></a>
 ### Cascade notation (..)
 
-### 级联运算符 (..)
+### 级联运算符（..）
 
 Cascades (`..`) allow you to make a sequence of operations
 on the same object. In addition to function calls,
@@ -2506,15 +2472,11 @@ you can also access fields on that same object.
 This often saves you the step of creating a temporary variable and
 allows you to write more fluid code.
 
-级联运算符 (`..`) 可以实现对同一个对像进行一系列的操作。
-除了调用函数，
-还可以访问同一对象上的字段属性。
-这通常可以节省创建临时变量的步骤，
-同时编写出更流畅的代码。
+级联运算符（`..`）可以让你在同一个对象上连续调用多个对象的变量或方法。
 
 Consider the following code:
 
-考虑一下代码：
+比如下面的代码：
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (cascade-operator)"?>
 {% prettify dart %}
@@ -2529,13 +2491,11 @@ The code that follows the cascade notation operates
 on this selector object, ignoring any subsequent values that
 might be returned.
 
-第一句调用函数 `querySelector()` ， 返回获取到的对象。
-获取的对象依次执行级联运算符后面的代码，
-代码执行后的返回值会被忽略。
+第一个方法 `querySelector` 返回了一个 Selector 对象，后面的级联操作符都是调用这个 Selector 对象的成员并忽略每个操作的返回值。
 
 The previous example is equivalent to:
 
-上面的代码等价于：
+上面的代码相当于：
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (cascade-operator-example-expanded)"?>
 {% prettify dart %}
@@ -2564,8 +2524,7 @@ final addressBook = (AddressBookBuilder()
 Be careful to construct your cascade on a function that returns
 an actual object. For example, the following code fails:
 
-在返回对象的函数中谨慎使用级联操作符。
-例如，下面的代码是错误的：
+在返回对象的函数中谨慎使用级联操作符。例如，下面的代码是错误的：
 
 <?code-excerpt "misc/lib/language_tour/operators.dart (cannot-cascade-on-void)" plaster="none"?>
 {% prettify dart %}
@@ -2577,21 +2536,18 @@ sb.write('foo')
 The `sb.write()` call returns void,
 and you can't construct a cascade on `void`.
 
-`sb.write()` 函数调用返回 void，
-不能在 `void` 对象上创建级联操作。
+上述代码中的 `sb.write()` 方法返回的是 void，返回值为 `void` 的方法则不能使用级联运算符。
 
 <div class="alert alert-info" markdown="1">
 **Note:**
 
-**提示：**
+**注意：**
 
 Strictly speaking,
 the "double dot" notation for cascades is not an operator.
 It's just part of the Dart syntax.
 
-严格的来讲，
-"两个点" 的级联语法不是一个运算符。
-它只是一个 Dart 的特殊语法。
+严格来说 `..` 级联操作并非一个运算符而是 Dart 的特殊语法。
 </div>
 
 ### Other operators
@@ -2600,7 +2556,7 @@ It's just part of the Dart syntax.
 
 You've seen most of the remaining operators in other examples:
 
-大多数剩余的运算符，已在示例中使用过：
+大多数其它的运算符，已经在其它的示例中使用过：
 
 |----------+-------------------------------------------|
 | Operator | Name                 |          Meaning   |
@@ -2614,8 +2570,7 @@ You've seen most of the remaining operators in other examples:
 For more information about the `.`, `?.`, and `..` operators, see
 [Classes](#classes).
 
-更多关于 `.`, `?.` 和  `..` 运算符介绍，参考
-[Classes](#classes).
+更多关于 `.`, `?.` 和  `..` 运算符介绍，请参考[类](#classes).
 
 
 ## Control flow statements
