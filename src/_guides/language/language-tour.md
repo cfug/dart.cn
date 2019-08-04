@@ -1987,25 +1987,25 @@ You can override many of these operators, as described in
 
 下表是 Dart 中定义的运算符，很多运算符都可以重写。详情参考[重写运算符](#overridable-operators)。
 
-|--------------------------+------------------------------------------------|
-|Description               | Operator                                       |
-|--------------------------|------------------------------------------------|
-| unary postfix            | <code><em>expr</em>++</code>    <code><em>expr</em>--</code>    `()`    `[]`    `.`    `?.` |
-| unary prefix             | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>   |
-| multiplicative           | `*`    `/`    `%`    `~/`                      |
-| additive                 | `+`    `-`                                     |
-| shift                    | `<<`    `>>`    `>>>`                          |
-| bitwise AND              | `&`                                            |
-| bitwise XOR              | `^`                                            |
-| bitwise OR               | `|`                                            |
-| relational&nbsp;and&nbsp;type&nbsp;test | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!` |
-| equality                 | `==`    `!=`                                   |
-| logical AND              | `&&`                                           |
-| logical OR               | `||`                                           |
-| if null                  | `??`                                           |
-| conditional              | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code> |
-| cascade                  | `..`                                           |
-| assignment               | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em> |
+|--------------+---------------------------------------------------------------|
+| 描述          | 运算符                                                         |
+|--------------|---------------------------------------------------------------|
+| 一元后缀      | <code><em>表达式</em>++</code>    <code><em>表达式</em>--</code>    `()`    `[]`    `.`    `?.` |
+| 一元前缀      | <code>-<em>表达式</em></code>    <code>!<em>表达式</em></code>    <code>~<em>表达式</em></code>    <code>++<em>表达式</em></code>    <code>--<em>表达式</em></code>   |
+| 乘除法        | `*`    `/`    `%`    `~/`                                     |
+| 加减法        | `+`    `-`                                                    |
+| 位运算        | `<<`    `>>`    `>>>`                                         |
+| 二进制与      | `&`                                                           |
+| 二进制异或     | `^`                                                           |
+| 二进制或      | `|`                                                           |
+| 关系和类型测试 | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!`           |
+| 相等判断      | `==`    `!=`                                                  |
+| 逻辑与        | `&&`                                                          |
+| 逻辑或        | `||`                                                          |
+| 空判断        | `??`                                                          |
+| 条件表达式     | <code><em>表达式 1</em> ? <em>表达式 2</em> : <em>表达式 3</em></code> |
+| 级联          | `..`                                                          |
+| 赋值          | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>等等……</em> |
 {:.table .table-striped}
 
 <aside class="alert alert-warning" markdown="1">
@@ -2077,15 +2077,15 @@ Dart supports the usual arithmetic operators, as shown in the following table.
 Dart 支持常用的算术运算符：
 
 |-----------------------------+-------------------------------------------|
-| Operator                    | Meaning                                   |
+| 运算符                       | 描述                                       |
 |-----------------------------+-------------------------------------------|
-| `+`                         | Add
-| `–`                         | Subtract
-| <code>-<em>expr</em></code> | Unary minus, also known as negation (reverse the sign of the expression)
-| `*`                         | Multiply
-| `/`                         | Divide
-| `~/`                        | Divide, returning an integer result
-| `%`                         | Get the remainder of an integer division (modulo)
+| `+`                         | 加
+| `–`                         | 减
+| <code>-<em>表达式</em></code>| 一元负, 也可以作为反转（反转表达式的符号）
+| `*`                         | 乘
+| `/`                         | 除
+| `~/`                        | 除并取整
+| `%`                         | 取模
 {:.table .table-striped}
 
 Example:
@@ -2112,10 +2112,10 @@ Dart 还支持自增自减操作。
 |-----------------------------+-------------------------------------------|
 | Operator                    | Meaning                                   |
 |-----------------------------+-------------------------------------------|
-| <code>++<em>var</em></code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em> + 1</code>)
-| <code><em>var</em>++</code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em></code>)
-| <code>--<em>var</em></code> | <code><em>var</em> = <em>var</em> – 1</code> (expression value is <code><em>var</em> – 1</code>)
-| <code><em>var</em>--</code> | <code><em>var</em> = <em>var</em> – 1</code> (expression value is <code><em>var</em></code>)
+| <code>++<em>var</em></code> | <code><em>var</em> = <em>var</em> + 1</code> (表达式的值为 <code><em>var</em> + 1</code>)
+| <code><em>var</em>++</code> | <code><em>var</em> = <em>var</em> + 1</code> (表达式的值为 <code><em>var</em></code>)
+| <code>--<em>var</em></code> | <code><em>var</em> = <em>var</em> – 1</code> (表达式的值为 <code><em>var</em> – 1</code>)
+| <code><em>var</em>--</code> | <code><em>var</em> = <em>var</em> – 1</code> (表达式的值为 <code><em>var</em></code>)
 {:.table .table-striped}
 
 Example:
@@ -2155,12 +2155,12 @@ The following table lists the meanings of equality and relational operators.
 |-----------+-------------------------------------------|
 | Operator  | Meaning                                   |
 |-----------+-------------------------------------------|
-| `==`      |       Equal; see discussion below
-| `!=`      |       Not equal
-| `>`       |       Greater than
-| `<`       |       Less than
-| `>=`      |       Greater than or equal to
-| `<=`      |       Less than or equal to
+| `==`      |       相等
+| `!=`      |       不等
+| `>`       |       大于
+| `<`       |       小于
+| `>=`      |       大于等于
+| `<=`      |       小于等于
 {:.table .table-striped}
 
 To test whether two objects x and y represent the same thing, use the
@@ -2212,9 +2212,9 @@ runtime.
 |-----------+-------------------------------------------|
 | Operator  | Meaning                                   |
 |-----------+-------------------------------------------|
-| `as`      | Typecast (also used to specify [library prefixes](#specifying-a-library-prefix))
-| `is`      | True if the object has the specified type
-| `is!`     | False if the object has the specified type
+| `as`      | 类型转换（也用作指定[类前缀](#specifying-a-library-prefix))）
+| `is`      | 如果对象是指定类型则返回 true
+| `is!`     | 如果对象是指定类型则返回 false
 {:.table .table-striped}
 
 The result of `obj is T` is true if `obj` implements the interface
@@ -2313,10 +2313,10 @@ Here’s how compound assignment operators work:
 下表解释了符合运算符的原理：
 
 |-----------+----------------------+-----------------------|
-|           | Compound assignment  | Equivalent expression |
+|    场景    |       复合运算        |        等效表达式       |
 |-----------+----------------------+-----------------------|
-|**For an operator <em>op</em>:** | <code>a <em>op</em>= b</code> | <code>a = a <em>op</em> b</code>
-|**Example:**                     |`a += b`                       | `a = a + b`
+|**假设有运算符 <em>op</em>：** | <code>a <em>op</em>= b</code> | <code>a = a <em>op</em> b</code>
+|**示例：**                     |`a += b`                       | `a = a + b`
 {:.table}
 
 The following example uses assignment and compound assignment
@@ -2341,12 +2341,12 @@ operators.
 
 使用逻辑运算符你可以反转或组合布尔表达式。
 
-|-----------------------------+-------------------------------------------|
-| Operator                    | Meaning                                   |
-|-----------------------------+-------------------------------------------|
-| <code>!<em>expr</em></code> | inverts the following expression (changes false to true, and vice versa)
-| `||`                        | logical OR
-| `&&`                        | logical AND
+|-------------------------------+-------------------------------------------|
+|             运算符             |                   描述                     |
+|-------------------------------+-------------------------------------------|
+| <code>!<em>!表达式</em></code> | 对表达式结果取反（即将 true 变为 false，false 变为 true）
+| `||`                          | 逻辑或
+| `&&`                          | 逻辑与
 {:.table .table-striped}
 
 Here’s an example of using the logical operators:
@@ -2370,15 +2370,15 @@ you’d use these bitwise and shift operators with integers.
 
 在 Dart 中，二进制位运算符可以操作二进制的某一位，但仅适用于整数。
 
-|-----------------------------+-------------------------------------------|
-| Operator                    | Meaning                                   |
-|-----------------------------+-------------------------------------------|
-| `&`                         | AND
-| `|`                         | OR
-| `^`                         | XOR
-| <code>~<em>expr</em></code> | Unary bitwise complement (0s become 1s; 1s become 0s)
-| `<<`                        | Shift left
-| `>>`                        | Shift right
+|------------------------------+-------------------------------------------|
+| 运算符                        | 描述                                       |
+|------------------------------+-------------------------------------------|
+| `&`                          | 按位与
+| `|`                          | 按位或
+| `^`                          | 按位异或
+| <code>~<em>表达式</em></code> | 按位取反（即将 “0” 变为 “1”，“1” 变为 “0”）
+| `<<`                         | 位左移
+| `>>`                         | 位右移
 {:.table .table-striped}
 
 Here’s an example of using bitwise and shift operators:
@@ -2559,12 +2559,12 @@ You've seen most of the remaining operators in other examples:
 大多数其它的运算符，已经在其它的示例中使用过：
 
 |----------+-------------------------------------------|
-| Operator | Name                 |          Meaning   |
+|   运算符  | 名字                  |          描述      |
 |-----------+------------------------------------------|
-| `()`     | Function application | Represents a function call
-| `[]`     | List access          | Refers to the value at the specified index in the list
-| `.`      | Member access        | Refers to a property of an expression; example: `foo.bar` selects property `bar` from expression `foo`
-| `?.`     | Conditional member access | Like `.`, but the leftmost operand can be null; example: `foo?.bar` selects property `bar` from expression `foo` unless `foo` is null (in which case the value of `foo?.bar` is null)
+| `()`     | 使用方法               | 代表调用一个方法
+| `[]`     | 访问 List             | 访问 List 中特定位置的元素
+| `.`      | 访问成员               | 成员访问符
+| `?.`     | 条件访问成员            | 与上述成员访问符类似，但是左边的操作对象不能为 null，例如 foo?.bar，如果 foo 为 null 则返回 null ，否则返回 bar
 {:.table .table-striped}
 
 For more information about the `.`, `?.`, and `..` operators, see
