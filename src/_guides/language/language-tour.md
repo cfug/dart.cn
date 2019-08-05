@@ -2575,33 +2575,47 @@ For more information about the `.`, `?.`, and `..` operators, see
 
 ## Control flow statements
 
-## 控制流程语句
+## 流程控制语句
 
 You can control the flow of your Dart code using any of the following:
 
-使用 `try-catch` 和 `throw` 也可以改变程序流程，
-详见 [Exceptions](#exceptions)。
+你可以使用下面的语句来控制 Dart 代码的执行流程：
 
 -   `if` and `else`
+
+    `if` 和 `else`
+
 -   `for` loops
+
+    `for` 循环
+
 -   `while` and `do`-`while` loops
+
+    `while` 和 `do`-`while` 循环
+
 -   `break` and `continue`
+
+    `break` 和 `continue`
+
 -   `switch` and `case`
+
+    `switch` 和 `case`
+
 -   `assert`
 
 You can also affect the control flow using `try-catch` and `throw`, as
 explained in [Exceptions](#exceptions).
 
+使用 `try-catch` 和 `throw` 也能影响控制流，详情参考[异常](#exceptions)部分。
 
 ### If and else
 
-### if 和 else
+### If 和 Else
 
 Dart supports `if` statements with optional `else` statements, as the
 next sample shows. Also see [conditional expressions](#conditional-expressions).
 
-Dart 支持 `if - else` 语句，其中 `else` 是可选的，
-比如下面的例子， 另参考 [conditional expressions](#conditional-expressions).
+Dart 支持 `if - else` 语句，其中 `else` 是可选的，比如下面的例子。你也可以参考[条件表达式](#conditional-expressions)。
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (if-else)"?>
 {% prettify dart %}
@@ -2617,17 +2631,16 @@ if (isRaining()) {
 Unlike JavaScript, conditions must use boolean values, nothing else. See
 [Booleans](#booleans) for more information.
 
-Dart 支持 `if - else` 语句，其中 `else` 是可选的，
-比如下面的例子， 另参考 [conditional expressions](#conditional-expressions).
+与 JavaScript 不同的是，Dart 的 if 语句中的条件必须是一个布尔值，不能是其它类型。详情请查阅[布尔值](#booleans)。
 
 
 ### For loops
 
-### for 循环
+### For 循环
 
 You can iterate with the standard `for` loop. For example:
 
-进行迭代操作，可以使用标准 `for` 语句。 例如：
+你可以使用标准的 `for` 循环进行迭代。例如：
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (for)"?>
 {% prettify dart %}
@@ -2640,8 +2653,7 @@ for (var i = 0; i < 5; i++) {
 Closures inside of Dart’s `for` loops capture the _value_ of the index,
 avoiding a common pitfall found in JavaScript. For example, consider:
 
-闭包在 Dart 的 `for` 循环中会捕获循环的 index 索引值， 来避免 JavaScript 中常见的陷阱。
-请思考示例代码：
+在 Dart 语言中，`for` 循环中的闭包会自动捕获循环的 _索引值_ 以避免 JavaScript 中一些常见的陷阱。假设有如下代码：
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (for-and-closures)"?>
 {% prettify dart %}
@@ -2655,17 +2667,13 @@ callbacks.forEach((c) => c());
 The output is `0` and then `1`, as expected. In contrast, the example
 would print `2` and then `2` in JavaScript.
 
-和期望一样，输出的是 `0` 和 `1`。
-但是示例中的代码在 JavaScript 中会连续输出两个 `2` 。
+上述代码执行后会输出 `0` 和 `1`，但是如果在 JavaScript 中执行同样的代码则会输出两个 `2`。
 
 If the object that you are iterating over is an Iterable, you can use the
 [forEach()][] method. Using `forEach()` is a good option if you don’t need to
 know the current iteration counter:
 
-I如果要迭代一个实现了 Iterable 接口的对象，
-可以使用 [forEach()][] 方法，
-如果不需要使用当前计数值，
-使用 `forEach()` 是非常棒的选择：
+如果要遍历的对象实现了 Iterable 接口，则可以使用 [forEach()][] 方法，如果不需要使用到索引，则使用 `forEach` 方法是一个非常好的选择：
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (forEach)"?>
 {% prettify dart %}
@@ -2675,8 +2683,7 @@ candidates.forEach((candidate) => candidate.interview());
 Iterable classes such as List and Set also support the `for-in` form of
 [iteration](/guides/libraries/library-tour#iteration):
 
-实现了 Iterable 的类（比如， List 和 Set）同样也支持使用 `for-in` 进行迭代操作
-[iteration](/guides/libraries/library-tour#iteration) ：
+像 List 和 Set 等实现了 Iterable 接口的类还支持 `for-in` 形式的[迭代](/guides/libraries/library-tour#iteration)：
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (collection)"?>
 {% prettify dart %}
@@ -2689,11 +2696,11 @@ for (var x in collection) {
 
 ### While and do-while
 
-### while 和 do-while
+### While 和 Do-While
 
 A `while` loop evaluates the condition before the loop:
 
-`while` 循环在执行前判断执行条件：
+`while` 循环会在执行循环体前先判断条件：
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (while)"?>
 {% prettify dart %}
@@ -2704,7 +2711,7 @@ while (!isDone()) {
 
 A `do`-`while` loop evaluates the condition *after* the loop:
 
-`do`-`while` 循环在执行`后`判断执行条件：
+`do-while` 循环则会先执行一遍循环体 _再_ 判断条件：
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (do-while)"?>
 {% prettify dart %}
@@ -2715,11 +2722,11 @@ do {
 
 ### Break and continue
 
-### break 和 continue
+### Break 和 Continue
 
 Use `break` to stop looping:
 
-使用 `break` 停止程序循环：
+使用 `break` 可以中断循环：
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (while-break)"?>
 {% prettify dart %}
@@ -2731,7 +2738,7 @@ while (true) {
 
 Use `continue` to skip to the next loop iteration:
 
-使用 `continue` 跳转到下一次迭代：
+使用 `continue` 可以跳过本次循环直接进入下一次循环：
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (for-continue)"?>
 {% prettify dart %}
@@ -2747,8 +2754,7 @@ for (int i = 0; i < candidates.length; i++) {
 You might write that example differently if you’re using an
 [Iterable][] such as a list or set:
 
-如果对象实现了 [Iterable][] 接口 （例如，list 或者 set）。
-那么上面示例完全可以用另一种方式来实现：
+上述代码中的 candidates 如果像 List 或 Set 一样实现了 [Iterable][] 接口则可以简单地使用下述写法：
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (where)"?>
 {% prettify dart %}
@@ -2760,7 +2766,7 @@ candidates
 
 ### Switch and case
 
-### switch 和 case
+### Switch 和 Case
 
 Switch statements in Dart compare integer, string, or compile-time
 constants using `==`. The compared objects must all be instances of the
@@ -2768,33 +2774,28 @@ same class (and not of any of its subtypes), and the class must not
 override `==`.
 [Enumerated types](#enumerated-types) work well in `switch` statements.
 
-在 Dart 中 switch 语句使用 `==` 比较整数，字符串，或者编译时常量。
-比较的对象必须都是同一个类的实例（并且不可以是子类），
-类必须没有对 `==` 重写。
-[枚举类型](#枚举类型) 可以用于 `switch` 语句。
+Switch 语句在 Dart 中使用 `==` 来比较整数、字符串或编译时常量，比较的两个对象必须是同一个类型且不能是子类并且没有重写 `==` 操作符。[枚举类型]((#enumerated-types))非常适合在 `Switch` 语句中使用。
 
 <div class="alert alert-info" markdown="1">
 **Note:**
 
-**提示：**
+**注意：**
 
 Switch statements in Dart are intended for limited circumstances,
 such as in interpreters or scanners.
 
-在 Dart 中 Switch 语句仅适用于有限的情况下，
-例如在 interpreter 或 scanner 中。
+Dart 中的 Switch 语句仅适用于有限的情况，比如使用解释器和扫描器的场景。
 </div>
 
 Each non-empty `case` clause ends with a `break` statement, as a rule.
 Other valid ways to end a non-empty `case` clause are a `continue`,
 `throw`, or `return` statement.
 
-在 `case` 语句中，每个非空的 `case` 语句结尾需要跟一个 `break` 语句。
-除 `break` 以外，还有可以使用 `continue`, `throw`，者 `return`。
+每一个非空的 `case` 子句都必须有一个 `break` 语句，也可以通过 `continue`、`throw` 或者 `return` 来结束非空 `case` 语句。
 
 Use a `default` clause to execute code when no `case` clause matches:
 
-当没有 `case` 语句匹配时，执行 `default` 代码：
+当没有 `case` 语句匹配时，可以使用 `default` 子句来匹配这种情况：
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (switch)"?>
 {% prettify dart %}
@@ -2823,7 +2824,7 @@ switch (command) {
 The following example omits the `break` statement in a `case` clause,
 thus generating an error:
 
-下面的 `case` 程序示例中缺省了 `break` 语句，导致错误：
+下面的例子忽略了 `case` 子句的 `break` 语句，因此会产生错误：
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (switch-break-omitted)" plaster="none"?>
 {% prettify dart %}
@@ -2842,8 +2843,7 @@ switch (command) {
 However, Dart does support empty `case` clauses, allowing a form of
 fall-through:
 
-但是， Dart 支持空 `case` 语句，
-允许程序以 fall-through 的形式执行。
+但是，Dart 支持空的 `case` 语句，允许其以 fall-through 的形式执行。
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (switch-empty-case)"?>
 {% prettify dart %}
@@ -2860,8 +2860,7 @@ switch (command) {
 If you really want fall-through, you can use a `continue` statement and
 a label:
 
-在非空 `case` 中实现 fall-through 形式，
-可以使用 `continue` 语句结合 `lable` 的方式实现:
+在非空 `case` 语句中想要实现 fall-through 的形式，可以使用 `continue` 语句配合 lable 的方式实现:
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (switch-continue)"?>
 {% prettify dart %}
@@ -2883,11 +2882,12 @@ switch (command) {
 A `case` clause can have local variables, which are visible only inside
 the scope of that clause.
 
-在非空 `case` 中实现 fall-through 形式，
-可以使用 `continue` 语句结合 `lable` 的方式实现:
+每个 `case` 子句都可以有局部变量且仅在该 case 语句内可见。
 
 
 ### Assert
+
+### 断言
 
 During development, use an assert statement
 — <code>assert(<em>condition</em>, <em>optionalMessage</em>)</code>; —
@@ -2895,11 +2895,7 @@ to disrupt normal execution if a boolean
 condition is false. You can find examples of assert statements
 throughout this tour. Here are some more:
 
-在开发过程中，如果使用的 assert 表达式
-— <code>assert(<em>condition</em>, <em>optionalMessage</em>)</code>; —
-布尔值为 false，正常的程序执行流程就会被中断。
-本章中包含部分 assert 的使用，
-以下是部分示例：
+在开发过程中，可以在条件表达式为 false 时使用 - <code>assert(<em>条件</em>, <em>可选信息</em>)</code>; - 语句来打断代码的执行。你可以在本文中找到大量使用 assert 的例子。下面是相关示例：
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (assert)"?>
 {% prettify dart %}
@@ -2916,7 +2912,7 @@ assert(urlString.startsWith('https'));
 To attach a message to an assertion,
 add a string as the second argument to `assert`.
 
-assert 的第二个参数可以为其添加一个字符串消息。
+`assert` 的第二个参数可以为其添加一个字符串消息。
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (assert-with-message)"?>
 {% prettify dart %}
@@ -2930,35 +2926,31 @@ is true, the assertion succeeds and execution
 continues. If it's false, the assertion fails and an exception (an
 [AssertionError][]) is thrown.
 
-assert 的第一个参数可以是解析为布尔值的任何表达式。
-如果表达式结果为 true ， 则断言成功，继续执行。
-如果表达式结果为 false ， 则断言失败，抛出异常
-([AssertionError][]) 。
+`assert` 的第一个参数可以是值为布尔值的任何表达式。如果表达式的值为 true，则断言成功，继续执行。如果表达式的值为 false，则断言失败，抛出一个 [AssertionError][] 异常。
 
 When exactly do assertions work?
 That depends on the tools and framework you're using:
 
-如何判断 assert 是否生效？
-assert 是否生效依赖开发工具和使用的框架：
+如何判断 assert 是否生效？assert 是否生效依赖开发工具和使用的框架：
 
 * Flutter enables assertions in [debug mode.][Flutter debug mode]
 
-  Flutter 在 [debug mode][Flutter debug mode] 时生效。
+  Flutter 在[调试模式][Flutter debug mode]时生效。
 
 * Development-only tools such as [dartdevc][]
   typically enable assertions by default.
 
-  开发工具比如 [dartdevc][] 通常情况下是默认生效的。
+  一些开发工具比如 [dartdevc][] 通常情况下是默认生效的。
 
 * Some tools, such as [dart][] and [dart2js,][dart2js]
   support assertions through a command-line flag: `--enable-asserts`.
 
-  其他一些工具，比如 [dart][] 以及 [dart2js][dart2js] 通过命令参数 `--enable-asserts` 使 assert 生效。
+  其他一些工具，比如 [dart][] 以及 [dart2js][dart2js] 通过在运行 Dart 程序时添加命令行参数 `--enable-asserts` 使 assert 生效。
 
 In production code, assertions are ignored, and
 the arguments to `assert` aren't evaluated.
 
-在生产环境代码中， assert 被忽略，与此同时传入 `assert` 的参数不被判断。
+在生产环境代码中，断言会被忽略，与此同时传入 `assert` 的参数不被判断。
 
 
 ## Exceptions
@@ -2970,31 +2962,24 @@ indicating that something unexpected happened. If the exception isn’t
 caught, the [isolate](#isolates) that raised the exception is suspended, and
 typically the isolate and its program are terminated.
 
-
-Dart 代码可以抛出和捕获异常。
-异常表示一些未知的错误情况。
-如果异常没有被捕获， 则异常会抛出，
-导致抛出异常的代码终止执行。
+Dart 代码可以抛出和捕获异常。异常表示一些未知的错误情况，如果异常没有捕获则会被抛出从而导致抛出异常的代码终止执行。
 
 In contrast to Java, all of Dart’s exceptions are unchecked exceptions.
 Methods do not declare which exceptions they might throw, and you are
 not required to catch any exceptions.
 
-和 Java 有所不同， Dart 中的所有异常是非检查异常。
-方法不会声明它们抛出的异常，
-也不要求捕获任何异常。
+与 Java 不同的是，Dart 的所有异常都是非必检异常，方法不一定会声明其所抛出的异常并且你也不会被要求捕获任何异常。
 
 Dart provides [Exception][] and [Error][]
 types, as well as numerous predefined subtypes. You can, of course,
 define your own exceptions. However, Dart programs can throw any
 non-null object—not just Exception and Error objects—as an exception.
 
-Dart 提供了 [Exception][] 和 [Error][] 类型，
-以及一些子类型。
-当然也可以定义自己的异常类型。
-但是，此外 Dart 程序可以抛出任何非 null 对象， 不仅限 Exception 和 Error 对象。
+Dart 提供了 [Exception][] 和 [Error][] 两种类型的异常以及它们一系列的子类，你也可以定义自己的异常类型。但是在 Dart 中可以将任何非 null 对象作为异常抛出而不局限于 Exception 或 Error 类型。
 
 ### Throw
+
+### 抛出异常
 
 Here’s an example of throwing, or *raising*, an exception:
 
@@ -3007,7 +2992,7 @@ throw FormatException('Expected at least 1 section');
 
 You can also throw arbitrary objects:
 
-也可以抛出任意的对象：
+你也可以抛出任意的对象：
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (out-of-llamas)"?>
 {% prettify dart %}
@@ -3018,14 +3003,13 @@ throw 'Out of llamas!';
   **Note:** Production-quality code usually throws types that implement
   [Error][] or [Exception][].
 
-  **提示：** 高质量的生产环境代码通常会实现 [Error][] 或 [Exception][] 类型的异常抛出。
+  **注意：** 优秀的代码通常会抛出 [Error][] 或 [Exception][] 类型的异常。
 </div>
 
 Because throwing an exception is an expression, you can throw exceptions
 in =\> statements, as well as anywhere else that allows expressions:
 
-因为抛出异常是一个表达式，
-所以可以在 =\> 语句中使用，也可以在其他使用表达式的地方抛出异常：
+因为抛出异常是一个表达式，所以可以在 =\> 语句中使用，也可以在其他使用表达式的地方抛出异常：
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (throw-is-an-expression)"?>
 {% prettify dart %}
@@ -3035,12 +3019,13 @@ void distanceTo(Point other) => throw UnimplementedError();
 
 ### Catch
 
+### 捕获异常
+
 Catching, or capturing, an exception stops the exception from
 propagating (unless you rethrow the exception).
 Catching an exception gives you a chance to handle it:
 
-捕获异常可以避免异常继续传递（除非重新抛出（ rethrow ）异常）。
-可以通过捕获异常的机会来处理该异常：
+捕获异常可以避免异常继续传递（重新抛出异常除外）。捕获一个异常可以给你处理它的机会：
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try)"?>
 {% prettify dart %}
@@ -3056,10 +3041,7 @@ specify multiple catch clauses. The first catch clause that matches the
 thrown object’s type handles the exception. If the catch clause does not
 specify a type, that clause can handle any type of thrown object:
 
-通过指定多个 catch 语句，可以处理可能抛出多种类型异常的代码。
-与抛出异常类型匹配的第一个 catch 语句处理异常。
-如果 catch 语句未指定类型，
-则该语句可以处理任何类型的抛出对象：
+对于可以抛出多种异常类型的代码，也可以指定多个 catch 语句，每个语句分别对应一个异常类型，如果 catch 语句没有指定异常类型则表示可以捕获任意异常类型：
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try-catch)"?>
 {% prettify dart %}
@@ -3081,17 +3063,13 @@ As the preceding code shows, you can use either `on` or `catch` or both.
 Use `on` when you need to specify the exception type. Use `catch` when
 your exception handler needs the exception object.
 
-如上述代码所示，捕获语句中可以同时使用 `on` 和 `catch` ，也可以单独分开使用。
-使用 `on` 来指定异常类型，
-使用 `catch` 来 捕获异常对象。
+如上述代码所示可以使用 `on` 或 `catch` 来捕获异常，使用 `on` 来指定异常类型，使用 `catch` 来捕获异常对象，两者可同时使用。
 
 You can specify one or two parameters to `catch()`.
 The first is the exception that was thrown,
 and the second is the stack trace (a [StackTrace][] object).
 
-`catch()` 函数可以指定1到2个参数，
-第一个参数为抛出的异常对象，
-第二个为堆栈信息 ( 一个 [StackTrace][] 对象 )。
+你可以为 `catch` 方法指定两个参数，第一个参数为抛出的异常对象，第二个参数为栈信息 [StackTrace][] 对象：
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try-catch-2)" replace="/\(e.*?\)/[!$&!]/g"?>
 {% prettify dart %}
@@ -3109,8 +3087,7 @@ To partially handle an exception,
 while allowing it to propagate,
 use the `rethrow` keyword.
 
-分处理异常，
-那么可以使用关键字 `rethrow` 将异常重新抛出。
+关键字 `rethrow` 可以将捕获的异常再次抛出：
 
 <?code-excerpt "misc/test/language_tour/exceptions_test.dart (rethrow)" replace="/rethrow;/[!$&!]/g"?>
 {% prettify dart %}
@@ -3140,9 +3117,7 @@ To ensure that some code runs whether or not an exception is thrown, use
 a `finally` clause. If no `catch` clause matches the exception, the
 exception is propagated after the `finally` clause runs:
 
-不管是否抛出异常， `finally` 中的代码都会被执行。
-如果 `catch` 没有匹配到异常，
-异常会在 `finally` 执行完成后，再次被抛出：
+可以使用 `finally` 语句来包裹确保不管有没有异常都执行代码，如果没有指定 `catch` 语句来捕获异常，则在执行完 `finally` 语句后再抛出异常：
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (finally)"?>
 {% prettify dart %}
@@ -3156,7 +3131,7 @@ try {
 
 The `finally` clause runs after any matching `catch` clauses:
 
-任何匹配的 `catch` 执行完成后，再执行 `finally` ：
+`finally` 语句会在任何匹配的 `catch` 语句后执行：
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try-catch-finally)"?>
 {% prettify dart %}
@@ -3174,7 +3149,7 @@ Learn more by reading the
 section of the library tour.
 
 更多详情，请参考
-[Exceptions](/guides/libraries/library-tour#exceptions) 章节。
+你可以阅读 Dart 核心库概览的[异常](/guides/libraries/library-tour#exceptions)章节获取更多相关信息。
 
 ## Classes
 
