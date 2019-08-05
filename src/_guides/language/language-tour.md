@@ -2832,7 +2832,7 @@ var command = 'OPEN';
 switch (command) {
   case 'OPEN':
     executeOpen();
-    // ERROR: Missing break
+    // 错误: 没有 break
 
   case 'CLOSED':
     executeClosed();
@@ -2849,9 +2849,9 @@ fall-through:
 {% prettify dart %}
 var command = 'CLOSED';
 switch (command) {
-  case 'CLOSED': // Empty case falls through.
+  case 'CLOSED': // case 语句为空时的 fall-through 形式。
   case 'NOW_CLOSED':
-    // Runs for both CLOSED and NOW_CLOSED.
+    // case 条件值为 CLOSED 和 NOW_CLOSED 时均会执行该语句。
     executeNowClosed();
     break;
 }
@@ -2869,11 +2869,11 @@ switch (command) {
   case 'CLOSED':
     executeClosed();
     continue nowClosed;
-  // Continues executing at the nowClosed label.
+  // 继续执行标签为 nowClosed 的 case 子句。
 
   nowClosed:
   case 'NOW_CLOSED':
-    // Runs for both CLOSED and NOW_CLOSED.
+    // case 条件值为 CLOSED 和 NOW_CLOSED 时均会执行该语句。
     executeNowClosed();
     break;
 }
@@ -2899,13 +2899,13 @@ throughout this tour. Here are some more:
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (assert)"?>
 {% prettify dart %}
-// Make sure the variable has a non-null value.
+// 确保变量值不为 null。
 assert(text != null);
 
-// Make sure the value is less than 100.
+// 确保变量值小于 100。
 assert(number < 100);
 
-// Make sure this is an https URL.
+// 确保这是一个 https 地址。
 assert(urlString.startsWith('https'));
 {% endprettify %}
 
@@ -3048,13 +3048,13 @@ specify a type, that clause can handle any type of thrown object:
 try {
   breedMoreLlamas();
 } on OutOfLlamasException {
-  // A specific exception
+  // 指定异常
   buyMoreLlamas();
 } on Exception catch (e) {
-  // Anything else that is an exception
+  // 其它类型的异常
   print('Unknown exception: $e');
 } catch (e) {
-  // No specified type, handles all
+  // // 不指定类型，处理其它全部
   print('Something really unknown: $e');
 }
 {% endprettify %}
@@ -3094,10 +3094,10 @@ use the `rethrow` keyword.
 void misbehave() {
   try {
     dynamic foo = true;
-    print(foo++); // Runtime error
+    print(foo++); // 运行时错误
   } catch (e) {
     print('misbehave() partially handled ${e.runtimeType}.');
-    [!rethrow;!] // Allow callers to see the exception.
+    [!rethrow;!] // 允许调用者查看异常。
   }
 }
 
@@ -3124,7 +3124,7 @@ exception is propagated after the `finally` clause runs:
 try {
   breedMoreLlamas();
 } finally {
-  // Always clean up, even if an exception is thrown.
+  // 总是清理，即便抛出了异常。
   cleanLlamaStalls();
 }
 {% endprettify %}
@@ -3138,9 +3138,9 @@ The `finally` clause runs after any matching `catch` clauses:
 try {
   breedMoreLlamas();
 } catch (e) {
-  print('Error: $e'); // Handle the exception first.
+  print('Error: $e'); // 先处理异常。
 } finally {
-  cleanLlamaStalls(); // Then clean up.
+  cleanLlamaStalls(); // 然后清理。
 }
 {% endprettify %}
 
