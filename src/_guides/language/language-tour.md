@@ -4493,7 +4493,7 @@ the list is probably a mistake. Here’s an example:
 {% prettify dart %}
 var names = List<String>();
 names.addAll(['Seth', 'Kathy', 'Lars']);
-names.add(42); // Error
+names.add(42); // 报错
 {% endprettify %}
 
 Another reason for using generics is to reduce code duplication.
@@ -4564,12 +4564,12 @@ List、Set 以及 Map 字面量也可以是参数化的。定义参数化的 Lis
 
 <?code-excerpt "misc/lib/language_tour/generics/misc.dart (collection-literals)"?>
 {% prettify dart %}
-var names = <String>['Seth', 'Kathy', 'Lars'];
-var uniqueNames = <String>{'Seth', 'Kathy', 'Lars'};
+var names = <String>['小芸', '小芳', '小民'];
+var uniqueNames = <String>{'小芸', '小芳', '小民'};
 var pages = <String, String>{
-  'index.html': 'Homepage',
-  'robots.txt': 'Hints for web robots',
-  'humans.txt': 'We are people, not machines'
+  'index.html': '主页',
+  'robots.txt': '网页机器人提示',
+  'humans.txt': '我们是人类，不是机器'
 };
 {% endprettify %}
 
@@ -4614,7 +4614,7 @@ Dart的泛型类型是 *固化的*，这意味着即便在运行时也会保持�
 <?code-excerpt "misc/test/language_tour/generics_test.dart (generic-collections)"?>
 {% prettify dart %}
 var names = List<String>();
-names.addAll(['Seth', 'Kathy', 'Lars']);
+names.addAll(['小芸', '小芳', '小民']);
 print(names is List<String>); // true
 {% endprettify %}
 
@@ -4644,8 +4644,8 @@ You can do this using `extends`.
 <?code-excerpt "misc/lib/language_tour/generics/base_class.dart" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
 {% prettify dart %}
 class Foo<T [!extends SomeBaseClass!]> {
-  // Implementation goes here...
-  String toString() => "Instance of 'Foo<$T>'";
+  // 具体实现……
+  String toString() => "'Foo<$T>' 的实例";
 }
 
 class Extender extends SomeBaseClass {...}
@@ -4668,7 +4668,7 @@ It's also OK to specify no generic argument:
 <?code-excerpt "misc/test/language_tour/generics_test.dart (no-generic-arg-ok)" replace="/expect\((.*?).toString\(\), .(.*?).\);/print($1); \/\/ $2/g"?>
 {% prettify dart %}
 var foo = Foo();
-print(foo); // Instance of 'Foo<SomeBaseClass>'
+print(foo); // 'Foo<SomeBaseClass>' 的实例
 {% endprettify %}
 
 Specifying any non-`SomeBaseClass` type results in an error:
@@ -4696,9 +4696,9 @@ A newer syntax, called _generic methods_, allows type arguments on methods and f
 <?code-excerpt "misc/test/language_tour/generics_test.dart (method)" replace="/<T.(?=\()|T/[!$&!]/g"?>
 {% prettify dart %}
 [!T!] first[!<T>!](List<[!T!]> ts) {
-  // Do some initial work or error checking, then...
+  // 处理一些初始化工作或错误检测……
   [!T!] tmp = ts[0];
-  // Do some additional checking or processing...
+  // 处理一些额外的检查……
   return tmp;
 }
 {% endprettify %}
