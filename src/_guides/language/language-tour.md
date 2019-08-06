@@ -4459,41 +4459,34 @@ type is actually `List<E>`. The \<...\> notation marks List as a
 parameters. [By convention][], most type variables have single-letter names,
 such as E, T, S, K, and V.
 
-在 API 文档中你会发现基础数组类型 [List] 的实际类型是 `List<E>` 。
-\<...\> 符号将 List 标记为 *泛型* (或 *参数化*) 类型。
-这种类型具有形式化的参数。
-[通常情况下][By convention]，使用一个字母来代表类型参数， 例如 E, T, S, K, 和 V 等。
+如果你查看数组的 API 文档，你会发现数组 [List][List] 的实际类型为 `List<E>`。\<...\> 符号表示数组是一个 *泛型*（或 *参数化类型*）。[通常][By convention]使用一个字母来代表类型参数，比如E、T、S、K 和 V 等等。
 
 [By convention]: /guides/language/effective-dart/design#do-follow-existing-mnemonic-conventions-when-naming-type-parameters
 
 
 ### Why use generics?
 
-### 为什么使用泛型
+### 为什么使用泛型？
 
 Generics are often required for type safety, but they have more benefits
 than just allowing your code to run:
 
-在类型安全上通常需要泛型支持，
-它的好处不仅仅是保证代码的正常运行：
+泛型常用于需要要求类型安全的情况，但是它也会对代码运行有好处：
 
 * Properly specifying generic types results in better generated code.
 
-  正确指定泛型类型可以提高代码质量。
+  适当地指定泛型可以更好地帮助代码生成。
 
 * You can use generics to reduce code duplication.
 
-  使用泛型可以减少重复的代码。
+  使用泛型可以减少代码重复。
 
 If you intend for a list to contain only strings, you can
 declare it as `List<String>` (read that as “list of string”). That way
 you, your fellow programmers, and your tools can detect that assigning a non-string to
 the list is probably a mistake. Here’s an example:
 
-如果想让 List 仅仅支持字符串类型，
-可以将其声明为 `List<String>` （读作“字符串类型的 list ”）。
-那么，当一个非字符串被赋值给了这个 list 时，开发工具就能够检测到这样的做法可能存在错误。
-例如：
+比如你想声明一个只能包含 String 类型的数组，你可以将该数组声明为 `List<String>`（读作“字符串类型的 list”），这样的话就可以很容易避免因为在该数组放入非 String 类变量而导致的诸多问题，同时编译器以及其他阅读代码的人都可以很容易地发现并定位问题：
 
 {:.fails-sa}
 <?code-excerpt "misc/lib/language_tour/generics/misc.dart (why-generics)"?>
@@ -4509,10 +4502,7 @@ many types, while still taking advantage of static
 analysis. For example, say you create an interface for
 caching an object:
 
-另外一个使用泛型的原因是减少重复的代码。
-泛型可以在多种类型之间定义同一个实现，
-同时还可以继续使用检查模式和静态分析工具提供的代码分析功能。
-例如，假设你创建了一个用于缓存对象的接口：
+另一个使用泛型的原因是可以减少重复代码。泛型可以让你在多个不同类型实现之间共享同一个接口声明，比如下面的例子中声明了一个类用于缓存对象的接口：
 
 <?code-excerpt "misc/lib/language_tour/generics/cache.dart (ObjectCache)"?>
 {% prettify dart %}
@@ -4525,7 +4515,7 @@ abstract class ObjectCache {
 You discover that you want a string-specific version of this interface,
 so you create another interface:
 
-后来发现需要一个相同功能的字符串类型接口，因此又创建了另一个接口：
+不久后你可能又会想专门为 String 类对象做一个缓存，于是又有了专门为 String 做缓存的类：
 
 <?code-excerpt "misc/lib/language_tour/generics/cache.dart (StringCache)"?>
 {% prettify dart %}
@@ -4538,14 +4528,12 @@ abstract class StringCache {
 Later, you decide you want a number-specific version of this
 interface... You get the idea.
 
-后来，又发现需要一个相同功能的数字类型接口 ...
-这里你应该明白了。
+如果过段时间你又想为数字类型也创建一个类，那么就会有很多诸如此类的代码……
 
 Generic types can save you the trouble of creating all these interfaces.
 Instead, you can create a single interface that takes a type parameter:
 
-泛型可以省去创建所有这些接口的麻烦。
-通过创建一个带有泛型参数的接口，来代替上述接口：
+这时候可以考虑使用泛型来声明一个类，让不同类型的缓存实现该类做出不同的具体实现即可：
 
 <?code-excerpt "misc/lib/language_tour/generics/cache.dart (Cache)"?>
 {% prettify dart %}
@@ -4558,8 +4546,7 @@ abstract class Cache<T> {
 In this code, T is the stand-in type. It’s a placeholder that you can
 think of as a type that a developer will define later.
 
-在上面的代码中，T 是一个备用类型。
-这是一个类型占位符，在开发者调用该接口的时候会指定具体类型。
+在上述代码中，T 是一个替代类型。其相当于类型占位符，在开发者调用该接口的时候会指定具体类型。
 
 
 ### Using collection literals
@@ -4573,13 +4560,7 @@ just like the literals you’ve already seen, except that you add
 before the opening bracket. Here
 is example of using typed literals:
 
-List , Set 和 Map 字面量也是可以参数化的。
-参数化字面量和之前的字面量定义类似，
-对于 List 或 Set 只需要在声明语句前加
-<code>&lt;<em>type</em>></code> 前缀，
-对于 Map 只需要在声明语句前加
-<code>&lt;<em>keyType</em>, <em>valueType</em>></code> 前缀，
-下面是参数化字面量的示例：
+List、Set 以及 Map 字面量也可以是参数化的。定义参数化的 List 只需在中括号前添加 <code>&lt;<em>type</em>></code>；定义参数化的 Map 只需要在大括号前添加 <code>&lt;<em>keyType</em>, <em>valueType</em>></code>：
 
 <?code-excerpt "misc/lib/language_tour/generics/misc.dart (collection-literals)"?>
 {% prettify dart %}
@@ -4595,13 +4576,12 @@ var pages = <String, String>{
 
 ### Using parameterized types with constructors
 
-### 使用泛型类型的构造函数
+### 使用类型参数化的构造函数
 
 To specify one or more types when using a constructor, put the types in
 angle brackets (`<...>`) just after the class name. For example:
 
-在调用构造函数的时，在类名字后面使用尖括号（`<...>`）来指定泛型类型。
-例如：
+在调用构造方法时也可以使用泛型，只需在类名后用尖括号（`<...>`）将一个或多个类型包裹即可：
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (constructor-1)"?>
 {% prettify dart %}
@@ -4613,7 +4593,7 @@ var nameSet = Set<String>.from(names);
 The following code creates a map that has integer keys and values of
 type View:
 
-下面代码创建了一个 key 为 integer， value 为 View 的 map 对象：
+下面代码创建了一个键为 Int 类型，值为 View 类型的 Map 对象：
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (constructor-2)"?>
 {% prettify dart %}
@@ -4623,15 +4603,13 @@ var views = Map<int, View>();
 
 ### Generic collections and the types they contain
 
-### 运行时中的泛型集合
+### 泛型集合以及它们所包含的类型
 
 Dart generic types are *reified*, which means that they carry their type
 information around at runtime. For example, you can test the type of a
 collection:
 
-Dart 中泛型类型是 *固化的*，也就是说它们在运行时是携带着类型信息的。
-例如，
-在运行时检测集合的类型：
+Dart的泛型类型是 *固化的*，这意味着即便在运行时也会保持类型信息：
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (generic-collections)"?>
 {% prettify dart %}
@@ -4643,28 +4621,25 @@ print(names is List<String>); // true
 <div class="alert alert-info" markdown="1">
 **Note:**
 
-**提示：**
+**注意：**
 
 In contrast, generics in Java use *erasure*, which means that generic
 type parameters are removed at runtime. In Java, you can test whether
 an object is a List, but you can’t test whether it’s a `List<String>`.
 
-相反，Java中的泛型会被 *擦除* ，也就是说在运行时泛型类型参数的信息是不存在的。
-在Java中，可以测试对象是否为 List 类型，
-但无法测试它是否为 `List<String>` 。
+与 Java 不同的是，Java 中的泛型是类型 *擦除* 的，这意味着泛型类型会在运行时被移除。在 Java 中你可以判断对象是否为 List 但不可以判断对象是否为 `List<String>`。
 </div>
 
 
 ### Restricting the parameterized type
 
-### 限制泛型类型
+### 限制参数化类型
 
 When implementing a generic type,
 you might want to limit the types of its parameters.
 You can do this using `extends`.
 
-使用泛型类型的时候，
-可以使用 `extends` 实现参数类型的限制。
+有时使用泛型的时候可能会想限制泛型的类型范围，这时候可以使用 `extends` 关键字：
 
 <?code-excerpt "misc/lib/language_tour/generics/base_class.dart" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
 {% prettify dart %}
@@ -4678,7 +4653,7 @@ class Extender extends SomeBaseClass {...}
 
 It's OK to use `SomeBaseClass` or any of its subclasses as generic argument:
 
-可以使用 `SomeBaseClass` 或其任意子类作为通用参数：
+这时候就可以使用 `SomeBaseClass` 或者它的子类来作为泛型参数：
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (SomeBaseClass-ok)" replace="/Foo.\w+./[!$&!]/g"?>
 {% prettify dart %}
@@ -4688,7 +4663,7 @@ var extenderFoo = [!Foo<Extender>!]();
 
 It's also OK to specify no generic argument:
 
-也可以不指定泛型参数：
+这时候也可以指定无参数的泛型，这时无参数泛型的类型则为 `Foo<SomeBaseClass>`：
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (no-generic-arg-ok)" replace="/expect\((.*?).toString\(\), .(.*?).\);/print($1); \/\/ $2/g"?>
 {% prettify dart %}
@@ -4698,7 +4673,7 @@ print(foo); // Instance of 'Foo<SomeBaseClass>'
 
 Specifying any non-`SomeBaseClass` type results in an error:
 
-指定任何非 `SomeBaseClass` 类型会导致错误：
+将非 `SomeBaseClass` 的类型作为泛型参数则会导致编译错误：
 
 {:.fails-sa}
 <?code-excerpt "misc/lib/language_tour/generics/misc.dart (Foo-Object-error)" replace="/Foo.\w+./[!$&!]/g"?>
@@ -4709,14 +4684,12 @@ var foo = [!Foo<Object>!]();
 
 ### Using generic methods
 
-
-### 使用泛型函数
+### 使用泛型方法
 
 Initially, Dart's generic support was limited to classes.
 A newer syntax, called _generic methods_, allows type arguments on methods and functions:
 
-最初，Dart 的泛型只能用于类。
-新语法_泛型方法_，允许在方法和函数上使用类型参数：
+起初 Dart 只支持在类的声明时指定泛型，现在同样也可以在方法上使用泛型，称之为 _泛型方法_：
 
 <!-- {{site.dartpad}}/a02c53b001977efa4d803109900f21bb -->
 <!-- https://gist.github.com/a02c53b001977efa4d803109900f21bb -->
@@ -4733,8 +4706,7 @@ A newer syntax, called _generic methods_, allows type arguments on methods and f
 Here the generic type parameter on `first` (`<T>`)
 allows you to use the type argument `T` in several places:
 
-这里的 `first` (`<T>`)
-泛型可以在如下地方使用参数 `T` ：
+方法 `first<T>` 的泛型 `T` 可以在如下地方使用：
 
 * In the function's return type (`T`).
 
@@ -4751,8 +4723,7 @@ allows you to use the type argument `T` in several places:
 For more information about generics, see
 [Using Generic Methods.](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md)
 
-关于泛型的更多信息，参考
-[使用泛型函数](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md)
+你可以查阅[使用泛型函数](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md)获取更多关于泛型的信息。
 
 
 ## Libraries and visibility
