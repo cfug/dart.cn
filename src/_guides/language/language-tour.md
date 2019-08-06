@@ -3301,7 +3301,7 @@ If a constant constructor is outside of a constant context
 and is invoked without `const`,
 it creates a **non-constant object**:
 
-但是如果无法根据上下文判断是否可以省略 `cosnt`，则不能省略掉 `const` 关键字，例如：
+但是如果无法根据上下文判断是否可以省略 `cosnt`，则不能省略掉 `const` 关键字，否则将会创建一个 **非常量对象** 例如：
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (nonconst-const-constructor)"?>
 {% prettify dart %}
@@ -3364,7 +3364,7 @@ All instance variables generate an implicit *getter* method. Non-final
 instance variables also generate an implicit *setter* method. For details,
 see [Getters and setters](#getters-and-setters).
 
-所有实例变量均会隐式地声明一个 *getter* 方法，非 final 类型的实例变量还会隐式地声明一个 *setter* 方法。你可以查阅 [Getter 和 Setter](#getters-and-setters) 获取更多相关信息。
+所有实例变量均会隐式地声明一个 *Getter* 方法，非 final 类型的实例变量还会隐式地声明一个 *Setter* 方法。你可以查阅 [Getter 和 Setter](#getters-and-setters) 获取更多相关信息。
 
 <?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class+main)" replace="/(num .*?;).*/$1/g" plaster="none"?>
 {% prettify dart %}
@@ -3399,7 +3399,7 @@ class (plus, optionally, an additional identifier as described in
 The most common form of constructor, the generative constructor, creates
 a new instance of a class:
 
-声明一个与类名一样的函数即可声明一个构造函数（[对于命名式构造函数](#named-constructors)还可以添加额外的标识符）。大部分的构造函数形式是生成式构造函数，其用于创建一个类的实例：
+声明一个与类名一样的函数即可声明一个构造函数（对于[命名式构造函数](#named-constructors)还可以添加额外的标识符）。大部分的构造函数形式是生成式构造函数，其用于创建一个类的实例：
 
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (constructor-long-way)" plaster="none"?>
 {% prettify dart %}
@@ -3432,7 +3432,7 @@ omits the `this`.
 The pattern of assigning a constructor argument to an instance variable
 is so common, Dart has syntactic sugar to make it easy:
 
-对于大多数编程语言来说在构造方法中为实例变量赋值的过程都是类似的，而 Dart 则提供了一种特殊的语法糖来简化该步骤：
+对于大多数编程语言来说在构造函数中为实例变量赋值的过程都是类似的，而 Dart 则提供了一种特殊的语法糖来简化该步骤：
 
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (constructor-initializer)" plaster="none"?>
 {% prettify dart %}
@@ -3506,7 +3506,7 @@ constructor body. If an [initializer list](#initializer-list)
 is also being used, it executes before the superclass is called.
 In summary, the order of execution is as follows:
 
-默认情况下，子类的构造函数会调用父类的匿名无参数构造方法，并且该调用会在子类构造函数的函数体代码执行前，如果子类构造函数还有一个 [initializer list](#initializer-list)，那么该初始化列表会在调用父类的该构造函数之前被执行，总的来说，这三者的调用顺序如下：
+默认情况下，子类的构造函数会调用父类的匿名无参数构造方法，并且该调用会在子类构造函数的函数体代码执行前，如果子类构造函数还有一个[初始化列表](#initializer-list)，那么该初始化列表会在调用父类的该构造函数之前被执行，总的来说，这三者的调用顺序如下：
 
 1. initializer list
 
@@ -3531,8 +3531,7 @@ In the following example, the constructor for the Employee class
 calls the named constructor for its superclass, Person.
 Click the run button {% asset red-run.png alt="" %} to execute the code.
 
-下面的示例中，Employee 类的构造函数调用了父类 Person 的命名构造函数。
-点击运行按钮{% asset red-run.png alt="" %} 执行示例代码。
+下面的示例中，Employee 类的构造函数调用了父类 Person 的命名构造函数。点击运行按钮{% asset red-run.png alt="" %} 执行示例代码。
 
 {% comment %}
 https://gist.github.com/Sfshaza/e57aa06401e6618d4eb8
@@ -3906,9 +3905,6 @@ Instance, getter, and setter methods can be abstract, defining an
 interface but leaving its implementation up to other classes.
 Abstract methods can only exist in [abstract classes](#abstract-classes).
 
-实例方法， getter， 和 setter 方法可以是抽象的，
-只定义接口不进行实现，而是留给其他类去实现。
-抽象方法只存在于 [抽象类](#abstract-classes) 中。
 实例方法、Getter 方法以及 Setter 方法都可以是抽象的，定义一个接口方法而不去做具体的实现让实现它的类去实现该方法，抽象方法只能存在于[抽象类](#abstract-classes)中。
 
 To make a method abstract, use a semicolon (;) instead of a method body:
@@ -3940,11 +3936,6 @@ can’t be instantiated. Abstract classes are useful for defining
 interfaces, often with some implementation. If you want your abstract
 class to appear to be instantiable, define a [factory
 constructor](#factory-constructors).
-
-使用 `abstract` 修饰符来定义 *抽象类* — 抽象类不能实例化。
-抽象类通常用来定义接口，以及部分实现。
-如果希望抽象类能够被实例化，那么可以通过定义一个
-[工厂构造函数](#工厂构造函数) 来实现。
 
 使用关键字 `abstract` 标识类可以让该类成为 *抽象类*，抽象类将无法被实例化。抽象类常用于声明接口方法、有时也会有具体的方法实现。如果想让抽象类同时可被实例化，可以为其定义[工厂构造函数](#工厂构造函数)。
 
@@ -4024,7 +4015,7 @@ class Point implements Comparable, Location {...}
 
 ### Extending a class
 
-### 扩展类（继承）
+### 扩展一个类
 
 Use `extends` to create a subclass, and `super` to refer to the
 superclass:
@@ -4076,7 +4067,7 @@ To narrow the type of a method parameter or instance variable in code that is
 [type safe](/guides/language/sound-dart),
 you can use the [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
 
-限定方法参数以及实例变量的类型可以让代码更加类型安全，你可以使用 `covariant` 协变关键字。
+限定方法参数以及实例变量的类型可以让代码更加[类型安全]((/guides/language/sound-dart))，你可以使用[协变关键字](/guides/language/sound-problems#the-covariant-keyword)。
 
 #### Overridable operators
 
@@ -4138,7 +4129,7 @@ For an example of overriding `==` and `hashCode`, see
 For more information on overriding, in general, see
 [Extending a class](#extending-a-class).
 
-你也可以查阅[扩展类](#extending-a-class)获取更多关于重写的信息。
+你也可以查阅[扩展一个类](#extending-a-class)获取更多关于重写的信息。
 
 #### noSuchMethod()
 
@@ -4271,7 +4262,7 @@ For more information, see the [Dart language specification][].
 
 ### Adding features to a class: mixins
 
-### 使用 Mixn 为类添加功能
+### 使用 Mixin 为类添加功能
 
 Mixins are a way of reusing a class's code in multiple class
 hierarchies.
