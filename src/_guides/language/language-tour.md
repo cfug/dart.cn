@@ -3162,28 +3162,23 @@ descend from [Object.][Object]
 Object) has exactly one superclass, a class body can be reused in
 multiple class hierarchies.
 
-Dart 是一种基于类和 mixin 继承机制的面向对象的语言。
-每个对象都是一个类的实例，所有的类都继承于 [Object.][Object] 。
-基于 *Mixin 继承* 意味着每个类（除 Object 外） 都只有一个超类，
-一个类中的代码可以在其他多个继承类中重复使用。
+Dart 是支持基于 mixin 继承机制的面向对象语言，所有对象都是一个类的实例，而所有的类都继承自 [Object][Object] 类。基于 *mixin 的继承* 意味着每个除 Object 类之外的类都只有一个超类，一个类的代码可以在其它多个类继承中重复使用。
 
 
 ### Using class members
 
-### 使用类的成员变量
+### 使用类的成员
 
 Objects have *members* consisting of functions and data (*methods* and
 *instance variables*, respectively). When you call a method, you *invoke*
 it on an object: the method has access to that object’s functions and
 data.
 
-对象的*成员*由函数和数据（即*方法*和*实例变量*）组成。
-方法的*调用*要通过对象来完成：
-调用的方法可以访问其对象的其他函数和数据。
+对象的 *成员* 由函数和数据（即 *方法* 和 *实例变量*）组成。方法的 *调用* 要通过对象来完成，这种方式可以访问对象的函数和数据。
 
 Use a dot (`.`) to refer to an instance variable or method:
 
-使用 (`.`) 来引用实例对象的变量和方法：
+使用（`.`）来访问对象的实例变量或方法：
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (object-members)"?>
 {% prettify dart %}
@@ -3202,9 +3197,7 @@ num distance = p.distanceTo(Point(4, 4));
 Use `?.` instead of `.` to avoid an exception
 when the leftmost operand is null:
 
-使用 `?.` 来代替 `.` ，
-可以避免因为左边对象可能为 null ，
-导致的异常：
+使用 `?.` 代替 `.` 可以避免因为左边表达式为 null 而导致的问题：
 
 {% comment %}
 {{site.dartpad}}/0cb25997742ed5382e4a
@@ -3228,10 +3221,7 @@ Constructor names can be either <code><em>ClassName</em></code> or
 the following code creates `Point` objects using the
 `Point()` and `Point.fromJson()` constructors:
 
-通过 *构造函数* 创建对象。
-构造函数的名字可以是 <code><em>ClassName</em></code> 或者
-<code><em>ClassName</em>.<em>identifier</em></code>。例如，
-以下代码使用 `Point` 和 `Point.fromJson()` 构造函数创建 `Point` 对象：
+可以使用 *构造函数* 来创建一个对象。构造函数的命名方式可以为 <code><em>类名</em></code> 或 <code><em>类名</em>.<em>标识符</em></code> 的形式。例如下述代码分别使用 `Point()` 和 `Point.fromJson()` 两种构造器创建了 `Point` 对象：
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (object-creation)" replace="/ as .*?;/;/g"?>
 {% prettify dart %}
@@ -3242,8 +3232,7 @@ var p2 = Point.fromJson({'x': 1, 'y': 2});
 The following code has the same effect, but
 uses the optional `new` keyword before the constructor name:
 
-以下代码具有相同的效果，
-但是构造函数前面的的 `new` 关键字是可选的：
+以下代码具有相同的效果，但是构造函数名前面的的 `new` 关键字是可选的：
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (object-creation-new)" replace="/ as .*?;/;/g"?>
 {% prettify dart %}
@@ -3254,15 +3243,14 @@ var p2 = new Point.fromJson({'x': 1, 'y': 2});
 <aside class="alert alert-info" markdown="1">
   **Version note:** The `new` keyword became optional in Dart 2.
 
-  **版本提示：** 在 Dart 2 中 `new` 关键字变成了可选的。
+  **版本说明：** 从 Dart 2 开始，`new` 关键字是可选的。
 </aside>
 
 Some classes provide [constant constructors](#constant-constructors).
 To create a compile-time constant using a constant constructor,
 put the `const` keyword before the constructor name:
 
-一些类提供了[常量构造函数](#constant-constructors)。
-使用常量构造函数，在构造函数名之前加 `const` 关键字，来创建编译时常量时：
+一些类提供了[常量构造函数](#constant-constructors)。使用常量构造函数，在构造函数名之前加 `const` 关键字，来创建编译时常量时：
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (const)"?>
 {% prettify dart %}
@@ -3272,8 +3260,7 @@ var p = const ImmutablePoint(2, 2);
 Constructing two identical compile-time constants results in a single,
 canonical instance:
 
-构造两个相同的编译时常量会产生一个唯一的，
-标准的实例：
+两个使用相同构造函数相同参数值构造的编译时常量是同一个对象：
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (identical)"?>
 {% prettify dart %}
@@ -3286,8 +3273,7 @@ assert(identical(a, b)); // They are the same instance!
 Within a _constant context_, you can omit the `const` before a constructor
 or literal. For example, look at this code, which creates a const map:
 
-在 _常量上下文_ 中， 构造函数或者字面量前的 `const` 可以省略。
-例如，下面代码创建了一个 const 类型的 map 对象：
+根据使用 _常量上下文_ 的场景，你可以省略掉构造函数或字面量前的 `const` 关键字。例如下面的例子中我们创建了一个常量 Map：
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (const-context-withconst)" replace="/pointAndLine1/pointAndLine/g"?>
 {% prettify dart %}
@@ -3300,7 +3286,7 @@ const pointAndLine = const {
 
 You can omit all but the first use of the `const` keyword:
 
-保留第一个 `const` 关键字，其余的全部省略：
+根据上下文，你可以只保留第一个 `const` 关键字，其余的全部省略：
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (const-context-noconst)" replace="/pointAndLine2/pointAndLine/g"?>
 {% prettify dart %}
@@ -3315,9 +3301,7 @@ If a constant constructor is outside of a constant context
 and is invoked without `const`,
 it creates a **non-constant object**:
 
-如果常量构造函数在常量上下文之外，
-且省略了 `const` 关键字，
-此时创建的对象是**非常量对象**：
+但是如果无法根据上下文判断是否可以省略 `cosnt`，则不能省略掉 `const` 关键字，例如：
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (nonconst-const-constructor)"?>
 {% prettify dart %}
@@ -3331,7 +3315,7 @@ assert(!identical(a, b)); // NOT the same instance!
   **Version note:** The `const` keyword became optional
   within a constant context in Dart 2.
 
-  **版本提示：** 在 Dart 2 中，一个常量上下文中的 `const` 关键字可以被省略。
+  **版本说明：** 只有从 Dart 2 开始才能根据上下文判断省略 `cosnt` 关键字。
 </aside>
 
 
@@ -3343,9 +3327,7 @@ To get an object's type at runtime,
 you can use Object's `runtimeType` property,
 which returns a [Type][] object.
 
-使用对象的 `runtimeType` 属性，
-可以在运行时获取对象的类型，
-`runtimeType` 属性回返回一个 [Type][] 对象。
+可以使用 Object 对象的 `runtimeType` 属性在运行时获取一个对象的类型，该对象类型是 [Type][] 的实例。
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (runtimeType)"?>
 {% prettify dart %}
@@ -3355,8 +3337,7 @@ print('The type of a is ${a.runtimeType}');
 Up to here, you've seen how to _use_ classes.
 The rest of this section shows how to _implement_ classes.
 
-到目前为止，我们已经解了如何_使用_类。
-本节的其余部分将介绍如何_实现_一个类。
+到目前为止，我们已经解了如何 _使用_ 类。本节的其余部分将向你介绍如何 _实现_ 一个类。
 
 ### Instance variables
 
@@ -3377,15 +3358,13 @@ class Point {
 
 All uninitialized instance variables have the value `null`.
 
-未初始化实例变量的默认人值为 “null” 。
+所有未初始化的实例变量其值均为 `null`。
 
 All instance variables generate an implicit *getter* method. Non-final
 instance variables also generate an implicit *setter* method. For details,
 see [Getters and setters](#getters-and-setters).
 
-所有实例变量都生成隐式 *getter* 方法。
-非 final 的实例变量同样会生成隐式 *setter* 方法。
-有关更多信息，参考 [Getters 和 setters](#getters-和-setters)。
+所有实例变量均会隐式地声明一个 *getter* 方法，非 final 类型的实例变量还会隐式地声明一个 *setter* 方法。你可以查阅 [Getter 和 Setter](#getters-and-setters) 获取更多相关信息。
 
 <?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class+main)" replace="/(num .*?;).*/$1/g" plaster="none"?>
 {% prettify dart %}
@@ -3407,9 +3386,7 @@ in a constructor or method), the value is set when the instance is
 created, which is before the constructor and its initializer list
 execute.
 
-如果在声明时进行了示例变量的初始化，
-那么初始化值会在示例创建时赋值给变量，
-该赋值过程在构造函数及其初始化列表执行之前。
+如果你在声明一个实例变量的时候就将其初始化（而不是在构造函数或其它方法中），那么该实例变量的值就会在对象实例创建的时候被设置，该过程会在构造函数以及它的初始化器列表执行前。
 
 
 ### Constructors
@@ -3422,11 +3399,7 @@ class (plus, optionally, an additional identifier as described in
 The most common form of constructor, the generative constructor, creates
 a new instance of a class:
 
-通过创建一个与其类同名的函数来声明构造函数
-（另外，还可以附加一个额外的可选标识符，如 [命名构造函数](#named-constructors) 中所述）。
-下面通过最常见的构造函数形式，
-即生成构造函数，
-创建一个类的实例：
+声明一个与类名一样的函数即可声明一个构造函数（[对于命名式构造函数](#named-constructors)还可以添加额外的标识符）。大部分的构造函数形式是生成式构造函数，其用于创建一个类的实例：
 
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (constructor-long-way)" plaster="none"?>
 {% prettify dart %}
@@ -3448,19 +3421,18 @@ The `this` keyword refers to the current instance.
 <div class="alert alert-info" markdown="1">
 **Note:**
 
-**提示：**
+**注意：**
 
 Use `this` only when there is a name conflict. Otherwise, Dart style
 omits the `this`.
 
-近当存在命名冲突时，使用 `this` 关键字。 否则，按照 Dart 风格应该省略 `this` 。
+当且仅当命名冲突时使用 `this` 关键字才有意义，否则 Dart 会忽略 `this` 关键字。
 </div>
 
 The pattern of assigning a constructor argument to an instance variable
 is so common, Dart has syntactic sugar to make it easy:
 
-通常模式下，会将构造函数传入的参数的值赋值给对应的实例变量，
-Dart 自身的语法糖精简了这些代码：
+对于大多数编程语言来说在构造方法中为实例变量赋值的过程都是类似的，而 Dart 则提供了一种特殊的语法糖来简化该步骤：
 
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (constructor-initializer)" plaster="none"?>
 {% prettify dart %}
@@ -3481,8 +3453,7 @@ If you don’t declare a constructor, a default constructor is provided
 for you. The default constructor has no arguments and invokes the
 no-argument constructor in the superclass.
 
-在没有声明构造函数的情况下， Dart 会提供一个默认的构造函数。
-默认构造函数没有参数并会调用父类的无参构造函数。
+如果你没有声明构造函数，那么 Dart 会自动生成一个无参数的构造函数并且该构造函数会调用其父类的无参数构造方法。
 
 #### Constructors aren’t inherited
 
@@ -3492,18 +3463,16 @@ Subclasses don’t inherit constructors from their superclass. A subclass
 that declares no constructors has only the default (no argument, no
 name) constructor.
 
-子类不会继承父类的构造函数。
-子类不声明构造函数，那么它就只有默认构造函数 (匿名，没有参数)。
+子类不会继承父类的构造函数，如果子类没有声明构造函数，那么只会有一个默认无参数的构造函数。
 
 #### Named constructors
 
-#### 命名构造函数
+#### 命名式构造函数
 
 Use a named constructor to implement multiple constructors for a class
 or to provide extra clarity:
 
-使用命名构造函数可为一个类实现多个构造函数，
-也可以使用命名构造函数来更清晰的表明函数意图：
+可以为一个类声明多个命名式构造函数来表达更明确的意图：
 
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (named-constructor)" replace="/Point\.\S*/[!$&!]/g" plaster="none"?>
 {% prettify dart %}
@@ -3525,10 +3494,7 @@ superclass’s named constructor is not inherited by a subclass. If you
 want a subclass to be created with a named constructor defined in the
 superclass, you must implement that constructor in the subclass.
 
-切记，构造函数不能够被继承，
-这意味着父类的命名构造函数不会被子类继承。
-如果希望使用父类中定义的命名构造函数创建子类，
-就必须在子类中实现该构造函数。
+记住构造函数是不能被继承的，这将意味着子类不能继承父类的命名式构造函数，如果你想在子类中提供一个与父类命名构造函数名字一样的命名构造函数，则需要在子类中显式地声明。
 
 #### Invoking a non-default superclass constructor
 
@@ -3541,32 +3507,26 @@ constructor body. If an [initializer list](#initializer-list)
 is also being used, it executes before the superclass is called.
 In summary, the order of execution is as follows:
 
-默认情况下，子类的构造函数会自动调用父类的默认构造函数（匿名，无参数）。
-父类的构造函数在子类构造函数体开始执行的位置被调用。
-如果提供了一个 [initializer list](#initializer-list)（初始化参数列表），
-则初始化参数列表在父类构造函数执行之前执行。
-总之，执行顺序如下：
+默认情况下，子类的构造函数会调用父类的匿名无参数构造方法，并且该调用会在子类构造函数的函数体代码执行前，如果子类构造函数还有一个 [initializer list](#initializer-list)，那么该初始化列表会在调用父类的该构造函数之前被执行，总的来说，这三者的调用顺序如下：
 
 1. initializer list
 
-   初始化参数列表
+   初始化列表
 
 1. superclass's no-arg constructor
 
-   父类的无名构造函数
+   父类的无参数构造函数
 
 1. main class's no-arg constructor
 
-   主类的无名构造函数
+   当前类的构造函数
 
 If the superclass doesn’t have an unnamed, no-argument constructor,
 then you must manually call one of the constructors in the
 superclass. Specify the superclass constructor after a colon (`:`), just
 before the constructor body (if any).
 
-如果父类中没有匿名无参的构造函数，
-则需要手工调用父类的其他构造函数。
-在当前构造函数冒号 (`:`) 之后，函数体之前，声明调用父类构造函数。
+如果父类没有匿名无参数构造函数，那么子类必须调用父类的其中一个构造函数，为子类的构造函数指定一个父类的构造函数只需在构造函数体前使用（`:`）指定。
 
 In the following example, the constructor for the Employee class
 calls the named constructor for its superclass, Person.
@@ -3623,8 +3583,7 @@ Because the arguments to the superclass constructor are evaluated before
 invoking the constructor, an argument can be an expression such as a
 function call:
 
-由于父类的构造函数参数在构造函数执行之前执行，
-所以参数可以是一个表达式或者一个方法调用：
+因为参数会在子类构造函数被执行前传递给父类的构造函数，因此该参数也可以是一个表达式，比如一个函数：
 
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (method-then-constructor)"?>
 {% prettify dart %}
@@ -3642,8 +3601,7 @@ class Employee extends Person {
 Arguments to the superclass constructor do not have access to `this`.
 For example, arguments can call static methods but not instance methods.
 
-调用父类构造函数的参数无法访问 this。
-例如，参数可以为静态函数但是不能是实例函数。
+传递给父类构造函数的参数不能使用 `this` 关键字，因为在参数传递的这一步骤，子类构造函数尚未执行，子类的实例对象也就还未初始化，因此所有的实例成员都不能被访问，但是类成员可以。
 </div>
 
 #### Initializer list
@@ -3654,9 +3612,7 @@ Besides invoking a superclass constructor, you can also initialize
 instance variables before the constructor body runs. Separate
 initializers with commas.
 
-除了调用超类构造函数之外，
-还可以在构造函数体执行之前初始化实例变量。
-各参数的初始化用逗号分隔。
+除了调用父类构造函数之外，还可以在构造函数体执行之前初始化实例变量。每个实例变量之间使用逗号分隔。
 
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list)"?>
 {% prettify dart %}
@@ -3676,14 +3632,13 @@ Point.fromJson(Map<String, num> json)
 
 The right-hand side of an initializer does not have access to `this`.
 
-初始化程序的右侧无法访问 `this`。
+初始化列表表达式 = 右边的语句不能使用 `this` 关键字。
 </div>
 
 During development, you can validate inputs by using `assert` in the
 initializer list.
 
-在开发期间，
-可以使用 `assert` 来验证输入的初始化列表。
+在开发模式下，你可以在初始化列表中使用 `assert` 来验证输入数据：
 
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-with-assert)" replace="/assert\(.*?\)/[!$&!]/g"?>
 {% prettify dart %}
@@ -3704,9 +3659,7 @@ Initializer lists are handy when setting up final fields.
 The following example initializes three final fields in an initializer list.
 Click the run button {% asset red-run.png alt="" %} to execute the code.
 
-使用初始化列表可以很方便的设置 final 字段。
-下面示例演示了，如何使用初始化列表初始化设置三个 final 字段。
-点击运行按钮 {% asset red-run.png alt="" %} 执行示例代码。
+初始化列表用来设置 `final` 字段是非常好用的，下面的示例中就使用初始化列表来设置了三个 `final` 变量的值。点击运行按钮 {% asset red-run.png alt="" %} 执行示例代码。
 
 {% comment %}
 https://gist.github.com/Sfshaza/7a9764702c0608711e08
@@ -3750,9 +3703,7 @@ Sometimes a constructor’s only purpose is to redirect to another
 constructor in the same class. A redirecting constructor’s body is
 empty, with the constructor call appearing after a colon (:).
 
-有时构造函数的唯一目的是重定向到同一个类中的另一个构造函数。
-重定向构造函数的函数体为空，
-构造函数的调用在冒号 (:) 之后。
+有时候类中的构造函数会调用类中其它的构造函数，该重定向构造函数没有函数体，只需在函数签名后使用（:）指定需要重定向到的其它构造函数即可：
 
 <?code-excerpt "misc/lib/language_tour/classes/point_redirecting.dart"?>
 {% prettify dart %}
@@ -3775,10 +3726,7 @@ If your class produces objects that never change, you can make these
 objects compile-time constants. To do this, define a `const` constructor
 and make sure that all instance variables are `final`.
 
-如果该类生成的对象是固定不变的，
-那么就可以把这些对象定义为编译时常量。
-为此，需要定义一个 `const` 构造函数，
-并且声明所有实例变量为 `final`。
+如果类生成的对象都是不会变的，那么可以在生成这些对象时就将其变为编译时常量。你可以在类的构造函数前加上 `const` 关键字并确保所有实例变量均为 `final` 来实现该功能。
 
 <?code-excerpt "misc/lib/language_tour/classes/immutable_point.dart"?>
 {% prettify dart %}
@@ -3796,8 +3744,7 @@ Constant constructors don't always create constants.
 For details, see the section on
 [using constructors](#using-constructors).
 
-常量构造函数创建的实例并不总是常量。
-更多内容，查看 [使用构造函数](#using-constructors)章节。
+常量构造函数创建的实例并不总是常量，具体可以参考[使用构造函数](#using-constructors)章节。
 
 
 #### Factory constructors
@@ -3809,9 +3756,7 @@ always create a new instance of its class. For example, a factory
 constructor might return an instance from a cache, or it might return an
 instance of a subtype.
 
-当执行构造函数并不总是创建这个类的一个新实例时，则使用 `factory` 关键字。
-例如，一个工厂构造函数可能会返回一个 cache 中的实例，
-或者可能返回一个子类的实例。
+使用 `factory` 关键字标识类的构造函数将会令该构造函数变为工厂构造函数，这将意味着使用该构造函数构造类的实例时并非总是会返回新的实例对象。例如，工厂构造函数可能会从缓存中返回一个实例，或者返回一个子类型的实例。
 
 The following example demonstrates a factory constructor returning
 objects from a cache:
@@ -3850,11 +3795,11 @@ class Logger {
 <div class="alert alert-info" markdown="1">
 **Note:**
 
-**提示：**
+**注意：**
 
 Factory constructors have no access to `this`.
 
-工厂构造函数无法访问 this。
+在工厂构造函数中无法访问 `this`。
 </div>
 
 Invoke a factory constructor just like you would any other constructor:
@@ -3874,7 +3819,7 @@ logger.log('Button clicked');
 
 Methods are functions that provide behavior for an object.
 
-方法是为对象提供行为的函数。
+方法是对象提供行为的函数。
 
 #### Instance methods
 
@@ -3884,8 +3829,7 @@ Instance methods on objects can access instance variables and `this`.
 The `distanceTo()` method in the following sample is an example of an
 instance method:
 
-对象的实例方法可以访问 `this` 和实例变量。
-以下示例中的 `distanceTo()` 方法就是实例方法：
+对象的实例方法可以访问实例变量和 `this`。下面的 `distanceTo()` 方法就是一个实例方法的例子：
 
 
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (class-with-distanceTo)" plaster="none"?>
@@ -3915,10 +3859,7 @@ an implicit getter, plus a setter if appropriate. You can create
 additional properties by implementing getters and setters, using the
 `get` and `set` keywords:
 
-
-Getter 和 Setter 是用于对象属性读和写的特殊方法。
-回想之前的例子，每个实例变量都有一个隐式 Getter ，通常情况下还会有一个 Setter 。
-使用 `get` 和 `set` 关键字实现 Getter 和 Setter ，能够为实例创建额外的属性。
+Getter 和 Setter 是一对用来读写对象属性的特殊方法，上面说过实例对象的每一个属性都有一个隐式的 Getter 方法，如果为非 final 属性的话还会有一个 Setter 方法，你可以使用 `get` 和 `set` 关键字为额外的属性添加 Getter 和 Setter 方法：
 
 <?code-excerpt "misc/lib/language_tour/classes/rectangle.dart"?>
 {% prettify dart %}
@@ -3945,24 +3886,20 @@ void main() {
 With getters and setters, you can start with instance variables, later
 wrapping them with methods, all without changing client code.
 
-最开始实现 Getter 和 Setter 也许是直接返回成员变量；
-随着需求变化， Getter 和 Setter 可能需要进行计算处理而使用方法来实现；
-但是，调用对象的代码不需要做任何的修改。
+使用 Getter 和 Setter 的好处是，你可以先使用你的实例变量，过一段时间过再将它们包裹成方法且不需要改动任何代码，即先定义后更改且不影响原有逻辑。
 
 
 <div class="alert alert-info" markdown="1">
 **Note:**
 
-**提示：**
+**注意：**
 
 Operators such as increment (++) work in the expected way, whether or
 not a getter is explicitly defined. To avoid any unexpected side
 effects, the operator calls the getter exactly once, saving its value
 in a temporary variable.
 
-类似 (++) 之类操作符不管是否定义了 getter 方法，都能够正确的执行。
-为了避免一些问题，操作符只调用一次 getter 方法，
-然后把值保存到一个临时的变量中。
+像自增（++）这样的操作符不管是否定义了 Getter 方法都会正确地执行。为了避免一些不必要的异常情况，运算符只会调用 Getter 一次，然后将其值存储在一个临时变量中。
 </div>
 
 #### Abstract methods
@@ -3976,10 +3913,11 @@ Abstract methods can only exist in [abstract classes](#abstract-classes).
 实例方法， getter， 和 setter 方法可以是抽象的，
 只定义接口不进行实现，而是留给其他类去实现。
 抽象方法只存在于 [抽象类](#abstract-classes) 中。
+实例方法、Getter 方法以及 Setter 方法都可以是抽象的，定义一个接口方法而不去做具体的实现让实现它的类去实现该方法，抽象方法只能存在于[抽象类](#abstract-classes)中。
 
 To make a method abstract, use a semicolon (;) instead of a method body:
 
-定义一个抽象函数，使用分号 (;) 来代替函数体：
+直接使用分号（;）替代方法体即可声明一个抽象方法：
 
 <?code-excerpt "misc/lib/language_tour/classes/doer.dart"?>
 {% prettify dart %}
@@ -4012,12 +3950,13 @@ constructor](#factory-constructors).
 如果希望抽象类能够被实例化，那么可以通过定义一个
 [工厂构造函数](#工厂构造函数) 来实现。
 
+使用关键字 `abstract` 标识类可以让该类成为 *抽象类*，抽象类将无法被实例化。抽象类常用于声明接口方法、有时也会有具体的方法实现。如果想让抽象类同时可被实例化，可以为其定义[工厂构造函数](#工厂构造函数)。
+
 Abstract classes often have [abstract methods](#abstract-methods).
 Here’s an example of declaring an abstract class that has an abstract
 method:
 
-抽象类通常具有 [抽象方法](#abstract-methods)。
-下面是一个声明具有抽象方法的抽象类示例：
+抽象类常常会包含[抽象方法](#abstract-methods)。下面是一个声明具有抽象方法的抽象类示例：
 
 <?code-excerpt "misc/lib/language_tour/classes/misc.dart (abstract)"?>
 {% prettify dart %}
@@ -4040,17 +3979,13 @@ members of the class and of any interfaces it implements. If you want to
 create a class A that supports class B’s API without inheriting B’s
 implementation, class A should implement the B interface.
 
-每个类都隐式的定义了一个接口，接口包含了该类所有的实例成员及其实现的接口。
-如果要创建一个 A 类，A 要支持 B 类的 API ，但是不需要继承 B 的实现，
-那么可以通过 A 实现 B 的接口。
+每一个类都隐式地定义了一个接口并实现了该接口，这个接口包含所有这个类的实例成员以及这个类所实现的其它接口。如果想要创建一个 A 类支持调用 B 类的 API 且不想继承 B 类，则可以实现 B 类的接口。
 
 A class implements one or more interfaces by declaring them in an
 `implements` clause and then providing the APIs required by the
 interfaces. For example:
 
-一个类可以通过 `implements` 关键字来实现一个或者多个接口，
-并实现每个接口要求的 API。
-例如：
+一个类可以通过关键字 `implements` 来实现一个或多个接口并实现每个接口定义的 API：
 
 <?code-excerpt "misc/lib/language_tour/classes/impostor.dart"?>
 {% prettify dart %}
@@ -4084,7 +4019,7 @@ void main() {
 Here’s an example of specifying that a class implements multiple
 interfaces:
 
-下面示例演示一个类如何实现多个接口：
+如果需要实现多个类接口，可以使用逗号分割每个接口类：
 
 <?code-excerpt "misc/lib/language_tour/classes/misc.dart (point_interfaces)"?>
 {% prettify dart %}
@@ -4099,7 +4034,7 @@ class Point implements Comparable, Location {...}
 Use `extends` to create a subclass, and `super` to refer to the
 superclass:
 
-使用 `extends` 关键字来创建子类，使用 `super` 关键字来引用父类：
+使用 `extends` 关键字来创建一个子类，并可使用 `super` 关键字引用一个父类：
 
 <?code-excerpt "misc/lib/language_tour/classes/extends.dart" replace="/extends|super/[!$&!]/g"?>
 {% prettify dart %}
@@ -4131,8 +4066,7 @@ Subclasses can override instance methods, getters, and setters.
 You can use the `@override` annotation to indicate that you are
 intentionally overriding a member:
 
-子类可以重写实例方法，getter 和 setter。
-可以使用 `@override` 注解指出想要重写的成员：
+子类可以重写父类的实例方法、Getter 以及 Setter 方法。你可以使用 `@override` 注解来表示你重写了一个成员：
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (override)" replace="/@override/[!$&!]/g"?>
 {% prettify dart %}
@@ -4147,6 +4081,7 @@ To narrow the type of a method parameter or instance variable in code that is
 [type safe](/guides/language/sound-dart),
 you can use the [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
 
+限定方法参数以及实例变量的类型可以让代码更加类型安全，你可以使用 `covariant` 协变关键字。
 
 #### Overridable operators
 
@@ -4156,8 +4091,7 @@ You can override the operators shown in the following table.
 For example, if you define a
 Vector class, you might define a `+` method to add two vectors.
 
-下标的运算符可以被重写。
-例如，想要实现两个向量对象相加，可以重写 `+` 方法。
+可以在一个类中重写下表所罗列出的所有运算符。比如如果定一个 Vector 表示矢量的类，那么可以考虑重写 `+` 操作符来处理两个矢量的相加。
 
 `<`  | `+`  | `|`  | `[]`
 `>`  | `/`  | `^`  | `[]=`
@@ -4170,13 +4104,12 @@ Vector class, you might define a `+` method to add two vectors.
   **Note:** You may have noticed that `!=` is not an overridable operator.
   The expression `e1 != e2` is just syntactic sugar for `!(e1 == e2)`.
 
-   **提示：** 你可能会被提示 `!=` 运算符为非可重载运算符。
-  因为 `e1 != e2` 表达式仅仅是 `!(e1 == e2)` 的语法糖。
+   **注意：** 必须要注意的是 `!=` 操作符并不是一个可被重写的操作符。表达式 `e1 != e2` 仅仅是 `!(e1 == e2)` 的一个语法糖。
 </div>
 
 Here’s an example of a class that overrides the `+` and `-` operators:
 
-下面示例演示一个类重写 `+` 和 `-` 操作符：
+下面是重写 `+` 和 `-` 操作符的例子：
 
 <?code-excerpt "misc/lib/language_tour/classes/vector.dart"?>
 {% prettify dart %}
@@ -4205,25 +4138,19 @@ If you override `==`, you should also override Object's `hashCode` getter.
 For an example of overriding `==` and `hashCode`, see
 [Implementing map keys](/guides/libraries/library-tour#implementing-map-keys).
 
-如果要重写 `==` 操作符，需要重写对象的 `hashCode` getter 方法。
-重写 `==` 和 `hashCode` 的实例，参考
-[Implementing map keys](/guides/libraries/library-tour#implementing-map-keys)。
+如果重写 `==` 操作符，必须也同时重写对象 `hashCode` 的 Getter 方法。你可以查阅[实现映射键](/guides/libraries/library-tour#implementing-map-keys)获取更多关于重写的 `==` 和 `hashCode` 的例子。
 
 For more information on overriding, in general, see
 [Extending a class](#extending-a-class).
 
-
-有关重写的更多介绍，请参考
-[扩展类（继承）](#extending-a-class).
-
+你也可以查阅[扩展类](#extending-a-class)获取更多关于重写的信息。
 
 #### noSuchMethod()
 
 To detect or react whenever code attempts to use a non-existent method or
 instance variable, you can override `noSuchMethod()`:
 
-当代码尝试使用不存在的方法或实例变量时，
-通过重写 `noSuchMethod()` 方法，来实现检测和应对处理：
+如果调用了对象上不存在的方法或实例变量将会触发 `noSuchMethod` 方法，你可以重写 `noSuchMethod` 方法来追踪和记录这一行为：
 
 <?code-excerpt "misc/lib/language_tour/classes/no_such_method.dart" replace="/noSuchMethod(?!,)/[!$&!]/g"?>
 {% prettify dart %}
@@ -4241,27 +4168,23 @@ class A {
 You **can't invoke** an unimplemented method unless
 **one** of the following is true:
 
-除非符合下面的任意一项条件，
-否则没有实现的方法不能够被调用：
+你不能调用一个未实现的方法除非下面其中的一个条件成立：
 
 * The receiver has the static type `dynamic`.
 
-  receiver 具有 `dynamic` 的静态类型 。
+  接收方是静态的 `dynamic` 类型。
 
 * The receiver has a static type that
 defines the unimplemented method (abstract is OK),
 and the dynamic type of the receiver has an implemention of `noSuchMethod()`
 that's different from the one in class `Object`.
 
-  receiver 具有静态类型，用于定义为实现的方法 (可以是抽象的),
-并且 receiver 的动态类型具有 `noSuchMethod()` 的实现，
-该实现与 `Object` 类中的实现不同。
+  接收方具有静态类型，定义了未实现的方法（抽象亦可），并且接收方的动态类型实现了 `noSuchMethod` 方法且具体的实现与 `Object` 中的不同。
 
 For more information, see the informal
 [noSuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
 
-有关更多信息，参考
-[noSuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
+你可以查阅 [noSuchMethod 转发规范](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)获取更多相关信息。
 
 
 <a id="enums"></a>
@@ -4273,8 +4196,7 @@ Enumerated types, often called _enumerations_ or _enums_,
 are a special kind of class used to represent
 a fixed number of constant values.
 
-枚举类型也称为 _enumerations_ 或 _enums_ ，
-是一种特殊的类，用于表示数量固定的常量值。
+枚举类型是一种特殊的类型，也称为 _enumerations_ 或 _enums_，用于定义一些固定数量的常量值。
 
 
 #### Using enums
@@ -4283,7 +4205,7 @@ a fixed number of constant values.
 
 Declare an enumerated type using the `enum` keyword:
 
-使用 `enum` 关键字定义一个枚举类型：
+使用关键字 `enum` 来定义枚举类型：
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (enum)"?>
 {% prettify dart %}
@@ -4295,10 +4217,7 @@ which returns the zero-based position of the value in the enum declaration.
 For example, the first value has index 0,
 and the second value has index 1.
 
-枚举中的每个值都有一个 `index` getter 方法，
-该方法返回值所在枚举类型定义中的位置（从 0 开始）。
-例如，第一个枚举值的索引是 0 ，
-第二个枚举值的索引是 1。
+每一个枚举值都有一个名为 `index` 成员变量的 Getter 方法，该方法将会返回以 0 为基准索引的位置值。例如，第一个枚举值的索引是 0 ，第二个枚举值的索引是 1。以此类推。
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (index)"?>
 {% prettify dart %}
@@ -4310,8 +4229,7 @@ assert(Color.blue.index == 2);
 To get a list of all of the values in the enum,
 use the enum's `values` constant.
 
-使用枚举的 `values` 常量，
-获取所有枚举值列表（list）。
+可以使用枚举类的 `values` 方法获取一个包含所有枚举值的列表：
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (values)"?>
 {% prettify dart %}
@@ -4322,8 +4240,7 @@ assert(colors[2] == Color.blue);
 You can use enums in [switch statements](#switch-and-case), and
 you'll get a warning if you don't handle all of the enum's values:
 
-可以在 [switch 语句](#switch-和-case) 中使用枚举，
-如果不处理所有枚举值，会收到警告：
+你可以在 [Switch 语句](#switch-和-case)中使用枚举，但是需要注意的是必须处理枚举值的每一种情况，即每一个枚举值都必须成为一个 case 子句，不然会出现警告：
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (switch)"?>
 {% prettify dart %}
@@ -4343,36 +4260,34 @@ switch (aColor) {
 
 Enumerated types have the following limits:
 
-枚举类型具有以下限制：
+枚举类型有如下两个限制：
 
 * You can't subclass, mix in, or implement an enum.
 
-  枚举不能被子类化，混合或实现。
+  枚举不能成为子类，也不可以 mix in，你也不可以实现一个枚举。
 
 * You can't explicitly instantiate an enum.
 
-  枚举不能被显式实例化。
+  不能显式地实例化一个枚举类。
 
 For more information, see the [Dart language specification][].
 
-有关更多信息，参考 [Dart language specification][]。
+你可以查阅 [Dart 编程语言规范][]获取更多相关信息。
 
 
 ### Adding features to a class: mixins
 
-### 为类添加功能： Mixin
+### 使用 Mixn 为类添加功能
 
 Mixins are a way of reusing a class's code in multiple class
 hierarchies.
 
-Mixin 是复用类代码的一种途径，
-复用的类可以在不同层级，之间可以不存在继承关系。
+Mixin 是一种在多重继承中复用某个类中代码的方法模式。
 
 To _use_ a mixin, use the `with` keyword followed by one or more mixin
 names. The following example shows two classes that use mixins:
 
-通过 `with` 后面跟一个或多个混入的名称，来 _使用_ Mixin ，
-下面的示例演示了两个使用 Mixin 的类：
+使用 `with` 关键字并在其后跟上 Mixin 类的名字来使用 Mixin 模式：
 
 <?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (Musician and Maestro)" replace="/(with.*) \{/[!$1!] {/g"?>
 {% prettify dart %}
@@ -4395,9 +4310,7 @@ Unless you want your mixin to be usable as a regular class,
 use the `mixin` keyword instead of `class`.
 For example:
 
-通过创建一个继承自 Object 且没有构造函数的类，来 _实现_ 一个 Mixin 。
-如果 Mixin 不希望作为常规类被使用，使用关键字 `mixin` 替换 `class` 。
-例如：
+定义一个类继承自 Object 并且不为该类定义构造函数，这个类就是 Mixin 类，除非你想让该类与普通的类一样可以被正常地使用，否则可以使用关键字 `mixin` 替代 `class` 让其成为一个单纯的 Mixin 类：
 
 <?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (Musical)"?>
 {% prettify dart %}
@@ -4422,9 +4335,7 @@ To specify that only certain types can use the mixin — for example,
 so your mixin can invoke a method that it doesn't define —
 use `on` to specify the required superclass:
 
-指定只有某些类型可以使用的 Mixin -
-比如， Mixin 可以调用 Mixin 自身没有定义的方法 -
-使用 `on` 来指定可以使用 Mixin 的父类类型：
+可以使用关键字 `on` 来指定哪些类可以使用该 Mixin 类，比如有 Mixin 类 A，但是 A 只能被 B 类使用，则可以这样定义 A：
 
 
 <?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (mixin-on)"?>
@@ -4441,19 +4352,20 @@ mixin MusicalPerformer on Musician {
 <aside class="alert alert-info" markdown="1">
   **Version note:** Support for the `mixin` keyword was introduced in Dart 2.1.
 
-  **版本提示：** `mixin` 关键字在 Dart 2.1 中被引用支持。
+  **版本说明：** `mixin` 关键字在 Dart 2.1 中才被引用支持。
 
   Code in earlier releases usually used `abstract class` instead.
   For more information on 2.1 mixin changes, see the
   [Dart SDK changelog][] and [2.1 mixin specification.][]
 
-  早期版本中的代码通常使用 `abstract class` 代替。
-  更多有关 Mixin 在 2.1 中的变更信息，请参见
-  [Dart SDK changelog][] 和 [2.1 mixin specification][] 。
+  早期版本中的代码通常使用 `abstract class` 代替。你可以查阅 [Dart SDK 变更日志][] 和 [2.1 mixin 规范][]获取更多有关 Mixin 在 2.1 中的变更信息。
 </aside>
 
 [Dart SDK changelog]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md
 [2.1 mixin specification.]: https://github.com/dart-lang/language/blob/master/accepted/2.1/super-mixins/feature-specification.md#dart-2-mixin-declarations
+
+[Dart SDK 变更日志]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md
+[2.1 mixin 规范]: https://github.com/dart-lang/language/blob/master/accepted/2.1/super-mixins/feature-specification.md#dart-2-mixin-declarations
 
 
 ### Class variables and methods
@@ -4462,7 +4374,7 @@ mixin MusicalPerformer on Musician {
 
 Use the `static` keyword to implement class-wide variables and methods.
 
-使用 `static` 关键字实现类范围的变量和方法。
+使用关键字 `static` 可以声明类变量或类方法。
 
 #### Static variables
 
@@ -4471,7 +4383,7 @@ Use the `static` keyword to implement class-wide variables and methods.
 Static variables (class variables) are useful for class-wide state and
 constants:
 
-静态变量（类变量）对于类级别的状态是非常有用的：
+静态变量（即类变量）常用于声明类范围内所属的状态变量和常量：
 
 <?code-excerpt "misc/lib/language_tour/classes/misc.dart (static-field)"?>
 {% prettify dart %}
@@ -4487,19 +4399,18 @@ void main() {
 
 Static variables aren’t initialized until they’re used.
 
-静态变量只到它们被使用的时候才会初始化。
+静态变量在其首次被使用的时候才被初始化。
 
 <div class="alert alert-info" markdown="1">
 **Note:**
 
-**提示：**
+**注意：**
 
 This page follows the [style guide
 recommendation](/guides/language/effective-dart/style#identifiers)
 of preferring `lowerCamelCase` for constant names.
 
-代码准守[风格推荐指南](/guides/language/effective-dart/style#identifiers)
-中的命名规则， 使用 `lowerCamelCase` 来命名常量。
+本文代码准守[风格推荐指南](/guides/language/effective-dart/style#identifiers)中的命名规则，使用 `驼峰式大小写` 来命名常量。
 </div>
 
 #### Static methods
@@ -4509,8 +4420,7 @@ of preferring `lowerCamelCase` for constant names.
 Static methods (class methods) do not operate on an instance, and thus
 do not have access to `this`. For example:
 
-静态方法（类方法）不能在实例上使用，因此它们不能访问 `this` 。
-例如：
+静态方法（即类方法）不能被一个类的实例访问，同样地，静态方法内也不可以使用 `this`：
 
 <?code-excerpt "misc/lib/language_tour/classes/point_with_distance_method.dart"?>
 {% prettify dart %}
@@ -4539,20 +4449,18 @@ void main() {
 <div class="alert alert-info" markdown="1">
 **Note:**
 
-**提示：**
+**注意：**
 
 Consider using top-level functions, instead of static methods, for
 common or widely used utilities and functionality.
 
-对于常见或广泛使用的工具和函数，
-应该考虑使用顶级函数而不是静态方法。
+对于一些通用或常用的静态方法，应该将其定义为顶级函数而非静态方法。
 </div>
 
 You can use static methods as compile-time constants. For example, you
 can pass a static method as a parameter to a constant constructor.
 
-静态函数可以当做编译时常量使用。
-例如，可以将静态方法作为参数传递给常量构造函数。
+可以将静态方法作为编译时常量。例如，你可以将静态方法作为一个参数传递给一个常量构造函数。
 
 
 ## Generics
