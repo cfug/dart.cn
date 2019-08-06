@@ -4492,7 +4492,7 @@ the list is probably a mistake. Here’s an example:
 <?code-excerpt "misc/lib/language_tour/generics/misc.dart (why-generics)"?>
 {% prettify dart %}
 var names = List<String>();
-names.addAll(['Seth', 'Kathy', 'Lars']);
+names.addAll(['小芸', '小芳', '小民']);
 names.add(42); // 报错
 {% endprettify %}
 
