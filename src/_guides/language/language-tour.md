@@ -3184,13 +3184,13 @@ Use a dot (`.`) to refer to an instance variable or method:
 {% prettify dart %}
 var p = Point(2, 2);
 
-// Set the value of the instance variable y.
+// 为实例变量 y 赋值。
 p.y = 3;
 
-// Get the value of y.
+// 获取 y 的值。
 assert(p.y == 3);
 
-// Invoke distanceTo() on p.
+// 调用变量 p 的 distanceTo() 方法。
 num distance = p.distanceTo(Point(4, 4));
 {% endprettify %}
 
@@ -3206,7 +3206,7 @@ https://gist.github.com/0cb25997742ed5382e4a
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (safe-member-access)"?>
 {% prettify dart %}
-// If p is non-null, set its y value to 4.
+// 如果 p 为非空则将其属性 y 的值设为 4。
 p?.y = 4;
 {% endprettify %}
 
@@ -3267,7 +3267,7 @@ canonical instance:
 var a = const ImmutablePoint(1, 1);
 var b = const ImmutablePoint(1, 1);
 
-assert(identical(a, b)); // They are the same instance!
+assert(identical(a, b)); // 它们是同一个实例
 {% endprettify %}
 
 Within a _constant context_, you can omit the `const` before a constructor
@@ -3277,7 +3277,7 @@ or literal. For example, look at this code, which creates a const map:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (const-context-withconst)" replace="/pointAndLine1/pointAndLine/g"?>
 {% prettify dart %}
-// Lots of const keywords here.
+// 这里有很多 const 关键字。
 const pointAndLine = const {
   'point': const [const ImmutablePoint(0, 0)],
   'line': const [const ImmutablePoint(1, 10), const ImmutablePoint(-2, 11)],
@@ -3290,7 +3290,7 @@ You can omit all but the first use of the `const` keyword:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (const-context-noconst)" replace="/pointAndLine2/pointAndLine/g"?>
 {% prettify dart %}
-// Only one const, which establishes the constant context.
+// 只需要一个 const 关键字，其它的则会隐式地根据上下文进行关联。
 const pointAndLine = {
   'point': [ImmutablePoint(0, 0)],
   'line': [ImmutablePoint(1, 10), ImmutablePoint(-2, 11)],
@@ -3305,10 +3305,10 @@ it creates a **non-constant object**:
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (nonconst-const-constructor)"?>
 {% prettify dart %}
-var a = const ImmutablePoint(1, 1); // Creates a constant
-var b = ImmutablePoint(1, 1); // Does NOT create a constant
+var a = const ImmutablePoint(1, 1); // 创建一个常量
+var b = ImmutablePoint(1, 1); // 不会创建一个常量
 
-assert(!identical(a, b)); // NOT the same instance!
+assert(!identical(a, b)); // 这两变量并不相同
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
@@ -3350,9 +3350,9 @@ Here’s how you declare instance variables:
 <?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class)"?>
 {% prettify dart %}
 class Point {
-  num x; // Declare instance variable x, initially null.
-  num y; // Declare y, initially null.
-  num z = 0; // Declare z, initially 0.
+  num x; // 声明实例变量 x 并初始化为 null。
+  num y; // 声明实例变量 y 并初始化为 null。
+  num z = 0; // 声明实例变量 z 并初始化为 0。
 }
 {% endprettify %}
 
@@ -3375,9 +3375,9 @@ class Point {
 
 void main() {
   var point = Point();
-  point.x = 4; // Use the setter method for x.
-  assert(point.x == 4); // Use the getter method for x.
-  assert(point.y == null); // Values default to null.
+  point.x = 4; // 使用 x 的 Setter 方法。
+  assert(point.x == 4); // 使用 x 的 Getter 方法。
+  assert(point.y == null); // 默认值为 null。
 }
 {% endprettify %}
 
@@ -3407,7 +3407,7 @@ class Point {
   num x, y;
 
   Point(num x, num y) {
-    // There's a better way to do this, stay tuned.
+    // 还会有更好的方式来实现此逻辑，敬请期待。
     this.x = x;
     this.y = y;
   }
@@ -3439,8 +3439,7 @@ is so common, Dart has syntactic sugar to make it easy:
 class Point {
   num x, y;
 
-  // Syntactic sugar for setting x and y
-  // before the constructor body runs.
+  // 在构造函数体执行前用于设置 x 和 y 的语法糖。
   Point(this.x, this.y);
 }
 {% endprettify %}
@@ -3481,7 +3480,7 @@ class Point {
 
   Point(this.x, this.y);
 
-  // Named constructor
+  // 命名式构造函数
   [!Point.origin()!] {
     x = 0;
     y = 0;
@@ -3550,8 +3549,7 @@ class Person {
 }
 
 class Employee extends Person {
-  // Person does not have a default constructor;
-  // you must call super.fromJson(data).
+  // Person没有默认的构造函数，你必须调用 super.fromJson(data)。
   Employee.fromJson(Map data) : super.fromJson(data) {
     print('in Employee');
   }
@@ -3559,12 +3557,12 @@ class Employee extends Person {
 
 void main() {
   var emp = Employee.fromJson({});
-  // Prints:
+  // 打印输出:
   // in Person
   // in Employee
 
   if (emp is Person) {
-    // Type check
+    // 类型检查
     emp.firstName = 'Bob';
   }
   (emp as Person).firstName = 'Bob';
@@ -3616,8 +3614,7 @@ initializers with commas.
 
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list)"?>
 {% prettify dart %}
-// Initializer list sets instance variables before
-// the constructor body runs.
+// 使用初始化列表在构造函数体执行前设置实例变量。
 Point.fromJson(Map<String, num> json)
     : x = json['x'],
       y = json['y'] {
@@ -3710,10 +3707,10 @@ empty, with the constructor call appearing after a colon (:).
 class Point {
   num x, y;
 
-  // The main constructor for this class.
+  // 该类的主构造函数。
   Point(this.x, this.y);
 
-  // Delegates to the main constructor.
+  // 委托实现给主构造函数。
   Point.alongXAxis(num x) : this(x, 0);
 }
 {% endprettify %}
@@ -3769,8 +3766,7 @@ class Logger {
   final String name;
   bool mute = false;
 
-  // _cache is library-private, thanks to
-  // the _ in front of its name.
+  // _cache 变量是库私有的，因为在其名字前面有下划线。
   static final Map<String, Logger> _cache =
       <String, Logger>{};
 
@@ -3868,7 +3864,7 @@ class Rectangle {
 
   Rectangle(this.left, this.top, this.width, this.height);
 
-  // Define two calculated properties: right and bottom.
+  // 定义两个计算产生的属性：right 和 bottom。
   num get right => left + width;
   set right(num value) => left = value - width;
   num get bottom => top + height;
@@ -3922,14 +3918,14 @@ To make a method abstract, use a semicolon (;) instead of a method body:
 <?code-excerpt "misc/lib/language_tour/classes/doer.dart"?>
 {% prettify dart %}
 abstract class Doer {
-  // Define instance variables and methods...
+  // 定义实例变量和方法等等……
 
-  void doSomething(); // Define an abstract method.
+  void doSomething(); // 定义一个抽象方法。
 }
 
 class EffectiveDoer extends Doer {
   void doSomething() {
-    // Provide an implementation, so the method is not abstract here...
+    // 提供一个实现，所以在这里该方法不再是抽象的……
   }
 }
 {% endprettify %}
@@ -3960,12 +3956,11 @@ method:
 
 <?code-excerpt "misc/lib/language_tour/classes/misc.dart (abstract)"?>
 {% prettify dart %}
-// This class is declared abstract and thus
-// can't be instantiated.
+// 该类被声明为抽象的，因此它不能被实例化。
 abstract class AbstractContainer {
-  // Define constructors, fields, methods...
+  // 定义构造函数、字段、方法等……
 
-  void updateChildren(); // Abstract method.
+  void updateChildren(); // 抽象方法。
 }
 {% endprettify %}
 
@@ -3989,19 +3984,19 @@ interfaces. For example:
 
 <?code-excerpt "misc/lib/language_tour/classes/impostor.dart"?>
 {% prettify dart %}
-// A person. The implicit interface contains greet().
+// Person 类的隐式接口中包含 greet() 方法。
 class Person {
-  // In the interface, but visible only in this library.
+  // _name 变量同样包含在接口中，但它只是库内可见的。
   final _name;
 
-  // Not in the interface, since this is a constructor.
+  // 构造函数不在接口中。
   Person(this._name);
 
-  // In the interface.
+  // greet() 方法在接口中。
   String greet(String who) => 'Hello, $who. I am $_name.';
 }
 
-// An implementation of the Person interface.
+// Person 接口的一个实现。
 class Impostor implements Person {
   get _name => '';
 
@@ -4121,7 +4116,7 @@ class Vector {
   Vector operator +(Vector v) => Vector(x + v.x, y + v.y);
   Vector operator -(Vector v) => Vector(x - v.x, y - v.y);
 
-  // Operator == and hashCode not shown. For details, see note below.
+  // 运算符 == 和 hashCode 的实现未在这里展示，详情请查看下方说明。
   // ···
 }
 
@@ -4155,8 +4150,7 @@ instance variable, you can override `noSuchMethod()`:
 <?code-excerpt "misc/lib/language_tour/classes/no_such_method.dart" replace="/noSuchMethod(?!,)/[!$&!]/g"?>
 {% prettify dart %}
 class A {
-  // Unless you override noSuchMethod, using a
-  // non-existent member results in a NoSuchMethodError.
+  // 除非你重写 noSuchMethod，否则调用一个不存在的成员会导致 NoSuchMethodError。
   @override
   void [!noSuchMethod!](Invocation invocation) {
     print('You tried to use a non-existent member: ' +
@@ -4253,7 +4247,7 @@ switch (aColor) {
   case Color.green:
     print('Green as grass!');
     break;
-  default: // Without this, you see a WARNING.
+  default: // 没有该语句会出现警告。
     print(aColor); // 'Color.blue'
 }
 {% endprettify %}
