@@ -3543,22 +3543,22 @@ class Person {
   String firstName;
 
   Person.fromJson(Map data) {
-    print('in Person');
+    print('在 Person 对象中');
   }
 }
 
 class Employee extends Person {
   // Person没有默认的构造函数，你必须调用 super.fromJson(data)。
   Employee.fromJson(Map data) : super.fromJson(data) {
-    print('in Employee');
+    print('在 Employee 对象中');
   }
 }
 
 void main() {
   var emp = Employee.fromJson({});
   // 打印输出:
-  // in Person
-  // in Employee
+  // 在 Person 对象中
+  // 在 Employee 对象中
 
   if (emp is Person) {
     // 类型检查
@@ -3984,20 +3984,20 @@ class Person {
   Person(this._name);
 
   // greet() 方法在接口中。
-  String greet(String who) => 'Hello, $who. I am $_name.';
+  String greet(String who) => '你好，$who。我是$_name。';
 }
 
 // Person 接口的一个实现。
 class Impostor implements Person {
   get _name => '';
 
-  String greet(String who) => 'Hi $who. Do you know who I am?';
+  String greet(String who) => '你好$who。你知道我是谁吗？';
 }
 
-String greetBob(Person person) => person.greet('Bob');
+String greetBob(Person person) => person.greet('小芳');
 
 void main() {
-  print(greetBob(Person('Kathy')));
+  print(greetBob(Person('小芸')));
   print(greetBob(Impostor()));
 }
 {% endprettify %}
@@ -4144,8 +4144,8 @@ class A {
   // 除非你重写 noSuchMethod，否则调用一个不存在的成员会导致 NoSuchMethodError。
   @override
   void [!noSuchMethod!](Invocation invocation) {
-    print('You tried to use a non-existent member: ' +
-        '${invocation.memberName}');
+  print('你尝试使用一个不存在的成员：' +
+  '${invocation.memberName}');
   }
 }
 {% endprettify %}
@@ -4233,10 +4233,10 @@ var aColor = Color.blue;
 
 switch (aColor) {
   case Color.red:
-    print('Red as roses!');
+    print('红如玫瑰！');
     break;
   case Color.green:
-    print('Green as grass!');
+    print('绿如草原！');
     break;
   default: // 没有该语句会出现警告。
     print(aColor); // 'Color.blue'
