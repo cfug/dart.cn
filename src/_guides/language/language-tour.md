@@ -4966,16 +4966,13 @@ a possibly time-consuming operation
 (such as I/O),
 without waiting for that operation to complete.
 
-Dart 库中包含许多返回 Future 或 Stream 对象的函数.
-这些函数在设置完耗时任务（例如 I/O 曹组）后，
-就立即返回了，不会等待耗任务完成。
+Dart 代码库中有大量返回 [Future][] 或 [Stream][] 对象的函数，这些函数都是 _异步_ 的，它们会在耗时操作（比如I/O）执行完毕前直接返回而不会等待耗时操作执行完毕。
 
 The `async` and `await` keywords support asynchronous programming,
 letting you write asynchronous code that
 looks similar to synchronous code.
 
-使用 `async` 和 `await` 关键字实现异步编程。
-可以让你像编写同步代码一样实现异步操作。
+`async` 和 `await` 关键字用于实现异步编程，并且让你的代码看起来就像是同步的一样。
 
 <a id="await"></a>
 ### Handling Futures
@@ -4994,17 +4991,14 @@ you have two options:
 * Use the Future API, as described
   [in the library tour](/guides/libraries/library-tour#future).
 
-  使用 Future API，具体描述，参考
-  [库概览](/guides/libraries/library-tour#future)。
+  使用 Future API，具体描述，参考[库概览](/guides/libraries/library-tour#future)。
 
 Code that uses `async` and `await` is asynchronous,
 but it looks a lot like synchronous code.
 For example, here's some code that uses `await`
 to wait for the result of an asynchronous function:
 
-使用 `async` 和 `await` 关键字的代码是异步的。
-虽然看起来有点想同步代码。
-例如，下面的代码使用 `await`
+使用 `async` 和 `await` 的代码是异步的，但是看起来有点像同步代码。例如，下面的代码使用 `await`
 等待异步函数的执行结果。
 
 <?code-excerpt "misc/lib/language_tour/async.dart (await-lookUpVersion)"?>
@@ -5015,8 +5009,7 @@ await lookUpVersion();
 To use `await`, code must be in an _async function_—a
 function marked as `async`:
 
-要使用 `await` ，
-代码必须在 _异步函数_（使用 `async` 标记的函数）中：
+必须在带有 async 关键字的 _异步函数_ 中使用 `await`：
 
 <?code-excerpt "misc/lib/language_tour/async.dart (checkVersion)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart %}
@@ -5029,7 +5022,7 @@ Future checkVersion() [!async!] {
 <aside class="alert alert-info" markdown="1">
 **Note:**
 
-**提示：**
+**注意：**
 
 Although an async function might perform time-consuming operations,
 it doesn't wait for those operations.
@@ -5039,18 +5032,13 @@ its first `await` expression
 Then it returns a Future object,
 resuming execution only after the `await` expression completes.
 
-虽然异步函数可能会执行耗时的操作，
-但它不会等待这些操作。
-相反，异步函数只有在遇到第一个 `await` 表达式（[详情见][synchronous-async-start]）时才会执行。
-也就是说，它返回一个 Future 对象，
-仅在await表达式完成后才恢复执行。
+尽管异步函数可以处理耗时操作，但是它并不会等待这些耗时操作完成，异步函数执行时会在其遇到第一个 `await` 表达式（[详情见][synchronous-async-start]）的时候返回一个 Future 对象，然后等待 await 表达式执行完毕后继续执行。
 </aside>
 
 Use `try`, `catch`, and `finally`
 to handle errors and cleanup in code that uses `await`:
 
-使用 `try`， `catch`， 和 `finally`
-来处理代码中使用 `await` 导致的错误。
+使用 `try`、`catch` 以及 `finally` 来处理使用 `await` 导致的异常：
 
 <?code-excerpt "misc/lib/language_tour/async.dart (try-catch)"?>
 {% prettify dart %}
@@ -5065,8 +5053,7 @@ You can use `await` multiple times in an async function.
 For example, the following code waits three times
 for the results of functions:
 
-在一个异步函数中可以多次使用 `await` 。
-例如，下面代码中等待了三次函数结果：
+你可以在异步函数中多次使用 `await` 关键字。例如，下面代码中等待了三次函数结果：
 
 
 <?code-excerpt "misc/lib/language_tour/async.dart (repeated-await)"?>
@@ -5083,22 +5070,14 @@ This Future object indicates a promise to return an object.
 The value of <code>await <em>expression</em></code> is that returned object.
 The await expression makes execution pause until that object is available.
 
-在 <code>await <em>表达式</em></code> 中，
-<code><em>表达式</em></code> 的值通常是一个 Future 对象；
-如果不是，这是表达式的值会被自动包装成一个 Future 对象。
-Future 对象指明返回一个对象的承诺（promise）。
-<code>await <em>表达式</em></code> 执行的结果为这个返回的对象。
-await 表达式会阻塞代码的执行，直到需要的对象返回为止。
+<code>await <em>表达式的返回值通常是一个 Future 对象；如果不是的话也会自动将其包裹在一个 Future 对象里。Future 对象代表一个“承诺”，<code>await <em>表达式</em></code>会阻塞直到需要的对象返回。
 
 **If you get a compile-time error when using `await`,
 make sure `await` is in an async function.**
 For example, to use `await` in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
-**如果在使用 `await` 导致编译时错误，
-确认 `await` 是否在一个异步函数中。**
-例如，在应用的 `main()` 函数中使用 `await` ，
-`main()` 函数的函数体必须被标记为 `async` ：
+**如果在使用 `await` 时导致编译错误，请确保 `await` 在一个异步函数中使用**。例如，如果想在 main() 函数中使用 `await`，那么 `main()` 函数就必须使用 `async` 关键字标识。
 
 <?code-excerpt "misc/lib/language_tour/async.dart (main)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart %}
@@ -5117,14 +5096,13 @@ Future main() [!async!] {
 An _async function_ is a function whose body is marked with
 the `async` modifier.
 
-函数体被 `async` 标示符标记的函数，即是一个 _异步函数_。
+定义 _异步函数_ 只需在普通方法上加上 `async` 关键字即可。
 
 Adding the `async` keyword to a function makes it return a Future.
 For example, consider this synchronous function,
 which returns a String:
 
-将 `async` 关键字添加到函数使其返回Future。
-例如，考虑下面的同步函数，它返回一个 String ：
+将关键字 `async` 添加到函数并让其返回一个 Future 对象。假设有如下返回 String 对象的方法：
 
 <?code-excerpt "misc/lib/language_tour/async.dart (sync-lookUpVersion)"?>
 {% prettify dart %}
@@ -5135,7 +5113,7 @@ If you change it to be an async function—for example,
 because a future implementation will be time consuming—the
 returned value is a Future:
 
-例如，将来的实现将非常耗时，将其更改为异步函数，返回值是 Future：
+将其改为异步函数，返回值是 Future：
 
 <?code-excerpt "misc/lib/language_tour/async.dart (async-lookUpVersion)"?>
 {% prettify dart %}
@@ -5145,14 +5123,12 @@ Future<String> lookUpVersion() async => '1.0.0';
 Note that the function's body doesn't need to use the Future API.
 Dart creates the Future object if necessary.
 
-注意，函数体不需要使用Future API。
-如有必要， Dart 会创建 Future 对象。
+注意，函数体不需要使用 Future API。如有必要，Dart 会创建 Future 对象。
 
 If your function doesn't return a useful value,
 make its return type `Future<void>`.
 
-如果函数没有返回有效值，
-需要设置其返回类型为 `Future<void>` 。
+如果函数没有返回有效值，需要设置其返回类型为 `Future<void>` 。
 
 {% comment %}
 PENDING: add example here
@@ -5169,38 +5145,33 @@ Where else should we cover generalized void?
 When you need to get values from a Stream,
 you have two options:
 
-当需要从 Stream 中获取数据值时，
-可以通过一下两种方式：
+如果想从 Stream 中获取值，可以有两种选择：
 
 * Use `async` and an _asynchronous for loop_ (`await for`).
 
-  使用 `async` 和 一个 _异步循环_ （`await for`）。
+  使用 `async` 关键字和一个 _异步循环_（使用 `await for` 关键字标识）。
 
 * Use the Stream API, as described
   [in the library tour](/guides/libraries/library-tour#stream).
 
-  使用 Stream API, 更多详情，参考
-  [in the library tour](/guides/libraries/library-tour#stream)。
+  使用 Stream API。详情参考[库概览](/guides/libraries/library-tour#stream)。
 
 <aside class="alert alert-warning" markdown="1">
 **Note:**
 
-**提示：**
+**注意：**
 
 Before using `await for`, be sure that it makes the code clearer
 and that you really do want to wait for all of the stream's results.
 For example, you usually should **not** use `await for` for UI event listeners,
 because UI frameworks send endless streams of events.
 
-在使用 `await for` 前，确保代码清晰，
-并且确实希望等待所有流的结果。
-例如，通常不应该使用 `await for` 的UI事件侦听器，
-因为UI框架会发送无穷无尽的事件流。
+在使用 `await for` 关键字前，确保其可以令代码逻辑更加清晰并且是真的需要等待所有的结果执行完毕。例如，通常不应该在 UI 事件监听器上使用 `await for` 关键字，因为 UI 框架发出的事件流是无穷尽的。
 </aside>
 
 An asynchronous for loop has the following form:
 
-以下是异步for循环的使用形式：
+使用 await for 定义异步循环看起来是这样的：
 
 <?code-excerpt "misc/lib/language_tour/async.dart (await-for)"?>
 {% prettify dart %}
@@ -5212,40 +5183,34 @@ await for (varOrType identifier in expression) {
 The value of <code><em>expression</em></code> must have type Stream.
 Execution proceeds as follows:
 
-上面 <code><em>表达式</em></code> 返回的值必须是 Stream 类型。
-执行流程如下：
+<code><em>表达式</em></code> 的类型必须是 Stream。执行流程如下：
 
 1. Wait until the stream emits a value.
 
-   等待，直到流发出一个值。
+   等待直到 Stream 返回一个数据。
 
 2. Execute the body of the for loop,
    with the variable set to that emitted value.
 
-   执行 for 循环体，将变量设置为该发出的值
+   使用 1 中 Stream 返回的数据执行循环体。
 
 3. Repeat 1 and 2 until the stream is closed.
 
-   重复1和2，直到关闭流。
+   重复 1、2 过程直到 Stream 数据返回完毕。
 
 To stop listening to the stream,
 you can use a `break` or `return` statement,
 which breaks out of the for loop
 and unsubscribes from the stream.
 
-使用  break` 或者 `return` 语句可以停止接收 stream 的数据，
-这样就跳出了 for 循环，
-并且从 stream 上取消注册。
+使用 `break` 和 `return` 语句可以停止接收 Stream 数据，这样就跳出了循环并取消注册监听 Stream。
 
 **If you get a compile-time error when implementing an asynchronous for loop,
 make sure the `await for` is in an async function.**
 For example, to use an asynchronous for loop in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
-**如果在实现异步 for 循环时遇到编译时错误，
-请检查确保 `await for` 处于异步函数中。**
-例如，要在应用程序的 `main()` 函数中使用异步 fo r循环，
-`main()` 函数体必须标记为 `async` ：
+**如果在实现异步 for 循环时遇到编译时错误，请检查确保 `await for` 处于异步函数中。** 例如，要在应用程序的 `main()` 函数中使用异步 for 循环，`main()` 函数体必须标记为 `async`：
 
 <?code-excerpt "misc/lib/language_tour/async.dart (number_thinker)" replace="/async|await for/[!$&!]/g"?>
 {% prettify dart %}
@@ -5262,9 +5227,7 @@ For more information about asynchronous programming, in general, see the
 [dart:async](/guides/libraries/library-tour#dartasync---asynchronous-programming)
 section of the library tour.
 
-有关异步编程的更多信息，请参考
-[dart:async](/guides/libraries/library-tour#dartasync---asynchronous-programming)
-部分。
+你可以查阅库概览中有关 [dart:async](/guides/libraries/library-tour#dartasync---asynchronous-programming) 的部分获取更多有关异步编程的信息。
 
 
 <a id="generator"></a>
