@@ -5553,8 +5553,7 @@ Dart 支持单行注释、多行注释和文档注释。
 A single-line comment begins with `//`. Everything between `//` and the
 end of line is ignored by the Dart compiler.
 
-单行注释以 `//` 开始。
-所有在 `//` 和改行结尾之间的内容被编译器忽略。
+单行注释以 `//` 开始。所有在 `//` 和该行结尾之间的内容被编译器忽略。
 
 <?code-excerpt "misc/lib/language_tour/comments.dart (single-line-comments)"?>
 {% prettify dart %}
@@ -5574,10 +5573,7 @@ between `/*` and `*/` is ignored by the Dart compiler (unless the
 comment is a documentation comment; see the next section). Multi-line
 comments can nest.
 
-多行注释以  `/*`  开始， 以 `*/` 结尾。
-所有在 `/*` 和 `*/` 之间的内容被编译器忽略
-（不会忽略文档注释）。
-多行注释可以嵌套。
+多行注释以  `/*`  开始， 以 `*/` 结尾。所有在 `/*` 和 `*/` 之间的内容被编译器忽略（不会忽略文档注释）。多行注释可以嵌套。
 
 <?code-excerpt "misc/lib/language_tour/comments.dart (multi-line-comments)"?>
 {% prettify dart %}
@@ -5602,9 +5598,7 @@ Documentation comments are multi-line or single-line comments that begin
 with `///` or `/**`. Using `///` on consecutive lines has the same
 effect as a multi-line doc comment.
 
-文档注释可以是多行注释，也可以是单行注释，
-文档注释以 `///` 或者 `/**` 开始。
-在连续行上使用 `///` 与多行文档注释具有相同的效果。
+文档注释可以是多行注释，也可以是单行注释，文档注释以 `///` 或者 `/**` 开始。在连续行上使用 `///` 与多行文档注释具有相同的效果。
 
 Inside a documentation comment, the Dart compiler ignores all text
 unless it is enclosed in brackets. Using brackets, you can refer to
@@ -5612,9 +5606,7 @@ classes, methods, fields, top-level variables, functions, and
 parameters. The names in brackets are resolved in the lexical scope of
 the documented program element.
 
-在文档注释中，除非用中括号括起来，否则Dart 编译器会忽略所有文本。
-使用中括号可以引用类、 方法、 字段、 顶级变量、 函数、 和参数。
-括号中的符号会在已记录的程序元素的词法域中进行解析。
+在文档注释中，除非用中括号括起来，否则 Dart 编译器会忽略所有文本。使用中括号可以引用类、 方法、 字段、 顶级变量、 函数、 和参数。括号中的符号会在已记录的程序元素的词法域中进行解析。
 
 Here is an example of documentation comments with references to other
 classes and arguments:
@@ -5648,8 +5640,7 @@ class Llama {
 In the generated documentation, `[Food]` becomes a link to the API docs
 for the Food class.
 
-在生成的文档中，`[Food]` 会成为一个链接，
-指向 Food 类的 API 文档。
+在生成的文档中，`[Food]` 会成为一个链接，指向 Food 类的 API 文档。
 
 To parse Dart code and generate HTML documentation, you can use the SDK’s
 [documentation generation tool.](https://github.com/dart-lang/dartdoc#dartdoc)
@@ -5658,12 +5649,8 @@ documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}) For advice
 your comments, see
 [Guidelines for Dart Doc Comments.](/guides/language/effective-dart/documentation)
 
-解析 Dart 代码并生成 HTML 文档，可以使用 SDK 中的
-[documentation generation tool.](https://github.com/dart-lang/dartdoc#dartdoc)
-关于生成文档的实例，请参考 [Dart API
-documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
-关于文档结构的建议，请参考
-[Guidelines for Dart Doc Comments.](/guides/language/effective-dart/documentation)
+解析 Dart 代码并生成 HTML 文档，可以使用 SDK 中的[文档生成工具。](https://github.com/dart-lang/dartdoc#dartdoc)关于生成文档的实例，请参考 [Dart API
+documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})关于文档结构的建议，请参考[Guidelines for Dart Doc Comments.](/guides/language/effective-dart/documentation)
 
 
 ## Summary
