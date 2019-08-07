@@ -5015,7 +5015,7 @@ function marked as `async`:
 {% prettify dart %}
 Future checkVersion() [!async!] {
   var version = [!await!] lookUpVersion();
-  // // 使用 version 继续处理逻辑
+  // 使用 version 继续处理逻辑
 }
 {% endprettify %}
 
@@ -5128,7 +5128,7 @@ Dart creates the Future object if necessary.
 If your function doesn't return a useful value,
 make its return type `Future<void>`.
 
-如果函数没有返回有效值，需要设置其返回类型为 `Future<void>` 。
+如果函数没有返回有效值，需要设置其返回类型为 `Future<void>`。
 
 {% comment %}
 PENDING: add example here
