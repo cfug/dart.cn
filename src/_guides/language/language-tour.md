@@ -5307,9 +5307,7 @@ a call() function that takes three strings and concatenates them,
 separating each with a space, and appending an exclamation.
 Click the run button {% asset red-run.png alt="" %} to execute the code.
 
-在下面的示例中，`WannabeFunction` 类定义了一个 call() 函数，
-函数接受三个字符串参数，函数体将三个字符串拼接，字符串间用空格分割，并在结尾附加了一个感叹号。
-单击运行按钮 {% asset red-run.png alt="" %} 执行代码。
+在下面的示例中，`WannabeFunction` 类定义了一个 call() 函数，函数接受三个字符串参数，函数体将三个字符串拼接，字符串间用空格分割，并在结尾附加了一个感叹号。单击运行按钮 {% asset red-run.png alt="" %} 执行代码。
 
 {% comment %}
 https://gist.github.com/405379bacf30335f3aed
