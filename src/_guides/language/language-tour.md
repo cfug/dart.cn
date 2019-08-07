@@ -5320,7 +5320,7 @@ class WannabeFunction {
 }
 
 var wf = WannabeFunction();
-var out = wf('Hi', 'there,', 'gang');
+var out = wf('你好', '，使用 Dart 的', '朋友');
 
 main() => print(out);
 {% endprettify %}
