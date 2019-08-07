@@ -5336,34 +5336,43 @@ src="{{site.custom.dartpad.embed-inline-prefix}}?id=405379bacf30335f3aed&vertica
 
 ## Isolates
 
+## 隔离区
+
 Most computers, even on mobile platforms, have multi-core CPUs.
 To take advantage of all those cores, developers traditionally use
 shared-memory threads running concurrently. However, shared-state
 concurrency is error prone and can lead to complicated code.
 
-大多数计算机中，甚至在移动平台上，都在使用多核CPU。
-为了有效利用多核性能，开发者一般使用共享内存数据来保证多线程的正确执行。
-然而，
-多线程共享数据通常会导致很多潜在的问题，并导致代码运行出错。
+大多数计算机中，甚至在移动平台上，都在使用多核 CPU。为了有效利用多核性能，开发者一般使用共享内存的方式让线程并发地运行。然而，多线程共享数据通常会导致很多潜在的问题，并导致代码运行出错。
 
 Instead of threads, all Dart code runs inside of *isolates*. Each
 isolate has its own memory heap, ensuring that no isolate’s state is
 accessible from any other isolate.
 
+为了解决多线程带来的并发问题，Dart 使用 isolates 替代线程，所有的 Dart 代码均运行在一个 *isolates* 中。每一个 isolates 有它自己的堆内存以确保其状态不被其它 isolates 访问。
+
 For more information, see the following:
+
+你可以查阅下面的文档获取更多相关信息：
+
 * [Dart asynchronous programming: Isolates and event loops][isolates article]
+
+  [Dart 异步编程：隔离区和事件循环][isolates article]
+
 * [dart:isolate API reference,][dart:isolate]
   including [Isolate.spawn()][] and
   [TransferableTypedData][]
+
+  [dart:isolate API 参考][dart:isolate]介绍了 [Isolate.spawn()][] 和 [TransferableTypedData][] 的用法
+
 * [Background parsing][background json] cookbook on the Flutter site
+
+  Flutter 网站上关于[后台解析][background json]的 Cookbook
 
 [isolates article]: https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
 [Isolate.spawn()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
 [TransferableTypedData]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/TransferableTypedData-class.html
 [background json]: {{site.flutter}}/docs/cookbook/networking/background-parsing
-
-有关更多信息，请参考
-[dart:isolate library documentation.][dart:isolate]。
 
 ## Typedefs
 
