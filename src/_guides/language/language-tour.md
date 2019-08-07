@@ -5239,25 +5239,21 @@ When you need to lazily produce a sequence of values,
 consider using a _generator function_.
 Dart has built-in support for two kinds of generator functions:
 
-当您需要延迟生成( lazily produce )一系列值时，
-可以考虑使用_生成器函数_。
-Dart 内置支持两种生成器函数：
+当你需要延迟地生成一连串的值时，可以考虑使用 _生成器函数_。Dart 内置支持两种形式的生成器方法：
 
 * **Synchronous** generator: Returns an **[Iterable]** object.
 
-  **Synchronous** 生成器： 返回一个 **[Iterable]** 对象。
+  **同步** 生成器：返回一个 **[Iterable]** 对象。
 
 * **Asynchronous** generator: Returns a **[Stream]** object.
 
-  **Asynchronous** 生成器： 返回一个 **[Stream]** 对象。
+  **异步** 生成器：返回一个 **[Stream]** 对象。
 
 To implement a **synchronous** generator function,
 mark the function body as `sync*`,
 and use `yield` statements to deliver values:
 
-通过在函数体标记 `sync*`，
-可以实现一个**同步**生成器函数。
-使用 `yield` 语句来传递值：
+通过在函数上加 `sync*` 关键字并将返回值类型设置为 Iterable 来实现一个 **同步** 生成器函数，在函数中使用 `yield` 语句来传递值：
 
 <?code-excerpt "misc/test/language_tour/async_test.dart (sync-generator)"?>
 {% prettify dart %}
@@ -5271,9 +5267,7 @@ To implement an **asynchronous** generator function,
 mark the function body as `async*`,
 and use `yield` statements to deliver values:
 
-通过在函数体标记 `async*`，
-可以实现一个**异步**生成器函数。
-使用 `yield` 语句来传递值：
+实现 **异步** 生成器函数与同步类似，只不过关键字为 `async*` 并且返回值为 Stream：
 
 <?code-excerpt "misc/test/language_tour/async_test.dart (async-generator)"?>
 {% prettify dart %}
@@ -5286,7 +5280,7 @@ Stream<int> asynchronousNaturalsTo(int n) async* {
 If your generator is recursive,
 you can improve its performance by using `yield*`:
 
-如果生成器是递归的，可以使用 `yield*` 来提高其性能：
+如果生成器是递归调用的，可是使用 `yield*` 语句提升执行性能：
 
 <?code-excerpt "misc/test/language_tour/async_test.dart (recursive-generator)"?>
 {% prettify dart %}
