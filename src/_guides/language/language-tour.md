@@ -5015,7 +5015,7 @@ function marked as `async`:
 {% prettify dart %}
 Future checkVersion() [!async!] {
   var version = [!await!] lookUpVersion();
-  // Do something with version
+  // // 使用 version 继续处理逻辑
 }
 {% endprettify %}
 
@@ -5045,7 +5045,7 @@ to handle errors and cleanup in code that uses `await`:
 try {
   version = await lookUpVersion();
 } catch (e) {
-  // React to inability to look up the version
+  // 无法找到版本时做出的反应
 }
 {% endprettify %}
 
@@ -5083,7 +5083,7 @@ the body of `main()` must be marked as `async`:
 {% prettify dart %}
 Future main() [!async!] {
   checkVersion();
-  print('In main: version is ${[!await!] lookUpVersion()}');
+  print('在 Main 函数中执行：版本是 ${[!await!] lookUpVersion()}');
 }
 {% endprettify %}
 
@@ -5176,7 +5176,7 @@ An asynchronous for loop has the following form:
 <?code-excerpt "misc/lib/language_tour/async.dart (await-for)"?>
 {% prettify dart %}
 await for (varOrType identifier in expression) {
-  // Executes each time the stream emits a value.
+  // 每当 Stream 发出一个值时会执行
 }
 {% endprettify %}
 
