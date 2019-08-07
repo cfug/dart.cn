@@ -4808,10 +4808,10 @@ this:
 import 'package:lib1/lib1.dart';
 import 'package:lib2/lib2.dart' as lib2;
 
-// Uses Element from lib1.
+// 使用 lib1 的 Element 类。
 Element element1 = Element();
 
-// Uses Element from lib2.
+// 使用 lib2 的 Element 类。
 lib2.Element element2 = lib2.Element();
 {% endprettify %}
 
@@ -4826,10 +4826,10 @@ the library. For example:
 
 <?code-excerpt "misc/lib/language_tour/libraries/show_hide.dart" replace="/(lib\d)\.dart/package:$1\/$&/g"?>
 {% prettify dart %}
-// Import only foo.
+// 只导入 lib1 中的 foo。
 import 'package:lib1/lib1.dart' show foo;
 
-// Import all names EXCEPT foo.
+// 导入 lib2 中除了 foo 外的所有。
 import 'package:lib2/lib2.dart' hide foo;
 {% endprettify %}
 
@@ -4926,7 +4926,7 @@ Keep in mind the following when you use deferred loading:
   using <code>deferred as <em>namespace</em></code>.
   The `loadLibrary()` function returns a [Future](/guides/libraries/library-tour#future).
 
-  Dart会隐式地将 `loadLibrary` 方法导入到使用了 <code>deferred as <em>namespace</em></code> 的类中。`loadLibrary` 函数返回的是一个 [Future](/guides/libraries/library-tour#future)。
+  Dart会隐式地将 `loadLibrary` 方法导入到使用了 <code>deferred as <em>命名空间</em></code> 的类中。`loadLibrary` 函数返回的是一个 [Future](/guides/libraries/library-tour#future)。
 
 ### Implementing libraries
 
