@@ -5474,9 +5474,7 @@ annotation begins with the character `@`, followed by either a reference
 to a compile-time constant (such as `deprecated`) or a call to a
 constant constructor.
 
-使用元数据可以提供有关代码的其他信息。
-元数据注释以字符 `@` 开头，
-后跟对编译时常量 (如 `deprecated`) 的引用或对常量构造函数的调用。
+使用元数据可以为代码增加一些额外的信息。元数据注解以 `@` 开头，其后紧跟一个编译时常量（比如 `deprecated`）或者调用一个常量构造函数。
 
 Two annotations are available to all Dart code: `@deprecated` and
 `@override`. For examples of using `@override`,
@@ -5484,21 +5482,18 @@ see [Extending a class](#extending-a-class).
 Here’s an example of using the `@deprecated`
 annotation:
 
-对于所有 Dart 代码有两种可用注解：`@deprecated` 和 `@override`。
-关于 `@override` 的使用，
-参考 [扩展类（继承）](#扩展类继承)。
-下面是使用 `@deprecated` 注解的示例：
+Dart 中有两个注解是所有代码都可以使用的：`@deprecated` 和 `@override`。你可以查阅[扩展一个类](#extending-a-class)获取有关 `@override` 的使用示例。下面是使用 `@deprecated` 的示例：
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (deprecated)" replace="/@deprecated/[!$&!]/g"?>
 {% prettify dart %}
 class Television {
-  /// _Deprecated: Use [turnOn] instead._
+  /// _弃用: 使用 [turnOn] 替代_
   [!@deprecated!]
   void activate() {
     turnOn();
   }
 
-  /// Turns the TV's power on.
+  /// 打开 TV 的电源。
   void turnOn() {...}
 }
 {% endprettify %}
@@ -5506,8 +5501,7 @@ class Television {
 You can define your own metadata annotations. Here’s an example of
 defining a @todo annotation that takes two arguments:
 
-可以自定义元数据注解。
-下面的示例定义了一个带有两个参数的 @todo 注解：
+可以自定义元数据注解。下面的示例定义了一个带有两个参数的 @todo 注解：
 
 <?code-excerpt "misc/lib/language_tour/metadata/todo.dart"?>
 {% prettify dart %}
@@ -5540,10 +5534,7 @@ constructor, factory, function, field, parameter, or variable
 declaration and before an import or export directive. You can
 retrieve metadata at runtime using reflection.
 
-元数据可以在 library、 class、 typedef、 type parameter、
-constructor、 factory、 function、 field、 parameter 或者 variable
-声明之前使用，也可以在 import 或者 export 指令之前使用。
-使用反射可以在运行时获取元数据信息。
+元数据可以在 library、class、typedef、type parameter、constructor、factory、function、field、parameter 或者 variable 声明之前使用，也可以在 import 或 export 之前使用。可使用反射在运行时获取元数据信息。
 
 
 ## Comments
