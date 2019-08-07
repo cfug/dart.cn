@@ -5376,19 +5376,18 @@ For more information, see the following:
 
 ## Typedefs
 
+## 类型定义
+
 In Dart, functions are objects, just like strings and numbers are
 objects. A *typedef*, or *function-type alias*, gives a function type a
 name that you can use when declaring fields and return types. A typedef
 retains type information when a function type is assigned to a variable.
 
-在 Dart 中，函数也是对象，就想字符和数字对象一样。
-使用 *typedef* ，或者 *function-type alias* 为函数起一个别名，
-别名可以用来声明字段及返回值类型。
-当函数类型分配给变量时，typedef会保留类型信息。
+在 Dart 语言中，函数与 String 和 Number 一样都是对象，可以使用 *类型定义*（或者叫 *方法类型别名*）来为函数的类型命名。使用函数命名将该函数类型的函数赋值给一个变量时，类型定义将会保留相关的类型信息。
 
 Consider the following code, which doesn't use a typedef:
 
-请考虑以下代码，代码中未使用 typedef ：
+比如下面的代码没有使用类型定义：
 
 <?code-excerpt "misc/lib/language_tour/typedefs/sorted_collection_1.dart"?>
 {% prettify dart %}
@@ -5418,10 +5417,7 @@ type of `compare` is Function. If we change the code to use explicit
 names and retain type information, both developers and tools can use
 that information.
 
-当把  `f` 赋值给 `compare` 的时候，类型信息丢失了。
-`f` 的类型是 `(Object, ``Object)` → `int` (这里 → 代表返回值类型)，
-但是 `compare` 得到的类型是 Function 。如果我们使用显式的名字并保留类型信息，
-这样开发者和工具都可以使用这些信息。
+上述代码中，当将参数 `f` 赋值给 `compare` 时，函数的类型信息丢失了，这里 `f` 这个函数的类型为 `(Object, Object) → int`（→ 代表返回），当然该类型也是一个 Function 的子类，但是将 `f` 赋值给 `compare` 后，`f` 的类型 `(Object, Object) → int` 就会丢失。我们可以使用 `typedef` 显式地保留类型信息：
 
 <?code-excerpt "misc/lib/language_tour/typedefs/sorted_collection_2.dart"?>
 {% prettify dart %}
@@ -5446,20 +5442,18 @@ void main() {
 <aside class="alert alert-info" markdown="1">
 **Note:**
 
-**提示：**
+**注意：**
 
 Currently, typedefs are restricted to function types. We expect this
 to change.
 
-目前，typedefs 只能使用在函数类型上，
-我们希望将来这种情况有所改变。
+目前类型定义只能用在函数类型上，但是将来可能会有变化。
 </aside>
 
 Because typedefs are simply aliases, they offer a way to check the type
 of any function. For example:
 
-由于 typedefs 只是别名，
-他们还提供了一种方式来判断任意函数的类型。例如：
+因为类型定义只是别名，因此我们可以使用它判断任意函数类型的方法：
 
 <?code-excerpt "misc/lib/language_tour/typedefs/misc.dart (compare)"?>
 {% prettify dart %}
