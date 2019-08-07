@@ -5662,17 +5662,12 @@ More features are being implemented, but we expect that they won’t break
 existing code. For more information, see the [Dart language specification][] and
 [Effective Dart](/guides/language/effective-dart).
 
-本页概述了 Dart 语言中常用的功能。
-还有更多特性有待实现，但我们希望它们不会破坏现有代码。
-有关更多信息，请参考
-[Dart language specification][] 和
-[Effective Dart](/guides/language/effective-dart)。
+本页概述了 Dart 语言中常用的功能。还有更多特性有待实现，但我们希望它们不会破坏现有代码。有关更多信息，请参考 [Dart 语言规范][]和[高效 Dart 语言指南](/guides/language/effective-dart)。
 
 To learn more about Dart's core libraries, see
 [A Tour of the Dart Libraries](/guides/libraries/library-tour).
 
-要了解更多关于 Dart 核心库的内容，请参考
-[A Tour of the Dart Libraries](/guides/libraries/library-tour).
+要了解更多关于 Dart 核心库的内容，请参考 [Dart 核心库概览](/guides/libraries/library-tour)。
 
 [AssertionError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html
 [dart2js]: /tools/dart2js
