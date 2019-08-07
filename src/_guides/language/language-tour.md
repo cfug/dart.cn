@@ -5399,14 +5399,13 @@ class SortedCollection {
   }
 }
 
-// Initial, broken implementation.
+// 简单的不完整实现。
 int sort(Object a, Object b) => 0;
 
 void main() {
   SortedCollection coll = SortedCollection(sort);
 
-  // All we know is that compare is a function,
-  // but what type of function?
+  // 我们知道 compare 是一个函数类型的变量，但是具体是什么样的函数却不得而知。
   assert(coll.compare is Function);
 }
 {% endprettify %}
@@ -5429,7 +5428,7 @@ class SortedCollection {
   SortedCollection(this.compare);
 }
 
-// Initial, broken implementation.
+// 简单的不完整实现。
 int sort(Object a, Object b) => 0;
 
 void main() {
