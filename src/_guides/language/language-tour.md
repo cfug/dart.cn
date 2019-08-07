@@ -4866,9 +4866,7 @@ For more information, see
 [issue #33118](https://github.com/dart-lang/sdk/issues/33118) and
 [issue #27776.](https://github.com/dart-lang/sdk/issues/27776)
 
-**目前只有 dart2js 支持延迟加载**
-Flutter、Dart VM以及 DartDevc 目前都不支持延迟加载。
-你可以查阅 [issue #33118](https://github.com/dart-lang/sdk/issues/33118) 和 [issue #27776](https://github.com/dart-lang/sdk/issues/27776) 获取更多的相关信息。
+**目前只有 dart2js 支持延迟加载** Flutter、Dart VM以及 DartDevc 目前都不支持延迟加载。你可以查阅 [issue #33118](https://github.com/dart-lang/sdk/issues/33118) 和 [issue #27776](https://github.com/dart-lang/sdk/issues/27776) 获取更多的相关信息。
 
 </aside>
 
@@ -4885,7 +4883,7 @@ import 'package:greetings/hello.dart' deferred as hello;
 When you need the library, invoke
 `loadLibrary()` using the library's identifier.
 
-当实际需要使用到库中API时先调用 `loadLibrary` 函数加载库：
+当实际需要使用到库中 API 时先调用 `loadLibrary` 函数加载库：
 
 <?code-excerpt "misc/lib/language_tour/libraries/greeter.dart (loadLibrary)"?>
 {% prettify dart %}
