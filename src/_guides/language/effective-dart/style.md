@@ -43,7 +43,7 @@ Identifiers come in three flavors in Dart.
 *   `lowerCamelCase` names capitalize the first letter of each word, *except*
     the first which is always lowercase, even if it's an acronym.
 
-    `UpperCamelCase` 每个单词的首字母都大写，包含第一个单词。
+    `lowerCamelCase` 除了第一个字母始终是小写（即使是缩略词），每个单词的首字母都大写。
 
 *   `lowercase_with_underscores` use only lowercase letters, even for acronyms,
     and separate words with `_`.
