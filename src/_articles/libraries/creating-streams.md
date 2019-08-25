@@ -265,7 +265,7 @@ That's where the `StreamController` class comes in.
 ## 使用 StreamController
 
 If the events of your stream comes from different parts of your program,
-and not just from a stream or futures that can traversed by an async function,
+and not just from a stream or futures that can traversed by an `async` function,
 then use a
 [StreamController]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamController-class.html)
 to create and populate the stream.
@@ -408,7 +408,7 @@ as shown in the next section.
 ### 遵循并实现暂停
 
 Avoid producing events when the listener has requested a pause.
-An async* function automatically pauses at a `yield` statement
+An `async*` function automatically pauses at a `yield` statement
 while the stream subscription is paused.
 A `StreamController`, on the other hand, buffers events during the pause.
 If the code providing the events doesn't respect the pause,

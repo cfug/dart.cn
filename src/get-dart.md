@@ -1,8 +1,8 @@
 ---
 title: Get the Dart SDK
 title: 获取 Dart SDK
-description: Get the Dart SDK
-description: 获取 Dart SDK
+description: Get the libraries and command-line tools that you need to develop Dart web, command-line, and server apps.
+description: 获得 Dart 命令行工具和库，用以编写 Dart web，命令行以及服务端应用。
 js:
 - url: /tools/sdk/archive/assets/install.js
   defer: true

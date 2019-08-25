@@ -1322,12 +1322,12 @@ dart:async library ([API reference][dart:async])。
 You don't always need to use the Future or Stream APIs directly.
 The Dart language supports asynchronous coding
 using keywords such as `async` and `await`.
-See [Asynchrony support](/guides/language/language-tour#asynchrony-support)
-in the language tour for details.
+See the [asynchronous programming codelab](/codelabs/async-await)
+for details.
 
 你并不总是需要直接使用 Future 或 Stream 的 API。
 Dart 语言支持使用关键字（例如，`async` 和 `await` ）来实现异步编程。
-更多详情，参考语言概览中 [Asynchrony support](/guides/language/language-tour#asynchrony-support)。
+更多详情，参考这个 codelab 了解更多：[asynchronous programming codelab](/codelabs/async-await)。
 </div>
 
 The dart:async library works in both web apps and command-line apps. To
@@ -1409,7 +1409,7 @@ runUsingAsyncAwait() async {
 }
 {% endprettify %}
 
-An async function can catch exceptions from Futures.
+An `async` function can catch exceptions from Futures.
 For example:
 
 async 函数能够捕获来自 Future 的异常。
@@ -1434,16 +1434,16 @@ try {
 Async functions return Futures.
 If you don't want your function to return a future,
 then use a different solution.
-For example, you might call an async function from your function.
+For example, you might call an `async` function from your function.
 
-async 函数 返回 Future 对象。
+`async` 函数 返回 Future 对象。
 如果你不希望你的函数返回一个 future 对象，
 可以使用其他方案。
 例如，你可以在你的方法中调用一个 async 方法。
 </div>
 
 For more information on using `await` and related Dart language features,
-see [Asynchrony support](/guides/language/language-tour#asynchrony-support).
+see the [asynchronous programming codelab](/codelabs/async-await).
 
 更多关于 `await` 的使用及相关的 Dart 语言特征，参考
 [Asynchrony support](/guides/language/language-tour#asynchrony-support)。
@@ -1686,8 +1686,8 @@ then the second kind of event is never handled.
 </div>
 
 For more information on using `await` and related
-Dart language features, see
-[Asynchrony support](/guides/language/language-tour#asynchrony-support).
+Dart language features, see the
+[asynchronous programming codelab](/codelabs/async-await).
 
 有关 `await` 的使用及 Dart 语言的相关信息，参考
 [Asynchrony support](/guides/language/language-tour#asynchrony-support)。
@@ -1821,7 +1821,7 @@ an `onDone` listener.
 
 如果使用的是 Stream API，
 那么通过注册 `onError` 监听来处理错误。
-代码位于注册的 `onDone` 中，
+代码位���注册的 `onDone` 中，
 会在 stream 被关闭后执行。
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (onDone)" replace="/onDone|onError/[!$&!]/g"?>
@@ -1848,18 +1848,17 @@ inputStream
 
 For some examples of using Future and Stream in command-line apps,
 see the [dart:io tour][dart:io tour].
-Also see these articles and tutorials:
+Also see these articles, codelabs, and tutorials:
 
 更多在 command-line 应用中使用 Future 和 Stream 的实例，参考
 [dart:io 概览][dart:io tour]
 也可以参考下列文章和教程：
 
--   [Asynchronous Programming: Futures](/tutorials/language/futures)
--   [Futures and Error Handling](/guides/libraries/futures-error-handling)
--   [Asynchronous Programming: Streams](/tutorials/language/streams)
--   [Creating Streams in Dart](/articles/libraries/creating-streams)
+-   [Asynchronous programming: futures, async, await](/codelabs/async-await)
+-   [Futures and error handling](/guides/libraries/futures-error-handling)
+-   [Asynchronous programming: streams](/tutorials/language/streams)
+-   [Creating streams in Dart](/articles/libraries/creating-streams)
 -   [Dart asynchronous programming: Isolates and event loops](https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a)
-
 
 ## dart:math - math and random
 
@@ -2085,7 +2084,7 @@ the object's `toJson()` method.
 第二种方式是省略第二个参数，着这种情况下编码器调用对象的 `toJson()` 方法。
 
 For more examples and links to JSON-related packages, see
-[JSON Support](/guides/json).
+[Using JSON](/guides/json).
 
 更多示例及 JSON 包相关链接，参考 [JSON Support](/guides/json) 。
 

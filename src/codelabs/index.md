@@ -6,7 +6,8 @@ description: Dart codelabs 列表。
 toc: false
 ---
 
-For a guided, hands-on coding experience, try a codelab.
+The Dart codelabs provide a guided, hands-on coding experience —
+no download required!
 
 尝试 Codelab 获取体验动手编码的指导。
 
@@ -15,14 +16,15 @@ For a guided, hands-on coding experience, try a codelab.
 ## 一般的
 
 <img src="/codelabs/images/from-java-to-dart.png" width="150px" alt="Bicycle image from codelab" align="right">
+
 ### [Intro to Dart for Java Developers](https://codelabs.developers.google.com/codelabs/from-java-to-dart/)
 
 ### [介绍 Dart 给 Java 开发者](https://codelabs.developers.google.com/codelabs/from-java-to-dart/)
 
-Use DartPad (no download required!) to explore how
-Dart makes writing modern apps easy and fun.
+Use DartPad to explore how
+Dart makes writing apps easy and fun.
 
-使用 DartPad（无需下载！）来探索 Dart 是如何轻松有趣地编写
+使用 DartPad 来探索 Dart 是如何轻松有趣地编写
 现代应用程序的。
 
 ### [Dart cheatsheet](/codelabs/dart-cheatsheet)
@@ -33,6 +35,12 @@ some of the most commonly used, yet unique features of the Dart language.
 
 使用最新实验版本的 DartPad 来测试，学习和了解 Dart 语言的语法和特性。
 
+### [Asynchronous programming: futures, async, await](/codelabs/async-await)
+
+Use the latest, experimental version of DartPad to learn how to write 
+asynchronous code using futures and the `async` and `await` keywords.
+
+使用最新实验版本的 DartPad 来学习使用 futures、async 和 await 来写异步代码。
 
 ## Flutter
 

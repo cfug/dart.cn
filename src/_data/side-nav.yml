@@ -6,6 +6,7 @@
     - title: Codelabs
       expanded: true
       children:
+<<<<<<< HEAD
         - title: Codelabs 列表
           urlExactMatch: true
           match-page-url-exactly: true
@@ -13,6 +14,17 @@
         - title: Dart 速查表实践
           permalink: /codelabs/dart-cheatsheet
     - title: 教程一览
+=======
+        - title: List of Dart codelabs
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /codelabs
+        - title: Language cheatsheet
+          permalink: /codelabs/dart-cheatsheet
+        - title: Asynchronous programming
+          permalink: /codelabs/async-await
+    - title: Tutorials
+>>>>>>> 2266bb06ee06a5a33c979254cfb72e34de7cde3c
       urlExactMatch: true
       match-page-url-exactly: true
       permalink: /tutorials
@@ -90,9 +102,15 @@
 - title: 开发文档
   expanded: false
   children:
+<<<<<<< HEAD
     - title: Futures 和 async-await
       permalink: /tutorials/language/futures
     - title: 使用 JSON
+=======
+    - title: Futures, async, await
+      permalink: /codelabs/async-await
+    - title: JSON
+>>>>>>> 2266bb06ee06a5a33c979254cfb72e34de7cde3c
       permalink: /guides/json
     - title: Streams 介绍
       permalink: /tutorials/language/streams
@@ -132,7 +150,11 @@
             permalink: /tutorials/web/low-level-html/add-elements 
           - title: 移除 DOM 元素
             permalink: /tutorials/web/low-level-html/remove-elements
+<<<<<<< HEAD
         - title: 与 JS/TS 互调
+=======
+        - title: JS interop
+>>>>>>> 2266bb06ee06a5a33c979254cfb72e34de7cde3c
           permalink: /web/js-interop
         - title: 部署
           permalink: /web/deployment
@@ -208,6 +230,12 @@
 - title: 资源
   expanded: false
   children:
+    - title: 概览
+      urlExactMatch: true
+      match-page-url-exactly: true
+      permalink: /resources
+    - title: 书籍
+      permalink: /resources/books
     - title: 行为准则
       permalink: /code-of-conduct
     - title: 常见问题
@@ -222,6 +250,8 @@
           permalink: /web/dart-2
         - title: 已失效的 pub 命令
           permalink: /tools/pub/obsolete
+    - title: Videos
+      permalink: /resources/videos
 
 - title: 相关站点
   expanded: true

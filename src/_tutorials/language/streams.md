@@ -3,10 +3,7 @@ title: "Asynchronous programming: streams"
 title: 异步编程：使用 stream
 description: Learn how to consume single-subscriber and broadcast streams.
 description: 了解如何使用 single-subscriber 和 broadcast streams。
-description: 
-prevpage:
-  url: /tutorials/language/futures
-  title: "Asynchronous programming: futures"
+
 ---
 
 <div class="mini-toc" markdown="1">
@@ -122,13 +119,14 @@ main() async {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=15d5ef986238c97dbc14&verticalRatio=85"
+src="{{site.custom.dartpadx.embed-inline-prefix}}?id=15d5ef986238c97dbc14"
     width="100%"
     height="490px"
     style="border: 1px solid #ccc;">
 </iframe>
 
 <aside class="alert alert-info" markdown="1">
+<<<<<<< HEAD
 **Note:**
 
 **注意：**
@@ -137,6 +135,9 @@ Click run {% asset red-run.png alt="" %}
 to see the result in the **Console output**.
 
 点击运行 {% asset red-run.png alt="" %} 可以在 **控制台输出** 查看结果。
+=======
+**Note:** Click **Run** to see the result in the **Console**.
+>>>>>>> 2266bb06ee06a5a33c979254cfb72e34de7cde3c
 </aside>
 
 ## Error events
@@ -209,13 +210,14 @@ main() async {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=df7c1168a5c6b20fda2a76d6ff33a1da&verticalRatio=80"
+src="{{site.custom.dartpadx.embed-inline-prefix}}?id=df7c1168a5c6b20fda2a76d6ff33a1da"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">
 </iframe>
 
 <aside class="alert alert-info" markdown="1">
+<<<<<<< HEAD
 **Note:**
 
 **注意：**
@@ -224,6 +226,9 @@ Click run {% asset red-run.png alt="" %}
 to see the result in the **Console output**.
 
 点击运行 {% asset red-run.png alt="" %} 可以在 **控制台输出** 查看结果。
+=======
+**Note:** Click **Run** to see the result in the **Console**.
+>>>>>>> 2266bb06ee06a5a33c979254cfb72e34de7cde3c
 </aside>
 
 
@@ -327,7 +332,7 @@ Future<Set<T>> toSet();
 
 All of these functions, except `drain()` and `pipe()`,
 correspond to a similar function on [Iterable.][Iterable]
-Each one can be written easily by using an async function
+Each one can be written easily by using an `async` function
 with an **await for** loop (or just using one of the other methods).
 For example, some implementations could be:
 
@@ -389,7 +394,7 @@ Stream<T> where(bool Function(T event) test);
 
 The preceding methods correspond to similar methods on [Iterable][]
 which transform an iterable into another iterable.
-All of these can be written easily using an async function
+All of these can be written easily using an `async` function
 with an **await for** loop.
 
 在 [Iterable][] 类中也有一些将一个 iterable 转换为另一个 iterable 的方法，上述的这些方法与 [Iterable][] 类中的这些方法相似。如果你在异步函数中使用了 **await for** 循环，那么使用上述的这些方法将会更加容易。
@@ -438,7 +443,7 @@ it might take several incoming events to produce an output event.
 A [StreamTransformer][] can work with that.
 For example, decoders like [Utf8Decoder][] are transformers.
 A transformer requires only one function, [bind()][], which can be
-easily implemented by an async function.
+easily implemented by an `async` function.
 
 `transform()` 方法并不只是用于处理错误；它更是一个通用的 Stream “map 映射”。通常而言，一个 “map 映射”会为每一个输入事件设置一个值。但是对于 I/O Stream 而言，它可能会使用多个输入事件来生成一个输出事件。这时候使用 [StreamTransformer][] 就可以做到这一点。例如像 [Utf8Decoder][] 这样的解码器就是一个变换器。一个变换器只需要实现一个 [bind()][] 方法，其可通过异步函数轻松实现。
 

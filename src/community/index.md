@@ -100,12 +100,6 @@ Our wonderful community has provided these resources.
 * [Dart Academy](https://dart.academy/) - Tutorials
   and articles written by the Dart community
 
-  [Dart 学院](https://dart.academy/) - 由 Dart 社区编写的学习教程以及文章
-
-* [Smartherd videos](https://www.youtube.com/watch?v=5rtujDjt50I&list=PLlxmoA0rQ-LyHW9voBdNo4gEEIh0SjG-q) - A series of tutorial videos about the Dart language
-
-  [Smartherd 视频](https://www.youtube.com/watch?v=5rtujDjt50I&list=PLlxmoA0rQ-LyHW9voBdNo4gEEIh0SjG-q) - 关于Dart语言的一系列教程视频
-
 * [Chinese version of this site (此网站的中文版)](http://www.dartdoc.cn)
   
   [此站的英文官网](https://www.dartlang.org/)

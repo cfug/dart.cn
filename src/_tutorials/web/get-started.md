@@ -16,7 +16,7 @@ no download necessary.
 
 For example, here's an embedded DartPad that lets you play with
 the code for a todo-list generator.
-Click run {% asset red-run.png alt="" %} to run the app;
+Click **Run** to run the app;
 the console output appears beneath the code.
 Try editing the source code—perhaps you'd like to add "horses"
 to the list of pets. To get the full DartPad experience,
@@ -25,7 +25,7 @@ which includes the web UI that the app produces,
    target="_blank">open the example at dartpad.dev.</a>
 
 <iframe
-    src="{{site.custom.dartpad.embed-inline-prefix}}?id=2a24f3f042f1c86cf91621c30adce771&verticalRatio=70"
+    src="{{site.custom.dartpadx.embed-html-prefix}}?id=2a24f3f042f1c86cf91621c30adce771"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">
@@ -111,7 +111,7 @@ Let's customize the app you just created.
  1. Copy the `thingsTodo()` function from the DartPad above
     to the `web/main.dart` file.
 
- 2. In the `main()` method, initialize the `output` element using
+ 2. In the `main()` function, initialize the `output` element using
     `thingsTodo()`:
 
     {% prettify dart %}

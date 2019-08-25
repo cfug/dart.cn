@@ -1294,12 +1294,11 @@ units. Use the `runes` property to get the runes of a string.
 
 [String][] 类中有一些属性可以用来提取字符串的 Rune 符文信息。`codeUnitAt` 和 `codeUnit` 属性返回 16 位代码单元。`runes` 属性可以获取字符串的 Runes 符文。
 
-The following example illustrates the relationship between runes,
-16-bit code units, and 32-bit code points.
-Click the run button {% asset red-run.png alt="" %}
-to see runes in action.
+The following example illustrates the relationship between runes, 16-bit code
+units, and 32-bit code points. Click **Run** to see runes in action.
 
-下面的例子说明了 Rune、16位代码单元、32位代码单元之间的关系。点击运行按钮 {% asset red-run.png alt="" %} 查看 Rune 结果。
+下面的例子说明了 Rune、16位代码单元、32位代码单元之间的关系。
+点击运行（**Run**）按钮查看运行结果。
 
 {% comment %}
 https://gist.github.com/589bc5c95318696cefe5
@@ -1322,9 +1321,9 @@ void main() {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=589bc5c95318696cefe5&verticalRatio=65"
+src="{{site.custom.dartpadx.embed-inline-prefix}}?id=589bc5c95318696cefe5"
     width="100%"
-    height="333px"
+    height="400px"
     style="border: 1px solid #ccc;">
 </iframe>
 
@@ -1642,9 +1641,8 @@ parameter and a default map for the `gifts` parameter.
 List 或 Map 同样也可以作为默认值。下面的示例定义了一个名为 `doStuff()` 的函数，并为其名为 `list` 和 `gifts` 的参数指定了一个 List 类型的值和 Map 类型的值。
 
 {% comment %}
-The function is called three times with different values.
-Click the run button {% asset red-run.png alt="" %}
-to see list and map default values in action.
+The function is called three times with different values. Click **Run** to see
+list and map default values in action.
 {% endcomment %}
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (list-map-default-function-param)"?>
@@ -1666,7 +1664,7 @@ https://gist.github.com/d988cfce0a54c6853799
 {{site.dartpad}}/d988cfce0a54c6853799
 (The gist needs updating: see https://github.com/dart-lang/site-www/issues/189)
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=d988cfce0a54c6853799&verticalRatio=70"
+src="{{site.custom.dartpadx.embed-inline-prefix}}?id=d988cfce0a54c6853799"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">
@@ -1808,9 +1806,9 @@ list.forEach((item) {
 });
 {% endprettify %}
 
-Click the run button {% asset red-run.png alt="" %} to execute the code.
+Click **Run** to execute the code.
 
-点击运行按钮 {% asset red-run.png alt="" %} 执行代码。
+点击运行按钮执行代码。
 
 {% comment %}
 https://gist.github.com/chalin/5d70bc1889d055c7a18d35d77874af88
@@ -1818,15 +1816,15 @@ https://gist.github.com/chalin/5d70bc1889d055c7a18d35d77874af88
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=5d70bc1889d055c7a18d35d77874af88&verticalRatio=60"
+src="{{site.custom.dartpadx.embed-inline-prefix}}?id=5d70bc1889d055c7a18d35d77874af88&split=60"
     width="100%"
-    height="250px"
+    height="400px"
     style="border: 1px solid #ccc;">
 </iframe>
 
-If the function contains only one statement, you can shorten it using
-arrow notation. Paste the following line into DartPad
-and click run to verify that it is functionally equivalent.
+If the function contains only one statement, you can shorten it using arrow
+notation. Paste the following line into DartPad and click **Run** to verify that
+it is functionally equivalent.
 
 如果函数体内只有一行语句，你可以使用胖箭头缩写法。粘贴下面代码到 DartPad 中并点击运行按钮，验证两个函数是否一致。
 
@@ -2791,7 +2789,7 @@ Each non-empty `case` clause ends with a `break` statement, as a rule.
 Other valid ways to end a non-empty `case` clause are a `continue`,
 `throw`, or `return` statement.
 
-每一个非空的 `case` 子句都必须有一个 `break` 语句，也可以通过 `continue`、`throw` 或者 `return` 来结束非空 `case` 语句。
+每一个非空的 `case` 子句都必须有一个 `break` 语句，也可以���过 `continue`、`throw` 或者 `return` 来结束非空 `case` 语句。
 
 Use a `default` clause to execute code when no `case` clause matches:
 
@@ -3527,11 +3525,10 @@ before the constructor body (if any).
 
 如果父类没有匿名无参数构造函数，那么子类必须调用父类的其中一个构造函数，为子类的构造函数指定一个父类的构造函数只需在构造函数体前使用（`:`）指定。
 
-In the following example, the constructor for the Employee class
-calls the named constructor for its superclass, Person.
-Click the run button {% asset red-run.png alt="" %} to execute the code.
+In the following example, the constructor for the Employee class calls the named
+constructor for its superclass, Person. Click **Run** to execute the code.
 
-下面的示例中，Employee 类的构造函数调用了父类 Person 的命名构造函数。点击运行按钮{% asset red-run.png alt="" %} 执行示例代码。
+下面的示例中，Employee 类的构造函数调用了父类 Person 的命名构造函数。点击运行按钮执行示例代码。
 
 {% comment %}
 https://gist.github.com/Sfshaza/e57aa06401e6618d4eb8
@@ -3570,7 +3567,7 @@ void main() {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=e57aa06401e6618d4eb8&verticalRatio=80"
+src="{{site.custom.dartpadx.embed-inline-prefix}}?id=e57aa06401e6618d4eb8&split=90"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -3651,11 +3648,12 @@ https://github.com/dart-lang/sdk/issues/30968
 https://github.com/dart-lang/sdk/blob/master/docs/language/informal/assert-in-initializer-list.md]
 {% endcomment %}
 
-Initializer lists are handy when setting up final fields.
-The following example initializes three final fields in an initializer list.
-Click the run button {% asset red-run.png alt="" %} to execute the code.
+Initializer lists are handy when setting up final fields. The following example
+initializes three final fields in an initializer list. Click **Run** to execute
+the code.
 
-初始化列表用来设置 `final` 字段是非常好用的，下面的示例中就使用初始化列表来设置了三个 `final` 变量的值。点击运行按钮 {% asset red-run.png alt="" %} 执行示例代码。
+初始化列表用来设置 `final` 字段是非常好用的，下面的示例中就使用初始化列表来设置了三个 `final` 变量的值。
+点击运行按钮执行示例代码。
 
 {% comment %}
 https://gist.github.com/Sfshaza/7a9764702c0608711e08
@@ -3684,7 +3682,7 @@ void main() {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=7a9764702c0608711e08&verticalRatio=85"
+src="{{site.custom.dartpadx.embed-inline-prefix}}?id=7a9764702c0608711e08&split=90"
     width="100%"
     height="420px"
     style="border: 1px solid #ccc;">
@@ -3770,13 +3768,8 @@ class Logger {
       <String, Logger>{};
 
   factory Logger(String name) {
-    if (_cache.containsKey(name)) {
-      return _cache[name];
-    } else {
-      final logger = Logger._internal(name);
-      _cache[name] = logger;
-      return logger;
-    }
+    return _cache.putIfAbsent(
+        name, () => Logger._internal(name));
   }
 
   Logger._internal(this.name);
@@ -5006,7 +4999,7 @@ to wait for the result of an asynchronous function:
 await lookUpVersion();
 {% endprettify %}
 
-To use `await`, code must be in an _async function_—a
+To use `await`, code must be in an `async` function—a
 function marked as `async`:
 
 必须在带有 async 关键字的 _异步函数_ 中使用 `await`：
@@ -5020,13 +5013,14 @@ Future checkVersion() [!async!] {
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
+
 **Note:**
 
 **注意：**
 
-Although an async function might perform time-consuming operations,
+Although an `async` function might perform time-consuming operations,
 it doesn't wait for those operations.
-Instead, the async function executes only until it encounters
+Instead, the `async` function executes only until it encounters
 its first `await` expression
 ([details][synchronous-async-start]).
 Then it returns a Future object,
@@ -5049,7 +5043,7 @@ try {
 }
 {% endprettify %}
 
-You can use `await` multiple times in an async function.
+You can use `await` multiple times in an `async` function.
 For example, the following code waits three times
 for the results of functions:
 
@@ -5073,7 +5067,7 @@ The await expression makes execution pause until that object is available.
 <code>await <em>表达式的返回值通常是一个 Future 对象；如果不是的话也会自动将其包裹在一个 Future 对象里。Future 对象代表一个“承诺”，<code>await <em>表达式</em></code>会阻塞直到需要的对象返回。
 
 **If you get a compile-time error when using `await`,
-make sure `await` is in an async function.**
+make sure `await` is in an `async` function.**
 For example, to use `await` in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
@@ -5093,7 +5087,7 @@ Future main() [!async!] {
 
 ### 声明异步函数
 
-An _async function_ is a function whose body is marked with
+An `async` function is a function whose body is marked with
 the `async` modifier.
 
 定义 _异步函数_ 只需在普通方法上加上 `async` 关键字即可。
@@ -5109,7 +5103,7 @@ which returns a String:
 String lookUpVersion() => '1.0.0';
 {% endprettify %}
 
-If you change it to be an async function—for example,
+If you change it to be an `async` function—for example,
 because a future implementation will be time consuming—the
 returned value is a Future:
 
@@ -5130,10 +5124,14 @@ make its return type `Future<void>`.
 
 如果函数没有返回有效值，需要设置其返回类型为 `Future<void>`。
 
-{% comment %}
-PENDING: add example here
+For an interactive introduction to using futures, `async`, and `await`,
+see the [asynchronous programming codelab](/codelabs/async-await).
 
-Where else should we cover generalized void?
+关于 futures、`async` 和 `await` 的使用介绍，可以参见这个 codelab: 
+[asynchronous programming codelab](/codelabs/async-await)。
+
+{% comment %}
+TODO: Where else should we cover generalized void?
 {% endcomment %}
 
 
@@ -5206,7 +5204,7 @@ and unsubscribes from the stream.
 使用 `break` 和 `return` 语句可以停止接收 Stream 数据，这样就跳出了循环并取消注册监听 Stream。
 
 **If you get a compile-time error when implementing an asynchronous for loop,
-make sure the `await for` is in an async function.**
+make sure the `await for` is in an `async` function.**
 For example, to use an asynchronous for loop in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
@@ -5302,12 +5300,13 @@ implement the `call()` method.
 
 通过实现类的 `call()` 方法，允许使用类似函数调用的方式来使用该类的实例。
 
-In the following example, the `WannabeFunction` class defines
-a call() function that takes three strings and concatenates them,
-separating each with a space, and appending an exclamation.
-Click the run button {% asset red-run.png alt="" %} to execute the code.
+In the following example, the `WannabeFunction` class defines a call() function
+that takes three strings and concatenates them, separating each with a space,
+and appending an exclamation. Click **Run** to execute the code.
 
-在下面的示例中，`WannabeFunction` 类定义了一个 call() 函数，函数接受三个字符串参数，函数体将三个字符串拼接，字符串间用空格分割，并在结尾附加了一个感叹号。单击运行按钮 {% asset red-run.png alt="" %} 执行代码。
+在下面的示例中，`WannabeFunction` 类定义了一个 call() 函数，
+函数接受三个字符串参数，函数体将三个字符串拼接，字符串间用空格分割，
+并在结尾附加了一个感叹号。单击运行按钮执行代码。
 
 {% comment %}
 https://gist.github.com/405379bacf30335f3aed
@@ -5327,9 +5326,9 @@ main() => print(out);
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-inline-prefix}}?id=405379bacf30335f3aed&verticalRatio=73"
+src="{{site.custom.dartpadx.embed-inline-prefix}}?id=405379bacf30335f3aed"
     width="100%"
-    height="240px"
+    height="350px"
     style="border: 1px solid #ccc;">
 </iframe>
 
