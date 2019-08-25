@@ -169,7 +169,7 @@ You can chain multiple uses of `?.` together in a single expression:
 myObject?.someProperty?.someMethod()
 {% endprettify %}
 
-The preceding code returns null (and never calls `someMethod`) if either
+The preceding code returns null (and never calls `someMethod()`) if either
 `myObject` or `myObject.someProperty` is
 null.
 
@@ -251,7 +251,7 @@ expression to its right and returns its value.
 你也许已经在 Dart 代码中见到过 `=>` 符号。这种箭头语法是一种定义函数的方法，该函数将在其右侧执行表达式并返回其值。
 
 For example, consider this call to the `List` class's
-`any` method:
+`any()` method:
 
 例如，考虑调用这个 `List` 类中的 `any` 方法：
 
@@ -301,8 +301,8 @@ We've all seen an expression like this:
 myObject.someMethod()
 {% endprettify %}
 
-It invokes `someMethod` on `myObject`, and the result of
-the expression is the return value of `someMethod`.
+It invokes `someMethod()` on `myObject`, and the result of
+the expression is the return value of `someMethod()`.
 
 它在 `myObject` 上调用 `someMethod` 方法，而表达式的结果是 `someMethod` 的返回值。
 
@@ -314,7 +314,7 @@ Here's the same expression with a cascade:
 myObject..someMethod()
 {% endprettify %}
 
-Although it still invokes `someMethod` on `myObject`, the result
+Although it still invokes `someMethod()` on `myObject`, the result
 of the expression **isn't** the return value — it's a reference to `myObject`!
 Using cascades, you can chain together operations that
 would otherwise require separate statements.
@@ -478,7 +478,7 @@ print(newTotal); // <-- prints 15
 
 ### 代码样例
 
-Implement a function called `joinWithCommas` that accepts one to
+Implement a function called `joinWithCommas()` that accepts one to
 five integers, then returns a string of those numbers separated by commas.
 Here are some examples of function calls and returned values:
 
@@ -533,16 +533,16 @@ A function can't have both optional positional and optional named parameters.
 
 ### 代码样例
 
-Add a `copyWith` instance method to the `MyDataObject`
+Add a `copyWith()` instance method to the `MyDataObject`
 class. It should take three named parameters:
 
-向 `MyDataObject` 类添加一个 `copyWith` 实例方法，它应该包含三个命名参数。
+向 `MyDataObject` 类添加一个 `copyWith()` 实例方法，它应该包含三个命名参数。
 
 * `int newInt`
 * `String newString`
 * `double newDouble`
 
-When called, `copyWith` should return a new `MyDataObject`
+When called, `copyWith()` should return a new `MyDataObject`
 based on the current instance,
 with data from the preceding parameters (if any)
 copied into the object's properties.
@@ -634,26 +634,26 @@ try {
 
 ### 代码样例
 
-Implement `tryFunction` below. It should execute an untrustworthy method and
+Implement `tryFunction()` below. It should execute an untrustworthy method and
 then do the following:
 
-在下面实现 `tryFunction` 方法。它应该会执行一个不可靠的方法，然后做以下操作：
+在下面实现 `tryFunction()` 方法。它应该会执行一个不可靠的方法，然后做以下操作：
 
-* If `untrustworthy` throws an `ExceptionWithMessage`,
+* If `untrustworthy()` throws an `ExceptionWithMessage`,
   call `logger.logException` with the exception type and message
   (try using `on` and `catch`).
 
-  如果 `untrustworthy` 抛出了 `ExceptionWithMessage`，则调用 `logger.logException` 并传入使用异常类型和消息（尝试使用 `on` 和 `catch`）。
+  如果 `untrustworthy()` 抛出了 `ExceptionWithMessage`，则调用 `logger.logException` 并传入使用异常类型和消息（尝试使用 `on` 和 `catch`）。
 
-* If `untrustworthy` throws an `Exception`,
+* If `untrustworthy()` throws an `Exception`,
   call `logger.logException` with the exception type
   (try using `on` for this one).
 
-  如果 `untrustworthy` 抛出了一个 `Exception`，则调用 `logger.logException` 并传入使用异常类型（这次请尝试使用 `on`）。
+  如果 `untrustworthy()` 抛出了一个 `Exception`，则调用 `logger.logException` 并传入使用异常类型（这次请尝试使用 `on`）。
 
-* If `untrustworthy` throws any other object, don't catch the exception.
+* If `untrustworthy()` throws any other object, don't catch the exception.
 
-  如果 `untrustworthy` 抛出了其他对象，请不要捕获该异常。
+  如果 `untrustworthy()` 抛出了其他对象，请不要捕获该异常。
 
 * After everything's caught and handled, call `logger.doneLogging`
   (try using `finally`).

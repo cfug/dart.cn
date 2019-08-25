@@ -10,8 +10,10 @@
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /codelabs
-        - title: Dart 速查表实践
+        - title: Dart 速查表
           permalink: /codelabs/dart-cheatsheet
+        - title: Dart 异步编程
+          permalink: /codelabs/async-await
     - title: 教程一览
       urlExactMatch: true
       match-page-url-exactly: true
@@ -90,8 +92,8 @@
 - title: 开发文档
   expanded: false
   children:
-    - title: Futures 和 async-await
-      permalink: /tutorials/language/futures
+    - title: Futures、async 和 await
+      permalink: /codelabs/async-await
     - title: 使用 JSON
       permalink: /guides/json
     - title: Streams 介绍
@@ -132,7 +134,7 @@
             permalink: /tutorials/web/low-level-html/add-elements 
           - title: 移除 DOM 元素
             permalink: /tutorials/web/low-level-html/remove-elements
-        - title: 与 JS/TS 互调
+        - title: 与 JS 互调
           permalink: /web/js-interop
         - title: 部署
           permalink: /web/deployment
@@ -208,6 +210,12 @@
 - title: 资源
   expanded: false
   children:
+    - title: 概览
+      urlExactMatch: true
+      match-page-url-exactly: true
+      permalink: /resources
+    - title: 书籍
+      permalink: /resources/books
     - title: 行为准则
       permalink: /code-of-conduct
     - title: 常见问题
@@ -222,6 +230,8 @@
           permalink: /web/dart-2
         - title: 已失效的 pub 命令
           permalink: /tools/pub/obsolete
+    - title: Videos
+      permalink: /resources/videos
 
 - title: 相关站点
   expanded: true

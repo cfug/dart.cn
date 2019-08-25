@@ -20,24 +20,19 @@ The following tours assume a basic familiarity with the Dart language,
 which you can get from skimming the
 [language samples](/samples) or the
 [language tour](/guides/language/language-tour).
+Next, learn about futures by following the
+[asynchronous programming codelab](/codelabs/async-await).
 
 通过浏览 [language samples](/samples) 和 [language tour](/guides/language/language-tour)，你可以对 Dart 语言有一个初步了解，并且开始我们的 Dart 学习之旅了。
 
-Once you're familiar with the language,
-learn more about _futures_ and _streams_,
+Once you're familiar with the language and futures,
+learn about _streams_ and _packages_,
 which are fundamental to most Dart programs.
-Then learn about how to install packages —
-shared code that can help you be more productive.
 
-当你熟悉该语言后，可以进一步了解 _futures_ 和 _streams_ ，它们是众多 Dart 程序的基础。
+当你熟悉该语言后，可以进一步了解 _streams_ 和 _futures_，它们是众多 Dart 程序的基础。
 接下来你可以开始学习如何安装包——共享代码能使你的学习更加高效。
 
 <div class="card-grid">
-  <div class="card">
-    <h3><a href="/tutorials/language/futures">Asynchronous programming:
-        futures</a></h3>
-    <p>Use futures for asynchronous tasks.</p>
-  </div>
   <div class="card">
     <h3><a href="/tutorials/language/streams">Asynchronous programming:
        streams</a></h3>

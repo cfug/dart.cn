@@ -43,7 +43,7 @@ can be serialized and represented by strings.
 **Try it!**
 The following app, `its_all_about_you`,
 displays the JSON string for data of various types.
-Click run ( {% asset red-run.png %} ) to start the app.
+Click **Run** to start the app.
 Then change the values of the input elements,
 and check out the JSON format for each data type.
 You might prefer to
@@ -173,7 +173,7 @@ void showJson(Event _) {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpad.embed-html-prefix}}?id=1d42e4eadb75bcc1ffbc079e299b862e&horizontalRatio=50&verticalRatio=90"
+src="{{site.custom.dartpadx.embed-html-prefix}}?id=1d42e4eadb75bcc1ffbc079e299b862e"
     width="100%"
     height="600px"
     style="border: 1px solid #ccc;">
@@ -408,12 +408,11 @@ and loads the file.
   from everywhere.
 </aside>
 
-**Try it!** Click run ( {% asset red-run.png %} )
-and then click the **Get portmanteaux** button.
+**Try it!** Click **Run** and then click the **Get portmanteaux** button.
 
 {% comment %} https://gist.github.com/chalin/6b76bce8d46986e624f4e82925c48287 {% endcomment %}
 <iframe
-src="{{site.custom.dartpad.embed-html-prefix}}?id=6b76bce8d46986e624f4e82925c48287&horizontalRatio=68&verticalRatio=80"
+src="{{site.custom.dartpadx.embed-html-prefix}}?id=6b76bce8d46986e624f4e82925c48287"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -447,20 +446,13 @@ void processResponse(String jsonString) {
 The `getString()` method uses a Future object to handle the request.
 A [Future][] is a way to perform potentially time-consuming operations,
 such as HTTP requests, asynchronously.
-If you haven't encountered Futures yet,
-you can learn more about them in
-[Asynchronous Programming: Futures](/tutorials/language/futures).
+If you haven't encountered futures yet,
+you can learn about them — as well as the `async` and `await` keywords — in the
+[asynchronous programming codelab](/codelabs/async-await).
 Until then, you can use the code above as a guide
 and provide your own code for the body of the `processResponse()` function
 and your own code to handle the error.
 
-<aside class="alert alert-info" markdown="1">
-  **Note:**
-  The examples in this section use the `async` and `await` keywords.
-  If you are not familiar with these keywords, see
-  [Asynchrony support](/guides/language/language-tour#asynchrony)
-  in the [language tour](/guides/language/language-tour).
-</aside>
 
 ## Using an HttpRequest object to load a file {#making-a-get-request}
 
@@ -476,7 +468,7 @@ an HttpRequest object.
 
 {% comment %} https://gist.github.com/chalin/c387e454cb751ab0632c68ccbbf94d12 {% endcomment %}
 <iframe
-src="{{site.custom.dartpad.embed-html-prefix}}?id=c387e454cb751ab0632c68ccbbf94d12&horizontalRatio=68&verticalRatio=80"
+src="{{site.custom.dartpadx.embed-html-prefix}}?id=c387e454cb751ab0632c68ccbbf94d12"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -595,7 +587,7 @@ void processResponse(String jsonString) {
 ## Other resources
 
 * [Using JSON](/guides/json)
-* [Asynchronous programming: futures](/tutorials/language/futures)
+* [Asynchronous programming: futures, async, await](/codelabs/async-await)
 
 [dart:convert]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
 [dart:core]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html

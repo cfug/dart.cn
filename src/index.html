@@ -4,6 +4,9 @@ title: Dart programming language
 title: Dart 编程语言主页
 description: Dart is a client-optimized language for fast apps on any platform
 description: Dart 是一个针对全平台优化的编程语言。
+js:
+- url: /assets/dash/js/dartpad_picker_main.dart.js
+  defer: true
 ---
 <!-- Hero animation -->
 <div class="d-none d-sm-none d-md-block">
@@ -78,7 +81,7 @@ description: Dart 是一个针对全平台优化的编程语言。
                 <div class="content-desc" id="gallerySix">
                     <ul class="selector">
                         <li class="highlight"  data-banner="assets/dash/2x/1-1 async await@2x-80.jpg">
-                            Mature and complete <a href="/tutorials/language/futures#async-await">async-await</a>
+                            Mature and complete <a href="/codelabs/async-await">async-await</a>
                             for user interfaces containing event-driven code, paired with
                             <a href="/guides/language/language-tour#isolates">isolate-based concurrency</a>
                         </li>
@@ -169,7 +172,7 @@ description: Dart 是一个针对全平台优化的编程语言。
                 <div class="content-desc" id="galleryOne">
                     <ul class="selector" >
                         <li class="highlight" tabindex="0" data-banner="assets/dash/2x/1-1 async await@2x-80.jpg">
-                            Mature and complete <a href="/tutorials/language/futures#async-await">async-await</a>
+                            Mature and complete <a href="/codelabs/async-await">async-await</a>
                             for user interfaces containing event-driven code, paired with
                             <a href="/guides/language/language-tour#isolates">isolate-based concurrency</a>
                         </li>
@@ -249,6 +252,15 @@ description: Dart 是一个针对全平台优化的编程语言。
         </div>
         <div class="col-lg-7 col-md-6 col-sm-12 content-image"><img class="galleryThree"
                 src="assets/dash/2x/3-1 - aot compile@2x-80.jpg"/>
+        </div>
+    </section>
+    <section class="row">
+        <div class="dash-dartpad">
+            <a name="try-dart"></a>
+            <h2>Try Dart in your browser</h2>
+            <select id="dartpad-select"></select>
+            <div id="dartpad-host"></div>
+            <h3>Want more practice? <a href="/codelabs">Try a codelab</a>. Or <a href="/get-dart">download Dart</a>.</h3>
         </div>
     </section>
 </div>

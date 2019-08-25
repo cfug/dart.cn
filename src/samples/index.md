@@ -471,7 +471,7 @@ Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
 {% endprettify %}
 
 [Read more](/guides/language/language-tour#asynchrony-support) about
-asynchrony support, including async functions, `Future`, `Stream`,
+asynchrony support, including `async` functions, `Future`, `Stream`,
 and the asynchronous loop (`await for`).
 
 [阅读更多](/guides/language/language-tour#异步支持) 关于异步支持的内容，
@@ -512,7 +512,7 @@ try {
 {% endprettify %}
 
 Note that the code above is asynchronous;
-`try` works for both synchronous code and code in an async function.
+`try` works for both synchronous code and code in an `async` function.
 
 请注意，上面的代码是异步的; 
 同步代码以及异步函数代码中都能够使用 `try` 捕获异常。

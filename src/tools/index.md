@@ -78,7 +78,17 @@ thanks to the Dart community.
 <img src="{% asset tools/atom-logo.png @path %}" alt="Atom logo">
 <a class="no-automatic-external" href="https://github.com/dart-atom/dart"><b>Atom</b></a>
 </li>
+<li>
+<img src="{% asset tools/eclipse-logo.png @path %}" alt="Eclipse logo">
+<a class="no-automatic-external" href="https://github.com/eclipse/dartboard"><b>Eclipse</b></a>
+</li>
 </ul>
+
+A [Language Server Protocol implementation][LSP] is also available for
+[LSP-capable editors][] that don't have specific Dart extensions.
+
+[LSP]: https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/tool/lsp_spec/README.md
+[LSP-capable editors]: https://microsoft.github.io/language-server-protocol/implementors/tools/
 
 ### Command-line tools {#cli}
 
