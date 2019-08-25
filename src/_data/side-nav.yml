@@ -6,25 +6,15 @@
     - title: Codelabs
       expanded: true
       children:
-<<<<<<< HEAD
         - title: Codelabs 列表
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /codelabs
-        - title: Dart 速查表实践
+        - title: Dart 速查表
           permalink: /codelabs/dart-cheatsheet
-    - title: 教程一览
-=======
-        - title: List of Dart codelabs
-          urlExactMatch: true
-          match-page-url-exactly: true
-          permalink: /codelabs
-        - title: Language cheatsheet
-          permalink: /codelabs/dart-cheatsheet
-        - title: Asynchronous programming
+        - title: Dart 异步编程
           permalink: /codelabs/async-await
-    - title: Tutorials
->>>>>>> 2266bb06ee06a5a33c979254cfb72e34de7cde3c
+    - title: 教程一览
       urlExactMatch: true
       match-page-url-exactly: true
       permalink: /tutorials
@@ -102,15 +92,9 @@
 - title: 开发文档
   expanded: false
   children:
-<<<<<<< HEAD
-    - title: Futures 和 async-await
-      permalink: /tutorials/language/futures
-    - title: 使用 JSON
-=======
-    - title: Futures, async, await
+    - title: Futures、async 和 await
       permalink: /codelabs/async-await
-    - title: JSON
->>>>>>> 2266bb06ee06a5a33c979254cfb72e34de7cde3c
+    - title: 使用 JSON
       permalink: /guides/json
     - title: Streams 介绍
       permalink: /tutorials/language/streams
@@ -150,11 +134,7 @@
             permalink: /tutorials/web/low-level-html/add-elements 
           - title: 移除 DOM 元素
             permalink: /tutorials/web/low-level-html/remove-elements
-<<<<<<< HEAD
-        - title: 与 JS/TS 互调
-=======
-        - title: JS interop
->>>>>>> 2266bb06ee06a5a33c979254cfb72e34de7cde3c
+        - title: 与 JS 互调
           permalink: /web/js-interop
         - title: 部署
           permalink: /web/deployment
