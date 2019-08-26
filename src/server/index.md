@@ -45,19 +45,31 @@ More tools
 
 ## Tutorials
 
+## 教程
+
 You might find the following tutorials helpful.
+
+你可能会发现以下的教程会比较有用。
 
 [Get started](/tutorials/server/get-started)
 : Learn how to use the Dart SDK to develop command-line and server apps.
 
+[开始](/tutorials/server/get-started)：学习如何使用 Dart SDK 开发 命令行或服务器应用。
+
 [gRPC Quickstart](https://grpc.io/docs/quickstart/dart.html)
 : Walks you through running and modifying a client-server example that uses the gRPC framework.
+
+[gRPC 快速上手](https://grpc.io/docs/quickstart/dart.html)：手把手教你使用 gRPC 框架运行和修改一个客户端-服务器示例。
 
 [Write command-line apps](/tutorials/server/cmdline)
 : Introduces dart:io and the args package.
 
+[开发 command-line 应用](/tutorials/server/cmdline)：介绍 dart:io 和 args 包。
+
 [Write HTTP clients & servers](/tutorials/server/httpserver)
 : Features dart:io and the http_server package.
+
+[开发 HTTP 客户端和服务端](/tutorials/server/httpserver)：dart:io 和 http_server 包的相关功能。
 
 ## More resources
 
