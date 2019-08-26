@@ -73,10 +73,16 @@ You might find the following tutorials helpful.
 
 ## More resources
 
+## 更多资源
+
 [Dart API]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
 : API reference for dart:* libraries.
+
+[Dart API]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})：dart:* 库的 API 参考。
 
 [dart:io section of the library tour](/guides/libraries/library-tour/#dartio)
 : Shows how to use the major features of the dart:io library.
   You can use the dart:io library in command-line scripts, servers, and
   [Flutter mobile apps.]({{site.flutter}})
+
+[库概览的 dart:io 小节](/guides/libraries/library-tour/#dartio)：向你展示如何使用 dart:io 库的主要功能。你可以在命令行脚本、服务器应用以及 [Flutter 移动应用]({{site.flutter}})中使用 dart:io 库
