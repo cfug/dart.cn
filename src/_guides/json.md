@@ -10,6 +10,7 @@ exchanging data with a web server.
 This page discusses Dart support for JSON _serialization_ and _deserialization_:
 converting Dart objects to and from JSON.
 
+许多移动或网页应用都使用 JSON 来处理类似与服务器交换数据的任务。本文将讨论如果使用 Dart 对 JSON 数据进行 _序列化_ 和 _反序列化_：即 Dart 对象与 JSON 数据之间的相互转换。
 
 ## Libraries
 
