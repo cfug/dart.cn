@@ -14,11 +14,18 @@ converting Dart objects to and from JSON.
 
 ## Libraries
 
+## 需要用到的库
+
 The following libraries and packages are useful across Dart platforms:
+
+下述的库和包可以用作于所有的 Dart 平台：
 
 * [dart:convert](/guides/libraries/library-tour#dartconvert---decoding-and-encoding-json-utf-8-and-more)<br>
   Converters for both JSON and UTF-8
   (the character encoding that JSON requires).
+
+  [dart:convert](/guides/libraries/library-tour#dartconvert---decoding-and-encoding-json-utf-8-and-more)<br>
+  包含 JSON 数据和 UTF-8（JSON 数据需要的字符编码）的转换器。
 
 * [package:json_serializable]({{site.pub}}/packages/json_serializable)<br>
   An easy-to-use code generation package.
@@ -26,9 +33,14 @@ The following libraries and packages are useful across Dart platforms:
   and use the builder provided by this package,
   the Dart build system generates serialization and deserialization code for you.
 
+  [package:json_serializable]({{site.pub}}/packages/json_serializable)<br>
+  一个易于使用的代码生成包。当你添加一些元注解以及使用该包提供的构建器时，Dart 编译器可以为你生成序列化和反序列化的代码。
+
 * [package:built_value]({{site.pub}}/packages/built_value)<br>
   A powerful, opinionated alternative to json_serializable.
 
+  [package:built_value]({{site.pub}}/packages/built_value)<br>
+  一个强大的，可以作为 json_serializable 的替代品。
 
 ## Flutter resources
 
