@@ -54,14 +54,19 @@ The following libraries and packages are useful across Dart platforms:
 
 ## Web app resources
 
+## 相关的 Web 应用资源
+
 [AngularDart Tutorial, part 6: HTTP]({{site.angulardart}}/tutorial/toh-pt6)
 : Illustrates how a Dart web app can interact with a
   RESTful backend using JSON data.
+
+[AngularDart 教程的第六部分：HTTP]({{site.angulardart}}/tutorial/toh-pt6)：向你说明 Dart Web 应用如何使用 JSON 数据与 RESTful 后端进行交互。
 
 [Using HTTP resources with HttpRequest](/guides/libraries/library-tour#using-http-resources-with-httprequest)
 : Demonstrates how to use HttpRequest to exchange data with a web server.
   Part of the [dart:html library tour.](/guides/libraries/library-tour#darthtml)
 
+[通过 HttpRequest 使用 HTTP 资源](/guides/libraries/library-tour#using-http-resources-with-httprequest)：向你演示如何使用 HttpRequest 与服务器交换数据。该资源是 [dart:html 库概览](/guides/libraries/library-tour#darthtml)的一部分。
 
 ## VM resources
 
