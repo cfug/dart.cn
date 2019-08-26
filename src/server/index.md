@@ -16,22 +16,32 @@ that can help you develop command-line and server apps.
 
 ## Tools
 
+## 工具
+
 [DartPad](/tools/dartpad)
 : Handy for both beginners and experts,
   DartPad lets you try out language features and dart:* APIs.
 
+[DartPad](/tools/dartpad)：不管是对新手还是专家来说都易于使用的工具，DartPad 可以让你尝试语言相关功能和 dart:* 的 API。
+
   <aside class="alert alert-info" markdown="1">
     **Note:** DartPad does **not** support using dart:io APIs or
     importing libraries from packages.
+
+    **注意：** DartPad **不** 支持使用 dart:io 的相关 API 或从包中导入库。
   </aside>
 
 [Dart SDK](/tools/sdk)
 : [Install the Dart SDK](/get-dart) to get the core Dart
   libraries and [tools](/tools).
 
+[Dart SDK](/tools/sdk)：[安装 Dart SDK](/get-dart) 以获取 Dart 的核心库和 [工具](/tools)。
+
 More tools
 : The [Tools](/tools) page links to generally useful tools,
   such as Dart plugins for your favorite IDE or editor.
+
+更多工具：[工具](/tools)界面链接了一些有用的工具，比如你喜欢的 IDE 或编辑器的 Dart 插件。
 
 ## Tutorials
 
