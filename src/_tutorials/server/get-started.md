@@ -140,8 +140,12 @@ These commands create a small Dart app that has the following:
 
 ## 5. Get the app's dependencies
 
+## 5. 获取应用的依赖
+
 Use the [`pub`](/tools/pub/cmd) command to get the packages
 that the app depends on:
+
+使用 [`pub`](/tools/pub/cmd) 命令获取应用依赖的包：
 
 ```terminal
 > pub get
