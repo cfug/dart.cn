@@ -239,22 +239,57 @@ real	0m0.032s
 
 ## What next?
 
+## 接下来做什么？
+
 Check out these resources:
 
+检索这些资源：
+
 * Additional tutorials and codelabs for Dart
+
+  其它额外的一些 Dart 教程和指引
+
   * [Tutorials](/tutorials)
+
+    [教程](/tutorials)
+
   * [Codelabs](/codelabs)
+
+    [指引](/codelabs)
 * Dart language, libraries, and conventions
+
+  Dart 语言、库以及习惯用法
+
   * [Sample code](/samples)
+
+    [示例代码](/samples)
+
   * [Language tour](/guides/language/language-tour)
+
+    [语言概览](/guides/language/language-tour)
+
   * [Library tour](/guides/libraries/library-tour)
+
+    [库概览](/guides/libraries/library-tour)
+
   * [Effective Dart](/guides/language/effective-dart)
+
+    [高效 Dart 编程](/guides/language/effective-dart)
+
 * Tools and libraries
+
+  工具和库
+
   * [Dart SDK](/tools/sdk)
   * [Dart tools](/tools)
+
+    [Dart 工具](/tools)
+
   * [IDEs](/tools#ides-and-editors)
 
 If you get stuck, find help at [Community and support.](/community)
+
+如果你卡住了，可以从[社区和帮助](/community)中查找帮助。
 
 [stagehand]: {{site.pub-pkg}}/stagehand
 [DartPad documentation]: /tools/dartpad
