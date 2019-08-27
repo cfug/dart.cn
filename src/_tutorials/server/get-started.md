@@ -23,8 +23,12 @@ which you'll execute using the Dart runtime.
 
 ## 1. Play with Dart code in DartPad
 
+## 1. 在 DartPad 中运行 Dart 代码
+
 With DartPad you can experiment with the Dart language and APIs,
 no download necessary.
+
+你可以使用 DartPad 来简单地尝试 Dart 编程语言和 API 且不需要下载任何东西。
 
 For example, here's an embedded DartPad that lets you play with the code for a
 small Hello World program. Click **Run** to run the app; the console output
@@ -32,6 +36,8 @@ appears beneath the code. Try editing the source code—perhaps you'd like to
 change the greeting to use another language. To get the full DartPad experience,
 <a href="{{site.dartpad}}/27e044ec9e2957d9c5c7062871ce8bf3" target="_blank">open
 the example at dartpad.dev.</a>
+
+例如，下面这个内嵌的 DartPad 可以让你尝试一个简单的 Hello World 程序代码。点击 **运行** 来运行应用；控制台输出的内容位于代码块下方。你可以尝试更改源代码，比如更改问候语或者其它的一些语句。你也可以<a href="{{site.dartpad}}/27e044ec9e2957d9c5c7062871ce8bf3" target="_blank">在 dartpad.dev 中打开示例</a>以获取更完整的 DartPad 体验。
 
 <iframe
     src="{{site.custom.dartpadx.embed-inline-prefix}}?id=27e044ec9e2957d9c5c7062871ce8bf3"
@@ -42,9 +48,19 @@ the example at dartpad.dev.</a>
 
 More information:
 
+更多信息：
+
 * [DartPad documentation][]
+
+  [DartPad 文档][DartPad documentation]
+
 * [Dart language tour][]
+
+  [Dart 语言概览][Dart language tour]
+
 * [Dart library tour][]
+
+  [Dart 库概览][Dart library tour]
 
 ## 2. Install Dart
 
