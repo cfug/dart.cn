@@ -17,16 +17,24 @@ that provide low-level command-line & server APIs.
 
 ## SDK libraries
 
+## SDK 库
+
 The Dart SDK contains dart:io and other libraries
 that provide low-level web APIs.
+
+Dart SDK 包含 dart:io 和其它提供底层 web API 的库。
 
 [The dart:io section](/guides/libraries/library-tour#dartio) of the library tour
 : An example-driven tour of using the dart:io library.
   Topics include working with files & directories, and making & handling
   HTTP requests.
 
+库概览的 [dart:io 小节](/guides/libraries/library-tour#dartio)：一个使用 dart:io 库的示例驱动概览。主要包括如何使用文件和目录以及发起和处理 HTTP 请求。
+
 [dart:io API reference][dart:io]
 : Complete reference documentation for the dart:io library.
+
+[dart:io API 参考][dart:io]：dart:io 库完整的参考文档。
 
 
 ## Community packages
