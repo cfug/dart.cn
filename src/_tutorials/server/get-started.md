@@ -64,6 +64,8 @@ More information:
 
 ## 2. Install Dart
 
+## 2. 安装 Dart
+
 {% include get-sdk.md %}
 
 <!-- PENDING: the following instructions assume you have set the PATH.
