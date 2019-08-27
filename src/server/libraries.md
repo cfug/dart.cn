@@ -34,7 +34,7 @@ Dart SDK 包含 dart:io 和其它提供底层 web API 的库。
 [dart:io API reference][dart:io]
 : Complete reference documentation for the dart:io library.
 
-[dart:io API 参考][dart:io]：dart:io 库完整的参考文档。
+[dart:io API 参考][dart:io]：完整的 dart:io 库参考文档。
 
 
 ## Community packages
@@ -45,7 +45,7 @@ The [Pub site]({{site.pub}}) doesn't currently support
 limiting your search to packages that support command-line and server apps.
 You can, however, search for words that describe the functionality you need.
 
-[Pub 网站]({{site.pub}})暂时还不支持仅搜索命令行和服务器应用相关的包。但是你可以搜索描述所需功能的单词。
+[Pub 网站]({{site.pub}}) 暂时还不支持仅搜索命令行和服务器应用相关的包。但是你可以搜索描述所需功能的单词。
 
 ### Command-line packages
 
@@ -54,7 +54,7 @@ You can, however, search for words that describe the functionality you need.
 Command-line apps often use the following packages,
 in addition to [general-purpose packages][] such as `archive`, `intl`, and `yaml`:
 
-命令行应用常常使用下述列表中列出的包，除此之外还有像 `archive`、`intl` 和 `yaml` 这样的[通用包][general-purpose packages]：
+命令行应用常常使用下述列表中列出的包，除此之外还有像 `archive`、`intl` 和 `yaml` 这样的 [通用包][general-purpose packages]：
 
 | **Package**                   | **Description** |
 
@@ -89,7 +89,7 @@ Server apps can choose from many packages, in addition to
 the packages listed in the previous table
 and [general-purpose packages][] such as `logging`:
 
-服务器应用可选择使用的包更多一些，除了上面上面表格中列出的外还支持比如 `logging` 这样的[通用包][general-purpose packages]：
+服务器应用可选择使用的包更多一些，除了上面上面表格中列出的外还支持比如 `logging` 这样的 [通用包][general-purpose packages]：
 
 | **Package**                   | **Description** |
 
@@ -97,7 +97,7 @@ and [general-purpose packages][] such as `logging`:
 
 | [appengine]({{site.pub-pkg}}/appengine) | Provides support for running server applications written in Dart on [Google App Engine][] using [Custom Runtimes with Flex Environment.][] |
 
-| [appengine]({{site.pub-pkg}}/appengine) | 为在 [Google App Engine] 上使用 [Flex Environment 自定义运行时]的 Dart 应用提供支持。|
+| [appengine]({{site.pub-pkg}}/appengine) | 为在 [Google App Engine] 上使用 [Flex Environment 自定义运行时][] 的 Dart 应用提供支持。|
 
 | [aqueduct]({{site.pub-pkg}}/aqueduct) | Supports building scalable REST APIs that run on the Dart VM. |
 
@@ -105,7 +105,7 @@ and [general-purpose packages][] such as `logging`:
 
 | [angel_framework]({{site.pub-pkg}}/angel_framework) | A high-powered HTTP server with support for dependency injection & sophisticated routing. |
 
-| [angel_framework]({{site.pub-pkg}}/angel_framework) | 支持依赖注入和复杂路由的高性能HTTP服务器。|
+| [angel_framework]({{site.pub-pkg}}/angel_framework) | 支持依赖注入和复杂路由的高性能 HTTP 服务器。|
 
 | [crypto]({{site.pub-pkg}}/crypto) | Implements cryptographic hashing functions for algorithms such as SHA-1, SHA-256, MD5, and HMAC. |
 
@@ -113,7 +113,7 @@ and [general-purpose packages][] such as `logging`:
 
 | [grpc]({{site.pub-pkg}}/grpc) | Implements [gRPC,][] a high performance, open source, general RPC framework that puts mobile and HTTP/2 first. |
 
-| [grpc]({{site.pub-pkg}}/grpc) | 实现 [gRPC][]， 将移动和 HTTP/2 放在首位的高性能开源通用的 RPC 框架。|
+| [grpc]({{site.pub-pkg}}/grpc) | 实现 [gRPC][]，将移动和 HTTP/2 放在首位的高性能开源通用的 RPC 框架。|
 
 | [http_multi_server]({{site.pub-pkg}}/http_multi_server) | Extends the [dart:io HttpServer][HttpServer] class with support for multiple servers. |
 
@@ -130,6 +130,7 @@ and [general-purpose packages][] such as `logging`:
 
 [Google App Engine]: https://cloud.google.com/appengine/
 [Custom Runtimes with Flex Environment.]: https://cloud.google.com/appengine/docs/flexible/custom-runtimes/
+[Flex Environment 自定义运行时]:https://cloud.google.com/appengine/docs/flexible/custom-runtimes/
 [general-purpose packages]: /guides/libraries/useful-libraries#general-purpose-packages
 [gRPC,]: https://grpc.io/
 [HttpServer]: https://api.dart.dev/stable/dart-io/HttpServer-class.html
