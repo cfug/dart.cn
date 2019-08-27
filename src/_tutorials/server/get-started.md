@@ -106,7 +106,11 @@ More information:
 
 ## 4. Create a small app
 
+## 4. 创建一个小应用
+
 Create a command-line app:
+
+创建一个命令行应用：
 
 ```terminal
 > mkdir cli
@@ -116,13 +120,23 @@ Create a command-line app:
 
 These commands create a small Dart app that has the following:
 
+这些命令创建一个包含下述信息的小 Dart 应用：
+
 * A main Dart source file, `bin/main.dart`, that contains a top-level
   `main()` function. This is the entrypoint for your app.
+
+  一个主要的 Dart 源文件，`bin/main.dart`，该文件包含一个顶层 `main()` 函数。该函数是你应用的入口。
+
 * An additional Dart file, `lib/cli.dart`, that contains the functionality of
   the app and is imported by the `main.dart` file.
+
+  一个额外的 Dart 文件，`lib/cli.dart`，包含一些功能性的函数方法，这些函数方法将会导入到 `main.dart` 文件中。
+
 * A pubspec file, `pubspec.yaml`, that contains the app's metadata, including
   information about which [packages](/guides/packages) the app depends on
   and which versions of those packages are required.
+
+  一个 pubspec 文件，`pubspec.yaml`，包含应用的元数据，包括应用依赖的[包](/guides/packages)信息以及所需的版本等。
 
 ## 5. Get the app's dependencies
 
