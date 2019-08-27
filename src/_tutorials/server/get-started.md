@@ -167,9 +167,15 @@ Hello world: 42!
 
 ## 7. Modify the app
 
+## 7. 修改应用
+
 Let's customize the app you just created.
 
+现在我们来自定义刚才你所创建的应用。
+
  1. Edit `lib/cli.dart` to return a different result:
+
+ 1. 编辑 `lib/cli.dart` 以返回一个不同的结果：
 
     ```dart
     int calculate() {
@@ -178,7 +184,11 @@ Let's customize the app you just created.
     ```
  1. Save your changes.
 
+ 1. 保存你刚才所做的改变。
+
  1. Rerun the main entrypoint of your app:
+
+ 1. 重新运行你应用的入口 main 函数：
 
     ```terminal
     > dart bin/main.dart
@@ -187,6 +197,8 @@ Let's customize the app you just created.
 
 More information:
 [Write command-line apps](/tutorials/server/cmdline)
+
+更多信息：[开发命令行应用](/tutorials/server/cmdline)
 
 ## 8. Compile for production
 
