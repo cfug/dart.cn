@@ -73,7 +73,11 @@ More information:
 
 ## 3. Get more command-line developer tools
 
+## 3. 获取更多命令行开发工具
+
 Install [`stagehand`,][stagehand] which gives you templates for creating Dart apps:
+
+安装 [`stagehand`][stagehand]，该工具可以让你在创建 Dart 应用时提供模板：
 
 ```terminal
 > pub global activate stagehand
@@ -84,12 +88,21 @@ Note that although these instructions feature the command line,
 many IDEs support Dart development.
 Those IDEs use Stagehand behind the scenes when you create new Dart projects.
 
+注意尽管这些指令以命令行的形式存在，但是许多 IDE 也支持使用这些指令进行 Dart 开发。当你创建一个新的 Dart 项目时，那些 IDE 在底层依然使用 Stagehand 来进行创建。
+
 <!-- PENDING: the following instructions assume you have the bin directory for the system cache in your path. -->
 
 More information:
 
+更多信息：
+
 * [Dart tools](/tools)
+
+  [Dart 工具](/tools)
+
 * [Running a script from your path](/tools/pub/cmd/pub-global#running-a-script-from-your-path)
+
+  [从某个路径运行脚本](/tools/pub/cmd/pub-global#running-a-script-from-your-path)
 
 ## 4. Create a small app
 
