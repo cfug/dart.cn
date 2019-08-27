@@ -10,6 +10,8 @@ description: 库和包可以帮助你开发命令行和服务器应用。
 The [Dart SDK][] contains [dart:io][] and other libraries
 that provide low-level command-line & server APIs.
 
+[Dart SDK][] 包含 [dart:io][] 和其它提供底层命令行和服务器 API 的库。
+
 [Dart SDK]: /tools/sdk
 [dart:io]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/dart-io-library.html
 
