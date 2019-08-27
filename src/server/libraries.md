@@ -1,7 +1,10 @@
 ---
 title: "Command-line & server libraries and packages"
+title: "命令行和服务器的库和包"
 short-title: CLI & server libraries
+short-title: CLI 和 服务器库
 description: Libraries and packages that can help you write Dart command-line & server apps.
+description: 库和包可以帮助你开发命令行和服务器应用。
 ---
 
 The [Dart SDK][] contains [dart:io][] and other libraries
@@ -17,7 +20,7 @@ that provide low-level web APIs.
 
 [The dart:io section](/guides/libraries/library-tour#dartio) of the library tour
 : An example-driven tour of using the dart:io library.
-  Topics include working with files & directories, and making & handling 
+  Topics include working with files & directories, and making & handling
   HTTP requests.
 
 [dart:io API reference][dart:io]
