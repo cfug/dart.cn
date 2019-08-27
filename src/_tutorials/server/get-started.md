@@ -153,8 +153,12 @@ that the app depends on:
 
 ## 6. Run the app
 
+## 6. 运行应用
+
 To run the app from the command line, use the Dart VM by running the
 [`dart`](/tools/dart-vm) command:
+
+为了从命令行运行应用，使用 [`dart`](/tools/dart-vm) 命令运行 Dart VM：
 
 ```terminal
 > dart bin/main.dart
