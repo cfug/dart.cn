@@ -19,7 +19,7 @@ Then you’ll install the Dart SDK, write a small program, and run that program 
 Finally, you'll use an AOT (_ahead of time_) compiler to compile your finished program to native machine code,
 which you'll execute using the Dart runtime.
 
-跟着下面这些步骤开始使用 Dart SDK 来开发命令行和服务器应用。首先你将在浏览器中运行 Dart 编程语言和库而不需要下载它。然后你将安装 Dart SDK 并开发一个小程序然后使用 Dart VM 运行它。最后你将使用一个 AOT（_预_）编译器将你刚才完成的程序编译为可以被 Dart 运行时执行的原生机器码。
+跟着下面这些步骤开始使用 Dart SDK 来开发命令行和服务器应用。首先你将在浏览器中运行 Dart 编程语言和库而不需要下载它。接着，你需要安装 Dart SDK 并尝试开发一个小程序，然后使用 Dart VM 运行它。最后你将使用一个 AOT（_预_）编译器将你刚才完成的程序编译为可以被 Dart 运行时执行的原生机器码。
 
 ## 1. Play with Dart code in DartPad
 
@@ -37,7 +37,7 @@ change the greeting to use another language. To get the full DartPad experience,
 <a href="{{site.dartpad}}/27e044ec9e2957d9c5c7062871ce8bf3" target="_blank">open
 the example at dartpad.dev.</a>
 
-例如，下面这个内嵌的 DartPad 可以让你尝试一个简单的 Hello World 程序代码。点击 **运行** 来运行应用；控制台输出的内容位于代码块下方。你可以尝试更改源代码，比如更改问候语或者其它的一些语句。你也可以<a href="{{site.dartpad}}/27e044ec9e2957d9c5c7062871ce8bf3" target="_blank">在 dartpad.dev 中打开示例</a>以获取更完整的 DartPad 体验。
+例如，下面这个内嵌的 DartPad 可以让你尝试一个简单的 Hello World 程序代码。点击 **运行** 来运行应用；控制台输出的内容位于代码块下方。你可以尝试更改源代码，比如更改问候语或者其它的一些语句。你也可以 <a href="{{site.dartpad}}/27e044ec9e2957d9c5c7062871ce8bf3" target="_blank">在 dartpad.dev 中打开示例</a> 以获取更完整的 DartPad 体验。
 
 <iframe
     src="{{site.custom.dartpadx.embed-inline-prefix}}?id=27e044ec9e2957d9c5c7062871ce8bf3"
@@ -136,7 +136,7 @@ These commands create a small Dart app that has the following:
   information about which [packages](/guides/packages) the app depends on
   and which versions of those packages are required.
 
-  一个 pubspec 文件，`pubspec.yaml`，包含应用的元数据，包括应用依赖的[包](/guides/packages)信息以及所需的版本等。
+  一个 pubspec 文件，`pubspec.yaml`，包含应用的元数据，包括应用依赖的 [包](/guides/packages) 信息以及所需的版本等。
 
 ## 5. Get the app's dependencies
 
@@ -175,7 +175,7 @@ Let's customize the app you just created.
 
  1. Edit `lib/cli.dart` to return a different result:
 
- 1. 编辑 `lib/cli.dart` 以返回一个不同的结果：
+    编辑 `lib/cli.dart` 以返回一个不同的结果：
 
     ```dart
     int calculate() {
@@ -184,11 +184,11 @@ Let's customize the app you just created.
     ```
  1. Save your changes.
 
- 1. 保存你刚才所做的改变。
+    保存你刚才所做的改变。
 
  1. Rerun the main entrypoint of your app:
 
- 1. 重新运行你应用的入口 main 函数：
+    重新运行你应用的入口 main 函数：
 
     ```terminal
     > dart bin/main.dart
@@ -256,6 +256,7 @@ Check out these resources:
   * [Codelabs](/codelabs)
 
     [指引](/codelabs)
+    
 * Dart language, libraries, and conventions
 
   Dart 语言、库以及习惯用法
@@ -289,7 +290,7 @@ Check out these resources:
 
 If you get stuck, find help at [Community and support.](/community)
 
-如果你卡住了，可以从[社区和帮助](/community)中查找帮助。
+如果你卡住了，可以从 [社区和帮助](/community) 中查找帮助。
 
 [stagehand]: {{site.pub-pkg}}/stagehand
 [DartPad documentation]: /tools/dartpad
