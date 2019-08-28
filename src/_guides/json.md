@@ -66,7 +66,7 @@ The following libraries and packages are useful across Dart platforms:
 : Demonstrates how to use HttpRequest to exchange data with a web server.
   Part of the [dart:html library tour.](/guides/libraries/library-tour#darthtml)
 
-[通过 HttpRequest 使用 HTTP 资源](/guides/libraries/library-tour#using-http-resources-with-httprequest)：向你演示如何使用 HttpRequest 与服务器交换数据。该资源是 [dart:html 库概览](/guides/libraries/library-tour#darthtml)的一部分。
+[通过 HttpRequest 使用 HTTP 资源](/guides/libraries/library-tour#using-http-resources-with-httprequest)：向你演示如何使用 HttpRequest 与服务器交换数据。该资源是 [dart:html 库概览](/guides/libraries/library-tour#darthtml) 的一部分。
 
 ## VM resources
 
@@ -80,6 +80,4 @@ The following libraries and packages are useful across Dart platforms:
 
 {% comment %}
 ## Other tools and resources
-
-## 其它工具和资源
 {% endcomment %}
