@@ -70,8 +70,7 @@ Get answers and connect with Dart developers.
 Dart is open source. Learn how to
 [contribute to the core SDK.](https://github.com/dart-lang/sdk/wiki/Contributing)
 
-Dart 是开源项目。了解如何
-[为核心 SDK 做贡献](https://github.com/dart-lang/sdk/wiki/Contributing)。
+Dart 是开源项目。了解如何[为核心 SDK 做贡献](https://github.com/dart-lang/sdk/wiki/Contributing)。
 
 * [Dart GitHub repositories](https://github.com/dart-lang/)
   * [Core SDK](https://github.com/dart-lang/sdk/)
@@ -81,8 +80,7 @@ Dart 是开源项目。了解如何
 * [Dart reviews]({{site.group}}/d/forum/reviews) -
   High-traffic list of all core SDK code reviews.
 
-  [Dart reviews]({{site.group}}/d/forum/reviews) -
-  所有核心 SDK 的高频率 code review 列表。
+  [Dart reviews]({{site.group}}/d/forum/reviews) - 所有核心 SDK 的高频率 code review 列表。
 
 ## Additional community resources
 
