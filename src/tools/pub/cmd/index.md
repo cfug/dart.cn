@@ -128,29 +128,49 @@ to make it directly available from the command line.
 Several command-line options work with all of the pub commands.
 These include:
 
+有几个命令行选线可以用于所有 pub 命令。它们包括：
+
 `--help` or `-h`
 : Print usage information.
+
+`--help` 或 `-h`：显示使用说明。
 
 `--version`
 : Print version of pub.
 
+`--version`：显示当前 pub 命令的版本。
+
 `--trace`
 : Print debugging information when an error occurs.
+
+`--trace`：当出现错误时输出调试信息。
 
 `--verbosity=<level>`
 : The specified level determines the amount of information that is displayed:
 
+`--verbosity=<level>`：指定输出信息的级别：
+
 * `all`
 : Show all output, including internal tracing messages.
+
+* `all`：显示所有出输出，包括内部追踪信息。
 
 * `io`
 : Show I/O operations.
 
+* `io`：显示 I/O 操作。
+
 * `normal`
 : Show errors, warnings, and user messages.
+
+* `normal`：显示错误、警告以及用户信息。
 
 * `solver`
 : Show steps during version resolution.
 
+* `solver`：显示版本解析的步骤。
+
 `-verbose` or `-v`
 : Equivalent to `--verbosity=all`.
+
+`-verbose` 或 `-v`：等同于 `--verbosity=all`。
