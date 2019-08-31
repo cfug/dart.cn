@@ -13,17 +13,16 @@ Dart web, command-line, and server apps.
 If you're developing only mobile apps,
 then you don't need the Dart SDK; just [install Flutter.][flutter]
 
-Dart SDK 包含开发 Web ，命令行，服务端应用所需要的库和命令行工具，
-如果仅需要开发移动端应用，只要[安装 Flutter][flutter] 即可，不需要 Dart SDK 。
+Dart SDK 包含开发 Web、命令行和服务端应用所需要的库和命令行工具。如果你只是想开发移动应用，则不需要使用 Dart SDK，只需[安装 Flutter][flutter] 即可
 
 To learn about other tools you can use for Dart development, see
 the [Dart tools]({{site.dartlang}}/tools) page.
 
-要了解 Dart 开发中的其他可用工具，请参阅 [Dart 工具]({{site.dartlang}}/tools) 。
+要了解在 Dart 开发中你可以使用的其它工具，请查阅 [Dart 工具]({{site.dartlang}}/tools)。
 
 To learn about what's in the SDK, see [Dart SDK overview](/tools/sdk).
 
-要了解 SDK 中的内容，请参阅[Dart SDK 概述](/tools/sdk)。
+要了解 SDK 中的内容，请参阅 [Dart SDK 概述](/tools/sdk)。
 
 <aside class="alert alert-info" markdown="1">
   **Note:** This site's documentation and examples use
@@ -31,16 +30,13 @@ To learn about what's in the SDK, see [Dart SDK overview](/tools/sdk).
   version [{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external}
   of the **Dart SDK**.
 
-  **Note:** 
-  注意：本网站的文档和示例基于
-  {% if site.data.pkg-vers.SDK.channel == 'dev' %} **开发版** 的{% endif -%}
-  **Dart SDK**[{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external} 版本。
+  **注意：** 本网站的文档和示例使用的是 **Dart SDK** 的 {% if site.data.pkg-vers.SDK.channel == 'dev' %} **dev channel** {% endif -%} 版本 [{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external}
 </aside>
 
 
 To learn about what's in the SDK, see [Dart SDK overview](/tools/sdk).
 
-了解更多关于 SDK 里的最新更新，查看 [Dart SDK 概览页面](/tools/sdk)。
+请查阅 [Dart SDK 概览](/tools/sdk)获取更多关于 SDK 中包含哪些内容的信息。
 
 ## Install the Dart SDK {#install}
 
