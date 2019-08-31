@@ -9,9 +9,12 @@ Dart 2 has a few key differences from earlier versions of Dart.
 This page briefly covers those differences and
 gives general advice on migrating your code to Dart 2.
 
+Dart 2 有一些与早期版本 Dart 不同的关键点。本文将会简单地介绍这些差异并提供了一些将代码迁移到 Dart 2 的建议。
+
 For information on _why_ Dart 2 has changed, see the
 [Dart 2 announcement.][Dart 2 announcement]
 
+至于 _为什么_ Dart 2 要做这些改变，你可以查阅 [Dart 2 通告。][Dart 2 announcement]
 
 ## Differences
 
