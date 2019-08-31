@@ -14,7 +14,7 @@ Dart 2 有一些与早期版本 Dart 不同的关键点。本文将会简单地�
 For information on _why_ Dart 2 has changed, see the
 [Dart 2 announcement.][Dart 2 announcement]
 
-至于 _为什么_ Dart 2 要做这些改变，你可以查阅 [Dart 2 通告。][Dart 2 announcement]
+至于 _为什么_ Dart 2 要做这些改变，你可以查阅 [Dart 2 公告。][Dart 2 announcement]
 
 ## Differences
 
