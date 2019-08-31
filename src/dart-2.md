@@ -305,13 +305,29 @@ environment:
 
 ## More resources
 
+## 更多资源
+
 * [DartPad](/tools/dartpad)
+
+  [DartPad](/tools/dartpad)
+
 * [Dart Language Specification][]
+
+  [Dart 语言规范][Dart Language Specification]
+
 * [About Dart SDK release channels and version strings][pre-release]
+
+  [关于 Dart SDK 发布渠道和版本字符串][pre-release]
+
 * [SDK constraints][]
+
+  [SDK 限制][SDK constraints]
+
 * [Updating your pub package to Dart 2,][]
   an article that includes tips for updating your code and
   using Travis to perform continuous integration (CI) testing
+
+  [更新你的 pub 包到 Dart 2，][Updating your pub package to Dart 2,]这篇文章包含了更新代码和使用 Travis 执行可持续集成（CI）测试的技巧。
 
 [analysis options file]: /guides/language/analysis-options#the-analysis-options-file
 [dartdevc]: /tools/dartdevc
