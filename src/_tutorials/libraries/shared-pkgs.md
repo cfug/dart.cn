@@ -82,13 +82,19 @@ your app must itself be a package.
 Any app with a valid pubspec.yaml file in its top-level directory
 is a package and can therefore use external packages.
 
+想要使用外部的包，你的应用其本身也必须是一个包。任何在顶层目录中包含有效 pubspec.yaml 文件的应用都是一个包，从而可以使该应用使用外部的包。
+
 You can use the Stagehand tool to generate packages
 with valid pubspec.yaml files and directory structures.
 Stagehand works either at the command line or (behind the scenes) in an IDE
 such as IntelliJ or WebStorm.
 
+你可以使用 Stagehand 工具来生成带有有效 pubspec.yaml 文件和目录结构的包。你可以使用命令行工具来调用 Stagehand 工具，也可以使用类似 IntelliJ 或 WebStorm 这样的 IDE 来间接使用 Stagehand 工具。
+
 Install or update Stagehand using
 [pub global activate](/tools/pub/cmd/pub-global):
+
+你可以使用 [pub global activate](/tools/pub/cmd/pub-global) 命令安装或更新 Stagehand 工具：
 
 ```terminal
 > pub global activate stagehand
@@ -97,6 +103,8 @@ Install or update Stagehand using
 Now run the `stagehand` command to see what kinds of template files
 it can generate:
 
+现在你可以运行 `stagehand` 命令来查看它可以生成的模板文件：
+
 ```terminal
 > stagehand
 ```
@@ -104,8 +112,12 @@ it can generate:
 You'll see a list of generators, including various web and server-side apps.
 One of the generators is named **console-full**.
 
+你将会看到一系列的生成器，包括各种 Web 和 服务端应用的。其中一个生成器叫 **console-full** 。
+
 In a new directory named `vector_victor`,
 use Stagehand to generate a command-line app:
+
+在一个新建的名为 `vector_victor` 的目录中，使用 Stagehand 工具来生成一个命令行应用：
 
 ```terminal
 > mkdir vector_victor
@@ -117,6 +129,8 @@ The pubspec.yaml file contains the package specification written in YAML.
 (Visit <a href="/tools/pub/pubspec">Pubspec Format</a>
 for in-depth coverage.)
 The contents of your pubspec.yaml file should look something like this:
+
+pubspec.yaml 文件包含了由 YAML 语言撰写的包规格。（访问 <a href="/tools/pub/pubspec">Pubspec 格式</a>获取更多深入的介绍。）而你的 pubspec.yaml 文件看起来则应该是这样的：
 
 ```yaml
 name: vector_victor
