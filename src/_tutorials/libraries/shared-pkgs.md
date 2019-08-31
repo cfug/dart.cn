@@ -12,21 +12,39 @@ description: Package 是用于在 Dart 语言里打包代码、工具和资源�
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
 
+  <h4>本文的重点是什么？</h4>
+
   * The [Pub site]({{site.pub}}) is the primary public repository for Dart
     packages.
+
+    [Pub 网站]({{site.pub}})是 Dart 包主要的公共仓库。
+
   * Following a few conventions, such as having a valid pubspec.yaml file,
     makes your app a package.
+
+    遵循一些规定，比如一个有效的 pubspec.yaml 文件，使你的应用成为一个包。
+
   * If you're developing a web or server-side app,
     use Stagehand to generate starting files.
+
+    如果你正在开发一款 Web 或服务端应用，请使用 Stagehand 工具生成相关初始化文件。
+
   * If you're developing a web or server-side app,
     use `pub get` to download packages.
+
+    如果你正在开发一款 Web 或服务端应用，请使用 `pub get` 命令下载相关包。
+
   * If you're developing a mobile app, use Flutter's tools.
+
+    如果你正在开发一款移动应用，请使用 Flutter 工具。
 </div>
 
 Once you can create and run a Dart app,
 you're ready to leverage code written by other programmers.
 Many interesting and useful packages of reusable Dart code
 are available at the [Pub site]({{site.pub}}) repository.
+
+当你可以创建和运行 Dart 应用时，你就已经准备复用其他程序员编写的代码了。[Pub 网站]({{site.pub}})仓库有许多可用的使用 Dart 代码编写的包。
 
 This tutorial shows how to use `pub`&mdash;a package manager
 that comes with Dart&mdash;to
@@ -38,13 +56,20 @@ just change the package name when you get to that step.
 This tutorial also describes some of the resources you can expect to find
 in a well-built package.
 
+本教程将向你展示如何使用 `pub` 命令&mdash;Dart 的包管理命令&mdash;即用以安装仓库中某个包（比如 vector_math 包）的命令。你可以使用这些步骤来安装由 [Pub 网站]({{site.pub}}) 提供的任意一个包；当你想安装其它你想要使用的包时只需修改这些步骤中的示例包名即可。本教程同时也会向你展示一些你可能会使用到的优秀的包。
+
 <aside class="alert alert-info" markdown="1">
   **Flutter note:**
+
+  **使用 Flutter 的请注意：**
+
   This page doesn't describe the tools you use with Flutter, but the
   concepts are the same, and you can share packages between
   your Flutter and web or server-side apps.
   For more information, see the
   [Flutter package documentation.]({{site.flutter}}/docs/development/packages-and-plugins/using-packages)
+
+  本文不会向你展示那些只针对 Flutter 的包，但是 Flutter 使用到的 Dart 包会被介绍，你也可以将你的包分享为可以在 Flutter、Web 或服务端应用上使用。更多相关信息，请查阅 [Flutter 包文档。]({{site.flutter}}/docs/development/packages-and-plugins/using-packages)
 </aside>
 
 
