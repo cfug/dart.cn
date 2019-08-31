@@ -12,7 +12,7 @@ Track the Dart project, get help, and talk with other Dart developers.
 We pledge to maintain an open and welcoming environment.
 For details, see our [code of conduct](/code-of-conduct).
 
-我们承诺为你营造一个开放和热情的环境。详情请参考我们的
+我们承诺为你营造一个开放和热情的环境。详情请参考我们的[行为准则](/code-of-conduct)。
 
 ## Stay informed
 
