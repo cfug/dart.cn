@@ -10,7 +10,7 @@ You can use Dart to write simple scripts or full-featured apps. Whether you're
 creating a mobile app, web app, command-line script, or server-side app, there's
 a Dart solution for that.
 
-Dart 可以用来编写简单的脚本或完整功能的应用程序。无论是创建移动应用，Web 应用，命令行脚本还是服务端应用，都可以选择 Dart 作为解决方案。
+Dart 可以用来编写简单的脚本或完整功能的应用程序。无论是创建移动应用、Web 应用、命令行脚本还是服务端应用，都可以选择 Dart 作为解决方案。
 
 Flexible compiler technology lets you run Dart code in different ways,
 depending on your target platform and goals:
@@ -22,17 +22,13 @@ depending on your target platform and goals:
     compilation and an AOT (ahead-of-time) compiler for producing machine
     code.
 
-    **Dart Native**: 针对设备（移动设备，桌面设备，服务器等）应用开发，
-    Dart Native 包括带有 JIT（just-in-time）编译器的 Dart VM
-    和用于生成机器码的 AOT（ahead-of-time）编译器。
+    **Dart Native**: 针对目标设备（移动设备、桌面设备、服务器等）的应用开发，Dart Native 包括使用 JIT（Just-In-Time）编译的 Dart VM 和用于生成机器码的 AOT（Ahead-Of-Time）编译器。
 
   * **Dart Web**: For programs targeting the web, Dart Web includes both a
     development time compiler (`dartdevc`) and a production time compiler
     (`dart2js`).
 
-    **Dart Web**: 针对 Web 应用开发，
-    Dart Web 包括开发时编译器（`dartdevc`）
-    和生产时编译器（`dart2js`）。
+    **Dart Web**: 针对 Web 应用开发，Dart Web 包括开发时编译器（`dartdevc`）和生产时编译器（`dart2js`）。
 
 <img src="{% asset platforms.svg @path %}" width="800px" alt="Dart platform">
 
@@ -73,7 +69,7 @@ More information:
 
 ### 极速开发 (Dart VM JIT)
 
-Having a fast developer cycle is critical for iteration. 
+Having a fast developer cycle is critical for iteration.
 
 缩短开发周期对于迭代至关重要。
 
@@ -97,7 +93,7 @@ you can use the Dart AOT compiler to ahead-of-time compile your app
 to native ARM or X64 code machine code.
 Your AOT-compiled app starts instantly and runs smoothly.
 
-当应用程序准备好部署到生产环境时 - 无论是发布到应用程序商店还是部署到生产后端 - 
+当应用程序准备好部署到生产环境时 - 无论是发布到应用程序商店还是部署到生产后端 -
 都可以使用 Dart AOT 编译器将应用程序提前编译为本机 ARM 或 X64 的机器码。
 经过 AOT 编译的应用程序，能够快速启动和更流畅的运行。
 
@@ -121,7 +117,7 @@ turn runs in a browser — for example, [V8](https://v8.dev/) inside
 
 Dart Web 可以让 Dart 代码运行在支持 JavaScript 的 Web 平台。
 Dart Web 可以将 Dart 代码编译为 JavaScript 代码，
-从而运行在浏览器中 - 
+从而运行在浏览器中 -
 例如，内嵌 [V8](https://v8.dev/) 的 [Chrome](https://www.google.com/chrome/) 浏览器。
 
 The [Flutter framework]({{site.flutter}}), a popular multi-platform UI toolkit,
@@ -155,11 +151,11 @@ More information:
 更多内容：
 
 * [`dartdevc` compiler](/tools/dartdevc)
-  
+
   [`dartdevc` 编译器](/tools/dartdevc)
 
 * [`webdev` tool](/tools/webdev)
-  
+
   [`webdev` 工具](/tools/webdev)
 
 ### Optimized production code (Dart JS compiler)
