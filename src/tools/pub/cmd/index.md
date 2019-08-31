@@ -61,6 +61,8 @@ Pub 的命令可以分为以下几类：
 Pub provides a number of commands for managing the
 [packages your code depends on](/tools/pub/dependencies).
 
+Pub 提供了许多管理[代码依赖包](/tools/pub/dependencies)的命令。
+
 In this group, the most commonly used commands are `pub get` and
 `pub upgrade`, which retrieve or upgrade dependencies used by a package.
 Every time you modify a pubspec file, run `pub get`
@@ -68,18 +70,26 @@ to make sure the dependencies are up to date. Some IDEs
 perform this step automatically on the creation of a project,
 or any modification of the pubspec.
 
+在这些命令中，最常用的是 `pub get` 和 `pub upgrade`，前者用于检索包的依赖项，后者用于更新包的依赖项。每一次你修改了 pubspec 文件后都需要执行 `pub get` 命令来确保你所用的依赖项是最新的。一些 IDE 会在创建项目或修改了 pubspec 文件后自动执行此操作。
+
 [`pub cache`](/tools/pub/cmd/pub-cache)
 : Manages pub's local package cache. Use this command to add packages
   to your cache, or to perform a clean reinstall of all packages in
   your cache.
 
+[`pub cache`](/tools/pub/cmd/pub-cache)：管理 Pub 的本地包缓存。使用该命令你可以将一个包添加至缓存，或者清除所有缓存重新安装包。
+
 [`pub deps`](/tools/pub/cmd/pub-deps)
 : Lists all dependencies used by the current package.
+
+[`pub deps`](/tools/pub/cmd/pub-deps)：显示当前包使用的所有依赖项。
 
 [`pub downgrade`](/tools/pub/cmd/pub-downgrade)
 : Retrieves the lowest versions of all the packages that are
   listed as dependencies used by the current package. Used for testing
   the lower range of your package's dependencies.
+
+[`pub downgrade`](/tools/pub/cmd/pub-downgrade)：检索当前包所有依赖项的包的最低版本。用于测试较低版本的包依赖项兼容性。
 
 [`pub get`](/tools/pub/cmd/pub-get)
 : Retrieves the packages that are listed as the dependencies for
@@ -88,6 +98,8 @@ or any modification of the pubspec.
   of each dependency (if possible) as listed in the lock file.
   Creates or updates the lock file, as needed.
 
+[`pub get`](/tools/pub/cmd/pub-get)：检索当前包所依赖项的包。如果 `pubspec.lock` 已经存在，则在该文件中列出获取的每个依赖项版本（如果可能的话）。如有必要，将会创建或更新该文件。
+
 [`pub upgrade`](/tools/pub/cmd/pub-upgrade)
 : Retrieves the latest version of each package listed
   as dependencies used by the current package. If a `pubspec.lock`
@@ -95,6 +107,7 @@ or any modification of the pubspec.
   the newest versions that honor the constraints in the pubspec.
   Creates or updates the lock file, as needed.
 
+[`pub upgrade`](/tools/pub/cmd/pub-upgrade)：检索当前包所依赖项的包的最新版本。如果 `pubspec.lock` 已经存在，则忽略其缓存的版本并以 pubspec 文件中指定的最新版本为主。如有必要，将会创建或更新该文件。
 
 ## Running command-line apps
 
