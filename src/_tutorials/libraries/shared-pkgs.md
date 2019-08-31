@@ -342,5 +342,10 @@ use the `package:` prefix.
 * Dart developers share packages at the [Pub site]({{site.pub}}).
   Look there for packages that might be useful to you,
   or share your own Dart packages.
+
+  Dart 开发者们在 [Pub 网站]({{site.pub}})分享它们开发的包。你可以在那里查找你想要使用的包或者分享你自己开发的包。
+
 * See the [pub package documentation](/guides/packages)
   for more information on using and sharing packages.
+
+  你也可以查阅 [pub 包文档](/guides/packages)获取更多有关如何使用和分享包的信息。
