@@ -13,13 +13,27 @@ del code { color: darkred; }
 This page has information on migrating your Dart 1.x web app to Dart 2.
 These changes are necessary because of the following:
 
+本文将向你阐述迁移 Dart 1.x Web 应用到 Dart 2 的相关信息。这些迁移变化是必须的因为：
+
 - [Tooling changes](#tools):
+
+  [相关工具变更](#tools):
+
   - **Chrome** replaces Dartium and content-shell.
+
+    **Chrome** 取代了 Dartium 和 content-shell。
+
   - A **new build system** replaces `pub build`, `pub serve`, pub transformers.
+
+    **新的编译系统** 取代了 `pub build`、`pub serve` 以及 pub 变换器。
+
 - Dart 2 [language and library changes.][dart-2]
+
+  Dart 2 [语言和库变化。][dart-2]
 
 See also: [Angular Migration Guide v4 to v5]({{site.angulardart}}/note/migrating-to-v5)
 
+你也可以查阅：[Angular 迁移指南从 v4 到 v5]({{site.angulardart}}/note/migrating-to-v5)
 
 ## Tools
 
