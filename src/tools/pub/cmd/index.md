@@ -10,9 +10,13 @@ and for deploying packages and command-line apps.
 For general information about using the pub package manager, see
 [How to use packages](/guides/packages).
 
+`pub` 工具包含管理包以及部署包和命令行应用的命令。有关如何使用 pub 包管理器的信息，请查阅[如何使用包](/guides/packages)。
+
 {% include flutter-packages.md %}
 
 Quick links to the `pub` commands:
+
+`pub` 相关命令链接：
 
 * [`pub cache`](/tools/pub/cmd/pub-cache)
 * [`pub deps`](/tools/pub/cmd/pub-deps)
@@ -27,13 +31,26 @@ Quick links to the `pub` commands:
 <aside class="alert alert-info" markdown="1">
 *Problems?*
 See [Troubleshooting Pub](/tools/pub/troubleshoot).
+
+*有疑问？*
+请查阅 [Pub 疑难协助](/tools/pub/troubleshoot).
 </aside>
 
 Pub's commands fall into the following categories:
 
+Pub 的命令可以分为以下几类：
+
 * [Managing package dependencies](#managing-apps)
+
+  [管理包的依赖关系](#managing-apps)
+
 * [Running command-line apps](#running-command-line-apps)
+
+  [运行命令行应用](#running-command-line-apps)
+
 * [Deploying packages and apps](#deploying-packages-and-apps)
+
+  [部署包和应用](#deploying-packages-and-apps)
 
 
 <a id="managing-apps"></a>
