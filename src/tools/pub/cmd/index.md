@@ -1,6 +1,8 @@
 ---
 title: The pub tool
+title: Pub 工具
 description: Pub, a package management tool for Dart, supports a variety of commands.
+description: Pub 是一个支持各种命令的 Dart 包管理工具。
 ---
 
 The `pub` tool has commands for managing packages
@@ -36,6 +38,8 @@ Pub's commands fall into the following categories:
 
 <a id="managing-apps"></a>
 ## Managing package dependencies
+
+## 管理包的依赖关系
 
 Pub provides a number of commands for managing the
 [packages your code depends on](/tools/pub/dependencies).
@@ -77,6 +81,8 @@ or any modification of the pubspec.
 
 ## Running command-line apps
 
+## 运行命令行应用
+
 Two commands let you run Dart scripts from the command line:
 
 * The [`pub run`](/tools/pub/cmd/pub-run) command invokes a Dart script in your
@@ -87,11 +93,15 @@ Two commands let you run Dart scripts from the command line:
 
 ## Deploying packages and apps
 
+## 部署包和应用
+
 With pub you can publish packages and command-line apps.
 
 {% include tools/pub-was-a-builder.md %}
 
 ### Packages
+
+### 包
 
 To share your Dart packages with the world, you can
 use the [`pub publish`](/tools/pub/cmd/pub-lish) command to upload the
@@ -100,6 +110,8 @@ package to the [Pub site]({{site.pub}}). The
 users to modify and upload new versions of your package.
 
 ### Command-line apps
+
+### 命令行应用
 
 For any package that contains scripts (anything under the `bin/`
 directory), consider adding the `executables` tag to the pubspec file.
@@ -110,6 +122,8 @@ to make it directly available from the command line.
 ---
 
 ## Global options
+
+## 全局选项
 
 Several command-line options work with all of the pub commands.
 These include:
