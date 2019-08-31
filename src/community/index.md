@@ -7,13 +7,12 @@ description: Communities, mailing lists, and bug databases for the Dart project.
 
 Track the Dart project, get help, and talk with other Dart developers.
 
-关注 Dart 项目，获得帮助，以及与其他 Dart 开发者交流。
+请持续关注 Dart 项目的进展，你可以在 Dart 社区获取到帮助以及与其他 Dart 开发者交流。
 
 We pledge to maintain an open and welcoming environment.
 For details, see our [code of conduct](/code-of-conduct).
 
-我们承诺保持环境的开放和热情。
-有关详细信息，请参见我们的[行为准则](/code-of-conduct)。
+我们承诺为你营造一个开放和热情的环境。详情请参考我们的
 
 ## Stay informed
 
@@ -101,10 +100,9 @@ Our wonderful community has provided these resources.
   and articles written by the Dart community
 
 * [Chinese version of this site (此网站的中文版)](http://www.dartdoc.cn)
-  
+
   [此站的英文官网](https://www.dartlang.org/)
 
 Also see the [Flutter community page.]({{site.flutter}}/community)
 
 另见 [Flutter 社区]({{site.flutter}}/community)。
-
