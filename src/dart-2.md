@@ -18,31 +18,82 @@ For information on _why_ Dart 2 has changed, see the
 
 ## Differences
 
+## 差异点
+
 The Dart language, libraries, build system, and web development tools have changed.
+
+Dart 语言、库、编译系统以及 Web 开发工具都已经有所变化。
 
 ### Language and libraries
 
+### 语言和库
+
 * [Dart's type system][sound Dart] is now sound.
+
+  [Dart 的类型系统][sound Dart]现在是健全的。
+
   * [Fixing common type problems][Fixing Common Type Problems]
+
+    [修复常见的类型问题][Fixing Common Type Problems]
+
   * [Flutter announcement: Breaking Change: `--preview-dart-2` turned on by default][Leaf's email]
+
+    [Flutter 公告：变更：`--preview-dart-2` 命令参数默认为开启][Leaf's email]
+
 * Instance creation keywords are now generally optional,
   as described in [Using constructors][]:
+
+  实例对象创建的关键字现在是可选的，就像[使用构造函数][Using constructors]中所说的那样：
+
   * `new` is always optional.
+
+    `new` 关键字总是可选的。
+
   * `const` is optional inside of a constant context.
+
+    `const` 在常量上下文环境中也是可选的。
+
 * Dart no longer has checked mode.
+
+  Dart 不再有检查模式。
+
   * [Assert statements][] are still supported, but you enable them differently.
+
+    [Assert 语句][]依然支持，但是开启的方式改变了。
+
 * The Dart language and core libraries have changed,
   partly as a result of the type system changes.
+
+  Dart 语言和核心库也改变了，部分原因是因为类型系统的改变而改变。
+
   * [Dev channel API reference documentation][apiref]
+
+    [开发渠道 API 参考文档][apiref]
+
   * [dart-lang/sdk CHANGELOG][]
+
+    [dart-lang/sdk 变更日志][dart-lang/sdk CHANGELOG]
 
 ### Tools
 
+### 工具
+
 * Pub no longer supports transformers.
   Instead, use the [new build system.][build system]
+
+  Pub 不再支持转换。作为替代，请使用[新的编译系统。][build system]
+
 * Tools related to web development have changed.
+
+  Web 开发相关的工具已经改变。
+
   * The new build system [replaces `pub build` and `pub serve`.][build_runner web]
+
+    新的编译系统[替代 `pub build` 和 `pub serve`。][build_runner web]
+
   * Dartium is no longer supported. Instead, use [dartdevc][] and Chrome.
+
+    Dartium 不再支持。作为替代，使用 [dartdevc][] 和 Chrome。
 
 
 ## Migrating your code {#migration}
