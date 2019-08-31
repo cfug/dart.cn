@@ -282,6 +282,8 @@ that do not get installed into your app directory.
 Let's take a step back for a moment to look at what
 you got and where it came from.
 
+除了 Dart 库以外，vector_math 包可能包含其它对你有用但不会安装到你应用目录的资源。让我们后退一步看看你在依赖包时得到了什么以及从何而来。
+
 To see the contents of the vector_math package,
 visit the
 <a href="https://github.com/johnmccutchan/vector_math" target="_blank">
@@ -290,6 +292,8 @@ Dart vector math repository
 at GitHub.
 Although many files and directories are in the repository,
 only one, `lib`, was installed when you ran pub get.
+
+访问 <a href="https://github.com/johnmccutchan/vector_math" target="_blank">Dart 数学矢量仓库</a>的 Github 仓库查看 vector_math 包的具体内容。尽管该仓库中有大量的文件和目录，但是只有 `lib` 目录下的文件会在你执行 pub get 命令时安装。
 
 <div>
   <hr>
@@ -300,8 +304,11 @@ only one, `lib`, was installed when you ran pub get.
     </div>
     <div class="col-lg-7">
       <em>Dart libraries:</em>
+      <em>Dart 库：</em>
       The lib directory contains one or more Dart libraries,
       which can be imported into your Dart programs.
+
+      lib 目录包含一个或多个可以安装到你 Dart 程序的 Dart 库。
     </div>
   </div>
   <hr>
@@ -312,6 +319,7 @@ only one, `lib`, was installed when you ran pub get.
     </div>
     <div class="col-lg-7">
       <em>Housekeeping files:</em>
+      <em>管理文件：</em>
       When using a package written by someone else,
       the README file is a good place to start.
       It should contain important information about the package,
@@ -319,6 +327,8 @@ only one, `lib`, was installed when you ran pub get.
       The LICENSE file provides copyright and rules-of-use information.
       These files can be found at the package repository.
       They are not installed when you install a package.
+
+      当使用别人开发的包时，README 文件是了解该包最好的地方。它会包含与包相关的重要信息，比如开发包时的想法、包的相关内容、示例以及使用说明。LICENSE 文件则包含了版权信息以及使用规则信息。这些文件可以在包仓库中找到，在你安装包时它们不会被下载。
     </div>
   </div>
   <hr>
@@ -329,11 +339,14 @@ only one, `lib`, was installed when you ran pub get.
     </div>
     <div class="col-lg-7">
       <em>Other resources:</em>
+      <em>其它资源：</em>
       Along with Dart libraries,
       a package might also contain other resources
       such as example code, tests, scripts, and documentation.
       If a package contains these resources,
       they should be in the directories as specified in the pub
+
+      包可能会包含库以外的其它资源，比如示例代码、测试、脚本以及文档。如果包中包含诸如此类的信息，它们会存放在 Pub 指定的目录中。
 <a href="/tools/pub/package-layout">conventions</a>.
     </div>
   </div>
