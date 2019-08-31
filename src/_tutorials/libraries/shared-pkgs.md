@@ -234,8 +234,12 @@ as we have done here.
 If you're using an IDE or Dart-savvy editor to edit `pubspec.yaml`,
 it might automatically install the packages your app depends on.
 
+如果你使用 IDE 或适配了 Dart 语言开发的编辑器去编辑 `pubspec.yaml` 文件，其可能会在你编辑了该文件后自动下载安装相关的依赖包。
+
 If not, do it yourself by running
 [pub get](/tools/pub/cmd/pub-get):
+
+否则，你只能手动地执行 [pub get](/tools/pub/cmd/pub-get) 命令进行下载安装：
 
 ```terminal
 > pub get
@@ -254,6 +258,8 @@ if an included package has dependencies, those packages are installed as well.
 Pub caches the files for each package your app depends on,
 pointing to them from a file named `.packages`.
 
+`pub get` 命令会安装你应用依赖列表中的包。而每一个包可能还会包含其它的库或资源，Pub 同样会将它们依次安装；如果一个依赖包已经安装过，则会直接使用。Pub 会缓存你应用依赖过的每一个包并将其缓存至一个名为 `.packages` 的文件中。
+
 {% comment %}
 PENDING: Here only to make it easy to find the packages discussion: packages-dir.html
 {% endcomment %}
@@ -263,6 +269,8 @@ that identifies the specific versions of the packages that were installed.
 This helps to provide a stable development environment.
 Later you can modify the version constraints and use `pub upgrade`
 to update to new versions as needed.
+
+Pub 会创建一个名为 `pubspec.lock` 的文件来标识哪些包的哪些版本已经安装过。此举可以为开发者提供一个稳定的开发环境。你也可以修改包版本并使用 `pub upgrade` 命令来更新包。
 
 ## What did you get (and not get)?
 
