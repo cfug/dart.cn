@@ -49,7 +49,7 @@ Alternatively, you can
 [build the SDK from source][] or
 [download the SDK as a zip file]({{site.dartlang}}/tools/sdk/archive).
 
-如下介绍，可以使用包管理器轻松的安装更新 Dart SDK。也可以，从源代码 [构建 SDK ][build the SDK from source] 或者 [下载 SDK zip 包文件]({{site.dartlang}}/tools/sdk/archive)。
+如下所述，你可以使用包管理轻松地安装和更新 Dart SDK。你也可以[下载 SDK 的 zip 压缩文件]({{site.dartlang}}/tools/sdk/archive)并以[编译 SDK 源码][build the SDK from source]的形式安装或更新 SDK。
 
 {% comment %}
 NOTE to editors: Keep the zip file link as the last thing in the paragraph,
