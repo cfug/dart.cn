@@ -31,11 +31,11 @@ For details, see our [code of conduct](/code-of-conduct).
 
 ## Join the conversation
 
-## 加入会话
+## 加入讨论
 
 Get answers and connect with Dart developers.
 
-获得答案以及与其他 Dart 开发者交流。
+提问以及寻求答案，同时与其他 Dart 开发者交流。
 
 #### Communities
 
@@ -44,14 +44,12 @@ Get answers and connect with Dart developers.
 * [StackOverflow](http://stackoverflow.com/tags/dart) -
   The best place for how-to questions.
 
-  [StackOverflow](http://stackoverflow.com/tags/dart) -
-  提问题的最佳场所。
+  [StackOverflow](http://stackoverflow.com/tags/dart) - 提问题的最佳场所。
 
 * [Gitter](https://gitter.im/dart-lang/home) -
   Chat with Dart team and community members.
 
-  [Gitter](https://gitter.im/dart-lang/home) -
-  与 Dart 团队及社区成员交流。
+  [Gitter](https://gitter.im/dart-lang/home) - 与 Dart 团队及社区成员交流。
 
 * [Dart on Reddit](https://www.reddit.com/r/dartlang)
 
@@ -61,7 +59,7 @@ Get answers and connect with Dart developers.
 
 * [General discussions]({{site.group}}/d/forum/misc)
 
-  [一般性讨论]({{site.group}}/d/forum/misc)
+  [通用讨论区]({{site.group}}/d/forum/misc)
 
 * [Dart analyzer]({{site.group}}/d/forum/analyzer-discuss)
 
