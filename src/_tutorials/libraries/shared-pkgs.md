@@ -7,6 +7,8 @@ description: Package 是用于在 Dart 语言里打包代码、工具和资源�
 
 ### Borrow and share code.
 
+### 借用和分享代码。
+
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
 
@@ -47,6 +49,8 @@ in a well-built package.
 
 
 ## About the pubspec.yaml file
+
+## 关于 pubspec.yaml 文件
 
 To use an external package,
 your app must itself be a package.
@@ -105,6 +109,8 @@ dev_dependencies:
 
 ## Name the package dependencies
 
+## 依赖包的命名
+
 To use an external library package,
 you need to add the package to your
 app's list of dependencies
@@ -162,6 +168,8 @@ as we have done here.
 
 ## Install the package dependencies
 
+## 安装依赖包
+
 If you're using an IDE or Dart-savvy editor to edit `pubspec.yaml`,
 it might automatically install the packages your app depends on.
 
@@ -196,6 +204,8 @@ Later you can modify the version constraints and use `pub upgrade`
 to update to new versions as needed.
 
 ## What did you get (and not get)?
+
+## 你可以从中获取（或不可获取）什么？
 
 Besides the Dart libraries,
 the vector_math package has other resources that might be useful to you
@@ -263,6 +273,8 @@ only one, `lib`, was installed when you ran pub get.
 
 ## Import libraries from a package
 
+## 从包中导入库
+
 Now that you've installed the package,
 you can import its libraries and use them in your app.
 
@@ -300,9 +312,10 @@ use the `package:` prefix.
 
 ## Other resources
 
+## 其它资源
+
 * Dart developers share packages at the [Pub site]({{site.pub}}).
   Look there for packages that might be useful to you,
   or share your own Dart packages.
 * See the [pub package documentation](/guides/packages)
   for more information on using and sharing packages.
-
