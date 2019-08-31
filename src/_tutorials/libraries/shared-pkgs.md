@@ -158,18 +158,32 @@ Each item in the dependencies list
 specifies the name and version
 of a package that your app uses.
 
+为了能够使用外部包，你需要将其添加到你应用 pubspec.yaml 文件的依赖里。依赖中的每一项都指定了你应用所使用的包名以及包版本。
+
 Let's make the vector_victor app have a dependency
 on the vector_math package,
 which is available at the [Pub site]({{site.pub}}).
 
+下面让我们为 vector_victor 应用添加一个名为 vector_math 的包，该包可以在 [Pub 网站]({{site.pub}})中找到。
+
  1. Get the current installation details for the package:
+
+    获取包当前的安装细节信息：
 
     {: type="a"}
      1. Go to [vector_math's entry on the Package
         site.]({{site.pub}}/packages/vector_math)
+
+        打开[Pub 网站中 vector_math 包的网页。]({{site.pub}}/packages/vector_math)
+
      2. Click the **Installing** tab.
+
+        点击 **Installing** 标签。
+
      3. Copy the **vector_math** line from the sample **dependencies** entry.
         The entry should look something like this:
+
+        拷贝示例 **dependencies** 实体中有 **vector_math** 的那一行。**dependencies** 实体看起来像下面那样：
 
         ```yaml
         dependencies:
@@ -178,9 +192,13 @@ which is available at the [Pub site]({{site.pub}}).
 
  2. Edit `pubspec.yaml`.
 
+    编辑 `pubspec.yaml` 文件。
+
  3. In the dependencies section, add the string you copied from the
     Pub site. Be careful to keep the indentation the same; YAML is
     picky! For example:
+
+    在 dependencies 部分，将上面你从 Pub 网站拷贝来的文本粘贴添加至这里。这里要注意缩进；必须严格按照 YAML 语言规范！例如：
 
     ```yaml
     environment:
@@ -197,6 +215,8 @@ For details of what version numbers mean
 and how you can format them,
 see [Pub versioning philosophy](/tools/pub/versioning).
 
+你可以查阅 [Pub 版本管理](/tools/pub/versioning)获取更多有关版本号含义以及格式化的相关信息。
+
 The [Pub site]({{site.pub}})
 is the primary public repository for Dart packages.
 `pub` automatically checks that
@@ -204,6 +224,8 @@ website when resolving package dependencies.
 To use one of the packages from that site,
 you can specify it by its simple name,
 as we have done here.
+
+[Pub 网站]({{site.pub}})是 Dart 包主要的公共仓库。`pub` 命令在解析包依赖时会自动去该网站进行检查。如果你想使用该网站的某个包，你可以像我们上面所说的那样在 dependencies 中指定对应的包名。
 
 ## Install the package dependencies
 
