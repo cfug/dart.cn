@@ -16,20 +16,18 @@ For details, see our [code of conduct](/code-of-conduct).
 
 ## Stay informed
 
-## 一手消息
+## 请持续关注下列消息源
 
 * [Dart announce]({{site.group}}/d/forum/announce) -
   Low traffic announcements of new releases, breaking changes,
   and other important news. Recommended!
 
-  [Dart announce]({{site.group}}/d/forum/announce) -
-  第一时间的发行版本公告，重大变化，以及其他重要新闻。推荐！
+  [Dart 公告]({{site.group}}/d/forum/announce) - 第一时间公布新的发行版本、重大变化以及其他重要新闻。推荐！
 
 * [@dart_lang](https://twitter.com/dart_lang) -
   The official Twitter account.
 
-  [@dart_lang](https://twitter.com/dart_lang) -
-  Twitter 官方账号。
+  [@dart_lang](https://twitter.com/dart_lang) - Twitter 官方账号。
 
 ## Join the conversation
 
