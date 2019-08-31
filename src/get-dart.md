@@ -77,24 +77,22 @@ so it's easy to find (but not more tempting than package managers).
 
 ## About release channels and version strings
 
-## 关于发布渠道和版本号
+## 关于发行渠道和版本字符串
 
 The Dart SDK has two release channels:
 
-Dart SDK 有两个发布渠道：
+Dart SDK 有两个发行渠道：
 
 * **stable** channel: **stable releases**,
   updated no more frequently than every 6 weeks;
   currently `[calculating]`{:.editor-build-rev-stable}.
 
-  **稳定版** 渠道： **稳定发行版**，每六周更新一次；
-  当前版本 `[calculating]`{:.editor-build-rev-stable}.
+  **稳定版** 渠道：**稳定发行版**，每六周更新一次；当前版本 `[calculating]`{:.editor-build-rev-stable}.
 
 * **dev** channel: **pre-releases**, usually updated 1/week;
   currently `[calculating]`{:.editor-build-rev-dev}.
 
-  **开发版** 渠道： **预览发行版**，通常每周更新一次；
-  当前版本 `[calculating]`{:.editor-build-rev-dev}.
+  **开发版** 渠道：**预览发行版**，通常每周更新一次；当前版本 `[calculating]`{:.editor-build-rev-dev}.
 
 <aside class="alert alert-warning" markdown="1">
   **Warning:**
@@ -104,27 +102,25 @@ Dart SDK 有两个发布渠道：
   To give you early access to new features and fixes,
   dev channel releases are not as heavily tested as the stable release.
 
-  为了让开发者能够及早了解新功能和修复程序，发行的开发版并未经过像稳定版那样的严格测试。
+  为了能让你及早地了解到新的功能以及 BUG 修复，dev channel 版本并不会像稳定版那样经过很多的测试。
 </aside>
 
 
 **Stable** channel releases of the Dart SDK have version strings like `1.24.3` and `2.1.0`.
 They consist of dot-separated integers, with no hyphens or letters.
 
-**稳定版** 通道发行的 Dart SDK 版本具有 `1.24.3` 或 `2.1.0` 的版本号描述。
-版本号是由点分隔的整数组成，不会包含连接符或字符。
+**稳定版** 的 Dart SDK 版本号类似 `1.24.3` 或 `2.1.0`。其由点分隔开的整数组成，并不会包含其它字符。
 
 **Dev** channel releases of the Dart SDK (pre-releases)
 have additional characters, starting with a hyphen (`-`).
 For example, Dart 2 pre-releases have version numbers starting with
 `2.0.0-dev` such as `2.0.0-dev.69.5`.
 
-**开发版** 通道发行的 Dart SDK 版本（预览发行版）版本号中包含以连接符开始的其他字符。
-例如：Dart 2 预览发行版的版本号 `2.0.0-dev.69.5` 是以 `2.0.0-dev` 开始，并附加数字版本。
+**开发版** 的 Dart SDK（正式预览版）版本号中包含以连接符开始的其他字符。例如：Dart 2 预览发行版的版本号 `2.0.0-dev.69.5` 是以 `2.0.0-dev` 开始，并附加数字版本。
 
 For more information, see the [Dart 2 page.][Dart 2]
 
-更多内容, 参见[ Dart 2 章节][Dart 2]。
+你可以查阅 [Dart 2 相关页面][Dart 2]获取更多信息。
 
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [semantic versioning]: http://semver.org/
