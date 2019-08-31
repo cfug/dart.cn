@@ -115,17 +115,25 @@ or any modification of the pubspec.
 
 Two commands let you run Dart scripts from the command line:
 
+你可以使用下面两个命令从命令行运行 Dart 脚本：
+
 * The [`pub run`](/tools/pub/cmd/pub-run) command invokes a Dart script in your
   package, or in one of its dependencies.
 
+  [`pub run`](/tools/pub/cmd/pub-run) 命令调用你包中或其中一个依赖项中的 Dart 脚本。
+
 * The [`pub global`](/tools/pub/cmd/pub-global) command lets you work with
   globally available packages.
+
+  [`pub global`](/tools/pub/cmd/pub-global) 命令可以让你使用全局可用的包。
 
 ## Deploying packages and apps
 
 ## 部署包和应用
 
 With pub you can publish packages and command-line apps.
+
+使用 pub 命令你还可以发布包和命令行应用。
 
 {% include tools/pub-was-a-builder.md %}
 
@@ -139,6 +147,8 @@ package to the [Pub site]({{site.pub}}). The
 [`pub uploader`](/tools/pub/cmd/pub-uploader) command enables specific
 users to modify and upload new versions of your package.
 
+你可以使用 [`pub publish`](/tools/pub/cmd/pub-lish) 命令将包上传至 [Pub 网站]({{site.pub}})以分享给全世界的开发者使用。[`pub uploader`](/tools/pub/cmd/pub-uploader) 命令可以允许指定用户修改和上传新版本的包。
+
 ### Command-line apps
 
 ### 命令行应用
@@ -149,6 +159,7 @@ When a script is listed under `executables`, users can run
 [`pub global activate`](/tools/pub/cmd/pub-global#activating-a-package)
 to make it directly available from the command line.
 
+任何包含脚本（即在 `bin/` 目录下有任意文件）的包，可以在 pubspec 文件中添加上 `executables` 标签。当一个脚本标识为 `executables` 时，用户可以直接从命令行使用 [`pub global activate`](/tools/pub/cmd/pub-global#activating-a-package) 命令运行它。
 ---
 
 ## Global options
