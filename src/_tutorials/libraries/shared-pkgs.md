@@ -360,6 +360,8 @@ only one, `lib`, was installed when you ran pub get.
 Now that you've installed the package,
 you can import its libraries and use them in your app.
 
+现在你已经安装了包，你可以在你的应用中导入和使用包中的库。
+
 As with the SDK libraries,
 use the **import** directive to use code from an installed library.
 The Dart SDK libraries are built in and
@@ -367,13 +369,25 @@ are identified with the special `dart:` prefix.
 For external libraries installed by pub,
 use the `package:` prefix.
 
+与 SDK 库一样，使用 **import** 关键字导入使用安装了的库中的代码。Dart SDK 库是内置的且由特殊的 `dart:` 前缀标识。如果你使用由 pub 命令安装的外部库，请使用 `package:` 前缀。
+
 1. Get the import details for the package's main library:
+
+   获取包中主要库的导入流程：
 
    {: type="a"}
    1. Go to [vector_math's entry on the Package
       site.]({{site.pub}}/packages/vector_math)
+
+      打开[Pub 网站中 vector_math 包的网页。]({{site.pub}}/packages/vector_math)
+
    2. Click the **Installing** tab.
+
+      点击 **Installing** 标签。
+
    3. Copy the **import** line. It should look something like this:
+
+      拷贝有 **import** 的这一行代码。其看起来像下面这样：
 
       ```dart
       import 'package:vector_math/vector_math.dart';
@@ -386,9 +400,13 @@ use the `package:` prefix.
    docs]({{site.pub}}/documentation/vector_math/latest),
    which you can find from the Pub site entry.
 
+   在你的 vector_victor 应用中，编辑 `lib/vector_victor.dart` 文件，由此它导入 vector_math 库并使用了它的一些 API。你可以阅读 [vector_math API 文档]({{site.pub}}/documentation/vector_math/latest)获取更多相关信息。
+
    <aside class="alert alert-info" markdown="1">
      **Note:** You specify a filename, not a library name,
      when you import a library from a package.
+
+     **注意：** 当你从包中导入一个库时你指定的是文件名而不是库名。
    </aside>
 
 
