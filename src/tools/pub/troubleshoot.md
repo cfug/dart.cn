@@ -66,10 +66,16 @@ On Linux/macOS:
 $ export https_proxy=hostname:port
 {% endprettify %}
 
-On Windows:
+On Windows Command Prompt:
 
 {% prettify sh %}
 > set https_proxy=hostname:port
+{% endprettify %}
+
+On Windows PowerShell:
+
+{% prettify sh %}
+> $Env:https_proxy="hostname:port"
 {% endprettify %}
 
 If the proxy requires credentials, you can set them as follows.
@@ -80,9 +86,15 @@ On Linux/macOS:
 $ export https_proxy=username:password@hostname:port
 {% endprettify %}
 
-On Windows:
+On Windows Command Prompt:
 
 {% prettify sh %}
 > set https_proxy=username:password@hostname:port
+{% endprettify %}
+
+On Windows PowerShell:
+
+{% prettify sh %}
+> $Env:https_proxy="username:password@hostname:port"
 {% endprettify %}
 
