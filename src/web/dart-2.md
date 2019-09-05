@@ -25,7 +25,7 @@ These changes are necessary because of the following:
 
   - A **new build system** replaces `pub build`, `pub serve`, pub transformers.
 
-    **新的编译系统** 取代了 `pub build`、`pub serve` 以及 pub 变换器。
+    **新的编译系统**取代了 `pub build`、`pub serve` 以及 pub 变换器。
 
 - Dart 2 [language and library changes.][dart-2]
 
@@ -54,11 +54,11 @@ Dart 2 的 Web 应用开发环境与 Dart 1.x 不同。以下是重点：
 | `pub serve` | [`webdev serve`](/tools/webdev#serve) |
 | `pub run angular_test` | `pub run build_runner test -- -p chrome`. See: [Running tests][] |
 
-| `pub run angular_test` | `pub run build_runner test -- -p chrome`. 参见: [运行测试][Running tests] |
+| `pub run angular_test` | `pub run build_runner test -- -p chrome`. See: [Running tests][] |
 
 | pub transformers | [build][] package transformers. See: [Transforming code][] |
 
-| pub transformers | [build][] package transformers. 参见: [转换代码][Transforming code] |
+| pub transformers | [build][] package transformers. See: [Transforming code][] |
 
 ## Code
 
@@ -70,21 +70,22 @@ To migrate to Dart 2, you'll need to edit your web app's project files:
 
 - `pubspec.yaml`, [see details below.](#pubspec)
 
-  `pubspec.yaml`, [详情请见下方。](#pubspec)
+  `pubspec.yaml`, [see details below.](#pubspec)
 
 - HTML files with `<script src="foo.dart"...>` elements,
   such as `web/index.html`. [See details below.](#web-index-html)
 
-  带有 `<script src="foo.dart"...>` 元素的 HTML 文件，比如 `web/index.html`。[详情请见下方。](#web-index-html)
+  HTML files with `<script src="foo.dart"...>` elements,
+  such as `web/index.html`. [See details below.](#web-index-html)
 
 - Dart code, due to changes in the [Dart language and libraries.][dart-2]
 
-  相关的 Dart 代码，因为 [Dart 语言和库][dart-2]改变了。
+  Dart code, due to changes in the [Dart language and libraries.][dart-2]
 
 For complete examples of migrated apps, compare the `4.x` and `master` branches
 of any one of the [angular-examples][] apps, such as these:
 
-你可以对比 `4.x` 和 `master` 分支的任意 [Angular 示例][angular-examples]应用来获取完整的迁移示例，比如这些：
+你可以对比 `4.x` 和 `master` 分支的任意 [Angular 示例][angular-examples] 应用来获取完整的迁移示例，比如这些：
 
 - [Quickstart][angular-examples/quickstart]
 
@@ -132,7 +133,7 @@ For example, here is a diff of
 [angular-examples/quickstart/pubspec.yaml][]
 with these changes applied.
 
-例如，[angular-examples/quickstart/pubspec.yaml][]是一个应用了这些差异修改的示例。
+例如，[angular-examples/quickstart/pubspec.yaml][] 是一个应用了这些差异修改的示例。
 
 <a id="web-index-html"></a>
 ### HTML with script elements
@@ -151,7 +152,7 @@ You'll need to make these changes:
 - Replace <del>`<script defer src="foo.dart" type="application/dart"></script>`</del> by<br>
   `<script defer src="foo.dart.js"></script>`
 
-- 替换为 <del>`<script defer src="foo.dart" type="application/dart"></script>`</del> 由<br>`<script defer src="foo.dart.js"></script>`
+- 替换为 <del>`<script defer src="foo.dart" type="application/dart"></script>`</del> 由 <br>`<script defer src="foo.dart.js"></script>`
 
 Here is a diff of
 [angular-examples/quickstart/web/index.html][]
