@@ -12,7 +12,7 @@ Track the Dart project, get help, and talk with other Dart developers.
 We pledge to maintain an open and welcoming environment.
 For details, see our [code of conduct](/code-of-conduct).
 
-我们承诺为你营造一个开放和热情的环境。详情请参考我们的[行为准则](/code-of-conduct)。
+我们承诺为你营造一个开放和热情的环境。详情请参考我们的 [行为准则](/code-of-conduct)。
 
 ## Stay informed
 
@@ -70,7 +70,7 @@ Get answers and connect with Dart developers.
 Dart is open source. Learn how to
 [contribute to the core SDK.](https://github.com/dart-lang/sdk/wiki/Contributing)
 
-Dart 是开源项目。了解如何[为核心 SDK 做贡献](https://github.com/dart-lang/sdk/wiki/Contributing)。
+Dart 是开源项目。了解如何 [为核心 SDK 做贡献](https://github.com/dart-lang/sdk/wiki/Contributing)。
 
 * [Dart GitHub repositories](https://github.com/dart-lang/)
   * [Core SDK](https://github.com/dart-lang/sdk/)
@@ -95,7 +95,7 @@ Our wonderful community has provided these resources.
 
   [Dart Academy](https://dart.academy/) - Dart 社区撰写的教程和文章
 
-* [Chinese version of this site (此网站的中文版)](http://www.dartdoc.cn)
+* [Chinese version of this site （此网站的中文版）](http://www.dartdoc.cn)
 
   [此站的英文官网](https://www.dartlang.org/)
 
