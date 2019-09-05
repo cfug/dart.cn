@@ -8,7 +8,7 @@ description: 在 Dart 2 里，有些 pub 功能和命令被移除。
 As of Dart 2, pub no longer supports `pub build`, `pub serve`, or transformers.
 They're replaced by the **build system**, which includes the **build_runner** tool.
 
-从 Dart 2 开始，pub 不再支持 `pub build`、`pub serve` 以及变换器。它们均由 **build_runner** 工具中的 **build system** 替代。
+从 Dart 2 开始，pub 不再支持 `pub build`、`pub serve` 以及变换器。它们均由**build_runner**工具中的**build system**替代。
 
 For information about building and serving apps in Dart 2, see the following:
 
@@ -20,11 +20,11 @@ For information about building and serving apps in Dart 2, see the following:
 
   * [Setup for Angular development (v5)]({{site.angulardart}}/guide/setup)
 
-    [Angular 开发（v5）的设置]({{site.angulardart}}/guide/setup)
+    [Angular 开发 (v5) 的设置]({{site.angulardart}}/guide/setup)
 
   * [Deployment (v5)]({{site.angulardart}}/guide/deployment)
 
-    [部署（v5）]({{site.angulardart}}/guide/deployment)
+    [部署 (v5)]({{site.angulardart}}/guide/deployment)
 
   * [Web-specific build_runner documentation](/tools/build_runner)
 
@@ -41,7 +41,7 @@ For information about building and serving apps in Dart 2, see the following:
   * [Build system documents,](https://github.com/dart-lang/build/tree/master/docs) including
     [getting started with build_runner](https://github.com/dart-lang/build/blob/master/docs/getting_started.md#getting-started-with-build_runner)
 
-    [编译系统文档，](https://github.com/dart-lang/build/tree/master/docs)包括[开始使用 build_runner](https://github.com/dart-lang/build/blob/master/docs/getting_started.md#getting-started-with-build_runner)
+    [编译系统文档，](https://github.com/dart-lang/build/tree/master/docs) 包括 [开始使用 build_runner](https://github.com/dart-lang/build/blob/master/docs/getting_started.md#getting-started-with-build_runner)
 
 If you use Dart 1.x for web development, see the following:
 
@@ -49,11 +49,11 @@ If you use Dart 1.x for web development, see the following:
 
 * [Setup for Angular development (v4)]({{site.angulardart}}/guide/setup)
 
-  [Angular 开发（v4）的设置]({{site.angulardart}}/guide/setup)
+  [Angular 开发 (v4) 的设置]({{site.angulardart}}/guide/setup)
 
 * [Deployment (v4)]({{site.angulardart}}/guide/deployment)
 
-  [部署（v4）]({{site.angulardart}}/guide/deployment)
+  [部署 (v4)]({{site.angulardart}}/guide/deployment)
 
 If you maintain a transformer, see the following:
 
@@ -62,12 +62,12 @@ If you maintain a transformer, see the following:
 * [Assets and Transformers]({{site.prev-url}}/tools/pub/assets-and-transformers)
   in the [archived Dart site]({{site.prev-url}})
 
-  [存档的 Dart 网站]({{site.prev-url}})中的[ Assets 和变换器]({{site.prev-url}}/tools/pub/assets-and-transformers)
+  [存档的 Dart 网站]({{site.prev-url}}) 中的 [ Assets 和变换器]({{site.prev-url}}/tools/pub/assets-and-transformers)
 
 * [Writing a Pub Transformer]({{site.prev-url}}/tools/pub/transformers)
   in the [archived Dart site]({{site.prev-url}})
 
-  [存档的 Dart 网站]({{site.prev-url}})中的[ 开发一个 Pub 变化器]({{site.prev-url}}/tools/pub/transformers)
+  [存档的 Dart 网站]({{site.prev-url}}) 中的 [开发一个 Pub 变化器]({{site.prev-url}}/tools/pub/transformers)
 
 For help in switching from Dart 1.x to Dart 2, see the Dart 2 migration guides:
 
