@@ -44,7 +44,7 @@ you're ready to leverage code written by other programmers.
 Many interesting and useful packages of reusable Dart code
 are available at the [Pub site]({{site.pub}}) repository.
 
-当你可以创建和运行 Dart 应用时，你就已经准备复用其他程序员编写的代码了。[Pub 网站]({{site.pub}})仓库有许多可用的使用 Dart 代码编写的包。
+当你可以创建和运行 Dart 应用时，你就已经准备复用其他程序员编写的代码了。[Pub 网站]({{site.pub}}) 仓库有许多可用的使用 Dart 代码编写的包。
 
 This tutorial shows how to use `pub`&mdash;a package manager
 that comes with Dart&mdash;to
@@ -112,7 +112,7 @@ it can generate:
 You'll see a list of generators, including various web and server-side apps.
 One of the generators is named **console-full**.
 
-你将会看到一系列的生成器，包括各种 Web 和 服务端应用的。其中一个生成器叫 **console-full** 。
+你将会看到一系列的生成器，包括各种 Web 和 服务端应用的。其中一个生成器叫**console-full**。
 
 In a new directory named `vector_victor`,
 use Stagehand to generate a command-line app:
@@ -130,7 +130,7 @@ The pubspec.yaml file contains the package specification written in YAML.
 for in-depth coverage.)
 The contents of your pubspec.yaml file should look something like this:
 
-pubspec.yaml 文件包含了由 YAML 语言撰写的包规格。（访问 <a href="/tools/pub/pubspec">Pubspec 格式</a>获取更多深入的介绍。）而你的 pubspec.yaml 文件看起来则应该是这样的：
+pubspec.yaml 文件包含了由 YAML 语言撰写的包规格。（访问 <a href="/tools/pub/pubspec">Pubspec 格式 </a> 获取更多深入的介绍。）而你的 pubspec.yaml 文件看起来则应该是这样的：
 
 ```yaml
 name: vector_victor
@@ -164,7 +164,7 @@ Let's make the vector_victor app have a dependency
 on the vector_math package,
 which is available at the [Pub site]({{site.pub}}).
 
-下面让我们为 vector_victor 应用添加一个名为 vector_math 的包，该包可以在 [Pub 网站]({{site.pub}})中找到。
+下面让我们为 vector_victor 应用添加一个名为 vector_math 的包，该包可以在 [Pub 网站]({{site.pub}}) 中找到。
 
  1. Get the current installation details for the package:
 
@@ -174,16 +174,16 @@ which is available at the [Pub site]({{site.pub}}).
      1. Go to [vector_math's entry on the Package
         site.]({{site.pub}}/packages/vector_math)
 
-        打开[Pub 网站中 vector_math 包的网页。]({{site.pub}}/packages/vector_math)
+        打开 [Pub 网站中 vector_math 包的网页。]({{site.pub}}/packages/vector_math)
 
      2. Click the **Installing** tab.
 
-        点击 **Installing** 标签。
+        点击**Installing**标签。
 
      3. Copy the **vector_math** line from the sample **dependencies** entry.
         The entry should look something like this:
 
-        拷贝示例 **dependencies** 实体中有 **vector_math** 的那一行。**dependencies** 实体看起来像下面那样：
+        拷贝示例 _dependencies_ 实体中有 _vector_math_ 的那一行。 _dependencies_ 实体看起来像下面那样：
 
         ```yaml
         dependencies:
@@ -215,7 +215,7 @@ For details of what version numbers mean
 and how you can format them,
 see [Pub versioning philosophy](/tools/pub/versioning).
 
-你可以查阅 [Pub 版本管理](/tools/pub/versioning)获取更多有关版本号含义以及格式化的相关信息。
+你可以查阅 [Pub 版本管理](/tools/pub/versioning) 获取更多有关版本号含义以及格式化的相关信息。
 
 The [Pub site]({{site.pub}})
 is the primary public repository for Dart packages.
@@ -225,7 +225,7 @@ To use one of the packages from that site,
 you can specify it by its simple name,
 as we have done here.
 
-[Pub 网站]({{site.pub}})是 Dart 包主要的公共仓库。`pub` 命令在解析包依赖时会自动去该网站进行检查。如果你想使用该网站的某个包，你可以像我们上面所说的那样在 dependencies 中指定对应的包名。
+[Pub 网站]({{site.pub}}) 是 Dart 包主要的公共仓库。`pub` 命令在解析包依赖时会自动去该网站进行检查。如果你想使用该网站的某个包，你可以像我们上面所说的那样在 dependencies 中指定对应的包名。
 
 ## Install the package dependencies
 
@@ -293,7 +293,7 @@ at GitHub.
 Although many files and directories are in the repository,
 only one, `lib`, was installed when you ran pub get.
 
-访问 <a href="https://github.com/johnmccutchan/vector_math" target="_blank">Dart 数学矢量仓库</a>的 Github 仓库查看 vector_math 包的具体内容。尽管该仓库中有大量的文件和目录，但是只有 `lib` 目录下的文件会在你执行 pub get 命令时安装。
+访问 <a href="https://github.com/johnmccutchan/vector_math" target="_blank">Dart 数学矢量仓库 </a> 的 Github 仓库查看 vector_math 包的具体内容。尽管该仓库中有大量的文件和目录，但是只有 `lib` 目录下的文件会在你执行 pub get 命令时安装。
 
 <div>
   <hr>
@@ -369,7 +369,7 @@ are identified with the special `dart:` prefix.
 For external libraries installed by pub,
 use the `package:` prefix.
 
-与 SDK 库一样，使用 **import** 关键字导入使用安装了的库中的代码。Dart SDK 库是内置的且由特殊的 `dart:` 前缀标识。如果你使用由 pub 命令安装的外部库，请使用 `package:` 前缀。
+与 SDK 库一样，使用_ import_ 关键字导入使用安装了的库中的代码。Dart SDK 库是内置的且由特殊的 `dart:` 前缀标识。如果你使用由 pub 命令安装的外部库，请使用 `package:` 前缀。
 
 1. Get the import details for the package's main library:
 
@@ -379,15 +379,15 @@ use the `package:` prefix.
    1. Go to [vector_math's entry on the Package
       site.]({{site.pub}}/packages/vector_math)
 
-      打开[Pub 网站中 vector_math 包的网页。]({{site.pub}}/packages/vector_math)
+      打开 [Pub 网站中 vector_math 包的网页。]({{site.pub}}/packages/vector_math)
 
    2. Click the **Installing** tab.
 
-      点击 **Installing** 标签。
+      点击**Installing**标签。
 
    3. Copy the **import** line. It should look something like this:
 
-      拷贝有 **import** 的这一行代码。其看起来像下面这样：
+      拷贝有**import**的这一行代码。其看起来像下面这样：
 
       ```dart
       import 'package:vector_math/vector_math.dart';
@@ -400,13 +400,13 @@ use the `package:` prefix.
    docs]({{site.pub}}/documentation/vector_math/latest),
    which you can find from the Pub site entry.
 
-   在你的 vector_victor 应用中，编辑 `lib/vector_victor.dart` 文件，由此它导入 vector_math 库并使用了它的一些 API。你可以阅读 [vector_math API 文档]({{site.pub}}/documentation/vector_math/latest)获取更多相关信息。
+   在你的 vector_victor 应用中，编辑 `lib/vector_victor.dart` 文件，由此它导入 vector_math 库并使用了它的一些 API。你可以阅读 [vector_math API 文档]({{site.pub}}/documentation/vector_math/latest) 获取更多相关信息。
 
    <aside class="alert alert-info" markdown="1">
      **Note:** You specify a filename, not a library name,
      when you import a library from a package.
 
-     **注意：** 当你从包中导入一个库时你指定的是文件名而不是库名。
+     **注意：**当你从包中导入一个库时你指定的是文件名而不是库名。
    </aside>
 
 
@@ -418,9 +418,9 @@ use the `package:` prefix.
   Look there for packages that might be useful to you,
   or share your own Dart packages.
 
-  Dart 开发者们在 [Pub 网站]({{site.pub}})分享它们开发的包。你可以在那里查找你想要使用的包或者分享你自己开发的包。
+  Dart 开发者们在 [Pub 网站]({{site.pub}}) 分享它们开发的包。你可以在那里查找你想要使用的包或者分享你自己开发的包。
 
 * See the [pub package documentation](/guides/packages)
   for more information on using and sharing packages.
 
-  你也可以查阅 [pub 包文档](/guides/packages)获取更多有关如何使用和分享包的信息。
+  你也可以查阅 [pub 包文档](/guides/packages) 获取更多有关如何使用和分享包的信息。
