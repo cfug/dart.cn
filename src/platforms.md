@@ -22,13 +22,13 @@ depending on your target platform and goals:
     compilation and an AOT (ahead-of-time) compiler for producing machine
     code.
 
-    **Dart Native**: 针对目标设备（移动设备、桌面设备、服务器等）的应用开发，Dart Native 包括使用 JIT（Just-In-Time）编译的 Dart VM 和用于生成机器码的 AOT（Ahead-Of-Time）编译器。
+    **Dart Native**: 针对目标设备（移动设备、桌面设备、服务器等）的应用开发，Dart Native 包括使用 JIT(Just-In-Time)编译的 Dart VM 和用于生成机器码的 AOT(Ahead-Of-Time)编译器。
 
   * **Dart Web**: For programs targeting the web, Dart Web includes both a
     development time compiler (`dartdevc`) and a production time compiler
     (`dart2js`).
 
-    **Dart Web**: 针对 Web 应用开发，Dart Web 包括开发时编译器（`dartdevc`）和生产时编译器（`dart2js`）。
+    **Dart Web**: 针对 Web 应用开发，Dart Web 包括开发时编译器 (`dartdevc`) 和生产时编译器 (`dart2js`)。
 
 <img src="{% asset platforms.svg @path %}" width="800px" alt="Dart platform">
 
@@ -42,7 +42,7 @@ Dart Native 支持将可执行的 Dart 代码编译为适用于移动，桌面�
 The [Flutter framework]({{site.flutter}}) is a popular multi-platform UI toolkit
 that's powered by Dart Native when targeting mobile or desktop devices.
 
-[Flutter 框架]({{site.flutter}})是一个流行的多平台 UI 工具，当应用的目标设备是移动端或桌面端时由 Dart Native 提供支持。
+[Flutter 框架]({{site.flutter}}) 是一个流行的多平台 UI 工具，当应用的目标设备是移动端或桌面端时由 Dart Native 提供支持。
 
 More information:
 
@@ -75,7 +75,7 @@ Having a fast developer cycle is critical for iteration.
 The Dart VM has a just-in-time compiler (JIT) that supports both pure interpretation
 (as required on iOS devices, for example) and runtime optimization.
 
-Dart VM 拥有 JIT （Just-In-Time）编译器 用以支持纯解释（例如，基于 iOS 开发中的需求）和运行时优化。
+Dart VM 拥有 JIT(Just-In-Time)编译器 用以支持纯解释（例如，基于 iOS 开发中的需求）和运行时优化。
 
 More information: [`dart` VM tool](/tools/dart-vm)
 
@@ -97,7 +97,7 @@ The AOT-compiled code runs inside an efficient Dart runtime that enforces
 the sound Dart type system and manages memory using fast object allocation and a [generational garbage
 collector.](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30)
 
-AOT 编译的代码在一个高效的 Dart 运行时内运行，该运行时会强制执行健全的 Dart 类型系统并使用快速对象分配和[分代垃圾收集器管理](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30)内存。
+AOT 编译的代码在一个高效的 Dart 运行时内运行，该运行时会强制执行健全的 Dart 类型系统并使用快速对象分配和 [分代垃圾收集器管理](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30)内存。
 
 More information: [`dart2aot` tool](/tools/dart2aot)
 
@@ -117,7 +117,7 @@ is powered by Dart Web when targeting web apps. The
 [AngularDart]({{site.angulardart}}) framework, a popular web app toolkit, is
 also powered by Dart Web.
 
-[Flutter 框架]({{site.flutter}})是一个流行的多平台 UI 工具包，当应用的环境是 Web 时由 Dart Web 提供支持。[AngularDart]({{site.angulardart}}) 框架是一个流行的 Web 应用程序工具包，也由 Dart Web 提供支持。
+[Flutter 框架]({{site.flutter}}) 是一个流行的多平台 UI 工具包，当应用的环境是 Web 时由 Dart Web 提供支持。[AngularDart]({{site.angulardart}}) 框架是一个流行的 Web 应用程序工具包，也由 Dart Web 提供支持。
 
 
 More information: [Get started: web apps](/tutorials/web/get-started)
@@ -133,7 +133,7 @@ that's optimized for quick turnaround. Instead of using dartdevc directly,
 you use it with `webdev`, a tool that supports core developer tasks such as
 running, debugging, and building.
 
-Dart 开发编译器（dartdevc）是一个 Dart 转 JavaScript 编译器，编译器针对快速转译进行了优化。避免直接使用 dartdevc，应该与 `webdev` 配合一起使用。`webdev` 是一种支持核心开发任务（如运行，调试和构建）的工具。
+Dart 开发编译器 (dartdevc) 是一个 Dart 转 JavaScript 编译器，编译器针对快速转译进行了优化。避免直接使用 dartdevc，应该与 `webdev` 配合一起使用。`webdev` 是一种支持核心开发任务（如运行，调试和构建）的工具。
 
 More information:
 
