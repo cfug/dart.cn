@@ -13,7 +13,7 @@ that can help you develop command-line and server apps.
   
   <a href="/tutorials/server/get-started" class="btn btn-primary btn-lg">Get started</a>
   
-  <a href="/tutorials/server/get-started" class="btn btn-primary btn-lg">从这里开始吧</a>
+  <a href="/tutorials/server/get-started" class="btn btn-primary btn-lg">Get started</a>
   
 </p>
 
