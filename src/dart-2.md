@@ -14,7 +14,7 @@ Dart 2 有一些与早期版本 Dart 不同的关键点。本文将会简单地�
 For information on _why_ Dart 2 has changed, see the
 [Dart 2 announcement.][Dart 2 announcement]
 
-至于 _为什么_ Dart 2 要做这些改变，你可以查阅 [Dart 2 公告。][Dart 2 announcement]
+至于**为什么**Dart 2 要做这些改变，你可以查阅 [Dart 2 公告][Dart 2 announcement]
 
 ## Differences
 
@@ -30,7 +30,7 @@ Dart 语言、库、编译系统以及 Web 开发工具都已经有所变化。
 
 * [Dart's type system][sound Dart] is now sound.
 
-  [Dart 的类型系统][sound Dart]现在是健全的。
+  [Dart 的类型系统][sound Dart] 现在是健全的。
 
   * [Fixing common type problems][Fixing Common Type Problems]
 
@@ -43,7 +43,7 @@ Dart 语言、库、编译系统以及 Web 开发工具都已经有所变化。
 * Instance creation keywords are now generally optional,
   as described in [Using constructors][]:
 
-  实例对象创建的关键字现在是可选的，就像[使用构造函数][Using constructors]中所说的那样：
+  实例对象创建的关键字现在是可选的，就像 [使用构造函数][Using constructors]中所说的那样：
 
   * `new` is always optional.
 
@@ -59,7 +59,7 @@ Dart 语言、库、编译系统以及 Web 开发工具都已经有所变化。
 
   * [Assert statements][] are still supported, but you enable them differently.
 
-    [Assert 语句][]依然支持，但是开启的方式改变了。
+    [Assert 语句][] 依然支持，但是开启的方式改变了。
 
 * The Dart language and core libraries have changed,
   partly as a result of the type system changes.
@@ -81,7 +81,7 @@ Dart 语言、库、编译系统以及 Web 开发工具都已经有所变化。
 * Pub no longer supports transformers.
   Instead, use the [new build system.][build system]
 
-  Pub 不再支持转换。作为替代，请使用[新的编译系统。][build system]
+  Pub 不再支持转换。作为替代，请使用 [新的编译系统。][build system]
 
 * Tools related to web development have changed.
 
@@ -89,7 +89,7 @@ Dart 语言、库、编译系统以及 Web 开发工具都已经有所变化。
 
   * The new build system [replaces `pub build` and `pub serve`.][build_runner web]
 
-    新的编译系统[替代 `pub build` 和 `pub serve`。][build_runner web]
+    新的编译系统 [替代 `pub build` 和 `pub serve`。][build_runner web]
 
   * Dartium is no longer supported. Instead, use [dartdevc][] and Chrome.
 
@@ -110,7 +110,7 @@ If you publish packages,
 then in addition to making platform-specific changes,
 follow the [package migration instructions below](#migrating-packages).
 
-如何迁移你的代码取决于你的代码有多古老以及运行在什么平台。有关如何迁移 Web 应用的帮助请查阅[ Web 应用迁移指南。][webdev dart2]如果你迁移一个 Flutter 应用，请查阅[变革公告。][Leaf's email]如果你发布包，则除了适配平台不同的特性之外，还需要遵循[下述的包迁移说明](#migrating-packages)。
+如何迁移你的代码取决于你的代码有多古老以及运行在什么平台。有关如何迁移 Web 应用的帮助请查阅 [ Web 应用迁移指南。][webdev dart2]如果你迁移一个 Flutter 应用，请查阅 [变革公告][Leaf's email] 如果你发布包，则除了适配平台不同的特性之外，还需要遵循 [下述的包迁移说明](#migrating-packages)。
 
 ### General process
 
@@ -149,12 +149,12 @@ from either Dart 1.x or an earlier version of Dart 2.
 3. **Run the [dart2_fix tool.][dart2_fix]** It helps migrate some
    usages of deprecated Dart 1.x APIs to Dart 2.
 
-   **运行 [dart2_fix 工具。][dart2_fix]** 它可以帮助迁移一些过时的 Dart 1.x API 到 Dart 2。
+   **运行 [dart2_fix 工具][dart2_fix]** 它可以帮助迁移一些过时的 Dart 1.x API 到 Dart 2。
 
 4. **Run the analyzer** to find [compile-time errors][]
    and deprecation hints.
 
-   **运行分析器** 以找出[编译时错误][compile-time errors]以及弃用提示。
+   **运行分析器**以找出 [编译时错误][compile-time errors] 以及弃用提示。
 
    * Flutter: [`flutter analyze`][Flutter analyzer]
      or use the problems view in Android Studio/IntelliJ or VS Code.
@@ -172,11 +172,11 @@ from either Dart 1.x or an earlier version of Dart 2.
 
 6. **Run tests to find [runtime errors][].**
 
-   **运行测试以找出[运行时错误][runtime errors]**
+   **运行测试以找出 [运行时错误][runtime errors]**
 
    * Run all [automated tests] for your software.
 
-     运行你软件所有的[自动化测试]。
+     运行你软件所有的 [自动化测试]。
 
    * Do manual testing, and look for console errors.
 
@@ -192,7 +192,7 @@ from either Dart 1.x or an earlier version of Dart 2.
 
 8. _Optional:_ **Remove `new` and unnecessary `const`.**
 
-   _可选的：_ **移除 `new` 以及不必要的 `const` 关键字。**
+   **可选的：** **移除 `new` 以及不必要的 `const` 关键字。**
 
    * You can remove these by hand or use a tool such as `dartfmt --fix`.
 
@@ -202,7 +202,7 @@ from either Dart 1.x or an earlier version of Dart 2.
      `unnecessary_new` and `unnecessary_const` to the `linter` section of your
      [analysis options file][].
 
-     为了找到 `new` 和不必要的 `const` 出现的地方，可以将 `unnecessary_new` 和 `unnecessary_const` 规则添加至[分析选项文件][analysis options file]的 `linter` 部分。
+     为了找到 `new` 和不必要的 `const` 出现的地方，可以将 `unnecessary_new` 和 `unnecessary_const` 规则添加至 [分析选项文件][analysis options file]的 `linter` 部分。
 
 ### Migrating packages
 
@@ -215,11 +215,11 @@ As a package owner, you need to do the following:
 * Follow the migration tips for the platforms that your package supports
   (see [above](#migration)).
 
-  遵循你的包所支持的平台的迁移技巧（详见[上述](#migration)）。
+  遵循你的包所支持的平台的迁移技巧（详见 [上述](#migration)）。
 
 * Make sure your package passes Dart 2 analysis (see **Run the analyzer** above)
 
-  确保你的包通过了 Dart 2 分析（查阅上面的 **运行分析器**）。
+  确保你的包通过了 Dart 2 分析（查阅上面的**运行分析器**）。
 
 * Make sure your package's users know how to report issues.
 
@@ -243,16 +243,16 @@ If you have to change your package's code,
 For example, you might be able to add type annotations
 or (if an API has been removed) to use an alternative 1.x API.
 
-如果你必须更改包的代码，请 **尝试令其可以在 1.x 中使用**，就像其在 Dart 2 中使用那样。例如，你可能需要添加类型注解（或者如果一个已被移除的 API）去使用一个替代的 1.x API。
+如果你必须更改包的代码，请**尝试令其可以在 1.x 中使用**，就像其在 Dart 2 中使用那样。例如，你可能需要添加类型注解（或者如果一个已被移除的 API）去使用一个替代的 1.x API。
 
 If a backward-compatible change isn't possible,
 **update the lower [SDK constraint.][SDK constraints]**
 
-如果代码的变更导致无法向后兼容，请 **升级最低的 [SDK 限制。][SDK constraints]**
+如果代码的变更导致无法向后兼容，请**升级最低的 [SDK 限制][SDK constraints]**
 
 [Test your changes][testing] to make sure that your package works as expected.
 
-[测试你代码的变更][testing]以确保你的包在使用时可以如你所愿地运行。
+[测试你代码的变更][testing] 以确保你的包在使用时可以如你所愿地运行。
 
 #### Upper constraints on the SDK version {#upper-constraint}
 
@@ -283,7 +283,7 @@ environment:
 If you use [features introduced after 2.0,][CHANGELOG]
 be sure to specify the correct lower SDK constraint:
 
-如果你使用 [2.0 后引入的功能，][CHANGELOG]请确保你指定了正确的 SDK 下限：
+如果你使用 [2.0 后引入的功能][CHANGELOG] 请确保你指定了正确的 SDK 下限：
 
 ```yaml
 environment:
@@ -300,7 +300,7 @@ environment:
   lax upper constraint checking and can use packages that have
   no SDK constraints or an upper constraint of `<2.0.0`.
 
-  **包版本必须有 `<3.0.0` 的上限限制** 以便在 Dart 2 稳定版以及随后的发行版中使用。Dart 2 在构建编译稳定发行版前的开发版本时有较为宽松的上限限制检查，你可以在此情况下使用没有 SDK 限制或者上限限制 `<2.0.0` 的包。
+**包版本必须有 `<3.0.0` 的上限限制**以便在 Dart 2 稳定版以及随后的发行版中使用。Dart 2 在构建编译稳定发行版前的开发版本时有较为宽松的上限限制检查，你可以在此情况下使用没有 SDK 限制或者上限限制 `<2.0.0` 的包。
 </aside>
 
 ## More resources
@@ -327,7 +327,7 @@ environment:
   an article that includes tips for updating your code and
   using Travis to perform continuous integration (CI) testing
 
-  [更新你的 pub 包到 Dart 2，][Updating your pub package to Dart 2,]这篇文章包含了更新代码和使用 Travis 执行可持续集成（CI）测试的技巧。
+  [更新你的 pub 包到 Dart 2，][Updating your pub package to Dart 2,] 这篇文章包含了更新代码和使用 Travis 执行可持续集成 (CI) 测试的技巧。
 
 [analysis options file]: /guides/language/analysis-options#the-analysis-options-file
 [dartdevc]: /tools/dartdevc
