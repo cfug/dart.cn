@@ -19,7 +19,7 @@ Then you’ll install the Dart SDK, write a small program, and run that program 
 Finally, you'll use an AOT (_ahead of time_) compiler to compile your finished program to native machine code,
 which you'll execute using the Dart runtime.
 
-跟着下面这些步骤开始使用 Dart SDK 来开发命令行和服务器应用。首先你将在浏览器中运行 Dart 编程语言和库而不需要下载它。接着，你需要安装 Dart SDK 并尝试开发一个小程序，然后使用 Dart VM 运行它。最后你将使用一个 AOT（_预_）编译器将你刚才完成的程序编译为可以被 Dart 运行时执行的原生机器码。
+跟着下面这些步骤开始使用 Dart SDK 来开发命令行和服务器应用。首先你将在浏览器中运行 Dart 编程语言和库而不需要下载它。接着，你需要安装 Dart SDK 并尝试开发一个小程序，然后使用 Dart VM 运行它。最后你将使用一个 AOT（**预**）编译器将你刚才完成的程序编译为可以被 Dart 运行时执行的原生机器码。
 
 ## 1. Play with Dart code in DartPad
 
@@ -37,7 +37,7 @@ change the greeting to use another language. To get the full DartPad experience,
 <a href="{{site.dartpad}}/27e044ec9e2957d9c5c7062871ce8bf3" target="_blank">open
 the example at dartpad.dev.</a>
 
-例如，下面这个内嵌的 DartPad 可以让你尝试一个简单的 Hello World 程序代码。点击 **运行** 来运行应用；控制台输出的内容位于代码块下方。你可以尝试更改源代码，比如更改问候语或者其它的一些语句。你也可以 <a href="{{site.dartpad}}/27e044ec9e2957d9c5c7062871ce8bf3" target="_blank">在 dartpad.dev 中打开示例</a> 以获取更完整的 DartPad 体验。
+例如，下面这个内嵌的 DartPad 可以让你尝试一个简单的 Hello World 程序代码。点击**运行**来运行应用；控制台输出的内容位于代码块下方。你可以尝试更改源代码，比如更改问候语或者其它的一些语句。你也可以 <a href="{{site.dartpad}}/27e044ec9e2957d9c5c7062871ce8bf3" target="_blank">在 dartpad.dev 中打开示例 </a> 以获取更完整的 DartPad 体验。
 
 <iframe
     src="{{site.custom.dartpadx.embed-inline-prefix}}?id=27e044ec9e2957d9c5c7062871ce8bf3"
@@ -52,15 +52,15 @@ More information:
 
 * [DartPad documentation][]
 
-  [DartPad 文档][DartPad documentation]
+  [DartPad 文档][]
 
 * [Dart language tour][]
 
-  [Dart 语言概览][Dart language tour]
+  [Dart 语言概览][]
 
 * [Dart library tour][]
 
-  [Dart 库概览][Dart library tour]
+  [Dart 库概览][]
 
 ## 2. Install Dart
 
