@@ -15,8 +15,6 @@ AOT](/platforms) native code compiler for creating fast production code.
 <p class="text-center">
   <a href="{{site.flutter}}/get-started" class="btn btn-primary btn-lg no-automatic-external">
     <img src="{% asset shared/flutter/icon/64.png @path %}" width="32px" alt=""/>
-    Get started
-
     开始使用
   </a>
 </p>
