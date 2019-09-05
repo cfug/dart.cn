@@ -33,7 +33,8 @@ that can help you develop command-line and server apps.
     **Note:** DartPad does **not** support using dart:io APIs or
     importing libraries from packages.
 
-    **注意：** DartPad **不** 支持使用 dart:io 的相关 API 或从包中导入库。
+    **Note:** DartPad does **not** support using dart:io APIs or
+    importing libraries from packages.
     
   </aside>
 
