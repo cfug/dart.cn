@@ -63,6 +63,8 @@ You can tell `pub upgrade` to upgrade specific dependencies to the
 latest version while leaving the rest of the dependencies alone as much as
 possible. For example:
 
+你可以使用 `pub upgrade` 命令更新指定的依赖项到最新的版本同时尽可能地保持其余依赖项不变。例如：
+
 ```terminal
   $ pub upgrade test args
   Dependencies upgraded!
@@ -74,6 +76,7 @@ versions that are locked in the lockfile. However, if the requested upgrades
 cause incompatibilities with these locked versions, they are selectively
 unlocked until a compatible set of versions is found.
 
+更新一个依赖项也会将这个依赖项所依赖的其它依赖项更新到最新版本。通常而言，与这个依赖项无关的其它依赖项不会被更新；它们会保持处于 lockfile 文件中的版本不变。但是，如果该依赖的升级会导致这些锁定的版本不兼容的话，则不兼容的依赖会被解锁，直到找到一个兼容的版本后再重新锁定。
 
 ## Getting a new dependency
 
