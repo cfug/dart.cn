@@ -111,6 +111,8 @@ Because pub downloads packages to a central cache shared by all packages
 on your system, it can often find previously downloaded packages
 without needing to use the network.
 
+即便没有网络，你也可以运行 `pub upgrade` 命令。因为 Pub 会将 Package 下载到系统的一个缓存中心并与其它 Package 分享，其它 Package 也可以从该缓存中心获取任意已经下载过的 Package，如果你所需的 Package 是一个流行的 Package，则你可以直接从该缓存中依赖该 Package 而不需要使用网络。
+
 However, by default, `pub upgrade` tries to go online if you
 have any hosted dependencies,
 so that pub can detect newer versions of dependencies.
@@ -119,12 +121,15 @@ In offline mode, pub looks only in your local package cache,
 trying to find a set of versions that work with your package from what's already
 available.
 
+但是，默认情况下，`pub upgrade` 命令依然会尽可能地访问网络以获取最新的依赖项版本。如果你不希望其通过网络查找依赖项，可以在该命令后加上 `--offline` 参数。在离线模式下，Pub 只会从你的本地 Package 缓存中查找已经存在且能适用到你 Package 上的依赖项。
+
 Keep in mind that pub generates a lockfile. If the
 only version of some dependency in your cache happens to be old,
 offline `pub upgrade` locks your app to that old version.
 The next time you are online, you will likely want to
 run `pub upgrade` again to upgrade to a later version.
 
+记住 Pub 会生成一个 lockfile 文件。如果缓存中某个依赖项只有一个版本且该版本是旧版本，则在离线模式下 `pub upgrade` 命令会锁定你的应用使用这些旧版本。等你有网时，你可以再次运行 `pub upgrade` 命令将它们更新到最新版本。
 
 ## Options
 
