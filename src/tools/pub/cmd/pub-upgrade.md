@@ -7,6 +7,8 @@ description: 使用 pub upgrade 命令来更新 Dart 应用的所有依赖项到
 
 _Upgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
+_Upgrade_ 命令是 [Pub 工具](/tools/pub/cmd)中的一个命令。
+
 {% prettify nocode %}
 $ pub upgrade [args] [dependencies]
 {% endprettify %}
@@ -17,12 +19,16 @@ The difference is that `pub upgrade` ignores any existing
 [lockfile](/tools/pub/glossary#lockfile),
 so that pub can get the latest versions of all dependencies.
 
+`pub upgrade` 命令与 [`pub get`](/tools/pub/cmd/pub-get) 命令一样，都是用于获取依赖项的。不同的是 `pub upgrade` 命令会忽略掉任何已存在的 [lockfile](/tools/pub/glossary#lockfile) 文件，因此 Pub 可以获取所有依赖项的最新版本。
+
 Without any additional arguments, `pub upgrade` gets the latest
 versions of all the dependencies listed in the
 [`pubspec.yaml`](/tools/pub/pubspec) file in the current working
 directory, as well as their [transitive
 dependencies](/tools/pub/glossary#transitive-dependency).
 For example:
+
+在没有指定其它参数的情况下，`pub upgrade` 命令会获取当前工作目录下 [`pubspec.yaml`](/tools/pub/pubspec) 文件中所列出的所有依赖项的最新版本，包括[这些依赖项中内部依赖的其它依赖项](/tools/pub/glossary#transitive-dependency)。例如：
 
 ```terminal
 $ pub upgrade
@@ -37,11 +43,17 @@ versions of all dependencies for all developers and when deployed to
 production. For library packages, don't check in the lockfile,
 because libraries are expected to work with a range of dependency versions.
 
+`pub upgrade` 命令会在更新依赖的版本时写入一个 lockfile 文件以确保后续使用 [`pub get`](/tools/pub/cmd/pub-get) 命令时使用的是相同的依赖版本。对应用 Package 而言，签入 lockfile 文件以控制来源；此操作可以确保当你将应用部署到生产环境时，所有的开发者使用的依赖项都是完全相同的版本以避免冲突。而对库 Package 而言，则不要签入 lockfile 文件，因为库 Package 会使用到各种不同的依赖版本。
+
 If a lockfile already exists, `pub upgrade` ignores it and generates a new
 one from scratch, using the latest versions of all dependencies.
 
+`pub upgrade` 命令会忽略掉已经存在的 lockfile 文件并从 Scratch 中新建一个，然后使用所有依赖项的最新版本。
+
 See the [`pub get` documentation](/tools/pub/cmd/pub-get) for more information
 on package resolution and the system package cache.
+
+你可以查阅 [`pub get` 命令文档](/tools/pub/cmd/pub-get)获取更多关于 Package 解析以及系统 Package 缓存的信息。
 
 ## Upgrading specific dependencies
 
