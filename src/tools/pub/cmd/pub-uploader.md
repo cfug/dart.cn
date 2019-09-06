@@ -1,6 +1,8 @@
 ---
 title: pub uploader
+title: pub uploader
 description: Use pub uploader to add or remove uploaders for your Dart package on the Pub site.
+description: 使用 pub uploader 命令为你在 Pub 网站上的 Dart Package 添加或删除上传者。
 toc: false
 ---
 
@@ -41,7 +43,7 @@ $ pub uploader --package=transmogrify add bob@example.com
 Note that uploaders are identified by their Google accounts, so use a Gmail or
 Google Apps email address for any new uploaders.
 
-## Options
+## 选项
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
