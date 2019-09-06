@@ -1,10 +1,10 @@
 ---
 title: "Command-line & server libraries and packages"
-title: " 命令行和服务器的库和包 "
+title: "命令行和服务器的库和 Package"
 short-title: CLI & server libraries
 short-title: CLI 和 服务器库
 description: Libraries and packages that can help you write Dart command-line & server apps.
-description: 库和包可以帮助你开发命令行和服务器应用。
+description: 库和 Package 可以帮助你开发命令行和服务器应用。
 ---
 
 The [Dart SDK][] contains [dart:io][] and other libraries
@@ -25,36 +25,39 @@ that provide low-level web APIs.
 Dart SDK 包含 dart:io 和其它提供底层 web API 的库。
 
 [The dart:io section](/guides/libraries/library-tour#dartio) of the library tour
-: An example-driven tour of using the dart:io library.
+<br> An example-driven tour of using the dart:io library.
   Topics include working with files & directories, and making & handling
   HTTP requests.
 
-库概览的 [dart:io 小节](/guides/libraries/library-tour#dartio)：一个使用 dart:io 库的示例驱动概览。主要包括如何使用文件和目录以及发起和处理 HTTP 请求。
+库概览的 [dart:io 小节](/guides/libraries/library-tour#dartio)：
+<br> 一个使用 dart:io 库的示例驱动概览。主要包括如何使用文件和目录以及发起和处理 HTTP 请求。
 
 [dart:io API reference][dart:io]
-: Complete reference documentation for the dart:io library.
+<br> Complete reference documentation for the dart:io library.
 
-[dart:io API 参考][dart:io]：完整的 dart:io 库参考文档。
+[dart:io API 参考][dart:io]：
+<br> 完整的 dart:io 库参考文档。
 
 
 ## Community packages
 
-## 社区上的一些第三方包
+## 社区上的一些第三方 package
 
 The [Pub site]({{site.pub}}) doesn't currently support
 limiting your search to packages that support command-line and server apps.
 You can, however, search for words that describe the functionality you need.
 
-[Pub 网站]({{site.pub}}) 暂时还不支持仅搜索命令行和服务器应用相关的包。但是你可以搜索描述所需功能的单词。
+[Pub 网站]({{site.pub}}) 暂时还不支持仅搜索命令行和服务器应用相关的 package。
+但是你可以搜索描述所需功能的单词。
 
 ### Command-line packages
 
-### 命令行相关的包
+### 命令行相关的 package
 
 Command-line apps often use the following packages,
 in addition to [general-purpose packages][] such as `archive`, `intl`, and `yaml`:
 
-命令行应用常常使用下述列表中列出的包，除此之外还有像 `archive`、`intl` 和 `yaml` 这样的 [通用包][general-purpose packages]：
+命令行应用常常使用下述列表中列出的 package，除此之外还有像 `archive`、`intl` 和 `yaml` 这样的 [通用 package][general-purpose packages]：
 
 | **Package**                   | **Description** |
 
@@ -83,13 +86,14 @@ in addition to [general-purpose packages][] such as `archive`, `intl`, and `yaml
 
 ### Server packages
 
-### 服务器相关的包
+### 服务器相关的 package
 
 Server apps can choose from many packages, in addition to
 the packages listed in the previous table
 and [general-purpose packages][] such as `logging`:
 
-服务器应用可选择使用的包更多一些，除了上面上面表格中列出的外还支持比如 `logging` 这样的 [通用包][general-purpose packages]：
+服务器应用可选择使用的 package 更多一些，
+除了上面上面表格中列出的外还支持比如 `logging` 这样的 [通用 package][general-purpose packages]：
 
 | **Package**                   | **Description** |
 
