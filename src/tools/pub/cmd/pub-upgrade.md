@@ -1,6 +1,8 @@
 ---
 title: pub upgrade
+title: pub upgrade
 description: Use pub upgrade to get the latest versions of all dependencies used by your Dart application.
+description: 使用 pub upgrade 命令来更新 Dart 应用的所有依赖项到最新版本
 ---
 
 _Upgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
@@ -43,6 +45,8 @@ on package resolution and the system package cache.
 
 ## Upgrading specific dependencies
 
+## 更新指定的依赖项
+
 You can tell `pub upgrade` to upgrade specific dependencies to the
 latest version while leaving the rest of the dependencies alone as much as
 possible. For example:
@@ -61,6 +65,8 @@ unlocked until a compatible set of versions is found.
 
 ## Getting a new dependency
 
+## 获取一个新的依赖项
+
 If a dependency is added to the pubspec before `pub upgrade` is run,
 it gets the new dependency and any of its transitive dependencies,
 placing them in the `.packages` file. This
@@ -68,6 +74,8 @@ is the same behavior as `pub get`.
 
 
 ## Removing a dependency
+
+## 删除一个依赖项
 
 If a dependency is removed from the pubspec before `pub upgrade` is
 run, it removes the dependency from the `.packages` file,
@@ -78,6 +86,8 @@ depend on them. This is the same behavior as `pub get`.
 
 
 ## Upgrading while offline
+
+## 离线更新
 
 If you don't have network access, you can still run `pub upgrade`.
 Because pub downloads packages to a central cache shared by all packages
@@ -100,6 +110,8 @@ run `pub upgrade` again to upgrade to a later version.
 
 
 ## Options
+
+## 选项
 
 The `pub upgrade` command supports the
 [`pub get` options](/tools/pub/cmd/pub-get#options).
