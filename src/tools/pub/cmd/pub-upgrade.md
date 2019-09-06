@@ -87,6 +87,7 @@ it gets the new dependency and any of its transitive dependencies,
 placing them in the `.packages` file. This
 is the same behavior as `pub get`.
 
+如果在运行 `pub upgrade` 命令前将一个依赖项添加至 pubspec 文件，则在运行该命令后会获取新的依赖项以及该依赖项所依赖的其它依赖项，并将它们放在`.packages`文件中。该行为与 `pub get` 命令一致。
 
 ## Removing a dependency
 
