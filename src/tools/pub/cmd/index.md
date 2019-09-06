@@ -10,7 +10,7 @@ and for deploying packages and command-line apps.
 For general information about using the pub package manager, see
 [How to use packages](/guides/packages).
 
-`pub` 工具包含管理包以及部署包和命令行应用的命令。有关如何使用 pub 包管理器的信息，请查阅[如何使用包](/guides/packages)。
+`pub` 工具包含管理 Package 、部署 Package 和部署命令行应用的命令。有关如何使用 Pub Package 管理器的信息，请查阅[如何使用 Package](/guides/packages)。
 
 {% include flutter-packages.md %}
 
@@ -42,7 +42,7 @@ Pub 的命令可以分为以下几类：
 
 * [Managing package dependencies](#managing-apps)
 
-  [管理包的依赖关系](#managing-apps)
+  [管理 Package 的依赖关系](#managing-apps)
 
 * [Running command-line apps](#running-command-line-apps)
 
@@ -50,18 +50,18 @@ Pub 的命令可以分为以下几类：
 
 * [Deploying packages and apps](#deploying-packages-and-apps)
 
-  [部署包和应用](#deploying-packages-and-apps)
+  [部署 Package 和应用](#deploying-packages-and-apps)
 
 
 <a id="managing-apps"></a>
 ## Managing package dependencies
 
-## 管理包的依赖关系
+## 管理 Package 的依赖关系
 
 Pub provides a number of commands for managing the
 [packages your code depends on](/tools/pub/dependencies).
 
-Pub 提供了许多管理[代码依赖包](/tools/pub/dependencies)的命令。
+Pub 提供了许多命令，这些命令用于管理那些[你代码所依赖 Package](/tools/pub/dependencies)。
 
 In this group, the most commonly used commands are `pub get` and
 `pub upgrade`, which retrieve or upgrade dependencies used by a package.
@@ -70,26 +70,26 @@ to make sure the dependencies are up to date. Some IDEs
 perform this step automatically on the creation of a project,
 or any modification of the pubspec.
 
-在这些命令中，最常用的是 `pub get` 和 `pub upgrade`，前者用于检索包的依赖项，后者用于更新包的依赖项。每一次你修改了 pubspec 文件后都需要执行 `pub get` 命令来确保你所用的依赖项是最新的。一些 IDE 会在创建项目或修改了 pubspec 文件后自动执行此操作。
+在这些命令中，最常用的是 `pub get` 命令和 `pub upgrade` 命令，前者用于检索 Package 的依赖项，后者用于更新 Package 的依赖项。每一次你修改了 pubspec 文件后都需要执行 `pub get` 命令来确保你所用的依赖项是最新的。一些 IDE 会在创建项目或修改了 pubspec 文件后自动执行此操作。
 
 [`pub cache`](/tools/pub/cmd/pub-cache)
 : Manages pub's local package cache. Use this command to add packages
   to your cache, or to perform a clean reinstall of all packages in
   your cache.
 
-[`pub cache`](/tools/pub/cmd/pub-cache)：管理 Pub 的本地包缓存。使用该命令你可以将一个包添加至缓存，或者清除所有缓存重新安装包。
+[`pub cache`](/tools/pub/cmd/pub-cache) 命令：用于管理 Pub 的本地 Package 缓存。使用该命令你可以将一个 Package 添加至缓存，或者清除所有缓存的 Package 并重新安装。
 
 [`pub deps`](/tools/pub/cmd/pub-deps)
 : Lists all dependencies used by the current package.
 
-[`pub deps`](/tools/pub/cmd/pub-deps)：显示当前包使用的所有依赖项。
+[`pub deps`](/tools/pub/cmd/pub-deps) 命令：用于显示当前 Package 使用的所有依赖项。
 
 [`pub downgrade`](/tools/pub/cmd/pub-downgrade)
 : Retrieves the lowest versions of all the packages that are
   listed as dependencies used by the current package. Used for testing
   the lower range of your package's dependencies.
 
-[`pub downgrade`](/tools/pub/cmd/pub-downgrade)：检索当前包所有依赖项的包的最低版本。用于测试较低版本的包依赖项兼容性。
+[`pub downgrade`](/tools/pub/cmd/pub-downgrade) 命令：用于检索当前 Package 所依赖的其它 Package 的最低版本。用于测试这些较低版本依赖项的 Package 在当前 Package 上的兼容性。
 
 [`pub get`](/tools/pub/cmd/pub-get)
 : Retrieves the packages that are listed as the dependencies for
@@ -98,7 +98,7 @@ or any modification of the pubspec.
   of each dependency (if possible) as listed in the lock file.
   Creates or updates the lock file, as needed.
 
-[`pub get`](/tools/pub/cmd/pub-get)：检索当前包所依赖项的包。如果 `pubspec.lock` 已经存在，则在该文件中列出获取的每个依赖项版本（如果可能的话）。如有必要，将会创建或更新该文件。
+[`pub get`](/tools/pub/cmd/pub-get) 命令：用于检索当前 Package 所依赖的其它 Package。如果 `pubspec.lock` 文件已经存在，则根据该文件中保存的依赖项版本获取对应的依赖项。如有必要，将会创建或更新该文件。
 
 [`pub upgrade`](/tools/pub/cmd/pub-upgrade)
 : Retrieves the latest version of each package listed
@@ -107,7 +107,7 @@ or any modification of the pubspec.
   the newest versions that honor the constraints in the pubspec.
   Creates or updates the lock file, as needed.
 
-[`pub upgrade`](/tools/pub/cmd/pub-upgrade)：检索当前包所依赖项的包的最新版本。如果 `pubspec.lock` 已经存在，则忽略其缓存的版本并以 pubspec 文件中指定的最新版本为主。如有必要，将会创建或更新该文件。
+[`pub upgrade`](/tools/pub/cmd/pub-upgrade) 命令：用于检索当前 Package 所依赖的其它 Package 的最新版本。如果 `pubspec.lock` 文件已经存在，则忽略其保存的版本并以 pubspec 文件中指定的最新版本为主。如有必要，将会创建或更新该文件。
 
 ## Running command-line apps
 
@@ -120,26 +120,26 @@ Two commands let you run Dart scripts from the command line:
 * The [`pub run`](/tools/pub/cmd/pub-run) command invokes a Dart script in your
   package, or in one of its dependencies.
 
-  [`pub run`](/tools/pub/cmd/pub-run) 命令调用你包中或其中一个依赖项中的 Dart 脚本。
+  [`pub run`](/tools/pub/cmd/pub-run) 命令可以调用当前 Package 或当前 Package 所依赖的其它 Package 中的 Dart 脚本。
 
 * The [`pub global`](/tools/pub/cmd/pub-global) command lets you work with
   globally available packages.
 
-  [`pub global`](/tools/pub/cmd/pub-global) 命令可以让你使用全局可用的包。
+  [`pub global`](/tools/pub/cmd/pub-global) 命令可以让你使用那些可以全局可用的 Package。
 
 ## Deploying packages and apps
 
-## 部署包和应用
+## 部署 Package 和应用
 
 With pub you can publish packages and command-line apps.
 
-使用 pub 命令你还可以发布包和命令行应用。
+使用 pub 命令你还可以发布 Package 和命令行应用。
 
 {% include tools/pub-was-a-builder.md %}
 
 ### Packages
 
-### 包
+### Package
 
 To share your Dart packages with the world, you can
 use the [`pub publish`](/tools/pub/cmd/pub-lish) command to upload the
@@ -147,7 +147,7 @@ package to the [Pub site]({{site.pub}}). The
 [`pub uploader`](/tools/pub/cmd/pub-uploader) command enables specific
 users to modify and upload new versions of your package.
 
-你可以使用 [`pub publish`](/tools/pub/cmd/pub-lish) 命令将包上传至 [Pub 网站]({{site.pub}})以分享给全世界的开发者使用。[`pub uploader`](/tools/pub/cmd/pub-uploader) 命令可以允许指定用户修改和上传新版本的包。
+你可以使用 [`pub publish`](/tools/pub/cmd/pub-lish) 命令将 Package 上传至 [Pub 网站]({{site.pub}})以分享给全世界的开发者使用。[`pub uploader`](/tools/pub/cmd/pub-uploader) 命令则可以允许指定用户修改 Package 和上传新版本的 Package。
 
 ### Command-line apps
 
@@ -159,7 +159,7 @@ When a script is listed under `executables`, users can run
 [`pub global activate`](/tools/pub/cmd/pub-global#activating-a-package)
 to make it directly available from the command line.
 
-任何包含脚本（即在 `bin/` 目录下有任意文件）的包，可以在 pubspec 文件中添加上 `executables` 标签。当一个脚本标识为 `executables` 时，用户可以直接从命令行使用 [`pub global activate`](/tools/pub/cmd/pub-global#activating-a-package) 命令运行它。
+任何包含脚本（即在 `bin/` 目录下有任意文件）的 Package，可以在 pubspec 文件中添加上 `executables` 标签。当一个脚本标识为 `executables` 时，用户可以直接从命令行使用 [`pub global activate`](/tools/pub/cmd/pub-global#activating-a-package) 命令运行它。
 ---
 
 ## Global options
