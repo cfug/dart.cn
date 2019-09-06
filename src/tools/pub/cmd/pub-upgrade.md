@@ -100,6 +100,7 @@ importing. Any transitive dependencies of the removed dependency are
 also removed, as long as no remaining immediate dependencies also
 depend on them. This is the same behavior as `pub get`.
 
+如果在运行 `pub upgrade` 命令前将一个依赖项从 pubspec 文件删除，则在运行该命令后会删除 `.packages` 文件中对应的依赖项，且会导致已经导入使用的该依赖项相关代码不可用。任何该依赖项所依赖的其它依赖项也会被同时删除。该行为与 `pub get` 命令一致。
 
 ## Upgrading while offline
 
