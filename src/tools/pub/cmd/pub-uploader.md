@@ -8,7 +8,7 @@ toc: false
 
 _Uploader_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-_Uploader_ 命令是 [Pub 工具](/tools/pub/cmd)中的一个命令。
+_Uploader_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
 
 {% prettify nocode %}
 $ pub uploader [options] {add/remove} <email>
@@ -21,7 +21,7 @@ other uploaders for that package. It has two sub-commands,
 `add` and `remove`, that take the email address of the person to
 add/remove as an uploader. For example:
 
-该命令允许 [Pub 网站]({{site.pub}})上某个 Package 的[上传者](/tools/pub/glossary#uploader)为该 Package 添加或删除其它的上传者。其有两个子命令 `add` 和 `remove`，可以将电子邮件地址作为某个上传者的标识以此来添加或删除上传者。例如：
+该命令允许 [Pub 网站]({{site.pub}})上某个 Package 的 [上传者](/tools/pub/glossary#uploader) 为该 Package 添加或删除其它的上传者。其有两个子命令 `add` 和 `remove`，可以将电子邮件地址作为某个上传者的标识以此来添加或删除上传者。例如：
 
 ```terminal
 ~/code/transmogrify$ pub uploader add bob@example.com
@@ -63,7 +63,7 @@ Google Apps email address for any new uploaders.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-你可以查阅[全局选项](/tools/pub/cmd#global-options)获取 Pub 命令所支持的命令选项。
+你可以查阅 [全局选项](/tools/pub/cmd#global-options) 获取 Pub 命令所支持的命令选项。
 
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).
