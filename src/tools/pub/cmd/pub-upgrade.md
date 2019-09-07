@@ -149,6 +149,6 @@ For options that apply to all pub commands, see
 *Problems?*
 See [Troubleshooting Pub](/tools/pub/troubleshoot).
 
-*有疑问？*
+**有疑问？**
 请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
 </aside>
