@@ -126,18 +126,9 @@ src="{{site.custom.dartpadx.embed-inline-prefix}}?id=15d5ef986238c97dbc14"
 </iframe>
 
 <aside class="alert alert-info" markdown="1">
-<<<<<<< HEAD
-**Note:**
-
-**注意：**
-
-Click run {% asset red-run.png alt="" %}
-to see the result in the **Console output**.
-
-点击运行 {% asset red-run.png alt="" %} 可以在 **控制台输出** 查看结果。
-=======
 **Note:** Click **Run** to see the result in the **Console**.
->>>>>>> 2266bb06ee06a5a33c979254cfb72e34de7cde3c
+
+**注意：** 点击 **Run** 可以在 **控制台输出** 查看结果。
 </aside>
 
 ## Error events
@@ -217,18 +208,9 @@ src="{{site.custom.dartpadx.embed-inline-prefix}}?id=df7c1168a5c6b20fda2a76d6ff3
 </iframe>
 
 <aside class="alert alert-info" markdown="1">
-<<<<<<< HEAD
-**Note:**
-
-**注意：**
-
-Click run {% asset red-run.png alt="" %}
-to see the result in the **Console output**.
-
-点击运行 {% asset red-run.png alt="" %} 可以在 **控制台输出** 查看结果。
-=======
 **Note:** Click **Run** to see the result in the **Console**.
->>>>>>> 2266bb06ee06a5a33c979254cfb72e34de7cde3c
+
+**注意：** 点击 **Run** 可以在 **控制台输出** 查看结果。
 </aside>
 
 
