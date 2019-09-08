@@ -1,6 +1,8 @@
 ---
 title: pub publish
+title: pub publish
 description: Use pub publish to publish your Dart package to the Pub site.
+description: 使用 pub publish 命令将你的 Dart Package 发布到 Pub 网站。
 toc: false
 ---
 
@@ -18,16 +20,22 @@ see [Publishing packages](/tools/pub/publishing).
 
 ## Options
 
+## 选项
+
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
 ### `--dry-run` or `-n`
+
+### `--dry-run` 选项或 `-n` 选项
 
 With this, pub goes through the validation process but does not actually upload
 the package. This is useful if you want to see if your package meets all of the
 publishing requirements before you're ready to actually go public.
 
 ### `--force` or `-f`
+
+### `--force` 选项或 `-f` 选项
 
 With this, pub does not ask for confirmation before publishing. Normally, it
 shows you the package contents and asks for you to confirm the upload.
@@ -52,4 +60,3 @@ The main pub server is itself open source and available [here][pub repo].
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting pub](/tools/pub/troubleshoot).
 </aside>
-
