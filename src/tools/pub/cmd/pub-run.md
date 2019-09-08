@@ -68,6 +68,10 @@ All other directories are private.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
+你可以查阅 [全局选项](/tools/pub/cmd#global-options) 获取 Pub 命令所支持的命令选项。
+
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).
+
+  *有疑问？* 请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
 </aside>
