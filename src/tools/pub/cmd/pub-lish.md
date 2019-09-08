@@ -8,6 +8,8 @@ toc: false
 
 _Publish_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
+_Publish_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
+
 {% prettify nocode %}
 $ pub publish [--dry-run] [--force] [--server <url>]
 {% endprettify %}
@@ -17,6 +19,8 @@ This command publishes your package on the
 on. For information on how to prepare your package for publishing,
 and what files you should include or exclude,
 see [Publishing packages](/tools/pub/publishing).
+
+该命令用于将你的 Package 发布到 [Pub 网站]({{site.pub}}) 以供其他人下载和依赖。有关如果将你的 Package 发布以及哪些文件可以发布哪些不应该发布的信息请查阅 [发布 Package](/tools/pub/publishing)。
 
 ## Options
 
