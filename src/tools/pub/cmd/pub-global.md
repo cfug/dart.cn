@@ -7,6 +7,8 @@ description: 使用 pub global 命令从命令行运行 Pub 网站上托管的 D
 
 _Global_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
+_Global_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
+
 Pub's `global` option allows you to run Dart scripts from the
 command line when you are not currently inside a package.
 After [activating a package](#activating-a-package), you can
@@ -14,9 +16,13 @@ After [activating a package](#activating-a-package), you can
 [Deactivating a package](#deactivating-a-package) removes it from
 your list of globally available packages.
 
+Pub 的 `global` 选项允许你在任意位置下从命令行运行 Dart 脚本。在 [激活 Package](#activating-a-package) 后，你可以 [运行](#running-a-script) 该 Package `bin` 目录下的脚本。[停用 Package](#deactivating-a-package) 后你可以从全局可用的 Package 列表中将其移除。
+
 For example, say you want to run
 [Stagehand]({{site.pub}}/packages/stagehand)
 the Dart project generator, from the command line.
+
+例如，假设你想要从命令行运行 Dart 项目生成的 [Stagehand]({{site.pub}}/packages/stagehand)。
 
 ```terminal
 $ pub global activate stagehand
@@ -26,8 +32,12 @@ $ stagehand
 If this doesn't work, you might need to
 [set up your path](#running-a-script-from-your-path).
 
+如果该操作无效，你可能需要 [设置你的路径](#running-a-script-from-your-path)。
+
 To run a Dart script from within a package, or from a
 package that your package depends on, see [pub run](/tools/pub/cmd/pub-run).
+
+如果想要从 Package 中运行 Dart 脚本，或者从 Package 所依赖的其它 Package 中运行脚本，请查阅 [pub run](/tools/pub/cmd/pub-run) 命令。
 
 ## Activating a package
 
