@@ -1,6 +1,8 @@
 ---
 title: pub global
+title: pub global
 description: Use pub global to run Dart scripts hosted on the Pub site from the command line.
+description: 使用 pub global 命令从命令行运行 Pub 网站上托管的 Dart 脚本。
 ---
 
 _Global_ is one of the commands of the [pub tool](/tools/pub/cmd).
@@ -29,6 +31,8 @@ package that your package depends on, see [pub run](/tools/pub/cmd/pub-run).
 
 ## Activating a package
 
+## Package 激活
+
 ```nocode
 pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [constraint]
 ```
@@ -47,6 +51,8 @@ constraint.  See the [constraint](#options) flag for usage examples.
 
 ### Activating a package on the Pub site
 
+### 激活 Pub 网站上的 Package
+
 ```terminal
 $ pub global activate <pub.dartlang package>
 ```
@@ -58,6 +64,8 @@ $ pub global activate markdown
 ```
 
 ### Activating a package with Git
+
+### 激活 Git 仓库中的 Package
 
 ```terminal
 $ pub global activate --source git <Git URL>
@@ -76,6 +84,8 @@ $ pub global activate -sgit https://github.com/dart-lang/async_await.git
 
 ### Activating a package on your local machine
 
+### 激活当前设备上的 Package
+
 ```terminal
 $ pub global activate --source path <path>
 ```
@@ -90,16 +100,22 @@ $ pub global activate --source path ~/dart/stopwatch
 
 ### Updating an activated package
 
+### 更新已经激活的 Package
+
 Once a package has been activated, you can upgrade it by activating the
 package again.
 
 ## Running a script
+
+## 运行脚本
 
 You can directly run a script from an activated package from the
 command line. If you are unable to run the script directly,
 you can also use `pub global run`.
 
 ### Running a script from your PATH
+
+### 运行指定路径中的脚本
 
 To run a script directly from the command line, add the `bin` file
 for the [system cache](/tools/pub/glossary#system-cache) to your path.
@@ -148,6 +164,8 @@ this feature. You can still run the script using `pub global run`.
 
 ### Running a script using `pub global run`
 
+### 使用 `pub global run` 命令运行脚本
+
 ```nocode
 $ pub global run <package>:<executable> [args...]
 ```
@@ -162,6 +180,8 @@ $ pub global run foo:bar arg1 arg2
 ```
 
 ### Configuring package executables
+
+### 配置 Package 为可运行的
 
 If you are not a package developer, you can skip this section.
 
@@ -186,6 +206,8 @@ directly from the command line.
 
 ## Deactivating a package
 
+## 停用 Pacakge
+
 ```terminal
 $ pub global deactivate <package>
 ```
@@ -202,6 +224,8 @@ or at the command line.
 
 ## Listing active packages
 
+## 列出激活的 Package
+
 ```terminal
 $ pub global list
 ```
@@ -209,6 +233,8 @@ $ pub global list
 Use `list` to list all currently active packages.
 
 ## Options
+
+## 选项
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
