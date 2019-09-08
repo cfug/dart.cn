@@ -1,6 +1,8 @@
 ---
 title: pub deps
+title: pub deps
 description: Use pub deps to print a dependency graph for a package.
+description: 使用 pub deps 命令可以将 Package 的依赖项打印出来。
 toc: false
 ---
 
@@ -47,6 +49,8 @@ markdown_converter 0.0.0
 ```
 
 ## Options
+
+## 选项
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
