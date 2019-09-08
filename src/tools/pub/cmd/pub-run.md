@@ -29,8 +29,12 @@ use the [pub global](/tools/pub/cmd/pub-global) command.
 
 This is the simplest use case.
 
+这是一个最简单的使用示例。
+
 From the root of a package that contains `foo.dart`
 in the `bin` directory, run the app using the following command:
+
+假设一个 Package 根目录下包含 `bin` 目录，且该目录中包含有 `foo.dart` 文件，则你可以使用下述命令运行该应用：
 
 ```terminal
 $ pub run foo arg1 arg2
@@ -38,6 +42,8 @@ $ pub run foo arg1 arg2
 
 This command looks in your package's `bin` directory for the
 specified script and invokes it, passing in any arguments.
+
+该命令会查找位于你 Package `bin` 目录下的指定脚本并以指定参数运行它。
 
 ## Running a script in another directory in your package
 
