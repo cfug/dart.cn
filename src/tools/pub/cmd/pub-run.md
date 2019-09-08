@@ -54,6 +54,8 @@ bin directory (but within the package), prepend the path
 to the name of the script.
 For example, to run `foo.dart` in the `example/sub` directory:
 
+如果你想运行位于 Package 其它目录中的脚本，只需要在脚本前加上对应的目录地址即可。例如，运行位于 `example/sub` 目录下的 `foo.dart`：
+
 ```terminal
 $ pub run example/sub/foo arg1 arg2
 ```
