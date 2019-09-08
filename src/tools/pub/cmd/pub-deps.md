@@ -8,6 +8,8 @@ toc: false
 
 _Deps_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
+_Deps_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
+
 {% prettify none %}
 $ pub deps [--style=<style>]
 {% endprettify %}
@@ -19,11 +21,17 @@ that the package uses (as specified in the pubspec), as well as the
 [transitive dependencies](/tools/pub/glossary#transitive-dependency)
 pulled in by the immediate dependencies.
 
+该命令可以将 Package 的依赖图示打印输出到控制台。该图示中包括 Package 声明在 pubspec 文件中的 [直接依赖](/tools/pub/glossary#immediate-dependency) 以及这些直接依赖所依赖的 [间接依赖](/tools/pub/glossary#transitive-dependency)。
+
 The dependency information is printed as a tree, a list, or a compact
 list.
 
+依赖信息将以树状、列表或者简洁列表的形式打印输出。
+
 For example, the pubspec for the markdown_converter example specifies
 the following dependencies:
+
+例如，markdown_converter 这个示例的 pubspec 文件中声明了如下依赖信息：
 
 {% prettify yaml %}
 dependencies:
@@ -32,6 +40,8 @@ dependencies:
 {% endprettify %}
 
 Here's an example of the `pub deps` output for markdown_converter:
+
+当你执行 `pub deps` 命令时则会看到 markdown_converter 的依赖图示如下：
 
 ```terminal
 $ pub deps
