@@ -8,6 +8,8 @@ toc: false
 
 _Cache_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
+_Cache_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
+
 ```
 $ pub cache add <package> [--version <constraint>] [--all]
 $ pub cache repair
@@ -18,6 +20,8 @@ The `pub cache` command works with the
 To add new packages to your cache, use `pub cache add`.
 To perform a clean reinstall of the packages in your system cache,
 use `pub cache repair`.
+
+`pub cache` 命令用于操作 [Pub 位于系统中的缓存](/tools/pub/glossary#system-cache)。你可以使用 `pub cache add` 命令将新的 Package 添加至缓存。也可以使用 `pub cache repair` 命令将 Package 从缓存中清除并重新安装。
 
 ## Options
 
