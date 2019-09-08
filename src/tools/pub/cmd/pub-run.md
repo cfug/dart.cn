@@ -7,6 +7,8 @@ description: 使用 pub run 命令运行你 Package 中的 Dart 脚本。
 
 _Run_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
+_Run_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
+
 {% prettify nocode %}
 $ pub run [--enable-asserts] <executable> [args...]
 {% endprettify %}
@@ -14,8 +16,12 @@ $ pub run [--enable-asserts] <executable> [args...]
 Use this command to run a Dart script in your package,
 or in one of its dependencies, from the command line.
 
+使用该命令可以从命令行运行一个位于你 Package 中或 Package 依赖项中的脚本。
+
 To run an executable when you are not currently inside a package,
 use the [pub global](/tools/pub/cmd/pub-global) command.
+
+可以使用 [pub global](/tools/pub/cmd/pub-global) 命令来运行一个不存在于当前 Package 中的可执行对象。
 
 ## Running a script in your package's bin directory
 
