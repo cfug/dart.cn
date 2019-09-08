@@ -66,12 +66,16 @@ To run a script from the `bin` directory of a package that you depend on
 in the pubspec, specify the package name.
 For example, to run `bar.dart` in the foo package:
 
+如果你想执行的脚本不在当前 Package 中而是在当前 Package 所依赖的其它 Package 的 `bin` 目录中，那么你需要在运行该脚本时指定 Package 的名称。例如运行名为 foo 的 Package 中的 `bar.dart` 脚本：
+
 ```terminal
 $ pub run foo:bar arg
 ```
 
 You can only run scripts out of another package's `bin` directory.
 All other directories are private.
+
+你只能运行位于其它 Package `bin` 目录下的脚本。而所有其它的目录则都是私有的。
 
 ## Options
 
