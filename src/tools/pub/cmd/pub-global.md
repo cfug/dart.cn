@@ -249,11 +249,15 @@ Use `list` to list all currently active packages.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
+你可以查阅 [全局选项](/tools/pub/cmd#global-options) 获取 Pub 命令所支持的命令选项。
+
 `<constraint>`
 : Optional for `pub global activate`. The constraint allows you to pull
   in a specific version of the package. For example,
   the following command pulls the 0.6.0 version of the `markdown`
   package:
+
+`<版本限制参数>`：`pub global activate` 命令的可选选项。使用版本限制参数可以允许你拉取 Package 的指定版本。例如，下述命令会拉取 `markdown` 这个 Package 的 0.6.0 版本：
 
   ```terminal
   $ pub global activate markdown 0.6.0
@@ -261,6 +265,8 @@ For options that apply to all pub commands, see
 
   If you specify a range, pub picks the best version that meets that
   constraint. For example:
+
+如果你指定的是一个范围，Pub 则会在这个范围内选取一个最适合的版本。例如：
 
   ```terminal
   $ pub global activate foo <3.0.0
@@ -277,11 +283,15 @@ For options that apply to all pub commands, see
   $ pub global activate foo -x bar -x baz
   ```
 
+`--executable=<name>` 或 `-x<name>`：`pub global activate` 命令的可选选项。将指定的可执行对象添加至你的 PATH 路径中。你可以在一次命令执行中多次使用该选项以添加多个可执行对象到你的 PATH 路径中。例如，下述命令添加了 foo 中的 `bar` 和 `baz` 两个可执行对象（不包括 foo 中定义的其它可执行对象）到你的 PATH 中。
+
 `--no-executables`
 : Optional for `pub global activate`.
   Globally activates the package but doesn't put any
   executables in `bin`. You have to use `pub global run` to
   run any executables.
+
+`--no-executables`：`pub global activate` 命令的可选选项。会在全局范围内激活 Package 但不会在 `bin` 目录下生成任何文件。你必须使用 `pub global run` 来运行任意这些可执行的对象。
 
 `--overwrite`
 : Optional for `pub global activate`.
@@ -289,6 +299,10 @@ For options that apply to all pub commands, see
   collision, the preexisting executable wins. If you specify this flag,
   the new executable overwrites the previously activated executable.
 
+`--overwrite`：`pub global activate` 命令的可选选项。默认情况下，如果执行的两个全局 Package 名字冲突了，那么会优先执行最先执行过的那个。但是如果你指定该标识，那么新执行的 Package 则会覆盖之前执行的那些。
+
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting pub](/tools/pub/troubleshoot).
+
+  *有疑问？* 请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
 </aside>
