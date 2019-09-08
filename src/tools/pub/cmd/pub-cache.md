@@ -1,6 +1,8 @@
 ---
 title: pub cache
+title: pub cache
 description: Use pub cache to manage your system cache.
+description: 使用 pub cache 命令管理你系统中的缓存。
 toc: false
 ---
 
@@ -18,6 +20,8 @@ To perform a clean reinstall of the packages in your system cache,
 use `pub cache repair`.
 
 ## Options
+
+## 选项
 
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
