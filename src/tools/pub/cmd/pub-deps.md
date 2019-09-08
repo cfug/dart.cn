@@ -55,11 +55,18 @@ markdown_converter 0.0.0
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
+你可以查阅 [全局选项](/tools/pub/cmd#global-options) 获取 Pub 命令所支持的命令选项。
+
 `--style=<style>` or `-s <style>`
 : Optional. How the output should be displayed. The options are:
 `compact`, `tree`, or `list`. The default is tree.
 
+`--style=<style>` 选项或 `-s <style>` 选项：可选的选项。用于指定依赖项打印输出的样式。共有 `简洁`、`树状` 和 `列表` 三种，默认是树状样式。
+
 <aside class="alert alert-info" markdown="1">
 *Problems?*
 See [Troubleshooting Pub](/tools/pub/troubleshoot).
+
+*有疑问？*
+请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
 </aside>
