@@ -56,8 +56,12 @@ Once you've activated a package, see [Running a
 script](#running-a-script) to run scripts from the package's
 `bin` directory.
 
+当你想从命令行运行某个 Package 中的可执行对象时你需要先激活它。该 Package 可以是在 [Pub 网站]({{site.pub}})、Git 仓库或者你当前设备上。一旦你激活了 Package，就可以参阅 [Running a script](#running-a-script) 运行位于 Package `bin` 目录下的脚本。
+
 When you activate a package you can specify an optional version
 constraint.  See the [constraint](#options) flag for usage examples.
+
+你可以在激活 Package 时指定一个可选的版本限制参数。关于其使用示例请查阅 [版本限制参数](#options)。
 
 ### Activating a package on the Pub site
 
@@ -68,6 +72,8 @@ $ pub global activate <pub.dartlang package>
 ```
 
 Specify a package on the Pub site to activate it. For example:
+
+激活 Pub 网站上的一个 Package。例如：
 
 ```terminal
 $ pub global activate markdown
@@ -87,6 +93,8 @@ a package in a Git repository. The following examples,
 which activate the `async_await` package on
 [GitHub](https://github.com/), are equivalent:
 
+使用 `--source git`（或 `-sgit` 简写）命令参数可以激活位于 Git 仓库中的 Package。下面的两个示例都可以用于激活位于 [GitHub](https://github.com/) 网站上名为 `async_await` 的 Package。
+
 ```terminal
 $ pub global activate --source git https://github.com/dart-lang/async_await.git
 $ pub global activate -sgit https://github.com/dart-lang/async_await.git
@@ -104,6 +112,8 @@ Use `activate --source path <path>` to activate a package on your local machine.
 The following example activates the `stopwatch` package from the
 `~/dart` directory:
 
+使用 `activate --source path <path>` 命令参数激活当前设备上的 Package。下面的示例激活了位于 `~/dart` 目录下名为 `stopwatch` 的 Package。
+
 ```terminal
 $ pub global activate --source path ~/dart/stopwatch
 ```
@@ -114,6 +124,8 @@ $ pub global activate --source path ~/dart/stopwatch
 
 Once a package has been activated, you can upgrade it by activating the
 package again.
+
+你可以再次激活一个已经激活的 Package 以更新它。
 
 ## Running a script
 
