@@ -1,10 +1,14 @@
 ---
 title: pub deps
+title: pub deps
 description: Use pub deps to print a dependency graph for a package.
+description: 使用 pub deps 命令可以将 Package 的依赖项打印出来。
 toc: false
 ---
 
 _Deps_ is one of the commands of the [pub tool](/tools/pub/cmd).
+
+_Deps_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
 
 {% prettify none %}
 $ pub deps [--style=<style>]
@@ -17,11 +21,17 @@ that the package uses (as specified in the pubspec), as well as the
 [transitive dependencies](/tools/pub/glossary#transitive-dependency)
 pulled in by the immediate dependencies.
 
+该命令可以将 Package 的依赖图示打印输出到控制台。该图示中包括 Package 声明在 pubspec 文件中的 [直接依赖](/tools/pub/glossary#immediate-dependency) 以及这些直接依赖所依赖的 [间接依赖](/tools/pub/glossary#transitive-dependency)。
+
 The dependency information is printed as a tree, a list, or a compact
 list.
 
+依赖信息将以树状、列表或者简洁列表的形式打印输出。
+
 For example, the pubspec for the markdown_converter example specifies
 the following dependencies:
+
+例如，markdown_converter 这个示例的 pubspec 文件中声明了如下依赖信息：
 
 {% prettify yaml %}
 dependencies:
@@ -30,6 +40,8 @@ dependencies:
 {% endprettify %}
 
 Here's an example of the `pub deps` output for markdown_converter:
+
+当你执行 `pub deps` 命令时则会看到 markdown_converter 的依赖图示如下：
 
 ```terminal
 $ pub deps
@@ -48,14 +60,23 @@ markdown_converter 0.0.0
 
 ## Options
 
+## 选项
+
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
+
+你可以查阅 [全局选项](/tools/pub/cmd#global-options) 获取 Pub 命令所支持的命令选项。
 
 `--style=<style>` or `-s <style>`
 : Optional. How the output should be displayed. The options are:
 `compact`, `tree`, or `list`. The default is tree.
 
+`--style=<style>` 选项或 `-s <style>` 选项：可选的选项。用于指定依赖项打印输出的样式。共有 `简洁`、`树状` 和 `列表` 三种，默认是树状样式。
+
 <aside class="alert alert-info" markdown="1">
 *Problems?*
 See [Troubleshooting Pub](/tools/pub/troubleshoot).
+
+**有疑问？**
+请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
 </aside>
