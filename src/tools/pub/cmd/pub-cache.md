@@ -71,5 +71,5 @@ hosted and git packages in the system cache.</dd>
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).
 
-  *有疑问？* 请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
+  **有疑问？** 请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
 </aside>
