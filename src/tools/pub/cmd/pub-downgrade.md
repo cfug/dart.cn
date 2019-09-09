@@ -1,6 +1,8 @@
 ---
 title: pub downgrade
+title: pub downgrade
 description: Use pub downgrade to get the lowest versions of all dependencies used by your Dart application.
+description: 使用 pub downgrade 命令可以获取你 Dart 应用所使用的所有依赖项的最低版本。
 ---
 
 _Downgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
@@ -37,6 +39,8 @@ on package resolution and the system package cache.
 
 ## Downgrading specific dependencies
 
+## 降级指定依赖项
+
 It's possible to tell `pub downgrade` to downgrade specific dependencies to the
 lowest version while leaving the rest of the dependencies alone as much as
 possible. For example:
@@ -68,6 +72,8 @@ as a result.
 
 ## Getting a new dependency
 
+## 获取新的依赖项
+
 If a dependency is added to the pubspec before `pub downgrade` is run,
 it gets the new dependency and any of its transitive dependencies,
 placing them in the `.packages` file. This
@@ -75,6 +81,8 @@ is the same behavior as `pub get`.
 
 
 ## Removing a dependency
+
+## 移除依赖项
 
 If a dependency is removed from the pubspec before `pub downgrade` is
 run, it removes the dependency from the `.packages` file,
@@ -85,6 +93,8 @@ depend on them. This is the same behavior as `pub get`.
 
 
 ## Downgrading while offline
+
+## 离线降级
 
 If you don't have network access, you can still run `pub downgrade`.
 Because pub downloads packages to a central cache shared by all packages
@@ -100,6 +110,8 @@ available.
 
 
 ## Options {#options}
+
+## 选项 {#options}
 
 The `pub downgrade` command supports the
 [`pub get` options](/tools/pub/cmd/pub-get#options).
