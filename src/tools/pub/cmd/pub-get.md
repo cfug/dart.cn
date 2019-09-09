@@ -7,6 +7,8 @@ description: 使用 pub get 命令检索 Dart 应用使用的依赖项。
 
 _Get_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
+_Get_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
+
 {% prettify nocode %}
 $ pub get [--offline]
 {% endprettify %}
@@ -16,6 +18,8 @@ This command gets all the dependencies listed in the
 directory, as well as their
 [transitive dependencies](/tools/pub/glossary#transitive-dependency).
 For example:
+
+该命令获取所有在当前工作目录下的 [`pubspec.yaml`](/tools/pub/pubspec) 文件中列出的依赖项，以及这些依赖项的 [间接依赖项](/tools/pub/glossary#transitive-dependency)。例如：
 
 ```terminal
 $ pub get
@@ -29,8 +33,12 @@ downloading dependencies if necessary.
 To map packages back to the system cache,
 this command creates a `.packages` file.
 
+如果 [Pub 的系统缓存](/tools/pub/glossary#system-cache) 中还没有该依赖项，则 `pub get` 命令会在必要时下载该依赖项并更新缓存。该命令会创建一个 `.packages` 文件并将之映射到 Pub 的系统缓存中。
+
 Once the dependencies are acquired, they may be referenced in Dart code.
 For example, if a package depends on `test`:
+
+一旦依赖获取完毕，就可以在 Dart 代码中引用。例如，假如 Package 依赖了名为 `test` 的 Package，则可以使用该 Package 下的资源：
 
 {% prettify dart %}
 import 'package:test/test.dart';
@@ -45,6 +53,8 @@ of all dependencies for all developers and when deployed to production.
 Library packages should not check in the lockfile, though, since they're
 expected to work with a range of dependency versions.
 
+`pub get` 命令获取新依赖项后会写入一个 [lockfile](/tools/pub/glossary#lockfile) 文件以确保下次执行该命令时会使用相同的依赖项版本。应用型的 Package 应该总是签入该 lockfile 文件以控制来源；从而确保在将 Package 部署到生产环境时所有的依赖项对于所有开发者而言都是相同的版本。库类型的 Package 则不需要签入 lockfile 文件，因为它们可能需要使用到不同的依赖项版本。
+
 If a lockfile already exists, `pub get` uses the versions of dependencies
 locked in it if possible. If a dependency isn't locked, pub gets the
 latest version of that dependency that satisfies all the [version
@@ -52,6 +62,8 @@ constraints](/tools/pub/glossary#version-constraint).
 This is the primary difference between `pub get` and
 [`pub upgrade`](/tools/pub/cmd/pub-upgrade), which always tries to
 get the latest versions of all dependencies.
+
+如果 lockfile 已经存在，`pub get` 命令会尽可能地使用锁定的依赖项版本。如果某个依赖项没有被锁定，则 Pub 会获取所有 [限定的版本](/tools/pub/glossary#version-constraint) 中最新的那个依赖项版本。这是 `pub get` 命令与 [`pub upgrade`](/tools/pub/cmd/pub-upgrade) 命令最大的不同点，后者总是会去尝试使用依赖项的最新版本。
 
 {% include pub-in-prereleases.html %}
 
