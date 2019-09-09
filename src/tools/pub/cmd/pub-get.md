@@ -107,6 +107,7 @@ updates the mapping in the `.packages` file.
 However, pub won't change the versions of any already-acquired
 dependencies unless that's necessary to get the new dependency.
 
+如果在执行 `pub get` 命令前将某个依赖添加至 pubspec 文件中，则在执行该命令后会将该新的依赖项以及其间接依赖的其它依赖项下载并将其更新映射到 `.packages` 文件中。但是，Pub 不会更改哪些已经存在的依赖项除非有必要获取它们的新版本。
 
 ## Removing a dependency
 
