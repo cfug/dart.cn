@@ -121,6 +121,7 @@ as long as no remaining immediate dependencies also depend on them.
 Removing a dependency never changes the versions of any
 already-acquired dependencies.
 
+如果在 `pub get` 命令前从 pubspec 文件移除了某个依赖项，则在执行该命令后会将该依赖项从 `.packages` 文件中移除，且代码使用到该依赖项的相关导入将变得不可用。所有该依赖项依赖的间接依赖项也同时会被移除，只要这些间接依赖项没有没其它的依赖项所依赖。移除某个依赖项不会对已经获得的依赖项版本产生任何影响。
 
 ## The system package cache
 
