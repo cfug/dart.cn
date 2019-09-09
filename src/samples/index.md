@@ -7,7 +7,8 @@ description: 展示常见的 Dart 语言的用法。
 
 This collection is not exhaustive&mdash;it's just a brief
 introduction to the language for people who like to learn by example.
-You might also want to check out the language and library tours.
+You might also want to check out the language and library tours,
+or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
 
 这里的示例并不全面&mdash;它只是为那些喜欢通过示例了解语言的人提供一个语言的介绍。
 你可能还希望阅读语言概览和库概览。
