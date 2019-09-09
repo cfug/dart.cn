@@ -10,6 +10,8 @@ short-title: Language tour
 This page shows you how to use each major Dart feature, from
 variables and operators to classes and libraries, with the assumption
 that you already know how to program in another language.
+For a briefer, less complete introduction to the language, see the
+[language samples page](/samples).
 
 本文将从变量和运算符开始到类和库的使用来向你介绍 Dart 编程语言的主要功能，这里假设你已经有使用其它语言进行编程的经验。
 
