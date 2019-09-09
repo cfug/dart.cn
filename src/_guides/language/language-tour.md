@@ -13,14 +13,18 @@ that you already know how to program in another language.
 For a briefer, less complete introduction to the language, see the
 [language samples page](/samples).
 
-本文将从变量和运算符开始到类和库的使用来向你介绍 Dart 编程语言的主要功能，这里假设你已经有使用其它语言进行编程的经验。
+本文将从变量和运算符开始到类和库的使用来向你介绍 Dart 编程语言的主要功能，
+这里假设你已经有使用其它语言进行编程的经验。
 
 To learn more about Dart's core libraries, see the
 [library tour](/guides/libraries/library-tour).
 Whenever you want more details about a language feature,
 consult the [Dart language specification][].
 
-你可以通过查看 [Dart 库概览](/guides/libraries/library-tour) 学习更多关于 Dart 核心库的知识。若还想了解更多有关语言功能的详细内容，请参阅 [Dart 编程语言规范][/guides/language/spec]。
+你可以通过查看 [Dart 库概览](/guides/libraries/library-tour) 
+学习更多关于 Dart 核心库的知识。
+若还想了解更多有关语言功能的详细内容，
+请参阅 [Dart 编程语言规范](/guides/language/spec)。
 
 <div class="alert alert-info" markdown="1">
 **Tip:**
