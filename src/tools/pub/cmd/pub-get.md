@@ -1,6 +1,8 @@
 ---
 title: pub get
+title: pub get
 description: Use pub get to retrieve the dependencies used by your Dart application.
+description: 使用 pub get 命令检索 Dart 应用使用的依赖项。
 ---
 
 _Get_ is one of the commands of the [pub tool](/tools/pub/cmd).
@@ -55,6 +57,8 @@ get the latest versions of all dependencies.
 
 ## Package resolution
 
+## Package 解析
+
 By default, pub creates a `.packages` file
 that maps from package names to location URIs.
 Before the `.packages` file, pub used to create `packages` directories.
@@ -78,6 +82,8 @@ For more information, see the
 
 ## Getting a new dependency
 
+## 获取一个新的依赖项
+
 If a dependency is added to the pubspec and then `pub get` is run,
 it gets the new dependency and any of its transitive dependencies and
 updates the mapping in the `.packages` file.
@@ -86,6 +92,8 @@ dependencies unless that's necessary to get the new dependency.
 
 
 ## Removing a dependency
+
+## 移除一个依赖项
 
 If a dependency is removed from the pubspec and then `pub get` is run,
 it removes the dependency from the `.packages` file,
@@ -97,6 +105,8 @@ already-acquired dependencies.
 
 
 ## The system package cache
+
+## 系统 Package 缓存
 
 Dependencies downloaded over the internet, such as those from Git and the
 [Pub site]({{site.pub}}), are stored in a
@@ -115,6 +125,8 @@ environment variable before running pub.
 
 
 ## Getting while offline
+
+## 离线检索
 
 If you don't have network access, you can still run `pub get`.
 Because pub downloads packages to a central cache shared by all packages
@@ -137,6 +149,8 @@ run [`pub upgrade`](/tools/pub/cmd/pub-upgrade) to upgrade to a later version.
 
 
 ## Options
+
+## 选项
 
 The `pub get` command supports the `--offline`
 command-line argument, as discussed above.
