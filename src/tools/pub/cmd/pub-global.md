@@ -304,5 +304,5 @@ For options that apply to all pub commands, see
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting pub](/tools/pub/troubleshoot).
 
-  *有疑问？* 请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
+  **有疑问？** 请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
 </aside>
