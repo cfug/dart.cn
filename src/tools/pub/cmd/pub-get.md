@@ -134,6 +134,8 @@ This means that if multiple packages use the same version of the
 same dependency, it only needs to be
 downloaded and stored locally once.
 
+依赖项通过网络从类似 Git 仓库和 [Pub 网站]({{site.pub}}) 下载并存储在一个 [系统级的缓存](/tools/pub/glossary#system-cache) 中。这意味着如果多个 Package 使用了相同依赖项的相同版本，它就不再需要通过网络下载，而仅仅只需从本地缓存获取即可。
+
 By default, the system package cache is located in the `.pub-cache`
 subdirectory of your home directory (on Mac and Linux),
 or in `%APPDATA%\Pub\Cache` (on Windows;
@@ -142,6 +144,7 @@ You can configure the location of the cache by setting the
 [`PUB_CACHE`](/tools/pub/environment-variables)
 environment variable before running pub.
 
+默认情况下，Pub 缓存存储在你的用户目录（Mac 和 Linux）或 `%APPDATA%\Pub\Cache` 目录（Windows，不同版本的 Windows 操作系统可能会不一样）下的 `.pub-cache` 子目录中。你可以在运行 Pub 相关命令前通过 [`PUB_CACHE`](/tools/pub/environment-variables) 系统环境变量配置你想要的缓存存储目录。
 
 ## Getting while offline
 
