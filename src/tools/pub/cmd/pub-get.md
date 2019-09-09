@@ -75,6 +75,8 @@ By default, pub creates a `.packages` file
 that maps from package names to location URIs.
 Before the `.packages` file, pub used to create `packages` directories.
 
+默认情况下，Pub 会创建一个 `.packages` 文件用于映射 Package 名到位置 URI。在创建 `.packages` 文件之前，Pub 常常还会创建一个 `packages` 目录。
+
 <aside class="alert alert-info" markdown="1">
 **Note:** Don't check the generated `.packages` file,
 `packages` directories (if present), or
@@ -82,6 +84,8 @@ Before the `.packages` file, pub used to create `packages` directories.
 add them to your repo's `.gitignore` file.
 For more information, see
 [What Not to Commit](/guides/libraries/private-files).
+
+**注意：** 不要去检出你仓库中由 Pub 自动生成的 `.packages` 文件、`packages` 目录（如果存在的话）或者 `.dart_tool` 目录；请将它们添加至 Git 仓库的 `.gitignore` 文件中。更多信息请查阅 [你不应该提交哪些文件](/guides/libraries/private-files)。
 {% comment %}
 PENDING: here just to make it easy to find discussions of `packages`...
 {% include packages-dir.html %}
@@ -91,6 +95,7 @@ PENDING: here just to make it easy to find discussions of `packages`...
 For more information, see the
 [package specification file proposal.](https://github.com/lrhn/dep-pkgspec/blob/master/DEP-pkgspec.md#proposal)
 
+更多信息请查阅 [Package 文件规范建议。](https://github.com/lrhn/dep-pkgspec/blob/master/DEP-pkgspec.md#proposal)
 
 ## Getting a new dependency
 
