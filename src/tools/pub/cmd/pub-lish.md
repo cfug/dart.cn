@@ -76,5 +76,5 @@ The main pub server is itself open source and available [here][pub repo].
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting pub](/tools/pub/troubleshoot).
 
-  *有疑问？* 请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
+  **有疑问？** 请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
 </aside>
