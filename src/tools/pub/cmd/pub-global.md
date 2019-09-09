@@ -254,6 +254,8 @@ $ pub global list
 
 Use `list` to list all currently active packages.
 
+使用 `list` 列出当前所有已激活的 Package。
+
 ## Options
 
 ## 选项
