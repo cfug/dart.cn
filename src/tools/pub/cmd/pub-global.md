@@ -135,6 +135,8 @@ You can directly run a script from an activated package from the
 command line. If you are unable to run the script directly,
 you can also use `pub global run`.
 
+你可以从命令行直接运行已激活 Package 中的 脚本。如果你不能直接运行脚本，可以尝试使用 `pub global run` 命令。
+
 ### Running a script from your PATH
 
 ### 运行指定路径中的脚本
@@ -142,8 +144,12 @@ you can also use `pub global run`.
 To run a script directly from the command line, add the `bin` file
 for the [system cache](/tools/pub/glossary#system-cache) to your path.
 
+在从命令行运行脚本前，你还需要将 [Pub 系统缓存](/tools/pub/glossary#system-cache) 的 `bin` 文件目录添加至 PATH 路径中。
+
 For example, say you've activated the Stagehand script,
 but you still can't run the command:
+
+例如，假设你已经激活了名为 Stagehand 的脚本，但是你依然不能运行它：
 
 ```terminal
 $ pub global activate stagehand
@@ -154,6 +160,8 @@ $ stagehand
 Verify that the `bin` directory for the system cache is in your path.
 The following path, on macOS, includes the system cache.
 
+此时你需要确认 Pub 系统缓存的 `bin` 目录是否已经添加至 PATH 路径中。例如在 MacOS 上，使用下述命令可以查看你的 PATH 路径是否已经包含了 Pub 系统缓存的 `bin` 目录：
+
 {% prettify none %}
 $ echo $PATH
 [!/Users/<user>/.pub-cache/bin!]:/Users/<user>/homebrew/bin:/usr/local/bin:/usr/bin:/bin
@@ -162,17 +170,29 @@ $ echo $PATH
 If this directory is missing from your path,
 locate the file for your platform and add it.
 
+如果 PATH 路径中没有添加 Pub 缓存目录，你需要根据你当前设备的系统平台找到对应的 Pub 缓存目录并将之添加。
+
 |-------------------+---------------------------|
 |      Platform     |      Cache location       |
+
+|        平台       |          缓存位置           |
+
 |-------------------|---------------------------|
 | macOS or Linux | `$HOME/.pub-cache/bin`        |
+
+| macOS 或 Linux | `$HOME/.pub-cache/bin`        |
+
 | Windows<sup><strong>*</strong></sup> | `%APPDATA%\Pub\Cache\bin` |
 {:.table .table-striped}
 
 <sup><strong>*</strong></sup> The exact location of the system cache
 may vary for different versions of Windows.
 
+<sup><strong>*</strong></sup> 对于不同版本的 Windows 系统，Pub 系统缓存的确切位置可能有所不同。
+
 You can now directly invoke the command:
+
+现在你可以直接调用命令了：
 
 {% prettify none %}
 $ mkdir angular_project
@@ -183,6 +203,8 @@ $ [!stagehand web-angular!]
 If the script still fails to run from the command line, the
 package may not be [configured](#configuring-package-executables) for
 this feature. You can still run the script using `pub global run`.
+
+如果此时从命令行运行脚本依然失败，则 Package 可能没有针对此功能进行 [配置](#configuring-package-executables)。但你仍然可以使用 `pub global run` 命令运行它。
 
 ### Running a script using `pub global run`
 
@@ -197,6 +219,8 @@ you can still use `pub global run`.
 The following command runs the `bin/bar.dart` script from the
 `foo` package, passing in two arguments.
 
+即使某个脚本没有配置成可以从命令行运行，你依然可以使用 `pub global run` 命令运行它。下述命令传递两个参数从名为 `foo` 的 Package 运行 `bin/bar.dart` 脚本。
+
 ```terminal
 $ pub global run foo:bar arg1 arg2
 ```
@@ -207,6 +231,8 @@ $ pub global run foo:bar arg1 arg2
 
 If you are not a package developer, you can skip this section.
 
+如果你不是一个 Package 开发者，你可以跳过本节。
+
 A package can expose some of its scripts as executables
 that can be run directly from the command line. The script or scripts
 must be listed in the
@@ -214,6 +240,8 @@ must be listed in the
 entry of the pubspec file.  For example, the following pubspec file
 identifies `bin/helloworld.dart` as an executable for the helloworld
 package:
+
+Package 可以暴露它的一些脚本以直接从命令行运行。这些脚本必须在 pubspec 文件的 [`executables`](/tools/pub/pubspec#executables) 标签下列出。例如，下述名为 helloworld 的 Package 在其 pubspec 文件中将 `bin/helloworld.dart` 暴露为可以运行：
 
 {% prettify yaml %}
 name: helloworld
@@ -225,6 +253,8 @@ executables:
 Failing to list a script under the `executables` tag reduces the script's
 usability: unlisted scripts can be executed using `pub global run`, but not
 directly from the command line.
+
+没有在 `executables` 标签下列出的脚本可能会降低脚本的易用性：这些脚本虽然可以使用 `pub global run` 命令运行，但是不能直接从命令行运行。
 
 ## Deactivating a package
 
