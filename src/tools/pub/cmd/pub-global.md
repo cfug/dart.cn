@@ -267,12 +267,16 @@ $ pub global deactivate <package>
 Use `deactivate` to remove a package from the list of available
 global packages. For example:
 
+使用 `deactivate` 命令参数可以将 Package 从全局可用的 Package 列表移除。例如：
+
 ```terminal
 $ pub global deactivate markdown
 ```
 
 You can no longer invoke the package's scripts using `pub global run`,
 or at the command line.
+
+此时你不能使用 `pub global run` 命令或从命令行运行该 Package 的脚本。
 
 ## Listing active packages
 
