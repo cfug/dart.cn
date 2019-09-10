@@ -52,6 +52,8 @@ It's possible to tell `pub downgrade` to downgrade specific dependencies to the
 lowest version while leaving the rest of the dependencies alone as much as
 possible. For example:
 
+你可以指定 `pub downgrade` 命令只将某个依赖项的版本降至最低且不影响其余依赖项。例如：
+
 ```terminal
 $ pub downgrade test
 Resolving dependencies...
@@ -76,6 +78,7 @@ highest versions of any transitive dependencies that fit the new dependency
 constraints. Any transitive dependencies are usually also downgraded
 as a result.
 
+如果你降低指定依赖项的版本，且该依赖项还有间接依赖项，那么在版本变更后这些间接依赖项可能不适配降低后的新版依赖项。此时，Pub 会尝试在新版本依赖项可接受的范围内查找版本最高的该依赖项所依赖的间接依赖项。因此，通常而言，降低某个依赖项的版本后，其间接依赖项的版本也会随之降低。
 
 ## Getting a new dependency
 
