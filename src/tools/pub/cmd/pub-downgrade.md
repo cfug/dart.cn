@@ -7,6 +7,8 @@ description: 使用 pub downgrade 命令可以获取你 Dart 应用所使用的�
 
 _Downgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
+_Downgrade_ 命令是 [Pub 工具](/tools/pub/cmd)中的一个命令。
+
 {% prettify sh %}
 $ pub downgrade [args] [dependencies]
 {% endprettify %}
@@ -16,6 +18,8 @@ all the dependencies listed in the [`pubspec.yaml`](/tools/pub/pubspec) file
 in the current working directory, as well as their [transitive
 dependencies](/tools/pub/glossary#transitive-dependency).
 For example:
+
+在没有其它额外参数的情况下，`pub downgrade` 命令会获取当前工作目录下 [`pubspec.yaml`](/tools/pub/pubspec) 文件中列出的所有依赖项以及它们 [间接依赖项](/tools/pub/glossary#transitive-dependency) 的最低版本。例如：
 
 ```terminal
 $ pub downgrade
@@ -33,9 +37,12 @@ The `pub downgrade` command creates a lockfile. If one already exists,
 pub ignores that file and generates a new one from scratch, using the lowest
 versions of all dependencies.
 
+`pub downgrade` 命令会创建一个 lockfile 文件。如果 lockfile 文件已经存在，Pub 则会忽略该文件并通过 Scratch 生成一个新的 lockfile 文件，然后所有依赖项都会使用最低版本。
+
 See the [`pub get` documentation](/tools/pub/cmd/pub-get) for more information
 on package resolution and the system package cache.
 
+请查阅 [`pub get` 命令文档](/tools/pub/cmd/pub-get) 获取更多关于 Package 解析和系统 Package 缓存的信息。
 
 ## Downgrading specific dependencies
 
