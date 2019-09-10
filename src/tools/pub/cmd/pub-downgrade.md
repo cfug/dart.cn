@@ -108,6 +108,8 @@ Because pub downloads packages to a central cache shared by all packages
 on your system, it can often find previously downloaded packages
 without needing to use the network.
 
+在没有网络的情况下你也依然可以运行 `pub downgrade` 命令。因为 Pub 会将 Package 下载到一个统一的缓存区并将其与系统上其它的 Package 进行共享，如果你所需的 Package 是一个使用频率很高的 Package，那么很有可能它已经被其它 Package 在使用时下载到统一缓存区中了，此时你可以直接依赖使用它。
+
 However, by default, `pub downgrade` tries to go online if you
 have any hosted dependencies.
 If you don't want pub to do that, pass it the `--offline` flag.
@@ -115,6 +117,7 @@ In offline mode, pub looks only in your local package cache,
 trying to find a set of versions that work with your package from what's already
 available.
 
+但是，默认情况下，`pub downgrade` 命令会总是尝试获取线上的依赖版本，因此 Pub 可以确定依赖项是否有更新的版本。如果你不想 Pub 去线上检查，可以使用 `--offline` 命令参数让该命令在离线模式下执行。在离线模式下，Pub 只会从本地缓存区查找已经下载到的可用 Package。
 
 ## Options {#options}
 
