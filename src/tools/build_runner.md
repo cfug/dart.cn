@@ -2,7 +2,7 @@
 title: build_runner
 title: build_runner 命令
 description: A tool for building, testing, and running Dart code.
-description: 编译、测试、运行 Dart 代码的工具。
+description: 编译、测试和运行 Dart 代码的工具。
 ---
 
 The [build_runner][] package provides general-purpose commands for generating files,
@@ -35,6 +35,8 @@ generates `.css` files from `.scss` and `.sass` files.
 
 ## Setting up build_runner
 
+## build_runner 设置
+
 To use build_runner, add a [dev dependency][] on **build_runner**
 to your app's pubspec:
 
@@ -54,6 +56,8 @@ $ pub get
 ```
 
 ## Using built-in commands
+
+## 使用内置命令
 
 How you use the build_runner commands depends on whether you're using
 the Dart SDK or the Flutter SDK.
@@ -85,6 +89,8 @@ watch
 
 
 ## More information
+
+## 更多信息
 
 If you're working on web-specific code,
 see the [webdev page.][webdev]
