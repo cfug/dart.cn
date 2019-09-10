@@ -86,6 +86,7 @@ it gets the new dependency and any of its transitive dependencies,
 placing them in the `.packages` file. This
 is the same behavior as `pub get`.
 
+如果在执行 `pub downgrade` 命令前将某个依赖添加至 pubspec 文件中，则在执行该命令后会将该新的依赖项以及其间接依赖的其它依赖项下载并将其放到 `.packages` 文件中。这点与 `pub get` 命令一致。
 
 ## Removing a dependency
 
