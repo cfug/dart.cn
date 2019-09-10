@@ -98,6 +98,7 @@ importing. Any transitive dependencies of the removed dependency are
 also removed, as long as no remaining immediate dependencies also
 depend on them. This is the same behavior as `pub get`.
 
+如果在 `pub downgrade` 命令前从 pubspec 文件移除了某个依赖项，则在执行该命令后会将该依赖项从 `.packages` 文件中移除，且代码使用到该依赖项的相关导入将变得不可用。所有该依赖项依赖的间接依赖项也同时会被移除，只要这些间接依赖项没有没其它的依赖项所依赖。这点与 `pub get` 命令一致。
 
 ## Downgrading while offline
 
