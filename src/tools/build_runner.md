@@ -77,16 +77,22 @@ How you use the build_runner commands depends on whether you're using
 the Dart SDK or the Flutter SDK.
 Here are examples of using the build_runner **build** command:
 
+build_runner 命令的使用方式取决于你当前使用的是 Dart SDK 还是 Flutter SDK。下面是使用 build_runner **build** 命令的示例：
+
 ```terminal
-$ # From a directory that contains a pubspec.yaml file:
-$ pub run build_runner build  # Dart SDK
-$ flutter pub run build_runner build  # Flutter SDK
+$ # 从含有 pubspec.yaml 文件的目录执行下述命令：
+$ pub run build_runner build  # 使用 Dart SDK
+$ flutter pub run build_runner build  #  使用 Flutter SDK
 ```
 
 The build_runner package includes the following commands:
 
+build_runner 这个 Package 中包含下述几个命令：
+
 build
 : Performs a one-time build.
+
+build 命令：处理一次性构建。
 
 serve
 : Runs a development server.
@@ -94,13 +100,18 @@ serve
   you can use [`webdev serve`,][webdev serve]
   which has convenient default behavior.
 
+serve 命令：运行一个用于开发的服务器。你可以使用 [`webdev serve`][webdev serve] 替代该命令，它会包含一些方便的默认功能。
+
 test
 : Runs [tests.][tests]
+
+test 命令：用于运行 [测试][tests]。
 
 watch
 : Launches a build server that watches for edits to input files.
   Responds to changes by performing incremental rebuilds.
 
+watch 命令：启动一个构建服务器用于监听输入文件的编辑。通过处理增量重建来响应代码的修改。
 
 ## More information
 
