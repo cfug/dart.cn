@@ -7,7 +7,7 @@ description: 使用 pub downgrade 命令可以获取你 Dart 应用所使用的�
 
 _Downgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-_Downgrade_ 命令是 [Pub 工具](/tools/pub/cmd)中的一个命令。
+_Downgrade_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
 
 {% prettify sh %}
 $ pub downgrade [args] [dependencies]
