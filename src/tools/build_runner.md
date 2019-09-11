@@ -13,10 +13,15 @@ where you can find more information.
 For details of using build_runner with a specific package,
 see the documentation for that package.
 
+[build_runner][] 这个 Package 提供了一些用于生成文件的通用命令，这些命令中有些还可以用于测试生成的文件，有些则可以用于对外提供这些生成的文件以及它们的源代码。通过本文以更多信息中的相关链接你可以对 build_runner 以及如何使用它有一个大概的了解。至于如何针对特定 Package 使用 build_runner，你可以参考该 Package 的相关文档。
+
 <aside class="alert alert-info" markdown="1">
   **If you're a web developer:**
   You can use the [`webdev` tool][webdev] instead of directly using
   build_runner to build and serve web apps.
+
+  **如果你是一个 Web 开发者：**
+  你可以使用 [`webdev` 工具][webdev] 替代 build_runner 命令以构建和提供 Web 应用。
 </aside>
 
 The build_runner commands work with _builders_—packages
@@ -25,6 +30,8 @@ to generate output files from input files.
 For example, the [json_serializable][] and [built_value_generator][]
 packages define builders that generate Dart code.
 
+build_runner 命令需要与使用 [Dart 编译系统][build] 从输入文件生成输出文件的生成器 Package 配合使用。例如，[json_serializable][] 与 [built_value_generator][] 这两个 Package 共同定义了生成 Dart 代码的生成器。
+
 Although the Dart build system is a good alternative to
 reflection (which has performance issues) and
 macros (which Dart's compilers don't support),
@@ -32,6 +39,7 @@ it can do more than just read and write Dart code.
 For example, the [sass_builder][] package implements a builder that
 generates `.css` files from `.scss` and `.sass` files.
 
+Dart 的编译系统是反射（目前还有些性能问题）和宏指令（Dart 编译器还不支持）的替代方案，它可以做的不仅仅是用于读写 Dart 代码。例如，[sass_builder][] 这个 Package 实现了用于从 `.scss` 和 `.sass` 文件生成 `.css` 文件的生成器。
 
 ## Setting up build_runner
 
