@@ -95,14 +95,29 @@ watch
 If you're working on web-specific code,
 see the [webdev page.][webdev]
 
+如果你编写的代码针对的是 Web 应用，请查阅 [webdev 页面][webdev]。
+
 For details on using build_runner, see the following:
+
+你也可以通过下述链接查阅更多有关如何使用 build_runner 命令的信息：
 
 - Documentation for packages that require you to use build_runner.
   These packages generally have a dependency
   [on build][] or [on build_runner.][]
+
+  需要你使用 build_runner 命令的 Package 文档。这些 Package 通常依赖于 [build 命令][on build] 或 [build_runner][on build_runner.] 命令构建。
+
 - Build_runner documentation:
+
+  build_runner 命令的相关文档：
+
   - [Getting started with build_runner][]
+
+    [开始使用 build_runner 命令][Getting started with build_runner]
+
   - [Build FAQ][]
+
+    [构建常见问题][Build FAQ]
 
 [build]: https://github.com/dart-lang/build
 [Build FAQ]: https://github.com/dart-lang/build/blob/master/docs/faq.md
