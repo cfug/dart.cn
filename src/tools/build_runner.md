@@ -48,6 +48,8 @@ Dart 的编译系统是反射（目前还有些性能问题）和宏指令（Dar
 To use build_runner, add a [dev dependency][] on **build_runner**
 to your app's pubspec:
 
+在你应用 pubspec 文件的 [dev dependency][] 模块添加 **build_runner** 依赖以开启使用 build_runner：
+
 ```
   dev_dependencies:
     # ···
@@ -57,7 +59,11 @@ to your app's pubspec:
 
 Depending on **build_test** is optional; do it if you'll be testing your code.
 
+**build_test** 依赖是可选的；其可以让你测试你的代码。
+
 As usual after `pubspec.yaml` changes, run `pub get` or `pub upgrade`:
+
+像往常一样在你修改了 `pubspec.yaml` 文件后，记得运行 `pub get` 或 `pub upgrade` 命令：
 
 ```terminal
 $ pub get
