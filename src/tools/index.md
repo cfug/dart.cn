@@ -39,10 +39,16 @@ get the SDK and tools for your app type.
 
 The following tools support the Dart language on all platforms.
 
+下述工具支持使用 Dart 语言的全部平台。
+
 * [DartPad](#dartpad)
 * [IDEs and editors](#ides-and-editors)
+
+  [IDE 和编辑器](#ides-and-editors)
+
 * [Command-line tools](#cli)
 
+  [命令行工具](#cli)
 
 ### DartPad
 
@@ -54,12 +60,15 @@ and to experiment with Dart language features.
 It supports Dart's core libraries,
 except for VM libraries such as dart:io.
 
+<img src="{% asset dartpad-hello.png @path %}" alt="DartPad Hello World" width="200px" align="right" /> [DartPad](/tools/dartpad) 是一个用于学习 Dart 语法以及体验 Dart  语言功能的在线工具。它支持 Dart 的核心库，但不支持类似 dart:io 这样的 VM 库。
 
 ### IDEs and editors
 
 ### IDE 和编辑器
 
 Dart plugins exist for these commonly used IDEs.
+
+这些常用的 IDE 都带有 Dart 插件。
 
 <ul class="col2">
 <li>
@@ -79,8 +88,27 @@ Dart plugins exist for these commonly used IDEs.
 </li>
 </ul>
 
+<ul class="col2">
+<li>
+<img src="{% asset tools/android_studio.png @path %}"
+     width="48" alt="Android Studio logo">
+<a href="/tools/jetbrains-plugin"><b>Android Studio</b></a>
+</li>
+<li>
+<img src="{% asset tools/intellij-idea.svg @path %}"
+     width="48" alt="IntelliJ logo">
+<a href="/tools/jetbrains-plugin"><b>IntelliJ IDEA<br> (以及其它的 JetBrains IDE)</b></a>
+</li>
+<li>
+<img src="{% asset tools/vscode.png @path %}" alt="Visual Studio Code logo">
+<a href="/tools/vs-code"><b>Visual Studio Code</b></a>
+</li>
+</ul>
+
 The following Dart plugins are also available,
 thanks to the Dart community.
+
+下面的 Dart 插件也是可用的，感谢 Dart 社区。
 
 <ul class="col2">
 <li>
@@ -104,6 +132,8 @@ thanks to the Dart community.
 A [Language Server Protocol implementation][LSP] is also available for
 [LSP-capable editors][] that don't have specific Dart extensions.
 
+[语言服务器协议实现][LSP] 同样适用于没有特定的 Dart 扩展但 [支持 LSP 的编辑器][LSP-capable editors] 。
+
 [LSP]: https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/tool/lsp_spec/README.md
 [LSP-capable editors]: https://microsoft.github.io/language-server-protocol/implementors/tools/
 
@@ -113,19 +143,27 @@ A [Language Server Protocol implementation][LSP] is also available for
 
 The Dart SDK includes the following general-purpose tools:
 
+Dart SDK 中包含下面的通用工具：
+
 [`dartanalyzer`](/tools/dartanalyzer)
 : A static analyzer that evaluates and reports any errors or warnings in your code.
   The Dart plugin for your IDE should make use of Dart's analysis engine,
   but you can also run the analyzer from the command line.
 
+[`dartanalyzer`](/tools/dartanalyzer)：用于分析和报告你的代码错误或警告的静态分析器。相关 IDE 的 Dart 插件应该使用 Dart 的分析引擎，不过你依然可以从命令行运行分析器。
+
 [`dartdoc`](/tools/dartdoc)
 : Generates API reference documentation.
+
+[`dartdoc`](/tools/dartdoc)：生成 API 参考文档。
 
 [`dartfmt`](/tools/dartfmt)
 : Formats your code, following the recommendations of the
   [Dart style guide](/guides/language/effective-dart/style).
   IDEs that support Dart generally allow you to format the code within
   the IDE. Or you can run the formatter from the command line.
+
+[`dartfmt`](/tools/dartfmt)：根据 [Dart 代码风格指南](/guides/language/effective-dart/style) 格式化你的代码。支持 Dart 的 IDE 允许你使用它们来格式化 Dart 代码。或者你可以直接从命令行运行格式化器。
 
 [`pub`](/tools/pub/cmd)
 : Manages Dart packages,
@@ -136,21 +174,28 @@ The Dart SDK includes the following general-purpose tools:
   IDEs that support Dart generally have special support for pub,
   but you can also use it from the command line.
 
+[`pub`](/tools/pub/cmd)：用于管理 Dart Package 以及分享 Dart 库和命令行工具以及其它资源的工具。一些 Dart 相关的技术，比如 Flutter，可能不支持所有的 Pub 命令。支持 Dart 的 IDE 可能对 Pub 有特殊的支持方式，不过你也可以直接通过命令行使用它。
+
 Some additional tools are available in [packages](/guides/packages).
 To install these tools, use the `pub` command, as described in each tool's
 installation instructions.
 Here are the general-purpose tools you might want to install:
 
+一些额外的工具由 [Package](/guides/packages) 提供。你可以通过查阅每个工具的安装介绍使用 `pub` 命令来安装这些工具。下面是一些你可能想要安装的通用工具：
+
 [`build_runner`][build_runner]
 : A code generator.
+
+[`build_runner`][build_runner]：代码生成器。
 
 [`dartfix`][dartfix]
 : A tool for migrating Dart source code and fixing common issues.
 
+[`dartfix`][dartfix]：用于迁移 Dart 源代码和修复常见问题的工具。
+
 [build_runner]: /tools/build_runner
 [dart_style]: {{site.pub-pkg}}/dart_style
 [dartfix]: {{site.pub-pkg}}/dartfix
-
 
 ## Tools for developing web apps {#web}
 
