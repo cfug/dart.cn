@@ -12,15 +12,21 @@ with support for many other languages and frameworks.
 Android Studio is an IDE based on IntelliJ IDEA
 that's used for Android and Flutter development.
 
+Dart 插件为类似 IntelliJ IDEA 和 Android Studio 这样 JetBrains 的 IDE 提供了 Dart 支持。IntelliJ IDEA 是一款优秀的 Java IDE，除此之外它还支持许多其它的语言和框架。Android Studio 是一款基于 IntelliJ IDEA 的 IDE，其常用作开发 Android 和 Flutter。
+
 Whichever JetBrains IDE you choose for Dart development,
 this page has resources to help you get started quickly
 and find more information when you need it.
+
+不管你选择哪一款 JetBrains 的 IDE 用于 Dart 开发，本文所包含的资源都可以帮助你快速入门并在你需要时给你提供更多的信息。
 
 <aside class="alert alert-info" markdown="1">
   **Note:**
   [WebStorm,](https://www.jetbrains.com/webstorm/)
   a JetBrains IDE for client-side development,
   comes with the Dart plugin pre-installed.
+
+  **注意：** JetBrains 专门针对客户端开发的另一款 IDE [WebStorm](https://www.jetbrains.com/webstorm/) 则已经预装了 Dart 插件。
 </aside>
 
 ## Getting started
