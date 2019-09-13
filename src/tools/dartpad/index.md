@@ -11,13 +11,19 @@ is an open-source tool that
 lets you play with the Dart language in any modern browser.
 Here's what DartPad looks like:
 
+<a href="{{site.dartpad}}" target="_blank">DartPad (dartpad.dev)</a> 是一个可以让你在任何现代化的浏览器中体验 Dart 编程语言的开源工具。DartPad 看起来是这样的：
+
 <img src="{% asset dartpad-hello.png @path %}" alt="DartPad Hello World" />
 
 <aside class="alert alert-info" markdown="1">
   **Tip:** If you're in China, try [dartpad.cn.](https://dartpad.cn)
 
+  **提示：** 如果你在中国，请尝试使用 [dartpad.cn](https://dartpad.cn)。
+
   If you have issues using DartPad, see the [DartPad troubleshooting
   tips](/tools/dartpad/troubleshoot).
+
+  如果你在使用 DartPad 的过程中有任何的问题，请查阅 [DartPad 疑难排查提示](/tools/dartpad/troubleshoot)。
 </aside>
 
 ## Library support
