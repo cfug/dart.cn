@@ -1,8 +1,8 @@
 ---
 title: IntelliJ & Android Studio
-title: 在 IntelliJ 和 Android Studio 编辑 Dart
+title: 使用 IntelliJ 和 Android Studio 开发 Dart 应用
 description: Use Dart with a variety of IDEs and editors from JetBrains.
-description: 在 IntelliJ 和 Android Studio 编辑 Dart。
+description: 使用由 JetBrains 开发的各种 IDE 和编辑器开发 Dart 应用。
 ---
 
 The Dart plugin adds Dart support to JetBrains IDEs such as
@@ -25,11 +25,15 @@ and find more information when you need it.
 
 ## Getting started
 
+## 入门
+
 If you don't already have the IDE and the Dart SDK, get them.
 Then install the Dart plugin and tell it where to find the Dart SDK.
 
 
 ### Downloading the IDE
+
+### 下载 IDE
 
 Install a JetBrains IDE if you don't already have one.
 
@@ -50,6 +54,8 @@ Install a JetBrains IDE if you don't already have one.
 
 ### Downloading the Dart SDK
 
+### 下载 Dart SDK
+
 If you don't already have the Dart SDK,
 install it.
 
@@ -57,6 +63,8 @@ install it.
 
 
 ### Configuring Dart support
+
+### 配置以支持 Dart 开发
 
 Here's one way to configure Dart support:
 
@@ -122,10 +130,14 @@ by removing a directory.
 
 ## Reporting issues
 
+## 上报问题
+
 {% include tools/jetbrains-reporting-issues.html %}
 
 
 ## More information
+
+## 更多信息
 
 See the JetBrains website for more information.
 
