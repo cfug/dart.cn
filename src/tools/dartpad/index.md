@@ -168,3 +168,5 @@ for (var char in 'hello'.split('')) {
 The language features and APIs that DartPad supports depend on the
 **Dart SDK** version that DartPad is based on.
 You can find the SDK version at the bottom right of DartPad.
+
+DartPad 支持的语言功能和 API 取决于 DartPad 使用的 **Dart SDK** 版本。你可以在 DartPad 的右下方找到其所使用的 SDK 版本。
