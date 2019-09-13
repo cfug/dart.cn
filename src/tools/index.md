@@ -237,6 +237,8 @@ The following tools are especially for developing web apps:
 The following tools have special support for developing or running
 command line apps and servers:
 
+下面的工具对开发或运行命令行应用和服务器有特别的支持：
+
 [Standalone Dart VM: `dart`](/tools/dart-vm)
 : Executes Dart code.
   IDEs that support Dart,
@@ -245,10 +247,16 @@ command line apps and servers:
   Note that you must configure your IDE with the location of
   the `dart` binary.
 
+[Standalone Dart VM: `dart`](/tools/dart-vm)：用于执行 Dart 代码。一些支持 Dart 的 IDE 和 `pub` 命令使用该命令来执行 Dart 脚本。注意你必须在你的 IDE 配置中设置你的 `dart` 安装目录。
+
 [AOT compiler and runtime: `dart2aot`, `dartaotruntime`](/tools/dart2aot)
 : Support ahead-of-time compilation of Dart code to native x64 machine code.
+
+[AOT 编译器和运行时：`dart2aot`、`dartaotruntime`](/tools/dart2aot)：支持将 Dart 代码 AOT 编译为 x64 位的机器代码。
 
 [Pub package manager: `pub`](/tools/pub/cmd)
 : Simplifies downloading and running scripts,
   with commands such as `pub get`, `pub global activate`, `pub global run`,
   and `pub run`.
+
+[Pub Package 管理器：`pub`](/tools/pub/cmd)：可以通过使用 `pub get`、`pub global activate`、`pub global run` 和 `pub run` 等命令方便地下载和运行脚本。
