@@ -76,7 +76,11 @@ Install a JetBrains IDE if you don't already have one.
 If you don't already have the Dart SDK,
 install it.
 
+如果你还没有 Dart SDK，请先安装。
+
 * [Download the Dart SDK](/get-dart)
+
+  [下载 Dart SDK](/get-dart)
 
 
 ### Configuring Dart support
@@ -84,6 +88,8 @@ install it.
 ### 配置以支持 Dart 开发
 
 Here's one way to configure Dart support:
+
+下面是配置以支持 Dart 开发的一种方式：
 
 <ol>
 <li>
@@ -94,17 +100,26 @@ Here's one way to configure Dart support:
     then click <b>Install JetBrains plugin</b>,
     and then search or scroll down until you find <b>Dart</b>.
     Once you've installed the Dart plugin, restart the IDE.
+
+    启动 IDE 并安装 <b>Dart</b> 插件。你可以从欢迎界面窗口的 <b>Configure > Plugins</b> 菜单进入到插件设置界面，然后点击 <b>Install JetBrains plugin</b> 并搜索或拖动滚动条直到你找到 <b>Dart</b>。安装好 Dart 插件后记得重启 IDE。
   </p>
 </li>
 
 <li>
   <p>
     Create a new Dart project:
+
+    创建新的 Dart 项目：
   </p>
 
   <ol type="a">
     <li> From the Welcome screen, click <b>Create New Project</b>. </li>
+
+    <li> 在欢迎窗口界面点击 <b>Create New Project</b>。 </li>
+
     <li> In the next dialog, click <b>Dart</b>.</li>
+
+    <li> 在接下来的对话框中点击 <b>Dart</b>。</li>
   </ol>
 </li>
 <br>
@@ -113,11 +128,15 @@ Here's one way to configure Dart support:
   <p>
     If you don't see a value for the <b>Dart SDK</b> path,
     enter it.
+
+    如果 <b>Dart SDK</b> 路径为空请先设置。
   </p>
 
   <p>
     For example, the SDK path might be
     <code><em>&lt;dart installation directory></em>/dart/dart-sdk</code>.
+
+    例如，SDK 的路径可能是 <code><em>&lt;Dart 安装目录></em>/dart/dart-sdk</code>.
   </p>
 
 <aside class="alert alert-info" markdown="1">
@@ -126,6 +145,9 @@ Here's one way to configure Dart support:
   contains the SDK's `bin` and `lib` directories;
   the `bin` directory contains tools such as `dart` and `dartfmt`.
   The IDE ensures that the path is valid.
+
+  <b>注意：</b>
+  <b>Dart SDK</b> 路径为包含了 `bin` 和 `lib` 目录的路径；`bin` 目录中包含了类似 `dart` 和 `dartfmt` 的工具。需要确保 IDE 路径有效。
 </aside>
 </li>
 </ol>
@@ -133,6 +155,7 @@ Here's one way to configure Dart support:
 An alternative to Step 2 is to open an existing Dart project,
 and then open its `pubspec.yaml` file or any of its Dart files.
 
+如果你已经创建过 Dart 项目，则可以在第二步的时候选择打开该项目，然后选择打开 `pubspec.yaml` 或其它 Dart 文件。
 
 {% comment %}
 
