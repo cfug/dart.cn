@@ -39,6 +39,8 @@ If you want to use dart:io, use the [Dart SDK](/tools/sdk) instead.
 If you want to use a package, get the SDK for a
 [platform](/platforms) that the package supports.
 
+DartPad 支持 Web 应用所使用的 [dart:* 库]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})；但不支持 [dart:io]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io) 库以及从 [Package]({{site.pub}}) 中导入库。如果你想要使用 dart:io，请使用 [Dart SDK](/tools/sdk) 替代。如果你想要使用某个 Package，则获取该 Package 支持的 [平台](/platforms) 的 SDK。
+
 ## Getting started
 
 ## 开始体验
