@@ -203,23 +203,32 @@ Here are the general-purpose tools you might want to install:
 
 The following tools are especially for developing web apps:
 
+下面工具主要针对 Web 应用开发：
+
 [webdev](/tools/webdev)
 : A command line interface (CLI) for Dart web app development,
   including building and serving web apps.
+
+[webdev](/tools/webdev)：用于构建和提供 Dart Web 应用开发的命令行接口（CLI）。
 
 [dart2js](/tools/dart2js)
 : The original Dart-to-JavaScript compiler, with tree shaking.
   IDEs and the webdev CLI use dart2js when building web apps for deployment.
 
+[dart2js](/tools/dart2js)：支持 Tree-shaking 的原始的 Dart-to-JavaScript 编译器。在构建用于部署的 Web 应用时，IDE 和 webdev CLI 使用 dart2js。
+
 [dartdevc](/tools/dartdevc)
 : The Dart dev compiler, a modular Dart-to-JavaScript compiler.
   IDEs and the webdev CLI use dartdevc when running a development server.
+
+[dartdevc](/tools/dartdevc)：Dart dev 编译器，一个模块化的 Dart-to-Javascript 编译器。IDE 和 Webdev CLI 在运行开发服务器时会使用 dartdevc。
 
 [build_runner](/tools/webdev)
 : A build package that's used by the webdev CLI.
   You can use it directly for [testing](/tools/webdev#test)
   or if you need more configurability than webdev provides.
 
+[build_runner](/tools/webdev)：Webdev CLI 使用的构建 Package。你可以直接使用它用于 [测试](/tools/webdev#test) 或需要比 Webdev 提供的更多的可配置性。
 
 ## Tools for developing command-line apps and servers {#server}
 
