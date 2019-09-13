@@ -2,7 +2,7 @@
 title: DartPad
 title: DartPad 线上工具
 description: The tool that lets you interactively play with Dart in a browser.
-description: 在浏览器里体验 Dart 编程。
+description: 在浏览器里体验 Dart 编程语言的工具。
 ---
 
 <a href="{{site.dartpad}}"
@@ -15,12 +15,14 @@ Here's what DartPad looks like:
 
 <aside class="alert alert-info" markdown="1">
   **Tip:** If you're in China, try [dartpad.cn.](https://dartpad.cn)
-  
+
   If you have issues using DartPad, see the [DartPad troubleshooting
   tips](/tools/dartpad/troubleshoot).
 </aside>
 
 ## Library support
+
+## 库支持
 
 DartPad supports
 [dart:* libraries]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
@@ -33,11 +35,15 @@ If you want to use a package, get the SDK for a
 
 ## Getting started
 
+## 开始体验
+
 To get familiar with DartPad,
 try running some samples and then creating a simple command-line app.
 
 
 ### Open DartPad, and run some samples {#step-1-open-and-run}
+
+### 打开 DartPad 并运行一些示例 {#step-1-open-and-run}
 
 <ol markdown="1">
   <li markdown="1">
@@ -73,6 +79,8 @@ try running some samples and then creating a simple command-line app.
 
 
 ### Create a command-line app {#step-2-server}
+
+### 创建一个命令行应用 {#step-2-server}
 
 To create a simple command-line app, use **New Pad**.
 
@@ -129,6 +137,8 @@ for (var char in 'hello'.split('')) {
 
 
 ## Checking Dart version info
+
+## 检查 Dart 版本信息
 
 The language features and APIs that DartPad supports depend on the
 **Dart SDK** version that DartPad is based on.
