@@ -36,6 +36,7 @@ and find more information when you need it.
 If you don't already have the IDE and the Dart SDK, get them.
 Then install the Dart plugin and tell it where to find the Dart SDK.
 
+如果你还没有 IDE 和 Dart SDK，请先下载。然后安装相应的 Dart 插件并配置 Dart SDK 的路径。
 
 ### Downloading the IDE
 
