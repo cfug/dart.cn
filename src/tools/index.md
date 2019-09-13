@@ -22,6 +22,8 @@ get the SDK and tools for your app type.
 
 ## General-purpose tools
 
+## 通用工具
+
 The following tools support the Dart language on all platforms.
 
 * [DartPad](#dartpad)
@@ -41,6 +43,8 @@ except for VM libraries such as dart:io.
 
 
 ### IDEs and editors
+
+### IDE 和编辑器
 
 Dart plugins exist for these commonly used IDEs.
 
@@ -92,6 +96,8 @@ A [Language Server Protocol implementation][LSP] is also available for
 
 ### Command-line tools {#cli}
 
+### 命令行工具 {#cli}
+
 The Dart SDK includes the following general-purpose tools:
 
 [`dartanalyzer`](/tools/dartanalyzer)
@@ -135,6 +141,8 @@ Here are the general-purpose tools you might want to install:
 
 ## Tools for developing web apps {#web}
 
+## 开发 Web 应用的工具 {#web}
+
 The following tools are especially for developing web apps:
 
 [webdev](/tools/webdev)
@@ -157,6 +165,8 @@ The following tools are especially for developing web apps:
 
 ## Tools for developing command-line apps and servers {#server}
 
+## 开发命令行应用和服务器的工具 {#server}
+
 The following tools have special support for developing or running
 command line apps and servers:
 
@@ -175,4 +185,3 @@ command line apps and servers:
 : Simplifies downloading and running scripts,
   with commands such as `pub get`, `pub global activate`, `pub global run`,
   and `pub run`.
-
