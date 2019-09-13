@@ -28,7 +28,7 @@ Here's what DartPad looks like:
 
 ## Library support
 
-## 库支持
+## 可以在 DartPad 中使用的库
 
 DartPad supports
 [dart:* libraries]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
