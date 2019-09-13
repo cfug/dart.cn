@@ -141,9 +141,25 @@ by removing a directory.
 
 See the JetBrains website for more information.
 
+你可以查看 JetBrains 网站获取更多的信息。
+
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/)
   * [Dart PhpStorm Help](https://www.jetbrains.com/help/phpstorm/dart.html)
+
+    [Dart PhpStorm 帮助](https://www.jetbrains.com/help/phpstorm/dart.html)
+
   * [Features](https://www.jetbrains.com/idea/features/)
+
+    [特点](https://www.jetbrains.com/idea/features/)
+
   * [Quick start](https://www.jetbrains.com/help/idea/meet-intellij-idea.html)
+
+    [快速开始](https://www.jetbrains.com/help/idea/meet-intellij-idea.html)
+
 * [Dart Plugin by JetBrains](https://plugins.jetbrains.com/plugin/6351)
+
+  [JetBrains 出品的 Dart 插件](https://plugins.jetbrains.com/plugin/6351)
+
 * [Eclipse to IntelliJ migration guide](https://www.jetbrains.com/help/idea/eclipse.html)
+
+  [从 Eclipse 迁移至 IntelliJ 的指南](https://www.jetbrains.com/help/idea/eclipse.html)
