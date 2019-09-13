@@ -8,13 +8,26 @@ description: 支持 Dart 语言的开发工具。
 When you're ready to create an app,
 get the SDK and tools for your app type.
 
+当你准备好创建一个应用时，请根据你要创建的应用类型获取相应的 SDK 和工具。
+
 <div class="table-wrapper" markdown="1">
 |------------+-----------------------------------+--------------------------|
 | App type   | Get started instructions          | Tool information         |
+
+|   应用类型   |              入门说明              |          工具信息         |
+
 |------------|-----------------------------------|--------------------------|
 | Mobile | [Install Flutter]({{site.flutter}}/setup) | [Flutter tools]({{site.flutter}}/using-ide) |
+
+| 移动应用 | [安装 Flutter]({{site.flutter}}/setup) | [Flutter 工具]({{site.flutter}}/using-ide) |
+
 | Web    | [Install the Dart SDK](/tools/sdk) | [General-purpose tools][] and [web tools](#web) |
+
+| Web 应用 | [安装 Dart SDK](/tools/sdk) | [通用工具][General-purpose tools] 和 [Web 工具](#web) |
+
 | Server or command line | [Install the Dart SDK](/tools/sdk) | [General-purpose tools][] and [specialized tools](#server) |
+
+| 服务器或命令行应用 | [安装 Dart SDK](/tools/sdk) | [通用工具][General-purpose tools] 和 [专业工具](#server) |
 {:.table .table-striped}
 </div>
 
