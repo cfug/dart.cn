@@ -124,54 +124,47 @@ For links to all the guidelines, see the
 Each guide is broken into a few sections. Sections contain a list of guidelines.
 Each guideline starts with one of these words:
 
-每个指南都分为了几个部分。每个部分包含一些详细的准则。
-每条准则都以下面其中的一个词作为开头：
+每个指南都分为了几个部分。每个部分包含一些详细的准则。每条准则都以下面其中的一个词作为开头：
 
 * **DO** guidelines describe practices that should always be followed. There
   will almost never be a valid reason to stray from them.
 
-  **要**  准则所描述的内容应该始终被遵守。
-  不应该以任何的理由来偏离违背这些准则。
+  **要**  准则所描述的内容应该始终被遵守。不应该以任何的理由来偏离违背这些准则。
 
 * **DON'T** guidelines are the converse: things that are almost never a good
   idea. Hopefully, we don't have as many of these as other languages do because
   we have less historical baggage.
 
-  **不要**  准则所描述的内容是相反的：
-  描述的几乎从来不是一个好注意。
-  幸运的是，我们不会像其他语言有那么多这样的准则，因为我们没有太多的历史包袱。
+  **不要**  准则所描述的内容是相反的：描述的准则不是一个好注意。幸运的是，我们不会像其他语言有那么多这样的准则，因为我们没有太多的历史包袱。
 
 * **PREFER** guidelines are practices that you *should* follow. However, there
   may be circumstances where it makes sense to do otherwise. Just make sure you
   understand the full implications of ignoring the guideline when you do.
 
-  **推荐** 准则所描述的内容*应该*被遵守。
-  但是在有些情况下，可能有更好的或者更合理的做法。
-  请确保在你完全理解准则的情况下，再忽视这些准则。
+  **推荐** 准则所描述的内容 *应该* 被遵守。但是在有些情况下，可能有更好的或者更合理的做法。请确保在你完全理解准则的情况下，再忽视这些准则。
 
 * **AVOID** guidelines are the dual to "prefer": stuff you shouldn't do but
   where there may be good reasons to on rare occasions.
 
-  **避免** 准则与 "推荐" 准则相反：
-  显然，这些事不应该做，但不排除在极少数场合下有充分的理由可以使用。
+  **避免** 该单词描述的准则与 “推荐” 描述的准则相反：显然，这些事不应该做，但不排除在极少数场合下有充分的理由可以做。
 
 * **CONSIDER** guidelines are practices that you might or might not want to
   follow, depending on circumstances, precedents, and your own preference.
 
-  **考虑**  准则所描述的内容可以遵守，也可以不遵守。
-  取决于具体的情况、先前的做法以及自己的偏好。
+  **考虑**  准则所描述的内容可以遵守也可以不遵守。取决于具体的情况、习惯做法以及自己的偏好。
 
 Some guidelines describe an **exception** where the rule does *not* apply. When
 listed, the exceptions may not be exhaustive&mdash;you might still need to use
 your judgement on other cases.
+
+某些准则描述了规则 *不* 适用的 *例外情况*。当这些例外列出时，也有可能不是详尽的&mdash;你可能还需要对其它的情况作出判断。
 
 This sounds like the police are going to beat down your door if you don't have
 your laces tied correctly. Things aren't that bad. Most of the guidelines here
 are common sense and we're all reasonable people. The goal, as always, is nice,
 readable and maintainable code.
 
-这听起来好像有点小题大做。其实并没有那么糟糕。大部分的准则都是常识，也符合我们的认知。
-最终要达到的目标是写出优雅，可读，可维护的代码。
+这听起来好像有点小题大做。其实并没有那么糟糕。大部分的准则都是常识，也符合我们的认知。最终要达到的目标是写出优雅，可读，可维护的代码。
 
 ## Glossary
 
