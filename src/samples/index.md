@@ -93,9 +93,9 @@ Dart 支持常用的流程控制语句：
 <?code-excerpt "misc/test/samples_test.dart (control-flow)"?>
 {% prettify dart %}
 if (year >= 2001) {
-  print('21st century');
+  print('21 世纪');
 } else if (year >= 1901) {
-  print('20th century');
+  print('20 世纪');
 }
 
 for (var object in flybyObjects) {
