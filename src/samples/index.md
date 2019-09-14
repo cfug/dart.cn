@@ -303,7 +303,7 @@ Mixin 是一种在多个类层次结构中重用代码的方法。下面的类�
 class Piloted {
   int astronauts = 1;
   void describeCrew() {
-    print('Number of astronauts: $astronauts');
+    print('宇航员人数：$astronauts');
   }
 }
 {% endprettify %}
