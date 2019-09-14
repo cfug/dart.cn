@@ -173,43 +173,37 @@ readable and maintainable code.
 To keep the guidelines brief, we use a few shorthand terms to refer to different
 Dart constructs.
 
-为了使指南保持简洁，
-我们使用一些简写术语来指代不同的 Dart 结构。
+为了使指南保持简洁，我们使用一些简写术语来指代不同的 Dart 结构。
 
 * A **library member** is a top-level field, getter, setter, or function.
   Basically, anything at the top level that isn't a type.
 
-  **库成员** 是一个顶级字段，getter 方法，setter 方法，或者函数，
-  基本上，任何顶级的东西都不会是一种类型。
+  **库成员** 表示一个顶层字段、Getter 或 Setter 方法、或函数。基本而言，任何顶层的东西都不会是一种类型。
 
 * A **class member** is a constructor, field, getter, setter, function, or
   operator declared inside a class. Class members can be instance or static,
   abstract or concrete.
 
-  **类成员** 是一个类内部声明的构造函数，字段，getter 方法，setter 方法，函数，或者操作符。
-  类成员可以是实例的或者静态的，抽象的或者具体的。
+  **类成员** 表示类内部声明的构造函数、字段、Getter 或 Setter 方法、函数或操作符。类成员可以是实例或静态的，也可以是抽象或具体的。
 
 * A **member** is either a library member or a class member.
 
-  **成员** 是一个库成员或者是类成员。
+  **成员** 可以表示是一个库成员或者类成员。
 
 * A **variable**, when used generally, refers to top-level variables,
   parameters, and local variables. It doesn't include static or instance fields.
 
-  **变量** 通常是指顶级变量，参数和局部变量。
-  它不包括静态或实例的字段。
+  **变量** 通常指的是顶层变量、参数和局部变量。它不包括静态或实例字段。
 
 * A **type** is any named type declaration: a class, typedef, or enum.
 
-  **类型** 是任意命名类型的声明：一个类、 typedef、或者 enum。
+  **类型** 表示所有命名类型的声明：一个类、typedef 或枚举。
 
 * A **property** is a top-level variable, getter (inside a class or at the top
   level, instance or static), setter (same), or field (instance or static).
   Roughly any "field-like" named construct.
 
-  **属性** 是一个顶级变量，getter 方法（在一个类或者顶级实例或静态类中），
-  setter（同getter），或者字段（示例或静态类）。
-  大致上任何“字段式”命名构造。
+  **属性** 表示顶层变量、Getter 和 Setter 方法（位于类中或顶层，可以是实例或静态的）或字段（实例或静态的）。基本上是任何类似字段的命名结构都可以称为属性。
 
 ## Summary of all rules
 
