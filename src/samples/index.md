@@ -200,7 +200,7 @@ including how the documentation tooling works.
 
 ## Imports
 
-## 导入 (import)
+## 导入（ Import ）
 
 To access APIs defined in other libraries, use `import`.
 
@@ -228,7 +228,7 @@ including library prefixes, `show` and `hide`, and lazy loading through the `def
 
 ## Classes
 
-## 类 (class)
+## 类（ Class ）
 
 Here's an example of a class with three properties, two constructors,
 and a method. One of the properties can't be set directly, so it's
@@ -292,7 +292,7 @@ including initializer lists, optional `new` and `const`, redirecting constructor
 `factory` constructors, getters, setters, and much more.
 
 [阅读更多](/guides/language/language-tour#classes)  Dart 中关于类的内容,
-包括初始化列表，可选关键字 `new` 和 `const` ，重定向构造函数， `factory` 
+包括初始化列表，可选关键字 `new` 和 `const` ，重定向构造函数， `factory`
 构造函数， getter 方法， setter 方法，以及更多类似部分。
 
 
@@ -403,6 +403,8 @@ Any class extending `Describable` has the `describeWithEmphasis()` method, which
 
 ## Async
 
+## 异步
+
 Avoid callback hell and make your code much more readable by
 using `async` and `await`.
 
@@ -481,7 +483,7 @@ and the asynchronous loop (`await for`).
 
 ## Exceptions
 
-## 异常 (exception)
+## 异常
 
 To raise an exception, use `throw`:
 
@@ -515,7 +517,7 @@ try {
 Note that the code above is asynchronous;
 `try` works for both synchronous code and code in an `async` function.
 
-请注意，上面的代码是异步的; 
+请注意，上面的代码是异步的;
 同步代码以及异步函数代码中都能够使用 `try` 捕获异常。
 
 [Read more](/guides/language/language-tour#exceptions) about exceptions, including stack traces, `rethrow`, and the difference between
@@ -527,7 +529,7 @@ Error and Exception.
 
 ## Other topics
 
-## 其他主题
+## 其他资源
 
 Many more code samples are in the
 [language tour](/guides/language/language-tour) and the
