@@ -290,9 +290,7 @@ class Orbiter extends Spacecraft {
 
 [Read more](/guides/language/language-tour#extending-a-class) about extending classes, the optional `@override` annotation, and more.
 
-[阅读更多](/guides/language/language-tour#extending-a-class) 关于类继承，
-可选的 `@override` 注解，以及其他内容。
-
+你可以 [阅读更多](/guides/language/language-tour#extending-a-class) Dart 中有关类继承的信息，比如可选的 `@override` 注解等等。
 
 ## Mixins
 
