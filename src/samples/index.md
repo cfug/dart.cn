@@ -417,13 +417,13 @@ Future<void> createDescriptions(Iterable<String> objects) async {
       if (await file.exists()) {
         var modified = await file.lastModified();
         print(
-            'File for $object already exists. It was modified on $modified.');
+            '文件 $object 已经存在。它上一次的修改时间为 $modified。');
         continue;
       }
       await file.create();
-      await file.writeAsString('Start describing $object in this file.');
+      await file.writeAsString('开始在此文件中描述 $object。');
     } on IOException catch (e) {
-      print('Cannot create description for $object: $e');
+      print('不能为 $object 创建描述：$e');
     }
   }
 }
@@ -438,7 +438,7 @@ You can also use `async*`, which gives you a nice, readable way to build streams
 Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
   for (var object in objects) {
     await Future.delayed(oneSecond);
-    yield '${craft.name} flies by $object';
+    yield '${craft.name} 由 $object 飞行。';
   }
 }
 {% endprettify %}
