@@ -47,8 +47,7 @@ or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
 Every app has a `main()` function.
 To display text on the console, you can use the top-level `print()` function:
 
-每个 app 都有一个 `main()` 函数。
-使用顶级函数 `print()` 将文字输出到控制台：
+每个应用都有一个 `main()` 函数。你可以使用顶层函数 `print()` 来将一段文本输出显示到控制台：
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
 {% prettify dart %}
