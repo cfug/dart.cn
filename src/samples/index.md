@@ -213,8 +213,7 @@ Here's an example of a class with three properties, two constructors,
 and a method. One of the properties can't be set directly, so it's
 defined using a getter method (instead of a variable).
 
-下面是一个关于类的示例，这个类包含三个属性，两个构造函数，以及一个方法。
-其中一个属性不能被直接赋值，因此它被定义为一个 getter 方法（而不是变量）。
+下面的示例中向你展示了一个包含三个属性、两个构造函数以及一个方法的类。其中一个属性不能直接赋值，因此它被定义为一个 getter 方法（而不是变量）。
 
 {% comment %}
 The linter rule sort_constructors_first made us put the getter below
@@ -255,7 +254,7 @@ class Spacecraft {
 
 You might use the `Spacecraft` class like this:
 
-可以像下面这样使用 `Spacecraft` 这个类：
+你可以像下面这样使用 `Spacecraft` 类：
 
 <?code-excerpt "misc/test/samples_test.dart (use class)" plaster="none"?>
 {% prettify dart %}
@@ -270,10 +269,7 @@ voyager3.describe();
 including initializer lists, optional `new` and `const`, redirecting constructors,
 `factory` constructors, getters, setters, and much more.
 
-[阅读更多](/guides/language/language-tour#classes)  Dart 中关于类的内容,
-包括初始化列表，可选关键字 `new` 和 `const` ，重定向构造函数， `factory`
-构造函数， getter 方法， setter 方法，以及更多类似部分。
-
+你可以 [阅读更多](/guides/language/language-tour#classes) Dart 中有关类的信息，包括初始化列表、可选的 `new` 和 `const` 关键字、重定向构造函数、由 `factory` 关键字定义的工厂构造函数以及 Getter 和 Setter 方法等等。
 
 ## Inheritance
 
