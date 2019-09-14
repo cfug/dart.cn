@@ -64,7 +64,7 @@ void main() {
 Even in type-safe Dart code, most variables don't need explicit types,
 thanks to type inference:
 
-虽然 Dart 代码是类型安全的，但是由于支持类型推断，大多数变量是不需要显式指定类型的：
+虽然 Dart 是代码类型安全的语言，但是由于其支持类型推断，因此大多数变量不需要显式地指定类型：
 
 <?code-excerpt "misc/test/samples_test.dart (var)"?>
 {% prettify dart %}
@@ -80,9 +80,7 @@ var image = {
 
 [Read more](/guides/language/language-tour#variables) about variables in Dart, including default values, the `final` and `const` keywords, and static types.
 
-[阅读更多](/guides/language/language-tour#variables) Dart 中关于变量的内容，
-包含默认值， `final` 和 `const` 关键字，以及静态类型等。
-
+你可以 [阅读更多](/guides/language/language-tour#variables) Dart 中关于变量的信息，包括变量的默认值，`final` 和 `const` 关键字以及静态类型等。
 
 ## Control flow statements
 
