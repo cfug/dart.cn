@@ -143,7 +143,7 @@ This syntax is especially useful when passing anonymous functions as arguments:
 
 <?code-excerpt "misc/test/samples_test.dart (arrow)"?>
 {% prettify dart %}
-flybyObjects.where((name) => name.contains('turn')).forEach(print);
+flybyObjects.where((name) => name.contains('土星')).forEach(print);
 {% endprettify %}
 
 Besides showing an anonymous function (the argument to `where()`),
