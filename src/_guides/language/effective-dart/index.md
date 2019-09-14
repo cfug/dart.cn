@@ -15,25 +15,19 @@ Over the past several years, we've written a ton of Dart code and learned a lot
 about what works well and what doesn't. We're sharing this with you so you can
 write consistent, robust, fast code too. There are two overarching themes:
 
-在过去的几年里，我们编写了大量的 Dart 代码，
-也从中收获了很多经验和教训，
-我们将与你分享这些经验，这些经验将有助于你编写出一致、健壮、高效的代码。
-这里包含两主题：
+在过去的几年里，我们编写了大量的 Dart 代码，并从中收获了很多经验和教训。我们将与你分享这些经验，这些经验将有助于你编写出一致、健壮、高效的代码。这里包含两主题：
 
  1. **Be consistent.** When it comes to things like formatting, and casing,
     arguments about which is better are subjective and impossible to resolve.
     What we do know is that being *consistent* is objectively helpful.
 
-    **保持一致** 当谈论到格式、命名、参数相关规则时，其中那种规则更好，
-    得出的结论通常是主观的，而且无法达成一致。
-    但是我们知道，客观上保持*一致*是非常有益的。
+    **保持一致** 当谈论到格式、命名以及参数的相关规则时，哪种规则更好，得出的结论通常是主观且无法达成一致的。但我们知道的是，客观上保持 *一致* 是非常有益的。
 
     If two pieces of code look different it should be because they *are*
     different in some meaningful way. When a bit of code stands out and catches
     your eye, it should do so for a useful reason.
 
-    如果两段代码看起来不同，那他们就应该有不同的含义。
-    当一段突出的代码吸引到你的注意时，那他就应该有吸引你的理由。
+    如果两段代码看起来不同，那它们就应该有不同的含义。当一段突出的代码吸引到你的注意时，那它就应该有吸引你的理由。
 
  2. **Be brief.** Dart was designed to be familiar, so it inherits many of the
     same statements and expressions as C, Java, JavaScript and other languages.
@@ -42,23 +36,14 @@ write consistent, robust, fast code too. There are two overarching themes:
     initializing formals, to help you express your intent more simply and
     easily.
 
-    **保持精简** 
-    Dart 会让开发者感到很亲切，
-    因此它继承了许多与 C，Java，JavaScript 及其他语言相同的语句和表达式。
-    我们之所以开发 Dart 语言，是因为这些语言提供了很多改进的空间。
-    我们提供了很多新的特性，
-    比如字符串插值、初始化范式等，
-    以帮助你更简单，更轻松地表达意图。
+    **保持简洁** Dart 会让开发者感到很亲切，因为它继承了许多与 C、Java、JavaScript 及其他语言相同的语句和表达式语法。我们之所以开发 Dart 语言，是因为这些语言依然有很大的改进的空间。我们提供了很多新的特性，比如字符串插值、初始化范式等，以帮助你更简单、更轻松地表达意图。
 
     If there are multiple ways to say something, you should generally pick the
     most concise one. This is not to say you should [code golf][] yourself into
     cramming a whole program into a single line. The goal is code that is
     *economical*, not *dense*.
 
-    如果有多种方式来描述一件事情，
-    那么你通常应该选择其中最简洁的方式。
-    这并不意味着你要像 [code golf][] （代码高尔夫挑战赛）一样，将所有代码塞到一行中。
-    目标是让代码*简约*，而不是*密集*。
+    如果有多种方式来描述一件事情，那么你通常应该选择其中最简洁的方式。这并不意味着你要像 [Code Golf][code golf]（代码高尔夫挑战赛）一样将所有代码塞到一行中。而是应该让代码变得 *简约* 而非 *密集*。
 
 [code golf]: https://en.wikipedia.org/wiki/Code_golf
 
@@ -66,8 +51,7 @@ The Dart analyzer has a linter to help you write good, consistent code.
 If a linter rule exists that can help you follow a guideline,
 then the guideline links to that rule. Here's an example:
 
-Dart analyzer 包括一个 linter 可以帮助你编写一致性的，优秀的代码。
-如果 linter 包含规则，那么它将会帮助你遵守这些准则，准则包含规则的链接。比如下面的示例：
+Dart Analyzer 中有一个 Linter 工具，该工具可以帮助你编写优秀的、一致性的代码。如果存在一个 Linter 规则可以帮助你遵循某个指南准则，那么该指南准则将链接到该规则。比如下面的示例：
 
 {% include linter-rule.html rule="prefer_collection_literals" %}
 
@@ -76,9 +60,7 @@ For help on
 see the documentation for
 [customizing static analysis](/guides/language/analysis-options).
 
-获取帮助 [开启 linter 规则](/guides/language/analysis-options#enabling-linter-rules)，
-查看文档 [自定义静态分析](/guides/language/analysis-options)。
-
+更多关于 [开启 Linter 规则](/guides/language/analysis-options#enabling-linter-rules) 的帮助，请查阅 [自定义静态分析](/guides/language/analysis-options) 文档。
 
 ## The guides
 
