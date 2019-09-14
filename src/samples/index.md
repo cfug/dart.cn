@@ -190,13 +190,13 @@ To access APIs defined in other libraries, use `import`.
 
 <?code-excerpt "misc/test/samples_test.dart (import)" plaster="none"?>
 {% prettify dart %}
-// Importing core libraries
+// 导入核心库
 import 'dart:math';
 
-// Importing libraries from external packages
+// 从外部 Package 中导入库
 import 'package:test/test.dart';
 
-// Importing files
+// 导入文件
 import 'path/to/my_other_file.dart';
 {% endprettify %}
 
