@@ -333,8 +333,7 @@ class PilotedCraft extends Spacecraft [!with!] Piloted {
 
 Dart has no `interface` keyword. Instead, all classes implicitly define an interface. Therefore, you can implement any class.
 
-Dart 没有 `interface` 关键字。
-相反，所有的类都隐式定义了一个接口，因此，任意类都可以作为接口被实现。
+Dart 没有 `interface` 关键字。相反，所有的类都隐式定义了一个接口。因此，任意类都可以作为接口被实现。
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (implements)"?>
 {% prettify dart %}
@@ -345,11 +344,11 @@ class MockSpaceship implements Spacecraft {
 
 [Read more](/guides/language/language-tour#implicit-interfaces) about implicit interfaces.
 
-[阅读更多](/guides/language/language-tour#implicit-interfaces) 关于隐式接口的内容。
+你可以 [阅读更多](/guides/language/language-tour#implicit-interfaces) 关于隐式接口的信息。
 
 You can create an abstract class to be extended (or implemented) by a concrete class. Abstract classes can contain abstract methods (with empty bodies).
 
-创建一个抽象类，这个类可以被一个具体的类去扩展（或实现）。抽象类可以包含抽象方法（只声明未实现）。
+你可以创建一个被任意具体类扩展（或实现）的抽象类。抽象类可以包含抽象方法（不含方法体的方法）。
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
 {% prettify dart %}
@@ -366,12 +365,11 @@ You can create an abstract class to be extended (or implemented) by a concrete c
 
 Any class extending `Describable` has the `describeWithEmphasis()` method, which calls the extender's implementation of `describe()`.
 
-任意一个扩展了 `Describable` 的具体类都拥有 `describeWithEmphasis()` 方法，这个方法调用了具体类中实现的 `describe()` 。
+任意一个扩展了 `Describable` 的类都拥有 `describeWithEmphasis()` 方法，这个方法又会去调用实现类中实现的 `describe()` 方法。
 
 [Read more](/guides/language/language-tour#abstract-classes) about abstract classes and methods.
 
-[阅读更多](/guides/language/language-tour#abstract-classes) 关于抽象类和方法的内容。
-
+你可以 [阅读更多](/guides/language/language-tour#abstract-classes) 关于抽象类和抽象方法的信息。
 
 ## Async
 
