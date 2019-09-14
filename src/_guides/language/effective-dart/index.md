@@ -119,7 +119,7 @@ For links to all the guidelines, see the
 
 ## How to read the guides
 
-## 如何阅读本指南
+## 如何阅读这些指南
 
 Each guide is broken into a few sections. Sections contain a list of guidelines.
 Each guideline starts with one of these words:
