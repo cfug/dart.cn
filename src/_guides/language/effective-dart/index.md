@@ -68,46 +68,38 @@ see the documentation for
 
 We split the guidelines into a few separate pages for easy digestion:
 
-我们将指南分成几个单独的页面以便于消化：
+为了便于理解，这里我们将指南分成了几个部分：
 
   * **[Style Guide][]** &ndash; This defines the rules for laying out and
     organizing code, or at least the parts that [dartfmt] doesn't handle for
     you. The style guide also specifies how identifiers are formatted:
     `camelCase`, `using_underscores`, etc.
 
-    **[风格指南][]** &ndash; 这定义了布局和组织代码的规则，
-    [dartfmt] 的实现使用同样的规则。指南中还指定了标识符的格式：
-    `camelCase`，`using_underscores` 等。
+    **[风格指南][Style Guide]** &ndash; 该部分定义了布局和组织代码的规则，或者说是 [dartfmt] 不能为你格式化的那些代码的布局和组织规则。风格指南还为你指定了标识符的格式，比如：驼峰式大小写、下划线的使用等等。
 
   * **[Documentation Guide][]** &ndash; This tells you everything you need to
     know about what goes inside comments. Both doc comments and regular,
     run-of-the-mill code comments.
 
-    **[注释指南][]** &ndash; 这会告诉你关于如何编写注释文档的一切内容。
-    包括文档注释，常规的普通代码注释。
-
+    **[注释指南][Documentation Guide]** &ndash; 该部分会告诉你注释中应该包含哪些内容。包括文档注释以及常规的普通代码注释。
 
   * **[Usage Guide][]** &ndash; This teaches you how to make the best use of
     language features to implement behavior. If it's in a statement or
     expression, it's covered here.
 
-    **[使用指南][]** &ndash; 这将教你如何充分利用语言功能来实现功能。
-    例如语句和表达式相关的内容，则会在这里介绍。
+    **[使用指南][Usage Guide]** &ndash; 该部分将教你如何充分利用语言特性来实现相关功能。比如你可以在该部分找到如何利用语句或表达式来实现某个功能。
 
   * **[Design Guide][]** &ndash; This is the softest guide, but the one
     with the widest scope. It covers what we've learned about designing
     consistent, usable APIs for libraries. If it's in a type signature or
     declaration, this goes over it.
 
-    **[设计指南][]** &ndash; 这是一份宽松的指南，但是覆盖范围最广。
-    这里涵盖了如何为库设计一致的、可用的 API。例如类型签名或声明相关内容，
-    则会在这里介绍。
+    **[设计指南][Design Guide]** &ndash; 该部分是最易理解但是覆盖范围最广的。其涵盖了我们所总结的为库设计一致、可用 API 的经验。比如这些 API 的类型签名或声明的说明则会在这里找到。
 
 For links to all the guidelines, see the
 [summary](#summary-of-all-rules).
 
-有关所有指南的链接，参考
-[summary](#summary-of-all-rules)。
+有关所有指南的链接，请查阅 [概览](#summary-of-all-rules)。
 
 {% comment %}
 <aside class="alert alert-info" markdown="1">
@@ -124,10 +116,6 @@ For links to all the guidelines, see the
 [documentation guide]: /guides/language/effective-dart/documentation
 [usage guide]: /guides/language/effective-dart/usage
 [design guide]: /guides/language/effective-dart/design
-[风格指南]: /guides/language/effective-dart/style
-[注释指南]: /guides/language/effective-dart/documentation
-[使用指南]: /guides/language/effective-dart/usage
-[设计指南]: /guides/language/effective-dart/design
 
 ## How to read the guides
 
