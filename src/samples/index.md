@@ -166,13 +166,13 @@ Dart comments usually start with `//`.
 Dart 通常使用双斜杠 `//` 作为注释的开始。
 
 {% prettify dart %}
-// This is a normal, one-line comment.
+// 这是一个普通的单行注释。
 
-/// This is a documentation comment, used to document libraries,
-/// classes, and their members. Tools like IDEs and dartdoc treat
-/// doc comments specially.
+/// 这是一个文档注释。
+/// 文档注释用于为库、类以及类的成员添加注释。
+/// 像 IDE 和 dartdoc 这样的工具可以专门处理文档注释。
 
-/* Comments like these are also supported. */
+/* 也可以像这样使用单斜杠和星号的注释方式 */
 {% endprettify %}
 
 [Read more](/guides/language/language-tour#comments) about comments in Dart,
