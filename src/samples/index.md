@@ -502,8 +502,4 @@ Many more code samples are in the
 Also see the [Dart API reference,]({{site.dart_api}})
 which often contains examples.
 
-更多示例程序在
-[语言概览](/guides/language/language-tour) 和
-[库概览](/guides/libraries/library-tour) 中。
-另请参阅 [Dart API reference,]({{site.dart_api}})，
-其中通常包含示例程序。
+[语言概览](/guides/language/language-tour) 和 [库概览](/guides/libraries/library-tour) 中会有更多的代码示例。你也可以查阅 [Dart API reference,]({{site.dart_api}})，里面也常常会有示例代码。
