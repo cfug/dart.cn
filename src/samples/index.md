@@ -163,10 +163,7 @@ including optional parameters, default parameter values, and lexical scope.
 
 Dart comments usually start with `//`.
 
-Dart 通常使用 `//` 作为注释的开始，双斜杠是一个标准的单行注释，
-三斜杠 `///` 是一个文档注释，用来为库，类，以及它们的成员提供文档，
-像 IDEs 和 dartdoc 的工具会专门处理这些注释来生成文档。
-也支持使用 `/* */`斜杠 + 星号 类似的方式添加注释。
+Dart 通常使用双斜杠 `//` 作为注释的开始。
 
 {% prettify dart %}
 // This is a normal, one-line comment.
@@ -181,9 +178,7 @@ Dart 通常使用 `//` 作为注释的开始，双斜杠是一个标准的单行
 [Read more](/guides/language/language-tour#comments) about comments in Dart,
 including how the documentation tooling works.
 
-[阅读更多](/guides/language/language-tour#comments) 在 Dart 中关于注释的内容，
-包括文档工具的工作原理。
-
+你可以 [阅读更多](/guides/language/language-tour#comments) Dart 中有关注释的信息，包括文档工具的工作原理。
 
 ## Imports
 
