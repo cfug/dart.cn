@@ -455,7 +455,7 @@ and the asynchronous loop (`await for`).
 
 To raise an exception, use `throw`:
 
-使用 `throw` 抛出一个异常：
+使用 `throw` 关键字抛出一个异常：
 
 <?code-excerpt "misc/test/samples_test.dart (throw)"?>
 {% prettify dart %}
@@ -466,7 +466,7 @@ if (astronauts == 0) {
 
 To catch an exception, use a `try` statement with `on` or `catch` (or both):
 
-使用 `try` 语句以及 `on` 和 `catch`（或者两者），捕获一个异常。
+使用 `try` 语句配合 `on` 或 `catch`（两者也可同时使用）关键字来捕获一个异常:
 
 <?code-excerpt "misc/test/samples_test.dart (try)"?>
 {% prettify dart %}
@@ -485,15 +485,12 @@ try {
 Note that the code above is asynchronous;
 `try` works for both synchronous code and code in an `async` function.
 
-请注意，上面的代码是异步的;
-同步代码以及异步函数代码中都能够使用 `try` 捕获异常。
+注意上述代码是异步的；同步代码以及异步函数中得代码都可以使用 `try` 捕获异常。
 
 [Read more](/guides/language/language-tour#exceptions) about exceptions, including stack traces, `rethrow`, and the difference between
 Error and Exception.
 
-[阅读更多](/guides/language/language-tour#异常) 关于异常的内容，
-包括栈跟踪（stack traces）、`rethrow`、以及 Error 和 Exception 的区别。
-
+你可以 [阅读更多](/guides/language/language-tour#exceptions) 关于异常的信息，包括栈追踪、`rethrow` 关键字以及 Error 和 Exception 之间的区别。
 
 ## Other topics
 
