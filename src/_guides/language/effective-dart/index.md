@@ -3,7 +3,7 @@ title: Effective Dart
 title: 高效 Dart 语言指南
 description: Best practices for building consistent, maintainable, efficient Dart libraries.
 description: 编写具有高效、一致性、可维护的 Dart 代码。
-declaration: 
+declaration:
 permalink: /guides/language/effective-dart
 nextpage:
   url: /guides/language/effective-dart/style
@@ -160,7 +160,7 @@ Each guideline starts with one of these words:
 * **DO** guidelines describe practices that should always be followed. There
   will almost never be a valid reason to stray from them.
 
-  **要**  准则所描述的内容应该始终被遵守。 
+  **要**  准则所描述的内容应该始终被遵守。
   不应该以任何的理由来偏离违背这些准则。
 
 * **DON'T** guidelines are the converse: things that are almost never a good
@@ -175,7 +175,7 @@ Each guideline starts with one of these words:
   may be circumstances where it makes sense to do otherwise. Just make sure you
   understand the full implications of ignoring the guideline when you do.
 
-  **推荐** 准则所描述的内容*应该*被遵守。 
+  **推荐** 准则所描述的内容*应该*被遵守。
   但是在有些情况下，可能有更好的或者更合理的做法。
   请确保在你完全理解准则的情况下，再忽视这些准则。
 
@@ -190,7 +190,7 @@ Each guideline starts with one of these words:
 
   **考虑**  准则所描述的内容可以遵守，也可以不遵守。
   取决于具体的情况、先前的做法以及自己的偏好。
-  
+
 Some guidelines describe an **exception** where the rule does *not* apply. When
 listed, the exceptions may not be exhaustive&mdash;you might still need to use
 your judgement on other cases.
@@ -205,7 +205,7 @@ readable and maintainable code.
 
 ## Glossary
 
-## 词汇表
+## 术语表
 
 To keep the guidelines brief, we use a few shorthand terms to refer to different
 Dart constructs.
