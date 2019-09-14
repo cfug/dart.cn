@@ -296,7 +296,7 @@ class Orbiter extends Spacecraft {
 
 Mixins are a way of reusing code in multiple class hierarchies. The following class can act as a mixin:
 
-Mixin 是一种在多个类层次结构中重用代码的方法。下面的类可以作为一个 mixin：
+Mixin 是一种在多个类层次结构中重用代码的方法。下面的类可以作为一个 Mixin：
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (mixin)"?>
 {% prettify dart %}
@@ -310,7 +310,7 @@ class Piloted {
 
 To add a mixin's capabilities to a class, just extend the class with the mixin.
 
-将 mixin 的功能添加到一个类中，只需要继承这个类并 with 这个 mixin 。
+现在你只需使用 Mixin 的方式继承这个类就可将该类中的功能添加给其它类。
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (mixin use)" replace="/with/[!$&!]/g"?>
 {% prettify dart %}
@@ -321,12 +321,11 @@ class PilotedCraft extends Spacecraft [!with!] Piloted {
 
 `PilotedCraft` now has the `astronauts` field as well as the `describeCrew()` method.
 
-现在 `飞行器` 有了 `astronauts` 字段以及 `describeCrew()` 方法。
+自此，`PilotedCraft` 类中就包含了 `astronauts` 字段以及 `describeCrew()` 方法。
 
 [Read more](/guides/language/language-tour#adding-features-to-a-class-mixins) about mixins.
 
-[阅读更多](/guides/language/language-tour#adding-features-to-a-class-mixins) 关于 mixin 的内容。
-
+你可以 [阅读更多](/guides/language/language-tour#adding-features-to-a-class-mixins) 关于 Mixin 的信息。
 
 ## Interfaces and abstract classes
 
