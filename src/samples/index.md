@@ -80,7 +80,7 @@ var image = {
 
 [Read more](/guides/language/language-tour#variables) about variables in Dart, including default values, the `final` and `const` keywords, and static types.
 
-你可以 [阅读更多](/guides/language/language-tour#variables) Dart 中关于变量的信息，包括变量的默认值，`final` 和 `const` 关键字以及静态类型等。
+你可以 [阅读更多](/guides/language/language-tour#variables) Dart 中关于变量的内容，包括变量的默认值，`final` 和 `const` 关键字以及静态类型等。
 
 ## Control flow statements
 
@@ -114,7 +114,7 @@ while (year < 2016) {
 [Read more](/guides/language/language-tour#control-flow-statements) about control flow statements in Dart,
 including `break` and `continue`, `switch` and `case`, and `assert`.
 
-你可以 [阅读更多](/guides/language/language-tour#control-flow-statements) Dart 中关于控制流程语句的信息，包括 `break` 和 `continue` 关键字、`switch` 语句和 `case` 子句以及 `assert` 语句。
+你可以 [阅读更多](/guides/language/language-tour#control-flow-statements) Dart 中关于控制流程语句的内容，包括 `break` 和 `continue` 关键字、`switch` 语句和 `case` 子句以及 `assert` 语句。
 
 ## Functions
 
@@ -155,7 +155,7 @@ the top-level `print()` function is an argument to `forEach()`.
 [Read more](/guides/language/language-tour#functions) about functions in Dart,
 including optional parameters, default parameter values, and lexical scope.
 
-你可以 [阅读更多](/guides/language/language-tour#functions) Dart 中有关函数的信息，包括可选参数、默认参数值以及词法作用域。
+你可以 [阅读更多](/guides/language/language-tour#functions) Dart 中有关函数的内容，包括可选参数、默认参数值以及词法作用域。
 
 ## Comments
 
@@ -178,7 +178,7 @@ Dart 通常使用双斜杠 `//` 作为注释的开始。
 [Read more](/guides/language/language-tour#comments) about comments in Dart,
 including how the documentation tooling works.
 
-你可以 [阅读更多](/guides/language/language-tour#comments) Dart 中有关注释的信息，包括文档工具的工作原理。
+你可以 [阅读更多](/guides/language/language-tour#comments) Dart 中有关注释的内容，包括文档工具的工作原理。
 
 ## Imports
 
@@ -203,7 +203,7 @@ import 'path/to/my_other_file.dart';
 [Read more](/guides/language/language-tour#libraries-and-visibility) about libraries and visibility in Dart,
 including library prefixes, `show` and `hide`, and lazy loading through the `deferred` keyword.
 
-你可以 [阅读更多](/guides/language/language-tour#libraries-and-visibility) Dart 中有关库和可见性的信息，包括库前缀、`show` 和 `hide` 关键字以及通过 `deferred` 关键字实现的懒加载。
+你可以 [阅读更多](/guides/language/language-tour#libraries-and-visibility) Dart 中有关库和可见性的内容，包括库前缀、`show` 和 `hide` 关键字以及通过 `deferred` 关键字实现的懒加载。
 
 ## Classes
 
@@ -269,7 +269,7 @@ voyager3.describe();
 including initializer lists, optional `new` and `const`, redirecting constructors,
 `factory` constructors, getters, setters, and much more.
 
-你可以 [阅读更多](/guides/language/language-tour#classes) Dart 中有关类的信息，包括初始化列表、可选的 `new` 和 `const` 关键字、重定向构造函数、由 `factory` 关键字定义的工厂构造函数以及 Getter 和 Setter 方法等等。
+你可以 [阅读更多](/guides/language/language-tour#classes) Dart 中有关类的内容，包括初始化列表、可选的 `new` 和 `const` 关键字、重定向构造函数、由 `factory` 关键字定义的工厂构造函数以及 Getter 和 Setter 方法等等。
 
 ## Inheritance
 
@@ -290,7 +290,7 @@ class Orbiter extends Spacecraft {
 
 [Read more](/guides/language/language-tour#extending-a-class) about extending classes, the optional `@override` annotation, and more.
 
-你可以 [阅读更多](/guides/language/language-tour#extending-a-class) Dart 中有关类继承的信息，比如可选的 `@override` 注解等等。
+你可以 [阅读更多](/guides/language/language-tour#extending-a-class) Dart 中有关类继承的内容，比如可选的 `@override` 注解等等。
 
 ## Mixins
 
@@ -325,7 +325,7 @@ class PilotedCraft extends Spacecraft [!with!] Piloted {
 
 [Read more](/guides/language/language-tour#adding-features-to-a-class-mixins) about mixins.
 
-你可以 [阅读更多](/guides/language/language-tour#adding-features-to-a-class-mixins) 关于 Mixin 的信息。
+你可以 [阅读更多](/guides/language/language-tour#adding-features-to-a-class-mixins) 关于 Mixin 的内容。
 
 ## Interfaces and abstract classes
 
@@ -344,7 +344,7 @@ class MockSpaceship implements Spacecraft {
 
 [Read more](/guides/language/language-tour#implicit-interfaces) about implicit interfaces.
 
-你可以 [阅读更多](/guides/language/language-tour#implicit-interfaces) 关于隐式接口的信息。
+你可以 [阅读更多](/guides/language/language-tour#implicit-interfaces) 关于隐式接口的内容。
 
 You can create an abstract class to be extended (or implemented) by a concrete class. Abstract classes can contain abstract methods (with empty bodies).
 
@@ -369,7 +369,7 @@ Any class extending `Describable` has the `describeWithEmphasis()` method, which
 
 [Read more](/guides/language/language-tour#abstract-classes) about abstract classes and methods.
 
-你可以 [阅读更多](/guides/language/language-tour#abstract-classes) 关于抽象类和抽象方法的信息。
+你可以 [阅读更多](/guides/language/language-tour#abstract-classes) 关于抽象类和抽象方法的内容。
 
 ## Async
 
@@ -447,7 +447,7 @@ Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
 asynchrony support, including `async` functions, `Future`, `Stream`,
 and the asynchronous loop (`await for`).
 
-你可以 [阅读更多](/guides/language/language-tour#asynchrony-support) 关于异步支持的信息，包括异步函数、`Future`、`Stream` 以及异步循环（`await for`）。
+你可以 [阅读更多](/guides/language/language-tour#asynchrony-support) 关于异步支持的内容，包括异步函数、`Future`、`Stream` 以及异步循环（`await for`）。
 
 ## Exceptions
 
@@ -490,7 +490,7 @@ Note that the code above is asynchronous;
 [Read more](/guides/language/language-tour#exceptions) about exceptions, including stack traces, `rethrow`, and the difference between
 Error and Exception.
 
-你可以 [阅读更多](/guides/language/language-tour#exceptions) 关于异常的信息，包括栈追踪、`rethrow` 关键字以及 Error 和 Exception 之间的区别。
+你可以 [阅读更多](/guides/language/language-tour#exceptions) 关于异常的内容，包括栈追踪、`rethrow` 关键字以及 Error 和 Exception 之间的区别。
 
 ## Other topics
 
