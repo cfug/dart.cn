@@ -460,7 +460,7 @@ To raise an exception, use `throw`:
 <?code-excerpt "misc/test/samples_test.dart (throw)"?>
 {% prettify dart %}
 if (astronauts == 0) {
-  throw StateError('No astronauts.');
+  throw StateError('没有宇航员。');
 }
 {% endprettify %}
 
@@ -476,7 +476,7 @@ try {
     print(description);
   }
 } on IOException catch (e) {
-  print('Could not describe object: $e');
+  print('无法描述该对象：$e');
 } finally {
   flybyObjects.clear();
 }
