@@ -10,8 +10,7 @@ introduction to the language for people who like to learn by example.
 You might also want to check out the language and library tours,
 or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
 
-这里的示例并不全面&mdash;它只是为那些喜欢通过示例了解语言的人提供一个语言的介绍。
-你可能还希望阅读语言概览和库概览。
+本文向你展示的 Dart 语言用法并不全面&mdash;这里只是对那些喜欢通过示例了解语言的人提供一个简单的介绍。你也许会对 [Dart 语言的速查表 CodeLab](/codelabs/dart-cheatsheet) 或 Dart 语言概览和库概览更感兴趣。
 
 <div class="card-grid">
   <div class="card">
@@ -23,8 +22,7 @@ or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
       point to the language tour.
     </p>
     <p>
-      包含示例的 Dart 语言综合概览。
-      文中多数的<em>阅读更多</em>会跳转到此概览。
+      包含示例的 Dart 语言全面概览。本文中大部分的 <em>阅读更多</em> 链接均会跳转到此概览中。
     </p>
   </div>
   <div class="card">
@@ -36,8 +34,7 @@ or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
       dates and times, streams, and more.
     </p>
     <p>
-      基于示例的 Dart 核心库简介。通过概览可以了解内置类型，
-      集合，日期和时间，stream 等的使用方法。
+      通过各种示例向你介绍 Dart 的核心库。通过此概览你可以了解更多关于内置类型、集合、日期时间、异步 Stream 以及其它 Dart 核心功能的相关信息。
     </p>
   </div>
 </div>
