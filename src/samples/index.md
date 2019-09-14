@@ -226,27 +226,27 @@ class Spacecraft {
   String name;
   DateTime launchDate;
 
-  // Constructor, with syntactic sugar for assignment to members.
+  // 构造函数，带有可以直接为成员变量赋值的语法糖。
   Spacecraft(this.name, this.launchDate) {
-    // Initialization code goes here.
+    // 这里可以实现初始化代码。
   }
 
-  // Named constructor that forwards to the default one.
+  // 命名构造函数，转发到默认构造函数。
   Spacecraft.unlaunched(String name) : this(name, null);
 
   int get launchYear =>
-      launchDate?.year; // read-only non-final property
+      launchDate?.year; // 只读的非 final 的属性
 
-  // Method.
+  // 方法。
   void describe() {
-    print('Spacecraft: $name');
+    print('宇宙飞船：$name');
     if (launchDate != null) {
       int years =
           DateTime.now().difference(launchDate).inDays ~/
               365;
-      print('Launched: $launchYear ($years years ago)');
+      print('发射时间：$launchYear ($years years ago)');
     } else {
-      print('Unlaunched');
+      print('尚未发射');
     }
   }
 }
@@ -258,10 +258,10 @@ You might use the `Spacecraft` class like this:
 
 <?code-excerpt "misc/test/samples_test.dart (use class)" plaster="none"?>
 {% prettify dart %}
-var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
+var voyager = Spacecraft('旅行者一号', DateTime(1977, 9, 5));
 voyager.describe();
 
-var voyager3 = Spacecraft.unlaunched('Voyager III');
+var voyager3 = Spacecraft.unlaunched('旅行者三号');
 voyager3.describe();
 {% endprettify %}
 
