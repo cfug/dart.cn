@@ -114,9 +114,7 @@ while (year < 2016) {
 [Read more](/guides/language/language-tour#control-flow-statements) about control flow statements in Dart,
 including `break` and `continue`, `switch` and `case`, and `assert`.
 
-[阅读更多](/guides/language/language-tour#control-flow-statements) Dart 中关于控制流程语句的内容，
-包括 `break`  和 `continue`，`switch` 和 `case`，以及 `assert`。
-
+你可以 [阅读更多](/guides/language/language-tour#control-flow-statements) Dart 中关于控制流程语句的信息，包括 `break` 和 `continue` 关键字、`switch` 语句和 `case` 子句以及 `assert` 语句。
 
 ## Functions
 
