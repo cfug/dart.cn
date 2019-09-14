@@ -378,7 +378,7 @@ Any class extending `Describable` has the `describeWithEmphasis()` method, which
 Avoid callback hell and make your code much more readable by
 using `async` and `await`.
 
-避免回调地狱 (callback hell)，使用 `async` 和 `await` 使代码更具可读性。
+使用 `async` 和 `await` 关键字可以让你避免回调地狱（Callback Hell） 并使你的代码更具可读性。
 
 <?code-excerpt "misc/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
 {% prettify dart %}
@@ -392,7 +392,7 @@ Future<void> printWithDelay(String message) [!async!] {
 
 The method above is equivalent to:
 
-上面的方法相当于:
+上面的方法相当于：
 
 <?code-excerpt "misc/test/samples_test.dart (Future.then)"?>
 {% prettify dart %}
@@ -406,7 +406,7 @@ Future<void> printWithDelay(String message) {
 As the next example shows, `async` and `await` help make asynchronous code
 easy to read.
 
-如下一个示例所示，`async` 和 `await` 有助于使异步代码变的易于阅读。
+如下一个示例所示，`async` 和 `await` 关键字有助于使异步代码变得易于阅读。
 
 <?code-excerpt "misc/test/samples_test.dart (await)"?>
 {% prettify dart %}
@@ -431,7 +431,7 @@ Future<void> createDescriptions(Iterable<String> objects) async {
 
 You can also use `async*`, which gives you a nice, readable way to build streams.
 
-同样 `async*` 能够提供一个很棒的，可读的方式去构造 stream 。
+你也可以使用 `async*` 关键字，其可以为你提供一个可读性更好的方式去生成 Stream。
 
 <?code-excerpt "misc/test/samples_test.dart (async*)"?>
 {% prettify dart %}
@@ -447,9 +447,7 @@ Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
 asynchrony support, including `async` functions, `Future`, `Stream`,
 and the asynchronous loop (`await for`).
 
-[阅读更多](/guides/language/language-tour#异步支持) 关于异步支持的内容，
-包括异步函数，`Future`，`Stream`，以及异步循环 (`await for`)。
-
+你可以 [阅读更多](/guides/language/language-tour#asynchrony-support) 关于异步支持的信息，包括异步函数、`Future`、`Stream` 以及异步循环（`await for`）。
 
 ## Exceptions
 
