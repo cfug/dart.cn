@@ -186,8 +186,7 @@ including how the documentation tooling works.
 
 To access APIs defined in other libraries, use `import`.
 
-使用 `import` 来访问其他库中的 API，下面展示了三种导入的方式，导入核心库、
-从外部的 package 导入库和从文件中导入。
+使用 `import` 关键字来访问在其它库中定义的 API。
 
 <?code-excerpt "misc/test/samples_test.dart (import)" plaster="none"?>
 {% prettify dart %}
@@ -204,9 +203,7 @@ import 'path/to/my_other_file.dart';
 [Read more](/guides/language/language-tour#libraries-and-visibility) about libraries and visibility in Dart,
 including library prefixes, `show` and `hide`, and lazy loading through the `deferred` keyword.
 
-[阅读更多](/guides/language/language-tour#库和可见性) Dart 中关于库和可见性的内容,
-包括库前缀，`show` 和 `hide` ，以及通过 `deferred` 关键字的懒加载。
-
+你可以 [阅读更多](/guides/language/language-tour#libraries-and-visibility) Dart 中有关库和可见性的信息，包括库前缀、`show` 和 `hide` 关键字以及通过 `deferred` 关键字实现的懒加载。
 
 ## Classes
 
