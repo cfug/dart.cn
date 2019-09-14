@@ -123,8 +123,7 @@ including `break` and `continue`, `switch` and `case`, and `assert`.
 [We recommend](/guides/language/effective-dart/design#types)
 specifying the types of each function's arguments and return value:
 
-[我们建议](/guides/language/effective-dart/design#types)
-指定每个函数的参数类型和返回值：
+[我们建议](/guides/language/effective-dart/design#types) 为每个函数的参数以及返回值都指定类型：
 
 <?code-excerpt "misc/test/samples_test.dart (functions)"?>
 {% prettify dart %}
@@ -140,8 +139,7 @@ A shorthand `=>` (_arrow_) syntax is handy for functions that
 contain a single statement.
 This syntax is especially useful when passing anonymous functions as arguments:
 
-`=>`（箭头）语法用于仅包含一条语句的函数。
-该语法在匿名函数作为函数参数情况中非常有用。
+`=>` (_胖剪头_) 简写语法用于仅包含一条语句的函数。该语法在将匿名函数作为参数传递时非常有用：
 
 <?code-excerpt "misc/test/samples_test.dart (arrow)"?>
 {% prettify dart %}
@@ -152,15 +150,12 @@ Besides showing an anonymous function (the argument to `where()`),
 this code shows that you can use a function as an argument:
 the top-level `print()` function is an argument to `forEach()`.
 
-上例除了演示匿名函数（匿名函数作为 `where()` 的参数），同时也演示了函数作为
-参数的使用：顶级函数 `print()` 是传入 `forEach()` 方法的一个参数。
+上面的示例除了向你展示了匿名函数（上例中传入 `where()` 函数的参数即是一个匿名函数）外，还向你展示了将函数作为参数使用的方式：上面示例将顶层函数 `print()` 作为参数传给了 `forEach()` 函数。
 
 [Read more](/guides/language/language-tour#functions) about functions in Dart,
 including optional parameters, default parameter values, and lexical scope.
 
-[阅读更多](/guides/language/language-tour#函数) Dart 中关于函数的内容,
-包括可选参数，默认参数值，以及词法作用于。
-
+你可以 [阅读更多](/guides/language/language-tour#functions) Dart 中有关函数的信息，包括可选参数、默认参数值以及词法作用域。
 
 ## Comments
 
