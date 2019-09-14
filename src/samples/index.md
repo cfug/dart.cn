@@ -68,12 +68,12 @@ thanks to type inference:
 
 <?code-excerpt "misc/test/samples_test.dart (var)"?>
 {% prettify dart %}
-var name = 'Voyager I';
+var name = '旅行者一号';
 var year = 1977;
 var antennaDiameter = 3.7;
-var flybyObjects = ['Jupiter', 'Saturn', 'Uranus', 'Neptune'];
+var flybyObjects = ['木星', '土星', '天王星', '海王星'];
 var image = {
-  'tags': ['saturn'],
+  'tags': ['土星'],
   'url': '//path/to/saturn.jpg'
 };
 {% endprettify %}
