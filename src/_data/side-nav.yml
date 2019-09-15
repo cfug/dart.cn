@@ -94,6 +94,12 @@
   children:
     - title: Futures、async 和 await
       permalink: /codelabs/async-await
+    - title: 与其他相互调用
+      children:
+        - title: 与 C 互调
+          permalink: /guides/libraries/c-interop
+        - title: JavaScript 互调
+          permalink: /web/js-interop
     - title: 使用 JSON
       permalink: /guides/json
     - title: Streams 介绍
@@ -112,8 +118,6 @@
           permalink: /tutorials/server/cmdline
         - title: HTTP 客户端和服务端应用
           permalink: /tutorials/server/httpserver
-        - title: 与 C 和 C++ 互调
-          permalink: /server/c-interop
         - title: 库和 package
           permalink: /server/libraries
     - title: 网页端 (Web) 应用
@@ -134,8 +138,6 @@
             permalink: /tutorials/web/low-level-html/add-elements 
           - title: 移除 DOM 元素
             permalink: /tutorials/web/low-level-html/remove-elements
-        - title: 与 JS 互调
-          permalink: /web/js-interop
         - title: 部署
           permalink: /web/deployment
         - title: 常用 Web 库和 package

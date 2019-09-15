@@ -521,6 +521,19 @@ You can't change the value of a const variable:
 baz = [42]; // 错误：常量不可以被赋值。
 {% endprettify %}
 
+As of Dart 2.5, you can define constants that use
+[type checks and casts](#type-test-operators) (`is` and `as`),
+[collection if and collection for](#collection-operators),
+and [spread operators](#spread-operator) (`...` and `...?`):
+
+<?code-excerpt "misc/lib/language_tour/variables.dart (const-dart-25)"?>
+```dart
+// Valid compile-time constants as of Dart 2.5.
+const Object i = 3; // Where i is a const Object with an int value...
+const list = [i as int]; // Use a typecast.
+const map = {if (i is int) i: "int"}; // Use is and collection if.
+const set = {if (list is List<int>) ...list}; // ...and a spread.
+```
 For more information on using `const` to create constant values, see
 [Lists](#lists), [Maps](#maps), and [Classes](#classes).
 
@@ -5371,6 +5384,7 @@ For more information, see the following:
   [dart:isolate API 参考][dart:isolate]介绍了 [Isolate.spawn()][] 和 [TransferableTypedData][] 的用法
 
 * [Background parsing][background json] cookbook on the Flutter site
+* [Isolate sample app][]
 
   Flutter 网站上关于[后台解析][background json]的 Cookbook
 
@@ -5378,6 +5392,7 @@ For more information, see the following:
 [Isolate.spawn()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
 [TransferableTypedData]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/TransferableTypedData-class.html
 [background json]: {{site.flutter}}/docs/cookbook/networking/background-parsing
+[Isolate sample app]: https://github.com/flutter/samples/tree/master/isolate_example
 
 ## Typedefs
 
