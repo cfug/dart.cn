@@ -1,6 +1,6 @@
 ---
 title: pub get
-title: pub get
+title: pub get 命令
 description: Use pub get to retrieve the dependencies used by your Dart application.
 description: 使用 pub get 命令检索 Dart 应用使用的依赖项。
 ---
