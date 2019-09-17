@@ -1,6 +1,6 @@
 ---
 title: pub global
-title: pub global
+title: pub global 命令
 description: Use pub global to run Dart scripts hosted on the Pub site from the command line.
 description: 使用 pub global 命令从命令行运行 Pub 网站上托管的 Dart 脚本。
 ---
