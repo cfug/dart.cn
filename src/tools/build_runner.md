@@ -2,7 +2,7 @@
 title: build_runner
 title: build_runner 命令
 description: A tool for building, testing, and running Dart code.
-description: 编译、测试、运行 Dart 代码的工具。
+description: 编译、测试和运行 Dart 代码的工具。
 ---
 
 The [build_runner][] package provides general-purpose commands for generating files,
@@ -13,10 +13,15 @@ where you can find more information.
 For details of using build_runner with a specific package,
 see the documentation for that package.
 
+[build_runner][] 这个 Package 提供了一些用于生成文件的通用命令，这些命令中有的可以用于测试生成的文件，有的可以用于对外提供这些生成的文件以及它们的源代码。通过本文以及本文结尾处更多信息中的相关链接你可以对 build_runner 以及如何使用它有一个大概的了解。至于如何针对某个特定 Package 使用 build_runner，你可以参考该 Package 的相关文档。
+
 <aside class="alert alert-info" markdown="1">
   **If you're a web developer:**
   You can use the [`webdev` tool][webdev] instead of directly using
   build_runner to build and serve web apps.
+
+  **如果你是一个 Web 开发者：**
+  你可以使用 [`webdev` 工具][webdev] 替代 build_runner 以构建和提供 Web 应用。
 </aside>
 
 The build_runner commands work with _builders_—packages
@@ -25,6 +30,8 @@ to generate output files from input files.
 For example, the [json_serializable][] and [built_value_generator][]
 packages define builders that generate Dart code.
 
+build_runner 的命令需要与使用 [Dart 编译系统][build] 从输入文件生成输出文件的生成器 Package 配合使用。例如，[json_serializable][] 与 [built_value_generator][] 这两个 Package 共同定义了生成 Dart 代码的生成器。
+
 Although the Dart build system is a good alternative to
 reflection (which has performance issues) and
 macros (which Dart's compilers don't support),
@@ -32,11 +39,16 @@ it can do more than just read and write Dart code.
 For example, the [sass_builder][] package implements a builder that
 generates `.css` files from `.scss` and `.sass` files.
 
+Dart 的编译系统是反射（目前还有些性能问题）和宏指令（Dart 编译器还不支持）的替代方案，它可以做的不仅仅是用于读写 Dart 代码。例如，[sass_builder][] 这个 Package 实现了用于从 `.scss` 和 `.sass` 文件生成 `.css` 文件的生成器。
 
 ## Setting up build_runner
 
+## build_runner 设置
+
 To use build_runner, add a [dev dependency][] on **build_runner**
 to your app's pubspec:
+
+在你应用 pubspec 文件的 [dev dependency][] 层添加 **build_runner** 依赖以开启使用 build_runner：
 
 ```
   dev_dependencies:
@@ -47,7 +59,11 @@ to your app's pubspec:
 
 Depending on **build_test** is optional; do it if you'll be testing your code.
 
+依赖项 **build_test** 是可选的；但是它可以让你测试你的代码。
+
 As usual after `pubspec.yaml` changes, run `pub get` or `pub upgrade`:
+
+像往常一样在你修改了 `pubspec.yaml` 文件后，记得运行 `pub get` 或 `pub upgrade` 命令以令修改生效：
 
 ```terminal
 $ pub get
@@ -55,20 +71,28 @@ $ pub get
 
 ## Using built-in commands
 
+## 使用内置命令
+
 How you use the build_runner commands depends on whether you're using
 the Dart SDK or the Flutter SDK.
 Here are examples of using the build_runner **build** command:
 
+build_runner 的命令使用方式取决于你当前使用的是 Dart SDK 还是 Flutter SDK。下面是使用 build_runner 中 **build** 命令的示例：
+
 ```terminal
-$ # From a directory that contains a pubspec.yaml file:
-$ pub run build_runner build  # Dart SDK
-$ flutter pub run build_runner build  # Flutter SDK
+$ # 从含有 pubspec.yaml 文件的目录执行下述命令：
+$ pub run build_runner build  # 使用 Dart SDK
+$ flutter pub run build_runner build  #  使用 Flutter SDK
 ```
 
 The build_runner package includes the following commands:
 
+build_runner 中包含下述几个命令：
+
 build
 : Performs a one-time build.
+
+build 命令：处理一次性构建。
 
 serve
 : Runs a development server.
@@ -76,27 +100,49 @@ serve
   you can use [`webdev serve`,][webdev serve]
   which has convenient default behavior.
 
+serve 命令：运行一个用于开发的服务器。你可以使用 [`webdev serve`][webdev serve] 替代该命令，它会包含一些方便的默认功能。
+
 test
 : Runs [tests.][tests]
+
+test 命令：用于运行 [测试][tests]。
 
 watch
 : Launches a build server that watches for edits to input files.
   Responds to changes by performing incremental rebuilds.
 
+watch 命令：启动一个构建服务器用于监听输入文件的编辑。通过处理增量重建来响应代码的修改。
 
 ## More information
+
+## 更多信息
 
 If you're working on web-specific code,
 see the [webdev page.][webdev]
 
+如果你编写的代码针对的是 Web 应用，请查阅 [webdev 页面][webdev]。
+
 For details on using build_runner, see the following:
+
+你也可以通过下述链接查阅更多有关如何使用 build_runner 相关命令的信息：
 
 - Documentation for packages that require you to use build_runner.
   These packages generally have a dependency
   [on build][] or [on build_runner.][]
+
+  如果某个 Package 需要使用 build_runner，请认真阅读该 Package 的文档。这些 Package 通常都需要依赖 [build][on build] 或 [build_runner][on build_runner.]。
+
 - Build_runner documentation:
+
+  build_runner 的相关文档：
+
   - [Getting started with build_runner][]
+
+    [开始使用 build_runner][Getting started with build_runner]
+
   - [Build FAQ][]
+
+    [构建常见问题][Build FAQ]
 
 [build]: https://github.com/dart-lang/build
 [Build FAQ]: https://github.com/dart-lang/build/blob/master/docs/faq.md
