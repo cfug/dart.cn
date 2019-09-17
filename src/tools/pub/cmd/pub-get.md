@@ -95,7 +95,7 @@ PENDING: here just to make it easy to find discussions of `packages`...
 For more information, see the
 [package specification file proposal.](https://github.com/lrhn/dep-pkgspec/blob/master/DEP-pkgspec.md#proposal)
 
-更多信息请查阅 [Package 文件规范建议。](https://github.com/lrhn/dep-pkgspec/blob/master/DEP-pkgspec.md#proposal)
+更多信息请查阅 [Package 文件规范建议](https://github.com/lrhn/dep-pkgspec/blob/master/DEP-pkgspec.md#proposal)。
 
 ## Getting a new dependency
 
