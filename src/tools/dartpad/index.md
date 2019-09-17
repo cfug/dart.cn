@@ -68,7 +68,7 @@ try running some samples and then creating a simple command-line app.
   </li>
 
   <li markdown="1">
-  Click **Run**.
+  Click **Run**. 
 
   点击 **Run**.
 
