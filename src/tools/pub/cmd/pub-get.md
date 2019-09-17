@@ -78,6 +78,7 @@ Before the `.packages` file, pub used to create `packages` directories.
 默认情况下，Pub 会创建一个 `.packages` 文件用于映射 Package 名到位置 URI。在创建 `.packages` 文件之前，Pub 常常还会创建一个 `packages` 目录。
 
 <aside class="alert alert-info" markdown="1">
+
 **Note:** Don't check the generated `.packages` file,
 `packages` directories (if present), or
 `.dart_tool` directory into your repo;
