@@ -1,6 +1,6 @@
 ---
 title: pub downgrade
-title: pub downgrade
+title: pub downgrade 命令
 description: Use pub downgrade to get the lowest versions of all dependencies used by your Dart application.
 description: 使用 pub downgrade 命令可以获取你 Dart 应用所使用的所有依赖项的最低版本。
 ---
