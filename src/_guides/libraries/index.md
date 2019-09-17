@@ -64,11 +64,11 @@ Each library works on at least one [platform](/platforms).
 
 | [`dart:js`][dart-js]                    <br> _Don't use._ Instead, use the `js` package, as described in [JavaScript interoperability][]. | Web |
 
-| [`dart:js`][dart-js]                    <br> _不要使用该库。_ 而是使用 `js` 这个 Package 替代，就像我们在 [JavaScript 互相调用][JavaScript interoperability] 中说的那样。| Web |
+| [`dart:js`][dart-js]                    <br> **不要使用该库。** 而是使用 `js` 这个 Package 替代，就像我们在 [JavaScript 互相调用][JavaScript interoperability] 中说的那样。| Web |
 
 | [`dart:js_util`][dart-js_util]                    <br> _Don't use._ Instead, use the `js` package, as described in [JavaScript interoperability][]. | Web |
 
-| [`dart:js_util`][dart-js_util]          <br> _不要使用该库。_ 而是使用 `js` 这个 Package 替代，就像我们在 [JavaScript 互相调用][JavaScript interoperability] 中说的那样。| Web |
+| [`dart:js_util`][dart-js_util]          <br> **不要使用该库。** 而是使用 `js` 这个 Package 替代，就像我们在 [JavaScript 互相调用][JavaScript interoperability] 中说的那样。| Web |
 
 | [`dart:math`][dart-math]                <br> Mathematical constants and functions, plus a random number generator. | All
 
