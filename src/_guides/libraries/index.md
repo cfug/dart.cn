@@ -76,7 +76,7 @@ Each library works on at least one [platform](/platforms).
 
 | [`dart:mirrors`][dart-mirrors]          <br> Basic reflection with support for introspection and dynamic invocation. | JIT (experimental, _not_&nbsp;Flutter) |
 
-| [`dart:mirrors`][dart-mirrors]          <br> 支持检查和动态调用的基本反射功能。                                                | JIT (实验性的, _不支持_&nbsp Flutter) |
+| [`dart:mirrors`][dart-mirrors]          <br> 支持检查和动态调用的基本反射功能。                                                | JIT (实验性的, **不支持**&nbsp Flutter) |
 
 | [`dart:typed_data`][dart-typed_data]    <br> Lists that efficiently handle fixed sized data (for example, unsigned 8-byte integers) and SIMD numeric types. | All |
 
