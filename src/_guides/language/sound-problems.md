@@ -5,7 +5,7 @@ description: Common type issues you may have and how to fix them.
 description: 常见的跟类型相关的问题，以及如何修复这方面的问题。
 ---
 {% comment %}Don't show exact file names in analyzer error output.{% endcomment %}
-<?code-excerpt replace="/ at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; / at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 <?code-excerpt plaster="none"?>
 
 If you're having problems with type checks,

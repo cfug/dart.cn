@@ -5,7 +5,7 @@ description: A tour of all of the major Dart language features.
 description: Dart 开发语言的主要特性概览。
 short-title: Language tour
 ---
-<?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
 This page shows you how to use each major Dart feature, from
 variables and operators to classes and libraries, with the assumption

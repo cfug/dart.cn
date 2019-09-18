@@ -71,7 +71,7 @@ The main pub server is itself open source and available [here][pub repo].
 该选项在你使用你自己的服务器进行测试时会非常有用如果你。主 Pub 服务器本身是开源的你可以在 [这里][pub repo] 找到它。
 
 [pubsite]: {{site.pub}}
-[pub repo]: https://github.com/dart-lang/pub-dartlang
+[pub repo]: https://github.com/dart-lang/pub-dev
 
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting pub](/tools/pub/troubleshoot).
