@@ -56,9 +56,9 @@ NOTE to editors: Keep the zip file link as the last thing in the paragraph,
 so it's easy to find (but not more tempting than package managers).
 {% endcomment %}
 
-<aside class="alert alert-warning" markdown="1">
+{{site.alert.warn}}
   {% include_relative tools/sdk/archive/_sdk-terms.md %}
-</aside>
+{{site.alert.end}}
 
 <ul class="tabs__top-bar">
   <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>
@@ -124,8 +124,8 @@ For more information, see the [Dart 2 page.][Dart 2]
 
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [semantic versioning]: http://semver.org/
-[Dart 2]: {{site.dartlang}}/dart-2
+[Dart 2]: /dart-2
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
-[Dart libraries]: {{site.dartlang}}/guides/libraries/library-tour
+[Dart libraries]: /guides/libraries/library-tour
 [flutter]: https://flutter.dev/docs/get-started/install
 [site SDK version]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/{{site.data.pkg-vers.SDK.vers}}/index.html

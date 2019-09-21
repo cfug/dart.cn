@@ -141,15 +141,15 @@ you can also use `pub global run`.
 
 ### 运行指定路径中的脚本
 
-To run a script directly from the command line, add the `bin` file
-for the [system cache](/tools/pub/glossary#system-cache) to your path.
+To run a script directly from the command line, add the [system cache][] `bin`
+directory to your `PATH` environment variable.
 
-在从命令行运行脚本前，你还需要将 [Pub 系统缓存](/tools/pub/glossary#system-cache) 的 `bin` 文件目录添加至 PATH 路径中。
+在从命令行直接运行脚本前，你还需要将 [系统缓存][] 的 `bin` 文件目录添加至 PATH 路径中。
 
-For example, say you've activated the Stagehand script,
+For example, say you've activated the Stagehand package,
 but you still can't run the command:
 
-例如，假设你已经激活了名为 Stagehand 的脚本，但是你依然不能运行它：
+例如，假设你已经激活了名为 Stagehand 的包，但是你依然不能运行它：
 
 ```terminal
 $ pub global activate stagehand
@@ -158,7 +158,7 @@ $ stagehand
 ```
 
 Verify that the `bin` directory for the system cache is in your path.
-The following path, on macOS, includes the system cache.
+The following `PATH` variable, on macOS, includes the system cache:
 
 此时你需要确认 Pub 系统缓存的 `bin` 目录是否已经添加至 PATH 路径中。例如在 MacOS 上，使用下述命令可以查看你的 PATH 路径是否已经包含了 Pub 系统缓存的 `bin` 目录：
 
@@ -167,7 +167,7 @@ $ echo $PATH
 [!/Users/<user>/.pub-cache/bin!]:/Users/<user>/homebrew/bin:/usr/local/bin:/usr/bin:/bin
 {% endprettify %}
 
-If this directory is missing from your path,
+If this directory is missing from your `PATH`,
 locate the file for your platform and add it.
 
 如果 PATH 路径中没有添加 Pub 缓存目录，你需要根据你当前设备的系统平台找到对应的 Pub 缓存目录并将之添加。
@@ -354,3 +354,5 @@ For options that apply to all pub commands, see
 
   **有疑问？** 请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
 </aside>
+
+[system cache]: /tools/pub/glossary#system-cache
