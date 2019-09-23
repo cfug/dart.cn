@@ -22,7 +22,7 @@ or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
       point to the language tour.
     </p>
     <p>
-      包含示例的 Dart 语言全面概览。本文中大部分的 <em>阅读更多</em> 链接均会跳转到此概览中。
+      包含示例的 Dart 语言全面概览。本文中大部分的 <strong>阅读更多</strong> 链接均会跳转到此概览中。
     </p>
   </div>
   <div class="card">
