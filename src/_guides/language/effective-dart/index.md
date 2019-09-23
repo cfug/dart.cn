@@ -157,7 +157,7 @@ Some guidelines describe an **exception** where the rule does *not* apply. When
 listed, the exceptions may not be exhaustive&mdash;you might still need to use
 your judgement on other cases.
 
-某些准则描述了规则 *不* 适用的 *例外情况*。当这些例外列出时，也有可能不是详尽的&mdash;你可能还需要对其它的情况作出判断。
+某些准则描述了规则 **不** 适用的 **例外情况**。当这些例外列出时，也有可能不是详尽的&mdash;你可能还需要对其它的情况作出判断。
 
 This sounds like the police are going to beat down your door if you don't have
 your laces tied correctly. Things aren't that bad. Most of the guidelines here
