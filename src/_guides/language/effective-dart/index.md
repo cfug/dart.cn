@@ -21,7 +21,7 @@ write consistent, robust, fast code too. There are two overarching themes:
     arguments about which is better are subjective and impossible to resolve.
     What we do know is that being *consistent* is objectively helpful.
 
-    **保持一致** 当谈论到格式、命名以及参数的相关规则时，哪种规则更好，得出的结论通常是主观且无法达成一致的。但我们知道的是，客观上保持 *一致* 是非常有益的。
+    **保持一致** 当谈论到格式、命名以及参数的相关规则时，哪种规则更好，得出的结论通常是主观且无法达成一致的。但我们知道的是，客观上保持 **一致** 是非常有益的。
 
     If two pieces of code look different it should be because they *are*
     different in some meaningful way. When a bit of code stands out and catches
@@ -43,7 +43,7 @@ write consistent, robust, fast code too. There are two overarching themes:
     cramming a whole program into a single line. The goal is code that is
     *economical*, not *dense*.
 
-    如果有多种方式来描述一件事情，那么你通常应该选择其中最简洁的方式。这并不意味着你要像 [Code Golf][code golf]（代码高尔夫挑战赛）一样将所有代码塞到一行中。而是应该让代码变得 *简约* 而非 *密集*。
+    如果有多种方式来描述一件事情，那么你通常应该选择其中最简洁的方式。这并不意味着你要像 [Code Golf][code golf]（代码高尔夫挑战赛）一样将所有代码塞到一行中。而是应该让代码变得 **简约** 而非 **密集**。
 
 [code golf]: https://en.wikipedia.org/wiki/Code_golf
 
