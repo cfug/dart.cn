@@ -22,7 +22,7 @@ or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
       point to the language tour.
     </p>
     <p>
-      包含示例的 Dart 语言全面概览。本文中大部分的 **阅读更多** 链接均会跳转到此概览中。
+      包含示例的 Dart 语言全面概览。本文中大部分的 <em>阅读更多</em> 链接均会跳转到此概览中。
     </p>
   </div>
   <div class="card">
@@ -139,7 +139,7 @@ A shorthand `=>` (_arrow_) syntax is handy for functions that
 contain a single statement.
 This syntax is especially useful when passing anonymous functions as arguments:
 
-`=>` (_胖剪头_) 简写语法用于仅包含一条语句的函数。该语法在将匿名函数作为参数传递时非常有用：
+`=>` (**胖剪头**) 简写语法用于仅包含一条语句的函数。该语法在将匿名函数作为参数传递时非常有用：
 
 <?code-excerpt "misc/test/samples_test.dart (arrow)"?>
 {% prettify dart %}
