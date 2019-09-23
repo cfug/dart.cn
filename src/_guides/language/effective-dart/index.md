@@ -141,7 +141,7 @@ Each guideline starts with one of these words:
   may be circumstances where it makes sense to do otherwise. Just make sure you
   understand the full implications of ignoring the guideline when you do.
 
-  **推荐** 准则所描述的内容 *应该* 被遵守。但是在有些情况下，可能有更好的或者更合理的做法。请确保在你完全理解准则的情况下，再忽视这些准则。
+  **推荐** 准则所描述的内容 **应该** 被遵守。但是在有些情况下，可能有更好的或者更合理的做法。请确保在你完全理解准则的情况下，再忽视这些准则。
 
 * **AVOID** guidelines are the dual to "prefer": stuff you shouldn't do but
   where there may be good reasons to on rare occasions.
