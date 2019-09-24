@@ -76,7 +76,7 @@ the [Flutter API reference.][docs.flutter]
   **DartPad tip:** You can play with the code in this page by copying it into a
   [DartPad.]({{site.dartpad}})
 
-  **DartPad tip：** 可以通过将该页中的代码拷贝到 [DartPad][DartPad] 中进行演示。
+  **DartPad tip：** 可以通过将该页中的代码拷贝到 [DartPad]({{site.dartpad}}) 中进行演示。
 </aside>
 
 
