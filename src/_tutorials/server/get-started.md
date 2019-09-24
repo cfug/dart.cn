@@ -68,9 +68,6 @@ More information:
 
 {% include get-sdk.md %}
 
-<!-- PENDING: the following instructions assume you have set the PATH.
-     We should update the included instructions to refer to that. -->
-
 ## 3. Get more command-line developer tools
 
 ## 3. 获取更多命令行开发工具
@@ -80,9 +77,8 @@ Install [`stagehand`,][stagehand] which gives you templates for creating Dart ap
 安装 [`stagehand`][stagehand]，该工具可以让你在创建 Dart 应用时提供模板：
 
 ```terminal
-> pub global activate stagehand
+$ pub global activate stagehand
 ```
-
 
 Note that although these instructions feature the command line,
 many IDEs support Dart development.
@@ -113,9 +109,9 @@ Create a command-line app:
 创建一个命令行应用：
 
 ```terminal
-> mkdir cli
-> cd cli
-> stagehand console-full
+$ mkdir cli
+$ cd cli
+$ stagehand console-full
 ```
 
 These commands create a small Dart app that has the following:
@@ -148,7 +144,7 @@ that the app depends on:
 使用 [`pub`](/tools/pub/cmd) 命令获取应用依赖的包：
 
 ```terminal
-> pub get
+$ pub get
 ```
 
 ## 6. Run the app
@@ -161,7 +157,7 @@ To run the app from the command line, use the Dart VM by running the
 为了从命令行运行应用，使用 [`dart`](/tools/dart-vm) 命令运行 Dart VM：
 
 ```terminal
-> dart bin/main.dart
+$ dart bin/main.dart
 Hello world: 42!
 ```
 
@@ -171,17 +167,21 @@ Hello world: 42!
 
 Let's customize the app you just created.
 
-现在我们来自定义刚才你所创建的应用。
+ 现在我们来自定义刚才你所创建的应用。
 
- 1. Edit `lib/cli.dart` to return a different result:
+ 1. Edit `lib/cli.dart` to calculate a different result. For example, divide the
+    previous value by two (for details about `~/`, see [Arithmetic operators][]):
 
-    编辑 `lib/cli.dart` 以返回一个不同的结果：
+    编辑 `lib/cli.dart` 以返回一个不同的结果。例如，将先前的值除以2。
+    （关于 `~/` 的详情请查看 [Arithmetic operators][]）：
 
-    ```dart
+    <?code-excerpt "misc/test/tutorial/get_started.dart (calculate)" replace="/~\/ 2/[!$&!]/g"?>
+    {% prettify dart %}
     int calculate() {
-      return -1;
+      return 6 * 7 [!~/ 2!];
     }
-    ```
+    {% endprettify %}
+
  1. Save your changes.
 
     保存你刚才所做的改变。
@@ -191,8 +191,8 @@ Let's customize the app you just created.
     重新运行你应用的入口 main 函数：
 
     ```terminal
-    > dart bin/main.dart
-    Hello world: -1
+    $ dart bin/main.dart
+    Hello world: 21!
     ```
 
 More information:
@@ -216,7 +216,7 @@ Use the `dart2aot` tool to AOT compile the program to machine code:
 使用 `dart2aot` 工具将程序 AOT 编译成机器代码：
 
 ```terminal
-> dart2aot bin/main.dart bin/main.dart.aot
+$ dart2aot bin/main.dart bin/main.dart.aot
 ```
 
 To run the compiled program, use the Dart runtime (`dartaotruntime`):
@@ -224,7 +224,7 @@ To run the compiled program, use the Dart runtime (`dartaotruntime`):
 为了运行编译后的程序，使用 Dart 运行时（即 `dartaotruntime` 命令）：
 
 ```terminal
-> dartaotruntime bin/main.dart.aot
+$ dartaotruntime bin/main.dart.aot
 ```
 
 Notice how the compiled program starts instantly, completing quickly:
@@ -232,9 +232,12 @@ Notice how the compiled program starts instantly, completing quickly:
 注意测量编译后的程序启动有多快：
 
 ```terminal
-> time dartaotruntime bin/main.dart.aot
+$ time dartaotruntime bin/main.dart.aot
+Hello world: 21!
 
-real	0m0.032s
+real	0m0.016s
+user	0m0.008s
+sys	0m0.006s
 ```
 
 ## What next?
@@ -292,6 +295,7 @@ If you get stuck, find help at [Community and support.](/community)
 
 如果你卡住了，可以从 [社区和帮助](/community) 中查找帮助。
 
+[Arithmetic operators]: /guides/language/language-tour#arithmetic-operators
 [stagehand]: {{site.pub-pkg}}/stagehand
 [DartPad documentation]: /tools/dartpad
 [Dart language tour]: /guides/language/language-tour

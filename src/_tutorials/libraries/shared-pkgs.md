@@ -97,7 +97,7 @@ Install or update Stagehand using
 你可以使用 [pub global activate](/tools/pub/cmd/pub-global) 命令安装或更新 Stagehand 工具：
 
 ```terminal
-> pub global activate stagehand
+$ pub global activate stagehand
 ```
 
 Now run the `stagehand` command to see what kinds of template files
@@ -106,7 +106,7 @@ it can generate:
 现在你可以运行 `stagehand` 命令来查看它可以生成的模板文件：
 
 ```terminal
-> stagehand
+$ stagehand
 ```
 
 You'll see a list of generators, including various web and server-side apps.
@@ -120,9 +120,9 @@ use Stagehand to generate a command-line app:
 在一个新建的名为 `vector_victor` 的目录中，使用 Stagehand 工具来生成一个命令行应用：
 
 ```terminal
-> mkdir vector_victor
-> cd vector_victor
-> stagehand console-full
+$ mkdir vector_victor
+$ cd vector_victor
+$ stagehand console-full
 ```
 
 The pubspec.yaml file contains the package specification written in YAML.
@@ -242,7 +242,7 @@ If not, do it yourself by running
 否则，你只能手动地执行 [pub get](/tools/pub/cmd/pub-get) 命令进行下载安装：
 
 ```terminal
-> pub get
+$ pub get
 Resolving dependencies...
 + vector_math 2.0.7
 Changed 1 dependency!
