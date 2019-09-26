@@ -452,7 +452,7 @@ All lines are printed, except any that begin with a hashtag, `#`.
 
 下面的代码示例读取一个文件并在其 Stream 上执行了两次变换。第一次转换是将文件数据转换成 UTF-8 编码格式，然后将转换后的数据变换成一个 [LineSplitter][LineSplitter] 执行。文件中除了 `#` 开头的行外其它的行都会被打印出来。
 
-<?code-excerpt "misc/lib/tutorial/cat_no_hash.dart"?>
+<?code-excerpt "misc/bin/cat_no_hash.dart"?>
 {% prettify dart %}
 import 'dart:convert';
 import 'dart:io';
