@@ -320,6 +320,7 @@ As before, you can use the stream returned by `timedCounter()` like this:
 与前面一样，你可以像下面这样使用由 `timedCounter()` 函数返回的 Stream：
 
 **[PENDING: Did we show this before?]**
+{% endcomment %}
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (using stream)"?>
 {% prettify dart %}
