@@ -315,9 +315,9 @@ environment:
 
   [Dart 语言规范][Dart Language Specification]
 
-* [About Dart SDK release channels and version strings][pre-release]
+* [About Dart SDK release channels and version strings][prerelease]
 
-  [关于 Dart SDK 发布渠道和版本字符串][pre-release]
+  [关于 Dart SDK 发布渠道和版本字符串][prerelease]
 
 * [SDK constraints][]
 
@@ -354,7 +354,7 @@ environment:
 [Dart SDK install]: /get-dart
 [Leaf's email]: https://groups.google.com/d/msg/flutter-dev/H8dDhWg_c8I/_Ql78q_6AgAJ
 [newsletters]: https://github.com/dart-lang/sdk/tree/master/docs/newsletter#dart-language-and-library-newsletters
-[pre-release]: /get-dart#about-release-channels-and-version-strings
+[prerelease]: /get-dart#about-release-channels-and-version-strings
 [runtime errors]: /guides/language/sound-problems#runtime-errors
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
 [sound Dart]: /guides/language/sound-dart

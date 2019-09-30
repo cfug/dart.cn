@@ -111,12 +111,19 @@ They consist of dot-separated integers, with no hyphens or letters.
 
 **稳定版**的 Dart SDK 版本号类似 `1.24.3` 或 `2.1.0`。其由点分隔开的整数组成，并不会包含其它字符。
 
-**Dev** channel releases of the Dart SDK (pre-releases)
+**Dev** channel releases of the Dart SDK (prereleases)
 have additional characters, starting with a hyphen (`-`).
-For example, Dart 2 pre-releases have version numbers starting with
+For example, Dart 2 prereleases have version numbers starting with
 `2.0.0-dev` such as `2.0.0-dev.69.5`.
 
 **开发版**的 Dart SDK（正式预览版）版本号中包含以连接符开始的其他字符。例如：Dart 2 预览发行版的版本号 `2.0.0-dev.69.5` 是以 `2.0.0-dev` 开始，并附加数字版本。
+
+You can get stable and dev channel releases using
+the [instructions above](#install), or you can
+[download the SDK as a zip file](/tools/sdk/archive).
+
+你可以通过 [instructions above](#install) 获得 stable 和 dev 渠道，
+或者你也可以直接[下载 SDK 的压缩包](/tools/sdk/archive)。
 
 For more information, see the [Dart 2 page.][Dart 2]
 
