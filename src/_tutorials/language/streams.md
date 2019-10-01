@@ -91,6 +91,16 @@ generating a simple stream of integers using an `async*` function:
 
 下面的示例中使用了 `async*` 函数生成一个简单的整型 Stream 来测试上一个代码片段：
 
+{{ site.alert.note }}
+
+  This page uses embedded DartPads to display runnable examples.
+  
+  本页面内嵌了一些 DartPads 做例子展示，
+  
+  {% include dartpads-embedded-troubleshooting.md %}
+  
+{{ site.alert.end }}
+
 {% comment %}
 https://gist.github.com/Sfshaza/15d5ef986238c97dbc14
 
@@ -119,7 +129,7 @@ main() async {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=15d5ef986238c97dbc14"
+src="{{site.dartpad-embed-inline}}?id=15d5ef986238c97dbc14"
     width="100%"
     height="490px"
     style="border: 1px solid #ccc;">
@@ -201,7 +211,7 @@ main() async {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=df7c1168a5c6b20fda2a76d6ff33a1da"
+src="{{site.dartpad-embed-inline}}?id=df7c1168a5c6b20fda2a76d6ff33a1da"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">
