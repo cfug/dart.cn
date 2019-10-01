@@ -46,19 +46,15 @@ restores the editor to its original state.
 点击 **Format (格式化)** 按钮，**Reset (重置)** 按钮将会清除你的操作，
 并把编辑器恢复到初始状态。
 
-<aside class="alert alert-warning">
-<p>The embedded editors use an experimental version of DartPad.
-If you find a DartPad bug or have suggestions for DartPad, please
-<a target="_BLANK" href="https://github.com/dart-lang/dart-pad/issues/new">create a DartPad issue.</a>
-If you have suggestions for the text or examples in this codelab,
-you can create a site issue by clicking the bug icon
-at the top right of this page.</p>
+{{ site.alert.note }}
 
-<p>这里的嵌入式编辑器使用了实验版 DartPad。如果你发现了 DartPad 中的 bug，
-请 <a target="_BLANK" href="https://github.com/dart-lang/dart-pad/issues/new">创建一个 DartPad issue</a>。
-如果你对该 codelab 的语言描述或样例有任何建议，
-可以点击本页面右上角的 bug 图标提出 issue。</p>
-</aside>
+  This page uses embedded DartPads to display runnable examples.
+  
+  本页面内嵌了一些 DartPads 做例子展示，
+
+  {% include dartpads-embedded-troubleshooting.md %}
+  
+{{ site.alert.end }}
 
 ## String interpolation
 
@@ -89,10 +85,11 @@ The following function takes two integers as parameters.
 Make it return a string containing both integers separated by a space.
 For example, `stringify(2, 3)` should return `'2 3'`.
 
-下面的方法接收两个整形变量作为参数，然后让它返回一个包含以空格分隔的整数的字符串。
+下面的方法接收两个整形变量作为参数，
+然后让它返回一个包含以空格分隔的整数的字符串。
 例如，`stringify(2, 3)` 应该返回 `'2 3'`。
 
-<iframe src="{{site.dartpadx}}?id=43f3db47b0632c557200270807696687"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=43f3db47b0632c557200270807696687"></iframe>
 
 ## Null-aware operators
 
@@ -138,7 +135,7 @@ Try putting the `??=` and `??` operators to work below.
 
 尝试在下面使用 `??=` 和 `??` 操作符。
 
-<iframe src="{{site.dartpadx}}?id=ee3d441f60acc95a07d73762a61b3b98"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=ee3d441f60acc95a07d73762a61b3b98"></iframe>
 
 ## Conditional property access
 
@@ -183,8 +180,7 @@ Try using conditional property access to finish the code snippet below.
 
 尝试使用条件属性访问来完成下面的代码片段。
 
-<iframe src="{{site.dartpadx}}?id=58f14a3d943be6231ae611036fcfc80d"></iframe>
-
+<iframe src="{{site.dartpad-embed}}?id=58f14a3d943be6231ae611036fcfc80d"></iframe>
 
 ## Collection literals
 
@@ -238,7 +234,8 @@ Try setting the following variables to the indicated values.
 
 尝试将以下变量设定为指定的值。
 
-<iframe src="{{site.dartpadx}}?id=8ba5e98559ff2a2e92e58ac5a28f1cff"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=8ba5e98559ff2a2e92e58ac5a28f1cff"></iframe>
+
 
 ## Arrow syntax
 
@@ -277,7 +274,7 @@ Try finishing the following statements, which use arrow syntax.
 
 尝试使用箭头语法完成下面语句：
 
-<iframe src="{{site.dartpadx}}?id=7c287c55dcc7f414a5dfa5837e3450e3"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=7c287c55dcc7f414a5dfa5837e3450e3"></iframe>
 
 {% comment %}
 ISSUE: The analysis output kept getting in the way of my typing for the
@@ -351,9 +348,12 @@ sets the `anInt`, `aString`, and `aList` properties of a `BigObject`
 to `1`, `'String!'`, and `[3.0]` (respectively)
 and then calls `allDone()`.
 
-使用级联创建一个语句，分别将 `BigObject` 的 `anInt` 属性设为 `1`、`aString` 属性设为 `String!`、`aList` 属性设置为 `[3.0]` 然后调用 `allDone()`。
+使用级联创建一个语句，
+分别将 `BigObject` 的 `anInt` 属性设为 `1`、`aString` 
+属性设为 `String!`、`aList` 属性设置为
+`[3.0]` 然后调用 `allDone()`。
 
-<iframe src="{{site.dartpadx}}?id=72bde0b4d5c8c6046b4853a3b4053c3a"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=72bde0b4d5c8c6046b4853a3b4053c3a"></iframe>
 
 
 ## Getters and setters
@@ -419,9 +419,11 @@ Add the following:
   as long as the new list doesn't contain any negative prices
   (in which case the setter should throw an `InvalidPriceException`).
 
-  只要新列表不包含任何负价格，setter 就会用新的列表替换列表（在这种情况下，setter 应该抛出 `InvalidPriceException`。）
+  只要新列表不包含任何负价格，
+  setter 就会用新的列表替换列表
+  （在这种情况下，setter 应该抛出 `InvalidPriceException`）。
 
-<iframe src="{{site.dartpadx}}?id=84561041d263cbd4c92f614eceec85e6"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=84561041d263cbd4c92f614eceec85e6"></iframe>
 
 
 ## Optional positional parameters
@@ -493,7 +495,7 @@ Here are some examples of function calls and returned values:
 
 <br>
 
-<iframe src="{{site.dartpadx}}?id=9e7d5b6b56319b7e3b12b791c0ae27c1"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=9e7d5b6b56319b7e3b12b791c0ae27c1"></iframe>
 
 
 ## Optional named parameters
@@ -549,10 +551,11 @@ copied into the object's properties.
 For example, if `newInt` is non-null,
 then copy its value into `anInt`.
 
-当该方法被调用时，`copyWith` 应该根据当前实例返回一个新的 `MyDataObject` 并将前面参数（如果有的话）的数据复制到对象的属性中。
+当该方法被调用时，`copyWith` 应该根据当前实例返回一个新的
+`MyDataObject` 并将前面参数（如果有的话）的数据复制到对象的属性中。
 例如，如果 `newInt` 不为空，则将其值复制到 `anInt` 中。
 
-<iframe src="{{site.dartpadx}}?id=1dd9cc9654f9e6d080f99bfb9772dae4"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=1dd9cc9654f9e6d080f99bfb9772dae4"></iframe>
 
 
 ## Exceptions
@@ -658,9 +661,10 @@ then do the following:
 * After everything's caught and handled, call `logger.doneLogging`
   (try using `finally`).
 
-  捕获并处理完所有内容后，调用 `logger.doneLogging`（尝试使用 `finally`）。
+  捕获并处理完所有内容后，
+  调用 `logger.doneLogging`（尝试使用 `finally`）。
 
-<iframe src="{{site.dartpadx}}?id=e221e3fd667825e62aac79079b8b5c59"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=e221e3fd667825e62aac79079b8b5c59"></iframe>
 
 {% comment %}
 I was confused about the text saying "call... with the exception type" but
@@ -749,9 +753,10 @@ Add a one-line constructor to `MyClass` that uses
 `this.` syntax to receive and assign values for
 all three properties of the class.
 
-使用 `this` 语法向 `MyClass` 添加一行构造方法，并接收和分配全部（三个）属性。
+使用 `this` 语法向 `MyClass` 添加一行构造方法，
+并接收和分配全部（三个）属性。
 
-<iframe src="{{site.dartpadx}}?id=2778e81ae2c5729d45c611829f3888c2"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=2778e81ae2c5729d45c611829f3888c2"></iframe>
 
 {% comment %}
 This one seems super easy compared to previous ones.
@@ -826,11 +831,12 @@ an AssertionError.
 Also, my print() wasn't visible in the Output until I fixed my code and/or
 the test. That was unexpected.
 It'd be cool if Output appeared only if you want it, like Solution does.
+
+同样的，直到我修复了我代码或者测试之前，我都看不到 print() 的输出。
+
 {% endcomment %}
 
-同样的，直到我修复了我代码或者测试之前，我都看不见 print() 的输出。
-
-<iframe src="{{site.dartpadx}}?id=df45dfc1af2e6af712930c331115eb78"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=df45dfc1af2e6af712930c331115eb78"></iframe>
 
 
 ## Named constructors
@@ -886,7 +892,7 @@ ISSUE: comment says "a named constructor called "black"", which sounds
 wrong to me. I fixed it in the text but not in the example.
 {% endcomment %}
 
-<iframe src="{{site.dartpadx}}?id=e1a82c77547e659eb24f4e698abf1eca"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=e1a82c77547e659eb24f4e698abf1eca"></iframe>
 
 
 ## Factory constructors
@@ -949,7 +955,7 @@ making it do the following:
 TODO: Fix the comment to not say "named".
 ISSUE: The hint acts like you don't already have the signature for the constructor.
 {% endcomment %}
-<iframe src="{{site.dartpadx}}?id=727981a8ece1244b52a3c6dc377a8085"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=727981a8ece1244b52a3c6dc377a8085"></iframe>
 
 ## Redirecting constructors
 
@@ -987,9 +993,11 @@ Remember the `Color` class from above? Create a named constructor called
 `black`, but rather than manually assigning the properties, redirect it to the
 default constructor with zeros as the arguments.
 
-还记得我们之前提到的 `Color` 类吗？创建一个叫做 `black` 的命名构造方法，但这次我们不要手动分配属性，而是将 0 作为参数，重定向到默认的构造方法。
+还记得我们之前提到的 `Color` 类吗？创建一个叫做 `black` 的命名构造方法，
+但这次我们不要手动分配属性，而是将 0 作为参数，
+重定向到默认的构造方法。
 
-<iframe src="{{site.dartpadx}}?id=94eb1d8be5b64163753c7350f1f09edf"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=94eb1d8be5b64163753c7350f1f09edf"></iframe>
 
 
 ## Const constructors
@@ -1036,9 +1044,11 @@ and create a constant constructor that does the following:
 * Is constant, with the `const` keyword just before
   `Recipe` in the constructor declaration.
 
-  在 `Recipe` 的构造方法声明之前，用 `const` 关键字使其成为常量。
+  在 `Recipe` 的构造方法声明之前，
+  用 `const` 关键字使其成为常量。
 
-<iframe src="{{site.dartpadx}}?id=c400cb84fab309ddbbb436c1ced90dad"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=c400cb84fab309ddbbb436c1ced90dad"></iframe>
+
 
 {% comment %}
 TODO: Copy edit the hint.

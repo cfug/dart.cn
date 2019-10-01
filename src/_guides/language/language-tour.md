@@ -24,20 +24,24 @@ consult the [Dart language specification][].
 你可以通过查看 [Dart 库概览](/guides/libraries/library-tour) 
 学习更多关于 Dart 核心库的知识。
 若还想了解更多有关语言功能的详细内容，
-请参阅 [Dart 编程语言规范](/guides/language/spec)。
+请参阅 [Dart 编程语言规范][Dart language specification]。
 
-<div class="alert alert-info" markdown="1">
-**Tip:**
+{{ site.alert.note }}
 
-**提示：**
+  You can play with most of Dart's language features using DartPad
+  ([learn more](/tools/dartpad)).
+  **<a href="{{ site.dartpad }}" target="_blank">Open DartPad</a>**
+  
+  使用 DartPad 可以体验 Dart 的大部分语言功能 ([了解更多](/tools/dartpad))，
+  **<a href="{{ site.dartpad }}" target="_blank">打开 DartPad</a>**
+  
+  This page uses embedded DartPads to display some of the examples.
+  
+  本页面内嵌了一些 DartPads 做例子展示，
+  
+  {% include dartpads-embedded-troubleshooting.md %}
 
-You can play with most of Dart's language features using DartPad
-([learn more](/tools/dartpad)).
-
-使用 DartPad 可以体验 Dart 的大部分语言功能([了解更多](/tools/dartpad))。
-
-**<a href="{{ site.dartpad }}" target="_blank">打开 DartPad</a>**
-</div>
+{{ site.alert.end }}
 
 ## A basic Dart program
 
@@ -1340,7 +1344,7 @@ void main() {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=589bc5c95318696cefe5"
+src="{{site.dartpad-embed-inline}}?id=589bc5c95318696cefe5"
     width="100%"
     height="400px"
     style="border: 1px solid #ccc;">
@@ -1683,7 +1687,7 @@ https://gist.github.com/d988cfce0a54c6853799
 {{site.dartpad}}/d988cfce0a54c6853799
 (The gist needs updating: see https://github.com/dart-lang/site-www/issues/189)
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=d988cfce0a54c6853799"
+src="{{site.dartpad-embed-inline}}?id=d988cfce0a54c6853799"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">
@@ -1835,7 +1839,7 @@ https://gist.github.com/chalin/5d70bc1889d055c7a18d35d77874af88
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=5d70bc1889d055c7a18d35d77874af88&split=60"
+src="{{site.dartpad-embed-inline}}?id=5d70bc1889d055c7a18d35d77874af88&split=60"
     width="100%"
     height="400px"
     style="border: 1px solid #ccc;">
@@ -3586,7 +3590,7 @@ void main() {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=e57aa06401e6618d4eb8&split=90"
+src="{{site.dartpad-embed-inline}}?id=e57aa06401e6618d4eb8&split=90"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -3701,7 +3705,7 @@ void main() {
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=7a9764702c0608711e08&split=90"
+src="{{site.dartpad-embed-inline}}?id=7a9764702c0608711e08&split=90"
     width="100%"
     height="420px"
     style="border: 1px solid #ccc;">
@@ -5345,7 +5349,7 @@ main() => print(out);
 {% endcomment %}
 
 <iframe
-src="{{site.custom.dartpadx.embed-inline-prefix}}?id=405379bacf30335f3aed"
+src="{{site.dartpad-embed-inline}}?id=405379bacf30335f3aed"
     width="100%"
     height="350px"
     style="border: 1px solid #ccc;">

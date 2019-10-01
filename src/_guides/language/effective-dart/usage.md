@@ -1492,7 +1492,7 @@ class Point {
 }
 {% endprettify %}
 
-We've got to type `x` _four_ times here define a field. We can do better:
+We've got to type `x` _four_ times here to define a field. We can do better:
 
 为了初始化一个字段，我们需要取_四_次 `x` 。使用下面的方式会更好：
 
