@@ -43,7 +43,7 @@ deploy:
     script: ./tool/translator/deploy-cn.sh
     skip_cleanup: true
     on:
-      repo: cfug/dartlang-cn
+      repo: cfug/dart.cn
       branch: master
       condition: $TASK == *build*
 
