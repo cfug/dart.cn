@@ -9,7 +9,7 @@ This page lists some of the most popular and useful
 [packages](/guides/packages) that Dart developers have published.
 To find more packages —
 and search [core libraries](/guides/libraries), as well —
-use the [Pub site.]({{site.pub}})
+use the [pub.dev site.]({{site.pub}})
 
 本章列出了一些 Dart 开发者发布的非常流行的有用的 [包](/guides/packages)。
 到 [Pub 网站]({{site.pub}}) 发现更多包及 [核心库](/guides/libraries)。
@@ -89,7 +89,7 @@ such as packages for mobile (Flutter) and web development.
 
 See [Using packages]({{site.flutter}}/docs/development/packages-and-plugins/using-packages)
 on the Flutter site.
-Or use the Pub site to [search for Flutter packages.]({{site.pub}}/flutter)
+Or use the pub.dev site to [search for Flutter packages.]({{site.pub}}/flutter)
 
 在 Flutter 网站，查看 [包的使用]({{site.flutter}}/docs/development/packages-and-plugins/using-packages)。
 或者使用 Pub 网站 [查找 Flutter 包]({{site.pub}}/flutter)。
@@ -99,7 +99,7 @@ Or use the Pub site to [search for Flutter packages.]({{site.pub}}/flutter)
 ### Web 包
 
 See [Web libraries and packages](/web/libraries).
-Or use the Pub site to [search for web packages.]({{site.pub}}/web)
+Or use the pub.dev site to [search for web packages.]({{site.pub}}/web)
 
 查看 [Web 库和包](/web/libraries)。
 或者使用 Pub 网站 [查找用于 Web 的包]({{site.pub}}/web)。
@@ -109,7 +109,7 @@ Or use the Pub site to [search for web packages.]({{site.pub}}/web)
 ### 命令行和服务器包
 
 See [Command-line and server libraries and packages](/server/libraries).
-Or use the Pub site to [search for other packages.]({{site.pub}})
+Or use the pub.dev site to [search for other packages.]({{site.pub}})
 
 查看 [命令行和服务器的库和包](/server/libraries)。
-或者使用 Pub 网站 [查找用于其它应用的包]({{site.pub}})。
+或者使用 pub.dev 网站 [查找用于其它应用的包]({{site.pub}})。

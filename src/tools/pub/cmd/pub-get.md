@@ -129,7 +129,7 @@ already-acquired dependencies.
 ## 系统 Package 缓存
 
 Dependencies downloaded over the internet, such as those from Git and the
-[Pub site]({{site.pub}}), are stored in a
+[pub.dev site]({{site.pub}}), are stored in a
 [system-wide cache](/tools/pub/glossary#system-cache).
 This means that if multiple packages use the same version of the
 same dependency, it only needs to be
