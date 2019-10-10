@@ -283,7 +283,7 @@ public use go into the `tool` directory.
 在开发过程中任何非公开的工具或可执行程序，应该放到 `tool` 文件夹。
 
 Other files that are required if you publish your library to the
-Pub site, such as a README and a CHANGELOG, are
+pub.dev site, such as a README and a CHANGELOG, are
 described in [Publishing a package](/tools/pub/publishing).
 For more information on how to organize a package directory,
 see the [pub package layout conventions](/tools/pub/package-layout).
@@ -336,7 +336,7 @@ See [issue 1082.](https://github.com/dart-lang/dartdoc/issues/1082)
 ## 分发开源 Library {#distributing-a-library}
 
 If your library is open source,
-we recommend sharing it on the [Pub site.]({{site.pub}})
+we recommend sharing it on the [pub.dev site.]({{site.pub}})
 To publish or update the library,
 use [pub publish](/tools/pub/cmd/pub-lish),
 which uploads your package and creates or updates its page.
@@ -351,7 +351,7 @@ for details on how to prepare your package for publishing.
 示例参见 [shelf Package]({{site.pub}}/packages/shelf) 页面。
 有关如何准备发布 Package 的详细内容，参见 [发布 Package](/tools/pub/publishing)。
 
-The pub site not only hosts your package,
+The pub.dev site not only hosts your package,
 but also generates and hosts your package's API reference docs.
 A link to the latest generated docs is in the package's **About** box;
 for example, see the shelf package's
@@ -359,13 +359,13 @@ for example, see the shelf package's
 Links to previous versions' docs are in the
 **Versions** tab of the package's page.
 
-Pub 网站不仅仅是 Package 的主机。
+Pub.dev 网站不仅仅是 Dart Packages 的发布网站，
 Pub 网站不仅用于托管 Package ，还能够生成托管 Package 的 API 参考文档。
 最新生成的文档的链接位于 Package 的 **About** 选项卡中;
 示例参见 shelf Package 的 [API 文档]({{site.pub-api}}/shelf)。
 链接到以前版本的文档，位于 Package 页面的 **Versions** 选项卡中。
 
-To ensure that your package's API docs look good on the pub site,
+To ensure that your package's API docs look good on the pub.dev site,
 follow these steps:
 
 为了确保 Package 的 API 文档在 Pub 网站上看起来更美观，

@@ -43,11 +43,11 @@ Dart SDK 包含 dart:io 和其它提供底层 web API 的库。
 
 ## 社区上的一些第三方 package
 
-The [Pub site]({{site.pub}}) doesn't currently support
+The [pub.dev site]({{site.pub}}) doesn't currently support
 limiting your search to packages that support command-line and server apps.
 You can, however, search for words that describe the functionality you need.
 
-[Pub 网站]({{site.pub}}) 暂时还不支持仅搜索命令行和服务器应用相关的 package。
+[pub.dev 网站]({{site.pub}}) 暂时还不支持仅搜索命令行和服务器应用相关的 package。
 但是你可以搜索描述所需功能的单词。
 
 ### Command-line packages

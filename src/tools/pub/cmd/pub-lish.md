@@ -1,8 +1,8 @@
 ---
 title: pub publish
 title: pub publish
-description: Use pub publish to publish your Dart package to the Pub site.
-description: 使用 pub publish 命令将你的 Dart Package 发布到 Pub 网站。
+description: Use pub publish to publish your Dart package to the pub.dev site.
+description: 使用 pub publish 命令将你的 Dart Package 发布到 pub.dev 网站。
 toc: false
 ---
 
@@ -15,12 +15,12 @@ $ pub publish [--dry-run] [--force] [--server <url>]
 {% endprettify %}
 
 This command publishes your package on the
-[Pub site]({{site.pub}}) for anyone to download and depend
+[pub.dev site]({{site.pub}}) for anyone to download and depend
 on. For information on how to prepare your package for publishing,
 and what files you should include or exclude,
 see [Publishing packages](/tools/pub/publishing).
 
-该命令用于将你的 Package 发布到 [Pub 网站]({{site.pub}}) 以供其他人下载和依赖。有关如果将你的 Package 发布以及哪些文件可以发布哪些不应该发布的信息请查阅 [发布 Package](/tools/pub/publishing)。
+该命令用于将你的 Package 发布到 [pub.dev 网站]({{site.pub}}) 以供其他人下载和依赖。有关如果将你的 Package 发布以及哪些文件可以发布哪些不应该发布的信息请查阅 [发布 Package](/tools/pub/publishing)。
 
 ## Options
 
@@ -39,7 +39,7 @@ With this, pub goes through the validation process but does not actually upload
 the package. This is useful if you want to see if your package meets all of the
 publishing requirements before you're ready to actually go public.
 
-该选项可以让你运行上传 Package 的整个流程但不会真正地上传任何文件到 Pub 网站。此操作可以让你在真正上传到 Pub 网站前检查你的上传等相关配置是否有误。
+该选项可以让你运行上传 Package 的整个流程但不会真正地上传任何文件到 pub.dev 网站。此操作可以让你在真正上传到 pub.dev 网站前检查你的上传等相关配置是否有误。
 
 ### `--force` or `-f`
 
@@ -61,9 +61,9 @@ either don't use `--force`, or use `--dry-run` first.
 
 If you pass `--server` followed by a URL, it attempts to publish the
 package to that server. It assumes the server supports the same HTTP API that
-the [Pub site][pubsite] uses.
+the [pub.dev site][pubsite] uses.
 
-如果你在 `--server` 选项后加上一个 URL 地址，则在 Package 进行发布的时候会同样地上传到该服务器中。但是服务器需要支持 [Pub 网站][pubsite] 所使用的 HTTP API。
+如果你在 `--server` 选项后加上一个 URL 地址，则在 Package 进行发布的时候会同样地上传到该服务器中。但是服务器需要支持 [pub.dev 网站][pubsite] 所使用的 HTTP API。
 
 This can be useful if you're running your own local package server for testing.
 The main pub server is itself open source and available [here][pub repo].
