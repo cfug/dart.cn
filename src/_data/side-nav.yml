@@ -86,6 +86,8 @@
           permalink: /tools/pub/pubspec
         - title: 问题排查
           permalink: /tools/pub/troubleshoot
+        - title: 发布者认证
+          permalink: /tools/pub/verified-publishers
         - title: 版本管理
           permalink: /tools/pub/versioning
 
@@ -252,8 +254,8 @@
 - title: 关于 Dart 中文文档
   expanded: false
   children:
-    - title: 关于本站 (WIP)
-      permalink: #
+    - title: 关于本站
+      permalink: https://flutter.cn/about/docs-cn
     - title: 免责条款 (Disclaimer)
       permalink: https://flutter-io.cn/disclaimer.html
 
