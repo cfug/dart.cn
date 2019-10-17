@@ -1,8 +1,8 @@
 ---
 title: pub global
 title: pub global 命令
-description: Use pub global to run Dart scripts hosted on the Pub site from the command line.
-description: 使用 pub global 命令从命令行运行 Pub 网站上托管的 Dart 脚本。
+description: Use pub global to run Dart scripts hosted on the pub.dev site from the command line.
+description: 使用 pub global 命令从命令行运行 Pub.dev 网站上托管的 Dart 脚本。
 ---
 
 _Global_ is one of the commands of the [pub tool](/tools/pub/cmd).
@@ -50,30 +50,30 @@ pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <packa
 Activate a package when you want to be able to run
 one or more of its executable files from the command line.
 You can activate packages that live on the
-[Pub site]({{site.pub}}), a Git repository,
+[pub.dev site]({{site.pub}}), a Git repository,
 or your local machine.
 Once you've activated a package, see [Running a
 script](#running-a-script) to run scripts from the package's
 `bin` directory.
 
-当你想从命令行运行某个 Package 中的可执行对象时你需要先激活它。该 Package 可以是在 [Pub 网站]({{site.pub}})、Git 仓库或者你当前设备上。一旦你激活了 Package，就可以参阅 [Running a script](#running-a-script) 运行位于 Package `bin` 目录下的脚本。
+当你想从命令行运行某个 Package 中的可执行对象时你需要先激活它。该 Package 可以是在 [pub.dev 网站]({{site.pub}})、Git 仓库或者你当前设备上。一旦你激活了 Package，就可以参阅 [Running a script](#running-a-script) 运行位于 Package `bin` 目录下的脚本。
 
 When you activate a package you can specify an optional version
 constraint.  See the [constraint](#options) flag for usage examples.
 
 你可以在激活 Package 时指定一个可选的版本限制参数。关于其使用示例请查阅 [版本限制参数](#options)。
 
-### Activating a package on the Pub site
+### Activating a package on the pub.dev site
 
-### 激活 Pub 网站上的 Package
+### 激活 pub.dev 网站上的 Package
 
 ```terminal
 $ pub global activate <pub.dartlang package>
 ```
 
-Specify a package on the Pub site to activate it. For example:
+Specify a package on the pub.dev site to activate it. For example:
 
-激活 Pub 网站上的一个 Package。例如：
+激活 pub.dev 网站上的一个 Package。例如：
 
 ```terminal
 $ pub global activate markdown

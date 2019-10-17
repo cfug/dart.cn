@@ -1,8 +1,8 @@
 ---
 title: pub uploader
 title: pub uploader
-description: Use pub uploader to add or remove uploaders for your Dart package on the Pub site.
-description: 使用 pub uploader 命令为你在 Pub 网站上的 Dart Package 添加或删除上传者。
+description: Use pub uploader to add or remove uploaders for your Dart package on the pub.dev site.
+description: 使用 pub uploader 命令为你在 pub.dev 网站上的 Dart Package 添加或删除上传者。
 toc: false
 ---
 
@@ -16,12 +16,15 @@ $ pub uploader [options] {add/remove} <email>
 
 This command allows
 [uploaders](/tools/pub/glossary#uploader) of a
-package on the [Pub site]({{site.pub}}) to add or remove
+package on the [pub.dev site]({{site.pub}}) to add or remove
 other uploaders for that package. It has two sub-commands,
 `add` and `remove`, that take the email address of the person to
 add/remove as an uploader. For example:
 
-该命令允许 [Pub 网站]({{site.pub}})上某个 Package 的 [上传者](/tools/pub/glossary#uploader) 为该 Package 添加或删除其它的上传者。其有两个子命令 `add` 和 `remove`，可以将电子邮件地址作为某个上传者的标识以此来添加或删除上传者。例如：
+该命令允许 [pub.dev 网站]({{site.pub}})上某个 Package 的 [上传者](/tools/pub/glossary#uploader) 
+为该 Package 添加或删除其它的上传者。
+其有两个子命令 `add` 和 `remove`，
+可以将电子邮件地址作为某个上传者的标识以此来添加或删除上传者。例如：
 
 ```terminal
 ~/code/transmogrify$ pub uploader add bob@example.com
@@ -39,13 +42,16 @@ If a package has only one uploader, that uploader can't be removed. You may
 remove yourself as an uploader (as long as other uploaders are available),
 but you won't be able to re-add yourself again afterwards.
 
-如果 Package 有且只有一个上传者，则该上传者不能再被删除。你可以将自己从上传者列表中删除（只要 Package 中还有其它的上传者即可），但是一旦你删除了自己后则不能再将自己添加回去。
+如果 Package 有且只有一个上传者，则该上传者不能再被删除。
+你可以将自己从上传者列表中删除（只要 Package 中还有其它的上传者即可），
+但是一旦你删除了自己后则不能再将自己添加回去。
 
 By default, the package in the current working directory will have its
 uploaders modified. You can also pass the `--package` flag to choose a
 package by name. For example:
 
-默认情况下，你修改的是当前工作目录中 Package 的上传者。你可以通过 `--package` 标识来指定修改哪个 Package 的上传者。例如：
+默认情况下，你修改的是当前工作目录中 Package 的上传者。
+你可以通过 `--package` 标识来指定修改哪个 Package 的上传者。例如：
 
 ```terminal
 $ pub uploader --package=transmogrify add bob@example.com
@@ -56,7 +62,8 @@ $ pub uploader --package=transmogrify add bob@example.com
 Note that uploaders are identified by their Google accounts, so use a Gmail or
 Google Apps email address for any new uploaders.
 
-需要注意的是 Google 账户是上传者的识别标识，所以请使用 Gmail 或者 Google 应用电子邮件地址作为新上传者的标识。
+需要注意的是 Google 账户是上传者的识别标识，
+所以请使用 Gmail 或者 Google 应用电子邮件地址作为新上传者的标识。
 
 ## 选项
 

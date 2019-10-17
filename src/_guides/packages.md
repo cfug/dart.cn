@@ -9,7 +9,7 @@ description: 关于 pub 命令的更多介绍，这是 Dart 里用于管理 pack
 The Dart ecosystem uses _packages_ to manage shared software
 such as libraries and tools.
 To get Dart packages, you use the **pub package manager**.
-You can find publicly available packages on the [**Pub site**,]({{site.pub}})
+You can find publicly available packages on the [**pub.dev site**,]({{site.pub}})
 or you can load packages from the local file system or elsewhere,
 such as Git repositories.
 Wherever your packages come from, pub manages version dependencies,
@@ -19,16 +19,16 @@ with your SDK version.
 Dart 生态系统使用 _包_ 来管理**共享软件**，比如：库和工具。
 我们使用 **Pub 包管理工具** 来获取 Dart 包。
 在 [**Pub**]({{site.pub}}) 上，可以找到公开可用的包。
-或者从本地文件系统或其他的位置，比如 Git 仓库，加载可用的包。
-无论包是从什么途径加载的， Pub 都会进行版本依赖管理，
-从而帮助我们获得版本兼容的软件包以及 SDK 。
+或者从本地文件系统或其他的位置，比如 Git 仓库，加载可用的包。
+无论包是从什么途径加载的， Pub 都会进行版本依赖管理，
+从而帮助我们获得版本兼容的软件包以及 SDK 。
 
 Most [Dart-savvy IDEs][] offer support for using pub that
 includes creating, downloading, updating, and publishing packages.
 Or you can use [`pub` on the command line](/tools/pub/cmd).
 
 大多数 [Dart-savvy IDEs][] 都支持 Pub 的使用，包括包的创建，下载，更新和发布。
-同样上述功能也可以在命令行上通过 [`pub`](/tools/pub/cmd) 来操作。
+同样上述功能也可以在命令行上通过 [`pub`](/tools/pub/cmd) 来操作。
 或者可以在命令行上使用pub。
 
 At a minimum,
@@ -40,16 +40,17 @@ Dart libraries, apps, resources, tests, images, and examples.
 Dart 包目录中至少包含一个 [pubspec 文件](/tools/pub/pubspec)。
 pubspec 文件记录一些关于包的元数据。
 此外，包还包含其他依赖项（在 pubspec 中列出），
-Dart 库，应用，资源，测试，图片，以及示例。
+Dart 库，应用，资源，测试，图片，以及示例。
 
 To use a package, do the following:
 
 通过以下步骤，引用使用包：
 
 * Create a pubspec (a file named `pubspec.yaml` that lists package dependencies and includes
-  other metadata, such as a name for your package).
+  other metadata, such as a version number).
 
-  创建一个 pubspec （一个名为 `pubspec.yaml` 文件，文件列出依赖的包以及包含的其他元数据，比如当前包的名称）。
+  创建一个 pubspec （一个名为 `pubspec.yaml` 文件，
+  文件列出依赖的包以及包含的其他元数据，比如当前包的版本）。
 
 * Use pub to get your package's dependencies.
 
@@ -67,7 +68,7 @@ The pubspec is a file named <code class="literal">pubspec.yaml</code>
 that's in the top directory of your application.
 The simplest possible pubspec lists only the package name:
 
-pubspec 是一个名为 <code class="literal">pubspec.yaml</code> 的文件，
+pubspec 是一个名为 <code class="literal">pubspec.yaml</code> 的文件，
 文件位于应用的根路径。
 最简单的 pubspec 只需要列出包名：
 
@@ -77,7 +78,7 @@ name: my_app
 {% endprettify %}
 
 Here is an example of a pubspec that declares dependencies on
-two packages (`js` and `intl`) that are hosted on the Pub site:
+two packages (`js` and `intl`) that are hosted on the pub.dev site:
 
 下面是一个 pubspec 的示例，示例中声明依赖了在 Pub 站点上托管的两个包（ `js` 和 `intl` ）：
 
@@ -102,7 +103,7 @@ and the documentation for the packages that you want to use.
 Once you have a pubspec, you can run <code class="literal">pub
 get</code> from the top directory of your application:
 
-项目中一旦拥有了 pubspec 文件，就可以在项目根目录中执行
+项目中一旦拥有了 pubspec 文件，就可以在项目根目录中执行
 <code class="literal">pub get</code> 命令：
 
 ```terminal
@@ -117,18 +118,18 @@ This process is called _getting the dependencies_.
 The `pub get` command determines which packages your app depends on,
 and puts them in a central [system cache](/tools/pub/glossary#system-cache).
 If your app depends on a published package, pub downloads that package from the
-[Pub site.]({{site.pub}})
+[pub.dev site.]({{site.pub}})
 For a [Git dependency](/tools/pub/dependencies#git-packages),
 pub clones the Git repository.
 Transitive dependencies are included, too.
 For example, if the `js` package depends on the `test` package, `pub`
 grabs both the `js` package and the `test` package.
 
-`pub get` 命令确定当前应用所依赖的包，并将它们保存到中央[系统缓存](/tools/pub/glossary#system-cache)（central system cache）中。
-如果当前应用依赖了一个公开包， Pub 会从 [Pub 站点]({{site.pub}}) 该包。
+`pub get` 命令确定当前应用所依赖的包，并将它们保存到中央[系统缓存](/tools/pub/glossary#system-cache)（central system cache）中。
+如果当前应用依赖了一个公开包， Pub 会从 [Pub 站点]({{site.pub}}) 该包。
 对于一个 [Git 依赖](/tools/pub/dependencies#git-packages)， Pub 会 Clone 该 Git 仓库。
-同样包括包的相关依赖也会被下载。
-例如，如果 `js` 包依赖 `test` 包， `pub` 会同时获取 `js` 包和 `test` 包。
+同样包括包的相关依赖也会被下载。
+例如，如果 `js` 包依赖 `test` 包， `pub` 会同时获取 `js` 包和 `test` 包。
 
 Pub creates a
 `.packages` file (under your app’s top directory)
@@ -201,7 +202,7 @@ But that's a fragile relative path. If `parser_test.dart` ever moves
 up or down a directory, that path breaks.
 Instead, you can do as follows:
 
-但是相对路径是**脆弱的**。如果 `parser_test.dart` 在包目录中上下移动，
+但是相对路径是**脆弱的**。如果 `parser_test.dart` 在包目录中上下移动，
 那么该路径就会被破坏。
 我们应该通过下面的方式来代替：
 
@@ -229,8 +230,8 @@ transitive) that your package uses.
 
 第一次获取依赖时，Pub 会下载依赖及其兼容的最新版本。
 然后通过创建 **lockfile** 锁定依赖，以始终使用这个版本。
-Pub 会在 pubspec 旁创建并存储一个名为 `pubspec.lock` 文件。
-它列出了使用的每个依赖包的指定版本（当前包或传递包的版本）。
+Pub 会在 pubspec 旁创建并存储一个名为 `pubspec.lock` 文件。
+它列出了使用的每个依赖包的指定版本（当前包或传递包的版本）。
 
 If your package is an application package,
 you should check this file into
@@ -241,13 +242,13 @@ Checking in the lockfile also ensures that your deployed app
 uses the same versions of code.
 
 如果包是一个应用程序包，那么应该将此文件加入到 [源文件管理](/guides/libraries/private-files)。
-这样，在应用上开发的每个人都能够使用所有相同版本的包。
+这样，在应用上开发的每个人都能够使用所有相同版本的包。
 同样加入到 lockfile 可以保证部署的应用使用的是同一版本的代码。
 
 When you're ready to upgrade your dependencies to the latest versions,
 use pub upgrade:
 
-如果已经准备更新依赖到最新版本，使用命令 `pub upgrade` ：
+如果已经准备更新依赖到最新版本，使用命令 `pub upgrade` ：
 
 {% prettify sh %}
 $ pub upgrade
@@ -258,7 +259,7 @@ available versions of your package's dependencies.
 If you want to upgrade only one dependency,
 you can specify the package to upgrade:
 
-上面的命令用于重新生成 lockfile 文件，并使用最新可用版本的依赖包。
+上面的命令用于重新生成 lockfile 文件，并使用最新可用版本的依赖包。
 如果仅升级某个依赖，可以在命令中指定需要升级的包：
 
 {% prettify sh %}
@@ -277,7 +278,7 @@ but leaves everything else the same.
 The following pages have more information about packages and
 the pub package manager.
 
-以下链接的页面是关于包及 Pub 包管理的更多内容。
+以下链接的页面是关于包及 Pub 包管理的更多内容。
 
 
 ### How to
