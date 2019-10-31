@@ -2795,7 +2795,7 @@ same class (and not of any of its subtypes), and the class must not
 override `==`.
 [Enumerated types](#enumerated-types) work well in `switch` statements.
 
-Switch 语句在 Dart 中使用 `==` 来比较整数、字符串或编译时常量，比较的两个对象必须是同一个类型且不能是子类并且没有重写 `==` 操作符。[枚举类型]((#enumerated-types))非常适合在 `Switch` 语句中使用。
+Switch 语句在 Dart 中使用 `==` 来比较整数、字符串或编译时常量，比较的两个对象必须是同一个类型且不能是子类并且没有重写 `==` 操作符。[枚举类型](#enumerated-types)非常适合在 `Switch` 语句中使用。
 
 <div class="alert alert-info" markdown="1">
 **Note:**
@@ -2812,7 +2812,7 @@ Each non-empty `case` clause ends with a `break` statement, as a rule.
 Other valid ways to end a non-empty `case` clause are a `continue`,
 `throw`, or `return` statement.
 
-每一个非空的 `case` 子句都必须有一个 `break` 语句，也可以���过 `continue`、`throw` 或者 `return` 来结束非空 `case` 语句。
+每一个非空的 `case` 子句都必须有一个 `break` 语句，也可以通过 `continue`、`throw` 或者 `return` 来结束非空 `case` 语句。
 
 Use a `default` clause to execute code when no `case` clause matches:
 
@@ -4083,7 +4083,7 @@ To narrow the type of a method parameter or instance variable in code that is
 [type safe](/guides/language/sound-dart),
 you can use the [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
 
-限定方法参数以及实例变量的类型可以让代码更加[类型安全]((/guides/language/sound-dart))，你可以使用[协变关键字](/guides/language/sound-problems#the-covariant-keyword)。
+限定方法参数以及实例变量的类型可以让代码更加[类型安全](/guides/language/sound-dart)，你可以使用[协变关键字](/guides/language/sound-problems#the-covariant-keyword)。
 
 #### Overridable operators
 
@@ -4197,7 +4197,7 @@ Enumerated types, often called _enumerations_ or _enums_,
 are a special kind of class used to represent
 a fixed number of constant values.
 
-枚举类型是一种特殊的类型，也称为 _enumerations_ 或 _enums_，用于定义一些固定数量的常量值。
+枚举类型是一种特殊的类型，也称为 **enumerations** 或 **enums**，用于定义一些固定数量的常量值。
 
 
 #### Using enums
