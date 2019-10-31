@@ -22,19 +22,19 @@ target="_blank">DartPad site (dartpad.dev).</a>
 <a href="{{site.dartpad}}"
 target="_blank">DartPad 页面 (dartpad.cn).</a>
 
-{{ site.alert.tip }}
+{{site.alert.tip}}
 
   If you're in China, try [dartpad.cn.](https://dartpad.cn)
   
   如果你在中国，请尝试使用 [dartpad.cn](https://dartpad.cn)。
-  
+
   If you have issues using DartPad, see the [DartPad troubleshooting
   tips](/tools/dartpad/troubleshoot).
   
   如果你在使用 DartPad 的过程中有任何的问题，
   请查阅 [DartPad 常见问题页面](/tools/dartpad/troubleshoot)。
-
-{{ site.alert.end }}
+  
+{{site.alert.end}}
 
 Here's what DartPad looks like:
 

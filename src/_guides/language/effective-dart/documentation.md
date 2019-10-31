@@ -46,7 +46,7 @@ generated documentation.
 
 ### **要** 像句子一样来格式化注释。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (comments-like-sentences)"?>
 {% prettify dart %}
 // Not if there is nothing before it.
@@ -65,7 +65,7 @@ inline stuff, even TODOs. Even if it's a sentence fragment.
 
 ### **不要** 使用块注释作用作解释说明。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (block-comments)"?>
 {% prettify dart %}
 greet(name) {
@@ -74,7 +74,7 @@ greet(name) {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/docs_bad.dart (block-comments)"?>
 {% prettify dart %}
 greet(name) {
@@ -114,14 +114,14 @@ and generate documentation for it.
 
 使用文档注释可以让 [dartdoc][] 来为你生成代码 API 文档。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (use-doc-comments)"?>
 {% prettify dart %}
 /// The number of characters in this chunk when unsplit.
 int get length => ...
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (use-doc-comments)" replace="/^\///g"?>
 {% prettify dart %}
 // The number of characters in this chunk when unsplit.
@@ -223,7 +223,7 @@ elsewhere for the solution to their problem.
 通常句子片段就足够了。为读者提供足够的上下文来定位自己，
 并决定是否应该继续阅读，或寻找其他解决问题的方法。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (first-sentence)"?>
 {% prettify dart %}
 /// Deletes the file at [path] from the file system.
@@ -232,7 +232,7 @@ void delete(String path) {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/docs_bad.dart (first-sentence)"?>
 {% prettify dart %}
 /// Depending on the state of the file system and the user's permissions,
@@ -262,7 +262,7 @@ like lists of classes and members.
 这有助于您编写一个紧凑的第一句话来总结文档。 
 此外，像Dartdoc这样的工具使用第一段作为类和类成员列表等地方的简短摘要。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (first-sentence-a-paragraph)"?>
 {% prettify dart %}
 /// Deletes the file at [path].
@@ -274,7 +274,7 @@ void delete(String path) {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/docs_bad.dart (first-sentence-a-paragraph)"?>
 {% prettify dart %}
 /// Deletes the file at [path]. Throws an [IOError] if the file could not
@@ -300,7 +300,7 @@ spelled out in the doc comment. Instead, focus on explaining what the reader
 这些都不需要写在文档注释中。 
 相反，应该专注于解释读者所*不知道*的内容。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (redundant)"?>
 {% prettify dart %}
 class RadioButtonWidget extends Widget {
@@ -312,7 +312,7 @@ class RadioButtonWidget extends Widget {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/docs_bad.dart (redundant)"?>
 {% prettify dart %}
 class RadioButtonWidget extends Widget {
@@ -333,7 +333,7 @@ The doc comment should focus on what the code *does*.
 
 注释应该关注于代码 *所实现的* 功能。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (third-person)"?>
 {% prettify dart %}
 /// Returns `true` if every element satisfies the [predicate].
@@ -356,7 +356,7 @@ the *result* of that work, not the work itself.
 注释文档应该表述这个属性*是*什么。虽然 getter 函数会做些计算，
 但是也要求这样，调用者关心的是其*结果*而不是如何计算的。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (noun-phrases-for-var-etc)"?>
 {% prettify dart %}
 /// The current day of the week, where `0` is Sunday.
@@ -386,7 +386,7 @@ extra effort here can make all of the other members simpler to document.
 提供类成员使用的上下文信息。为类提供一些注释可以让
 其他类成员的注释更易于理解和编写。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (noun-phrases-for-type-or-lib)"?>
 {% prettify dart %}
 /// A chunk of non-breaking output text terminated by a hard or soft newline.
@@ -399,7 +399,7 @@ class Chunk { ... }
 
 ### **考虑** 在文档注释中添加示例代码。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (code-sample)"?>
 {% prettify dart %}
 /// Returns the lesser of two numbers.
@@ -430,7 +430,7 @@ constructor.
 如果给变量，方法，或类型等名称加上方括号，则 dartdoc 会查找名称并链接到相关的 API 文档。
 括号是可选的，但是当你在引用一个方法或者构造函数时，可以让注释更清晰。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (identifiers)"?>
 {% prettify dart %}
 /// Throws a [StateError] if ...
@@ -442,7 +442,7 @@ separated by a dot:
 
 要链接到特定类的成员，请使用以点号分割的类名和成员名：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (member)"?>
 {% prettify dart %}
 /// Similar to [Duration.inDays], but handles fractional days.
@@ -453,7 +453,7 @@ constructor, put parentheses after the class name:
 
 点语法也可用于引用命名构造函数。 对于未命名的构造函数，在类名后面加上括号：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (ctor)"?>
 {% prettify dart %}
 /// To create a point, call [Point()] or use [Point.polar()] to ...
@@ -468,7 +468,7 @@ and returns of a method are.
 
 其他语言使用各种标签和额外的注释来描述参数和返回值。
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/docs_bad.dart (no-annotations)"?>
 {% prettify dart %}
 /// Defines a flag with the given name and abbreviation.
@@ -484,7 +484,7 @@ Flag addFlag(String name, String abbr) => ...
 The convention in Dart is to integrate that into the description of the method
 and highlight parameters using square brackets.
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (no-annotations)"?>
 {% prettify dart %}
 /// Defines a flag.
@@ -498,7 +498,7 @@ Flag addFlag(String name, String abbr) => ...
 
 ### **要** 把注释文档放到注解之前。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (doc-before-meta)"?>
 {% prettify dart %}
 /// A button that can be flipped on and off.
@@ -506,7 +506,7 @@ Flag addFlag(String name, String abbr) => ...
 class ToggleComponent {}
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/docs_bad.dart (doc-before-meta)" replace="/\n\n/\n/g"?>
 {% prettify dart %}
 @Component(selector: 'toggle')
@@ -630,7 +630,7 @@ language, and is consistent with using backticks for inline code.
 而且能够指出代码的语言类型，
 内联代码同样可以使用反引号标注。
 
-{:.good-style}
+{:.good}
 {% prettify dart %}
 /// You can use [CodeBlockExample] like this:
 ///
@@ -640,7 +640,7 @@ language, and is consistent with using backticks for inline code.
 /// ```
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 {% prettify dart %}
 /// You can use [CodeBlockExample] like this:
 ///
@@ -693,7 +693,7 @@ object the member is being called on. Using "the" can be ambiguous.
 注释中提及到类的成员，通常是指被调用的对象实例的成员。
 使用 "the" 可能会导致混淆。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (this)"?>
 {% prettify dart %}
 class Box {

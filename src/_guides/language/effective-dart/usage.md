@@ -69,7 +69,7 @@ Then the part file should look like:
 
 从库中拆分的文件应该如下所示：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/some/other/file.dart"?>
 {% prettify dart %}
 part of "../../my_library.dart";
@@ -79,7 +79,7 @@ And not:
 
 而不是：
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/some/other/file_2.dart"?>
 {% prettify dart %}
 part of my_library;
@@ -136,7 +136,7 @@ If `api.dart` wants to import `utils.dart`, it should do so using:
 
 如果 `api.dart` 想导入 `utils.dart` ，应该这样使用：
 
-{:.good-style}
+{:.good}
 {% prettify dart %}
 import 'src/utils.dart';
 {% endprettify %}
@@ -145,7 +145,7 @@ And not:
 
 而不是:
 
-{:.bad-style}
+{:.bad}
 {% prettify dart %}
 import 'package:my_package/src/utils.dart';
 {% endprettify %}
@@ -191,7 +191,7 @@ This rule applies when an expression can evaluate `true`, `false`, or `null`,
 and you need to pass the result to something that doesn't accept `null`. A
 common case is the result of a null-aware method call being used as a condition:
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (null-aware-condition)"?>
 {% prettify dart %}
 if (optionalThing?.isEnabled) {
@@ -203,7 +203,7 @@ This code throws an exception if `optionalThing` is `null`. To fix this, you
 need to "convert" the `null` value to either `true` or `false`. Although you
 could do this using `==`, we recommend using `??`:
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (convert-null-aware)"?>
 {% prettify dart %}
 // If you want null to be false:
@@ -213,7 +213,7 @@ optionalThing?.isEnabled ?? false;
 optionalThing?.isEnabled ?? true;
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (convert-null-equals)"?>
 {% prettify dart %}
 // If you want null to be false:
@@ -260,7 +260,7 @@ a single long string that doesn't fit on one line.
 应该想 C 和 C++ 一样，只需要将它们挨着在一起就可以了。
 这种方式非常适合不能放到一行的长字符串的创建。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (adjacent-strings-literals)"?>
 {% prettify dart %}
 raiseAlarm(
@@ -268,7 +268,7 @@ raiseAlarm(
     'parts are overrun by martians. Unclear which are which.');
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (adjacent-strings-literals)"?>
 {% prettify dart %}
 raiseAlarm('ERROR: Parts of the spaceship are on fire. Other ' +
@@ -288,13 +288,13 @@ it's almost always cleaner and shorter to use interpolation:
 如果你之前使用过其他语言，你一定习惯使用大量 `+` 将字面量字符串以及字符串变量链接构建字符串。
 这种方式在 Dart 中同样有效，但是通常情况下使用插值会更清晰简短：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (string-interpolation)"?>
 {% prettify dart %}
 'Hello, $name! You are ${year - birth} years old.';
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (string-interpolation)"?>
 {% prettify dart %}
 'Hello, ' + name + '! You are ' + (year - birth).toString() + ' y...';
@@ -311,7 +311,7 @@ alphanumeric text, the `{}` should be omitted.
 
 如果要插入是一个简单的标识符，并且后面没有紧跟随在其他字母文本，则应省略 `{}` 。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (string-interpolation-avoid-curly)"?>
 {% prettify dart %}
 'Hi, $name!'
@@ -319,7 +319,7 @@ alphanumeric text, the `{}` should be omitted.
     'Wear your wildest ${decade}s outfit.'
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (string-interpolation-avoid-curly)"?>
 {% prettify dart %}
 'Hi, ${name}!'
@@ -359,14 +359,14 @@ code does not use them.
 否则，使用字面量语法更加优雅。
 核心库中暴露这些构造函数易于扩展，但是通常在 Dart 代码中并不使用构造函数。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (collection-literals)"?>
 {% prettify dart %}
 var points = [];
 var addresses = {};
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (collection-literals)"?>
 {% prettify dart %}
 var points = List();
@@ -377,14 +377,14 @@ You can even provide a type argument for them if that matters.
 
 如果需要的话，你甚至可以为它们提供一个类型参数。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (generic-collection-literals)"?>
 {% prettify dart %}
 var points = <Point>[];
 var addresses = <String, Address>{};
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (generic-collection-literals)"?>
 {% prettify dart %}
 var points = List<Point>();
@@ -419,14 +419,14 @@ Instead, there are faster and more readable getters: `.isEmpty` and
 相反，Dart 提供了更加高效率和易用的 getter 函数：`.isEmpty` 和`.isNotEmpty`。
 使用这些函数并不需要对结果再次取非。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (dont-use-length)"?>
 {% prettify dart %}
 if (lunchBox.isEmpty) return 'so hungry...';
 if (words.isNotEmpty) return words.join(' ');
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (dont-use-length)"?>
 {% prettify dart %}
 if (lunchBox.length == 0) return 'so hungry...';
@@ -450,7 +450,7 @@ is to produce a new sequence and not to produce side effects.
 使用这些函数替代 `for` 循环会让代码更加可以表述你的意图，
 生成一个新的集合系列并不具有副作用。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (use-higher-order-func)"?>
 {% prettify dart %}
 var aquaticNames = animals
@@ -480,7 +480,7 @@ over a sequence, the idiomatic way to do that is using a loop.
 这因为内置的 `for-in` 循环通常不能达到你想要的效果。
 在Dart中，如果要对序列进行迭代，惯用的方式是使用循环。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (avoid-forEach)"?>
 {% prettify dart %}
 for (var person in people) {
@@ -488,7 +488,7 @@ for (var person in people) {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (avoid-forEach)"?>
 {% prettify dart %}
 people.forEach((person) {
@@ -502,7 +502,7 @@ invoke some *already existing* function on each element, `forEach()` is fine.
 例外情况是，如果要执行的操作是调用一些已存在的并且将每个元素作为参数的函数，
 在这种情况下，`forEach()` 是很方便的。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (forEach-over-func)"?>
 {% prettify dart %}
 people.forEach(print);
@@ -535,7 +535,7 @@ object:
 明显的区别是前一个更短。
 更*重要*的区别在于第一个保留了原始对象的类型参数：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/test/effective_dart_test.dart (list-from-good)"?>
 {% prettify dart %}
 // Creates a List<int>:
@@ -545,7 +545,7 @@ var iterable = [1, 2, 3];
 print(iterable.toList().runtimeType);
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/test/effective_dart_test.dart (list-from-bad)"?>
 {% prettify dart %}
 // Creates a List<int>:
@@ -559,7 +559,7 @@ If you *want* to change the type, then calling `List.from()` is useful:
 
 如果你*想要*改变类型，那么可以调用 `List.from()` ：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/test/effective_dart_test.dart (list-from-3)"?>
 {% prettify dart %}
 var numbers = [1, 2.3, 4]; // List<num>.
@@ -587,7 +587,7 @@ just the integers out of it. You could use `where()` like this:
 但是你指向从它里面获取整型类型的数据。
 那么你可以像下面这样使用 `where()` ：
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (where-type)"?>
 {% prettify dart %}
 var objects = [1, "a", 2, "b", 3];
@@ -606,7 +606,7 @@ Sometimes you see code that "corrects" the above error by adding `cast()`:
 
 有时候你会看到通过添加 `cast()` 来“修正”上面的错误：
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (where-type-2)"?>
 {% prettify dart %}
 var objects = [1, "a", 2, "b", 3];
@@ -622,7 +622,7 @@ the [`whereType()`][where-type] method for this exact use case:
 
 [where-type]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/whereType.html
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/test/effective_dart_test.dart (whereType)"?>
 {% prettify dart %}
 var objects = [1, "a", 2, "b", 3];
@@ -660,14 +660,14 @@ If you're already calling `toList()`, replace that with a call to
 
 [list-from]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List/List.from.html
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-list)"?>
 {% prettify dart %}
 var stuff = <dynamic>[1, 2];
 var ints = List<int>.from(stuff);
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-list)"?>
 {% prettify dart %}
 var stuff = <dynamic>[1, 2];
@@ -684,14 +684,14 @@ to be explicit.
 类型推断通常根据传递给 `map()` 的函数选择出正确的类型，
 但有的时候需要明确指明。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-map)" replace="/\(n as int\)/n/g"?>
 {% prettify dart %}
 var stuff = <dynamic>[1, 2];
 var reciprocals = stuff.map<double>((n) => 1 / n);
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-map)" replace="/\(n as int\)/n/g"?>
 {% prettify dart %}
 var stuff = <dynamic>[1, 2];
@@ -746,7 +746,7 @@ Here is an example of **creating it with the right type:**
 
 下面是 **用恰当的类型创建集合** 的示例：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-at-create)"?>
 {% prettify dart %}
 List<int> singletonList(int value) {
@@ -756,7 +756,7 @@ List<int> singletonList(int value) {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-at-create)"?>
 {% prettify dart %}
 List<int> singletonList(int value) {
@@ -770,7 +770,7 @@ Here is **casting each element on access:**
 
 下面是 **在访问元素时进行 cast 操作** 的示例：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-iterate)" replace="/\(n as int\)/[!$&!]/g"?>
 {% prettify dart %}
 void printEvens(List<Object> objects) {
@@ -781,7 +781,7 @@ void printEvens(List<Object> objects) {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-iterate)"?>
 {% prettify dart %}
 void printEvens(List<Object> objects) {
@@ -796,7 +796,7 @@ Here is **casting eagerly using `List.from()`:**
 
 下面是 **使用 `List.from()` 进行 cast 操作** 的示例：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (cast-from)"?>
 {% prettify dart %}
 int median(List<Object> objects) {
@@ -807,7 +807,7 @@ int median(List<Object> objects) {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cast-from)"?>
 {% prettify dart %}
 int median(List<Object> objects) {
@@ -858,7 +858,7 @@ instead of binding a lambda to a variable.
 但是，如果你确实需要给方法一个名字，请使用方法定义而不是把
 lambda 赋值给一个变量。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (func-decl)"?>
 {% prettify dart %}
 void main() {
@@ -868,7 +868,7 @@ void main() {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (func-decl)"?>
 {% prettify dart %}
 void main() {
@@ -898,13 +898,13 @@ passed to it, you don't need to manually wrap the call in a lambda.
 如果你有一个方法，这个方法调用了参数相同的另一个方法。
 那么，你不需要人为将这个方法包装到一个 lambda 表达式中。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (use-tear-off)"?>
 {% prettify dart %}
 names.forEach(print);
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (use-tear-off)"?>
 {% prettify dart %}
 names.forEach((name) {
@@ -930,13 +930,13 @@ for named parameters. For consistency with optional positional parameters, use
 由于遗留原因，Dart 同时支持 `:` 和 `=` 作为参数名和默认值的分隔符。
 为了与可选的位置参数保持一致，请使用 `=` 。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (default-separator)"?>
 {% prettify dart %}
 void insert(Object item, {int at = 0}) { ... }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (default-separator)"?>
 {% prettify dart %}
 void insert(Object item, {int at: 0}) { ... }
@@ -955,7 +955,7 @@ implicitly uses `null` as the default, so there's no need to write it.
 如果你创建了一个可选参数，那么就不要为其赋默认值，
 Dart 默认使用 `null` 作为默认值，所以这里不需要为其 `null` 赋值语句。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (default-value-null)"?>
 {% prettify dart %}
 void error([String message]) {
@@ -963,7 +963,7 @@ void error([String message]) {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (default-value-null)"?>
 {% prettify dart %}
 void error([String message = null]) {
@@ -992,7 +992,7 @@ unneeded.
 语言保证了赋值的可靠性。在 Dart 中没有“未初始化内存”的概念。
 所以使用 `= null` 是多余的。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (no-null-init)"?>
 {% prettify dart %}
 int _nextId;
@@ -1009,7 +1009,7 @@ class LazyId {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-null-init)"?>
 {% prettify dart %}
 int _nextId = null;
@@ -1038,7 +1038,7 @@ constructor and then stores them:
 在设计类的时候，你常常希望暴露底层状态的多个表现属性。
 常常你会发现在类的构造函数中计算这些属性，然后保存起来：
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cacl-vs-store1)"?>
 {% prettify dart %}
 class Circle {
@@ -1080,7 +1080,7 @@ To correctly handle cache invalidation, we need to do this:
 
 为了正确处理缓存失效，我们需要这样做：
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (cacl-vs-store2)"?>
 {% prettify dart %}
 class Circle {
@@ -1114,7 +1114,7 @@ first implementation should be:
 这需要编写、维护、调试以及阅读更多的代码。
 如果你一开始这样写代码：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (cacl-vs-store)"?>
 {% prettify dart %}
 class Circle {
@@ -1180,7 +1180,7 @@ Dart 不存在这个限制。字段和 getter/setter 是完全无法区分的。
 你可以在类中公开一个字段，然后将其包装在 getter 和 setter 中，
 而不会影响任何使用该字段的代码。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (dont-wrap-field)"?>
 {% prettify dart %}
 class Box {
@@ -1188,7 +1188,7 @@ class Box {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (dont-wrap-field)"?>
 {% prettify dart %}
 class Box {
@@ -1213,7 +1213,7 @@ simple solution that works in many cases is to simply mark it `final`.
 如果你有一个变量，对于外部代买来说只能读取不能修改，
 最简单的做法就是使用 `final` 关键字来标记这个变量。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (final)"?>
 {% prettify dart %}
 class Box {
@@ -1221,7 +1221,7 @@ class Box {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (final)"?>
 {% prettify dart %}
 class Box {
@@ -1253,7 +1253,7 @@ and return a value.
 Dart 还允许使用它来定义成员。
 这种风格非常适合，仅进行计算并返回结果的简单成员。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (use-arrow)"?>
 {% prettify dart %}
 double get area => (right - left) * (bottom - top);
@@ -1275,7 +1275,7 @@ your code a favor and use a block body and some statements.
 你以及其他人有谁会愿意读这样的代码！
 你应该换做使用代码块和一些语句来实现。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (arrow-long)"?>
 {% prettify dart %}
 Treasure openChest(Chest chest, Point where) {
@@ -1288,7 +1288,7 @@ Treasure openChest(Chest chest, Point where) {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (arrow-long)"?>
 {% prettify dart %}
 Treasure openChest(Chest chest, Point where) =>
@@ -1302,7 +1302,7 @@ when a setter is small and has a corresponding getter that uses `=>`.
 您还可以对不返回值的成员使用 `=>` 。 
 这里有个惯例，就是当 setter 和 getter 都比较简单的时候使用 `=>` 。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (arrow-setter)"?>
 {% prettify dart %}
 num get x => center.x;
@@ -1329,7 +1329,7 @@ with the same name shadows the member you want to access:
 只有当局部变量和成员变量名字一样的时候，你才需要使用 `this.` 来访问成员变量。
 只有两种情况需要使用 `this.` 。其中一种情况是要访问的局部变量和成员变量命名一样的时候：
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (this-dot)"?>
 {% prettify dart %}
 class Box {
@@ -1345,7 +1345,7 @@ class Box {
 }
 {% endprettify %}
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (this-dot)"?>
 {% prettify dart %}
 class Box {
@@ -1365,7 +1365,7 @@ The other time to use `this.` is when redirecting to a named constructor:
 
 另一种使用 `this.` 的情况是在重定向到一个命名函数的时候：
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (this-dot-constructor)"?>
 {% prettify dart %}
 class ShadeOfGray {
@@ -1380,7 +1380,7 @@ class ShadeOfGray {
 }
 {% endprettify %}
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (this-dot-constructor)"?>
 {% prettify dart %}
 class ShadeOfGray {
@@ -1400,7 +1400,7 @@ initialization lists:
 
 注意，构造函数初始化列表中的字段有永远不会与构造函数参数列表参数产生冲突。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (param-dont-shadow-field-ctr-init)"?>
 {% prettify dart %}
 class Box extends BaseBox {
@@ -1431,7 +1431,7 @@ forget to initialize it if the class has multiple constructors.
 则应该在定义的时候就初始化字段值。
 这样可以减少需要的代码并可以确保在有多个构造函数的时候你不会忘记初始化该字段。
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (field-init-at-decl)"?>
 {% prettify dart %}
 class Folder {
@@ -1443,7 +1443,7 @@ class Folder {
 }
 {% endprettify %}
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (field-init-at-decl)"?>
 {% prettify dart %}
 class Folder {
@@ -1480,7 +1480,7 @@ Many fields are initialized directly from a constructor parameter, like:
 
 许多字段直接使用构造函数参数来初始化，如：
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (field-init-as-param)"?>
 {% prettify dart %}
 class Point {
@@ -1496,7 +1496,7 @@ We've got to type `x` _four_ times here to define a field. We can do better:
 
 为了初始化一个字段，我们需要取_四_次 `x` 。使用下面的方式会更好：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (field-init-as-param)"?>
 {% prettify dart %}
 class Point {
@@ -1526,7 +1526,7 @@ of the parameter is understood to be the same type as the field.
 如果构造函数参数使用 `this.` 的方式来初始化字段，
 这时参数的类型被认为和字段类型相同。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (dont-type-init-formals)"?>
 {% prettify dart %}
 class Point {
@@ -1535,7 +1535,7 @@ class Point {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (dont-type-init-formals)"?>
 {% prettify dart %}
 class Point {
@@ -1557,7 +1557,7 @@ semicolon. (In fact, it's required for const constructors.)
 在 Dart 中，没有具体函数体的构造函数可以使用分号结尾。
 （事实上，这是不可变构造函数的要求。）
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (semicolon-for-empty-body)"?>
 {% prettify dart %}
 class Point {
@@ -1566,7 +1566,7 @@ class Point {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (semicolon-for-empty-body)"?>
 {% prettify dart %}
 class Point {
@@ -1595,7 +1595,7 @@ consider it deprecated and remove it from your code.
 为了减少代码迁移时的痛苦， Dart 语言仍允许使用 `new` 关键字，
 但请考在你的代码中弃用和删除 `new`。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (no-new)"?>
 {% prettify dart %}
 Widget build(BuildContext context) {
@@ -1610,7 +1610,7 @@ Widget build(BuildContext context) {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-new)" replace="/new/[!$&!]/g"?>
 {% prettify dart %}
 Widget build(BuildContext context) {
@@ -1672,7 +1672,7 @@ Basically, any place where it would be an error to write `new` instead of
 基本上，任何地方用 `new` 替代 `const` 的写法都是错的，
 因为 Dart 2 中允许省略 `const` 。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (no-const)"?>
 {% prettify dart %}
 const primaryColors = [
@@ -1682,7 +1682,7 @@ const primaryColors = [
 ];
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (no-const)" replace="/ (const)/ [!$1!]/g"?>
 {% prettify dart %}
 const primaryColors = [!const!] [
@@ -1811,7 +1811,7 @@ other hand resets the stack trace to the last thrown position.
 `rethrow` 保留了原来的异常堆栈信息。 
 而 `throw` 会把异常堆栈信息重置为最后抛出的位置。
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (rethrow)"?>
 {% prettify dart %}
 try {
@@ -1822,7 +1822,7 @@ try {
 }
 {% endprettify %}
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (rethrow)" replace="/rethrow/[!$&!]/g"?>
 {% prettify dart %}
 try {
@@ -1857,7 +1857,7 @@ lets you use all of the Dart control flow structures within your async code.
 这就是为何 Dart 提供了 `async`/`await`。
 这样可以显著的提高代码的可读性并且让你可以在异步代码中使用语言提供的所有流程控制语句。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (async-await)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart %}
 Future<int> countActivePlayers(String teamName) [!async!] {
@@ -1874,7 +1874,7 @@ Future<int> countActivePlayers(String teamName) [!async!] {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (async-await)"?>
 {% prettify dart %}
 Future<int> countActivePlayers(String teamName) {
@@ -1902,7 +1902,7 @@ omit the `async` without changing the behavior of the function, do so.
 当成为习惯之后，你可能会在所有和异步相关的函数使用 `async`。但是在有些情况下，
 如果可以忽略 `async`  而不改变方法的行为，则应该这么做：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (unnecessary-async)"?>
 {% prettify dart %}
 Future afterTwoThings(Future first, Future second) {
@@ -1910,7 +1910,7 @@ Future afterTwoThings(Future first, Future second) {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (unnecessary-async)"?>
 {% prettify dart %}
 Future afterTwoThings(Future first, Future second) async {
@@ -1936,7 +1936,7 @@ Cases where `async` *is* useful include:
 
   你在返回一个值，但是你希望他显式的使用 Future。`async` 比 `Future.value(...)` 要简短很多。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (async)"?>
 {% prettify dart %}
 Future usesAwait(Future later) async {
@@ -1970,7 +1970,7 @@ eventually find the Completer class and use that.
 而 Future 的构造函数看起来并不满足他们的要求，
 然后他们就发现 Completer 类并使用它：
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (avoid-completer)"?>
 {% prettify dart %}
 Future<bool> fileContainsBear(String path) {
@@ -1996,7 +1996,7 @@ Completer 是用于两种底层代码的：
 
 [then]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future/then.html
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (avoid-completer)"?>
 {% prettify dart %}
 Future<bool> fileContainsBear(String path) {
@@ -2006,7 +2006,7 @@ Future<bool> fileContainsBear(String path) {
 }
 {% endprettify %}
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (avoid-completer-alt)"?>
 {% prettify dart %}
 Future<bool> fileContainsBear(String path) async {
@@ -2044,7 +2044,7 @@ object is a future. Instead, explicitly test for the `Future` case:
 在这种情况下，即使是 future 对象也会返回 true 。
 相反，下面是确切测试 `Future` 的例子：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (test-future-or)"?>
 {% prettify dart %}
 Future<T> logValue<T>(FutureOr<T> value) async {
@@ -2059,7 +2059,7 @@ Future<T> logValue<T>(FutureOr<T> value) async {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (test-future-or)"?>
 {% prettify dart %}
 Future<T> logValue<T>(FutureOr<T> value) async {

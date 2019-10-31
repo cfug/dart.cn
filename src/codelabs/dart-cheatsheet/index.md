@@ -21,14 +21,14 @@ toc: false
 The Dart language is designed to be easy to learn for
 coders coming from other languages,
 but it has a few unique features.
-This codelab — which is based on a 
-[Dart language cheatsheet]({{site.dart-site}}/guides/language/cheatsheet)
+This codelab — which is based on a
+[Dart language cheatsheet](/guides/language/cheatsheet)
 written by and for Google engineers —
 walks you through the most important of these language features.
 
 Dart 语言旨在让从其他编程语言转来的开发者们能够轻松学习，但也有它的独特之处。
 本篇将基于谷歌工程师编写的
-[Dart 语言速查表]({{site.dart-site}}/guides/language/cheatsheet)
+[Dart 语言速查表](/guides/language/cheatsheet)
 为你介绍一些最重要的语言特性。
 
 The embedded editors in this codelab have partially completed code snippets.
@@ -46,7 +46,7 @@ restores the editor to its original state.
 点击 **Format (格式化)** 按钮，**Reset (重置)** 按钮将会清除你的操作，
 并把编辑器恢复到初始状态。
 
-{{ site.alert.note }}
+{{site.alert.note}}
 
   This page uses embedded DartPads to display runnable examples.
   
@@ -54,7 +54,7 @@ restores the editor to its original state.
 
   {% include dartpads-embedded-troubleshooting.md %}
   
-{{ site.alert.end }}
+{{site.alert.end}}
 
 ## String interpolation
 

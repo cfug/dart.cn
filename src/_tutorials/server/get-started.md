@@ -43,11 +43,11 @@ the example at dartpad.dev.</a>
 你也可以 <a href="{{site.dartpad}}/27e044ec9e2957d9c5c7062871ce8bf3" target="_blank">在 dartpad.dev 中打开示例</a> 
 以获取更完整的 DartPad 体验。
 
-{{ site.alert.note }}
+{{site.alert.note}}
 
   {% include dartpad-embedded-troubleshooting.md %}
   
-{{ site.alert.end }}
+{{site.alert.end}}
 
 <iframe
     src="{{site.dartpad-embed-inline}}?id=27e044ec9e2957d9c5c7062871ce8bf3"

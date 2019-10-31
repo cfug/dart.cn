@@ -10,12 +10,11 @@ It also allows you to share your packages with the world. If you have a useful
 project and you want others to be able to use it, use the `pub publish`
 command.
 
-<aside class="alert alert-info" markdown="1">
-**Note:**
-To publish to a location other than pub.dev,
-or to prevent publication anywhere, use the `publish_to` field,
-as defined in the [pubspec](/tools/pub/pubspec).
-</aside>
+{{site.alert.note}}
+  To publish to a location other than pub.dev,
+  or to prevent publication anywhere, use the `publish_to` field,
+  as defined in the [pubspec](/tools/pub/pubspec).
+{{site.alert.end}}
 
 ## Preparing to publish
 
@@ -50,10 +49,10 @@ are a few additional requirements for uploading a package:
 
 [Google Account]: https://support.google.com/accounts/answer/27441
 
-{{ site.alert.note }}
-Unless you publish using a [verified publisher](#verified-publisher),
-**pub.dev displays the email address associated with your Google Account.**
-{{ site.alert.end }}
+{{site.alert.note}}
+  Unless you publish using a [verified publisher](#verified-publisher),
+  **pub.dev displays the email address associated with your Google Account.**
+{{site.alert.end}}
 
 ### Important files
 
@@ -80,7 +79,7 @@ Using a verified publisher has the following advantages:
 
 * The consumers of your package know that the publisher domain has been verified.
 * You can avoid having pub.dev display your personal email address.
-  Instead, pub.dev displays displays the publisher domain and contact address. 
+  Instead, pub.dev displays displays the publisher domain and contact address.
 * A verified publisher badge {% asset verified-publisher.svg
   alt="pub.dev verified publisher logo" %} is displayed next to your package name
   on both search pages and individual package pages.
@@ -104,13 +103,13 @@ To create a verified publisher, follow these steps:
 1. If prompted, complete the verification flow, which opens the [Google
    Search Console.](https://search.google.com/search-console/about)
    * When adding DNS records, it may take a few hours before the Search Console
-   reflects the changes. 
+   reflects the changes.
    * When the verification flow is complete, return to step 4.
 
 
 ## Publishing your package
 
-Use the [`pub publish`][] command to publish your package for the first time,
+Use the [pub publish][] command to publish your package for the first time,
 or to update it to a new version.
 
 
@@ -118,18 +117,19 @@ or to update it to a new version.
 
 To test how `pub publish` will work, you can perform a dry run:
 
-{% prettify none %}
+```terminal
 $ pub publish --dry-run
-{% endprettify %}
+```
 
 Pub makes sure that your package follows the
 [pubspec format](/tools/pub/pubspec) and
 [package layout conventions](/tools/pub/package-layout),
-and then uploads your package to pub.dev]. Pub also shows you all of
+and then uploads your package to [pub.dev.]({{site.pub}}) Pub also shows you all of
 the files it intends to publish. Here's an example of publishing a package
 named `transmogrify`:
 
-{% prettify none %}
+{:.console-output}
+```nocode
 Publishing transmogrify 1.0.0
     .gitignore
     CHANGELOG.md
@@ -144,45 +144,45 @@ Publishing transmogrify 1.0.0
         transmogrify_test.dart
 
 Package has 0 warnings.
-{% endprettify %}
+```
 
 ### Publishing
 
 When you're ready to publish your package, remove the `--dry-run` argument:
 
-{% prettify none %}
+```terminal
 $ pub publish
-{% endprettify %}
+```
 
-{{ site.alert.note }}
+{{site.alert.note}}
   The `pub` command currently doesn't support publishing a new package directly to a
   verified publisher. As a temporary workaround, publish new packages to a Google Account,
   and then [transfer the package to a publisher](#transferring-a-package-to-a-verified-publisher).
 
   Once a package has been transferred to a publisher,
   you can update the package using `pub publish`.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 After your package has been successfully uploaded to pub.dev, any pub user can
 download it or depend on it in their projects. For example, if you just
 published version 1.0.0 of your `transmogrify` package, then another Dart
 developer can add it as a dependency in their `pubspec.yaml`:
 
-{% prettify yaml %}
+```yaml
 dependencies:
   transmogrify: ^1.0.0
-{% endprettify %}
+```
 
 ### Transferring a package to a verified publisher
 
 To transfer a package to a verified publisher,
-you must be an [uploader](#uploader) for the package
-and an admin for the verified publisher. 
+you must be an [uploader](#uploaders) for the package
+and an admin for the verified publisher.
 
-{{ site.alert.note }}
+{{site.alert.note}}
   This process isn't reversible. Once you transfer a package to a publisher,
   you can't transfer it back to an individual account.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 Here's how to transfer a package to a verified publisher:
 
@@ -191,7 +191,7 @@ Here's how to transfer a package to a verified publisher:
 1. Go to the package details page (for example,
    `{{site.pub-pkg}}/http`).
 1. Select the **Admin** tab.
-1. Enter the name of the publisher, and click **Transfer to Publisher**. 
+1. Enter the name of the publisher, and click **Transfer to Publisher**.
 
 
 ## What files are published?
@@ -214,20 +214,20 @@ Be sure to delete any files you don't want to include (or add them to
 before uploading your package,
 so examine the list carefully before completing your upload.
 
-## Uploaders {#uploaders}
+## Uploaders
 
 The package authors as listed in the `pubspec.yaml` file
 are different from the list of people authorized to publish that package.
 Whoever publishes the first version of some package automatically becomes
 the first and only person authorized to upload additional versions of the package.
 To allow or disallow other people to upload versions,
-use the [`pub uploader`][] command.
+use the [pub uploader][] command.
 
-{{ site.alert.note }}
+{{site.alert.note}}
   For packages published using a verified publisher,
   the package details page displays the verified publisher domain,
   rather than the author field.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 ## Publishing prereleases
 
@@ -248,16 +248,15 @@ might need to change their dependency constraints.
 For example, if a user wants to test prereleases of version 2.1, then
 instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
 
-<aside class="alert alert-info" markdown="1">
-  **Note:**
+{{site.alert.note}}
   If a stable package in the dependency graph depends on a prerelease,
   then pub chooses that prerelease instead of a stable release.
-</aside>
+{{site.alert.end}}
 
 When a prerelease is published to pub.dev,
 the package page displays links to both the prerelease and the stable release.
 The prerelease doesn't affect the analysis score, show up in search results,
-or replace the package README and documentation. 
+or replace the package README and documentation.
 
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
 
@@ -288,8 +287,8 @@ discontinued.
 
 For more information, see the reference pages for the `pub` commands:
 
-* [`pub publish`][]
-* [`pub uploader`][]
+* [pub publish][]
+* [pub uploader][]
 
-[`pub publish`]: /tools/pub/cmd/pub-lish
-[`pub uploader`]: /tools/pub/cmd/pub-uploader
+[pub publish]: /tools/pub/cmd/pub-lish
+[pub uploader]: /tools/pub/cmd/pub-uploader
