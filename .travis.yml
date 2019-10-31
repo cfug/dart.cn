@@ -16,7 +16,7 @@ env:
     - TZ=US/Pacific # normalize build timestamp
   matrix:
     - TASK="./tool/translator/build.sh --check-links"
-    - TASK="./tool/check-code.sh"
+#   - TASK="./tool/check-code.sh"
     - TASK="./tool/analyze-and-test-examples.sh"
 
 before_install:
