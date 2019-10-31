@@ -65,7 +65,7 @@ Classes（类名）、 enums（枚举类型）、 typedefs（类型定义）、
 以及 type parameters（类型参数）应该把每个单词的首字母都大写（包含第一个单词）， 
 不使用分隔符。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (type-names)"?>
 {% prettify dart %}
 class SliderMenu { ... }
@@ -79,7 +79,7 @@ This even includes classes intended to be used in metadata annotations.
 
 这里包括使用元数据注解的类。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (annotation-type-names)"?>
 {% prettify dart %}
 class Foo {
@@ -99,7 +99,7 @@ create a separate `lowerCamelCase` constant for it.
 如果注解类的构造函数是无参函数，
 则可以使用一个 `lowerCamelCase` 风格的常量来初始化这个注解。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (annotation-const)"?>
 {% prettify dart %}
 const foo = Foo();
@@ -130,7 +130,7 @@ symbolic imports.
 使用分隔符这种形式可以保证命名的可读性。使用下划线作为分隔符可确保名称仍然是有效的Dart标识符，
 如果语言后续支持符号导入，这将会起到非常大的帮助。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart" replace="/foo\///g"?>
 {% prettify dart %}
 library peg_parser.source_scanner;
@@ -139,7 +139,7 @@ import 'file_system.dart';
 import 'slider_menu.dart';
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart" replace="/foo\///g;/file./file-/g;/slider_menu/SliderMenu/g;/source_scanner/SourceScanner/g;/peg_parser/pegparser/g"?>
 {% prettify dart %}
 library pegparser.SourceScanner;
@@ -163,7 +163,7 @@ import 'SliderMenu.dart';
 
 {% include linter-rule.html rule="library_prefixes" %}
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (import-as)" replace="/(package):examples[^']*/$1:angular_components\/angular_components/g"?>
 {% prettify dart %}
 import 'dart:math' as math;
@@ -172,7 +172,7 @@ import 'package:angular_components/angular_components'
 import 'package:js/js.dart' as js;
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (import-as)" replace="/(package):examples[^']*/$1:angular_components\/angular_components/g;/as angular_components/as angularComponents/g;/ math/ Math/g;/as js/as JS/g"?>
 {% prettify dart %}
 import 'dart:math' as Math;
@@ -195,7 +195,7 @@ word, and use no separators.
 类成员、顶级定义、变量、参数以及命名参数等
 *除了*第一个单词，每个单词首字母都应大写，并且不使用分隔符。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (misc-names)"?>
 {% prettify dart %}
 var item;
@@ -218,7 +218,7 @@ In new code, use `lowerCamelCase` for constant variables, including enum values.
 
 在新的代码中，使用 `lowerCamelCase` 来命名常量，包括枚举的值。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (const-names)"?>
 {% prettify dart %}
 const pi = 3.14;
@@ -230,7 +230,7 @@ class Dice {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/style_bad.dart (const-names)"?>
 {% prettify dart %}
 const PI = 3.14;
@@ -306,7 +306,7 @@ ID and Mr. are still capitalized like words.)
 两个字母的单词除外。
 （像 ID 和 Mr. 这样的双字母*缩写词*仍然像一般单词一样首字母大写。）
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (acronyms and abbreviations)" replace="/,//g"?>
 {% prettify dart %}
 HttpConnectionInfo
@@ -317,7 +317,7 @@ Id
 DB
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 {% prettify dart %}
 HTTPConnection
 UiHandler
@@ -361,12 +361,12 @@ encode those properties in identifier names.
 但是因为 Dart 可以提示你声明的类型，范围，可变性和其他属性，
 所以没有理由在标识符名称中对这些属性进行编码。
 
-{:.good-style}
+{:.good}
 {% prettify dart %}
 defaultTimeout
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 {% prettify dart %}
 kDefaultTimeout
 {% endprettify %}
@@ -392,7 +392,7 @@ A single linter rule handles all the ordering guidelines:
 
 {% include linter-rule.html rule="directives_ordering" %}
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (dart-import-first)" replace="/\w+\/effective_dart\///g"?>
 {% prettify dart %}
 import 'dart:async';
@@ -409,7 +409,7 @@ import 'package:foo/foo.dart';
 
 {% include linter-rule.html rule="directives_ordering" %}
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (pkg-import-before-local)" replace="/\w+\/effective_dart\///g;/'foo/'util/g"?>
 {% prettify dart %}
 import 'package:bar/bar.dart';
@@ -431,7 +431,7 @@ external packages, place yours in a separate section after the external ones.
 如果你使用了多个 "package:" 导入语句来导入自己的包以及其他外部扩展包，
 推荐将自己的包分开放到一个额外的部分。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (third-party)" replace="/\w+\/effective_dart\///g;/(package):foo(.dart)/$1:my_package\/util$2/g"?>
 {% prettify dart %}
 import 'package:bar/bar.dart';
@@ -447,7 +447,7 @@ import 'package:my_package/util.dart';
 
 {% include linter-rule.html rule="directives_ordering" %}
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (export)"?>
 {% prettify dart %}
 import 'src/error.dart';
@@ -456,7 +456,7 @@ import 'src/foo_bar.dart';
 export 'src/error.dart';
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/style_lib_bad.dart (export)"?>
 {% prettify dart %}
 import 'src/error.dart';
@@ -471,7 +471,7 @@ import 'src/foo_bar.dart';
 
 {% include linter-rule.html rule="directives_ordering" %}
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (sorted)" replace="/\w+\/effective_dart\///g"?>
 {% prettify dart %}
 import 'package:bar/bar.dart';
@@ -481,7 +481,7 @@ import 'foo.dart';
 import 'foo/foo.dart';
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/style_lib_bad.dart (sorted)" replace="/\w+\/effective_dart\///g"?>
 {% prettify dart %}
 import 'package:foo/foo.dart';
@@ -615,7 +615,7 @@ Doing so avoids the [dangling else][] problem.
 
 [dangling else]: http://en.wikipedia.org/wiki/Dangling_else
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (curly-braces)"?>
 {% prettify dart %}
 if (isWeekDay) {
@@ -632,7 +632,7 @@ whole `if` statement fits on one line, you can omit the braces if you prefer:
 并且这个 `if` 语句以及它的执行体适合在一行中实现。
 在这种情况下，如果您愿意，可以不用括号：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (one-line-if)"?>
 {% prettify dart %}
 if (arg == null) return defaultValue;
@@ -642,7 +642,7 @@ If the body wraps to the next line, though, use braces:
 
 但是，如果执行体包含下一行，请使用大括号：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (one-line-if-wrap)"?>
 {% prettify dart %}
 if (overflowChars != other.overflowChars) {
@@ -650,7 +650,7 @@ if (overflowChars != other.overflowChars) {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/style_bad.dart (one-line-if-wrap)"?>
 {% prettify dart %}
 if (overflowChars != other.overflowChars)

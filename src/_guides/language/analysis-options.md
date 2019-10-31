@@ -37,7 +37,7 @@ void increment() {
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "analysis/analyzer-results.txt" retain="empty_statements" replace="/( at )(lib|test)\/\w+\.dart:\d+:\d+/$1example.dart:11/g"?>
+<?code-excerpt "analysis/analyzer-results-stable.txt" retain="empty_statements" replace="/( at )(lib|test)\/\w+\.dart:\d+:\d+/$1example.dart:11/g"?>
 ```nocode
 lint • Avoid empty statements at example.dart:11 • empty_statements
 ```
@@ -53,7 +53,7 @@ var [!_controller = StreamController<String>()!];
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "analysis/analyzer-results.txt" retain="close_sinks" replace="/( at )(lib|test)\/\w+\.dart:\d+:\d+/$1example.dart:11/g"?>
+<?code-excerpt "analysis/analyzer-results-stable.txt" retain="close_sinks" replace="/( at )(lib|test)\/\w+\.dart:\d+:\d+/$1example.dart:11/g"?>
 ```nocode
 lint • Close instances of `dart.core.Sink` at example.dart:11 • close_sinks
 ```
@@ -185,7 +185,7 @@ String s2 = s.substring(1);
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "analysis/analyzer-results.txt" retain="lib/assignment.dart" replace="/ at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
+<?code-excerpt "analysis/analyzer-results-stable.txt" retain="lib/assignment.dart" replace="/ at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 ```nocode
 error • A value of type 'Object' can't be assigned to a variable of type 'String' • invalid_assignment
 ```

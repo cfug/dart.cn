@@ -1,24 +1,83 @@
 #!/usr/bin/env bash
 
-set -x
-set -e
+set -e -o pipefail
 
-bundle exec jekyll build
+source ./tool/shared/env-set-check.sh
 
-cp -r tool/translator/assets/*  _site/assets/
+while [[ "$1" == -* ]]; do
+  case "$1" in
+    --check-links) CHECK_LINKS=1; shift;
+                   # Use remaining arguments for call to check-links
+                   break;;
+    -h|--help)     echo "Usage: $(basename $0) [--help] [--check-links ...check-link-options]";
+                   exit 0;;
+    *)             echo "ERROR: Unrecognized option: $1. Use --help for details.";
+                   exit 1;;
+  esac
+done
 
-cp tool/translator/robots.txt _site
+travis_fold start build_site
+  (
+    set -x;
+    bundle exec jekyll build;
+  )
+travis_fold end build_site
 
-cd tool/translator
+[[ -z $CHECK_LINKS ]] && exit
 
-npm i
+travis_fold start check_links
+  (
+    set -x;
+    ./tool/shared/check-links.sh $*;
+  )
+travis_fold end check_links
 
-npx gulp mark-side-toc
+travis_fold start english_chinese_toggle
+  (
+  
+    set -x
+    
+    set -e
 
-npx nt inject '../../_site/**/*.html' -c /assets/translator/css/translator.css -s /assets/translator/js/translator.js -m ./url-map.json -t ./text-map.json
+    cp -r tool/translator/assets/*  _site/assets/
+    
+    cp tool/translator/robots.txt _site
+    
+    cd tool/translator
+    
+    npm i
+    
+    npx gulp mark-side-toc
+    
+    npx nt inject '../../_site/**/*.html' -c /assets/translator/css/translator.css -s /assets/translator/js/translator.js -m ./url-map.json -t ./text-map.json
+    
+    npx nt mark '../../_site/**/*.html'
+    
+    npx gulp remove-space
+    
+    cd -
+  )
+travis_fold end english_chinese_toggle
 
-npx nt mark '../../_site/**/*.html'
+# set -x
+# set -e
 
-npx gulp remove-space
+# bundle exec jekyll build
 
-cd -
+# cp -r tool/translator/assets/*  _site/assets/
+
+# cp tool/translator/robots.txt _site
+
+# cd tool/translator
+
+# npm i
+
+# npx gulp mark-side-toc
+
+# npx nt inject '../../_site/**/*.html' -c /assets/translator/css/translator.css -s /assets/translator/js/translator.js -m ./url-map.json -t ./text-map.json
+
+# npx nt mark '../../_site/**/*.html'
+
+# npx gulp remove-space
+
+# cd -

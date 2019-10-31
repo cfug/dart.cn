@@ -9,7 +9,7 @@ prevpage:
   title: "编写命令行应用"
 ---
 {% capture gh-path -%}
-  https://github.com/dart-lang/dart-tutorials-samples/blob/master/httpserver
+  https://github.com/dart-lang/site-www/blob/master/examples/httpserver
 {%- endcapture -%}
 
 
@@ -244,6 +244,9 @@ that you can use to guess the number.
 2. **Launch the web server**
 
    Run `webdev serve` from the top directory of the app.
+
+   _More information:_
+   [webdev documentation](/tools/webdev)
 
 3. **Open the HTML page**
 
