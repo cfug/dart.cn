@@ -77,14 +77,3 @@ You'll need this URL in the next step.
 
 ![DevTools connection dialog]({% asset tools/devtools-connect.png @path %})
 
-<<<<<<< HEAD
-Dart DevTool 是专门为 Dart 和 Flutter 提供的一套性能工具。除了 Flutter 特定的功能外，DevTools 还支持 Dart 应用源码级别的调试，以及查看正在运行应用的常规日志和诊断信息。DevTool 可以配合你现有的开发工作流，不管你使用的是 IDE 还是命令行。
-
-For more information, see the [Dart DevTools documentation.][]
-
-查阅 [Dart DevTool 文档][Dart DevTools documentation.] 你可以获得更多的相关信息。
-
-[Dart DevTools documentation.]: https://flutter.github.io/devtools/
-=======
-
->>>>>>> a4b74d94bf0e94fafbaeb4af8e55f69ff4abf39b
