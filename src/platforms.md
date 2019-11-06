@@ -99,9 +99,9 @@ collector.](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collecto
 
 AOT 编译的代码在一个高效的 Dart 运行时内运行，该运行时会强制执行健全的 Dart 类型系统并使用快速对象分配和 [分代垃圾收集器管理](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30)内存。
 
-More information: [`dart2aot` tool](/tools/dart2aot)
+More information: [`dart2native` tool](/tools/dart2native)
 
-更多内容请查阅：[`dart2aot` 工具](/tools/dart2aot)
+更多内容请查阅：[`dart2native` 工具](/tools/dart2native)
 
 ## Dart Web (JavaScript)
 
