@@ -171,6 +171,9 @@ $ dart bin/main.dart
 Hello world: 42!
 ```
 
+If you wish run the app with debugging support, see
+[DevTools](/tools/dart-devtools).
+
 ## 7. Modify the app
 
 ## 7. 修改应用
@@ -216,8 +219,8 @@ More information:
 
 The steps above used the Dart VM (`dart`) to run the app. The Dart VM is
 optimized for fast, incremental compilation to provide instant feedback
-during development. Now that your small app is done, it's time to AOT compile your
-Dart code to optimized native machine code.
+during development. Now that your small app is done,
+it's time to AOT compile your Dart code to optimized native machine code.
 
 上面的示例步骤我们使用的是 Dart VM（即 `dart` 命令）运行的应用。Dart VM 针对快速增量编译进行了优化，以便在开发过程中提供即时的响应。现在你的小应用已经完成，是时候 AOT 优化编译你的 Dart 代码为原生机器代码了。
 
@@ -229,20 +232,19 @@ Use the `dart2aot` tool to AOT compile the program to machine code:
 $ dart2aot bin/main.dart bin/main.dart.aot
 ```
 
-To run the compiled program, use the Dart runtime (`dartaotruntime`):
+Use the `dart2native` tool to AOT compile the program to machine code:
 
 为了运行编译后的程序，使用 Dart 运行时（即 `dartaotruntime` 命令）：
 
 ```terminal
-$ dartaotruntime bin/main.dart.aot
+$ dart2native bin/main.dart -o bin/my_app
 ```
-
 Notice how the compiled program starts instantly, completing quickly:
 
 注意测量编译后的程序启动有多快：
 
 ```terminal
-$ time dartaotruntime bin/main.dart.aot
+$ time bin/my_app
 Hello world: 21!
 
 real	0m0.016s

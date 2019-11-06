@@ -171,13 +171,15 @@
           permalink: /tools/sdk
         - title: dart 命令
           permalink: /tools/dart-vm
-        - title: dart2aot 命令
-          permalink: /tools/dart2aot
-        - title: dart2js 命令
+        - title: dart2js (prod JS)
           permalink: /tools/dart2js
+        - title: dart2native 命令
+          permalink: /tools/dart2native
         - title: dartanalyzer 命令
           permalink: /tools/dartanalyzer
-        - title: dartdevc 命令
+        - title: dartaotruntime 命令
+          permalink: /tools/dartaotruntime
+        - title: dartdevc (dev JS)
           permalink: /tools/dartdevc
         - title: dartdoc 命令
           permalink: /tools/dartdoc
