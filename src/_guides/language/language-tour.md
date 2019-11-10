@@ -26,7 +26,7 @@ consult the [Dart language specification][].
 若还想了解更多有关语言功能的详细内容，
 请参阅 [Dart 编程语言规范][Dart language specification]。
 
-{{ site.alert.note }}
+{{site.alert.note}}
 
   You can play with most of Dart's language features using DartPad
   ([learn more](/tools/dartpad)).
@@ -41,7 +41,7 @@ consult the [Dart language specification][].
   
   {% include dartpads-embedded-troubleshooting.md %}
 
-{{ site.alert.end }}
+{{site.alert.end}}
 
 ## A basic Dart program
 
@@ -2245,7 +2245,7 @@ specified by `T`. For example, `obj is Object` is always true.
 
 Use the `as` operator to cast an object to a particular type. In
 general, you should use it as a shorthand for an `is` test on an object
-following by an expression using that object. For example, consider the
+followed by an expression using that object. For example, consider the
 following code:
 
 使用 `as` 操作符可以把对象转换为特定的类型。一般情况下可以将其当做 `is` 判定类型后调用所判定对象的函数的缩写形式。假设有如下代码：
@@ -2795,7 +2795,7 @@ same class (and not of any of its subtypes), and the class must not
 override `==`.
 [Enumerated types](#enumerated-types) work well in `switch` statements.
 
-Switch 语句在 Dart 中使用 `==` 来比较整数、字符串或编译时常量，比较的两个对象必须是同一个类型且不能是子类并且没有重写 `==` 操作符。[枚举类型]((#enumerated-types))非常适合在 `Switch` 语句中使用。
+Switch 语句在 Dart 中使用 `==` 来比较整数、字符串或编译时常量，比较的两个对象必须是同一个类型且不能是子类并且没有重写 `==` 操作符。[枚举类型](#enumerated-types)非常适合在 `Switch` 语句中使用。
 
 <div class="alert alert-info" markdown="1">
 **Note:**
@@ -2812,7 +2812,7 @@ Each non-empty `case` clause ends with a `break` statement, as a rule.
 Other valid ways to end a non-empty `case` clause are a `continue`,
 `throw`, or `return` statement.
 
-每一个非空的 `case` 子句都必须有一个 `break` 语句，也可以���过 `continue`、`throw` 或者 `return` 来结束非空 `case` 语句。
+每一个非空的 `case` 子句都必须有一个 `break` 语句，也可以通过 `continue`、`throw` 或者 `return` 来结束非空 `case` 语句。
 
 Use a `default` clause to execute code when no `case` clause matches:
 
@@ -4083,7 +4083,7 @@ To narrow the type of a method parameter or instance variable in code that is
 [type safe](/guides/language/sound-dart),
 you can use the [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
 
-限定方法参数以及实例变量的类型可以让代码更加[类型安全]((/guides/language/sound-dart))，你可以使用[协变关键字](/guides/language/sound-problems#the-covariant-keyword)。
+限定方法参数以及实例变量的类型可以让代码更加[类型安全](/guides/language/sound-dart)，你可以使用[协变关键字](/guides/language/sound-problems#the-covariant-keyword)。
 
 #### Overridable operators
 
@@ -4197,7 +4197,7 @@ Enumerated types, often called _enumerations_ or _enums_,
 are a special kind of class used to represent
 a fixed number of constant values.
 
-枚举类型是一种特殊的类型，也称为 _enumerations_ 或 _enums_，用于定义一些固定数量的常量值。
+枚举类型是一种特殊的类型，也称为 **enumerations** 或 **enums**，用于定义一些固定数量的常量值。
 
 
 #### Using enums
@@ -4573,8 +4573,7 @@ List, set, and map literals can be parameterized. Parameterized literals are
 just like the literals you’ve already seen, except that you add
 <code>&lt;<em>type</em>></code> (for lists and sets) or
 <code>&lt;<em>keyType</em>, <em>valueType</em>></code> (for maps)
-before the opening bracket. Here
-is example of using typed literals:
+before the opening bracket. Here is an example of using typed literals:
 
 List、Set 以及 Map 字面量也可以是参数化的。定义参数化的 List 只需在中括号前添加 <code>&lt;<em>type</em>></code>；定义参数化的 Map 只需要在大括号前添加 <code>&lt;<em>keyType</em>, <em>valueType</em>></code>：
 
@@ -5002,7 +5001,7 @@ you have two options:
 
 * Use `async` and `await`.
 
-  使用 `async` 和 `await`。
+  ���用 `async` 和 `await`。
 
 * Use the Future API, as described
   [in the library tour](/guides/libraries/library-tour#future).

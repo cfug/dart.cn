@@ -37,7 +37,7 @@ precedent.
 如果之前已经存在的 API 之外命名，并且用户已经熟知，
 那么请继续使用这个命名。
 
-{:.good-style}
+{:.good}
 {% prettify dart %}
 pageCount         // A field.
 updatePageCount() // Consistent with pageCount.
@@ -46,7 +46,7 @@ asSomething()     // Consistent with List's asMap().
 Point             // A familiar concept.
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 {% prettify dart %}
 renumberPages()      // Confusingly different from pageCount.
 convertToSomething() // Inconsistent with toX() precedent.
@@ -77,7 +77,7 @@ abbreviate. If you do abbreviate, [capitalize it correctly][caps].
 
 [caps]: /guides/language/effective-dart/style#identifiers
 
-{:.good-style}
+{:.good}
 {% prettify dart %}
 pageCount
 buildRectangles
@@ -85,7 +85,7 @@ IOStream
 HttpRequest
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 {% prettify dart %}
 numPages    // "num" is an abbreviation of number(of)
 buildRects
@@ -104,7 +104,7 @@ prefix it with other words, such as adjectives, to further describe the thing.
 最后一个词应该是最具描述性的东西。
 你可以在其前面添加其他单词，例如形容词，以进一步描述该事物。
 
-{:.good-style}
+{:.good}
 {% prettify dart %}
 pageCount             // A count (of pages).
 ConversionSink        // A sink for doing conversions.
@@ -112,7 +112,7 @@ ChunkedConversionSink // A ConversionSink that's chunked.
 CssFontFaceRule       // A rule for font faces in CSS.
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 {% prettify dart %}
 numPages                  // Not a collection of pages.
 CanvasRenderingContext2D  // Not a "2D".
@@ -130,7 +130,7 @@ it like a sentence.
 当你不知道如何命名 API 的时候，
 使用你的 API 编写些代码，试着让代码看起来像普通的句子。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (code-like-prose)"?>
 {% prettify dart %}
 // "If errors is empty..."
@@ -143,7 +143,7 @@ subscription.cancel();
 monsters.where((monster) => monster.hasClaws);
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (code-like-prose)" replace="/ as bool//g"?>
 {% prettify dart %}
 // Telling errors to empty itself, or asking if it is?
@@ -163,7 +163,7 @@ to force your names to *literally* read like a grammatically correct sentence.
 尝试着使用你自己的 API，并且阅读写出来的代码，可以帮助你为 API 命名，但是不要过于冗余。
 添加文章和其他词性以强制名字读起来就像语法正确的句子一样，是没用的。
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (code-like-prose-overdone)"?>
 {% prettify dart %}
 if (theCollectionOfErrors.isEmpty) ...
@@ -183,14 +183,14 @@ verb phrase name.
 读者关注属性是*什么*。
 如果用户更关心*如何*确定一个属性，则很可能应该是一个使用动词短语命名函数。
 
-{:.good-style}
+{:.good}
 {% prettify dart %}
 list.length
 context.lineWidth
 quest.rampagingSwampBeast
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 {% prettify dart %}
 list.deleteItems
 {% endprettify %}
@@ -255,7 +255,7 @@ method.)
 原因在于访问一个变量的属性并没有修改对象的状态。
 （如果这个属性*确实*修改了对象的状态，则它应该是一个函数。）
 
-{:.good-style}
+{:.good}
 {% prettify dart %}
 isEmpty
 hasElements
@@ -265,7 +265,7 @@ canShowPopup
 hasShownPopup
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 {% prettify dart %}
 empty         // Adjective or verb?
 withElements  // Sounds like it might hold elements.
@@ -296,7 +296,7 @@ site.
 提炼于上一条规则。对于命名布尔参数，
 没有动词的名称通常看起来更加舒服。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-verb-for-bool-param)"?>
 {% prettify dart %}
 Isolate.spawn(entryPoint, message, paused: false);
@@ -337,7 +337,7 @@ understand what the code means.
 如果属性本身读起来想是个“否定”的，
 这将让读者耗费更多精力去阅读双重否定及理解代码的含义。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (positive)"?>
 {% prettify dart %}
 if (socket.isConnected && database.hasData) {
@@ -345,7 +345,7 @@ if (socket.isConnected && database.hasData) {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (positive)"?>
 {% prettify dart %}
 if (!socket.isDisconnected && !database.isEmpty) {
@@ -393,7 +393,7 @@ clarifies the work the member performs.
 这种类型的成员应该使用命令式动词短语来命名，强调
 该成员所执行的任务。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (verb-for-func-with-side-effect)"?>
 {% prettify dart %}
 list.add("element");
@@ -428,7 +428,7 @@ member returns.
 在*语法*上看这是一个函数，其实*严格来说*其返回的是集合中的一个属性，
 应该使用一个能够表示该函数返回的是*什么*的词语来命名。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (noun-for-func-returning-value)"?>
 {% prettify dart %}
 var element = list.elementAt(3);
@@ -463,7 +463,7 @@ work.
 在这种情况下，你希望调用者考虑成员在进行的工作，
 这时，为成员提供描述该工作的动词短语。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (verb-for-func-with-work)"?>
 {% prettify dart %}
 var table = database.downloadData();
@@ -538,7 +538,7 @@ If you define a conversion method, it's helpful to follow that convention.
 
 如果要定义一个转换函数，遵循该约定是非常有益的。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (to___)"?>
 {% prettify dart %}
 list.toSet();
@@ -568,7 +568,7 @@ The core library convention for you to follow is `as___()`.
 
 这种函数在核心库中被命名为 `as___()`。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (as___)"?>
 {% prettify dart %}
 var map = table.asMap();
@@ -586,14 +586,14 @@ readability to also refer to it in the name itself.
 
 在调用代码的时候可以看到参数，所以无需再次显示参数了。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-desc-param-in-func)"?>
 {% prettify dart %}
 list.add(element);
 map.remove(key);
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 {% prettify dart %}
 list.addElement(element)
 map.removeKey(key)
@@ -605,7 +605,7 @@ similarly-named methods that take different types:
 但是，对于具有多个类似的函数的时候，使用参数名字可以消除歧义，
 这个时候应该带有参数名字：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (desc-param-in-func-ok)"?>
 {% prettify dart %}
 map.containsKey(key);
@@ -628,7 +628,7 @@ The conventions are:
 
     `E` 用于集合中的 **元素** 类型:
 
-    {:.good-style}
+    {:.good}
     <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-e)" replace="/\n\n/\n/g"?>
     {% prettify dart %}
     class IterableBase<E> {}
@@ -642,7 +642,7 @@ The conventions are:
 
     `K` 和 `V` 分别用于关联集合中的 **key** 和 **value** 类型：
 
-    {:.good-style}
+    {:.good}
     <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-k-v)" replace="/\n\n/\n/g"?>
     {% prettify dart %}
     class Map<K, V> {}
@@ -657,7 +657,7 @@ The conventions are:
     `R` 用于函数或类方法的 **返回值** 类型。 这种情况并不常见，
     但有时会出现在typedef中，或实现访问者模式的类中：
 
-    {:.good-style}
+    {:.good}
     <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-r)"?>
     {% prettify dart %}
     abstract class ExpressionVisitor<R> {
@@ -676,7 +676,7 @@ The conventions are:
     请使用`T`，`S` 和 `U` 。
     这里允许多个字母嵌套且不会与周围命名产生歧义。例如：
 
-    {:.good-style}
+    {:.good}
     <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-t)"?>
     {% prettify dart %}
     class Future<T> {
@@ -694,7 +694,7 @@ mnemonic name or a descriptive name is fine:
 
 如果上述情况都不合适，则可以使用另一个单字母助记符名称或描述性的名称：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-graph)"?>
 {% prettify dart %}
 class Graph<N, E> {
@@ -809,13 +809,13 @@ just want a function.
 类似于回调的功能，那么使用函数即可。 例如如果你正在定义一个类，并且它仅拥有一个毫无意义名称的
 抽象成员，如 `call` 或 `invoke` ，那么这时你很可能只是需要一个函数。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (one-member-abstract-class)"?>
 {% prettify dart %}
 typedef Predicate<E> = bool Function(E element);
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (one-member-abstract-class)"?>
 {% prettify dart %}
 abstract class Predicate<E> {
@@ -856,7 +856,7 @@ move it to a separate library that can be imported with a prefix.
 如果函数或变量在逻辑上与类无关，那么应该将其置于顶层。如果担心名称冲突，
 那么请为其指定更精确的名称，或将其移动到可以使用前缀导入的单独库中。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (class-only-static)"?>
 {% prettify dart %}
 DateTime mostRecent(List<DateTime> dates) {
@@ -866,7 +866,7 @@ DateTime mostRecent(List<DateTime> dates) {
 const _favoriteMammal = 'weasel';
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (class-only-static)"?>
 {% prettify dart %}
 class DateUtils {
@@ -892,7 +892,7 @@ natural to group them in a class.
 当然，这并不是一条硬性规则。对于常量和类似枚举的类型，将它们组合在一个类
 中看起来也是很自然。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (class-only-static-exception)"?>
 {% prettify dart %}
 class Color {
@@ -966,9 +966,9 @@ of that new method.
 
 Library maintainers need the ability to evolve existing classes without breaking
 users. If you treat every class like it exposes an interface that users are free
-implement, then changing those classes becomes very difficult. That difficulty
-in turn means the libraries you rely on are slower to grow and adapt to new
-needs.
+to implement, then changing those classes becomes very difficult. That
+difficulty in turn means the libraries you rely on are slower to grow and adapt
+to new needs.
 
 库的维护人员需要能够在不破坏用户代码的情况下迭代现有的累。如果把每个类都看待成是暴露给用户
 的接口，用户可以自由的实现，这时修改这些类将变得非常困难。反过来，这个困难将导致你的库
@@ -1007,7 +1007,7 @@ created using that can *only* be used as mixins, and the language also ensures
 that your mixin stays within the restrictions. When defining a new type that you
 intend to be used as a mixin, use this syntax.
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (mixin)"?>
 {% prettify dart %}
 mixin ClickableMixin implements Control {
@@ -1167,7 +1167,7 @@ as the caller knows. That implies:
     这并*不*意味着操作必须特别快才能成为 getter 方法。`IterableBase.length` 复杂度是
      `O(n)`，是可以的。使用 getter 方法进行重要计算是没问题的。但是如果它做了*超*大量的工作，你可能需要通过一个描述其功能的动词的方法来引起使用者的注意。
 
-    {:.bad-style}
+    {:.bad}
     {% prettify dart %}
     connection.nextIncomingMessage; // Does network I/O.
     expression.normalForm; // Could be exponential to calculate.
@@ -1189,7 +1189,7 @@ as the caller knows. That implies:
     注意关键字"使用者可见"。只要调用者不*关心*这些副作用。getter 方法可以修改隐藏状态或产生
     带外副作用。 getter 方法可以惰性计算和存储他们的结果，写入缓存， log 等。这样是没有问题的。
 
-    {:.bad-style}
+    {:.bad}
     {% prettify dart %}
     stdout.newline; // Produces output.
     list.clear; // Modifies object.
@@ -1221,7 +1221,7 @@ as the caller knows. That implies:
 
     换句话说，*调用者关系的*是结果值应该相等。
 
-    {:.bad-style}
+    {:.bad}
     {% prettify dart %}
     DateTime.now; // New result each time.
     {% endprettify %}
@@ -1247,7 +1247,7 @@ should be getters.
 会超出你的想象。许多操作只是对某些状态进行一些计算，其中大多数能够，并且也应该作为 getter 方法。
 
 
-{:.good-style}
+{:.good}
 {% prettify dart %}
 rectangle.area;
 collection.isEmpty;
@@ -1291,7 +1291,7 @@ For a setter, "field-like" means:
     行任何操作。在内部，也许你会得到一些无效的缓存或者多次的日志记录。没关系，从调用者的角度
     来看，第二次调用似乎没做任何事情。
 
-{:.good-style}
+{:.good}
 {% prettify dart %}
 rectangle.width = 3;
 button.visible = false;
@@ -1327,7 +1327,7 @@ not intended to be invoked from Dart code and don't need a corresponding getter.
 (If they are used from Dart code, they *should* have a getter.)
 
 **例外：** 在 [Angular][] 组件类上，从模板调用的初始化组件 setter 可以公开。
-通常，这些 setter 是不打算在 Dart 中调用的，也就不需要相应的 getter。（如果在 Dart 代码
+通常，这些 setter 是不打算在 Dart 中调用的，也就不���要相应的 getter。（如果在 Dart 代码
 中使用它们，那么它们*应该*有一个对应的 getter 。）
 
 [angular]: {{site.angulardart}}
@@ -1368,7 +1368,7 @@ Method cascades are a better solution for chaining method calls.
 
 方法级联是链接方法调用的更好的解决方式。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (cascades)"?>
 {% prettify dart %}
 var buffer = StringBuffer()
@@ -1377,7 +1377,7 @@ var buffer = StringBuffer()
   ..write('three');
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (cascades)"?>
 {% prettify dart %}
 var buffer = StringBuffer()
@@ -1572,7 +1572,7 @@ type error. Consider:
 
 类型注解是关于如何使用库的重要文档。它们在程序的区域之间形成边界以隔离类型错误来源。思考下面代码：
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (type_annotate_public_apis)"?>
 {% prettify dart %}
 install(id, destination) => ...
@@ -1584,7 +1584,7 @@ or a `File` object? Is this method synchronous or asynchronous? This is clearer:
 在这里，无法判断：这个 `id` 是什么，一个字符串？`destination` 又是什么，一个字符串还是一个 
 `File` 对象？方法是同步的还是异步的？下面的实例会清晰很多：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (type_annotate_public_apis)"?>
 {% prettify dart %}
 Future<bool> install(PackageId id, String destination) => ...
@@ -1594,7 +1594,7 @@ In some cases, though, the type is so obvious that writing it is pointless:
 
 但在一些情况下，类型非常明显，根本没有指明类型的必要：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (inferred)"?>
 {% prettify dart %}
 const screenWidth = 640; // Inferred as int.
@@ -1673,7 +1673,7 @@ more important *name* of the variable and its initialized value.
 局部变量，特别是现代的函数往往很少，范围也很小。省略局部变量类型会将读者的注意力集中在变量的
 *名称*及初始化值上。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-types-on-locals)"?>
 {% prettify dart %}
 List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
@@ -1688,7 +1688,7 @@ List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (omit-types-on-locals)"?>
 {% prettify dart %}
 List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
@@ -1711,7 +1711,7 @@ inferred. In that case, it *is* a good idea to annotate. Otherwise, you get
 否则，你的到的会是一个 `dynamic` 类型，并失去静态类型的好处。
 
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (uninitialized-local)"?>
 {% prettify dart %}
 List<AstNode> parameters;
@@ -1744,13 +1744,13 @@ expects:
 例如，当为 `Iterable.map()` 传递一个函数表达式时，函数的参数类型会根据 `map()` 回调中所
 期望的类型进行推断。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (func-expr-no-param-type)"?>
 {% prettify dart %}
 var names = people.map((person) => person.name);
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (func-expr-no-param-type)"?>
 {% prettify dart %}
 var names = people.map((Person person) => person.name);
@@ -1773,13 +1773,13 @@ to a function, then inference usually fills in the type for you:
 如果推断的类型结果与指定相同，那么参数指定就是多余的。如果泛型调用是初始化变量，或者是函数参数，
 那么推断会自动为其填充类型：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (redundant)"?>
 {% prettify dart %}
 Set<String> things = Set();
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (redundant)"?>
 {% prettify dart %}
 Set<String> things = Set<String>();
@@ -1795,13 +1795,13 @@ should write the type argument:
 
 在其他情况下，如果没有足够的信息来推断类型时，应该为参数添加类型注解：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (explicit)"?>
 {% prettify dart %}
 var things = Set<String>();
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (explicit)"?>
 {% prettify dart %}
 var things = Set();
@@ -1825,7 +1825,7 @@ can later assign some other sibling type to the variable:
 有时候，Dart 推断的并不是你期望的类型。例如，你可能希望初始化变量的类型是超类型（父类的类型），
 以便后续可以为变量赋值一些同级别的其它变量：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (inferred-wrong)"?>
 {% prettify dart %}
 num highScore(List<num> scores) {
@@ -1837,7 +1837,7 @@ num highScore(List<num> scores) {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (inferred-wrong)" replace="/ +\/\/ ignore: .*?\n//g"?>
 {% prettify dart %}
 num highScore(List<num> scores) {
@@ -1884,13 +1884,13 @@ clear.
 
 当 `dynamic` 是你期望的类型，就应该指明它，这样能让你的意图更清晰。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (prefer-dynamic)"?>
 {% prettify dart %}
 dynamic mergeJson(dynamic original, dynamic changes) => ...
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (prefer-dynamic)"?>
 {% prettify dart %}
 mergeJson(original, changes) => ...
@@ -1929,13 +1929,13 @@ function.
 
 [Function]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-Function)" replace="/bool Function(\(.*?\))?/[!$&!]/g"?>
 {% prettify dart %}
 bool isValid(String value, [!bool Function(String)!] test) => ...
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid-Function)" replace="/Function/[!$&!]/g"?>
 {% prettify dart %}
 bool isValid(String value, [!Function!] test) => ...
@@ -1953,7 +1953,7 @@ no way to precisely type that and you'd normally have to use `dynamic`.
 的函数，也可能是两个参数的函数。由于 Dart 没有集合类型，所以没有办法为类似成员精确的指定类型，
 这个时候通常只能使用 `dynamic`。但这里使用 `Function` 要稍微比使用 `dynamic` 更有帮助些：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (function-arity)" replace="/(void )?Function(\(.*?\))?/[!$&!]/g"?>
 {% prettify dart %}
 void handleError([!void Function()!] operation, [!Function!] errorHandler) {
@@ -1982,13 +1982,13 @@ Setters always return `void` in Dart. Writing the word is pointless.
 
 在 Dart 中，setter 永远返回 `void` 。为 setter 指定类型没有意义。
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid_return_types_on_setters)"?>
 {% prettify dart %}
 void set foo(Foo value) { ... }
 {% endprettify %}
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid_return_types_on_setters)"?>
 {% prettify dart %}
 set foo(Foo value) { ... }
@@ -2006,7 +2006,7 @@ original syntax looks like:
 
 Dart 有两种为函数类型定义命名 typedef 注解语法。 原始语法如下：
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (old-typedef)"?>
 {% prettify dart %}
 typedef int Comparison<T>(T a, T b);
@@ -2032,7 +2032,7 @@ That syntax has a couple of problems:
 
     参数中的单个标识符会被认为是参数名称，而不是参数类型。参考下面代码：
 
-    {:.bad-style}
+    {:.bad}
     <?code-excerpt "misc/lib/effective_dart/design_bad.dart (typedef-param)"?>
     {% prettify dart %}
     typedef bool TestNumber(num);
@@ -2052,7 +2052,7 @@ The new syntax looks like this:
 
 新语法如下所示：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (new-typedef)"?>
 {% prettify dart %}
 typedef Comparison<T> = int Function(T, T);
@@ -2062,7 +2062,7 @@ If you want to include a parameter's name, you can do that too:
 
 如果想在方法中包含参数名称，可以这样做：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (new-typedef-param-name)"?>
 {% prettify dart %}
 typedef Comparison<T> = int Function(T a, T b);
@@ -2097,7 +2097,7 @@ a function type syntax that can be used anywhere a type annotation is allowed:
 在 Dart 1 中，如果要在字段，变量或泛型参数中使用函数类型，首选需要使用 typedef 定义这个类型。
 Dart 2 中任何使用类型注解的地方都可以使用函数类型声明语法：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (function-type)"  replace="/(bool|void) Function\(Event\)/[!$&!]/g"?>
 {% prettify dart %}
 class FilteredObservable {
@@ -2154,7 +2154,7 @@ parameters as well:
 在 Dart 2 添加函数类型语法之前，如果希望不通过 typedef 使用函数参数类型，上例是唯一的方法。
 如今 Dart 已经可以为函数提供泛型注解，那么也可以将泛型注解用于函数类型参数中：
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (function-type-param)"?>
 {% prettify dart %}
 Iterable<T> where(bool Function(T) predicate) => ...
@@ -2189,7 +2189,7 @@ point in the program.
 是变量来源于操作过程中，以及其他范围外的静态类型系统，或者是你明确的希望成员类型在 runtime 中动态
 确定。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (Object-vs-dynamic)"?>
 {% prettify dart %}
 void log(Object object) {
@@ -2262,13 +2262,13 @@ either is hard to use correctly.
 `Future` ）。返回值使用 `Future<int>` ，类型就清晰了。一个函数要么一直异步，要么一直是同步，
 这样才能够让调用者更容易理解，否则这个函数很难被正确的使用。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (future-or)"?>
 {% prettify dart %}
 Future<int> triple(FutureOr<int> value) async => (await value) * 3;
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (future-or)"?>
 {% prettify dart %}
 FutureOr<int> triple(FutureOr<int> value) {
@@ -2290,7 +2290,7 @@ means it's OK for a *callback's* type to return `FutureOr<T>`:
 
 [contravariant]: https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (future-or-contra)" replace="/FutureOr.S./[!$&!]/g"?>
 {% prettify dart %}
 Stream<S> asyncMap<T, S>(
@@ -2324,7 +2324,7 @@ clear what the boolean represents:
 与其他类型不同，布尔值通常以字面量方式使用。数字值的通常可以包含在命名的常量里，但对于布尔值通常
 喜欢直接传 `true` 和 `false` 。如果不清楚布尔值的含义，这样会造成调用者的代码不可读：
 
-{:.bad-style}
+{:.bad}
 {% prettify dart %}
 new Task(true);
 new Task(false);
@@ -2337,7 +2337,7 @@ to clarify what the call is doing.
 
 这里，应该考虑使用命名参数，命名构造函数或命名常量来阐明调用所执行的操作。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-positional-bool-param)"?>
 {% prettify dart %}
 Task.oneShot();
@@ -2351,7 +2351,7 @@ value represents:
 
 请注意，这并不适用于 setter ，因为 setter 的名称能够清楚的阐明值得含义：
 
-{:.good-style}
+{:.good}
 {% prettify dart %}
 listBox.canScroll = true;
 button.isEnabled = false;
@@ -2370,7 +2370,7 @@ pass later one. You're better off using named arguments for that.
 可选的位置参数应该具有逻辑性，前面参数应该比后面的参数使用更频繁。调用者不需要刻意的跳过或省略前面
 的一个参数而为后面的参数赋值。如果需要省略前面参数，这种情况最好使用命名可选参数。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-optional-positional)"?>
 {% prettify dart %}
 String.fromCharCodes(Iterable<int> charCodes, [int start = 0, int end]);
@@ -2411,13 +2411,13 @@ providing a real value.
 
 省略参数更加简洁，也有助于防止在调用者偶然地将 `null` 作为实际值传递到方法中而引起 bug。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-mandatory-param)"?>
 {% prettify dart %}
 var rest = string.substring(start);
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid-mandatory-param)"?>
 {% prettify dart %}
 var rest = string.substring(start, null);
@@ -2440,7 +2440,7 @@ This is consistent with core libraries that do the same thing.
 
 这种方式与核心库一致。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/test/effective_dart_test.dart (param-range)" replace="/expect\(//g; /, \/\*\*\// \/\//g; /\);//g"?>
 {% prettify dart %}
 [0, 1, 2, 3].sublist(1, 3) // [1, 2]
@@ -2542,7 +2542,7 @@ method is called only if the right-hand side is not `null`.
 
 Dart 指定此检查是自动完成的，只有当右侧不是 `null` 时才调用 `==` 方法。
 
-{:.good-style}
+{:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (eq-dont-check-for-null)" replace="/operator ==/[!$&!]/g" plaster?>
 {% prettify dart %}
 class Person {
@@ -2554,7 +2554,7 @@ class Person {
 }
 {% endprettify %}
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (eq-dont-check-for-null)" replace="/\w+ != null/[!$&!]/g" plaster?>
 {% prettify dart %}
 class Person {

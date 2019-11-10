@@ -349,7 +349,7 @@ which are neither futures nor stream events.
 该代码将数据直接添加至 `StreamController` 而不是从 Future 或 Stream 中获取，
 并在最后返回 `StreamController` 中的 Stream。
 
-{:.bad-style}
+{:.bad}
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (flawed stream)"?>
 {% prettify dart %}
 // 注意：该实现有缺陷。

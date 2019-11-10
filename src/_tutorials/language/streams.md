@@ -91,7 +91,7 @@ generating a simple stream of integers using an `async*` function:
 
 下面的示例中使用了 `async*` 函数生成一个简单的整型 Stream 来测试上一个代码片段：
 
-{{ site.alert.note }}
+{{site.alert.note}}
 
   This page uses embedded DartPads to display runnable examples.
   
@@ -99,7 +99,7 @@ generating a simple stream of integers using an `async*` function:
   
   {% include dartpads-embedded-troubleshooting.md %}
   
-{{ site.alert.end }}
+{{site.alert.end}}
 
 {% comment %}
 https://gist.github.com/Sfshaza/15d5ef986238c97dbc14

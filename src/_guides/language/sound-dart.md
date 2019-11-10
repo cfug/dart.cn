@@ -79,7 +79,7 @@ above) at the call of `printInts(list)`:
 上面的代码在调用 `printInts(list)` 时会在 `list` （高亮提示）上产生类型错误：
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-2-results.txt" retain="/List.*strong_analysis.*argument_type_not_assignable/" replace="/ at (lib|test)\/\w+\.dart:\d+:\d+//g"?>
+<?code-excerpt "strong/analyzer-results.txt" retain="/List.*strong_analysis.*argument_type_not_assignable/" replace="/. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 ```nocode
 error • The argument type 'List' can't be assigned to the parameter type 'List<int>' • argument_type_not_assignable
 ```
