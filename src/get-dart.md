@@ -130,7 +130,6 @@ For more information, see the [Dart 2 page.][Dart 2]
 你可以查阅 [Dart 2 相关页面][Dart 2] 获取更多信息。
 
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
-[semantic versioning]: http://semver.org/
 [Dart 2]: /dart-2
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
 [Dart libraries]: /guides/libraries/library-tour
