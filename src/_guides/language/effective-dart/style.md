@@ -108,7 +108,7 @@ const foo = Foo();
 class C { ... }
 {% endprettify %}
 
-[camel_case_types]: http://dart-lang.github.io/linter/lints/camel_case_types.html
+[camel_case_types]: https://dart-lang.github.io/linter/lints/camel_case_types.html
 [Linter rule]: /guides/language/analysis-options#the-analysis-options-file
 
 ### DO name libraries, packages, directories, and source files using `lowercase_with_underscores`. {#do-name-libraries-and-source-files-using-lowercase_with_underscores}
@@ -613,7 +613,7 @@ Doing so avoids the [dangling else][] problem.
 
 这样可以避免 [dangling else][]（else悬挂）的问题。
 
-[dangling else]: http://en.wikipedia.org/wiki/Dangling_else
+[dangling else]: https://en.wikipedia.org/wiki/Dangling_else
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (curly-braces)"?>

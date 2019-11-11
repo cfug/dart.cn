@@ -1326,7 +1326,7 @@ units, and 32-bit code points. Click **Run** to see runes in action.
 {% comment %}
 https://gist.github.com/589bc5c95318696cefe5
 {{site.dartpad}}/589bc5c95318696cefe5
-Unicode emoji: http://unicode.org/emoji/charts/full-emoji-list.html
+Unicode emoji: https://unicode.org/emoji/charts/full-emoji-list.html
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (runes)"?>
 {% prettify dart %}

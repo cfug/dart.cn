@@ -41,10 +41,10 @@ Get answers and connect with Dart developers.
 
 #### 社区
 
-* [StackOverflow](http://stackoverflow.com/tags/dart) -
+* [StackOverflow](https://stackoverflow.com/tags/dart) -
   The best place for how-to questions.
 
-  [StackOverflow](http://stackoverflow.com/tags/dart) - 提问题的最佳场所。
+  [StackOverflow](https://stackoverflow.com/tags/dart) - 提问题的最佳场所。
 
 * [Gitter](https://gitter.im/dart-lang/home) -
   Chat with Dart team and community members.
@@ -98,6 +98,8 @@ Our wonderful community has provided these resources.
 * [Chinese version of this site （此网站的中文版）](http://www.dartdoc.cn)
 
   [此站的英文官网](https://www.dartlang.org/)
+  
+* [Chinese version of this site (此网站的中文版)](https://www.dartdoc.cn)
 
 Also see the [Flutter community page.]({{site.flutter}}/community)
 
