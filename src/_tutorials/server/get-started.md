@@ -11,31 +11,30 @@ prevpage:
   url: /tutorials/server
   title: Dart command-line and server tutorials
   title: 教程目录：使用 Dart 编写命令行和服务端应用
+js: [{url: 'https://dartpad.cn/experimental/inject_embed.dart.js', defer: true}]
 ---
 
 Follow these steps to start using the Dart SDK to develop command-line and server apps.
-First you’ll play with the Dart language and libraries in your browser, no download required.
+First you’ll play with the Dart language in your browser, no download required.
 Then you’ll install the Dart SDK, write a small program, and run that program using the Dart VM.
 Finally, you'll use an AOT (_ahead of time_) compiler to compile your finished program to native machine code,
 which you'll execute using the Dart runtime.
 
-跟着下面这些步骤开始使用 Dart SDK 来开发命令行和服务器应用。首先你将在浏览器中运行 Dart 编程语言和库而不需要下载它。接着，你需要安装 Dart SDK 并尝试开发一个小程序，然后使用 Dart VM 运行它。最后你将使用一个 AOT（**预**）编译器将你刚才完成的程序编译为可以被 Dart 运行时执行的原生机器码。
+跟着下面这些步骤开始使用 Dart SDK 来开发命令行和服务器应用。首先你将在浏览器中运行 Dart 编程语言而不需要下载它。接着，你需要安装 Dart SDK 并尝试开发一个小程序，然后使用 Dart VM 运行它。最后你将使用一个 AOT（**预**）编译器将你刚才完成的程序编译为可以被 Dart 运行时执行的原生机器码。
 
 ## 1. Play with Dart code in DartPad
 
 ## 1. 在 DartPad 中运行 Dart 代码
 
-With DartPad you can experiment with the Dart language and APIs,
+With [DartPad](/tools/dartpad) you can experiment with the Dart language and APIs,
 no download necessary.
 
 你可以使用 DartPad 来简单地尝试 Dart 编程语言和 API 且不需要下载任何东西。
 
 For example, here's an embedded DartPad that lets you play with the code for a
-small Hello World program. Click **Run** to run the app; the console output
-appears beneath the code. Try editing the source code—perhaps you'd like to
-change the greeting to use another language. To get the full DartPad experience,
-<a href="{{site.dartpad}}/27e044ec9e2957d9c5c7062871ce8bf3" target="_blank">open
-the example at dartpad.dev.</a>
+small Hello World program. Click **Run** to run the app; output appears in the
+console view. Try editing the source code &mdash; perhaps you'd like to change the
+greeting to use another language.
 
 例如，下面这个内嵌的 DartPad 可以让你尝试一个简单的 Hello World 程序代码。
 点击**运行**来运行应用；控制台输出的内容位于代码块下方。
@@ -49,12 +48,22 @@ the example at dartpad.dev.</a>
   
 {{site.alert.end}}
 
-<iframe
-    src="{{site.dartpad-embed-inline}}?id=27e044ec9e2957d9c5c7062871ce8bf3"
-    width="100%"
-    height="300px"
-    style="border: 1px solid #ccc;">
-</iframe>
+<style>
+iframe[src^="https://dartpad"] {
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  min-height: 150px;
+  resize: vertical;
+  width: 100%;
+}
+</style>
+
+<?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
+```dart:run-dartpad
+void main() {
+  print('Hello, World!');
+}
+```
 
 More information:
 
