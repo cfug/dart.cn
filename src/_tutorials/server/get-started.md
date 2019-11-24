@@ -20,7 +20,7 @@ Then you’ll install the Dart SDK, write a small program, and run that program 
 Finally, you'll use an AOT (_ahead of time_) compiler to compile your finished program to native machine code,
 which you'll execute using the Dart runtime.
 
-跟着下面这些步骤开始使用 Dart SDK 来开发命令行和服务器应用。首先你将在浏览器中运行 Dart 编程语言和库而不需要下载它。接着，你需要安装 Dart SDK 并尝试开发一个小程序，然后使用 Dart VM 运行它。最后你将使用一个 AOT（**预**）编译器将你刚才完成的程序编译为可以被 Dart 运行时执行的原生机器码。
+跟着下面这些步骤开始使用 Dart SDK 来开发命令行和服务器应用。首先你将在浏览器中运行 Dart 编程语言而不需要下载它。接着，你需要安装 Dart SDK 并尝试开发一个小程序，然后使用 Dart VM 运行它。最后你将使用一个 AOT（**预**）编译器将你刚才完成的程序编译为可以被 Dart 运行时执行的原生机器码。
 
 ## 1. Play with Dart code in DartPad
 
