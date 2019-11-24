@@ -129,6 +129,7 @@ apps:
   
   本站的代码遵循 
   [Dart 风格指南](/guides/language/effective-dart/style) 中的约定。
+
 {{site.alert.end}}
 
 
@@ -385,6 +386,7 @@ String name = 'Bob';
   本文遵循
   [风格建议指南](/guides/language/effective-dart/design#types) 中的建议，
   通过 `var` 声明局部变量而非使用指定的类型。
+
 {{site.alert.end}}
 
 
@@ -415,6 +417,7 @@ assert(lineCount == null);
   在开发过程中，<code>assert(<em>condition</em>)</code> 
   将会在 **条件判断** 为 false 时抛出一个异常。
   详情请查阅 [Assert](#assert)。
+
 {{site.alert.end}}
 
 ### Final and const
@@ -445,6 +448,7 @@ the first time it's used.
   实例变量可以是 `final` 的但不可以是 `const` 的，
   final 实例变量必须在构造器开始前被初始化，比如在声明实例变量时初始化，
   或者作为构造器参数，或者将其置于构造器的 [初始化列表](#initializer-list)中。
+
 {{site.alert.end}}
 
 Here's an example of creating and setting a final variable:
@@ -670,6 +674,7 @@ double z = 1; // Equivalent to double z = 1.0.
   context.
   
   在 Dart 2.1 之前，在浮点数上下文中使用整数字面量是错误的。
+
 {{site.alert.end}}
 
 Here’s how you turn a string into a number, or vice versa:
@@ -779,6 +784,7 @@ assert('使用${s.substring(3,5)}表达式也非常方便' == '使用插值表�
   
   `==` 运算符判断两个对象的内容是否一样，
   如果两个字符串包含一样的字符编码序列，则表示相等。
+
 {{site.alert.end}}
 
 You can concatenate strings using adjacent string literals or the `+`
@@ -937,6 +943,7 @@ var list = [1, 2, 3];
   如果往该数组中添加一个非 int 类型的对象则会报错。
   你可以阅读 
   [类型推断](/guides/language/sound-dart#type-inference) 获取更多相关信息。
+
 {{site.alert.end}}
 
 Lists use zero-based indexing, where 0 is the index of the first element
@@ -1063,11 +1070,13 @@ A set in Dart is an unordered collection of unique items.
 Dart support for sets is provided by set literals and the [Set][] type.
 
 {{site.alert.version-note}}
+
   Although the Set _type_ has always been a core part of Dart, set _literals_
   were introduced in Dart 2.2.
   
   尽管 Set **类型(type)** 一直都是 Dart 的一项核心功能，
   但是 Set **字面量(literals)** 却是在 Dart2.2 中才加入的。
+
 {{site.alert.end}}
 
 Here is a simple Dart set, created using a set literal:
@@ -1090,6 +1099,7 @@ var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
   如果往该 Set 中添加类型不正确的对象则会报错。
   你可以查阅
   [类型推断](/guides/language/sound-dart#type-inference) 获取更多与之相关的内容。
+
 {{site.alert.end}}
 
 To create an empty set, use `{}` preceded by a type argument,
@@ -1666,6 +1676,7 @@ enableFlags(bold: true);
   所以我们建议你现在都 **[使用 `=` 来指定默认值][use =]**。
 
   [use =]: /guides/language/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value
+
 {{site.alert.end}}
 
 {% comment %}
@@ -3324,6 +3335,7 @@ var p2 = new Point.fromJson({'x': 1, 'y': 2});
   The `new` keyword became optional in Dart 2.
   
   从 Dart 2 开始，`new` 关键字是可选的。
+
 {{site.alert.end}}
 
 Some classes provide [constant constructors](#constant-constructors).
@@ -3398,6 +3410,7 @@ assert(!identical(a, b)); // 这两变量并不相同 (NOT the same instance!)
   The `const` keyword became optional within a constant context in Dart 2.
   
   只有从 Dart 2 开始才能根据上下文判断省略 `const` 关键字。
+
 {{site.alert.end}}
 
 
@@ -3705,6 +3718,7 @@ Point.fromJson(Map<String, num> json)
   The right-hand side of an initializer does not have access to `this`.
 
   初始化列表表达式 = 右边的语句不能使用 `this` 关键字。
+
 {{site.alert.end}}
 
 During development, you can validate inputs by using `assert` in the
@@ -3864,6 +3878,7 @@ class Logger {
   Factory constructors have no access to `this`.
   
   在工厂构造函数中无法访问 `this`。
+
 {{site.alert.end}}
 
 Invoke a factory constructor just like you would any other constructor:
@@ -3953,6 +3968,7 @@ wrapping them with methods, all without changing client code.
 使用 Getter 和 Setter 的好处是，你可以先使用你的实例变量，过一段时间过再将它们包裹成方法且不需要改动任何代码，即先定义后更改且不影响原有逻辑。
 
 {{site.alert.note}}
+
   Operators such as increment (++) work in the expected way, whether or
   not a getter is explicitly defined. To avoid any unexpected side
   effects, the operator calls the getter exactly once, saving its value
@@ -4160,6 +4176,7 @@ Vector class, you might define a `+` method to add two vectors.
   `e1 != e2` is just syntactic sugar for `!(e1 == e2)`.
   
   必须要注意的是 `!=` 操作符并不是一个可被重写的操作符。表达式 `e1 != e2` 仅仅是 `!(e1 == e2)` 的一个语法糖。
+
 {{site.alert.end}}
 
 Here’s an example of a class that overrides the `+` and `-` operators:
@@ -4400,6 +4417,7 @@ mixin MusicalPerformer on Musician {
 ```
 
 {{site.alert.version-note}}
+
   Support for the `mixin` keyword was introduced in Dart 2.1. Code in earlier
   releases usually used `abstract class` instead. For more information on 2.1
   mixin changes, see the [Dart SDK changelog][] and [2.1 mixin specification.][]
@@ -4843,6 +4861,7 @@ import 'package:test/test.dart';
   *URLs* (uniform resource locators) are a common kind of URI.
   
   *URL*（统一资源定位符）是一种常见的URI。
+
 {{site.alert.end}}
 
 
@@ -5511,6 +5530,7 @@ void main() {
   change.
   
   目前类型定义只能用在函数类型上，但是将来可能会有变化。
+  
 {{site.alert.end}}
 
 Because typedefs are simply aliases, they offer a way to check the type
