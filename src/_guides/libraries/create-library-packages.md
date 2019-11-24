@@ -193,6 +193,7 @@ Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 另外，避免通过 <code>package:<em>package_name</em>/src/...</code> 导入文件。
 </aside>
 
+
 ## Importing library files
 
 ## 导入 Library 文件
@@ -240,6 +241,121 @@ it could instead use the `package:` directive
 但是它同样能使用 `package:` 直接 (`import 'package:my_package/foo/a.dart'`) 导入 。
 </aside>
 
+
+## Conditionally importing and exporting library files
+
+## 条件导入或条件导出 Library 文件
+
+If your library supports multiple platforms,
+then you might need to conditionally import or export library files.
+A common use case is a library that supports both web and native platforms.
+
+如果你的 library 支持多平台，那么你应该会用到条件导入
+或条件导出 library 文件。
+常见的用例是，一个库同时支持 Web 和 Native 平台。
+
+To conditionally import or export,
+you need to check for the presence of `dart:*` libraries.
+Here's an example of conditional export code that
+checks for the presence of `dart:io` and `dart:html`:
+
+为了使用条件导入或条件导出，你需要检查
+是否存在 `dart:*` 库。
+下面是一个条件导出代码的样例，
+它将检查是否存在 `dart:io` and `dart:html` 库：
+
+<?code-excerpt "create_libraries/lib/hw_mp.dart (export)"?>
+```dart
+export 'src/hw_none.dart' // Stub implementation
+    if (dart.library.io) 'src/hw_io.dart' // dart:io implementation
+    if (dart.library.html) 'src/hw_html.dart'; // dart:html implementation
+```
+<div class="prettify-filename">lib/hw_mp.dart</div>
+
+Here's what that code does:
+
+该代码的作用如下：
+
+* In an app that can use `dart:io`
+  (for example, a command-line app),
+  export `src/hw_io.dart`.
+
+  在一个可以使用 `dart:io` 的 app 中
+  （例如一个命令行应用），
+  导出 `src/hw_io.dart`。
+
+* In an app that can use `dart:html`
+  (a web app),
+  export `src/hw_html.dart`.
+
+  在一个 web 应用中可以使用 `dart:html`
+  导出 `src/hw_io.dart`。
+
+* Otherwise, export `src/hw_none.dart`.
+
+  若是其他情况，则导出 `src/hw_none.dart`。
+
+To conditionally import a file, use the same code as above,
+but change `export` to `import`.
+
+要条件导入一个文件可以使用和上面一样的方式，
+仅需将 `export` 改为 `import` 即可。
+
+{{site.alert.note}}
+
+  The conditional import or export checks only whether the library is
+  _available for use_ on the current platform,
+  not whether it's actually imported or used.
+
+  条件导入或条件导出仅检查该库在当前平台上_是否可用_，
+  而不管是实际导入还是使用。
+
+{{site.alert.end}}
+
+All of the conditionally exported libraries must implement the same API.
+For example, here's the `dart:io` implementation:
+
+所有条件导出的库必须实现相同的 API。
+下面是 `dart:io` 实现的一个例子：
+
+<?code-excerpt "create_libraries/lib/src/hw_io.dart"?>
+```dart
+import 'dart:io';
+
+void alarm([String text]) {
+  stderr.writeln(text ?? message);
+}
+
+String get message => 'Hello World from the VM!';
+```
+<div class="prettify-filename">lib/src/hw_io.dart</div>
+
+And here's the default implementation,
+which is a stub that throws UnsupportedErrors:
+
+这是一个默认实现，它会导致抛出 UnsupportedErrors：
+
+<?code-excerpt "create_libraries/lib/src/hw_none.dart"?>
+```dart
+void alarm([String text]) => throw UnsupportedError('hw_none alarm');
+
+String get message => throw UnsupportedError('hw_none message');
+```
+<div class="prettify-filename">lib/src/hw_none.dart</div>
+
+On any platform,
+you can import the library that has the conditional export code:
+
+在任何平台上，你都可以导入具有条件导出代码的库：
+
+<?code-excerpt "create_libraries/example/hw_example.dart" replace="/create_libraries/hw_mp/g"?>
+```dart
+import 'package:hw_mp/hw_mp.dart';
+
+void main() {
+  print(message);
+}
+```
 
 ## Providing additional files
 

@@ -107,14 +107,14 @@ TBD: Make this and all non-trivial snippets testable.
 I found an error in one of the getter/setter snippets.
 {% endcomment %}
 
-{% prettify dart %}
-int a; // The initial value of any object is null.
+```dart
+int a; // The initial value of a is null.
 a ??= 3;
 print(a); // <-- Prints 3.
 
 a ??= 5;
 print(a); // <-- Still prints 3.
-{% endprettify %}
+```
 
 Another null-aware operator is `??`,
 which returns the expression on its left unless that expression's value is null,
@@ -122,10 +122,10 @@ in which case it evaluates and returns the expression on its right:
 
 另外一个避空运算符是 `??`，如果该运算符左边的表达式返回的是空值，则会计算并返回右边的表达式。
 
-{% prettify dart %}
-    print(1 ?? 3); // <-- Prints 1.
-    print(null ?? 12); // <-- Prints 12.
-{% endprettify %}
+```dart
+print(1 ?? 3); // <-- Prints 1.
+print(null ?? 12); // <-- Prints 12.
+```
 
 ### Code example
 
@@ -146,25 +146,25 @@ put a question mark (`?`) before the dot (`.`):
 
 要保护可能会为空的属性的正常访问，请在点（`.`）之前加一个问号（`?`）。
 
-{% prettify dart %}
+```dart
 myObject?.someProperty
-{% endprettify %}
+```
 
 The preceding code is equivalent to the following:
 
 上述代码等效于以下内容：
 
-{% prettify dart %}
+```dart
 (myObject != null) ? myObject.someProperty : null
-{% endprettify %}
+```
 
 You can chain multiple uses of `?.` together in a single expression:
 
 你可以在一个表达式中连续使用多个 `?.`：
 
-{% prettify dart %}
+```dart
 myObject?.someProperty?.someMethod()
-{% endprettify %}
+```
 
 The preceding code returns null (and never calls `someMethod()`) if either
 `myObject` or `myObject.someProperty` is
@@ -191,7 +191,7 @@ You can create them using literals:
 
 Dart 内置了对 list、map 以及 set 的支持。你可以通过字面量直接创建它们：
 
-{% prettify dart %}
+```dart
 final aListOfStrings = ['one', 'two', 'three'];
 final aSetOfStrings = {'one', 'two', 'three'};
 final aMapOfStringsToInts = {
@@ -199,7 +199,7 @@ final aMapOfStringsToInts = {
   'two': 2,
   'three': 3,
 };
-{% endprettify %}
+```
 
 Dart's type inference can assign types to these variables for you.
 In this case, the inferred types are `List<String>`,
@@ -211,20 +211,20 @@ Or you can specify the type yourself:
 
 你也可以手动指定类型：
 
-{% prettify dart %}
+```dart
 final aListOfInts = <int>[];
 final aSetOfInts = <int>{};
 final aMapOfIntToDouble = <int, double>{};
-{% endprettify %}
+```
 
 Specifying types is handy when you initialize a list with contents of a subtype,
 but still want the list to be `List<BaseType>`:
 
 在使用子类型的内容初始化列表，但仍希望列表为 `List <BaseType>` 时，指定其类型很方便：
 
-{% prettify dart %}
+```dart
 final aListOfBaseType = <BaseType>[SubType(), SubType()];
-{% endprettify %}
+```
 
 ### Code example
 
@@ -252,19 +252,19 @@ For example, consider this call to the `List` class's
 
 例如，考虑调用这个 `List` 类中的 `any` 方法：
 
-{% prettify dart %}
+```dart
 bool hasEmpty = aListOfStrings.any((s) {
   return s.isEmpty;
 });
-{% endprettify %}
+```
 
 Here’s a simpler way to write that code:
 
 这里是一个更简单的代码实现：
 
-{% prettify dart %}
+```dart
 bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
-{% endprettify %}
+```
 
 ### Code example
 
@@ -294,9 +294,9 @@ We've all seen an expression like this:
 
 要对同一对象执行一系列操作，请使用级联（`..`）。我们都看到过这样的表达式：
 
-{% prettify dart %}
+```dart
 myObject.someMethod()
-{% endprettify %}
+```
 
 It invokes `someMethod()` on `myObject`, and the result of
 the expression is the return value of `someMethod()`.
@@ -307,9 +307,9 @@ Here's the same expression with a cascade:
 
 下面是一个使用级连语法的相同表达式：
 
-{% prettify dart %}
+```dart
 myObject..someMethod()
-{% endprettify %}
+```
 
 Although it still invokes `someMethod()` on `myObject`, the result
 of the expression **isn't** the return value — it's a reference to `myObject`!
@@ -320,24 +320,24 @@ For example, consider this code:
 虽然它仍然在 `myObject` 上调用了 `someMethod`，但表达式的结果却**不是**该方法返回值，而是是 `myObject` 对象的引用！使用级联，你可以将需要单独操作的语句链接在一起。
 例如，请考虑以下代码：
 
-{% prettify dart %}
+```dart
 var button = querySelector('#confirm');
 button.text = 'Confirm';
 button.classes.add('important');
 button.onClick.listen((e) => window.alert('Confirmed!'));
-{% endprettify %}
+```
 
 With cascades, the code becomes much shorter,
 and you don’t need the `button` variable:
 
 使用级连能够让代码变得更加简洁，而且你也不再需要 `button` 变量了。
 
-{% prettify dart %}
+```dart
 querySelector('#confirm')
 ..text = 'Confirm'
 ..classes.add('important')
 ..onClick.listen((e) => window.alert('Confirmed!'));
-{% endprettify %}
+```
 
 ### Code example
 
@@ -368,7 +368,7 @@ For example, you can make sure a property's value is valid:
 
 例如，你可以用来确保属性值合法：
 
-{% prettify dart %}
+```dart
 class MyClass {
   int _aProperty = 0;
 
@@ -380,13 +380,13 @@ class MyClass {
     }
   }
 }
-{% endprettify %}
+```
 
 You can also use a getter to define a computed property:
 
 你还可以使用 getter 来定义计算属性：
 
-{% prettify dart %}
+```dart
 class MyClass {
   List<int> _values = [];
 
@@ -399,7 +399,7 @@ class MyClass {
     return _values.length;
   }
 }
-{% endprettify %}
+```
 
 ### Code example
 
@@ -435,19 +435,19 @@ you're likely familiar with:
 
 Dart 有两种传参方法：位置参数和命名参数。位置参数你可能会比较熟悉：
 
-{% prettify dart %}
+```dart
 int sumUp(int a, int b, int c) {
   return a + b + c;
 }
 
 int total = sumUp(1, 2, 3);
-{% endprettify %}
+```
 
 With Dart, you can make these positional parameters optional by wrapping them in brackets:
 
 在 Dart 中，你可以通过将这些参数包裹在大括号中使其变成可选位置参数：
 
-{% prettify dart %}
+```dart
 int sumUpToFive(int a, [int b, int c, int d, int e]) {
   int sum = a;
   if (b != null) sum += b;
@@ -459,7 +459,7 @@ int sumUpToFive(int a, [int b, int c, int d, int e]) {
 
 int total = sumUptoFive(1, 2);
 int otherTotal = sumUpToFive(1, 2, 3, 4, 5);
-{% endprettify %}
+```
 
 Optional positional parameters are always last
 in a function's parameter list.
@@ -467,14 +467,14 @@ Their default value is null unless you provide another default value:
 
 可选位置参数永远放在方法参数列表的最后。除非你给它们提供一个默认值，否则默认为 null。
 
-{% prettify dart %}
+```dart
 int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
   ...
 }
 
 int newTotal = sumUpToFive(1);
 print(newTotal); // <-- prints 15
-{% endprettify %}
+```
 
 ### Code example
 
@@ -507,25 +507,25 @@ you can define optional parameters that have names.
 
 你可以使用大括号语法定义可选命名参数。
 
-{% prettify dart %}
+```dart
 void printName(String firstName, String lastName, {String suffix}) {
   print('$firstName $lastName ${suffix ?? ''}');
 }
 
 printName('Avinash', 'Gupta');
 printName('Poshmeister', 'Moneybuckets', suffix: 'IV');
-{% endprettify %}
+```
 
 As you might expect, the value of these parameters is null by default,
 but you can provide default values:
 
 正如你所料，这些参数默认为 null，但你也可以为其提供默认值。
 
-{% prettify dart %}
+```dart
 void printName(String firstName, String lastName, {String suffix = ''}) {
   print('$firstName $lastName ${suffix}');
 }
-{% endprettify %}
+```
 
 A function can't have both optional positional and optional named parameters.
 
@@ -573,16 +573,16 @@ allowed to throw any non-null object:
 
 虽然 Dart 提供了 Exception 和 Error 类型，但是你可以抛出任何非空对象：
 
-{% prettify dart %}
+```dart
 throw Exception('Something bad happened.');
 throw 'Waaaaaaah!';
-{% endprettify %}
+```
 
 Use the `try`, `on`, and `catch` keywords when handling exceptions:
 
 使用 `try`、`on` 以及 `catch` 关键字来处理异常： 
 
-{% prettify dart %}
+```dart
 try {
   breedMoreLlamas();
 } on OutOfLlamasException {
@@ -595,7 +595,7 @@ try {
   // No specified type, handles all
   print('Something really unknown: $e');
 }
-{% endprettify %}
+```
 
 The `try` keyword works as it does in most other languages.
 Use the `on` keyword to filter for specific exceptions by type,
@@ -608,21 +608,21 @@ to propagate the exception:
 
 如果你无法完全处理该异常，请使用 `rethrow` 关键字再次抛出异常：
 
-{% prettify dart %}
+```dart
 try {
   breedMoreLlamas();
 } catch (e) {
   print('I was just trying to breed llamas!.');
   rethrow;
 }
-{% endprettify %}
+```
 
 To execute code whether or not an exception is thrown,
 use `finally`:
 
 要执行一段无论是否抛出异常都会执行的代码，请使用 `finally`：
 
-{% prettify dart %}
+```dart
 try {
   breedMoreLlamas();
 } catch (e) {
@@ -631,7 +631,7 @@ try {
   // Always clean up, even if an exception is thrown.
   cleanLlamaStalls();
 }
-{% endprettify %}
+```
 
 ### Code example
 
@@ -708,7 +708,7 @@ use `this.propertyName` when declaring the constructor:
 
 Dart 提供了一个方便的快捷方式，用于为构造方法中的属性赋值：在声明构造方法时使用 `this.propertyName`。
 
-{% prettify dart %}
+```dart
 class MyColor {
   int red;
   int green;
@@ -718,14 +718,14 @@ class MyColor {
 }
 
 final color = MyColor(80, 80, 128);
-{% endprettify %}
+```
 
 This technique works for named parameters, too.
 Property names become the names of the parameters:
 
 此技巧同样也适用于命名参数。属性名为参数的名称：
 
-{% prettify dart %}
+```dart
 class MyColor {
   ...
 
@@ -733,17 +733,17 @@ class MyColor {
 }
 
 final color = MyColor(red: 80, green: 80, blue: 80);
-{% endprettify %}
+```
 
 For optional parameters, default values work as expected:
 
 对于可选参数，默认值为期望值：
 
-{% prettify dart %}
+```dart
 MyColor([this.red = 0, this.green = 0, this.blue = 0]);
 // or
 MyColor({this.red = 0, this.green = 0, this.blue = 0});
-{% endprettify %}
+```
 
 ### Code example
 
@@ -784,26 +784,26 @@ which goes between the constructor's signature and its body:
 例如，final 修饰的字段必须在构造函数体执行之前赋值。
 在初始化列表中执行此操作，该列表位于构造函数的签名与其函数体之间：
 
-{% prettify dart %}
+```dart
 Point.fromJson(Map<String, num> json)
     : x = json['x'],
       y = json['y'] {
   print('In Point.fromJson(): ($x, $y)');
 }
-{% endprettify %}
+```
 
 The initializer list is also a handy place to put asserts,
 which run only during development:
 
 初始化列表也是放置断言的便利位置，它仅会在开发期间运行：
 
-{% prettify dart %}
+```dart
 NonNegativePoint(this.x, this.y)
     : assert(x >= 0),
       assert(y >= 0) {
   print('I just made a NonNegativePoint: ($x, $y)');
 }
-{% endprettify %}
+```
 
 ### Code example
 
@@ -857,7 +857,7 @@ Dart supports named constructors:
 
 为了允许一个类具有多个构造方法，Dart 支持命名构造方法：
 
-{% prettify dart %}
+```dart
 class Point {
   num x, y;
 
@@ -868,15 +868,15 @@ class Point {
     y = 0;
   }
 }
-{% endprettify %}
+```
 
 To use a named constructor, invoke it using its full name:
 
 为了使用命名构造方法，请使用全名调用它：
 
-{% prettify dart %}
+```dart
 final myPoint = Point.origin();
-{% endprettify %}
+```
 
 ### Code example
 
@@ -905,7 +905,7 @@ To create a factory constructor, use the `factory` keyword:
 
 Dart 支持工厂构造方法。它能够返回其子类甚至 null 对象。要创建一个工厂构造方法，请使用 `factory` 关键字。
 
-{% prettify dart %}
+```dart
 class Square extends Shape {}
 
 class Circle extends Shape {}
@@ -921,7 +921,7 @@ class Shape {
     return null;
   }
 }
-{% endprettify %}
+```
 
 ### Code example
 
@@ -968,7 +968,7 @@ with the constructor call appearing after a colon (`:`).
 
 有时一个构造方法仅仅用来重定向到该类的另一个构造方法。重定向方法没有主体，它在冒号（`:`）之后调用另一个构造方法。
 
-{% prettify dart %}
+```dart
 class Automobile {
   String make;
   String model;
@@ -983,7 +983,7 @@ class Automobile {
   // Delegates to a named constructor
   Automobile.fancyHybrid() : this.hybrid('Futurecar', 'Mark 2');
 }
-{% endprettify %}
+```
 
 ### Code example
 
@@ -1010,7 +1010,7 @@ are final.
 
 如果你的类生成的对象永远都不会更改，则可以让这些对象成为编译时常量。为此，请定义 `const` 构造方法并确保所有实例变量都是 final 的。
 
-{% prettify dart %}
+```dart
 class ImmutablePoint {
   const ImmutablePoint(this.x, this.y);
 
@@ -1020,7 +1020,7 @@ class ImmutablePoint {
   static const ImmutablePoint origin =
       ImmutablePoint(0, 0);
 }
-{% endprettify %}
+```
 
 ### Code example
 

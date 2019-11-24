@@ -6,6 +6,17 @@ description: 使用 pub uploader 命令为你在 pub.dev 网站上的 Dart Packa
 toc: false
 ---
 
+{{site.alert.tip}}
+
+  Instead of specifying uploaders for each package you publish,
+  consider using a
+  [verified publisher](/tools/pub/verified-publishers).
+
+  除了可以明确指定你发布的每个软件包的发布者之外，
+  你还可以考虑使用 [verified publisher](/tools/pub/verified-publishers)。
+
+{{site.alert.end}}
+
 _Uploader_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 _Uploader_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
@@ -38,9 +49,9 @@ add/remove as an uploader. For example:
 “bob@example.com” 这个电子邮件的所有者不再是 “transmogrify” 这个 Package 的上传者。
 ```
 
-If a package has only one uploader, that uploader can't be removed. You may
+If a package has only one uploader, that uploader can't be removed. You can
 remove yourself as an uploader (as long as other uploaders are available),
-but you won't be able to re-add yourself again afterwards.
+but you can't re-add yourself again afterwards.
 
 如果 Package 有且只有一个上传者，则该上传者不能再被删除。
 你可以将自己从上传者列表中删除（只要 Package 中还有其它的上传者即可），
