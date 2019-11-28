@@ -828,9 +828,12 @@ var s1 = '''
 
 var s2 = """This is also a
 multi-line string.""";
+<<<<<<< HEAD
 
 var s2 = """这也是一个
 多行字符串。""";
+=======
+>>>>>>> 1f6d784f5acd6fa8c7e6e51b193fcd13f5435f42
 ```
 
 You can create a “raw” string by prefixing it with `r`:
@@ -2567,8 +2570,13 @@ Consider the following code:
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (cascade-operator)"?>
 ```dart
+<<<<<<< HEAD
 querySelector('#confirm') // 获取对象 (Get an object).
   ..text = 'Confirm' // 使用对象的成员 (Use its members).
+=======
+querySelector('#confirm') // Get an object.
+  ..text = 'Confirm' // Use its members.
+>>>>>>> 1f6d784f5acd6fa8c7e6e51b193fcd13f5435f42
   ..classes.add('important')
   ..onClick.listen((e) => window.alert('Confirmed!'));
 ```
@@ -2805,6 +2813,7 @@ do {
 } while (!atEndOfPage());
 ```
 
+
 ### Break and continue
 
 ### Break 和 Continue
@@ -2862,7 +2871,6 @@ override `==`.
 Switch 语句在 Dart 中使用 `==` 来比较整数、字符串或编译时常量，
 比较的两个对象必须是同一个类型且不能是子类并且没有重写 `==` 操作符。
 [枚举类型](#enumerated-types)非常适合在 `Switch` 语句中使用。
-
 
 {{site.alert.note}}
 
@@ -3677,7 +3685,7 @@ function call:
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (method-then-constructor)"?>
 ```dart
 class Employee extends Person {
-  Employee() : super.fromJson(getDefaultData());
+  Employee() : super.fromJson(defaultData);
   // ···
 }
 ```
@@ -5026,10 +5034,13 @@ for advice on how to implement a library package, including:
   何时使用 `part` 命令。
 
 * When to use the `library` directive.
+ 
+  何时使用 `library` 命令。
+
 * How to use conditional imports and exports to implement
   a library that supports multiple platforms.
 
-  何时使用 `library` 命令。
+  如何使用倒入和导出命令实现多平台的库支持。
 
 
 <a id="asynchrony"></a>

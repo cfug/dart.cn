@@ -40,7 +40,7 @@ and the `async` and `await` keywords.
 
 ### Example: Incorrectly using an asynchronous function
 The following example shows the wrong way to use an asynchronous function
-(`getUserOrder()`). Later you'll fix the example using `async` and `await`.
+(`fetchUserOrder()`). Later you'll fix the example using `async` and `await`.
 Before running this example, try to spot the issue -- what do you think the
 output will be?
 
@@ -52,15 +52,15 @@ output will be?
   width="100%" >
 </iframe>
 
-Here's why the example fails to print the value that `getUserOrder()` eventually
+Here's why the example fails to print the value that `fetchUserOrder()` eventually
 produces:
 
-* `getUserOrder()` is an asynchronous function that, after a delay,
+* `fetchUserOrder()` is an asynchronous function that, after a delay,
   provides a string that describes the user's order: a "Large Latte".
-* To get the user's order, `createOrderMessage()` should call `getUserOrder()`
+* To get the user's order, `createOrderMessage()` should call `fetchUserOrder()`
   and wait for it to finish. Because `createOrderMessage()` does *not* wait
-  for `getUserOrder()` to finish, `createOrderMessage()` fails to get the string
-  value that `getUserOrder()` eventually provides.
+  for `fetchUserOrder()` to finish, `createOrderMessage()` fails to get the string
+  value that `fetchUserOrder()` eventually provides.
 * Instead, `createOrderMessage()` gets a representation of pending work to be
   done: an uncompleted future. You'll learn more about futures in the next section.
 * Because `createOrderMessage()` fails to get the value describing the user's
@@ -68,7 +68,7 @@ produces:
   prints "Your order is: Instance of '_Future<String>'".
 
 In the next sections you'll learn the about futures, `async`, and `await`
-so that you'll be able to write the code necessary to make `getUserOrder()`
+so that you'll be able to write the code necessary to make `fetchUserOrder()`
 print the desired value ("Large Latte") to the console.
 
 {{site.alert.secondary}}
@@ -121,9 +121,9 @@ future completes with an error.
 
 ### Example: Introducing futures
 
-In the following example, `getUserOrder()` returns a future that completes after
+In the following example, `fetchUserOrder()` returns a future that completes after
 printing to the console. Because it doesn't return a usable value,
-`getUserOrder()` has the type `Future<void>`. Before you run the example,
+`fetchUserOrder()` has the type `Future<void>`. Before you run the example,
 try to predict which will print first: "Large Latte" or "Fetching user order...".
 
 <iframe
@@ -134,10 +134,10 @@ try to predict which will print first: "Large Latte" or "Fetching user order..."
   width="100%" >
 </iframe>
 
-In the preceding example, even though `getUserOrder()` executes before
+In the preceding example, even though `fetchUserOrder()` executes before
 the `print()` call on line 8, the console shows the output from line 8
-("Fetching user order...") before the output from `getUserOrder()` ("Large Latte").
-This is because `getUserOrder()` delays before it prints "Large Latte".
+("Fetching user order...") before the output from `fetchUserOrder()` ("Large Latte").
+This is because `fetchUserOrder()` delays before it prints "Large Latte".
 
 ### Example: Completing with an error
 
@@ -152,7 +152,7 @@ A bit later you'll learn how to handle the error.
   width="100%" >
 </iframe>
 
-In this example, `getUserOrder()` completes with an error indicating that the
+In this example, `fetchUserOrder()` completes with an error indicating that the
 user ID is invalid.
 
 You've learned about futures and how they complete, but how do you use the
@@ -192,17 +192,8 @@ function.
 First, add the `async` keyword before the function body:
 
 {% prettify dart %}
-main() [!async!] {
+void main() [!async!] {
 {% endprettify %}
-
-{{site.alert.note}}
-  You might have noticed that some functions (like `main()`, above) don't have
-  return types. That's because Dart can [infer the return type][infer] for you.
-  Omitting return types is fine when you're prototyping, but when you write
-  production code, we recommend that you specify the return type.
-{{site.alert.end}}
-
-[infer]: https://dart.dev/guides/language/sound-dart#type-inference
 
 If the function has a declared return type, then update the type to be
 `Future<T>`, where `T` is the type of the value that the function returns.
@@ -234,11 +225,11 @@ your window is wide enough — is to the right of the synchronous example.
 ```dart
 // Synchronous
 String createOrderMessage() {
-  var order = getUserOrder();
+  var order = fetchUserOrder();
   return 'Your order is: $order';
 }
 
-Future<String> getUserOrder() {
+Future<String> fetchUserOrder() {
   // Imagine that this function is
   // more complex and slow.
   return
@@ -247,7 +238,7 @@ Future<String> getUserOrder() {
 }
 
 // Synchronous
-main() {
+void main() {
   print('Fetching user order...');
   print(createOrderMessage());
 }
@@ -262,11 +253,11 @@ main() {
 {% prettify dart %}
 // Asynchronous
 [!Future<String>!] createOrderMessage() [!async!] {
-var order = [!await!] getUserOrder();
+var order = [!await!] fetchUserOrder();
 return 'Your order is: $order';
 }
 
-Future<String> getUserOrder() {
+Future<String> fetchUserOrder() {
 // Imagine that this function is
 // more complex and slow.
 return
@@ -275,9 +266,9 @@ return
 }
 
 // Asynchronous
-main() [!async!] {
-print('Fetching user order...');
-print([!await!] createOrderMessage());
+Future<void> main() [!async!] {
+  print('Fetching user order...');
+  print([!await!] createOrderMessage());
 }
 
 // 'Fetching user order...'
@@ -294,7 +285,7 @@ The asynchronous example is different in three ways:
 * The **`async`** keyword appears before the function bodies for
   `createOrderMessage()` and `main()`.
 * The **`await`** keyword appears before calling the asynchronous functions
-  `getUserOrder()` and `createOrderMessage()`.
+  `fetchUserOrder()` and `createOrderMessage()`.
 
 {{site.alert.secondary}}
   **Key terms:**
@@ -329,15 +320,15 @@ function body. What do you think the output will be?
   width="100%">
 </iframe>
 
-After running the code in the preceding example, try reversing line 4 and line 5:
+After running the code in the preceding example, try reversing lines 2 and 3:
 
 ```dart
-var order = await getUserOrder();
+var order = await fetchUserOrder();
 print('Awaiting user order...');
 ```
 
 Notice that timing of the output shifts, now that `print('Awaiting user order')`
-appears after the first `await` keyword in `createOrderMessage()`.
+appears after the first `await` keyword in `printOrderMessage()`.
 
 ### Exercise: Practice using async and await
 
@@ -352,8 +343,8 @@ provided for you:
 |------------------+--------------------------------+-------------|
 | Function         | Type signature                 | Description |
 |------------------|--------------------------------|-------------|
-| getRole()        | `Future<String> getRole()`     | Gets a short description of the user's role. |
-| getLoginAmount() | `Future<int> getLoginAmount()` | Gets the number of times a user has logged in. |
+| fetchRole()        | `Future<String> fetchRole()`     | Gets a short description of the user's role. |
+| fetchLoginAmount() | `Future<int> fetchLoginAmount()` | Gets the number of times a user has logged in. |
 {:.table .table-striped}
 
 
@@ -367,20 +358,20 @@ Add code to the `reportUserRole()` function so that it does the following:
 
 * Returns a future that completes with the following
   string: `"User role: <user role>"`
-  * Note: You must use the actual value returned by `getRole()`; copying and
+  * Note: You must use the actual value returned by `fetchRole()`; copying and
     pasting the example return value won't make the test pass.
   * Example return value: `"User role: tester"`
-* Gets the user role by calling the provided function `getRole()`.
+* Gets the user role by calling the provided function `fetchRole()`.
 
 ####  Part 2: `reportLogins()`
 
 Implement an `async` function `reportLogins()` so that it does the following:
 
 * Returns the string `"Total number of logins: <# of logins>"`.
-  * Note: You must use the actual value returned by `getLoginAmount()`; copying
+  * Note: You must use the actual value returned by `fetchLoginAmount()`; copying
     and pasting the example return value won't make the test pass.
   * Example return value from `reportLogins()`: `"Total number of logins: 57"`
-* Gets the number of logins by calling the provided function `getLoginAmount()`.
+* Gets the number of logins by calling the provided function `fetchLoginAmount()`.
 
 <iframe
   src="{{site.dartpad-embed}}?id=f751b692502c4ee43d932f745860b056&theme=dark"
@@ -399,7 +390,7 @@ To handle errors in an `async` function, use try-catch:
 
 ```dart
 try {
-  var order = await getUserOrder();
+  var order = await fetchUserOrder();
   print('Awaiting user order...');
 } catch (err) {
   print('Caught error: $err');
@@ -431,13 +422,13 @@ operations, your code will call the following function, which is provided for yo
 |------------------+-----------------------------------+-------------|
 | Function         | Type signature                    | Description |
 |------------------|-----------------------------------|-------------|
-| getNewUsername() | `Future<String> getNewUsername()` | Returns the new username that you can use to replace an old one.|
+| fetchNewUsername() | `Future<String> fetchNewUsername()` | Returns the new username that you can use to replace an old one.|
 {:.table .table-striped}
 
 Use `async` and `await` to implement an asynchronous `changeUsername()` function
 that does the following:
 
-* Calls the provided asynchronous function `getNewUsername()` and returns its result.
+* Calls the provided asynchronous function `fetchNewUsername()` and returns its result.
   * Example return value from `changeUsername()`: `"jane_smith_92"`
 * Catches any error that occurs and returns the string value of the error.
   * You can use the
@@ -462,12 +453,12 @@ TODO: Consider adding new content to final section (not repeating same stuff)
 
 It's time to practice what you've learned in one final exercise.
 To simulate asynchronous operations, this exercise provides the asynchronous
-functions `getUsername()` and `logoutUser()`:
+functions `fetchUsername()` and `logoutUser()`:
 
 |------------------+-----------------------------------+-------------|
 | Function         | Type signature                    | Description |
 |------------------|-----------------------------------|-------------|
-| getUsername()    | `Future<String> getUsername()`    | Returns the name associated with the current user.|
+| fetchUsername()    | `Future<String> fetchUsername()`    | Returns the name associated with the current user.|
 | logoutUser()     | `Future<String> logoutUser()`     | Performs logout of current user and returns the username that was logged out.|
 {:.table .table-striped}
 
@@ -483,10 +474,10 @@ Write the following:
 
 * Write a function `greetUser()` that takes no arguments.
 * To get the username, `greetUser()` calls the provided asynchronous
-  function `getUsername()`.
+  function `fetchUsername()`.
 * `greetUser()` creates a greeting for the user by calling `addHello()`,
   passing it the username, and returning the result.<br>
-  Example: If `getUsername()` returns `'Jenny'`, then
+  Example: If `fetchUsername()` returns `'Jenny'`, then
   `greetUser()` returns `'Hello Jenny'`.
 
 ####  Part 3: `sayGoodbye()`

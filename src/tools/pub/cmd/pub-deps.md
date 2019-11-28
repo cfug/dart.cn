@@ -21,7 +21,11 @@ that the package uses (as specified in the pubspec), as well as the
 [transitive dependencies](/tools/pub/glossary#transitive-dependency)
 pulled in by the immediate dependencies.
 
-该命令可以将 Package 的依赖图示打印输出到控制台。该图示中包括 Package 声明在 pubspec 文件中的 [直接依赖](/tools/pub/glossary#immediate-dependency) 以及这些直接依赖所依赖的 [间接依赖](/tools/pub/glossary#transitive-dependency)。
+该命令可以将 Package 的依赖图示打印输出到控制台。
+该图示中包括 Package 声明在 pubspec 文件中的 
+[直接依赖](/tools/pub/glossary#immediate-dependency) 
+以及这些直接依赖所依赖的
+[间接依赖](/tools/pub/glossary#transitive-dependency)。
 
 The dependency information is printed as a tree by default.
 
