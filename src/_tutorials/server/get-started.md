@@ -26,8 +26,8 @@ which you'll execute using the Dart runtime.
 
 ## 1. 在 DartPad 中运行 Dart 代码
 
-With [DartPad](/tools/dartpad) you can experiment with the Dart language and APIs,
-no download necessary.
+With [DartPad](/tools/dartpad) you can experiment with the Dart language and
+APIs, no download necessary.
 
 你可以使用 DartPad 来简单地尝试 Dart 编程语言和 API 且不需要下载任何东西。
 
@@ -39,8 +39,6 @@ greeting to use another language.
 例如，下面这个内嵌的 DartPad 可以让你尝试一个简单的 Hello World 程序代码。
 点击**运行**来运行应用；控制台输出的内容位于代码块下方。
 你可以尝试更改源代码，比如更改问候语或者其它的一些语句。
-你也可以 <a href="{{site.dartpad}}/27e044ec9e2957d9c5c7062871ce8bf3" target="_blank">在 dartpad.dev 中打开示例</a> 
-以获取更完整的 DartPad 体验。
 
 {{site.alert.note}}
 
