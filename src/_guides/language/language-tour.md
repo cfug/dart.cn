@@ -826,14 +826,8 @@ var s1 = '''
 多行字符串。
 ''';
 
-var s2 = """This is also a
-multi-line string.""";
-<<<<<<< HEAD
-
 var s2 = """这也是一个
 多行字符串。""";
-=======
->>>>>>> 1f6d784f5acd6fa8c7e6e51b193fcd13f5435f42
 ```
 
 You can create a “raw” string by prefixing it with `r`:
@@ -2570,13 +2564,8 @@ Consider the following code:
 
 <?code-excerpt "misc/test/language_tour/browser_test.dart (cascade-operator)"?>
 ```dart
-<<<<<<< HEAD
 querySelector('#confirm') // 获取对象 (Get an object).
   ..text = 'Confirm' // 使用对象的成员 (Use its members).
-=======
-querySelector('#confirm') // Get an object.
-  ..text = 'Confirm' // Use its members.
->>>>>>> 1f6d784f5acd6fa8c7e6e51b193fcd13f5435f42
   ..classes.add('important')
   ..onClick.listen((e) => window.alert('Confirmed!'));
 ```
