@@ -65,8 +65,6 @@ get the latest versions of all dependencies.
 
 如果 lockfile 已经存在，`pub get` 命令会尽可能地使用锁定的依赖项版本。如果某个依赖项没有被锁定，则 Pub 会获取所有 [限定的版本](/tools/pub/glossary#version-constraint) 中最新的那个依赖项版本。这是 `pub get` 命令与 [`pub upgrade`](/tools/pub/cmd/pub-upgrade) 命令最大的不同点，后者总是会去尝试使用依赖项的最新版本。
 
-{% include pub-in-prereleases.html %}
-
 ## Package resolution
 
 ## Package 解析
