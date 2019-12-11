@@ -3258,9 +3258,11 @@ descend from [Object.][Object]
 *Mixin-based inheritance* means that although every class (except for
 Object) has exactly one superclass, a class body can be reused in
 multiple class hierarchies.
+[Extension methods](#extension-methods) are a way to
+add functionality to a class without changing the class or creating a subclass.
 
 Dart 是支持基于 mixin 继承机制的面向对象语言，所有对象都是一个类的实例，而所有的类都继承自 [Object][Object] 类。基于 *mixin 的继承* 意味着每个除 Object 类之外的类都只有一个超类，一个类的代码可以在其它多个类继承中重复使用。
-
+[Extension 方法](#extension-methods)是一种在不更改类或创建子类的情况下向类添加功能的方式。
 
 ### Using class members
 
@@ -4136,6 +4138,8 @@ class SmartTelevision [!extends!] Television {
 {% endprettify %}
 
 
+
+
 #### Overriding members
 
 #### 重写类成员
@@ -4265,6 +4269,40 @@ For more information, see the informal
 
 你可以查阅 [noSuchMethod 转发规范](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)获取更多相关信息。
 
+
+### Extension methods
+
+### Extension 方法
+
+Extension methods, introduced in Dart 2.7,
+are a way to add functionality to existing libraries.
+You might use extension methods without even knowing it.
+For example, when you use code completion in an IDE,
+it suggests extension methods alongside regular methods.
+
+Dart 2.7 中引入的 Extension 方法是向现有库添加功能的一种方式。
+你可能甚至都不知道有 Extension 方法。
+例如，当您在 IDE 中使用代码完成功能时，
+它建议将 Extension 方法与常规方法一起使用。
+
+Here's an example of using an extension method on `String`
+named `parseInt()` that's defined in `string_apis.dart`:
+
+这里是一个在 `String` 中使用 extension 方法的样例，
+我们取名为 `parseInt()`，它在 `string_apis.dart` 中定义：
+
+```dart
+import string_apis.dart';
+...
+print('42'.padLeft(5)); // Use a String method.
+print('42'.parseInt()); // Use an extension method.
+```
+
+For details of using and implementing extension methods, see the
+[extension methods page][].
+
+有关使用以及实现 extension 方法的详细信息，请参阅
+[extension methods 页面][extension methods page].
 
 <a id="enums"></a>
 ### Enumerated types
@@ -5780,6 +5818,7 @@ To learn more about Dart's core libraries, see
 [double]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
 [Error]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
 [Exception]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
+[extension methods page]: /guides/language/extension-methods
 [Flutter]: {{site.flutter}}
 [Flutter debug mode]: {{site.flutter}}/docs/testing/debugging#debug-mode-assertions
 [forEach()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
