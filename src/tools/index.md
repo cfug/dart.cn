@@ -83,7 +83,8 @@ Dart plugins exist for these commonly used IDEs.
 (and other JetBrains IDEs)</b></a>
 </li>
 <li>
-<img src="{% asset tools/vscode.png @path %}" alt="Visual Studio Code logo">
+<img src="{% asset tools/vscode.svg @path %}"
+     width="48" alt="Visual Studio Code logo">
 <a href="/tools/vs-code"><b>Visual Studio Code</b></a>
 </li>
 </ul>
@@ -100,7 +101,7 @@ Dart plugins exist for these commonly used IDEs.
 <a href="/tools/jetbrains-plugin"><b>IntelliJ IDEA<br> (以及其它的 JetBrains IDE)</b></a>
 </li>
 <li>
-<img src="{% asset tools/vscode.png @path %}" alt="Visual Studio Code logo">
+<img src="{% asset tools/vscode.svg @path %}" alt="Visual Studio Code logo">
 <a href="/tools/vs-code"><b>Visual Studio Code</b></a>
 </li>
 </ul>

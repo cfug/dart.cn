@@ -842,10 +842,10 @@ var s = r'In a raw string, not even \n gets special treatment.';
 var s = r'在 raw 字符串中，转义字符串 \n 会直接输出 “\n” 而不是转义为换行。';
 ```
 
-See [Runes](#runes) for details on how to express Unicode
-characters in a string.
+See [Runes and grapheme clusters](#characters) for details on how
+to express Unicode characters in a string.
 
-你可以查阅 [Runes](#runes) 获取更多关于如何在字符串中表示 Unicode 字符的信息。
+你可以查阅 [Runes and grapheme clusters](#characters) 获取更多关于如何在字符串中表示 Unicode 字符的信息。
 
 Literal strings are compile-time constants,
 as long as any interpolated expression is a compile-time constant
@@ -1328,16 +1328,25 @@ For more information about maps, see
 
 你也可以查阅[泛型](#generics)以及 [Maps](/guides/libraries/library-tour#maps) 获取更多相关信息。
 
-### Runes
+<a id="characters"></a>
+### Runes and grapheme clusters
 
-In Dart, runes are the UTF-32 code points of a string.
+### Runes 与 grapheme clusters
 
-Dart 使用 Runes 符文来表示 UTF-32 编码的字符串。
+In Dart, [runes][] expose the Unicode code points of a string.
+As of Dart 2.6, use the [characters package][]
+to view or manipulate user-perceived characters,
+also known as
+[Unicode (extended) grapheme clusters.][grapheme clusters]
+
+在 Dart 中，[runes][] 公开了字符串的 Unicode 代码点。
+从 Dart 2.6 开始，使用 [characters 包][characters package]来访问
+或者操作用户感知的字符，也被称为 [Unicode (扩展) grapheme clusters.][grapheme clusters]。
 
 Unicode defines a unique numeric value for each letter, digit,
 and symbol used in all of the world's writing systems.
 Because a Dart string is a sequence of UTF-16 code units,
-expressing 32-bit Unicode values within a string requires
+expressing Unicode code points within a string requires
 special syntax.
 
 Unicode 编码为每一个字母、数字和符号都定义了一个唯一的数值。因为 Dart 中的字符串是一个 UTF-16 的字符序列，所以如果想要表示 32 位的 Unicode 数值则需要一种特殊的语法。
@@ -1351,45 +1360,47 @@ For example, the laughing emoji (😆) is `\u{1f600}`.
 
 通常使用 `\uXXXX` 来表示 Unicode 字符，XXXX 是一个四位数的 16 进制数字。例如心形字符（♥）的 Unicode 为 `\u2665`。对于不是四位数的 16 进制数字，需要使用大括号将其括起来。例如大笑的 emoji 表情（😆）的 Unicode 为 `\u{1f600}`。
 
-The [String][]
-class has several properties you can use to extract rune information.
-The `codeUnitAt` and `codeUnit` properties return 16-bit code
-units. Use the `runes` property to get the runes of a string.
+If you need to read or write individual Unicode characters,
+use the `characters` getter defined on String
+by the characters package.
+The returned [`Characters`][] object is the string as
+a sequence of grapheme clusters.
+Here's an example of using the characters API:
 
-[String][] 类中有一些属性可以用来提取字符串的 Rune 符文信息。`codeUnitAt` 和 `codeUnit` 属性返回 16 位代码单元。`runes` 属性可以获取字符串的 Runes 符文。
-
-The following example illustrates the relationship between runes, 16-bit code
-units, and 32-bit code points. Click **Run** to see runes in action.
-
-下面的例子说明了 Rune、16位代码单元、32位代码单元之间的关系。
-点击运行（**Run**）按钮查看运行结果。
+如果你需要读写单个 Unicode 字符，可以使用 characters 包中定义
+的 `characters` getter。它将返回 [`Characters`][] 作为一系列 grapheme clusters
+的字符串。下面是使用 characters API 的样例：
 
 {% comment %}
-https://gist.github.com/589bc5c95318696cefe5
-{{site.dartpad}}/589bc5c95318696cefe5
-Unicode emoji: https://unicode.org/emoji/charts/full-emoji-list.html
-
-<?code-excerpt "misc/lib/language_tour/built_in_types.dart (runes)"?>
-```dart
-void main() {
-  var clapping = '\u{1f44f}';
-  print(clapping);
-  print(clapping.codeUnits);
-  print(clapping.runes.toList());
-
-  Runes input =
-      Runes('\u2665  \u{1f605}  \u{1f60e}  \u{1f47b}  \u{1f596}  \u{1f44d}');
-  print(String.fromCharCodes(input));
-}
-```
+TODO: add test code
 {% endcomment %}
 
-<iframe
-src="{{site.dartpad-embed-inline}}?id=589bc5c95318696cefe5"
-    width="100%"
-    height="400px"
-    style="border: 1px solid #ccc;">
-</iframe>
+```dart
+import 'package:characters/characters.dart';
+...
+var hi = 'Hi 🇩🇰';
+print(hi);
+print('The end of the string: ${hi.substring(hi.length - 1)}');
+print('The last character: ${hi.characters.last}\n');
+```
+
+The output, depending on your environment, looks something like this:
+
+输出取决于你的环境，看上去会像这样：
+
+```terminal
+$ dart bin/main.dart
+Hi 🇩🇰
+The end of the string: ???
+The last character: 🇩🇰
+```
+
+For details on using the characters package to manipulate strings,
+see the [example][characters example] and [API reference][characters API]
+for the characters package.
+
+有关使用 characters 包操作字符串的详细信息，请参阅用于 characters 包的[样例][characters example]
+和 [API 参考][characters API]。
 
 {{site.alert.note}}
 
@@ -3247,9 +3258,11 @@ descend from [Object.][Object]
 *Mixin-based inheritance* means that although every class (except for
 Object) has exactly one superclass, a class body can be reused in
 multiple class hierarchies.
+[Extension methods](#extension-methods) are a way to
+add functionality to a class without changing the class or creating a subclass.
 
 Dart 是支持基于 mixin 继承机制的面向对象语言，所有对象都是一个类的实例，而所有的类都继承自 [Object][Object] 类。基于 *mixin 的继承* 意味着每个除 Object 类之外的类都只有一个超类，一个类的代码可以在其它多个类继承中重复使用。
-
+[Extension 方法](#extension-methods)是一种在不更改类或创建子类的情况下向类添加功能的方式。
 
 ### Using class members
 
@@ -4125,6 +4138,8 @@ class SmartTelevision [!extends!] Television {
 {% endprettify %}
 
 
+
+
 #### Overriding members
 
 #### 重写类成员
@@ -4254,6 +4269,40 @@ For more information, see the informal
 
 你可以查阅 [noSuchMethod 转发规范](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)获取更多相关信息。
 
+
+### Extension methods
+
+### Extension 方法
+
+Extension methods, introduced in Dart 2.7,
+are a way to add functionality to existing libraries.
+You might use extension methods without even knowing it.
+For example, when you use code completion in an IDE,
+it suggests extension methods alongside regular methods.
+
+Dart 2.7 中引入的 Extension 方法是向现有库添加功能的一种方式。
+你可能甚至都不知道有 Extension 方法。
+例如，当您在 IDE 中使用代码完成功能时，
+它建议将 Extension 方法与常规方法一起使用。
+
+Here's an example of using an extension method on `String`
+named `parseInt()` that's defined in `string_apis.dart`:
+
+这里是一个在 `String` 中使用 extension 方法的样例，
+我们取名为 `parseInt()`，它在 `string_apis.dart` 中定义：
+
+```dart
+import string_apis.dart';
+...
+print('42'.padLeft(5)); // Use a String method.
+print('42'.parseInt()); // Use an extension method.
+```
+
+For details of using and implementing extension methods, see the
+[extension methods page][].
+
+有关使用以及实现 extension 方法的详细信息，请参阅
+[extension methods 页面][extension methods page].
 
 <a id="enums"></a>
 ### Enumerated types
@@ -5754,6 +5803,10 @@ To learn more about Dart's core libraries, see
 要了解更多关于 Dart 核心库的内容，请参考 [Dart 核心库概览](/guides/libraries/library-tour)。
 
 [AssertionError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html
+[`Characters`]: {{site.pub-api}}/characters/latest/characters/Characters-class.html
+[characters API]: {{site.pub-api}}/characters
+[characters example]: {{site.pub-pkg}}/characters#-example-tab-
+[characters package]: {{site.pub-pkg}}/characters
 [dart2js]: /tools/dart2js
 [dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html
 [dart:isolate]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate
@@ -5765,11 +5818,13 @@ To learn more about Dart's core libraries, see
 [double]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
 [Error]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
 [Exception]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
+[extension methods page]: /guides/language/extension-methods
 [Flutter]: {{site.flutter}}
 [Flutter debug mode]: {{site.flutter}}/docs/testing/debugging#debug-mode-assertions
 [forEach()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
 [Function API reference]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 [Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
+[grapheme clusters]: https://unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries
 [identical()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/identical.html
 [int]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
 [Iterable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
@@ -5781,6 +5836,7 @@ To learn more about Dart's core libraries, see
 [@required]: {{site.pub-api}}/meta/latest/meta/required-constant.html
 [Object]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
 [ObjectVsDynamic]: /guides/language/effective-dart/design#do-annotate-with-object-instead-of-dynamic-to-indicate-any-object-is-allowed
+[runes]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Runes-class.html
 [Set]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
 [StackTrace]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackTrace-class.html
 [Stream]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html

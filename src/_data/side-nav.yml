@@ -43,6 +43,14 @@
           permalink: /guides/language/effective-dart/usage
         - title: API 设计
           permalink: /guides/language/effective-dart/design
+    - title: Extension 方法
+      permalink: /guides/language/extension-methods
+    - title: 规范
+      permalink: /guides/language/spec
+    - title: 概览
+      permalink: /guides/language/language-tour
+    - title: 类型系统
+      permalink: /guides/language/sound-dart
 
 - title: 核心库
   expanded: false

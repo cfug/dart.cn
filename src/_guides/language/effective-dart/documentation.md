@@ -601,7 +601,7 @@ replace it. Words are what matter.
 ### **避免** 使用 HTML 来格式化文字。
 
 It *may* be useful to use it in rare cases for things like tables, but in almost
-all cases, if it's too complex too express in Markdown, you're better off not
+all cases, if it's too complex to express in Markdown, you're better off not
 expressing it.
 
 例如表格，在极少数情况下它*可能*很有用。
