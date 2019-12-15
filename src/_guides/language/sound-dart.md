@@ -8,13 +8,14 @@ description: 如何写出优雅的 Dart 代码。
 
 The Dart language is type safe: it uses a combination of static type checking and
 [runtime checks](#runtime-checks) to
-ensure that a variable's value always matches the variable's static type.
+ensure that a variable's value always matches the variable's static type,
+sometimes referred to as sound typing.
 Although _types_ are mandatory, type _annotations_ are optional
 because of [type inference](#type-inference).
 
 Dart 是类型安全的编程语言：Dart 使用静态类型检查和
 [运行时检查](#runtime-checks)
-的组合来确保变量的值始终与变量的静态类型匹配。尽管类型是必需的，但由于
+的组合来确保变量的值始终与变量的静态类型或其他安全类型相匹配。尽管类型是必需的，但由于
 [类型推断](#type-inference)，类型的注释是可选的。
 
 This page concentrates on the type safety features added in Dart 2.
@@ -40,6 +41,11 @@ For a full introduction to the Dart language, including types, see the
   **strong mode** 是一种在Dart 1.x中可选的功能，
   可为类型安全提供部分支持。
 </aside>
+
+For a full introduction to the Dart language, including types, see the
+[language tour](/guides/language/language-tour).
+
+有关 Dart 语言的完整介绍（包括类型），请参阅[语言指南](/guides/language/language-tour)。
 
 One benefit of static type checking is the ability to find bugs
 at compile time using Dart's [static analyzer.][analysis]
