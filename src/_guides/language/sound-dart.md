@@ -45,7 +45,7 @@ For a full introduction to the Dart language, including types, see the
 For a full introduction to the Dart language, including types, see the
 [language tour](/guides/language/language-tour).
 
-有关 Dart 语言的完整介绍，包括类型，请参阅[语言指南](/guides/language/language-tour)。
+有关 Dart 语言的完整介绍（包括类型），请参阅[语言指南](/guides/language/language-tour)。
 
 One benefit of static type checking is the ability to find bugs
 at compile time using Dart's [static analyzer.][analysis]
