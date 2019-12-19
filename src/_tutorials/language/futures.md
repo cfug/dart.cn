@@ -163,8 +163,6 @@ The `async` and `await` keywords are part of the Dart language's [asynchrony sup
 
 关键字 `async` 和 `await` 是 Dart 语言 [异步支持](/guides/language/language-tour#asynchrony-support) 的一部分。它们允许你不使用 `Future` 的 API 编写看起来与同步代码一样的异步代码。_异步函数_ 即在函数头中包含关键字 `async` 的函数。关键字 `await` 只能用在异步函数中。
 
-{% include async-await-2.0.md %}
-
 The following app simulates reading the news by using `async` and `await`
 to read the contents of a file on this site.
 Click run {% asset red-run.png alt="" %} to start the app.
