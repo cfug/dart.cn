@@ -1339,7 +1339,7 @@ to view or manipulate user-perceived characters,
 also known as
 [Unicode (extended) grapheme clusters.][grapheme clusters]
 
-在 Dart 中，[runes][] 公开了字符串的 Unicode 代码点。
+在 Dart 中，[runes][] 公开了字符串的 Unicode 码位。
 从 Dart 2.6 开始，使用 [characters 包][characters package]来访问
 或者操作用户感知的字符，也被称为 [Unicode (扩展) grapheme clusters.][grapheme clusters]。
 
