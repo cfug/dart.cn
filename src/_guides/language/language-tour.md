@@ -2503,11 +2503,12 @@ that might otherwise require [if-else](#if-and-else) statements:
 
 Dart 有两个特殊的运算符可以用来替代 [if-else](#if-和-else) 语句：
 
-<code><em>condition</em> ? <em>expr1</em> : <em>expr2</em>
+<code><em>condition</em> ? <em>expr1</em> : <em>expr2</em></code>
 : If _condition_ is true, evaluates _expr1_ (and returns its value);
   otherwise, evaluates and returns the value of _expr2_.
 
-<code><em>条件</em> ? <em>表达式 1</em> : <em>表达式 2</em>：如果条件为 true，执行表达式 1并返回执行结果，否则执行表达式 2 并返回执行结果。
+<code><em>条件</em> ? <em>表达式 1</em> : <em>表达式 2</em></code>
+：如果条件为 true，执行表达式 1并返回执行结果，否则执行表达式 2 并返回执行结果。
 
 <code><em>expr1</em> ?? <em>expr2</em></code>
 : If _expr1_ is non-null, returns its value;
@@ -4292,7 +4293,7 @@ named `parseInt()` that's defined in `string_apis.dart`:
 我们取名为 `parseInt()`，它在 `string_apis.dart` 中定义：
 
 ```dart
-import string_apis.dart';
+import 'string_apis.dart';
 ...
 print('42'.padLeft(5)); // Use a String method.
 print('42'.parseInt()); // Use an extension method.
