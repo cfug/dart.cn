@@ -115,6 +115,8 @@ class C { ... }
 
 ### **要** 使用 `UpperCamelCase` 风格类型作为扩展名
 
+{% include linter-rule.html rule="camel_case_extensions" %}
+
 Like types, extensions should capitalize the first letter of each word
 (including the first word), 
 and use no separators.

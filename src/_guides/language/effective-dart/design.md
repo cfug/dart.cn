@@ -996,6 +996,8 @@ comment.
 
 ### **要** 对支持 mixin 的类在文档注明
 
+{% include linter-rule.html rule="prefer_mixin" %}
+
 Dart originally didn't have a separate syntax for declaring a class intended to
 be mixed in to other classes. Instead, any class that met certain restrictions
 (no non-default constructor, no superclass, etc.) could be used as a mixin. This
@@ -1033,6 +1035,8 @@ syntax is preferred.
 ### AVOID mixing in a type that isn't intended to be a mixin. {#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin}
 
 ### **避免** 去 mixin 一个不期望被 mixin 的类 {#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin}
+
+{% include linter-rule.html rule="prefer_mixin" %}
 
 For compatibility, Dart still allows you to mix in classes that aren't defined
 using `mixin`. However, that's risky. If the author of the class doesn't intend
@@ -1726,6 +1730,8 @@ if (node is Constructor) {
 ### AVOID annotating inferred parameter types on function expressions.
 
 ### **避免** 在函数表达式上注解推断的参数类型。
+
+{% include linter-rule.html rule="avoid_types_on_closure_parameters" %}
 
 Anonymous functions are almost always immediately passed to a method taking a
 callback of some type. (If the function isn't used immediately, it's usually
@@ -2516,6 +2522,8 @@ you're trying to express.
 ### AVOID defining custom equality for mutable classes.
 
 ### **避免** 为可变类自定义相等。
+
+{% include linter-rule.html rule="avoid_equals_and_hash_code_on_mutable_classes" %}
 
 When you define `==`, you also have to define `hashCode`. Both of those should
 take into account the object's fields. If those fields *change* then that
