@@ -762,18 +762,9 @@ main .content {
       }
     }
 
-<<<<<<< HEAD
-    // Invisible pre-element to avoid modifying styles on headings.
-    &[id]::before {
-      @include header-clearance;
-
-      content: "";
-      // display: block;
-=======
     // Push # link targets clear of page header.
     &[id] {
       scroll-margin: 60px;
->>>>>>> 875c119c13ba69705702dd47b8938a0bef658650
     }
   }
 
