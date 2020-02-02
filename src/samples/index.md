@@ -139,7 +139,7 @@ A shorthand `=>` (_arrow_) syntax is handy for functions that
 contain a single statement.
 This syntax is especially useful when passing anonymous functions as arguments:
 
-`=>` (**胖剪头**) 简写语法用于仅包含一条语句的函数。该语法在将匿名函数作为参数传递时非常有用：
+`=>` (**胖箭头**) 简写语法用于仅包含一条语句的函数。该语法在将匿名函数作为参数传递时非常有用：
 
 <?code-excerpt "misc/test/samples_test.dart (arrow)"?>
 {% prettify dart %}
