@@ -29,18 +29,27 @@ Dart makes writing apps easy and fun.
 
 ### [Dart cheatsheet](/codelabs/dart-cheatsheet)
 
-Use the latest, experimental version of DartPad to learn,
-remind yourself about, or test your knowledge of
+Use DartPad to learn or remind yourself of
 some of the most commonly used, yet unique features of the Dart language.
 
 使用最新实验版本的 DartPad 来测试，学习和了解 Dart 语言的语法和特性。
 
+### [Iterable collections](/codelabs/iterables)
+
+Use DartPad to learn or remind yourself of how to use
+lists, sets, and other iterable collections in Dart,
+with special attention to filtering and mapping values.
+
+使用 DartPad 学习并提醒自己如何使用
+Dart 中的列表，集合和其他可迭代集合，
+特别注意过滤和映射值。
+
 ### [Asynchronous programming: futures, async, await](/codelabs/async-await)
 
-Use the latest, experimental version of DartPad to learn how to write 
+Use DartPad to learn or remind yourself of how to write 
 asynchronous code using futures and the `async` and `await` keywords.
 
-使用最新实验版本的 DartPad 来学习使用 futures、async 和 await 来写异步代码。
+使用 DartPad 来学习使用 futures、async 和 await 来写异步代码。
 
 ## Flutter
 

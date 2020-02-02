@@ -10,7 +10,7 @@ _Downgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 _Downgrade_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
 
 {% prettify sh %}
-$ pub downgrade [args] [dependencies]
+$ pub downgrade [--[no-]offline] [-n|--dry-run] [dependencies...] 
 {% endprettify %}
 
 Without any additional arguments, `pub downgrade` gets the lowest versions of
@@ -124,7 +124,8 @@ available.
 
 但是，默认情况下，`pub downgrade` 命令会总是尝试获取线上的依赖版本，因此 Pub 可以确定依赖项是否有更新的版本。如果你不想 Pub 去线上检查，可以使用 `--offline` 命令参数让该命令在离线模式下执行。在离线模式下，Pub 只会从本地缓存区查找已经下载到的可用 Package。
 
-## Options {#options}
+
+## Options
 
 ## 选项 {#options}
 
@@ -137,6 +138,19 @@ For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
 你可以查阅 [全局选项](/tools/pub/cmd#global-options) 获取 Pub 命令所支持的命令选项。
+
+`--[no-]offline`
+: By default, pub connects to the network to check for hosted 
+dependencies (`--no-offline`). To use cached packages instead, use `--offline`.
+
+`--[no-]offline`
+: 默认情况下，pub 将会通过网络检查 host 依赖（`--no-offline`）。要使用缓存的包，请使用 `--offline`。
+
+`--dry-run` or `-n`
+: Report what dependencies would change but don't change any.
+
+`--dry-run` 或 `-n`
+: 报告将要改变的依赖项，但不会真的改变它。
 
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).

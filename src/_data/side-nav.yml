@@ -12,6 +12,8 @@
           permalink: /codelabs
         - title: Dart 速查表
           permalink: /codelabs/dart-cheatsheet
+        - title: 可迭代集合
+          permalink: /codelabs/iterables
         - title: Dart 异步编程
           permalink: /codelabs/async-await
     - title: 教程一览
@@ -230,6 +232,8 @@
       permalink: /resources
     - title: 书籍
       permalink: /resources/books
+    - title: 教程中的 DartPad&#58; 最佳实践
+      permalink: /resources/dartpad-best-practices
     - title: 行为准则
       permalink: /code-of-conduct
     - title: 常见问题
