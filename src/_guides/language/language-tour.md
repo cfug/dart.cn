@@ -526,8 +526,10 @@ baz = [42]; // 报错：常量不可以被赋值。(Error: Constant variables ca
 
 As of Dart 2.5, you can define constants that use
 [type checks and casts](#type-test-operators) (`is` and `as`),
-[collection if and collection for](#collection-operators),
+[collection if](#collection-operators),
 and [spread operators](#spread-operator) (`...` and `...?`):
+
+从 Dart 2.5 开始，你可以在常量中使用[类型检查和强制类型转换](#type-test-operators) (`is` and `as`)、[collection if](#collection-operators) 以及 [spread operators](#spread-operator) (`...` and `...?`)：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const-dart-25)"?>
 ```dart
@@ -2318,12 +2320,20 @@ specified by `T`. For example, `obj is Object` is always true.
 
 当且仅当 `obj` 实现了 `T` 的接口，`obj is T` 才是 true。例如 `obj is Object` 总为 true，因为所有类都是 Object 的子类。
 
-Use the `as` operator to cast an object to a particular type. In
-general, you should use it as a shorthand for an `is` test on an object
-followed by an expression using that object. For example, consider the
-following code:
+Use the `as` operator to cast an object to a particular type if and only if
+you are sure that the object is of that type. Example:
 
-使用 `as` 操作符可以把对象转换为特定的类型。一般情况下可以将其当做 `is` 判定类型后调用所判定对象的函数的缩写形式。假设有如下代码：
+仅当你确定这个对象是该类型的时候，你才可以使用 `as` 操作符可以把对象转换为特定的类型。例如：
+
+<?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp as Person)"?>
+```dart
+(emp as Person).firstName = 'Bob';
+```
+
+If you aren't sure that the object is of type `T`, then use `is T` to check the 
+type before using the object.
+
+如果你不确定这个对象类型是不是 `T`，请在转型前使用 `is T` 检查类型。
 
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp is Person)"?>
 ```dart
@@ -2344,12 +2354,11 @@ You can make the code shorter using the `as` operator:
 
 {{site.alert.note}}
 
-  The code isn’t equivalent. If `emp` is null or not a Person, the
-  first example (with `is`) does nothing; the second (with `as`) throws
-  an exception.
+  The code isn’t equivalent. If `emp` is null or not a `Person`, the
+  first example throws an exception; the second does nothing.
   
   上述两种方式是有区别的：如果 `emp` 为 null 或者不为 Person 类型，
-  则第一种方式最多只是不执行条件内代码，但是第二种方式则会抛出异常。
+  则第一种方式将会抛出异常，而第二种不会。
 
 {{site.alert.end}}
 

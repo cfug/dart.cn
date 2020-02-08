@@ -129,8 +129,7 @@ available.
 
 ## 选项 {#options}
 
-The `pub downgrade` command supports the
-[`pub get` options](/tools/pub/cmd/pub-get#options).
+## Options
 
 `pub upgrade` 命令支持 [`pub get` 的命令选项](/tools/pub/cmd/pub-get#options)。
 
