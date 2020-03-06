@@ -159,7 +159,7 @@ Directly under lib, the main library file,
 在 shelf Package 中同样包含了 Mini Library：shelf_io 。
 适配器用来处理来自 dart:io 的 HttpRequest 对象。
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 export 'src/cascade.dart';
 export 'src/handler.dart';
 export 'src/handlers/logger.dart';
@@ -203,7 +203,7 @@ the `package:` directive to specify the URI of that file.
 
 在导入 Library 文件时，使用 `package:` 命令来指定文件的 URI 。
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:utilities/utilities.dart';
 {% endprettify %}
 
@@ -399,13 +399,13 @@ public use go into the `tool` directory.
 在开发过程中任何非公开的工具或可执行程序，应该放到 `tool` 文件夹。
 
 Other files that are required if you publish your library to the
-pub.dev site, such as a README and a CHANGELOG, are
+pub.dev site, such as `README.md` and `CHANGELOG.md`, are
 described in [Publishing a package](/tools/pub/publishing).
 For more information on how to organize a package directory,
 see the [pub package layout conventions](/tools/pub/package-layout).
 
 如果要将 Library 发布到 Pub 网站还要求一些其他的文件来描述 [发布的 Package](/tools/pub/publishing) ，
-例如：README 和 CHANGELOG 文件。
+例如：`README.md` 和 `CHANGELOG.md` 文件。
 更多关于如何组织 Package 目录的内容，参见 [Pub Package 布局约定](/tools/pub/package-layout)。
 
 ## Documenting a library
@@ -422,7 +422,7 @@ which use the `///` syntax:
 dartdoc 解析源文件去查找使用 `///` 语法标注的
 [文档注释](/guides/language/effective-dart/documentation#doc-comments)：
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// The event handler responsible for updating the badge in the UI.
 void updateBadge() {
   ...

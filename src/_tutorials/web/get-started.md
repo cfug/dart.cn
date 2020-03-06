@@ -22,14 +22,14 @@ Try editing the source code—perhaps you'd like to add "horses"
 to the list of pets. To get the full DartPad experience,
 which includes the web UI that the app produces,
 <a href="{{site.dartpad}}/2a24f3f042f1c86cf91621c30adce771"
-   target="_blank">open the example at dartpad.dev.</a>
+  target="_blank" rel="noopener">open the example at dartpad.dev.</a>
 
 {{site.alert.note}}
   {% include dartpad-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
 <iframe
-    src="{{site.dartpad-embed-html}}?id=2a24f3f042f1c86cf91621c30adce771"
+    src="{{site.dartpad-embed-html}}?id=2a24f3f042f1c86cf91621c30adce771&ga_id=play_with_a_web_app"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">
@@ -118,7 +118,7 @@ Let's customize the app you just created.
  2. In the `main()` function, initialize the `output` element using
     `thingsTodo()`:
 
-    {% prettify dart %}
+    {% prettify dart tag=pre+code %}
     void main() {
       Element output = querySelector('#output');
       [!output.children.addAll(thingsTodo().map(newLI));!]
@@ -140,7 +140,7 @@ Let's customize the app you just created.
  5. Optionally, improve the formatting by editing `web/styles.css`,
     then reload the app to check your changes.
 
-    {% prettify css %}
+    {% prettify css tag=pre+code %}
     #output {
       padding: 20px;
       [!text-align: left;!]

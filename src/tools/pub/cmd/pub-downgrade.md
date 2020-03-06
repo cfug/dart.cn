@@ -9,7 +9,7 @@ _Downgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 _Downgrade_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
 
-{% prettify sh %}
+{% prettify sh tag=pre+code %}
 $ pub downgrade [--[no-]offline] [-n|--dry-run] [dependencies...] 
 {% endprettify %}
 

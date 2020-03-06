@@ -180,7 +180,7 @@ void showJson(Event _) {
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-html}}?id=1d42e4eadb75bcc1ffbc079e299b862e"
+src="{{site.dartpad-embed-html}}?id=1d42e4eadb75bcc1ffbc079e299b862e&ga_id=about_json"
     width="100%"
     height="600px"
     style="border: 1px solid #ccc;">
@@ -220,7 +220,7 @@ The `showJson()` function, from the example,
 converts all of the data to JSON strings.
 
 <?code-excerpt "web/main.dart (showJson)" remove="FIXME" replace="/(\n\s+)(.*? json.encode.*?;)/$1[!$2!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void showJson(Event _) {
   // Grab the data that will be converted to JSON.
   final favNum = int.tryParse(favoriteNumber.value);
@@ -409,7 +409,7 @@ and loads the file.
 
 {% comment %} https://gist.github.com/kwalrath/70bb4db7bea44663206e7a9c111f31d2 {% endcomment %}
 <iframe
-src="{{site.dartpad-embed-html}}?id=70bb4db7bea44663206e7a9c111f31d2"
+src="{{site.dartpad-embed-html}}?id=70bb4db7bea44663206e7a9c111f31d2&ga_id=using_getstring"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -419,7 +419,7 @@ This program uses a convenience method, [getString()][], provided by the
 [HttpRequest][] class to request the file from the server.
 
 <?code-excerpt "web/portmanteaux/main.dart (makeRequest)" remove="FIXME" replace="/\/\/ \w.*/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future<void> makeRequest(Event _) async {
   const path = 'https://dart.dev/f/portmanteaux.json';
   try {
@@ -465,7 +465,7 @@ an HttpRequest object.
 
 {% comment %} https://gist.github.com/kwalrath/f8aa7310e96d359c5f68343c9ccba8ed {% endcomment %}
 <iframe
-src="{{site.dartpad-embed-html}}?id=f8aa7310e96d359c5f68343c9ccba8ed"
+src="{{site.dartpad-embed-html}}?id=f8aa7310e96d359c5f68343c9ccba8ed&ga_id=using_http_request"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -528,7 +528,7 @@ The `requestComplete()` function
 checks the status code for the request.
 
 <?code-excerpt "web/portmanteaux2/main.dart (requestComplete)" replace="/request\.\w+(?=\))/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void requestComplete(HttpRequest request) {
   switch ([!request.status!]) {
     case 200:
@@ -553,7 +553,7 @@ The data file in the portmanteaux example,
 contains the following JSON-formatted list of strings:
 
 <?code-excerpt "web/portmanteaux.json"?>
-{% prettify json %}
+{% prettify json tag=pre+code %}
 [
   "portmanteau", "fantabulous", "spork", "smog",
   "spanglish", "gerrymander", "turducken", "stagflation",
@@ -573,7 +573,7 @@ creates a new [LIElement][] for each one,
 and adds it to the `<ul>` element on the page.
 
 <?code-excerpt "web/portmanteaux2/main.dart (processResponse)" replace="/json\.\w+/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void processResponse(String jsonString) {
   for (final portmanteau in [!json.decode!](jsonString)) {
     wordList.children.add(LIElement()..text = portmanteau as String);

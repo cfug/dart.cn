@@ -30,10 +30,11 @@ consult the [Dart language specification][].
 
   You can play with most of Dart's language features using DartPad
   ([learn more](/tools/dartpad)).
-  **<a href="{{ site.dartpad }}" target="_blank">Open DartPad</a>**
+  **<a href="{{site.dartpad}}" target="_blank" rel="noopener">Open
+  DartPad.</a>**
   
   使用 DartPad 可以体验 Dart 的大部分语言功能 ([了解更多](/tools/dartpad))，
-  **<a href="{{ site.dartpad }}" target="_blank">打开 DartPad</a>**
+  **<a href="{{site.dartpad}}" target="_blank" rel="noopener">打开 DartPad。</a>**
   
   This page uses embedded DartPads to display some of the examples.
   
@@ -1066,7 +1067,10 @@ List 类中有许多用于操作 List 的便捷方法，你可以查阅[泛型](
 ### Sets
 
 A set in Dart is an unordered collection of unique items.
-Dart support for sets is provided by set literals and the [Set][] type.
+Dart support for sets is provided by set literals and the [Set][Set class] type.
+
+在 Dart 中，set 是一组特定元素的无序集合。
+Dart 所支持的 set 由 set literals 和 [Set][Set class] 类所提供。
 
 {{site.alert.version-note}}
 
@@ -1594,7 +1598,7 @@ For example:
 此时调用者则必须为该参数提供一个值。例如：
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/@required/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const Scrollbar({Key key, [!@required!] Widget child})
 {% endprettify %}
 
@@ -1748,7 +1752,7 @@ https://gist.github.com/d988cfce0a54c6853799
 {{site.dartpad}}/d988cfce0a54c6853799
 (The gist needs updating: see https://github.com/dart-lang/site-www/issues/189)
 <iframe
-src="{{site.dartpad-embed-inline}}?id=d988cfce0a54c6853799"
+src="{{site.dartpad-embed-inline}}?id=d988cfce0a54c6853799&ga_id=default_parameter_values"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">
@@ -1900,7 +1904,7 @@ https://gist.github.com/chalin/5d70bc1889d055c7a18d35d77874af88
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-inline}}?id=5d70bc1889d055c7a18d35d77874af88&split=60"
+src="{{site.dartpad-embed-inline}}?id=5d70bc1889d055c7a18d35d77874af88&split=60&ga_id=anonymous_functions"
     width="100%"
     height="400px"
     style="border: 1px solid #ccc;">
@@ -3179,7 +3183,7 @@ and the second is the stack trace (a [StackTrace][] object).
 你可以为 `catch` 方法指定两个参数，第一个参数为抛出的异常对象，第二个参数为栈信息 [StackTrace][] 对象：
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try-catch-2)" replace="/\(e.*?\)/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 try {
   // ···
 } on Exception catch [!(e)!] {
@@ -3197,7 +3201,7 @@ use the `rethrow` keyword.
 关键字 `rethrow` 可以将捕获的异常再次抛出：
 
 <?code-excerpt "misc/test/language_tour/exceptions_test.dart (rethrow)" replace="/rethrow;/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void misbehave() {
   try {
     dynamic foo = true;
@@ -3587,7 +3591,7 @@ or to provide extra clarity:
 可以为一个类声明多个命名式构造函数来表达更明确的意图：
 
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (named-constructor)" replace="/Point\.\S*/[!$&!]/g" plaster="none"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Point {
   num x, y;
 
@@ -3682,7 +3686,7 @@ void main() {
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-inline}}?id=e57aa06401e6618d4eb8&split=90"
+src="{{site.dartpad-embed-inline}}?id=e57aa06401e6618d4eb8&split=90&ga_id=non_default_superclass_constructor"
     width="100%"
     height="500px"
     style="border: 1px solid #ccc;">
@@ -3747,7 +3751,7 @@ initializer list.
 在开发模式下，你可以在初始化列表中使用 `assert` 来验证输入数据：
 
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-with-assert)" replace="/assert\(.*?\)/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Point.withAssert(this.x, this.y) : [!assert(x >= 0)!] {
   print('In Point.withAssert(): ($x, $y)');
 }
@@ -3795,7 +3799,7 @@ void main() {
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-inline}}?id=7a9764702c0608711e08&split=90"
+src="{{site.dartpad-embed-inline}}?id=7a9764702c0608711e08&split=90&ga_id=initializer_list"
     width="100%"
     height="420px"
     style="border: 1px solid #ccc;">
@@ -4127,7 +4131,7 @@ superclass:
 使用 `extends` 关键字来创建一个子类，并可使用 `super` 关键字引用一个父类：
 
 <?code-excerpt "misc/lib/language_tour/classes/extends.dart" replace="/extends|super/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Television {
   void turnOn() {
     _illuminateDisplay();
@@ -4161,7 +4165,7 @@ intentionally overriding a member:
 子类可以重写父类的实例方法、Getter 以及 Setter 方法。你可以使用 `@override` 注解来表示你重写了一个成员：
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (override)" replace="/@override/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class SmartTelevision extends Television {
   [!@override!]
   void turnOn() {...}
@@ -4247,7 +4251,7 @@ instance variable, you can override `noSuchMethod()`:
 如果调用了对象上不存在的方法或实例变量将会触发 `noSuchMethod` 方法，你可以重写 `noSuchMethod` 方法来追踪和记录这一行为：
 
 <?code-excerpt "misc/lib/language_tour/classes/no_such_method.dart" replace="/noSuchMethod(?!,)/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class A {
   // 除非你重写 noSuchMethod，否则调用一个不存在的成员会导致 NoSuchMethodError。
   @override
@@ -4417,7 +4421,7 @@ names. The following example shows two classes that use mixins:
 使用 `with` 关键字并在其后跟上 Mixin 类的名字来使用 Mixin 模式：
 
 <?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (Musician and Maestro)" replace="/(with.*) \{/[!$1!] {/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Musician extends Performer [!with Musical!] {
   // ···
 }
@@ -4773,7 +4777,7 @@ You can do this using `extends`.
 有时使用泛型的时候可能会想限制泛型的类型范围，这时候可以使用 `extends` 关键字：
 
 <?code-excerpt "misc/lib/language_tour/generics/base_class.dart" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Foo<T [!extends SomeBaseClass!]> {
   // 具体实现……
   String toString() => "'Foo<$T>' 的实例";
@@ -4787,7 +4791,7 @@ It's OK to use `SomeBaseClass` or any of its subclasses as generic argument:
 这时候就可以使用 `SomeBaseClass` 或者它的子类来作为泛型参数：
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (SomeBaseClass-ok)" replace="/Foo.\w+./[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var someBaseClassFoo = [!Foo<SomeBaseClass>!]();
 var extenderFoo = [!Foo<Extender>!]();
 {% endprettify %}
@@ -4808,7 +4812,7 @@ Specifying any non-`SomeBaseClass` type results in an error:
 
 {:.fails-sa}
 <?code-excerpt "misc/lib/language_tour/generics/misc.dart (Foo-Object-error)" replace="/Foo.\w+./[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var foo = [!Foo<Object>!]();
 {% endprettify %}
 
@@ -4825,7 +4829,7 @@ A newer syntax, called _generic methods_, allows type arguments on methods and f
 <!-- {{site.dartpad}}/a02c53b001977efa4d803109900f21bb -->
 <!-- https://gist.github.com/a02c53b001977efa4d803109900f21bb -->
 <?code-excerpt "misc/test/language_tour/generics_test.dart (method)" replace="/<T.(?=\()|T/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 [!T!] first[!<T>!](List<[!T!]> ts) {
   // 处理一些初始化工作或错误检测……
   [!T!] tmp = ts[0];
@@ -5150,7 +5154,7 @@ function marked as `async`:
 必须在带有 async 关键字的 _异步函数_ 中使用 `await`：
 
 <?code-excerpt "misc/lib/language_tour/async.dart (checkVersion)" replace="/async|await/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future checkVersion() [!async!] {
   var version = [!await!] lookUpVersion();
   // 使用 version 继续处理逻辑
@@ -5217,7 +5221,7 @@ the body of `main()` must be marked as `async`:
 **如果在使用 `await` 时导致编译错误，请确保 `await` 在一个异步函数中使用**。例如，如果想在 main() 函数中使用 `await`，那么 `main()` 函数就必须使用 `async` 关键字标识。
 
 <?code-excerpt "misc/lib/language_tour/async.dart (main)" replace="/async|await/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future main() [!async!] {
   checkVersion();
   print('在 Main 函数中执行：版本是 ${[!await!] lookUpVersion()}');
@@ -5355,7 +5359,7 @@ the body of `main()` must be marked as `async`:
 **如果在实现异步 for 循环时遇到编译时错误，请检查确保 `await for` 处于异步函数中。** 例如，要在应用程序的 `main()` 函数中使用异步 for 循环，`main()` 函数体必须标记为 `async`：
 
 <?code-excerpt "misc/lib/language_tour/async.dart (number_thinker)" replace="/async|await for/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future main() [!async!] {
   // ...
   [!await for!] (var request in requestServer) {
@@ -5470,7 +5474,7 @@ main() => print(out);
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-inline}}?id=405379bacf30335f3aed"
+src="{{site.dartpad-embed-inline}}?id=3723fcf3915ca935d13393b8a9f86fd5&ga_id=callable_classes"
     width="100%"
     height="350px"
     style="border: 1px solid #ccc;">
@@ -5628,7 +5632,7 @@ annotation:
 Dart 中有两个注解是所有代码都可以使用的：`@deprecated` 和 `@override`。你可以查阅[扩展一个类](#extending-a-class)获取有关 `@override` 的使用示例。下面是使用 `@deprecated` 的示例：
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (deprecated)" replace="/@deprecated/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Television {
   /// _弃用: 使用 [turnOn] 替代_
   [!@deprecated!]
@@ -5847,7 +5851,7 @@ To learn more about Dart's core libraries, see
 [Object]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
 [ObjectVsDynamic]: /guides/language/effective-dart/design#do-annotate-with-object-instead-of-dynamic-to-indicate-any-object-is-allowed
 [runes]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Runes-class.html
-[Set]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
+[Set class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
 [StackTrace]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackTrace-class.html
 [Stream]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [String]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html

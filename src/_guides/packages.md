@@ -73,7 +73,7 @@ pubspec 是一个名为 <code class="literal">pubspec.yaml</code> 的文件，
 最简单的 pubspec 只需要列出包名：
 
 {% comment %} TODO: make 3-backtick-yaml the same as prettify yaml {% endcomment %}
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: my_app
 {% endprettify %}
 
@@ -82,7 +82,7 @@ two packages (`js` and `intl`) that are hosted on the pub.dev site:
 
 下面是一个 pubspec 的示例，示例中声明依赖了在 Pub 站点上托管的两个包（ `js` 和 `intl` ）：
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: my_app
 dependencies:
   js: ^0.6.0
@@ -172,7 +172,7 @@ the (fictional) `transmogrify` package:
 也可以使用此方式从自己的包中导入库。
 思考下面的 pubspec 文件，该文件声明了对 `transmogrify` 包（虚构的包名）的依赖：
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: my_app
 dependencies:
   transmogrify:
@@ -180,7 +180,7 @@ dependencies:
 
 Let's say that your package is laid out as follows:
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 transmogrify/
   lib/
     transmogrify.dart
@@ -194,7 +194,7 @@ The `parser_test` file *could* import `parser.dart` like this:
 
 `parser_test` 文件可以通过 import `parser.dart` 的方式来导入：
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import '../../lib/parser.dart';
 {% endprettify %}
 
@@ -206,7 +206,7 @@ Instead, you can do as follows:
 那么该路径就会被破坏。
 我们应该通过下面的方式来代替：
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:transmogrify/parser.dart';
 {% endprettify %}
 
@@ -250,7 +250,7 @@ use pub upgrade:
 
 如果已经准备更新依赖到最新版本，使用命令 `pub upgrade` ：
 
-{% prettify sh %}
+{% prettify sh tag=pre+code %}
 $ pub upgrade
 {% endprettify %}
 
@@ -262,7 +262,7 @@ you can specify the package to upgrade:
 上面的命令用于重新生成 lockfile 文件，并使用最新可用版本的依赖包。
 如果仅升级某个依赖，可以在命令中指定需要升级的包：
 
-{% prettify sh %}
+{% prettify sh tag=pre+code %}
 $ pub upgrade transmogrify
 {% endprettify %}
 

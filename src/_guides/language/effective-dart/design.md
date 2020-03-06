@@ -38,7 +38,7 @@ precedent.
 那么请继续使用这个命名。
 
 {:.good}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 pageCount         // A field.
 updatePageCount() // Consistent with pageCount.
 toSomething()     // Consistent with Iterable's toList().
@@ -47,7 +47,7 @@ Point             // A familiar concept.
 {% endprettify %}
 
 {:.bad}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 renumberPages()      // Confusingly different from pageCount.
 convertToSomething() // Inconsistent with toX() precedent.
 wrappedAsSomething() // Inconsistent with asX() precedent.
@@ -78,7 +78,7 @@ abbreviate. If you do abbreviate, [capitalize it correctly][caps].
 [caps]: /guides/language/effective-dart/style#identifiers
 
 {:.good}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 pageCount
 buildRectangles
 IOStream
@@ -86,7 +86,7 @@ HttpRequest
 {% endprettify %}
 
 {:.bad}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 numPages    // "num" is an abbreviation of number(of)
 buildRects
 InputOutputStream
@@ -105,7 +105,7 @@ prefix it with other words, such as adjectives, to further describe the thing.
 你可以在其前面添加其他单词，例如形容词，以进一步描述该事物。
 
 {:.good}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 pageCount             // A count (of pages).
 ConversionSink        // A sink for doing conversions.
 ChunkedConversionSink // A ConversionSink that's chunked.
@@ -113,7 +113,7 @@ CssFontFaceRule       // A rule for font faces in CSS.
 {% endprettify %}
 
 {:.bad}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 numPages                  // Not a collection of pages.
 CanvasRenderingContext2D  // Not a "2D".
 RuleFontFaceCss           // Not a CSS.
@@ -132,7 +132,7 @@ it like a sentence.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (code-like-prose)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // "If errors is empty..."
 if (errors.isEmpty) ...
 
@@ -145,7 +145,7 @@ monsters.where((monster) => monster.hasClaws);
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (code-like-prose)" replace="/ as bool//g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // Telling errors to empty itself, or asking if it is?
 if (errors.empty) ...
 
@@ -165,7 +165,7 @@ to force your names to *literally* read like a grammatically correct sentence.
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (code-like-prose-overdone)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (theCollectionOfErrors.isEmpty) ...
 
 monsters.producesANewSequenceWhereEach((monster) => monster.hasClaws);
@@ -184,14 +184,14 @@ verb phrase name.
 如果用户更关心*如何*确定一个属性，则很可能应该是一个使用动词短语命名函数。
 
 {:.good}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 list.length
 context.lineWidth
 quest.rampagingSwampBeast
 {% endprettify %}
 
 {:.bad}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 list.deleteItems
 {% endprettify %}
 
@@ -206,7 +206,7 @@ that reads well there. Compare:
 布尔名称通常用在控制语句中当做条件，
 因此你要应该让这个名字在控制语句中读起来语感很好。比较下面的两个：
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (window.closeable) ...  // Adjective.
 if (window.canClose) ...   // Verb.
 {% endprettify %}
@@ -256,7 +256,7 @@ method.)
 （如果这个属性*确实*修改了对象的状态，则它应该是一个函数。）
 
 {:.good}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 isEmpty
 hasElements
 canClose
@@ -266,7 +266,7 @@ hasShownPopup
 {% endprettify %}
 
 {:.bad}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 empty         // Adjective or verb?
 withElements  // Sounds like it might hold elements.
 closeable     // Sounds like an interface.
@@ -298,7 +298,7 @@ site.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-verb-for-bool-param)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Isolate.spawn(entryPoint, message, paused: false);
 var copy = List.from(elements, growable: true);
 var regExp = RegExp(pattern, caseSensitive: false);
@@ -339,7 +339,7 @@ understand what the code means.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (positive)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (socket.isConnected && database.hasData) {
   socket.write(database.read());
 }
@@ -347,7 +347,7 @@ if (socket.isConnected && database.hasData) {
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (positive)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (!socket.isDisconnected && !database.isEmpty) {
   socket.write(database.read());
 }
@@ -395,7 +395,7 @@ clarifies the work the member performs.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (verb-for-func-with-side-effect)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 list.add("element");
 queue.removeFirst();
 window.refresh();
@@ -430,7 +430,7 @@ member returns.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (noun-for-func-returning-value)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var element = list.elementAt(3);
 var first = list.firstWhere(test);
 var char = string.codeUnitAt(4);
@@ -465,7 +465,7 @@ work.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (verb-for-func-with-work)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var table = database.downloadData();
 var packageVersions = packageGraph.solveConstraints();
 {% endprettify %}
@@ -540,7 +540,7 @@ If you define a conversion method, it's helpful to follow that convention.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (to___)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 list.toSet();
 stackTrace.toString();
 dateTime.toLocal();
@@ -570,7 +570,7 @@ The core library convention for you to follow is `as___()`.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (as___)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var map = table.asMap();
 var list = bytes.asFloat32List();
 var future = subscription.asFuture();
@@ -588,13 +588,13 @@ readability to also refer to it in the name itself.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-desc-param-in-func)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 list.add(element);
 map.remove(key);
 {% endprettify %}
 
 {:.bad}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 list.addElement(element)
 map.removeKey(key)
 {% endprettify %}
@@ -607,7 +607,7 @@ similarly-named methods that take different types:
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (desc-param-in-func-ok)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 map.containsKey(key);
 map.containsValue(value);
 {% endprettify %}
@@ -630,7 +630,7 @@ The conventions are:
 
     {:.good}
     <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-e)" replace="/\n\n/\n/g"?>
-    {% prettify dart %}
+    {% prettify dart tag=pre+code %}
     class IterableBase<E> {}
     class List<E> {}
     class HashSet<E> {}
@@ -644,7 +644,7 @@ The conventions are:
 
     {:.good}
     <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-k-v)" replace="/\n\n/\n/g"?>
-    {% prettify dart %}
+    {% prettify dart tag=pre+code %}
     class Map<K, V> {}
     class Multimap<K, V> {}
     class MapEntry<K, V> {}
@@ -659,7 +659,7 @@ The conventions are:
 
     {:.good}
     <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-r)"?>
-    {% prettify dart %}
+    {% prettify dart tag=pre+code %}
     abstract class ExpressionVisitor<R> {
       R visitBinary(BinaryExpression node);
       R visitLiteral(LiteralExpression node);
@@ -678,7 +678,7 @@ The conventions are:
 
     {:.good}
     <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-t)"?>
-    {% prettify dart %}
+    {% prettify dart tag=pre+code %}
     class Future<T> {
       Future<S> then<S>(FutureOr<S> onValue(T value)) => ...
     }
@@ -696,7 +696,7 @@ mnemonic name or a descriptive name is fine:
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (type-parameter-graph)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Graph<N, E> {
   final List<N> nodes = [];
   final List<E> edges = [];
@@ -811,13 +811,13 @@ just want a function.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (one-member-abstract-class)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 typedef Predicate<E> = bool Function(E element);
 {% endprettify %}
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (one-member-abstract-class)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 abstract class Predicate<E> {
   bool test(E element);
 }
@@ -858,7 +858,7 @@ move it to a separate library that can be imported with a prefix.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (class-only-static)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 DateTime mostRecent(List<DateTime> dates) {
   return dates.reduce((a, b) => a.isAfter(b) ? a : b);
 }
@@ -868,7 +868,7 @@ const _favoriteMammal = 'weasel';
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (class-only-static)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class DateUtils {
   static DateTime mostRecent(List<DateTime> dates) {
     return dates.reduce((a, b) => a.isAfter(b) ? a : b);
@@ -894,7 +894,7 @@ natural to group them in a class.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (class-only-static-exception)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Color {
   static const red = '#f00';
   static const green = '#0f0';
@@ -1011,7 +1011,7 @@ intend to be used as a mixin, use this syntax.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (mixin)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 mixin ClickableMixin implements Control {
   bool _isDown = false;
 
@@ -1172,7 +1172,7 @@ as the caller knows. That implies:
      `O(n)`，是可以的。使用 getter 方法进行重要计算是没问题的。但是如果它做了*超*大量的工作，你可能需要通过一个描述其功能的动词的方法来引起使用者的注意。
 
     {:.bad}
-    {% prettify dart %}
+    {% prettify dart tag=pre+code %}
     connection.nextIncomingMessage; // Does network I/O.
     expression.normalForm; // Could be exponential to calculate.
     {% endprettify %}
@@ -1194,7 +1194,7 @@ as the caller knows. That implies:
     带外副作用。 getter 方法可以惰性计算和存储他们的结果，写入缓存， log 等。这样是没有问题的。
 
     {:.bad}
-    {% prettify dart %}
+    {% prettify dart tag=pre+code %}
     stdout.newline; // Produces output.
     list.clear; // Modifies object.
     {% endprettify %}
@@ -1226,7 +1226,7 @@ as the caller knows. That implies:
     换句话说，*调用者关系的*是结果值应该相等。
 
     {:.bad}
-    {% prettify dart %}
+    {% prettify dart tag=pre+code %}
     DateTime.now; // New result each time.
     {% endprettify %}
 
@@ -1252,7 +1252,7 @@ should be getters.
 
 
 {:.good}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 rectangle.area;
 collection.isEmpty;
 button.canShow;
@@ -1296,7 +1296,7 @@ For a setter, "field-like" means:
     来看，第二次调用似乎没做任何事情。
 
 {:.good}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 rectangle.width = 3;
 button.visible = false;
 {% endprettify %}
@@ -1374,7 +1374,7 @@ Method cascades are a better solution for chaining method calls.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (cascades)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var buffer = StringBuffer()
   ..write('one')
   ..write('two')
@@ -1383,7 +1383,7 @@ var buffer = StringBuffer()
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (cascades)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var buffer = StringBuffer()
     .write('one')
     .write('two')
@@ -1413,7 +1413,7 @@ the static declarative structure of the code and aren't "executed" at runtime.
 并且他们不会在运行时"执行"。
 
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (annotate-declaration)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 bool isEmpty(String parameter) {
   bool result = parameter.isEmpty;
   return result;
@@ -1431,7 +1431,7 @@ runtime.
 在运行时会被提升并传递给调用。
 
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (annotate-invocation)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var lists = <num>[1, 2];
 lists.addAll(List<num>.filled(3, 4));
 lists.cast<int>();
@@ -1443,7 +1443,7 @@ appear in type annotations:
 这里再强调一下"泛型调用"，因为类型参数*也*可以出现在类型注解中：
 
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (annotate-type-arg)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 List<int> ints = [1, 2];
 {% endprettify %}
 
@@ -1578,7 +1578,7 @@ type error. Consider:
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (type_annotate_public_apis)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 install(id, destination) => ...
 {% endprettify %}
 
@@ -1590,7 +1590,7 @@ or a `File` object? Is this method synchronous or asynchronous? This is clearer:
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (type_annotate_public_apis)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future<bool> install(PackageId id, String destination) => ...
 {% endprettify %}
 
@@ -1600,7 +1600,7 @@ In some cases, though, the type is so obvious that writing it is pointless:
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (inferred)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const screenWidth = 640; // Inferred as int.
 {% endprettify %}
 
@@ -1679,7 +1679,7 @@ more important *name* of the variable and its initialized value.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-types-on-locals)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
   var desserts = <List<Ingredient>>[];
   for (var recipe in cookbook) {
@@ -1694,7 +1694,7 @@ List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (omit-types-on-locals)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
   List<List<Ingredient>> desserts = <List<Ingredient>>[];
   for (List<Ingredient> recipe in cookbook) {
@@ -1717,7 +1717,7 @@ inferred. In that case, it *is* a good idea to annotate. Otherwise, you get
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (uninitialized-local)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 List<AstNode> parameters;
 if (node is Constructor) {
   parameters = node.signature;
@@ -1752,13 +1752,13 @@ expects:
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (func-expr-no-param-type)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var names = people.map((person) => person.name);
 {% endprettify %}
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (func-expr-no-param-type)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var names = people.map((Person person) => person.name);
 {% endprettify %}
 
@@ -1781,13 +1781,13 @@ to a function, then inference usually fills in the type for you:
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (redundant)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Set<String> things = Set();
 {% endprettify %}
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (redundant)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Set<String> things = Set<String>();
 {% endprettify %}
 
@@ -1803,13 +1803,13 @@ should write the type argument:
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (explicit)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var things = Set<String>();
 {% endprettify %}
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (explicit)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var things = Set();
 {% endprettify %}
 
@@ -1833,7 +1833,7 @@ can later assign some other sibling type to the variable:
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (inferred-wrong)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 num highScore(List<num> scores) {
   num highest = 0;
   for (var score in scores) {
@@ -1845,7 +1845,7 @@ num highScore(List<num> scores) {
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (inferred-wrong)" replace="/ +\/\/ ignore: .*?\n//g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 num highScore(List<num> scores) {
   var highest = 0;
   for (var score in scores) {
@@ -1892,13 +1892,13 @@ clear.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (prefer-dynamic)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 dynamic mergeJson(dynamic original, dynamic changes) => ...
 {% endprettify %}
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (prefer-dynamic)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 mergeJson(original, changes) => ...
 {% endprettify %}
 
@@ -1937,13 +1937,13 @@ function.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-Function)" replace="/bool Function(\(.*?\))?/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 bool isValid(String value, [!bool Function(String)!] test) => ...
 {% endprettify %}
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid-Function)" replace="/Function/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 bool isValid(String value, [!Function!] test) => ...
 {% endprettify %}
 
@@ -1961,7 +1961,7 @@ no way to precisely type that and you'd normally have to use `dynamic`.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (function-arity)" replace="/(void )?Function(\(.*?\))?/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void handleError([!void Function()!] operation, [!Function!] errorHandler) {
   try {
     operation();
@@ -1990,13 +1990,13 @@ Setters always return `void` in Dart. Writing the word is pointless.
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid_return_types_on_setters)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void set foo(Foo value) { ... }
 {% endprettify %}
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid_return_types_on_setters)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 set foo(Foo value) { ... }
 {% endprettify %}
 
@@ -2014,7 +2014,7 @@ Dart 有两种为函数类型定义命名 typedef 注解语法。 原始语法�
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (old-typedef)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 typedef int Comparison<T>(T a, T b);
 {% endprettify %}
 
@@ -2040,7 +2040,7 @@ That syntax has a couple of problems:
 
     {:.bad}
     <?code-excerpt "misc/lib/effective_dart/design_bad.dart (typedef-param)"?>
-    {% prettify dart %}
+    {% prettify dart tag=pre+code %}
     typedef bool TestNumber(num);
     {% endprettify %}
 
@@ -2060,7 +2060,7 @@ The new syntax looks like this:
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (new-typedef)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 typedef Comparison<T> = int Function(T, T);
 {% endprettify %}
 
@@ -2070,7 +2070,7 @@ If you want to include a parameter's name, you can do that too:
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (new-typedef-param-name)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 typedef Comparison<T> = int Function(T a, T b);
 {% endprettify %}
 
@@ -2105,7 +2105,7 @@ Dart 2 中任何使用类型注解的地方都可以使用函数类型声明语�
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (function-type)"  replace="/(bool|void) Function\(Event\)/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class FilteredObservable {
   final [!bool Function(Event)!] _predicate;
   final List<[!void Function(Event)!]> _observers;
@@ -2148,7 +2148,7 @@ type and parameter signature:
 在定义参数为函数类型时， Dart 具有特殊的语法。与 C 类似，使用参数名称作为函数参数的函数名：
 
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (function-type-param)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Iterable<T> where(bool predicate(T element)) => ...
 {% endprettify %}
 
@@ -2162,7 +2162,7 @@ parameters as well:
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (function-type-param)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Iterable<T> where(bool Function(T) predicate) => ...
 {% endprettify %}
 
@@ -2197,7 +2197,7 @@ point in the program.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (Object-vs-dynamic)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void log(Object object) {
   print(object.toString());
 }
@@ -2270,13 +2270,13 @@ either is hard to use correctly.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (future-or)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future<int> triple(FutureOr<int> value) async => (await value) * 3;
 {% endprettify %}
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (future-or)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 FutureOr<int> triple(FutureOr<int> value) {
   if (value is int) return value * 3;
   return (value as Future<int>).then((v) => v * 3);
@@ -2298,7 +2298,7 @@ means it's OK for a *callback's* type to return `FutureOr<T>`:
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (future-or-contra)" replace="/FutureOr.S./[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Stream<S> asyncMap<T, S>(
     Iterable<T> iterable, [!FutureOr<S>!] Function(T) callback) async* {
   for (var element in iterable) {
@@ -2331,7 +2331,7 @@ clear what the boolean represents:
 喜欢直接传 `true` 和 `false` 。如果不清楚布尔值的含义，这样会造成调用者的代码不可读：
 
 {:.bad}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 new Task(true);
 new Task(false);
 new ListBox(false, true, true);
@@ -2345,7 +2345,7 @@ to clarify what the call is doing.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-positional-bool-param)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Task.oneShot();
 Task.repeating();
 ListBox(scroll: true, showScrollbars: true);
@@ -2358,7 +2358,7 @@ value represents:
 请注意，这并不适用于 setter ，因为 setter 的名称能够清楚的阐明值得含义：
 
 {:.good}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 listBox.canScroll = true;
 button.isEnabled = false;
 {% endprettify %}
@@ -2378,7 +2378,7 @@ pass later one. You're better off using named arguments for that.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (omit-optional-positional)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 String.fromCharCodes(Iterable<int> charCodes, [int start = 0, int end]);
 
 DateTime(int year,
@@ -2419,13 +2419,13 @@ providing a real value.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (avoid-mandatory-param)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var rest = string.substring(start);
 {% endprettify %}
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (avoid-mandatory-param)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var rest = string.substring(start, null);
 {% endprettify %}
 
@@ -2448,7 +2448,7 @@ This is consistent with core libraries that do the same thing.
 
 {:.good}
 <?code-excerpt "misc/test/effective_dart_test.dart (param-range)" replace="/expect\(//g; /, \/\*\*\// \/\//g; /\);//g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 [0, 1, 2, 3].sublist(1, 3) // [1, 2]
 'abcd'.substring(1, 3) // 'bc'
 {% endprettify %}
@@ -2552,7 +2552,7 @@ Dart 指定此检查是自动完成的，只有当右侧不是 `null` 时才调�
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (eq-dont-check-for-null)" replace="/operator ==/[!$&!]/g" plaster?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Person {
   final String name;
   // ···
@@ -2564,7 +2564,7 @@ class Person {
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/design_bad.dart (eq-dont-check-for-null)" replace="/\w+ != null/[!$&!]/g" plaster?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Person {
   final String name;
   // ···

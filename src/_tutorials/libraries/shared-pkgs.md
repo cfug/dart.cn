@@ -219,13 +219,9 @@ For details of what version numbers mean
 and how you can format them,
 see [Pub versioning philosophy](/tools/pub/versioning).
 
-<<<<<<< HEAD
 你可以查阅 [Pub 版本管理](/tools/pub/versioning) 获取更多有关版本号含义以及格式化的相关信息。
 
-The [Pub site]({{site.pub}})
-=======
 The [pub.dev site]({{site.pub}})
->>>>>>> eddf950d690eee180132a8fc89efec0bfb5af1ed
 is the primary public repository for Dart packages.
 `pub` automatically checks that
 website when resolving package dependencies.
@@ -294,9 +290,8 @@ you got and where it came from.
 
 To see the contents of the vector_math package,
 visit the
-<a href="https://github.com/johnmccutchan/vector_math" target="_blank">
-Dart vector math repository
-</a>
+<a href="https://github.com/johnmccutchan/vector_math"
+target="_blank" rel="noopener">Dart vector math repository</a>
 at GitHub.
 Although many files and directories are in the repository,
 only one, `lib`, was installed when you ran pub get.
@@ -329,14 +324,19 @@ only one, `lib`, was installed when you ran pub get.
       <em>Housekeeping files:</em>
       <em>管理文件：</em>
       When using a package written by someone else,
-      the README file is a good place to start.
+      the <code>README.md</code> file is a good place to start.
       It should contain important information about the package,
       such as its intent, contents, samples, and instructions.
-      The LICENSE file provides copyright and rules-of-use information.
-      These files can be found at the package repository.
-      They are not installed when you install a package.
+      The <code>LICENSE</code> file provides
+      copyright and rules-of-use information.
+      All of these files are in the package repository;
+      the contents of some,
+      such as <code>README.md</code>,
+      are also displayed in pub.dev.
+      These files aren't installed when you install a package.
 
-      当使用别人开发的包时，README 文件是了解该包最好的地方。它会包含与包相关的重要信息，比如开发包时的想法、包的相关内容、示例以及使用说明。LICENSE 文件则包含了版权信息以及使用规则信息。这些文件可以在包仓库中找到，在你安装包时它们不会被下载。
+      当使用别人开发的包时，README 文件是了解该包最好的地方。它会包含与包相关的重要信息，比如开发包时的想法、包的相关内容、示例以及使用说明。
+      LICENSE 文件则包含了版权信息以及使用规则信息。所有文件均在包仓库中，且在你安装包时它们不会被下载。而 <code>README.md</code> 中的内容同样也会展示在 pub.dev。
     </div>
   </div>
   <hr>
@@ -420,17 +420,13 @@ use the `package:` prefix.
 
 ## Other resources
 
-<<<<<<< HEAD
 ## 其它资源
 
-* Dart developers share packages at the [Pub site]({{site.pub}}).
-=======
 * Dart developers share packages at the [pub.dev site]({{site.pub}}).
->>>>>>> eddf950d690eee180132a8fc89efec0bfb5af1ed
   Look there for packages that might be useful to you,
   or share your own Dart packages.
 
-  Dart 开发者们在 [pub.dev 网站]({{site.pub}}) 分享它们开发的包。你可以在那里查找你想要使用的包或者分享你自己开发的包。
+  Dart 开发者们在 [pub.dev site]({{site.pub}}) 分享它们开发的包。你可以在那里查找你想要使用的包或者分享你自己开发的包。
 
 * See the [pub package documentation](/guides/packages)
   for more information on using and sharing packages.

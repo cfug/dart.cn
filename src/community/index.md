@@ -98,8 +98,10 @@ Our wonderful community has provided these resources.
 * [Chinese version of this site （此网站的中文版）](http://www.dartdoc.cn)
 
   [此站的英文官网](https://www.dartlang.org/)
-  
-* [Chinese version of this site (此网站的中文版)](https://www.dartdoc.cn)
+
+* [Russian version of this site (Русскоязычная версия сайта)](https://www.dart-lang.ru)
+
+  [此网站的俄罗斯版本 (Русскоязычная версия сайта)](https://www.dart-lang.ru)
 
 Also see the [Flutter community page.]({{site.flutter}}/community)
 

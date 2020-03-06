@@ -30,7 +30,7 @@ depending on your target platform and goals:
 
     **Dart Web**: 针对 Web 应用开发，Dart Web 包括开发时编译器 (`dartdevc`) 和生产时编译器 (`dart2js`)。
 
-<img src="{% asset platforms.svg @path %}" width="800px" alt="Dart platform">
+<img src="{% asset Dart-platforms.svg @path %}" width="800px" alt="An illustration of the devices in the Dart Native and Dart Web platforms">
 
 ## Dart Native (VM JIT and AOT)
 

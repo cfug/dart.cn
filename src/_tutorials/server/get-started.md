@@ -11,7 +11,7 @@ prevpage:
   url: /tutorials/server
   title: Dart command-line and server tutorials
   title: 教程目录：使用 Dart 编写命令行和服务端应用
-js: [{url: 'https://dartpad.cn/experimental/inject_embed.dart.js', defer: true}]
+js: [{url: 'https://dartpad.cn/inject_embed.dart.js', defer: true}]
 ---
 
 Follow these steps to start using the Dart SDK to develop command-line and server apps.
@@ -60,7 +60,7 @@ iframe[src^="https://dartpad"] {
 </style>
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
-```dart:run-dartpad
+```dart:run-dartpad:ga_id-hello_world
 void main() {
   print('Hello, World!');
 }
@@ -199,7 +199,7 @@ Let's customize the app you just created.
     （关于 `~/` 的详情请查看 [Arithmetic operators][]）：
 
     <?code-excerpt "misc/test/tutorial/get_started.dart (calculate)" replace="/~\/ 2/[!$&!]/g"?>
-    {% prettify dart %}
+    {% prettify dart tag=pre+code %}
     int calculate() {
       return 6 * 7 [!~/ 2!];
     }

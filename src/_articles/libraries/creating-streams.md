@@ -86,7 +86,7 @@ outputs new events. Example:
 然后再将新 Stream 中的事件输出。例如：
 
 <?code-excerpt "misc/lib/articles/creating-streams/line_stream_generator.dart (split into lines)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// 将连续的字符串 Stream 拆分为行。
 ///
 /// 输入的字符串来自于"源" Stream 并以较小的 chunk 块提供。
@@ -122,7 +122,7 @@ Here's how it might be implemented:
 用于每秒打印输出一个自增的整数。其实现过程可能如下：
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic usage)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var counterStream =
     Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
 {% endprettify %}
@@ -132,7 +132,7 @@ To quickly see the events, you can use code like this:
 你可以使用下面的代码快速查看事件：
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic for each)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 counterStream.forEach(print); // 每秒打印一个整数，共打印15次。
 {% endprettify %}
 
@@ -144,7 +144,7 @@ The method returns a new stream.
 的转换方法来转换 Stream 的事件。该方法将返回一个新的 Stream。
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-map)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // 将每次事件中的整数乘以2。
 var doubleCounterStream = counterStream.map((int x) => x * 2);
 doubleCounterStream.forEach(print);
@@ -157,7 +157,7 @@ such as the following:
 比如类似下面的这些：
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-where)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 .where((int x) => x.isEven) // 只保留整型事件中整数为偶数的事件。
 .expand((var x) => [x, x]) // 复制每一个事件。
 .take(5) // 开始五个事件后停止。
@@ -181,7 +181,7 @@ Dart 平台库为许多常见的任务需求提供了 Stream 转换器。
 `utf8.decoder` 和 `LineSplitter` 转换器。
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-transform)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Stream<List<int>> content = File('someFile.txt').openRead();
 List<String> lines =
     await content.transform(utf8.decoder).transform(LineSplitter()).toList();
@@ -212,7 +212,7 @@ Here's a primitive example that emits numbers at regular intervals:
 下面是一个周期性发送整数的函数例子：
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (async-generator)" replace="/timedCounterGenerator/timedCounter/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Stream<int> timedCounter(Duration interval, [int maxCount]) async* {
   int i = 0;
   while (true) {
@@ -271,7 +271,7 @@ a sequence of futures to a stream:
 另外，一个更有用的示例是将一个 Future 序列转换为 Stream 的函数：
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (stream-from-futures)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Stream<T> streamFromFutures<T>(Iterable<Future<T>> futures) async* {
   for (var future in futures) {
     var result = await future;
@@ -351,7 +351,7 @@ which are neither futures nor stream events.
 
 {:.bad}
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (flawed stream)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // 注意：该实现有缺陷。
 // 它在它拥有订阅者之前开始并且它没有实现暂停逻辑。
 Stream<int> timedCounter(Duration interval, [int maxCount]) {
@@ -380,7 +380,7 @@ As before, you can use the stream returned by `timedCounter()` like this:
 {% endcomment %}
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (using stream)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var counterStream = timedCounter(const Duration(seconds: 1), 15);
 counterStream.listen(print); // 每秒打印输出一个整数，共打印 15 次。
 {% endprettify %}
@@ -432,7 +432,7 @@ Try changing the code that uses the stream to the following:
 将上面示例中使用 Stream 的代码更改为如下：
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (pre-subscribe problem)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void listenAfterDelay() async {
   var counterStream = timedCounter(const Duration(seconds: 1), 15);
   await Future.delayed(const Duration(seconds: 5));
@@ -504,7 +504,7 @@ try changing the code that uses the stream to the following:
 我们将上面使用 Stream 的代码更改为如下：
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (pause problem)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void listenWithPause() {
   var counterStream = timedCounter(const Duration(seconds: 1), 15);
   StreamSubscription<int> subscription;
@@ -548,7 +548,7 @@ on the `StreamController`.
 `onListen`、`onPause`、`onResume` 和 `onCancel` 回调实现暂停功能。
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (better stream)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Stream<int> timedCounter(Duration interval, [int maxCount]) {
   StreamController<int> controller;
   Timer timer;
@@ -652,7 +652,7 @@ keep these tips in mind:
   例如，在下面的代码中，`onListen` 回调有可能会在 `subscription`
   变量被初始化为一个有效值之前被触发（同时 `处理器` 被调用）。
 
-  {% prettify dart %}
+  {% prettify dart tag=pre+code %}
 subscription = stream.listen(handler);
   {% endprettify %}
 

@@ -204,15 +204,15 @@ Here are the general-purpose tools you might want to install:
 
 [`dartfix` 命令][dartfix]：用于迁移 Dart 源代码和修复常见问题的工具。
 
-### Debugging and diagnostics
+### Debugging
 
 ### 调试工具
 
 [Dart DevTools](/tools/dart-devtools)
-<br> A suite of suite of debugging and performance tools.
+: A suite of debugging and performance tools.
 
 [Dart 开发者工具](/tools/dart-devtools) 
-<br> 一个工具套装帮助调试和性能测试。
+: 一个工具套装帮助调试和性能测试。
 
 ## Tools for developing web apps {#web}
 

@@ -10,7 +10,7 @@ _Deps_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 _Deps_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 $ pub deps [--style=<style>] [--dev] [--no-dev] [--executables]
 {% endprettify %}
 
@@ -36,7 +36,7 @@ the following dependencies:
 
 例如，markdown_converter 这个示例的 pubspec 文件中声明了如下依赖信息：
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 dependencies:
   barback: ^0.15.2
   markdown: ^0.7.2
