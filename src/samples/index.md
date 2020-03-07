@@ -12,7 +12,7 @@ or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
 
 本文向你展示的 Dart 语言用法并不全面&mdash;这里只是对那些喜欢通过示例了解语言的人提供一个简单的介绍。你也许会对 [Dart 语言的速查表 CodeLab](/codelabs/dart-cheatsheet) 或 Dart 语言概览和库概览更感兴趣。
 
-<div class="card-grid">
+<div class="card-grid no_toc_section">
   <div class="card">
     <h3><a href="/guides/language/language-tour">Language tour</a></h3>
     <h3><a href="/guides/language/language-tour">语言概览</a></h3>
@@ -50,7 +50,7 @@ To display text on the console, you can use the top-level `print()` function:
 每个应用都有一个 `main()` 函数。你可以使用顶层函数 `print()` 来将一段文本输出显示到控制台：
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 void main() {
   print('Hello, World!');
 }
@@ -67,7 +67,7 @@ thanks to type inference:
 虽然 Dart 是代码类型安全的语言，但是由于其支持类型推断，因此大多数变量不需要显式地指定类型：
 
 <?code-excerpt "misc/test/samples_test.dart (var)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var name = '旅行者一号';
 var year = 1977;
 var antennaDiameter = 3.7;
@@ -91,7 +91,7 @@ Dart supports the usual control flow statements:
 Dart 支持常用的流程控制语句：
 
 <?code-excerpt "misc/test/samples_test.dart (control-flow)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (year >= 2001) {
   print('21 世纪');
 } else if (year >= 1901) {
@@ -126,7 +126,7 @@ specifying the types of each function's arguments and return value:
 [我们建议](/guides/language/effective-dart/design#types) 为每个函数的参数以及返回值都指定类型：
 
 <?code-excerpt "misc/test/samples_test.dart (functions)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 int fibonacci(int n) {
   if (n == 0 || n == 1) return n;
   return fibonacci(n - 1) + fibonacci(n - 2);
@@ -142,7 +142,7 @@ This syntax is especially useful when passing anonymous functions as arguments:
 `=>` (**胖箭头**) 简写语法用于仅包含一条语句的函数。该语法在将匿名函数作为参数传递时非常有用：
 
 <?code-excerpt "misc/test/samples_test.dart (arrow)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 flybyObjects.where((name) => name.contains('土星')).forEach(print);
 {% endprettify %}
 
@@ -165,7 +165,7 @@ Dart comments usually start with `//`.
 
 Dart 通常使用双斜杠 `//` 作为注释的开始。
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // 这是一个普通的单行注释。
 
 /// 这是一个文档注释。
@@ -189,7 +189,7 @@ To access APIs defined in other libraries, use `import`.
 使用 `import` 关键字来访问在其它库中定义的 API。
 
 <?code-excerpt "misc/test/samples_test.dart (import)" plaster="none"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // 导入核心库
 import 'dart:math';
 
@@ -221,7 +221,7 @@ the constructors: https://github.com/dart-lang/linter/issues/859.
 {% endcomment %}
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (class)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Spacecraft {
   String name;
   DateTime launchDate;
@@ -257,7 +257,7 @@ You might use the `Spacecraft` class like this:
 你可以像下面这样使用 `Spacecraft` 类：
 
 <?code-excerpt "misc/test/samples_test.dart (use class)" plaster="none"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var voyager = Spacecraft('旅行者一号', DateTime(1977, 9, 5));
 voyager.describe();
 
@@ -280,7 +280,7 @@ Dart has single inheritance.
 Dart 支持单继承。
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (extends)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Orbiter extends Spacecraft {
   num altitude;
   Orbiter(String name, DateTime launchDate, this.altitude)
@@ -299,7 +299,7 @@ Mixins are a way of reusing code in multiple class hierarchies. The following cl
 Mixin 是一种在多个类层次结构中重用代码的方法。下面的类可以作为一个 Mixin：
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (mixin)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Piloted {
   int astronauts = 1;
   void describeCrew() {
@@ -313,7 +313,7 @@ To add a mixin's capabilities to a class, just extend the class with the mixin.
 现在你只需使用 Mixin 的方式继承这个类就可将该类中的功能添加给其它类。
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (mixin use)" replace="/with/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class PilotedCraft extends Spacecraft [!with!] Piloted {
   // ···
 }
@@ -336,7 +336,7 @@ Dart has no `interface` keyword. Instead, all classes implicitly define an inter
 Dart 没有 `interface` 关键字。相反，所有的类都隐式定义了一个接口。因此，任意类都可以作为接口被实现。
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (implements)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class MockSpaceship implements Spacecraft {
   // ···
 }
@@ -351,7 +351,7 @@ You can create an abstract class to be extended (or implemented) by a concrete c
 你可以创建一个被任意具体类扩展（或实现）的抽象类。抽象类可以包含抽象方法（不含方法体的方法）。
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 [!abstract!] class Describable {
   void describe();
 
@@ -381,7 +381,7 @@ using `async` and `await`.
 使用 `async` 和 `await` 关键字可以让你避免回调地狱（Callback Hell） 并使你的代码更具可读性。
 
 <?code-excerpt "misc/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const oneSecond = Duration(seconds: 1);
 // ···
 Future<void> printWithDelay(String message) [!async!] {
@@ -395,7 +395,7 @@ The method above is equivalent to:
 上面的方法相当于：
 
 <?code-excerpt "misc/test/samples_test.dart (Future.then)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future<void> printWithDelay(String message) {
   return Future.delayed(oneSecond).then((_) {
     print(message);
@@ -409,7 +409,7 @@ easy to read.
 如下一个示例所示，`async` 和 `await` 关键字有助于使异步代码变得易于阅读。
 
 <?code-excerpt "misc/test/samples_test.dart (await)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future<void> createDescriptions(Iterable<String> objects) async {
   for (var object in objects) {
     try {
@@ -434,7 +434,7 @@ You can also use `async*`, which gives you a nice, readable way to build streams
 你也可以使用 `async*` 关键字，其可以为你提供一个可读性更好的方式去生成 Stream。
 
 <?code-excerpt "misc/test/samples_test.dart (async*)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
   for (var object in objects) {
     await Future.delayed(oneSecond);
@@ -458,7 +458,7 @@ To raise an exception, use `throw`:
 使用 `throw` 关键字抛出一个异常：
 
 <?code-excerpt "misc/test/samples_test.dart (throw)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (astronauts == 0) {
   throw StateError('没有宇航员。');
 }
@@ -469,7 +469,7 @@ To catch an exception, use a `try` statement with `on` or `catch` (or both):
 使用 `try` 语句配合 `on` 或 `catch`（两者也可同时使用）关键字来捕获一个异常:
 
 <?code-excerpt "misc/test/samples_test.dart (try)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 try {
   for (var object in flybyObjects) {
     var description = await File('$object.txt').readAsString();

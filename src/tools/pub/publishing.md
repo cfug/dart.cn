@@ -16,6 +16,20 @@ command.
   as defined in the [pubspec][].
 {{site.alert.end}}
 
+## Publishing is forever
+
+Keep in mind that publishing is forever. As soon as you publish your package,
+users can depend on it. Once they start doing that, removing
+the package would break theirs. To avoid that, the [pub.dev policy][policy]
+disallows unpublishing packages except for very few cases.
+
+You can always upload new versions of your package, but
+old ones will continue to be available for users that aren't ready to
+upgrade yet.
+
+For already published packages that are no longer relevant or being maintained,
+you can [mark them as discontinued](#discontinue).
+
 ## Preparing to publish
 
 When publishing a package, it's important to follow the [pubspec
@@ -27,8 +41,8 @@ with your package. In both cases, pub tries to help you by pointing out what
 changes will help make your package play nicer with the Dart ecosystem. There
 are a few additional requirements for uploading a package:
 
-* You must include a license file (named `LICENSE`, `COPYING`, or some
-  variation) that contains an [open-source license.][open-source license]
+* You must include a `LICENSE` file
+  that contains an [open-source license.][open-source license]
   We recommend the [BSD license,][BSD license]
   which is used by Dart itself. You must also have the legal right to
   redistribute anything that you upload as part of your package.
@@ -58,13 +72,14 @@ Pub uses the contents of a few files to create a page for your
 package at `pub.dev/packages/<your_package>`. Here are the files that
 affect how your package's page looks:
 
-* **README**: The README file (`README`, `README.md`, `README.mdown`,
-  `README.markdown`) is the main content featured in your package's page.
-* **CHANGELOG**: Your package's CHANGELOG (`CHANGELOG`, `CHANGELOG.md`,
-  `CHANGELOG.mdown`, `CHANGELOG.markdown`), if found, is also featured in a
-  tab on your package's page, so that developers can read it right from
-  pub.dev.
-* **The pubspec**: Your package's `pubspec.yaml` file is used to fill out
+* **README.md:** The `README.md` file
+  is the main content featured in your package's page.
+  The file's contents are rendered as [Markdown.][Markdown]
+* **CHANGELOG.md:** Your package's `CHANGELOG.md` file, if found,
+  is also featured in a tab on your package's page,
+  so that developers can read it right from pub.dev.
+  The file's contents are rendered as [Markdown.][Markdown]
+* **The pubspec:** Your package's `pubspec.yaml` file is used to fill out
   details about your package on the right side of your package's page, like its
   description, homepage, etc.
 
@@ -253,17 +268,8 @@ instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
 When a prerelease is published to pub.dev,
 the package page displays links to both the prerelease and the stable release.
 The prerelease doesn't affect the analysis score, show up in search results,
-or replace the package README and documentation.
+or replace the package `README.md` and documentation.
 
-
-## Publishing is forever
-
-Keep in mind that publishing is forever. As soon as you publish your package,
-users can depend on it. Once they start doing that, removing
-the package would break theirs. To avoid that, pub strongly discourages
-deleting packages. You can always upload new versions of your package, but
-old ones will continue to be available for users that aren't ready to
-upgrade yet.
 
 ## Marking packages as discontinued {#discontinue}
 
@@ -288,8 +294,10 @@ For more information, see the reference pages for the following `pub` commands:
 
 [BSD license]: https://opensource.org/licenses/BSD-3-Clause
 [Google Account]: https://support.google.com/accounts/answer/27441
+[Markdown]: {{site.pub-pkg}}/markdown
 [open-source license]: https://opensource.org/
 [package layout conventions]: /tools/pub/package-layout
+[policy]: https://pub.dev/policy
 [pub]: /guides/packages
 [pub publish]: /tools/pub/cmd/pub-lish
 [pub uploader]: /tools/pub/cmd/pub-uploader

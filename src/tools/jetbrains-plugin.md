@@ -47,16 +47,16 @@ Install a JetBrains IDE if you don't already have one.
 如果你还没有一款 JetBrains 的 IDE，请先安装。
 
 * <a href="https://www.jetbrains.com/idea/download/"
-  target="_blank">Download IntelliJ IDEA</a> or,
+  target="_blank" rel="noopener">Download IntelliJ IDEA</a> or,
   to try out the latest Dart language features,
   [install IntelliJ IDEA EAP.](https://confluence.jetbrains.com/display/IDEADEV/EAP)
 
-  <a href="https://www.jetbrains.com/idea/download/" target="_blank">下载 IntelliJ IDEA</a> 或，尝试试用最新的 Dart 语言特性，[请安装 IntelliJ IDEA EAP](https://confluence.jetbrains.com/display/IDEADEV/EAP)。
+  <a href="https://www.jetbrains.com/idea/download/" target="_blank" rel="noopener">下载 IntelliJ IDEA</a> 或，尝试试用最新的 Dart 语言特性，[请安装 IntelliJ IDEA EAP](https://confluence.jetbrains.com/display/IDEADEV/EAP)。
 
 * Or <a href="https://www.jetbrains.com/products.html"
-  target="_blank">find another JetBrains product.</a>
+  target="_blank" rel="noopener">find another JetBrains product.</a>
 
-  或者 <a href="https://www.jetbrains.com/products.html" target="_blank">查找其它的 JetBrains 产品。</a>
+  或者 <a href="https://www.jetbrains.com/products.html" target="_blank" rel="noopener">查找其它的 JetBrains 产品。</a>
 
 <aside class="alert alert-info" markdown="1">
   **Note:**

@@ -280,18 +280,16 @@ environment:
   sdk: '>=1.20.1 <3.0.0'
 ```
 
-If you use [features introduced after 2.0,][CHANGELOG]
+If you use [features introduced after 2.0,][dart-lang/sdk CHANGELOG]
 be sure to specify the correct lower SDK constraint:
 
-如果你使用 [2.0 后引入的功能][CHANGELOG] 请确保你指定了正确的 SDK 下限：
+如果你使用 [2.0 后引入的功能][dart-lang/sdk CHANGELOG] 请确保你指定了正确的 SDK 下限：
 
 ```yaml
 environment:
   # 可以在 2.1 中使用但不能在 2.0 中使用
   sdk: '>=2.1.0 <3.0.0'
 ```
-
-[CHANGELOG]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md
 
 <aside class="alert alert-warning" markdown="1">
   **Packages must have an upper constraint of `<3.0.0`** to work in

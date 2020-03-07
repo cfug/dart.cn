@@ -35,8 +35,8 @@ prevpage:
 
 {{site.alert.note}}
   This tutorial uses the `async` and `await` language features, which rely on the
-  [Future]({{_api}}/dart-async/Future-class.html){:target="_blank"} and
-  [Stream]({{_api}}/dart-async/Stream-class.html){:target="_blank"}
+  [Future]({{_api}}/dart-async/Future-class.html) and
+  [Stream]({{_api}}/dart-async/Stream-class.html)
   classes for asynchronous support.
   To learn more about these features, see the
   [asynchronous programming codelab](/codelabs/async-await) and the
@@ -143,7 +143,7 @@ But for this first app, let's do the minimum necessary to get the code to run:
 Once you have your app's dependencies,
 you can run the app from the command line over any text file,
 like `pubspec.yaml` or `quote.txt`
-([downloadable file]({{site.repo.this}}/blob/master/examples/misc/test_data/quote.txt?raw=1){:target="_blank"}):
+([downloadable file]({{site.repo.this}}/blob/master/examples/misc/test_data/quote.txt?raw=1)):
 
 ```terminal
 $ dart dcat.dart -n quote.txt
@@ -158,11 +158,11 @@ is present, a line number is displayed before each line.
 
 ## Parsing command-line arguments
 
-The [args package]({{site.pub}}/packages/args){:target="_blank"} provides
+The [args package]({{site.pub}}/packages/args) provides
 parser support for transforming command-line arguments
 into a set of options, flags, and additional values.
 Import the package's
-[args library]({{argsAPI}}/args-library.html){:target="_blank"}
+[args library]({{argsAPI}}/args-library.html)
 as follows:
 
 <?code-excerpt "misc/bin/dcat.dart" retain="package:args"?>
@@ -174,15 +174,15 @@ The `args` library contains these classes, among others:
 
 | Class | Description |
 |---|---|
-| [ArgParser]({{argsAPI}}/ArgParser-class.html){:target="_blank"} | A command-line argument parser. |
-| [ArgResults]({{argsAPI}}/ArgResults-class.html){:target="_blank"} | The result of parsing command-line arguments using `ArgParser`. |
+| [ArgParser]({{argsAPI}}/ArgParser-class.html) | A command-line argument parser. |
+| [ArgResults]({{argsAPI}}/ArgResults-class.html) | The result of parsing command-line arguments using `ArgParser`. |
 {: .table }
 
 Here is the `dcat` code that uses these classes to parse and store command-line
 arguments:
 
 <?code-excerpt "misc/bin/dcat.dart (arg processing)" plaster="none" replace="/(ArgR.*|List[^\)]*|\..*|parser.*|argResults\S[^);]+)/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 [!ArgResults argResults;!]
 
 void main([!List<String> arguments!]) {
@@ -211,7 +211,7 @@ You can access flags and options by name,
 treating an `ArgResults` like a `Map`.
 You can access other values using the `rest` property.
 
-The [API reference]({{argsAPI}}/args-library.html){:target="_blank"}
+The [API reference]({{argsAPI}}/args-library.html)
 for the `args` library provides detailed information to help you use
 the `ArgParser` and `ArgResults` classes.
 
@@ -223,9 +223,9 @@ The standard I/O streams are defined at the top level of the dart:io library:
 
 | Stream | Description |
 |---|---|
-| [stdout]({{ioAPI}}/stdout.html){:target="_blank"} | The standard output |
-| [stderr]({{ioAPI}}/stderr.html){:target="_blank"} | The standard error |
-| [stdin]({{ioAPI}}/stdin.html){:target="_blank"} | The standard input |
+| [stdout]({{ioAPI}}/stdout.html) | The standard output |
+| [stderr]({{ioAPI}}/stderr.html) | The standard error |
+| [stdin]({{ioAPI}}/stdin.html) | The standard input |
 {: .table }
 
 Import the dart:io library as follows:
@@ -245,7 +245,7 @@ Here's the code from the `dcat` program that writes the line number to
 the `stdout` (if the -n flag is set) followed by the line from the file.
 
 <?code-excerpt "misc/bin/dcat.dart (showLineNumbers)" replace="/stdout\..*/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (showLineNumbers) {
   [!stdout.write('${lineNumber++} ');!]
 }
@@ -280,7 +280,7 @@ This code from `dcat` prints an error message if the user
 tries to list a directory.
 
 <?code-excerpt "misc/bin/dcat.dart (await FileSystemEntity)" replace="/stderr\..*/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (await FileSystemEntity.isDirectory(path)) {
   [!stderr.writeln('error: $path is a directory');!]
 } else {
@@ -322,7 +322,7 @@ Because `pipe()` is asynchronous
 the code that calls it uses `await`.
 
 <?code-excerpt "misc/bin/dcat.dart (pipe)" replace="/pipe/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 
 await stdin.[!pipe!](stdout);
 {% endprettify %}
@@ -340,7 +340,7 @@ The quick brown fox jumps over the lazy dog.
 ## Getting info about a file
 
 The
-[FileSystemEntity]({{ioAPI}}/FileSystemEntity-class.html){:target="_blank"}
+[FileSystemEntity]({{ioAPI}}/FileSystemEntity-class.html)
 class in the dart:io library provides properties and static methods
 that help you inspect and manipulate the file system.
 
@@ -357,7 +357,7 @@ Because the check is asynchronous, the code calls `isDirectory()`
 using `await`.
 
 <?code-excerpt "misc/bin/dcat.dart (await FileSystemEntity)" replace="/await.*path\)/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if ([!await FileSystemEntity.isDirectory(path)!]) {
   stderr.writeln('error: $path is a directory');
 } else {
@@ -380,7 +380,7 @@ asynchronously. The data prints to stdout when it
 becomes available on the stream.
 
 <?code-excerpt "misc/bin/dcat.dart (for path)" remove="/^\s*\/\/!tip.*/" replace="/(    )((await for| *stdout| *if| *}).*)/$1[!$2!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 for (var path in paths) {
   var lineNumber = 1;
   final lines = utf8.decoder
@@ -405,7 +405,7 @@ The UTF8 decoder converts the data into Dart strings.
 `LineSplitter` splits the data at newlines.
 
 <?code-excerpt "misc/bin/dcat.dart (for path)" remove="/^\s*\/\/!tip.*/" replace="/utf8.decoder|LineSplitter()/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 for (var path in paths) {
   var lineNumber = 1;
   final lines = [!utf8.decoder!]
@@ -436,7 +436,7 @@ import 'dart:convert';
 ## Writing a file
 
 The easiest way to write text to a file is to create a
-[File]({{ioAPI}}/File-class.html){:target="_blank"}
+[File]({{ioAPI}}/File-class.html)
 object and use the `writeAsString()` method:
 
 <?code-excerpt "misc/lib/tutorial/cmdline.dart (write quote)"?>
@@ -473,10 +473,10 @@ await quotes.close();
 
 {% assign PlatformAPI = ioAPI | append: '/Platform' -%}
 
-Use the [Platform]({{PlatformAPI}}-class.html){:target="_blank"} class
+Use the [Platform]({{PlatformAPI}}-class.html) class
 to get information about the machine and OS that the program is running on.
 
-[Platform.environment]({{PlatformAPI}}/environment.html){:target="_blank"}
+[Platform.environment]({{PlatformAPI}}/environment.html)
 provides a copy of the environment
 variables in an immutable map. If you need a mutable map (modifiable copy) you
 can use `Map.from(Platform.environment)`.
@@ -494,9 +494,9 @@ print('PATH = ${envVarMap["PATH"]}');
 information about the machine, OS, and currently
 running program. For example:
 
-- [Platform.isMacOS()]({{PlatformAPI}}/isMacOS.html){:target="_blank"}
-- [Platform.numberOfProcessors]({{PlatformAPI}}/numberOfProcessors.html){:target="_blank"}
-- [Platform.script]({{PlatformAPI}}/script.html){:target="_blank"}
+- [Platform.isMacOS()]({{PlatformAPI}}/isMacOS.html)
+- [Platform.numberOfProcessors]({{PlatformAPI}}/numberOfProcessors.html)
+- [Platform.script]({{PlatformAPI}}/script.html)
 
 ## Setting exit codes
 
@@ -513,7 +513,7 @@ in the `_handleError()` function to indicate that an error
 occcurred during execution.
 
 <?code-excerpt "misc/bin/dcat.dart (_handleError)" remove="/^\s*\/\/!tip.*/" replace="/exit.*;/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future _handleError(String path) async {
   if (await FileSystemEntity.isDirectory(path)) {
     stderr.writeln('error: $path is a directory');
@@ -554,27 +554,27 @@ This tutorial described some basic API found in these classes from the dart:io l
 
 | API | Description |
 |---|---|
-| [IOSink]({{ioAPI}}/IOSink-class.html){:target="_blank"} | Helper class for objects that consume data from streams. |
-| [File]({{ioAPI}}/File-class.html){:target="_blank"} | Represents a file on the native file system |
-| [Directory]({{ioAPI}}/Directory-class.html){:target="_blank"} | Represents a directory on the native file system |
-| [FileSystemEntity]({{ioAPI}}/FileSystemEntity-class.html){:target="_blank"} | Superclass for File and Directory |
-| [Platform]({{ioAPI}}/Platform-class.html){:target="_blank"} | Provides information about the machine and operating system |
-| [stdout]({{ioAPI}}/stdout.html){:target="_blank"} | The standard output |
-| [stderr]({{ioAPI}}/stderr.html){:target="_blank"} | The standard error |
-| [stdin]({{ioAPI}}/stdin.html){:target="_blank"} | The standard input |
-| [exitCode]({{ioAPI}}/exitCode.html){:target="_blank"} | Sets the exit code |
-| [exit()]({{ioAPI}}/exit.html){:target="_blank"} | Sets the exit code and quits |
+| [IOSink]({{ioAPI}}/IOSink-class.html) | Helper class for objects that consume data from streams. |
+| [File]({{ioAPI}}/File-class.html) | Represents a file on the native file system |
+| [Directory]({{ioAPI}}/Directory-class.html) | Represents a directory on the native file system |
+| [FileSystemEntity]({{ioAPI}}/FileSystemEntity-class.html) | Superclass for File and Directory |
+| [Platform]({{ioAPI}}/Platform-class.html) | Provides information about the machine and operating system |
+| [stdout]({{ioAPI}}/stdout.html) | The standard output |
+| [stderr]({{ioAPI}}/stderr.html) | The standard error |
+| [stdin]({{ioAPI}}/stdin.html) | The standard input |
+| [exitCode]({{ioAPI}}/exitCode.html) | Sets the exit code |
+| [exit()]({{ioAPI}}/exit.html) | Sets the exit code and quits |
 {: .table }
 
 In addition, this tutorial covers two classes that help with command-line arguments:
-[ArgParser]({{argsAPI}}/ArgParser-class.html){:target="_blank"} and
-[ArgResults.]({{argsAPI}}/ArgResults-class.html){:target="_blank"}
+[ArgParser]({{argsAPI}}/ArgParser-class.html) and
+[ArgResults.]({{argsAPI}}/ArgResults-class.html)
 
 For more classes, functions, and properties,
 consult to the API reference for
-[dart:io,]({{ioAPI}}/dart-io-library.html){:target="_blank"}
-[dart:convert,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html){:target="_blank"}
-and the [args]({{argsAPI}}/args-library.html){:target="_blank"} package.
+[dart:io,]({{ioAPI}}/dart-io-library.html)
+[dart:convert,]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html)
+and the [args]({{argsAPI}}/args-library.html) package.
 
 ## What next?
 

@@ -9,7 +9,7 @@ _Get_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 _Get_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
 
-{% prettify nocode %}
+{% prettify nocode tag=pre+code %}
 $ pub get [--offline]
 {% endprettify %}
 
@@ -40,7 +40,7 @@ For example, if a package depends on `test`:
 
 一旦依赖获取完毕，就可以在 Dart 代码中引用。例如，假如 Package 依赖了名为 `test` 的 Package，则可以使用该 Package 下的资源：
 
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:test/test.dart';
 {% endprettify %}
 

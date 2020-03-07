@@ -162,7 +162,7 @@ The following `PATH` variable, on macOS, includes the system cache:
 
 此时你需要确认 Pub 系统缓存的 `bin` 目录是否已经添加至 PATH 路径中。例如在 macOS 上，使用下述命令可以查看你的 `PATH` 路径是否已经包含了 Pub 系统缓存的 `bin` 目录：
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 $ echo $PATH
 [!/Users/<user>/.pub-cache/bin!]:/Users/<user>/homebrew/bin:/usr/local/bin:/usr/bin:/bin
 {% endprettify %}
@@ -194,7 +194,7 @@ You can now directly invoke the command:
 
 现在你可以直接调用命令了：
 
-{% prettify none %}
+{% prettify none tag=pre+code %}
 $ mkdir angular_project
 $ cd angular_project
 $ [!stagehand web-angular!]
@@ -243,7 +243,7 @@ package:
 
 Package 可以暴露它的一些脚本以直接从命令行运行。这些脚本必须在 pubspec 文件的 [`executables`](/tools/pub/pubspec#executables) 标签下列出。例如，下述名为 helloworld 的 Package 在其 pubspec 文件中将 `bin/helloworld.dart` 暴露为可以运行：
 
-{% prettify yaml %}
+{% prettify yaml tag=pre+code %}
 name: helloworld
 
 executables:

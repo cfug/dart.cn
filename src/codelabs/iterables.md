@@ -72,7 +72,7 @@ This example shows a `List` of `int`,
 which is also an `Iterable` of `int`:
 
 <?code-excerpt "iterables/test/iterables_test.dart (iterable)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Iterable<int> iterable = [1, 2, 3];
 {% endprettify %}
 
@@ -84,7 +84,7 @@ For example, consider the following code, which is **invalid**:
 
 {:.bad}
 <?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)" replace="/\.elementAt\(1\)/[![1]!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Iterable<int> iterable = [1, 2, 3];
 int value = iterable[![1]!];
 {% endprettify %}
@@ -99,7 +99,7 @@ which steps through the elements of the iterable until
 it reaches that position.
 
 <?code-excerpt "iterables/test/iterables_test.dart (iterable-elementat)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Iterable<int> iterable = [1, 2, 3];
 int value = iterable.elementAt(1);
 {% endprettify %}
@@ -118,7 +118,7 @@ The following example shows you how to read elements using  a `for-in` loop.
 
 [//]: https://gist.github.com/c419f595f95e8317c54192491ae017cd
 <iframe
-  src="{{site.dartpad-embed}}?id=c419f595f95e8317c54192491ae017cd"
+  src="{{site.dartpad-embed}}?id=c419f595f95e8317c54192491ae017cd&ga_id=for_in_loop"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="200"
@@ -166,7 +166,7 @@ but you can use the `last` property.
 
 [//]: https://gist.github.com/f3d96039195566d934a966390ea4ad62
 <iframe
-  src="{{site.dartpad-embed}}?id=f3d96039195566d934a966390ea4ad62"
+  src="{{site.dartpad-embed}}?id=f3d96039195566d934a966390ea4ad62&ga_id=first_and_last"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="300"
@@ -190,7 +190,7 @@ which is a function that returns true if
 the input satisfies a certain condition.
 
 <?code-excerpt "iterables/test/iterables_test.dart (firstwhere)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 String element = iterable.firstWhere((element) => element.length > 5);
 {% endprettify %}
 
@@ -204,7 +204,7 @@ Do you think all the functions will give the same result?
 
 [//]: https://gist.github.com/03b4100365c1b871a36b9a1c5781dab1
 <iframe
-  src="{{site.dartpad-embed}}?id=03b4100365c1b871a36b9a1c5781dab1"
+  src="{{site.dartpad-embed}}?id=03b4100365c1b871a36b9a1c5781dab1&ga_id=using_firstwhere"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="500"
@@ -285,7 +285,7 @@ you can check the class documentation for help.
 
 [//]: https://gist.github.com/241c6bc591f9436a9be0116724222953
 <iframe
-  src="{{site.dartpad-embed}}?id=241c6bc591f9436a9be0116724222953&theme=dark"
+  src="{{site.dartpad-embed}}?id=241c6bc591f9436a9be0116724222953&theme=dark&ga_id=practice_writing_a_test_predicate"
   frameborder="no"
   height="250"
   width="100%">
@@ -300,7 +300,7 @@ You might be tempted to write a solution using a `for-in` loop like this one:
 
 {:.bad}
 <?code-excerpt "iterables/test/iterables_test.dart (every-bad)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 for (var item in items) {
   if (item.length < 5) {
     return false;
@@ -312,7 +312,7 @@ return true;
 However, you can accomplish the same using the `every()` method:
 
 <?code-excerpt "iterables/test/iterables_test.dart (every-good)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 return items.every((element) => element.length >= 5);
 {% endprettify %}
 
@@ -331,7 +331,7 @@ Run this exercise to see them in action.
 
 [//]: https://gist.github.com/d56963729339cea951e16209e0a26e4c
 <iframe
-  src="{{site.dartpad-embed}}?id=d56963729339cea951e16209e0a26e4c"
+  src="{{site.dartpad-embed}}?id=d56963729339cea951e16209e0a26e4c&ga_id=using_any_and_every"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="375"
@@ -347,7 +347,7 @@ After running the code, try changing the predicate of `any()` so
 it returns false:
 
 <?code-excerpt "iterables/test/iterables_test.dart (any-false)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (items.any((element) => element.contains('Z'))) {
   print('At least one element contains "Z"');
 } else {
@@ -376,7 +376,7 @@ Use `any()` and `every()` to implement two functions:
 <!-- [//]: https://gist.github.com/76dc5c8644652adf4e2032912d974ac3 -->
 
 <iframe
-src="{{site.dartpad-embed}}?id=76dc5c8644652adf4e2032912d974ac3&theme=dark"
+src="{{site.dartpad-embed}}?id=76dc5c8644652adf4e2032912d974ac3&theme=dark&ga_id=verify_iterable"
 frameborder="no"
 height="325"
 width="100%" >
@@ -403,7 +403,7 @@ satisfy a certain condition?
 You can accomplish that using the `where()` method.
 
 <?code-excerpt "iterables/test/iterables_test.dart (where)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var evenNumbers = numbers.where((number) => number.isEven);
 {% endprettify %}
 
@@ -418,7 +418,7 @@ In the next example, the output of `where()`
 is used directly inside the `for-in` loop.
 
 <?code-excerpt "iterables/test/iterables_test.dart (where-for)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var evenNumbers = numbers.where((number) => number.isEven);
 for (var number in evenNumbers) {
   print('$number is even');
@@ -432,7 +432,7 @@ methods like `any()`.
 
 [//]: https://gist.github.com/f96f2f630ee327bd69ee7737301d9628
 <iframe
-  src="{{site.dartpad-embed}}?id=f96f2f630ee327bd69ee7737301d9628"
+  src="{{site.dartpad-embed}}?id=f96f2f630ee327bd69ee7737301d9628&ga_id=using_where"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="375"
@@ -463,7 +463,7 @@ split an `Iterable` containing numbers.
 
 [//]: https://gist.github.com/5e3582c858517f93baf160892d131ec9
 <iframe
-  src="{{site.dartpad-embed}}?id=5e3582c858517f93baf160892d131ec9"
+  src="{{site.dartpad-embed}}?id=5e3582c858517f93baf160892d131ec9&ga_id=using_takewhile"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="275"
@@ -482,7 +482,7 @@ change `takeWhile()` to take elements until
 it reaches the first negative number.
 
 <?code-excerpt "iterables/test/iterables_test.dart (takewhile)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var numbersUntilNegative =
     numbers.takeWhile((number) => !number.isNegative);
 {% endprettify %}
@@ -504,7 +504,7 @@ Use `where()` to implement two functions:
   
 [//]: https://gist.github.com/8113e2880772456f9036ddf55c517e9e
 <iframe
-src="{{site.dartpad-embed}}?id=8113e2880772456f9036ddf55c517e9e&theme=dark"
+src="{{site.dartpad-embed}}?id=8113e2880772456f9036ddf55c517e9e&theme=dark&ga_id=filtering_elements_from_a_list"
 frameborder="no"
 height="325"
 width="100%" >
@@ -526,7 +526,7 @@ apply a function over each of the elements,
 replacing each element with a new one.
 
 <?code-excerpt "iterables/test/iterables_test.dart (map-int)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Iterable<int> output = numbers.map((number) => number * 10);
 {% endprettify %}
 
@@ -537,7 +537,7 @@ for example, to convert all `int` to `String`,
 as you can see in the following example.
 
 <?code-excerpt "iterables/test/iterables_test.dart (map-string)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Iterable<String> output = numbers.map((number) => number.toString());
 {% endprettify %}
 
@@ -554,7 +554,7 @@ What do you think the output will be?
 
 [//]: https://gist.github.com/8c2f129d88c5ce166cca0f4bb9e2a906
 <iframe
-  src="{{site.dartpad-embed}}?id=8c2f129d88c5ce166cca0f4bb9e2a906"
+  src="{{site.dartpad-embed}}?id=8c2f129d88c5ce166cca0f4bb9e2a906&ga_id=using_map"
   style="border: 1px solid lightgrey; margin-top: 10px; margin-bottom: 25px"
   frameborder="no"
   height="200"
@@ -575,7 +575,7 @@ Each string in the `Iterable` must follow this format:
 
 [//]: https://gist.github.com/5ce89481a3dc8b14800825c78bd547e2
 <iframe
-src="{{site.dartpad-embed}}?id=5ce89481a3dc8b14800825c78bd547e2&theme=dark"
+src="{{site.dartpad-embed}}?id=5ce89481a3dc8b14800825c78bd547e2&theme=dark&ga_id=mapping_to_a_different_type"
 frameborder="no"
 height="325"
 width="100%" >
@@ -632,7 +632,7 @@ Part 3: Implement `validEmailAddresses()`.
 
 [//]: https://gist.github.com/0be68487b124b4e55927c3e026094547
 <iframe
-src="{{site.dartpad-embed}}?id=0be68487b124b4e55927c3e026094547&theme=dark"
+src="{{site.dartpad-embed}}?id=0be68487b124b4e55927c3e026094547&theme=dark&ga_id=putting_it_all_together"
 frameborder="no"
 height="600"
 width="100%" >

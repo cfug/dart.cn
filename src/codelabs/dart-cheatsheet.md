@@ -89,7 +89,7 @@ For example, `stringify(2, 3)` should return `'2 3'`.
 然后让它返回一个包含以空格分隔的整数的字符串。
 例如，`stringify(2, 3)` 应该返回 `'2 3'`。
 
-<iframe src="{{site.dartpad-embed}}?id=43f3db47b0632c557200270807696687"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=43f3db47b0632c557200270807696687&ga_id=string_interpolation"></iframe>
 
 ## Null-aware operators
 
@@ -135,7 +135,7 @@ Try putting the `??=` and `??` operators to work below.
 
 尝试在下面使用 `??=` 和 `??` 操作符。
 
-<iframe src="{{site.dartpad-embed}}?id=ee3d441f60acc95a07d73762a61b3b98"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=ee3d441f60acc95a07d73762a61b3b98&ga_id=null_aware"></iframe>
 
 ## Conditional property access
 
@@ -180,7 +180,7 @@ Try using conditional property access to finish the code snippet below.
 
 尝试使用条件属性访问来完成下面的代码片段。
 
-<iframe src="{{site.dartpad-embed}}?id=58f14a3d943be6231ae611036fcfc80d"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=58f14a3d943be6231ae611036fcfc80d&ga_id=conditional-property_access"></iframe>
 
 ## Collection literals
 
@@ -234,7 +234,7 @@ Try setting the following variables to the indicated values.
 
 尝试将以下变量设定为指定的值。
 
-<iframe src="{{site.dartpad-embed}}?id=8ba5e98559ff2a2e92e58ac5a28f1cff"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=8ba5e98559ff2a2e92e58ac5a28f1cff&ga_id=collection_literals"></iframe>
 
 
 ## Arrow syntax
@@ -274,7 +274,7 @@ Try finishing the following statements, which use arrow syntax.
 
 尝试使用箭头语法完成下面语句：
 
-<iframe src="{{site.dartpad-embed}}?id=7c287c55dcc7f414a5dfa5837e3450e3"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=7c287c55dcc7f414a5dfa5837e3450e3&ga_id=arrow_syntax"></iframe>
 
 {% comment %}
 ISSUE: The analysis output kept getting in the way of my typing for the
@@ -353,7 +353,7 @@ and then calls `allDone()`.
 属性设为 `String!`、`aList` 属性设置为
 `[3.0]` 然后调用 `allDone()`。
 
-<iframe src="{{site.dartpad-embed}}?id=72bde0b4d5c8c6046b4853a3b4053c3a"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=72bde0b4d5c8c6046b4853a3b4053c3a&ga_id=cascades"></iframe>
 
 
 ## Getters and setters
@@ -423,7 +423,7 @@ Add the following:
   setter 就会用新的列表替换列表
   （在这种情况下，setter 应该抛出 `InvalidPriceException`）。
 
-<iframe src="{{site.dartpad-embed}}?id=84561041d263cbd4c92f614eceec85e6"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=84561041d263cbd4c92f614eceec85e6&ga_id=getters_setters"></iframe>
 
 
 ## Optional positional parameters
@@ -495,7 +495,7 @@ Here are some examples of function calls and returned values:
 
 <br>
 
-<iframe src="{{site.dartpad-embed}}?id=9e7d5b6b56319b7e3b12b791c0ae27c1"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=9e7d5b6b56319b7e3b12b791c0ae27c1&ga_id=optional_positional_parameters"></iframe>
 
 
 ## Optional named parameters
@@ -555,7 +555,7 @@ then copy its value into `anInt`.
 `MyDataObject` 并将前面参数（如果有的话）的数据复制到对象的属性中。
 例如，如果 `newInt` 不为空，则将其值复制到 `anInt` 中。
 
-<iframe src="{{site.dartpad-embed}}?id=1dd9cc9654f9e6d080f99bfb9772dae4"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=1dd9cc9654f9e6d080f99bfb9772dae4&ga_id=optional_named_parameters"></iframe>
 
 
 ## Exceptions
@@ -664,7 +664,7 @@ then do the following:
   捕获并处理完所有内容后，
   调用 `logger.doneLogging`（尝试使用 `finally`）。
 
-<iframe src="{{site.dartpad-embed}}?id=e221e3fd667825e62aac79079b8b5c59"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=e221e3fd667825e62aac79079b8b5c59&ga_id=exceptions"></iframe>
 
 {% comment %}
 I was confused about the text saying "call... with the exception type" but
@@ -756,7 +756,7 @@ all three properties of the class.
 使用 `this` 语法向 `MyClass` 添加一行构造方法，
 并接收和分配全部（三个）属性。
 
-<iframe src="{{site.dartpad-embed}}?id=2778e81ae2c5729d45c611829f3888c2"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=2778e81ae2c5729d45c611829f3888c2&ga_id=this_constructor"></iframe>
 
 {% comment %}
 This one seems super easy compared to previous ones.
@@ -836,7 +836,7 @@ It'd be cool if Output appeared only if you want it, like Solution does.
 
 {% endcomment %}
 
-<iframe src="{{site.dartpad-embed}}?id=df45dfc1af2e6af712930c331115eb78"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=df45dfc1af2e6af712930c331115eb78&ga_id=initializer_lists"></iframe>
 
 
 ## Named constructors
@@ -892,7 +892,7 @@ ISSUE: comment says "a named constructor called "black"", which sounds
 wrong to me. I fixed it in the text but not in the example.
 {% endcomment %}
 
-<iframe src="{{site.dartpad-embed}}?id=e1a82c77547e659eb24f4e698abf1eca"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=e1a82c77547e659eb24f4e698abf1eca&ga_id=named_constructors"></iframe>
 
 
 ## Factory constructors
@@ -955,7 +955,7 @@ making it do the following:
 TODO: Fix the comment to not say "named".
 ISSUE: The hint acts like you don't already have the signature for the constructor.
 {% endcomment %}
-<iframe src="{{site.dartpad-embed}}?id=727981a8ece1244b52a3c6dc377a8085"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=727981a8ece1244b52a3c6dc377a8085&ga_id=factory_constructors"></iframe>
 
 ## Redirecting constructors
 
@@ -997,7 +997,7 @@ default constructor with zeros as the arguments.
 但这次我们不要手动分配属性，而是将 0 作为参数，
 重定向到默认的构造方法。
 
-<iframe src="{{site.dartpad-embed}}?id=94eb1d8be5b64163753c7350f1f09edf"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=94eb1d8be5b64163753c7350f1f09edf&ga_id=redirecting_constructors"></iframe>
 
 
 ## Const constructors
@@ -1047,7 +1047,7 @@ and create a constant constructor that does the following:
   在 `Recipe` 的构造方法声明之前，
   用 `const` 关键字使其成为常量。
 
-<iframe src="{{site.dartpad-embed}}?id=c400cb84fab309ddbbb436c1ced90dad"></iframe>
+<iframe src="{{site.dartpad-embed}}?id=c400cb84fab309ddbbb436c1ced90dad&ga_id=const_constructors"></iframe>
 
 
 {% comment %}

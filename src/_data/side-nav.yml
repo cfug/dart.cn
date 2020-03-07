@@ -47,6 +47,8 @@
           permalink: /guides/language/effective-dart/design
     - title: Extension 方法
       permalink: /guides/language/extension-methods
+    - title: 版本演变
+      permalink: /guides/language/evolution
     - title: 规范
       permalink: /guides/language/spec
     - title: 概览

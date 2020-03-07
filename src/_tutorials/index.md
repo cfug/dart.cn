@@ -32,7 +32,7 @@ which are fundamental to most Dart programs.
 当你熟悉该语言后，可以进一步了解 _streams_ 和 _futures_，它们是众多 Dart 程序的基础。
 接下来你可以开始学习如何安装包——共享代码能使你的学习更加高效。
 
-<div class="card-grid">
+<div class="card-grid no_toc_section">
   <div class="card">
     <h3><a href="/tutorials/language/streams">Asynchronous programming:
        streams</a></h3>
@@ -68,3 +68,8 @@ which are fundamental to most Dart programs.
 
   [Dart 学院](https://dart.academy)
 
+See the [Flutter tutorials.](https://flutter.dev/tutorials)
+
+请查看 [Flutter 教程。](https://flutter.dev/tutorials)
+
+<!-- * [Dart Academy](https://dart.academy) -->

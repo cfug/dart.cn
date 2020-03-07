@@ -64,7 +64,7 @@ over an Iterable. For example:
 Stream 可以通过许多方式创建，这个话题我们会在另一篇文章详述，而这些所有的创建方式都可以相同的方式在代码中使用：像使用 **for 循环** 迭代一个 Iterable 一样，我们可以使用 _异步 for 循环_ （通常我们直接称之为 **await for**）来迭代 Stream 中的事件。例如：
 
 <?code-excerpt "misc/lib/tutorial/sum_stream.dart (sumStream)" replace="/async|await for/[!$&!]/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 Future<int> sumStream(Stream<int> stream) [!async!] {
   var sum = 0;
   [!await for!] (var value in stream) {
@@ -129,7 +129,7 @@ main() async {
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-inline}}?id=15d5ef986238c97dbc14"
+src="{{site.dartpad-embed-inline}}?id=15d5ef986238c97dbc14&ga_id=receiving_stream_events"
     width="100%"
     height="490px"
     style="border: 1px solid #ccc;">
@@ -213,7 +213,7 @@ main() async {
 {% endcomment %}
 
 <iframe
-src="{{site.dartpad-embed-inline}}?id=df7c1168a5c6b20fda2a76d6ff33a1da"
+src="{{site.dartpad-embed-inline}}?id=df7c1168a5c6b20fda2a76d6ff33a1da&ga_id=error_events"
     width="100%"
     height="450px"
     style="border: 1px solid #ccc;">

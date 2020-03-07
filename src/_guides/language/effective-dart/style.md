@@ -67,7 +67,7 @@ Classes（类名）、 enums（枚举类型）、 typedefs（类型定义）、
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (type-names)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class SliderMenu { ... }
 
 class HttpRequest { ... }
@@ -81,7 +81,7 @@ This even includes classes intended to be used in metadata annotations.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (annotation-type-names)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Foo {
   const Foo([arg]);
 }
@@ -101,7 +101,7 @@ create a separate `lowerCamelCase` constant for it.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (annotation-const)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const foo = Foo();
 
 @foo
@@ -125,7 +125,7 @@ and use no separators.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (extension-names)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 extension MyFancyList<T> on List<T> { ... }
 
 extension SmartIterable<T> on Iterable<T> { ... }
@@ -164,7 +164,7 @@ symbolic imports.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart" replace="/foo\///g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 library peg_parser.source_scanner;
 
 import 'file_system.dart';
@@ -173,7 +173,7 @@ import 'slider_menu.dart';
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart" replace="/foo\///g;/file./file-/g;/slider_menu/SliderMenu/g;/source_scanner/SourceScanner/g;/peg_parser/pegparser/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 library pegparser.SourceScanner;
 
 import 'file-system.dart';
@@ -197,7 +197,7 @@ import 'SliderMenu.dart';
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (import-as)" replace="/(package):examples[^']*/$1:angular_components\/angular_components/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:math' as math;
 import 'package:angular_components/angular_components'
     as angular_components;
@@ -206,7 +206,7 @@ import 'package:js/js.dart' as js;
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (import-as)" replace="/(package):examples[^']*/$1:angular_components\/angular_components/g;/as angular_components/as angularComponents/g;/ math/ Math/g;/as js/as JS/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:math' as Math;
 import 'package:angular_components/angular_components'
     as angularComponents;
@@ -229,7 +229,7 @@ word, and use no separators.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (misc-names)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 var item;
 
 HttpRequest httpRequest;
@@ -252,7 +252,7 @@ In new code, use `lowerCamelCase` for constant variables, including enum values.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (const-names)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const pi = 3.14;
 const defaultTimeout = 1000;
 final urlScheme = RegExp('^([a-z]+):');
@@ -264,7 +264,7 @@ class Dice {
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/style_bad.dart (const-names)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 const PI = 3.14;
 const DefaultTimeout = 1000;
 final URL_SCHEME = RegExp('^([a-z]+):');
@@ -340,7 +340,7 @@ ID and Mr. are still capitalized like words.)
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (acronyms and abbreviations)" replace="/,//g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 HttpConnectionInfo
 uiHandler
 IOStream
@@ -350,7 +350,7 @@ DB
 {% endprettify %}
 
 {:.bad}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 HTTPConnection
 UiHandler
 IoStream
@@ -394,12 +394,12 @@ encode those properties in identifier names.
 所以没有理由在标识符名称中对这些属性进行编码。
 
 {:.good}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 defaultTimeout
 {% endprettify %}
 
 {:.bad}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 kDefaultTimeout
 {% endprettify %}
 
@@ -426,7 +426,7 @@ A single linter rule handles all the ordering guidelines:
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (dart-import-first)" replace="/\w+\/effective_dart\///g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'dart:async';
 import 'dart:html';
 
@@ -443,7 +443,7 @@ import 'package:foo/foo.dart';
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (pkg-import-before-local)" replace="/\w+\/effective_dart\///g;/'foo/'util/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:bar/bar.dart';
 import 'package:foo/foo.dart';
 
@@ -465,7 +465,7 @@ external packages, place yours in a separate section after the external ones.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (third-party)" replace="/\w+\/effective_dart\///g;/(package):foo(.dart)/$1:my_package\/util$2/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:bar/bar.dart';
 import 'package:foo/foo.dart';
 
@@ -481,7 +481,7 @@ import 'package:my_package/util.dart';
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (export)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'src/error.dart';
 import 'src/foo_bar.dart';
 
@@ -490,7 +490,7 @@ export 'src/error.dart';
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/style_lib_bad.dart (export)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'src/error.dart';
 export 'src/error.dart';
 import 'src/foo_bar.dart';
@@ -505,7 +505,7 @@ import 'src/foo_bar.dart';
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_lib_good.dart (sorted)" replace="/\w+\/effective_dart\///g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:bar/bar.dart';
 import 'package:foo/foo.dart';
 
@@ -515,7 +515,7 @@ import 'foo/foo.dart';
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/style_lib_bad.dart (sorted)" replace="/\w+\/effective_dart\///g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 import 'package:foo/foo.dart';
 import 'package:bar/bar.dart';
 
@@ -649,7 +649,7 @@ Doing so avoids the [dangling else][] problem.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (curly-braces)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (isWeekDay) {
   print('Bike to work!');
 } else {
@@ -666,7 +666,7 @@ whole `if` statement fits on one line, you can omit the braces if you prefer:
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (one-line-if)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (arg == null) return defaultValue;
 {% endprettify %}
 
@@ -676,7 +676,7 @@ If the body wraps to the next line, though, use braces:
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/style_good.dart (one-line-if-wrap)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (overflowChars != other.overflowChars) {
   return overflowChars < other.overflowChars;
 }
@@ -684,7 +684,7 @@ if (overflowChars != other.overflowChars) {
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/style_bad.dart (one-line-if-wrap)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 if (overflowChars != other.overflowChars)
   return overflowChars < other.overflowChars;
 {% endprettify %}

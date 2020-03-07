@@ -14,8 +14,8 @@ DartPad 是一个可以让你在任何现代化的浏览器中体验 Dart 编程
 Many pages in this site — especially [codelabs](/codelabs) —
 have [embedded DartPads](#embedding).
 To get a DartPad as big as your browser window, go to the
-<a href="{{site.dartpad}}"
-target="_blank">DartPad site (dartpad.dev).</a>
+<a href="{{site.dartpad}}" target="_blank" rel="noopener">DartPad
+site (dartpad.dev).</a>
 
 本网页里一些页面，尤其是 [codelabs](/codelabs) 页面，包含了很多[内嵌的 DartPads](#embedding)。
 你可以在浏览器里输入下面的网址打开一个 DartPad 页面。
@@ -79,9 +79,9 @@ try running some samples and then creating a simple command-line app.
 
 <ol markdown="1">
   <li markdown="1">
-  Go to <a href="{{site.dartpad}}" target="_blank">DartPad.</a>
+  Go to <a href="{{site.dartpad}}" target="_blank" rel="noopener">DartPad.</a>
 
-  打开 <a href="{{site.dartpad}}" target="_blank">DartPad。</a>
+  打开 <a href="{{site.dartpad}}" target="_blank" rel="noopener">DartPad。</a>
 
   A sample appears on the left and the output appears on the right.
   If you've played with DartPad before,
@@ -168,7 +168,7 @@ To create a simple command-line app, use **New Pad**.
   然后修改代码。比如将 `main()` 函数中的代码修改为如下：
 
 <!-- library-tour/string-tests/bin/main.dart -->
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 for (var char in 'hello'.split('')) {
   print(char);
 }

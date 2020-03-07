@@ -35,11 +35,11 @@ backward-compatible. For details, see the [Dart 2 page](/dart-2).
 ### 进行中的规范
 
 The in-progress formal Dart language specification is written as a
-[LaTeX file,](https://github.com/dart-lang/sdk/blob/master/docs/language/dartLangSpec.tex)
+[LaTeX file,](https://github.com/dart-lang/language/blob/master/specification/dartLangSpec.tex)
 and is available as a [draft specification in PDF format.](https://spec.dart.dev/DartLangSpecDraft.pdf)
 
 正在进行的正式的 Dart 语言规范是使用
-[LaTeX 文件](https://github.com/dart-lang/sdk/blob/master/docs/language/dartLangSpec.tex)
+[LaTeX 文件](https://github.com/dart-lang/language/blob/master/specification/dartLangSpec.tex)
 编写的，可作为 [PDF 格式的草案规范](https://spec.dart.dev/DartLangSpecDraft.pdf)
 使用。
 

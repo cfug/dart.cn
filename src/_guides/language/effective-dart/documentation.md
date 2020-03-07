@@ -48,7 +48,7 @@ generated documentation.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (comments-like-sentences)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // Not if there is nothing before it.
 if (_chunks.isEmpty) return false;
 {% endprettify %}
@@ -67,7 +67,7 @@ inline stuff, even TODOs. Even if it's a sentence fragment.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (block-comments)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 greet(name) {
   // Assume we have a valid name.
   print('Hi, $name!');
@@ -76,7 +76,7 @@ greet(name) {
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/docs_bad.dart (block-comments)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 greet(name) {
   /* Assume we have a valid name. */
   print('Hi, $name!');
@@ -116,14 +116,14 @@ and generate documentation for it.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (use-doc-comments)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// The number of characters in this chunk when unsplit.
 int get length => ...
 {% endprettify %}
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (use-doc-comments)" replace="/^\///g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 // The number of characters in this chunk when unsplit.
 int get length => ...
 {% endprettify %}
@@ -225,7 +225,7 @@ elsewhere for the solution to their problem.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (first-sentence)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// Deletes the file at [path] from the file system.
 void delete(String path) {
   ...
@@ -234,7 +234,7 @@ void delete(String path) {
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/docs_bad.dart (first-sentence)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// Depending on the state of the file system and the user's permissions,
 /// certain operations may or may not be possible. If there is no file at
 /// [path] or it can't be accessed, this function throws either [IOError]
@@ -264,7 +264,7 @@ like lists of classes and members.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (first-sentence-a-paragraph)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// Deletes the file at [path].
 ///
 /// Throws an [IOError] if the file could not be found. Throws a
@@ -276,7 +276,7 @@ void delete(String path) {
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/docs_bad.dart (first-sentence-a-paragraph)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// Deletes the file at [path]. Throws an [IOError] if the file could not
 /// be found. Throws a [PermissionError] if the file is present but could
 /// not be deleted.
@@ -302,7 +302,7 @@ spelled out in the doc comment. Instead, focus on explaining what the reader
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (redundant)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class RadioButtonWidget extends Widget {
   /// Sets the tooltip to [lines], which should have been word wrapped using
   /// the current font.
@@ -314,7 +314,7 @@ class RadioButtonWidget extends Widget {
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/docs_bad.dart (redundant)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class RadioButtonWidget extends Widget {
   /// Sets the tooltip for this radio button widget to the list of strings in
   /// [lines].
@@ -335,7 +335,7 @@ The doc comment should focus on what the code *does*.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (third-person)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// Returns `true` if every element satisfies the [predicate].
 bool all(bool predicate(T element)) => ...
 
@@ -358,7 +358,7 @@ the *result* of that work, not the work itself.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (noun-phrases-for-var-etc)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// The current day of the week, where `0` is Sunday.
 int weekday;
 
@@ -388,7 +388,7 @@ extra effort here can make all of the other members simpler to document.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (noun-phrases-for-type-or-lib)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// A chunk of non-breaking output text terminated by a hard or soft newline.
 ///
 /// ...
@@ -401,7 +401,7 @@ class Chunk { ... }
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (code-sample)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// Returns the lesser of two numbers.
 ///
 /// ```dart
@@ -432,7 +432,7 @@ constructor.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (identifiers)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// Throws a [StateError] if ...
 /// similar to [anotherMethod()], but ...
 {% endprettify %}
@@ -444,7 +444,7 @@ separated by a dot:
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (member)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// Similar to [Duration.inDays], but handles fractional days.
 {% endprettify %}
 
@@ -455,7 +455,7 @@ constructor, put parentheses after the class name:
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (ctor)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// To create a point, call [Point()] or use [Point.polar()] to ...
 {% endprettify %}
 
@@ -470,7 +470,7 @@ and returns of a method are.
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/docs_bad.dart (no-annotations)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// Defines a flag with the given name and abbreviation.
 ///
 /// @param name The name of the flag.
@@ -486,7 +486,7 @@ and highlight parameters using square brackets.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (no-annotations)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// Defines a flag.
 ///
 /// Throws an [ArgumentError] if there is already an option named [name] or
@@ -500,7 +500,7 @@ Flag addFlag(String name, String abbr) => ...
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (doc-before-meta)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// A button that can be flipped on and off.
 @Component(selector: 'toggle')
 class ToggleComponent {}
@@ -508,7 +508,7 @@ class ToggleComponent {}
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/docs_bad.dart (doc-before-meta)" replace="/\n\n/\n/g"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 @Component(selector: 'toggle')
 /// A button that can be flipped on and off.
 class ToggleComponent {}
@@ -533,7 +533,7 @@ a flavor of what's supported:
 有很多指南已经向您介绍Markdown。 它普遍受欢迎是我们选择它的原因。 这里只是一个简单的例子，让您了解所支持的内容：
 
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (markdown)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// This is a paragraph of regular text.
 ///
 /// This sentence has *two* _emphasized_ words (italics) and **two**
@@ -631,7 +631,7 @@ language, and is consistent with using backticks for inline code.
 内联代码同样可以使用反引号标注。
 
 {:.good}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// You can use [CodeBlockExample] like this:
 ///
 /// ```
@@ -641,7 +641,7 @@ language, and is consistent with using backticks for inline code.
 {% endprettify %}
 
 {:.bad}
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 /// You can use [CodeBlockExample] like this:
 ///
 ///     var example = CodeBlockExample();
@@ -695,7 +695,7 @@ object the member is being called on. Using "the" can be ambiguous.
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (this)"?>
-{% prettify dart %}
+{% prettify dart tag=pre+code %}
 class Box {
   /// The value this wraps.
   var _value;

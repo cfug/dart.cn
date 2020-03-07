@@ -9,7 +9,7 @@ _Run_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 _Run_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
 
-{% prettify nocode %}
+{% prettify nocode tag=pre+code %}
 $ pub run [--enable-asserts] <executable> [args...]
 {% endprettify %}
 

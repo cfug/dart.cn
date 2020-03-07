@@ -50,7 +50,7 @@ version matching the specified constraint. For example:
 
 <dd>可选的选项。与 <code>pub add</code> 结合使用根据限制条件安装最适合的版本。例如：
 
-{% prettify nocode %}
+{% prettify nocode tag=pre+code %}
 $ pub cache add barback --version "<=0.8.0 <0.110"
 {% endprettify %}
 
