@@ -2452,7 +2452,7 @@ operators.
 |-------------------------------+-------------------------------------------|
 |             运算符             |                   描述                     |
 |-------------------------------+-------------------------------------------|
-| <code>!<em>!表达式</em></code> | 对表达式结果取反（即将 true 变为 false，false 变为 true）
+| <code>!<em>表达式</em></code>  | 对表达式结果取反（即将 true 变为 false，false 变为 true）
 | `||`                          | 逻辑或
 | `&&`                          | 逻辑与
 {:.table .table-striped}
@@ -5128,7 +5128,7 @@ you have two options:
 
 * Use `async` and `await`.
 
-  使用 `async` 和 `await`。
+  使用 `async` 和 `await`；
 
 * Use the Future API, as described
   [in the library tour](/guides/libraries/library-tour#future).
