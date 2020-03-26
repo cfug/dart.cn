@@ -5128,7 +5128,7 @@ you have two options:
 
 * Use `async` and `await`.
 
-  ���用 `async` 和 `await`。
+  用 `async` 和 `await`。
 
 * Use the Future API, as described
   [in the library tour](/guides/libraries/library-tour#future).
