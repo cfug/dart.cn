@@ -1304,7 +1304,7 @@ dart:async library ([API reference][dart:async]).
 提供了其他方案：[Future][] 和 [Stream][] 对象。
 Future 类似与 JavaScript 中的 Promise ，
 代表在将来某个时刻会返回一个结果。
-Stream 类可以用来获取一系列的值，比如，一些列事件。
+Stream 类可以用来获取一系列的值，比如，一系列事件。
 Future， Stream，以及更多内容，参考
 dart:async library ([API reference][dart:async])。
 
@@ -1575,7 +1575,7 @@ Stream objects appear throughout Dart APIs, representing sequences of
 data. For example, HTML events such as button clicks are delivered using
 streams. You can also read a file as a stream.
 
-在 Dart API 中 Stream 对象随处可见，Stream 用来表示一些列数据。
+在 Dart API 中 Stream 对象随处可见，Stream 用来表示一系列数据。
 例如，HTML 中的按钮点击就是通过 stream 传递的。
 同样也可以将文件作为数据流来读取。
 
