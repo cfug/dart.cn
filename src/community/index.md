@@ -95,7 +95,7 @@ Our wonderful community has provided these resources.
 
   [Dart Academy](https://dart.academy/) - Dart 社区撰写的教程和文章
 
-* [Chinese version of this site （此网站的中文版）](http://www.dartdoc.cn)
+* [Chinese version of this site (此网站的中文版)](https://dart.cn)
 
   [此站的英文官网](https://www.dartlang.org/)
 
