@@ -521,7 +521,7 @@ You are allowed to use most [markdown][] formatting in your doc comments and
 dartdoc will process it accordingly using the [markdown package.][]
 
 文档注释中允许使用大多数 [markdown][] 格式，
-并且 dartdoc 会更具 [markdown package][] 进行解析。
+并且 dartdoc 会根据 [markdown package.][] 进行解析。
 
 [markdown]: https://daringfireball.net/projects/markdown/
 [markdown package.]: {{site.pub}}/packages/markdown
