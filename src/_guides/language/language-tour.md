@@ -82,17 +82,20 @@ apps:
     以双斜杠开头的一行语句称为单行注释。Dart 同样支持多行注释和文档注释。查阅[注释](#comments)获取更多相关信息。
 
 `int`
+
 :   A type. Some of the other [built-in types](#built-in-types)
     are `String`, `List`, and `bool`.
 
     表示一种数据类型。Dart 中一些其他的[内置类型](#built-in-types)包括 `String`、`List` 和 `bool`。
 
 `42`
+
 :   A number literal. Number literals are a kind of compile-time constant.
 
     表示一个数字字面量。数字字面量是一种编译时常量。
 
 `print()`
+
 :   A handy way to display output.
 
     一种便利的将信息输出显示的方式。
@@ -112,6 +115,7 @@ apps:
     表示字符串插值：字符串字面量中包含的变量或表达式。查阅[字符串](#strings)获取更多相关信息。
 
 `main()`
+
 :   The special, *required*, top-level function where app execution
     starts. For more information, see
     [The main() function](#the-main-function).
@@ -119,6 +123,7 @@ apps:
     一个特殊且 *必须的* 顶级函数，Dart 应用程序总是会从该函数开始执行。查阅 [main() 函数](#the-main-function) 获取更多相关信息。
 
 `var`
+
 :   A way to declare a variable without specifying its type.
 
     用于定义变量，通过这种方式定义变量不需要指定变量类型。
