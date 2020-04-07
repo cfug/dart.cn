@@ -10,27 +10,43 @@ It also allows you to share your packages with the world. If you have a useful
 project and you want others to be able to use it, use the `pub publish`
 command.
 
+[ Pub 包管理工具][pub] 并不仅仅用于使用其他人开发的 Package ，它同样允许你向全世界分享自己制作的 Package 。如果你有一个有用的项目，而且希望别人能够用到它，使用 `pub publish` 命令。
+
 {{site.alert.note}}
+
   To publish to a location other than pub.dev,
   or to prevent publication anywhere, use the `publish_to` field,
   as defined in the [pubspec][].
+
+  发布到非 pub.dev 的其它位置，或者不在任何地方发布，使用 `publish_to` 参数，也可在 [pubspec][] 中设置。
+
 {{site.alert.end}}
 
 ## Publishing is forever
+
+## 发布是永久的
 
 Keep in mind that publishing is forever. As soon as you publish your package,
 users can depend on it. Once they start doing that, removing
 the package would break theirs. To avoid that, the [pub.dev policy][policy]
 disallows unpublishing packages except for very few cases.
 
+切记，发布的 Package 将会永久存在。只要你发布了你的 Package ，用户就能依赖它。一旦他们开始这样做，移除 Package 的行为将破坏他们的项目。为了避免此类破坏发生，除了极少数情况， [ pub.dev 政策][policy] 不允许撤回已经发布的 Package 。
+
 You can always upload new versions of your package, but
 old ones will continue to be available for users that aren't ready to
 upgrade yet.
 
+你可以一直上传自己 Package 的新版本，但是旧版本对于那些尚未准备好升级的用户仍然可用。
+
 For already published packages that are no longer relevant or being maintained,
 you can [mark them as discontinued](#discontinue).
 
+对于那些已经发布，但不再相关或不再维护的 Package ，你可以 [把他们标记为终止](#discontinue) 。
+
 ## Preparing to publish
+
+## 准备发布
 
 When publishing a package, it's important to follow the [pubspec
 format][pubspec] and
@@ -41,29 +57,46 @@ with your package. In both cases, pub tries to help you by pointing out what
 changes will help make your package play nicer with the Dart ecosystem. There
 are a few additional requirements for uploading a package:
 
+发布一个 Package 时，遵守 [ pubspec 格式][pubspec] 和 [ Package 布局惯例][] 很重要。
+为了其它人能够使用你的 Package ，其中有些要求是必须的，其它则是一些有助于用户能更好的理解和使用的建议。无论是哪些， pub 都会指出什么样的改变能让你的 Package 在 Dart 生态系统中展现的更好。对于上传 Package 有一些额外的要求：
+
 * You must include a `LICENSE` file
   that contains an [open-source license.][open-source license]
   We recommend the [BSD license,][BSD license]
   which is used by Dart itself. You must also have the legal right to
   redistribute anything that you upload as part of your package.
 
+  你必须带有一个包含 [开源许可证][open-source license] 的 `LICENSE` 文件。
+  我们推荐 [ BSD 许可证][BSD license] ，也就是 Dart 自身所使用的开源许可证。同时，对于你所上传的 Package 的任意部分，你必须拥有重新发布的合法权利。
+
 * Your package must be less than 10 MB large after gzip compression. If
   it's too large, consider splitting it into multiple packages, or cutting down
   on the number of included resources or examples.
+
+  通过 gzip 压缩后，你的 Package 大小必须小于 10 MB 。如果它所占空间过大，考虑将它分割为几个小的 Package ，或者减少包含资源或实例的数量。
 
 * Your package should depend only on hosted dependencies (from the default pub
   package server) and SDK dependencies (`sdk: flutter`). These restrictions
   ensure that dependencies of your packages cannot become unavailable in the
   future.
 
+  你的 Package 应该仅依赖于已被托管的依赖项（来自默认的 pub 包服务）和属于 SDK 的依赖项（`sdk: flutter`）。这些限制条件确保了你的 Package 的依赖项在未来依然可用。
+
 * You must have a [Google Account,][Google Account]
   which pub uses to manage package upload permissions.
   Your Google Account can be associated with a Gmail address or
   with any other email address.
 
+  你必须有一个 [ Google 账户][Google Account]， pub 将使用它来管理 Package 更新权限。
+  你的 Google 账户可以与 Gmail 或其他任何邮箱地址关联。
+
 {{site.alert.note}}
+  
   Unless you publish using a [verified publisher][],
   **pub.dev displays the email address associated with your Google Account.**
+
+  除非你的发布使用了 [已验证的发布者][]，** pub.dev 将展示与你 Google 账户关联的邮箱**
+
 {{site.alert.end}}
 
 ### Important files
