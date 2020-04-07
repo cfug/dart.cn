@@ -95,56 +95,97 @@ are a few additional requirements for uploading a package:
   Unless you publish using a [verified publisher][],
   **pub.dev displays the email address associated with your Google Account.**
 
-  除非你的发布使用了 [已验证的发布者][]，** pub.dev 将展示与你 Google 账户关联的邮箱**
+  除非你的发布使用了 [已验证发布者][]，** pub.dev 将展示与你 Google 账户关联的邮箱**
 
 {{site.alert.end}}
 
 ### Important files
 
+### 重要的文件
+
 Pub uses the contents of a few files to create a page for your
 package at `pub.dev/packages/<your_package>`. Here are the files that
 affect how your package's page looks:
 
+Pub 使用几个文件的内容来创建你的 Package 在 `pub.dev/packages/<your_package>` 的页面。以下就是会影响你的 Package 页面效果的文件：
+
 * **README.md:** The `README.md` file
   is the main content featured in your package's page.
   The file's contents are rendered as [Markdown.][Markdown]
+
+  **README.md:** `README.md` 文件是你的 Package 页面主要组成部分。
+  这个文件的内容将会以 [Markdown][Markdown] 格式渲染。
+
 * **CHANGELOG.md:** Your package's `CHANGELOG.md` file, if found,
   is also featured in a tab on your package's page,
   so that developers can read it right from pub.dev.
   The file's contents are rendered as [Markdown.][Markdown]
+
+  **CHANGELOG.md:** 如果你的 Package 的 `CHANGELOG.md` 文件存在，同样会作为 Package 页面的一个选项卡展示。开发者可通过 pub.dev 阅读它。
+  这个文件的内容将会以 [Markdown][Markdown] 格式渲染。
+
 * **The pubspec:** Your package's `pubspec.yaml` file is used to fill out
   details about your package on the right side of your package's page, like its
   description, homepage, etc.
 
+  **The pubspec:** 你的 Package 的 `pubspec.yaml` 文件被用于填写关于 Package 本身的细节，例如它的描述，主页等等。这些信息将被展现在 Package 页面的右侧。
 
 ### Advantages of using a verified publisher {#verified-publisher}
+
+### 使用已验证发布者的优点 {#verified-publisher}
 
 You can publish packages using either a verified publisher (recommended)
 or an independent Google Account.
 Using a verified publisher has the following advantages:
 
+你可以使用已验证发布者（推荐）或一个独立的 Google 账户来发布 Package 。
+使用已验证发布者有以下几个优点：
+
 * The consumers of your package know that the publisher domain has been verified.
+
+  你的 Package 的使用者知道发布者域名已经过验证。
+
 * You can avoid having pub.dev display your personal email address.
   Instead, pub.dev displays displays the publisher domain and contact address.
+
+  你能够避免让 pub.dev 展示你的个人邮箱。
+  pub.dev 将展示发布者域名和联系地址作为代替。
+
 * A verified publisher badge {% asset verified-publisher.svg
   alt="pub.dev verified publisher logo" %} is displayed next to your package name
   on both search pages and individual package pages.
 
+  一个已验证发布者徽章 {% asset verified-publisher.svg
+  alt="pub.dev verified publisher logo" %} 将在你的 Package 名字旁边展示，不论是在搜索页面还是单独的 Package 页面。
 
 ### Creating a verified publisher {#create-verified-publisher}
 
+### 创建一个已验证发布者 {#create-verified-publisher}
+
 To create a verified publisher, follow these steps:
+
+想要创建一个已验证发布者，跟随以下步骤：
 
 1. Go to [pub.dev.]({{site.pub}})
 
+   访问 [pub.dev]({{site.pub}})。
+
 1. Log in to pub.dev using a Google Account.
 
+   用一个 Google 账户登录 pub.dev 。
+
 1. In the user menu in the top-right corner, select **Create Publisher**.
+
+   在右上角的用户菜单中，选择 **创建发布者**。
 
 1. Enter the domain name that you want to associate with your publisher (for example,
    `dart.dev`), and click **Create Publisher**.
 
+   输入你想要与发布者关联的域名（例如，`dart.dev`），然后点击 **创建发布者**。
+
 1. In the confirmation dialog, select **OK**.
+
+   在确认弹框中，选择 **好**。
 
 1. If prompted, complete the verification flow, which opens the [Google
    Search Console.](https://search.google.com/search-console/about)
@@ -152,16 +193,26 @@ To create a verified publisher, follow these steps:
    reflects the changes.
    * When the verification flow is complete, return to step 4.
 
+   如果收到提示，在打开的 [ Google 搜索控制台](https://search.google.com/search-console/about) 中完成确认流程。
+   * 添加 NDS 记录，可能需要几个小时让搜索控制台确认改动。
+   * 确认流程完成后，返回第四步。
 
 ## Publishing your package
+
+## 发布你的 Package 
 
 Use the [pub publish][] command to publish your package for the first time,
 or to update it to a new version.
 
+使用 [pub publish][] 命令来首次发布你的 Package ，或者把它升级到一个新版本。
 
 ### Performing a dry run
 
+### 演示一次试运行
+
 To test how `pub publish` will work, you can perform a dry run:
+
+为了测试 `pub publish` 命令会如何工作，你可以演示一次试运行（不会真的发布，只显示效果）：
 
 ```terminal
 $ pub publish --dry-run
@@ -173,6 +224,8 @@ Pub makes sure that your package follows the
 and then uploads your package to [pub.dev.]({{site.pub}}) Pub also shows you all of
 the files it intends to publish. Here's an example of publishing a package
 named `transmogrify`:
+
+Pub 会确认你的 Package 符合 [ pubspec 格式][pubspec] 和 [ Package 布局惯例][] ，然后把你的 Package 上传至 [pub.dev]({{site.pub}})。 Pub 也会提前向你展示所有准备发布的文件。如下是一个发布名为 `transmogrify` 的 Package 的例子：
 
 {:.console-output}
 ```nocode
@@ -194,25 +247,37 @@ Package has 0 warnings.
 
 ### Publishing
 
+### 发布
+
 When you're ready to publish your package, remove the `--dry-run` argument:
+
+当你已经准备好发布你的 Package 后，移除 `--dry-run` 参数：
 
 ```terminal
 $ pub publish
 ```
 
 {{site.alert.note}}
+
   The `pub` command currently doesn't support publishing a new package directly to a
   verified publisher. As a temporary workaround, publish new packages to a Google Account,
   and then [transfer the package to a publisher](#transferring-a-package-to-a-verified-publisher).
 
+  `pub` 命令目前不支持把一个新的 Package 直接发布至已验证发布者。作为一个临时空间，先把新的 Package 发布至一个 Google 账户，然后再 [把 Package 转移至已验证发布者](#transferring-a-package-to-a-verified-publisher)。
+
   Once a package has been transferred to a publisher,
   you can update the package using `pub publish`.
+
+  一旦这个 Package 被转移到已验证发布者，你就可以通过 `pub publish` 命令来更新它。
+
 {{site.alert.end}}
 
 After your package has been successfully uploaded to pub.dev, any pub user can
 download it or depend on it in their projects. For example, if you just
 published version 1.0.0 of your `transmogrify` package, then another Dart
 developer can add it as a dependency in their `pubspec.yaml`:
+
+在你的 Package 成功上传至 pub.dev 之后，任何 pub 用户都能够下载或在他们的项目中依赖它。例如，如果你刚刚发布了你的  `transmogrify` Package 1.0.0 版本，那么另一个 Dart 开发者将可以把它作为一项依赖添加到 `pubspec.yaml` 文件中：
 
 ```yaml
 dependencies:
