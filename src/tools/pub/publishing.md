@@ -286,38 +286,78 @@ dependencies:
 
 ### Transferring a package to a verified publisher
 
+### 把 Package 转移至已验证发布者
+
 To transfer a package to a verified publisher,
 you must be an [uploader](#uploaders) for the package
 and an admin for the verified publisher.
 
+想要把 Package 转移至已验证发布者，你必须是 Package 的一个[上传者](#uploaders)，以及已验证发布者的管理员。
+
 {{site.alert.note}}
+
   This process isn't reversible. Once you transfer a package to a publisher,
   you can't transfer it back to an individual account.
+
+  这个过程是不可撤回的。一旦你把 Package 转移至已验证发布者，你将无法再把它转移回一个单独的账户。
+
 {{site.alert.end}}
 
 Here's how to transfer a package to a verified publisher:
 
+以下是如何把 Package 转移至已验证发布者：
+
 1. Log in to [pub.dev]({{site.pub}}) with a Google Account that's listed as
    an uploader of the package.
+
+   用一个作为 Package 上传者之一的 Google 账户登录 [pub.dev]({{site.pub}})。
+
 1. Go to the package details page (for example,
    `{{site.pub-pkg}}/http`).
+
+   访问 Package 详情页面（例如，`{{site.pub-pkg}}/http`）。
+
 1. Select the **Admin** tab.
+
+   选择 **管理员** 选项卡。
+
 1. Enter the name of the publisher, and click **Transfer to Publisher**.
 
+   输入已验证发布者的名称，然后点击 **转移至已验证发布者** 。
 
 ## What files are published?
+
+## 那些文件会被发布？
 
 **All files** in your package are included in the published package, with
 the following exceptions:
 
+在你 Package 中的 **所有文件** 都会被包含在发布的 Package 中，除了以下几个例外： 
+
 * Any `packages` directories.
+
+  任何 `packages` 目录。
+
 * Your package's [lockfile](/tools/pub/glossary#lockfile).
+
+  你的 Package 的 [lockfile](/tools/pub/glossary#lockfile) 文件。
+
 * If you aren't using Git, all _hidden_ files (that is,
   files whose names begin with `.`).
+
+  如果你没有使用 Git ，所有的 **隐藏** 文件（即文件名以 `.` 开头的那些）。
+
 * If you're using Git, any files ignored by your `.gitignore` file.
 
+  如果你在使用 Git ，所有通过 `.gitignore` 文件所忽略的文件。
+
+
 {% comment %}
+
 PENDING: Here only to make it easy to find the packages discussion: packages-dir.html
+
+待定：仅用于更容易的发现 Package 的讨论区： packages-dir.html
+
 {% endcomment %}
 
 Be sure to delete any files you don't want to include (or add them to
@@ -325,7 +365,11 @@ Be sure to delete any files you don't want to include (or add them to
 before uploading your package,
 so examine the list carefully before completing your upload.
 
+确认删除了所有你不想包含在 Package 中的文件（或者把他们添加到 `.gitignore` 中）。 `pub publish` 命令会在上传你的 Package 之前，列出所有准备发布的文件，所以在完成上传之前请仔细检查这个列表。
+
 ## Uploaders
+
+## 上传者
 
 Whoever publishes the first version of a package automatically becomes
 the first and only person authorized to upload additional versions of that package.
@@ -333,34 +377,61 @@ To allow or disallow other people to upload versions,
 use the [pub uploader][] command
 or transfer the package to a [verified publisher][].
 
+发布 Package 第一个版本的人，将自动成为第一也是唯一有权更新其更多版本的人。
+要允许或取消其他人更新版本，可使用 [pub uploader][] 命令，或把 Package 转移至已验证发布者。
+
 If a package has a verified publisher,
 then the pub.dev page for that package displays the publisher domain.
 Otherwise, the page displays the email addresses of
 the authorized uploaders for the package.
 
+如果 Package 有了已验证发布者，那么 pub.dev 中其页面将展示已验证发布者域名。
+另外，页面将展示该 Package 经过授权的上传者的邮箱。
 
 ## Publishing prereleases
+
+## 以预发行的方式发布
 
 As you work on a package, consider publishing it as a prerelease.
 Prereleases can be useful when any of the following are true:
 
+如果你正专注于开发一个 Package ，考虑将它以预发行的方式发布。
+预发行将在以下这些情形下变的实用：
+
 * You're actively developing the next major version of the package.
+
+  你正在活跃的开发该 Package 的下一个主版本。
+
 * You want beta testers for the next release candidate of the package.
+
+  你想要为该 Package 下一个候选的发布版做 beta 测试。
+
 * The package depends on an unstable version of the Dart or Flutter SDK.
+
+  该 Package 依赖于 Dart 或 Flutter SDK 的一个不稳定版本。
 
 As described in [semantic versioning,][semver] to make a prerelease of a version
 you append a suffix to the version. For example, to make a prerelease of
 version `2.0.0` you might use the version `2.0.0-dev.1`. Later, when you
 release version `2.0.0`, it will take precedence over all `2.0.0-XXX` prereleases.
 
+正如在 [语义版本][semver] 中描述的那样，要制作一个版本的预发布，你需要为其添加一个后缀。例如，要给 `2.0.0` 版本做一个预发布，你可能会使用 `2.0.0-dev.1` 作为版本号。接下来，当你发布 `2.0.0` 正式版后，它将优先于所有诸如 `2.0.0-XXX` 的预发布。
+
 Because pub prefers stable releases when available, users of a prerelease package
 might need to change their dependency constraints.
 For example, if a user wants to test prereleases of version 2.1, then
 instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
 
+因为当稳定发布版可用时， Pub 倾向于选择它们，所以使用预发布的用户可能需要改变它们的依赖约束。
+例如，如果一个用户想要测试 2.1 版本的预发布，那么他可能需要指明是 `^2.1.0-dev.1` 版本，而不是 `^2.0.0` 或者 `^2.1.0` 版本。
+
 {{site.alert.note}}
+
   If a stable package in the dependency graph depends on a prerelease,
   then pub chooses that prerelease instead of a stable release.
+
+  如果一个稳定版的 Package 在依赖关系中依赖于一个预发布，那么 Pub 将选择预发布而非稳定发布。
+
 {{site.alert.end}}
 
 When a prerelease is published to pub.dev,
@@ -368,8 +439,12 @@ the package page displays links to both the prerelease and the stable release.
 The prerelease doesn't affect the analysis score, show up in search results,
 or replace the package `README.md` and documentation.
 
+当一个预发布被发布在 pub.dev ， Package 主页会同时展示预发布和稳定发布的链接。
+预发布不会影响分析评分，不会出现在搜索结果里，也不会代替 Package 的 `README.md` 文件和说明文档。
 
 ## Marking packages as discontinued {#discontinue}
+
+## 把 Package 标记为终止 {#discontinue}
 
 Although packages always remain published, it can be useful to signal to
 developers that a package is no longer being actively maintained.
@@ -378,14 +453,25 @@ A discontinued package remains published and viewable on pub.dev,
 but it has a clear **DISCONTINUED** badge and
 doesn't appear in pub.dev search results.
 
+尽管 Package 的发布总是会被保留，在需要时，把它标记为不再活跃的维护将会对开发者有帮助。
+为了达到这一点，你可以将一个 Package 标记为 **终止**。
+终止的 Package 曾经的发布依然留存在 pub.dev 上，并可以被看到，但是它有一个清楚的 **终止** 徽章，而且不会出现在搜索结果中。
+
 To mark a package as discontinued, sign in to pub.dev using a Google Account
 that's an uploader or verified publisher admin for the package.
 Then use the **Admin** tab of the individual package to mark the package as
 discontinued.
 
+要把 Package 标记为终止，需要使用一个上传者的 Google 账户或已验证发布者的管理员。
+接下来使用 Package 单独的 **管理员** 选项卡，在其中将其标记为终止。
+
 ## Resources
 
+## 资源
+
 For more information, see the reference pages for the following `pub` commands:
+
+想了解更多信息，请查阅以下 `pub` 命令的参考页面：
 
 * [pub publish][]
 * [pub uploader][]
