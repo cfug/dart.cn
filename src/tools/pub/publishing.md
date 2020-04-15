@@ -10,7 +10,7 @@ It also allows you to share your packages with the world. If you have a useful
 project and you want others to be able to use it, use the `pub publish`
 command.
 
-[ Pub 包管理工具][pub] 并不仅仅用于使用其他人开发的 Package ，它同样允许你向全世界分享自己制作的 Package 。如果你有一个有用的项目，而且希望别人能够用到它，使用 `pub publish` 命令。
+[Pub package 管理工具][pub] 并不仅仅用于使用其他人开发的 package，它同样允许你向全世界分享自己制作的 package。如果你有一个有用的项目，而且希望别人能够用到它，请使用 `pub publish` 命令。
 
 {{site.alert.note}}
 
@@ -31,18 +31,18 @@ users can depend on it. Once they start doing that, removing
 the package would break theirs. To avoid that, the [pub.dev policy][policy]
 disallows unpublishing packages except for very few cases.
 
-切记，发布的 Package 将会永久存在。只要你发布了你的 Package ，用户就能依赖它。一旦他们开始这样做，移除 Package 的行为将破坏他们的项目。为了避免此类破坏发生，除了极少数情况， [ pub.dev 政策][policy] 不允许撤回已经发布的 Package 。
+切记，发布的 package 将会永久存在。只要你发布了你的 package ，用户就能依赖它。一旦他们开始这样做，移除 package 的行为将破坏他们的项目。为了避免此类破坏发生，除了极少数情况，[pub.dev 政策][policy] 不允许撤回已经发布的 package 。
 
 You can always upload new versions of your package, but
 old ones will continue to be available for users that aren't ready to
 upgrade yet.
 
-你可以一直上传自己 Package 的新版本，但是旧版本对于那些尚未准备好升级的用户仍然可用。
+你可以一直上传自己 package 的新版本，但是旧版本对于那些尚未准备好升级的用户仍然可用。
 
 For already published packages that are no longer relevant or being maintained,
 you can [mark them as discontinued](#discontinue).
 
-对于那些已经发布，但不再相关或不再维护的 Package ，你可以 [把他们标记为终止](#discontinue) 。
+对于那些已经发布，但不再相关或不再维护的 package ，你可以 [把他们标记为终止](#discontinue) 。
 
 ## Preparing to publish
 
@@ -57,8 +57,8 @@ with your package. In both cases, pub tries to help you by pointing out what
 changes will help make your package play nicer with the Dart ecosystem. There
 are a few additional requirements for uploading a package:
 
-发布一个 Package 时，遵守 [ pubspec 格式][pubspec] 和 [ Package 布局惯例][] 很重要。
-为了其它人能够使用你的 Package ，其中有些要求是必须的，其它则是一些有助于用户能更好的理解和使用的建议。无论是哪些， pub 都会指出什么样的改变能让你的 Package 在 Dart 生态系统中展现的更好。对于上传 Package 有一些额外的要求：
+发布一个 Package 时，遵守 [pubspec 格式][pubspec] 和 [Package 布局惯例][] 很重要。
+为了其它人能够使用你的 package，其中有些要求是必须的，其它则是一些有助于用户能更好的理解和使用的建议。无论是哪些，pub 都会指出什么样的改变能让你的 package 在 Dart 生态系统中展现的更好。对于上传 package 有一些额外的要求：
 
 * You must include a `LICENSE` file
   that contains an [open-source license.][open-source license]
@@ -67,27 +67,27 @@ are a few additional requirements for uploading a package:
   redistribute anything that you upload as part of your package.
 
   你必须带有一个包含 [开源许可证][open-source license] 的 `LICENSE` 文件。
-  我们推荐 [ BSD 许可证][BSD license] ，也就是 Dart 自身所使用的开源许可证。同时，对于你所上传的 Package 的任意部分，你必须拥有重新发布的合法权利。
+  我们推荐 [BSD 许可证][BSD license] ，也就是 Dart 自身所使用的开源许可证。同时，对于你所上传的 package 的任意部分，你必须拥有重新发布的合法权利。
 
 * Your package must be less than 10 MB large after gzip compression. If
   it's too large, consider splitting it into multiple packages, or cutting down
   on the number of included resources or examples.
 
-  通过 gzip 压缩后，你的 Package 大小必须小于 10 MB 。如果它所占空间过大，考虑将它分割为几个小的 Package ，或者减少包含资源或实例的数量。
+  通过 gzip 压缩后，你的 package 大小必须小于 10 MB 。如果它所占空间过大，考虑将它分割为几个小的 package ，或者减少包含资源或实例的数量。
 
 * Your package should depend only on hosted dependencies (from the default pub
   package server) and SDK dependencies (`sdk: flutter`). These restrictions
   ensure that dependencies of your packages cannot become unavailable in the
   future.
 
-  你的 Package 应该仅依赖于已被托管的依赖项（来自默认的 pub 包服务）和属于 SDK 的依赖项（`sdk: flutter`）。这些限制条件确保了你的 Package 的依赖项在未来依然可用。
+  你的 package 应该仅依赖于已被托管的依赖项（来自默认的 pub 包服务）和属于 SDK 的依赖项（`sdk: flutter`）。这些限制条件确保了你的 package 的依赖项在未来依然可用。
 
 * You must have a [Google Account,][Google Account]
   which pub uses to manage package upload permissions.
   Your Google Account can be associated with a Gmail address or
   with any other email address.
 
-  你必须有一个 [ Google 账户][Google Account]， pub 将使用它来管理 Package 更新权限。
+  你必须有一个 [Google 账户][Google Account]， pub 将使用它来管理 package 更新权限。
   你的 Google 账户可以与 Gmail 或其他任何邮箱地址关联。
 
 {{site.alert.note}}
@@ -107,13 +107,13 @@ Pub uses the contents of a few files to create a page for your
 package at `pub.dev/packages/<your_package>`. Here are the files that
 affect how your package's page looks:
 
-Pub 使用几个文件的内容来创建你的 Package 在 `pub.dev/packages/<your_package>` 的页面。以下就是会影响你的 Package 页面效果的文件：
+Pub 使用几个文件的内容来创建你的 package 在 `pub.dev/packages/<your_package>` 的页面。以下就是会影响你的 package 页面效果的文件：
 
 * **README.md:** The `README.md` file
   is the main content featured in your package's page.
   The file's contents are rendered as [Markdown.][Markdown]
 
-  **README.md:** `README.md` 文件是你的 Package 页面主要组成部分。
+  **README.md:** `README.md` 文件是你的 package 页面主要组成部分。
   这个文件的内容将会以 [Markdown][Markdown] 格式渲染。
 
 * **CHANGELOG.md:** Your package's `CHANGELOG.md` file, if found,
@@ -121,14 +121,14 @@ Pub 使用几个文件的内容来创建你的 Package 在 `pub.dev/packages/<yo
   so that developers can read it right from pub.dev.
   The file's contents are rendered as [Markdown.][Markdown]
 
-  **CHANGELOG.md:** 如果你的 Package 的 `CHANGELOG.md` 文件存在，同样会作为 Package 页面的一个选项卡展示。开发者可通过 pub.dev 阅读它。
+  **CHANGELOG.md:** 如果你的 package 的 `CHANGELOG.md` 文件存在，同样会作为 package 页面的一个选项卡展示。开发者可通过 pub.dev 阅读它。
   这个文件的内容将会以 [Markdown][Markdown] 格式渲染。
 
 * **The pubspec:** Your package's `pubspec.yaml` file is used to fill out
   details about your package on the right side of your package's page, like its
   description, homepage, etc.
 
-  **The pubspec:** 你的 Package 的 `pubspec.yaml` 文件被用于填写关于 Package 本身的细节，例如它的描述，主页等等。这些信息将被展现在 Package 页面的右侧。
+  **The pubspec:** 你的 package 的 `pubspec.yaml` 文件被用于填写关于 package 本身的细节，例如它的描述，主页等等。这些信息将被展现在 Package 页面的右侧。
 
 ### Advantages of using a verified publisher {#verified-publisher}
 
@@ -138,12 +138,12 @@ You can publish packages using either a verified publisher (recommended)
 or an independent Google Account.
 Using a verified publisher has the following advantages:
 
-你可以使用已验证发布者（推荐）或一个独立的 Google 账户来发布 Package 。
+你可以使用已验证发布者（推荐）或一个独立的 Google 账户来发布 package。
 使用已验证发布者有以下几个优点：
 
 * The consumers of your package know that the publisher domain has been verified.
 
-  你的 Package 的使用者知道发布者域名已经过验证。
+  你的 package 的使用者知道发布者域名已经过验证。
 
 * You can avoid having pub.dev display your personal email address.
   Instead, pub.dev displays displays the publisher domain and contact address.
@@ -156,7 +156,7 @@ Using a verified publisher has the following advantages:
   on both search pages and individual package pages.
 
   一个已验证发布者徽章 {% asset verified-publisher.svg
-  alt="pub.dev verified publisher logo" %} 将在你的 Package 名字旁边展示，不论是在搜索页面还是单独的 Package 页面。
+  alt="pub.dev verified publisher logo" %} 将在你的 package 名字旁边展示，不论是在搜索页面还是单独的 package 页面。
 
 ### Creating a verified publisher {#create-verified-publisher}
 
@@ -189,13 +189,17 @@ To create a verified publisher, follow these steps:
 
 1. If prompted, complete the verification flow, which opens the [Google
    Search Console.](https://search.google.com/search-console/about)
+   
+   如果收到提示，在打开的 [Google 搜索控制台](https://search.google.com/search-console/about) 中完成确认流程。
+   
    * When adding DNS records, it may take a few hours before the Search Console
    reflects the changes.
+     
+     添加 NDS 记录，可能需要几个小时让搜索控制台确认改动。
+     
    * When the verification flow is complete, return to step 4.
-
-   如果收到提示，在打开的 [ Google 搜索控制台](https://search.google.com/search-console/about) 中完成确认流程。
-   * 添加 NDS 记录，可能需要几个小时让搜索控制台确认改动。
-   * 确认流程完成后，返回第四步。
+   
+     确认流程完成后，返回第四步。
 
 ## Publishing your package
 
@@ -204,7 +208,7 @@ To create a verified publisher, follow these steps:
 Use the [pub publish][] command to publish your package for the first time,
 or to update it to a new version.
 
-使用 [pub publish][] 命令来首次发布你的 Package ，或者把它升级到一个新版本。
+使用 [pub publish][] 命令来首次发布你的 package ，或者把它升级到一个新版本。
 
 ### Performing a dry run
 
@@ -225,7 +229,7 @@ and then uploads your package to [pub.dev.]({{site.pub}}) Pub also shows you all
 the files it intends to publish. Here's an example of publishing a package
 named `transmogrify`:
 
-Pub 会确认你的 Package 符合 [ pubspec 格式][pubspec] 和 [ Package 布局惯例][] ，然后把你的 Package 上传至 [pub.dev]({{site.pub}})。 Pub 也会提前向你展示所有准备发布的文件。如下是一个发布名为 `transmogrify` 的 Package 的例子：
+Pub 会确认你的 Package 符合 [pubspec 格式][pubspec] 和 [package 布局惯例][] ，然后把你的 package 上传至 [pub.dev]({{site.pub}})。 Pub 也会提前向你展示所有准备发布的文件。如下是一个发布名为 `transmogrify` 的 package 的例子：
 
 {:.console-output}
 ```nocode
@@ -251,7 +255,7 @@ Package has 0 warnings.
 
 When you're ready to publish your package, remove the `--dry-run` argument:
 
-当你已经准备好发布你的 Package 后，移除 `--dry-run` 参数：
+当你已经准备好发布你的 package 后，移除 `--dry-run` 参数：
 
 ```terminal
 $ pub publish
@@ -263,12 +267,12 @@ $ pub publish
   verified publisher. As a temporary workaround, publish new packages to a Google Account,
   and then [transfer the package to a publisher](#transferring-a-package-to-a-verified-publisher).
 
-  `pub` 命令目前不支持把一个新的 Package 直接发布至已验证发布者。作为一个临时空间，先把新的 Package 发布至一个 Google 账户，然后再 [把 Package 转移至已验证发布者](#transferring-a-package-to-a-verified-publisher)。
+  `pub` 命令目前不支持把一个新的 Package 直接发布至已验证发布者。作为一个临时空间，先把新的 package 发布至一个 Google 账户，然后再 [把 Package 转移至已验证发布者](#transferring-a-package-to-a-verified-publisher)。
 
   Once a package has been transferred to a publisher,
   you can update the package using `pub publish`.
 
-  一旦这个 Package 被转移到已验证发布者，你就可以通过 `pub publish` 命令来更新它。
+  一旦这个 package 被转移到已验证发布者，你就可以通过 `pub publish` 命令来更新它。
 
 {{site.alert.end}}
 
@@ -277,7 +281,7 @@ download it or depend on it in their projects. For example, if you just
 published version 1.0.0 of your `transmogrify` package, then another Dart
 developer can add it as a dependency in their `pubspec.yaml`:
 
-在你的 Package 成功上传至 pub.dev 之后，任何 pub 用户都能够下载或在他们的项目中依赖它。例如，如果你刚刚发布了你的  `transmogrify` Package 1.0.0 版本，那么另一个 Dart 开发者将可以把它作为一项依赖添加到 `pubspec.yaml` 文件中：
+在你的 package 成功上传至 pub.dev 之后，任何 pub 用户都能够下载或在他们的项目中依赖它。例如，如果你刚刚发布了你的  `transmogrify` Package 1.0.0 版本，那么另一个 Dart 开发者将可以把它作为一项依赖添加到 `pubspec.yaml` 文件中：
 
 ```yaml
 dependencies:
@@ -292,14 +296,14 @@ To transfer a package to a verified publisher,
 you must be an [uploader](#uploaders) for the package
 and an admin for the verified publisher.
 
-想要把 Package 转移至已验证发布者，你必须是 Package 的一个[上传者](#uploaders)，以及已验证发布者的管理员。
+想要把 Package 转移至已验证发布者，你必须是 package 的一个[上传者](#uploaders)，以及已验证发布者的管理员。
 
 {{site.alert.note}}
 
   This process isn't reversible. Once you transfer a package to a publisher,
   you can't transfer it back to an individual account.
 
-  这个过程是不可撤回的。一旦你把 Package 转移至已验证发布者，你将无法再把它转移回一个单独的账户。
+  这个过程是不可撤回的。一旦你把 package 转移至已验证发布者，你将无法再把它转移回一个单独的账户。
 
 {{site.alert.end}}
 
@@ -310,7 +314,7 @@ Here's how to transfer a package to a verified publisher:
 1. Log in to [pub.dev]({{site.pub}}) with a Google Account that's listed as
    an uploader of the package.
 
-   用一个作为 Package 上传者之一的 Google 账户登录 [pub.dev]({{site.pub}})。
+   用一个作为 package 上传者之一的 Google 账户登录 [pub.dev]({{site.pub}})。
 
 1. Go to the package details page (for example,
    `{{site.pub-pkg}}/http`).
@@ -332,7 +336,7 @@ Here's how to transfer a package to a verified publisher:
 **All files** in your package are included in the published package, with
 the following exceptions:
 
-在你 Package 中的 **所有文件** 都会被包含在发布的 Package 中，除了以下几个例外： 
+在你 package 中的 **所有文件** 都会被包含在发布的 package 中，除了以下几个例外： 
 
 * Any `packages` directories.
 
@@ -340,7 +344,7 @@ the following exceptions:
 
 * Your package's [lockfile](/tools/pub/glossary#lockfile).
 
-  你的 Package 的 [lockfile](/tools/pub/glossary#lockfile) 文件。
+  你的 package 的 [lockfile](/tools/pub/glossary#lockfile) 文件。
 
 * If you aren't using Git, all _hidden_ files (that is,
   files whose names begin with `.`).
@@ -356,7 +360,7 @@ the following exceptions:
 
 PENDING: Here only to make it easy to find the packages discussion: packages-dir.html
 
-待定：仅用于更容易的发现 Package 的讨论区： packages-dir.html
+待定：仅用于更容易的发现 package 的讨论区： packages-dir.html
 
 {% endcomment %}
 
@@ -365,7 +369,7 @@ Be sure to delete any files you don't want to include (or add them to
 before uploading your package,
 so examine the list carefully before completing your upload.
 
-确认删除了所有你不想包含在 Package 中的文件（或者把他们添加到 `.gitignore` 中）。 `pub publish` 命令会在上传你的 Package 之前，列出所有准备发布的文件，所以在完成上传之前请仔细检查这个列表。
+确认删除了所有你不想包含在 package 中的文件（或者把他们添加到 `.gitignore` 中）。 `pub publish` 命令会在上传你的 Package 之前，列出所有准备发布的文件，所以在完成上传之前请仔细检查这个列表。
 
 ## Uploaders
 
@@ -377,16 +381,16 @@ To allow or disallow other people to upload versions,
 use the [pub uploader][] command
 or transfer the package to a [verified publisher][].
 
-发布 Package 第一个版本的人，将自动成为第一也是唯一有权更新其更多版本的人。
-要允许或取消其他人更新版本，可使用 [pub uploader][] 命令，或把 Package 转移至已验证发布者。
+发布 package 第一个版本的人，将自动成为第一也是唯一有权更新其更多版本的人。
+要允许或取消其他人更新版本，可使用 [pub uploader][] 命令，或把 package 转移至已验证发布者。
 
 If a package has a verified publisher,
 then the pub.dev page for that package displays the publisher domain.
 Otherwise, the page displays the email addresses of
 the authorized uploaders for the package.
 
-如果 Package 有了已验证发布者，那么 pub.dev 中其页面将展示已验证发布者域名。
-另外，页面将展示该 Package 经过授权的上传者的邮箱。
+如果 package 有了已验证发布者，那么 pub.dev 中其页面将展示已验证发布者域名。
+另外，页面将展示该 package 经过授权的上传者的邮箱。
 
 ## Publishing prereleases
 
@@ -395,20 +399,20 @@ the authorized uploaders for the package.
 As you work on a package, consider publishing it as a prerelease.
 Prereleases can be useful when any of the following are true:
 
-如果你正专注于开发一个 Package ，考虑将它以预发行的方式发布。
+如果你正专注于开发一个 package ，考虑将它以预发行的方式发布。
 预发行将在以下这些情形下变的实用：
 
 * You're actively developing the next major version of the package.
 
-  你正在活跃的开发该 Package 的下一个主版本。
+  你正在活跃的开发该 package 的下一个主版本。
 
 * You want beta testers for the next release candidate of the package.
 
-  你想要为该 Package 下一个候选的发布版做 beta 测试。
+  你想要为该 package 下一个候选的发布版做 beta 测试。
 
 * The package depends on an unstable version of the Dart or Flutter SDK.
 
-  该 Package 依赖于 Dart 或 Flutter SDK 的一个不稳定版本。
+  该 package 依赖于 Dart 或 Flutter SDK 的一个不稳定版本。
 
 As described in [semantic versioning,][semver] to make a prerelease of a version
 you append a suffix to the version. For example, to make a prerelease of
@@ -422,7 +426,7 @@ might need to change their dependency constraints.
 For example, if a user wants to test prereleases of version 2.1, then
 instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
 
-因为当稳定发布版可用时， Pub 倾向于选择它们，所以使用预发布的用户可能需要改变它们的依赖约束。
+因为当稳定发布版可用时，Pub 倾向于选择它们，所以使用预发布的用户可能需要改变它们的依赖约束。
 例如，如果一个用户想要测试 2.1 版本的预发布，那么他可能需要指明是 `^2.1.0-dev.1` 版本，而不是 `^2.0.0` 或者 `^2.1.0` 版本。
 
 {{site.alert.note}}
@@ -430,7 +434,7 @@ instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
   If a stable package in the dependency graph depends on a prerelease,
   then pub chooses that prerelease instead of a stable release.
 
-  如果一个稳定版的 Package 在依赖关系中依赖于一个预发布，那么 Pub 将选择预发布而非稳定发布。
+  如果一个稳定版的 package 在依赖关系中依赖于一个预发布，那么 Pub 将选择预发布而非稳定发布。
 
 {{site.alert.end}}
 
@@ -439,8 +443,8 @@ the package page displays links to both the prerelease and the stable release.
 The prerelease doesn't affect the analysis score, show up in search results,
 or replace the package `README.md` and documentation.
 
-当一个预发布被发布在 pub.dev ， Package 主页会同时展示预发布和稳定发布的链接。
-预发布不会影响分析评分，不会出现在搜索结果里，也不会代替 Package 的 `README.md` 文件和说明文档。
+当一个预发布被发布在 pub.dev，package 主页会同时展示预发布和稳定发布的链接。
+预发布不会影响分析评分，不会出现在搜索结果里，也不会代替 package 的 `README.md` 文件和说明文档。
 
 ## Marking packages as discontinued {#discontinue}
 
@@ -453,17 +457,17 @@ A discontinued package remains published and viewable on pub.dev,
 but it has a clear **DISCONTINUED** badge and
 doesn't appear in pub.dev search results.
 
-尽管 Package 的发布总是会被保留，在需要时，把它标记为不再活跃的维护将会对开发者有帮助。
-为了达到这一点，你可以将一个 Package 标记为 **终止**。
-终止的 Package 曾经的发布依然留存在 pub.dev 上，并可以被看到，但是它有一个清楚的 **终止** 徽章，而且不会出现在搜索结果中。
+尽管 package 的发布总是会被保留，在需要时，把它标记为不再活跃的维护将会对开发者有帮助。
+为了达到这一点，你可以将一个 package 标记为 **终止**。
+终止的 package 曾经的发布依然留存在 pub.dev 上，并可以被看到，但是它有一个清楚的 **终止** 徽章，而且不会出现在搜索结果中。
 
 To mark a package as discontinued, sign in to pub.dev using a Google Account
 that's an uploader or verified publisher admin for the package.
 Then use the **Admin** tab of the individual package to mark the package as
 discontinued.
 
-要把 Package 标记为终止，需要使用一个上传者的 Google 账户或已验证发布者的管理员。
-接下来使用 Package 单独的 **管理员** 选项卡，在其中将其标记为终止。
+要把 package 标记为终止，需要使用一个上传者的 Google 账户或已验证发布者的管理员。
+接下来使用 package 单独的 **管理员** 选项卡，在其中将其标记为终止。
 
 ## Resources
 
