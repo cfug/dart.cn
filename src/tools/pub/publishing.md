@@ -18,7 +18,7 @@ command.
   or to prevent publication anywhere, use the `publish_to` field,
   as defined in the [pubspec][].
 
-  发布到除 pub.dev 以外的其它位置，或者不在任何地方发布，使用 `publish_to` 参数，也可在 [pubspec][] 中设置。
+  发布到除 pub.dev 以外的其他位置，或者不在任何地方发布，使用 `publish_to` 参数，相当于在 [pubspec][] 中定义。
 
 {{site.alert.end}}
 
@@ -58,7 +58,7 @@ changes will help make your package play nicer with the Dart ecosystem. There
 are a few additional requirements for uploading a package:
 
 发布一个 package 时，遵守 [pubspec 格式][pubspec] 和 [package 布局惯例][] 很重要。
-为了其它人能使用你的 package，有些要求是必须的，其它则是一些有助于用户更好理解和使用的建议。对于以上两者，pub 都会指出具体的改变方法，帮助你的 package 在 Dart 生态系统中展现的更好。对于上传 package 有一些额外的要求：
+为了其他人能使用你的 package，有些要求是必须的，其他则是一些有助于用户更好理解和使用的建议。对于以上两者，pub 都会指出具体的改变方法，帮助你的 package 在 Dart 生态系统中展现的更好。对于上传 package 有一些额外的要求：
 
 * You must include a `LICENSE` file
   that contains an [open-source license.][open-source license]
@@ -87,7 +87,7 @@ are a few additional requirements for uploading a package:
   Your Google Account can be associated with a Gmail address or
   with any other email address.
 
-  你必须有一个 [Google 账户][Google Account]， pub 将使用它来管理 package 更新权限。
+  你必须有一个 [Google 账户][Google Account]， pub 将使用它来管理 package 上传权限。
   你的 Google 账户可以与 Gmail 或其他任何邮箱地址关联。
 
 {{site.alert.note}}
@@ -107,7 +107,7 @@ Pub uses the contents of a few files to create a page for your
 package at `pub.dev/packages/<your_package>`. Here are the files that
 affect how your package's page looks:
 
-Pub 使用几个文件的内容来创建你的 package 在 `pub.dev/packages/<your_package>` 的页面。以下就是会影响到页面效果的几个文件：
+Pub 在 `pub.dev/packages/<your_package>` 里，使用几个文件的内容来创建你的 package 页面。以下就是会影响到页面效果的几个文件：
 
 * **README.md:** The `README.md` file
   is the main content featured in your package's page.
