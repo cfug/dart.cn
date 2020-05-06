@@ -1,8 +1,7 @@
 ---
 title: pub upgrade
-title: pub upgrade
-description: Use pub upgrade to get the latest versions of all dependencies used by your Dart application.
-description: 使用 pub upgrade 命令来更新 Dart 应用的所有依赖项到最新版本
+description: Use pub upgrade to get the latest versions of all dependencies used by your Dart app.
+description: 使用 pub upgrade 命令来更新 Dart 应用的所有依赖项到最新版本。
 ---
 
 _Upgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
@@ -18,6 +17,8 @@ Like [`pub get`](/tools/pub/cmd/pub-get),
 The difference is that `pub upgrade` ignores any existing
 [lockfile](/tools/pub/glossary#lockfile),
 so that pub can get the latest versions of all dependencies.
+A related command is [`pub outdated`](/tools/pub/cmd/pub-outdated),
+which you can run to find out-of-date dependencies.
 
 `pub upgrade` 命令与 [`pub get`](/tools/pub/cmd/pub-get) 命令一样，都是用于获取依赖项的。不同的是 `pub upgrade` 命令会忽略掉任何已存在的 [lockfile](/tools/pub/glossary#lockfile) 文件，因此 Pub 可以获取所有依赖项的最新版本。
 

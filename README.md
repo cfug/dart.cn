@@ -28,6 +28,11 @@ Install the following tools if you don't have them already.
 - **[nvm][]**, the Node Version Manager.
 - **[rvm][]**, the Ruby Version Manager.
 - **[Dart][]**
+- **[GNU diffutils][]** version 3.6 or later.
+  > NOTE: `diff` v3.6+ is required to ensure that in-page code diffs are
+  > consistently refreshed across macOS and Linux.
+  > To upgrade `diffutils` on macOS run:<br>
+  > `brew install diffutils`
 
 > IMPORTANT: Follow the installation instructions for each of the tools
 carefully. In particular, configure your shell/environment so
@@ -249,8 +254,9 @@ See the [Troubleshooting wiki page].
 [Firebase]: https://firebase.google.com/
 [first-timers SVG]: https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square
 [first-timers]: https://www.firsttimersonly.com/
+[GNU diffutils]: https://www.gnu.org/software/diffutils
 [Jekyll]: https://jekyllrb.com/
-[nvm]: https://github.com/creationix/nvm#installation
+[nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [Repo on Travis]: https://travis-ci.org/dart-lang/site-www
 [rvm]: https://rvm.io/rvm/install#installation
 [site-www]: https://github.com/dart-lang/site-www

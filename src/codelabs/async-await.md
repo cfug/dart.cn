@@ -110,7 +110,8 @@ produces:
   order, the example fails to print "Large Latte" to the console, and instead
   prints "Your order is: Instance of '_Future<String>'".
 
-In the next sections you'll learn the about futures, `async`, and `await`
+In the next sections you'll learn about futures and about working with futures
+(using `async` and `await`)
 so that you'll be able to write the code necessary to make `fetchUserOrder()`
 print the desired value ("Large Latte") to the console.
 
@@ -492,7 +493,7 @@ Implement an `async` function `reportLogins()` so that it does the following:
   width="100%">
 </iframe>
 
-{{site.alert.info}}
+{{site.alert.note}}
   If your code passes the tests, you can ignore
   [info-level messages.](/guides/language/analysis-options#customizing-analysis-rules)
 {{site.alert.end}}
