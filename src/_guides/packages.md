@@ -9,7 +9,8 @@ description: 关于 pub 命令的更多介绍，这是 Dart 里用于管理 pack
 The Dart ecosystem uses _packages_ to manage shared software
 such as libraries and tools.
 To get Dart packages, you use the **pub package manager**.
-You can find publicly available packages on the [**pub.dev site**,]({{site.pub}})
+You can find publicly available packages on the
+[**pub.dev site**,]({{site.pub}})
 or you can load packages from the local file system or elsewhere,
 such as Git repositories.
 Wherever your packages come from, pub manages version dependencies,
@@ -113,9 +114,9 @@ $ pub get
 
 This process is called _getting the dependencies_.
 
-上面的操作即_获取依赖_。
+上面的操作即 **获取依赖**。
 
-The `pub get` command determines which packages your app depends on,
+The [`pub get`][] command determines which packages your app depends on,
 and puts them in a central [system cache](/tools/pub/glossary#system-cache).
 If your app depends on a published package, pub downloads that package from the
 [pub.dev site.]({{site.pub}})
@@ -125,7 +126,8 @@ Transitive dependencies are included, too.
 For example, if the `js` package depends on the `test` package, `pub`
 grabs both the `js` package and the `test` package.
 
-`pub get` 命令确定当前应用所依赖的包，并将它们保存到中央[系统缓存](/tools/pub/glossary#system-cache)（central system cache）中。
+[`pub get`][] 命令确定当前应用所依赖的包，
+并将它们保存到中央[系统缓存](/tools/pub/glossary#system-cache)（central system cache）中。
 如果当前应用依赖了一个公开包， Pub 会从 [Pub 站点]({{site.pub}}) 该包。
 对于一个 [Git 依赖](/tools/pub/dependencies#git-packages)， Pub 会 Clone 该 Git 仓库。
 同样包括包的相关依赖也会被下载。
@@ -178,7 +180,9 @@ dependencies:
   transmogrify:
 {% endprettify %}
 
-Let's say that your package is laid out as follows:
+Let's say that the `transmogrify` package is laid out as follows:
+
+假如 `transmogrify` 这个 package 的布局如下：
 
 {% prettify none tag=pre+code %}
 transmogrify/
@@ -190,30 +194,14 @@ transmogrify/
       parser_test.dart
 {% endprettify %}
 
-The `parser_test` file *could* import `parser.dart` like this:
+The `parser_test.dart` file can import `parser.dart` like this:
 
-`parser_test` 文件可以通过 import `parser.dart` 的方式来导入：
-
-{% prettify dart tag=pre+code %}
-import '../../lib/parser.dart';
-{% endprettify %}
-
-But that's a fragile relative path. If `parser_test.dart` ever moves
-up or down a directory, that path breaks.
-Instead, you can do as follows:
-
-但是相对路径是**脆弱的**。如果 `parser_test.dart` 在包目录中上下移动，
-那么该路径就会被破坏。
-我们应该通过下面的方式来代替：
+`parser_test.dart` 就可以通过下面的方式导入 `parser.dart`：
 
 {% prettify dart tag=pre+code %}
 import 'package:transmogrify/parser.dart';
 {% endprettify %}
 
-This way, the import can always get to `parser.dart` regardless of where the
-importing file is.
-
-这样，无论 `parser.dart` 文件在哪个位置，总可以被导入。
 
 ## Upgrading a dependency
 
@@ -246,7 +234,7 @@ uses the same versions of code.
 同样加入到 lockfile 可以保证部署的应用使用的是同一版本的代码。
 
 When you're ready to upgrade your dependencies to the latest versions,
-use pub upgrade:
+use the [`pub upgrade`][] command:
 
 如果已经准备更新依赖到最新版本，使用命令 `pub upgrade` ：
 
@@ -254,7 +242,7 @@ use pub upgrade:
 $ pub upgrade
 {% endprettify %}
 
-That command tells pub to regenerate the lockfile, using the newest
+The `pub upgrade` command tells pub to regenerate the lockfile, using the newest
 available versions of your package's dependencies.
 If you want to upgrade only one dependency,
 you can specify the package to upgrade:
@@ -270,6 +258,17 @@ That command upgrades `transmogrify` to the latest version
 but leaves everything else the same.
 
 上面的命令升级 `transmogrify` 到最新版本，但维持其它包不变。
+
+The [`pub upgrade`][] command can't always upgrade every package
+to its latest version,
+due to conflicting version constraints in the pubspec.
+To identify out-of-date packages that require editing the pubspec,
+use [`pub outdated`][].
+
+[`pub upgrade`][] 命令并非总是可以将所有的 package 更新到最新版本，
+原因是 pubspec 文件中的一些 package 之间有版本限制的冲突。
+想要确定 pubspec 里已经过时且需要编辑的 package，
+请使用 [`pub outdated`][] 命令。
 
 ## More information
 
@@ -327,17 +326,18 @@ the pub package manager.
 
 The `pub` tool provides the following commands:
 
-`pub` 工具提供一下命令：
+`pub` 工具提供了如下的命令：
 
-* [`pub cache`](/tools/pub/cmd/pub-cache)
-* [`pub deps`](/tools/pub/cmd/pub-deps)
-* [`pub downgrade`](/tools/pub/cmd/pub-downgrade)
-* [`pub get`](/tools/pub/cmd/pub-get)
-* [`pub global`](/tools/pub/cmd/pub-global)
-* [`pub publish`](/tools/pub/cmd/pub-lish)
-* [`pub run`](/tools/pub/cmd/pub-run)
-* [`pub upgrade`](/tools/pub/cmd/pub-upgrade)
-* [`pub uploader`](/tools/pub/cmd/pub-uploader)
+* [`pub cache`][]
+* [`pub deps`][]
+* [`pub downgrade`][]
+* [`pub get`][]
+* [`pub global`][]
+* [`pub outdated`][]
+* [`pub publish`][]
+* [`pub run`][]
+* [`pub upgrade`][]
+* [`pub uploader`][]
 
 For an overview of all the `pub` commands,
 see the [pub tool documentation](/tools/pub/cmd).
@@ -355,3 +355,13 @@ you might encounter when using pub.
 [Pub 故障排除](/tools/pub/troubleshoot) 提供使用中可能遇到问题的解决方法。
 
 [Dart-savvy IDEs]: /tools#ides-and-editors
+[`pub cache`]: /tools/pub/cmd/pub-cache
+[`pub deps`]: /tools/pub/cmd/pub-deps
+[`pub downgrade`]: /tools/pub/cmd/pub-downgrade
+[`pub get`]: /tools/pub/cmd/pub-get
+[`pub global`]: /tools/pub/cmd/pub-global
+[`pub outdated`]: /tools/pub/cmd/pub-outdated
+[`pub publish`]: /tools/pub/cmd/pub-lish
+[`pub run`]: /tools/pub/cmd/pub-run
+[`pub upgrade`]: /tools/pub/cmd/pub-upgrade
+[`pub uploader`]: /tools/pub/cmd/pub-uploader

@@ -223,21 +223,22 @@ The following table lists the words that the Dart language treats specially.
 {% assign ckw = '&nbsp;<sup title="contextual keyword" alt="contextual keyword">1</sup>' %}
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">2</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">3</sup>' %}
-| [abstract][]{{bii}}   | [dynamic][]{{bii}}    | [implements][]{{bii}} | [show][]{{ckw}}   |
-| [as][]{{bii}}         | [else][]              | [import][]{{bii}}     | [static][]{{bii}} |
-| [assert][]            | [enum][]              | [in][]                | [super][]         |
-| [async][]{{ckw}}      | [export][]{{bii}}     | [interface][]{{bii}}  | [switch][]        |
-| [await][]{{lrw}}      | [extends][]           | [is][]                | [sync][]{{ckw}}   |
-| [break][]             | [external][]{{bii}}   | [library][]{{bii}}    | [this][]          |
-| [case][]              | [factory][]{{bii}}    | [mixin][]{{bii}}      | [throw][]         |
-| [catch][]             | [false][]             | [new][]               | [true][]          |
-| [class][]             | [final][]             | [null][]              | [try][]           |
-| [const][]             | [finally][]           | [on][]{{ckw}}         | [typedef][]{{bii}}|
-| [continue][]          | [for][]               | [operator][]{{bii}}   | [var][]           |
-| [covariant][]{{bii}}  | [Function][]{{bii}}   | [part][]{{bii}}       | [void][]          |
-| [default][]           | [get][]{{bii}}        | [rethrow][]           | [while][]         |
-| [deferred][]{{bii}}   | [hide][]{{ckw}}       | [return][]            | [with][]          |
-| [do][]                | [if][]                | [set][]{{bii}}        | [yield][]{{lrw}}  |
+| [abstract][]{{bii}}   | [else][]              | [import][]{{bii}}     | [super][]         |
+| [as][]{{bii}}         | [enum][]              | [in][]                | [switch][]        |
+| [assert][]            | [export][]{{bii}}     | [interface][]{{bii}}  | [sync][]{{ckw}}   |
+| [async][]{{ckw}}      | [extends][]           | [is][]                | [this][]          |
+| [await][]{{lrw}}      | [extension][]{{bii}}  | [library][]{{bii}}    | [throw][]         |
+| [break][]             | [external][]{{bii}}   | [mixin][]{{bii}}      | [true][]          |
+| [case][]              | [factory][]{{bii}}    | [new][]               | [try][]           |
+| [catch][]             | [false][]             | [null][]              | [typedef][]{{bii}}|
+| [class][]             | [final][]             | [on][]{{ckw}}         | [var][]           |
+| [const][]             | [finally][]           | [operator][]{{bii}}   | [void][]          |
+| [continue][]          | [for][]               | [part][]{{bii}}       | [while][]         |
+| [covariant][]{{bii}}  | [Function][]{{bii}}   | [rethrow][]           | [with][]          |
+| [default][]           | [get][]{{bii}}        | [return][]            | [yield][]{{lrw}}  |
+| [deferred][]{{bii}}   | [hide][]{{ckw}}       | [set][]{{bii}}        |                   |
+| [do][]                | [if][]                | [show][]{{ckw}}       |                   |
+| [dynamic][]{{bii}}    | [implements][]{{bii}} | [static][]{{bii}}     |                   |
 {:.table .table-striped .nowrap}
 
 [abstract]: #abstract-classes
@@ -264,6 +265,7 @@ The following table lists the words that the Dart language treats specially.
 [enum]: #enumerated-types
 [export]: /guides/libraries/create-library-packages
 [extends]: #extending-a-class
+[extension]: #extension-methods
 [external]: https://stackoverflow.com/questions/24929659/what-does-external-mean-in-dart
 [factory]: #factory-constructors
 [false]: #booleans
@@ -1367,7 +1369,7 @@ The usual way to express a Unicode code point is
 For example, the heart character (♥) is `\u2665`.
 To specify more or less than 4 hex digits,
 place the value in curly brackets.
-For example, the laughing emoji (😆) is `\u{1f600}`.
+For example, the laughing emoji (😆) is `\u{1f606}`.
 
 通常使用 `\uXXXX` 来表示 Unicode 字符，XXXX 是一个四位数的 16 进制数字。例如心形字符（♥）的 Unicode 为 `\u2665`。对于不是四位数的 16 进制数字，需要使用大括号将其括起来。例如大笑的 emoji 表情（😆）的 Unicode 为 `\u{1f600}`。
 

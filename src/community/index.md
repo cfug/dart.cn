@@ -90,14 +90,9 @@ Our wonderful community has provided these resources.
 
 我们丰富的社区还提供了这些资源。
 
-* [Dart Academy](https://dart.academy/) - Tutorials
-  and articles written by the Dart community
-
-  [Dart Academy](https://dart.academy/) - Dart 社区撰写的教程和文章
-
 * [Chinese version of this site (此网站的中文版)](https://dart.cn)
 
-  [此站的英文官网](https://www.dartlang.org/)
+  [Dart 中文文档（本站）](https://dart.cn/)
 
 * [Russian version of this site (Русскоязычная версия сайта)](https://www.dart-lang.ru)
 

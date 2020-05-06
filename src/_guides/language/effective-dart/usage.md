@@ -406,6 +406,8 @@ makes sense to use that.
 
 ### **不要** 使用 `.length` 来判断一个集合是否为空。
 
+{% include linter-rule.html rule1="prefer_is_empty" rule2="prefer_is_not_empty" %}
+
 The [Iterable][] contract does not require that a collection know its length or
 be able to provide it in constant time. Calling `.length` just to see if the
 collection contains *anything* can be painfully slow.
@@ -1789,10 +1791,8 @@ This follows from the above. Since an Error indicates a bug in your code, it
 should unwind the entire callstack, halt the program, and print a stack trace so
 you can locate and fix the bug.
 
-本条衔接上一天内容。既然 Error 表示代码中的 bug，
+本条衔接上一条的内容。既然 Error 表示代码中的 bug，
 应该展开整个调用堆栈，暂停程序并打印堆栈跟踪，以便找到错误并修复。
-
-[error]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/Error-class.html
 
 Catching errors of these types breaks that process and masks the bug. Instead of
 *adding* error-handling code to deal with this exception after the fact, go back
@@ -2087,6 +2087,7 @@ like a bare, synchronous value.
 它会错误地将其视为一个空的同步对象值。
 
 [pokemon]: https://blog.codinghorror.com/new-programming-jargon/
+[Error]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
 [StackOverflowError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StackOverflowError-class.html
 [OutOfMemoryError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/OutOfMemoryError-class.html
 [ArgumentError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html

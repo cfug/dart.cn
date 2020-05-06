@@ -9,19 +9,31 @@ js:
 ---
 
 The Dart SDK has the libraries and command-line tools that you need to develop
-Dart web, command-line, and server apps.
-If you're developing only mobile apps,
-then you don't need the Dart SDK; just [install Flutter.][flutter]
+Dart command-line, server, and non-Flutter web apps.
+**To develop Flutter apps for any platform** —
+including web and mobile apps —
+then **instead of installing the Dart SDK,
+[install Flutter.][flutter]**
 
-Dart SDK 包含开发 Web、命令行和服务端应用所需要的库和命令行工具。如果你只是想开发移动应用，则不需要使用 Dart SDK，只需 [安装 Flutter][flutter] 即可
+Dart SDK 包含开发 Web、命令行和服务端应用所需要的库和命令行工具。
+如果你只是想开发移动应用，则不需要使用 Dart SDK，
+只需 [安装 Flutter][flutter] 即可。
 
-To learn about other tools you can use for Dart development, see
-the [Dart tools]({{site.dartlang}}/tools) page.
+{{site.alert.tip}}
 
-要了解在 Dart 开发中你可以使用的其它工具，请查阅 [Dart 工具]({{site.dartlang}}/tools)。
+  If you want to create _both_ Flutter and command-line or server apps,
+  install both Flutter and the Dart SDK.
+  
+  如果您希望同时创建 Flutter 和命令行或者服务端应用，
+  请安装 Flutter 和 Dart SDK。
+{{site.alert.end}}
 
-To learn about what's in the SDK, see [Dart SDK overview](/tools/sdk).
+To learn about the tools you can use for Dart development, see
+the [Dart tools](/tools) page.
+To learn about what's in the Dart SDK, see [Dart SDK overview](/tools/sdk).
 
+要了解在 Dart 开发中你可以使用的其它工具，
+请查阅 [Dart 工具]({{site.dartlang}}/tools)。
 要了解 SDK 中的内容，请参阅 [Dart SDK 概述](/tools/sdk)。
 
 <aside class="alert alert-info" markdown="1">
@@ -30,7 +42,9 @@ To learn about what's in the SDK, see [Dart SDK overview](/tools/sdk).
   version [{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external}
   of the **Dart SDK**.
 
-  **注意：**本网站的文档和示例使用的是 _Dart SDK_ 的 {% if site.data.pkg-vers.SDK.channel == 'dev' %} _dev channel_ {% endif -%} 版本 [{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external}
+  **注意：**本网站的文档和示例使用的是 _Dart SDK_ 的 
+  {% if site.data.pkg-vers.SDK.channel == 'dev' %} _dev channel_ {% endif -%} 版本 
+  [{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external}
 </aside>
 
 
@@ -44,12 +58,15 @@ To learn about what's in the SDK, see [Dart SDK overview](/tools/sdk).
 
 As the following instructions show,
 you can use a package manager
-to easily install and update the Dart SDK.
+to easily install and update a stable channel Dart SDK.
 Alternatively, you can
-[build the SDK from source][] or
-[download the SDK as a zip file]({{site.dartlang}}/tools/sdk/archive).
+[build the SDK from source][] or install from [any release channel](#release-channels) by
+[downloading the SDK as a zip file](/tools/sdk/archive).
 
-如下所述，你可以使用包管理轻松地安装和更新 Dart SDK。你也可以 [下载 SDK 的 zip 压缩文件]({{site.dartlang}}/tools/sdk/archive) 并以 [编译 SDK 源码][build the SDK from source] 的形式安装或更新 SDK。
+如下所述，你可以使用包管理轻松地安装和更新 Dart SDK。
+你也可以 以 [编译 SDK 源码][build the SDK from source] 的形式安装，
+也可以在我们的 [各个发布渠道里](#release-channels) 
+[下载 SDK 的 zip 压缩文件]({{site.dartlang}}/tools/sdk/archive) 。
 
 {% comment %}
 NOTE to editors: Keep the zip file link as the last thing in the paragraph,
@@ -75,52 +92,74 @@ so it's easy to find (but not more tempting than package managers).
 {% include_relative tools/sdk/_mac.md %}
 </div>
 
-## About release channels and version strings
+## About release channels and version strings {#release-channels}
 
 ## 关于发行渠道和版本字符串
 
-The Dart SDK has two release channels:
+The Dart SDK has three release channels:
 
-Dart SDK 有两个发行渠道：
+Dart SDK 有三个发布渠道：
 
-* **stable** channel: **stable releases**,
-  updated no more frequently than every 6 weeks;
+* **Stable** channel: **stable releases**, updated roughly every three months;
   currently `[calculating]`{:.editor-build-rev-stable}.
 
-  **稳定版**渠道：**稳定发行版**，每六周更新一次；当前版本 `[calculating]`{:.editor-build-rev-stable}.
+  **稳定版 (Stable) **渠道：**稳定发行版**，每 **三个月** 更新一次；
+  当前版本 `[calculating]`{:.editor-build-rev-stable}.
+  
+  Stable releases are suitable for production use.
+  
+  稳定版可适用于生产环节。
+  
+* **Beta** channel: **preview releases**, usually updated every month;
+  currently `[calculating]`{:.editor-build-rev-beta}.
 
-* **dev** channel: **pre-releases**, usually updated 1/week;
+  **测试版 (Beta)**渠道：也称 **发行预览版**，通常 **每月** 更新一次；
+  当前版本 `[calculating]`{:.editor-build-rev-dev}.
+  
+  Beta channel builds are preview builds for the stable channel. We recommend
+  testing, but not releasing, your apps against beta to preview new features or
+  test compatibility with future releases.
+  
+  测试版渠道的构建是稳定版渠道的“预览版构建”。我们推荐您使用这个渠道的 SDK、
+  进行测试，但是不建议您的应用发布，您可以用这个渠道的构建
+  预览新功能或测试与未来版本的兼容性。
+  
+* **Dev** channel: **prereleases**, usually updated twice a week;
   currently `[calculating]`{:.editor-build-rev-dev}.
 
-  **开发版**渠道：**预览发行版**，通常每周更新一次；当前版本 `[calculating]`{:.editor-build-rev-dev}.
+  **开发版 (Dev)**渠道：也称 **预发行版**，通常每 **双周** 更新一次；
+  当前版本 `[calculating]`{:.editor-build-rev-dev}.
+  
+  Dev channel releases are the most current with latest changes, may be broken,
+  are unsupported, and may contain unvetted breaking changes.
+  
+  开发版渠道的构建包含最新的更新，也可能本身就是不完善的，这个版本我们不受支持，
+  并且可能会包含未经审核的重大更改 (breaking changes)。
 
-<aside class="alert alert-warning" markdown="1">
-  **Warning:**
+**Stable** channel releases of the Dart SDK have `x.y.z` version strings like
+`1.24.3` and `2.1.0`. They consist of dot-separated integers, with no hyphens or
+letters, where `x` is the major version, `y` is the minor version, and `z` is
+the patch version.
 
-  **警告：**
+Dart SDK **稳定版** 构建渠道的版本号设定为 `x.y.z`，比如 `1.24.3` 和 `2.1.0`。
+它们由点分隔的整数组成，没有连字符或字母，
+其中 `x` 是主版本，`y` 是次要版本，而 `z` 是补丁版本。
 
-  To give you early access to new features and fixes,
-  dev channel releases are not as heavily tested as the stable release.
+**Beta** and **dev** channel releases of the Dart SDK (non-stable releases) have
+`x.y.z-a.b.<beta|dev>` versions like `2.8.0-20.11.beta`. The part before the
+hyphen follows the stable version scheme, `a` and `b` after the hyphen are the
+prerelease and prerelease patch versions, and `beta` or `dev` is the channel.
 
-  为了能让你及早地了解到新的功能以及 BUG 修复，dev channel 版本并不会像稳定版那样经过很多的测试。
-</aside>
+Dart SDK 的非稳定版 (**测试版 (Beta)** 和 **开发版 (Dev)**) 构建渠道
+的版本号设定为：`x.y.z-a.b.<beta|dev>`，比如：`2.8.0-20.11.beta`。
+连字符前的部分 (`x.y.z`) 遵循稳定版本方案，
+连字符后的 `a` 和 `b` 分别是预发行版和预发行补丁版本，
+而 `beta` 或 `dev` 是构建渠道通道标示。
 
-
-**Stable** channel releases of the Dart SDK have version strings like `1.24.3` and `2.1.0`.
-They consist of dot-separated integers, with no hyphens or letters.
-
-**稳定版**的 Dart SDK 版本号类似 `1.24.3` 或 `2.1.0`。其由点分隔开的整数组成，并不会包含其它字符。
-
-**Dev** channel releases of the Dart SDK (prereleases)
-have additional characters, starting with a hyphen (`-`).
-For example, Dart 2 prereleases have version numbers starting with
-`2.0.0-dev` such as `2.0.0-dev.69.5`.
-
-**开发版**的 Dart SDK（正式预览版）版本号中包含以连接符开始的其他字符。例如：Dart 2 预览发行版的版本号 `2.0.0-dev.69.5` 是以 `2.0.0-dev` 开始，并附加数字版本。
-
-You can get stable and dev channel releases using
+You can get stable channel releases using
 the [instructions above](#install), or you can
-[download the SDK as a zip file](/tools/sdk/archive).
+get stable, beta, or dev channel releases by
+[downloading the SDK as a zip file](/tools/sdk/archive).
 
 你可以通过 [instructions above](#install) 获得 stable 和 dev 渠道，
 或者你也可以直接[下载 SDK 的压缩包](/tools/sdk/archive)。
