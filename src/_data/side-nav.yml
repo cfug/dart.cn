@@ -24,12 +24,6 @@
 - title: Dart 开发语言
   expanded: false
   children:
-    - title: 概览
-      permalink: /guides/language/language-tour
-    - title: 类型体系
-      permalink: /guides/language/sound-dart
-    - title: 规范
-      permalink: /guides/language/spec
     - title: 高效指南 (Effective Dart)
       expanded: false
       children:
