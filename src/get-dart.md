@@ -60,13 +60,14 @@ As the following instructions show,
 you can use a package manager
 to easily install and update a stable channel Dart SDK.
 Alternatively, you can
-[build the SDK from source][] or install from [any release channel](#release-channels) by
-[downloading the SDK as a zip file](/tools/sdk/archive).
+[build the SDK from source][] or install from
+[any release channel](#release-channels) by
+[downloading the SDK as a zip file][].
 
 如下所述，你可以使用包管理轻松地安装和更新 Dart SDK。
 你也可以 以 [编译 SDK 源码][build the SDK from source] 的形式安装，
 也可以在我们的 [各个发布渠道里](#release-channels) 
-[下载 SDK 的 zip 压缩文件]({{site.dartlang}}/tools/sdk/archive) 。
+[下载 SDK 的 zip 压缩文件][downloading the SDK as a zip file] 。
 
 {% comment %}
 NOTE to editors: Keep the zip file link as the last thing in the paragraph,
@@ -103,7 +104,7 @@ Dart SDK 有三个发布渠道：
 * **Stable** channel: **stable releases**, updated roughly every three months;
   currently `[calculating]`{:.editor-build-rev-stable}.
 
-  **稳定版 (Stable) **渠道：**稳定发行版**，每 **三个月** 更新一次；
+  稳定版 (Stable)渠道：**稳定发行版**，每 **三个月** 更新一次；
   当前版本 `[calculating]`{:.editor-build-rev-stable}.
   
   Stable releases are suitable for production use.
@@ -113,7 +114,7 @@ Dart SDK 有三个发布渠道：
 * **Beta** channel: **preview releases**, usually updated every month;
   currently `[calculating]`{:.editor-build-rev-beta}.
 
-  **测试版 (Beta)**渠道：也称 **发行预览版**，通常 **每月** 更新一次；
+  测试版 (Beta) 渠道：也称 **发行预览版**，通常 **每月** 更新一次；
   当前版本 `[calculating]`{:.editor-build-rev-dev}.
   
   Beta channel builds are preview builds for the stable channel. We recommend
@@ -127,7 +128,7 @@ Dart SDK 有三个发布渠道：
 * **Dev** channel: **prereleases**, usually updated twice a week;
   currently `[calculating]`{:.editor-build-rev-dev}.
 
-  **开发版 (Dev)**渠道：也称 **预发行版**，通常每 **双周** 更新一次；
+  开发版 (Dev)渠道：也称 **预发行版**，通常每 **双周** 更新一次；
   当前版本 `[calculating]`{:.editor-build-rev-dev}.
   
   Dev channel releases are the most current with latest changes, may be broken,
@@ -158,8 +159,9 @@ Dart SDK 的非稳定版 (**测试版 (Beta)** 和 **开发版 (Dev)**) 构建�
 
 You can get stable channel releases using
 the [instructions above](#install), or you can
-get stable, beta, or dev channel releases by
-[downloading the SDK as a zip file](/tools/sdk/archive).
+get stable, beta, or dev channel releases
+using [a package manager][]
+or by [downloading the SDK as a zip file][].
 
 你可以通过 [instructions above](#install) 获得 stable 和 dev 渠道，
 或者你也可以直接[下载 SDK 的压缩包](/tools/sdk/archive)。
@@ -172,5 +174,7 @@ For more information, see the [Dart 2 page.][Dart 2]
 [Dart 2]: /dart-2
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
 [Dart libraries]: /guides/libraries/library-tour
+[downloading the SDK as a zip file]: /tools/sdk/archive
 [flutter]: https://flutter.dev/docs/get-started/install
 [site SDK version]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/{{site.data.pkg-vers.SDK.vers}}/index.html
+[a package manager]: https://github.com/dart-lang/sdk/wiki/Installing-beta-and-dev-releases-with-brew,-choco,-and-apt-get
