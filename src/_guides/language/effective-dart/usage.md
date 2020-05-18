@@ -109,15 +109,15 @@ theoretically non-breaking point release of that package could break your code.
 这意味着，你如果导入了其中的私有库，
 按理论来讲，一个不破坏 package 的次版本就会影响到你的代码。
 
-### PREFER relative paths when importing libraries within your own package's `lib` directory.
+### DO use relative paths when importing libraries within your own package's `lib` directory.
 
-### **建议** 使用相对路径在导入你自己 package 中的 `lib` 目录。
+### **要** 使用相对路径在导入你自己 package 中的 `lib` 目录。
 
 {% include linter-rule.html rule1="avoid_relative_lib_imports" rule2="prefer_relative_imports" %}
 
 When referencing a library inside your package's `lib` directory from another
-library in that same package, either a relative URI or an explicit `package:`
-will work.
+library in that same package, use a relative URI, not an explicit `package:`
+URI.
 
 在同一个 package 下其中一个库引用另一个 `lib` 目录下的库时，
 应该使用相对的 URI 或者直接使用 `package:`。
@@ -152,11 +152,6 @@ And not:
 import 'package:my_package/src/utils.dart';
 {% endprettify %}
 
-There is no profound reason to prefer the former—it's just shorter, and we want
-to be consistent.
-
-喜欢一种方式没有什么深奥的原因——这里仅仅是因为更精简，或者是能够保持一致。
-
 The "within your own package's `lib` directory" part is important. Libraries
 inside `lib` can import other libraries inside `lib` (or in subdirectories of
 it). Libraries outside of `lib` can use relative imports to reach other
@@ -171,7 +166,9 @@ under `test` that other libraries in `test` import.
 But you can't "cross the streams". A library outside of `lib` should never use a
 relative import to reach a library under `lib`, or vice versa. Doing so will
 break Dart's ability to correctly tell if two library URIs refer to the same
-library. Follow these two rules:
+library, which can lead to unexpected duplicated types.
+
+Follow these two rules:
 
 但不能跨越导入。一个在 `lib` 外部的库应该永远不会引用一个在 `lib` 内部的库，反之亦然。
 这样做，会破坏 Dart 正确判断两个库的 URL 是否引用了同一个库的能力。
@@ -1705,7 +1702,7 @@ const primaryColors = [!const!] [
 Dart uses exceptions when an error occurs in your program. The following
 best practices apply to catching and throwing exceptions.
 
-Dart 使用异常来表示程序执行错误。
+Dart 使用异常来表���程序执行错误。
 下面是关于如何捕获和抛出异常的最佳实践。
 
 ### AVOID catches without `on` clauses.
