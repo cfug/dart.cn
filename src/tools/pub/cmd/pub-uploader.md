@@ -27,7 +27,7 @@ $ pub uploader [options] {add/remove} <email>
 
 This command allows
 [uploaders](/tools/pub/glossary#uploader) of a
-package on the [pub.dev site]({{site.pub}}) to add or remove
+package on the [pub.dev site]({{site.pub}}) to add (invite) or remove
 other uploaders for that package. It has two sub-commands,
 `add` and `remove`, that take the email address of the person to
 add/remove as an uploader. For example:
@@ -39,14 +39,12 @@ add/remove as an uploader. For example:
 
 ```terminal
 ~/code/transmogrify$ pub uploader add bob@example.com
-'bob@example.com' added as an uploader for package 'transmogrify'.
-
-“bob@example.com” 这个电子邮件的所有者将成为 “transmogrify” 这个 Package 的上传者。
+We have sent an invitation to bob@example.com, they will be added as uploader after they confirm it.
+// 我们已经向 bob@example.com 发送了一份邀请函，在他/她确认后就会成被加入上传者（权限）
 
 ~/code/transmogrify$ pub uploader remove bob@example.com
-'bob@example.com' is no longer an uploader for package 'transmogrify'.
-
-“bob@example.com” 这个电子邮件的所有者不再是 “transmogrify” 这个 Package 的上传者。
+Successfully removed uploader from package.
+// 成功将该上传者从 package 中移除
 ```
 
 If a package has only one uploader, that uploader can't be removed. You can
@@ -66,8 +64,8 @@ package by name. For example:
 
 ```terminal
 $ pub uploader --package=transmogrify add bob@example.com
-'bob@example.com' added as an uploader for package 'transmogrify'.
-“bob@example.com” 这个电子邮件的所有者将成为 “transmogrify” 这个 Package 的上传者。
+We have sent an invitation to bob@example.com, they will be added as uploader after they confirm it.
+// 我们已经向 bob@example.com 发送了一份邀请函，在他/她确认后就会成被加入上传者（权限）
 ```
 
 Note that uploaders are identified by their Google accounts, so use a Gmail or
@@ -75,6 +73,22 @@ Google Apps email address for any new uploaders.
 
 需要注意的是 Google 账户是上传者的识别标识，
 所以请使用 Gmail 或者 Google 应用电子邮件地址作为新上传者的标识。
+
+{{site.alert.important}}
+
+  The `pub uploader add <email>` command sends an invitation that
+  the invited user must accept.
+  For the invitation to work,
+  `<email>` must be the **primary email address** of
+  the associated Google account.
+  
+  通过 `pub uploader add <email>` 命令发送邀请，被邀请的用户必须接受。
+  为了使邀请生效，`<email>` 字段必须是被邀请人
+  Google 账户的**主要电子邮件地址**。
+  
+{{site.alert.end}}
+
+## Options
 
 ## 选项
 

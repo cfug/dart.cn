@@ -282,7 +282,7 @@ Dart 支持单继承。
 <?code-excerpt "misc/lib/samples/spacecraft.dart (extends)"?>
 {% prettify dart tag=pre+code %}
 class Orbiter extends Spacecraft {
-  num altitude;
+  double altitude;
   Orbiter(String name, DateTime launchDate, this.altitude)
       : super(name, launchDate);
 }

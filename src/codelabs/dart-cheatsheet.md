@@ -768,7 +768,13 @@ so I deleted that. We can add it back if we can word it better
 To allow classes to have multiple constructors,
 Dart supports named constructors:
 
-为了允许一个类具有多个构造方法，Dart 支持命名构造方法：
+为了允许一个类具有多个构造方法，
+Dart 支持命名构造方法：
+
+<?code-excerpt "misc/bin/named_constructor.dart"?>
+```dart
+class Point {
+  double x, y;
 
 <?code-excerpt "misc/bin/named_constructor.dart"?>
 
