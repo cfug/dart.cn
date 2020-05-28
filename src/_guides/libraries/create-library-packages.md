@@ -198,21 +198,20 @@ Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 
 ## 导入 Library 文件
 
-When importing a library file, you can use the
+When importing a library file from another package, use the
 the `package:` directive to specify the URI of that file.
 
-在导入 Library 文件时，使用 `package:` 命令来指定文件的 URI 。
+在从其他 package 导入库文件时，
+使用 `package:` 命令来指定文件的 URI 。
 
 {% prettify dart tag=pre+code %}
 import 'package:utilities/utilities.dart';
 {% endprettify %}
 
-You can import a library using a relative path when
-both files are inside of lib,
-or when both files are outside of lib.
-However, you must use `package:` when importing a file that reaches
-inside, or outside, of lib.
-When in doubt, use the `package:` directive; it works in all cases.
+When importing a library file from your own package,
+use a relative path when both files are inside of lib,
+or when both files are outside of lib. 
+Use `package:` when the imported file is in lib and the importer is outside.
 
 在两个文件都在 lib 目录中，或两个文件都在 lib 目录外，
 我们都可以使用相对路径的方式导入 Library 。
@@ -226,21 +225,6 @@ to import `lib/foo/a.dart` from both lib and web.
 下面图片展示分别从 lib 和 web 目录中导入 `lib/foo/a.dart` 。
 
 {% asset libraries/import-lib-rules.png alt="lib/bar/b.dart uses a relative import; web/main.dart uses a package import" %}
-
-<aside class="alert alert-info" markdown="1">
-**Note:**
-
-**提示：**
-
-Although the lib graphic shows `lib/bar/b.dart` using a relative import
-(`import '../foo/a.dart'`),
-it could instead use the `package:` directive
-(`import 'package:my_package/foo/a.dart'`).
-
-虽然 lib 图片上使用相对路径 (`import '../foo/a.dart'`) 导入 `lib/bar/b.dart` ，
-但是它同样能使用 `package:` 直接 (`import 'package:my_package/foo/a.dart'`) 导入 。
-</aside>
-
 
 ## Conditionally importing and exporting library files
 
