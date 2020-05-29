@@ -68,8 +68,8 @@ To make APIs under lib/src public, you can export lib/src files
 from a file that's directly under lib.
 
 如你所料， Library 的代码位于 _lib_ 目录下，且对于其他 Package 是公开的。
-你可以根据需要在 _lib_ 下任意创建组织文件结构。
-按照惯例，实现代码会放在 _lib/src_ 目录下。
+你可以根据需要在 **lib** 下任意创建组织文件结构。
+按照惯例，实现代码会放在 **lib/src** 目录下。
 lib/src 目录下的代码被认为是私有的。
 其他 Package 应该永远不需要导入 `src/...` 目录下代码。
 通过导出 lib/src 目录的文件到一个 lib 目录的文件，实现
@@ -105,7 +105,7 @@ _mini libraries_.
 In most cases, each class should be in its own mini library, unless
 you have a situation where two classes are tightly coupled.
 
-在创建一个小的，独立的 Library（称之为 _Mini Library_）。
+在创建一个小的，独立的 Library（称之为 **Mini Library**）。
 Library Package 非常容易维护，扩展和测试。
 大多数情况下，除非存在两个类紧密耦合的情况，否则每个类都应该将自己视为一个 Mini Library 。
 
@@ -145,8 +145,9 @@ package provides an easy way to create web servers using Dart,
 and is laid out in a structure that is commonly used for Dart
 library packages:
 
-这里让我们来看下一个真实 Library Package 的组织结构： shelf 。
-[shelf](https://github.com/dart-lang/shelf) Package 提供了一种使用 Dart 创建 Web 服务器的简便方法，
+这里让我们来看下一个真实 Library Package 的组织结构：shelf 。
+[shelf](https://github.com/dart-lang/shelf) Package
+提供了一种使用 Dart 创建 Web 服务器的简便方法，
 它的布局在 Dart Library Package 中是一种常用布局：
 
 {% asset libraries/shelf.png alt="shelf root directory contains example, lib, test, and tool subdirectories" %}
@@ -188,7 +189,7 @@ instead of elsewhere under `/lib`.
 Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 
 为了在开发时使 [dartdevc](/tools/dartdevc) 工具能够达到最佳新能，
-应该将[实现文件](/tools/pub/package-layout#implementation-files)放到目录 `/lib/src` 下，
+应该将 [实现文件](/tools/pub/package-layout#implementation-files) 放到目录 `/lib/src` 下，
 而不是 `/lib` 目录的其他地方。
 另外，避免通过 <code>package:<em>package_name</em>/src/...</code> 导入文件。
 </aside>
@@ -201,7 +202,7 @@ Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 When importing a library file from another package, use the
 the `package:` directive to specify the URI of that file.
 
-在从其他 package 导入库文件时，
+在从其他 package 导入 Library 文件时，
 使用 `package:` 命令来指定文件的 URI 。
 
 {% prettify dart tag=pre+code %}
