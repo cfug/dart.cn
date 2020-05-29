@@ -22,10 +22,13 @@ For details, see our [code of conduct](/code-of-conduct).
   Low traffic announcements of new releases, breaking changes,
   and other important news. Recommended!
 
-  [Dart 公告]({{site.group}}/d/forum/announce) - 第一时间公布新的发行版本、重大变化以及其他重要新闻。推荐！
+  [Dart 公告群组]({{site.group}}/d/forum/announce) - 
+  第一时间公布新的发行版本、重大变化以及其他重要新闻。推荐！
 
 * [@dart_lang](https://twitter.com/dart_lang) -
   The official Twitter account.
+* [Dart blog](https://medium.com/dartlang) - 
+  The latest news and insights from a diverse group of Dart users.
 
   [@dart_lang](https://twitter.com/dart_lang) - Twitter 官方账号。
 
