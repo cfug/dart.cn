@@ -6,13 +6,21 @@ set -e
 commitSha=$(git rev-parse --short HEAD)
 commitMessage=$(git log --oneline -n 1)
 
-rm -rf /tmp/dartlang.cn-prebuilt/ || true
+rm -rf /tmp/site-dart.cn/ || true
 
-git clone https://cfug-deploy:${CFUG_DEPLOY_KEY}@github.com/cfug-deploy/dartlang-cn-prebuilt.git /tmp/dartlang.cn-prebuilt/
+git clone https://chenglu:${CHENGLU_DEPLOY_KEY}@github.com/chenglu/site-dart.cn.git /tmp/site-dart.cn/
 
-cp -r _site/* /tmp/dartlang.cn-prebuilt/
+# cd /tmp/site-dart.cn/
+# git config --global user.name "travis-ci deploy"
+# git config --global user.email "cfug-dev@googlegroups.com"
 
-cd /tmp/dartlang.cn-prebuilt
+# git rm -rf .
+# git add .
+# git commit --allow-empty -am "empty repo first"
+
+cp -r _site/* /tmp/site-dart.cn/
+
+cd /tmp/site-dart.cn/
 
 git add .
 git commit --allow-empty -am "${commitMessage}"
