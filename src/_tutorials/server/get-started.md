@@ -247,14 +247,14 @@ Use the `dart2native` tool to AOT compile the program to machine code:
 为了运行编译后的程序，使用 Dart 运行时（即 `dartaotruntime` 命令）：
 
 ```terminal
-$ dart2native bin/main.dart -o bin/my_app
+$ dart2native bin/main.dart
 ```
 Notice how the compiled program starts instantly, completing quickly:
 
 注意测量编译后的程序启动有多快：
 
 ```terminal
-$ time bin/my_app
+$ time bin/main.exe
 Hello world: 21!
 
 real	0m0.016s
