@@ -944,12 +944,12 @@ var list = [1, 2, 3];
   Dart infers that `list` has type `List<int>`. If you try to add non-integer
   objects to this list, the analyzer or runtime raises an error. For more
   information, read about
-  [type inference.](/guides/language/sound-dart#type-inference)
+  [type inference.](/guides/language/type-system#type-inference)
   
   这里 Dart 推断出 `list` 的类型为 `List<int>`，
   如果往该数组中添加一个非 int 类型的对象则会报错。
   你可以阅读 
-  [类型推断](/guides/language/sound-dart#type-inference) 获取更多相关信息。
+  [类型推断](/guides/language/type-system#type-inference) 获取更多相关信息。
 
 {{site.alert.end}}
 
@@ -1103,12 +1103,12 @@ var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
   Dart infers that `halogens` has the type `Set<String>`. If you try to add the
   wrong type of value to the set, the analyzer or runtime raises an error. For
   more information, read about
-  [type inference.](/guides/language/sound-dart#type-inference)
+  [type inference.](/guides/language/type-system#type-inference)
   
   Dart 推断 `halogens` 变量是一个 `Set<String>` 类型的集合，
   如果往该 Set 中添加类型不正确的对象则会报错。
   你可以查阅
-  [类型推断](/guides/language/sound-dart#type-inference) 获取更多与之相关的内容。
+  [类型推断](/guides/language/type-system#type-inference) 获取更多与之相关的内容。
 
 {{site.alert.end}}
 
@@ -1236,13 +1236,13 @@ var nobleGases = {
   Dart infers that `gifts` has the type `Map<String, String>` and `nobleGases`
   has the type `Map<int, String>`. If you try to add the wrong type of value to
   either map, the analyzer or runtime raises an error. For more information,
-  read about [type inference.](/guides/language/sound-dart#type-inference)
+  read about [type inference.](/guides/language/type-system#type-inference)
 
   Dart 将 `gifts` 变量的类型推断为 `Map<String, String>`，
   而降 `nobleGases` 的类型推断为 `Map<int, String>`。
   如果你向这两个 Map 对象中添加不正确的类型值，将导致运行时异常。
   你可以阅读
-  [类型推断](/guides/language/sound-dart#type-inference)获取更多相关信息。
+  [类型推断](/guides/language/type-system#type-inference) 获取更多相关信息。
 
 {{site.alert.end}}
 
@@ -4307,7 +4307,7 @@ class SmartTelevision extends Television {
 {% endprettify %}
 
 To narrow the type of a method parameter or instance variable in code that is
-[type safe](/guides/language/sound-dart),
+[type safe](/guides/language/type-system),
 you can use the [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
 
 限定方法参数以及实例变量的类型可以让代码更加

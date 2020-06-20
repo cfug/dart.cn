@@ -10,8 +10,8 @@ description: 常见的跟类型相关的问题，以及如何修复这方面的�
 
 If you're having problems with type checks,
 this page can help. To learn more, read about
-[Dart's type system](/guides/language/sound-dart),
-and see [these other resources](/guides/language/sound-dart#other-resources).
+[Dart's type system](/guides/language/type-system),
+and see [these other resources](/guides/language/type-system#other-resources).
 
 {{site.alert.info}}
   **Help us improve this page!** If you encounter a warning or error that isn't
@@ -265,7 +265,7 @@ class MyAdder extends NumberAdder {
 }
 {% endprettify %}
 
-For more information, see [Use proper input parameter types when overriding methods](/guides/language/sound-dart#use-proper-param-types).
+For more information, see [Use proper input parameter types when overriding methods](/guides/language/type-system#use-proper-param-types).
 
 {{site.alert.note}}
   If you have a valid reason to use a subtype, you can use the
@@ -498,7 +498,7 @@ Dart rules this out statically. You can see other examples of these
 static analysis errors in [Unexpected collection element type](#unexpected-collection-element-type).
 
 The errors discussed in the remainder of this section are reported at
-[runtime](sound-dart#runtime-checks).
+[runtime](type-system#runtime-checks).
 
 ### Invalid casts
 

@@ -50,7 +50,7 @@
     - title: 概览
       permalink: /guides/language/language-tour
     - title: 类型系统
-      permalink: /guides/language/sound-dart
+      permalink: /guides/language/type-system
 
 - title: 核心库
   expanded: false
