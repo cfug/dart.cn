@@ -44,7 +44,7 @@ deploy:
       repo: cfug/dart.cn
       branch: master
 #      condition: $TASK == *build*
-      condition: $TASK == *tool/build.sh* && $TRAVIS_DART_VERSION == stable && $TRAVIS_EVENT_TYPE == push
+      condition: $TASK == *build* && $TRAVIS_DART_VERSION == stable && $TRAVIS_EVENT_TYPE == push
 
 # Only run Travis jobs for named branches (to avoid double builds for each PR)
 branches:
