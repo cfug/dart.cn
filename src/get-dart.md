@@ -175,6 +175,6 @@ For more information, see the [Dart 2 page.][Dart 2]
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
 [Dart libraries]: /guides/libraries/library-tour
 [downloading the SDK as a zip file]: /tools/sdk/archive
-[flutter]: https://flutter.dev/docs/get-started/install
+[flutter]: https://flutter.cn/docs/get-started/install
 [site SDK version]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/{{site.data.pkg-vers.SDK.vers}}/index.html
 [a package manager]: https://github.com/dart-lang/sdk/wiki/Installing-beta-and-dev-releases-with-brew,-choco,-and-apt-get

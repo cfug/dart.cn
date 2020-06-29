@@ -8,7 +8,7 @@ var updatePlaceholders = function(channel, version) {
   $('.editor-build-rev-' + channel).each(function(index, elem) {
       $(elem).text(version);
   });
-  var download = 'https://storage.googleapis.com/dart-archive/channels/' + channel + '/release/latest/linux_packages/dart_' + version + '-1_amd64.deb';
+  var download = 'https://storage.flutter-io.cn/dart-archive/channels/' + channel + '/release/latest/linux_packages/dart_' + version + '-1_amd64.deb';
   if (channel == 'stable') {
     var target = $(".debian-link-stable");
     target.attr('href', download);
@@ -21,7 +21,7 @@ var updatePlaceholders = function(channel, version) {
 var fetchEditorVersion = function(channel) {
   $.ajax({
     type: "GET",
-    url: 'https://storage.googleapis.com/dart-archive/channels/' + channel + '/release/latest/VERSION',
+    url: 'https://storage.flutter-io.cn/dart-archive/channels/' + channel + '/release/latest/VERSION',
     dataType: "json",
     success: function(data) {
       updatePlaceholders(channel, data['version']);
@@ -143,7 +143,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
   $.getJSON(
-    "https://storage.googleapis.com/dart-archive/channels/dev/release/latest/VERSION",
+    "https://storage.flutter-io.cn/dart-archive/channels/dev/release/latest/VERSION",
     function( data ) {
         var date = data.date,
             revDate = date.substr(0,4) + "-" + date.substr(4,2) + "-" + date.substr(6,2);
