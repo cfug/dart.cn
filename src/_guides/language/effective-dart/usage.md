@@ -1909,7 +1909,8 @@ omit the `async` without changing the behavior of the function, do so.
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (unnecessary-async)"?>
 {% prettify dart tag=pre+code %}
-Future afterTwoThings(Future first, Future second) {
+Future<void> afterTwoThings(
+    Future<void> first, Future<void> second) {
   return Future.wait([first, second]);
 }
 {% endprettify %}
@@ -1917,7 +1918,7 @@ Future afterTwoThings(Future first, Future second) {
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (unnecessary-async)"?>
 {% prettify dart tag=pre+code %}
-Future afterTwoThings(Future first, Future second) async {
+Future<void> afterTwoThings(Future<void> first, Future<void> second) async {
   return Future.wait([first, second]);
 }
 {% endprettify %}
@@ -1943,15 +1944,15 @@ Cases where `async` *is* useful include:
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (async)"?>
 {% prettify dart tag=pre+code %}
-Future usesAwait(Future later) async {
+Future<void> usesAwait(Future<String> later) async {
   print(await later);
 }
 
-Future asyncError() async {
+Future<void> asyncError() async {
   throw 'Error!';
 }
 
-Future asyncValue() async => 'value';
+Future<void> asyncValue() async => 'value';
 {% endprettify %}
 
 ### CONSIDER using higher-order methods to transform a stream.
