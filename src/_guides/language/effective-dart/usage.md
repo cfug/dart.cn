@@ -1073,11 +1073,10 @@ do you know when the cache is out of date and needs to be recalculated? Here, we
 never do, even though `radius` is mutable. You can assign a different value and
 the `area` and `circumference` will retain their previous, now incorrect values.
 
-上面的代码有两个不妥之处。首先，这样浪费了内存。
-严格来说面积和周长是*缓存*数据。
-他们保存的结果可以通过已知的数据计算出来。
-他们减少了 CPU 消耗却增加了内存消耗。
-我们还没有权衡，到底存不存在性能问题？
+更糟糕的是，代码是错误的。
+问题在于缓存是无效的 —— 你如何知道缓存何时会过期并且需要重新计算？
+即便半径是可变的，在这里我们也永远不会这样做。
+你可以赋一个不同的值，但面积和周长还是以前的值，现在的值是不正确的。
 
 To correctly handle cache invalidation, we need to do this:
 
