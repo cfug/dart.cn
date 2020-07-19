@@ -1,5 +1,4 @@
 ---
-layout: default
 title: "dart (Dart VM)"
 title: dart 命令 (DartVM 运行环境)
 description: "The reference page for 'dart' at the command line."
