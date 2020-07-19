@@ -8,33 +8,40 @@ js:
   defer: true
 ---
 
+This page describes how to download the Dart SDK.
 The Dart SDK has the libraries and command-line tools that you need to develop
 Dart command-line, server, and non-Flutter web apps.
-**To develop Flutter apps for any platform** —
-including web and mobile apps —
-then **instead of installing the Dart SDK,
-[install Flutter.][flutter]**
+For details, see the [Dart SDK overview](/tools/sdk).
 
 Dart SDK 包含开发 Web、命令行和服务端应用所需要的库和命令行工具。
 如果你只是想开发移动应用，则不需要使用 Dart SDK，
 只需 [安装 Flutter][flutter] 即可。
 
-{{site.alert.tip}}
+**As of Flutter 1.20, the [Flutter SDK][flutter] includes the Dart SDK.**
+So if you have Flutter installed,
+you might not need to explicitly download the Dart SDK.
+Consider downloading the Dart SDK if
+any of the following are true:
 
-  If you want to create _both_ Flutter and command-line or server apps,
-  install both Flutter and the Dart SDK.
+**从 Flutter 1.20 版本开始，[Flutter SDK][flutter] 会同时包含 Dart SDK**
+因此如果你已经安装了 Flutter，可能就无需再特别下载 Dart SDK 了。
+如果你有下述的需求，请考虑下载 Dart SDK：
+
+* You don't use Flutter.
+
+  不需要使用 Flutter；
   
-  如果您希望同时创建 Flutter 和命令行或者服务端应用，
-  请安装 Flutter 和 Dart SDK。
-{{site.alert.end}}
+* You use a pre-1.20 version of Flutter.
 
-To learn about the tools you can use for Dart development, see
-the [Dart tools](/tools) page.
-To learn about what's in the Dart SDK, see [Dart SDK overview](/tools/sdk).
+  使用 Flutter 1.20 之前的版本；
+  
+* You want to reduce disk space requirements or download time,
+  and your use case doesn't require Flutter.
+  For example, you might have a continuous integration (CI)
+  setup that requires Dart but not Flutter.
 
-要了解在 Dart 开发中你可以使用的其它工具，
-请查阅 [Dart 工具]({{site.dartlang}}/tools)。
-要了解 SDK 中的内容，请参阅 [Dart SDK 概述](/tools/sdk)。
+  希望降低电脑存储空间的使用，此次用例并不需要 Flutter，比如：
+  设置 CI 时，需要 Dart 并不需要 Flutter。
 
 <aside class="alert alert-info" markdown="1">
   **Note:** This site's documentation and examples use
@@ -52,7 +59,7 @@ To learn about what's in the SDK, see [Dart SDK overview](/tools/sdk).
 
 请查阅 [Dart SDK 概览](/tools/sdk) 获取更多关于 SDK 中包含哪些内容的信息。
 
-## Install the Dart SDK {#install}
+## Installing the Dart SDK {#install}
 
 ## 安装 Dart SDK {#install}
 

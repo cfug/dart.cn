@@ -75,10 +75,15 @@ Install a JetBrains IDE if you don't already have one.
 
 If you don't already have the Dart SDK,
 install it.
+You can get it either by itself or by downloading the Flutter SDK,
+which (as of Flutter 1.20) includes the Dart SDK.
+
+Choose one:
 
 如果你还没有 Dart SDK，请先安装。
 
 * [Download the Dart SDK](/get-dart)
+* [Download the Flutter SDK]({{site.flutter}}/docs/get-started/install)
 
   [下载 Dart SDK](/get-dart)
 
