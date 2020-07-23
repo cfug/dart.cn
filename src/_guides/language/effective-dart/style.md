@@ -58,8 +58,8 @@ Identifiers come in three flavors in Dart.
 
 {% include linter-rule.html rule="camel_case_types" %}
 
-Classes, enums, typedefs, and type parameters should capitalize the first letter
-of each word (including the first word), and use no separators.
+Classes, enum types, typedefs, and type parameters should capitalize the first
+letter of each word (including the first word), and use no separators.
 
 Classes（类名）、 enums（枚举类型）、 typedefs（类型定义）、
 以及 type parameters（类型参数）应该把每个单词的首字母都大写（包含第一个单词）， 
@@ -118,7 +118,7 @@ class C { ... }
 {% include linter-rule.html rule="camel_case_extensions" %}
 
 Like types, extensions should capitalize the first letter of each word
-(including the first word), 
+(including the first word),
 and use no separators.
 
 与类型命名一样，扩展名也应大写每个单词的首字母（包括第一个单词），并且不使用分隔符。
@@ -346,7 +346,8 @@ uiHandler
 IOStream
 HttpRequest
 Id
-DB
+DBIOPort
+TVVcr
 {% endprettify %}
 
 {:.bad}
@@ -356,7 +357,8 @@ UiHandler
 IoStream
 HTTPRequest
 ID
-Db
+DbIoPort
+TvVcr
 {% endprettify %}
 
 

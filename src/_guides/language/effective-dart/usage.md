@@ -341,59 +341,34 @@ Dart 集合中原生支持了四种类型：list， map， queue， 和 set。
 
 {% include linter-rule.html rule="prefer_collection_literals" %}
 
-There are two ways to make an empty growable list: `[]` and `List()`.
-Likewise, there are three ways to make an empty linked hash map: `{}`,
-`Map()`, and `LinkedHashMap()`.
+Dart has three core collection types: List, Map, and Set. These classes have
+unnamed constructors like most classes do. But because these collections are
+used so frequently, Dart has nicer built-in syntax for creating them:
 
-有两种方式来构造一个空的可变 list ： `[]` 和 `List()` 。
-同样，有三总方式来构造一个空的链表哈希 map：`{}`，
-`Map()`， 和 `LinkedHashMap()` 。
-
-If you want to create a non-growable list, or some other custom collection type
-then, by all means, use a constructor. Otherwise, use the nice literal syntax.
-The core library exposes those constructors to ease adoption, but idiomatic Dart
-code does not use them.
-
-如果想创建一个固定不变的 list 或者其他自定义集合类型，这种情况下你需要使用构造函数。
-否则，使用字面量语法更加优雅。
-核心库中暴露这些构造函数易于扩展，但是通常在 Dart 代码中并不使用构造函数。
+Dart 有三种核心集合类型。List、Map 和 Set，
+这些类和大多数类一样，都有未命名的构造函数，
+但由于这些集合使用频率很高，Dart 有更好的内置语法来创建它们：
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (collection-literals)"?>
 {% prettify dart tag=pre+code %}
-var points = [];
-var addresses = {};
+var points = <Point>[];
+var addresses = <String, Address>{};
+var counts = <int>{};
 {% endprettify %}
 
 {:.bad}
 <?code-excerpt "misc/lib/effective_dart/usage_bad.dart (collection-literals)"?>
 {% prettify dart tag=pre+code %}
-var points = List();
-var addresses = Map();
-{% endprettify %}
-
-You can even provide a type argument for them if that matters.
-
-如果需要的话，你甚至可以为它们提供一个类型参数。
-
-{:.good}
-<?code-excerpt "misc/lib/effective_dart/usage_good.dart (generic-collection-literals)"?>
-{% prettify dart tag=pre+code %}
-var points = <Point>[];
-var addresses = <String, Address>{};
-{% endprettify %}
-
-{:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (generic-collection-literals)"?>
-{% prettify dart tag=pre+code %}
 var points = List<Point>();
 var addresses = Map<String, Address>();
+var counts = Set<int>();
 {% endprettify %}
 
-Note that this doesn't apply to the *named* constructors for those classes.
-`List.from()`, `Map.fromIterable()`, and friends all have their uses. Likewise,
-if you're passing a size to `List()` to create a non-growable one, then it
-makes sense to use that.
+Note that this guideline doesn't apply to the *named* constructors for those
+classes. `List.from()`, `Map.fromIterable()`, and friends all have their uses.
+Likewise, if you're passing a size to `List()` to create a non-growable one,
+then it makes sense to use that.
 
 注意，对于集合类的 *命名* 构造函数则不适用上面的规则。
 `List.from()`、 `Map.fromIterable()` 都有其使用场景。 
