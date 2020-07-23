@@ -2173,7 +2173,7 @@ where you must use the new syntax.
 
 ### AVOID using `dynamic` unless you want to disable static checking.
 
-### **要** 为类型是任何对象的参数使用 `Object` 注解，而不是 `dynamic` 。
+### **避免** 使用 `dynamic` 除非你希望禁用静态检查
 
 Some operations work with any possible object. For example, a `log()` method
 could take any object and call `toString()` on it. Two types in Dart permit all
