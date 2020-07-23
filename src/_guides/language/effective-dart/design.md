@@ -2171,7 +2171,7 @@ where you must use the new syntax.
 
 虽然新语法稍微冗长一点，但是你必须使用新语法才能与其他位置的类型注解的语法保持一致。
 
-### DO annotate with `Object` instead of `dynamic` to indicate any object is allowed.
+### AVOID using `dynamic` unless you want to disable static checking.
 
 ### **要** 为类型是任何对象的参数使用 `Object` 注解，而不是 `dynamic` 。
 
@@ -2185,32 +2185,45 @@ Java or C#.
 在 Dart 中两种类型可以表示所有类型：`Object` 和 `dynamic` 。但是，他们传达的意义并不相同。
 和 Java 或 C# 类似，要表示成员类型为所有对象，使用 `Object` 进行注解。
 
-Using `dynamic` sends a more complex signal. It may mean that Dart's type system
-isn't sophisticated enough to represent the set of types that are allowed, or
-that the values are coming from interop or otherwise outside of the purview of
-the static type system, or that you explicitly want runtime dynamism at that
-point in the program.
+The type `dynamic` not only accepts all objects, but it also permits all
+*operations*. Any member access on a value of type `dynamic` is allowed at
+compile time, but may fail and throw an exception at runtime. If you want
+exactly that risky but flexible dynamic dispatch, then `dynamic` is the right
+type to use.
 
-使用 `dynamic` 释放出一种复杂的信号。它可能意味着成员的类型集合不足以使用 Dart 类型系统表达，或者
-是变量来源于操作过程中，以及其他范围外的静态类型系统，或者是你明确的希望成员类型在 runtime 中动态
-确定。
+`dynamic` 这个类型不仅接受所有对象，也允许所有 *operations*。
+在编译时任何成员对 `dynamic` 类型值访问是允许的，但在运行时可能会引发异常。
+如果你可以承担风险来达到灵活性，`dynamic` 类型是你不错的选择。
+
+Otherwise, prefer using `Object`. Rely on `is` checks and type promotion to
+ensure that the value's runtime type supports the member you want to access
+before you access it.
+
+除此之外，我们建议你使用 `Object`，并使用 `is` 来检查和进行类型升级，
+以确保在运行时访问判断这个值支持您要访问的成员。
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/design_good.dart (Object-vs-dynamic)"?>
 {% prettify dart tag=pre+code %}
-void log(Object object) {
-  print(object.toString());
-}
-
 /// Returns a Boolean representation for [arg], which must
 /// be a String or bool.
-bool convertToBool(dynamic arg) {
+bool convertToBool(Object arg) {
   if (arg is bool) return arg;
-  if (arg is String) return arg == 'true';
+  if (arg is String) return arg.toLowerCase() == 'true';
   throw ArgumentError('Cannot convert $arg to a bool.');
 }
 {% endprettify %}
 
+The main exception to this rule is when working with existing APIs that use
+`dynamic`, especially inside a generic type. For example, JSON objects have type
+`Map<String, dynamic>` and your code will need to accept that same type. Even
+so, when using a value from one of these APIs, it's often a good idea to cast it
+to a more precise type before accessing members.
+
+这个规则的主要例外是，与已经使用 `dynamic` 的类型，特别是通用类进行操作的时候。
+比如，JSON 对象有 `Map<String, dynamic>` 类型，而且代码需要接受相同的类型。
+即便如此，在调用和使用这些 API 的时候，将类型转换成一个更精确的类型之后
+再去调用成员会更好。
 
 ### DO use `Future<void>` as the return type of asynchronous members that do not produce values.
 
