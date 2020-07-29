@@ -42,7 +42,16 @@
     - title: Extension 方法
       permalink: /guides/language/extension-methods
     - title: 健全的空安全
-      permalink: /null-safety
+      expanded: false
+      children:
+        - title: 概览
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /null-safety
+        - title: 理解空安全
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /null-safety/understanding-null-safety
     - title: 版本演变
       permalink: /guides/language/evolution
     - title: 规范
