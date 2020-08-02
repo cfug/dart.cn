@@ -330,7 +330,7 @@ if you opt into null safety.
 {% assign yes = '<b>Yes</b>' %}
 
 |----------------------+----------------------------------+--------------------------+------------|
-|<t>Type</t><t>类型</t> | <t>Can the list<br>be null?</t><t>列表能<br>为空吗？</t> | <t>Can an item (string)<br>be null?</t><t>元素 (string)<br>能为空吗</t> | <t>Description</t><t>描述</t>|
+|<t>Type</t><t>类型</t> | <t>Can the list<br>be null?</t><t>列表能<br>为空吗？</t> | <t>Can an item (string)<br>be null?</t><t>元素 (string)<br>能为空吗？</t> | <t>Description</t><t>描述</t>|
 |------------------|----------------------------------|--------------------------|------------|
 | `List<String>`   | No      | No      | <t>A non-null list that contains<br> non-null strings</t><t>一个包含非空字符串的<br>非空列表</t> |
 | `List<String>?`  | {{yes}} | No      | <t>A list that **might be null** and that<br> contains non-null strings</t><t>一个包含非空字符串的<br>**可空**列表</t> |
@@ -387,7 +387,7 @@ Like lists and sets, maps can have a variety of types:
 就像列表和集合一样，映射也会有一些不同的类型：
 
 |----------------------+-------------------------------+-------------------------|
-|<t>Type</t><t>类型</t> | <t>Can the map<br>be null?</t><t>映射能<br>为空吗？</t> | <t>Can an item (int)<br>be null?</t><t>元素 (int)<br>能为空吗</t> | <t>Description</t><t>描述</t>|
+|<t>Type</t><t>类型</t> | <t>Can the map<br>be null?</t><t>映射能<br>为空吗？</t> | <t>Can an item (int)<br>be null?</t><t>元素 (int)<br>能为空吗？</t> | <t>Description</t><t>描述</t>|
 |----------------------|-------------------------------|-------------------------|
 | `Map<String, int>`   | No                            | No*                     |
 | `Map<String, int>?`  | {{yes}}                       | No*                     |
