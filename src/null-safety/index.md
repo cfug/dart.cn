@@ -243,7 +243,7 @@ int value = aNullableInt!; // `aNullableInt!` is an int.
   **don't use the `!` operator**.
 
   如果您并不完全确定值为非空，
-  **请不要使用 `!` 操作符。**
+  **请不要使用 `!` 操作符**。
 
 {{site.alert.end}}
 
@@ -387,7 +387,7 @@ Like lists and sets, maps can have a variety of types:
 就像列表和集合一样，映射也会有一些不同的类型：
 
 |----------------------+-------------------------------+-------------------------|
-|<t>Type</t><t>类型</t> | <t>Can the map<br>be null?</t><t>映射能<br>为空吗？</t> | <t>Can an item (string)<br>be null?</t><t>元素 (string)<br>能为空吗</t> | <t>Description</t><t>描述</t>|
+|<t>Type</t><t>类型</t> | <t>Can the map<br>be null?</t><t>映射能<br>为空吗？</t> | <t>Can an item (int)<br>be null?</t><t>元素 (int)<br>能为空吗</t> | <t>Description</t><t>描述</t>|
 |----------------------|-------------------------------|-------------------------|
 | `Map<String, int>`   | No                            | No*                     |
 | `Map<String, int>?`  | {{yes}}                       | No*                     |
