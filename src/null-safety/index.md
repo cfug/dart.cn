@@ -1,6 +1,8 @@
 ---
 title: Sound null safety
+title: 健全的空安全
 description: Information about Dart's upcoming null safety feature
+description: Dart 即将到来的空安全的有关内容
 ---
 
 Sound null safety is coming to the Dart language!
@@ -10,7 +12,7 @@ values can’t be null _unless you say they can be._
 With null safety, your **runtime** null-dereference errors
 turn into **edit-time** analysis errors.
 
-Dart 语言将要引入空安全声明了！
+Dart 语言将要引入健全的空安全机制了！
 当您选择使用空安全时，代码中的类型将默认是非空的，
 意味着**除非您声明它们可空**，它们的值都不能为空。
 有了空安全，原本处于您的**运行时**的空值引用错误将变为**编译时**的分析错误。
@@ -387,7 +389,7 @@ Like lists and sets, maps can have a variety of types:
 就像列表和集合一样，映射也会有一些不同的类型：
 
 |----------------------+-------------------------------+-------------------------|
-|<t>Type</t><t>类型</t> | <t>Can the map<br>be null?</t><t>映射能<br>为空吗？</t> | <t>Can an item (int)<br>be null?</t><t>元素 (int)<br>能为空吗？</t> | <t>Description</t><t>描述</t>|
+|<t>Type</t><t>类型</t> | <t>Can the map<br>be null?</t><t>映射能<br>为空吗？</t> | <t>Can an item (int)<br>be null?</t><t>元素 (int)<br>能为空吗？</t> |
 |----------------------|-------------------------------|-------------------------|
 | `Map<String, int>`   | No                            | No*                     |
 | `Map<String, int>?`  | {{yes}}                       | No*                     |
@@ -458,7 +460,7 @@ int value = aList['one'] ?? 0;
 
 For more information about null safety, see the following resources:
 
-更多关于空安全的信息，请前往以下内容：
+更多关于空安全的信息，请前往以下内容继续阅读：
 
 * [Dart announcements group][Dart announce]
 
