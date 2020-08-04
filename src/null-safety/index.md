@@ -65,7 +65,7 @@ Or try null safety in your normal development environment,
 using the instructions and configuration files in the
 [null safety sample.][calculate_lix]
 
-您可以通过下方截图中的[支持空声明的 DartPad][nullsafety.dartpad.dev]
+您可以通过下方截图中的[支持空安全的 DartPad][nullsafety.dartpad.dev]
 进行练习。
 或者按照[空安全示例][calculate_lix]中的指示和配置，在您的开发环境下
 尝试空安全。
@@ -116,9 +116,9 @@ initialized to a non-null value before it's used,
 but the Dart analyzer doesn't agree,
 **insert `late`** before the variable's type:
 
-如果您知道一个非空的变量将在使用前被初始化为一个非空的值，
-又想让 Dart 的分析器同意这项行动，
-那么您可以在变量的类型前**加上 `late`**。
+在您已经明确一个非空变量一定会在使用前初始化，
+而 Dart 分析器仍然被蒙在鼓里的情况下，
+您可以在变量的类型前**加上 `late`**：
 
 ```dart
 class IntProvider {
