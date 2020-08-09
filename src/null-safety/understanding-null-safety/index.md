@@ -191,6 +191,8 @@ somewhere that would cause a crash.
 
 ## Nullability in the type system
 
+## 类型系统中的可空性
+
 Null safety begins in the static type system because everything else rests upon
 that. Your Dart program has a whole universe of types in it: primitive types
 like `int` and `String`, collection types like `List`, and all of the classes
@@ -198,7 +200,14 @@ and types you and the packages you use define. Before null safety, the static
 type system allowed the value `null` to flow into expressions of any of those
 types.
 
+因为一切均建立于静态类型系统上，所以空安全也始于此处。
+您的 Dart 程序中包含了整个类型世界：基本类型（如 `int` 和 `String`）、
+集合类型（如 `List`）以及您和您所使用的依赖所定义的类和类型。
+在空安全推出之前，静态类型系统允许所有类型的表达式中的每一处都可以有 `null`。
+
 In type theory lingo, the `Null` type was treated as a subtype of all types:
+
+从类型理论的角度来说，`Null` 类型是所有类型的子类；
 
 <img src="understanding-null-safety/hierarchy-before.png" width="335">
 
@@ -210,11 +219,24 @@ flow into an expression of some other type means any of those operations can
 fail. This is really the crux of null reference errors&mdash;every failure comes
 from trying to look up a method or property on `null` that it doesn't have.
 
+类型会定义一些操作对象&mdash;getters、setters、方法和操作符，从而在表达式中使用。
+如果是 `List` 类型，您可以对其调用 `.add()` 或 `[]`。
+如果是 `int` 类型，您可以对其调用 `+`。 
+但是 `null` 值没有定义它们中的任何一个方法。
+当 `null` 传递至其他类型的表达式时，就意味着任何操作都有可能失败。
+这就是空引用的症结所在&mdash;所有错误都来源于尝试在 `null` 上查找一个不存在的方法或属性。
+
 ### Non-nullable and nullable types
+
+### 非空和可空类型
 
 Null safety eliminates that problem at the root by changing the type hierarchy.
 The `Null` type still exists, but it's no longer a subtype of all types.
 Instead, the type hierarchy looks like this:
+
+空安全通过修改了类型的层级结构，从根源上解决了这个问题。
+`Null` 类型仍然存在，但它不再是所有类型的子类。
+现在的类型层级看起来是这样的：
 
 <img src="understanding-null-safety/hierarchy-after.png" width="344">
 
@@ -223,9 +245,18 @@ permits the value `null`. We've made all types *non-nullable by default*. If you
 have a variable of type `String`, it will always contain *a string*. There,
 we've fixed all null reference errors.
 
+既然 `Null` 已不再是子类，那么除了特殊的 `Null` 类允许 `null` 值，其他类型均不允许。
+我们已经将所有的类型**默认不可空**。
+如果您有一个 `String` 类型的变量，它将一直包含**一个字符串**。
+自此，我们修复了所有的空引用错误。
+
 If we didn't think `null` was useful at all, we could stop here. But `null` is
 useful, so we still need a way to handle it. Optional parameters are a good
 illustrative case. Consider this null safe Dart code:
+
+如果我们认为 `null` 根本不重要，那么我们也许已经停下了。
+但实际上 `null` 十分有用，所以我们仍然需要合理地处理它。
+可选参数就是非常好的例子。让我们来看下这段空安全的代码：
 
 ```dart
 makeCoffee(String coffee, [String? dairy]) {
@@ -244,14 +275,25 @@ this is essentially defining a [union][] of the underlying type and the `Null`
 type. So `String?` would be a shorthand for `String|Null` if Dart had
 full-featured union types.
 
+此处我们希望 `dairy` 参数只能传入任意字符串，或者一个 `null` 值。
+为了表达我们的想法，我们在原有类型 `String` 的尾部加上 `?` 使得 `dairy` 成为可空的类型。
+本质上，这和定义了一个原有类型加 `Null` 的[组合类型][union]相差无几。
+所以如果 Dart 包含完整的组合类型定义，那么 `String?` 就是 `String|Null` 的缩写。
+
 [union]: https://en.wikipedia.org/wiki/Union_type
 
 ### Using nullable types
+
+### 使用可空类型
 
 If you have an expression with a nullable type, what can you do with the result?
 Since our principle is safe by default, the answer is not much. We can't let you
 call methods of the underlying type on it because those might fail if the value
 is `null`:
+
+如果您的表达式中包含可空类型，您将如何处理结果？
+由于安全是我们的原则之一，答案其实所剩无几。
+因为您在其值为 `null` 的时候调用方法将会失败，所以我们不会允许您这样做。
 
 ```dart
 bad(String? maybeString) {
@@ -269,6 +311,11 @@ safely let you access are ones defined by both the underlying type and the
 nullable types as map keys, store them in sets, compare them to other values,
 and use them in string interpolation, but that's about it.
 
+如果我们让您运行它，它将毫无疑问地崩溃。
+只有同时在原有类型及 `Null` 类下同时定义的方法和属性，我们才能让您访问。
+所以只有 `toString()`、`==` 和 `hashCode` 可以访问。
+因此，您可以将可空类型用于映射键、存储于集合或者与其他值进行比较，仅此而已。
+
 How do they interact with non-nullable types? It's always safe to pass a
 *non*-nullable type to something expecting a nullable type. If a function
 accepts `String?` then passing a `String` is allowed because it won't cause any
@@ -276,12 +323,22 @@ problems. We model this by making every nullable type a supertype of its
 underlying type. You can also safely pass `null` to something expecting a nullable type, so
 `Null` is also a subtype of every nullable type:
 
+它们是如何于可空类型交互的呢？
+将一个**非**空类型的值传递给可空类型是一定安全的。
+如果一个函数接受 `String?`，那么向其传递 `String` 是允许的，不会有任何问题。
+我们通过将所有的可空类型作为基础类型的子类来让它生效。
+您也可以将 `null` 传递给一个可空的类型，即 `Null` 也是任何可空类型的子类：
+
 <img src="understanding-null-safety/nullable-hierarchy.png" width="235">
 
 But going the other direction and passing a nullable type to something expecting
 the underlying non-nullable type is unsafe. Code that expects a `String` may
 call `String` methods on the value. If you pass a `String?` to it, `null` could
 flow in and that could fail:
+
+但当你背道而驰，将一个可空类型传递给非空的基础类型时，是不安全的。
+期望 `String` 的代码可能会在对应值上调用 `String` 的方法。
+如果您传递了 `String?`，`null` 将可能被传入并产生错误：
 
 ```dart
 requireStringNotNull(String definitelyString) {
@@ -297,6 +354,10 @@ main() {
 This program is not safe and we shouldn't allow it. However, Dart has always had
 this thing called *implicit downcasts*. If you, for example, pass a value of
 type `Object` to a function expecting an `String`, the type checker allows it:
+
+我们不会允许这样不安全的程序。
+然而，Dart 一直以来都存在着**隐式转换**。
+假设您将类型为 `Object` 的值传递给了需要 `String` 的函数，类型检查器会允许：
 
 ```dart
 requireStringNotObject(String definitelyString) {
@@ -317,10 +378,23 @@ would let you pass a `String?` to something expecting a `String`. Allowing that
 would violate our goal of being safe by default. So with null safety we are
 removing implicit downcasts entirely.
 
+为了保持健全性，编译器为 `requireStringNotObject()` 的参数
+静默添加了 `as String` 强制转换。
+在运行时转换可能会抛出异常，但在编译时，Dart 认为这是可行的。
+在我们已将可空类型变为非空类型的子类的前提下，
+隐式转换让您可能给需要 `String` 的某些内容传递 `String?`。
+这项来自隐式转换的允诺与我们的安全性目标不符。
+所以在空安全推出之际，我们完全移除了隐式转换。
+
 This makes the call to `requireStringNotNull()` produce a compile error, which
 is what you want. But it also means *all* implicit downcasts become compile
 errors, including the call to `requireStringNotObject()`. You'll have to add the
 explicit downcast yourself:
+
+这会让 `requireStringNotNull()` 的调用产生您预料中的编译错误。
+同时这也意味着类似 `requireStringNotObject()` 这样的
+**所有**隐式转换调用都变成了编译错误。
+您需要自己添加显式类型转换：
 
 ```dart
 requireStringNotObject(String definitelyString) {
@@ -337,6 +411,10 @@ We think this is an overall good change. Our impression is that most users never
 liked implicit downcasts. In particular, you may have been burned by this
 before:
 
+总的来说，我们认为这是项非常好的改动。
+在我们的印象中，大部分用户非常厌恶隐式转换。
+值得注意的是，您可能已经遭受了它的摧残：
+
 ```dart
 List<int> filterEvens(List<int> ints) {
   return ints.where((n) => n.isEven);
@@ -348,8 +426,16 @@ Spot the bug? The `.where()` method is lazy, so it returns an `Iterable`, not a
 tries to cast that `Iterable` to the `List` type that `filterEvens` declares it
 returns. With the removal of implicit downcasts, this becomes a compile error.
 
+看出问题了吗？`.where()` 方法是懒加载的，所以它返回了一个 `Iterable` 而非 `List`。
+这段代码会正常编译，但会在运行时抛出一个异常，提示您在对 `Iterable` 进行
+转换为 `filterEvens` 声明的返回类型 `List` 时遇到了错误。
+在隐式转换移除后，这就变成了一个编译的错误。
+
 Where were we? Right, OK, so it's as if we've taken the universe of types in
 your program and split them into two halves:
+
+（我是谁我在哪？刚刚说到哪了？）
+所以正如我们在类型世界中将所有类型拆分成两半一样：
 
 <img src="understanding-null-safety/bifurcate.png" width="668">
 
@@ -359,10 +445,17 @@ parallel family of all of the corresponding nullable types. Those permit `null`,
 but you can't do much with them. We let values flow from the non-nullable side
 to the nullable side because doing so is safe, but not the other direction.
 
+此处有一个非空类型的区域划分。区域中的类型让您能够访问到您想要的所有方法，但不能包含 `null`。
+接着有一个对应并行的可空类型家族。它们允许出现 `null`，但您并没有太多操作空间。
+我们让值从非空的一侧走向可空的一侧，因为这是安全的，但反之则不是。
+
 That seems like nullable types are basically useless. They have no methods and
 you can't get away from them. Don't worry, we have a whole suite of features to
 help you move values from the nullable half over to the other side that we will
 get to soon.
+
+自此看来可空类型已经基本无用了。它们不包含方法且您无法摆脱他们。
+别担心，接下来我们有一整套的方法来帮助您把值从可空的一半转移到另一半。
 
 ### Top and bottom
 
