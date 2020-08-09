@@ -29,9 +29,9 @@ If you aren't sure which tools you need, **get the Flutter SDK.**
 
 {{site.alert.version-note}}
 
-  As of Flutter 1.20, the Flutter SDK includes the Dart SDK.
+  As of Flutter 1.21, the Flutter SDK includes the Dart SDK.
   
-  从 Flutter 1.20 版本开始，[Flutter SDK][flutter] 同时包含了 Dart SDK。
+  从 Flutter 1.21 版本开始，[Flutter SDK][flutter] 同时包含了 Dart SDK。
   
 {{site.alert.end}}
 
