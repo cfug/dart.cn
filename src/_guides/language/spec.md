@@ -16,45 +16,49 @@ For a gentler introduction to Dart, see the
 
 ## Dart 2
 
-A formal Dart 2 specification is available in PDF format:
+The Dart 2 language specification is available in PDF format:
 
 正式的 Dart 2 规范以 PDF 格式提供：
 
-  * [Dart Programming Language Specification (Version 2.2)](/guides/language/specifications/DartLangSpec-v2.2.pdf)
-  
-    [Dart 编程语言规范(版本 2.2)](/guides/language/specifications/DartLangSpec-v2.2.pdf)
+  * [Formal specification (Dart 2.2)][formal spec]
 
-Note: Dart 2 has changed the Dart language in many ways, some of which are not
-backward-compatible. For details, see the [Dart 2 page](/dart-2).
+    [正式的规范文档 (Dart 2.2 版本)][formal spec]
 
-注意：Dart 2 相对于先去的规范发生了很大变化，其中一些是不向后兼容的。
-有关详细内容，请参阅 [Dart 2](/dart-2) 。
+  * [Latest, in-progress specification][latest draft]
+    (produced from a [LaTeX file][])
 
-### In-progress specification
+    [最新的规范文档][latest draft]
+    (源文件是一个 [LaTeX 格式的文件][LaTeX file]
 
-### 进行中的规范
+[formal spec]: /guides/language/specifications/DartLangSpec-v2.2.pdf
+[latest draft]: https://spec.dart.dev/DartLangSpecDraft.pdf
+[LaTeX file]: https://github.com/dart-lang/language/blob/master/specification/dartLangSpec.tex
 
-The in-progress formal Dart language specification is written as a
-[LaTeX file,](https://github.com/dart-lang/language/blob/master/specification/dartLangSpec.tex)
-and is available as a [draft specification in PDF format.](https://spec.dart.dev/DartLangSpecDraft.pdf)
-
-正在进行的正式的 Dart 语言规范是使用
-[LaTeX 文件](https://github.com/dart-lang/language/blob/master/specification/dartLangSpec.tex)
-编写的，可作为 [PDF 格式的草案规范](https://spec.dart.dev/DartLangSpecDraft.pdf)
-使用。
 
 New language features are typically described using informal language feature specifications in the dart-lang/language repo:
 
 在 dart-lang/language 仓库中通常使用非正式语言功能规范来描述新的语言功能：
+  * [Accepted informal proposals][]
 
-  * [Accepted informal proposals](https://github.com/dart-lang/language/tree/master/accepted)
+    [已接受的非正式提案][Accepted informal proposals]
 
-    [接受的非正式提案](https://github.com/dart-lang/language/tree/master/accepted)
+  * [Drafts of potential features][]
 
-  * [Drafts of potential features](https://github.com/dart-lang/language/tree/master/working)
+    [潜在的功能草案][Drafts of potential features]
 
-    [潜在的功能草案](https://github.com/dart-lang/language/tree/master/working)
+[Accepted informal proposals]: https://github.com/dart-lang/language/tree/master/accepted
+[Drafts of potential features]: https://github.com/dart-lang/language/tree/master/working
 
+{{site.alert.info}}
+
+  Dart 2 changed the Dart language in many ways, some of which are not
+  backward-compatible with Dart 1.x.
+  For details, see the [Dart 2 page](/dart-2).
+  
+  Dart 2 修改了很多内容，其中有一些与 Dart 1.x 版本不兼容。
+  详细信息请参考 [Dart 2 页面](/dart-2)。
+
+{{site.alert.end}}
 
 ## Dart 1.x
 

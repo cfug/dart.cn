@@ -17,13 +17,13 @@ Dart SDK 包含开发 Web、命令行和服务端应用所需要的库和命令�
 如果你只是想开发移动应用，则不需要使用 Dart SDK，
 只需 [安装 Flutter][flutter] 即可。
 
-**As of Flutter 1.20, the [Flutter SDK][flutter] includes the Dart SDK.**
+**As of Flutter 1.21, the [Flutter SDK][flutter] includes the Dart SDK.**
 So if you have Flutter installed,
 you might not need to explicitly download the Dart SDK.
 Consider downloading the Dart SDK if
 any of the following are true:
 
-**从 Flutter 1.20 版本开始，[Flutter SDK][flutter] 会同时包含 Dart SDK**
+**从 Flutter 1.21 版本开始，[Flutter SDK][flutter] 会同时包含 Dart SDK**
 因此如果你已经安装了 Flutter，可能就无需再特别下载 Dart SDK 了。
 如果你有下述的需求，请考虑下载 Dart SDK：
 
@@ -31,9 +31,9 @@ any of the following are true:
 
   不需要使用 Flutter；
   
-* You use a pre-1.20 version of Flutter.
+* You use a pre-1.21 version of Flutter.
 
-  使用 Flutter 1.20 之前的版本；
+  使用 Flutter 1.21 之前的版本；
   
 * You want to reduce disk space requirements or download time,
   and your use case doesn't require Flutter.

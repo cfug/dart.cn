@@ -1,6 +1,8 @@
 ---
 title: Sound null safety
+title: 健全的空安全
 description: Information about Dart's upcoming null safety feature
+description: Dart 即将到来的空安全的有关内容
 ---
 
 Sound null safety is coming to the Dart language!
@@ -10,10 +12,31 @@ values can’t be null _unless you say they can be._
 With null safety, your **runtime** null-dereference errors
 turn into **edit-time** analysis errors.
 
-Dart 语言将要引入空安全声明了！
+Dart 语言将要引入健全的空安全机制了！
 当您选择使用空安全时，代码中的类型将默认是非空的，
 意味着**除非您声明它们可空**，它们的值都不能为空。
-有了空安全，原本处于您的**运行时**的空值引用错误将变为**编译时**的分析错误。
+有了空安全，原本处于您的**运行时**的空值引用错误
+将变为**编译时**的分析错误。
+
+{{site.alert.note}}
+
+  This page provides an overview to how null safety
+  affects the Dart language. For a deep dive into how
+  null safety works, see [Understanding null safety][].
+  
+  本页概述了空安全是如何 Dart 语言的。
+  如果希望深入了解空安全性的工作原理，
+  请参阅文档 [了解空安全][Understanding null safety]。
+  
+{{site.alert.end}}
+
+{% comment %}
+  If it were my druthers, I'd move this page to a sub-page
+  called overview and make this page more of a landing page,
+  now that Bob's null-safety deep dive is available
+  (and the migration guide is coming).
+  But I'll leave that decision up to KW.
+{% endcomment %}
 
 With null safety,
 the Dart analyzer enforces good practices.
@@ -63,7 +86,7 @@ Or try null safety in your normal development environment,
 using the instructions and configuration files in the
 [null safety sample.][calculate_lix]
 
-您可以通过下方截图中的[支持空声明的 DartPad][nullsafety.dartpad.dev]
+您可以通过下方截图中的[支持空安全的 DartPad][nullsafety.dartpad.dev]
 进行练习。
 或者按照[空安全示例][calculate_lix]中的指示和配置，在您的开发环境下
 尝试空安全。
@@ -114,9 +137,9 @@ initialized to a non-null value before it's used,
 but the Dart analyzer doesn't agree,
 **insert `late`** before the variable's type:
 
-如果您知道一个非空的变量将在使用前被初始化为一个非空的值，
-又想让 Dart 的分析器同意这项行动，
-那么您可以在变量的类型前**加上 `late`**。
+在您已经明确一个非空变量一定会在使用前初始化，
+而 Dart 分析器仍然被蒙在鼓里的情况下，
+您可以在变量的类型前**加上 `late`**：
 
 ```dart
 class IntProvider {
@@ -387,7 +410,7 @@ Like lists and sets, maps can have a variety of types:
 就像列表和集合一样，映射也会有一些不同的类型：
 
 |----------------------+-------------------------------+-------------------------|
-|<t>Type</t><t>类型</t> | <t>Can the map<br>be null?</t><t>映射能<br>为空吗？</t> | <t>Can an item (int)<br>be null?</t><t>元素 (int)<br>能为空吗？</t> | <t>Description</t><t>描述</t>|
+|<t>Type</t><t>类型</t> | <t>Can the map<br>be null?</t><t>映射能<br>为空吗？</t> | <t>Can an item (int)<br>be null?</t><t>元素 (int)<br>能为空吗？</t> |
 |----------------------|-------------------------------|-------------------------|
 | `Map<String, int>`   | No                            | No*                     |
 | `Map<String, int>?`  | {{yes}}                       | No*                     |
@@ -458,7 +481,7 @@ int value = aList['one'] ?? 0;
 
 For more information about null safety, see the following resources:
 
-更多关于空安全的信息，请前往以下内容：
+更多关于空安全的信息，请前往以下内容继续阅读：
 
 * [Dart announcements group][Dart announce]
 
@@ -490,3 +513,4 @@ For more information about null safety, see the following resources:
 [give us feedback.]: https://github.com/dart-lang/sdk/issues/new?title=Null%20safety%20feedback:%20[issue%20summary]&labels=NNBD&body=Describe%20the%20issue%20or%20potential%20improvement%20in%20detail%20here
 [nullsafety.dartpad.dev]: https://nullsafety.dartpad.dev
 [other operators]: /guides/language/language-tour#other-operators
+[Understanding null safety]: /null-safety/understanding-null-safety
