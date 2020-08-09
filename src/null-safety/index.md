@@ -15,7 +15,28 @@ turn into **edit-time** analysis errors.
 Dart 语言将要引入健全的空安全机制了！
 当您选择使用空安全时，代码中的类型将默认是非空的，
 意味着**除非您声明它们可空**，它们的值都不能为空。
-有了空安全，原本处于您的**运行时**的空值引用错误将变为**编译时**的分析错误。
+有了空安全，原本处于您的**运行时**的空值引用错误
+将变为**编译时**的分析错误。
+
+{{site.alert.note}}
+
+  This page provides an overview to how null safety
+  affects the Dart language. For a deep dive into how
+  null safety works, see [Understanding null safety][].
+  
+  本页概述了空安全是如何 Dart 语言的。
+  如果希望深入了解空安全性的工作原理，
+  请参阅文档 [了解空安全][Understanding null safety]。
+  
+{{site.alert.end}}
+
+{% comment %}
+  If it were my druthers, I'd move this page to a sub-page
+  called overview and make this page more of a landing page,
+  now that Bob's null-safety deep dive is available
+  (and the migration guide is coming).
+  But I'll leave that decision up to KW.
+{% endcomment %}
 
 With null safety,
 the Dart analyzer enforces good practices.
@@ -492,3 +513,4 @@ For more information about null safety, see the following resources:
 [give us feedback.]: https://github.com/dart-lang/sdk/issues/new?title=Null%20safety%20feedback:%20[issue%20summary]&labels=NNBD&body=Describe%20the%20issue%20or%20potential%20improvement%20in%20detail%20here
 [nullsafety.dartpad.dev]: https://nullsafety.dartpad.dev
 [other operators]: /guides/language/language-tour#other-operators
+[Understanding null safety]: /null-safety/understanding-null-safety
