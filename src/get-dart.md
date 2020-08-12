@@ -13,9 +13,9 @@ The Dart SDK has the libraries and command-line tools that you need to develop
 Dart command-line, server, and non-Flutter web apps.
 For details, see the [Dart SDK overview](/tools/sdk).
 
+本页面指引你如何下载 Dart SDK。
 Dart SDK 包含开发 Web、命令行和服务端应用所需要的库和命令行工具。
-如果你只是想开发移动应用，则不需要使用 Dart SDK，
-只需 [安装 Flutter][flutter] 即可。
+更多详细内容，请参考 [Dart SDK 概览](/tools/sdk) 文档。
 
 **As of Flutter 1.21, the [Flutter SDK][flutter] includes the Dart SDK.**
 So if you have Flutter installed,
