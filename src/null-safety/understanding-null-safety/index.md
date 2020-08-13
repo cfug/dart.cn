@@ -461,10 +461,12 @@ you can't get away from them. Don't worry, we have a whole suite of features to
 help you move values from the nullable half over to the other side that we will
 get to soon.
 
-自此看来可空类型已经基本无用了。它们不包含方法且您无法摆脱他们。
+自此看来可空类型已经基本无用了。它们不包含方法且您无法摆脱。
 别担心，接下来我们有一整套的方法来帮助您把值从可空的一半转移到另一半。
 
 ### Top and bottom
+
+### 顶层及底层
 
 This section is a little esoteric. You can mostly skip it, except for two
 bullets at the very end, unless you're into type system stuff. Imagine all the
@@ -473,11 +475,21 @@ of each other. If you were to draw it, like the diagrams in this doc, it would
 form a huge directed graph with supertypes like `Object` near the top and leaf
 classes like your own types near the bottom.
 
+这一节会略微深奥。
+您可以直接跳过它，除非您对类型系统非常感兴趣，在最后有两项有趣的内容。
+想象一下，在您的程序里，所有的类型都互为子类或超类。
+如果将它们的关系用画图表示出来，就像文中的那些图一样，那将会是一幅巨大的有向图，
+诸如 `Object` 的超类会在顶层，子类在底层。
+
 If that directed graph comes to a point at the top where there is a single type
 that is the supertype (directly or indirectly), that type is called the *top
 type*. Likewise, if there is a weird type at that bottom that is a subtype of
 every type, you have a *bottom type*. (In this case, your directed graph is a
 [lattice][].)
+
+如果这张有向图的顶部有是一个单一的超类（直接或间接），这个类型称为**顶层类型**。
+类似的，如果有一个在底部有一个奇怪的类型，是所有类型的子类，这个类型称为**底层类型**。
+（在这个情况下，您的有向图是一种[偏序集合 (lattice)][lattice]）
 
 [lattice]: https://en.wikipedia.org/wiki/Lattice_(order)
 
@@ -487,29 +499,55 @@ figure out the type of a conditional expression based on the types of its two
 branches) can always produce a type. Before null safety, `Object` was Dart's top
 type and `Null` was its bottom type.
 
+如果类型系统中有顶层和底层类型，将带来一定程度的便利，
+因为它意味着像最小上界这样类型层面的操作
+（类型推理常根据一个条件表达式的两个分支推导出一个类型）
+一定能推导出一个类型。
+在空安全引入以前，Dart 中的顶层类型是 `Object`，底层类型是 `Null`。
+
 Since `Object` is non-nullable now, it is no longer a top type. `Null` is not a
 subtype of it. Dart has no *named* top type. If you need a top type, you want
 `Object?`. Likewise, `Null` is no longer the bottom type. If it was, everything
 would still be nullable. Instead, we've added a new bottom type named `Never`:
 
+由于现在 `Object` 不再可空，它不再是一个顶层类型了。`Null` 也不再是它的子类。
+Dart 中没有**命名的**顶层类型。如果您需要一个顶层类型，可以用 `Object?`。
+同样的，`Null` 也不再是底层类型，否则所有类型都仍将是可空。
+实际上，我们添加了一个新的底层类型 `Never`：
+
 <img src="understanding-null-safety/top-and-bottom.png" width="360">
 
 In practice, this means:
+
+依据实际开发中的经验，这意味着：
 
 *   If you want to indicate that you allow a value of any type, use `Object?`
     instead of `Object`. In fact, it becomes pretty unusual to use `Object`
     since that type means "could be any possible value except this one weirdly
     prohibited value `null`".
 
+    如果您想表明让一个值可以接受任意类型，请用 `Object?` 而不是 `Object`。
+    事实上，使用 `Object` 会变得不同寻常，
+    因为它意味着“除了诡异的 `null` 值以外的任何可能的值”。
+
 *   On the rare occasion that you need a bottom type, use `Never` instead of
     `Null`. If you don't know if you need a bottom type, you probably don't.
 
+    在极少数需要底层类型的情况下，请使用 `Never` 代替 `Null`。
+    如果您不了解是否需要一个底层类型，那么您基本上不会需要它。
+
 ## Ensuring correctness
+
+## 确保正确性
 
 We divided the universe of types into nullable and non-nullable halves. In order
 to maintain soundness and our principle that you can never get a null reference
 error at runtime unless you ask for it, we need to guarantee that `null` never
 appears in any type on the non-nullable side.
+
+我们将类型世界砍成了非空和可空的两半。
+为了保持代码的健全和我们的原则：“除非您需要，否则您永远不会在运行时遇到空引用错误”，
+我们需要保证 `null` 不会出现在非空侧的任何类型里。
 
 Getting rid of implicit downcasts and removing `Null` as a bottom type covers
 all of the main places that types flow through a program across assigments and
@@ -517,11 +555,21 @@ from arguments into parameters on function calls. The main remaining places
 where `null` can sneak in are when a variable first comes into being and when
 you leave a function. So there are some additional compile errors:
 
+通过取代了隐式转换、不再将 `Null` 作为底层类型，
+我们覆盖了程序中声明、函数参数和函数调用等所有的主要位置。
+剩下的 `null` 可以悄悄潜入的地方，只有当变量首次出现和您跳出函数的时候。
+所以我们还会看到一些编译错误：
+
 ### Invalid returns
+
+### 无效的返回值
 
 If a function has a non-nullable return type, then every path through the
 function must reach a `return` statement that returns a value. Before null
 safety, Dart was pretty lax about missing returns. For example:
+
+如果一个函数的返回类型非空，那么函数内最终一定要调用 `return` 返回一个值。
+在空安全引入以前，Dart 在限制未返回内容的函数时非常松懈。举个例子：
 
 ```dart
 // Without null safety:
@@ -536,12 +584,23 @@ function body then Dart implicitly returns `null`. Since every type is nullable,
 *technically* this function is safe, even though it's probably not what you
 want.
 
+如果分析器跑过了这个函数，您会看到一个轻微的**提示**提醒您**可能**忘记返回值，
+但不返回也无关紧要。
+这是因为代码执行到最后时，Dart 会隐式返回一个 `null`。
+因为所有的类型都是可空的，所以**理论上**这个函数是安全的，尽管它也许并不与您预期相符。
+
 With sound non-nullable types, this program is flat out wrong and unsafe. Under
 null safety, you get a compile error if a function with a non-nullable return
 type doesn't reliably return a value. By "reliably", I mean that the language
 analyzes all of the control flow paths through the function. As long as they all
 return something, it is satisfied. The analysis is pretty smart, so even this
 function is OK:
+
+有了确定的非空类型，这段程序是错误且不安全的。
+在空安全下，一个返回值为非空类型的函数，如果没有可靠地返回一个值，您会得到一个编译错误。
+这里所提到的“可靠”，指的是分析器会分析函数中所有的控制代码流。
+只要它们都返回了内容，就满足了条件。
+分析器相当聪明，聪明到下面的代码也能应付：
 
 ```dart
 // Using null safety:
@@ -562,12 +621,20 @@ String alwaysReturns(int n) {
 
 We'll dive more deeply into the new flow analysis in the next section.
 
+下个章节我们会更加深入的解释新的代码流分析。
+
 ### Uninitialized variables
+
+### 未初始化的变量
 
 When you declare a variable, if you don't give it an explicit initializer, Dart
 default initializes the variable with `null`. That's convenient, but obviously
 totally unsafe if the variable's type is non-nullable. So we have to tighten
 things up for non-nullable variables:
+
+当您在声明变量时，如果没有传递一个显式的初始化内容，Dart 默认会将变量初始化为 `null`。
+这的确非常方便，但在变量可空的情况下明显非常不安全。
+所以，我们需要加强对非空变量的处理：
 
 *   **Top level variable and static field declarations must have an
     initializer.** Since these can be accessed and assigned from anywhere in the
@@ -575,6 +642,10 @@ things up for non-nullable variables:
     been given a value before it gets used. The only safe option is to require
     the declaration itself to have an initializing expression that produces a
     value of the right type:
+
+    **顶层变量和静态字段必须包含一个初始化方法。**
+    由于它们能在程序里的任何位置被访问到，编译器无法保证它们在被使用前已被赋值。
+    唯一保险的选项是要求其本身包含初始化表达式，以此产生匹配的类型的值。
 
     ```dart
     // Using null safety:
@@ -588,6 +659,10 @@ things up for non-nullable variables:
 *   **Instance fields must either have an initializer at the declaration, use an
     initializing formal, or be initialized in the constructor's initialization
     list.** That's a lot of jargon. Here are the examples:
+
+    **实例的字段也必须在声明时包含初始化方法，
+    可以是初始化形式的代码，也可以是在实例的构造方法中进行初始化。**
+    这样的初始化非常常见。举个例子：
 
     ```dart
     // Using null safety:
@@ -604,8 +679,13 @@ things up for non-nullable variables:
     In other words, as long as the field has a value before you reach the
     constructor body, you're good.
 
+    换句话说，字段在构造体前被赋值即可。
+
 *   Local variables are the most flexible case. A non-nullable local variable
     *doesn't* need to have an initializer. This is perfectly fine:
+
+    内部变量的灵活度最高。一个非空的变量**不一定需要**一个初始化方法。
+    这里有个很好的例子：
 
     ```dart
     // Using null safety:
