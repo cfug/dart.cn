@@ -271,7 +271,6 @@ class HoneyBadger extends Animal {
 {% endprettify %}
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/animal_bad.dart (HoneyBadger)" replace="/(\w+)(?= get)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class HoneyBadger extends Animal {
   void chase(Animal a) { ... }
@@ -332,7 +331,6 @@ from Animal to Mouse, a subclass of Animal.
 Mouse 是 Animal 的子类，下面的代码将 `chase()` 方法中参数的范围从 Animal 缩小到 Mouse 。
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/animal_bad.dart (chase-Mouse)" replace="/(\w+)(?= x)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class Mouse extends Animal {...}
 
@@ -374,7 +372,6 @@ a list of type Cat, which generates an error during static analysis.
 表达式在静态分析期间会产生错误。
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/animal_bad.dart (dynamic-list)" replace="/.dynamic.(?!.*OK)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class Cat extends Animal { ... }
 

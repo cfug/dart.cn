@@ -4789,7 +4789,6 @@ the list is probably a mistake. Here’s an example:
 同时编译器以及其他阅读代码的人都可以很容易地发现并定位问题：
 
 {:.fails-sa}
-<?code-excerpt "misc/lib/language_tour/generics/misc.dart (why-generics)"?>
 ```dart
 var names = List<String>();
 names.addAll(['Seth', 'Kathy', 'Lars']);
@@ -4984,7 +4983,6 @@ Specifying any non-`SomeBaseClass` type results in an error:
 将非 `SomeBaseClass` 的类型作为泛型参数则会导致编译错误：
 
 {:.fails-sa}
-<?code-excerpt "misc/lib/language_tour/generics/misc.dart (Foo-Object-error)" replace="/Foo.\w+./[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 var foo = [!Foo<Object>!]();
 {% endprettify %}
