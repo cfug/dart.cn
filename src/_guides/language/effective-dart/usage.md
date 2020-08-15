@@ -1409,8 +1409,11 @@ forget to initialize it if the class has multiple constructors.
 则应该在定义的时候就初始化字段值。
 这样可以减少需要的代码并可以确保在有多个构造函数的时候你不会忘记初始化该字段。
 
+<!-- Q: As of 2.9, this code no longer works.
+  Should we change it or the recommendation? -->
+  
 {:.bad}
-<?code-excerpt "misc/lib/effective_dart/usage_bad.dart (field-init-at-decl)"?>
+<!-- code-excerpt "misc/lib/effective_dart/usage_bad.dart (field-init-at-decl)" -->
 {% prettify dart tag=pre+code %}
 class Folder {
   final String name;
