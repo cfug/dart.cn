@@ -1027,14 +1027,27 @@ checks to ensure the value is not `null`, Dart promotes it from `List<String>?`
 to `List<String>` and lets you call methods on it or pass it to functions that
 expect non-nullable lists.
 
+此处，`arguments` 是可空的类型。
+通常来说，这样会禁止您对其调用 `.join()`。
+但是由于我们已经保证 `if` 语句中的判断足以确认值不为 `null`，Dart 将它类型
+从 `List<String>?` 提升到了 `List<String>`，
+让您能够调用它的方法，或将它传递给一个需要非空列表的函数。
+
 This sounds like a fairly minor thing, but this flow-based promotion on null
 checks is what makes most existing Dart code work under null safety. Most Dart
 code *is* dynamically correct and does avoid throwing null reference errors by
 checking for `null` before calling methods. The new flow analysis on null checks
 turns that *dynamic* correctness into provable *static* correctness.
 
+听起来这是件小事，但这种基于流程的空检查提升，是大部分 Dart 代码能运行在空安全下的保障。
+大部分的 Dart 代码**是**动态正确的，并且在调用前通过判断 `null` 来避免抛出空调用错误。
+新的空安全流分析将**动态**正确变成了有保障的**静态**正确。
+
 It also, of course, works with the smarter analysis we do for reachability. The
 above function can be written just as well as:
+
+当然，它也和我们更智能的分析一起进行检查工作。
+上面的函数也可以像下面这样编写：
 
 ```dart
 // Using null safety:
@@ -1052,12 +1065,25 @@ promotion. The general goal is that if the code is dynamically correct and it's
 reasonable to figure that out statically, the analysis should be clever enough
 to do so.
 
+Dart 语言也对什么表达式需要提升变量判断地更智能了。
+除了显式的 `== null` 和 `!= null` 以外，显式使用 `as` 或赋值，以及我们马上就要提到的
+后置操作符 `!` 也会进行类型提升。
+总体来说的目标是：如果代码是动态正确的，而静态分析时又是合理的，
+那么分析结果也足够聪明，会对齐进行类型提升。
+
 ### Unnecessary code warnings
+
+### 不需要的代码警告
 
 Having smarter reachability analysis and knowing where `null` can flow through
 your program helps ensure that you *add* code to handle `null`. But we can also
 use that same analysis to detect code that you *don't* need. Before null safety,
 if you wrote something like:
+
+在您的程序中，一个智能的可达性分析，加上准确知晓 `null` 的去向，
+能让您确保已经**新增**了处理 `null` 的代码。
+不过我们也可以用同样的分析来检测您是否有**不用**的代码。
+在空安全以前，如果您编写了如下的代码：
 
 ```dart
 // Using null safety:
@@ -1071,18 +1097,29 @@ String checkList(List list) {
 
 Dart had no way of knowing if that null-aware `?.` operator is useful or not.
 For all it knows, you could pass `null` to the function. But in null safe Dart,
-if you have annotated that function with the now non-nullable `List` type, then
+if you have annotated that function with the new non-nullable `List` type, then
 it knows `list` will never be `null`. That implies the `?.` will never do
 anything useful and you can and should just use `.`.
+
+Dart 无法得知空判断操作符 `?.` 是否有用。它只知道您可以将 `null` 传递进方法内。
+但是在有空安全的 Dart 里，如果您将函数声明为新的非空 `List` 类型，
+它就知道 `list` 永远不会为空。
+实际上暗示了 `?.` 是不必要的，您应该直接使用 `.`。
 
 To help you simplify your code, we've added warnings for unnecessary code like
 this now that the static analysis is precise enough to detect it. Using a
 null-aware operator or even a check like `== null` or `!= null` on a
 non-nullable type gets reported as a warning.
 
+为了帮助您简化代码，我们为一些不必要的代码增加了一些警告，静态分析可以精确地检测到它。
+在一个非空类型上使用空判断操作符，或者用 `== null` 或 `!= null` 判断，都会出现一个警告。
+
 And, of course, this plays with non-nullable type promotion too. Once a
 variable has been promoted to a non-nullable type, you get a warning if you
 redundantly check it again for `null`:
+
+同时，这也会出现在非空类型提升的情况中。
+当一个变量已经被提升至非空类型，你会在不必要的 `null` 检查时看到一个警告：
 
 ```dart
 // Using null safety:
@@ -1100,6 +1137,11 @@ already know `list` cannot be `null`. The goal with these warnings is not just
 to clean up pointless code. By removing *unneeded* checks for `null`, we ensure
 that the remaining meaningful checks stand out. We want you to be able to look
 at your code and *see* where `null` can flow.
+
+此处由于代码执行后 `list` 已知不能为 `null`，所以您会在 `?.` 调用处看到一个警告。
+这些警告的目标不仅仅是减少无意义的代码。
+通过移除**不必要**的 `null` 判断，我们得以确保剩下的有意义的判断能够脱颖而出。
+我们期望您能**看到**您的代码中 `null` 会向何处传递。
 
 ## Working with nullable types
 
