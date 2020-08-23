@@ -3977,17 +3977,25 @@ For details, see the section on
 
 Use the `factory` keyword when implementing a constructor that doesn’t
 always create a new instance of its class. For example, a factory
-constructor might return an instance from a cache, or it might return an
-instance of a subtype.
+constructor might return an instance from a cache, or it might
+return an instance of a subtype.
+Another use case for factory constructors is
+initializing a final variable using
+logic that can't be handled in the initializer list. 
 
 使用 `factory` 关键字标识类的构造函数将会令该构造函数变为工厂构造函数，
 这将意味着使用该构造函数构造类的实例时并非总是会返回新的实例对象。
 例如，工厂构造函数可能会从缓存中返回一个实例，或者返回一个子类型的实例。
 
-The following example demonstrates a factory constructor returning
-objects from a cache:
+In the following example,
+the `Logger` factory constructor returns objects from a cache,
+and the `Logger.fromJson` factory constructor
+initializes a final variable from a JSON object.
 
-以下示例演示了从缓存中返回对象的工厂构造函数：
+在如下的示例中，
+`Logger` 的工厂构造函数从缓存中返回对象，
+和 `Logger.fromJson` 工厂构造函数从 JSON 对象中
+初始化一个最终变量。
 
 <?code-excerpt "misc/lib/language_tour/classes/logger.dart"?>
 ```dart
@@ -4002,6 +4010,10 @@ class Logger {
   factory Logger(String name) {
     return _cache.putIfAbsent(
         name, () => Logger._internal(name));
+  }
+
+  factory Logger.fromJson(Map<String, Object> json) {
+    return Logger(json['name'].toString());
   }
 
   Logger._internal(this.name);
@@ -4028,6 +4040,9 @@ Invoke a factory constructor just like you would any other constructor:
 ```dart
 var logger = Logger('UI');
 logger.log('Button clicked');
+
+var logMap = {'name': 'UI'};
+var loggerJson = Logger.fromJson(logMap);
 ```
 
 
@@ -4385,6 +4400,8 @@ For more information on overriding, in general, see
 
 #### noSuchMethod()
 
+#### noSuchMethod 方法
+
 To detect or react whenever code attempts to use a non-existent method or
 instance variable, you can override `noSuchMethod()`:
 
@@ -4424,7 +4441,9 @@ that's different from the one in class `Object`.
 For more information, see the informal
 [noSuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
 
-你可以查阅 [noSuchMethod 转发规范](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)获取更多相关信息。
+你可以查阅
+[noSuchMethod 转发规范](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
+获取更多相关信息。
 
 
 ### Extension methods
@@ -5147,7 +5166,8 @@ allows a web app to load a library on demand,
 if and when the library is needed.
 Here are some cases when you might use deferred loading:
 
-_延迟加载_（也常称为 _懒加载_）允许应用在需要时再去加载代码库，下面是可能使用到延迟加载的场景：
+_延迟加载_（也常称为 _懒加载_）允许应用在需要时再去加载代码库，
+下面是可能使用到延迟加载的场景：
 
 * To reduce a web app's initial startup time.
 
@@ -5852,7 +5872,11 @@ constructor, factory, function, field, parameter, or variable
 declaration and before an import or export directive. You can
 retrieve metadata at runtime using reflection.
 
-元数据可以在 library、class、typedef、type parameter、constructor、factory、function、field、parameter 或者 variable 声明之前使用，也可以在 import 或 export 之前使用。可使用反射在运行时获取元数据信息。
+元数据可以在 library、class、typedef、type parameter、
+constructor、factory、function、field、parameter
+或者 variable 声明之前使用，
+也可以在 import 或 export 之前使用。
+可使用反射在运行时获取元数据信息。
 
 
 ## Comments
@@ -5891,7 +5915,9 @@ between `/*` and `*/` is ignored by the Dart compiler (unless the
 comment is a documentation comment; see the next section). Multi-line
 comments can nest.
 
-多行注释以  `/*`  开始， 以 `*/` 结尾。所有在 `/*` 和 `*/` 之间的内容被编译器忽略（不会忽略文档注释）。多行注释可以嵌套。
+多行注释以  `/*`  开始， 以 `*/` 结尾。所有在 `/*` 和 `*/`
+之间的内容被编译器忽略（不会忽略文档注释），
+多行注释可以嵌套。
 
 <?code-excerpt "misc/lib/language_tour/comments.dart (multi-line-comments)"?>
 ```dart
@@ -5916,7 +5942,9 @@ Documentation comments are multi-line or single-line comments that begin
 with `///` or `/**`. Using `///` on consecutive lines has the same
 effect as a multi-line doc comment.
 
-文档注释可以是多行注释，也可以是单行注释，文档注释以 `///` 或者 `/**` 开始。在连续行上使用 `///` 与多行文档注释具有相同的效果。
+文档注释可以是多行注释，也可以是单行注释，
+文档注释以 `///` 或者 `/**` 开始。
+在连续行上使用 `///` 与多行文档注释具有相同的效果。
 
 Inside a documentation comment, the Dart compiler ignores all text
 unless it is enclosed in brackets. Using brackets, you can refer to
@@ -5924,7 +5952,9 @@ classes, methods, fields, top-level variables, functions, and
 parameters. The names in brackets are resolved in the lexical scope of
 the documented program element.
 
-在文档注释中，除非用中括号括起来，否则 Dart 编译器会忽略所有文本。使用中括号可以引用类、 方法、 字段、 顶级变量、 函数、 和参数。括号中的符号会在已记录的程序元素的词法域中进行解析。
+在文档注释中，除非用中括号括起来，否则 Dart 编译器会忽略所有文本。
+使用中括号可以引用类、方法、字段、顶级变量、函数和参数。
+括号中的符号会在已记录的程序元素的词法域中进行解析。
 
 Here is an example of documentation comments with references to other
 classes and arguments:
@@ -5967,8 +5997,13 @@ documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}) For advice
 your comments, see
 [Guidelines for Dart Doc Comments.](/guides/language/effective-dart/documentation)
 
-解析 Dart 代码并生成 HTML 文档，可以使用 SDK 中的[文档生成工具。](https://github.com/dart-lang/dartdoc#dartdoc)关于生成文档的实例，请参考 [Dart API
-documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})关于文档结构的建议，请参考[Guidelines for Dart Doc Comments.](/guides/language/effective-dart/documentation)
+解析 Dart 代码并生成 HTML 文档，可以使用 SDK 中的 
+[文档生成工具](https://github.com/dart-lang/dartdoc#dartdoc) 关于生成文档的实例，
+请参考
+[Dart API documentation]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}) 
+查看关于文档结构的建议，
+请参考文档：
+[Guidelines for Dart Doc Comments.](/guides/language/effective-dart/documentation)。
 
 
 ## Summary
@@ -5980,12 +6015,16 @@ More features are being implemented, but we expect that they won’t break
 existing code. For more information, see the [Dart language specification][] and
 [Effective Dart](/guides/language/effective-dart).
 
-本页概述了 Dart 语言中常用的功能。还有更多特性有待实现，但我们希望它们不会破坏现有代码。有关更多信息，请参考 [Dart 语言规范][]和[高效 Dart 语言指南](/guides/language/effective-dart)。
+本页概述了 Dart 语言中常用的功能。还有更多特性有待实现，
+但我们希望它们不会破坏现有代码。有关更多信息，
+请参考 [Dart 语言规范][Dart language specification] 和
+[高效 Dart 语言指南](/guides/language/effective-dart)。
 
 To learn more about Dart's core libraries, see
 [A Tour of the Dart Libraries](/guides/libraries/library-tour).
 
-要了解更多关于 Dart 核心库的内容，请参考 [Dart 核心库概览](/guides/libraries/library-tour)。
+要了解更多关于 Dart 核心库的内容，
+请参考 [Dart 核心库概览](/guides/libraries/library-tour)。
 
 [AssertionError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html
 [`Characters`]: {{site.pub-api}}/characters/latest/characters/Characters-class.html

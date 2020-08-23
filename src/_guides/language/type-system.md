@@ -328,7 +328,8 @@ class HoneyBadger extends Animal {
 The following code tightens the parameter on the `chase()` method
 from Animal to Mouse, a subclass of Animal.
 
-Mouse 是 Animal 的子类，下面的代码将 `chase()` 方法中参数的范围从 Animal 缩小到 Mouse 。
+Mouse 是 Animal 的子类，下面的代码将 `chase()`
+方法中参数的范围从 Animal 缩小到 Mouse 。
 
 {:.fails-sa}
 {% prettify dart tag=pre+code %}
@@ -342,9 +343,9 @@ class Cat extends Animal {
 This code is not type safe because it would then be possible to define
 a cat and send it after an alligator:
 
-下面的代码不是类型安全的，因为 a 可以是一个 cat 对象，却可以给它传入一个 alligator 对象。
+下面的代码不是类型安全的，因为 a 可以是一个 cat 对象，
+却可以给它传入一个 alligator 对象。
 
-<?code-excerpt "strong/lib/animal_bad.dart (chase-Alligator)" replace="/Alligator/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 Animal a = Cat();
 a.chase([!Alligator!]()); // Not type safe or feline safe
@@ -564,7 +565,8 @@ with a declared type) with something that has another type
 has one type with something that has a subtype or a supertype?
 
 当重写方法时，可以使用一个新类型（在新方法中）替换旧类型（在旧方法中）。
-类似地，当参数传递给函数时，可以使用另一种类型（实际参数）的对象替换现有类型（具有声明类型的参数）要求的对象。
+类似地，当参数传递给函数时，可以使用另一种类型（实际参数）
+的对象替换现有类型（具有声明类型的参数）要求的对象。
 什么时候可以用具有子类型或父类型的对象替换具有一种类型的对象那？
 
 When substituting types, it helps to think in terms of _consumers_
