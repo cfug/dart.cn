@@ -162,7 +162,8 @@ These commands create a small Dart app that has the following:
   information about which [packages](/guides/packages) the app depends on
   and which versions of those packages are required.
 
-  一个 pubspec 文件，`pubspec.yaml`，包含应用的元数据，包括应用依赖的 [包](/guides/packages) 信息以及所需的版本等。
+  一个 pubspec 文件，`pubspec.yaml`，包含应用的元数据，包括应用依赖的
+  [package](/guides/packages) 信息以及所需的版本等。
 
 ## 5. Get the app's dependencies
 

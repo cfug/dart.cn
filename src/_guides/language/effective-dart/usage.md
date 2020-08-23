@@ -1411,7 +1411,6 @@ forget to initialize it if the class has multiple constructors.
 
 <!-- Q: As of 2.9, this code no longer works.
   Should we change it or the recommendation? -->
-  
 {:.bad}
 <!-- code-excerpt "misc/lib/effective_dart/usage_bad.dart (field-init-at-decl)" -->
 {% prettify dart tag=pre+code %}

@@ -12,21 +12,29 @@ with support for many other languages and frameworks.
 Android Studio is an IDE based on IntelliJ IDEA
 that's used for Android and Flutter development.
 
-Dart 插件为类似 IntelliJ IDEA 和 Android Studio 这样 JetBrains 的 IDE 提供了 Dart 支持。IntelliJ IDEA 是一款优秀的 Java IDE，除此之外它还支持许多其它的语言和框架。Android Studio 是一款基于 IntelliJ IDEA 的 IDE，其常用作开发 Android 和 Flutter。
+Dart 插件为类似 IntelliJ IDEA 和 Android Studio
+这样 JetBrains 的 IDE 提供了 Dart 支持。
+IntelliJ IDEA 是一款优秀的 Java IDE，
+除此之外它还支持许多其它的语言和框架。
+Android Studio 是一款基于 IntelliJ IDEA 的 IDE，
+其常用作开发 Android 和 Flutter。
 
 Whichever JetBrains IDE you choose for Dart development,
 this page has resources to help you get started quickly
 and find more information when you need it.
 
-不管你选择哪一款 JetBrains 的 IDE 用于 Dart 开发，本文所包含的资源都可以帮助你快速入门并在你需要时给你提供更多的信息。
+不管你选择哪一款 JetBrains 的 IDE 用于 Dart 开发，
+本文所包含的资源都可以帮助你快速入门并在你需要时给你提供更多的信息。
 
 <aside class="alert alert-info" markdown="1">
+
   **Note:**
   [WebStorm,](https://www.jetbrains.com/webstorm/)
   a JetBrains IDE for client-side development,
   comes with the Dart plugin pre-installed.
 
-  **注意：** JetBrains 专门针对客户端开发的另一款 IDE [WebStorm](https://www.jetbrains.com/webstorm/) 则已经预装了 Dart 插件。
+  **注意：** JetBrains 专门针对客户端开发的另一款 IDE
+  [WebStorm](https://www.jetbrains.com/webstorm/) 则已经预装了 Dart 插件。
 </aside>
 
 ## Getting started
@@ -51,7 +59,9 @@ Install a JetBrains IDE if you don't already have one.
   to try out the latest Dart language features,
   [install IntelliJ IDEA EAP.](https://confluence.jetbrains.com/display/IDEADEV/EAP)
 
-  <a href="https://www.jetbrains.com/idea/download/" target="_blank" rel="noopener">下载 IntelliJ IDEA</a> 或，尝试试用最新的 Dart 语言特性，[请安装 IntelliJ IDEA EAP](https://confluence.jetbrains.com/display/IDEADEV/EAP)。
+  <a href="https://www.jetbrains.com/idea/download/" target="_blank" rel="noopener">下载 IntelliJ IDEA</a>
+  或尝试试用最新的 Dart 语言特性，
+  [请安装 IntelliJ IDEA EAP](https://confluence.jetbrains.com/display/IDEADEV/EAP)。
 
 * Or <a href="https://www.jetbrains.com/products.html"
   target="_blank" rel="noopener">find another JetBrains product.</a>
@@ -59,6 +69,7 @@ Install a JetBrains IDE if you don't already have one.
   或者 <a href="https://www.jetbrains.com/products.html" target="_blank" rel="noopener">查找其它的 JetBrains 产品。</a>
 
 <aside class="alert alert-info" markdown="1">
+
   **Note:**
   The Community Edition of IntelliJ IDEA has limited functionality.
   For example, it doesn't directly support debugging web apps.
@@ -78,11 +89,18 @@ install it.
 You can get it either by itself or by downloading the Flutter SDK,
 which (as of Flutter 1.21) includes the Dart SDK.
 
+如果你还没有安装 Dart SDK，安装一下。
+你可以选择下载 Dart SDK 或者下载安装 Flutter SDK，
+在 Flutter 1.21 和之后的版本，Flutter SDK 已经包含了完整的 Dart SDK 。
+
 Choose one:
 
-如果你还没有 Dart SDK，请先安装。
+选一个吧：
 
 * [Download the Dart SDK](/get-dart)
+ 
+  [下载 Dart SDK](/get-dart)
+
 * [Download the Flutter SDK]({{site.flutter}}/docs/get-started/install)
 
   [下载 Dart SDK](/get-dart)
@@ -106,7 +124,11 @@ Here's one way to configure Dart support:
     and then search or scroll down until you find <b>Dart</b>.
     Once you've installed the Dart plugin, restart the IDE.
 
-    启动 IDE 并安装 <b>Dart</b> 插件。你可以从欢迎界面窗口的 <b>Configure > Plugins</b> 菜单进入到插件设置界面，然后点击 <b>Install JetBrains plugin</b> 并搜索或拖动滚动条直到你找到 <b>Dart</b>。安装好 Dart 插件后记得重启 IDE。
+    启动 IDE 并安装 <b>Dart</b> 插件。你可以从欢迎界面窗口的 
+    <b>Configure > Plugins</b> 菜单进入到插件设置界面，
+    然后点击 <b>Install JetBrains plugin</b> 并搜索或拖动滚动条
+    直到你找到 <b>Dart</b>。
+    安装好 Dart 插件后记得重启 IDE。
   </p>
 </li>
 
@@ -152,7 +174,9 @@ Here's one way to configure Dart support:
   The IDE ensures that the path is valid.
 
   <b>注意：</b>
-  <b>Dart SDK</b> 路径为包含了 `bin` 和 `lib` 目录的路径；`bin` 目录中包含了类似 `dart` 和 `dartfmt` 的工具。需要确保 IDE 路径有效。
+  <b>Dart SDK</b> 路径为包含了 `bin` 和 `lib` 目录的路径；
+  `bin` 目录中包含了类似 `dart` 和 `dartfmt` 的工具。
+  需要确保 IDE 路径有效。
 </aside>
 </li>
 </ol>
@@ -160,7 +184,8 @@ Here's one way to configure Dart support:
 An alternative to Step 2 is to open an existing Dart project,
 and then open its `pubspec.yaml` file or any of its Dart files.
 
-如果你已经创建过 Dart 项目，则可以在第二步的时候选择打开该项目，然后选择打开 `pubspec.yaml` 或其它 Dart 文件。
+如果你已经创建过 Dart 项目，则可以在第二步的时候选择打开该项目，
+然后选择打开 `pubspec.yaml` 或其它 Dart 文件。
 
 {% comment %}
 

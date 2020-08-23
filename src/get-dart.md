@@ -17,13 +17,13 @@ For details, see the [Dart SDK overview](/tools/sdk).
 Dart SDK 包含开发 Web、命令行和服务端应用所需要的库和命令行工具。
 更多详细内容，请参考 [Dart SDK 概览](/tools/sdk) 文档。
 
-**As of Flutter 1.21, the [Flutter SDK][flutter] includes the Dart SDK.**
+**As of Flutter 1.21, the [Flutter SDK][flutter] includes the full Dart SDK.**
 So if you have Flutter installed,
 you might not need to explicitly download the Dart SDK.
 Consider downloading the Dart SDK if
 any of the following are true:
 
-**从 Flutter 1.21 版本开始，[Flutter SDK][flutter] 会同时包含 Dart SDK**
+**从 Flutter 1.21 版本开始，[Flutter SDK][flutter] 会同时包含完整的 Dart SDK**
 因此如果你已经安装了 Flutter，可能就无需再特别下载 Dart SDK 了。
 如果你有下述的需求，请考虑下载 Dart SDK：
 
@@ -44,6 +44,7 @@ any of the following are true:
   设置 CI 时，需要 Dart 并不需要 Flutter。
 
 <aside class="alert alert-info" markdown="1">
+
   **Note:** This site's documentation and examples use
   {% if site.data.pkg-vers.SDK.channel == 'dev' %} the **dev channel** {% endif -%}
   version [{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external}
