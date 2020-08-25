@@ -1145,21 +1145,37 @@ at your code and *see* where `null` can flow.
 
 ## Working with nullable types
 
+## 与可空类型共舞
+
 We've now corralled `null` into the set of nullable types. With flow analysis,
 we can safely let some non-`null` values hop over the fence to the non-nullable
 side where we can use them. That's a big step, but if we stop here, the
 resulting system is still painfully restrictive. Flow analysis only helps with
 locals and parameters.
 
+现在，我们已经将 `null` 归到了可空类型的集合中。
+有了流分析，我们可以安全地让一些非 `null` 值越过栅栏，到达非空的那一侧，供我们使用。
+这是相当大的一步，但如果我们止步不前，产出的系统仍然饱含着痛苦的限制。
+流分析也仅对局部变量和参数起作用。
+
 To try to regain as much of the flexibility that Dart had before null
 safety&mdash;and to go beyond it on some places&mdash;we have a handful of other
 new features.
 
+为了尽可能地保持 Dart 在拥有空安全之前的灵活度，并且在一定程度上超越它，
+我们带来了一些实用的新特性。
+
 ### Smarter null-aware methods
+
+### 更智能的空判断方法
 
 Dart's null aware operator `?.` is much older than null safety. The runtime
 semantics state that if the receiver is `null` then the property access on the
 right-hand side is skipped and the expression evaluates to `null`:
+
+Dart 的空判断操作符 `?.` 相对空安全而言俨然是一位老生。
+根据运行时的语义化规定，如果接收者是 `null`，那么右侧的属性访问就会被跳过，
+表达式将被作为 `null` 看待。
 
 ```dart
 // Without null safety:
@@ -1172,6 +1188,11 @@ a nice tool for making nullable types usable in Dart. While we can't let you
 call methods on nullable types, we can and do let you use null-aware operators
 on them. The post-null safety version of the program is:
 
+这将打印 “null”，而不是抛出一个异常。
+空判断操作符是一个不错的工具，让可空类型在 Dart 中变得可用。
+尽管我们不能让您在可空类型上调用方法，但我们可以让您使用空判断操作符调用它们。
+空安全版本的程序是这样的：
+
 ```dart
 // Using null safety:
 String? notAString = null;
@@ -1180,10 +1201,16 @@ print(notAString?.length);
 
 It works just like the previous one.
 
+与之前一样，它可以正常运行。
+
 However, if you've ever used null-aware operators in Dart, you've probably
 encountered an annoyance when using them in method chains. Let's say you want to
 see if the length of a potentially absent string is an even number (not a
 particularly realistic problem, I know, but work with me here):
+
+然而，如果您曾经在 Dart 中使用过空判断操作符，您可能经历过链式方法调用的恼人操作。
+假设您需要判断一个可能为空的字符串的长度是否为偶数
+（不是个贴合实际的问题，我知道，但还请继续跟着我看下去）：
 
 ```dart
 // Using null safety:
@@ -1199,12 +1226,20 @@ ever used `?.` in Dart, you probably learned the hard way that you have to apply
 the null-aware operator to *every* property or method in a chain after you use
 it once:
 
+就算这个程序使用了 `?.`，它仍然会在运行时抛出异常。
+这里的问题在于，`.isEven` 的接收器是左侧整个 `notAString?.length` 表达式的结果。
+这个表达式被认为是 `null`，所以我们在尝试调用 `.isEven` 的时候出现了空引用的错误。
+如果您在 Dart 中使用过 `?.`，您可能已经学会了一个非常繁琐的方法，
+那就是在使用了一次空判断操作符后，其**每一处**属性或方法的链式使用都需要加上它。
+
 ```dart
 String? notAString = null;
 print(notAString?.length?.isEven);
 ```
 
 This is annoying, but, worse, it obscures important information. Consider:
+
+这非常烦人，但更致命的是，它会扰乱重要信息的获取。看看下面这个：
 
 ```dart
 // Using null safety:
@@ -1218,11 +1253,21 @@ It looks like it *could* because you're using `?.` on the result. But it may
 just be that the second `?.` is only there to handle cases where `thing` is
 `null`, not the result of `doohickey`. You can't tell.
 
+这里我们想问您一个问题：`Thing` 中获取 `doohickey` 是否会返回 `null`？
+看上去它**会**返回 `null`，因为您在调用后使用了 `?.`。
+但也有可能第二个 `?.` 仅仅是为了处理 `thing` 为 `null` 的情况，
+而不是 `doohickey` 的结果。您无法直接得出结论。
+
 To address this, we borrowed a smart idea from C#'s design of the same feature.
 When you use a null-aware operator in a method chain, if the receiver evaluates
 to `null`, then *the entire rest of the method chain is short-circuited and
 skipped*. This means if `doohickey` has a non-nullable return type, then you
 can and should write:
+
+为了解决这类问题，我们从 C# 相同功能的设计中借鉴了一个聪明的处理方法。
+当您在链式方法调用中使用空判断操作符时，如果接收器被判断为 `null`，
+那么**整个链式调用的剩余部分都会被截断并跳过**。
+这意味着如果 `doohickey` 的返回值是一个可空的类型，您应该这样写：
 
 ```dart
 // Using null safety:
@@ -1233,6 +1278,9 @@ showGizmo(Thing? thing) {
 
 In fact, you'll get an unnecessary code warning on the second `?.` if you
 don't. If you see code like:
+
+实际上，如果您不去掉第二个 `?.`，您会看到一个警告，提示这段代码是不必要的。
+如果您看到了这样的代码：
 
 ```dart
 // Using null safety:
@@ -1246,7 +1294,13 @@ type. Each `?.` corresponds to a *unique* path that can cause `null` to flow
 into the method chain. This makes null-aware operators in method chains both
 more terse and more precise.
 
+您立刻就会知道 `doohickey` 本身的返回类型就是可空的。
+每一个 `?.` 对应一个**独一无二的**代码路径，能够让 `null` 随着链式调用传递。
+这就让链式方法调用中的空判断操作符更为简洁和精确。
+
 While we were at it, we added a couple of other null-aware operators:
+
+同时，我们也在这里加入了一些其他的空判断操作符：
 
 ```dart
 // Using null safety:
@@ -1260,6 +1314,8 @@ receiver?[index];
 
 There isn't a null-aware function call operator, but you can write:
 
+目前还没有空判断函数调用操作符，但是您可以这样写：
+
 ```dart
 // Allowed with or without null safety:
 function?.call(arg1, arg2);
@@ -1267,13 +1323,20 @@ function?.call(arg1, arg2);
 
 ### Null assertion operator
 
+### 空值断言操作符
+
 The great thing about using flow analysis to move a nullable variable to the
 non-nullable side of the world is that doing so is provably safe. You get to
 call methods on the previously-nullable variable without giving up any of the
 safety or performance of non-nullable types.
 
+利用流分析将可空的变量转移到非空的一侧，是安全可靠的。
+您可以在先前可空的变量上调用方法，同时能享受到非空类型的安全和性能。
+
 But many valid uses of nullable types can't be *proven* to be safe in a way that
 pleases static analysis. For example:
+
+但是，很多有效的可空类型使用方法，不能向静态分析**证明**它们的安全性。例如：
 
 ```dart
 // Using null safety, incorrectly:
@@ -1300,9 +1363,19 @@ message when it is `null`. But that requires understanding the relationship
 between the value of `code` and the nullability of `error`. The type checker
 can't see that connection.
 
+如果您尝试运行这段代码，您会看到一个编译错误，指向 `toUpperCase()` 的调用。
+`error` 属性是可空的，在返回结果成功时，它不会有值。
+我们通过仔细观察类可以看出，当消息为空时，我们永远不会访问 `error`。
+但为了知晓这个行为，必须要理解 `code` 的值与 `error` 的可空性之间的联系。
+类型检查器看不出这种联系。
+
 In other words, we human maintainers of the code *know* that error won't be
 `null` at the point that we use it and we need a way to assert that. Normally,
 you assert types using an `as` cast, and you can do the same thing here:
+
+换句话说，作为代码的人类维护者，我们知道在使用 error 时，
+它的值不会是 `null`，我们需要对其进行断言。
+通常您可以通过使用 `as` 转换来断言类型，这里您也可以这样做：
 
 ```dart
 // Using null safety:
@@ -1316,10 +1389,17 @@ Casting `error` to the non-nullable `String` type will throw a runtime exception
 if the cast fails. Otherwise, it gives us a non-nullable string that we can then
 call methods on.
 
+如果在运行时，将 `error` 转换为非空的 `String` 类型出现了无法转换的错误，会抛出一个异常。
+否则，一个非空的字符串就会到我们的手上，让我们可以进行方法调用。
+
 "Casting away nullability" comes up often enough that we have a new shorthand
 syntax. A postfix exclamation mark (`!`) takes the expression on the left and
 casts it to its underlying non-nullable type. So the above function is
 equivalent to:
+
+“排除可空性的转换”的场景频繁出现，这促使了我们带来了新的短小精悍的语法。
+一个作为后缀的感叹号标记 (`!`) 会让左侧的表达式转换成其对应的非空类型。
+所以上面的函数等效于：
 
 ```dart
 // Using null safety:
@@ -1334,15 +1414,28 @@ type is verbose. It would be really annoying to have to write `as
 Map<TransactionProviderFactory, List<Set<ResponseFilter>>>` just to cast away a
 single `?` from some type.
 
+当基础对应类型非常繁琐的时候，这个只有一个字符的“惊人操作符”非常上手。
+如果仅仅是为了将一个类型转换为非空，而需要写出类似于
+`as Map<TransactionProviderFactory, List<Set<ResponseFilter>>>`
+这样的代码，将会让这个过程变得非常烦人。
+
 Of course, like any cast, using `!` comes with a loss of static safety. The cast
 must be checked at runtime to preserve soundness and it may fail and throw an
 exception. But you have control over where these casts are inserted, and you can
 always see them by looking through your code.
 
+当然，与其他所有转换一样，使用 `!` 将会失去部分静态的安全性。
+这些转换必须在运行时进行，从而确保代码健全，并且有可能失败并抛出异常。
+但您可以完全控制这些转换在哪使用，并且能从代码中直接看到它们。
+
 ### Late variables
+
+### 懒加载的变量
 
 The most common place where the type checker cannot prove the safety of code is
 around top-level variables and fields. Here is an example:
+
+对于顶层变量和字段而言，类型检查器常常无法证明其是否安全。这里有一个例子：
 
 ```dart
 // Using null safety, incorrectly:
@@ -1368,13 +1461,24 @@ for a static analysis to determine that. (It might be possible for a trivial
 example like this one, but the general case of trying to track the state of each
 instance of a class is intractable.)
 
+在这里，`heat()` 方法在 `serve()` 之前就被调用了。
+这意味着 `_temperature` 会在它被使用前初始化为一个非空的值。
+但对于静态分析而言，这样是不可行的。
+（在这样的例子里，代码实际上可能是可行的，但是在一般情况下，我们难以跟踪每一个实例的状态。）
+
 Because the type checker can't analyze uses of fields and top-level variables,
 it has a conservative rule that non-nullable fields have to be initialized
 either at their declaration (or in the constructor initialization list for
 instance fields). So Dart reports a compile error on this class.
 
+由于类型检查器无法分析字段和顶层变量的用途，因此它遵循一个相对保守的规则，
+即不可空的字段必须在声明时初始化（或是在构造函数的初始化字段列表中）。
+所以在这里，Dart 会在这个类上提示一个编译错误。
+
 You can fix the error by making the field nullable and then using null assertion
 operators on the uses:
+
+为了修复它，您可以将它声明为可空，接着使用空断言操作符：
 
 ```dart
 // Using null safety:
@@ -1393,8 +1497,15 @@ By marking `_temperature` nullable, you imply that `null` is a useful,
 meaningful value for that field. But that's not the intent. The `_temperature`
 field should never be *observed* in its `null` state.
 
+这样一来，代码确实可以正常工作了。但是它给这个类维护人员发送了令人困惑的信号。
+将 `_temperature` 变为可空后，您在此处暗示 `null` 对于字段来说是有用的值。
+但实际上与您的企图背道而驰。
+`_temperature` 字段永远不会在为 `null` 的情况下被观测到。
+
 To handle the common pattern of state with delayed initialization, we've added a
 new modifier, `late`. You can use it like this:
+
+为了处理类似延迟初始化这样常见的行为，我们新增了一个修饰符：`late`。您可以这样使用：
 
 ```dart
 // Using null safety:
