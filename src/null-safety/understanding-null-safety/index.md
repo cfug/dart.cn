@@ -1526,11 +1526,23 @@ this: The `late` modifier means "enforce this variable's constraints at runtime
 instead of at compile time". It's almost like the word "late" describes *when*
 it enforces the variable's guarantees.
 
+此处我们注意到，`_temperature` 字段是一个非空的类型，但是并没有进行初始化。
+另外，在使用时，也没有明确的空断言。
+虽然有几种语义模型都可以作为 `late` 应用的语义，但这里我认为应该是：
+`late` 修饰符是“在运行时而非编译时对变量进行约束”。
+这就让 `late` 这个词语约等于**何时**执行对变量的强制约束。
+
 In this case, since the field is not definitely initialized, every time the
 field is read, a runtime check is inserted to make sure it has been assigned a
 value. If it hasn't, an exception is thrown. Giving the variable the type
 `String` means "you should never see me with a value other than a string" and
 the `late` modifier means "verify that at runtime".
+
+当前场景里，字段并不一定已经被初始化，
+每次它被读取时，都会插入一个运行时的检查，以确保它已经被赋值。
+如果并未赋值，就会抛出一个异常。
+给一个变量加上 `String` 类型就是在说：“我的值绝对是字符串”，
+而加上 `late` 修饰符意味着：“每次运行都要检查检查是不是真的”。
 
 In some ways, the `late` modifier is more "magical" than using `?` because any
 use of the field could fail, and there isn't anything textually visible at the
@@ -1538,16 +1550,28 @@ use site. But you *do* have to write `late` at the declaration to get this
 behavior, and our belief is that seeing the modifier there is explicit enough
 for this to be maintainable.
 
+在某些方面，`late` 修饰符比 `?` 更为神奇，因为对这个字段的任何使用都有可能失败，
+且在失败的事故现场没有任何文字说明。
+
 In return, you get better static safety than using a nullable type. Because the
 field's type is non-nullable now, it is a *compile* error to try to assign
 `null` or a nullable `String` to the field. The `late` modifier lets you *defer*
 initialization, but still prohibits you from treating it like a nullable
 variable.
 
+作为回报，它比可空类型更为静态安全。
+因为这个字段现在是非空的了，在**编译时**为它赋予 `null` 或可空的 `String` 就会出错。
+虽然 `late` 修饰符让您延迟了初始化，但它仍然禁止您将变量作为可空的类型进行处理。
+
 ### Lazy initialization
+
+### 延迟初始化
 
 The `late` modifier has some other special powers too. It may seem paradoxical,
 but you can use `late` on a field that has an initializer:
+
+`late` 修饰符也有一些特殊的能力。
+您可以在一个包含初始化内容的字段上使用 `late`，虽然这看起来有一些自相矛盾：
 
 ```dart
 // Using null safety:
@@ -1562,15 +1586,30 @@ field is accessed. In other words, it works exactly like an initializer on a
 top-level variable or static field. This can be handy when the initialization
 expression is costly and may not be needed.
 
+当您这么声明时，会让初始化**延迟**执行。
+它将会延迟到字段首次被访问时执行，而不是在实例构造时就初始化。
+换句话说，它让字段的初始化方式变得与顶层变量和静态字段完全一致。
+当初始化表达式比较消耗性能，且有可能不需要时，这会变得非常有用。
+
 Running the initializer lazily gives you an extra bonus when you use `late` on
 an instance field. Usually instance field initializers cannot access `this`
 because you don't have access to the new object until all field initializers
 have completed. But with a `late` field, that's no longer true, so you *can*
 access `this`, call methods, or access fields on the instance.
 
+当您在实例字段上使用 `late` 时，延迟初始化会给您带来更多的便利。
+通常实例字段的初始化内容无法访问到 `this`，
+因为在所有的初始化方法完成前，您无法访问到新的实例对象。
+但是，使用了 `late` 让这个条件不在为真，
+所以您**可以**访问到 `this`、调用方法以及访问实例的字段。
+
 ### Late final variables
 
+### 延迟的终值
+
 You can also combine `late` with `final`:
+
+您也可以将 `late` 与 `final` 结合使用：
 
 ```dart
 // Using null safety:
@@ -1592,10 +1631,21 @@ at runtime. If you try to assign to it more than once&mdash;like calling both
 This is a great way to model state that gets initialized eventually and is
 immutable afterwards.
 
+与普通的 `final` 字段不同，您不需要在声明或构造时就将其初始化。
+您可以在运行中的某个地方晚些加载它。
+但是您只能对其进行**一次**赋值，并且它在运行时检查是否真的是如此。
+如果您尝试对它进行多次赋值，比如 `heat()` 和 `chill()` 都调用，
+那么第二次的赋值会抛出异常。
+这是对状态进行固定的好方法，状态最终会被初始化，并且其在初始化后是无法改变的。
+
 In other words, the new `late` modifier in combination with Dart's other
 variable modifiers covers most of the feature space of `lateinit` in Kotlin and
 `lazy` in Swift. You can even use it on local variables if you want a little
 local lazy evaluation.
+
+换句话说，新的 `late` 修饰符与 Dart 的其他变量修饰符结合后，
+Kotlin 中的 `lateinit` 和 Swift 中的 `lazy` 的大量特征都已实现了。
+如果您需要给局部变量加上一些延迟初始化，您也可以在局部变量上使用它。
 
 ### Required named parameters
 
