@@ -1649,6 +1649,8 @@ Kotlin 中的 `lateinit` 和 Swift 中的 `lazy` 的大量特征都已实现了�
 
 ### Required named parameters
 
+### 必需的命名参数
+
 To guarantee that you never see a `null` parameter with a non-nullable type, the
 type checker requires all optional parameters to either have a nullable type or
 a default value. What if you want to have a named parameter with a nullable type
@@ -1656,7 +1658,15 @@ and no default value? That would imply that you want to require the caller to
 *always* pass it. In other words, you want a parameter that is *named* but not
 optional.
 
+为了保证您永远不会看到一个非空类型的参数值为 `null`，
+类型检查器给所有的可选参数提出了要求，要么是一个可空的类型，要么包含一个默认值。
+如果您需要一个可空的命名参数，同时又不包含默认值，该怎么办呢？
+这就意味着您要求调用者**每次**都为其传递内容。
+换句话说，您想要的是一个非可选的**命名**参数。
+
 I visualize the various kinds of Dart parameters with this table:
+
+在这个表格中，我直观地展示了 Dart 的各种参数：
 
 ```
              mandatory    optional
@@ -1672,6 +1682,10 @@ left the combination of named+mandatory empty. With null safety, we filled that
 in. You declare a required named parameter by placing `required` before the
 parameter:
 
+Dart 为何长期以来只支持这个表的三个角的参数类型，而不支持命名+强制组合的参数，仍然是未解之谜。
+随着空安全的引入，我们将这个角补充上了。
+现在您可以声明一个必需的命名参数，只需要将 `required` 放在参数前：
+
 ```dart
 // Using null safety:
 function({int? a, required int? b, int? c, required int? d}) {}
@@ -1683,10 +1697,21 @@ be passed. Note that required-ness is independent of nullability. You can have
 required named parameters of nullable types, and optional named parameters of
 non-nullable types (if they have a default value).
 
+这里的所有参数都必须通过命名来传递。
+参数 `a` 和 `c` 都是可选的，可以省略。
+参数 `b` 和 `d` 是必需的，调用时必须传递。
+在这里请注意，是否必需和是否可空无关。
+您可以写下一个可空类型的必需命名参数，以及非空类型的可选命名参数（如果它们包含了默认值）。
+
 This is another one of those features that I think makes Dart better regardless
 of null safety. It simply makes the language feel more complete to me.
 
+无论是否为空安全，这都是另一个让 Dart 变得更好的功能之一。
+对我来说，它让这门语言看起来更为完整。
+
 ### Working with nullable fields
+
+### 与可空字段共舞
 
 These new features cover many common patterns and make working with `null`
 pretty painless most of the time. But even so, our experience is that nullable
@@ -1695,7 +1720,15 @@ non-nullable, you're golden. But in many cases you need to *check* to see if the
 field has a value, and that requires making it nullable so you can observe the
 `null`.
 
+新引入的特性处理了非常多常见的行为模式，并且让大部分处理 `null` 的工作不再那么痛苦。
+即便如此，从我们的经验之谈来说，处理可空字段仍然是较为困难的。
+在您能使用 `late` 和非空类型的情况下，这是相当稳妥的。
+但在很多场景里，您仍然需要**检查**字段是否有值，
+在这些情况下，字段会是可空的，您也能观测到 `null` 的存在。
+
 You might expect this to work:
+
+以下这段代码，您可能会认为可以这么写：
 
 ```dart
 // Using null safety, incorrectly:
@@ -1723,13 +1756,26 @@ check for `null` and the point that you use it. (Consider that in pathological
 cases, the field itself could be overridden by a getter in a subclass that
 returns `null` the second time it is called.)
 
+在 `checkTemp()` 中，我们检查了 `_temperature` 是否为 `null`。
+如果不为空，我们会访问它，并对它调用 `+`。
+很遗憾，这样做是不被允许的。
+基于流分析的类型提升并不适用于字段，
+因为静态分析不能**证明**这个字段的值在您判断后和使用前没有发生变化。
+（某些极端场景中，字段本身可能会被子类的 getter 重写，从而在第二次调用时返回 `null`。）
+
 So, since we care about soundness, fields don't promote and the above method
 does not compile. This is annoying. In simple cases like here, your best bet is
 to slap a `!` on the use of the field. It seems redundant, but that's more or
 less how Dart behaves today.
 
+因为代码的健全性也是我们在乎的指标，所以字段不会被提升，且上面的方法也无法编译。
+这其实不太舒服。在这样的简单例子中，您最好能在使用字段时加上 `!`。
+它看起来是多余的，但是目前的 Dart 需要这样的操作。
+
 Another pattern that helps is to copy the field to a local variable first and
 then use that instead:
+
+还有一种可以解决这类情况的方法，就是先将字段拷贝为一个局部变量，然后再使用它：
 
 ```dart
 // Using null safety:
@@ -1744,6 +1790,9 @@ void checkTemp() {
 Since the type promotion does apply to locals, this now works fine. If you need
 to *change* the value, just remember to store back to the field and not just the
 local.
+
+对于局部变量而言，类型提升是有效的，所以它会正常运行。
+如果您需要**更改**它的值，记得要存储回原有的字段，不要只更新了您的局部变量。
 
 ### Nullability and generics
 
