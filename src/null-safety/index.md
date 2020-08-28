@@ -79,17 +79,16 @@ That's by design: the Dart language aims to be unsurprising.
 那么这些空安全的语法看起来会有些熟悉。
 这是设计使然：Dart 语言的目标是不让您感到惊讶。
 
-You can practice using null safety in the web app
+You can
+[try null safety in your normal development environment](#enable-null-safety)
+by configuring your project to use a tech preview SDK.
+Or you can practice using null safety in the web app
 [DartPad with Null Safety,][nullsafety.dartpad.dev]
 shown in the following screenshot.
-Or try null safety in your normal development environment,
-using the instructions and configuration files in the
-[null safety sample.][calculate_lix]
 
-您可以通过下方截图中的[支持空安全的 DartPad][nullsafety.dartpad.dev]
-进行练习。
-或者按照[空安全示例][calculate_lix]中的指示和配置，在您的开发环境下
-尝试空安全。
+您可以在您的项目设置里 [启用技术预览版 SDK](#enable-null-safety)，
+在您的项目里实践空安全。
+或者通过 [支持空安全的 DartPad][nullsafety.dartpad.dev] 进行练习。
 
 ![Screenshot of DartPad null safety snippet with analysis errors](/null-safety/dartpad-snippet.png)
 {% comment %}
@@ -474,6 +473,102 @@ var aList = <String, int>{'one': 1};
 int value = aList['one'] ?? 0;
 ```
 
+## Enabling null safety {#enable-null-safety}
+
+## 启用空安全
+
+Dart tools have experimental support for
+analyzing, compiling, and running code with null safety.
+To use null safety while it's in tech preview —
+whether you use the command line or an IDE —
+you need the following setup:
+
+Dart 工具目前正 **实验性** 地支持空安全代码的
+分析、编译和运行。如果想使用空安全，
+请按照如下步骤通过命令行命令或者 IDE 设置
+启用技术预览版本的空安全。
+
+* A Dart project configured to use an SDK that
+  supports the tech preview of null safety
+
+  为 Dart 项目配置支持空安全的技术预览版 SDK；
+  
+* An experiment flag passed to all Dart tools
+
+  为所有的 Dart 工具加入实验性的命令行参数。
+
+### Configure the SDK version
+
+### 设置 SDK 版本
+
+Set the [SDK constraints](/tools/pub/pubspec#sdk-constraints)
+to require a version that has null safety support.
+For example, your `pubspec.yaml` file might have the following constraints:
+
+查看文档 [SDK 版本约束](/tools/pub/pubspec#sdk-constraints)
+来设定一个支持空安全的 SDK 版本。
+
+```yaml
+environment: sdk: '>=2.10.0-56.0.dev <3.0.0'
+```
+
+{{ site.alert.version-note }}
+
+  We recommend requiring and using the **most recent dev channel** release
+  of the Dart or Flutter SDK.
+  To find the most recent releases, see the
+  [Dev channel][dart-dev-channel] section of the
+  Dart SDK archive, or the **Dev channel** section of the
+  [Flutter SDK archive.][flutter-sdks]
+  
+  我们建议这里使用 Dart 或者 Flutter SDK 的 **最新 dev 发布渠道**。
+  了解如何获得最新的发布渠道信息，请查看 Dart SDK 页面的
+  [Dev 发布渠道][dart-dev-channel] 部分。
+  或者 [Flutter SDK 页面][flutter-sdks] 的的 Dev 发布渠道部分。
+  
+{{ site.alert.end }}
+
+### Pass the experiment flag
+
+### 加入实验性的命令行参数
+
+To opt into null safety,
+pass the `non-nullable` experiment flag to all Dart tools.
+For example:
+
+如果需要使用空安全，需要把 `non-nullable` 这个实验性的命令行参数
+加入到所有的 Dart 工具。
+比如：
+
+```terminal
+$ ~/dev/dart-sdk/bin/dart --enable-experiment=non-nullable bin/main.dart
+```
+
+For details on how to use experiment flags with IDEs and command-line tools, see
+the Dart [experiment flags documentation][experiment-flags].
+
+关于如何在 IDE 和命令行工具里加入实验性的命令行参数，请查看文档：
+[实验性的参数标记][experiment-flags]。
+
+{{ site.alert.version-note }}
+
+  After null safety launches in a beta or stable release,
+  you won't need to enable the null safety experiment.
+  
+  等到空安全在 beta 或者 stable 渠道发布时，
+  就无需再加入空安全的实验性参数了。
+  
+{{ site.alert.end }}
+
+### Example
+
+### 示例
+
+For a full example of a Dart command-line app that enables and uses null safety,
+see the [null safety sample.][calculate_lix]
+
+有关启用和使用空安全的 Dart 命令行程序的完整示例，
+请参见 [空安全示例][calculate_lix]。
 
 ## Where to learn more
 
@@ -500,6 +595,7 @@ For more information about null safety, see the following resources:
   [空安全示例代码 (Null safety sample code)][calculate_lix]
 
 * [Null safety tracking issue][110]
+* [Understanding null safety][]
 
   [空安全的问题跟踪 (Null safety tracking issue)][110]
 
@@ -510,6 +606,9 @@ For more information about null safety, see the following resources:
 [calculate_lix]: https://github.com/dart-lang/samples/tree/master/null_safety/calculate_lix
 [Dart announce]: {{site.group}}/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
+[dart-dev-channel]: /tools/sdk/archive#dev-channel
+[experiment-flags]: /tools/experiment-flags
+[flutter-sdks]: {{site.flutter}}/docs/development/tools/sdk/releases
 [give us feedback.]: https://github.com/dart-lang/sdk/issues/new?title=Null%20safety%20feedback:%20[issue%20summary]&labels=NNBD&body=Describe%20the%20issue%20or%20potential%20improvement%20in%20detail%20here
 [nullsafety.dartpad.dev]: https://nullsafety.dartpad.cn
 [other operators]: /guides/language/language-tour#other-operators
