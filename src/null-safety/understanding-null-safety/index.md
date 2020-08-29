@@ -1636,7 +1636,7 @@ immutable afterwards.
 但是您只能对其进行**一次**赋值，并且它在运行时检查是否真的是如此。
 如果您尝试对它进行多次赋值，比如 `heat()` 和 `chill()` 都调用，
 那么第二次的赋值会抛出异常。
-这是对状态进行固定的好方法，状态最终会被初始化，并且其在初始化后是无法改变的。
+这是对状态进行确定的好方法，状态最终会被初始化，并且其在初始化后是无法改变的。
 
 In other words, the new `late` modifier in combination with Dart's other
 variable modifiers covers most of the feature space of `lateinit` in Kotlin and
@@ -1796,11 +1796,17 @@ local.
 
 ### Nullability and generics
 
+### 可空性和泛型
+
 Like most modern statically-typed languages, Dart has generic classes and
 generic methods. They interact with nullability in a few ways that seem
 counter-intuitive but make sense once you think through the implications. First
 is that "is this type nullable?" is no longer a simple yes or no question.
 Consider:
+
+与现今主流的静态类型语言一样，Dart 也有泛型类和泛型方法。
+它们和可空性的交互看上去会有一些反直觉的地方，但一旦您想清楚了它的实现细节，就会认为非常合理。
+首先，“这个类型是否是可空？”已经不再是一个简单的是非问题。考虑以下的情况：
 
 ```dart
 // Using null safety:
@@ -1821,9 +1827,18 @@ you can see, it can be instantiated with either kind. The answer is that `T` is 
 potentially nullable type has all of the restrictions of both nullable types
 *and* non-nullable types.
 
+在 `Box` 的定义中，`T` 是可空还是非空的类型？
+正如您所看到的那样，它可以实例化为任意一种类型。
+答案是：`T` 是一个**潜在的可空类型**。
+在泛型类或泛型方法的内容中，一个潜在的可空类型包含了可空类型**以及**非空类型的所有限制。
+
 The former means you can't call any methods on it except the handful defined on
 Object. The latter means that you must initialize any fields or variables of
 that type before they're used. This can make type parameters pretty hard to work with.
+
+前者意味着除了在 Object 上定义的部分方法以外，不能调用它的其他方法。
+后者意味着这个类型的任何字段或变量都需要在使用前被初始化。
+这就会让类型参数非常难处理。
 
 In practice, a few patterns show up. In collection-like classes where the type
 parameter can be instantiated with any type at all, you just have to deal with
@@ -1832,8 +1847,16 @@ have access to a value of the type argument's type whenever you need to work
 with one. Fortunately, collection-like classes rarely call methods on their
 elements.
 
+在实际开发的实践中，有部分场景会出现这类情况。
+在一个类似集合的类中，只要您处理了限制条件，类型参数就可以基于任何类型进行实例化。
+在大部分场景中，像此处的例子一样，意味着当您每次需要使用类型实参的类型的值时，
+都可以确保您能访问这个值。
+幸运的是，类似集合的类很少直接在其元素上调用方法。
+
 In places where you don't have access to a value, you can make the use of the
 type parameter nullable:
+
+在您不需要访问值的时候，您可以将类型参数变为可空：
 
 ```dart
 // Using null safety:
@@ -1847,9 +1870,15 @@ class Box<T> {
 Note the `?` on the declaration of `object`. Now the field has an explicitly
 nullable type, so it is fine to leave it uninitialized.
 
+注意此处对于 `object` 声明的 `?`。
+现在这个字段是一个显式的可空类型，所以不一定要对其进行初始化。
+
 When you make a type parameter type nullable like `T?` here, you may need to
 cast the nullability away. The correct way to do that is using an explicit `as
 T` cast, *not* the `!` operator:
+
+当您将类型参数变为可空，就像此处一样时，您可能需要将它转换为非空。
+目前正确的做法是显式地使用 `as T` 进行转换，**而不是** `!` 操作符。
 
 ```dart
 // Using null safety:
@@ -1866,6 +1895,9 @@ The `!` operator *always* throws if the value is `null`. But if the type
 parameter has been instantiated with a nullable type, then `null` is a perfectly
 valid value for `T`:
 
+使用了 `!` 操作符后，每当值为 `null` 时，都会抛出异常。
+但是如果类型参数已被实例化为一个可空的类型，那么 `null` 对于 `T` 就是一个完全有效的值：
+
 ```dart
 // Using null safety:
 main() {
@@ -1877,8 +1909,12 @@ main() {
 This program should run without error. Using `as T` accomplishes that. Using
 `!` would throw an exception.
 
+这段代码会正常运行。使用 `as T` 就可以达到这一点。而使用 `!` 会抛出异常。
+
 Other generic types have some bound that restricts the kinds of type arguments
 that can be applied:
+
+其他的泛型存在着一些约束，限制了可以应用的类型参数种类：
 
 ```dart
 // Using null safety:
@@ -1896,13 +1932,23 @@ means you have the restrictions of non-nullable types&mdash;you can't leave
 fields and variables uninitialized. The example class here must have a
 constructor that initializes the fields.
 
+如果继承关系是非空的，那么类型参数也是非空的。
+这就意味着您会受到非空类型一些限制，必须要初始化字段和变量。
+示例中的类必须要使用构造函数，对字段进行初始化。
+
 In return for that restriction, you can call any methods on values of the type
 parameter type that are declared on its bound. Having a non-nullable bound does,
 however, prevent *users* of your generic class from instantiating it with a
 nullable type argument. That's probably a reasonable limitation for most
 classes.
 
+这些限制同时也带来了一些好处，您可以对类型参数声明的继承关系上的值调用任何方法。
+然而，当您继承了非空的类型时，**使用者**将无法使用可空的类型参数对泛型进行实例化。
+对于大部分类来说，这是合理的限制。
+
 You can also use a nullable *bound*:
+
+您也可以使用可空的**继承关系**：
 
 ```dart
 // Using null safety:
@@ -1925,11 +1971,20 @@ type parameter as nullable. Note we have no constructor this time, and that's
 OK. The fields will be implicitly initialized to `null`. You can declare
 uninitialized variables of the type parameter's type.
 
+这意味着在类中您可以灵活地将类型参数处理为可空。
+请注意，此处我们没有构造函数，所以一切正常。
+字段将会被隐式初始化为 `null`。
+您可以将未初始化的变量声明为类型参数的类型。
+
 But you also have the limitations of nullability&mdash;you can't call anything
 on a variable of that type unless you deal with the nullability first. In the
 example here, we copy the fields in local variables and check those locals for
 `null` so that flow analysis promotes them to non-nullable types before we use
 `<=`.
+
+但您也受到了可空性的限制，除非您先处理了可空状态，否则您无法对变量进行任何调用。
+在此处的例子中，我们将字段拷贝至局部变量，并且检查了它们是否为 `null`，
+所以在我们调用 `<=` 前，流分析将它们提升成了非空类型。
 
 Note that a nullable bound does not prevent users from instantiating the class
 with non-nullable types. A nullable bound means that the type argument *can* be
@@ -1938,6 +1993,12 @@ you don't write an `extends` clause is the nullable bound `Object?`.) There is
 no way to *require* a nullable type argument. If you want uses of the type
 parameter to reliably be nullable, you can use `T?` inside the body of the
 class.
+
+请注意，可空的继承关系并不会阻止用户将类实例化为非空的类型。
+一个可空的继承意味着类型参数**可以**为空，而不是**必须**为空。
+（实际上，如果您没有写上 `extends` 语句，类型参数的默认继承关系是可空的 `Object?`。）
+您没有办法声明一个**必需的**可空类型参数。
+如果您希望类型参数的使用是可靠的且可空的，您可以在类中使用 `T?`。
 
 ## Core library changes
 
