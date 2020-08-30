@@ -621,7 +621,7 @@ String alwaysReturns(int n) {
 
 We'll dive more deeply into the new flow analysis in the next section.
 
-下个章节我们会更加深入的解释新的流分析。
+下个章节我们会更加深入的解释新的流程分析。
 
 ### Uninitialized variables
 
@@ -708,7 +708,7 @@ things up for non-nullable variables:
     first, the use is OK.
 
     此处遵循的规则是**局部变量必须*确保在使用前被赋值*。**
-    我们也可以依赖于之前所提到的全新的流分析来实现。
+    我们也可以依赖于之前所提到的全新的流程分析来实现。
     只要所有使用变量的路径在使用前都先初始化，就可以正常调用。
 
 *   **Optional parameters must have a default value.** If you don't pass an
@@ -744,21 +744,21 @@ limitations slow you down. First, though, it's time to talk about flow analysis.
 
 即便如此，这些规则也会让您的适配之路有些小磕碰。
 幸运的是，我们有一整套新的语言特性，来帮助您平稳应付一些常见的颠簸。
-不过，首先，我们是时候来聊一聊流分析了。
+不过，首先，我们是时候来聊一聊流程分析了。
 
 ## Flow analysis
 
-## 流分析
+## 流程分析
 
 [Control flow analysis][] has been around in compilers for years. It's mostly
 hidden from users and used during compiler optimization, but some newer
 languages have started to use the same techniques for visible language features.
 Dart already has a dash of flow analysis in the form of *type promotion*:
 
-[控制流分析][Control flow analysis]已经在众多编译器中存在多年了。
+[控制流程分析][Control flow analysis]已经在众多编译器中存在多年了。
 通常它对于使用者而言是不可见的，只在编译优化流程中使用，
 但是，部分较新的语言，已经开始在可以看见的语言特性中使用同样的技术了。
-Dart 已经以**类型提升**的方式实现了一些流分析：
+Dart 已经以**类型提升**的方式实现了一些流程分析：
 
 ```dart
 // With (or without) null safety:
@@ -859,7 +859,7 @@ stuff not related to nullability.
 
 ### Never for unreachable code
 
-### 为不可达代码准备的 Never
+### 为不可达的代码准备的 Never
 
 You can also *program* this reachability analysis. The new bottom type `Never`
 has no values. (What kind of value is simultaneously a `String`, `bool`, and
@@ -918,7 +918,7 @@ statement can only be reached when `other` is a `Point`, Dart promotes it.
 这段代码不会分析出错误。
 请注意 `==` 方法的最后一行，在 `other` 上调用 `.x` 和 `.y`。
 尽管在第一行并没有包含 `return` 或 `throw`，它的类型仍然提升为了 `Point`。
-控制流分析意识到 `wrongType()` 声明的类型是 `Never`，
+控制流程分析意识到 `wrongType()` 声明的类型是 `Never`，
 代表着 `if` 语句的 then 分支**一定会**由于某些原因被中断。
 由于下一句的代码仅能在 `other` 是 `Point` 时运行，所以 Dart 提升了它的类型。
 
@@ -976,7 +976,7 @@ on every control flow path, so the constraints for marking a variable `final`
 are satisfied.
 
 鉴于 `result` 被声明为 `final`，又没有一个初始化的方法，这段代码将显示一个错误。
-而对于更智能的空安全流分析来说，这段代码是正确的。
+而对于更智能的空安全流程分析来说，这段代码是正确的。
 通过分析可以知道，`result` 在所有的控制流路径上都已经被初始化了一次，
 所以对于标记的 `final` 变量而言，约束得以满足。
 
@@ -991,7 +991,7 @@ of a nullable type, you can't really *do* anything useful with it. In cases
 where the value *is* `null`, that restriction is good. It's preventing you from
 crashing.
 
-更智能的流分析对于众多 Dart 代码而言帮助极大，甚至对于一些与是否可空的无关的代码也是如此。
+更智能的流程分析对于众多 Dart 代码而言帮助极大，甚至对于一些与是否可空的无关的代码也是如此。
 但是我们在现在做出这些改动并非巧合。
 我们已经将类型划分成了可空和非空的集合。
 如果一个变量是一个可空的类型，您无法对它**做**任何有用的事情。
@@ -1041,7 +1041,7 @@ turns that *dynamic* correctness into provable *static* correctness.
 
 听起来这是件小事，但这种基于流程的空检查提升，是大部分 Dart 代码能运行在空安全下的保障。
 大部分的 Dart 代码**是**动态正确的，并且在调用前通过判断 `null` 来避免抛出空调用错误。
-新的空安全流分析将**动态**正确变成了有保障的**静态**正确。
+新的空安全流程分析将**动态**正确变成了有保障的**静态**正确。
 
 It also, of course, works with the smarter analysis we do for reachability. The
 above function can be written just as well as:
@@ -1154,9 +1154,9 @@ resulting system is still painfully restrictive. Flow analysis only helps with
 locals and parameters.
 
 现在，我们已经将 `null` 归到了可空类型的集合中。
-有了流分析，我们可以安全地让一些非 `null` 值越过栅栏，到达非空的那一侧，供我们使用。
+有了流程分析，我们可以安全地让一些非 `null` 值越过栅栏，到达非空的那一侧，供我们使用。
 这是相当大的一步，但如果我们止步不前，产出的系统仍然饱含着痛苦的限制。
-流分析也仅对局部变量和参数起作用。
+流程分析也仅对局部变量和参数起作用。
 
 To try to regain as much of the flexibility that Dart had before null
 safety&mdash;and to go beyond it on some places&mdash;we have a handful of other
@@ -1330,7 +1330,7 @@ non-nullable side of the world is that doing so is provably safe. You get to
 call methods on the previously-nullable variable without giving up any of the
 safety or performance of non-nullable types.
 
-利用流分析将可空的变量转移到非空的一侧，是安全可靠的。
+利用流程分析将可空的变量转移到非空的一侧，是安全可靠的。
 您可以在先前可空的变量上调用方法，同时能享受到非空类型的安全和性能。
 
 But many valid uses of nullable types can't be *proven* to be safe in a way that
@@ -1414,7 +1414,7 @@ type is verbose. It would be really annoying to have to write `as
 Map<TransactionProviderFactory, List<Set<ResponseFilter>>>` just to cast away a
 single `?` from some type.
 
-当基础对应类型非常繁琐的时候，这个只有一个字符的“惊人操作符”非常上手。
+当基础对应类型非常繁琐的时候，这个只有一个字符的“重点操作符”非常上手。
 如果仅仅是为了将一个类型转换为非空，而需要写出类似于
 `as Map<TransactionProviderFactory, List<Set<ResponseFilter>>>`
 这样的代码，将会让这个过程变得非常烦人。
@@ -1759,7 +1759,7 @@ returns `null` the second time it is called.)
 在 `checkTemp()` 中，我们检查了 `_temperature` 是否为 `null`。
 如果不为空，我们会访问它，并对它调用 `+`。
 很遗憾，这样做是不被允许的。
-基于流分析的类型提升并不适用于字段，
+基于流程分析的类型提升并不适用于字段，
 因为静态分析不能**证明**这个字段的值在您判断后和使用前没有发生变化。
 （某些极端场景中，字段本身可能会被子类的 getter 重写，从而在第二次调用时返回 `null`。）
 
@@ -1984,7 +1984,7 @@ example here, we copy the fields in local variables and check those locals for
 
 但您也受到了可空性的限制，除非您先处理了可空状态，否则您无法对变量进行任何调用。
 在此处的例子中，我们将字段拷贝至局部变量，并且检查了它们是否为 `null`，
-所以在我们调用 `<=` 前，流分析将它们提升成了非空类型。
+所以在我们调用 `<=` 前，流程分析将它们提升成了非空类型。
 
 Note that a nullable bound does not prevent users from instantiating the class
 with non-nullable types. A nullable bound means that the type argument *can* be
@@ -2002,10 +2002,16 @@ class.
 
 ## Core library changes
 
+## 核心库的改动
+
 There are a couple of other tweaks here and there in the language, but they are
 minor. Things like the default type of a `catch` with no `on` clause is now
 `Object` instead of `dynamic`. Fallthrough analysis in switch statements uses
 the new flow analysis.
+
+我们在语言上还有一些其他的调整，但它们都是一些微小的细节。
+例如没有使用 `on` 的 `catch` 现在返回的默认类型是 `Object` 而不是 `dynamic`。
+同时，switch 语句中的条件贯穿分析也使用了新的流程分析。
 
 The remaining changes that really matter to you are in the core libraries.
 Before we embarked on the Grand Null Safety Adventure, we worried that it would
@@ -2015,13 +2021,27 @@ changes, but for the most part, the migration went smoothly. Most core libraries
 either did not accept `null` and naturally move to non-nullable types, or do and
 gracefully accept it with a nullable type.
 
+剩余的重要改动，都存在于核心库中。
+在我们开始这次的空安全大冒险之前，我们曾经担心过，
+为了让核心库用上空安全，我们必须得对现有的语言系统做出大规模的破坏性改动。
+而结果并没有想象中的可怕。
+尽管确实**有**一些重大的变化，但在其他大部分情况下，迁移进行得十分顺利。
+大多数的核心库要么不接受 `null` ，从而自然地使用了非空的类型，
+要么接受了 `null`，并且优雅地处理了可空类型。
+
 There are a few important corners, though:
 
 ### The Map index operator is nullable
 
+### Map 的索引操作符是可空的
+
 This isn't really a change, but more a thing to know. The index `[]` operator on
 the Map class returns `null` if the key isn't present. This implies that the
 return type of that operator must be nullable: `V?` instead of `V`.
+
+这其实算不上一个改动，但您也应该知晓。
+Map 类的 `[]` 操作符会在键值不存在时返回 `null`。
+这就暗示了操作符的返回类型必须是可空的：`V?` 而不是 `V`。
 
 We could have changed that method to throw an exception when the key isn't
 present and then given it an easier-to-use non-nullable return type. But code
@@ -2029,9 +2049,17 @@ that uses the index operator and checks for `null` to see if the key is absent
 is very common, around half of all uses based on our analysis. Breaking all of
 that code would have set the Dart ecosystem aflame.
 
+我们本可以将这个方法改为当键值不存在时抛出异常，然后将返回类型改为更易使用的非空类型。
+但是，通过索引操作符判断 `null` 来确认键值是否存在，是一个非常常见的操作，
+经过我们的分析，大约有一半的操作是这样的用途。
+如果破坏了这些代码，会直接点燃 Dart 的生态系统。
+
 Instead, the runtime behavior is the same and thus the return type is obliged
 to be nullable. This means you generally cannot immediately use the result of
 a map lookup:
+
+实际上，运行时的行为还是一样的，因此返回类型必须是可空的。
+这意味着您无法在 Map 查询时立马使用查询的结果：
 
 ```dart
 // Using null safety, incorrectly:
@@ -2042,6 +2070,9 @@ print(map["key"].length); // Error.
 This gives you a compile error on the attempt to call `.length` on a nullable
 string. In cases where you *know* the key is present you can teach the type
 checker by using `!`:
+
+这会在 `.length` 的调用处抛出一个编译异常，因为您尝试调用可空的字符串。
+在您已经**确定**键值存在的情况下，您可以给类型检查器上一个 `!`：
 
 ```dart
 // Using null safety:
@@ -2056,12 +2087,23 @@ method name would be clearer than seeing a `!` with its built-in semantics right
 there at the call site. So the idiomatic way to access a known-present element
 in a map is to use `[]!`. You get used to it.
 
+我们曾经考虑过为 Map 增加另一个方法，能帮助您办到：
+查找键值，如果没找到则抛出异常，否则返回一个非空值。
+但是我们应该怎么称呼它？
+任何名字都不如一个 `!` 来的简短，也没有任何一个方法的名字会比一个 `!` 调用的语义更清晰。
+所以，在 Map 查找一个已知存在的元素的方法是 `[]!`。您会慢慢习惯的。
+
 ### No unnamed List constructor
+
+### 去除非命名的 List 构造
 
 The unnamed constructor on `List` creates a new list with the given size but
 does not initialize any of the elements. This would poke a very large hole in
 the soundness guarantees if you created a list of a non-nullable type and then
 accessed an element.
+
+`List` 的非命名构造函数会创建一个给定大小的列表，但是并没有为任何元素进行初始化。
+如果您创建了一个非空类型的列表，接着访问了其中一个元素，这将会是巨大的漏洞。
 
 To avoid that, we have removed the constructor entirely. It is an error to call
 `List()` in null safe code, even with a nullable type. That sounds scary, but
@@ -2070,22 +2112,42 @@ in practice most code creates lists using list literals, `List.filled()`,
 the edge case where you want to create an empty list of some type, we added a
 new `List.empty()` constructor.
 
+为了避免这样的情况发生，我们将这个构造函数完全移除了。
+在空安全的代码中，就算是一个可空的类型，调用 `List()` 都会抛出错误。
+听起来有点吓人，但在实际开发中，大部分的代码都通过
+字面量、`List.filled()`、`List.generate()` 或是通过其他集合转换，来创建列表。
+为了一些极端情况，比如您需要创建某个类型的一个空的列表，我们新增了 `List.empty()` 构造。
+
 The pattern of creating a completely uninitialized list has always felt out of
 place in Dart, and now it is even more so. If you have code broken by this,
 you can always fix it by using one of the many other ways to produce a list.
 
+在 Dart 中，创建一个完全未初始化的列表，总是不太对劲，以前是，现在还是。
+如果您的代码因为这项改动而被影响了，随时可以通过其他众多方法来生成一个列表。
+
 ### Cannot set a larger length on non-nullable lists
+
+### 不能对非空的列表设置更大的长度
 
 This is little known, but the `length` getter on `List` also has a corresponding
 *setter*. You can set the length to a shorter value to truncate the list. And
 you can also set it to a *longer* length to pad the list with uninitialized
 elements.
 
+`List` 的 `length` getter 也有一个对应的 setter，这一点鲜为人知。
+您可以对列表设置一个较短的长度，从而截断它。
+您也可以对列表设置一个**更长的**长度，从而使用未初始化的元素填充它。
+
 If you were to do that with a list of a non-nullable type, you'd violate
 soundness when you later accessed those unwritten elements. To prevent that, the
 `length` setter will throw a runtime exception if (and only if) the list has a
 non-nullable element type *and* you set it to a *longer* length. It is still
 fine to truncate lists of all types, and you can grow lists of nullable types.
+
+如果您一个非空的列表做了这样的操作，之后您访问了未初始化的元素时，就与空安全的健全性发生了冲突。
+为了防止意外发生，现在在调用 `length` setter 时，如果是对一个非空类型的数组调用，
+**且**您准备设置一个**更长的**长度时，会在运行时抛出一个异常。
+您仍然可以对任何类型的列表进行截断，也可以对一个可空类型的列表进行填充。
 
 There is an important consequence of this if you define your own list types that
 extend `ListBase` or apply `ListMixin`. Both of those types provide an
@@ -2095,17 +2157,33 @@ the implementation of `insert()` in `ListMixin` (which `ListBase` shares) to
 call `add()` instead. Your custom list class should provide a definition of
 `add()` if you want to be able to use that inherited `insert()` method.
 
+如果您自定义了列表的类型，例如继承了 `ListBase` 或者混入了 `ListMixin`，
+那么这项改动可能会导致较为严重的后果。
+以上的两种类型都提供了 `insert()` 的实现，通过设置长度，为插入的元素提供空间。
+在空安全中这样做可能会出现错误，所以我们将它们的 `insert()` 实现改为了 `add()`。
+如果您自定义的列表期望继承 `insert()` 方法，现在您应该使用 `add()`。
+
 ### Cannot access Iterator.current before or after iteration
+
+### 在迭代前后不能访问 Iterator.current
 
 The `Iterator` class is the mutable "cursor" class used to traverse the elements
 of a type that implements `Iterable`. You are expected to call `moveNext()`
 before accessing any elements to advance to the first element. When that method
 returns `false`, you have reached the end and there are no more elements.
 
+`Iterable` 是一个可变的“游标”类，用于遍历 `Iterable` 类型的元素。
+在访问任何元素之前，您都需要调用 `moveNext()` 来跳到第一个元素。
+当方法返回了 `false` 时，意味着您已经到达了终点，已经没有更多元素了。
+
 It used to be that `current` returned `null` if you called it either before
 calling `moveNext()` the first time or after iteration finished. With null
 safety, that would require the return type of `current` to be `E?` and not `E`.
 That in turn means every element access would require a runtime `null` check.
+
+在以前，在首次调用 `moveNext()` 前，或者在迭代结束后，调用 `current`，它会返回 `null`。
+有了空安全，这就要求 `current` 的返回类型是 `E?` 而不是 `E`。
+这样的返回类型，意味着在运行时，所有元素的访问都需要进行 `null` 检查。
 
 Those checks would be useless given that almost no one ever accesses the current
 element in that erroneous way. Instead, we have made the type of `current` be
@@ -2113,7 +2191,15 @@ element in that erroneous way. Instead, we have made the type of `current` be
 iterating, we've left the iterator's behavior undefined if you call it when you
 aren't supposed to. Most implementations of `Iterator` throw a `StateError`.
 
+鉴于目前几乎没有人会以这种错误的方式访问当前元素，这些检查其实毫无用处。
+我们反行其道，将 `current` 的返回类型确定为 `E`。
+由于迭代前后**有可能**会有一个对应类型的值出现，
+当您在不应该调用它的时候调用迭代器时，我们让迭代器的行为保持为未定义。
+对于 `Iterator` 的大部分实现都将抛出 `StateError` 异常。
+
 ## Summary
+
+## 总结
 
 That is a very detailed tour through all of the language and library changes
 around null safety. It's a lot of stuff, but this is a pretty big language
@@ -2122,32 +2208,65 @@ cohesive and usable. That requires changing not just the type system, but a
 number of other usability features around it. We didn't want it to feel like
 null safety was bolted on.
 
+这是一场非常完整的空安全旅途，途中走遍了所有语言和库的变更。
+这其中的内容真的很多，但是这也是一项非常大的语言变更。
+更重要的是，我们希望 Dart 仍然处在能让您感觉到统一性和可用性的点上。
+所以不仅是类型系统需要作出变动，同时一些可用性的特性也围绕着一起改变。
+我们不希望空安全仅仅是拿螺栓固定的特性。
+
 The core points to take away are:
 
+您需要掌握的核心要点有：
+
 *   Types are non-nullable by default and made nullable by adding `?`.
+
+    类型默认是非空的，可以添加 `?` 变为可空的。
 
 *   Optional parameters must be nullable or have a default value. You can use
     `required` to make named parameters non-optional. Non-nullable top-level
     variables and static fields must have initializers. Non-nullable instance
     fields must be initialized before the constructor body begins.
 
+    可选参数必须是可空的或者包含默认值的。
+    您可以使用 `required` 来构建一个非可选命名参数。
+    非空的全局变量和静态字段必须包含构造。
+    实例的非空字段必须在构造体开始执行前被初始化。
+
 *   Method chains after null-aware operators short circuit if the receiver is
     `null`. There are new null-aware cascade (`?..`) and index (`?[]`)
     operators. The postfix null assertion "bang" operator (`!`) casts its
     nullable operand to the underlying non-nullable type.
+
+    如果接收者为 `null`，那么在其空判断操作符之后的链式方法调用都会被截断。
+    我们引入了新的空判断级联操作符 (`?..`) 及索引操作符 (`?[]`)。
+    后缀空断言“重点”操作符 (`!`) 可以将可空的操作对象转换为对应的非空类型。
 
 *   Flow analysis lets you safely turn nullable local variables and parameters
     into usable non-nullable ones. The new flow analysis also has smarter rules
     for type promotion, missing returns, unreachable code, and variable
     initialization.
 
+    新的流程分析，让您更安全地将可空的局部变量和参数，转变为可用的非空类型。
+    它同时还对类型提升、遗漏的返回、不可达的代码和变量的初始化，有着更为智能的规则。
+
 *   The `late` modifier lets you use non-nullable types and `final` in places
     you otherwise might not be able to, at the expense of runtime checking. It
     also gives you lazy-initialized fields.
 
+    `late` 修饰符以牺牲运行时的变量检查为代价，
+    让您在一些原本无法使用的地方，能够使用非空类型和 `final`。
+    它同时提供了对字段延迟初始化的支持。
+
 *   The List class is changed to prevent uninitialized elements.
+
+    列表类现在不再允许包含未初始化的元素。
 
 Finally, once you absorb all of that and get your code into the world of null
 safety, you get a sound program that the compilers can optimize and where every
 place a runtime error can occur is visible in your code. We hope you feel that's
 worth the effort to get there.
+
+最后，当您吸收了这篇文章的所有内容，并且将您的代码真正带到空安全的世界中时，
+您会得到一个健全的程序，编译器可以进行优化，
+并且在您的代码中，您可以看到每一个运行时可能出错的地方。
+希望您的一切努力都是值得的。
