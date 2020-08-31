@@ -420,26 +420,13 @@ They involve error handling which an **await for** loop
 can't do&mdash;the first error reaching the loops will end
 the loop and its subscription on the stream.
 There is no recovering from that.
-You can use `handleError()` to remove errors from a stream
+The following code shows how to use `handleError()` to remove errors from a stream
 before using it in an **await for** loop.
 
-最后这三个方法比较特殊。它们用于处理 **await for** 循环不能处理的错误：当循环执行过程中出现错误时，该循环会结束同时取消 Stream 上的订阅且不能恢复。你可以使用 `handleError()` 方法在 **await for** 循环中使用 Stream 前将相关错误移除。
-
-### The transform() function {#transform-function}
-
-### transform() 方法 {#transform-function}
-
-The `transform()` function is not just for error handling;
-it is a more generalized "map" for streams.
-A normal map requires one value for each incoming event.
-However, especially for I/O streams,
-it might take several incoming events to produce an output event.
-A [StreamTransformer][] can work with that.
-For example, decoders like [Utf8Decoder][] are transformers.
-A transformer requires only one function, [bind()][], which can be
-easily implemented by an `async` function.
-
-`transform()` 方法并不只是用于处理错误；它更是一个通用的 Stream “map 映射”。通常而言，一个 “map 映射”会为每一个输入事件设置一个值。但是对于 I/O Stream 而言，它可能会使用多个输入事件来生成一个输出事件。这时候使用 [StreamTransformer][] 就可以做到这一点。例如像 [Utf8Decoder][] 这样的解码器就是一个变换器。一个变换器只需要实现一个 [bind()][] 方法，其可通过异步函数轻松实现。
+最后这三个方法比较特殊。它们用于处理 **await for** 循环不能处理的错误：
+当循环执行过程中出现错误时，该循环会结束同时取消 Stream 上的订阅且不能恢复。
+你可以使用 `handleError()` 方法在 **await for** 循环中
+使用 Stream 前将相关错误移除。
 
 <?code-excerpt "misc/lib/tutorial/misc.dart (mapLogErrors)"?>
 ```dart
@@ -453,6 +440,18 @@ Stream<S> mapLogErrors<S, T>(
   }
 }
 ```
+
+### The transform() function {#transform-function}
+
+The `transform()` function is not just for error handling;
+it is a more generalized "map" for streams.
+A normal map requires one value for each incoming event.
+However, especially for I/O streams,
+it might take several incoming events to produce an output event.
+A [StreamTransformer][] can work with that.
+For example, decoders like [Utf8Decoder][] are transformers.
+A transformer requires only one function, [bind()][], which can be
+easily implemented by an `async` function.
 
 ### Reading and decoding a file {#reading-decoding-file}
 
