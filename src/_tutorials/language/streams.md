@@ -443,7 +443,7 @@ Stream<S> mapLogErrors<S, T>(
 
 ### The transform() function {#transform-function}
 
-### transform() 方法 {#transform-function}	
+### transform() 方法 {#transform-function}
 
 The `transform()` function is not just for error handling;
 it is a more generalized "map" for streams.
