@@ -14,7 +14,7 @@ problem][billion]. Here is an example:
 空安全是我们对 Dart 作出最大的改变。
 在 Dart 初始之际，编译时的空安全是一项少有且需要大量时间推进的功能。
 时至今日，Kotlin、Swift、Rust 及众多语言都拥有他们自己的解决方案，
-空安全已经成为[老生常谈][billion]。让我们来看下面这个例子：
+空安全已经成为 [老生常谈][billion]。让我们来看下面这个例子：
 
 [strong]: /guides/language/type-system
 [billion]: https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/
@@ -76,7 +76,7 @@ understand *how* the language handles `null`, *why* we designed it that way, and
 how to write idiomatic, modern, null-safe Dart. (Spoiler alert: it ends up
 surprisingly close to how you write Dart today.)
 
-这篇文档很长。如果您只需要一份如何开始并运行的简短的文档，请从[概览][overview]开始。
+这篇文档很长。如果您只需要一份如何开始并运行的简短的文档，请从 [概览][overview]开始。
 当您认为您有充足的时间，且已经准备好深入理解它时，再回到这里，
 彼时您可以了解到语言是**如何**处理 `null`、**为什么**我们会这样设计，
 以及您如何写出符合现代习惯的空安全 Dart 代码。
@@ -280,7 +280,7 @@ full-featured union types.
 
 此处我们希望 `dairy` 参数只能传入任意字符串，或者一个 `null` 值。
 为了表达我们的想法，我们在原有类型 `String` 的尾部加上 `?` 使得 `dairy` 成为可空的类型。
-本质上，这和定义了一个原有类型加 `Null` 的[组合类型][union]相差无几。
+本质上，这和定义了一个原有类型加 `Null` 的 [组合类型][union]相差无几。
 所以如果 Dart 包含完整的组合类型定义，那么 `String?` 就是 `String|Null` 的缩写。
 
 [union]: https://en.wikipedia.org/wiki/Union_type
@@ -491,7 +491,7 @@ every type, you have a *bottom type*. (In this case, your directed graph is a
 
 如果这张有向图的顶部有是一个单一的超类（直接或间接），这个类型称为**顶层类型**。
 类似的，如果有一个在底部有一个奇怪的类型，是所有类型的子类，这个类型称为**底层类型**。
-（在这个情况下，您的有向图是一种[偏序集合 (lattice)][lattice]）
+（在这个情况下，您的有向图是一种 [偏序集合 (lattice)][lattice]）
 
 [lattice]: https://en.wikipedia.org/wiki/Lattice_(order)
 
@@ -757,7 +757,7 @@ hidden from users and used during compiler optimization, but some newer
 languages have started to use the same techniques for visible language features.
 Dart already has a dash of flow analysis in the form of *type promotion*:
 
-[控制流程分析][Control flow analysis]已经在众多编译器中存在多年了。
+[控制流程分析][Control flow analysis] 已经在众多编译器中存在多年了。
 通常它对于使用者而言是不可见的，只在编译优化流程中使用，
 但是，部分较新的语言，已经开始在可以看见的语言特性中使用同样的技术了。
 Dart 已经以**类型提升**的方式实现了一些流程分析：
@@ -820,7 +820,7 @@ reached when `object` is a list.
 For null safety, we've taken this limited analysis and made it [much more
 powerful in several ways][flow analysis].
 
-在空安全中，我们[从不同的维度增强了][flow analysis]这项能力有限的分析。
+在空安全中，我们 [从不同的维度增强了][flow analysis] 这项能力有限的分析。
 
 [flow analysis]: https://github.com/dart-lang/language/blob/master/resources/type-system/flow-analysis.md
 
@@ -833,8 +833,8 @@ isn't smart about early returns and other unreachable code paths. When analyzing
 a function, it now takes into account `return`, `break`, `throw`, and any other
 way execution might terminate early in a function. Under null safety, this function:
 
-首先，长期以来，对于类型提升在处理提前返回和无法到达的代码路径时[不够智能的问题][18921]，
-已经被修复。
+首先，对于长期以来类型提升在处理提前返回和无法到达的代码路径时 [不够智能的问题][18921]，
+已经被我们修复。
 当我们在分析一个函数时，`return`、`break`、`throw` 以及任何可能提早结束函数的方式，
 都将被考虑进来。
 在空安全下，下面的这个函数：
