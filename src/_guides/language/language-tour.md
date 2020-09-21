@@ -953,9 +953,9 @@ var list = [1, 2, 3];
 
 {{site.alert.end}}
 
-Lists use zero-based indexing, where 0 is the index of the first element
-and `list.length - 1` is the index of the last element. You can get a
-list’s length and refer to list elements just as you would in
+Lists use zero-based indexing, where 0 is the index of the first value
+and `list.length - 1` is the index of the last value. You can get a
+list’s length and refer to list values just as you would in
 JavaScript:
 
 List 的下标索引从 0 开始，第一个元素的下标为 0，最后一个元素的下标为 `list.length - 1`。你可以像 JavaScript 中的用法那样获取 Dart 中 List 的长度以及元素：
@@ -984,12 +984,12 @@ var constantList = const [1, 2, 3];
 <a id="spread-operator"> </a>
 Dart 2.3 introduced the **spread operator** (`...`) and the
 **null-aware spread operator** (`...?`),
-which provide a concise way to insert multiple elements into a collection.
+which provide a concise way to insert multiple values into a collection.
 
 Dart 在 2.3 引入了 **扩展操作符**（`...`）和 **null-aware 扩展操作符**（`...?`），它们提供了一种将多个元素插入集合的简洁方法。
 
 For example, you can use the spread operator (`...`) to insert
-all the elements of a list into another list:
+all the values of a list into another list:
 
 例如，你可以使用扩展操作符（`...`）将一个 List 中的所有元素插入到另一个 List 中：
 
@@ -1559,9 +1559,11 @@ is sometimes referred to as _arrow_ syntax.
 
 {{site.alert.end}}
 
-A function can have two types of parameters: _required_ and _optional_.
-The required parameters are listed first, followed by any optional parameters.
-Optional parameters can be _named_ or _positional_.
+### Parameters
+
+A function can have any number of *required positional* parameters. These can be
+followed either by *named* parameters or by *optional positional* parameters
+(but not both).
 
 函数可以有两种形式的参数：**必要参数** 和 **可选参数**。
 必要参数定义在参数列表前面，可选参数则定义在必要参数后面。
@@ -1578,17 +1580,13 @@ Optional parameters can be _named_ or _positional_.
 
 {{site.alert.end}}
 
-### Optional parameters
-
-### 可选参数
-
-Optional parameters can be either named or positional, but not both.
-
-可选参数分为命名参数和位置参数，可在参数列表中任选其一使用，但两者不能同时出现在参数列表中。
-
 #### Named parameters
 
-#### 命名参数
+#### 已命名的参数
+
+Named parameters are optional unless they're specifically marked as required.
+
+已命名的参数是可选参数了，除非他们被特别标记为 required。
 
 When calling a function, you can specify named parameters using
 <code><em>paramName</em>: <em>value</em></code>. For example:
@@ -1637,11 +1635,16 @@ then the analyzer reports an issue.
 To use the [@required][] annotation,
 depend on the [meta][] package and import `package:meta/meta.dart`.
 
-[@required][] 注解定义在 [meta][] 包中，可以直接导入 `package:meta/meta.dart` 包使用。
+[@required][] 注解定义在 [meta][] package 中，
+可以直接导入 `package:meta/meta.dart` 包使用。
 
-#### Positional parameters
+{% comment %}
+NULLSAFE: Rewrite this section.
+{% endcomment %}
 
-#### 位置参数
+#### Optional positional parameters
+
+#### 可选的位置参数
 
 Wrapping a set of function parameters in `[]` marks them as optional
 positional parameters:
@@ -2841,9 +2844,9 @@ Iterable classes such as List and Set also support the `for-in` form of
 
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (collection)"?>
 ```dart
-var collection = [0, 1, 2];
+var collection = [1, 2, 3];
 for (var x in collection) {
-  print(x); // 0 1 2
+  print(x); // 1 2 3
 }
 ```
 

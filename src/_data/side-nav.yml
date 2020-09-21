@@ -186,8 +186,8 @@
       children:
         - title: 综述
           permalink: /tools/sdk
-        - title: dart 命令
-          permalink: /tools/dart-vm
+        - title: dart 命令 (新的 Dart 工具)
+          permalink: /tools/dart-tool
         - title: dart2js (prod JS)
           permalink: /tools/dart2js
         - title: dart2native 命令
@@ -262,7 +262,7 @@
   expanded: true
   children:
     - title: API 文档
-      permalink: https://api.dart.dev
+      permalink: https://api.dart.cn
     - title: Dart 团队官方博客
       permalink: https://medium.com/dartlang
     - title: DartPad (在线编辑器)
