@@ -10,7 +10,7 @@ feature needing a long introduction. Today, Kotlin, Swift, Rust, and other
 languages all have their own answers to what has become a very [familiar
 problem][billion]. Here is an example:
 
-自 Dart 2.0 替换了静态可选类型系统为健全的静态类型系统后，
+自 Dart 2.0 替换了静态可选类型系统为 [健全的静态类型系统][strong] 后，
 空安全是我们对 Dart 作出最大的改变。
 在 Dart 初始之际，编译时的空安全是一项少有且需要大量时间推进的功能。
 时至今日，Kotlin、Swift、Rust 及众多语言都拥有他们自己的解决方案，
@@ -39,7 +39,7 @@ phone, they are not happy. When your users aren't happy, you aren't happy.
 如果您在运行这个 Dart 程序时并未使用空安全，
 它将在调用 `.length` 时抛出 `NoSuchMethodError` 异常。
 `null` 值是 `Null` 类的一个实例，而 `Null` 没有 "length" getter。
-运行时的错误很糟心，在本身就是为终端用户的使用而设计的 Dart 语言上尤其如此。
+运行时的出错很恼人，在本身就是为终端用户的使用而设计的 Dart 语言上尤其如此。
 如果一个服务器应用出现了异常，您可以快速对它进行重启，而不被其他人察觉。
 但当一个 Flutter 应用在用户的手机上崩溃时，他们绝对不会感到开心。
 用户不开心，想必开发者也不会开心。
@@ -96,7 +96,7 @@ pros and cons. These principles guided the choices we made:
     you can, but you have to choose that by using some feature that is textually
     visible in the code.
 
-    **代码需要默认是安全的。**
+    **代码在默认情况下是安全的。**
     如果您写的新代码中没有显式使用不安全的特性，运行时将不会有空引用错误抛出。
     所有潜在的空引用错误都将被静态捕获。
     如果您想为了灵活度而将某些检查放到运行时进行，当然不成问题，
@@ -164,7 +164,7 @@ pros and cons. These principles guided the choices we made:
     benefits in the portions that are null safe, but you don't get full runtime
     soundness until the entire application is null safe.
 
-    需要注意一点：我们只对完全使用了空安全的代码的保证健全性。
+    需要注意一点：目前我们只能完全保证使用了空安全的代码的健全性。
     Dart 程序支持新的空安全代码和旧的传统代码混合。
     在这些“混合模式”的程序中，空引用的错误仍有可能出现。
     这类程序里让您可以在使用了空安全的部分，享受到所有**静态部分的**空安全福利。
@@ -1608,7 +1608,7 @@ access `this`, call methods, or access fields on the instance.
 当您在实例字段上使用 `late` 时，延迟初始化会给您带来更多的便利。
 通常实例字段的初始化内容无法访问到 `this`，
 因为在所有的初始化方法完成前，您无法访问到新的实例对象。
-但是，使用了 `late` 让这个条件不在为真，
+但是，使用了 `late` 让这个条件不再为真，
 所以您**可以**访问到 `this`、调用方法以及访问实例的字段。
 
 ### Late final variables
