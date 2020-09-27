@@ -38,7 +38,7 @@ you don't just say "My app uses `widgets`." You say, "My app uses
 identifies an _immutable_ chunk of code. The people updating `widgets` can
 make all of the changes they want, but they promise to not touch any already
 released versions. They can put out `2.0.6` or `3.0.0` and it won't affect you
-one whit because the version you use is unchanged.
+one bit because the version you use is unchanged.
 
 When you _do_ want to get those changes, you can always point your app to a
 newer version of `widgets` and you don't have to coordinate with those
@@ -384,7 +384,7 @@ Let's say after
 putting all of the constraints on a shared dependency together, you're
 left with the narrow range of `>=1.2.4 <1.2.6`. It's not an empty range.
 If there was a version `1.2.4` of the dependency, you'd be golden. But maybe
-they never released that and instead when straight from `1.2.3` to `1.3.0`.
+they never released that and instead went straight from `1.2.3` to `1.3.0`.
 You've got a range but nothing exists inside it.
 
 ### You can have an unstable graph

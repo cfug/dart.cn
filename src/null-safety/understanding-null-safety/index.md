@@ -1,14 +1,19 @@
 ---
 title: Understanding null safety
-description: A deep dive into all of the changes related to null safety and how to use them.
+title: 深入理解空安全
+description: A deep dive into Dart language and library changes related to null safety.
+description: 深入了解 Dart 语言及其依赖的在空安全方面改动。
 ---
+
+_Written by Bob Nystrom<br>
+July 2020_
 
 Null safety is the largest change we've made to Dart since we replaced the
 original unsound optional type system with [a sound static type system][strong]
 in Dart 2.0. When Dart first launched, compile-time null safety was a rare
 feature needing a long introduction. Today, Kotlin, Swift, Rust, and other
 languages all have their own answers to what has become a very [familiar
-problem][billion]. Here is an example:
+problem.][billion] Here is an example:
 
 自 Dart 2.0 替换了静态可选类型系统为 [健全的静态类型系统][strong] 后，
 空安全是我们对 Dart 作出最大的改变。
@@ -264,9 +269,9 @@ illustrative case. Consider this null safe Dart code:
 // Using null safety:
 makeCoffee(String coffee, [String? dairy]) {
   if (dairy != null) {
-    print("$coffee with $dairy");
+    print('$coffee with $dairy');
   } else {
-    print("Black $coffee");
+    print('Black $coffee');
   }
 }
 ```
@@ -372,7 +377,7 @@ requireStringNotObject(String definitelyString) {
 }
 
 main() {
-  Object maybeString = "it is";
+  Object maybeString = 'it is';
   requireStringNotObject(maybeString);
 }
 ```
@@ -410,7 +415,7 @@ requireStringNotObject(String definitelyString) {
 }
 
 main() {
-  Object maybeString = "it is";
+  Object maybeString = 'it is';
   requireStringNotObject(maybeString as String);
 }
 ```
@@ -487,7 +492,7 @@ If that directed graph comes to a point at the top where there is a single type
 that is the supertype (directly or indirectly), that type is called the *top
 type*. Likewise, if there is a weird type at that bottom that is a subtype of
 every type, you have a *bottom type*. (In this case, your directed graph is a
-[lattice][].)
+[lattice.][lattice])
 
 如果这张有向图的顶部有是一个单一的超类（直接或间接），那么这个类型称为**顶层类型**。
 类似的，如果有一个在底部有一个奇怪的类型，是所有类型的子类，这个类型就被称为**底层类型**。
@@ -818,7 +823,7 @@ reached when `object` is a list.
 它无法预测到 `return` 让下面代码只能在 `object` 为列表时才能访问到。
 
 For null safety, we've taken this limited analysis and made it [much more
-powerful in several ways][flow analysis].
+powerful in several ways.][flow analysis]
 
 在空安全中，我们 [从不同的维度增强了][flow analysis] 这项能力，
 让它不再只能进行有限的分析。
@@ -903,7 +908,7 @@ class Point {
   final double x, y;
 
   bool operator ==(Object other) {
-    if (other is! Point) wrongType("Point", other);
+    if (other is! Point) wrongType('Point', other);
     return x == other.x && y == other.y;
   }
 
@@ -1355,11 +1360,11 @@ class HttpResponse {
   HttpResponse.ok() : code = 200;
   HttpResponse.notFound()
       : code = 404,
-        error = "Not found";
+        error = 'Not found';
 
   String toString() {
-    if (code == 200) return "OK";
-    return "ERROR $code ${error.toUpperCase()}";
+    if (code == 200) return 'OK';
+    return 'ERROR $code ${error.toUpperCase()}';
   }
 }
 ```
@@ -1388,8 +1393,8 @@ you assert types using an `as` cast, and you can do the same thing here:
 ```dart
 // Using null safety:
 String toString() {
-  if (code == 200) return "OK";
-  return "ERROR $code ${(error as String).toUpperCase()}";
+  if (code == 200) return 'OK';
+  return 'ERROR $code ${(error as String).toUpperCase()}';
 }
 ```
 
@@ -1412,8 +1417,8 @@ equivalent to:
 ```dart
 // Using null safety:
 String toString() {
-  if (code == 200) return "OK";
-  return "ERROR $code ${error!.toUpperCase()}";
+  if (code == 200) return 'OK';
+  return 'ERROR $code ${error!.toUpperCase()}';
 }
 ```
 
@@ -1826,7 +1831,7 @@ class Box<T> {
 }
 
 main() {
-  Box<String>("a string");
+  Box<String>('a string');
   Box<int?>(null);
 }
 ```
@@ -2076,8 +2081,8 @@ a map lookup:
 
 ```dart
 // Using null safety, incorrectly:
-var map = {"key": "value"};
-print(map["key"].length); // Error.
+var map = {'key': 'value'};
+print(map['key'].length); // Error.
 ```
 
 This gives you a compile error on the attempt to call `.length` on a nullable
@@ -2089,8 +2094,8 @@ checker by using `!`:
 
 ```dart
 // Using null safety:
-var map = {"key": "value"};
-print(map["key"]!.length); // OK.
+var map = {'key': 'value'};
+print(map['key']!.length); // OK.
 ```
 
 We considered adding another method to Map that would do this for you: look up
@@ -2271,9 +2276,9 @@ The core points to take away are:
     让您在一些原本无法使用的地方，能够使用非空类型和 `final`。
     它同时提供了对字段延迟初始化的支持。
 
-*   The List class is changed to prevent uninitialized elements.
+*   The `List` class is changed to prevent uninitialized elements.
 
-    列表类现在不再允许包含未初始化的元素。
+    `List` 类现在不再允许包含未初始化的元素。
 
 Finally, once you absorb all of that and get your code into the world of null
 safety, you get a sound program that the compilers can optimize and where every

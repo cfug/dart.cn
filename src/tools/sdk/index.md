@@ -15,7 +15,7 @@ To learn about other tools you can use for Dart development, see
 the [Dart tools](/tools) page.
 
 {{site.alert.version-note}}
-  As of Flutter 1.21, the Flutter SDK includes the Dart SDK.
+  As of Flutter 1.21, the Flutter SDK includes the full Dart SDK.
   This site's documentation and examples use
   {% if site.data.pkg-vers.SDK.channel == 'dev' %} the **dev channel** {% endif -%}
   version [{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external}
@@ -28,8 +28,9 @@ The Dart SDK includes a `lib` directory for the [Dart libraries][] and a `bin`
 directory that has these command-line tools:
 
 <div class="row">
-  <div class="col-lg-6" markdown="1">
-  [dart](/server)
+  <div class="col-lg-6" markdown="1">  
+    
+  [dart](/tools/dart-vm)
   : The standalone VM
 
   [dart2native](/tools/dart2native)

@@ -151,13 +151,11 @@ To create a simple command-line app, use **New Pad**.
   </li>
 
   <li markdown="1">
-  Clear the **Show web content** checkbox,
-  at the bottom right of DartPad.
-
-  取消勾选位于 DartPad 右下方的 **Show web content** 复选框。
-
+  Turn off **HTML**, using the toggle
+  underneath the Dart logo.
   The HTML and CSS tabs disappear.
 
+  点击位于 Dart logo 下面的 **HTML** 按钮，
   HTML 和 CSS 标签就会被隐藏。
   </li>
 
@@ -251,4 +249,3 @@ For technical details on embedding DartPads, see the
 [best practices for using DartPad in tutorials]: /resources/dartpad-best-practices
 [DartPad embedding guide.]: https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide
 [futures codelab]: /codelabs/async-await
-

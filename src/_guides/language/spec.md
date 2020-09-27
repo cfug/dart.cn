@@ -38,6 +38,7 @@ The Dart 2 language specification is available in PDF format:
 New language features are typically described using informal language feature specifications in the dart-lang/language repo:
 
 在 dart-lang/language 仓库中通常使用非正式语言功能规范来描述新的语言功能：
+
   * [Accepted informal proposals][]
 
     [已接受的非正式提案][Accepted informal proposals]
