@@ -137,7 +137,7 @@ $(function () {
   });
 
   // Initialize the video on the homepage, if it exists.
-  initVideoModal();
+  // initVideoModal();
 });
 
 
@@ -147,43 +147,44 @@ function switchBanner(galleryName) {
     $('.' + galleryName).attr('src', $(this).data('banner'));
 }
 
-function initVideoModal() {
-    let videoModalObject = $('[data-video-modal]');
-    var player;
+// Replace with Bilibili video.
+// function initVideoModal() {
+//     let videoModalObject = $('[data-video-modal]');
+//     var player;
 
-    function onPlayerReady() {
-        videoModalObject.on('shown.bs.modal', function (event) {
-            if (player) {
-                let videoId = event.relatedTarget.dataset.video;
-                player.loadVideoById(videoId);
-                player.playVideo();
-            }
-        });
+//     function onPlayerReady() {
+//         videoModalObject.on('shown.bs.modal', function (event) {
+//             if (player) {
+//                 let videoId = event.relatedTarget.dataset.video;
+//                 player.loadVideoById(videoId);
+//                 player.playVideo();
+//             }
+//         });
 
-        videoModalObject.on('hide.bs.modal', function (event) {
-            if (player) {
-                player.stopVideo();
-            }
-        });
-    }
+//         videoModalObject.on('hide.bs.modal', function (event) {
+//             if (player) {
+//                 player.stopVideo();
+//             }
+//         });
+//     }
 
-    if (videoModalObject.length > 0) {
-        // there is a video modal in the DOM, load the YouTube API
-        let tag = document.createElement('script');
-        tag.src = 'https://youtube.com/iframe_api';
-        let firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+//     if (videoModalObject.length > 0) {
+//         // there is a video modal in the DOM, load the YouTube API
+//         let tag = document.createElement('script');
+//         tag.src = 'https://youtube.com/iframe_api';
+//         let firstScriptTag = document.getElementsByTagName('script')[0];
+//         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        window.onYouTubeIframeAPIReady = function () {
-            player = new YT.Player('video-player', {
-                videoId: '5F-6n_2XWR8',
-                events: {
-                    "onReady": onPlayerReady,
-                },
-            });
-        };
-    }
-}
+//         window.onYouTubeIframeAPIReady = function () {
+//             player = new YT.Player('video-player', {
+//                 videoId: '5F-6n_2XWR8',
+//                 events: {
+//                     "onReady": onPlayerReady,
+//                 },
+//             });
+//         };
+//     }
+// }
 
 $(document).ready(function () {
         function createGallery() {
