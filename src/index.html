@@ -416,18 +416,15 @@ js:
         <div class="modal-content">
             <div class="modal-body">
                 <div class="embedded-video-wrapper">
-                    <!-- <div id="video-player"></div> -->
-                    <iframe
-                        src="https://player.bilibili.com/player.html?aid=839645027&bvid=BV1t54y1m7Qr&cid=239228698&page=1&as_wide=1&high_quality=1&danmaku=0"
-                        border="0"
-                        framespacing="0"
-                        allowfullscreen="true"
+                    <video
+                        id="video-player"
+                        controls=""
+                        src="https://files.flutter-io.cn/dart-cn/landing/why-flutter-uses-dart.mp4"
                         width="640"
                         height="360"
                         title="Why Flutter uses dart?"
-                        style="position:absolute;width:100%;height:100%"
-                    >
-                    </iframe>
+                        style="position:absolute;width:100%;height:100%">
+                    </video>
                 </div>
             </div>
         </div>
