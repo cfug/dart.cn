@@ -468,9 +468,9 @@ Here's an example of using the value `0` if the lookup returns a null value:
 下面是当查询结果为空时使用 `0` 为值的一个例子：
 
 ```dart
-var aList = <String, int>{'one': 1};
+var aMap = <String, int>{'one': 1};
 ...
-int value = aList['one'] ?? 0;
+int value = aMap['one'] ?? 0;
 ```
 
 ## Enabling null safety {#enable-null-safety}
