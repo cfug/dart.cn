@@ -2,7 +2,7 @@
 title: Understanding null safety
 title: 深入理解空安全
 description: A deep dive into Dart language and library changes related to null safety.
-description: 深入了解 Dart 语言及其依赖的在空安全方面改动。
+description: 深入了解 Dart 语言及其依赖在空安全方面改动。
 ---
 
 _Written by Bob Nystrom<br>
@@ -19,7 +19,7 @@ problem.][billion] Here is an example:
 空安全是我们对 Dart 作出最大的改变。
 在 Dart 初始之际，编译时的空安全是一项少有且需要大量时间推进的功能。
 时至今日，Kotlin、Swift、Rust 及众多语言都拥有他们自己的解决方案，
-空安全已经成为 [老生常谈][billion]。让我们来看下面这个例子：
+空安全已经成为 [屡见不鲜的话题][billion]。让我们来看下面这个例子：
 
 [strong]: /guides/language/type-system
 [billion]: https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/
@@ -44,9 +44,9 @@ phone, they are not happy. When your users aren't happy, you aren't happy.
 如果您在运行这个 Dart 程序时并未使用空安全，
 它将在调用 `.length` 时抛出 `NoSuchMethodError` 异常。
 `null` 值是 `Null` 类的一个实例，而 `Null` 没有 "length" getter。
-运行时的出错很恼人，在本身就是为终端用户的使用而设计的 Dart 语言上尤其如此。
-如果一个服务器应用出现了异常，您可以快速对它进行重启，而不被其他人察觉。
-但当一个 Flutter 应用在用户的手机上崩溃时，他们绝对不会感到开心。
+运行时才出现的错误十分恼人，在本就是为终端打造的 Dart 语言上尤其如此。
+如果一个服务端应用出现了异常，您可以快速对它进行重启，而不被用户察觉。
+但当一个 Flutter 应用在用户的手机上崩溃了，他们的体验就会大打折扣。
 用户不开心，想必开发者也不会开心。
 
 Developers like statically-typed languages like Dart because they enable the
@@ -57,7 +57,7 @@ checker so that the language can detect mistakes like the above attempt to call
 `.length` on a value that might be `null`.
 
 开发者偏爱像 Dart 这样的静态类型语言，
-因为它可以让开发者在开发时，更多时候是在使用 IDE 编译时，通过类型检查发现错误。
+因为它通常可以让使用 IDE 的开发者通过类型检查发现错误。
 Bug 越早被发现，就能越早处理。
 当语言设计者在谈论“修复空引用错误”时，他们指的是加强静态类型检查器，
 使得诸如在可能为 `null` 的值上调用 `.length` 这样的错误能被检测到。
@@ -71,7 +71,7 @@ to let you not only write null-safe code but hopefully to *enjoy* doing so.
 针对这个问题，从来没有一个标准答案。
 Rust 和 Kotlin 在其语言内都各自拥有合理的解决方案。
 这篇文档将带您了解 Dart 的解决方案。
-它包含了对静态类型系统的修改、一系列的修改及新的语言特性，
+它包含了对静态类型系统及诸多方面的修改，以及新的语言特性，
 让您在编写代码时不仅能写出空安全的代码，同时也能非常**享受**。
 
 This document is long. If you want something shorter that covers just what you
@@ -142,7 +142,7 @@ pros and cons. These principles guided the choices we made:
     而对我们来说，在空安全的上下文里，“健全”意味着如果一个表达式声明了一个
     不允许值为 `null` 的静态类型，那么这个表达式的任何执行结果都不可能为 `null`。
     Dart 语言主要通过静态检查来保证这项特性，但在运行时也有一些检查参与其中。
-    （不过，请注意第一条原则：您可以选择在运行时将检查放在任何位置。）
+    （不过，根据第一条原则，在运行时何时何地进行检查，完全由您自己掌握。）
 
     Soundness is important for user confidence. A boat that *mostly* stays
     afloat is not one you're enthused to brave the open seas on. But it's also
@@ -153,10 +153,10 @@ pros and cons. These principles guided the choices we made:
     eliminates unneeded `null` checks, and faster code that doesn't need to
     verify a receiver is non-`null` before calling methods on it.
 
-    代码的健全性极大程度影响用户对于代码的信心程度。
-    一艘**大部分时间**都在漂浮状态的小船，
+    代码的健全性极大程度地决定了开发者对于自己的代码是否有自信。
+    一艘**大部分时间**都在飘忽不定的小船，
     是不足以让您鼓起勇气，驶往公海进行冒险的。
-    但对于我们无畏的”黑客“编译器而言，仍然十分重要。
+    这对于我们无畏的”黑客“编译器而言，同样十分重要。
     当语言对程序中语义化的属性做出硬性保证时，
     说明编译器能真正意义上为这些属性作出优化。
     当它涉及到 `null` 时，意味着可以消除不必要的 `null` 检查，提供更精悍的代码，
@@ -187,7 +187,7 @@ that causes problems.
 相反，可以表示一个**空缺**的值是十分有用的。
 在语言中提供对空缺的值的支持，让处理空缺更为灵活和高效。
 它为可选参数、`?.` 空调用语法糖和默认值初始化提供了基础。
-`null` 并不糟糕，糟糕的是**在您意想不到的地方出现**，最终引发问题。
+`null` 并不糟糕，糟糕的是**它在您意想不到的地方出现**，最终引发问题。
 
 Thus with null safety, our goal is to give you *control* and *insight* into
 where `null` can flow through your program and certainty that it can't flow
