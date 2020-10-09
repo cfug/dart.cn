@@ -211,6 +211,16 @@ mind:
 
     Dart 工具可以显示 _警告_ 和 _错误_ 两种类型的问题。警告表明代码可能有问题但不会阻止其运行。错误分为编译时错误和运行时错误；编译时错误代码无法运行；运行时错误会在代码运行时导致[异常](#exceptions)。
 
+{{site.alert.note}}
+
+  If you're curious why Dart uses underscores instead of
+  access modifier keywords like `public` or `private`, see
+  [SDK issue 33383](https://github.com/dart-lang/sdk/issues/33383).
+  
+  如果您好奇 Dart 为什么使用下划线而不使用诸如 `public` 或 `private` 作为修饰符，
+  请参阅 [SDK 议题 #33383](https://github.com/dart-lang/sdk/issues/33383)。
+{{site.alert.end}}
+
 
 ## Keywords
 
@@ -4634,21 +4644,34 @@ mixin Musical {
 }
 ```
 
-To specify that only certain types can use the mixin — for example,
-so your mixin can invoke a method that it doesn't define —
-use `on` to specify the required superclass:
+Sometimes you might want to restrict the types that can use a mixin.
+For example, the mixin might depend on being able to invoke a method
+that the mixin doesn't define.
+As the following example shows, you can restrict a mixin's use
+by using the `on` keyword to specify the required superclass:
 
 可以使用关键字 `on` 来指定哪些类可以使用该 Mixin 类，
 比如有 Mixin 类 A，但是 A 只能被 B 类使用，
 则可以这样定义 A：
 
-
-<?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (mixin-on)"?>
+<?code-excerpt "misc/lib/language_tour/classes/orchestra.dart (mixin-on)" plaster="none" replace="/on Musician2/[!on Musician!]/g" ?>
 ```dart
-mixin MusicalPerformer on Musician {
-  // ···
+class Musician {
+  // ...
+}
+mixin MusicalPerformer [!on Musician!] {
+  // ...
+}
+class SingerDancer extends Musician with MusicalPerformer {
+  // ...
 }
 ```
+
+In the preceding code,
+only classes that extend or implement the `Musician` class
+can use the mixin `MusicalPerformer`.
+Because `SingerDancer` extends `Musician`,
+`SingerDancer` can mix in `MusicalPerformer`.
 
 {{site.alert.version-note}}
 
