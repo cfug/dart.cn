@@ -536,8 +536,8 @@ In practice, this means:
     prohibited value `null`".
 
     如果您想表明让一个值可以接受任意类型，请用 `Object?` 而不是 `Object`。
-    事实上，使用 `Object` 后会使得代码的行为变得不同寻常，
-    因为它意味着“除了诡异的 `null` 值以外的任何可能的值”。
+    使用 `Object` 后会使得代码的行为变得非常诡异，
+    因为它意味着能够是“除了 `null` 以外的任何实例”。
 
 *   On the rare occasion that you need a bottom type, use `Never` instead of
     `Null`. If you don't know if you need a bottom type, you probably don't.
@@ -554,7 +554,7 @@ to maintain soundness and our principle that you can never get a null reference
 error at runtime unless you ask for it, we need to guarantee that `null` never
 appears in any type on the non-nullable side.
 
-我们将类型世界砍成了非空和可空的两半。
+我们将类型世界划分为了非空和可空的两半。
 为了保持代码的健全和我们的原则：“除非您需要，否则您永远不会在运行时遇到空引用错误”，
 我们需要保证 `null` 不会出现在非空一侧的任何类型里。
 
@@ -891,7 +891,7 @@ throw a certain kind of exception:
 
 事实上，根据语言的细则，`throw` 表达式的静态类型就是 `Never`。
 该类型已在核心库中定义，您可以将它用于变量声明。
-也许您写了一个辅助函数，用于简单方便地抛出一个固定的异常：
+也许您会写一个辅助函数，用于简单方便地抛出一个固定的异常：
 
 ```dart
 // Using null safety:
@@ -963,7 +963,7 @@ We also use definite assignment analysis to make *final* variables more
 flexible. Before null safety, it can be difficult to use `final` for local
 variables if you need to initialize them in any sort of interesting way:
 
-同时我们也通过绝对赋值分析使得**终值**变量更灵活。
+同时我们也通过绝对赋值分析使得声明为 **final** 的变量更灵活。
 在空安全引入以前，当你需要声明一个 `final` 变量时，
 一些有意思的初始化方式是无法使用的：
 
@@ -1095,7 +1095,7 @@ your program helps ensure that you *add* code to handle `null`. But we can also
 use that same analysis to detect code that you *don't* need. Before null safety,
 if you wrote something like:
 
-在您的程序中，一个智能的准确知晓 `null` 去向的可达性分析，
+在您的程序中，一个可以准确知晓 `null` 去向的可达性分析，
 能确保您已经**增加**了对 `null` 的处理。
 不过我们也可以用同样的分析来检测您是否有**不用**的代码。
 在空安全以前，如果您编写了如下的代码：
@@ -1116,7 +1116,7 @@ if you have annotated that function with the new non-nullable `List` type, then
 it knows `list` will never be `null`. That implies the `?.` will never do
 anything useful and you can and should just use `.`.
 
-Dart 无法得知空判断操作符 `?.` 是否有用。它只知道您可以将 `null` 传递进方法内。
+Dart 无法得知避空运算符 `?.` 是否有用。它只知道您可以将 `null` 传递进方法内。
 但是在有空安全的 Dart 里，如果您将函数声明为新的非空 `List` 类型，
 它就知道 `list` 永远不会为空。
 实际上就暗示了 `?.` 是不必要的，您完全可以直接使用 `.`。
@@ -1127,7 +1127,7 @@ null-aware operator or even a check like `== null` or `!= null` on a
 non-nullable type gets reported as a warning.
 
 为了帮助您简化代码，我们为一些不必要的代码增加了一些警告，静态分析可以精确地检测到它。
-在一个非空类型上使用空判断操作符、用 `== null` 或 `!= null` 判断，都会出现一个警告。
+在一个非空类型上使用避空运算符、用 `== null` 或 `!= null` 判断，都会出现一个警告。
 
 And, of course, this plays with non-nullable type promotion too. Once a
 variable has been promoted to a non-nullable type, you get a warning if you
@@ -1188,7 +1188,7 @@ Dart's null aware operator `?.` is much older than null safety. The runtime
 semantics state that if the receiver is `null` then the property access on the
 right-hand side is skipped and the expression evaluates to `null`:
 
-Dart 的空判断操作符 `?.` 相对空安全而言俨然是一位老生。
+Dart 的避空运算符 `?.` 相对空安全而言俨然是一位老生。
 根据运行时的语义化规定，如果接收者是 `null`，那么右侧的属性访问就会被跳过，
 表达式将被作为 `null` 看待。
 
@@ -1204,8 +1204,8 @@ call methods on nullable types, we can and do let you use null-aware operators
 on them. The post-null safety version of the program is:
 
 这段代码将打印 “null”，而不是抛出一个异常。
-空判断操作符是一个不错的工具，让可空类型在 Dart 中变得可用。
-尽管我们不能让您在可空类型上调用方法，但我们可以让您使用空判断操作符调用它们。
+避空运算符是一个不错的工具，让可空类型在 Dart 中变得可用。
+尽管我们不能让您在可空类型上调用方法，但我们可以让您使用避空运算符调用它们。
 空安全版本的程序是这样的：
 
 ```dart
@@ -1223,7 +1223,7 @@ encountered an annoyance when using them in method chains. Let's say you want to
 see if the length of a potentially absent string is an even number (not a
 particularly realistic problem, I know, but work with me here):
 
-然而，如果您曾经在 Dart 中使用过空判断操作符，您可能经历过链式方法调用的恼人操作。
+然而，如果您曾经在 Dart 中使用过避空运算符，您可能经历过链式方法调用的恼人操作。
 假设您需要判断一个可能为空的字符串的长度是否为偶数
 （这可能不是个贴合实际的问题，但请继续往下看）：
 
@@ -1245,7 +1245,7 @@ it once:
 这里的问题在于，`.isEven` 的接收器是左侧整个 `notAString?.length` 表达式的结果。
 这个表达式被认为是 `null`，所以我们在尝试调用 `.isEven` 的时候出现了空引用的错误。
 如果您在 Dart 中使用过 `?.`，您可能已经学会了一个非常繁琐的方法，
-那就是在使用了一次空判断操作符后，其**每一处**属性或方法的链式调用处都加上它。
+那就是在使用了一次避空运算符后，其**每一处**属性或方法的链式调用处都加上它。
 
 ```dart
 String? notAString = null;
@@ -1280,7 +1280,7 @@ skipped*. This means if `doohickey` has a non-nullable return type, then you
 can and should write:
 
 为了解决这类问题，我们从 C# 相同功能的设计中借鉴了一个聪明的处理方法。
-当您在链式方法调用中使用空判断操作符时，如果接收器被判断为 `null`，
+当您在链式方法调用中使用避空运算符时，如果接收器被判断为 `null`，
 那么**整个链式调用的剩余部分都会被截断并跳过**。
 这意味着如果 `doohickey` 的返回值是一个可空的类型，您应该这样写：
 
@@ -1311,11 +1311,11 @@ more terse and more precise.
 
 您立刻就会知道 `doohickey` 本身的返回类型就是可空的。
 每一个 `?.` 对应一个**独一无二的**代码路径，能够让 `null` 随着链式调用传递。
-这就让链式方法调用中的空判断操作符更为简洁和精确。
+这就让链式方法调用中的避空运算符更为简洁和精确。
 
 While we were at it, we added a couple of other null-aware operators:
 
-同时，我们也在这里加入了一些其他的空判断操作符：
+同时，我们也在这里加入了一些其他的避空运算符：
 
 ```dart
 // Using null safety:
@@ -2258,7 +2258,7 @@ The core points to take away are:
     operators. The postfix null assertion "bang" operator (`!`) casts its
     nullable operand to the underlying non-nullable type.
 
-    如果接收者为 `null`，那么在其空判断操作符之后的链式方法调用都会被截断。
+    如果接收者为 `null`，那么在其避空运算符之后的链式方法调用都会被截断。
     我们引入了新的空判断级联操作符 (`?..`) 及索引操作符 (`?[]`)。
     后缀空断言“重点”操作符 (`!`) 可以将可空的操作对象转换为对应的非空类型。
 
