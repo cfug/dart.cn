@@ -214,7 +214,7 @@ types.
 
 In type theory lingo, the `Null` type was treated as a subtype of all types:
 
-从类型理论的角度来说，`Null` 类型是所有类型的子类；
+从类型理论的角度来说，`Null` 类型被看作是所有类型的子类；
 
 <img src="understanding-null-safety/hierarchy-before.png" width="335">
 
@@ -230,7 +230,7 @@ from trying to look up a method or property on `null` that it doesn't have.
 如果是 `List` 类型，您可以对其调用 `.add()` 或 `[]`。
 如果是 `int` 类型，您可以对其调用 `+`。 
 但是 `null` 值并没有它们定义的任何一个方法。
-当 `null` 传递至其他类型的表达式时，就意味着任何操作都有可能失败。
+所以当 `null` 传递至其他类型的表达式时，任何操作都有可能失败。
 这就是空引用的症结所在&mdash;所有错误都来源于尝试在 `null` 上查找一个不存在的方法或属性。
 
 ### Non-nullable and nullable types
@@ -252,16 +252,17 @@ permits the value `null`. We've made all types *non-nullable by default*. If you
 have a variable of type `String`, it will always contain *a string*. There,
 we've fixed all null reference errors.
 
-既然 `Null` 已不再是子类，那么除了特殊的 `Null` 类允许 `null` 值，其他类型均不允许。
-我们已经将所有的类型设置为**默认不可空**。
-如果您有一个 `String` 类型的变量，它将始终包含**一个字符串**。
-自此，我们修复了所有的空引用错误。
+既然 `Null` 已不再被看作所有类型的子类，
+那么除了特殊的 `Null` 类型允许传递 `null` 值，其他类型均不允许。
+我们已经将所有的类型设置为**默认不可空**的类型。
+如果您的变量是 `String` 类型，它必须包含**一个字符串**。
+这样一来，我们就修复了所有的空引用错误。
 
 If we didn't think `null` was useful at all, we could stop here. But `null` is
 useful, so we still need a way to handle it. Optional parameters are a good
 illustrative case. Consider this null safe Dart code:
 
-如果我们认为 `null` 根本不重要，那么我们也许已经停下了。
+如果 `null` 对我们来说没有什么意义的话，那大可不必再研究下去了。
 但实际上 `null` 十分有用，所以我们仍然需要合理地处理它。
 可选参数就是非常好的例子。让我们来看下这段空安全的代码：
 
@@ -283,9 +284,9 @@ this is essentially defining a [union][] of the underlying type and the `Null`
 type. So `String?` would be a shorthand for `String|Null` if Dart had
 full-featured union types.
 
-此处我们希望 `dairy` 参数只能传入任意字符串，或者一个 `null` 值。
+此处我们希望 `dairy` 参数能传入任意字符串，或者一个 `null` 值。
 为了表达我们的想法，我们在原有类型 `String` 的尾部加上 `?` 使得 `dairy` 成为可空的类型。
-本质上，这和定义了一个原有类型加 `Null` 的 [组合类型][union]相差无几。
+本质上，这和定义了一个原有类型加 `Null` 的 [组合类型][union] 没有什么区别。
 所以如果 Dart 包含完整的组合类型定义，那么 `String?` 就是 `String|Null` 的缩写。
 
 [union]: https://en.wikipedia.org/wiki/Union_type
@@ -299,7 +300,7 @@ Since our principle is safe by default, the answer is not much. We can't let you
 call methods of the underlying type on it because those might fail if the value
 is `null`:
 
-您会如何处理可空类型的表达式的结果？
+如果您的表达式可能返回空值，您会如何处理它呢？
 由于安全是我们的原则之一，答案其实所剩无几。
 因为您在其值为 `null` 的时候调用方法将会失败，所以我们不会允许您这样做。
 
@@ -320,8 +321,8 @@ safely let you access are ones defined by both the underlying type and the
 nullable types as map keys, store them in sets, compare them to other values,
 and use them in string interpolation, but that's about it.
 
-这段代码将毫无疑问地在运行时崩溃。
-我们只会让您访问同时在原有类型及 `Null` 类下同时定义的方法和属性。
+如果我们允许这样的代码运行，那么它将毫无疑问地崩溃。
+我们只允许您访问同时在原有类型及 `Null` 类下同时定义的方法和属性。
 所以只有 `toString()`、`==` 和 `hashCode` 可以访问。
 因此，您可以将可空类型用于 Map 的键值、存储于集合中或者与其他值进行比较，仅此而已。
 
