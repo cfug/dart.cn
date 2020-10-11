@@ -333,10 +333,10 @@ problems. We model this by making every nullable type a supertype of its
 underlying type. You can also safely pass `null` to something expecting a nullable type, so
 `Null` is also a subtype of every nullable type:
 
-它们是如何与可空类型交互的呢？
+那么原有类型是如何与可空类型交互的呢？
 我们知道，将一个**非**空类型的值传递给可空类型是一定安全的。
 如果一个函数接受 `String?`，那么向其传递 `String` 是允许的，不会有任何问题。
-我们将所有的可空类型作为基础类型的子类。
+在此次改动中，我们将所有的可空类型作为基础类型的子类。
 您也可以将 `null` 传递给一个可空的类型，即 `Null` 也是任何可空类型的子类：
 
 <img src="understanding-null-safety/nullable-hierarchy.png" width="235">
@@ -346,8 +346,8 @@ the underlying non-nullable type is unsafe. Code that expects a `String` may
 call `String` methods on the value. If you pass a `String?` to it, `null` could
 flow in and that could fail:
 
-但当你背道而驰，将一个可空类型传递给非空的基础类型，是不安全的。
-需要 `String` 的代码可能会在您传递的值上调用 `String` 的方法。
+但将一个可空类型传递给非空的基础类型，是不安全的。
+声明为 `String` 的变量可能会在您传递的值上调用 `String` 的方法。
 如果您传递了 `String?`，传入的 `null` 将可能产生错误：
 
 ```dart
@@ -368,7 +368,7 @@ type `Object` to a function expecting an `String`, the type checker allows it:
 
 我们不会允许这样不安全的程序出现。
 然而，**隐式转换**在 Dart 中一直存在。
-假设您将类型为 `Object` 的值传递给了需要 `String` 的函数，
+假设您将类型为 `Object` 的实例传递给了需要 `String` 的函数，
 类型检查器会允许您这样做：
 
 ```dart
@@ -393,7 +393,7 @@ removing implicit downcasts entirely.
 
 为了保持健全性，编译器为 `requireStringNotObject()` 的参数
 静默添加了 `as String` 强制转换。
-在运行时进行转换可能会抛出异常，但在编译时，Dart 认为这是可行的。
+在运行时进行转换可能会抛出异常，但在编译时，Dart 允许这样的操作。
 在可空类型已经变为非空类型的子类的前提下，
 隐式转换允许您给需要 `String` 的内容传递 `String?`。
 这项来自隐式转换的允诺与我们的安全性目标不符。
@@ -427,7 +427,7 @@ before:
 
 总的来说，我们认为这是项非常好的改动。
 在我们的印象中，大部分用户非常厌恶隐式转换。
-值得注意的是，过去您可能已经遭受了它的摧残：
+您可能已经遭受过它的摧残：
 
 ```dart
 // Without null safety:
@@ -469,7 +469,8 @@ you can't get away from them. Don't worry, we have a whole suite of features to
 help you move values from the nullable half over to the other side that we will
 get to soon.
 
-这么看来，可空类型基本宣告毫无作用了。它们不包含任何方法，您也无法抛下它们扬长而去。
+这么看来，可空类型基本宣告毫无作用了。
+它们不包含任何方法，但是您又无法摆脱它们。
 别担心，接下来我们有一整套的方法来帮助您把值从可空的一半转移到另一半。
 
 ### Top and bottom
