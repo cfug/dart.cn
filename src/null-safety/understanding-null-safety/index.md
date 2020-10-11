@@ -1697,9 +1697,9 @@ left the combination of named+mandatory empty. With null safety, we filled that
 in. You declare a required named parameter by placing `required` before the
 parameter:
 
-Dart 为何长期以来只支持该的三个角的参数类型，而不支持 命名+必需 组合的参数，仍然是未解之谜。
+Dart 为何长期以来只支持三种参数类型，而不支持 命名+必需 组合的参数，仍然是未解之谜。
 随着空安全的引入，我们将这个角补充上了。
-现在您只需要将 `required` 放在参数前，就可以声明一个必需的命名参数，：
+现在您只需要将 `required` 放在参数前，就可以声明一个必需的命名参数：
 
 ```dart
 // Using null safety:
@@ -2072,7 +2072,7 @@ that code would have set the Dart ecosystem aflame.
 我们本可以在键值不存在时抛出异常，并且将返回类型改为更易使用的非空类型。
 但是，通过索引操作符判断 `null` 来确认键值是否存在，是一个非常常见的操作，
 经过我们的分析，大约有一半的操作是这样的用途。
-如果破坏了这些代码，会直接点燃 Dart 的生态系统。
+如果破坏了这些代码，会直接摧毁 Dart 的生态系统。
 
 Instead, the runtime behavior is the same and thus the return type is obliged
 to be nullable. This means you generally cannot immediately use the result of
@@ -2250,7 +2250,7 @@ The core points to take away are:
 
     可选参数必须是可空的或者包含默认值的。
     您可以使用 `required` 来构建一个非可选命名参数。
-    非空的全局变量和静态字段必须包含构造。
+    非空的全局变量和静态字段必须在声明时被初始化。
     实例的非空字段必须在构造体开始执行前被初始化。
 
 *   Method chains after null-aware operators short circuit if the receiver is
