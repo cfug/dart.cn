@@ -1685,10 +1685,13 @@ I visualize the various kinds of Dart parameters with this table:
 
 ```
              mandatory    optional
+             必需的        可选的
             +------------+------------+
 positional  | f(int x)   | f([int x]) |
+位置参数     | f(int x)   | f([int x]) |
             +------------+------------+
 named       | ???        | f({int x}) |
+命名参数     | ???        | f({int x}) |
             +------------+------------+
 ```
 
@@ -1698,7 +1701,7 @@ in. You declare a required named parameter by placing `required` before the
 parameter:
 
 Dart 为何长期以来只支持三种参数类型，而不支持 命名+必需 组合的参数，仍然是未解之谜。
-随着空安全的引入，我们将这个角补充上了。
+随着空安全的引入，我们将这个空缺的参数类型补充上了。
 现在您只需要将 `required` 放在参数前，就可以声明一个必需的命名参数：
 
 ```dart
