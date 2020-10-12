@@ -246,7 +246,7 @@ Here are some best practices to keep in mind when composing strings in Dart.
 
 ### DO use adjacent strings to concatenate string literals.
 
-### **要** 使用临近字符字的方式连接字面量字符串。
+### **要** 使用相邻字符串的方式连接字面量字符串。
 
 {% include linter-rule.html rule="prefer_adjacent_string_concatenation" %}
 
@@ -487,7 +487,7 @@ people.forEach(print);
 Also note that it's always OK to use `Map.forEach()`. Maps aren't iterable, so
 this guideline doesn't apply.
 
-对于 `Map.forEach()` 调用时可以的。Map 是不可迭代的。所它们不包括在该准则内。
+您可以调用 `Map.forEach()`。Map 是不可迭代的，所以该准则对它无效。
 
 ### DON'T use `List.from()` unless you intend to change the type of the result.
 
@@ -1474,7 +1474,8 @@ class Point {
 
 We've got to type `x` _four_ times here to define a field. We can do better:
 
-为了初始化一个字段，我们需要取_四_次 `x` 。使用下面的方式会更好：
+为了初始化一个字段，我们需要反复写下 `x` **四**次。
+使用下面的方式会更好：
 
 {:.good}
 <?code-excerpt "misc/lib/effective_dart/usage_good.dart (field-init-as-param)"?>

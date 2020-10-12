@@ -1879,7 +1879,7 @@ type parameter nullable:
 ```dart
 // Using null safety:
 class Box<T> {
-  final T? object;
+  T? object;
   Box.empty();
   Box.full(this.object);
 }
