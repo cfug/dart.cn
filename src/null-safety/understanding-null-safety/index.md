@@ -5,8 +5,9 @@ description: A deep dive into Dart language and library changes related to null 
 description: 深入了解 Dart 语言及其依赖在空安全方面改动。
 ---
 
-_Written by Bob Nystrom<br>
-July 2020_
+_July 2020, Written by Bob Nystrom_
+
+_文/ Bob Nystrom, Google Dart 团队工程师_
 
 Null safety is the largest change we've made to Dart since we replaced the
 original unsound optional type system with [a sound static type system][strong]
@@ -81,7 +82,7 @@ understand *how* the language handles `null`, *why* we designed it that way, and
 how to write idiomatic, modern, null-safe Dart. (Spoiler alert: it ends up
 surprisingly close to how you write Dart today.)
 
-这篇文档很长。如果您只需要一份如何开始并运行的简短的文档，请从 [概览][overview]开始。
+这篇文档很长。如果您只需要一份如何开始并运行的简短的文档，请从 [概览][overview] 开始。
 当您认为您有充足的时间，且已经准备好深入理解它时，再回到这里，
 彼时您可以了解到语言是**如何**处理 `null`、**为什么**我们会这样设计，
 以及您如何写出符合现代习惯的空安全 Dart 代码。
@@ -138,7 +139,7 @@ pros and cons. These principles guided the choices we made:
     happen will be your choice.)
 
     **产出的空安全代码应该是非常健全的。**
-    对于静态检查而言，”健全“有着多层含义。
+    对于静态检查而言，“健全”有着多层含义。
     而对我们来说，在空安全的上下文里，“健全”意味着如果一个表达式声明了一个
     不允许值为 `null` 的静态类型，那么这个表达式的任何执行结果都不可能为 `null`。
     Dart 语言主要通过静态检查来保证这项特性，但在运行时也有一些检查参与其中。
@@ -156,7 +157,7 @@ pros and cons. These principles guided the choices we made:
     代码的健全性极大程度地决定了开发者对于自己的代码是否有自信。
     一艘**大部分时间**都在飘忽不定的小船，
     是不足以让您鼓起勇气，驶往公海进行冒险的。
-    这对于我们无畏的”黑客“编译器而言，同样十分重要。
+    这对于我们无畏的“黑客”编译器而言，同样十分重要。
     当语言对程序中语义化的属性做出硬性保证时，
     说明编译器能真正意义上为这些属性作出优化。
     当它涉及到 `null` 时，意味着可以消除不必要的 `null` 检查，提供更精悍的代码，
@@ -1684,13 +1685,10 @@ I visualize the various kinds of Dart parameters with this table:
 这个表格直观地展示了 Dart 的各种参数：
 
 ```
-             mandatory    optional
-             必需的        可选的
+                必需的        可选的
             +------------+------------+
-positional  | f(int x)   | f([int x]) |
 位置参数     | f(int x)   | f([int x]) |
             +------------+------------+
-named       | ???        | f({int x}) |
 命名参数     | ???        | f({int x}) |
             +------------+------------+
 ```
