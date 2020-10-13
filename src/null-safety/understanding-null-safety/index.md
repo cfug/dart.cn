@@ -1112,12 +1112,12 @@ String checkList(List list) {
 
 Dart had no way of knowing if that null-aware `?.` operator is useful or not.
 For all it knows, you could pass `null` to the function. But in null safe Dart,
-if you have annotated that function with the new non-nullable `List` type, then
+if you have annotated that function with the now non-nullable `List` type, then
 it knows `list` will never be `null`. That implies the `?.` will never do
 anything useful and you can and should just use `.`.
 
 Dart 无法得知避空运算符 `?.` 是否有用。它只知道您可以将 `null` 传递进方法内。
-但是在有空安全的 Dart 里，如果您将函数声明为新的非空 `List` 类型，
+但是在有空安全的 Dart 里，如果您将函数声明为现有的非空 `List` 类型，
 它就知道 `list` 永远不会为空。
 实际上就暗示了 `?.` 是不必要的，您完全可以直接使用 `.`。
 
