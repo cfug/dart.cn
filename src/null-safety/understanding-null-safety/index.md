@@ -2,7 +2,7 @@
 title: Understanding null safety
 title: 深入理解空安全
 description: A deep dive into Dart language and library changes related to null safety.
-description: 深入了解 Dart 语言及其依赖在空安全方面改动。
+description: 深入了解 Dart 语言及其依赖在空安全方面的改动。
 ---
 
 _July 2020, Written by Bob Nystrom_

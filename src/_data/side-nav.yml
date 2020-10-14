@@ -48,7 +48,7 @@
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /null-safety
-        - title: 理解空安全
+        - title: 深入理解空安全
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /null-safety/understanding-null-safety
