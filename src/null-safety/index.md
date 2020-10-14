@@ -24,9 +24,9 @@ Dart 语言将要引入健全的空安全机制了！
   affects the Dart language. For a deep dive into how
   null safety works, see [Understanding null safety][].
   
-  本页概述了空安全是如何 Dart 语言的。
+  本页概述了空安全是如何影响 Dart 语言的。
   如果希望深入了解空安全性的工作原理，
-  请参阅文档 [了解空安全][Understanding null safety]。
+  请参阅文档 [深入理解空安全][Understanding null safety]。
   
 {{site.alert.end}}
 
@@ -60,11 +60,11 @@ Dart 编译器和运行环境也同时可以通过优化减少内部的空安全
   Please test the feature using the Dart SDK,
   and [give us feedback.][]
 
-  因为目前空安全仍然处于技术预览阶段，
-  **请勿在生产环境使用空安全。**
+  由于目前空安全仍然处于技术预览阶段，
+  所以**请勿在生产环境使用空安全。**
   请注意，Flutter 目前尚未支持空安全。
   请通过 Dart SDK 测试这项特性，
-  并且[给予我们反馈。][give us feedback.]
+  并且 [给予我们反馈][give us feedback.] 。
 
 {{ site.alert.end }}
 
@@ -74,7 +74,7 @@ If you've used Kotlin, TypeScript, or C#,
 the syntax for null safety might look familiar.
 That's by design: the Dart language aims to be unsurprising.
 
-与空安全相关的新操作符和关键词有 `?`、`!` 和 `late`。
+与空安全相关的新操作符和关键字有 `?`、`!` 和 `late`。
 如果您曾经使用过 Kotlin、TypeScript 或 C# 进行开发，
 那么这些空安全的语法看起来会有些熟悉。
 这是设计使然：Dart 语言的目标是不让您感到惊讶。
@@ -87,8 +87,8 @@ Or you can practice using null safety in the web app
 shown in the following screenshot.
 
 您可以在您的项目设置里 [启用技术预览版 SDK](#enable-null-safety)，
-在您的项目里实践空安全。
-或者通过 [支持空安全的 DartPad][nullsafety.dartpad.dev] 进行练习。
+从而在您的项目里实践空安全。
+或者通过 [支持空安全的 DartPad][nullsafety.dartpad.dev] 进行尝试。
 
 ![Screenshot of DartPad null safety snippet with analysis errors](/null-safety/dartpad-snippet.png)
 {% comment %}
@@ -137,7 +137,7 @@ but the Dart analyzer doesn't agree,
 **insert `late`** before the variable's type:
 
 在您已经明确一个非空变量一定会在使用前初始化，
-而 Dart 分析器仍然被蒙在鼓里的情况下，
+而 Dart 分析器仍然无法明确的情况下，
 您可以在变量的类型前**加上 `late`**：
 
 ```dart
@@ -201,8 +201,8 @@ a variable or expression inside a function has
 a nullable type but can't have a null value.
 
 有了空安全，Dart 分析器会在要求非空而得到一个空值时抛出错误。
-这并不像听起来那么糟糕：当函数内的一个变量或一条表达式为可空类型，
-但不能有空值时，分析器通常也可以识别。
+这并不像听起来那么糟糕。当函数内的一个变量或一句表达式为可空的类型，
+但不能包含空值时，分析器通常也可以识别。
 
 {{site.alert.info}}
 
@@ -210,7 +210,7 @@ a nullable type but can't have a null value.
   so it can't predict the values of global variables or class fields.
 
   分析器不能对整个应用流程进行模拟，
-  所以它并不能预测全局变量或者类的字段。
+  所以它并不能对全局变量或者类的字段进行推断。
 
 {{site.alert.end}}
 
@@ -275,7 +275,7 @@ you can use the [typecast operator (`as`)][`as`].
 The following example uses `as` to convert a `num?` to an `int`:
 
 如果您想改变一个可空变量的类型，
-您可以使用[类型转换操作符 (`as`)][`as`]，
+您可以使用 [类型转换操作符 (`as`)][`as`]，
 这是 `!` 操作符做不到的。
 下面的例子使用了 `as` 将 `num?` 转换为 `int`。
 
@@ -289,7 +289,7 @@ if the operand might be null.
 Instead, you can use the null-aware version of that operator (`?.`):
 
 一旦您开始使用空安全，
-当操作对象可能为空时，您将不再能使用[成员访问符 (`.`)][other operators]。
+当操作对象可能为空时，您将不再能使用 [成员访问符 (`.`)][other operators]。
 取而代之的是可空版本的 `?.`。
 
 ```dart
@@ -367,7 +367,7 @@ For example, here’s the code you might use to create
 a variable (`nameList`) of type `List<String?>` and
 a variable (`nameSet`) of type `Set<String?>`:
 
-在通过字面量创建一个列表或集合时，通常您会看到字面量类型注解
+在通过字面量创建一个列表或集合时，通常您会看到字面量类型注解，
 而不是表格上面的类型声明。
 例如下面的代码可以用于创建一个名为 `nameList` 的 `List<String?>`
 和一个名为 `nameSet` 的 `Set<String?>`：
@@ -385,7 +385,7 @@ Map types behave mostly like you’d expect, with one exception:
 **the returned value of a lookup can be null**.
 Null is the value for a key that isn't present in the map.
 
-映射类型大部分会如您预期表现一致，除了一处不同：
+映射类型大部分会与您预期的表现一致，除了一处不同：
 **查询的返回值可能为空**。
 当一个映射中并未出现包含某个 key 时，将会是空值。
 
@@ -427,7 +427,7 @@ Because map lookups can return null,
 you can't assign them to non-nullable variables:
 
 由于映射查询可能返回空值，
-您不能将其复制给非空变量：
+您不能将其传递给非空变量：
 
 ```dart
 // Assigning a lookup result to a non-nullable
@@ -483,8 +483,9 @@ To use null safety while it's in tech preview —
 whether you use the command line or an IDE —
 you need the following setup:
 
-Dart 工具目前正 **实验性** 地支持空安全代码的
-分析、编译和运行。如果想使用空安全，
+Dart 工具目前对空安全代码的
+分析、编译和运行的支持仍然在实验阶段。
+如果想使用空安全，
 请按照如下步骤通过命令行命令或者 IDE 设置
 启用技术预览版本的空安全。
 
@@ -524,7 +525,7 @@ environment: sdk: '>=2.10.0-56.0.dev <3.0.0'
   我们建议这里使用 Dart 或者 Flutter SDK 的 **最新 dev 发布渠道**。
   了解如何获得最新的发布渠道信息，请查看 Dart SDK 页面的
   [Dev 发布渠道][dart-dev-channel] 部分。
-  或者 [Flutter SDK 页面][flutter-sdks] 的的 Dev 发布渠道部分。
+  或者 [Flutter SDK][flutter-sdks] 的 Dev 发布渠道部分。
   
 {{ site.alert.end }}
 
