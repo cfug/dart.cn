@@ -232,7 +232,7 @@ from trying to look up a method or property on `null` that it doesn't have.
 如果是 `int` 类型，您可以对其调用 `+`。 
 但是 `null` 值并没有它们定义的任何一个方法。
 所以当 `null` 传递至其他类型的表达式时，任何操作都有可能失败。
-这就是空引用的症结所在&mdash;所有错误都来源于尝试在 `null` 上查找一个不存在的方法或属性。
+这就是空引用的症结所在&mdash;&mdash;所有错误都来源于尝试在 `null` 上查找一个不存在的方法或属性。
 
 ### Non-nullable and nullable types
 
@@ -790,7 +790,7 @@ body of some control flow construct only executes when a certain `is` expression
 on a variable is true, then inside that body the variable's type is "promoted"
 to the tested type.
 
-请注意我们是如何在标记的行上，调用 `object` 的 `isEmpty` 的。
+请留意我们是如何在标记的代码行上对 `object` 调用 `isEmpty` 的。
 该方法是在 `List` 中定义的，而不是 `Object`。
 因为类型检查器检查了代码中所有的 `is` 表达式，以及控制流的路径，所以这段代码是有效的。
 如果部分控制流的代码主体只在变量的某个 `is` 表达式为真时才执行，
@@ -842,7 +842,7 @@ isn't smart about early returns and other unreachable code paths. When analyzing
 a function, it now takes into account `return`, `break`, `throw`, and any other
 way execution might terminate early in a function. Under null safety, this function:
 
-首先，对于长期以来类型提升在处理提前返回和无法到达的代码路径时 [不够智能的问题][18921]，
+首先，长期以来类型提升在处理提前返回和无法到达的代码路径时 [不够智能的问题][18921]，
 已经被我们修复。
 当我们在分析一个函数时，`return`、`break`、`throw` 以及任何可能提早结束函数的方式，
 都将被考虑进来。
@@ -991,7 +991,7 @@ are satisfied.
 
 鉴于 `result` 被声明为 `final`，又不包含初始化内容，这段代码将返回一个错误。
 而对于更智能的空安全流程分析来说，这段代码是正确的。
-通过分析可以知道，`result` 在所有的控制流路径上都已经被初始化了一次，
+通过分析可以知道，`result` 在所有的控制流路径上都已经被初始化，
 所以对于标记的 `final` 变量而言，约束得以满足。
 
 ### Type promotion on null checks
@@ -1155,7 +1155,7 @@ that the remaining meaningful checks stand out. We want you to be able to look
 at your code and *see* where `null` can flow.
 
 此处由于代码执行后，`list` 不能为 `null`，所以您会在 `?.` 的调用处看到一个警告。
-这些警告的不仅仅是为了减少无意义的代码，
+这些警告不仅仅是为了减少无意义的代码，
 通过移除**不必要**的 `null` 判断，我们得以确保其他有意义的判断能够脱颖而出。
 我们期望您能**看到**您代码中的 `null` 会向何处传递。
 
@@ -1171,8 +1171,8 @@ locals and parameters.
 
 现在，我们已经将 `null` 归到了可空类型的集合中。
 有了流程分析，我们可以让一些非 `null` 值安全地越过栅栏，到达非空的那一侧，供我们使用。
-这是相当大的一步，但如果我们就此止步不前，产出的系统仍然饱含痛苦的限制。
-流程分析也仅对局部变量和参数起作用。
+这是相当大的一步，但如果我们就此止步不前，产出的系统仍然饱含痛苦的限制，
+而流程分析也仅对局部变量和参数起作用。
 
 To try to regain as much of the flexibility that Dart had before null
 safety&mdash;and to go beyond it on some places&mdash;we have a handful of other
@@ -1660,7 +1660,7 @@ variable modifiers covers most of the feature space of `lateinit` in Kotlin and
 local lazy evaluation.
 
 换句话说，新的 `late` 修饰符与 Dart 的其他变量修饰符结合后，
-Kotlin 中的 `lateinit` 和 Swift 中的 `lazy` 的大量特征都已实现了。
+已经实现了 Kotlin 中的 `lateinit` 和 Swift 中的 `lazy` 的大量特性。
 如果您需要给局部变量加上一些延迟初始化，您也可以在局部变量上使用它。
 
 ### Required named parameters
@@ -1785,7 +1785,7 @@ to slap a `!` on the use of the field. It seems redundant, but that's more or
 less how Dart behaves today.
 
 因为代码的健全性也是我们在乎的指标，所以字段的类型不会被提升，且上面的方法也无法编译。
-这其实不太舒服。在这样的简单例子中，您最好能在使用字段时加上 `!`。
+这其实不太舒服。在这样的简单例子中，最好的办法是在使用字段时加上 `!`。
 它看起来是多余的，但是目前的 Dart 需要这样的操作。
 
 Another pattern that helps is to copy the field to a local variable first and
@@ -1822,7 +1822,7 @@ Consider:
 
 与现今主流的静态类型语言一样，Dart 也有泛型类和泛型方法。
 它们在与可空性的交互上，会有一些反直觉的地方，
-可一旦您想清楚了其中隐含的设计意图，就会意识到它们的合理性。
+可一旦您想清楚了其中隐含的设计意图，就会理解它们的合理性。
 首先，“这个类型是否是可空？”已经不再是一个简单的是非问题。
 让我们来考虑以下的情况：
 
@@ -2232,9 +2232,9 @@ null safety was bolted on.
 
 这是一场非常详尽的空安全旅途，途中走遍了所有语言和库的变更。
 这其中的内容真的很多，但是这也是一项非常大的语言变更。
-更重要的是，我们希望 Dart 仍然处在能让您感觉到统一性和可用性的点上。
-所以不仅是类型系统需要作出变动，同时一些可用性的特性也围绕着一起改变。
-我们不希望空安全仅仅是拿螺栓固定的特性。
+更重要的是，我们希望 Dart 仍然让您感到好用且具备一致性。
+所以不仅类型系统需要作出变动，一些可用性的特性也同时围绕着一起改变。
+我们不希望空安全仅仅是拿螺栓固定的糟糕特性。
 
 The core points to take away are:
 
@@ -2275,7 +2275,7 @@ The core points to take away are:
     you otherwise might not be able to, at the expense of runtime checking. It
     also gives you lazy-initialized fields.
 
-    `late` 修饰符以牺牲运行时的变量检查为代价，
+    `late` 修饰符以在运行时每次都进行检查的高昂代价，
     让您在一些原本无法使用的地方，能够使用非空类型和 `final`。
     它同时提供了对字段延迟初始化的支持。
 
