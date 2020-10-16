@@ -330,35 +330,44 @@ to tell if it's referring to HTTPS FTP or HTTP SFTP.
 例如，一个以 `HTTPSFTP` 开头的名字，
 没有办法判断它是指 HTTPS FTP 还是 HTTP SFTP。
 
-To avoid this, acronyms and abbreviations are capitalized like regular words,
-except for two-letter acronyms. (Two-letter *abbreviations* like
-ID and Mr. are still capitalized like words.)
+To avoid this, acronyms and abbreviations are capitalized like regular words.
+
+为了避免上面的情况，缩略词和缩写词要像普通单词一样首字母大写。
+
+**例外情况** 两个字母情况下，类似 IO (input/output) 这样的 **缩略词** 要全大写。
+另外，两个字母的 **缩写词** 比如 ID (identification) 与其他常规单词一样，
+首字母大写即可: `Id`。
+
+**Exception:** Two-letter *acronyms* like IO (input/output) are fully 
+capitalized: `IO`. On the other hand, two-letter *abbreviations* like 
+ID (identification) are still capitalized like regular words: `Id`.
 
 为了避免上面的情况，缩略词和缩写词要像普通单词一样首字母大写，
 两个字母的单词除外。
 （像 ID 和 Mr. 这样的双字母*缩写词*仍然像一般单词一样首字母大写。）
 
 {:.good}
-<?code-excerpt "misc/lib/effective_dart/style_good.dart (acronyms and abbreviations)" replace="/,//g"?>
 {% prettify dart tag=pre+code %}
-HttpConnectionInfo
-uiHandler
-IOStream
-HttpRequest
-Id
-DBIOPort
-TVVcr
+class HttpConnection {}
+class DBIOPort {}
+class TVVcr {}
+class MrRogers {}
+
+var httpRequest = ...
+var uiHandler = ...
+Id id;
 {% endprettify %}
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-HTTPConnection
-UiHandler
-IoStream
-HTTPRequest
-ID
-DbIoPort
-TvVcr
+class HTTPConnection {}
+class DbIoPort {}
+class TvVcr {}
+class MRRogers {}
+
+var hTTPRequest = ...
+var uIHandler = ...
+ID iD;
 {% endprettify %}
 
 
