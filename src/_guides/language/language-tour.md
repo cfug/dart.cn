@@ -55,14 +55,14 @@ The following code uses many of Dart’s most basic features:
 <?code-excerpt "misc/test/language_tour/basic_test.dart"?>
 ```dart
 // Define a function.
-printInteger(int aNumber) {
-  print('The number is $aNumber.'); // 打印输出到控制台。
+void printInteger(int aNumber) {
+  print('The number is $aNumber.'); // Print to console.
 }
 
-// Dart 程序从 main() 函数开始执行。
-main() {
-  var number = 42; // 声明并初始化一个变量。
-  printInteger(number); // 调用一个函数。
+// This is where the app starts executing.
+void main() {
+  var number = 42; // Declare and initialize a variable.
+  printInteger(number); // Call a function.
 }
 ```
 

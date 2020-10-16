@@ -509,9 +509,9 @@ For example, your `pubspec.yaml` file might have the following constraints:
 查看文档 [SDK 版本约束](/tools/pub/pubspec#sdk-constraints)
 来设定一个支持空安全的 SDK 版本。
 
-```yaml
-environment: sdk: '>=2.10.0-56.0.dev <3.0.0'
-```
+{% prettify yaml tag=pre+code %}
+environment: sdk: '>=2.11.0-213.0.dev <3.0.0'
+{% endprettify %}
 
 {{ site.alert.version-note }}
 
