@@ -28,7 +28,7 @@ But the reality is that most of us don't write as many comments as we should.
 It's like exercise: you technically *can* do too much, but it's a lot more
 likely that you're doing too little. Try to step it up.
 
-我们知道代码应该子文档（self-documenting），并不是所有的注释都是有用的。
+我们知道代码应该自文档（self-documenting），并不是所有的注释都是有用的。
 但实际情况是，我们大多数人都没有写出尽可能多的评论。
 和练习一样：从技术上你*可以*做很多，但是实际上你
 只做了一点点。尝试着逐步提高。
