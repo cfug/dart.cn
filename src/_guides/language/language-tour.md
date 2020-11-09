@@ -3519,7 +3519,7 @@ If a constant constructor is outside of a constant context
 and is invoked without `const`,
 it creates a **non-constant object**:
 
-但是如果无法根据上下文判断是否可以省略 `cosnt`，
+但是如果无法根据上下文判断是否可以省略 `const`，
 则不能省略掉 `const` 关键字，否则将会创建一个 **非常量对象** 例如：
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (nonconst-const-constructor)"?>
