@@ -129,9 +129,9 @@ This command creates a small Dart app that has the following:
   一个 pubspec 文件，`pubspec.yaml`，包含应用的元数据，包括应用依赖的
   [package](/guides/packages) 信息以及所需的版本等。
 
-## 5. Run the app
+## 4. Run the app
 
-## 5. 运行应用
+## 4. 运行应用
 
 To run the app from the command line, use the Dart VM by running the
 [`dart run`](/tools/dart-tool) command in the app's top directory:
