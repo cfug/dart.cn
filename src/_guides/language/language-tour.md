@@ -21,7 +21,7 @@ To learn more about Dart's core libraries, see the
 Whenever you want more details about a language feature,
 consult the [Dart language specification][].
 
-你可以通过查看 [Dart 库概览](/guides/libraries/library-tour) 
+你可以通过查看 [Dart 库概览](/guides/libraries/library-tour)
 学习更多关于 Dart 核心库的知识。
 若还想了解更多有关语言功能的详细内容，
 请参阅 [Dart 编程语言规范][Dart language specification]。
@@ -32,14 +32,14 @@ consult the [Dart language specification][].
   ([learn more](/tools/dartpad)).
   **<a href="{{site.dartpad}}" target="_blank" rel="noopener">Open
   DartPad.</a>**
-  
+
   使用 DartPad 可以体验 Dart 的大部分语言功能 ([了解更多](/tools/dartpad))，
   **<a href="{{site.dartpad}}" target="_blank" rel="noopener">打开 DartPad。</a>**
-  
+
   This page uses embedded DartPads to display some of the examples.
-  
+
   本页面内嵌了一些 DartPads 做例子展示，
-  
+
   {% include dartpads-embedded-troubleshooting.md %}
 
 {{site.alert.end}}
@@ -81,12 +81,27 @@ apps:
 
     以双斜杠开头的一行语句称为单行注释。Dart 同样支持多行注释和文档注释。查阅[注释](#comments)获取更多相关信息。
 
+`void`
+
+:   A special type that indicates a value that's never used.
+    Functions like `printInteger()` and `main()` that don't explicitly return a value
+    have the `void` return type.
+    For more information, see [this article][void article].
+
+    一种特殊的类型，表示一个值永远不会被使用。
+    类似于 `main()` 和 `printInteger()` 的函数，
+    以 `void` 声明的函数返回类型，并不会返回值。
+
+[void article]: https://medium.com/dartlang/dart-2-legacy-of-the-void-e7afb5f44df0
+
 `int`
 
-:   A type. Some of the other [built-in types](#built-in-types)
+:   Another type, indicating an integer.
+    Some additional [built-in types](#built-in-types)
     are `String`, `List`, and `bool`.
 
-    表示一种数据类型。Dart 中一些其他的[内置类型](#built-in-types)包括 `String`、`List` 和 `bool`。
+    另一种数据类型，表示一个整型数字。
+    Dart 中一些其他的[内置类型](#built-in-types)包括 `String`、`List` 和 `bool`。
 
 `42`
 
@@ -132,8 +147,8 @@ apps:
 
   This site's code follows the conventions in the
   [Dart style guide](/guides/language/effective-dart/style).
-  
-  本站的代码遵循 
+
+  本站的代码遵循
   [Dart 风格指南](/guides/language/effective-dart/style) 中的约定。
 
 {{site.alert.end}}
@@ -216,7 +231,7 @@ mind:
   If you're curious why Dart uses underscores instead of
   access modifier keywords like `public` or `private`, see
   [SDK issue 33383](https://github.com/dart-lang/sdk/issues/33383).
-  
+
   如果您好奇 Dart 为什么使用下划线而不使用诸如 `public` 或 `private` 作为修饰符，
   请参阅 [SDK 议题 #33383](https://github.com/dart-lang/sdk/issues/33383)。
 {{site.alert.end}}
@@ -233,6 +248,7 @@ The following table lists the words that the Dart language treats specially.
 {% assign ckw = '&nbsp;<sup title="contextual keyword" alt="contextual keyword">1</sup>' %}
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">2</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">3</sup>' %}
+<div class="table-wrapper" markdown="1">
 | [abstract][]{{bii}}   | [else][]              | [import][]{{bii}}     | [super][]         |
 | [as][]{{bii}}         | [enum][]              | [in][]                | [switch][]        |
 | [assert][]            | [export][]{{bii}}     | [interface][]{{bii}}  | [sync][]{{ckw}}   |
@@ -250,6 +266,7 @@ The following table lists the words that the Dart language treats specially.
 | [do][]                | [if][]                | [show][]{{ckw}}       |                   |
 | [dynamic][]{{bii}}    | [implements][]{{bii}} | [static][]{{bii}}     |                   |
 {:.table .table-striped .nowrap}
+</div>
 
 [abstract]: #abstract-classes
 [as]: #type-test-operators
@@ -296,7 +313,7 @@ The following table lists the words that the Dart language treats specially.
 [new]: #using-constructors
 [null]: #default-value
 [on]: #catch
-[operator]: #overridable-operators
+[operator]: #_operators
 [part]: /guides/libraries/create-library-packages#organizing-a-library-package
 [rethrow]: #catch
 [return]: #functions
@@ -400,7 +417,7 @@ String name = 'Bob';
   This page follows the
   [style guide recommendation](/guides/language/effective-dart/design#types)
   of using `var`, rather than type annotations, for local variables.
-  
+
   本文遵循
   [风格建议指南](/guides/language/effective-dart/design#types) 中的建议，
   通过 `var` 声明局部变量而非使用指定的类型。
@@ -430,9 +447,9 @@ assert(lineCount == null);
   Production code ignores the `assert()` call. During development, on the other
   hand, <code>assert(<em>condition</em>)</code> throws an exception if
   _condition_ is false. For details, see [Assert](#assert).
-  
+
   `assert()` 的调用将会在生产环境的代码中被忽略掉。
-  在开发过程中，<code>assert(<em>condition</em>)</code> 
+  在开发过程中，<code>assert(<em>condition</em>)</code>
   将会在 **条件判断** 为 false 时抛出一个异常。
   详情请查阅 [Assert](#assert)。
 
@@ -462,14 +479,14 @@ the first time it's used.
   the constructor body starts —
   at the variable declaration, by a constructor parameter,
   or in the constructor's [initializer list](#initializer-list).
-  
+
   实例变量可以是 `final` 的但不可以是 `const` 的，
   final 实例变量必须在构造器开始前被初始化，比如在声明实例变量时初始化，
   或者作为构造器参数，或者将其置于构造器的 [初始化列表](#initializer-list)中。
 
 {{site.alert.end}}
 
-Here's an example of creating and setting a final variable:
+Here's an example of creating and setting a `final` variable:
 
 下面的示例中我们创建并设置两个 final 变量：
 
@@ -479,7 +496,7 @@ final name = 'Bob'; // Without a type annotation
 final String nickname = 'Bobby';
 ```
 
-You can't change the value of a final variable:
+You can't change the value of a `final` variable:
 
 你不能修改一个 final 变量的值：
 
@@ -523,7 +540,7 @@ like for `baz` above. For details, see [DON’T use const redundantly][].
 如果使用初始化表达式为常量赋值可以省略掉关键字 `const`，比如上面的常量 `baz` 的赋值就省略掉了 `const`。详情请查阅[DON’T use const redundantly][]
 
 You can change the value of a non-final, non-const variable,
-even if it used to have a const value:
+even if it used to have a `const` value:
 
 没有使用 final 或 const 修饰的变量的值是可以被更改的，即使这些变量之前引用过 const 的值。
 
@@ -532,7 +549,7 @@ even if it used to have a const value:
 foo = [1, 2, 3]; // foo 的值之前为 const [] (Was const [])
 ```
 
-You can't change the value of a const variable:
+You can't change the value of a `const` variable:
 
 常量的值不可以被修改：
 
@@ -557,10 +574,18 @@ const list = [i as int]; // Use a typecast.
 const map = {if (i is int) i: "int"}; // Use is and collection if.
 const set = {if (list is List<int>) ...list}; // ...and a spread.
 ```
+
+{{site.alert.note}}
+  Although a `final` object cannot be modified,
+  its fields can be changed.
+  In comparison, a `const` object and its fields
+  cannot be changed: they're _immutable_.
+{{site.alert.end}}
+
 For more information on using `const` to create constant values, see
 [Lists](#lists), [Maps](#maps), and [Classes](#classes).
 
-可以查阅 [Lists](#lists)、[Maps](#maps) 和 [Classes](#classes) 
+可以查阅 [Lists](#lists)、[Maps](#maps) 和 [Classes](#classes)
 获取更多关于使用 `const` 创建常量值的信息。
 
 ## Built-in types
@@ -692,7 +717,7 @@ double z = 1; // Equivalent to double z = 1.0.
 
   Before Dart 2.1, it was an error to use an integer literal in a double
   context.
-  
+
   在 Dart 2.1 之前，在浮点数上下文中使用整数字面量是错误的。
 
 {{site.alert.end}}
@@ -801,7 +826,7 @@ assert('使用${s.substring(3,5)}表达式也非常方便' == '使用插值表�
   The `==` operator tests whether two objects are equivalent. Two
   strings are equivalent if they contain the same sequence of code
   units.
-  
+
   `==` 运算符判断两个对象的内容是否一样，
   如果两个字符串包含一样的字符编码序列，则表示相等。
 
@@ -955,13 +980,27 @@ var list = [1, 2, 3];
   objects to this list, the analyzer or runtime raises an error. For more
   information, read about
   [type inference.](/guides/language/type-system#type-inference)
-  
+
   这里 Dart 推断出 `list` 的类型为 `List<int>`，
   如果往该数组中添加一个非 int 类型的对象则会报错。
-  你可以阅读 
+  你可以阅读
   [类型推断](/guides/language/type-system#type-inference) 获取更多相关信息。
 
 {{site.alert.end}}
+
+<a name="trailing-comma"></a>
+You can add a comma after the last item in a Dart collection literal.
+This _trailing comma_ doesn't affect the collection,
+but it can help prevent copy-paste errors.
+
+<?code-excerpt "misc/lib/language_tour/built_in_types.dart (trailing-commas)"?>
+```dart
+var list = [
+  'Car',
+  'Boat',
+  'Plane',
+];
+```
 
 Lists use zero-based indexing, where 0 is the index of the first value
 and `list.length - 1` is the index of the last value. You can get a
@@ -1093,7 +1132,7 @@ Dart 所支持的 set 由 set literals 和 [Set][Set class] 类所提供。
 
   Although the Set _type_ has always been a core part of Dart, set _literals_
   were introduced in Dart 2.2.
-  
+
   尽管 Set **类型(type)** 一直都是 Dart 的一项核心功能，
   但是 Set **字面量(literals)** 却是在 Dart2.2 中才加入的。
 
@@ -1114,7 +1153,7 @@ var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
   wrong type of value to the set, the analyzer or runtime raises an error. For
   more information, read about
   [type inference.](/guides/language/type-system#type-inference)
-  
+
   Dart 推断 `halogens` 变量是一个 `Set<String>` 类型的集合，
   如果往该 Set 中添加类型不正确的对象则会报错。
   你可以查阅
@@ -1140,7 +1179,7 @@ var names = <String>{}; // 类型+{}的形式创建Set。
   literals. Because map literals came first, `{}` defaults to the `Map` type. If
   you forget the type annotation on `{}` or the variable it's assigned to, then
   Dart creates an object of type `Map<dynamic, dynamic>`.
-  
+
   **Set 还是 map?** Map 字面量语法同 Set 字面量语法非常相似。
   因为先有的 Map 字面量语法，所以 `{}` 默认是 `Map` 类型。
   如果忘记在 `{}` 上注释类型或赋值到一个未声明类型的变量上，
@@ -1278,7 +1317,7 @@ nobleGases[18] = 'argon';
   You might expect to see `new Map()` instead of just `Map()`.
   As of Dart 2, the `new` keyword is optional.
   For details, see [Using constructors](#using-constructors).
-  
+
   这里为什么使用 `Map()` 而不是使用 `new Map()` 构造 Map 对象。
   因为从 Dart2 开始，构造对象的 `new` 关键字可以被省略掉。
   你可以查阅 [构造函数的使用](#using-constructors)获取更多相关信息。
@@ -1445,7 +1484,7 @@ for the characters package.
   easily break down, depending on the particular language, character set, and
   operation. For more information, see [How do I reverse a String in Dart?][] on
   Stack Overflow.
-  
+
   在使用 List 操作 Rune 的时候需要小心，
   根据所操作的语种、字符集等不同可能会导致字符串出现问题，
   具体可参考 Stack Overflow 中的提问：
@@ -1553,7 +1592,7 @@ The <code>=> <em>expr</em></code> syntax is a shorthand for
 <code>{ return <em>expr</em>; }</code>. The `=>` notation
 is sometimes referred to as _arrow_ syntax.
 
-语法 <code>=> <em>表达式</em></code> 
+语法 <code>=> <em>表达式</em></code>
 是 <code>{ return <em>表达式</em>; }</code> 的简写，
 `=>` 有时也称之为胖箭头语法。
 
@@ -1562,7 +1601,7 @@ is sometimes referred to as _arrow_ syntax.
   Only an *expression*—not a *statement*—can appear between the arrow (=\>) and
   the semicolon (;). For example, you can’t put an [if statement](#if-and-else)
   there, but you can use a [conditional expression](#conditional-expressions).
-  
+
   在 =\> 与 ; 之间的只能是 *表达式* 而非 *语句*。
   比如你不能将一个 [if语句](#if-and-else) 放在其中，
   但是可以放置 [条件表达式](#conditional-expressions)。
@@ -1584,11 +1623,15 @@ followed either by *named* parameters or by *optional positional* parameters
   Some APIs — notably [Flutter][] widget constructors — use only named
   parameters, even for parameters that are mandatory. See the next section for
   details.
-  
+
   某些 API，特别是 [Flutter][] 控件的构造器，它只使用命名参数，
   即便参数是强制性的。可以查阅下一节获取更多信息。
 
 {{site.alert.end}}
+
+You can use [trailing commas][] when you pass arguments to a function
+or when you define function parameters.
+
 
 #### Named parameters
 
@@ -1723,7 +1766,7 @@ enableFlags(bold: true);
   default values of named parameters. The reason is that originally, only `:`
   was supported for named parameters. That support might be deprecated, so we
   recommend that you **[use `=` to specify default values.][use =]**
-  
+
   在老版本的 Dart 代码中会使用 冒号（`:`）而不是 `=` 来设置命名参数的默认值。
   原因在于刚开始的时候命名参数只支持 `:`。不过现在这个支持已经过时，
   所以我们建议你现在都 **[使用 `=` 来指定默认值][use =]**。
@@ -1745,14 +1788,8 @@ The next example shows how to set default values for positional parameters:
 <?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-param-default)"?>
 ```dart
 String say(String from, String msg,
-    [String device = 'carrier pigeon', String mood]) {
-  var result = '$from says $msg';
-  if (device != null) {
-    result = '$result with a $device';
-  }
-  if (mood != null) {
-    result = '$result (in a $mood mood)';
-  }
+    [String device = 'carrier pigeon']) {
+  var result = '$from says $msg with a $device';
   return result;
 }
 
@@ -1827,7 +1864,7 @@ void main() {
   The `..` syntax in the preceding code is called a
   [cascade](#cascade-notation-). With cascades, you can perform multiple
   operations on the members of a single object.
-  
+
   上述代码中的 `..` 语法称之为 [级联调用](#cascade-notation-)。
   使用级联访问可以在一个对象上执行多个操作。
 
@@ -2111,9 +2148,11 @@ assert(foo() == null);
 
 ## 运算符
 
-Dart defines the operators shown in the following table.
-You can override many of these operators, as described in
-[Overridable operators](#overridable-operators).
+Dart supports the operators shown in the following table.
+You can implement many of these [operators as class members](#_operators).
+
+Dart 支持下表的操作符。
+你可以将这些运算符实现为 [一个类的成员](#_operators)。
 
 |--------------------------+------------------------------------------------|
 |Description               | Operator                                       |
@@ -2158,7 +2197,7 @@ You can override many of these operators, as described in
   Operator precedence is an approximation of the behavior of a Dart parser.
   For definitive answers, consult the grammar in the
   [Dart language specification][].
-  
+
   上述运算符优先级是对 Dart 解析器行为的效仿。更准确的描述，
   请参阅 [Dart 语言规范][Dart language specification] 中的语法。
 
@@ -2205,13 +2244,13 @@ if (n % i == 0 && d % i == 0) ...
 
 {{site.alert.warning}}
 
-  For operators that work on two operands, the leftmost operand determines which
-  version of the operator is used. For example, if you have a Vector object and
-  a Point object, `aVector + aPoint` uses the Vector version of +.
-  
+  For operators that take two operands, the leftmost operand determines which
+  method is used. For example, if you have a `Vector` object and
+  a `Point` object, then `aVector + aPoint` uses `Vector` addition (`+`).
+
   对于有两个操作数的运算符，左边的操作数决定了运算符的功能。
   比如如果有一个 Vector 对象和一个 Point 对象，
-  表达式 `aVector + aPoint` 中所使用的是 Vector 对象中定义的 + 运算符。
+  表达式 `aVector + aPoint` 中所使用的是 Vector 对象中定义的相加运算符 (`+`)。
 
 {{site.alert.end}}
 
@@ -2328,9 +2367,8 @@ function instead.) Here’s how the `==` operator works:
 2.  Return the result of the method invocation
     <code><em>x</em>.==(<em>y</em>)</code>. (That’s right,
     operators such as `==` are methods that are invoked on their first
-    operand. You can even override many operators, including `==`, as
-    you’ll see in
-    [Overridable operators](#overridable-operators).)
+    operand. For details, see
+    [Operators](#_operators).)
 
     <code><em>x</em>.==(<em>y</em>)</code> 将会返回值，
     这里不管有没有 y，即 y 是可选的。
@@ -2387,7 +2425,7 @@ you are sure that the object is of that type. Example:
 (emp as Person).firstName = 'Bob';
 ```
 
-If you aren't sure that the object is of type `T`, then use `is T` to check the 
+If you aren't sure that the object is of type `T`, then use `is T` to check the
 type before using the object.
 
 如果你不确定这个对象类型是不是 `T`，
@@ -2414,7 +2452,7 @@ You can make the code shorter using the `as` operator:
 
   The code isn’t equivalent. If `emp` is null or not a `Person`, the
   first example throws an exception; the second does nothing.
-  
+
   上述两种方式是有区别的：如果 `emp` 为 null 或者不为 Person 类型，
   则第一种方式将会抛出异常，而第二种不会。
 
@@ -2706,7 +2744,7 @@ and you can't construct a cascade on `void`.
 
   Strictly speaking, the "double dot" notation for cascades is not an operator.
   It's just part of the Dart syntax.
-  
+
   严格来说 `..` 级联操作并非一个运算符而是 Dart 的特殊语法。
 
 {{site.alert.end}}
@@ -2951,7 +2989,7 @@ Switch 语句在 Dart 中使用 `==` 来比较整数、字符串或编译时常�
 
   Switch statements in Dart are intended for limited circumstances,
   such as in interpreters or scanners.
-  
+
   Dart 中的 Switch 语句仅适用于有限的情况，比如使用解释器和扫描器的场景。
 
 {{site.alert.end}}
@@ -3084,7 +3122,8 @@ assert(urlString.startsWith('https'));
 ```
 
 To attach a message to an assertion,
-add a string as the second argument to `assert`.
+add a string as the second argument to `assert`
+(optionally with a [trailing comma][trailing commas]):
 
 `assert` 的第二个参数可以为其添加一个字符串消息。
 
@@ -3121,7 +3160,7 @@ That depends on the tools and framework you're using:
 * Some tools, such as [dart][] and [dart2js,][dart2js]
   support assertions through a command-line flag: `--enable-asserts`.
 
-  其他一些工具，比如 [dart][] 以及 [dart2js][dart2js] 
+  其他一些工具，比如 [dart][] 以及 [dart2js][dart2js]
   通过在运行 Dart 程序时添加命令行参数 `--enable-asserts` 使 assert 生效。
 
 In production code, assertions are ignored, and
@@ -3186,7 +3225,7 @@ throw 'Out of llamas!';
 
   Production-quality code usually throws types that implement [Error][] or
   [Exception][].
-  
+
   优秀的代码通常会抛出 [Error][] 或 [Exception][] 类型的异常。
 
 {{site.alert.end}}
@@ -3429,7 +3468,7 @@ the following code creates `Point` objects using the
 构造函数的命名方式可以为
 <code><em>类名</em></code> 或 <code><em> 类名
 </em>.<em> 标识符 </em></code> 的形式。
-例如下述代码分别使用 `Point()` 和 `Point.fromJson()` 
+例如下述代码分别使用 `Point()` 和 `Point.fromJson()`
 两种构造器创建了 `Point` 对象：
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (object-creation)" replace="/ as .*?;/;/g"?>
@@ -3453,7 +3492,7 @@ var p2 = new Point.fromJson({'x': 1, 'y': 2});
 {{site.alert.version-note}}
 
   The `new` keyword became optional in Dart 2.
-  
+
   从 Dart 2 开始，`new` 关键字是可选的。
 
 {{site.alert.end}}
@@ -3533,7 +3572,7 @@ assert(!identical(a, b)); // 这两变量并不相同 (NOT the same instance!)
 {{site.alert.version-note}}
 
   The `const` keyword became optional within a constant context in Dart 2.
-  
+
   只有从 Dart 2 开始才能根据上下文判断省略 `const` 关键字。
 
 {{site.alert.end}}
@@ -3648,7 +3687,7 @@ The `this` keyword refers to the current instance.
 
   Use `this` only when there is a name conflict. Otherwise, Dart style
   omits the `this`.
-  
+
   当且仅当命名冲突时使用 `this` 关键字才有意义，否则 Dart 会忽略 `this` 关键字。
 
 {{site.alert.end}}
@@ -3826,7 +3865,7 @@ class Employee extends Person {
 
   Arguments to the superclass constructor do not have access to `this`. For
   example, arguments can call static methods but not instance methods.
-  
+
   传递给父类构造函数的参数不能使用 `this` 关键字，
   因为在参数传递的这一步骤，子类构造函数尚未执行，
   子类的实例对象也就还未初始化，
@@ -3994,7 +4033,7 @@ constructor might return an instance from a cache, or it might
 return an instance of a subtype.
 Another use case for factory constructors is
 initializing a final variable using
-logic that can't be handled in the initializer list. 
+logic that can't be handled in the initializer list.
 
 使用 `factory` 关键字标识类的构造函数将会令该构造函数变为工厂构造函数，
 这将意味着使用该构造函数构造类的实例时并非总是会返回新的实例对象。
@@ -4040,7 +4079,7 @@ class Logger {
 {{site.alert.note}}
 
   Factory constructors have no access to `this`.
-  
+
   在工厂构造函数中无法访问 `this`。
 
 {{site.alert.end}}
@@ -4095,6 +4134,71 @@ class Point {
 }
 ```
 
+#### Operators {#_operators}
+
+#### 操作符
+
+Operators are instance methods with special names.
+Dart allows you to define operators with the following names:
+
+运算符是有着特殊名称的实例方法。
+Dart 允许您使用以下名称定义运算符：
+
+`<`  | `+`  | `|`  | `[]`
+`>`  | `/`  | `^`  | `[]=`
+`<=` | `~/` | `&`  | `~`
+`>=` | `*`  | `<<` | `==`
+`–`  | `%`  | `>>`
+{:.table}
+
+{{site.alert.note}}
+
+  You may have noticed that some [operators](#operators), like `!=`, are not in
+  the list of names. That's because they're just syntactic sugar. For example,
+  the expression `e1 != e2` is syntactic sugar for `!(e1 == e2)`.
+
+  你可能注意到有一些 [操作符](#operators) 没有出现在列表中，例如 `!=`。
+  因为它们仅仅是语法糖。
+  表达式 `e1 != e2` 仅仅是 `!(e1 == e2)` 的一个语法糖。
+
+{{site.alert.end}}
+
+{%- comment %}
+  Internal note from https://github.com/dart-lang/site-www/pull/2691#discussion_r506184100:
+  -  `??`, `&&` and `||` are excluded because they are lazy / short-circuiting operators
+  - `!` is probably excluded for historical reasons
+{% endcomment %}
+
+An operator declaration is identified using the built-in identifier `operator`.
+The following example defines vector addition (`+`) and subtraction (`-`):
+
+为了表示重写操作符，我们使用 `operator` 标识来进行标记。
+下面是重写 `+` 和 `-` 操作符的例子：
+
+<?code-excerpt "misc/lib/language_tour/classes/vector.dart"?>
+```dart
+class Vector {
+  final int x, y;
+
+  Vector(this.x, this.y);
+
+  Vector operator +(Vector v) => Vector(x + v.x, y + v.y);
+  Vector operator -(Vector v) => Vector(x - v.x, y - v.y);
+
+  // Operator == and hashCode not shown.
+  // ···
+}
+
+void main() {
+  final v = Vector(2, 3);
+  final w = Vector(2, 2);
+
+  assert(v + w == Vector(4, 5));
+  assert(v - w == Vector(0, 1));
+}
+```
+
+
 #### Getters and setters
 
 #### Getter 和 Setter
@@ -4145,7 +4249,7 @@ wrapping them with methods, all without changing client code.
   not a getter is explicitly defined. To avoid any unexpected side
   effects, the operator calls the getter exactly once, saving its value
   in a temporary variable.
-  
+
   像自增（++）这样的操作符不管是否定义了 Getter 方法都会正确地执行。
   为了避免一些不必要的异常情况，
   运算符只会调用 Getter 一次，然后将其值存储在一个临时变量中。
@@ -4312,17 +4416,18 @@ class SmartTelevision [!extends!] Television {
 {% endprettify %}
 
 
-
+<a name="overridable-operators"></a>
 
 #### Overriding members
 
 #### 重写类成员
 
-Subclasses can override instance methods, getters, and setters.
+Subclasses can override instance methods (including [operators](#_operators)), getters, and setters.
 You can use the `@override` annotation to indicate that you are
 intentionally overriding a member:
 
-子类可以重写父类的实例方法、Getter 以及 Setter 方法。
+子类可以重写父类的实例方法（包括 [操作符](#_operators)）、
+Getter 以及 Setter 方法。
 你可以使用 `@override` 注解来表示你重写了一个成员：
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (override)" replace="/@override/[!$&!]/g"?>
@@ -4338,78 +4443,17 @@ To narrow the type of a method parameter or instance variable in code that is
 [type safe](/guides/language/type-system),
 you can use the [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
 
-限定方法参数以及实例变量的类型可以让代码更加
-[类型安全](/guides/language/sound-dart)，你可以使用
-[协变关键字](/guides/language/sound-problems#the-covariant-keyword)。
+{{site.alert.warning}}
 
-#### Overridable operators
+  If you override `==`, you should also override Object's `hashCode` getter.
+  For an example of overriding `==` and `hashCode`, see
+  [Implementing map keys](/guides/libraries/library-tour#implementing-map-keys).
 
-#### 重写运算符
-
-You can override the operators shown in the following table.
-For example, if you define a
-Vector class, you might define a `+` method to add two vectors.
-
-可以在一个类中重写下表所罗列出的所有运算符。
-比如如果定一个 Vector 表示矢量的类，
-那么可以考虑重写 `+` 操作符来处理两个矢量的相加。
-
-`<`  | `+`  | `|`  | `[]`
-`>`  | `/`  | `^`  | `[]=`
-`<=` | `~/` | `&`  | `~`
-`>=` | `*`  | `<<` | `==`
-`–`  | `%`  | `>>`
-{:.table}
-
-{{site.alert.note}}
-
-  You may have noticed that `!=` is not an overridable operator. The expression
-  `e1 != e2` is just syntactic sugar for `!(e1 == e2)`.
-  
-  必须要注意的是 `!=` 操作符并不是一个可被重写的操作符。
-  表达式 `e1 != e2` 仅仅是 `!(e1 == e2)` 的一个语法糖。
+  如果重写 `==` 操作符，必须也同时重写对象 `hashCode` 的 Getter 方法。
+  你可以查阅 [实现映射键](/guides/libraries/library-tour#implementing-map-keys)
+  获取更多关于重写的 `==` 和 `hashCode` 的例子。
 
 {{site.alert.end}}
-
-Here’s an example of a class that overrides the `+` and `-` operators:
-
-下面是重写 `+` 和 `-` 操作符的例子：
-
-<?code-excerpt "misc/lib/language_tour/classes/vector.dart"?>
-```dart
-class Vector {
-  final int x, y;
-
-  Vector(this.x, this.y);
-
-  Vector operator +(Vector v) => Vector(x + v.x, y + v.y);
-  Vector operator -(Vector v) => Vector(x - v.x, y - v.y);
-
-  // 运算符 == 和 hashCode 的实现未在这里展示，详情请查看下方说明。
-  // ···
-}
-
-void main() {
-  final v = Vector(2, 3);
-  final w = Vector(2, 2);
-
-  assert(v + w == Vector(4, 5));
-  assert(v - w == Vector(0, 1));
-}
-```
-
-If you override `==`, you should also override Object's `hashCode` getter.
-For an example of overriding `==` and `hashCode`, see
-[Implementing map keys](/guides/libraries/library-tour#implementing-map-keys).
-
-如果重写 `==` 操作符，必须也同时重写对象 `hashCode` 的 Getter 方法。
-你可以查阅 [实现映射键](/guides/libraries/library-tour#implementing-map-keys)
-获取更多关于重写的 `==` 和 `hashCode` 的例子。
-
-For more information on overriding, in general, see
-[Extending a class](#extending-a-class).
-
-你也可以查阅 [扩展一个类](#extending-a-class)获取更多关于重写的信息。
 
 #### noSuchMethod()
 
@@ -4448,7 +4492,7 @@ and the dynamic type of the receiver has an implemention of `noSuchMethod()`
 that's different from the one in class `Object`.
 
   接收方具有静态类型，定义了未实现的方法（抽象亦可），
-  并且接收方的动态类型实现了 `noSuchMethod` 
+  并且接收方的动态类型实现了 `noSuchMethod`
   方法且具体的实现与 `Object` 中的不同。
 
 For more information, see the informal
@@ -4518,6 +4562,8 @@ Declare an enumerated type using the `enum` keyword:
 ```dart
 enum Color { red, green, blue }
 ```
+
+You can use [trailing commas][] when declaring an enumerated type.
 
 Each value in an enum has an `index` getter,
 which returns the zero-based position of the value in the enum declaration.
@@ -4678,10 +4724,10 @@ Because `SingerDancer` extends `Musician`,
   Support for the `mixin` keyword was introduced in Dart 2.1. Code in earlier
   releases usually used `abstract class` instead. For more information on 2.1
   mixin changes, see the [Dart SDK changelog][] and [2.1 mixin specification.][]
-  
+
   `mixin` 关键字在 Dart 2.1 中才被引用支持。
   早期版本中的代码通常使用 `abstract class` 代替。
-  你可以查阅 
+  你可以查阅
   [Dart SDK 变更日志][Dart SDK changelog]
   和 [2.1 mixin 规范][2.1 mixin specification.]
   获取更多有关 Mixin 在 2.1 中的变更信息。
@@ -4733,9 +4779,9 @@ Static variables aren’t initialized until they’re used.
   This page follows the [style guide
   recommendation](/guides/language/effective-dart/style#identifiers)
   of preferring `lowerCamelCase` for constant names.
-  
+
   本文代码准守
-  [风格推荐指南](/guides/language/effective-dart/style#identifiers) 
+  [风格推荐指南](/guides/language/effective-dart/style#identifiers)
   中的命名规则，使用 `驼峰式大小写` 来命名常量。
 
 {{site.alert.end}}
@@ -4777,7 +4823,7 @@ void main() {
 
   Consider using top-level functions, instead of static methods, for
   common or widely used utilities and functionality.
-  
+
   对于一些通用或常用的静态方法，应该将其定义为顶级函数而非静态方法。
 
 {{site.alert.end}}
@@ -4977,7 +5023,7 @@ print(names is List<String>); // true
   In contrast, generics in Java use *erasure*, which means that generic
   type parameters are removed at runtime. In Java, you can test whether
   an object is a List, but you can’t test whether it’s a `List<String>`.
-  
+
   与 Java 不同的是，Java 中的泛型是类型 *擦除* 的，这意味着泛型类型会在运行时被移除。在 Java 中你可以判断对象是否为 List 但不可以判断对象是否为 `List<String>`。
 
 {{site.alert.end}}
@@ -5131,11 +5177,11 @@ import 'package:test/test.dart';
 {{site.alert.note}}
 
   *URI* stands for uniform resource identifier.
-  
+
   *URI* 代表统一资源标识符。
-  
+
   *URLs* (uniform resource locators) are a common kind of URI.
-  
+
   *URL*（统一资源定位符）是一种常见的URI。
 
 {{site.alert.end}}
@@ -5205,7 +5251,7 @@ _延迟加载_（也常称为 _懒加载_）允许应用在需要时再去加载
   处理 A/B 测试，比如测试各种算法的不同实现。
 
 * To load rarely used functionality, such as optional screens and dialogs.
- 
+
   加载很少会使用到的功能，比如可选的屏幕和对话框。
 
 
@@ -5216,10 +5262,10 @@ _延迟加载_（也常称为 _懒加载_）允许应用在需要时再去加载
   For more information, see
   [issue #33118](https://github.com/dart-lang/sdk/issues/33118) and
   [issue #27776.](https://github.com/dart-lang/sdk/issues/27776)
-  
-  **目前只有 dart2js 支持延迟加载** 
+
+  **目前只有 dart2js 支持延迟加载**
   Flutter、Dart VM以及 DartDevc 目前都不支持延迟加载。
-  你可以查阅 [issue #33118](https://github.com/dart-lang/sdk/issues/33118) 
+  你可以查阅 [issue #33118](https://github.com/dart-lang/sdk/issues/33118)
   和 [issue #27776](https://github.com/dart-lang/sdk/issues/27776) 获取更多的相关信息。
 
 {{site.alert.end}}
@@ -5303,7 +5349,7 @@ for advice on how to implement a library package, including:
   何时使用 `part` 命令。
 
 * When to use the `library` directive.
- 
+
   何时使用 `library` 命令。
 
 * How to use conditional imports and exports to implement
@@ -5385,12 +5431,12 @@ Future checkVersion() [!async!] {
   until it encounters its first `await` expression
   ([details][synchronous-async-start]). Then it returns a Future object,
   resuming execution only after the `await` expression completes.
-  
+
   尽管异步函数可以处理耗时操作，但是它并不会等待这些耗时操作完成，
   异步函数执行时会在其遇到第一个 `await` 表达式
   （[详情见][synchronous-async-start]）的时候返回一个 Future 对象，
   然后等待 await 表达式执行完毕后继续执行。
-  
+
 {{site.alert.end}}
 
 Use `try`, `catch`, and `finally` to handle errors and cleanup in code that uses
@@ -5491,7 +5537,7 @@ make its return type `Future<void>`.
 For an interactive introduction to using futures, `async`, and `await`,
 see the [asynchronous programming codelab](/codelabs/async-await).
 
-关于 futures、`async` 和 `await` 的使用介绍，可以参见这个 codelab: 
+关于 futures、`async` 和 `await` 的使用介绍，可以参见这个 codelab:
 [asynchronous programming codelab](/codelabs/async-await)。
 
 {% comment %}
@@ -5524,7 +5570,7 @@ you have two options:
   really do want to wait for all of the stream's results. For example, you
   usually should **not** use `await for` for UI event listeners, because UI
   frameworks send endless streams of events.
-  
+
   在使用 `await for` 关键字前，
   确保其可以令代码逻辑更加清晰并且是真的需要等待所有的结果执行完毕。
   例如，通常不应该在 UI 事件监听器上使用 `await for` 关键字，
@@ -5808,9 +5854,9 @@ void main() {
 
   Currently, typedefs are restricted to function types. We expect this to
   change.
-  
+
   目前类型定义只能用在函数类型上，但是将来可能会有变化。
-  
+
 {{site.alert.end}}
 
 Because typedefs are simply aliases, they offer a way to check the type
@@ -6023,10 +6069,10 @@ documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}) For advice
 your comments, see
 [Guidelines for Dart Doc Comments.](/guides/language/effective-dart/documentation)
 
-解析 Dart 代码并生成 HTML 文档，可以使用 SDK 中的 
+解析 Dart 代码并生成 HTML 文档，可以使用 SDK 中的
 [文档生成工具](https://github.com/dart-lang/dartdoc#dartdoc) 关于生成文档的实例，
 请参考
-[Dart API documentation]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}) 
+[Dart API documentation]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
 查看关于文档结构的建议，
 请参考文档：
 [Guidelines for Dart Doc Comments.](/guides/language/effective-dart/documentation)。
@@ -6093,4 +6139,5 @@ To learn more about Dart's core libraries, see
 [String]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
 [Symbol]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
 [synchronous-async-start]: https://github.com/dart-lang/sdk/blob/master/docs/newsletter/20170915.md#synchronous-async-start
+[trailing commas]: #trailing-comma
 [Type]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Type-class.html

@@ -23,11 +23,11 @@ Dart 语言将要引入健全的空安全机制了！
   This page provides an overview to how null safety
   affects the Dart language. For a deep dive into how
   null safety works, see [Understanding null safety][].
-  
+
   本页概述了空安全是如何影响 Dart 语言的。
   如果希望深入了解空安全性的工作原理，
   请参阅文档 [深入理解空安全][Understanding null safety]。
-  
+
 {{site.alert.end}}
 
 {% comment %}
@@ -56,15 +56,12 @@ Dart 编译器和运行环境也同时可以通过优化减少内部的空安全
 
   Because null safety is still in tech preview,
   **don't use null safety in production code.**
-  In particular, the Flutter framework doesn't yet support null safety.
-  Please test the feature using the Dart SDK,
+  Please test the feature
   and [give us feedback.][]
 
   由于目前空安全仍然处于技术预览阶段，
   所以**请勿在生产环境使用空安全。**
-  请注意，Flutter 目前尚未支持空安全。
-  请通过 Dart SDK 测试这项特性，
-  并且 [给予我们反馈][give us feedback.] 。
+  欢迎您测试这项特性，并且 [给予我们反馈][give us feedback.] 。
 
 {{ site.alert.end }}
 
@@ -140,10 +137,11 @@ but the Dart analyzer doesn't agree,
 而 Dart 分析器仍然无法明确的情况下，
 您可以在变量的类型前**加上 `late`**：
 
+<?code-excerpt "../null_safety_examples/basics/lib/late.dart (late_field)"?>
 ```dart
 class IntProvider {
   late int aRealInt;
-  
+
   IntProvider() {
     aRealInt = calculate();
   }
@@ -493,7 +491,7 @@ Dart 工具目前对空安全代码的
   supports the tech preview of null safety
 
   为 Dart 项目配置支持空安全的技术预览版 SDK；
-  
+
 * An experiment flag passed to all Dart tools
 
   为所有的 Dart 工具加入实验性的命令行参数。
@@ -510,7 +508,8 @@ For example, your `pubspec.yaml` file might have the following constraints:
 来设定一个支持空安全的 SDK 版本。
 
 {% prettify yaml tag=pre+code %}
-environment: sdk: '>=2.11.0-213.0.dev <3.0.0'
+environment:
+  sdk: ">=2.11.0-213.0.dev <2.12.0"
 {% endprettify %}
 
 {{ site.alert.version-note }}
@@ -521,12 +520,12 @@ environment: sdk: '>=2.11.0-213.0.dev <3.0.0'
   [Dev channel][dart-dev-channel] section of the
   Dart SDK archive, or the **Dev channel** section of the
   [Flutter SDK archive.][flutter-sdks]
-  
+
   我们建议这里使用 Dart 或者 Flutter SDK 的 **最新 dev 发布渠道**。
   了解如何获得最新的发布渠道信息，请查看 Dart SDK 页面的
   [Dev 发布渠道][dart-dev-channel] 部分。
   或者 [Flutter SDK][flutter-sdks] 的 Dev 发布渠道部分。
-  
+
 {{ site.alert.end }}
 
 ### Pass the experiment flag
@@ -555,10 +554,10 @@ the Dart [experiment flags documentation][experiment-flags].
 
   After null safety launches in a beta or stable release,
   you won't need to enable the null safety experiment.
-  
+
   等到空安全在 beta 或者 stable 渠道发布时，
   就无需再加入空安全的实验性参数了。
-  
+
 {{ site.alert.end }}
 
 ### Example

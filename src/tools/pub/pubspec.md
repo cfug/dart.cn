@@ -100,12 +100,12 @@ description: >-
 homepage: https://example-pet-store.com/newtify
 documentation: https://example-pet-store.com/newtify/docs
 environment:
-  sdk: '>=2.0.0 <3.0.0'
+  sdk: '>=2.10.0 <3.0.0'
 dependencies:
   efts: ^2.0.4
   transmogrify: ^0.4.0
 dev_dependencies:
-  test: '>=0.6.0 <0.12.0'
+  test: '>=1.15.0 <2.0.0'
 {% endprettify %}
 
 
@@ -286,16 +286,37 @@ and uses the same
 [version constraint](/tools/pub/dependencies#version-constraints) syntax as
 dependencies.
 
+{{ site.alert.version-note }}
+  For a package to use a feature introduced after 2.0,
+  its pubspec must have a lower constraint that's at least
+  the version when the feature was introduced.
+  For details, see the [language evolution page][].
+{{ site.alert.end }}
+
+[language evolution page]: /guides/language/evolution
+
 For example, the following constraint says that this package
-works with any **Dart 2** SDK that's version 2.0.0 or higher:
+works with any Dart SDK that's version 2.10.0 or higher:
 
 {% prettify yaml tag=pre+code %}
 environment:
-  sdk: '>=2.0.0 <3.0.0'
+  sdk: '>=2.10.0 <3.0.0'
 {% endprettify %}
 
 Pub tries to find the latest version of a package whose SDK constraint works
 with the version of the Dart SDK that you have installed.
+
+As of Dart 2.12, omitting the SDK constraint is an error.
+When the pubspec has no SDK constraint,
+`pub get` fails with a message like the following:
+
+```
+pubspec.yaml has no lower-bound SDK constraint.
+You should edit pubspec.yaml to contain an SDK constraint:
+
+environment:
+  sdk: '>=2.10.0 <3.0.0'
+```
 
 <aside class="alert alert-warning" markdown="1">
   Caret syntax (`^`) is a compact way to represent version ranges, but **don't use
