@@ -48,7 +48,7 @@ greeting to use another language.
 {{site.alert.note}}
 
   {% include dartpad-embedded-troubleshooting.md %}
-  
+
 {{site.alert.end}}
 
 <style>
@@ -93,58 +93,22 @@ More information:
 
 {% include get-sdk.md %}
 
-## 3. Get more command-line developer tools
+## 3. Create a small app
 
-## 3. 获取更多命令行开发工具
+## 3. 创建一个小应用
 
-Install [`stagehand`,][stagehand] which gives you templates for creating Dart apps:
+Use the `dart create` command and the `console-full` template
+to create a command-line app:
 
-安装 [`stagehand`][stagehand]，该工具可以让你在创建 Dart 应用时提供模板：
-
-```terminal
-$ pub global activate stagehand
-```
-
-Note that although these instructions feature the command line,
-many IDEs support Dart development.
-Those IDEs use Stagehand behind the scenes when you create new Dart projects.
-
-注意尽管这些指令以命令行的形式存在，
-但是许多 IDE 也支持使用这些指令进行 Dart 开发。
-当你创建一个新的 Dart 项目时，
-那些 IDE 在底层依然使用 Stagehand 来进行创建。
-
-<!-- PENDING: the following instructions assume you have the bin directory for the system cache in your path. -->
-
-More information:
-
-更多信息：
-
-* [Dart tools](/tools)
-
-  [Dart 工具](/tools)
-
-* [Running a script from your path](/tools/pub/cmd/pub-global#running-a-script-from-your-path)
-
-  [从某个路径运行脚本](/tools/pub/cmd/pub-global#running-a-script-from-your-path)
-
-## 4. Create a small app
-
-## 4. 创建一个小应用
-
-Create a command-line app:
-
-创建一个命令行应用：
+使用 `dart create` 命令，以 `console-full` 模板创建一个命令行应用：
 
 ```terminal
-$ mkdir cli
-$ cd cli
-$ stagehand console-full
+$ dart create -t console-full cli
 ```
 
-These commands create a small Dart app that has the following:
+This command creates a small Dart app that has the following:
 
-这些命令创建一个包含下述信息的小 Dart 应用：
+该命令会创建一个包含下述信息的 Dart 应用：
 
 * A main Dart source file, `bin/cli.dart`, that contains a top-level
   `main()` function. This is the entrypoint for your app.
@@ -165,39 +129,28 @@ These commands create a small Dart app that has the following:
   一个 pubspec 文件，`pubspec.yaml`，包含应用的元数据，包括应用依赖的
   [package](/guides/packages) 信息以及所需的版本等。
 
-## 5. Get the app's dependencies
+## 4. Run the app
 
-## 5. 获取应用的依赖
-
-Use the [`pub`](/tools/pub/cmd) command to get the packages
-that the app depends on:
-
-使用 [`pub`](/tools/pub/cmd) 命令获取应用依赖的包：
-
-```terminal
-$ pub get
-```
-
-## 6. Run the app
-
-## 6. 运行应用
+## 4. 运行应用
 
 To run the app from the command line, use the Dart VM by running the
-[`dart`](/tools/dart-vm) command:
+[`dart run`](/tools/dart-tool) command in the app's top directory:
 
-为了从命令行运行应用，使用 [`dart`](/tools/dart-vm) 命令运行 Dart VM：
+想要从命令行运行应用，请使用 [`dart run](/tools/dart-vm) 命令
+在应用的根目录运行 Dart VM：
 
 ```terminal
-$ dart bin/cli.dart
+$ cd cli
+$ dart run
 Hello world: 42!
 ```
 
 If you want to run the app with debugging support, see
 [Dart DevTools](/tools/dart-devtools).
 
-## 7. Modify the app
+## 5. Modify the app
 
-## 7. 修改应用
+## 5. 修改应用
 
 Let's customize the app you just created.
 
@@ -225,7 +178,7 @@ Let's customize the app you just created.
     重新运行你应用的入口 main 函数：
 
     ```terminal
-    $ dart bin/cli.dart
+    $ dart run
     Hello world: 21!
     ```
 
@@ -234,9 +187,9 @@ More information:
 
 更多信息：[开发命令行应用](/tutorials/server/cmdline)
 
-## 8. Compile for production
+## 6. Compile for production
 
-## 8. 编译成正式产品
+## 6. 编译成正式产品
 
 The steps above used the Dart VM (`dart`) to run the app. The Dart VM is
 optimized for fast, incremental compilation to provide instant feedback
@@ -247,24 +200,16 @@ it's time to AOT compile your Dart code to optimized native machine code.
 Dart VM 针对快速增量编译进行了优化，以便在开发过程中提供即时的响应。
 现在你的小应用已经完成，是时候 AOT 优化编译你的 Dart 代码为原生机器代码了。
 
-Use the `dart2aot` tool to AOT compile the program to machine code:
+Use the `dart compile` tool to AOT compile the program to machine code:
 
-使用 `dart2aot` 工具将程序 AOT 编译成机器代码：
-
-```terminal
-$ dart2aot bin/main.dart bin/main.dart.aot
-```
-
-Use the `dart2native` tool to AOT compile the program to machine code:
-
-为了运行编译后的程序，使用 Dart 运行时（即 `dartaotruntime` 命令）：
+使用 `dart compile` 工具将程序 AOT 编译成机器代码：
 
 ```terminal
-$ dart2native bin/cli.dart
+$ dart compile exe bin/cli.dart
 ```
 Notice how the compiled program starts instantly, completing quickly:
 
-注意测量编译后的程序启动有多快：
+看看编译后的程序启动有多快：
 
 ```terminal
 $ time bin/cli.exe
@@ -294,7 +239,7 @@ Check out these resources:
   * [Codelabs](/codelabs)
 
     [指引](/codelabs)
-    
+
 * Dart language, libraries, and conventions
 
   Dart 语言、库以及习惯用法
@@ -328,7 +273,7 @@ Check out these resources:
 
 If you get stuck, find help at [Community and support.](/community)
 
-如果你卡住了，可以从 [社区和帮助](/community) 中查找帮助。
+如果你在这一步无法继续进行，可以从 [社区和帮助](/community) 中查找帮助。
 
 [Arithmetic operators]: /guides/language/language-tour#arithmetic-operators
 [stagehand]: {{site.pub-pkg}}/stagehand

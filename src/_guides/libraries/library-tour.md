@@ -20,7 +20,7 @@ consult the [Dart API reference.][Dart API]
 : Built-in types, collections, and other core functionality.
   This library is automatically imported into every Dart program.
 
-  内置类型，集合和其他核心功能。 
+  内置类型，集合和其他核心功能。
   该库会被自动导入到所有的 Dart 程序。
 
 [dart:async](#dartasync---asynchronous-programming)
@@ -77,7 +77,7 @@ the [Flutter API reference.][docs.flutter]
   **DartPad tip:** You can play with the code in this page by copying it into a
   [DartPad.]({{site.dartpad}})
 
-  **DartPad tip：** 可以通过将该页中的代码拷贝到 [DartPad]({{site.dartpad}}) 中进行演示。 
+  **DartPad tip：** 可以通过将该页中的代码拷贝到 [DartPad]({{site.dartpad}}) 中进行演示。
 
 {{site.alert.end}}
 
@@ -104,7 +104,7 @@ and displays that object's string value (as returned by `toString()`)
 in the console.
 
 顶级 `print()` 方法接受一个参数 任意对象）
-并输出显示这个对象的字符串值(由 `toString()` 返回) 
+并输出显示这个对象的字符串值(由 `toString()` 返回)
 到控制台。
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (print)"?>
@@ -1080,7 +1080,7 @@ assert(duration.inDays == 366); // y2k was a leap year.
   days.
 
   由于时钟转换（例如，夏令时）的原因，
-  使用 Duration 对 DateTime 按天移动可能会有问题。 
+  使用 Duration 对 DateTime 按天移动可能会有问题。
   如果要按照天数来位移时间，请使用 UTC 日期。
 
 {{site.alert.end}}
@@ -1498,10 +1498,10 @@ registered with `then()` returns a Future, `then()` returns an
 equivalent Future. If the callback returns a value of any other type,
 `then()` creates a new Future that completes with the value.
 
-`then()` 方法返回一个 Future 对象， 
+`then()` 方法返回一个 Future 对象，
 这样就提供了一个非常好的方式让多个异步方法按顺序依次执行。
 如果用 `then()` 注册的回调返回一个 Future ，
-那么 `then()` 返回一个等价的 Future 。 
+那么 `then()` 返回一个等价的 Future 。
 如果回调返回任何其他类型的值，
 那么 `then()` 会创建一个以该值完成的新 Future 。
 
@@ -1982,10 +1982,8 @@ dart:convert 库 （[API reference][dart:convert]）提供 JSON 和 UTF-8 转换
 [JSON][] 是一种用于表示结构化对象和集合的简单文本格式。
 [UTF-8][] 是一种常见的可变宽度编码，可以表示Unicode字符集中的每个字符。
 
-The dart:convert library works in both web apps and command-line apps.
-To use it, import dart:convert.
+To use this library, import dart:convert.
 
-dart:convert 库可以在 web 及 命令行应用中使用。
 使用时，通过 import dart:convert 引入。
 
 <?code-excerpt "misc/test/library_tour/convert_test.dart (import)"?>
@@ -2050,13 +2048,13 @@ encoded recursively.
 List 和 Map 对象进行递归编码。
 
 You have two options for encoding objects that aren't directly
-encodable. The first is to invoke `encode()` with a second argument: a
+encodable. The first is to invoke `jsonEncode()` with a second argument: a
 function that returns an object that is directly encodable. Your second
 option is to omit the second argument, in which case the encoder calls
 the object's `toJson()` method.
 
 不能直接编码的对象有两种方式对其编码。
-第一种方式是调用 `encode()` 时赋值第二个参数，
+第一种方式是调用 `jsonEncode()` 时赋值第二个参数，
 这个参数是一个函数，
 该函数返回一个能够直接编码的对象
 第二种方式是省略第二个参数，着这种情况下编码器调用对象的 `toJson()` 方法。
