@@ -1026,7 +1026,6 @@ class EmailAddress {
   bool operator ==(Object other) =>
       identical(this, other) ||
           other is EmailAddress &&
-              runtimeType == other.runtimeType &&
               address == other.address;
 
   @override
