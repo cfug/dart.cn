@@ -5,7 +5,10 @@ description: Information about Dart's upcoming null safety feature
 description: Dart 即将到来的空安全的有关内容
 ---
 
-Sound null safety is coming to the Dart language!
+Sound null safety — currently in beta — is coming to the Dart language!
+
+健全的空安全机制目前已经到 Beta 阶段啦！
+
 When you opt into null safety,
 types in your code are non-nullable by default, meaning that
 values can’t be null _unless you say they can be._
@@ -14,72 +17,14 @@ turn into **edit-time** analysis errors.
 
 Dart 语言将要引入健全的空安全机制了！
 当您选择使用空安全时，代码中的类型将默认是非空的，
-意味着**除非您声明它们可空**，它们的值都不能为空。
+意味着 **除非您声明它们可空**，它们的值都不能为空。
 有了空安全，原本处于您的**运行时**的空值引用错误
 将变为**编译时**的分析错误。
 
-{{site.alert.note}}
-
-  This page provides an overview to how null safety
-  affects the Dart language. For a deep dive into how
-  null safety works, see [Understanding null safety][].
-
-  本页概述了空安全是如何影响 Dart 语言的。
-  如果希望深入了解空安全性的工作原理，
-  请参阅文档 [深入理解空安全][Understanding null safety]。
-
-{{site.alert.end}}
-
-{% comment %}
-  If it were my druthers, I'd move this page to a sub-page
-  called overview and make this page more of a landing page,
-  now that Bob's null-safety deep dive is available
-  (and the migration guide is coming).
-  But I'll leave that decision up to KW.
-{% endcomment %}
-
-With null safety,
-the Dart analyzer enforces good practices.
-For example, it makes sure you check for null before
-reading a nullable variable.
-And because Dart null safety is sound,
-Dart compilers and runtimes can optimize away internal null checks,
-so apps can be faster and smaller.
-
-有了空安全，Dart 分析器可以进行更好的检查。
-例如：它将在您读取一个可空的变量前提示您进行空检查。
-由于 Dart 的空安全是十分有效的，
-Dart 编译器和运行环境也同时可以通过优化减少内部的空安全检查，
-这样应用就可以更快且更小。
-
-{{ site.alert.important }}
-
-  Because null safety is still in tech preview,
-  **don't use null safety in production code.**
-  Please test the feature
-  and [give us feedback.][]
-
-  由于目前空安全仍然处于技术预览阶段，
-  所以**请勿在生产环境使用空安全。**
-  欢迎您测试这项特性，并且 [给予我们反馈][give us feedback.] 。
-
-{{ site.alert.end }}
-
-New operators and keywords related to null safety
-include `?`, `!`, and `late`.
-If you've used Kotlin, TypeScript, or C#,
-the syntax for null safety might look familiar.
-That's by design: the Dart language aims to be unsurprising.
-
-与空安全相关的新操作符和关键字有 `?`、`!` 和 `late`。
-如果您曾经使用过 Kotlin、TypeScript 或 C# 进行开发，
-那么这些空安全的语法看起来会有些熟悉。
-这是设计使然：Dart 语言的目标是不让您感到惊讶。
-
 You can
-[try null safety in your normal development environment](#enable-null-safety)
-by configuring your project to use a tech preview SDK.
-Or you can practice using null safety in the web app
+[try null safety in your normal development environment](#enable-null-safety),
+[migrate your existing code][migration-guide] to use null safety,
+or you can practice using null safety in the web app
 [DartPad with Null Safety,][nullsafety.dartpad.dev]
 shown in the following screenshot.
 
@@ -87,15 +32,43 @@ shown in the following screenshot.
 从而在您的项目里实践空安全。
 或者通过 [支持空安全的 DartPad][nullsafety.dartpad.dev] 进行尝试。
 
+你可以在
+
 ![Screenshot of DartPad null safety snippet with analysis errors](/null-safety/dartpad-snippet.png)
 {% comment %}
 [TODO: update that screenshot]
 {% endcomment %}
 
+## Null safety principles
 
-## Creating variables
+Dart null safety support is based on the following three core design principles:
 
-## 创建变量
+*  **Non-nullable by default**. Unless you explicitly tell Dart that a variable
+   can be null, it's considered non-nullable. This default was chosen
+   after research found that non-null was by far the most common choice in APIs.
+
+* **Incrementally adoptable**. You choose _what_ to migrate to null safety, and _when_.
+  You can migrate incrementally, mixing null-safe and
+  non-null-safe code in the same project. We provide tools to help you
+  with the migration.
+
+* **Fully sound**. Dart’s null safety is sound, which enables compiler optimizations.
+  If the type system determines that something isn’t null, then that thing can _never_ be
+  null. Once you migrate your whole project
+  and its dependencies to null safety, you reap the full benefits of soundness
+  —- not only fewer bugs, but smaller binaries and faster execution.
+
+## A tour of the null safety feature
+
+New operators and keywords related to null safety
+include `?`, `!`, and `late`.
+If you've used Kotlin, TypeScript, or C#,
+the syntax for null safety might look familiar.
+That's by design: the Dart language aims to be unsurprising.
+
+### Creating variables
+
+### 创建变量
 
 When creating a variable,
 you can use `?` and `late`
@@ -187,7 +160,7 @@ PENDING: Uncomment the following once we're ready to offer more guidance.
 {% endcomment %}
 
 
-## Using variables and expressions
+### Using variables and expressions
 
 ## 在变量和表达式中使用
 
@@ -291,11 +264,11 @@ Instead, you can use the null-aware version of that operator (`?.`):
 取而代之的是可空版本的 `?.`。
 
 ```dart
-double? d;  
+double? d;
 print(d?.floor()); // Uses `?.` instead of `.` to invoke `floor()`.
 ```
 
-## Understanding list, set, and map types
+### Understanding list, set, and map types
 
 ## 理解列表、集合及映射类型中的使用
 
@@ -334,7 +307,7 @@ Here are some examples of how Dart code uses these collection types:
 [GitHub Dataviz]: https://github.com/flutter/samples/tree/master/web/github_dataviz
 
 
-### List and set types {#list-and-set-types}
+#### List and set types {#list-and-set-types}
 
 ### 列表和集合类型 {#list-and-set-types}
 
@@ -375,7 +348,7 @@ var nameList = <String?>['Andrew', 'Anjan', 'Anya'];
 var nameSet = <String?>{'Andrew', 'Anjan', 'Anya'};
 ```
 
-### Map types {#map-types}
+#### Map types {#map-types}
 
 ### 映射类型 {#map-types}
 
@@ -398,7 +371,7 @@ var myMap = <String, int>{'one': 1};
 var uhOh = myMap['two'];
 ```
 
-The answer is that `uhOh` is null and has type `int?`. 
+The answer is that `uhOh` is null and has type `int?`.
 
 答案是 `uhOh` 是空值，类型为 `int?`。
 
@@ -475,33 +448,18 @@ int value = aMap['one'] ?? 0;
 
 ## 启用空安全
 
-Dart tools have experimental support for
-analyzing, compiling, and running code with null safety.
-To use null safety while it's in tech preview —
-whether you use the command line or an IDE —
-you need the following setup:
-
-Dart 工具目前对空安全代码的
-分析、编译和运行的支持仍然在实验阶段。
-如果想使用空安全，
-请按照如下步骤通过命令行命令或者 IDE 设置
-启用技术预览版本的空安全。
-
-* A Dart project configured to use an SDK that
-  supports the tech preview of null safety
-
-  为 Dart 项目配置支持空安全的技术预览版 SDK；
-
-* An experiment flag passed to all Dart tools
-
-  为所有的 Dart 工具加入实验性的命令行参数。
-
-### Configure the SDK version
+Null safety is currently a beta feature. 
+We recommend requiring and using the **most recent beta channel** release
+of the Dart or Flutter SDK.
+To find the most recent releases, see the
+[beta channel][dart-beta-channel] section of the
+Dart SDK archive, or the **Beta channel** section of the
+[Flutter SDK archive.][flutter-sdks]
 
 ### 设置 SDK 版本
 
 Set the [SDK constraints](/tools/pub/pubspec#sdk-constraints)
-to require a version that has null safety support.
+to require a [language version][] that has null safety support.
 For example, your `pubspec.yaml` file might have the following constraints:
 
 查看文档 [SDK 版本约束](/tools/pub/pubspec#sdk-constraints)
@@ -509,66 +467,21 @@ For example, your `pubspec.yaml` file might have the following constraints:
 
 {% prettify yaml tag=pre+code %}
 environment:
-  sdk: ">=2.11.0-213.0.dev <2.12.0"
+  sdk: ">=2.12.0-0 <3.0.0"
 {% endprettify %}
 
-{{ site.alert.version-note }}
+{{site.alert.note}}
+  The 2.12 SDK constraint above ends in **`-0`**.
+  This use of [semantic versioning notation](https://semver.org/)
+  allows 2.12.0 prereleases, such as the `2.12.0-29.10.beta` beta prerelease.
+{{site.alert.end}}
 
-  We recommend requiring and using the **most recent dev channel** release
-  of the Dart or Flutter SDK.
-  To find the most recent releases, see the
-  [Dev channel][dart-dev-channel] section of the
-  Dart SDK archive, or the **Dev channel** section of the
-  [Flutter SDK archive.][flutter-sdks]
+If you find any issues with null safety please [give us feedback.][]
 
-  我们建议这里使用 Dart 或者 Flutter SDK 的 **最新 dev 发布渠道**。
-  了解如何获得最新的发布渠道信息，请查看 Dart SDK 页面的
-  [Dev 发布渠道][dart-dev-channel] 部分。
-  或者 [Flutter SDK][flutter-sdks] 的 Dev 发布渠道部分。
+如果发现任何空安全的问题，请在 [这里向我们反馈][give us feedback.]。
 
-{{ site.alert.end }}
+[language version]: /guides/language/evolution#language-versioning
 
-### Pass the experiment flag
-
-### 加入实验性的命令行参数
-
-To opt into null safety,
-pass the `non-nullable` experiment flag to all Dart tools.
-For example:
-
-如果需要使用空安全，需要把 `non-nullable` 这个实验性的命令行参数
-加入到所有的 Dart 工具。
-比如：
-
-```terminal
-$ ~/dev/dart-sdk/bin/dart --enable-experiment=non-nullable bin/main.dart
-```
-
-For details on how to use experiment flags with IDEs and command-line tools, see
-the Dart [experiment flags documentation][experiment-flags].
-
-关于如何在 IDE 和命令行工具里加入实验性的命令行参数，请查看文档：
-[实验性的参数标记][experiment-flags]。
-
-{{ site.alert.version-note }}
-
-  After null safety launches in a beta or stable release,
-  you won't need to enable the null safety experiment.
-
-  等到空安全在 beta 或者 stable 渠道发布时，
-  就无需再加入空安全的实验性参数了。
-
-{{ site.alert.end }}
-
-### Example
-
-### 示例
-
-For a full example of a Dart command-line app that enables and uses null safety,
-see the [null safety sample.][calculate_lix]
-
-有关启用和使用空安全的 Dart 命令行程序的完整示例，
-请参见 [空安全示例][calculate_lix]。
 
 ## Where to learn more
 
@@ -578,14 +491,18 @@ For more information about null safety, see the following resources:
 
 更多关于空安全的信息，请前往以下内容继续阅读：
 
-* [Dart announcements group][Dart announce]
+* [Understanding null safety][]
 
-  [Dart 公告小组 (Dart announcements group)][Dart announce]
+  [深入了解空安全][Understanding null safety]
+  
+* [Migration guide for existing code][migration-guide]
 
-* [Dart blog][]
+  [空安全迁移指南][migration-guide]
 
-  [Dart 博客 (Dart blog)][Dart blog]
+* [Null safety FAQ][]
 
+  [空安全常见问题和解答][Null safety FAQ]
+  
 * [DartPad with null safety][nullsafety.dartpad.dev]
 
   [支持空声明的 DartPad (DartPad with null safety)][nullsafety.dartpad.dev]
@@ -595,9 +512,12 @@ For more information about null safety, see the following resources:
   [空安全示例代码 (Null safety sample code)][calculate_lix]
 
 * [Null safety tracking issue][110]
-* [Understanding null safety][]
 
   [空安全的问题跟踪 (Null safety tracking issue)][110]
+
+* [Dart blog][]
+
+  [Dart 官方博客)][Dart blog]
 
 [`??`]: /guides/language/language-tour#conditional-expressions
 [110]: https://github.com/dart-lang/language/issues/110
@@ -606,10 +526,12 @@ For more information about null safety, see the following resources:
 [calculate_lix]: https://github.com/dart-lang/samples/tree/master/null_safety/calculate_lix
 [Dart announce]: {{site.group}}/d/forum/announce
 [Dart blog]: https://medium.com/dartlang
-[dart-dev-channel]: /tools/sdk/archive#dev-channel
+[dart-beta-channel]: /tools/sdk/archive#beta-channel
 [experiment-flags]: /tools/experiment-flags
 [flutter-sdks]: {{site.flutter}}/docs/development/tools/sdk/releases
 [give us feedback.]: https://github.com/dart-lang/sdk/issues/new?title=Null%20safety%20feedback:%20[issue%20summary]&labels=NNBD&body=Describe%20the%20issue%20or%20potential%20improvement%20in%20detail%20here
 [nullsafety.dartpad.dev]: https://nullsafety.dartpad.cn
 [other operators]: /guides/language/language-tour#other-operators
 [Understanding null safety]: /null-safety/understanding-null-safety
+[migration-guide]: /null-safety/migration-guide
+[Null safety FAQ]: /null-safety/faq

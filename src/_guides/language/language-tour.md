@@ -1027,7 +1027,7 @@ add `const` before the list literal:
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (const-list)"?>
 ```dart
 var constantList = const [1, 2, 3];
-// constantList[1] = 1; // 取消注释将导致出错 (Uncommenting this causes an error.)
+// constantList[1] = 1; // This line will cause an error.
 ```
 
 <a id="spread-operator"> </a>
@@ -1224,7 +1224,7 @@ final constantSet = const {
   'iodine',
   'astatine',
 };
-// constantSet.add('helium'); // 取消注释将导致出错 (Uncommenting this causes an error).
+// constantSet.add('helium'); // This line will cause an error.
 ```
 
 As of Dart 2.3, sets support spread operators (`...` and `...?`)
@@ -1379,7 +1379,7 @@ final constantMap = const {
   18: 'argon',
 };
 
-// constantMap[2] = 'Helium'; // 取消注释将导致出错 (Uncommenting this causes an error).
+// constantMap[2] = 'Helium'; // This line will cause an error.
 ```
 
 As of Dart 2.3, maps support spread operators (`...` and `...?`)
@@ -3426,11 +3426,8 @@ Use a dot (`.`) to refer to an instance variable or method:
 ```dart
 var p = Point(2, 2);
 
-// 为实例变量 y 赋值。
-p.y = 3;
-
-// 获取 y 的值。
-assert(p.y == 3);
+// 获取 y 值
+assert(p.y == 2);
 
 // 调用变量 p 的 distanceTo() 方法。
 double distance = p.distanceTo(Point(4, 4));
@@ -3448,9 +3445,8 @@ https://gist.github.com/0cb25997742ed5382e4a
 
 <?code-excerpt "misc/test/language_tour/classes_test.dart (safe-member-access)"?>
 ```dart
-// If p is non-null, set its y value to 4.
-// 如果 p 为非空则将其属性 y 的值设为 4
-p?.y = 4;
+// If p is non-null, set a variable equal to its y value.
+var a = p?.y;
 ```
 
 
@@ -5133,7 +5129,7 @@ are a unit of privacy: identifiers that start with an underscore (\_)
 are visible only inside the library. *Every Dart app is a library*, even
 if it doesn’t use a `library` directive.
 
-`import` 和 `library` 关键字可以帮助你创建一个模块化和可共享的代码库。代码库不仅只是提供 API 而且还起到了封装的作用：以下划线（\_）开头的成员仅在代码库中可见。*每个 Dart 程序都是一个库*，即便没有使用关键字 `library` 指定。
+`import` 和 `library` 关键字可以帮助你创建一个模块化和可共享的代码库���代码库不仅只是提供 API 而且还起到了封装的作用：以下划线（\_）开头的成员仅在代码库中可见。*每个 Dart 程序都是一个库*，即便没有使用关键字 `library` 指定。
 
 Libraries can be distributed using [packages](/guides/packages).
 

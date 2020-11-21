@@ -48,10 +48,19 @@
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /null-safety
+        - title: 迁移到空安全
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /null-safety/migration-guide
         - title: 深入理解空安全
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /null-safety/understanding-null-safety
+        - title: 空安全常见问题和解答
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /null-safety/faq
+
     - title: 版本演变
       permalink: /guides/language/evolution
     - title: 规范
@@ -154,7 +163,7 @@
           - title: Dart 与 HTML 关联
             permalink: /tutorials/web/low-level-html/connect-dart-html
           - title: 向 DOM 添加元素
-            permalink: /tutorials/web/low-level-html/add-elements 
+            permalink: /tutorials/web/low-level-html/add-elements
           - title: 移除 DOM 元素
             permalink: /tutorials/web/low-level-html/remove-elements
         - title: 部署
