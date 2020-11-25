@@ -64,9 +64,9 @@ You start getting these benefits
 as soon as you start migrating some of your code to null safety.
 
 Dart 通过一系列的静态和运行时检查来提供健全的空安全。
-每一个使用了空安全的 Dart 库都会得到所有的 **静态** 检查和更严格的编译期的错误。
+每一个使用了空安全的 Dart 库都会拥有所有的 **静态** 检查和更严格的编译期的错误提醒。
 对于包含了空安全库的混合模式程序也是如此。
-代码一旦开始迁移，已迁移的部分就能立刻享受到它带来的好处。
+代码一旦开始迁移，已迁移的部分就能立刻享有到它带来的好处。
 
 However, a mixed-version program can't have the
 _runtime_ soundness guarantees that a fully null-safe app has.
@@ -75,7 +75,7 @@ into the null-safe code, because
 preventing that would break the existing behavior of the unmigrated code.
 
 然而，混合模式的程序无法获得与空安全的程序的 **运行时** 健全性一致的保证。
-`null` 有可能从非空安全的库跑到空安全的代码中，
+`null` 很可能从非空安全的库污染到空安全的代码，
 因为一旦它被阻止，就会对现有的代码行为造成破坏。
 
 To maintain runtime compatibility with legacy libraries
@@ -92,7 +92,7 @@ Dart 工具提供了以下两种模式的支持：
 
   以 **非健全的空安全** 运行的混合模式的程序。
   在运行时有可能出现 `null` 引用错误，
-  但只是因为一些 `null` 值和可空类型从非空安全的库跑到了空安全的代码里。
+  但这只是因为一些 `null` 值和可空类型在非空安全的库中污染了空安全的代码。
 
 * When a program is fully migrated and _all_ its libraries are null safe,
   then it runs with **sound null safety**, with
@@ -235,7 +235,7 @@ you need to disable sound null safety.
 You can do this in two ways:
 
 想要测试或运行混合版本的代码，您需要禁用健全的空安全。
-有两种方式可以进行报错：
+有两种方式可以进行操作：
 
 * Disable sound null safety using the `--no-sound-null-safety` flag.
   Example:
