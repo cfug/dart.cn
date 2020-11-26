@@ -151,7 +151,7 @@ initialized, and must be nullable. Fortunately, you have options:
     `final` and non-nullable. This refactoring can be done *before* the
     migration to null safety.
 
-    将构造转变为工厂方法，并将其委托给一个实际的构造，直接初始化所有的字段。
+    将构造转变为工厂方法，并将其委托给一个直接初始化所有字段的真正的构造函数。
     在 Dart 中，这样的私有构造通常是一个下划线：`_`。
     如此一来，字段就可以是 `final` 且非空了。
     在空安全迁移介入 **之前**，您就可以这样进行调整。
@@ -189,7 +189,7 @@ Getters that were *not* marked `@nullable` should *not* have nullable types,
 even if the migration tool suggests them. Add `!` hints as needed then rerun the
 analysis.
 
-就算迁移工具建议 **没有** 使用 `@nullable` 注解的 getter 可以是可空的类型，也不应该这样做。
+就算迁移工具建议，**没有** 使用 `@nullable` 注解的 getter 也不应该是可空的类型。
 这时可以根据需要添加 `!` 操作符，并且重新进行分析。
 
 ## How should I migrate a factory that can return `null`?
@@ -301,7 +301,7 @@ whether `arg` is `null`. It might look like migrating to null safety means `arg`
 can never be `null`, but it could be `null` in unsound null safety. So, to preserve
 behavior, the null check should remain.
 
-运行时的检查同样适用。如果 `arg` 的指定了静态类型为 `String`，
+运行时的检查同样适用。如果 `arg` 指定了静态类型为 `String`，
 那么 `if (arg is! String)` 实际上是在检查 `arg` 是否为 `null`。
 尽管代码在迁移到空安全后，`arg` 应该是永远不为 `null` 的，
 但是在不完全的空安全中它仍有可能为 `null` 的。
