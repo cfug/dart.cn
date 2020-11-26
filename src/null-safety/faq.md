@@ -40,8 +40,8 @@ Two exceptions to be aware of are:
     users to pass a null.
 
     对于任何模式而言，`!` 操作符都是在运行时进行的空检查。
-    所以在进行迁移时，请确保您只在已经确认所有调用处的类型是可空，
-    而错误的原因是值已为非空但无法推导正确的非空类型时，添加 `!` 操作符。
+    所以在进行迁移时，请确保您仅对 `null` 可能由混合模式造成污染的代码位置添加 `!`，
+    就算发起调用的代码还未迁移至空安全，也应如此。
 
 -   Runtime checks associated with the `late` keyword apply in all modes, for
     all users. Only mark a field `late` if you are sure it is always initialized
