@@ -112,7 +112,7 @@ final b = Foo();
 If the variable _can_ have the value `null`,
 **add `?`** to its type declaration:
 
-如果这些变量 **可以** 为 (`null`)，
+如果这些变量 **可以** 为 `null`，
 在类型声明处 **加上 `?`**。
 
 ```dart
