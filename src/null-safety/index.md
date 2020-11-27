@@ -47,7 +47,7 @@ Dart null safety support is based on the following three core design principles:
    can be null, it's considered non-nullable. This default was chosen
    after research found that non-null was by far the most common choice in APIs.
 
-   **默认即非空**。除非您将变量显式声明为可空，否则它一定是非空的类型。
+   **默认不可空**。除非您将变量显式声明为可空，否则它一定是非空的类型。
    我们在研究后发现，非空是目前的 API 中最常见的选择，所以选择了非空作为默认值。
 
 * **Incrementally adoptable**. You choose _what_ to migrate to null safety, and _when_.
@@ -499,7 +499,8 @@ environment:
   allows 2.12.0 prereleases, such as the `2.12.0-29.10.beta` beta prerelease.
 
   2.12 版本的 Dart SDK 限制以 **`-0`** 结尾。
-  依据 [语义化版本定义](https://semver.org/) 制定的版本号使得 2.12.0 可以预发布，
+  依据 [语义化版本定义](https://semver.org/) 制定的版本号格式，
+  2.12.0 预发布版本可以使用如 `2.12.0-29.10.beta` 这样的版本号预发布，
   例如 `2.12.0-29.10.beta` 也可以是一个预览版本。
 
 {{site.alert.end}}
