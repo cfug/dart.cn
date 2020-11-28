@@ -15,11 +15,10 @@ values can’t be null _unless you say they can be._
 With null safety, your **runtime** null-dereference errors
 turn into **edit-time** analysis errors.
 
-Dart 语言将要引入健全的空安全机制了！
 当您选择使用空安全时，代码中的类型将默认是非空的，
 意味着 **除非您声明它们可空**，它们的值都不能为空。
-有了空安全，原本处于您的**运行时**的空值引用错误
-将变为**编译时**的分析错误。
+有了空安全，原本处于您的 **运行时** 的空值引用错误
+将变为 **编辑时** 的分析错误。
 
 You can
 [try null safety in your normal development environment](#enable-null-safety),
@@ -28,11 +27,10 @@ or you can practice using null safety in the web app
 [DartPad with Null Safety,][nullsafety.dartpad.dev]
 shown in the following screenshot.
 
-您可以在您的项目设置里 [启用技术预览版 SDK](#enable-null-safety)，
-从而在您的项目里实践空安全。
-或者通过 [支持空安全的 DartPad][nullsafety.dartpad.dev] 进行尝试。
-
-你可以在
+您可以 [在您的开发项目里尝试空安全](#enable-null-safety)、
+[迁移您项目中的代码][migration-guide] 至空安全、
+或者通过 [支持空安全的 DartPad][nullsafety.dartpad.dev] 进行练习，
+如下面的截图所示。
 
 ![Screenshot of DartPad null safety snippet with analysis errors](/null-safety/dartpad-snippet.png)
 {% comment %}
@@ -41,16 +39,25 @@ shown in the following screenshot.
 
 ## Null safety principles
 
+## 空安全的原则
+
 Dart null safety support is based on the following three core design principles:
 
 *  **Non-nullable by default**. Unless you explicitly tell Dart that a variable
    can be null, it's considered non-nullable. This default was chosen
    after research found that non-null was by far the most common choice in APIs.
 
+   **默认不可空**。除非您将变量显式声明为可空，否则它一定是非空的类型。
+   我们在研究后发现，非空是目前的 API 中最常见的选择，所以选择了非空作为默认值。
+
 * **Incrementally adoptable**. You choose _what_ to migrate to null safety, and _when_.
   You can migrate incrementally, mixing null-safe and
   non-null-safe code in the same project. We provide tools to help you
   with the migration.
+
+  **渐进迁移**。您可以自由地选择何时进行迁移，多少代码会进行迁移。
+  您可以使用混合模式的空安全，在一个项目中同时使用空安全和非空安全的代码。
+  我们也提供了帮助您进行迁移的工具。
 
 * **Fully sound**. Dart’s null safety is sound, which enables compiler optimizations.
   If the type system determines that something isn’t null, then that thing can _never_ be
@@ -58,13 +65,24 @@ Dart null safety support is based on the following three core design principles:
   and its dependencies to null safety, you reap the full benefits of soundness
   —- not only fewer bugs, but smaller binaries and faster execution.
 
+  **完全可靠**。Dart 的空安全是非常可靠的，意味着编译期间包含了很多优化。
+  如果类型系统推断出某个变量不为空，那么它 **永远** 不为空。
+  当您将整个项目和其依赖完全迁移至空安全后，您会享有健全性带来的所有优势&mdash&mdash
+  更少的 BUG，更小的二进制文件，以及更快的执行速度。
+
 ## A tour of the null safety feature
+
+## 空安全特性概览
 
 New operators and keywords related to null safety
 include `?`, `!`, and `late`.
 If you've used Kotlin, TypeScript, or C#,
 the syntax for null safety might look familiar.
 That's by design: the Dart language aims to be unsurprising.
+
+空安全带来的新的操作符和关键词，包括 `?`、`!` 和 `late`。
+如果您曾经使用过 Kotlin、TypeScript 或 C#，会发现语法非常相似。
+这是设计使然：Dart 希望让您不会感到陌生和惊讶。
 
 ### Creating variables
 
@@ -81,7 +99,7 @@ to inform Dart of the variable's nullability.
 Here are some examples of declaring **non-nullable variables**
 (assuming you’ve opted into null safety):
 
-以下是一些声明**非空变量**的例子
+以下是一些声明 **非空变量** 的例子
 （假设您已经使用了空安全）：
 
 ```dart
@@ -94,8 +112,8 @@ final b = Foo();
 If the variable _can_ have the value `null`,
 **add `?`** to its type declaration:
 
-如果这些变量**可以**为空值 ( `null` )，
-在类型声明处**加上 `?`**。
+如果这些变量 **可以** 为 `null`，
+在类型声明处 **加上 `?`**。
 
 ```dart
 int? aNullableInt = null;
@@ -108,7 +126,7 @@ but the Dart analyzer doesn't agree,
 
 在您已经明确一个非空变量一定会在使用前初始化，
 而 Dart 分析器仍然无法明确的情况下，
-您可以在变量的类型前**加上 `late`**：
+您可以在变量的类型前 **加上 `late`**：
 
 <?code-excerpt "../null_safety_examples/basics/lib/late.dart (late_field)"?>
 ```dart
@@ -162,7 +180,7 @@ PENDING: Uncomment the following once we're ready to offer more guidance.
 
 ### Using variables and expressions
 
-## 在变量和表达式中使用
+### 在变量和表达式中使用
 
 With null safety, the Dart analyzer generates errors when
 it finds a nullable value where a non-null value is required.
@@ -270,7 +288,7 @@ print(d?.floor()); // Uses `?.` instead of `.` to invoke `floor()`.
 
 ### Understanding list, set, and map types
 
-## 理解列表、集合及映射类型中的使用
+### 理解列表、集合及映射类型中的使用
 
 Lists, sets, and maps are commonly used collection types in Dart programs,
 so you need to know how they interact with null safety.
@@ -309,7 +327,7 @@ Here are some examples of how Dart code uses these collection types:
 
 #### List and set types {#list-and-set-types}
 
-### 列表和集合类型 {#list-and-set-types}
+#### 列表和集合类型 {#list-and-set-types}
 
 When you’re declaring the type of a list or set,
 think about what can be null.
@@ -350,7 +368,7 @@ var nameSet = <String?>{'Andrew', 'Anjan', 'Anya'};
 
 #### Map types {#map-types}
 
-### 映射类型 {#map-types}
+#### 映射类型 {#map-types}
 
 Map types behave mostly like you’d expect, with one exception:
 **the returned value of a lookup can be null**.
@@ -397,8 +415,7 @@ when you use an invalid key to do a map lookup, the returned value is null._
 Because map lookups can return null,
 you can't assign them to non-nullable variables:
 
-由于映射查询可能返回空值，
-您不能将其传递给非空变量：
+由于映射查询可能返回空值，您不能将其传递给非空变量：
 
 ```dart
 // Assigning a lookup result to a non-nullable
@@ -456,14 +473,19 @@ To find the most recent releases, see the
 Dart SDK archive, or the **Beta channel** section of the
 [Flutter SDK archive.][flutter-sdks]
 
-### 设置 SDK 版本
+空安全目前处于 beta 阶段。
+我们建议您使用 **最新的 beta 版本** 的 Dart 和 Flutter SDK。
+您可以在 Dart SDK 归档的 [beta 频道][dart-beta-channel] 和
+[Flutter SDK 归档][Flutter SDK archive] 的 **beta 频道**
+找到最新的 beta 版本。
 
 Set the [SDK constraints](/tools/pub/pubspec#sdk-constraints)
 to require a [language version][] that has null safety support.
 For example, your `pubspec.yaml` file might have the following constraints:
 
-查看文档 [SDK 版本约束](/tools/pub/pubspec#sdk-constraints)
-来设定一个支持空安全的 SDK 版本。
+将 [SDK 版本约束](/tools/pub/pubspec#sdk-constraints)
+设定为一个支持空安全的 SDK 版本。
+例如，您的 `pubspec.yaml` 可以设置为如下的限制：
 
 {% prettify yaml tag=pre+code %}
 environment:
@@ -471,9 +493,15 @@ environment:
 {% endprettify %}
 
 {{site.alert.note}}
+
   The 2.12 SDK constraint above ends in **`-0`**.
   This use of [semantic versioning notation](https://semver.org/)
   allows 2.12.0 prereleases, such as the `2.12.0-29.10.beta` beta prerelease.
+
+  2.12 版本的 Dart SDK 限制以 **`-0`** 结尾。
+  依据 [语义化版本定义](https://semver.org/) 制定的版本号格式，
+  2.12.0 预发布版本可以使用如 `2.12.0-29.10.beta` 这样的版本号预发布，
+
 {{site.alert.end}}
 
 If you find any issues with null safety please [give us feedback.][]
