@@ -56,6 +56,10 @@
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /null-safety/understanding-null-safety
+        - title: 非健全的空安全
+          urlExactMatch: true
+          match-page-url-exactly: true
+          permalink: /null-safety/unsound-null-safety
         - title: 空安全常见问题和解答
           urlExactMatch: true
           match-page-url-exactly: true
