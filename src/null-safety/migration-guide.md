@@ -91,7 +91,7 @@ then passing a nullable argument becomes a compile error.
   For example, the Dart and Flutter core libraries are null safe,
   and they're still usable by apps that haven't migrated to null safety.
 
-  **您应当在其他依赖于您的软件包进行迁移之前进行对您的包进行迁移。**
+  **您应当在其他依赖于您的软件包进行迁移之前，对您的包进行迁移。**
   您已迁移的软件包对于未进行迁移的包和应用而言，仍然可用。
   例如，Dart 和 Flutter 的核心库现已完全迁移至空安全，而尚未进行迁移的应用仍然可以使用。
 
@@ -140,7 +140,7 @@ $ flutter upgrade
   **switch back to a stable release**
   (for example, by running `flutter channel stable`).
 
-  如果您需要开发别的生产环境的项目，请记得 **将 SDK 切换至稳定版本**
+  如果您继续投入开发生产环境中的代码，请记得 **将 SDK 切换至稳定版本**
   （例如运行 `flutter channel stable`）。
 
 {{ site.alert.end }}
@@ -179,7 +179,7 @@ null-safe releases, if they exist.
 
   **为何所有的依赖都需要支持空安全？**
   当应用的所有依赖都支持空安全时，您可以在健全的空安全下 **运行应用**。
-  同样，当开发期依赖支持时，您可以将在健全的空安全下 **进行测试**。
+  同样，当开发期依赖也已支持时，您可以在健全的空安全下 **进行测试**。
   您可能会因为需要生成代码，而使用已迁移到空安全的开发期依赖。
 
 {{ site.alert.end }}
@@ -203,7 +203,7 @@ You can find contact details on the package page on [pub.dev][].
 
 如果您的软件包的依赖中，有一些 **尚未** 支持空安全，
 我们推荐您联系对应依赖的作者。
-您可以在 [pub.flutter-io.cn][pub.dev] 对应依赖的页面找到作者的联系信息。
+您可以在 [pub.flutter-io.cn][pub.dev] 对应依赖包的页面，找到作者的联系信息。
 
 [pub.dev]: {{ site.pub }}
 
@@ -224,10 +224,10 @@ update its dependencies to null-safe versions:
    and _don't_ update the SDK minimum constraint.
    For example, the `pubspec.yaml` file might look like this:
 
-   更新 `pubspec.yaml`，使用依赖们的空安全版本
+   更新 `pubspec.yaml`，使用已发布空安全版本的依赖包
    （在 **Resolvable** 列中列出的）。
-   省略 `.x` 的后缀版本，让版本被更灵活地解析，
-   并且 **不要** 更新 SDK 最低版本显示。
+   省略后缀版本号 `.x`，使之能够被更灵活地解析，
+   并且 **不要** 更新 SDK 最低版本限制。
    下面是一个 `pubspec.yaml` 文件的示例：
 
    ```yaml
@@ -280,7 +280,7 @@ You have two options for migrating:
   For additional help while migrating code, check the
   [null safety FAQ][].
 
-  若您需要迁移过程的额外帮助，请查看 [空安全常见问题][null safety FAQ]。
+  若您在迁移过程中需要额外的帮助，请查看 [空安全常见问题][null safety FAQ]。
 
 {{ site.alert.end }}
 
@@ -300,7 +300,7 @@ You can guide the tool's conversion by
 adding [hint markers][] to your Dart code.
 
 迁移工具会带上一个非空安全的包，将它转换至空安全。
-您可以先在代码中添加 [提示标记] 来引导迁移工具的转换。
+您可以先在代码中添加 [提示标记][hint markers] 来引导迁移工具的转换。
 
 [hint markers]: #hint-markers
 
@@ -321,7 +321,7 @@ Before starting the tool, make sure you're ready:
 Start the migration tool by running the `dart migrate` command
 in the directory that contains the package's `pubspec.yaml` file:
 
-在包含 `pubspec.yaml` 的目录下，执行 `dart migrate` 命令，开启迁移工具。
+在包含 `pubspec.yaml` 的目录下，执行 `dart migrate` 命令，启动迁移工具。
 
 ```terminal
 $ dart migrate
@@ -383,7 +383,7 @@ The default migration when this code is outside a function
 (it's different within a function)
 is backward compatible but not ideal:
 
-当这些代码处在函数外时，默认的迁移改动是向下兼容的，但并不理想
+当这些代码处在函数外时，默认的迁移改动是向后兼容的，但并不理想
 （在函数内时会稍有不同）：
 
 ```dart
@@ -400,7 +400,7 @@ Because you know that `zero` can't be null,
 you can improve the migration result.
 
 点击 **line 3** 链接，您可以看到迁移工具添加 `!` 的原因。
-而因为您只带 `zero` 不会为空，所以您可以改进迁移结果。
+而因为您知道 `zero` 不会为空，所以您可以改进迁移结果。
 
 #### Improving migration results {#hint-markers}
 
@@ -424,7 +424,7 @@ you can override its proposed edits by inserting temporary hint markers:
   you can use your usual code editor to remove it.
 
   按下这些按钮，相应的标记会立刻添加到代码中，并且 **无法撤销**。
-  如果您想删除标记，可以使用平常使用的代码编辑器删除它。
+  如果您想删除标记，可以和平常一样使用代码编辑器删除它。
 
 * You can use an editor to add hint markers,
   even while the tool is still running.
@@ -608,7 +608,7 @@ To migrate a package by hand, follow these steps:
    every library in the package to 2.12,
    opting them all in to null safety.
 
-   在版本低于 `2.12.0-0` 的 SDK 上运行 `dart pub get` 时，
+   在版本最低是 `2.12.0-0` 的 SDK 上运行 `dart pub get` 时，
    会将每个包的默认 SDK 版本设定为 2.12，并且默认它们已经迁移至空安全。
 
 3. Open the package in your IDE. <br>
@@ -668,7 +668,7 @@ $ dart test       # or `flutter test`
 
 You might need to update tests that expect null values.
 
-您可能需要更新期望空值的测试。
+您可能需要更新使用了空值作为预期用例的测试代码。
 
 If you need to make large changes to your code,
 then you might need to remigrate it.
@@ -705,7 +705,7 @@ and the upper SDK constraint to `<3.0.0`.
 For example, if you're using 2.12.0-29.10.beta,
 then your constraints should look like this:
 
-将 SDK 限制的下界设置为您用于测试的 2.12 beta 版本，
+将 SDK 限制的下界设置为您测试迁移时的 2.12 beta 版本，
 上界设置为 `<3.0.0`。
 例如，如果您正在使用 2.12.0-29.10.beta，那么您的限制看起来应该是这样的：
 
@@ -722,7 +722,7 @@ can still work with the next stable release of the Dart SDK.
 
 ### Package version
 
-### 软件包的保本
+### 软件包的版本
 
 Update the version of the package
 to indicate a breaking change and include a `nullsafety` suffix:
@@ -773,8 +773,8 @@ you should have a fully migrated, null-safe Dart package.
 If all of the packages you depend on are migrated too,
 then your program is sound with respect to null-reference errors.
 
-如果您走到了这一步，您应该拥有了一个完全迁移的空安全 Dart 软件包。
-当您的所有依赖都也已完成了迁移，那么您的软件就是健全的，同时可以正确处理空引用的错误。
+如果您走到了这一步，您应该已经完全将您的 Dart 软件包迁移至空安全了。
+当您的所有依赖也都完成了迁移，那么您的程序就是健全的，同时可以正确处理空引用的错误。
 
 From all of the Dart team, *thank you* for migrating your code.
 
