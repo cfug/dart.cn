@@ -735,7 +735,7 @@ to indicate a breaking change and include a `nullsafety` suffix:
   the new version is **`3.0.0-nullsafety.0`**.
 
 * 如果您的软件包版本已经大于或等于 1.0.0，请提升主版本。
-  例如，上一个版本为 `2.3.2`，那么新版本应该为 **`5.0.0-nullsafety.0`**。
+  例如，上一个版本为 `2.3.2`，那么新版本应该为 **`3.0.0-nullsafety.0`**。
 
 * If your package hasn't reached 1.0.0 yet,
   _either_ increase the minor version _or_ update the version to 1.0.0.
