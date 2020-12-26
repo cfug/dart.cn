@@ -36,8 +36,9 @@ Two exceptions to be aware of are:
 但是有两项例外您需要注意：
 
 -   The `!` operator is a runtime null check in all modes, for all users. So,
-    when migrating, ensure that you only add `!` where it's an error for all
-    users to pass a null.
+    when migrating, ensure that you only add `!` where it's an error for a
+    `null` to flow to that location, even if the calling code has not migrated
+    yet.
 
     对于任何模式而言，`!` 操作符都是在运行时进行的空检查。
     所以在进行迁移时，请确保您仅对 `null` 可能由混合模式造成污染的代码位置添加 `!`，
