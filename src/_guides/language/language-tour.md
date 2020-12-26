@@ -5149,7 +5149,7 @@ Dart 的库可以使用[包](/guides/packages)工具来发布和部署。
 Use `import` to specify how a namespace from one library is used in the
 scope of another library.
 
-使用 `import` 来指定命名���间以便其它库可以访问。
+使用 `import` 来指定命名空间以便其它库可以访问。
 
 For example, Dart web apps generally use the [dart:html][]
 library, which they can import like this:

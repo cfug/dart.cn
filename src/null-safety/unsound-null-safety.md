@@ -234,16 +234,11 @@ To test or run mixed-version code,
 you need to disable sound null safety.
 You can do this in two ways:
 
-<<<<<<< HEAD
 想要测试或运行混合版本的代码，您需要禁用健全的空安全。
 有两种方式可以进行操作：
 
 * Disable sound null safety using the `--no-sound-null-safety` flag
   to the `dart` or `flutter` command:
-=======
-* Disable sound null safety using the `--no-sound-null-safety` flag
-  to the `dart` or `flutter` command:
->>>>>>> 937562ece8777b7dd3d58f4a5a5078a9d6756f43
 
   在 `dart` 和 `flutter` 命令里，加入 `--no-sound-null-safety` 标记禁用。
   例如：
