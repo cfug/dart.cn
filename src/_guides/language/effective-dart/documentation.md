@@ -371,8 +371,9 @@ only one of them. Dartdoc treats the getter and setter like a single field,
 and if both the getter and the setter have doc comments, then
 dartdoc discards the setter's doc comment.
 
-避免同时为 setter 和 getter 加文档注释，
-DartDoc 只会展示其中一个（getter上的文档注释）。
+如果一个属性同时包含 getter 和 setter，请只为其中一个添加文档。
+Dartdoc 会将 getter 和 setter 作为同一个属性进行处理，而如果它们
+都包含文档注释，setter 的文档将被忽略。
 
 ### PREFER starting library or type comments with noun phrases.
 
