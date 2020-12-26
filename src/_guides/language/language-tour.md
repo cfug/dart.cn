@@ -4786,10 +4786,15 @@ Static variables aren’t initialized until they’re used.
 
 #### 静态方法
 
-Static methods (class methods) do not operate on an instance, and thus
-do not have access to `this`. For example:
+Static methods (class methods) don't operate on an instance, and thus
+don't have access to `this`.
+They do, however, have access to static variables.
+As the following example shows,
+you invoke static methods directly on a class:
 
-静态方法（即类方法）不能被一个类的实例访问，同样地，静态方法内也不可以使用 `this`：
+静态方法（即类方法）不能对实例进行操作，因此不能使用 `this`，
+但是他们可以访问静态变量。
+如下面的例子所示，你可以在一个类上直接调用静态方法：
 
 <?code-excerpt "misc/lib/language_tour/classes/point_with_distance_method.dart"?>
 ```dart

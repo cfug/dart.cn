@@ -496,11 +496,13 @@ doesn't appear in pub.dev search results.
 
 To mark a package as discontinued, sign in to pub.dev using a Google Account
 that's an uploader or verified publisher admin for the package.
-Then use the **Admin** tab of the individual package to mark the package as
-discontinued.
+Then use the **Admin** tab of the individual package to
+mark the package as discontinued.
+If you change your mind, you can remove the discontinued mark at any time.
 
 要把 package 标记为终止，需要使用一个上传者的 Google 账户或已验证发布者的管理员。
 接下来使用 package 单独的 **管理员** 选项卡，在其中将其标记为终止。
+如果您回心转意想继续维护，可在任意时候删除终止标记。
 
 ## Resources
 
@@ -525,4 +527,3 @@ For more information, see the reference pages for the following `pub` commands:
 [pubspec]: /tools/pub/pubspec
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
 [verified publisher]: /tools/pub/verified-publishers
-

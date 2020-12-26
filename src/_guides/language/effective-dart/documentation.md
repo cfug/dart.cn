@@ -256,7 +256,7 @@ rest in later paragraphs.
 如果不止一个解释句子有用，请将其余部分放在后面的段落中。
 
 This helps you write a tight first sentence that summarizes the documentation.
-Also, tools like Dartdoc use the first paragraph as a short summary in places
+Also, tools like dartdoc use the first paragraph as a short summary in places
 like lists of classes and members.
 
 这有助于您编写一个紧凑的第一句话来总结文档。 
@@ -366,11 +366,14 @@ int weekday;
 int get checkedCount => ...
 {% endprettify %}
 
-Avoid having a doc comment on both the setter and the getter, as DartDoc will show
-only one (the one on the getter.)
+If a property has both a getter and a setter, then create a doc comment for
+only one of them. Dartdoc treats the getter and setter like a single field,
+and if both the getter and the setter have doc comments, then
+dartdoc discards the setter's doc comment.
 
-避免同时为 setter 和 getter 加文档注释，
-DartDoc 只会展示其中一个（getter上的文档注释）。
+如果一个属性同时包含 getter 和 setter，请只为其中一个添加文档。
+Dartdoc 会将 getter 和 setter 作为同一个属性进行处理，而如果它们
+都包含文档注释，setter 的文档将被忽略。
 
 ### PREFER starting library or type comments with noun phrases.
 
@@ -704,4 +707,3 @@ class Box {
   bool get hasValue => _value != null;
 }
 {% endprettify %}
-

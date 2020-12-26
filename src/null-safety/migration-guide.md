@@ -49,10 +49,13 @@ Here are the basic steps for migrating each package that you own:
 
 {{ site.alert.end }}
 
-[null safety]: /null-safety
+For an informal look at the experience of using the migration tool, watch this video:
 
-![Screenshot of migration tool](/null-safety/migration-tool.png)
-_The interactive migration tool can simplify migration to null safety._
+如果您想预览迁移工具的体验，可以查看以下视频：
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eBr5tlumwlg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+[null safety]: /null-safety
 
 **可交互的迁移工具让您可以简化迁移至空安全的过程。**
 
@@ -758,6 +761,18 @@ then the next one is `3.0.0-nullsafety.1`.
 如果需要更新已发布的空安全预览版本，请提升后缀版本。
 例如，如果首个空安全版本为 `3.0.0-nullsafety.0`，
 那么下一个版本应该为 `3.0.0-nullsafety.1`。
+
+You can maintain a stable release and null-safe prerelease at the same time.
+For example, if you have a stable release that's `1.0.0` and
+a prerelease that's `2.0.0-nullsafety.0`,
+you can still publish new versions of the stable release
+(`1.0.1`) and null-safe prerelease (`2.0.0-nullsafety.1`).
+
+您可以同时维护一个稳定版以及一个空安全的预发布版。
+举个例子，稳定版的版本号可以是 `1.0.0`，
+空安全的预发布版版本号可以是 `2.0.0-nullsafety.0`，
+如此一来您还可以继续发布新的稳定版 (`1.0.1`)
+和新的空安全预发布版 (`2.0.0-nullsafety.1`)。
 
 Once null safety is available in a stable release of the Dart SDK,
 we encourage you to publish a stable version of your null-safe package.
