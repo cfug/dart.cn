@@ -62,7 +62,8 @@ with your package. In both cases, pub tries to help you by pointing out what
 changes will help make your package play nicer with the Dart ecosystem. There
 are a few additional requirements for uploading a package:
 
-发布一个 package 时，遵守 [pubspec 格式][pubspec] 和 [package 布局惯例][] 很重要。
+发布一个 package 时，遵守 [pubspec 格式][pubspec] 和
+[package 布局惯例][package layout conventions] 很重要。
 为了其他人能使用你的 package，有些要求是必须的，其他则是一些有助于用户更好理解和使用的建议。
 对于以上两者，pub 都会指出具体的改变方法，
 帮助你的 package 在 Dart 生态系统中展现的更好。对于上传 package 有一些额外的要求：
@@ -107,7 +108,8 @@ are a few additional requirements for uploading a package:
   Unless you publish using a [verified publisher][],
   **pub.dev displays the email address associated with your Google Account.**
 
-  除非你的发布使用了 [已验证发布者][]，** pub.dev 将展示与你 Google 账户关联的邮箱**
+  除非你的发布使用了 [已验证发布者][verified publisher]，
+  ** pub.dev 将展示与你 Google 账户关联的邮箱**
 
 {{site.alert.end}}
 
@@ -304,7 +306,7 @@ published version 1.0.0 of your `transmogrify` package, then another Dart
 developer can add it as a dependency in their `pubspec.yaml`:
 
 在你的 package 成功上传至 pub.dev 之后，任何用户都能够下载或在项目中依赖它。
-例如，如果你刚刚发布了你的  `transmogrify` package 1.0.0 版本，
+例如，如果你刚刚发布了你的 `transmogrify` package 1.0.0 版本，
 那么另一个 Dart 开发者将可以把它作为一项依赖添加到 `pubspec.yaml` 文件中：
 
 ```yaml
@@ -460,7 +462,8 @@ For example, if a user wants to test prereleases of version 2.1, then
 instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
 
 当稳定发布版可用时，pub 会主动选择它们，所以使用预发布的用户可能需要改变它们的依赖约束。
-例如，如果一个用户想要测试 2.1 版本的预发布，那么他可能需要指明是 `^2.1.0-dev.1` 版本，而不是 `^2.0.0` 或者 `^2.1.0` 版本。
+例如，如果一个用户想要测试 2.1 版本的预发布，
+那么他可能需要指明是 `^2.1.0-dev.1` 版本，而不是 `^2.0.0` 或者 `^2.1.0` 版本。
 
 {{site.alert.note}}
 
