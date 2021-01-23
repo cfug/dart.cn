@@ -34,27 +34,27 @@ travis_fold end check_links
 
 travis_fold start english_chinese_toggle
   (
-  
+
     set -x
-    
+
     set -e
 
     cp -r tool/translator/assets/*  _site/assets/
-    
+
     cp tool/translator/robots.txt _site
-    
+
     cd tool/translator
-    
+
     npm i
-    
+
     npx gulp mark-side-toc
-    
-    npx nt inject '../../_site/**/*.html' -c /assets/translator/css/translator.css -s /assets/translator/js/translator.js -m ./url-map.json -t ./text-map.json
-    
-    npx nt mark '../../_site/**/*.html'
-    
+
+    npx nt inject '../../_site/**/!(*_cn).html' -c /assets/translator/css/translator.css -s /assets/translator/js/translator.js -m ./url-map.json -t ./text-map.json
+
+    npx nt mark '../../_site/**/!(*_cn).html'
+
     npx gulp remove-space
-    
+
     cd -
   )
 travis_fold end english_chinese_toggle
