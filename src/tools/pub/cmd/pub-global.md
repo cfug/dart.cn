@@ -258,7 +258,7 @@ directly from the command line.
 
 ## Deactivating a package
 
-## 停用 Pacakge
+## 停用 Package
 
 ```terminal
 $ pub global deactivate <package>
