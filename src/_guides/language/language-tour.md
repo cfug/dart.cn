@@ -355,13 +355,12 @@ However, if necessary, the keywords marked with superscripts can be identifiers:
 
   带有上标 **2** 的关键字为 **内置标识符**，其作用只是在JavaScript代码转为Dart代码时更简单，这些关键字在大多数时候都可以作为有效的标识符，但是它们不能用作类名或者类型名或者作为导入前缀使用。
 
-* Words with the superscript **3** are newer, limited reserved words related to
-  the [asynchrony support](#asynchrony-support) that was added
-  after Dart's 1.0 release.
+* Words with the superscript **3** are limited reserved words related to
+  [asynchrony support](#asynchrony-support).
   You can't use `await` or `yield` as an identifier
   in any function body marked with `async`, `async*`, or `sync*`.
 
-  带有上标 **3** 的关键字为 Dart1.0 发布后用于[支持异步](#asynchrony-support)相关的特性新加的。不能在由关键字 `async`、`async*` 或 `sync*` 标识的方法体中使用 `await` 或 `yield` 作为标识符。
+  带有上标 **3** 的关键字为 Dart1.0 发布后用于[支持异步](#asynchrony-support)相关内容。不能在由关键字 `async`、`async*` 或 `sync*` 标识的方法体中使用 `await` 或 `yield` 作为标识符。
 
 All other words in the table are **reserved words**,
 which can't be identifiers.
@@ -559,7 +558,7 @@ You can't change the value of a `const` variable:
 baz = [42]; // 报错：常量不可以被赋值。(Error: Constant variables can't be assigned a value.)
 ```
 
-As of Dart 2.5, you can define constants that use
+You can define constants that use
 [type checks and casts](#type-test-operators) (`is` and `as`),
 [collection if](#collection-operators),
 and [spread operators](#spread-operator) (`...` and `...?`):
@@ -568,7 +567,6 @@ and [spread operators](#spread-operator) (`...` and `...?`):
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const-dart-25)"?>
 ```dart
-// Valid compile-time constants as of Dart 2.5.
 const Object i = 3; // Where i is a const Object with an int value...
 const list = [i as int]; // Use a typecast.
 const map = {if (i is int) i: "int"}; // Use is and collection if.
@@ -703,8 +701,7 @@ var y = 1.1;
 var exponents = 1.42e5;
 ```
 
-As of Dart 2.1, integer literals are automatically converted to doubles
-when necessary:
+Integer literals are automatically converted to doubles when necessary:
 
 从 Dart 2.1 开始，整型字面量将会在必要的时候自动转换成浮点数字面量：
 
@@ -1067,7 +1064,7 @@ For more details and examples of using the spread operator, see the
 可以查阅[扩展操作符建议][spread proposal]获取更多关于如何使用扩展操作符的信息。
 
 <a id="collection-operators"> </a>
-Dart 2.3 also introduced **collection if** and **collection for**,
+Dart also offers **collection if** and **collection for**,
 which you can use to build collections using conditionals (`if`)
 and repetition (`for`).
 
@@ -1227,7 +1224,7 @@ final constantSet = const {
 // constantSet.add('helium'); // This line will cause an error.
 ```
 
-As of Dart 2.3, sets support spread operators (`...` and `...?`)
+Sets support spread operators (`...` and `...?`)
 and collection ifs and fors,
 just like lists do.
 For more information, see the
@@ -1313,12 +1310,12 @@ nobleGases[18] = 'argon';
 ```
 
 {{site.alert.note}}
-
-  You might expect to see `new Map()` instead of just `Map()`.
-  As of Dart 2, the `new` keyword is optional.
+  If you come from a language like C# or Java, you might expect to see `new Map()` 
+  instead of just `Map()`. In Dart, the `new` keyword is optional.
   For details, see [Using constructors](#using-constructors).
 
-  这里为什么使用 `Map()` 而不是使用 `new Map()` 构造 Map 对象。
+  如果你之前是使用的 C# 或 Java 这样的语言，你可能想要使用 `Map()` 
+  而不是使用 `new Map()` 构造 Map 对象。
   因为从 Dart2 开始，构造对象的 `new` 关键字可以被省略掉。
   你可以查阅 [构造函数的使用](#using-constructors)获取更多相关信息。
 
@@ -1382,7 +1379,7 @@ final constantMap = const {
 // constantMap[2] = 'Helium'; // This line will cause an error.
 ```
 
-As of Dart 2.3, maps support spread operators (`...` and `...?`)
+Maps support spread operators (`...` and `...?`)
 and collection if and for, just like lists do.
 For details and examples, see the
 [spread operator proposal][spread proposal] and the
@@ -1402,7 +1399,7 @@ For more information about maps, see
 ### Runes 与 grapheme clusters
 
 In Dart, [runes][] expose the Unicode code points of a string.
-As of Dart 2.6, use the [characters package][]
+You can use the [characters package][]
 to view or manipulate user-perceived characters,
 also known as
 [Unicode (extended) grapheme clusters.][grapheme clusters]
@@ -4002,8 +3999,7 @@ and make sure that all instance variables are `final`.
 <?code-excerpt "misc/lib/language_tour/classes/immutable_point.dart"?>
 ```dart
 class ImmutablePoint {
-  static final ImmutablePoint origin =
-      const ImmutablePoint(0, 0);
+  static const ImmutablePoint origin = ImmutablePoint(0, 0);
 
   final double x, y;
 
@@ -4502,14 +4498,12 @@ For more information, see the informal
 ### Extension methods
 
 ### Extension 方法
-
-Extension methods, introduced in Dart 2.7,
-are a way to add functionality to existing libraries.
+Extension methods are a way to add functionality to existing libraries.
 You might use extension methods without even knowing it.
 For example, when you use code completion in an IDE,
 it suggests extension methods alongside regular methods.
 
-Dart 2.7 中引入的 Extension 方法是向现有库添加功能的一种方式。
+Extension 方法是向现有库添加功能的一种方式。
 你可能甚至都不知道有 Extension 方法。
 例如，当您在 IDE 中使用代码完成功能时，
 它建议将 Extension 方法与常规方法一起使用。
@@ -6102,7 +6096,7 @@ To learn more about Dart's core libraries, see
 [AssertionError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html
 [`Characters`]: {{site.pub-api}}/characters/latest/characters/Characters-class.html
 [characters API]: {{site.pub-api}}/characters
-[characters example]: {{site.pub-pkg}}/characters#-example-tab-
+[characters example]: {{site.pub-pkg}}/characters/example
 [characters package]: {{site.pub-pkg}}/characters
 [dart2js]: /tools/dart2js
 [dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html

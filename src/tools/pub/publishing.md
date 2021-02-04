@@ -7,12 +7,12 @@ description: 学习如何将 Dart package 发布到 pub.dev 网站。
 
 [The pub package manager][pub] isn't just for using other people's packages.
 It also allows you to share your packages with the world. If you have a useful
-project and you want others to be able to use it, use the `pub publish`
+project and you want others to be able to use it, use the `dart pub publish`
 command.
 
 [Pub package 管理工具][pub] 不但可以让你使用其他人开发的 package，
 而且能向全世界分享你自己制作的 package。如果你有一个有用的项目，
-且希望别人能够用到它，请使用 `pub publish` 命令。
+且希望别人能够用到它，请使用 `dart pub publish` 命令。
 
 {{site.alert.note}}
 
@@ -224,21 +224,21 @@ To create a verified publisher, follow these steps:
 
 ## 发布你的 package 
 
-Use the [pub publish][] command to publish your package for the first time,
+Use the [dart pub publish][] command to publish your package for the first time,
 or to update it to a new version.
 
-使用 [pub publish][] 命令来首次发布你的 package，或者把它升级到一个新版本。
+使用 [dart pub publish][] 命令来首次发布你的 package，或者把它升级到一个新版本。
 
 ### Performing a dry run
 
 ### 演示一次试运行
 
-To test how `pub publish` will work, you can perform a dry run:
+To test how `dart pub publish` will work, you can perform a dry run:
 
-为了测试 `pub publish` 命令会如何工作，你可以演示一次试运行（不会真的发布，只显示效果）：
+为了测试 `dart pub publish` 命令会如何工作，你可以演示一次试运行（不会真的发布，只显示效果）：
 
 ```terminal
-$ pub publish --dry-run
+$ dart pub publish --dry-run
 ```
 
 Pub makes sure that your package follows the
@@ -280,7 +280,7 @@ When you're ready to publish your package, remove the `--dry-run` argument:
 当你已经准备好发布你的 package 后，移除 `--dry-run` 参数：
 
 ```terminal
-$ pub publish
+$ dart pub publish
 ```
 
 {{site.alert.note}}
@@ -294,9 +294,9 @@ $ pub publish
   然后再 [把 package 转移至已验证发布者](#transferring-a-package-to-a-verified-publisher)。
 
   Once a package has been transferred to a publisher,
-  you can update the package using `pub publish`.
+  you can update the package using `dart pub publish`.
 
-  一旦这个 package 被转移到已验证发布者，你就可以通过 `pub publish` 命令来更新它。
+  一旦这个 package 被转移到已验证发布者，你就可以通过 `dart pub publish` 命令来更新它。
 
 {{site.alert.end}}
 
@@ -393,7 +393,7 @@ PENDING: Here only to make it easy to find the packages discussion: packages-dir
 {% endcomment %}
 
 Be sure to delete any files you don't want to include (or add them to
-`.gitignore`). `pub publish` lists all files that it's going to publish
+`.gitignore`). `dart pub publish` lists all files that it's going to publish
 before uploading your package,
 so examine the list carefully before completing your upload.
 
@@ -515,7 +515,7 @@ For more information, see the reference pages for the following `pub` commands:
 
 想了解更多信息，请查阅以下 `pub` 命令的参考页面：
 
-* [pub publish][]
+* [dart pub publish][]
 * [pub uploader][]
 
 [BSD license]: https://opensource.org/licenses/BSD-3-Clause
@@ -525,7 +525,7 @@ For more information, see the reference pages for the following `pub` commands:
 [package layout conventions]: /tools/pub/package-layout
 [policy]: https://pub.dev/policy
 [pub]: /guides/packages
-[pub publish]: /tools/pub/cmd/pub-lish
+[dart pub publish]: /tools/pub/cmd/pub-lish
 [pub uploader]: /tools/pub/cmd/pub-uploader
 [pubspec]: /tools/pub/pubspec
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html

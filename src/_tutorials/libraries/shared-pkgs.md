@@ -25,12 +25,12 @@ description: Package 是用于在 Dart 语言里打包代码、工具和资源�
     遵循一些规定，比如一个有效的 pubspec.yaml 文件，使你的应用成为一个包。
 
   * If you're developing a web or server-side app,
-    use Stagehand to generate starting files.
+    use `dart create` to generate starting files.
 
-    如果你正在开发一款 Web 或服务端应用，请使用 Stagehand 工具生成相关初始化文件。
+    如果你正在开发一款 Web 或服务端应用，请使用 `dart create` 生成相关初始化文件。
 
   * If you're developing a web or server-side app,
-    use `pub get` to download packages.
+    use `dart pub get` to download packages.
 
     如果你正在开发一款 Web 或服务端应用，请使用 `pub get` 命令下载相关包。
 
@@ -46,7 +46,7 @@ are available at the [pub.dev site]({{site.pub}}) repository.
 
 当你可以创建和运行 Dart 应用时，你就已经准备复用其他程序员编写的代码了。[pub.dev 网站]({{site.pub}}) 仓库有许多可用的使用 Dart 代码编写的包。
 
-This tutorial shows how to use `pub`&mdash;a package manager
+This tutorial shows how to use `dart pub`&mdash;a package manager
 that comes with Dart&mdash;to
 install one of the packages in the repository,
 the vector_math package.
@@ -56,7 +56,7 @@ just change the package name when you get to that step.
 This tutorial also describes some of the resources you can expect to find
 in a well-built package.
 
-本教程将向你展示如何使用 `pub` 命令&mdash;Dart 的包管理命令&mdash;即用以安装仓库中某个包
+本教程将向你展示如何使用 `dart pub` 命令&mdash;Dart 的包管理命令&mdash;即用以安装仓库中某个包
 （比如 vector_math 包）的命令。
 你可以使用这些步骤来安装由 [pub.dev 网站]({{site.pub}}) 提供的任意一个包；
 当你想安装其它你想要使用的包时只需修改这些步骤中的示例包名即可。
@@ -88,12 +88,12 @@ is a package and can therefore use external packages.
 
 想要使用外部的包，你的应用其本身也必须是一个包。任何在顶层目录中包含有效 pubspec.yaml 文件的应用都是一个包，从而可以使该应用使用外部的包。
 
-You can use the Stagehand tool to generate packages
+You can use the `dart create` command to generate packages
 with valid pubspec.yaml files and directory structures.
-Stagehand works either at the command line or (behind the scenes) in an IDE
+This command works either at the command line or (behind the scenes) in an IDE
 such as IntelliJ or WebStorm.
 
-你可以使用 Stagehand 工具来生成带有有效 pubspec.yaml 文件和目录结构的包。你可以使用命令行工具来调用 Stagehand 工具，也可以使用类似 IntelliJ 或 WebStorm 这样的 IDE 来间接使用 Stagehand 工具。
+你可以使用 `dart create` 命令来生成带有有效 pubspec.yaml 文件和目录结构的包。你可以使用命令行工具来调用 Stagehand 工具，也可以使用类似 IntelliJ 或 WebStorm 这样的 IDE 来间接使用 Stagehand 工具。
 
 Install or update Stagehand using
 [pub global activate](/tools/pub/cmd/pub-global):
@@ -104,13 +104,12 @@ Install or update Stagehand using
 $ pub global activate stagehand
 ```
 
-Now run the `stagehand` command to see what kinds of template files
-it can generate:
+Now run the `dart create` command to see what kinds of template files it can generate:
 
-现在你可以运行 `stagehand` 命令来查看它可以生成的模板文件：
+现在你可以运行 `dart create` 命令来查看它可以生成的模板文件：
 
 ```terminal
-$ stagehand
+$ dart create
 ```
 
 You'll see a list of generators, including various web and server-side apps.
@@ -118,15 +117,13 @@ One of the generators is named **console-full**.
 
 你将会看到一系列的生成器，包括各种 Web 和 服务端应用的。其中一个生成器叫**console-full**。
 
-In a new directory named `vector_victor`,
-use Stagehand to generate a command-line app:
+Use the `dart create` command to generate a command-line app named `vector_victor`:
 
-在一个新建的名为 `vector_victor` 的目录中，使用 Stagehand 工具来生成一个命令行应用：
+使用 `dart create` 工具来生成一个叫做 `vector_victor` 的命令行应用：
 
 ```terminal
-$ mkdir vector_victor
+$ dart create -t console-full vector_victor 
 $ cd vector_victor
-$ stagehand console-full
 ```
 
 The pubspec.yaml file contains the package specification written in YAML.
@@ -141,13 +138,14 @@ name: vector_victor
 description: A sample command-line application.
 
 environment:
-  sdk: '>=2.1.0 <3.0.0'
+  sdk: '>=2.8.1 <3.0.0'
 
 #dependencies:
-#  path: ^1.4.1
+#  path: ^1.7.0
 
 dev_dependencies:
-  test: ^1.0.0
+  pedantic: ^1.9.0
+  test: ^1.14.4
 ```
 
 ## Name the package dependencies
@@ -191,7 +189,7 @@ which is available at the [pub.dev site]({{site.pub}}).
 
         ```yaml
         dependencies:
-          vector_math: ^2.0.7
+          vector_math: ^2.0.8
         ```
 
  2. Edit `pubspec.yaml`.
@@ -206,13 +204,14 @@ which is available at the [pub.dev site]({{site.pub}}).
 
     ```yaml
     environment:
-      sdk: '>=2.1.0 <3.0.0'
+      sdk: '>=2.8.1 <3.0.0'
 
     dependencies:
-      vector_math: ^2.0.7
+      vector_math: ^2.0.8
 
     dev_dependencies:
-      test: ^1.0.0
+      pedantic: ^1.9.0
+      test: ^1.14.4
     ```
 
 For details of what version numbers mean
@@ -223,13 +222,13 @@ see [Pub versioning philosophy](/tools/pub/versioning).
 
 The [pub.dev site]({{site.pub}})
 is the primary public repository for Dart packages.
-`pub` automatically checks that
+`dart pub` automatically checks that
 website when resolving package dependencies.
 To use one of the packages from that site,
 you can specify it by its simple name,
 as we have done here.
 
-[pub.dev 网站]({{site.pub}}) 是 Dart 包主要的公共仓库。`pub` 命令在解析包依赖时会自动去该网站进行检查。如果你想使用该网站的某个包，你可以像我们上面所说的那样在 dependencies 中指定对应的包名。
+[pub.dev 网站]({{site.pub}}) 是 Dart 包主要的公共仓库。`dart pub` 命令在解析包依赖时会自动去该网站进行检查。如果你想使用该网站的某个包，你可以像我们上面所说的那样在 dependencies 中指定对应的包名。
 
 ## Install the package dependencies
 
@@ -241,20 +240,18 @@ it might automatically install the packages your app depends on.
 如果你使用 IDE 或适配了 Dart 语言开发的编辑器去编辑 `pubspec.yaml` 文件，其可能会在你编辑了该文件后自动下载安装相关的依赖包。
 
 If not, do it yourself by running
-[pub get](/tools/pub/cmd/pub-get):
+[dart pub get](/tools/pub/cmd/pub-get):
 
-否则，你只能手动地执行 [pub get](/tools/pub/cmd/pub-get) 命令进行下载安装：
+否则，你只能手动地执行 [dart pub get](/tools/pub/cmd/pub-get) 命令进行下载安装：
 
 ```terminal
-$ pub get
+$ dart pub get
 Resolving dependencies...
-+ vector_math 2.0.7
++ vector_math 2.0.8
 Changed 1 dependency!
-Precompiling executables...
-Precompiled vector_math:mesh_generator.
 ```
 
-The `pub get` command installs the
+The `dart pub get` command installs the
 packages in your app's dependencies list.
 Each package can contain libraries and other assets.
 Pub works recursively;
@@ -262,7 +259,7 @@ if an included package has dependencies, those packages are installed as well.
 Pub caches the files for each package your app depends on,
 pointing to them from a file named `.packages`.
 
-`pub get` 命令会安装你应用依赖列表中的包。而每一个包可能还会包含其它的库或资源，Pub 同样会将它们依次安装；如果一个依赖包已经安装过，则会直接使用。Pub 会缓存你应用依赖过的每一个包并将其缓存至一个名为 `.packages` 的文件中。
+`dart pub get` 命令会安装你应用依赖列表中的包。而每一个包可能还会包含其它的库或资源，Pub 同样会将它们依次安装；如果一个依赖包已经安装过，则会直接使用。Pub 会缓存你应用依赖过的每一个包并将其缓存至一个名为 `.packages` 的文件中。
 
 {% comment %}
 PENDING: Here only to make it easy to find the packages discussion: packages-dir.html
@@ -271,10 +268,10 @@ PENDING: Here only to make it easy to find the packages discussion: packages-dir
 Pub creates a file called `pubspec.lock`
 that identifies the specific versions of the packages that were installed.
 This helps to provide a stable development environment.
-Later you can modify the version constraints and use `pub upgrade`
+Later you can modify the version constraints and use `dart pub upgrade`
 to update to new versions as needed.
 
-Pub 会创建一个名为 `pubspec.lock` 的文件来标识哪些包的哪些版本已经安装过。此举可以为开发者提供一个稳定的开发环境。你也可以修改包版本并使用 `pub upgrade` 命令来更新包。
+Pub 会创建一个名为 `pubspec.lock` 的文件来标识哪些包的哪些版本已经安装过。此举可以为开发者提供一个稳定的开发环境。你也可以修改包版本并使用 `dart pub upgrade` 命令来更新包。
 
 ## What did you get (and not get)?
 

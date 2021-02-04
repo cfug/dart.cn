@@ -367,11 +367,17 @@ V:
 在这种情况下，您应该使用强制非空操作符 (`!`) 将可空的类型转为非空 (V)。
 
 ```dart
-if (blockTypes.containsKey(key)) {
-  return blockTypes[key]!; // blockTypes[key] is non-nullable
-} else {
-  throw ArgumentError('Could not read block type.');
-}
+return blockTypes[key]!;
+```
+
+Which will throw if the map returns null. If you want explicit handling for that case:
+
+如果 map 返回了 null，则会抛出异常。如果你希望手动处理这些情况：
+
+```dart
+var result = blockTypes[key];
+if (result != null) return result;
+// Handle the null case here, e.g. throw with explanation.
 ```
 
 ## Why is the generic type on my List/Map nullable?

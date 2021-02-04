@@ -26,10 +26,10 @@ Dart 生态系统使用 _包_ 来管理**共享软件**，比如：库和工具�
 
 Most [Dart-savvy IDEs][] offer support for using pub that
 includes creating, downloading, updating, and publishing packages.
-Or you can use [`pub` on the command line](/tools/pub/cmd).
+Or you can use [`dart pub` on the command line](/tools/pub/cmd).
 
 大多数 [Dart-savvy IDEs][] 都支持 Pub 的使用，包括包的创建，下载，更新和发布。
-同样上述功能也可以在命令行上通过 [`pub`](/tools/pub/cmd) 来操作。
+同样上述功能也可以在命令行上通过 [`dart pub`](/tools/pub/cmd) 来操作。
 或者可以在命令行上使用pub。
 
 At a minimum,
@@ -109,14 +109,14 @@ get</code> from the top directory of your application:
 
 ```terminal
 $ cd <path-to-my_app>
-$ pub get
+$ dart pub get
 ```
 
 This process is called _getting the dependencies_.
 
 上面的操作即 **获取依赖**。
 
-The [`pub get`][] command determines which packages your app depends on,
+The [`dart pub get`][] command determines which packages your app depends on,
 and puts them in a central [system cache](/tools/pub/glossary#system-cache).
 If your app depends on a published package, pub downloads that package from the
 [pub.dev site.]({{site.pub}})
@@ -126,7 +126,7 @@ Transitive dependencies are included, too.
 For example, if the `js` package depends on the `test` package, `pub`
 grabs both the `js` package and the `test` package.
 
-[`pub get`][] 命令确定当前应用所依赖的包，
+[`dart pub get`][] 命令确定当前应用所依赖的包，
 并将它们保存到中央[系统缓存](/tools/pub/glossary#system-cache)（central system cache）中。
 如果当前应用依赖了一个公开包， Pub 会从 [Pub 站点]({{site.pub}}) 该包。
 对于一个 [Git 依赖](/tools/pub/dependencies#git-packages)， Pub 会 Clone 该 Git 仓库。
@@ -234,24 +234,24 @@ uses the same versions of code.
 同样加入到 lockfile 可以保证部署的应用使用的是同一版本的代码。
 
 When you're ready to upgrade your dependencies to the latest versions,
-use the [`pub upgrade`][] command:
+use the [`dart pub upgrade`][] command:
 
-如果已经准备更新依赖到最新版本，使用命令 `pub upgrade` ：
+如果已经准备更新依赖到最新版本，使用命令 `dart pub upgrade` ：
 
 {% prettify sh tag=pre+code %}
-$ pub upgrade
+$ dart pub upgrade
 {% endprettify %}
 
-The `pub upgrade` command tells pub to regenerate the lockfile, using the newest
+The `dart pub upgrade` command tells pub to regenerate the lockfile, using the newest
 available versions of your package's dependencies.
 If you want to upgrade only one dependency,
 you can specify the package to upgrade:
 
-上面的命令用于重新生成 lockfile 文件，并使用最新可用版本的依赖包。
+`dart pub upgrade` 命令用于重新生成 lockfile 文件，并使用最新可用版本的依赖包。
 如果仅升级某个依赖，可以在命令中指定需要升级的包：
 
 {% prettify sh tag=pre+code %}
-$ pub upgrade transmogrify
+$ dart pub upgrade transmogrify
 {% endprettify %}
 
 That command upgrades `transmogrify` to the latest version
@@ -259,16 +259,16 @@ but leaves everything else the same.
 
 上面的命令升级 `transmogrify` 到最新版本，但维持其它包不变。
 
-The [`pub upgrade`][] command can't always upgrade every package
+The [`dart pub upgrade`][] command can't always upgrade every package
 to its latest version,
 due to conflicting version constraints in the pubspec.
 To identify out-of-date packages that require editing the pubspec,
-use [`pub outdated`][].
+use [`dart pub outdated`][].
 
-[`pub upgrade`][] 命令并非总是可以将所有的 package 更新到最新版本，
+[`dart pub upgrade`][] 命令并非总是可以将所有的 package 更新到最新版本，
 原因是 pubspec 文件中的一些 package 之间有版本限制的冲突。
 想要确定 pubspec 里已经过时且需要编辑的 package，
-请使用 [`pub outdated`][] 命令。
+请使用 [`dart pub outdated`][] 命令。
 
 ## More information
 
