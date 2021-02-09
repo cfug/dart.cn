@@ -350,7 +350,7 @@ img {
     }
   }
   .brand {
-    display: block;
+    align-self: center;
     float: left;
     width: 85px;
     margin: 0 20px;
@@ -633,6 +633,7 @@ img {
  Search
  ----------------------------------------- */
 .site-header__search {
+  margin-block-end: 0 !important;
   &::before {
     color: $gray;
     z-index: 1;
