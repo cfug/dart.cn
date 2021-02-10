@@ -66,7 +66,7 @@ packages in the pub cache, and you might accidentally edit one of those files.
 The <code>dart pub cache repair</code> command performs a clean reinstall of all
 hosted and git packages in the system cache.</dd>
 
-<dd>你 Pub 缓存中的 Package 是有可能被修改或破坏的。例如，某些编辑器可以轻松地在 Pub 缓存中找到 Package 的实现文件，而你也许会对这些文件进行修改导致它们与原本的逻辑不一致。dart pub cache repair 命令可以对系统缓存中的所有 Package 执行重安装以修正篡改的问题。</dd>
+<dd>您的 pub 缓存中的 package 是有可能被修改或破坏的。例如，某些编辑器可以轻松地在 pub 缓存中找到 package 的实现文件，而你也许会对这些文件进行修改导致它们与原本的逻辑不一致。<code>dart pub cache repair</code> 命令可以对系统缓存中的所有 package 执行重安装以修正篡改的问题。</dd>
 
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).

@@ -2,7 +2,7 @@
 title: Formatting code
 title: 代码格式化
 description: Use `dart format` to format your code, and follow Effective Dart guidelines for what `dart format` doesn't cover.
-description: 使用 `dart format` 来格式化你的代码，包括 Dart 高效指南 (Effective Dart) 里提到的 `dart format` 没有包含的内容。
+description: 使用 `dart format` 来格式化你的代码，并且通过 Dart 高效指南 (Effective Dart) 进一步调整 `dart format` 没有包括的内容。
 toc: false
 ---
 

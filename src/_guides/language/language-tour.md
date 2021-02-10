@@ -360,7 +360,7 @@ However, if necessary, the keywords marked with superscripts can be identifiers:
   You can't use `await` or `yield` as an identifier
   in any function body marked with `async`, `async*`, or `sync*`.
 
-  带有上标 **3** 的关键字为 Dart1.0 发布后用于[支持异步](#asynchrony-support)相关内容。不能在由关键字 `async`、`async*` 或 `sync*` 标识的方法体中使用 `await` 或 `yield` 作为标识符。
+  带有上标 **3** 的关键字为 Dart 1.0 发布后用于[支持异步](#asynchrony-support)相关内容。不能在由关键字 `async`、`async*` 或 `sync*` 标识的方法体中使用 `await` 或 `yield` 作为标识符。
 
 All other words in the table are **reserved words**,
 which can't be identifiers.
@@ -1314,8 +1314,8 @@ nobleGases[18] = 'argon';
   instead of just `Map()`. In Dart, the `new` keyword is optional.
   For details, see [Using constructors](#using-constructors).
 
-  如果你之前是使用的 C# 或 Java 这样的语言，你可能想要使用 `Map()` 
-  而不是使用 `new Map()` 构造 Map 对象。
+  如果你之前是使用的 C# 或 Java 这样的语言，你可能想要使用 `new Map()` 
+  而不是使用 `Map()` 构造 Map 对象。
   因为从 Dart2 开始，构造对象的 `new` 关键字可以被省略掉。
   你可以查阅 [构造函数的使用](#using-constructors)获取更多相关信息。
 
