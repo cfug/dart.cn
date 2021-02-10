@@ -29,9 +29,9 @@ Dart 拥有非常丰富的核心库用以为诸如处理对象集合（`dart:col
 ## 全平台库列表
 
 The following table lists the Dart core libraries that work on all
-[Dart platforms](/platforms).
+[Dart platforms](/overview#platform).
 
-下面提供的一些库可以应用于所有 [Dart 可运行的平台](/platforms)。
+下面提供的一些库可以应用于所有 [Dart 可运行的平台](/overview#platform)。
 
 <div class="table-wrapper" markdown="1">
 |-----------------------------------------------+-------------------------------|
@@ -60,9 +60,9 @@ The following table lists the Dart core libraries that work on all
 ## 原生平台库
 
 The following table lists the Dart core libraries that work on the
-[Dart native platform](/platforms) (AOT- and JIT-compiled code).
+[Dart native platform](/overview#platform) (AOT- and JIT-compiled code).
 
-下面列出的核心库适用于 [Dart 原生平台](/platforms)（AOT 和 JIT 编译运行）。
+下面列出的核心库适用于 [Dart 原生平台](/overview#platform)（AOT 和 JIT 编译运行）。
 
 <div class="table-wrapper" markdown="1">
 |-----------------------------------------------+-------------------------------|
@@ -83,9 +83,9 @@ The following table lists the Dart core libraries that work on the
 ## Web 平台库
 
 The following table lists the Dart core libraries that work on the
-[Dart web platform](/platforms) (code compiled to JavaScript).
+[Dart web platform](/overview#platform) (code compiled to JavaScript).
 
-下面列出的核心库适用于 [Dart Web 平台](/platforms)（代码编译成 JS 来运行）。
+下面列出的核心库适用于 [Dart Web 平台](/overview#platform)（代码编译成 JS 来运行）。
 
 <div class="table-wrapper" markdown="1">
 |-----------------------------------------------+-------------------------------|

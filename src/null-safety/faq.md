@@ -464,6 +464,31 @@ The fix is to explicitly create such lists as `List<dynamic>`.
 
 手动创建 `List<dynamic>` 类型的列表可以解决这个问题。
 
+## Why does the migration tool add comments to my code? {#migration-comments}
+
+## 为什么迁移工具在我的代码中添加了评论 {#migration-comments}
+
+The migration tool adds `/* == false */` or `/* == true */` comments when it
+sees conditions that will always be false or true while running in sound mode.
+Comments like these might indicate that the automatic migration is incorrect and
+needs human intervention. For example:
+
+空安全模式下，在当某个表达式的结果一定为 false 或 true 的时候，
+迁移工具会自动添加 `/* == false */` 或者 `/* == true */` 这样的评论。
+这样的评论将会导致自动迁移出现错误，并且需要人工干预。例如：
+
+```dart
+if (registry.viewFactory(viewDescriptor.id) == null /* == false */)
+```
+
+In these cases, the migration tool can't distinguish defensive-coding situations
+and situations where a null value is really expected. So the tool tells you what
+it knows ("it looks like this condition will always be false!") and lets you
+decide what to do.
+
+在这些情况下，迁移工具无法区分防御性编码情况或是确实需要空值的情况。 
+那么该工具会告诉您它认为（“这看起来永远为 false！”）并让您进行决定。
+
 ## Resources
 
 ## 资源
