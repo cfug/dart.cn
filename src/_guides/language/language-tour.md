@@ -360,7 +360,7 @@ However, if necessary, the keywords marked with superscripts can be identifiers:
   You can't use `await` or `yield` as an identifier
   in any function body marked with `async`, `async*`, or `sync*`.
 
-  带有上标 **3** 的关键字为 Dart 1.0 发布后用于[支持异步](#asynchrony-support)相关内容。不能在由关键字 `async`、`async*` 或 `sync*` 标识的方法体中使用 `await` 或 `yield` 作为标识符。
+  带有上标 **3** 的关键字为 Dart 1.0 发布后用于 [支持异步](#asynchrony-support) 相关内容。不能在由关键字 `async`、`async*` 或 `sync*` 标识的方法体中使用 `await` 或 `yield` 作为标识符。
 
 All other words in the table are **reserved words**,
 which can't be identifiers.
@@ -563,7 +563,7 @@ You can define constants that use
 [collection if](#collection-operators),
 and [spread operators](#spread-operator) (`...` and `...?`):
 
-从 Dart 2.5 开始，你可以在常量中使用[类型检查和强制类型转换](#type-test-operators) (`is` and `as`)、[collection if](#collection-operators) 以及 [spread operators](#spread-operator) (`...` and `...?`)：
+你可以在常量中使用[类型检查和强制类型转换](#type-test-operators) (`is` and `as`)、[collection if](#collection-operators) 以及 [spread operators](#spread-operator) (`...` and `...?`)：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const-dart-25)"?>
 ```dart
