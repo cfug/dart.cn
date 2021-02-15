@@ -511,7 +511,10 @@ Where you declare the variable, set the value to a compile-time constant
 such as a number or string literal, a const
 variable, or the result of an arithmetic operation on constant numbers:
 
-使用关键字 `const` 修饰变量表示该变量为 **编译时常量**。如果使用 const 修饰类中的变量，则必须加上 static 关键字，即 `static const`（注意：顺序不能颠倒（译者注））。在声明 const 变量时可以直接为其赋值，也可以使用其它的 const 变量为其赋值：
+使用关键字 `const` 修饰变量表示该变量为 **编译时常量**。
+如果使用 const 修饰类中的变量，则必须加上 static 关键字，
+即 `static const`（注意：顺序不能颠倒（译者注））。
+在声明 const 变量时可以直接为其赋值，也可以使用其它的 const 变量为其赋值：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const)"?>
 ```dart
@@ -536,7 +539,8 @@ const baz = []; // 相当于 `const []` (Equivalent to `const []`)
 You can omit `const` from the initializing expression of a `const` declaration,
 like for `baz` above. For details, see [DON’T use const redundantly][].
 
-如果使用初始化表达式为常量赋值可以省略掉关键字 `const`，比如上面的常量 `baz` 的赋值就省略掉了 `const`。详情请查阅[DON’T use const redundantly][]
+如果使用初始化表达式为常量赋值可以省略掉关键字 `const`，比如上面的常量 `baz` 的赋值就省略掉了 `const`。
+详情请查阅 [DON’T use const redundantly][]
 
 You can change the value of a non-final, non-const variable,
 even if it used to have a `const` value:
@@ -563,7 +567,9 @@ You can define constants that use
 [collection if](#collection-operators),
 and [spread operators](#spread-operator) (`...` and `...?`):
 
-你可以在常量中使用[类型检查和强制类型转换](#type-test-operators) (`is` and `as`)、[collection if](#collection-operators) 以及 [spread operators](#spread-operator) (`...` and `...?`)：
+你可以在常量中使用 [类型检查和强制类型转换](#type-test-operators) (`is` 和 `as`)、
+[集合中的 if](#collection-operators) 以及
+[展开操作符](#spread-operator) (`...` 和 `...?`)：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const-dart-25)"?>
 ```dart
@@ -1104,7 +1110,8 @@ assert(listOfStrings[1] == '#1');
 For more details and examples of using collection if and for, see the
 [control flow collections proposal.][collections proposal]
 
-你可以查阅[集合中使用控制流建议][collections proposal]获取更多关于使用 **Collection If** 和 **Collection For** 的细节内容和示例。
+你可以查阅 [集合中使用控制流建议][collections proposal]
+获取更多关于在集合中使用 if 和 for 的细节内容和示例。
 
 [collections proposal]: https://github.com/dart-lang/language/blob/master/accepted/2.3/control-flow-collections/feature-specification.md
 
@@ -1114,8 +1121,9 @@ The List type has many handy methods for manipulating lists. For more
 information about lists, see [Generics](#generics) and
 [Collections](/guides/libraries/library-tour#collections).
 
-List 类中有许多用于操作 List 的便捷方法，你可以查阅[泛型](#generics)和[集合](/guides/libraries/library-tour#collections)获取更多与之相关的信息。
-
+List 类中有许多用于操作 List 的便捷方法，
+你可以查阅 [泛型](#generics) 和 [集合](/guides/libraries/library-tour#collections)
+获取更多与之相关的信息。
 
 ### Sets
 
@@ -1316,8 +1324,7 @@ nobleGases[18] = 'argon';
 
   如果你之前是使用的 C# 或 Java 这样的语言，你可能想要使用 `new Map()` 
   而不是使用 `Map()` 构造 Map 对象。
-  因为从 Dart2 开始，构造对象的 `new` 关键字可以被省略掉。
-  你可以查阅 [构造函数的使用](#using-constructors)获取更多相关信息。
+  你可以查阅 [构造函数的使用](#using-constructors) 获取更多相关信息。
 
 {{site.alert.end}}
 
@@ -1385,13 +1392,17 @@ For details and examples, see the
 [spread operator proposal][spread proposal] and the
 [control flow collections proposal.][collections proposal]
 
-从 Dart 2.3 Map 可以像 List 一样支持使用扩展操作符（`...` 和 `...?`）以及 Collection If 和 Collection For 操作。你可以查阅 [List 扩展操作符](#spread-operator)和 [List 集合操作符](#collection-operators)获取更多相关信息。
+Map 可以像 List 一样支持使用扩展操作符（`...` 和 `...?`）
+以及集合的 if 和 for 操作。
+你可以查阅 [List 扩展操作符](#spread-operator)
+和 [List 集合操作符](#collection-operators) 获取更多相关信息。
 
 For more information about maps, see
 [Generics](#generics) and
 [Maps](/guides/libraries/library-tour#maps).
 
-你也可以查阅[泛型](#generics)以及 [Maps](/guides/libraries/library-tour#maps) 获取更多相关信息。
+你也可以查阅 [泛型](#generics) 以及
+[Maps](/guides/libraries/library-tour#maps) 获取更多相关信息。
 
 <a id="characters"></a>
 ### Runes and grapheme clusters
@@ -1405,8 +1416,9 @@ also known as
 [Unicode (extended) grapheme clusters.][grapheme clusters]
 
 在 Dart 中，[runes][] 公开了字符串的 Unicode 码位。
-从 Dart 2.6 开始，使用 [characters 包][characters package]来访问
-或者操作用户感知的字符，也被称为 [Unicode (扩展) grapheme clusters.][grapheme clusters]。
+使用 [characters 包][characters package] 来访问
+或者操作用户感知的字符，也被称为
+[Unicode (扩展) grapheme clusters][grapheme clusters]。
 
 Unicode defines a unique numeric value for each letter, digit,
 and symbol used in all of the world's writing systems.
@@ -5115,7 +5127,9 @@ allows you to use the type argument `T` in several places:
 For more information about generics, see
 [Using Generic Methods.](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md)
 
-你可以查阅[使用泛型函数](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md)获取更多关于泛型的信息。
+你可以查阅
+[使用泛型函数](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md)
+获取更多关于泛型的信息。
 
 
 ## Libraries and visibility
@@ -5887,7 +5901,9 @@ see [Extending a class](#extending-a-class).
 Here’s an example of using the `@deprecated`
 annotation:
 
-Dart 中有两个注解是所有代码都可以使用的：`@deprecated` 和 `@override`。你可以查阅[扩展一个类](#extending-a-class)获取有关 `@override` 的使用示例。下面是使用 `@deprecated` 的示例：
+Dart 中有两个注解是所有代码都可以使用的：`@deprecated` 和 `@override`。
+你可以查阅 [扩展一个类](#extending-a-class) 获取有关 `@override` 的使用示例。
+下面是使用 `@deprecated` 的示例：
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (deprecated)" replace="/@deprecated/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
