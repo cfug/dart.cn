@@ -1038,7 +1038,8 @@ Dart 2.3 introduced the **spread operator** (`...`) and the
 **null-aware spread operator** (`...?`),
 which provide a concise way to insert multiple values into a collection.
 
-Dart 在 2.3 引入了 **扩展操作符**（`...`）和 **null-aware 扩展操作符**（`...?`），它们提供了一种将多个元素插入集合的简洁方法。
+Dart 在 2.3 引入了 **扩展操作符**（`...`）和 **空感知扩展操作符**（`...?`），
+它们提供了一种将多个元素插入集合的简洁方法。
 
 For example, you can use the spread operator (`...`) to insert
 all the values of a list into another list:
@@ -1074,12 +1075,13 @@ Dart also offers **collection if** and **collection for**,
 which you can use to build collections using conditionals (`if`)
 and repetition (`for`).
 
-Dart 在 2.3 还同时引入了 **Collection If** 和 **Collection For**，在构建集合时，可以使用条件判断（`if`）和循环（`for`）。
+Dart 还同时引入了 **集合中的 if** 和 **集合中的 for** 操作，
+在构建集合时，可以使用条件判断 (`if`) 和循环 (`for`)。
 
 Here's an example of using **collection if**
 to create a list with three or four items in it:
 
-下面示例是使用 **Collection If** 来创建一个 List 的示例， 它可能包含 3 个或 4 个元素：
+下面示例是使用 **集合中的 if** 来创建一个 List 的示例， 它可能包含 3 个或 4 个元素：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-if)"?>
 ```dart
@@ -1095,7 +1097,7 @@ Here's an example of using **collection for**
 to manipulate the items of a list before
 adding them to another list:
 
-下面示例是使用 **Collection For** 将列表中的元素修改后添加到另一个列表中的示例：
+下面示例是使用 **集合中的 for** 将列表中的元素修改后添加到另一个列表中的示例：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-for)"?>
 ```dart

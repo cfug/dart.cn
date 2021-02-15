@@ -729,7 +729,7 @@ things up for non-nullable variables:
 
     **可选参数必须具有默认值。**
     如果一个可选位置参数或可选命名参数没有传递内容，Dart 会自动使用默认值进行填充。
-    在未指定默认值的情况下，默认值为 `null`，
+    在未指定默认值的情况下，**默认的** 默认值为 `null`，
     如此一来，非空类型的参数就要出事了。
 
     So, if you want a parameter to be optional, you need to either make it
