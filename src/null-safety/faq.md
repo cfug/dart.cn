@@ -372,7 +372,7 @@ return blockTypes[key]!;
 
 Which will throw if the map returns null. If you want explicit handling for that case:
 
-如果 map 返回了 null，则会抛出异常。如果你希望手动处理这些情况：
+如果 map 返回了 null，则会抛出异常。如果您希望手动处理这些情况：
 
 ```dart
 var result = blockTypes[key];
@@ -487,7 +487,7 @@ it knows ("it looks like this condition will always be false!") and lets you
 decide what to do.
 
 在这些情况下，迁移工具无法区分防御性编码情况或是确实需要空值的情况。 
-那么该工具会告诉您它认为（“这看起来永远为 false！”）并让您进行决定。
+那么该工具会告诉您「这看起来永远为 false！」并让您进行决定。
 
 ## Resources
 

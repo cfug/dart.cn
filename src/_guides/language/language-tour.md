@@ -709,7 +709,7 @@ var exponents = 1.42e5;
 
 Integer literals are automatically converted to doubles when necessary:
 
-从 Dart 2.1 开始，整型字面量将会在必要的时候自动转换成浮点数字面量：
+整型字面量将会在必要的时候自动转换成浮点数字面量：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (int-to-double)"?>
 ```dart

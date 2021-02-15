@@ -1,6 +1,8 @@
 ---
 title: Dart overview
+title: Dart 概览
 description: A short introduction to Dart
+description: Dart 的简单介绍
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 <style>
