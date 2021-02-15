@@ -724,12 +724,12 @@ things up for non-nullable variables:
 *   **Optional parameters must have a default value.** If you don't pass an
     argument for an optional positional or named parameter, then the language
     fills it in with the default value. If you don't specify a default value,
-    the default default value is `null`, and that doesn't fly if the parameter's
+    the _default_ default value is `null`, and that doesn't fly if the parameter's
     type is non-nullable.
 
     **可选参数必须具有默认值。**
     如果一个可选位置参数或可选命名参数没有传递内容，Dart 会自动使用默认值进行填充。
-    在未指定默认值的情况下，默认值为 `null`，
+    在未指定默认值的情况下，**默认的** 默认值为 `null`，
     如此一来，非空类型的参数就要出事了。
 
     So, if you want a parameter to be optional, you need to either make it

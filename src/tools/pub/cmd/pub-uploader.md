@@ -1,8 +1,8 @@
 ---
-title: pub uploader
-title: pub uploader
-description: Use pub uploader to add or remove uploaders for your Dart package on the pub.dev site.
-description: 使用 pub uploader 命令为你在 pub.dev 网站上的 Dart Package 添加或删除上传者。
+title: dart pub uploader
+title: dart pub uploader
+description: Use dart pub uploader to add or remove uploaders for your Dart package on the pub.dev site.
+description: 使用 dart pub uploader 命令为你在 pub.dev 网站上的 Dart Package 添加或删除上传者。
 toc: false
 ---
 
@@ -22,7 +22,7 @@ _Uploader_ is one of the commands of the [pub tool](/tools/pub/cmd).
 _Uploader_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
 
 {% prettify nocode tag=pre+code %}
-$ pub uploader [options] {add/remove} <email>
+$ dart pub uploader [options] {add/remove} <email>
 {% endprettify %}
 
 This command allows
@@ -38,11 +38,11 @@ add/remove as an uploader. For example:
 可以将电子邮件地址作为某个上传者的标识以此来添加或删除上传者。例如：
 
 ```terminal
-~/code/transmogrify$ pub uploader add bob@example.com
+~/code/transmogrify$ dart pub uploader add bob@example.com
 We have sent an invitation to bob@example.com, they will be added as uploader after they confirm it.
 // 我们已经向 bob@example.com 发送了一份邀请函，在他/她确认后就会成被加入上传者（权限）
 
-~/code/transmogrify$ pub uploader remove bob@example.com
+~/code/transmogrify$ dart pub uploader remove bob@example.com
 Successfully removed uploader from package.
 // 成功将该上传者从 package 中移除
 ```
@@ -63,7 +63,7 @@ package by name. For example:
 你可以通过 `--package` 标识来指定修改哪个 Package 的上传者。例如：
 
 ```terminal
-$ pub uploader --package=transmogrify add bob@example.com
+$ dart pub uploader --package=transmogrify add bob@example.com
 We have sent an invitation to bob@example.com, they will be added as uploader after they confirm it.
 // 我们已经向 bob@example.com 发送了一份邀请函，在他/她确认后就会成被加入上传者（权限）
 ```
@@ -76,13 +76,13 @@ Google Apps email address for any new uploaders.
 
 {{site.alert.important}}
 
-  The `pub uploader add <email>` command sends an invitation that
+  The `dart pub uploader add <email>` command sends an invitation that
   the invited user must accept.
   For the invitation to work,
   `<email>` must be the **primary email address** of
   the associated Google account.
   
-  通过 `pub uploader add <email>` 命令发送邀请，被邀请的用户必须接受。
+  通过 `dart pub uploader add <email>` 命令发送邀请，被邀请的用户必须接受。
   为了使邀请生效，`<email>` 字段必须是被邀请人
   Google 账户的**主要电子邮件地址**。
   

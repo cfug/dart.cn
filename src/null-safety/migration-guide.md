@@ -90,12 +90,13 @@ then passing a nullable argument becomes a compile error.
   **You can — and should — migrate your package before
   packages that depend on it are migrated.**
   Your null-safe package is usable by packages and apps that
-  don't use null safety yet.
+  don't use null safety yet,
+  as long as they use Dart 2.12 beta or later.
   For example, the Dart and Flutter core libraries are null safe,
   and they're still usable by apps that haven't migrated to null safety.
 
   **您应当在其他依赖于您的软件包进行迁移之前，对您的包进行迁移。**
-  您已迁移的软件包对于未进行迁移的包和应用而言，仍然可用。
+  您已迁移的软件包对于未进行迁移的包和应用而言，仍然可用（前提是使用的 Dart 2.12 及之后的版本）。
   例如，Dart 和 Flutter 的核心库现已完全迁移至空安全，而尚未进行迁移的应用仍然可以使用。
 
 {{ site.alert.end }}

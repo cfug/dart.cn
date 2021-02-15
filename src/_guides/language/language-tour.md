@@ -355,13 +355,12 @@ However, if necessary, the keywords marked with superscripts can be identifiers:
 
   带有上标 **2** 的关键字为 **内置标识符**，其作用只是在JavaScript代码转为Dart代码时更简单，这些关键字在大多数时候都可以作为有效的标识符，但是它们不能用作类名或者类型名或者作为导入前缀使用。
 
-* Words with the superscript **3** are newer, limited reserved words related to
-  the [asynchrony support](#asynchrony-support) that was added
-  after Dart's 1.0 release.
+* Words with the superscript **3** are limited reserved words related to
+  [asynchrony support](#asynchrony-support).
   You can't use `await` or `yield` as an identifier
   in any function body marked with `async`, `async*`, or `sync*`.
 
-  带有上标 **3** 的关键字为 Dart1.0 发布后用于[支持异步](#asynchrony-support)相关的特性新加的。不能在由关键字 `async`、`async*` 或 `sync*` 标识的方法体中使用 `await` 或 `yield` 作为标识符。
+  带有上标 **3** 的关键字为 Dart 1.0 发布后用于 [支持异步](#asynchrony-support) 相关内容。不能在由关键字 `async`、`async*` 或 `sync*` 标识的方法体中使用 `await` 或 `yield` 作为标识符。
 
 All other words in the table are **reserved words**,
 which can't be identifiers.
@@ -512,7 +511,10 @@ Where you declare the variable, set the value to a compile-time constant
 such as a number or string literal, a const
 variable, or the result of an arithmetic operation on constant numbers:
 
-使用关键字 `const` 修饰变量表示该变量为 **编译时常量**。如果使用 const 修饰类中的变量，则必须加上 static 关键字，即 `static const`（注意：顺序不能颠倒（译者注））。在声明 const 变量时可以直接为其赋值，也可以使用其它的 const 变量为其赋值：
+使用关键字 `const` 修饰变量表示该变量为 **编译时常量**。
+如果使用 const 修饰类中的变量，则必须加上 static 关键字，
+即 `static const`（注意：顺序不能颠倒（译者注））。
+在声明 const 变量时可以直接为其赋值，也可以使用其它的 const 变量为其赋值：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const)"?>
 ```dart
@@ -537,7 +539,8 @@ const baz = []; // 相当于 `const []` (Equivalent to `const []`)
 You can omit `const` from the initializing expression of a `const` declaration,
 like for `baz` above. For details, see [DON’T use const redundantly][].
 
-如果使用初始化表达式为常量赋值可以省略掉关键字 `const`，比如上面的常量 `baz` 的赋值就省略掉了 `const`。详情请查阅[DON’T use const redundantly][]
+如果使用初始化表达式为常量赋值可以省略掉关键字 `const`，比如上面的常量 `baz` 的赋值就省略掉了 `const`。
+详情请查阅 [DON’T use const redundantly][]
 
 You can change the value of a non-final, non-const variable,
 even if it used to have a `const` value:
@@ -559,16 +562,17 @@ You can't change the value of a `const` variable:
 baz = [42]; // 报错：常量不可以被赋值。(Error: Constant variables can't be assigned a value.)
 ```
 
-As of Dart 2.5, you can define constants that use
+You can define constants that use
 [type checks and casts](#type-test-operators) (`is` and `as`),
 [collection if](#collection-operators),
 and [spread operators](#spread-operator) (`...` and `...?`):
 
-从 Dart 2.5 开始，你可以在常量中使用[类型检查和强制类型转换](#type-test-operators) (`is` and `as`)、[collection if](#collection-operators) 以及 [spread operators](#spread-operator) (`...` and `...?`)：
+你可以在常量中使用 [类型检查和强制类型转换](#type-test-operators) (`is` 和 `as`)、
+[集合中的 if](#collection-operators) 以及
+[展开操作符](#spread-operator) (`...` 和 `...?`)：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const-dart-25)"?>
 ```dart
-// Valid compile-time constants as of Dart 2.5.
 const Object i = 3; // Where i is a const Object with an int value...
 const list = [i as int]; // Use a typecast.
 const map = {if (i is int) i: "int"}; // Use is and collection if.
@@ -703,10 +707,9 @@ var y = 1.1;
 var exponents = 1.42e5;
 ```
 
-As of Dart 2.1, integer literals are automatically converted to doubles
-when necessary:
+Integer literals are automatically converted to doubles when necessary:
 
-从 Dart 2.1 开始，整型字面量将会在必要的时候自动转换成浮点数字面量：
+整型字面量将会在必要的时候自动转换成浮点数字面量：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (int-to-double)"?>
 ```dart
@@ -1035,7 +1038,8 @@ Dart 2.3 introduced the **spread operator** (`...`) and the
 **null-aware spread operator** (`...?`),
 which provide a concise way to insert multiple values into a collection.
 
-Dart 在 2.3 引入了 **扩展操作符**（`...`）和 **null-aware 扩展操作符**（`...?`），它们提供了一种将多个元素插入集合的简洁方法。
+Dart 在 2.3 引入了 **扩展操作符**（`...`）和 **空感知扩展操作符**（`...?`），
+它们提供了一种将多个元素插入集合的简洁方法。
 
 For example, you can use the spread operator (`...`) to insert
 all the values of a list into another list:
@@ -1067,16 +1071,17 @@ For more details and examples of using the spread operator, see the
 可以查阅[扩展操作符建议][spread proposal]获取更多关于如何使用扩展操作符的信息。
 
 <a id="collection-operators"> </a>
-Dart 2.3 also introduced **collection if** and **collection for**,
+Dart also offers **collection if** and **collection for**,
 which you can use to build collections using conditionals (`if`)
 and repetition (`for`).
 
-Dart 在 2.3 还同时引入了 **Collection If** 和 **Collection For**，在构建集合时，可以使用条件判断（`if`）和循环（`for`）。
+Dart 还同时引入了 **集合中的 if** 和 **集合中的 for** 操作，
+在构建集合时，可以使用条件判断 (`if`) 和循环 (`for`)。
 
 Here's an example of using **collection if**
 to create a list with three or four items in it:
 
-下面示例是使用 **Collection If** 来创建一个 List 的示例， 它可能包含 3 个或 4 个元素：
+下面示例是使用 **集合中的 if** 来创建一个 List 的示例， 它可能包含 3 个或 4 个元素：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-if)"?>
 ```dart
@@ -1092,7 +1097,7 @@ Here's an example of using **collection for**
 to manipulate the items of a list before
 adding them to another list:
 
-下面示例是使用 **Collection For** 将列表中的元素修改后添加到另一个列表中的示例：
+下面示例是使用 **集合中的 for** 将列表中的元素修改后添加到另一个列表中的示例：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-for)"?>
 ```dart
@@ -1107,7 +1112,8 @@ assert(listOfStrings[1] == '#1');
 For more details and examples of using collection if and for, see the
 [control flow collections proposal.][collections proposal]
 
-你可以查阅[集合中使用控制流建议][collections proposal]获取更多关于使用 **Collection If** 和 **Collection For** 的细节内容和示例。
+你可以查阅 [集合中使用控制流建议][collections proposal]
+获取更多关于在集合中使用 if 和 for 的细节内容和示例。
 
 [collections proposal]: https://github.com/dart-lang/language/blob/master/accepted/2.3/control-flow-collections/feature-specification.md
 
@@ -1117,8 +1123,9 @@ The List type has many handy methods for manipulating lists. For more
 information about lists, see [Generics](#generics) and
 [Collections](/guides/libraries/library-tour#collections).
 
-List 类中有许多用于操作 List 的便捷方法，你可以查阅[泛型](#generics)和[集合](/guides/libraries/library-tour#collections)获取更多与之相关的信息。
-
+List 类中有许多用于操作 List 的便捷方法，
+你可以查阅 [泛型](#generics) 和 [集合](/guides/libraries/library-tour#collections)
+获取更多与之相关的信息。
 
 ### Sets
 
@@ -1227,7 +1234,7 @@ final constantSet = const {
 // constantSet.add('helium'); // This line will cause an error.
 ```
 
-As of Dart 2.3, sets support spread operators (`...` and `...?`)
+Sets support spread operators (`...` and `...?`)
 and collection ifs and fors,
 just like lists do.
 For more information, see the
@@ -1313,14 +1320,13 @@ nobleGases[18] = 'argon';
 ```
 
 {{site.alert.note}}
-
-  You might expect to see `new Map()` instead of just `Map()`.
-  As of Dart 2, the `new` keyword is optional.
+  If you come from a language like C# or Java, you might expect to see `new Map()` 
+  instead of just `Map()`. In Dart, the `new` keyword is optional.
   For details, see [Using constructors](#using-constructors).
 
-  这里为什么使用 `Map()` 而不是使用 `new Map()` 构造 Map 对象。
-  因为从 Dart2 开始，构造对象的 `new` 关键字可以被省略掉。
-  你可以查阅 [构造函数的使用](#using-constructors)获取更多相关信息。
+  如果你之前是使用的 C# 或 Java 这样的语言，你可能想要使用 `new Map()` 
+  而不是使用 `Map()` 构造 Map 对象。
+  你可以查阅 [构造函数的使用](#using-constructors) 获取更多相关信息。
 
 {{site.alert.end}}
 
@@ -1382,19 +1388,23 @@ final constantMap = const {
 // constantMap[2] = 'Helium'; // This line will cause an error.
 ```
 
-As of Dart 2.3, maps support spread operators (`...` and `...?`)
+Maps support spread operators (`...` and `...?`)
 and collection if and for, just like lists do.
 For details and examples, see the
 [spread operator proposal][spread proposal] and the
 [control flow collections proposal.][collections proposal]
 
-从 Dart 2.3 Map 可以像 List 一样支持使用扩展操作符（`...` 和 `...?`）以及 Collection If 和 Collection For 操作。你可以查阅 [List 扩展操作符](#spread-operator)和 [List 集合操作符](#collection-operators)获取更多相关信息。
+Map 可以像 List 一样支持使用扩展操作符（`...` 和 `...?`）
+以及集合的 if 和 for 操作。
+你可以查阅 [List 扩展操作符](#spread-operator)
+和 [List 集合操作符](#collection-operators) 获取更多相关信息。
 
 For more information about maps, see
 [Generics](#generics) and
 [Maps](/guides/libraries/library-tour#maps).
 
-你也可以查阅[泛型](#generics)以及 [Maps](/guides/libraries/library-tour#maps) 获取更多相关信息。
+你也可以查阅 [泛型](#generics) 以及
+[Maps](/guides/libraries/library-tour#maps) 获取更多相关信息。
 
 <a id="characters"></a>
 ### Runes and grapheme clusters
@@ -1402,14 +1412,15 @@ For more information about maps, see
 ### Runes 与 grapheme clusters
 
 In Dart, [runes][] expose the Unicode code points of a string.
-As of Dart 2.6, use the [characters package][]
+You can use the [characters package][]
 to view or manipulate user-perceived characters,
 also known as
 [Unicode (extended) grapheme clusters.][grapheme clusters]
 
 在 Dart 中，[runes][] 公开了字符串的 Unicode 码位。
-从 Dart 2.6 开始，使用 [characters 包][characters package]来访问
-或者操作用户感知的字符，也被称为 [Unicode (扩展) grapheme clusters.][grapheme clusters]。
+使用 [characters 包][characters package] 来访问
+或者操作用户感知的字符，也被称为
+[Unicode (扩展) grapheme clusters][grapheme clusters]。
 
 Unicode defines a unique numeric value for each letter, digit,
 and symbol used in all of the world's writing systems.
@@ -4002,8 +4013,7 @@ and make sure that all instance variables are `final`.
 <?code-excerpt "misc/lib/language_tour/classes/immutable_point.dart"?>
 ```dart
 class ImmutablePoint {
-  static final ImmutablePoint origin =
-      const ImmutablePoint(0, 0);
+  static const ImmutablePoint origin = ImmutablePoint(0, 0);
 
   final double x, y;
 
@@ -4502,14 +4512,12 @@ For more information, see the informal
 ### Extension methods
 
 ### Extension 方法
-
-Extension methods, introduced in Dart 2.7,
-are a way to add functionality to existing libraries.
+Extension methods are a way to add functionality to existing libraries.
 You might use extension methods without even knowing it.
 For example, when you use code completion in an IDE,
 it suggests extension methods alongside regular methods.
 
-Dart 2.7 中引入的 Extension 方法是向现有库添加功能的一种方式。
+Extension 方法是向现有库添加功能的一种方式。
 你可能甚至都不知道有 Extension 方法。
 例如，当您在 IDE 中使用代码完成功能时，
 它建议将 Extension 方法与常规方法一起使用。
@@ -5121,7 +5129,9 @@ allows you to use the type argument `T` in several places:
 For more information about generics, see
 [Using Generic Methods.](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md)
 
-你可以查阅[使用泛型函数](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md)获取更多关于泛型的信息。
+你可以查阅
+[使用泛型函数](https://github.com/dart-lang/sdk/blob/master/pkg/dev_compiler/doc/GENERIC_METHODS.md)
+获取更多关于泛型的信息。
 
 
 ## Libraries and visibility
@@ -5893,7 +5903,9 @@ see [Extending a class](#extending-a-class).
 Here’s an example of using the `@deprecated`
 annotation:
 
-Dart 中有两个注解是所有代码都可以使用的：`@deprecated` 和 `@override`。你可以查阅[扩展一个类](#extending-a-class)获取有关 `@override` 的使用示例。下面是使用 `@deprecated` 的示例：
+Dart 中有两个注解是所有代码都可以使用的：`@deprecated` 和 `@override`。
+你可以查阅 [扩展一个类](#extending-a-class) 获取有关 `@override` 的使用示例。
+下面是使用 `@deprecated` 的示例：
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (deprecated)" replace="/@deprecated/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
@@ -6102,7 +6114,7 @@ To learn more about Dart's core libraries, see
 [AssertionError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/AssertionError-class.html
 [`Characters`]: {{site.pub-api}}/characters/latest/characters/Characters-class.html
 [characters API]: {{site.pub-api}}/characters
-[characters example]: {{site.pub-pkg}}/characters#-example-tab-
+[characters example]: {{site.pub-pkg}}/characters/example
 [characters package]: {{site.pub-pkg}}/characters
 [dart2js]: /tools/dart2js
 [dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html

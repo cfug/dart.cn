@@ -1,8 +1,8 @@
 ---
-title: pub global
-title: pub global 命令
-description: Use pub global to run Dart scripts hosted on the pub.dev site from the command line.
-description: 使用 pub global 命令从命令行运行 Pub.dev 网站上托管的 Dart 脚本。
+title: dart pub global
+title: dart pub global 命令
+description: Use dart pub global to run Dart scripts hosted on the pub.dev site from the command line.
+description: 使用 dart pub global 命令从命令行运行 Pub.dev 网站上托管的 Dart 脚本。
 ---
 
 _Global_ is one of the commands of the [pub tool](/tools/pub/cmd).
@@ -25,7 +25,7 @@ the Dart project generator, from the command line.
 例如，假设你想要从命令行运行 Dart 项目生成的 [Stagehand]({{site.pub}}/packages/stagehand)。
 
 ```terminal
-$ pub global activate stagehand
+$ dart pub global activate stagehand
 $ stagehand
 ```
 
@@ -35,7 +35,7 @@ If this doesn't work, you might need to
 如果该操作无效，你可能需要 [设置你的路径](#running-a-script-from-your-path)。
 
 To run a Dart script from within a package, or from a
-package that your package depends on, see [pub run](/tools/pub/cmd/pub-run).
+package that your package depends on, see [dart run](/tools/dart-tool).
 
 如果想要从 Package 中运行 Dart 脚本，或者从 Package 所依赖的其它 Package 中运行脚本，请查阅 [pub run](/tools/pub/cmd/pub-run) 命令。
 
@@ -44,7 +44,7 @@ package that your package depends on, see [pub run](/tools/pub/cmd/pub-run).
 ## Package 激活
 
 ```nocode
-pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [constraint]
+dart pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [constraint]
 ```
 
 Activate a package when you want to be able to run
@@ -68,7 +68,7 @@ constraint.  See the [constraint](#options) flag for usage examples.
 ### 激活 pub.dev 网站上的 Package
 
 ```terminal
-$ pub global activate <pub.dartlang package>
+$ dart pub global activate <pub.dartlang package>
 ```
 
 Specify a package on the pub.dev site to activate it. For example:
@@ -76,7 +76,7 @@ Specify a package on the pub.dev site to activate it. For example:
 激活 pub.dev 网站上的一个 Package。例如：
 
 ```terminal
-$ pub global activate markdown
+$ dart pub global activate markdown
 ```
 
 ### Activating a package with Git
@@ -84,8 +84,8 @@ $ pub global activate markdown
 ### 激活 Git 仓库中的 Package
 
 ```terminal
-$ pub global activate --source git <Git URL>
-$ pub global activate -sgit <Git URL>
+$ dart pub global activate --source git <Git URL>
+$ dart pub global activate -sgit <Git URL>
 ```
 
 Use `--source git` (or `-sgit`, for short) to activate
@@ -96,8 +96,8 @@ which activate the `async_await` package on
 使用 `--source git`（或 `-sgit` 简写）命令参数可以激活位于 Git 仓库中的 Package。下面的两个示例都可以用于激活位于 [GitHub](https://github.com/) 网站上名为 `async_await` 的 Package。
 
 ```terminal
-$ pub global activate --source git https://github.com/dart-lang/async_await.git
-$ pub global activate -sgit https://github.com/dart-lang/async_await.git
+$ dart pub global activate --source git https://github.com/dart-lang/async_await.git
+$ dart pub global activate -sgit https://github.com/dart-lang/async_await.git
 ```
 
 ### Activating a package on your local machine
@@ -105,7 +105,7 @@ $ pub global activate -sgit https://github.com/dart-lang/async_await.git
 ### 激活当前设备上的 Package
 
 ```terminal
-$ pub global activate --source path <path>
+$ dart pub global activate --source path <path>
 ```
 
 Use `activate --source path <path>` to activate a package on your local machine.
@@ -115,7 +115,7 @@ The following example activates the `stopwatch` package from the
 使用 `activate --source path <path>` 命令参数激活当前设备上的 Package。下面的示例激活了位于 `~/dart` 目录下名为 `stopwatch` 的 Package。
 
 ```terminal
-$ pub global activate --source path ~/dart/stopwatch
+$ dart pub global activate --source path ~/dart/stopwatch
 ```
 
 ### Updating an activated package
@@ -133,9 +133,9 @@ package again.
 
 You can directly run a script from an activated package from the
 command line. If you are unable to run the script directly,
-you can also use `pub global run`.
+you can also use `dart pub global run`.
 
-你可以从命令行直接运行已激活 Package 中的 脚本。如果你不能直接运行脚本，可以尝试使用 `pub global run` 命令。
+你可以从命令行直接运行已激活 Package 中的 脚本。如果你不能直接运行脚本，可以尝试使用 `dart pub global run` 命令。
 
 ### Running a script from your PATH
 
@@ -152,7 +152,7 @@ but you still can't run the command:
 例如，假设你已经激活了名为 Stagehand 的包，但是你依然不能运行它：
 
 ```terminal
-$ pub global activate stagehand
+$ dart pub global activate stagehand
 $ stagehand
 -bash: stagehand: command not found
 ```
@@ -164,7 +164,7 @@ The following `PATH` variable, on macOS, includes the system cache:
 
 {% prettify none tag=pre+code %}
 $ echo $PATH
-[!/Users/<user>/.pub-cache/bin!]:/Users/<user>/homebrew/bin:/usr/local/bin:/usr/bin:/bin
+/Users/<user>/homebrew/bin:/usr/local/bin:/usr/bin:/bin:[!/Users/<user>/.pub-cache/bin!]
 {% endprettify %}
 
 If this directory is missing from your `PATH`,
@@ -202,27 +202,27 @@ $ [!stagehand web-angular!]
 
 If the script still fails to run from the command line, the
 package may not be [configured](#configuring-package-executables) for
-this feature. You can still run the script using `pub global run`.
+this feature. You can still run the script using `dart pub global run`.
 
-如果此时从命令行运行脚本依然失败，则 Package 可能没有针对此功能进行 [配置](#configuring-package-executables)。但你仍然可以使用 `pub global run` 命令运行它。
+如果此时从命令行运行脚本依然失败，则 Package 可能没有针对此功能进行 [配置](#configuring-package-executables)。但你仍然可以使用 `dart pub global run` 命令运行它。
 
-### Running a script using `pub global run`
+### Running a script using `dart pub global run`
 
-### 使用 `pub global run` 命令运行脚本
+### 使用 `dart pub global run` 命令运行脚本
 
 ```nocode
-$ pub global run <package>:<executable> [args...]
+$ dart pub global run <package>:<executable> [args...]
 ```
 
 Even if a script is not configured to be run from the command line,
-you can still use `pub global run`.
+you can still use `dart pub global run`.
 The following command runs the `bin/bar.dart` script from the
 `foo` package, passing in two arguments.
 
 即使某个脚本没有配置成可以从命令行运行，你依然可以使用 `pub global run` 命令运行它。下述命令传递两个参数从名为 `foo` 的 Package 运行 `bin/bar.dart` 脚本。
 
 ```terminal
-$ pub global run foo:bar arg1 arg2
+$ dart pub global run foo:bar arg1 arg2
 ```
 
 ### Configuring package executables
@@ -251,17 +251,17 @@ executables:
 {% endprettify %}
 
 Failing to list a script under the `executables` tag reduces the script's
-usability: unlisted scripts can be executed using `pub global run`, but not
+usability: unlisted scripts can be executed using `dart pub global run`, but not
 directly from the command line.
 
-没有在 `executables` 标签下列出的脚本可能会降低脚本的易用性：这些脚本虽然可以使用 `pub global run` 命令运行，但是不能直接从命令行运行。
+没有在 `executables` 标签下列出的脚本可能会降低脚本的易用性：这些脚本虽然可以使用 `dart pub global run` 命令运行，但是不能直接从命令行运行。
 
 ## Deactivating a package
 
 ## 停用 Package
 
 ```terminal
-$ pub global deactivate <package>
+$ dart pub global deactivate <package>
 ```
 
 Use `deactivate` to remove a package from the list of available
@@ -270,20 +270,20 @@ global packages. For example:
 使用 `deactivate` 命令参数可以将 Package 从全局可用的 Package 列表移除。例如：
 
 ```terminal
-$ pub global deactivate markdown
+$ dart pub global deactivate markdown
 ```
 
-You can no longer invoke the package's scripts using `pub global run`,
+You can no longer invoke the package's scripts using `dart pub global run`,
 or at the command line.
 
-此时你不能使用 `pub global run` 命令或从命令行运行该 Package 的脚本。
+此时你不能使用 `dart pub global run` 命令或从命令行运行该 Package 的脚本。
 
 ## Listing active packages
 
 ## 列出激活的 Package
 
 ```terminal
-$ pub global list
+$ dart pub global list
 ```
 
 Use `list` to list all currently active packages.
@@ -300,15 +300,15 @@ For options that apply to all pub commands, see
 你可以查阅 [全局选项](/tools/pub/cmd#global-options) 获取 Pub 命令所支持的命令选项。
 
 `<constraint>`
-: Optional for `pub global activate`. The constraint allows you to pull
+: Optional for `dart pub global activate`. The constraint allows you to pull
   in a specific version of the package. For example,
   the following command pulls the 0.6.0 version of the `markdown`
   package:
 
-`<版本限制参数>`：`pub global activate` 命令的可选选项。使用版本限制参数可以允许你拉取 Package 的指定版本。例如，下述命令会拉取 `markdown` 这个 Package 的 0.6.0 版本：
+`<版本限制参数>`：`dart pub global activate` 命令的可选选项。使用版本限制参数可以允许你拉取 Package 的指定版本。例如，下述命令会拉取 `markdown` 这个 Package 的 0.6.0 版本：
 
   ```terminal
-  $ pub global activate markdown 0.6.0
+  $ dart pub global activate markdown 0.6.0
   ```
 
   If you specify a range, pub picks the best version that meets that
@@ -317,37 +317,37 @@ For options that apply to all pub commands, see
 如果你指定的是一个范围，Pub 则会在这个范围内选取一个最适合的版本。例如：
 
   ```terminal
-  $ pub global activate foo <3.0.0
+  $ dart pub global activate foo <3.0.0
   ```
 
 `--executable=<name>` or `-x<name>`
-: Optional for `pub global activate`.
+: Optional for `dart pub global activate`.
   Adds the specified executable to your PATH.
   You can pass more than one of these flags.
   For example, the following command adds `bar` and `baz` (but not
   any other executables that `foo` might define) to your PATH.
 
   ```terminal
-  $ pub global activate foo -x bar -x baz
+  $ dart pub global activate foo -x bar -x baz
   ```
 
-`--executable=<name>` 或 `-x<name>`：`pub global activate` 命令的可选选项。将指定的可执行对象添加至你的 PATH 路径中。你可以在一次命令执行中多次使用该选项以添加多个可执行对象到你的 PATH 路径中。例如，下述命令添加了 foo 中的 `bar` 和 `baz` 两个可执行对象（不包括 foo 中定义的其它可执行对象）到你的 PATH 中。
+`--executable=<name>` 或 `-x<name>`：`dart pub global activate` 命令的可选选项。将指定的可执行对象添加至你的 PATH 路径中。你可以在一次命令执行中多次使用该选项以添加多个可执行对象到你的 PATH 路径中。例如，下述命令添加了 foo 中的 `bar` 和 `baz` 两个可执行对象（不包括 foo 中定义的其它可执行对象）到你的 PATH 中。
 
 `--no-executables`
-: Optional for `pub global activate`.
+: Optional for `dart pub global activate`.
   Globally activates the package but doesn't put any
-  executables in `bin`. You have to use `pub global run` to
+  executables in `bin`. You have to use `dart pub global run` to
   run any executables.
 
-`--no-executables`：`pub global activate` 命令的可选选项。会在全局范围内激活 Package 但不会在 `bin` 目录下生成任何文件。你必须使用 `pub global run` 来运行任意这些可执行的对象。
+`--no-executables`：`dart pub global activate` 命令的可选选项。会在全局范围内激活 Package 但不会在 `bin` 目录下生成任何文件。你必须使用 `pub global run` 来运行任意这些可执行的对象。
 
 `--overwrite`
-: Optional for `pub global activate`.
+: Optional for `dart pub global activate`.
   Normally, if executables from two global packages have a name
   collision, the preexisting executable wins. If you specify this flag,
   the new executable overwrites the previously activated executable.
 
-`--overwrite`：`pub global activate` 命令的可选选项。默认情况下，如果执行的两个全局 Package 名字冲突了，那么会优先执行最先执行过的那个。但是如果你指定该标识，那么新执行的 Package 则会覆盖之前执行的那些。
+`--overwrite`：`dart pub global activate` 命令的可选选项。默认情况下，如果执行的两个全局 Package 名字冲突了，那么会优先执行最先执行过的那个。但是如果你指定该标识，那么新执行的 Package 则会覆盖之前执行的那些。
 
 <aside class="alert alert-info" markdown="1">
   *Problems?* See [Troubleshooting pub](/tools/pub/troubleshoot).

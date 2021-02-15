@@ -61,12 +61,12 @@ Depending on **build_test** is optional; do it if you'll be testing your code.
 
 依赖项 **build_test** 是可选的；但是它可以让你测试你的代码。
 
-As usual after `pubspec.yaml` changes, run `pub get` or `pub upgrade`:
+As usual after `pubspec.yaml` changes, run `dart pub get` or `dart pub upgrade`:
 
-像往常一样在你修改了 `pubspec.yaml` 文件后，记得运行 `pub get` 或 `pub upgrade` 命令以令修改生效：
+像往常一样在你修改了 `pubspec.yaml` 文件后，记得运行 `dart pub get` 或 `dart pub upgrade` 命令以令修改生效：
 
 ```terminal
-$ pub get
+$ dart pub get
 ```
 
 ## Using built-in commands
@@ -81,7 +81,7 @@ build_runner 的命令使用方式取决于你当前使用的是 Dart SDK 还是
 
 ```terminal
 $ # 从含有 pubspec.yaml 文件的目录执行下述命令：
-$ pub run build_runner build  # 使用 Dart SDK
+$ dart pub run build_runner build  # 使用 Dart SDK
 $ flutter pub run build_runner build  #  使用 Flutter SDK
 ```
 

@@ -294,13 +294,14 @@ class Orbiter extends Spacecraft {
 
 ## Mixins
 
-Mixins are a way of reusing code in multiple class hierarchies. The following class can act as a mixin:
+Mixins are a way of reusing code in multiple class hierarchies. The following is
+a mixin declaration:
 
-Mixin 是一种在多个类层次结构中重用代码的方法。下面的类可以作为一个 Mixin：
+Mixin 是一种在多个类层次结构中重用代码的方法。下面的是声明一个 Mixin 的做法：
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (mixin)"?>
 {% prettify dart tag=pre+code %}
-class Piloted {
+mixin Piloted {
   int astronauts = 1;
   void describeCrew() {
     print('宇航员人数：$astronauts');
