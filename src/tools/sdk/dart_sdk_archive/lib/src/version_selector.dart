@@ -5,7 +5,6 @@ import 'package:platform_detect/platform_detect.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:sdk_builds/sdk_builds.dart';
 
-//String _storageBase = "https://storage.googleapis.com/dart-archive";
 String _storageBase = "https://storage.flutter-io.cn/dart-archive";
 
 class VersionSelector {
