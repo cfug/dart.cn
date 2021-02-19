@@ -3574,7 +3574,7 @@ return P.bv(null,r)}})
 return P.bw($async$jW,r)}},D={
 ox:function(a,b,c){var s=H.r([H.r(["channels",a,"release",b],t.i),c],t.eW),r=t.gj.a(new D.j0())
 return $.jm().cX(new H.cM(s,r,t.e_))},
-kk:function(a){return new D.h1(new O.hv(new A.fF(a==null?new O.cD(P.kr(t.fK)):a,"https://www.googleapis.com/","storage/v1/","dart-api-client storage/v1")))},
+kk:function(a){return new D.h1(new O.hv(new A.fF(a==null?new O.cD(P.kr(t.fK)):a,"https://storage-apis.dart.cn/","storage/v1/","dart-api-client storage/v1")))},
 j0:function j0(){},
 h1:function h1(a){this.a=a}},R={
 nq:function(a,b,c){var s,r,q,p,o,n,m,l=c.i(0,"date"),k=null
