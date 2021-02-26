@@ -43,6 +43,8 @@ shown in the following screenshot.
 
 Dart null safety support is based on the following three core design principles:
 
+Dart 的空安全支持基于以下三条核心原则：
+
 *  **Non-nullable by default**. Unless you explicitly tell Dart that a variable
    can be null, it's considered non-nullable. This default was chosen
    after research found that non-null was by far the most common choice in APIs.
@@ -67,7 +69,7 @@ Dart null safety support is based on the following three core design principles:
 
   **完全可靠**。Dart 的空安全是非常可靠的，意味着编译期间包含了很多优化。
   如果类型系统推断出某个变量不为空，那么它 **永远** 不为空。
-  当您将整个项目和其依赖完全迁移至空安全后，您会享有健全性带来的所有优势&mdash&mdash
+  当您将整个项目和其依赖完全迁移至空安全后，您会享有健全性带来的所有优势&mdash;&mdash;
   更少的 BUG，更小的二进制文件，以及更快的执行速度。
 
 ## A tour of the null safety feature
@@ -475,8 +477,8 @@ Dart SDK archive, or the **Beta channel** section of the
 
 空安全目前处于 beta 阶段。
 我们建议您使用 **最新的 beta 版本** 的 Dart 和 Flutter SDK。
-您可以在 Dart SDK 归档的 [beta 频道][dart-beta-channel] 和
-[Flutter SDK 归档][Flutter SDK archive] 的 **beta 频道**
+您可以在 Dart SDK 归档的 [beta 渠道][dart-beta-channel] 和
+[Flutter SDK 归档][Flutter SDK archive] 的 **beta 渠道**
 找到最新的 beta 版本。
 
 Set the [SDK constraints](/tools/pub/pubspec#sdk-constraints)
