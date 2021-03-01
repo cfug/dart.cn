@@ -274,7 +274,7 @@ Here's what that code does:
   export `src/hw_html.dart`.
 
   在一个 web 应用中可以使用 `dart:html`
-  导出 `src/hw_io.dart`。
+  导出 `src/hw_html.dart`。
 
 * Otherwise, export `src/hw_none.dart`.
 
