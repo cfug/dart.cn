@@ -79,7 +79,7 @@ jobs:
         continue-on-error: ${{ matrix.experimental }}
 
   deploy:
-    # needs: test
+    needs: test
     runs-on: ubuntu-latest
     if: |
       github.event_name == 'push'
