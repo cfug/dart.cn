@@ -30,7 +30,6 @@ $ brew switch dart 2.10.1
   The `brew switch` command was removed
   after the 2.6 release of Homebrew.
   To continue using `brew switch`,
-  downgrade Homebrew to a 2.6 version:
 
   `brew switch` 命令已在 Homebrew 2.6 以上的发行版移除。
   若您仍然需要这个命令，请将 Homebrew 降级至 2.6.2：

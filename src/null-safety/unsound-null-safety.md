@@ -120,17 +120,9 @@ they can only [run with unsound null safety](#analyzing-and-testing).
 Because Dart supports mixed-version programs,
 you can migrate one library (generally one Dart file) at a time,
 while still being able to run your program and its tests.
-If you want to migrate your package file by file,
-the [migration tool][] can help,
-but you'll need to do more by hand.
 
 因为 Dart 支持混合模式的空安全，
 所以您可以一个个迁移您的库（通常是一个文件），同时能正常运行程序和测试。
-如果您想要一次迁移一个文件，那么 [迁移工具][migration tool] 可以帮到您，
-但是您需要自己出马完成一些小操作。
-
-[migration tool]: /null-safety/migration-guide#step2-migrate
-
 
 We recommend that you **first migrate leaf libraries** —
 libraries that don't import other files from the package.
@@ -157,18 +149,48 @@ consider migrating those libraries together.
 如果有一些循环引用的库（例如 A 引用了 B，B 引用了 C，C 引用了 A），
 建议同时对它们进行迁移。
 
-To migrate a package by hand, follow these steps:
+### Using the migration tool
+
+### 使用迁移工具
+
+You can migrate incrementally using the
+[migration tool][].
+To opt out files or directories, click the green checkbox.
+In the following screenshot,
+all files in the `bin` directory are opted out.
+
+您可以使用 [迁移工具][migration tool] 进行渐进迁移。
+如果您需要排除部分文件或文件夹，勾选绿色的勾选框。
+下方的截图中，`bin` 文件夹的所有文件都已被排除。
+
+![Screenshot of file viewer in migration tool](/null-safety/migration-tool-incremental.png)
+
+[migration tool]: /null-safety/migration-guide#step2-migrate
+
+Each opted out file will be unchanged
+except for a 2.9 [language version comment][].
+You can later run `dart migrate` again to continue the migration.
+Any files that are already migrated feature a disabled checkbox:
+you cannot un-migrate a file once it has been migrated.
+
+每个不迁移的文件都会加上 2.9 [语言版本的注释][language version comment]。
+您可以之后再次运行 `dart migrate` 继续迁移。
+已迁移的文件将显示为禁用的勾选框，它们无法撤销迁移更改。
+
+### Migrating by hand
+
+If you want to incrementally migrate a package by hand, follow these steps:
 
 手动对软件包进行迁移时，请参考以下步骤：
 
 1. Edit the package's `pubspec.yaml` file,
-   setting the minimum SDK constraint to `2.12.0-0`:
+   setting the minimum SDK constraint to `2.12.0`:
 
-   编辑软件包的 `pubspec.yaml` 文件，将最低 SDK 版本设置到 `2.12.0-0`：
+   编辑软件包的 `pubspec.yaml` 文件，将最低 SDK 版本设置到 `2.12.0`：
 
    ```yaml
 environment:
-  sdk: '>=2.12.0-0 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 ```
 
 2. Regenerate the [package configuration file][]:
@@ -181,7 +203,7 @@ environment:
 
    [package configuration file]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/language-versioning/package-config-file-v2.md
 
-   Running `dart pub get` with a lower SDK constraint of `2.12.0-0`
+   Running `dart pub get` with a lower SDK constraint of `2.12.0`
    sets the default language version of
    every library in the package to 2.12,
    opting them all in to null safety.

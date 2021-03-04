@@ -287,6 +287,18 @@ var codeUnitList =
 assert(codeUnitList[0] == 78);
 ```
 
+{{site.alert.note}}
+  In many cases, you want to work with
+  Unicode grapheme clusters
+  as opposed to pure code units.
+  These are characters as they are perceived
+  by the user (for example, "🇬🇧" is one
+  user-perceived character but several
+  UTF-16 code units).
+  For this, the Dart team provides the
+  [`characters` package.]({{site.pub-pkg}}/characters)
+{{site.alert.end}}
+
 #### Converting to uppercase or lowercase
 
 #### 首字母大小写转换
@@ -1176,10 +1188,9 @@ class Person {
   // override hashCode.
   @override
   bool operator ==(dynamic other) {
-    if (other is! Person) return false;
-    Person person = other;
-    return (person.firstName == firstName &&
-        person.lastName == lastName);
+    return other is Person &&
+        other.firstName == firstName &&
+        other.lastName == lastName;
   }
 }
 

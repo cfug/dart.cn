@@ -1997,7 +1997,7 @@ src="{{site.dartpad-embed-inline}}?id=5d70bc1889d055c7a18d35d77874af88&split=60&
     style="border: 1px solid #ccc;">
 </iframe>
 
-If the function contains only one statement, you can shorten it using arrow
+If the function contains only one return statement, you can shorten it using arrow
 notation. Paste the following line into DartPad and click **Run** to verify that
 it is functionally equivalent.
 
@@ -2414,8 +2414,11 @@ runtime.
 |-----------+-------------------------------------------|
 | Operator  | Meaning                                   |
 |-----------+-------------------------------------------|
-| `as`      | 类型转换（也用作指定[类前缀](#specifying-a-library-prefix))）
+| `as`      | Typecast (also used to specify [library prefixes](#specifying-a-library-prefix))
+| `as`      | 类型转换（也用作指定 [类前缀](#specifying-a-library-prefix))）
+| `is`      | True if the object has the specified type
 | `is`      | 如果对象是指定类型则返回 true
+| `is!`     | True if the object doesn't have the specified type
 | `is!`     | 如果对象是指定类型则返回 false
 {:.table .table-striped}
 
@@ -3751,10 +3754,9 @@ class Point {
   Point(this.x, this.y);
 
   // 命名式构造函数
-  [!Point.origin()!] {
-    x = 0;
-    y = 0;
-  }
+  [!Point.origin()!]
+      : x = 0,
+        y = 0;
 }
 {% endprettify %}
 

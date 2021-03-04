@@ -12,15 +12,23 @@ Func1 raiseAlarm = (_) {}, handle = (_) {};
 Func1<bool, dynamic> canHandle = (_) => false,
     verifyResult = (_) => false;
 
+class Thing {
+  bool get isEnabled => true;
+}
+
 void miscDeclAnalyzedButNotTested() {
   {
-    dynamic optionalThing;
+    Thing? optionalThing;
     // #docregion convert-null-aware
     // If you want null to be false:
-    optionalThing?.isEnabled ?? false;
+    if (optionalThing?.isEnabled ?? false) {
+      print("Have enabled thing.");
+    }
 
     // If you want null to be true:
-    optionalThing?.isEnabled ?? true;
+    if (optionalThing?.isEnabled ?? true) {
+      print("Have enabled thing or nothing.");
+    }
     // #enddocregion convert-null-aware
   }
 
@@ -39,13 +47,9 @@ void miscDeclAnalyzedButNotTested() {
   };
 
   (name, decade) {
-    return
-        // #docregion string-interpolation-avoid-curly
-        'Hi, $name!'
-            "Wear your wildest $decade's outfit."
-            'Wear your wildest ${decade}s outfit.'
-        // #enddocregion string-interpolation-avoid-curly
-        ;
+    // #docregion string-interpolation-avoid-curly
+    var greeting = 'Hi, $name! I love your ${decade}s costume.';
+    // #enddocregion string-interpolation-avoid-curly
   };
 
   {
@@ -54,6 +58,25 @@ void miscDeclAnalyzedButNotTested() {
     var addresses = <String, Address>{};
     var counts = <int>{};
     // #enddocregion collection-literals
+  }
+
+  {
+    var command = 'c';
+    var options = ['a'];
+    var modeFlags = ['b'] as List<String>?;
+    var filePaths = ['p'];
+    String removeExtension(String path) => path;
+
+    // #docregion spread-etc
+    var arguments = [
+      ...options,
+      command,
+      ...?modeFlags,
+      for (var path in filePaths)
+        if (path.endsWith('.dart'))
+          path.replaceAll('.dart', '.js')
+    ];
+    // #enddocregion spread-etc
   }
 
   (Iterable lunchBox, Iterable words) {
@@ -147,10 +170,23 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion default-value-null
-    void error([String message]) {
+    void error([String? message]) {
       stderr.write(message ?? '\n');
     }
     // #enddocregion default-value-null
+  }
+
+  {
+    // #docregion null-aware-promote
+    int measureMessage(String? message) {
+      if (message != null && message.isNotEmpty) {
+        // message is promoted to String.
+        return message.length;
+      }
+
+      return 0;
+    }
+    // #enddocregion null-aware-promote
   }
 
   {
@@ -166,9 +202,9 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion unnecessary-async
-    Future<void> afterTwoThings(
-        Future<void> first, Future<void> second) {
-      return Future.wait([first, second]);
+    Future<int> fastestBranch(
+        Future<int> left, Future<int> right) {
+      return Future.any([left, right]);
     }
     // #enddocregion unnecessary-async
   }
@@ -206,7 +242,7 @@ void miscDeclAnalyzedButNotTested() {
       return result;
     } else {
       print(value);
-      return value as T;
+      return value;
     }
   }
   // #enddocregion test-future-or
@@ -256,7 +292,8 @@ class Player {
 
 class Team {
   Future<List<Player>> get roster => Future.value([]);
-  Future<Team> downloadTeam(String name) => Future.value(Team());
+  Future<Team?> downloadTeam(String name) =>
+      Future.value(Team());
   dynamic get log => null;
 
   // #docregion async-await
@@ -277,24 +314,54 @@ class Team {
 
 //----------------------------------------------------------------------------
 
+class Item {
+  int get price => 0;
+}
+
 // #docregion no-null-init
-int _nextId;
+Item? bestDeal(List<Item> cart) {
+  Item? bestItem;
 
-class LazyId {
-  int _id;
-
-  int get id {
-    if (_nextId == null) _nextId = 0;
-    if (_id == null) _id = _nextId++;
-
-    return _id;
+  for (var item in cart) {
+    if (bestItem == null || item.price < bestItem.price) {
+      bestItem = item;
+    }
   }
+
+  return bestItem;
 }
 // #enddocregion no-null-init
 
 //----------------------------------------------------------------------------
 
-// #docregion cacl-vs-store
+class Response {
+  String get url => "";
+  String get errorCode => "";
+  String get reason => "";
+}
+
+// #docregion copy-nullable-field
+class UploadException {
+  final Response? response;
+
+  UploadException([this.response]);
+
+  @override
+  String toString() {
+    var response = this.response;
+    if (response != null) {
+      return "Could not complete upload to ${response.url} "
+          "(error code ${response.errorCode}): ${response.reason}.";
+    }
+
+    return "Could not upload (no response).";
+  }
+}
+// #enddocregion copy-nullable-field
+
+//----------------------------------------------------------------------------
+
+// #docregion calc-vs-store
 class Circle {
   double radius;
 
@@ -303,7 +370,7 @@ class Circle {
   double get area => pi * radius * radius;
   double get circumference => pi * 2.0 * radius;
 }
-// #enddocregion cacl-vs-store
+// #enddocregion calc-vs-store
 
 //----------------------------------------------------------------------------
 
@@ -345,9 +412,6 @@ class C {
   // #docregion use-arrow
   double get area => (right - left) * (bottom - top);
 
-  bool isReady(double time) =>
-      minTime == null || minTime <= time;
-
   String capitalize(String name) =>
       '${name[0].toUpperCase()}${name.substring(1)}';
   // #enddocregion use-arrow
@@ -358,7 +422,7 @@ class C {
   // #enddocregion arrow-setter
 
   // #docregion arrow-long
-  Treasure openChest(Chest chest, Point where) {
+  Treasure? openChest(Chest chest, Point where) {
     if (_opened.containsKey(chest)) return null;
 
     var treasure = Treasure(where);
@@ -421,12 +485,12 @@ class Box3 extends BaseBox {
 class Document {}
 
 // #docregion field-init-at-decl
-class Folder {
+class ProfileMark {
   final String name;
-  final List<Document> contents = [];
+  final DateTime start = DateTime.now();
 
-  Folder(this.name);
-  Folder.temp() : name = 'temporary';
+  ProfileMark(this.name);
+  ProfileMark.unnamed() : name = '';
 }
 // #enddocregion field-init-at-decl
 
@@ -441,12 +505,14 @@ class Point0 {
 
 //----------------------------------------------------------------------------
 
-// #docregion dont-type-init-formals
+// #docregion late-init-list
 class Point1 {
   double x, y;
-  Point1(this.x, this.y);
+  Point1.polar(double theta, double radius)
+      : x = cos(theta) * radius,
+        y = sin(theta) * radius;
 }
-// #enddocregion dont-type-init-formals
+// #enddocregion late-init-list
 
 //----------------------------------------------------------------------------
 

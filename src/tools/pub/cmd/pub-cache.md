@@ -39,13 +39,13 @@ For options that apply to all pub commands, see
 <dd>在你的缓存中安装一个库。</dd>
 
 <dt><code>--all</code></dt>
-<dd>Optional. Use with <code>dart pub add</code> to install all
+<dd>Optional. Use with <code>dart pub cache add</code> to install all
 matching versions of a library.</dd>
 
 <dd>可选的选项。与 <code>dart pub add</code> 结合使用用于安装某个库的所有版本。</dd>
 
 <dt><code>--version &lt;constraint&gt;</code></dt>
-<dd>Optional. Use with <code>dart pub add</code> to install the best
+<dd>Optional. Use with <code>dart pub cache add</code> to install the best
 version matching the specified constraint. For example:
 
 <dd>可选的选项。与 <code>dart pub add</code> 结合使用根据限制条件安装最适合的版本。例如：
