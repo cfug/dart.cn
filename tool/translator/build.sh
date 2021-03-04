@@ -16,68 +16,36 @@ while [[ "$1" == -* ]]; do
   esac
 done
 
-travis_fold start build_site
-  (
-    set -x;
-    bundle exec jekyll build;
-  )
-travis_fold end build_site
+echo "::group::build_site"
+
+bundle exec jekyll --version;
+set -x;
+bundle exec jekyll build;
+
+echo "::endgroup::"
 
 [[ -z $CHECK_LINKS ]] && exit
 
-travis_fold start check_links
-  (
-    set -x;
-    ./tool/shared/check-links.sh $*;
-  )
-travis_fold end check_links
+echo "::group::check_links"
 
-travis_fold start english_chinese_toggle
-  (
+set -x;
+./tool/shared/check-links.sh $*;
 
-    set -x
+echo "::endgroup::"
 
-    set -e
+echo "::group::english_chinese_toggle"
 
-    cp -r tool/translator/assets/*  _site/assets/
+set -x
+set -e
+cp -r tool/translator/assets/*  _site/assets/
+cp tool/translator/robots.txt _site
+cd tool/translator
 
-    cp tool/translator/robots.txt _site
+npm i
+npx gulp mark-side-toc
+npx nt inject '../../_site/**/!(*_cn).html' -c /assets/translator/css/translator.css -s /assets/translator/js/translator.js -m ./url-map.json -t ./text-map.json
+npx nt mark '../../_site/**/!(*_cn).html'
+npx gulp remove-space
+cd -
 
-    cd tool/translator
-
-    npm i
-
-    npx gulp mark-side-toc
-
-    npx nt inject '../../_site/**/!(*_cn).html' -c /assets/translator/css/translator.css -s /assets/translator/js/translator.js -m ./url-map.json -t ./text-map.json
-
-    npx nt mark '../../_site/**/!(*_cn).html'
-
-    npx gulp remove-space
-
-    cd -
-  )
-travis_fold end english_chinese_toggle
-
-# set -x
-# set -e
-
-# bundle exec jekyll build
-
-# cp -r tool/translator/assets/*  _site/assets/
-
-# cp tool/translator/robots.txt _site
-
-# cd tool/translator
-
-# npm i
-
-# npx gulp mark-side-toc
-
-# npx nt inject '../../_site/**/*.html' -c /assets/translator/css/translator.css -s /assets/translator/js/translator.js -m ./url-map.json -t ./text-map.json
-
-# npx nt mark '../../_site/**/*.html'
-
-# npx gulp remove-space
-
-# cd -
+echo "::endgroup::"
