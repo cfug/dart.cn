@@ -199,23 +199,28 @@
       children:
         - title: 综述
           permalink: /tools/sdk
-        - title: dart 命令 (新的 Dart 工具)
+        - title: dart 命令
           permalink: /tools/dart-tool
+          urlExactMatch: true
+        - title: dart analyze
+          permalink: /tools/dart-analyze
+        - title: dart compile
+          permalink: /tools/dart-compile
+        - title: dart fix 
+          permalink: /tools/dart-fix
+        - title: dart format 
+          permalink: /tools/dart-format
         - title: dart2js (prod JS)
           permalink: /tools/dart2js
-        - title: dart2native 命令
-          permalink: /tools/dart2native
-        - title: dartanalyzer 命令
-          permalink: /tools/dartanalyzer
-        - title: dartaotruntime 命令
+        - title: dartaotruntime
           permalink: /tools/dartaotruntime
         - title: dartdevc (dev JS)
           permalink: /tools/dartdevc
-        - title: dartdoc 命令
+        - title: dartdoc
           permalink: /tools/dartdoc
-        - title: dartfmt 命令
+        - title: dartfmt
           permalink: /tools/dartfmt
-        - title: pub 命令
+        - title: pub
           permalink: /tools/pub/cmd
         - title: 实验性命令标记
           permalink: /tools/experiment-flags

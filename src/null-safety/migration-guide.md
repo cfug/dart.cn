@@ -40,11 +40,12 @@ Here are the basic steps for migrating each package that you own:
 
   **Migrating an app is technically the same as migrating a package.**
   Before migrating an app,
-  consider waiting until null safety is in a stable release
-  and all your dependencies are ready.
+  consider waiting for a stable release of the Dart SDK that
+  contains null safety. 
+  Also, make sure all your dependencies are ready.
 
   **理论上，迁移应用和迁移软件包的过程一致。**
-  在迁移应用之前，建议您等到空安全处于稳定版后，
+  在迁移应用之前，建议您等到 Dart 发布包含空安全的稳定版 SDK，
   且您所依赖的包全部迁移完成后，再进行迁移。
 
 {{ site.alert.end }}
@@ -91,7 +92,7 @@ then passing a nullable argument becomes a compile error.
   packages that depend on it are migrated.**
   Your null-safe package is usable by packages and apps that
   don't use null safety yet,
-  as long as they use Dart 2.12 beta or later.
+  as long as they use Dart 2.12 or later.
   For example, the Dart and Flutter core libraries are null safe,
   and they're still usable by apps that haven't migrated to null safety.
 
@@ -110,45 +111,23 @@ so that you can easily undo any changes.
 该节会讲述如何在空安全模式下，使用 `dart pub outdated` 检查并更新您的依赖。
 如果您的代码应用了 **版本管理**，您可以随时回滚所有的改动。
 
-### Switch to a 2.12 beta release
+### Switch to the Dart 2.12 release
 
 ### 切换至 2.12 beta 版本
 
-**Switch to the latest beta release**
+Switch to the **latest stable release**
 of either the Dart SDK or the Flutter SDK.
-How you get the latest beta release depends on whether
-you use the Flutter SDK:
 
-**切换至最新的 beta 版本** 的 Dart SDK 或 Flutter SDK。
+**切换至最新的稳定版本** 的 Dart SDK 或 Flutter SDK。
 您可以根据您的使用情况，参考以下的方式获取 SDK：
 
-* If you use the Flutter SDK,
-  switch to the beta channel:
+Check that you have Dart 2.12 or later:
 
-* 如果您使用 Flutter SDK，请切换至 beta 频道：
+查看您的 Dart 版本是否为 2.12 或更高：
 
   ```terminal
-$ flutter channel beta
-$ flutter upgrade
+$ dart --version
 ```
-* Otherwise, download a beta release
-  from the [Dart SDK archive][].
-
-* 否则，请从 [Dart SDK 归档][Dart SDK archive] 下载最新的 beta 版本。
-
-[Dart SDK archive]: /tools/sdk/archive#beta-channel
-
-{{ site.alert.warn }}
-
-  If you return to working on production code, remember to
-  **switch back to a stable release**
-  (for example, by running `flutter channel stable`).
-
-  如果您继续投入开发生产环境中的代码，请记得 **将 SDK 切换至稳定版本**
-  （例如运行 `flutter channel stable`）。
-
-{{ site.alert.end }}
-
 
 ### Check dependency status
 
@@ -219,35 +198,14 @@ You can find contact details on the package page on [pub.dev][].
 Before migrating your package's code,
 update its dependencies to null-safe versions:
 
-在迁移您的软件包代码前，请先升级它的依赖至空安全版本：
+1. Run `dart pub upgrade --null-safety` to upgrade to the latest versions
+   supporting null safety.
+   **Note:** This command changes your `pubspec.yaml` file.
 
-1. Update `pubspec.yaml` to use null-safe releases
-   (as listed in the **Resolvable** column)
-   of its dependencies.
-   Omit `.x` suffixes to make version solving more flexible,
-   and _don't_ update the SDK minimum constraint.
-   For example, the `pubspec.yaml` file might look like this:
+   运行 `dart pub upgrade --null-safety` 将依赖升级至支持空安全的最新版本。
+   **注意：** 该命令会更改您的 `pubspec.yaml` 文件。
 
-   更新 `pubspec.yaml`，使用已发布空安全版本的依赖包
-   （在 **Resolvable** 列中列出的）。
-   省略后缀版本号 `.x`，使之能够被更灵活地解析，
-   并且 **不要** 更新 SDK 最低版本限制。
-   下面是一个 `pubspec.yaml` 文件的示例：
-
-   ```yaml
-   ...
-   environment:
-     sdk: '>=2.8.1 <3.0.0'
-
-   dependencies:
-     path: ^1.8.0-nullsafety
-     process: ^4.0.0-nullsafety
-
-   dev_dependencies:
-     pedantic: ^1.10.0-nullsafety
-   ```
-
-2. Run `dart pub upgrade`.
+2. Run `dart pub get`.
 
    运行 `dart pub upgrade`。
 
@@ -312,9 +270,9 @@ Before starting the tool, make sure you're ready:
 
 开始转换前，请做好如下的准备：
 
-* Use the latest 2.12 beta release of the Dart SDK.
+* Use the latest beta release of the Dart SDK.
 
-  使用 2.12 beta 版本的 Dart SDK。
+  使用 Dart SDK 的最新 beta 版本。
 
 * Use `dart pub outdated --mode=null-safety` to make sure that
   all dependencies are null safe and up-to-date.
@@ -511,6 +469,22 @@ var zeroOne = <int>[zero, one];
 </tr>
 </table>
 
+#### Opting out files
+
+Although we recommend migrating all at once,
+sometimes that isn't practical,
+especially in a large app or package.
+To opt out a file or directory,
+click its green checkbox.
+Later, when you apply changes,
+each opted out file will be unchanged
+except for a 2.9 [version comment][].
+
+For more information about incremental migration, see
+[Unsound null safety][].
+
+[version comment]: /guides/language/evolution#per-library-language-version-selection
+
 
 #### Applying changes
 
@@ -576,26 +550,14 @@ To migrate a package by hand, follow these steps:
 手动对软件包进行迁移时，请参考以下步骤：
 
 1. Edit the package's `pubspec.yaml` file,
-   setting the minimum SDK constraint to `2.12.0-0`:
+   setting the minimum SDK constraint to `2.12.0`:
 
-   编辑软件包的 `pubspec.yaml` 文件，将最低 SDK 版本设置到 `2.12.0-0`：
+   编辑软件包的 `pubspec.yaml` 文件，将最低 SDK 版本设置到 `2.12.0`：
 
    ```yaml
    environment:
-     sdk: '>=2.12.0-0 <3.0.0'
+     sdk: '>=2.12.0 <3.0.0'
    ```
-
-   {{ site.alert.note }}
-
-     The 2.12 SDK constraint above ends in **`-0`**.
-     This use of [semantic versioning notation](https://semver.org/)
-     allows 2.12.0 prereleases, such as the `2.12.0-29.10.beta` beta prerelease.
-
-     2.12 版本的 Dart SDK 限制以 **`-0`** 结尾。
-     依据 [语义化版本定义](https://semver.org/) 制定的版本号格式，
-     2.12.0 预发布版本可以使用如 `2.12.0-29.10.beta` 这样的版本号预发布，
-
-   {{ site.alert.end }}
 
 2. Regenerate the [package configuration file][]:
 
@@ -607,7 +569,7 @@ To migrate a package by hand, follow these steps:
 
    [package configuration file]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/language-versioning/package-config-file-v2.md
 
-   Running `dart pub get` with a lower SDK constraint of `2.12.0-0`
+   Running `dart pub get` with a lower SDK constraint of `2.12.0`
    sets the default language version of
    every library in the package to 2.12,
    opting them all in to null safety.
@@ -694,28 +656,19 @@ as soon as you migrate:
 
   [将 SDK 限制设定为已测试的 beta 版本。](#sdk-constraints)
 
-* [Set the package version to indicate a breaking change and
-  include a `nullsafety` suffix.](#version)
+* [Set the package version to indicate a breaking change.](#version)
 
-* [设置 `nullsafety` 后缀，表示该版本包含了破坏性的改动。](#version)
+  [调整 package 的版，表示该版本包含了破坏性的改动。](#version)
 
 ### SDK constraints
 
-### SDK 限制
+Set the lower SDK constraint to 2.12.0:
 
-Set the lower SDK constraint to the beta version of 2.12
-that you used to test the migration,
-and the upper SDK constraint to `<3.0.0`.
-For example, if you're using 2.12.0-29.10.beta,
-then your constraints should look like this:
-
-将 SDK 限制的下界设置为您测试迁移时的 2.12 beta 版本，
-上界设置为 `<3.0.0`。
-例如，如果您正在使用 2.12.0-29.10.beta，那么您的限制看起来应该是这样的：
+将 SDK 限制的下界设置为 2.12.0：
 
 ```yaml
 environment:
-  sdk: '>=2.12.0-29.10.beta <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 ```
 
 With these constraints,
@@ -729,56 +682,39 @@ can still work with the next stable release of the Dart SDK.
 ### 软件包的版本
 
 Update the version of the package
-to indicate a breaking change and include a `nullsafety` suffix:
+to indicate a breaking change:
 
 为版本添加 `nullsafety` 后缀，表示该版本包含了破坏性的改动。
 
 * If your package is already at 1.0.0 or greater,
   increase the major version.
   For example, if the previous version is `2.3.2`,
-  the new version is **`3.0.0-nullsafety.0`**.
+  the new version is `3.0.0`.
 
-* 如果您的软件包版本已经大于或等于 1.0.0，请提升主版本。
+  如果您的软件包版本已经大于或等于 1.0.0，请提升主版本。
   例如，上一个版本为 `2.3.2`，那么新版本应该为 **`3.0.0-nullsafety.0`**。
 
 * If your package hasn't reached 1.0.0 yet,
   _either_ increase the minor version _or_ update the version to 1.0.0.
   For example, if the previous version is `0.3.2`,
-  the new version is one of the following:
-  * **`0.4.0-nullsafety.0`**
-  * **`1.0.0-nullsafety.0`**
+  the new version is either `0.4.0` or `1.0.0`.
 
-* 如果您的软件包的版本还未高于 1.0.0，
+  如果您的软件包的版本还未高于 1.0.0，
   您可以 **提升次版本**，也可以 **提升至 1.0.0**。
-  例如，上一个版本为 `0.3.2`，那么新版本可以是：
-  * **`0.4.0-nullsafety.0`**
-  * **`1.0.0-nullsafety.0`**
+  例如，上一个版本为 `0.3.2`，那么新版本可以是 **`0.4.0`** 或 **`1.0.0`**。
 
-For subsequent updates to the null-safe prerelease of the package,
-increment the prerelease suffix.
-For example, if the first null-safe version is `3.0.0-nullsafety.0`,
-then the next one is `3.0.0-nullsafety.1`.
+Before you publish a stable null safety version of a package,
+we strongly recommend following these pubspec rules:
 
-如果需要更新已发布的空安全预览版本，请提升后缀版本。
-例如，如果首个空安全版本为 `3.0.0-nullsafety.0`，
-那么下一个版本应该为 `3.0.0-nullsafety.1`。
+在您发布稳定版本的空安全 package 前，我们强烈建议您遵循以下 pubspec 的规则：
 
-You can maintain a stable release and null-safe prerelease at the same time.
-For example, if you have a stable release that's `1.0.0` and
-a prerelease that's `2.0.0-nullsafety.0`,
-you can still publish new versions of the stable release
-(`1.0.1`) and null-safe prerelease (`2.0.0-nullsafety.1`).
+  * Set the Dart lower SDK constraint to `2.12.0`.
 
-您可以同时维护一个稳定版以及一个空安全的预发布版。
-举个例子，稳定版的版本号可以是 `1.0.0`，
-空安全的预发布版版本号可以是 `2.0.0-nullsafety.0`，
-如此一来您还可以继续发布新的稳定版 (`1.0.1`)
-和新的空安全预发布版 (`2.0.0-nullsafety.1`)。
+    将 SDK 的最低限制设置为 `2.12.0`。
 
-Once null safety is available in a stable release of the Dart SDK,
-we encourage you to publish a stable version of your null-safe package.
+  * Use stable versions of all direct dependencies.
 
-当 Dart SDK 中的空安全为稳定版时，我们希望您将空安全软件包发布为稳定版本。
+    所有的直接依赖都使用稳定版本。
 
 ## Welcome to null safety
 

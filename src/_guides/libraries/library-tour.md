@@ -287,6 +287,24 @@ var codeUnitList =
 assert(codeUnitList[0] == 78);
 ```
 
+{{site.alert.note}}
+
+  In many cases, you want to work with
+  Unicode grapheme clusters
+  as opposed to pure code units.
+  These are characters as they are perceived
+  by the user (for example, "🇬🇧" is one
+  user-perceived character but several
+  UTF-16 code units).
+  For this, the Dart team provides the
+  [`characters` package.]({{site.pub-pkg}}/characters)
+
+在一些情况下，你可能会希望使用「显性」 Unicode 字符，而不是用纯代码表示。
+这种字符是用户可感知的，比如 "🇨🇳"，就是一个用户可感知的字符 (emoji)，而它其实也是一个 UTF-16 的字符 (`U+1F1E8 U+1F1F3`)。
+为此，Dart 团队提供了 [`characters` 这个 package.]({{site.pub-pkg}}/characters) 供开发者使用。
+
+{{site.alert.end}}
+
 #### Converting to uppercase or lowercase
 
 #### 首字母大小写转换
@@ -1176,10 +1194,9 @@ class Person {
   // override hashCode.
   @override
   bool operator ==(dynamic other) {
-    if (other is! Person) return false;
-    Person person = other;
-    return (person.firstName == firstName &&
-        person.lastName == lastName);
+    return other is Person &&
+        other.firstName == firstName &&
+        other.lastName == lastName;
   }
 }
 

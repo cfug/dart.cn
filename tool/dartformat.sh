@@ -35,17 +35,17 @@ if [[ $NULL_SAFETY == 1 ]]; then
     # $NULL_SAFETY_EXAMPLES/misc/lib/samples/spacecraft.dart
 
   dart format -l 65 \
-    $NULL_SAFETY_EXAMPLES/misc/lib/language_tour/exceptions.dart
+    $NULL_SAFETY_EXAMPLES/misc/lib/language_tour/exceptions.dart \
+    $NULL_SAFETY_EXAMPLES/misc/lib/effective_dart/style_lib_good.dart \
+    $NULL_SAFETY_EXAMPLES/misc/lib/effective_dart/usage_good.dart \
+    $NULL_SAFETY_EXAMPLES/misc/lib/library_tour/core \
+    $NULL_SAFETY_EXAMPLES/misc/lib/library_tour/async/future.dart \
+    $NULL_SAFETY_EXAMPLES/misc/lib/library_tour/async/stream.dart \
+    $NULL_SAFETY_EXAMPLES/misc/test/library_tour/core_test.dart \
+    $NULL_SAFETY_EXAMPLES/misc/test/library_tour/io_test.dart
     # $NULL_SAFETY_EXAMPLES/httpserver/bin/basic_writer_server.dart \
     # $NULL_SAFETY_EXAMPLES/httpserver/bin/note_server.dart \
     # $NULL_SAFETY_EXAMPLES/misc/bin/dcat.dart \
-    # $NULL_SAFETY_EXAMPLES/misc/lib/library_tour/core \
-    # $NULL_SAFETY_EXAMPLES/misc/lib/library_tour/async/future.dart \
-    # $NULL_SAFETY_EXAMPLES/misc/lib/library_tour/async/stream.dart \
-    # $NULL_SAFETY_EXAMPLES/misc/test/library_tour/core_test.dart \
-    # $NULL_SAFETY_EXAMPLES/misc/test/library_tour/io_test.dart \
-    # $NULL_SAFETY_EXAMPLES/misc/lib/effective_dart/style_lib_good.dart \
-    # $NULL_SAFETY_EXAMPLES/misc/lib/effective_dart/usage_good.dart
 else
   echo "Formatting example files..."
   dart format $* `find $EXAMPLES -name "*.dart" \
@@ -71,9 +71,7 @@ else
     $EXAMPLES/misc/lib/library_tour/async/future.dart \
     $EXAMPLES/misc/lib/library_tour/async/stream.dart \
     $EXAMPLES/misc/test/library_tour/core_test.dart \
-    $EXAMPLES/misc/test/library_tour/io_test.dart \
-    $EXAMPLES/misc/lib/effective_dart/style_lib_good.dart \
-    $EXAMPLES/misc/lib/effective_dart/usage_good.dart
+    $EXAMPLES/misc/test/library_tour/io_test.dart
 fi
 
 # If any files were changed, then exit 1:

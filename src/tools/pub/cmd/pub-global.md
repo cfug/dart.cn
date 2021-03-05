@@ -16,17 +16,19 @@ After [activating a package](#activating-a-package), you can
 [Deactivating a package](#deactivating-a-package) removes it from
 your list of globally available packages.
 
-Pub 的 `global` 选项允许你在任意位置下从命令行运行 Dart 脚本。在 [激活 Package](#activating-a-package) 后，你可以 [运行](#running-a-script) 该 Package `bin` 目录下的脚本。[停用 Package](#deactivating-a-package) 后你可以从全局可用的 Package 列表中将其移除。
+Pub 的 `global` 选项允许你在任意位置下从命令行运行 Dart 脚本。
+在 [激活 Package](#activating-a-package) 后，
+你可以 [运行](#running-a-script) 该 Package `bin` 目录下的脚本。
+[停用 Package](#deactivating-a-package) 后你可以从全局可用的 Package 列表中将其移除。
 
-For example, say you want to run
-[Stagehand]({{site.pub}}/packages/stagehand)
-the Dart project generator, from the command line.
+For example, say you want to use [webdev][] to serve
+your Dart web application from the command line.
 
-例如，假设你想要从命令行运行 Dart 项目生成的 [Stagehand]({{site.pub}}/packages/stagehand)。
+例如，假设你想要通过命令使用 [webdev][] 来部署您的 Dart Web 应用。
 
 ```terminal
-$ dart pub global activate stagehand
-$ stagehand
+$ dart pub global activate webdev
+$ webdev serve
 ```
 
 If this doesn't work, you might need to
@@ -145,16 +147,15 @@ To run a script directly from the command line, add the [system cache][] `bin`
 directory to your `PATH` environment variable.
 
 在从命令行直接运行脚本前，你还需要将 [系统缓存][system cache] 的 `bin` 文件目录添加至 PATH 路径中。
-
-For example, say you've activated the Stagehand package,
+For example, say you've activated the webdev package,
 but you still can't run the command:
 
-例如，假设你已经激活了名为 Stagehand 的包，但是你依然不能运行它：
+例如，假设你已经激活了名为 webdev 的包，但是你依然不能运行它：
 
 ```terminal
-$ dart pub global activate stagehand
-$ stagehand
--bash: stagehand: command not found
+$ dart pub global activate webdev
+$ webdev serve
+-bash: webdev: command not found
 ```
 
 Verify that the `bin` directory for the system cache is in your path.
@@ -195,9 +196,8 @@ You can now directly invoke the command:
 现在你可以直接调用命令了：
 
 {% prettify none tag=pre+code %}
-$ mkdir angular_project
-$ cd angular_project
-$ [!stagehand web-angular!]
+$ cd web_project
+$ [!webdev serve!]
 {% endprettify %}
 
 If the script still fails to run from the command line, the
@@ -356,3 +356,4 @@ For options that apply to all pub commands, see
 </aside>
 
 [system cache]: /tools/pub/glossary#system-cache
+[webdev]: /tools/webdev

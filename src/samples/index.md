@@ -136,7 +136,7 @@ var result = fibonacci(20);
 {% endprettify %}
 
 A shorthand `=>` (_arrow_) syntax is handy for functions that
-contain a single statement.
+contain a single expression or return statement.
 This syntax is especially useful when passing anonymous functions as arguments:
 
 `=>` (**胖箭头**) 简写语法用于仅包含一条语句的函数。该语法在将匿名函数作为参数传递时非常有用：
@@ -297,7 +297,7 @@ class Orbiter extends Spacecraft {
 Mixins are a way of reusing code in multiple class hierarchies. The following is
 a mixin declaration:
 
-Mixin 是一种在多个类层次结构中重用代码的方法。下面的是声明一个 Mixin 的做法：
+Mixin 是一种在多个类层次结构中重用代码的方法。下面的是声明一个 Mixin 的做法：<<<<<<< HEAD
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (mixin)"?>
 {% prettify dart tag=pre+code %}
