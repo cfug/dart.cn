@@ -47,7 +47,8 @@ To use a package, do the following:
 
 通过以下步骤，引用使用包：
 
-* Create a pubspec (a file named `pubspec.yaml` that lists package dependencies and includes
+* Create a pubspec (a file named `pubspec.yaml` that
+  lists package dependencies and includes
   other metadata, such as a version number).
 
   创建一个 pubspec （一个名为 `pubspec.yaml` 文件，
@@ -101,7 +102,7 @@ and the documentation for the packages that you want to use.
 
 ## 获取包
 
-Once you have a pubspec, you can run <code class="literal">pub
+Once you have a pubspec, you can run <code class="literal">dart pub
 get</code> from the top directory of your application:
 
 项目中一旦拥有了 pubspec 文件，就可以在项目根目录中执行
@@ -116,7 +117,7 @@ This process is called _getting the dependencies_.
 
 上面的操作即 **获取依赖**。
 
-The [`dart pub get`][] command determines which packages your app depends on,
+The [`dart pub get`][`get`] command determines which packages your app depends on,
 and puts them in a central [system cache](/tools/pub/glossary#system-cache).
 If your app depends on a published package, pub downloads that package from the
 [pub.dev site.]({{site.pub}})
@@ -126,7 +127,7 @@ Transitive dependencies are included, too.
 For example, if the `js` package depends on the `test` package, `pub`
 grabs both the `js` package and the `test` package.
 
-[`dart pub get`][] 命令确定当前应用所依赖的包，
+[`dart pub get`][`get`] 命令确定当前应用所依赖的包，
 并将它们保存到中央[系统缓存](/tools/pub/glossary#system-cache)（central system cache）中。
 如果当前应用依赖了一个公开包， Pub 会从 [Pub 站点]({{site.pub}}) 该包。
 对于一个 [Git 依赖](/tools/pub/dependencies#git-packages)， Pub 会 Clone 该 Git 仓库。
@@ -234,41 +235,41 @@ uses the same versions of code.
 同样加入到 lockfile 可以保证部署的应用使用的是同一版本的代码。
 
 When you're ready to upgrade your dependencies to the latest versions,
-use the [`dart pub upgrade`][] command:
+use the [`dart pub upgrade`][`upgrade`] command:
 
-如果已经准备更新依赖到最新版本，使用命令 `dart pub upgrade` ：
+如果已经准备更新依赖到最新版本，使用 [`dart pub upgrade`][`upgrade`] 命令：
 
-{% prettify sh tag=pre+code %}
+```terminal
 $ dart pub upgrade
-{% endprettify %}
+```
 
-The `dart pub upgrade` command tells pub to regenerate the lockfile, using the newest
-available versions of your package's dependencies.
+The `dart pub upgrade` command tells pub to regenerate the lockfile,
+using the newest available versions of your package's dependencies.
 If you want to upgrade only one dependency,
 you can specify the package to upgrade:
 
 `dart pub upgrade` 命令用于重新生成 lockfile 文件，并使用最新可用版本的依赖包。
 如果仅升级某个依赖，可以在命令中指定需要升级的包：
 
-{% prettify sh tag=pre+code %}
+```terminal
 $ dart pub upgrade transmogrify
-{% endprettify %}
+```
 
 That command upgrades `transmogrify` to the latest version
 but leaves everything else the same.
 
 上面的命令升级 `transmogrify` 到最新版本，但维持其它包不变。
 
-The [`dart pub upgrade`][] command can't always upgrade every package
+The `dart pub upgrade` command can't always upgrade every package
 to its latest version,
 due to conflicting version constraints in the pubspec.
 To identify out-of-date packages that require editing the pubspec,
-use [`dart pub outdated`][].
+use [`dart pub outdated`][`outdated`].
 
-[`dart pub upgrade`][] 命令并非总是可以将所有的 package 更新到最新版本，
+`dart pub upgrade`] 命令并非总是可以将所有的 package 更新到最新版本，
 原因是 pubspec 文件中的一些 package 之间有版本限制的冲突。
 想要确定 pubspec 里已经过时且需要编辑的 package，
-请使用 [`dart pub outdated`][] 命令。
+请使用 [`dart pub outdated`][`outdated`] 命令。
 
 ## More information
 
@@ -320,26 +321,26 @@ the pub package manager.
 
   [Pubspec 格式](/tools/pub/pubspec)
 
-### Pub commands
+### Pub subcommands
 
-### Pub 命令
+### Pub 子命令
 
-The `pub` tool provides the following commands:
+The `dart pub` tool provides the following subcommands:
 
-`pub` 工具提供了如下的命令：
+`pub` 工具提供了如下的子命令：
 
-* [`pub cache`][]
-* [`pub deps`][]
-* [`pub downgrade`][]
-* [`pub get`][]
-* [`pub global`][]
-* [`pub outdated`][]
-* [`pub publish`][]
-* [`pub run`][]
-* [`pub upgrade`][]
-* [`pub uploader`][]
+* [`cache`][]
+* [`deps`][]
+* [`downgrade`][]
+* [`get`][]
+* [`global`][]
+* [`outdated`][]
+* [`publish`][]
+* [`run`][]
+* [`upgrade`][]
+* [`uploader`][]
 
-For an overview of all the `pub` commands,
+For an overview of all the `dart pub` subcommands,
 see the [pub tool documentation](/tools/pub/cmd).
 
 有关所有 `pub` 命令的概述，
@@ -355,13 +356,13 @@ you might encounter when using pub.
 [Pub 故障排除](/tools/pub/troubleshoot) 提供使用中可能遇到问题的解决方法。
 
 [Dart-savvy IDEs]: /tools#ides-and-editors
-[`pub cache`]: /tools/pub/cmd/pub-cache
-[`pub deps`]: /tools/pub/cmd/pub-deps
-[`pub downgrade`]: /tools/pub/cmd/pub-downgrade
-[`pub get`]: /tools/pub/cmd/pub-get
-[`pub global`]: /tools/pub/cmd/pub-global
-[`pub outdated`]: /tools/pub/cmd/pub-outdated
-[`pub publish`]: /tools/pub/cmd/pub-lish
-[`pub run`]: /tools/pub/cmd/pub-run
-[`pub upgrade`]: /tools/pub/cmd/pub-upgrade
-[`pub uploader`]: /tools/pub/cmd/pub-uploader
+[`cache`]: /tools/pub/cmd/pub-cache
+[`deps`]: /tools/pub/cmd/pub-deps
+[`downgrade`]: /tools/pub/cmd/pub-downgrade
+[`get`]: /tools/pub/cmd/pub-get
+[`global`]: /tools/pub/cmd/pub-global
+[`outdated`]: /tools/pub/cmd/pub-outdated
+[`publish`]: /tools/pub/cmd/pub-lish
+[`run`]: /tools/pub/cmd/pub-run
+[`upgrade`]: /tools/pub/cmd/pub-upgrade
+[`uploader`]: /tools/pub/cmd/pub-uploader

@@ -97,10 +97,6 @@ Our wonderful community has provided these resources.
 
   [Dart 中文文档（本站）](https://dart.cn/)
 
-* [Russian version of this site (Русскоязычная версия сайта)](https://www.dart-lang.ru)
-
-  [此网站的俄罗斯版本 (Русскоязычная версия сайта)](https://www.dart-lang.ru)
-
 Also see the [Flutter community page.]({{site.flutter}}/community)
 
 另见 [Flutter 社区]({{site.flutter}}/community)。

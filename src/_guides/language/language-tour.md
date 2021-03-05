@@ -1949,7 +1949,11 @@ called an _anonymous function_, or sometimes a _lambda_ or _closure_.
 You might assign an anonymous function to a variable so that,
 for example, you can add or remove it from a collection.
 
-大多数方法都是有名字的，比如 `main()` 或 `printElement()`。你可以创建一个没有名字的方法，称之为 _匿名函数_，或 _Lambda表达式_ 或 _Closure闭包_。你可以将匿名方法赋值给一个变量然后使用它，比如将该变量添加到集合或从中删除。
+大多数方法都是有名字的，比如 `main()` 或 `printElement()`。
+你可以创建一个没有名字的方法，称之为 **匿名函数**、
+**Lambda表达式** 或 **Closure闭包**。
+你可以将匿名方法赋值给一个变量然后使用它，
+比如将该变量添加到集合或从中删除。
 
 An anonymous function looks similar to a named function&mdash;
 zero or more parameters, separated by commas
@@ -1971,7 +1975,8 @@ The following example defines an anonymous function with an untyped parameter, `
 The function, invoked for each item in the list,
 prints a string that includes the value at the specified index.
 
-下面代码定义了只有一个参数 `item` 且没有参数类型的匿名方法。List 中的每个元素都会调用这个函数，打印元素位置和值的字符串：
+下面代码定义了只有一个参数 `item` 且没有参数类型的匿名方法。
+List 中的每个元素都会调用这个函数，打印元素位置和值的字符串：
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function)"?>
 ```dart
@@ -1997,11 +2002,12 @@ src="{{site.dartpad-embed-inline}}?id=5d70bc1889d055c7a18d35d77874af88&split=60&
     style="border: 1px solid #ccc;">
 </iframe>
 
-If the function contains only one statement, you can shorten it using arrow
+If the function contains only one return statement, you can shorten it using arrow
 notation. Paste the following line into DartPad and click **Run** to verify that
 it is functionally equivalent.
 
-如果函数体内只有一行语句，你可以使用胖箭头缩写法。粘贴下面代码到 DartPad 中并点击运行按钮，验证两个函数是否一致。
+如果函数体内只有一行返回语句，你可以使用胖箭头缩写法。
+粘贴下面代码到 DartPad 中并点击运行按钮，验证两个函数是否一致。
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anon-func)"?>
 ```dart
@@ -2019,7 +2025,8 @@ variables is determined statically, simply by the layout of the code.
 You can “follow the curly braces outwards” to see if a variable is in
 scope.
 
-Dart 是词法有作用域语言，变量的作用域在写代码的时候就确定了，大括号内定义的变量只能在大括号内访问，与 Java 类似。
+Dart 是词法有作用域语言，变量的作用域在写代码的时候就确定了，
+大括号内定义的变量只能在大括号内访问，与 Java 类似。
 
 Here is an example of nested functions with variables at each scope
 level:
@@ -2414,8 +2421,11 @@ runtime.
 |-----------+-------------------------------------------|
 | Operator  | Meaning                                   |
 |-----------+-------------------------------------------|
-| `as`      | 类型转换（也用作指定[类前缀](#specifying-a-library-prefix))）
+| `as`      | Typecast (also used to specify [library prefixes](#specifying-a-library-prefix))
+| `as`      | 类型转换（也用作指定 [类前缀](#specifying-a-library-prefix))）
+| `is`      | True if the object has the specified type
 | `is`      | 如果对象是指定类型则返回 true
+| `is!`     | True if the object doesn't have the specified type
 | `is!`     | 如果对象是指定类型则返回 false
 {:.table .table-striped}
 
@@ -3751,10 +3761,9 @@ class Point {
   Point(this.x, this.y);
 
   // 命名式构造函数
-  [!Point.origin()!] {
-    x = 0;
-    y = 0;
-  }
+  [!Point.origin()!]
+      : x = 0,
+        y = 0;
 }
 {% endprettify %}
 

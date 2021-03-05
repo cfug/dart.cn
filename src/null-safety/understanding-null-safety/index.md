@@ -1725,6 +1725,77 @@ of null safety. It simply makes the language feel more complete to me.
 无论是否为空安全，这都是另一个让 Dart 变得更好的特性之一。
 它让这门语言看起来更为完整。
 
+### Abstract fields
+
+### 抽象字段
+
+One of the neat features of Dart is that
+it upholds a thing called the [uniform access principle][].
+In human terms it means that
+fields are indistinguishable from getters and setters.
+It's an implementation detail whether a "property" in some Dart class
+is computed or stored.
+Because of this,
+when defining an interface using an abstract class,
+it's typical to use a field declaration:
+
+Dart 有一项好用的功能，即其拥有 [统一访问原则][uniform access principle]。
+意思是字段和拆分的 getter 和 setter 没有区别。
+这是 Dart 中一个类的「属性」是否进行计算和存储的实现细节。
+因为这项功能的存在，当您在定义抽象类的接口时，
+会经常使用字段声明的形式：
+
+[uniform access principle]: https://en.wikipedia.org/wiki/Uniform_access_principle
+
+```dart
+abstract class Cup {
+  Beverage contents;
+}
+```
+
+The intent is that users only implement that class and don't extend it.
+The field syntax is simply a shorter way of writing a getter/setter pair:
+
+用户应只能实现这个类，而不能对其进行扩展。
+这样的字段定义语句只是一对 getter 和 setter 的简写形式：
+
+```dart
+abstract class Cup {
+  Beverage get contents;
+  set contents(Beverage);
+}
+```
+
+But Dart doesn't *know* that this class will never be used as a concrete type.
+It sees that `contents` declaration as a real field.
+And, unfortunately, that field is non-nullable and has no initializer,
+so you get a compile error.
+
+但是 Dart 并不 **了解** 这个类是否会被用于具体类型的定义。
+它会认为 `contents` 是一个真实定义存在的字段。
+所以，该字段是非空类型却没有进行初始化，您会在编译时看到一个编译错误，属实不幸。
+
+One fix is to use explicit abstract getter/setter declarations
+like in the second example.
+But that's a little verbose,
+so with null safety
+we also added support for explicit abstract field declarations:
+
+解决这个问题的其中一种方法是像第二种示例那样，显式声明抽象的 getter 和 setter。
+但这样写起来过于冗长，所以随着空安全的推出，我们一并增加了显式声明抽象字段的支持：
+
+```dart
+abstract class Cup {
+  abstract Beverage contents;
+}
+```
+
+This behaves exactly like the second example.
+It simply declares an abstract getter and setter with the given name and type.
+
+这段代码与第二种示例行为一致。
+它用非常简洁的方式声明了指定名称和类型抽象 getter 和 setter。
+
 ### Working with nullable fields
 
 ### 与可空字段共舞

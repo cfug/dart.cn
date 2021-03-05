@@ -6,18 +6,6 @@ description: 用交互的形式学习（或回顾）Dart 的独特之处。
 js: [{url: 'https://dartpad.cn/inject_embed.dart.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
-<style>
-{% comment %}
-TODO(chalin): move this into one of our SCSS files
-{% endcomment -%}
-iframe[src^="https://dartpad"] {
-  border: 1px solid #ccc;
-  margin-bottom: 1rem;
-  min-height: 220px;
-  resize: vertical;
-  width: 100%;
-}
-</style>
 
 The Dart language is designed to be easy to learn for
 coders coming from other languages,
@@ -1698,7 +1686,13 @@ Dart 支持命名构造方法：
 class Point {
   double x, y;
 
-<?code-excerpt "misc/bin/named_constructor.dart"?>
+  Point(this.x, this.y);
+
+  Point.origin()
+      : x = 0,
+        y = 0;
+}
+```
 
 To use a named constructor, invoke it using its full name:
 
