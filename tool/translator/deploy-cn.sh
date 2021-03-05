@@ -8,7 +8,7 @@ commitMessage=$(git log --oneline -n 1)
 
 rm -rf /tmp/site-dart.cn/ || true
 
-git clone https://chenglu:${CHENGLU_DEPLOY_KEY}@github.com/chenglu/site-dart.cn.git /tmp/site-dart.cn/
+git clone https://chenglu:$DEPLOY_TOKEN@github.com/chenglu/site-dart.cn.git /tmp/site-dart.cn/
 
 # cd /tmp/site-dart.cn/
 
@@ -20,7 +20,7 @@ cp -r _site/* /tmp/site-dart.cn/
 
 cd /tmp/site-dart.cn/
 
-git config --global user.name "travis-ci deploy"
+git config --global user.name "gh-actions deploy"
 git config --global user.email "cfug-dev@googlegroups.com"
 
 git add .

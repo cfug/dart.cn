@@ -31,7 +31,7 @@ jobs:
           - ./tool/build.sh --check-links
           - ./tool/check-code.sh
           - ./tool/check-code.sh --null-safety
-        experimental: [false]
+        experimental: [true] # false needed.. #TODO
         include:
           - sdk: dev
             task: ./tool/analyze-and-test-examples.sh
@@ -84,7 +84,7 @@ jobs:
     if: |
       github.event_name == 'push'
       && github.ref == 'refs/heads/master'
-      && github.repository == 'dart-lang/site-www'
+      && github.repository == 'cfug/dart.cn'
     steps:
       - uses: actions/checkout@v2
         with:
@@ -107,7 +107,7 @@ jobs:
       - name: Install dart dependencies
         run: dart pub get
       - run: ./tool/shared/write-ci-info.sh -v
-      - run: ./tool/build.sh
-      - run: ./tool/shared/deploy.sh --robots ok default
+      - run: ./tool/translator/build.sh
+      - run: ./tool/translator/deploy-cn.sh --robots ok default
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          DEPLOY_TOKEN: ${{ secrets.CHENGLU_DEPLOY_KEY }}
