@@ -288,6 +288,7 @@ assert(codeUnitList[0] == 78);
 ```
 
 {{site.alert.note}}
+
   In many cases, you want to work with
   Unicode grapheme clusters
   as opposed to pure code units.

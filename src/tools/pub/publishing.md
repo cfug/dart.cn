@@ -432,7 +432,7 @@ As you work on a package, consider publishing it as a prerelease.
 Prereleases can be useful when *any* of the following are true:
 
 如果你正专注于开发一个 package，考虑将它以预发行的方式发布。
-预发行将在以下这些情形下变的实用：
+预发行将在以下 **任意情况下** 下变得实用：
 
 * You're actively developing the next major version of the package.
 
