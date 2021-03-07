@@ -1,39 +1,39 @@
 #!/usr/bin/env bash
 
-set -e -o pipefail
+# set -e -o pipefail
 
-source ./tool/shared/env-set-check.sh
+# source ./tool/shared/env-set-check.sh
 
-while [[ "$1" == -* ]]; do
-  case "$1" in
-    --check-links) CHECK_LINKS=1; shift;
-                   # Use remaining arguments for call to check-links
-                   break;;
-    -h|--help)     echo "Usage: $(basename $0) [--help] [--check-links ...check-link-options]";
-                   exit 0;;
-    *)             echo "ERROR: Unrecognized option: $1. Use --help for details.";
-                   exit 1;;
-  esac
-done
+# while [[ "$1" == -* ]]; do
+#   case "$1" in
+#     --check-links) CHECK_LINKS=1; shift;
+#                    # Use remaining arguments for call to check-links
+#                    break;;
+#     -h|--help)     echo "Usage: $(basename $0) [--help] [--check-links ...check-link-options]";
+#                    exit 0;;
+#     *)             echo "ERROR: Unrecognized option: $1. Use --help for details.";
+#                    exit 1;;
+#   esac
+# done
 
-echo "::group::build_site"
+# echo "::group::build_site"
 
-bundle exec jekyll --version;
-set -x;
-bundle exec jekyll build;
+# bundle exec jekyll --version;
+# set -x;
+# bundle exec jekyll build;
 
-echo "::endgroup::"
+# echo "::endgroup::"
 
-[[ -z $CHECK_LINKS ]] && exit
+# [[ -z $CHECK_LINKS ]] && exit
 
-echo "::group::check_links"
+# echo "::group::check_links"
 
-set -x;
-./tool/shared/check-links.sh $*;
+# set -x;
+# ./tool/shared/check-links.sh $*;
 
-echo "::endgroup::"
+# echo "::endgroup::"
 
-echo "::group::english_chinese_toggle"
+# echo "::group::english_chinese_toggle"
 
 set -x
 set -e
@@ -48,4 +48,4 @@ npx nt mark '../../_site/**/!(*_cn).html'
 npx gulp remove-space
 cd -
 
-echo "::endgroup::"
+# echo "::endgroup::"
