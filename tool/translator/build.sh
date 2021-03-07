@@ -2,7 +2,7 @@
 
 # set -e -o pipefail
 
-# source ./tool/shared/env-set-check.sh
+source ./tool/shared/env-set-check.sh
 
 # while [[ "$1" == -* ]]; do
 #   case "$1" in
@@ -35,8 +35,13 @@
 
 # echo "::group::english_chinese_toggle"
 
+bundle exec jekyll --version;
+set -x;
+bundle exec jekyll build;
+
 set -x
 set -e
+pwd
 cp -r tool/translator/assets/*  _site/assets/
 cp tool/translator/robots.txt _site
 cd tool/translator
