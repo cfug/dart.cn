@@ -1295,7 +1295,7 @@ var nobleGases = {
   read about [type inference.](/guides/language/type-system#type-inference)
 
   Dart 将 `gifts` 变量的类型推断为 `Map<String, String>`，
-  而降 `nobleGases` 的类型推断为 `Map<int, String>`。
+  而将 `nobleGases` 的类型推断为 `Map<int, String>`。
   如果你向这两个 Map 对象中添加不正确的类型值，将导致运行时异常。
   你可以阅读
   [类型推断](/guides/language/type-system#type-inference) 获取更多相关信息。
