@@ -73,7 +73,7 @@ to let you not only write null-safe code but hopefully to *enjoy* doing so.
 Rust 和 Kotlin 在其语言内都各自拥有合理的解决方案。
 这篇文档将带您了解 Dart 的解决方案。
 它包含了对静态类型系统及诸多方面的修改，以及新的语言特性，
-让您在编写代码时不仅能写出空安全的代码，同时也能非常**享受**。
+让您在编写代码时不仅能写出空安全的代码，同时也能非常 **享受**。
 
 This document is long. If you want something shorter that covers just what you
 need to know to get up and running, start with the [overview][]. When you are
@@ -84,7 +84,7 @@ surprisingly close to how you write Dart today.)
 
 这篇文档很长。如果您只需要一份如何开始并运行的简短的文档，请从 [概览][overview] 开始。
 当您认为您有充足的时间，且已经准备好深入理解它时，再回到这里，
-彼时您可以了解到语言是**如何**处理 `null`、**为什么**我们会这样设计，
+彼时您可以了解到语言是 **如何** 处理 `null`、**为什么** 我们会这样设计，
 以及您如何写出符合现代习惯的空安全 Dart 代码。
 （剧透一下：实际上它和您当前写 Dart 代码的方式相差无几。）
 
@@ -155,7 +155,7 @@ pros and cons. These principles guided the choices we made:
     verify a receiver is non-`null` before calling methods on it.
 
     代码的健全性极大程度地决定了开发者对于自己的代码是否有自信。
-    一艘**大部分时间**都在飘忽不定的小船，
+    一艘 **大部分时间** 都在飘忽不定的小船，
     是不足以让您鼓起勇气，驶往公海进行冒险的。
     这对于我们无畏的“黑客”编译器而言，同样十分重要。
     当语言对程序中语义化的属性做出硬性保证时，
@@ -173,7 +173,7 @@ pros and cons. These principles guided the choices we made:
     需要注意一点：目前我们只能完全保证使用了空安全的代码的健全性。
     Dart 程序支持新的空安全代码和旧的传统代码混合。
     在这些使用混合空安全的程序版本中，空引用的错误仍有可能出现。
-    这类程序里让您可以在使用了空安全的部分，享受到所有**静态部分的**空安全福利。
+    这类程序里让您可以在使用了空安全的部分，享受到所有 **静态部分的** 空安全福利。
     但在整个程序都使用了空安全之前，代码在运行时仍然不能保证是空安全的。
 
 Note that *eliminating* `null` is not a goal. There's nothing wrong with `null`.
@@ -184,11 +184,11 @@ parameters, the handy `?.` null-aware operator, and default initialization. It
 is not `null` that is bad, it is having `null` go *where you don't expect it*
 that causes problems.
 
-值得注意的是，我们的目标并不是**消除** `null`。`null` 没有任何错。
-相反，可以表示一个**空缺**的值是十分有用的。
+值得注意的是，我们的目标并不是 **消除** `null`。`null` 没有任何错。
+相反，可以表示一个 **空缺** 的值是十分有用的。
 在语言中提供对空缺的值的支持，让处理空缺更为灵活和高效。
 它为可选参数、`?.` 空调用语法糖和默认值初始化提供了基础。
-`null` 并不糟糕，糟糕的是**它在您意想不到的地方出现**，最终引发问题。
+`null` 并不糟糕，糟糕的是 **它在您意想不到的地方出现**，最终引发问题。
 
 Thus with null safety, our goal is to give you *control* and *insight* into
 where `null` can flow through your program and certainty that it can't flow
@@ -255,8 +255,8 @@ we've fixed all null reference errors.
 
 既然 `Null` 已不再被看作所有类型的子类，
 那么除了特殊的 `Null` 类型允许传递 `null` 值，其他类型均不允许。
-我们已经将所有的类型设置为**默认不可空**的类型。
-如果您的变量是 `String` 类型，它必须包含**一个字符串**。
+我们已经将所有的类型设置为 **默认不可空** 的类型。
+如果您的变量是 `String` 类型，它必须包含 **一个字符串**。
 这样一来，我们就修复了所有的空引用错误。
 
 If we didn't think `null` was useful at all, we could stop here. But `null` is
@@ -335,7 +335,7 @@ underlying type. You can also safely pass `null` to something expecting a nullab
 `Null` is also a subtype of every nullable type:
 
 那么原有类型是如何与可空类型交互的呢？
-我们知道，将一个**非**空类型的值传递给可空类型是一定安全的。
+我们知道，将一个 **非** 空类型的值传递给可空类型是一定安全的。
 如果一个函数接受 `String?`，那么向其传递 `String` 是允许的，不会有任何问题。
 在此次改动中，我们将所有的可空类型作为基础类型的子类。
 您也可以将 `null` 传递给一个可空的类型，即 `Null` 也是任何可空类型的子类：
@@ -368,7 +368,7 @@ this thing called *implicit downcasts*. If you, for example, pass a value of
 type `Object` to a function expecting an `String`, the type checker allows it:
 
 我们不会允许这样不安全的程序出现。
-然而，**隐式转换**在 Dart 中一直存在。
+然而，**隐式转换** 在 Dart 中一直存在。
 假设您将类型为 `Object` 的实例传递给了需要 `String` 的函数，
 类型检查器会允许您这样做：
 
@@ -407,7 +407,7 @@ explicit downcast yourself:
 
 这会让 `requireStringNotNull()` 的调用产生您预料中的编译错误。
 同时也意味着，类似 `requireStringNotObject()` 这样的
-**所有**隐式转换调用都变成了编译错误。
+**所有** 隐式转换调用都变成了编译错误。
 您需要自己添加显式类型转换：
 
 ```dart
@@ -497,8 +497,8 @@ type*. Likewise, if there is a weird type at that bottom that is a subtype of
 every type, you have a *bottom type*. (In this case, your directed graph is a
 [lattice.][lattice])
 
-如果这张有向图的顶部有是一个单一的超类（直接或间接），那么这个类型称为**顶层类型**。
-类似的，如果有一个在底部有一个奇怪的类型，是所有类型的子类，这个类型就被称为**底层类型**。
+如果这张有向图的顶部有是一个单一的超类（直接或间接），那么这个类型称为 **顶层类型**。
+类似的，如果有一个在底部有一个奇怪的类型，是所有类型的子类，这个类型就被称为 **底层类型**。
 （在这个情况下，您的有向图是一种 [偏序集合 (lattice)][lattice]）
 
 [lattice]: https://en.wikipedia.org/wiki/Lattice_(order)
@@ -521,7 +521,7 @@ subtype of it. Dart has no *named* top type. If you need a top type, you want
 would still be nullable. Instead, we've added a new bottom type named `Never`:
 
 由于现在 `Object` 不再可空，所以它不再是一个顶层类型了。`Null` 也不再是它的子类。
-Dart 中没有**令人熟知的**顶层类型。如果您需要一个顶层类型，可以用 `Object?`。
+Dart 中没有 **令人熟知的** 顶层类型。如果您需要一个顶层类型，可以用 `Object?`。
 同样的，`Null` 也不再是底层类型，否则所有类型都仍将是可空。
 取而代之是一个全新的底层类型 `Never`：
 
@@ -594,10 +594,10 @@ function body then Dart implicitly returns `null`. Since every type is nullable,
 *technically* this function is safe, even though it's probably not what you
 want.
 
-如果分析器检查了这个函数，您会看到一个轻微的**提示**，提醒您**可能**忘记返回值，
+如果分析器检查了这个函数，您会看到一个轻微的 **提示**，提醒您 **可能** 忘记返回值，
 但不返回也无关紧要。
 这是因为代码执行到最后时，Dart 会隐式返回一个 `null`。
-因为所有的类型都是可空的，所以**从代码层面而言**，这个函数是安全的，尽管它并不一定与您预期相符。
+因为所有的类型都是可空的，所以 **从代码层面而言**，这个函数是安全的，尽管它并不一定与您预期相符。
 
 With sound non-nullable types, this program is flat out wrong and unsafe. Under
 null safety, you get a compile error if a function with a non-nullable return
@@ -694,7 +694,7 @@ things up for non-nullable variables:
 *   Local variables are the most flexible case. A non-nullable local variable
     *doesn't* need to have an initializer. This is perfectly fine:
 
-    局部变量的灵活度最高。一个非空的变量**不一定需要**一个初始化方法。
+    局部变量的灵活度最高。一个非空的变量 **不一定需要** 一个初始化方法。
     这里有个很好的例子：
 
     ```dart
@@ -717,7 +717,7 @@ things up for non-nullable variables:
     for this as well. As long as every path to a variable's use initializes it
     first, the use is OK.
 
-    此处遵循的规则是**局部变量必须*确保在使用前被赋值*。**
+    此处遵循的规则是 **局部变量必须*确保在使用前被赋值*。**
     我们也可以依赖于之前所提到的全新的流程分析来实现。
     只要所有使用变量的路径，在使用前都先初始化，就可以正常调用。
 
@@ -745,7 +745,7 @@ the type nullable and then get the default initialization to `null`.
 
 这些限制听起来非常繁琐，但在实际操作中并不难。
 它们与目前 `final` 有关的限制非常相似，您可能没有特别关注过，但它们伴随您已久。
-另外，请记住，这些限制仅适用于**非空**变量。
+另外，请记住，这些限制仅适用于 **非空** 变量。
 在您使用可空的类型时，`null` 仍然可以作为初始化的默认值。
 
 Even so, the rules do cause friction. Fortunately, we have a suite of new
@@ -768,7 +768,7 @@ Dart already has a dash of flow analysis in the form of *type promotion*:
 [控制流程分析][Control flow analysis] 已经在众多编译器中存在多年了。
 通常它对于使用者而言是不可见的，只在编译优化流程中使用，
 但是，部分较新的语言，已经开始在可以看见的语言特性中使用同样的技术了。
-Dart 已经以**类型提升**的方式实现了一些流程分析：
+Dart 已经以 **类型提升** 的方式实现了一些流程分析：
 
 ```dart
 // With (or without) null safety:
@@ -879,7 +879,7 @@ that expression can never successfully finish evaluating. It must throw an
 exception, abort, or otherwise ensure that the surrounding code expecting the
 result of the expression never runs.
 
-您可以自己**码出**这项可达性分析。
+您可以自己 **码出** 这项可达性分析。
 新的底层类型 `Never` 是没有任何值的。（什么值能同时是 `String`、`bool` 和 `int` 呢？）
 那么一个类型为 `Never` 的表达式有什么含义呢？
 它意味着这个表达式永远无法成功的推导和执行。
@@ -930,7 +930,7 @@ statement can only be reached when `other` is a `Point`, Dart promotes it.
 请注意 `==` 方法的最后一行，在 `other` 上调用 `.x` 和 `.y`。
 尽管在第一行并没有包含 `return` 或 `throw`，它的类型仍然提升为了 `Point`。
 控制流程分析意识到 `wrongType()` 声明的类型是 `Never`，
-代表着 `if` 语句的 then 分支**一定会**由于某些原因被中断。
+代表着 `if` 语句的 then 分支 **一定会** 由于某些原因被中断。
 由于下一句的代码仅能在 `other` 是 `Point` 时运行，所以 Dart 提升了它的类型。
 
 In other words, using `Never` in your own APIs lets you extend Dart's
@@ -954,7 +954,7 @@ has a non-nullable type.
 
 前文已经在提到局部变量时简单提到了这个分析。
 Dart 需要确保一个非空的局部变量在它被读取前一定完成了初始化。
-我们使用了**绝对的赋值分析**，从而保证尽可能灵活地处理变量的初始化。
+我们使用了 **绝对的赋值分析**，从而保证尽可能灵活地处理变量的初始化。
 Dart 语言会逐个分析函数的主体，并且追踪所有控制流路径的局部变量和参数的赋值。
 只要变量在每个使用路径中都已经被赋值，这个变量就被视为已初始化。
 这项分析可以让你不再一开始就对变量初始化，而是在后面复杂的控制流中进行赋值，
@@ -1008,8 +1008,8 @@ crashing.
 更智能的流程分析对于众多 Dart 代码而言帮助极大，甚至对于一些与是否可空无关的代码也是如此。
 但是我们在现在做出这些改动并非巧合。
 我们已经将类型划分成了可空和非空的集合，
-如果一个变量是一个可空的类型，您无法对它**做**任何有用的事情。
-所以在**值为** `null` 的情况下，这项限制是很有效的，
+如果一个变量是一个可空的类型，您无法对它 **做** 任何有用的事情。
+所以在 **值为** `null` 的情况下，这项限制是很有效的，
 它可以避免您的程序崩溃。
 
 But if the value isn't `null`, it would be good to be able to move it over to
@@ -1056,8 +1056,8 @@ checking for `null` before calling methods. The new flow analysis on null checks
 turns that *dynamic* correctness into provable *static* correctness.
 
 这听起来是件小事，但这种基于流程的空检查提升，是大部分 Dart 代码能运行在空安全下的保障。
-大部分的 Dart 代码**是**动态正确的，并且在调用前通过判断 `null` 来避免抛出空调用错误。
-新的空安全流程分析将**动态**正确变成了更有保障的**静态**正确。
+大部分的 Dart 代码 **是** 动态正确的，并且在调用前通过判断 `null` 来避免抛出空调用错误。
+新的空安全流程分析将 **动态** 正确变成了更有保障的 **静态** 正确。
 
 It also, of course, works with the smarter analysis we do for reachability. The
 above function can be written just as well as:
@@ -1097,8 +1097,8 @@ use that same analysis to detect code that you *don't* need. Before null safety,
 if you wrote something like:
 
 在您的程序中，一个可以准确知晓 `null` 去向的可达性分析，
-能确保您已经**增加**了对 `null` 的处理。
-不过我们也可以用同样的分析来检测您是否有**不用**的代码。
+能确保您已经 **增加** 了对 `null` 的处理。
+不过我们也可以用同样的分析来检测您是否有 **不用** 的代码。
 在空安全以前，如果您编写了如下的代码：
 
 ```dart
@@ -1156,8 +1156,8 @@ at your code and *see* where `null` can flow.
 
 此处由于代码执行后，`list` 不能为 `null`，所以您会在 `?.` 的调用处看到一个警告。
 这些警告不仅仅是为了减少无意义的代码，
-通过移除**不必要**的 `null` 判断，我们得以确保其他有意义的判断能够脱颖而出。
-我们期望您能**看到**您代码中的 `null` 会向何处传递。
+通过移除 **不必要** 的 `null` 判断，我们得以确保其他有意义的判断能够脱颖而出。
+我们期望您能 **看到** 您代码中的 `null` 会向何处传递。
 
 ## Working with nullable types
 
@@ -1246,7 +1246,7 @@ it once:
 这里的问题在于，`.isEven` 的接收器是左侧整个 `notAString?.length` 表达式的结果。
 这个表达式被认为是 `null`，所以我们在尝试调用 `.isEven` 的时候出现了空引用的错误。
 如果您在 Dart 中使用过 `?.`，您可能已经学会了一个非常繁琐的方法，
-那就是在使用了一次避空运算符后，其**每一处**属性或方法的链式调用处都加上它。
+那就是在使用了一次避空运算符后，其 **每一处** 属性或方法的链式调用处都加上它。
 
 ```dart
 String? notAString = null;
@@ -1270,7 +1270,7 @@ just be that the second `?.` is only there to handle cases where `thing` is
 `null`, not the result of `doohickey`. You can't tell.
 
 这里我们想问您一个问题：`Thing` 中获取 `doohickey` 是否会返回 `null`？
-看上去它**会**返回 `null`，因为您在调用后使用了 `?.`。
+看上去它 **会** 返回 `null`，因为您在调用后使用了 `?.`。
 但也有可能第二个 `?.` 仅仅是为了处理 `thing` 为 `null` 的情况，
 而不是 `doohickey` 的结果。您无法直接得出结论。
 
@@ -1282,8 +1282,8 @@ can and should write:
 
 为了解决这类问题，我们从 C# 相同功能的设计中借鉴了一个聪明的处理方法。
 当您在链式方法调用中使用避空运算符时，如果接收器被判断为 `null`，
-那么**整个链式调用的剩余部分都会被截断并跳过**。
-这意味着如果 `doohickey` 的返回值是一个可空的类型，您应该这样写：
+那么 **整个链式调用的剩余部分都会被截断并跳过**。
+这意味着如果 `doohickey` 的返回值是一个非空的类型，您应该这样写：
 
 ```dart
 // Using null safety:
@@ -1311,7 +1311,7 @@ into the method chain. This makes null-aware operators in method chains both
 more terse and more precise.
 
 您立刻就会知道 `doohickey` 本身的返回类型就是可空的。
-每一个 `?.` 对应一个**独一无二的**代码路径，能够让 `null` 随着链式调用传递。
+每一个 `?.` 对应一个 **独一无二的** 代码路径，能够让 `null` 随着链式调用传递。
 这就让链式方法调用中的避空运算符更为简洁和精确。
 
 While we were at it, we added a couple of other null-aware operators:
@@ -1352,7 +1352,7 @@ safety or performance of non-nullable types.
 But many valid uses of nullable types can't be *proven* to be safe in a way that
 pleases static analysis. For example:
 
-但是，很多有效的可空类型使用方法，不能向静态分析**证明**它们的安全性。例如：
+但是，很多有效的可空类型使用方法，不能向静态分析 **证明** 它们的安全性。例如：
 
 ```dart
 // Using null safety, incorrectly:
@@ -1516,7 +1516,7 @@ field should never be *observed* in its `null` state.
 这样一来，代码确实可以正常工作了。但是它让这个类的维护人员感到困惑。
 将 `_temperature` 变为可空，暗示着 `null` 对于字段来说是有用的值。
 但实际上其与您的企图背道而驰。
-`_temperature` 字段永远不会在为 `null` 的情况下被观测到。
+`_temperature` 字段永远不会在为 `null` 的情况下 **被观测到**。
 
 To handle the common pattern of state with delayed initialization, we've added a
 new modifier, `late`. You can use it like this:
@@ -1546,7 +1546,7 @@ it enforces the variable's guarantees.
 同时，在使用时也没有明确的空断言。
 虽然 `late` 应用的语义有几种解释，但在这里应该是：
 `late` 修饰符是“在运行时而非编译时对变量进行约束”。
-这就让 `late` 这个词语约等于**何时**执行对变量的强制约束。
+这就让 `late` 这个词语约等于 **何时** 执行对变量的强制约束。
 
 In this case, since the field is not definitely initialized, every time the
 field is read, a runtime check is inserted to make sure it has been assigned a
@@ -1576,7 +1576,7 @@ initialization, but still prohibits you from treating it like a nullable
 variable.
 
 作为回报，它在静态安全方面比可空类型更靠谱。
-因为这个字段现在是非空的了，在**编译时**为它赋予 `null` 或可空的 `String` 就会出错。
+因为这个字段现在是非空的了，在 **编译时** 为它赋予 `null` 或可空的 `String` 就会出错。
 虽然 `late` 修饰符让您延迟了初始化，但它仍然禁止您将变量作为可空的类型进行处理。
 
 ### Lazy initialization
@@ -1602,7 +1602,7 @@ field is accessed. In other words, it works exactly like an initializer on a
 top-level variable or static field. This can be handy when the initialization
 expression is costly and may not be needed.
 
-当您这么声明时，会让初始化**延迟**执行。
+当您这么声明时，会让初始化 **延迟** 执行。
 实例的构造将会延迟到字段首次被访问时执行，而不是在实例构造时就初始化。
 换句话说，它让字段的初始化方式变得与顶层变量和静态字段完全一致。
 当初始化表达式比较消耗性能，并且有可能不需要时，这会变得非常有用。
@@ -1617,7 +1617,7 @@ access `this`, call methods, or access fields on the instance.
 通常实例字段的初始化内容无法访问到 `this`，
 因为在所有的初始化方法完成前，您无法访问到新的实例对象。
 但是，使用了 `late` 让这个条件不再为真，
-所以您**可以**访问到 `this`、调用方法以及访问实例的字段。
+所以您 **可以** 访问到 `this`、调用方法以及访问实例的字段。
 
 ### Late final variables
 
@@ -1649,7 +1649,7 @@ immutable afterwards.
 
 与普通的 `final` 字段不同，您不需要在声明或构造时就将其初始化。
 您可以稍后在运行中的某个地方加载它。
-但是您只能对其进行**一次**赋值，并且它在运行时会进行校验。
+但是您只能对其进行 **一次** 赋值，并且它在运行时会进行校验。
 如果您尝试对它进行多次赋值，比如 `heat()` 和 `chill()` 都调用，
 那么第二次的赋值会抛出异常。
 这是确定字段状态的好方法，它最终会被初始化，并且在初始化后是无法改变的。
@@ -1677,8 +1677,8 @@ optional.
 为了保证您永远不会看到一个非空类型的参数值为 `null`，
 类型检查器给所有的可选参数提出了要求，要么是一个可空的类型，要么包含一个默认值。
 如果您需要一个可空的命名参数，同时又不包含默认值，该怎么办呢？
-这就意味着您要求调用者**每次**都为其传递内容。
-换句话说，您需要的是一个非可选的**命名**参数。
+这就意味着您要求调用者 **每次** 都为其传递内容。
+换句话说，您需要的是一个非可选的 **命名** 参数。
 
 I visualize the various kinds of Dart parameters with this table:
 
@@ -1810,7 +1810,7 @@ field has a value, and that requires making it nullable so you can observe the
 新引入的特性处理了非常多常见的行为模式，并且让大部分处理 `null` 的工作不再那么痛苦。
 即便如此，根据我们的经验之谈，处理可空的字段仍然是较为困难的。
 在您能使用 `late` 和非空类型的情况下，已经相当稳妥。
-但在很多场景里，您仍然需要**检查**字段是否有值，
+但在很多场景里，您仍然需要 **检查** 字段是否有值，
 这些情况下，字段会是可空的，您也能观测到 `null` 的存在。
 
 You might expect this to work:
@@ -1847,7 +1847,7 @@ returns `null` the second time it is called.)
 如果不为空，我们会访问并对它调用 `+`。
 很遗憾，这样做是不被允许的。
 基于流程分析的类型提升并不适用于字段，
-因为静态分析不能**证明**这个字段的值在您判断后和使用前没有发生变化。
+因为静态分析不能 **证明** 这个字段的值在您判断后和使用前没有发生变化。
 （某些极端场景中，字段本身可能会被子类的 getter 重写，从而在第二次调用时返回 `null`。）
 
 So, since we care about soundness, fields don't promote and the above method
@@ -1918,8 +1918,8 @@ potentially nullable type has all of the restrictions of both nullable types
 
 在 `Box` 的定义中，`T` 是可空还是非空的类型？
 正如您所看到的那样，它可以通过任意一种类型来进行实例化。
-答案是：`T` 是一个**潜在的可空类型**。
-在泛型类或泛型方法的主体中，一个潜在的可空类型包含了可空类型**以及**非空类型的所有限制。
+答案是：`T` 是一个 **潜在的可空类型**。
+在泛型类或泛型方法的主体中，一个潜在的可空类型包含了可空类型 **以及** 非空类型的所有限制。
 
 The former means you can't call any methods on it except the handful defined on
 Object. The latter means that you must initialize any fields or variables of
@@ -1968,7 +1968,7 @@ cast the nullability away. The correct way to do that is using an explicit `as
 T` cast, *not* the `!` operator:
 
 当您将类型参数像此处一样变为可空类型时，您可能需要强制将它转换为非空类型。
-正确的做法是显式地使用 `as T` 进行转换，**而不是**使用 `!` 操作符。
+正确的做法是显式地使用 `as T` 进行转换，**而不是** 使用 `!` 操作符。
 
 ```dart
 // Using null safety:
@@ -1985,7 +1985,7 @@ The `!` operator *always* throws if the value is `null`. But if the type
 parameter has been instantiated with a nullable type, then `null` is a perfectly
 valid value for `T`:
 
-如果值为 `null`，使用 `!` 操作符**一定**会抛出异常。
+如果值为 `null`，使用 `!` 操作符 **一定** 会抛出异常。
 但是如果类型参数已被声明为一个可空的类型，那么 `null` 对于 `T` 就是一个完全有效的值：
 
 ```dart
@@ -2033,7 +2033,7 @@ nullable type argument. That's probably a reasonable limitation for most
 classes.
 
 这些限制同时也带来了一些好处，您可以调用类型参数继承自其类型约束的任何方法。
-当然，非空的类型约束会阻止**使用者**用可空的类型参数对泛型进行实例化。
+当然，非空的类型约束会阻止 **使用者** 用可空的类型参数对泛型进行实例化。
 对于大部分类来说，这也是合理的限制。
 
 You can also use a nullable *bound*:
@@ -2085,9 +2085,9 @@ parameter to reliably be nullable, you can use `T?` inside the body of the
 class.
 
 请注意，可空的类型约束并不会阻止用户使用非空类型对类进行实例化。
-一个可空的类型约束意味着类型参数**可以**为空，而不是**必须**为空。
+一个可空的类型约束意味着类型参数 **可以** 为空，而不是 **必须** 为空。
 （实际上，如果您没有写上 `extends` 语句，类型参数的默认类型约束是可空的 `Object?`。）
-您没有办法声明一个**必需的**可空类型参数。
+您没有办法声明一个 **必需的** 可空类型参数。
 如果您希望确保类型参数一定是可空的，您可以在类的主体中使用 `T?`。
 
 ## Core library changes
@@ -2115,7 +2115,7 @@ gracefully accept it with a nullable type.
 在我们开始这次的空安全大冒险之前，我们曾经担心过，
 为了让核心库用上空安全，也许我们要对现有的语言系统做出大规模的破坏性改动。
 而结果并没有想象中的那么可怕。
-尽管确实**有**一些重大的变化，但在大部分情况下，迁移进行得十分顺利。
+尽管确实 **有** 一些重大的变化，但在大部分情况下，迁移进行得十分顺利。
 大多数的核心库要么不接受 `null` ，从而自然地使用了非空的类型，
 要么接受了 `null`，并且优雅地处理了可空类型。
 
@@ -2164,7 +2164,7 @@ string. In cases where you *know* the key is present you can teach the type
 checker by using `!`:
 
 这段代码会在 `.length` 的调用处抛出一个编译异常，因为您尝试调用可空的字符串。
-在您已经**确定**键值存在的情况下，您可以给类型检查器上一个 `!`：
+在您已经 **确定** 键值存在的情况下，您可以给类型检查器上一个 `!`：
 
 ```dart
 // Using null safety:
@@ -2229,7 +2229,7 @@ elements.
 
 `List` 的 `length` getter 也有一个对应的 setter，这一点鲜为人知。
 您可以对列表设置一个较短的长度，从而截断它。
-您也可以对列表设置一个**更长的**长度，从而使用未初始化的元素填充它。
+您也可以对列表设置一个 **更长的** 长度，从而使用未初始化的元素填充它。
 
 If you were to do that with a list of a non-nullable type, you'd violate
 soundness when you later accessed those unwritten elements. To prevent that, the
@@ -2239,7 +2239,7 @@ fine to truncate lists of all types, and you can grow lists of nullable types.
 
 如果您对一个非空的列表做了这样的操作，在访问未初始化的元素时，就与空安全的健全性发生了冲突。
 为了防止意外发生，现在对一个非空类型的数组调用调用 `length` setter，
-**并且**准备设置一个**更长的**长度时，会在运行时抛出一个异常。
+**并且** 准备设置一个 **更长的** 长度时，会在运行时抛出一个异常。
 您仍然可以对任何类型的列表进行截断，也可以对一个可空类型的列表进行填充。
 
 There is an important consequence of this if you define your own list types that
@@ -2286,7 +2286,7 @@ aren't supposed to. Most implementations of `Iterator` throw a `StateError`.
 
 鉴于目前几乎没有人会以这种错误的方式访问当前元素，这些检查其实毫无用处。
 所以我们将 `current` 的返回类型确定为 `E`。
-由于迭代前后**有可能**会有一个对应类型的值出现，
+由于迭代前后 **有可能** 会有一个对应类型的值出现，
 当您在不应该调用它的时候调用迭代器时，我们让迭代器的行为保持为未定义。
 对于 `Iterator` 的大部分实现都将抛出 `StateError` 异常。
 
