@@ -4310,12 +4310,13 @@ class EffectiveDoer extends Doer {
 Use the `abstract` modifier to define an *abstract class*—a class that
 can’t be instantiated. Abstract classes are useful for defining
 interfaces, often with some implementation. If you want your abstract
-class to appear to be instantiable, define a [factory
-constructor](#factory-constructors).
+class to appear to be instantiable, define a [factory constructor][factory].
 
 使用关键字 `abstract` 标识类可以让该类成为 *抽象类*，抽象类将无法被实例化。
 抽象类常用于声明接口方法、有时也会有具体的方法实现。
-如果想让抽象类同时可被实例化，可以为其定义 [工厂构造函数](#工厂构造函数)。
+如果想让抽象类同时可被实例化，可以为其定义 [工厂构造函数][factory]。
+
+[factory]: #factory-constructors
 
 Abstract classes often have [abstract methods](#abstract-methods).
 Here’s an example of declaring an abstract class that has an abstract
