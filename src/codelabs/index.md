@@ -19,7 +19,7 @@ no download required!
 
 ### [Intro to Dart for Java Developers](https://codelabs.developers.google.com/codelabs/from-java-to-dart/)
 
-### [介绍 Dart 给 Java 开发者](https://codelabs.developers.google.com/codelabs/from-java-to-dart/)
+### [向 Java 开发者介绍 Dart](https://codelabs.developers.google.com/codelabs/from-java-to-dart/)
 
 Use DartPad to explore how
 Dart makes writing apps easy and fun.
@@ -36,6 +36,8 @@ some of the most commonly used, yet unique features of the Dart language.
 
 ### [Iterable collections](/codelabs/iterables)
 
+### [可迭代集合](/codelabs/iterables)
+
 Use DartPad to learn or remind yourself of how to use
 lists, sets, and other iterable collections in Dart,
 with special attention to filtering and mapping values.
@@ -45,6 +47,8 @@ Dart 中的列表，集合和其他可迭代集合，
 特别注意过滤和映射值。
 
 ### [Asynchronous programming: futures, async, await](/codelabs/async-await)
+
+### [异步编程：futures, async, await](/codelabs/async-await)
 
 Use DartPad to learn or remind yourself of how to write 
 asynchronous code using futures and the `async` and `await` keywords.
