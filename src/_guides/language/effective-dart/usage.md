@@ -1714,7 +1714,7 @@ actually return a new object.
 
 Dart 2 `new` 关键字成为可选项。
 即使在Dart 1中，其含义也从未明确过，
-以为在工厂构造函数中，调用 `new` 可能并不意味着一定会返回一个新对象。
+因为在工厂构造函数中，调用 `new` 可能并不意味着一定会返回一个新对象。
 
 The language still permits `new` in order to make migration less painful, but
 consider it deprecated and remove it from your code.
