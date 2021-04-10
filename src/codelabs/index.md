@@ -19,7 +19,7 @@ no download required!
 
 ### [Intro to Dart for Java Developers](https://codelabs.developers.google.com/codelabs/from-java-to-dart/)
 
-### [向 Java 开发者介绍 Dart](https://codelabs.developers.google.com/codelabs/from-java-to-dart/)
+### [面向 Java 开发者的 Dart 介绍](https://codelabs.developers.google.com/codelabs/from-java-to-dart/)
 
 Use DartPad to explore how
 Dart makes writing apps easy and fun.
@@ -61,4 +61,3 @@ To learn about Flutter, try one of the
 [Flutter codelabs.]({{site.flutter}}/codelabs)
 
 尝试在 [Flutter Codelab]({{site.flutter}}/codelabs)，学习和了解 Flutter。
-
