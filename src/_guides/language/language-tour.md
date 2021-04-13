@@ -5462,7 +5462,7 @@ Future checkVersion() [!async!] {
 
   尽管异步函数可以处理耗时操作，但是它并不会等待这些耗时操作完成，
   异步函数执行时会在其遇到第一个 `await` 表达式
-  （[详情][synchronous-async-start]）的时候返回一个 Future 对象，
+  （[详情][synchronous-async-start]）时返回一个 Future 对象，
   然后等待 await 表达式执行完毕后继续执行。
 
 {{site.alert.end}}
@@ -5528,7 +5528,7 @@ Future main() [!async!] {
 An `async` function is a function whose body is marked with
 the `async` modifier.
 
-**异步函数** 是函数体 `async` 关键字标记的函数。
+**异步函数** 是函数体由 `async` 关键字标记的函数。
 
 Adding the `async` keyword to a function makes it return a Future.
 For example, consider this synchronous function,
@@ -5997,7 +5997,7 @@ Dart 支持单行注释、多行注释和文档注释。
 A single-line comment begins with `//`. Everything between `//` and the
 end of line is ignored by the Dart compiler.
 
-单行注释以 `//` 开始。编译器会忽略所有在 `//` 和该行结尾之间的内容。
+单行注释以 `//` 开始。所有在 `//` 和该行结尾之间的内容均被编译器忽略。
 
 <?code-excerpt "misc/lib/language_tour/comments.dart (single-line-comments)"?>
 ```dart
