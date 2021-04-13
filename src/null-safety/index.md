@@ -50,7 +50,7 @@ or learn about null safety using
 (shown in the following screenshot).
 
 您可以 [在您的开发项目里尝试空安全](#enable-null-safety)、
-[迁移您项目中的代码][migration-guide] 至空安全、
+[迁移您项目中的代码][migration guide] 至空安全、
 或者通过 [支持空安全的 DartPad][nullsafety.dartpad.dev] 进行练习，
 如下面的截图所示。
 
@@ -208,7 +208,7 @@ For more information about null safety, see the following resources:
 
 * [Understanding null safety][]
 
-  [深入理解空安全][]
+  [深入理解空安全][Understanding null safety]
 
 * [Migration guide for existing code][migration guide]
 
