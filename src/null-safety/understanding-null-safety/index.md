@@ -2305,7 +2305,7 @@ null safety was bolted on.
 这其中的内容真的很多，但是这也是一项非常大的语言变更。
 更重要的是，我们希望 Dart 仍然让您感到好用且具备一致性。
 所以不仅类型系统需要作出变动，一些可用性的特性也同时围绕着一起改变。
-我们不希望空安全仅仅是拿螺栓固定的糟糕特性。
+我们不希望空安全仅仅是一个简陋的语法附加特性。
 
 The core points to take away are:
 
@@ -2359,7 +2359,7 @@ safety, you get a sound program that the compilers can optimize and where every
 place a runtime error can occur is visible in your code. We hope you feel that's
 worth the effort to get there.
 
-最后，当您吸收了这篇文章的所有内容，并且将您的代码真正带到空安全的世界中时，
+最后，当您掌握了这篇文章的所有内容，并且将您的代码真正带到空安全的世界中时，
 您会得到一个健全的、编译器可以进行优化的程序，
 并且在您的代码中，您可以看到每一个运行时可能出错的地方。
 希望您的一切努力都是值得的。
