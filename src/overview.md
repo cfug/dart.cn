@@ -28,7 +28,7 @@ prioritizing both development (sub-second stateful hot reload) and
 high-quality production experiences across
 a wide variety of compilation targets (web, mobile, and desktop).
 
-语言收到其**技术设计**的限制，即语言在设计中的抉择决定了其功能和优势。
+语言受到其**技术设计**的限制，即语言在设计中的抉择决定了其功能和优势。
 Dart 的语言设计针对客户端开发，它优先考虑多平台（Web，移动端和桌面端）上的开发（亚秒级的状态热重载）和高质量生产环境体验。
 
 Dart also forms the foundation of [Flutter]({{site.flutter}}).
