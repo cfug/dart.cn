@@ -2238,7 +2238,7 @@ non-nullable element type *and* you set it to a *longer* length. It is still
 fine to truncate lists of all types, and you can grow lists of nullable types.
 
 如果您对一个非空的列表做了这样的操作，在访问未初始化的元素时，就与空安全的健全性发生了冲突。
-为了防止意外发生，现在对一个非空类型的数组调用调用 `length` setter，
+为了防止意外发生，现在对一个非空类型的数组调用 `length` setter，
 **并且** 准备设置一个 **更长的** 长度时，会在运行时抛出一个异常。
 您仍然可以对任何类型的列表进行截断，也可以对一个可空类型的列表进行填充。
 
