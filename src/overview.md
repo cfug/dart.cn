@@ -73,7 +73,7 @@ If you inspect your running code in the debugger,
 you’ll see that non-nullability is retained at runtime
 (hence _sound_ null safety).
 
-Dart提供 [可靠的空值安全](/null-safety)，
+Dart 提供 [可靠的空值安全](/null-safety)，
 这意味着只有您声明值可以为空的情况下，值才可以为空。
 凭借可靠的空值安全，Dart 可以通过静态代码分析在运行时保护您免受空值异常的影响。
 与其他许多空安全语言不同，
@@ -368,7 +368,7 @@ More information:
 * [Web deployment tips](/web/deployment)
 
 更多相关信息：
-* [快速上手: 网页应用程序](/tutorials/web/get-started)
+* [快速上手：网页应用程序](/tutorials/web/get-started)
 * [`dartdevc` 编译器](/tools/dartdevc)
 * [`webdev` 工具](/tools/webdev)
 * [网页部署提示](/web/deployment)
