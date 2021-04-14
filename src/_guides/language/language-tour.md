@@ -997,7 +997,7 @@ This _trailing comma_ doesn't affect the collection,
 but it can help prevent copy-paste errors.
 
 你可以在 Dart 的集合类型的最后一个项目后添加逗号。
-这个尾随逗号并不会影响集合，但它能有效避免“复制粘贴”错误。
+这个尾随逗号并不会影响集合，但它能有效避免「复制粘贴」的错误。
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (trailing-commas)"?>
 ```dart
