@@ -4526,21 +4526,22 @@ For more information, see the informal
 
 ### Extension methods
 
-### Extension 方法
+### 扩展方法
+
 Extension methods are a way to add functionality to existing libraries.
 You might use extension methods without even knowing it.
 For example, when you use code completion in an IDE,
 it suggests extension methods alongside regular methods.
 
-Extension 方法是向现有库添加功能的一种方式。
-你可能已经在不知道它是 Extension 方法的情况下使用了它。
+扩展方法是向现有库添加功能的一种方式。
+你可能已经在不知道它是扩展方法的情况下使用了它。
 例如，当您在 IDE 中使用代码完成功能时，
-它建议将 Extension 方法与常规方法一起使用。
+它建议将扩展方法与常规方法一起使用。
 
 Here's an example of using an extension method on `String`
 named `parseInt()` that's defined in `string_apis.dart`:
 
-这里是一个在 `String` 中使用 extension 方法的样例，
+这里是一个在 `String` 中使用扩展方法的样例，
 我们取名为 `parseInt()`，它在 `string_apis.dart` 中定义：
 
 ```dart
@@ -4553,8 +4554,8 @@ print('42'.parseInt()); // Use an extension method.
 For details of using and implementing extension methods, see the
 [extension methods page][].
 
-有关使用以及实现 extension 方法的详细信息，请参阅
-[extension methods 页面][extension methods page]。
+有关使用以及实现扩展方法的详细信息，请参阅
+[扩展方法页面][extension methods page]。
 
 <a id="enums"></a>
 ### Enumerated types
@@ -5462,7 +5463,7 @@ Future checkVersion() [!async!] {
 
   尽管异步函数可以处理耗时操作，但是它并不会等待这些耗时操作完成，
   异步函数执行时会在其遇到第一个 `await` 表达式
-  （[详情][synchronous-async-start]）时返回一个 Future 对象，
+  （[代码行][synchronous-async-start]）时返回一个 Future 对象，
   然后等待 await 表达式执行完毕后继续执行。
 
 {{site.alert.end}}
@@ -5787,7 +5788,7 @@ Instead of threads, all Dart code runs inside of *isolates*. Each
 isolate has its own memory heap, ensuring that no isolate’s state is
 accessible from any other isolate.
 
-为了解决多线程带来的并发问题，Dart 使用 isolates 替代线程，所有的 Dart 代码均运行在一个 **isolates** 中。每一个 isolates 有它自己的堆内存以确保其状态不被其它 isolates 访问。
+为了解决多线程带来的并发问题，Dart 使用 isolate 替代线程，所有的 Dart 代码均运行在一个 **isolate** 中。每一个 isolate 有它自己的堆内存以确保其状态不被其它 isolate 访问。
 
 For more information, see the following:
 
