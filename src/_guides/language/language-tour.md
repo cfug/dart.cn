@@ -2942,7 +2942,7 @@ while (!isDone()) {
 
 A `do`-`while` loop evaluates the condition *after* the loop:
 
-`do-while` 循环则会**先执行一遍循环体**再判断条件：
+`do-while` 循环则会 **先执行一遍循环体** 再判断条件：
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (do-while)"?>
 ```dart
