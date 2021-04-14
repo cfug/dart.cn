@@ -1606,7 +1606,7 @@ is sometimes referred to as _arrow_ syntax.
 
 语法 <code>=> <em>表达式</em></code>
 是 <code>{ return <em>表达式</em>; }</code> 的简写，
-`=>` 有时也称之为**胖箭头**语法。
+`=>` 有时也称之为 **箭头** 函数。
 
 {{site.alert.note}}
 
