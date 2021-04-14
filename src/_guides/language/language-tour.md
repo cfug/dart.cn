@@ -5424,7 +5424,7 @@ you have two options:
 * Use the Future API, as described
   [in the library tour](/guides/libraries/library-tour#future).
 
-  使用 Future API，具体描述参考[库概览](/guides/libraries/library-tour#future)。
+  使用 Future API，具体描述参考 [库概览](/guides/libraries/library-tour#future)。
 
 Code that uses `async` and `await` is asynchronous,
 but it looks a lot like synchronous code.
