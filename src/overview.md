@@ -123,9 +123,9 @@ Stream<double> computePi({int batch = 100000}) async* {
     // should approach π / 4. Therefore, the value of π
     // should be:
     //
-    // 圆的面积为 A =π⋅r²，故 π= A /r²。
-    // 因此，当给定 x∈<0,1>，y∈<0,1> 的随机点时，
-    // 单位圆内的比率应该接近π/4。
+    // 圆的面积为 A =π⋅r²，故 π = A /r²。
+    // 因此，当给定 x ∈ <0,1>，y ∈ <0,1> 的随机点时，
+    // 单位圆内的比率应该接近 π/4。
     // 因此，π 的值应为：
     yield ratio * 4;
   }
@@ -231,7 +231,7 @@ Dart 团队发布了许多有用的补充包，
 * [crypto]({{site.pub-pkg}}/crypto)
 * [markdown]({{site.pub-pkg}}/markdown)
 
-* [characters(字符)]({{site.pub-pkg}}/characters)
+* [characters（字符）]({{site.pub-pkg}}/characters)
 * [intl（国际化）]({{site.pub-pkg}}/intl) 
 * [http（http 请求）]({{site.pub-pkg}}/http)
 * [crypto（哈希加密）]({{site.pub-pkg}}/crypto)
@@ -242,6 +242,11 @@ publish thousands of packages, with support for features like these:
 
 此外，第三方发布者和更广泛的社区也
 发布了上千个软件包，支持诸如此类功能：
+
+* [XML]({{site.pub-pkg}}/xml) 
+* [Windows integration]({{site.pub-pkg}}/win32)
+* [SQLite]({{site.pub-pkg}}/sqflite_common)
+* [compression]({{site.pub-pkg}}/archive)
 
 * [XML]({{site.pub-pkg}}/xml) 
 * [Windows integration（Windows API 调用）]({{site.pub-pkg}}/win32)
@@ -319,7 +324,9 @@ enforces the sound Dart type system and
 manages memory using fast object allocation and a
 [generational garbage collector](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30).
 
-经过 AOT 编译的代码会在高效的 Dart 运行环境中运行，该运行环境拥有健全的 Dart 类型系统，并使用快速对象分配和 [分代垃圾收集器](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30) 来管理内存 。
+经过 AOT 编译的代码会在高效的 Dart 运行环境中运行，该运行环境拥有健全的 Dart 类型系统，
+并使用快速对象分配和
+[分代垃圾收集器](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30) 来管理内存。
 
 More information:
 * [Get started: command-line and server apps](/tutorials/server/get-started)
@@ -328,7 +335,7 @@ More information:
 * [Write HTTP clients and servers](/tutorials/server/httpserver)
 
 更多相关信息：
-* [快速上手：命令行和服务器应用程序](/tutorials/server/get-started)
+* [快速上手：命令行与服务器应用](/tutorials/server/get-started)
 * [用于 JIT 运行或 AOT 编译为机器码的 `dart` 工具 ](/tools/dart-tool)
 * [编写命令行应用应用程序](/tutorials/server/cmdline)
 * [编写 HTTP 客户端和服务器](/tutorials/server/httpserver)
@@ -342,7 +349,7 @@ JavaScript. With Dart Web, you compile Dart code to JavaScript code, which in
 turn runs in a browser — for example, [V8](https://v8.dev/) inside
 [Chrome](https://www.google.com/chrome/).
 
-Dart 网页支持在 JavaScript 驱动的网页平台上运行 Dart 代码。
+Dart 网页支持允许你在 JavaScript 驱动的网页平台上运行 Dart 代码。
 使用 Dart Web，你可以将 Dart 编译为在浏览器中运行的 JavaScript 代码，
 例如: [Chrome](https://www.google.com/chrome/) 中的 [V8](https://v8.dev/)。
 
