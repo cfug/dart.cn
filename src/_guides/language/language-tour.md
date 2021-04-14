@@ -3212,7 +3212,7 @@ Methods do not declare which exceptions they might throw, and you are
 not required to catch any exceptions.
 
 与 Java 不同的是，Dart 的所有异常都是非必检异常，
-方法不必声明会抛出哪些异常并且你也不必捕获任何异常。
+方法不必声明会抛出哪些异常，并且你也不必捕获任何异常。
 
 Dart provides [Exception][] and [Error][]
 types, as well as numerous predefined subtypes. You can, of course,
