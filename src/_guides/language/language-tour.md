@@ -4650,7 +4650,7 @@ Enumerated types have the following limits:
 
 For more information, see the [Dart language specification][].
 
-你可以查阅 [Dart 编程语言规范][Dart language specification]获取更多相关信息。
+你可以查阅 [Dart 编程语言规范][Dart language specification] 获取更多相关信息。
 
 
 ### Adding features to a class: mixins
