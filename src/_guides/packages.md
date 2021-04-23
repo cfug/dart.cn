@@ -327,18 +327,7 @@ the pub package manager.
 
 The `dart pub` tool provides the following subcommands:
 
-`pub` 工具提供了如下的子命令：
-
-* [`cache`][]
-* [`deps`][]
-* [`downgrade`][]
-* [`get`][]
-* [`global`][]
-* [`outdated`][]
-* [`publish`][]
-* [`run`][]
-* [`upgrade`][]
-* [`uploader`][]
+{% include pub-subcommands.md %}
 
 For an overview of all the `dart pub` subcommands,
 see the [pub tool documentation](/tools/pub/cmd).
@@ -356,13 +345,3 @@ you might encounter when using pub.
 [Pub 故障排除](/tools/pub/troubleshoot) 提供使用中可能遇到问题的解决方法。
 
 [Dart-savvy IDEs]: /tools#ides-and-editors
-[`cache`]: /tools/pub/cmd/pub-cache
-[`deps`]: /tools/pub/cmd/pub-deps
-[`downgrade`]: /tools/pub/cmd/pub-downgrade
-[`get`]: /tools/pub/cmd/pub-get
-[`global`]: /tools/pub/cmd/pub-global
-[`outdated`]: /tools/pub/cmd/pub-outdated
-[`publish`]: /tools/pub/cmd/pub-lish
-[`run`]: /tools/pub/cmd/pub-run
-[`upgrade`]: /tools/pub/cmd/pub-upgrade
-[`uploader`]: /tools/pub/cmd/pub-uploader

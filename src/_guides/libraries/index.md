@@ -17,7 +17,6 @@ Dart 拥有非常丰富的核心库用以为诸如处理对象集合（`dart:col
 [由社区贡献的 packages](/guides/libraries/useful-libraries) 中也提供了许多其它
 的 API 便于开发者使用。
 
-
 <style>
   th:first-child {
     width: 80%;
@@ -102,10 +101,8 @@ The following table lists the Dart core libraries that work on the
 | [`dart:web_gl`][dart-web_gl]            <br> 用于浏览器的 3D 编程。| |
 | [`dart:js`][dart-js]                    <br> _Don't use._ Instead, use the `js` package, as described in [JavaScript interoperability][]. | *DEPRECATED* |
 | [`dart:js`][dart-js]                    <br> **不要使用该库**，请使用 `js` 这个 Package 替代，就像我们在 [JavaScript 互相调用][JavaScript interoperability] 中说的那样。| **已弃用** |
-| [`dart:js_util`][dart-js_util]          <br> _Don't use._ Instead, use the `js` package, as described in [JavaScript interoperability][]. | *DEPRECATED* |
-| [`dart:js_util`][dart-js_util]          <br> **不要使用该库**，请使用 `js` 这个 Package 替代，就像我们在 [JavaScript 互相调用][JavaScript interoperability] 中说的那样。| **已弃用** |
-| [`dart:web_sql`][dart-web_sql]          <br> API for storing data in the browser that can be queried with SQL. | *DEPRECATED* |
-| [`dart:web_sql`][dart-web_sql]          <br> 用于在浏览器中存储数据的 API，存储的数据可以通过 SQL 查询。 | **已弃用** |
+| [`dart:js_util`][dart-js_util]          <br> APIs to supplement missing functionality in `dart:html` or the `js` package. | |
+| [`dart:js_util`][dart-js_util]          <br> 补充 `dart:html` 或 `js` 包中缺少的功能性 API。 | |
 {:.table .table-striped}
 
 </div>
@@ -129,5 +126,4 @@ The following table lists the Dart core libraries that work on the
 [dart-svg]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-svg/dart-svg-library.html
 [dart-web_audio]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
 [dart-web_gl]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_gl/dart-web_gl-library.html
-[dart-web_sql]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_sql/dart-web_sql-library.html
 [JavaScript interoperability]: /web/js-interop

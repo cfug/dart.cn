@@ -56,12 +56,12 @@ or learn about null safety using
 
 ![Screenshot of DartPad in null-safe mode](/null-safety/dartpad-snippet.png)
 
-For an example-driven summary of null safety language features,
-see the [null safety feature tour](/null-safety/tour).
-For a more in-depth discussion, see
+For an interactive, example-driven introduction to null safety language features,
+see the [null safety codelab][Null safety codelab].
+For an in-depth discussion, see
 [Understanding null safety](/null-safety/understanding-null-safety).
 
-若您想通过示例快速了解空安全，可以查看 [空安全功能之旅](/null-safety/tour)。
+若您想通过一个交互示例快速了解空安全，可以查看 [空安全 Codelab][Null safety codelab]。
 更深入的探讨，可以阅读 [深入理解空安全](/null-safety/understanding-null-safety)。
 
 ## Null safety principles
@@ -92,7 +92,7 @@ Dart 的空安全支持基于以下三条核心原则：
   If the type system determines that something isn’t null, then that thing can _never_ be
   null. Once you migrate your whole project
   and its dependencies to null safety, you reap the full benefits of soundness
-  —- not only fewer bugs, but smaller binaries and faster execution.
+  — not only fewer bugs, but smaller binaries and faster execution.
 
   **完全可靠**。Dart 的空安全是非常可靠的，意味着编译期间包含了很多优化。
   如果类型系统推断出某个变量不为空，那么它 **永远** 不为空。
@@ -202,9 +202,9 @@ Dart 团队已知晓以下问题：
 
 For more information about null safety, see the following resources:
 
-* [Null safety tour][]
+* [Null safety codelab][]
 
-  [空安全功能之旅][Null safety tour]
+  [空安全 Codelab][Null safety codelab]
 
 * [Understanding null safety][]
 
@@ -240,7 +240,7 @@ For more information about null safety, see the following resources:
 [Dart blog]: https://medium.com/dartlang
 [migration guide]: /null-safety/migration-guide
 [Null safety FAQ]: /null-safety/faq
-[Null safety tour]: /null-safety/tour
+[Null safety codelab]: /codelabs/null-safety
 [nullsafety.dartpad.dev]: https://nullsafety.dartpad.dev
 [Understanding null safety]: /null-safety/understanding-null-safety
 

@@ -1,5 +1,5 @@
 ---
-title: "DartPad in tutorials: best practices"
+title: DartPad in tutorials: best practices
 title: DartPad 最佳实践教程
 description: Research-tested advice for creating effective and engaging educational content for Dart and Flutter users.
 description: 经过研究测试的建议的指南，旨在为Dart和Flutter用户创建有效且高质量的教程。
@@ -48,7 +48,7 @@ The following screenshot shows DartPad.
 
 **1. Tabs:** Dart, Solution, and Tests (hidden) <br>
 **2. Hint:** Offers help <br>
-**3. Format:** Runs the code formatter (dartfmt) <br>
+**3. Format:** Runs the code formatter (dart format) <br>
 **4. Reset:** Erases your work and restores the editor to its original state <br>
 **5. Run**
 

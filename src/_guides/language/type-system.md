@@ -6,6 +6,8 @@ description: 如何写出优雅的 Dart 代码。
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /([A-Z]\w*)\d\b/$1/g; /\b(main)\d\b/$1/g"?>
 
+{% include not-null-safe.md %}
+
 The Dart language is type safe: it uses a combination of static type checking and
 [runtime checks](#runtime-checks) to
 ensure that a variable's value always matches the variable's static type,

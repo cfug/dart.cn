@@ -566,7 +566,7 @@ a flavor of what's supported:
 ///
 /// Code blocks are fenced in triple backticks:
 ///
-/// ```
+/// ```dart
 /// this.code
 ///     .will
 ///     .retain(its, formatting);
@@ -644,7 +644,7 @@ language, and is consistent with using backticks for inline code.
 {% prettify dart tag=pre+code %}
 /// You can use [CodeBlockExample] like this:
 ///
-/// ```
+/// ```dart
 /// var example = CodeBlockExample();
 /// print(example.isItGreat); // "Yes."
 /// ```

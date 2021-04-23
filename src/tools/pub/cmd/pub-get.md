@@ -10,7 +10,7 @@ _Get_ is one of the commands of the [pub tool](/tools/pub/cmd).
 _Get_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
 
 {% prettify nocode tag=pre+code %}
-$ dart pub get [--offline]
+$ dart pub get [args]
 {% endprettify %}
 
 This command gets all the dependencies listed in the
@@ -179,15 +179,37 @@ run [`dart pub upgrade`](/tools/pub/cmd/pub-upgrade) to upgrade to a later versi
 
 ## 选项
 
-The `dart pub get` command supports the `--offline`
-command-line argument, as discussed above.
-
-`dart pub get` 命令支持我们上面所说的 `--offline` 命令行参数。
-
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
 你可以查阅 [全局选项](/tools/pub/cmd#global-options) 获取 Pub 命令所支持的命令选项。
+
+### `--dry-run` or `-n`
+
+### `--dry-run` 或 `-n`
+
+Reports the dependencies that would be changed,
+but doesn't make the changes. This is useful if you
+want to analyze updates before making them.
+
+打印出可能变化的依赖，但不会实际作出更改。
+如果你想要在变更前进行分析，该命令非常有用。
+
+### `--offline`
+
+Uses cached packages rather than downloading
+from the network.
+For details, see [Getting while offline](#getting-while-offline).
+
+使用缓存的 package 而不是从网上下载。
+更多细节，请查看 [离线时获取](#getting-while-offline)。
+
+### `--precompile`
+
+Creates snapshots of the
+project's executables in direct dependencies.
+
+以直接依赖的方式创建项目中可执行文件的快照。
 
 <aside class="alert alert-info" markdown="1">
 *Problems?*

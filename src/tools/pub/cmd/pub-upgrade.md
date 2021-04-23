@@ -138,13 +138,89 @@ run `dart pub upgrade` again to upgrade to a later version.
 
 The `dart pub upgrade` command supports the
 [`dart pub get` options](/tools/pub/cmd/pub-get#options).
-
-`pub upgrade` 命令支持 [`pub get` 的命令选项](/tools/pub/cmd/pub-get#options)。
-
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
+`pub upgrade` 命令支持 [`pub get` 的命令选项](/tools/pub/cmd/pub-get#options)。
 你可以查阅[全局选项](/tools/pub/cmd#global-options)获取 Pub 命令所支持的命令选项。
+
+### `--dry-run` or `-n`
+
+### `--dry-run` 或 `-n`
+
+Reports the dependencies that would be changed,
+but doesn't make the changes. This is useful if you
+want to analyze updates before making them.
+
+打印出可能变化的依赖，但不会实际作出更改。
+如果你想要在变更前进行分析，该命令非常有用。
+
+### `--major-versions`
+
+Gets the packages that [`dart pub outdated`][] lists as _resolvable_,
+ignoring any upper-bound constraint in the `pubspec.yaml` file.
+Also updates `pubspec.yaml` with the new constraints.
+
+获取 [`dart pub outdated`][] 列表中标记为 **resolvable** 的依赖，
+忽略 `pubspec.yaml` 文件中的任何上限。
+同时 `pubspec.yaml` 文件中的限制也会更新。
+
+[`dart pub outdated`]: /tools/pub/cmd/pub-outdated
+
+{{ site.alert.tip }}
+
+  Commit the `pubspec.yaml` file before running this command,
+  so that you can undo the changes if necessary.
+
+  在运行该命令前提交 `pubspec.yaml` 文件的修改，这样如果有需要时可以进行回滚。
+
+{{ site.alert.end }}
+
+To check which dependencies will be upgraded,
+you can use `dart pub upgrade --major-versions --dry-run`.
+
+想查看哪些依赖会被更新，可以运行
+`dart pub upgrade --major-versions --dry-run`。
+
+### `--null-safety`
+
+Gets the packages that
+[`dart pub outdated --mode=null-safety`][`dart pub outdated`]
+lists as _resolvable_,
+ignoring any upper-bound constraint in the `pubspec.yaml` file.
+Also updates `pubspec.yaml` with the new constraints.
+This command is similar to `--major-versions`.
+
+获取 [`dart pub outdated --mode=null-safety`][`dart pub outdated`]
+列表中标记为 **resolvable** 的依赖，
+忽略 `pubspec.yaml` 文件中的任何上限。
+同时 `pubspec.yaml` 文件中的限制也会更新。
+该命令与 `--major-versions` 类似。
+
+{{ site.alert.tip }}
+
+  Commit the `pubspec.yaml` file before running this command,
+  so that you can undo the changes if necessary.
+
+  在运行该命令前提交 `pubspec.yaml` 文件的修改，这样如果有需要时可以进行回滚。
+
+{{ site.alert.end }}
+
+### `--offline`
+
+Uses cached packages rather than downloading
+from the network.
+For details, see [Upgrading while offline](#upgrading-while-offline).
+
+使用缓存的 package 而不是从网上下载。
+更多细节，请查看 [离线时升级](#upgrading-while-offline)。
+
+### `--precompile`
+
+Creates snapshots of the
+project's executables in direct dependencies.
+
+以直接依赖的方式创建项目中可执行文件的快照。
 
 <aside class="alert alert-info" markdown="1">
 *Problems?*

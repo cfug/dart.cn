@@ -55,6 +55,15 @@ asynchronous code using futures and the `async` and `await` keywords.
 
 使用 DartPad 来学习使用 futures、async 和 await 来写异步代码。
 
+### [Null safety](/codelabs/null-safety)
+
+### [空安全](/codelabs/null-safety)
+
+Use DartPad to learn about Dart's null-safe type system,
+which was introduced in Dart 2.12.
+
+使用 DartPad 来学习在 Dart 2.12 中引入的 Dart 空安全类型系统。
+
 ## Flutter
 
 To learn about Flutter, try one of the
