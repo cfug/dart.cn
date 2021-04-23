@@ -16,7 +16,7 @@ With null safety, your **runtime** null-dereference errors
 turn into **edit-time** analysis errors.
 
 当您选择使用空安全时，代码中的类型将默认是非空的，
-意味着 **除非您声明它们可空**，它们的值都不能为空。
+意味着 **除非您声明它们可空**，否则它们的值都不能为空。
 有了空安全，原本处于您的 **运行时** 的空值引用错误
 将变为 **编辑时** 的分析错误。
 
