@@ -106,7 +106,7 @@ Dart SDK 支持 Windows、Linux 和 macOS。
 
 * **Supported versions:** Recent Linux versions, but only Ubuntu 16.04 is tested.
 
-  **支持的版本：**近期的 Linux 版本，仅在 Ubuntu 16.04 上进行了测试。
+  **支持的版本：**最新的 Linux 版本，仅在 Ubuntu 16.04 上进行了测试。
 
 * **Supported architectures:** x64, ia32, arm, arm64.
 

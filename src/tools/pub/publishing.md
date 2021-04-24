@@ -84,7 +84,7 @@ are a few additional requirements for uploading a package:
   it's too large, consider splitting it into multiple packages, or cutting down
   on the number of included resources or examples.
 
-  通过 gzip 压缩后，你的 package 大小必须小于 10 MB。
+  通过 gzip 压缩后，你的 package 大小必须小于 100 MB。
   如果它所占空间过大，考虑将它分割为几个小的 package，
   或者减少包含资源或实例的数量。
 

@@ -1700,7 +1700,7 @@ annotations on APIs help *users* of your code, types on private members help
 
 ### DON'T redundantly type annotate initialized local variables.
 
-### **避免** 为初始化的局部变量添加类型注解。
+### **避免** 为初始化的局部变量添加冗余地类型注解。
 
 {% include linter-rule.html rule="omit_local_variable_types" %}
 
@@ -1709,7 +1709,7 @@ have very little scope. Omitting the type focuses the reader's attention on the
 more important *name* of the variable and its initialized value.
 
 局部变量，特别是现代的函数往往很少，范围也很小。省略局部变量类型会将读者的注意力集中在变量的
-*名称*及初始化值上。
+*名称* 及初始化值上。
 
 {:.good}
 <?code-excerpt "design_good.dart (omit-types-on-locals)"?>
