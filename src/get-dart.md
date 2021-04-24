@@ -43,23 +43,6 @@ any of the following are true:
   希望降低电脑存储空间的使用，此次用例并不需要 Flutter，比如：
   设置 CI 时，需要 Dart 并不需要 Flutter。
 
-<aside class="alert alert-info" markdown="1">
-
-  **Note:** This site's documentation and examples use
-  {% if site.data.pkg-vers.SDK.channel == 'dev' %} the **dev channel** {% endif -%}
-  version [{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external}
-  of the **Dart SDK**.
-
-  **注意：**本网站的文档和示例使用的是 _Dart SDK_ 的 
-  {% if site.data.pkg-vers.SDK.channel == 'dev' %} _dev channel_ {% endif -%} 版本 
-  [{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external}
-</aside>
-
-
-To learn about what's in the SDK, see [Dart SDK overview](/tools/sdk).
-
-请查阅 [Dart SDK 概览](/tools/sdk) 获取更多关于 SDK 中包含哪些内容的信息。
-
 ## Installing the Dart SDK {#install}
 
 ## 安装 Dart SDK {#install}
@@ -89,7 +72,7 @@ so it's easy to find (but not more tempting than package managers).
 <ul class="tabs__top-bar">
   <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>
   <li class="tab-link" data-tab="tab-sdk-install-linux">Linux</li>
-  <li class="tab-link" data-tab="tab-sdk-install-mac">Mac</li>
+  <li class="tab-link" data-tab="tab-sdk-install-mac">macOS</li>
 </ul>
 <div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
 {% include_relative tools/sdk/_windows.md %}
@@ -100,6 +83,65 @@ so it's easy to find (but not more tempting than package managers).
 <div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
 {% include_relative tools/sdk/_mac.md %}
 </div>
+
+## System requirements
+
+## 系统要求
+
+The Dart SDK is supported on Windows, Linux, and macOS.
+
+Dart SDK 支持 Windows、Linux 和 macOS。
+
+### Windows
+
+* **Supported versions:** Windows 10.
+
+  **支持的版本：**Windows 10。
+
+* **Supported architectures:** x64, ia32.
+
+  **支持的架构：**x64、ia32。
+
+### Linux
+
+* **Supported versions:** Recent Linux versions, but only Ubuntu 16.04 is tested.
+
+  **支持的版本：**最新的 Linux 版本，仅在 Ubuntu 16.04 上进行了测试。
+
+* **Supported architectures:** x64, ia32, arm, arm64.
+
+  **支持的架构：**x64、ia32、arm、arm64。
+
+{{ site.alert.note }}
+
+  The arm support requires glibc 2.23 or newer due to a
+  [dynamic linker bug](https://sourceware.org/bugzilla/show_bug.cgi?id=14341).
+
+  由于 [动态链接的缺陷](https://sourceware.org/bugzilla/show_bug.cgi?id=14341)，
+  Arm 的支持需要使用 glibc 2.23 或更新的版本。
+
+{{ site.alert.end }}
+
+### macOS
+
+* **Supported versions:** Latest three major versions.
+  As of April 2021, the following versions are supported:
+  - macOS 10.14 (Mojave)
+  - macOS 10.15 (Catalina)
+  - macOS 11 (Big Sur)
+
+  **支持的版本：**最新的三个主要版本。
+  截止 2021 年 4 月，支持以下版本：
+  - macOS 10.14 (Mojave)
+  - macOS 10.15 (Catalina)
+  - macOS 11 (Big Sur)
+
+* **Supported architectures:** x64.
+  Support for arm64 is [in progress](https://github.com/dart-lang/sdk/issues/42773).
+
+  **支持的架构：**x64。
+  针对 arm64 的支持正在
+  [进行中](https://github.com/dart-lang/sdk/issues/42773)。
 
 ## About release channels and version strings {#release-channels}
 

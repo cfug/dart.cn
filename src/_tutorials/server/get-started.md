@@ -1,5 +1,5 @@
 ---
-title: "Get started: command-line and server apps"
+title: Get started: command-line and server apps
 title: 起步教程：编写命令行和服务端应用
 description: Get Dart, run and compile a small app
 description: 获取 Dart SDK，运行和编译一个小应用
@@ -115,6 +115,21 @@ This command creates a small Dart app that has the following:
 
   一个 pubspec 文件，`pubspec.yaml`，包含应用的元数据，包括应用依赖的
   [package](/guides/packages) 信息以及所需的版本等。
+
+{{ site.alert.note }}
+
+  Under the hood, `dart create` runs [`dart pub get`][], which
+  scans the generated pubspec file and downloads dependencies.
+  If you add other dependencies to your pubspec file,
+  then run `dart pub get` to download them.
+
+  实际上，`dart create` 会执行 [`dart pub get`][]，
+  扫描生成的 pubspec 文件和下载的依赖。
+  如果你在 pubspec 文件中添加了其他的依赖，执行 `dart pub get` 进行下载。
+
+{{ site.alert.end }}
+
+[`dart pub get`]: /tools/pub/cmd/pub-get
 
 ## 4. Run the app
 
@@ -268,3 +283,4 @@ If you get stuck, find help at [Community and support.](/community)
 [Dart language tour]: /guides/language/language-tour
 [Dart library tour]: /guides/libraries/library-tour
 [ide]: /tools#ides-and-editors
+

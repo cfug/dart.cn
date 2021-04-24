@@ -1,6 +1,6 @@
 ---
-title: "Command-line & server libraries and packages"
-title: "命令行和服务器的库和 Package"
+title: Command-line and server libraries and packages
+title: 命令行和服务器的库和 Package
 short-title: CLI & server libraries
 short-title: CLI 和 服务器库
 description: Libraries and packages that can help you write Dart command-line & server apps.
@@ -96,45 +96,13 @@ and [general-purpose packages][] such as `logging`:
 除了上面上面表格中列出的外还支持比如 `logging` 这样的 [通用 package][general-purpose packages]：
 
 | **Package**                   | **Description** |
-
-| **包名**                   | **描述** |
-
-| [appengine]({{site.pub-pkg}}/appengine) | Provides support for running server applications written in Dart on [Google App Engine][] using [Custom Runtimes with Flex Environment.][] |
-
-| [appengine]({{site.pub-pkg}}/appengine) | 为在 [Google App Engine] 上使用 [Flex Environment 自定义运行时][] 的 Dart 应用提供支持。|
-
-| [aqueduct]({{site.pub-pkg}}/aqueduct) | Supports building scalable REST APIs that run on the Dart VM. |
-
-| [aqueduct]({{site.pub-pkg}}/aqueduct) | 支持构建运行在 Dart VM 上可伸缩的 REST API。|
-
-| [angel_framework]({{site.pub-pkg}}/angel_framework) | A high-powered HTTP server with support for dependency injection & sophisticated routing. |
-
-| [angel_framework]({{site.pub-pkg}}/angel_framework) | 支持依赖注入和复杂路由的高性能 HTTP 服务器。|
-
 | [crypto]({{site.pub-pkg}}/crypto) | Implements cryptographic hashing functions for algorithms such as SHA-1, SHA-256, MD5, and HMAC. |
-
 | [crypto]({{site.pub-pkg}}/crypto) | 为 SHA-1、SHA-256、MD5 和 HMAC 等算法实现加密哈希散列函数。|
-
-| [grpc]({{site.pub-pkg}}/grpc) | Implements [gRPC,][] a high performance, open source, general RPC framework that puts mobile and HTTP/2 first. |
-
+| [grpc]({{site.pub-pkg}}/grpc) | Implements [gRPC][] a high performance, open source, general RPC framework that puts mobile and HTTP/2 first. |
 | [grpc]({{site.pub-pkg}}/grpc) | 实现 [gRPC][]，将移动和 HTTP/2 放在首位的高性能开源通用的 RPC 框架。|
-
-| [http_multi_server]({{site.pub-pkg}}/http_multi_server) | Extends the [dart:io HttpServer][HttpServer] class with support for multiple servers. |
-
-| [http_multi_server]({{site.pub-pkg}}/http_multi_server) | 继承自 [dart:io HttpServer][HttpServer] 类并支持多服务器。|
-
-| [http_server]({{site.pub-pkg}}/http_server) | Provides utility classes that work with [HttpServer][] to serve web content. |
-
-| [http_server]({{site.pub-pkg}}/http_server) | 提供与 [HttpServer][] 相关的工具类以提供网页内容。|
-
 | [shelf]({{site.pub-pkg}}/shelf) | Provides a model for web server middleware that encourages composition and easy reuse. |
-
 | [shelf]({{site.pub-pkg}}/shelf) | 为 Web 服务器中间件提供一个模型，该模型促成组合和易于重用。|
 {:.table .table-striped .nowrap}
 
-[Google App Engine]: https://cloud.google.com/appengine/
-[Custom Runtimes with Flex Environment.]: https://cloud.google.com/appengine/docs/flexible/custom-runtimes/
-[Flex Environment 自定义运行时]:https://cloud.google.com/appengine/docs/flexible/custom-runtimes/
 [general-purpose packages]: /guides/libraries/useful-libraries#general-purpose-packages
-[gRPC,]: https://grpc.io/
-[HttpServer]: https://api.dart.dev/stable/dart-io/HttpServer-class.html
+[gRPC]: https://grpc.io/

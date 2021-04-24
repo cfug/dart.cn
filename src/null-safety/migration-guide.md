@@ -40,13 +40,10 @@ Here are the basic steps for migrating each package that you own:
 
   **Migrating an app is technically the same as migrating a package.**
   Before migrating an app,
-  consider waiting for a stable release of the Dart SDK that
-  contains null safety. 
-  Also, make sure all your dependencies are ready.
+  make sure that all of your dependencies are ready.
 
   **理论上，迁移应用和迁移软件包的过程一致。**
-  在迁移应用之前，建议您等到 Dart 发布包含空安全的稳定版 SDK，
-  且您所依赖的包全部迁移完成后，再进行迁移。
+  在迁移应用之前，确保您所依赖的包全部迁移完成后，再进行迁移。
 
 {{ site.alert.end }}
 
@@ -656,7 +653,7 @@ as soon as you migrate:
 
   [将 SDK 限制设定为已测试的 beta 版本。](#sdk-constraints)
 
-* [Set the package version to indicate a breaking change.](#version)
+* [Set the package version to indicate a breaking change.](#package-version)
 
   [调整 package 的版，表示该版本包含了破坏性的改动。](#version)
 

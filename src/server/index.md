@@ -1,6 +1,8 @@
 ---
-title: Command-line & server apps
+title: Command-line and server apps
 title: 命令行和服务端应用
+short-title: CLI and server apps
+short-title: 命令行和服务端应用
 description: All things relating to command-line and server apps.
 description: 与命令行和服务端应用有关的内容。
 toc: false

@@ -5,11 +5,11 @@ description: Basics for command-line apps.
 description: 编写命令行应用的基础教程。
 nextpage:
   url: /tutorials/server/httpserver
-  title: Write HTTP clients & servers
+  title: Write HTTP clients and servers
   title: 编写 HTTP 客户端和服务端应用
 prevpage:
   url: /tutorials/server/get-started
-  title: "Get started: command-line & server apps"
+  title: "Get started: command-line and server apps"
   title: 起步教程：编写命令行和服务端应用
 ---
 

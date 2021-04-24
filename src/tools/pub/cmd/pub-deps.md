@@ -1,8 +1,8 @@
 ---
-title: pub deps
-title: pub deps
+title: dart pub deps
+title: dart pub deps
 description: Use pub deps to print a dependency graph for a package.
-description: 使用 pub deps 命令可以将 Package 的依赖项打印出来。
+description: 使用 dart pub deps 命令可以将 Package 的依赖项打印出来。
 toc: false
 ---
 
@@ -11,7 +11,7 @@ _Deps_ is one of the commands of the [pub tool](/tools/pub/cmd).
 _Deps_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
 
 {% prettify none tag=pre+code %}
-$ pub deps [--style=<style>] [--dev] [--no-dev] [--executables]
+$ dart pub deps [--style=<style>] [--dev] [--no-dev] [--executables]
 {% endprettify %}
 
 This command prints the dependency graph for a package.
@@ -42,12 +42,12 @@ dependencies:
   markdown: ^0.7.2
 {% endprettify %}
 
-Here's an example of the `pub deps` output for markdown_converter:
+Here's an example of the `dart pub deps` output for markdown_converter:
 
-当你执行 `pub deps` 命令时则会看到 markdown_converter 的依赖图示如下：
+当你执行 `dart pub deps` 命令时则会看到 markdown_converter 的依赖图示如下：
 
 ```terminal
-$ pub deps
+$ dart pub deps
 markdown_converter 0.0.0
 |-- barback 0.15.2+6
 |   |-- collection 1.1.2

@@ -541,30 +541,29 @@ way the compiler does.
 和其他大部分语言一样， Dart 忽略空格。但是，*人*不会。
 具有一致的空格风格有助于帮助我们能够用编译器相同的方式理解代码。
 
-### DO format your code using `dartfmt`.
+### DO format your code using `dart format`.
 
-### **要** 使用 `dartfmt` 格式化你的代码。
+### **要** 使用 `dart format` 格式化你的代码。
 
 Formatting is tedious work and is particularly time-consuming during
 refactoring. Fortunately, you don't have to worry about it. We provide a
-sophisticated automated code formatter called [dartfmt][] that does it for
-you. We have [some documentation][dartfmt docs] on the rules it applies, but the
-official whitespace-handling rules for Dart are *whatever dartfmt produces*.
+sophisticated automated code formatter called [`dart format`][] that does it for
+you. We have [some documentation][dart format docs] on the rules it applies, but the
+official whitespace-handling rules for Dart are *whatever `dart format` produces*.
 
 格式化是一项繁琐的工作，尤其在重构过程中特别耗时。
 庆幸的是，你不必担心。
-我们提供了一个名为 [dartfmt][] 的优秀的自动代码格式化程序，它可以为你完成格式化工作。
-我们有一些关于它适用的规则的 [文档][dartfmt docs] ，
-Dart 中任何官方的空格处理规则由 *dartfmt 生成*。
+我们提供了一个名为 [`dart format`][] 的优秀的自动代码格式化程序，它可以为你完成格式化工作。
+我们有一些关于它适用的规则的 [文档][dart format docs] ，
+Dart 中任何官方的空格处理规则由 *`dart format` 生成*。
 
-
-The remaining formatting guidelines are for the few things dartfmt cannot fix
+The remaining formatting guidelines are for the few things `dart format` cannot fix
 for you.
 
-其余格式指南用于 dartfmt 无法修复的一些规则。
+其余格式指南用于 `dart format` 无法修复的一些规则。
 
-[dartfmt]: https://github.com/dart-lang/dart_style
-[dartfmt docs]: https://github.com/dart-lang/dart_style/wiki/Formatting-Rules
+[`dart format`]: /tools/dart-format
+[dart format docs]: https://github.com/dart-lang/dart_style/wiki/Formatting-Rules
 
 ### CONSIDER changing your code to make it more formatter-friendly.
 
@@ -584,13 +583,13 @@ When that happens, reorganize or simplify your code. Consider shortening a local
 variable name or hoisting out an expression into a new local variable. In other
 words, make the same kinds of modifications that you'd make if you were
 formatting the code by hand and trying to make it more readable. Think of
-dartfmt as a partnership where you work together, sometimes iteratively, to
-produce beautiful code.
+`dart format` as a partnership where you work together, sometimes iteratively, 
+to produce beautiful code.
 
 当有这样的情况发生时，那么就需要重新组织或简化你的代码。
 考虑缩短局部变量名或者将表达式抽取为一个新的局部变量。
 换句话说，你应该做一些手动格式化并增加代码的可读性的修改。
-在工作中应该把 dartfmt 看做一个合作伙伴，
+在工作中应该把 `dart format` 看做一个合作伙伴，
 在代码的编写和迭代过程中互相协作输出优质的代码。
 
 
@@ -621,12 +620,12 @@ prevent a name collision?" If not, consider omitting it.
 当遇到这种情况时，请自问一下：“那个类型名称中的每个单词都会告诉我一些关键的内容或阻止名称冲突吗？”，
 如果不是，考虑删除它。
 
-Note that dartfmt does 99% of this for you, but the last 1% is you. It does not
-split long string literals to fit in 80 columns, so you have to do that
-manually.
+Note that `dart format` does 99% of this for you, but the last 1% is you. 
+It does not split long string literals to fit in 80 columns, 
+so you have to do that manually.
 
-注意，dartfmt 能自动处理 99% 的情况，但是剩下的 1% 需要你自己处理。 
-dartfmt 不会把很长的字符串字面量分割为 80 个字符的列，
+注意，`dart format` 能自动处理 99% 的情况，但是剩下的 1% 需要你自己处理。
+`dart format` 不会把很长的字符串字面量分割为 80 个字符的列，
 所以这种情况你**需要**自己手工确保每行不超过 80 个字符。
 
 **Exception:** When a URI or file path occurs in a comment or string (usually in

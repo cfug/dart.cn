@@ -107,7 +107,7 @@ in the console.
 并输出显示这个对象的字符串值(由 `toString()` 返回)
 到控制台。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (print)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (print)"?>
 ```dart
 print(anObject);
 print('I drink $tea.');
@@ -135,7 +135,7 @@ methods of int and double, respectively:
 
 使用 int 和 double 的 `parse()` 方法将字符串转换为整型或双浮点型对象：
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (int|double.parse)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (int|double.parse)"?>
 ```dart
 assert(int.parse('42') == 42);
 assert(int.parse('0x42') == 66);
@@ -147,7 +147,7 @@ and otherwise a double:
 
 或者使用 num 的 parse() 方法，该方法可能会创建一个整型，否则为浮点型对象：
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (num-parse)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (num-parse)"?>
 ```dart
 assert(num.parse('42') is int);
 assert(num.parse('0x42') is int);
@@ -158,7 +158,7 @@ To specify the base of an integer, add a `radix` parameter:
 
 通过添加 `radix` 参数，指定整数的进制基数：
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (radix)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (radix)"?>
 ```dart
 assert(int.parse('42', radix: 16) == 66);
 ```
@@ -173,8 +173,7 @@ number of significant digits in the string, use
 使用 [toStringAsFixed().][toStringAsFixed()] 指定小数点右边的位数，
 使用 [toStringAsPrecision():][toStringAsPrecision()] 指定字符串中的有效数字的位数。
 
-
-<?code-excerpt "misc/test/library_tour/core_test.dart (toString())"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (toString())"?>
 ```dart
 // Convert an int to a string.
 assert(42.toString() == '42');
@@ -228,7 +227,7 @@ example:
 可以在字符串内查找特定字符串的位置，
 以及检查字符串是否以特定字符串作为开头或结尾。例如：
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (contains-etc)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (contains-etc)"?>
 ```dart
 // Check whether a string contains another string.
 assert('Never odd or even'.contains('odd'));
@@ -261,7 +260,7 @@ substrings:
 
 你也可以获取字符串中的子字符串或者将一个字符串分割为子字符串列表：
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (substring-etc)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (substring-etc)"?>
 ```dart
 // Grab a substring.
 assert('Never odd or even'.substring(6, 9) == 'odd');
@@ -314,7 +313,7 @@ variants:
 
 可以轻松的对字符串的首字母大小写进行转换：
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (toUpperCase-toLowerCase)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (toUpperCase-toLowerCase)"?>
 ```dart
 // Convert to uppercase.
 assert('structured web apps'.toUpperCase() ==
@@ -345,7 +344,7 @@ whether a string is empty (length is zero), use `isEmpty`.
 使用 `trim()` 移除首尾空格。
 使用 `isEmpty` 检查一个字符串是否为空（长度为0）。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (trim-etc)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (trim-etc)"?>
 ```dart
 // Trim a string.
 assert('  hello  '.trim() == 'hello');
@@ -374,7 +373,7 @@ original String:
 例如，方法 `replaceAll()` 返回一个新字符串，
 并没有改变原始字符串：
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (replace)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (replace)"?>
 ```dart
 var greetingTemplate = 'Hello, NAME!';
 var greeting =
@@ -398,7 +397,7 @@ lets you specify a separator—in this case, a space.
 `writeAll()` 的第二个参数为可选参数，用来指定分隔符，
 本例中使用空格作为分隔符。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (StringBuffer)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (StringBuffer)"?>
 ```dart
 var sb = StringBuffer();
 sb
@@ -420,10 +419,10 @@ The RegExp class provides the same capabilities as JavaScript regular
 expressions. Use regular expressions for efficient searching and pattern
 matching of strings.
 
-RegExp类提供与JavaScript正则表达式相同的功能。
+RegExp 类提供与 JavaScript 正则表达式相同的功能。
 使用正则表达式可以对字符串进行高效搜索和模式匹配。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (RegExp)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (RegExp)"?>
 ```dart
 // Here's a regular expression for one or more digits.
 var numbers = RegExp(r'\d+');
@@ -443,7 +442,7 @@ assert(exedOut == 'llamas live XX to XX years');
 You can work directly with the RegExp class, too. The Match class
 provides access to a regular expression match.
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (match)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (match)"?>
 ```dart
 var numbers = RegExp(r'\d+');
 var someDigits = 'llamas live 15 to 20 years';
@@ -491,12 +490,13 @@ items to and removing items from lists.
 另外，也可以使用 List 的构造函数。
 List 类还定义了若干方法，用于向列表添加或删除项目。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (List)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (List)"?>
 ```dart
-// Use a List constructor.
-var vegetables = List();
+// Create an empty list of strings.
+var grains = <String>[];
+assert(grains.isEmpty);
 
-// Or simply use a list literal.
+// Create a list using a list literal.
 var fruits = ['apples', 'oranges'];
 
 // Add to a list.
@@ -516,13 +516,17 @@ assert(fruits.length == 4);
 // Remove all elements from a list.
 fruits.clear();
 assert(fruits.isEmpty);
+
+// You can also create a List using one of the constructors.
+var vegetables = List.filled(99, 'broccoli');
+assert(vegetables.every((v) => v == 'broccoli'));
 ```
 
 Use `indexOf()` to find the index of an object in a list:
 
 使用 `indexOf()` 方法查找一个对象在 list 中的下标值。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (indexOf)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (indexOf)"?>
 ```dart
 var fruits = ['apples', 'oranges'];
 
@@ -546,7 +550,7 @@ example uses `compareTo()`, which is defined by
 该函数在 [Comparable][] 中定义，
 并被 String 类实现。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (compareTo)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (compareTo)"?>
 ```dart
 var fruits = ['bananas', 'apples', 'oranges'];
 
@@ -555,16 +559,18 @@ fruits.sort((a, b) => a.compareTo(b));
 assert(fruits[0] == 'apples');
 ```
 
-Lists are parameterized types, so you can specify the type that a list
+Lists are parameterized types
+([generics](/guides/language/language-tour#generics)),
+so you can specify the type that a list
 should contain:
 
-list 是参数化类型，
+列表是参数化类型（[泛型](/guides/language/language-tour#generics)），
 因此可以指定 list 应该包含的元素类型：
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (List-of-String)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (List-of-String)"?>
 ```dart
 // This list should contain only strings.
-var fruits = List<String>();
+var fruits = <String>[];
 
 fruits.add('apples');
 var fruit = fruits[0];
@@ -572,10 +578,39 @@ assert(fruit is String);
 ```
 
 {:.fails-sa}
-<?code-excerpt "misc/lib/library_tour/core/collections.dart (List-of-String)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/core/collections.dart (List-of-String)"?>
 ```dart
 fruits.add(5); // Error: 'int' can't be assigned to 'String'
 ```
+
+{{site.alert.note}}
+
+  In many cases, you don't
+  need to explicitly specify generic
+  types, because Dart will
+  [infer](/guides/language/type-system#type-inference)
+  them for you.
+  A list like `['Dash', 'Dart']` is understood
+  to be a `List<String>` (read: list of strings).
+
+  在大多数情况下，你不需要显式指定泛型，因为 Dart 帮你会
+  [推断](/guides/language/type-system#type-inference)
+  它们的类型。
+  类似于 `['Dash', 'Dart']` 这样的 list 很容易可以推断为 `List<String>`。
+
+  But there are times when you _should_ specify
+  the generic type. Like, for example, when Dart doesn't have
+  anything to infer from: `[]` could be a list of any
+  combination of things.
+  That's often not what you want, so you write `<String>[]`
+  or `<Person>[]` or something similar.
+
+  但有些时候你 **需要** 指定泛型。
+  比如：Dart 无法从 `[]` 中推断出任何类型，它可以是任何类型元素的组合。
+  这时推断的类型基本不会是你想要的，所以你需要写下
+  `<String>[]` 或者 `<Person>[]` 这样的类型声明。
+
+{{site.alert.end}}
 
 Refer to the [List API reference][List] for a full list of methods.
 
@@ -589,9 +624,12 @@ is unordered, you can’t get a set’s items by index (position).
 在 Dart 中，set 是一个无序的，元素唯一的集合。
 因为一个 set 是无序的，所以无法通过下标（位置）获取 set 中的元素。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Set)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (Set)"?>
 ```dart
-var ingredients = Set();
+// Create an empty set of strings.
+var ingredients = <String>{};
+
+// Add new items to it.
 ingredients.addAll(['gold', 'titanium', 'xenon']);
 assert(ingredients.length == 3);
 
@@ -602,6 +640,10 @@ assert(ingredients.length == 3);
 // Remove an item from a set.
 ingredients.remove('gold');
 assert(ingredients.length == 2);
+
+// You can also create sets using
+// one of the constructors.
+var atomicNumbers = Set.from([79, 22, 54]);
 ```
 
 Use `contains()` and `containsAll()` to check whether one or more
@@ -609,9 +651,9 @@ objects are in a set:
 
 使用 `contains()` 和 `containsAll()` 来检查一个或多个元素是否在 set 中：
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (contains)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (contains)"?>
 ```dart
-var ingredients = Set();
+var ingredients = Set<String>();
 ingredients.addAll(['gold', 'titanium', 'xenon']);
 
 // Check whether an item is in the set.
@@ -625,9 +667,9 @@ An intersection is a set whose items are in two other sets.
 
 交集是另外两个 set 中的公共元素组成的 set。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (intersection)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (intersection)"?>
 ```dart
-var ingredients = Set();
+var ingredients = Set<String>();
 ingredients.addAll(['gold', 'titanium', 'xenon']);
 
 // Create the intersection of two sets.
@@ -655,7 +697,7 @@ traditional constructor:
 
 声明 map 可以使用简洁的字面量语法，也可以使用传统构造函数：
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Map)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (Map)"?>
 ```dart
 // Maps often use strings as keys.
 var hawaiianBeaches = {
@@ -678,7 +720,7 @@ to remove a key and its value from a map.
 通过大括号语法可以为 map 添加，获取，设置元素。
 使用 `remove()` 方法从 map 中移除键值对。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (remove)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (remove)"?>
 ```dart
 var nobleGases = {54: 'xenon'};
 
@@ -697,7 +739,7 @@ You can retrieve all the values or all the keys from a map:
 
 可以从一个 map 中检索出所有的 key 或所有的 value：
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (keys)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (keys)"?>
 ```dart
 var hawaiianBeaches = {
   'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
@@ -727,7 +769,7 @@ key and checking for null to determine the existence of a key.
 因为 map 中的 value 可能会是 null ，
 所有通过 key 获取 value，并通过判断 value 是否为 null 来判断 key 是否存在是不可靠的。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (containsKey)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (containsKey)"?>
 ```dart
 var hawaiianBeaches = {
   'Oahu': ['Waikiki', 'Kailua', 'Waimanalo'],
@@ -747,9 +789,9 @@ a function that returns the value.
 可使用`putIfAbsent（）`方法。
 该方法需要一个方法返回这个 value。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (putIfAbsent)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (putIfAbsent)"?>
 ```dart
-var teamAssignments = {};
+var teamAssignments = <String, String>{};
 teamAssignments.putIfAbsent(
     'Catcher', () => pickToughestKid());
 assert(teamAssignments['Catcher'] != null);
@@ -784,9 +826,9 @@ Use `isEmpty` or `isNotEmpty` to check whether a list, set, or map has items:
 
 使用 `isEmpty` 和 `isNotEmpty` 方法可以检查 list， set 或 map 对象中是否包含元素：
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (isEmpty)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (isEmpty)"?>
 ```dart
-var coffees = [];
+var coffees = <String>[];
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 assert(coffees.isEmpty);
 assert(teas.isNotEmpty);
@@ -797,7 +839,7 @@ To apply a function to each item in a list, set, or map, you can use
 
 使用 `forEach()` 可以让 list， set 或 map 对象中的每个元素都使用一个方法。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (List.forEach)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (List.forEach)"?>
 ```dart
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
@@ -809,7 +851,7 @@ arguments (the key and value):
 
 当在 map 对象上调用 `forEach() 方法时，函数必须带两个参数（key 和 value）：
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Map.forEach)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (Map.forEach)"?>
 ```dart
 hawaiianBeaches.forEach((k, v) {
   print('I want to visit $k and swim at $v');
@@ -823,7 +865,7 @@ a single object:
 
 Iterable 提供 `map()` 方法，这个方法将所有结果返回到一个对象中。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (List.map)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (List.map)"?>
 ```dart
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
@@ -847,7 +889,7 @@ To force your function to be called immediately on each item, use
 使用 `map().toList()` 或 `map().toSet()` ，
 可以强制在每个项目上立即调用函数。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (toList)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (toList)"?>
 ```dart
 var loudTeas =
     teas.map((tea) => tea.toUpperCase()).toList();
@@ -866,7 +908,7 @@ cities instead of isDecaffeinated.
 {% endcomment %}
 
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (where-etc)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (where-etc)"?>
 ```dart
 var teas = ['green', 'black', 'chamomile', 'earl grey'];
 
@@ -925,7 +967,7 @@ a fully qualified URI, leaving intact special URI characters.
 对 URI 中除了特殊字符（例如 `/`， `:`， `&`， `#`）以外的字符进行编解码，
 这些方法非常适合编解码完整合法的 URI，并保留 URI 中的特殊字符。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (encodeFull)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (encodeFull)"?>
 ```dart
 var uri = 'https://example.org/api?foo=some message';
 
@@ -952,7 +994,7 @@ the `encodeComponent()` and `decodeComponent()` methods.
 使用 `encodeComponent()` 和 `decodeComponent()` 方法，
 对 URI 中具有特殊含义的所有字符串字符，特殊字符包括（但不限于）`/`， `&`， 和  `:`。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (encodeComponent)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (encodeComponent)"?>
 ```dart
 var uri = 'https://example.org/api?foo=some message';
 
@@ -981,7 +1023,7 @@ Uri fields such as `path`. To create a Uri from a string, use the
 来获取一个 Uri 对象或者 URI 字符串的一部分。
 使用 `parse()` 静态方法，可以使用字符串创建 Uri 对象。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Uri.parse)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (Uri.parse)"?>
 ```dart
 var uri =
     Uri.parse('https://example.org:8080/foo/bar#frag');
@@ -1006,7 +1048,7 @@ constructor:
 
 使用 `Uri()` 构造函数，可以将各组件部分构建成 URI 。
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Uri)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (Uri)"?>
 ```dart
 var uri = Uri(
     scheme: 'https',
@@ -1031,7 +1073,7 @@ You can create DateTime objects using several constructors:
 
 DateTime 对象可以通过若干构造函数创建：
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (DateTime)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (DateTime)"?>
 ```dart
 // Get the current date and time.
 var now = DateTime.now();
@@ -1058,7 +1100,7 @@ milliseconds since the “Unix epoch”—January 1, 1970, UTC:
 
 日期中 `millisecondsSinceEpoch` 属性返回自 “Unix纪元（January 1, 1970, UTC）”以来的毫秒数：
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (millisecondsSinceEpoch)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (millisecondsSinceEpoch)"?>
 ```dart
 // 1/1/2000, UTC
 var y2k = DateTime.utc(2000);
@@ -1072,7 +1114,7 @@ assert(unixEpoch.millisecondsSinceEpoch == 0);
 Use the Duration class to calculate the difference between two dates and
 to shift a date forward or backward:
 
-<?code-excerpt "misc/test/library_tour/core_test.dart (Duration)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (Duration)"?>
 ```dart
 var y2k = DateTime.utc(2000);
 
@@ -1133,7 +1175,7 @@ usually for sorting. The `compareTo()` method returns \< 0 for
 在 *相等* 时返回 0，
 在 *大于* 时返回  \> 0。
 
-<?code-excerpt "misc/lib/library_tour/core/comparable.dart"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/core/comparable.dart"?>
 ```dart
 class Line implements Comparable<Line> {
   final int length;
@@ -1173,7 +1215,7 @@ compare many fields. They don’t do identical() automatically because, by
 convention, NaN != NaN.
 {% endcomment %}
 
-<?code-excerpt "misc/lib/library_tour/core/hash_code.dart"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/core/hash_code.dart"?>
 ```dart
 class Person {
   final String firstName, lastName;
@@ -1223,7 +1265,7 @@ loops. Implement Iterator to define the actual iteration ability.
 当创建一个类的时候，继承或者实现 Iterable，可以为该类提供用于 for-in 循环的 Iterators。
 实现 Iterator 来定义实际的遍历操作。
 
-<?code-excerpt "misc/lib/library_tour/core/iterator.dart"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/core/iterator.dart"?>
 ```dart
 class Process {
   // Represents a process...
@@ -1288,10 +1330,10 @@ implementing the Exception interface:
 通常通过抛出一个应用特定的异常，来表示应用发生了错误。
 通过实现 Exception 接口来自定义异常：
 
-<?code-excerpt "misc/lib/library_tour/core/exception.dart"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/core/exception.dart"?>
 ```dart
 class FooException implements Exception {
-  final String msg;
+  final String? msg;
 
   const FooException([this.msg]);
 
@@ -1344,7 +1386,7 @@ use it, import dart:async:
 dart:async 库可以工作在 web 应用及 command-line 应用。
 通过 import dart:async 来使用。
 
-<?code-excerpt "misc/lib/library_tour/async/future.dart (import)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/future.dart (import)"?>
 ```dart
 import 'dart:async';
 ```
@@ -1388,8 +1430,7 @@ waiting for each one to complete before executing the next one.
 代码使用 Future 的 `then()` 方法在同一行执行了三个异步函数，
 要等待上一个执行完成，再执行下一个任务。
 
-
-<?code-excerpt "misc/lib/library_tour/async/future.dart (runUsingFuture)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/future.dart (runUsingFuture)"?>
 ```dart
 runUsingFuture() {
   // ...
@@ -1405,7 +1446,7 @@ looks more like synchronous code:
 通过 await 表达式实现等价的代码，
 看起来非常像同步代码：
 
-<?code-excerpt "misc/lib/library_tour/async/future.dart (runUsingAsyncAwait)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/future.dart (runUsingAsyncAwait)"?>
 ```dart
 runUsingAsyncAwait() async {
   // ...
@@ -1421,7 +1462,7 @@ For example:
 async 函数能够捕获来自 Future 的异常。
 例如：
 
-<?code-excerpt "misc/lib/library_tour/async/future.dart (catch)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/future.dart (catch)"?>
 ```dart
 var entryPoint = await findEntryPoint();
 try {
@@ -1466,7 +1507,7 @@ has completed and the promised string value is available:
 
 当 future 执行完成后，`then()` 中的代码会被执行。`then()` 中的代码会在 future 完成后被执行。例如，`HttpRequest.getString()` 返回一个 future 对象，因为 HTTP 请求可能需要一段时间。当 Future 完成并且保证字符串值有效后，使用 `then()` 来执行你需要的代码：
 
-<?code-excerpt "misc/lib/library_tour/async/basic.dart (then)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/basic.dart (then)"?>
 ```dart
 HttpRequest.getString(url).then((String result) {
   print(result);
@@ -1478,7 +1519,7 @@ object might throw.
 
 使用 `catchError()` 来处理一些 Future 对象可能抛出的错误或者异常。
 
-<?code-excerpt "misc/lib/library_tour/async/basic.dart (catchError)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/basic.dart (catchError)"?>
 ```dart
 HttpRequest.getString(url).then((String result) {
   print(result);
@@ -1522,7 +1563,7 @@ equivalent Future. If the callback returns a value of any other type,
 如果回调返回任何其他类型的值，
 那么 `then()` 会创建一个以该值完成的新 Future 。
 
-<?code-excerpt "misc/lib/library_tour/async/future.dart (then-chain)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/future.dart (then-chain)"?>
 ```dart
 Future result = costlyQuery(url);
 result
@@ -1546,7 +1587,7 @@ Here is the same code written using await:
 
 这是使用 await 编写的等效代码：
 
-<?code-excerpt "misc/lib/library_tour/async/future.dart (then-chain-as-await)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/future.dart (then-chain-as-await)"?>
 ```dart
 try {
   final value = await costlyQuery(url);
@@ -1571,7 +1612,7 @@ static method to manage multiple Futures and wait for them to complete:
 并等待它们全部完成后再继续执行。
 使用 [Future.wait()][] 静态方法管理多个 Future 以及等待它们完成：
 
-<?code-excerpt "misc/lib/library_tour/async/future.dart (wait)" replace="/elideBody;/\/* ... *\//g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/future.dart (wait)" replace="/elideBody;/\/* ... *\//g"?>
 ```dart
 Future deleteLotsOfFiles() async =>  ...
 Future copyLotsOfFiles() async =>  ...
@@ -1616,18 +1657,14 @@ passing in a function literal that searches each file or directory.
 传入一个搜索文件或目录的函数
 
 <!-- OLD dart-tutorials-samples/cmdline/bin/dgrep.dart -->
-<?code-excerpt "misc/lib/library_tour/async/stream.dart (listen)" replace="/listen/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/stream.dart (listen)" replace="/listen/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void main(List<String> arguments) {
   // ...
   FileSystemEntity.isDirectory(searchPath).then((isDir) {
     if (isDir) {
       final startingDir = Directory(searchPath);
-      startingDir
-          .list(
-              recursive: argResults[recursive],
-              followLinks: argResults[followLinks])
-          .[!listen!]((entity) {
+      startingDir.list().[!listen!]((entity) {
         if (entity is File) {
           searchFile(entity, searchTerms);
         }
@@ -1646,15 +1683,13 @@ looks more like synchronous code:
 下面是使用 await 表达式和异步 for 循环 (`await for`) 实现的等价的代码，
 看起来更像是同步代码：
 
-<?code-excerpt "misc/lib/library_tour/async/stream.dart (await-for)" replace="/await for/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/stream.dart (await-for)" replace="/await for/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 Future main(List<String> arguments) async {
   // ...
   if (await FileSystemEntity.isDirectory(searchPath)) {
     final startingDir = Directory(searchPath);
-    [!await for!] (var entity in startingDir.list(
-        recursive: argResults[recursive],
-        followLinks: argResults[followLinks])) {
+    [!await for!] (var entity in startingDir.list()) {
       if (entity is File) {
         searchFile(entity, searchTerms);
       }
@@ -1700,17 +1735,17 @@ subscribe to the stream using the `listen()` method:
 使用 `await for` 或者使用 `listen()` 方法监听 stream，
 来获取每个到达的数据流值：
 
-<?code-excerpt "misc/lib/library_tour/async/stream_web.dart (listen)" replace="/listen/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/stream_web.dart (listen)" replace="/listen/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-// Find a button by ID and add an event handler.
-querySelector('#submitInfo').onClick.[!listen!]((e) {
+// Add an event handler to a button.
+submitButton.onClick.[!listen!]((e) {
   // When the button is clicked, it runs this code.
   submitData();
 });
 {% endprettify %}
 
-In this example, the `onClick` property is a Stream object provided by
-the "submitInfo" button.
+In this example, the `onClick` property is a `Stream` object provided by
+the submit button.
 
 下面示例中，ID 为 "submitInfo" button 提供的 `onClick` 属性是一个 Stream 对象。
 
@@ -1746,7 +1781,7 @@ different type of data:
 常常，在使用流数据前需要改变数据的格式。
 使用 `transform()` 方法生成具有不同类型数据的流：
 
-<?code-excerpt "misc/lib/library_tour/async/stream.dart (transform)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/stream.dart (transform)"?>
 ```dart
 var lines = inputStream
     .transform(utf8.decoder)
@@ -1791,7 +1826,7 @@ goes after the asynchronous for loop.
 代码位于异步 for 循环之后，
 会在 stream 被关闭后执行。
 
-<?code-excerpt "misc/lib/library_tour/async/stream.dart (readFileAwaitFor)" replace="/try|catch/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/stream.dart (readFileAwaitFor)" replace="/try|catch/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 Future readFileAwaitFor() async {
   var config = File('config.txt');
@@ -1821,7 +1856,7 @@ an `onDone` listener.
 代码位���注册的 `onDone` 中，
 会在 stream 被关闭后执行。
 
-<?code-excerpt "misc/lib/library_tour/async/stream.dart (onDone)" replace="/onDone|onError/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/library_tour/async/stream.dart (onDone)" replace="/onDone|onError/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 var config = File('config.txt');
 Stream<List<int>> inputStream = config.openRead();
@@ -1873,9 +1908,9 @@ dart:math 库（[API reference][dart:math]）
 
 To use this library in your app, import dart:math.
 
-通过 import dart:math 来引入使用该库。
+通过导入 dart:math 来引入使用该库。
 
-<?code-excerpt "misc/test/library_tour/math_test.dart (import)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/math_test.dart (import)"?>
 ```dart
 import 'dart:math';
 ```
@@ -1889,8 +1924,7 @@ The Math library provides basic trigonometric functions:
 
 Math 库提供基本的三角函数：
 
-
-<?code-excerpt "misc/test/library_tour/math_test.dart (trig)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/math_test.dart (trig)"?>
 ```dart
 // Cosine
 assert(cos(pi) == -1.0);
@@ -1921,7 +1955,7 @@ The Math library provides `max()` and `min()` methods:
 
 Math 库提供 `max()` 和 `min()` 方法：
 
-<?code-excerpt "misc/test/library_tour/math_test.dart (min-max)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/math_test.dart (min-max)"?>
 ```dart
 assert(max(1, 1000) == 1000);
 assert(min(1, -1000) == -1000);
@@ -1936,7 +1970,7 @@ Find your favorite constants—*pi*, *e*, and more—in the Math library:
 
 在 Math 库中可以找到你需要的数学常熟，例如，*pi*， *e* 等等：
 
-<?code-excerpt "misc/test/library_tour/math_test.dart (constants)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/math_test.dart (constants)"?>
 ```dart
 // See the Math library for additional constants.
 print(e); // 2.718281828459045
@@ -1955,7 +1989,7 @@ optionally provide a seed to the Random constructor.
 使用 [Random][] 类产生随机数。
 可以为 Random 构造函数提供一个可选的种子参数。
 
-<?code-excerpt "misc/test/library_tour/math_test.dart (Random)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/math_test.dart (Random)"?>
 ```dart
 var random = Random();
 random.nextDouble(); // Between 0.0 and 1.0: [0, 1)
@@ -1966,7 +2000,7 @@ You can even generate random booleans:
 
 也可以产生随机布尔值序列：
 
-<?code-excerpt "misc/test/library_tour/math_test.dart (Random-bool)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/math_test.dart (Random-bool)"?>
 ```dart
 var random = Random();
 random.nextBool(); // true or false
@@ -2003,7 +2037,7 @@ To use this library, import dart:convert.
 
 使用时，通过 import dart:convert 引入。
 
-<?code-excerpt "misc/test/library_tour/convert_test.dart (import)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/convert_test.dart (import)"?>
 ```dart
 import 'dart:convert';
 ```
@@ -2017,7 +2051,7 @@ Decode a JSON-encoded string into a Dart object with `jsonDecode()`:
 
 使用 `jsonDecode()` 解码 JSON 编码的字符串为 Dart 对象：
 
-<?code-excerpt "misc/test/library_tour/convert_test.dart (json-decode)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/convert_test.dart (json-decode)"?>
 ```dart
 // NOTE: Be sure to use double quotes ("),
 // not single quotes ('), inside the JSON string.
@@ -2042,7 +2076,7 @@ Encode a supported Dart object into a JSON-formatted string with
 
 使用 `jsonEncode()` 编码 Dart 对象为 JSON 格式的字符串：
 
-<?code-excerpt "misc/test/library_tour/convert_test.dart (json-encode)"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/convert_test.dart (json-encode)"?>
 ```dart
 var scores = [
   {'score': 40},
@@ -2090,7 +2124,7 @@ Use `utf8.decode()` to decode UTF8-encoded bytes to a Dart string:
 
 使用 `utf8.decode()` 解码 UTF8 编码的字符创为 Dart 字符创：
 
-<?code-excerpt "misc/test/library_tour/convert_test.dart (utf8-decode)" replace="/ \/\/line-br.*//g"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/convert_test.dart (utf8-decode)" replace="/ \/\/line-br.*//g"?>
 ```dart
 List<int> utf8Bytes = [
   0xc3, 0x8e, 0xc3, 0xb1, 0xc5, 0xa3, 0xc3, 0xa9,
@@ -2110,7 +2144,7 @@ To convert a stream of UTF-8 characters into a Dart string, specify
 
 将 UTF-8 字符串流转换为 Dart 字符串，为 Stream 的 `transform()` 方法上指定 `utf8.decoder`：
 
-<?code-excerpt "misc/test/library_tour/io_test.dart (utf8-decoder)" replace="/utf8.decoder/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/io_test.dart (utf8-decoder)" replace="/utf8.decoder/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 var lines =
     [!utf8.decoder!].bind(inputStream).transform(LineSplitter());
@@ -2129,7 +2163,7 @@ bytes:
 
 使用 `utf8.encode()` 将 Dart 字符串编码为一个 UTF8 编码的字节流：
 
-<?code-excerpt "misc/test/library_tour/convert_test.dart (utf8-encode)" replace="/ \/\/line-br.*//g"?>
+<?code-excerpt "../null_safety_examples/misc/test/library_tour/convert_test.dart (utf8-encode)" replace="/ \/\/line-br.*//g"?>
 ```dart
 List<int> encoded = utf8.encode('Îñţérñåţîöñåļîžåţîờñ');
 

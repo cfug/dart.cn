@@ -1,11 +1,11 @@
 ---
-title: "Remove DOM elements"
+title: Remove DOM elements
 title: 移除 DOM 元素
-description: "Remove a child element from the DOM"
+description: Remove a child element from the DOM
 description: 从 DOM 中移除一个子元素。
 prevpage:
   url: /tutorials/web/low-level-html/add-elements
-  title: "Add elements to the DOM"
+  title: Add elements to the DOM
   title: 向 DOM 添加元素
 ---
 

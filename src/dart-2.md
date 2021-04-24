@@ -194,9 +194,9 @@ from either Dart 1.x or an earlier version of Dart 2.
 
    **可选的：** **移除 `new` 以及不必要的 `const` 关键字。**
 
-   * You can remove these by hand or use a tool such as `dartfmt --fix`.
+   * You can remove these by hand or use a tool such as `dart format --fix`.
 
-     你可以手动地移除它们或者使用类似 `dartfmt --fix` 这样的工具。
+     你可以手动地移除它们或者使用类似 `dart format --fix` 这样的工具。
 
    * To find occurrences of `new` and unnecessary `const`, add the rules
      `unnecessary_new` and `unnecessary_const` to the `linter` section of your

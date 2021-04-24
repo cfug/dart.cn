@@ -5,6 +5,7 @@ void miscDeclAnalyzedButNotTested() {
     // #docregion integer-literals
     var x = 1;
     var hex = 0xDEADBEEF;
+    var exponent = 8e5;
     // #enddocregion integer-literals
   }
 
@@ -13,6 +14,13 @@ void miscDeclAnalyzedButNotTested() {
     var y = 1.1;
     var exponents = 1.42e5;
     // #enddocregion double-literals
+  }
+
+  {
+    // #docregion declare-num
+    num x = 1; // x can have both int and double values
+    x += 2.5;
+    // #enddocregion declare-num
   }
 
   {
@@ -153,12 +161,12 @@ void miscDeclAnalyzedButNotTested() {
 
   {
     // #docregion map-constructor
-    var gifts = Map();
+    var gifts = Map<String, String>();
     gifts['first'] = 'partridge';
     gifts['second'] = 'turtledoves';
     gifts['fifth'] = 'golden rings';
 
-    var nobleGases = Map();
+    var nobleGases = Map<int, String>();
     nobleGases[2] = 'helium';
     nobleGases[10] = 'neon';
     nobleGases[18] = 'argon';
