@@ -1,5 +1,5 @@
 ---
-title: DartPad in tutorials: best practices
+title: "DartPad in tutorials: Best practices"
 title: DartPad 最佳实践教程
 description: Research-tested advice for creating effective and engaging educational content for Dart and Flutter users.
 description: 经过研究测试的建议的指南，旨在为Dart和Flutter用户创建有效且高质量的教程。
