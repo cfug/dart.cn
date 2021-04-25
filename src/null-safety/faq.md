@@ -1,6 +1,6 @@
 ---
-title: Null safety: frequently asked questions
-title: "空安全：常见问题"
+title: "Null safety: Frequently asked questions"
+title: 空安全：常见问题
 description: FAQs to help you migrate your Dart code to null safety
 description: 帮助您迁移到空安全的常见问题解答
 short-title: FAQ (null safety)
