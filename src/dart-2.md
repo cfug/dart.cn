@@ -14,7 +14,8 @@ Dart 2 有一些与早期版本 Dart 不同的关键点。本文将会简单地�
 For information on _why_ Dart 2 has changed, see the
 [Dart 2 announcement.][Dart 2 announcement]
 
-至于**为什么**Dart 2 要做这些改变，你可以查阅 [Dart 2 公告][Dart 2 announcement]
+至于 **为什么** Dart 2 要做这些改变，
+你可以查阅 [Dart 2 公告][Dart 2 announcement]
 
 ## Differences
 
@@ -43,7 +44,7 @@ Dart 语言、库、编译系统以及 Web 开发工具都已经有所变化。
 * Instance creation keywords are now generally optional,
   as described in [Using constructors][]:
 
-  实例对象创建的关键字现在是可选的，就像 [使用构造函数][Using constructors]中所说的那样：
+  实例对象创建的关键字现在是可选的，就像 [使用构造函数][Using constructors] 中所说的那样：
 
   * `new` is always optional.
 
@@ -59,7 +60,21 @@ Dart 语言、库、编译系统以及 Web 开发工具都已经有所变化。
 
   * [Assert statements][] are still supported, but you enable them differently.
 
-    [Assert 语句][] 依然支持，但是开启的方式改变了。
+    [Assert 语句][Assert statements] 依然支持，但是开启的方式改变了。
+
+* Functions marked `async` now run synchronously
+  until the first `await` statement. 
+
+  标记为 `async` 的方法现在可以同步运行，直到第一个 `await` 语句为止。
+  
+  * Previously, execution returned immediately to the caller, and
+    the function body was scheduled to run later.
+
+    之前是立刻返回给调用者，方法体内的代码会在之后运行。
+    
+  * To learn more, read [the September 2017 Dart newsletter][sync async start].
+
+    了解更多，请阅读 [2017 年 9 月的 Dart 新闻快报][sync async start]。
 
 * The Dart language and core libraries have changed,
   partly as a result of the type system changes.
@@ -110,7 +125,12 @@ If you publish packages,
 then in addition to making platform-specific changes,
 follow the [package migration instructions below](#migrating-packages).
 
-如何迁移你的代码取决于你的代码有多古老以及运行在什么平台。有关如何迁移 Web 应用的帮助请查阅 [ Web 应用迁移指南。][webdev dart2]如果你迁移一个 Flutter 应用，请查阅 [变革公告][Leaf's email] 如果你发布包，则除了适配平台不同的特性之外，还需要遵循 [下述的包迁移说明](#migrating-packages)。
+如何迁移你的代码取决于你的代码有多古老以及运行在什么平台。
+有关如何迁移 Web 应用的帮助请查阅 [ Web 应用迁移指南][webdev dart2]。
+如果你迁移一个 Flutter 应用，
+请查阅 [变革公告][Leaf's email] 如果你发布了 package，
+则除了适配平台不同的特性之外，
+还需要遵循 [下述的 package 迁移说明](#migrating-packages)。
 
 ### General process
 
@@ -136,7 +156,7 @@ from either Dart 1.x or an earlier version of Dart 2.
 
 2. **Upgrade the packages your app depends on.**
 
-   **升级你应用依赖的包。**
+   **升级你应用依赖的 package。**
 
    * Flutter: [`flutter pub upgrade`][flutter pub upgrade]
 
@@ -159,7 +179,8 @@ from either Dart 1.x or an earlier version of Dart 2.
    * Flutter: [`flutter analyze`][Flutter analyzer]
      or use the problems view in Android Studio/IntelliJ or VS Code.
 
-     Flutter：[`flutter analyze`][Flutter analyzer]或使用 Android Studio/IntelliJ 或 VS Code 的问题视图。
+     Flutter：[`flutter analyze`][Flutter analyzer]
+     或使用 Android Studio/IntelliJ 或 VS Code 的问题视图。
 
    * Server-side or web: [`dartanalyzer`][dartanalyzer]
 
@@ -202,28 +223,30 @@ from either Dart 1.x or an earlier version of Dart 2.
      `unnecessary_new` and `unnecessary_const` to the `linter` section of your
      [analysis options file][].
 
-     为了找到 `new` 和不必要的 `const` 出现的地方，可以将 `unnecessary_new` 和 `unnecessary_const` 规则添加至 [分析选项文件][analysis options file]的 `linter` 部分。
+     为了找到 `new` 和不必要的 `const` 出现的地方，
+     可以将 `unnecessary_new` 和 `unnecessary_const` 
+     规则添加至 [分析选项文件][analysis options file] 的 `linter` 部分。
 
 ### Migrating packages
 
-### 迁移包
+### 迁移 package
 
 As a package owner, you need to do the following:
 
-作为一个包的拥有者，你需要遵循下列几项：
+作为一个 package 的拥有者，你需要遵循下列几项：
 
 * Follow the migration tips for the platforms that your package supports
   (see [above](#migration)).
 
-  遵循你的包所支持的平台的迁移技巧（详见 [上述](#migration)）。
+  遵循你的 package 所支持的平台的迁移技巧（详见 [上述](#migration)）。
 
 * Make sure your package passes Dart 2 analysis (see **Run the analyzer** above)
 
-  确保你的包通过了 Dart 2 分析（查阅上面的**运行分析器**）。
+  确保你的 package 通过了 Dart 2 分析（查阅上面的**运行分析器**）。
 
 * Make sure your package's users know how to report issues.
 
-  确保你包的使用者知道如何上报问题。
+  确保你 package 的使用者知道如何上报问题。
 
 * Respond quickly to issue reports.
 
@@ -243,7 +266,10 @@ If you have to change your package's code,
 For example, you might be able to add type annotations
 or (if an API has been removed) to use an alternative 1.x API.
 
-如果你必须更改包的代码，请**尝试令其可以在 1.x 中使用**，就像其在 Dart 2 中使用那样。例如，你可能需要添加类型注解（或者如果一个已被移除的 API）去使用一个替代的 1.x API。
+如果你必须更改 package 的代码，请 **尝试令其可以在 1.x 中使用**，
+就像其在 Dart 2 中使用那样。
+例如，你可能需要添加类型注解（或者如果一个已被移除的 API）
+去使用一个替代的 1.x API。
 
 If a backward-compatible change isn't possible,
 **update the lower [SDK constraint.][SDK constraints]**
@@ -252,7 +278,7 @@ If a backward-compatible change isn't possible,
 
 [Test your changes][testing] to make sure that your package works as expected.
 
-[测试你代码的变更][testing] 以确保你的包在使用时可以如你所愿地运行。
+[测试你代码的变更][testing] 以确保你的 package 在使用时可以如你所愿地运行。
 
 #### Upper constraints on the SDK version {#upper-constraint}
 
@@ -261,7 +287,8 @@ If a backward-compatible change isn't possible,
 Once your package passes Dart 2 analysis, update the upper constraint
 to declare that the package is compatible with Dart 2:
 
-一旦你的包通过了 Dart 2 分析，请更新版本上限以表明其支持兼容到 Dart 2：
+一旦你的 package 通过了 Dart 2 分析，
+请更新版本上限以表明其支持兼容到 Dart 2：
 
 ```yaml
 environment:
@@ -272,7 +299,8 @@ environment:
 If you plan to maintain compatibility with older versions of Dart, adjust the
 lower SDK constraint accordingly:
 
-如果你计划保持与旧版 Dart 的兼容性，请相应地调整 SDK 为较低的版本限制：
+如果你计划保持与旧版 Dart 的兼容性，
+请相应地调整 SDK 为较低的版本限制：
 
 ```yaml
 environment:
@@ -298,7 +326,10 @@ environment:
   lax upper constraint checking and can use packages that have
   no SDK constraints or an upper constraint of `<2.0.0`.
 
-**包版本必须有 `<3.0.0` 的上限限制**以便在 Dart 2 稳定版以及随后的发行版中使用。Dart 2 在构建编译稳定发行版前的开发版本时有较为宽松的上限限制检查，你可以在此情况下使用没有 SDK 限制或者上限限制 `<2.0.0` 的包。
+**Package 版本必须有 `<3.0.0` 的上限限制**
+以便在 Dart 2 稳定版以及随后的发行版中使用。
+Dart 2 在构建编译稳定发行版前的开发版本时有较为宽松的上限限制检查，
+你可以在此情况下使用没有 SDK 限制或者上限限制 `<2.0.0` 的 package。
 </aside>
 
 ## More resources
@@ -325,7 +356,8 @@ environment:
   an article that includes tips for updating your code and
   using Travis to perform continuous integration (CI) testing
 
-  [更新你的 pub 包到 Dart 2，][Updating your pub package to Dart 2,] 这篇文章包含了更新代码和使用 Travis 执行可持续集成 (CI) 测试的技巧。
+  [更新你的 pub package 到 Dart 2][Updating your pub package to Dart 2,]，
+  这篇文章包含了更新代码和使用 Travis 执行可持续集成 (CI) 测试的技巧。
 
 [analysis options file]: /guides/language/analysis-options#the-analysis-options-file
 [dartdevc]: /tools/dartdevc
@@ -360,3 +392,4 @@ environment:
 [Updating your pub package to Dart 2,]: https://medium.com/@filiph/updating-your-pub-package-to-dart-2-cd8ca343b1be
 [Using constructors]: /guides/language/language-tour#using-constructors
 [webdev dart2]: /web/dart-2
+[sync async start]: https://github.com/dart-lang/sdk/blob/master/docs/newsletter/20170915.md#synchronous-async-start

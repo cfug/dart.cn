@@ -137,7 +137,7 @@ downloaded and stored locally once.
 依赖项通过网络从类似 Git 仓库和 [Pub 网站]({{site.pub}}) 下载并存储在一个 [系统级的缓存](/tools/pub/glossary#system-cache) 中。这意味着如果多个 Package 使用了相同依赖项的相同版本，它就不再需要通过网络下载，而仅仅只需从本地缓存获取即可。
 
 By default, the system package cache is located in the `.pub-cache`
-subdirectory of your home directory (on Mac and Linux),
+subdirectory of your home directory (on macOS and Linux),
 or in `%LOCALAPPDATA%\Pub\Cache` (on Windows;
 the location might vary depending on the Windows version).
 You can configure the location of the cache by setting the
