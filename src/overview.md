@@ -28,7 +28,7 @@ prioritizing both development (sub-second stateful hot reload) and
 high-quality production experiences across
 a wide variety of compilation targets (web, mobile, and desktop).
 
-语言受到其**技术设计**的限制，即语言在设计中的抉择决定了其功能和优势。
+通常来说，编程语言会包含一些 **技术壁垒**，即语言在设计中的抉择决定了其功能和优势。
 Dart 的语言设计针对客户端开发，它优先考虑多平台（Web，移动端和桌面端）上的开发（亚秒级的状态热重载）和高质量生产环境体验。
 
 Dart also forms the foundation of [Flutter]({{site.flutter}}).
@@ -56,7 +56,7 @@ which can be useful during experimentation or
 for code that needs to be especially dynamic.
 
 Dart 语言是类型安全的；
-它使用静态类型检查来确保变量的值**始终**与变量的静态类型相匹配。
+它使用静态类型检查来确保变量的值 **始终** 与变量的静态类型相匹配。
 这也叫可靠类型。
 尽管类型是强制性的，但由于 Dart 支持类型推断，类型注释仍是可选的。
 Dart 的类型系统也很灵活，允许结合使用 dynamic 类型与运行时检查，
@@ -78,7 +78,7 @@ Dart 提供 [可靠的空值安全](/null-safety)，
 凭借可靠的空值安全，Dart 可以通过静态代码分析在运行时保护您免受空值异常的影响。
 与其他许多空安全语言不同，
 当 Dart 确定变量不可为空时，
-该变量**永远**不可为空。
+该变量 **永远** 不可为空。
 如果你在调试器中审查正在运行的代码，你会看到不可为空性仍在运行时被保留（所以是完全空值安全）。
 
 The following code sample showcases several Dart language features,
@@ -123,8 +123,8 @@ Stream<double> computePi({int batch = 100000}) async* {
     // should approach π / 4. Therefore, the value of π
     // should be:
     //
-    // 圆的面积为 A =π⋅r²，故 π = A /r²。
-    // 因此，当给定 x ∈ <0,1> 且 y ∈ <0,1> 的随机点时，
+    // 圆的面积 A = π⋅r²，故 π = A/r²。
+    // 因此，当给定 x ∈ <0,1>，y ∈ <0,1> 的随机点时，
     // 单位圆内的比率应该接近 π/4。
     // 因此，π 的值应为：
     yield ratio * 4;
@@ -168,51 +168,70 @@ Dart 拥有 [丰富的核心库](/guides/libraries)，为许多日常编程任�
 * Built-in types, collections, and other core functionality for
   every Dart program
   (`dart:core`)
+
+* 为每个 Dart 程序提供的内置类型，集合与其他核心功能
+  (`dart:core`)
+
 * Richer collection types such as queues, linked lists, hashmaps, and
   binary trees
   (`dart:collection`)
+
+* 更丰富的集合类型，诸如队列，链接列表，哈希图和二叉树
+  (`dart:collection`)
+
 * Encoders and decoders for converting between different data representations,
   including JSON and UTF-8
   (`dart:convert`)
+
+* 用于在不同的数据表示形式之间进行转换编码器和解码器，包括 JSON 和 UTF-8
+  (`dart:convert`)
+
 * Mathematical constants and functions, and random number generation
   (`dart:math`)
+
+
+* 数学常数和函数，以及随机数生成
+  (`dart:math`)
+
 * File, socket, HTTP, and other I/O support for non-web applications
   (`dart:io`)
+
+* 为非 Web 应用程序提供的文件、套接字、HTTP 和其他 I/O 支持
+  (`dart:io`)
+
 * Support for asynchronous programming,
   with classes such as `Future` and `Stream`
   (`dart:async`)
+
+* 异步编程支持，比如 `Future` 和 `Stream` 类
+  (`dart:async`)
+
 * Lists that efficiently handle fixed-sized data
   (for example, unsigned 8-byte integers) and SIMD numeric types
   (`dart:typed_data`)
+
+* 能够有效处理固定大小的数据（例如，无符号的 8 字节整数）和 SIMD 数字类型的列表
+  (`dart:typed_data`)
+
 * Foreign function interfaces for interoperability with
   other code that presents a C-style interface
   (`dart:ffi`)
+
+* 用于提供 C 语言风格代码互通性支持的外来函数接口
+  (`dart:ffi`)
+  
 * Concurrent programming using _isolates_ —
   independent workers that are similar to threads but
   don't share memory, communicating only through messages
   (`dart:isolate`)
+
+* 使用 **isolates** 的并发编程 — 这些独立的工作程序与线程相似但它们不共享内存并仅通过消息进行通信
+  (`dart:isolate`)
+
 * HTML elements and other resources for web-based applications that need to
   interact with the browser and the Document Object Model (DOM)
   (`dart:html`)
 
-* 为每个 Dart 程序提供的内置类型，集合与其他核心功能
-  (`dart:core`)
-* 更丰富的集合类型，诸如队列，链接列表，哈希图和二叉树
-  (`dart:collection`)
-* 用于在不同的数据表示形式之间进行转换编码器和解码器，包括 JSON 和 UTF-8
-  (`dart:convert`)
-* 数学常数和函数，以及随机数生成
-  (`dart:math`)
-* 为非 Web 应用程序提供的文件、套接字、HTTP 和其他 I/O 支持
-  (`dart:io`)
-* 异步编程支持，比如 `Future` 和 `Stream` 类
-  (`dart:async`)
-* 能够有效处理固定大小的数据（例如，无符号的 8 字节整数）和 SIMD 数字类型的列表
-  (`dart:typed_data`)
-* 用于提供 C 语言风格代码互通性支持的外来函数接口
-  (`dart:ffi`)
-* 使用 **isolates** 的并发编程 — 这些独立的工作程序与线程相似但它们不共享内存并仅通过消息进行通信
-  (`dart:isolate`)
 * 基于 Web 的应用程序中需要与浏览器和文档对象模型（DOM）交互的 HTML 元素和其他资源
   (`dart:html`)
 
@@ -226,15 +245,23 @@ Dart 团队发布了许多有用的补充包，
 例如：
 
 * [characters]({{site.pub-pkg}}/characters)
-* [intl]({{site.pub-pkg}}/intl) 
-* [http]({{site.pub-pkg}}/http)
-* [crypto]({{site.pub-pkg}}/crypto)
-* [markdown]({{site.pub-pkg}}/markdown)
 
 * [characters（字符）]({{site.pub-pkg}}/characters)
+
+* [intl]({{site.pub-pkg}}/intl) 
+
 * [intl（国际化）]({{site.pub-pkg}}/intl) 
+
+* [http]({{site.pub-pkg}}/http)
+
 * [http（http 请求）]({{site.pub-pkg}}/http)
+
+* [crypto]({{site.pub-pkg}}/crypto)
+
 * [crypto（哈希加密）]({{site.pub-pkg}}/crypto)
+
+* [markdown]({{site.pub-pkg}}/markdown)
+
 * [markdown]({{site.pub-pkg}}/markdown)
 
 Additionally, third-party publishers and the broader community
@@ -244,13 +271,15 @@ publish thousands of packages, with support for features like these:
 发布了上千个软件包，支持诸如此类功能：
 
 * [XML]({{site.pub-pkg}}/xml) 
+
 * [Windows integration]({{site.pub-pkg}}/win32)
+
+* [Windows integration（Windows API 调用）]({{site.pub-pkg}}/win32)
+
 * [SQLite]({{site.pub-pkg}}/sqflite_common)
+
 * [compression]({{site.pub-pkg}}/archive)
 
-* [XML]({{site.pub-pkg}}/xml) 
-* [Windows integration（Windows API 调用）]({{site.pub-pkg}}/win32)
-* [SQLite]({{site.pub-pkg}}/sqflite_common)
 * [compression（压缩）]({{site.pub-pkg}}/archive)
 
 To see a series of working examples featuring the Dart core libraries,
@@ -329,15 +358,24 @@ manages memory using fast object allocation and a
 [分代垃圾收集器](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30) 来管理内存。
 
 More information:
-* [Get started: command-line and server apps](/tutorials/server/get-started)
-* [`dart` tool for running with JIT or AOT compiling to machine code](/tools/dart-tool)
-* [Write command-line apps](/tutorials/server/cmdline)
-* [Write HTTP clients and servers](/tutorials/server/httpserver)
 
 更多相关信息：
+
+* [Get started: command-line and server apps](/tutorials/server/get-started)
+
 * [快速上手：命令行与服务器应用](/tutorials/server/get-started)
+
+* [`dart` tool for running with JIT or AOT compiling to machine code](/tools/dart-tool)
+
 * [用于 JIT 运行或 AOT 编译为机器码的 `dart` 工具 ](/tools/dart-tool)
+
+
+* [Write command-line apps](/tutorials/server/cmdline)
+
 * [编写命令行应用应用程序](/tutorials/server/cmdline)
+
+* [Write HTTP clients and servers](/tutorials/server/httpserver)
+
 * [编写 HTTP 客户端和服务器](/tutorials/server/httpserver)
 
 #### Dart Web (JavaScript dev & prod) {#web-platform}
@@ -362,15 +400,23 @@ Dart Web 同时包含了实现快速开发周期的增量开发编译器与用�
 后者使用诸如不可访问代码移除的技术将 Dart 代码编译为快速，紧凑，可部署的 JavaScript。
 
 More information:
-* [Get started: web apps](/tutorials/web/get-started)
-* [`dartdevc` compiler](/tools/dartdevc)
-* [`webdev` tool](/tools/webdev)
-* [Web deployment tips](/web/deployment)
 
 更多相关信息：
+
+* [Get started: web apps](/tutorials/web/get-started)
+
 * [快速上手：网页应用程序](/tutorials/web/get-started)
+
+* [`dartdevc` compiler](/tools/dartdevc)
+
 * [`dartdevc` 编译器](/tools/dartdevc)
+
+* [`webdev` tool](/tools/webdev)
+
 * [`webdev` 工具](/tools/webdev)
+
+* [Web deployment tips](/web/deployment)
+
 * [网页部署提示](/web/deployment)
 
 ## Learning Dart {#learning-dart}
@@ -379,26 +425,36 @@ More information:
 
 You have many choices for learning Dart. Here are a few that we recommend:
 
-学习 Dart 有很多选择。以下是我们推荐的一些内容：
+学习 Dart 有很多选择。以下是我们推荐的一些方法：
 
 * [Explore Dart in the browser]({{site.dartpad}}/) through DartPad,
   a web-based execution environment for Dart code.
-* [Take a tour of the Dart language](/guides/language/language-tour),
-  which shows you how to use each major Dart feature.
-* [Complete a Dart tutorial](/tutorials/server/cmdline) that 
-  covers the basics of using Dart to build for the command line.
-* [Work through extensive online training][udemy]
-  from Dart experts.
-* [Explore the API documentation]({{site.dart_api}}) that
-  describes the Dart core libraries.
-* [Read a book about Dart programming](/resources/books).
 
 * [在浏览器中探索 Dart]({{site.dartpad}}/) - DartPad 是一个基于网页的 Dart 代码执行环境。
+
+* [Take a tour of the Dart language](/guides/language/language-tour),
+  which shows you how to use each major Dart feature.
+
 * [Dart 开发语言概览](/guides/language/language-tour)，
   它展示了如何使用 Dart 的主要特性。
+
+* [Complete a Dart tutorial](/tutorials/server/cmdline) that 
+  covers the basics of using Dart to build for the command line.
+
 * [完成 Dart 教程](/tutorials/server/cmdline) 它涵盖了通过命令行构建使用 Dart 的基础知识。
-* 来自 Dart 专家的 [完成广泛的在线学习][udemy]
+
+* [Work through extensive online training][udemy]
+  from Dart experts.
+
+* 来自 Dart 专家的 [在线课程][udemy]
+
+* [Explore the API documentation]({{site.dart_api}}) that
+  describes the Dart core libraries.
+
 * [探索 API 文档]({{site.dart_api}}) - 描述了 Dart 核心库。
+
+* [Read a book about Dart programming](/resources/books).
+
 * [阅读关于 Dart 编程的书籍](/resources/books)。
 
 [udemy]: https://www.udemy.com/course/complete-dart-guide/?couponCode=NOV-20
