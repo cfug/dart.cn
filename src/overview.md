@@ -37,7 +37,7 @@ but Dart also supports many core developer tasks like
 formatting, analyzing, and testing code.
 
 Dart 也是 [Flutter]({{site.flutter}}) 的基础。
-Dart 提供了驱动 Flutter 应用程序的语言和运行环境，
+Dart 作为 Flutter 应用程序的编程语言，为驱动应用运行提供了环境，
 同时 Dart 还支持许多核心的开发任务，例如格式化，分析和代码测试。
 
 ## Dart: The language {#language}
