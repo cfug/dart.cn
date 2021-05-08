@@ -151,10 +151,9 @@ class Point {
   <a href="{{site.dartpad}}/4d688b6e468fb4c53d312250f557ec5c"
   target="_blank">open this example in its own window</a>.
 
-  此示例在嵌入式 [DartPad](/tools/dartpad) 中运行。您也可以 <a href="{{site.dartpad}}/4d688b6e468fb4c53d312250f557ec5c"
-  target="_blank">在此示例自己的窗口中打开它</a>。
+  此示例在嵌入式 [DartPad](/tools/dartpad) 中运行。您也可以
+  <a href="{{site.dartpad}}/4d688b6e468fb4c53d312250f557ec5c" target="_blank">在此示例自己的窗口中打开它</a>。
 {{ site.alert.end }}
-
 
 ## Dart: The libraries {#libraries}
 
@@ -342,7 +341,7 @@ the Dart AOT compiler enables ahead-of-time compilation to
 native ARM or x64 machine code.
 Your AOT-compiled app launches with consistent, short startup time.
 
-当应用程序可以部署到生产环境中时 (无论是发布到应用程序商店还是部署到生产后端)，
+当应用程序可以部署到生产环境时 (无论是发布到应用程序商店还是部署到生产后端)，
 Dart AOT 编译器提供原生的 ARM 或 x64 机器码的 AOT 编译。
 经过 AOT 编译的应用程序将稳定快速地启动。
 
