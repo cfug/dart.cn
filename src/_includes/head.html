@@ -11,6 +11,17 @@
     gtag('js', new Date());
     gtag('config', 'G-28P0PYCRZ9');
   </script>
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?fa71f2474b82505e00203cf9956cf0bc";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
   {% assign desc = page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 160 -%}
   <meta name="description" content="{{desc}}">
   <title>{% if page.short-title %}{{ page.short-title }}{% else %}{{ page.title }}{% endif %} | {{ site.title }}</title>
