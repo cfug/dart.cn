@@ -379,7 +379,7 @@ More information:
 
 You have many choices for learning Dart. Here are a few that we recommend:
 
-学习 Dart 有很多选择。以下是我们建议的一些方法：
+学习 Dart 有很多选择。以下是我们推荐的一些内容：
 
 * [Explore Dart in the browser]({{site.dartpad}}/) through DartPad,
   a web-based execution environment for Dart code.
