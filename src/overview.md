@@ -91,7 +91,7 @@ tour](/guides/language/language-tour).
 
 以下代码示例展示了 Dart 语言的一些功能，包括库、异步调用、可空和不可空的类型、箭头语法、生成器、流和 getter。
 想要查找使用更多 Dart 功能的示例，请参阅 [示例页面](/samples)。
-要了解有关该语言的更多信息，请加入 [Dart 语言之旅](/guides/language/language-tour)。
+要了解有关 Dart 语言的更多信息，请参阅 [Dart 语言之旅](/guides/language/language-tour)。
 
 <?code-excerpt "../null_safety_examples/misc/lib/overview_pi.dart"?>
 ```dart:run-dartpad:ga_id-overview:null_safety-true
@@ -124,7 +124,7 @@ Stream<double> computePi({int batch = 100000}) async* {
     // should be:
     //
     // 圆的面积 A = π⋅r²，故 π = A/r²。
-    // 因此，当给定 x ∈ <0,1>，y ∈ <0,1> 的随机点时，
+    // 因此，当给定 x ∈ <0,1> 且 y ∈ <0,1> 的随机点时，
     // 单位圆内的比率应该接近 π / 4。
     // 因此，π 的值应为：
     yield ratio * 4;
@@ -377,7 +377,7 @@ More information:
 
 #### Dart Web (JavaScript dev & prod) {#web-platform}
 
-#### Dart 网页 (JavaScript 开发和生产) {#web-platform}
+#### Web 平台的 Dart (使用 JavaScript 开发和部署) {#web-platform}
 
 Dart Web enables running Dart code on web platforms powered by
 JavaScript. With Dart Web, you compile Dart code to JavaScript code, which in
