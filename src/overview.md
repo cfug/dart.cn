@@ -399,6 +399,6 @@ You have many choices for learning Dart. Here are a few that we recommend:
 * [完成 Dart 教程](/tutorials/server/cmdline) 它覆盖了涵盖了通过命令行构建使用 Dart 的基础知识。
 * 来自 Dart 专家的 [完成广泛的在线学习][udemy]
 * [探索 API 文档]({{site.dart_api}}) - 描述了 Dart 核心库。
-* [阅读关于 Dart 编程的书籍](/resources/books).
+* [阅读关于 Dart 编程的书籍](/resources/books)。
 
 [udemy]: https://www.udemy.com/course/complete-dart-guide/?couponCode=NOV-20
