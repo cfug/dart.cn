@@ -60,7 +60,7 @@ Dart 语言是类型安全的；
 这也叫可靠类型。
 尽管类型是强制性的，但由于 Dart 支持类型推断，类型注释仍是可选的。
 Dart 的类型系统也很灵活，允许结合使用 dynamic 类型与运行时检查，
-在测试开发期间，或需要特别指定为动态类型的代码该特性很有帮助。
+在测试开发期间，或是遇到需要特别指定为动态类型的代码时，这项特性很有帮助。
 
 Dart offers [sound null safety](/null-safety),
 meaning that values can’t be null unless you say they can be.
