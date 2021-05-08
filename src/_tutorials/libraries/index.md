@@ -1,5 +1,5 @@
 ---
-title: "Dart tutorials: libraries"
+title: "Dart tutorials: Libraries"
 title: Dart 编程语言教程：使用库
 description: "Tutorials relating to Dart's core libraries and APIs."
 description: 与核心库和 API 相关的教程。

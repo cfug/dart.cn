@@ -1,6 +1,6 @@
 ---
-title: The pub tool
-title: Pub 工具
+title: dart pub
+title: dart pub 工具
 description: The command-line interface for pub, a package management tool for Dart.
 description: Pub 的命令行工具，是 Dart 的 package 管理工具。
 ---
@@ -43,16 +43,7 @@ see [Troubleshooting Pub](/tools/pub/troubleshoot).
 
 Detailed documentation exists for each of the following pub subcommands:
 
-* [`cache`](/tools/pub/cmd/pub-cache)
-* [`deps`](/tools/pub/cmd/pub-deps)
-* [`downgrade`](/tools/pub/cmd/pub-downgrade)
-* [`get`](/tools/pub/cmd/pub-get)
-* [`global`](/tools/pub/cmd/pub-global)
-* [`outdated`](/tools/pub/cmd/pub-outdated)
-* [`publish`](/tools/pub/cmd/pub-lish)
-* [`upgrade`](/tools/pub/cmd/pub-upgrade)
-* [`uploader`](/tools/pub/cmd/pub-uploader)
-
+{% include pub-subcommands.md %}
 
 ## Overview of subcommands
 

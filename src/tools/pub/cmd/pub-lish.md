@@ -11,7 +11,7 @@ _Publish_ is one of the commands of the [pub tool](/tools/pub/cmd).
 _Publish_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
 
 {% prettify nocode tag=pre+code %}
-$ dart pub publish [--dry-run] [--force]
+$ dart pub publish [options]
 {% endprettify %}
 
 This command publishes your package on the

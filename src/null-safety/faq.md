@@ -1,6 +1,6 @@
 ---
-title: "Null safety: frequently asked questions"
-title: "空安全：常见问题"
+title: "Null safety: Frequently asked questions"
+title: 空安全：常见问题
 description: FAQs to help you migrate your Dart code to null safety
 description: 帮助您迁移到空安全的常见问题解答
 short-title: FAQ (null safety)
@@ -466,7 +466,7 @@ The fix is to explicitly create such lists as `List<dynamic>`.
 
 ## Why does the migration tool add comments to my code? {#migration-comments}
 
-## 为什么迁移工具在我的代码中添加了评论 {#migration-comments}
+## 为什么迁移工具在我的代码中添加了注释 {#migration-comments}
 
 The migration tool adds `/* == false */` or `/* == true */` comments when it
 sees conditions that will always be false or true while running in sound mode.
@@ -474,8 +474,8 @@ Comments like these might indicate that the automatic migration is incorrect and
 needs human intervention. For example:
 
 空安全模式下，在当某个表达式的结果一定为 false 或 true 的时候，
-迁移工具会自动添加 `/* == false */` 或者 `/* == true */` 这样的评论。
-这样的评论将会导致自动迁移出现错误，并且需要人工干预。例如：
+迁移工具会自动添加 `/* == false */` 或者 `/* == true */` 这样的注释。
+这样的注释将会导致自动迁移出现错误，并且需要人工干预。例如：
 
 ```dart
 if (registry.viewFactory(viewDescriptor.id) == null /* == false */)

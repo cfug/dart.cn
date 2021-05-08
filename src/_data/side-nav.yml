@@ -16,6 +16,8 @@
           permalink: /codelabs/iterables
         - title: Dart 异步编程
           permalink: /codelabs/async-await
+        - title: 空安全
+          permalink: /codelabs/null-safety
     - title: 教程一览
       urlExactMatch: true
       match-page-url-exactly: true
@@ -41,6 +43,8 @@
           permalink: /guides/language/effective-dart/design
     - title: Extension 方法
       permalink: /guides/language/extension-methods
+    - title: 数字
+      permalink: /guides/language/numbers
     - title: 空安全
       expanded: false
       children:
@@ -126,17 +130,19 @@
   children:
     - title: Futures、async 和 await
       permalink: /codelabs/async-await
+    - title: Streams 介绍
+      permalink: /tutorials/language/streams
+    - title: 使用 JSON
+      permalink: /guides/json
     - title: 与其他相互调用
       children:
         - title: 与 C 互调
           permalink: /guides/libraries/c-interop
         - title: JavaScript 互调
           permalink: /web/js-interop
-    - title: 使用 JSON
-      permalink: /guides/json
-    - title: Streams 介绍
-      permalink: /tutorials/language/streams
-    - title: 开发移动应用
+    - title: Google APIs
+      permalink: /guides/google-apis
+    - title: Mobile apps
       permalink: /mobile
     - title: 命令行和服务端应用
       children:
@@ -152,6 +158,8 @@
           permalink: /tutorials/server/httpserver
         - title: 库和 package
           permalink: /server/libraries
+        - title: Google Cloud
+          permalink: /server/google-cloud
     - title: 网页端 (Web) 应用
       children:
         - title: 综述
@@ -210,18 +218,12 @@
           permalink: /tools/dart-fix
         - title: dart format 
           permalink: /tools/dart-format
-        - title: dart2js (prod JS)
-          permalink: /tools/dart2js
+        - title: dart pub
+          permalink: /tools/pub/cmd
         - title: dartaotruntime
           permalink: /tools/dartaotruntime
-        - title: dartdevc (dev JS)
-          permalink: /tools/dartdevc
         - title: dartdoc
           permalink: /tools/dartdoc
-        - title: dartfmt
-          permalink: /tools/dartfmt
-        - title: pub
-          permalink: /tools/pub/cmd
         - title: 实验性命令标记
           permalink: /tools/experiment-flags
     - title: 其他的命令行工具

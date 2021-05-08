@@ -6,6 +6,8 @@ description: 如何写出优雅的 Dart 代码。
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /([A-Z]\w*)\d\b/$1/g; /\b(main)\d\b/$1/g"?>
 
+{% include not-null-safe.md %}
+
 The Dart language is type safe: it uses a combination of static type checking and
 [runtime checks](#runtime-checks) to
 ensure that a variable's value always matches the variable's static type,
@@ -18,34 +20,10 @@ Dart 是类型安全的编程语言：Dart 使用静态类型检查和
 的组合来确保变量的值始终与变量的静态类型或其他安全类型相匹配。尽管类型是必需的，但由于
 [类型推断](#type-inference)，类型的注释是可选的。
 
-This page concentrates on the type safety features added in Dart 2.
 For a full introduction to the Dart language, including types, see the
 [language tour](/guides/language/language-tour).
 
-本章重点介绍 Dart 2 中添加的类型安全功能。有关 Dart 语言的完整介绍（包括类型），
-请参阅[语言概览](/guides/language/language-tour)。
-
-<aside class="alert alert-info" markdown="1">
-  **Terminology note:**
-
-  **术语说明：**
-
-  The terms **sound** Dart and **type safe** Dart
-  are often used interchangeably.
-  You might also see the term **strong mode**.
-  Strong mode was an opt-in Dart 1.x feature
-  that provided partial support for type safety.
-
-  术语 **sound** Dart 和 **type safe** Dart 通常可互换使用。
-  你可能还会看到术语 **strong mode** 。 
-  **strong mode** 是一种在Dart 1.x中可选的功能，
-  可为类型安全提供部分支持。
-</aside>
-
-For a full introduction to the Dart language, including types, see the
-[language tour](/guides/language/language-tour).
-
-有关 Dart 语言的完整介绍（包括类型），请参阅[语言指南](/guides/language/language-tour)。
+有关 Dart 语言的完整介绍（包括类型），请参阅[语言概览](/guides/language/language-tour)。
 
 One benefit of static type checking is the ability to find bugs
 at compile time using Dart's [static analyzer.][analysis]

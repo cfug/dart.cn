@@ -49,7 +49,7 @@ To display text on the console, you can use the top-level `print()` function:
 
 每个应用都有一个 `main()` 函数。你可以使用顶层函数 `print()` 来将一段文本输出显示到控制台：
 
-<?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (hello-world)"?>
 {% prettify dart tag=pre+code %}
 void main() {
   print('Hello, World!');
@@ -66,7 +66,7 @@ thanks to type inference:
 
 虽然 Dart 是代码类型安全的语言，但是由于其支持类型推断，因此大多数变量不需要显式地指定类型：
 
-<?code-excerpt "misc/test/samples_test.dart (var)"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (var)"?>
 {% prettify dart tag=pre+code %}
 var name = '旅行者一号';
 var year = 1977;
@@ -90,12 +90,12 @@ Dart supports the usual control flow statements:
 
 Dart 支持常用的流程控制语句：
 
-<?code-excerpt "misc/test/samples_test.dart (control-flow)"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (control-flow)"?>
 {% prettify dart tag=pre+code %}
 if (year >= 2001) {
-  print('21 世纪');
+  print('21st century');
 } else if (year >= 1901) {
-  print('20 世纪');
+  print('20th century');
 }
 
 for (var object in flybyObjects) {
@@ -125,7 +125,7 @@ specifying the types of each function's arguments and return value:
 
 [我们建议](/guides/language/effective-dart/design#types) 为每个函数的参数以及返回值都指定类型：
 
-<?code-excerpt "misc/test/samples_test.dart (functions)"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (functions)"?>
 {% prettify dart tag=pre+code %}
 int fibonacci(int n) {
   if (n == 0 || n == 1) return n;
@@ -136,12 +136,13 @@ var result = fibonacci(20);
 {% endprettify %}
 
 A shorthand `=>` (_arrow_) syntax is handy for functions that
-contain a single expression or return statement.
+contain a single statement.
 This syntax is especially useful when passing anonymous functions as arguments:
 
-`=>` (**胖箭头**) 简写语法用于仅包含一条语句的函数。该语法在将匿名函数作为参数传递时非常有用：
+`=>` (**胖箭头**) 简写语法用于仅包含一条语句的函数。
+该语法在将匿名函数作为参数传递时非常有用：
 
-<?code-excerpt "misc/test/samples_test.dart (arrow)"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (arrow)"?>
 {% prettify dart tag=pre+code %}
 flybyObjects.where((name) => name.contains('土星')).forEach(print);
 {% endprettify %}
@@ -188,7 +189,7 @@ To access APIs defined in other libraries, use `import`.
 
 使用 `import` 关键字来访问在其它库中定义的 API。
 
-<?code-excerpt "misc/test/samples_test.dart (import)" plaster="none"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (import)" plaster="none"?>
 {% prettify dart tag=pre+code %}
 // 导入核心库
 import 'dart:math';
@@ -220,11 +221,11 @@ The linter rule sort_constructors_first made us put the getter below
 the constructors: https://github.com/dart-lang/linter/issues/859.
 {% endcomment %}
 
-<?code-excerpt "misc/lib/samples/spacecraft.dart (class)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (class)"?>
 {% prettify dart tag=pre+code %}
 class Spacecraft {
   String name;
-  DateTime launchDate;
+  DateTime? launchDate;
 
   // 构造函数，带有可以直接为成员变量赋值的语法糖。
   Spacecraft(this.name, this.launchDate) {
@@ -234,19 +235,18 @@ class Spacecraft {
   // 命名构造函数，转发到默认构造函数。
   Spacecraft.unlaunched(String name) : this(name, null);
 
-  int get launchYear =>
+  int? get launchYear =>
       launchDate?.year; // 只读的非 final 的属性
 
   // 方法。
   void describe() {
-    print('宇宙飞船：$name');
+    print('Spacecraft: $name');
+    var launchDate = this.launchDate; // Type promotion doesn't work on getters.
     if (launchDate != null) {
-      int years =
-          DateTime.now().difference(launchDate).inDays ~/
-              365;
-      print('发射时间：$launchYear ($years years ago)');
+      int years = DateTime.now().difference(launchDate).inDays ~/ 365;
+      print('Launched: $launchYear ($years years ago)');
     } else {
-      print('尚未发射');
+      print('Unlaunched');
     }
   }
 }
@@ -256,12 +256,12 @@ You might use the `Spacecraft` class like this:
 
 你可以像下面这样使用 `Spacecraft` 类：
 
-<?code-excerpt "misc/test/samples_test.dart (use class)" plaster="none"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (use class)" plaster="none"?>
 {% prettify dart tag=pre+code %}
-var voyager = Spacecraft('旅行者一号', DateTime(1977, 9, 5));
+var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
 voyager.describe();
 
-var voyager3 = Spacecraft.unlaunched('旅行者三号');
+var voyager3 = Spacecraft.unlaunched('Voyager III');
 voyager3.describe();
 {% endprettify %}
 
@@ -279,10 +279,11 @@ Dart has single inheritance.
 
 Dart 支持单继承。
 
-<?code-excerpt "misc/lib/samples/spacecraft.dart (extends)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (extends)"?>
 {% prettify dart tag=pre+code %}
 class Orbiter extends Spacecraft {
   double altitude;
+
   Orbiter(String name, DateTime launchDate, this.altitude)
       : super(name, launchDate);
 }
@@ -297,14 +298,15 @@ class Orbiter extends Spacecraft {
 Mixins are a way of reusing code in multiple class hierarchies. The following is
 a mixin declaration:
 
-Mixin 是一种在多个类层次结构中重用代码的方法。下面的是声明一个 Mixin 的做法：<<<<<<< HEAD
+Mixin 是一种在多个类层次结构中重用代码的方法。下面的是声明一个 Mixin 的做法：
 
-<?code-excerpt "misc/lib/samples/spacecraft.dart (mixin)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (mixin)"?>
 {% prettify dart tag=pre+code %}
 mixin Piloted {
   int astronauts = 1;
+
   void describeCrew() {
-    print('宇航员人数：$astronauts');
+    print('Number of astronauts: $astronauts');
   }
 }
 {% endprettify %}
@@ -313,7 +315,7 @@ To add a mixin's capabilities to a class, just extend the class with the mixin.
 
 现在你只需使用 Mixin 的方式继承这个类就可将该类中的功能添加给其它类。
 
-<?code-excerpt "misc/lib/samples/spacecraft.dart (mixin use)" replace="/with/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (mixin use)" replace="/with/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class PilotedCraft extends Spacecraft [!with!] Piloted {
   // ···
@@ -336,7 +338,7 @@ Dart has no `interface` keyword. Instead, all classes implicitly define an inter
 
 Dart 没有 `interface` 关键字。相反，所有的类都隐式定义了一个接口。因此，任意类都可以作为接口被实现。
 
-<?code-excerpt "misc/lib/samples/spacecraft.dart (implements)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (implements)"?>
 {% prettify dart tag=pre+code %}
 class MockSpaceship implements Spacecraft {
   // ···
@@ -351,7 +353,7 @@ You can create an abstract class to be extended (or implemented) by a concrete c
 
 你可以创建一个被任意具体类扩展（或实现）的抽象类。抽象类可以包含抽象方法（不含方法体的方法）。
 
-<?code-excerpt "misc/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 [!abstract!] class Describable {
   void describe();
@@ -381,7 +383,7 @@ using `async` and `await`.
 
 使用 `async` 和 `await` 关键字可以让你避免回调地狱（Callback Hell） 并使你的代码更具可读性。
 
-<?code-excerpt "misc/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 const oneSecond = Duration(seconds: 1);
 // ···
@@ -395,7 +397,7 @@ The method above is equivalent to:
 
 上面的方法相当于：
 
-<?code-excerpt "misc/test/samples_test.dart (Future.then)"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (Future.then)"?>
 {% prettify dart tag=pre+code %}
 Future<void> printWithDelay(String message) {
   return Future.delayed(oneSecond).then((_) {
@@ -409,7 +411,7 @@ easy to read.
 
 如下一个示例所示，`async` 和 `await` 关键字有助于使异步代码变得易于阅读。
 
-<?code-excerpt "misc/test/samples_test.dart (await)"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (await)"?>
 {% prettify dart tag=pre+code %}
 Future<void> createDescriptions(Iterable<String> objects) async {
   for (var object in objects) {
@@ -418,13 +420,13 @@ Future<void> createDescriptions(Iterable<String> objects) async {
       if (await file.exists()) {
         var modified = await file.lastModified();
         print(
-            '文件 $object 已经存在。它上一次的修改时间为 $modified。');
+            'File for $object already exists. It was modified on $modified.');
         continue;
       }
       await file.create();
-      await file.writeAsString('开始在此文件中描述 $object。');
+      await file.writeAsString('Start describing $object in this file.');
     } on IOException catch (e) {
-      print('不能为 $object 创建描述：$e');
+      print('Cannot create description for $object: $e');
     }
   }
 }
@@ -434,12 +436,12 @@ You can also use `async*`, which gives you a nice, readable way to build streams
 
 你也可以使用 `async*` 关键字，其可以为你提供一个可读性更好的方式去生成 Stream。
 
-<?code-excerpt "misc/test/samples_test.dart (async*)"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (async*)"?>
 {% prettify dart tag=pre+code %}
 Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
   for (var object in objects) {
     await Future.delayed(oneSecond);
-    yield '${craft.name} 由 $object 飞行。';
+    yield '${craft.name} flies by $object';
   }
 }
 {% endprettify %}
@@ -458,10 +460,10 @@ To raise an exception, use `throw`:
 
 使用 `throw` 关键字抛出一个异常：
 
-<?code-excerpt "misc/test/samples_test.dart (throw)"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (throw)"?>
 {% prettify dart tag=pre+code %}
 if (astronauts == 0) {
-  throw StateError('没有宇航员。');
+  throw StateError('No astronauts.');
 }
 {% endprettify %}
 
@@ -469,7 +471,7 @@ To catch an exception, use a `try` statement with `on` or `catch` (or both):
 
 使用 `try` 语句配合 `on` 或 `catch`（两者也可同时使用）关键字来捕获一个异常:
 
-<?code-excerpt "misc/test/samples_test.dart (try)"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (try)"?>
 {% prettify dart tag=pre+code %}
 try {
   for (var object in flybyObjects) {
@@ -477,7 +479,7 @@ try {
     print(description);
   }
 } on IOException catch (e) {
-  print('无法描述该对象：$e');
+  print('Could not describe object: $e');
 } finally {
   flybyObjects.clear();
 }

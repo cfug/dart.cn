@@ -1,11 +1,11 @@
 ---
-title: "Connect Dart &amp; HTML"
+title: Connect Dart &amp; HTML
 title: Dart 与 HTML 关联
-description: "Shows basic scaffolding of a Dart web app."
+description: Shows basic scaffolding of a Dart web app.
 description: Dart Web 应用的脚手架。
 nextpage:
   url: /tutorials/web/low-level-html/add-elements
-  title: "Add elements to the DOM"
+  title: Add elements to the DOM
   title: 向 DOM 添加元素
 ---
 

@@ -71,11 +71,11 @@ We split the guidelines into a few separate pages for easy digestion:
 为了便于理解，这里我们将指南分成了几个部分：
 
   * **[Style Guide][]** &ndash; This defines the rules for laying out and
-    organizing code, or at least the parts that [dartfmt] doesn't handle for
+    organizing code, or at least the parts that [dart format] doesn't handle for
     you. The style guide also specifies how identifiers are formatted:
     `camelCase`, `using_underscores`, etc.
 
-    **[风格指南][Style Guide]** &ndash; 该部分定义了布局和组织代码的规则，或者说是 [dartfmt] 不能为你格式化的那些代码的布局和组织规则。风格指南还为你指定了标识符的格式，比如：驼峰式大小写、下划线的使用等等。
+    **[风格指南][Style Guide]** &ndash; 该部分定义了布局和组织代码的规则，或者说是 [dart format] 不能为你格式化的那些代码的布局和组织规则。风格指南还为你指定了标识符的格式，比如：驼峰式大小写、下划线的使用等等。
 
   * **[Documentation Guide][]** &ndash; This tells you everything you need to
     know about what goes inside comments. Both doc comments and regular,
@@ -111,7 +111,7 @@ For links to all the guidelines, see the
 </aside>
 {% endcomment %}
 
-[dartfmt]: https://github.com/dart-lang/dart_style#readme
+[dart format]: /tools/dart-format
 [style guide]: /guides/language/effective-dart/style
 [documentation guide]: /guides/language/effective-dart/documentation
 [usage guide]: /guides/language/effective-dart/usage

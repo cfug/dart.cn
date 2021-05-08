@@ -1,7 +1,7 @@
 ---
-title: "Dart tutorials: low-level HTML"
+title: "Dart tutorials: Low-level HTML"
 title: Dart 编程语言教程：底层 Web 编程
-description: "Dart tutorials related to low-level web programming using HTML."
+description: Dart tutorials related to low-level web programming using HTML.
 description: Dart 编程语言中有关底层 Web 编程相关的教程。
 toc: false
 ---
@@ -26,7 +26,7 @@ Then learn how to add, move, and remove DOM elements.
 
 <div class="card-grid">
   <div class="card">
-    <h3><a href="/tutorials/web/low-level-html/connect-dart-html">Connect Dart & HTML</a></h3>
+    <h3><a href="/tutorials/web/low-level-html/connect-dart-html">Connect Dart and HTML</a></h3>
     <p>Include a Dart script in an HTML page.</p>
   </div>
   <div class="card">

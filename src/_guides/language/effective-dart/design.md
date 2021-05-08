@@ -1698,9 +1698,9 @@ annotations on APIs help *users* of your code, types on private members help
 如果你认为注解有助于使代码更清晰，那么你应该加上这个注解。
 
 
-### DON'T type annotate initialized local variables.
+### DON'T redundantly type annotate initialized local variables.
 
-### **避免** 为初始化的局部变量添加类型注解。
+### **避免** 为初始化的局部变量添加冗余地类型注解。
 
 {% include linter-rule.html rule="omit_local_variable_types" %}
 
@@ -1709,7 +1709,7 @@ have very little scope. Omitting the type focuses the reader's attention on the
 more important *name* of the variable and its initialized value.
 
 局部变量，特别是现代的函数往往很少，范围也很小。省略局部变量类型会将读者的注意力集中在变量的
-*名称*及初始化值上。
+*名称* 及初始化值上。
 
 {:.good}
 <?code-excerpt "design_good.dart (omit-types-on-locals)"?>
@@ -1738,6 +1738,22 @@ List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
   }
 
   return desserts;
+}
+{% endprettify %}
+
+Sometimes the inferred type is not the type you want the variable to have. For
+example, you may intend to assign values of other types later. In that case,
+annotate the variable with the type you want.
+
+{:.good}
+<?code-excerpt "design_good.dart (upcast-local)" replace="/Widget result/[!Widget!] result/g"?>
+{% prettify dart tag=pre+code %}
+Widget build(BuildContext context) {
+  [!Widget!] result = Text('You won!');
+  if (applyPadding) {
+    result = Padding(padding: EdgeInsets.all(8.0), child: result);
+  }
+  return result;
 }
 {% endprettify %}
 
@@ -1982,7 +1998,7 @@ Here, `numbers` has a type annotation, but the annotation doesn't provide a type
 argument to the generic `List`. Likewise, the `Map` type argument to `Completer`
 isn't fully specified. In cases like this, Dart will *not* try to "fill in" the
 rest of the type for you using the surrounding context. Instead, it silently
-fills in any missing type arguments with with `dynamic` (or the bound if the
+fills in any missing type arguments with `dynamic` (or the bound if the
 class has one). That's rarely what you want.
 
 Instead, if you're writing a generic type either in a type annotation or as a type

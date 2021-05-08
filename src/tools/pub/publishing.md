@@ -68,21 +68,23 @@ are a few additional requirements for uploading a package:
 对于以上两者，pub 都会指出具体的改变方法，
 帮助你的 package 在 Dart 生态系统中展现的更好。对于上传 package 有一些额外的要求：
 
-* You must include a `LICENSE` file
-  that contains an [open-source license.][open-source license]
-  We recommend the [BSD license,][BSD license]
-  which is used by Dart itself. You must also have the legal right to
+* You must include a `LICENSE` file.
+  We recommend the [BSD 3-clause license][],
+  which the Dart and Flutter teams typically use.
+  However, you can use any license that's appropriate for your package.
+  You must also have the legal right to
   redistribute anything that you upload as part of your package.
 
-  你必须带有一个包含 [开源许可证][open-source license] 的 `LICENSE` 文件。
-  我们推荐 [BSD 许可证][BSD license]，也就是 Dart 自身所使用的开源许可证。
+  你必须带有一个包含 `LICENSE` 文件。
+  我们推荐 [BSD 3-clause 许可证][BSD 3-clause license]，
+  也就是 Dart 和 Flutter 团队所使用的开源许可证。
   同时，对于你所上传的 package 任意部分，你必须拥有重新发布的合法权利。
 
-* Your package must be less than 10 MB large after gzip compression. If
+* Your package must be less than 100 MB large after gzip compression. If
   it's too large, consider splitting it into multiple packages, or cutting down
   on the number of included resources or examples.
 
-  通过 gzip 压缩后，你的 package 大小必须小于 10 MB。
+  通过 gzip 压缩后，你的 package 大小必须小于 100 MB。
   如果它所占空间过大，考虑将它分割为几个小的 package，
   或者减少包含资源或实例的数量。
 
@@ -95,7 +97,7 @@ are a few additional requirements for uploading a package:
   和属于 SDK 的依赖项（`sdk: flutter`）。
   这些限制条件确保了你的 package 的依赖项在未来依然可用。
 
-* You must have a [Google Account,][Google Account]
+* You must have a [Google Account][],
   which pub uses to manage package upload permissions.
   Your Google Account can be associated with a Gmail address or
   with any other email address.
@@ -224,10 +226,10 @@ To create a verified publisher, follow these steps:
 
 ## 发布你的 package 
 
-Use the [dart pub publish][] command to publish your package for the first time,
+Use the [`dart pub publish`][] command to publish your package for the first time,
 or to update it to a new version.
 
-使用 [dart pub publish][] 命令来首次发布你的 package，或者把它升级到一个新版本。
+使用 [`dart pub publish`][] 命令来首次发布你的 package，或者把它升级到一个新版本。
 
 ### Performing a dry run
 
@@ -285,11 +287,11 @@ $ dart pub publish
 
 {{site.alert.note}}
 
-  The `pub` command currently doesn't support publishing a new package directly to a
+  The pub command currently doesn't support publishing a new package directly to a
   verified publisher. As a temporary workaround, publish new packages to a Google Account,
   and then [transfer the package to a publisher](#transferring-a-package-to-a-verified-publisher).
 
-  `pub` 命令目前不支持把一个新的 package 直接发布至已验证发布者。
+  pub 命令目前不支持把一个新的 package 直接发布至已验证发布者。
   可先把新 package 发布至一个 Google 账户，作为一个临时空间，
   然后再 [把 package 转移至已验证发布者](#transferring-a-package-to-a-verified-publisher)。
 
@@ -408,12 +410,12 @@ so examine the list carefully before completing your upload.
 Whoever publishes the first version of a package automatically becomes
 the first and only person authorized to upload additional versions of that package.
 To allow or disallow other people to upload versions,
-use the [pub uploader][] command
+use the [`dart pub uploader`][] command
 or transfer the package to a [verified publisher][].
 
 发布 package 第一个版本的人，将自动成为唯一有权对其进行更新的人。
-要允许或取消其他人更新版本，可使用 [pub uploader][] 命令，
-或把 package 转移至已验证发布者。
+要允许或取消其他人更新版本，可使用 [`dart pub uploader`][] 命令，
+或把 package 转移至 [已验证的发布者][verified publisher]。
 
 If a package has a verified publisher,
 then the pub.dev page for that package displays the publisher domain.
@@ -446,7 +448,7 @@ Prereleases can be useful when *any* of the following are true:
 
   该 package 依赖于 Dart 或 Flutter SDK 的一个不稳定版本。
 
-As described in [semantic versioning,][semver] to make a prerelease of a version
+As described in [semantic versioning][semver], to make a prerelease of a version
 you append a suffix to the version. For example, to make a prerelease of
 version `2.0.0` you might use the version `2.0.0-dev.1`. Later, when you
 release version `2.0.0`, it will take precedence over all `2.0.0-XXX` prereleases.
@@ -513,7 +515,7 @@ as illustrated by the following screenshot,
 where the stable version is listed as
 `1.6.0` and the preview version is listed as `2.0.0`.
 
-![Illustration of a preview version](/null-safety/preview-version.png){:width="600px"}<br>
+![Illustration of a preview version](preview-version.png){:width="600px"}<br>
 
 When Dart `2.12.0` stable is released,
 pub.dev updates the package listing to display
@@ -560,18 +562,17 @@ For more information, see the reference pages for the following `pub` commands:
 
 想了解更多信息，请查阅以下 `pub` 命令的参考页面：
 
-* [dart pub publish][]
-* [pub uploader][]
+* [`dart pub publish`][]
+* [`dart pub uploader`][]
 
-[BSD license]: https://opensource.org/licenses/BSD-3-Clause
+[BSD 3-clause license]: https://opensource.org/licenses/BSD-3-Clause
 [Google Account]: https://support.google.com/accounts/answer/27441
 [Markdown]: {{site.pub-pkg}}/markdown
-[open-source license]: https://opensource.org/
 [package layout conventions]: /tools/pub/package-layout
 [policy]: https://pub.dev/policy
 [pub]: /guides/packages
-[dart pub publish]: /tools/pub/cmd/pub-lish
-[pub uploader]: /tools/pub/cmd/pub-uploader
+[`dart pub publish`]: /tools/pub/cmd/pub-lish
+[`dart pub uploader`]: /tools/pub/cmd/pub-uploader
 [pubspec]: /tools/pub/pubspec
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
 [verified publisher]: /tools/pub/verified-publishers
