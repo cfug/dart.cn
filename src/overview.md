@@ -105,9 +105,8 @@ void main() async {
 }
 
 /// Generates a stream of increasingly accurate estimates of π.
-/// 生成越来越精确的 π 估计流。
 Stream<double> computePi({int batch = 100000}) async* {
-  var total = 0; // inferred to be of type int 自动推断为 int 类型
+  var total = 0; // inferred to be of type int
   var count = 0;
   while (true) {
     final points = generateRandom().take(batch);
@@ -122,11 +121,6 @@ Stream<double> computePi({int batch = 100000}) async* {
     // y ∈ <0,1>, the ratio of those inside a unit circle
     // should approach π / 4. Therefore, the value of π
     // should be:
-    //
-    // 圆的面积 A = π⋅r²，故 π = A/r²。
-    // 因此，当给定 x ∈ <0,1> 且 y ∈ <0,1> 的随机点时，
-    // 单位圆内的比率应该接近 π / 4。
-    // 因此，π 的值应为：
     yield ratio * 4;
   }
 }
@@ -358,7 +352,7 @@ More information:
 
 更多相关信息：
 
-* [Get started: command-line and server apps](/tutorials/server/get-started)
+* [Get started: Command-line and server apps](/tutorials/server/get-started)
 
   [快速上手：命令行与服务器应用](/tutorials/server/get-started)
 
@@ -402,7 +396,7 @@ More information:
 
 更多相关信息：
 
-* [Get started: web apps](/tutorials/web/get-started)
+* [Get started: Web apps](/tutorials/web/get-started)
 
   [快速上手：网页应用程序](/tutorials/web/get-started)
 
