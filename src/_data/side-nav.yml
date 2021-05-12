@@ -105,6 +105,8 @@
       permalink: /guides/libraries/create-library-packages
     - title: 发布 package
       permalink: /tools/pub/publishing
+    - title: 设置 package 介绍页
+      permalink: /guides/libraries/writing-package-pages
     - title: Package 参考资料
       expanded: false
       children:
@@ -154,7 +156,7 @@
           permalink: /tutorials/server/get-started
         - title: 命令行应用
           permalink: /tutorials/server/cmdline
-        - title: HTTP 客户端和服务端应用
+        - title: 编写 HTTP 服务端应用
           permalink: /tutorials/server/httpserver
         - title: 库和 package
           permalink: /server/libraries
@@ -220,6 +222,8 @@
           permalink: /tools/dart-format
         - title: dart pub
           permalink: /tools/pub/cmd
+        - title: dart run
+          permalink: /tools/dart-run
         - title: dartaotruntime
           permalink: /tools/dartaotruntime
         - title: dartdoc

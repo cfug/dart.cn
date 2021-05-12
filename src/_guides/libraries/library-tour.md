@@ -2215,11 +2215,11 @@ and the [Flutter libraries.][docs.flutter]
 以及特定于平台的库，如 [Dart web development libraries][webdev libraries] 和 [Flutter libraries.][docs.flutter] 。
 
 You can get yet more libraries by using the [pub package manager](/guides/packages). The
-[collection,]({{site.pub}}/packages/collection)
-[crypto,]({{site.pub}}/packages/crypto)
-[http,]({{site.pub}}/packages/http)
-[intl,]({{site.pub}}/packages/intl) and
-[test]({{site.pub}}/packages/test) libraries are just a
+[collection,]({{site.pub-pkg}}/collection)
+[crypto,]({{site.pub-pkg}}/crypto)
+[http,]({{site.pub-pkg}}/http)
+[intl,]({{site.pub-pkg}}/intl) and
+[test]({{site.pub-pkg}}/test) libraries are just a
 sampling of what you can install using pub.
 
 您可以使用 [pub 包管理](/guides/packages) 工具获得更多库。

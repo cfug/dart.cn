@@ -2056,7 +2056,7 @@ void main(List<String> arguments) {
 }
 ```
 
-You can use the [args library]({{site.pub}}/packages/args) to
+You can use the [args library]({{site.pub-pkg}}/args) to
 define and parse command-line arguments.
 
 你可以通过使用 [参数库]({{site.pub}}/packages/args) 来定义和解析命令行参数。
@@ -2588,7 +2588,7 @@ runtime.
 {:.table .table-striped}
 
 The result of `obj is T` is true if `obj` implements the interface
-specified by `T`. For example, `obj is Object` is always true.
+specified by `T`. For example, `obj is Object?` is always true.
 
 当且仅当 `obj` 实现了 `T` 的接口，`obj is T` 才是 true。
 例如 `obj is Object` 总为 true，因为所有类都是 Object 的子类。
@@ -3942,6 +3942,9 @@ or to provide extra clarity:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/classes/point.dart (named-constructor)" replace="/Point\.\S*/[!$&!]/g" plaster="none"?>
 {% prettify dart tag=pre+code %}
+const double xOrigin = 0;
+const double yOrigin = 0;
+
 class Point {
   double x = 0;
   double y = 0;
@@ -4290,9 +4293,6 @@ instance method:
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/classes/point.dart (class-with-distanceTo)" plaster="none"?>
 ```dart
 import 'dart:math';
-
-const double xOrigin = 0;
-const double yOrigin = 0;
 
 class Point {
   double x = 0;

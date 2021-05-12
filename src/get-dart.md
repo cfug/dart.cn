@@ -104,9 +104,9 @@ Dart SDK 支持 Windows、Linux 和 macOS。
 
 ### Linux
 
-* **Supported versions:** Recent Linux versions, but only Ubuntu 16.04 is tested.
+* **Supported versions:** [Debian stable][] and [Ubuntu LTS][] under standard support.
 
-  **支持的版本：**最新的 Linux 版本，仅在 Ubuntu 16.04 上进行了测试。
+  **支持的版本：**已支持标准版的 [Debian stable][] 以及 [Ubuntu LTS][]。
 
 * **Supported architectures:** x64, ia32, arm, arm64.
 
@@ -225,6 +225,8 @@ For more information, see the [Dart 2 page.][Dart 2]
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
 [Dart libraries]: /guides/libraries/library-tour
 [downloading the SDK as a zip file]: /tools/sdk/archive
-[flutter]: https://flutter.cn/docs/get-started/install
+[Debian stable]: https://www.debian.org/releases
+[Ubuntu LTS]: https://wiki.ubuntu.com/Releases
+[flutter]: https://flutter.dev/docs/get-started/install
 [site SDK version]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/{{site.data.pkg-vers.SDK.vers}}/index.html
 [a package manager]: https://github.com/dart-lang/sdk/wiki/Installing-beta-and-dev-releases-with-brew,-choco,-and-apt-get

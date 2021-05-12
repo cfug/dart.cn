@@ -52,7 +52,7 @@ $ sudo apt-get install dart
 
 #### 使用 Debian 安装包
 
-Alternatively, download Dart SDK [as Debian package](#){:.debian-link-stable}
+Alternatively, download Dart SDK [as a Debian package](#){:.debian-link-stable}
 in the `.deb` package format. 
 
 通过 [`.deb` 软件包](#){:.debian-link-stable} 下载 Dart SDK。

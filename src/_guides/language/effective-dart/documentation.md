@@ -534,7 +534,7 @@ dartdoc will process it accordingly using the [markdown package.][]
 并且 dartdoc 会根据 [markdown package.][] 进行解析。
 
 [markdown]: https://daringfireball.net/projects/markdown/
-[markdown package.]: {{site.pub}}/packages/markdown
+[markdown package.]: {{site.pub-pkg}}/markdown
 
 There are tons of guides out there already to introduce you to Markdown. Its
 universal popularity is why we chose it. Here's just a quick example to give you

@@ -174,9 +174,9 @@ which is available at the [pub.dev site]({{site.pub}}).
 
     {: type="a"}
      1. Go to [vector_math's entry on the Package
-        site.]({{site.pub}}/packages/vector_math)
+        site.]({{site.pub-pkg}}/vector_math)
 
-        打开 [pub.dev 网站中 vector_math 包的网页。]({{site.pub}}/packages/vector_math)
+        打开 [pub.dev 网站中 vector_math 包的网页。]({{site.pub-pkg}}/vector_math)
 
      2. Click the **Installing** tab.
 
@@ -382,9 +382,9 @@ use the `package:` prefix.
 
    {: type="a"}
    1. Go to [vector_math's entry on the Package
-      site.]({{site.pub}}/packages/vector_math)
+      site.]({{site.pub-pkg}}/vector_math)
 
-      打开 [pub.dev 网站中 vector_math 包的网页。]({{site.pub}}/packages/vector_math)
+      打开 [pub.dev 网站中 vector_math 包的网页。]({{site.pub-pkg}}/vector_math)
 
    2. Click the **Installing** tab.
 

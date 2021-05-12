@@ -78,7 +78,7 @@ You might find the following tutorials helpful.
 [开发 command-line 应用](/tutorials/server/cmdline)：
 <br> dart:io 和 args package 的介绍。
 
-[Write HTTP clients & servers](/tutorials/server/httpserver)
+[Write HTTP servers](/tutorials/server/httpserver)
 <br> Features dart:io and the http_server package.
 
 [开发 HTTP 客户端和服务端](/tutorials/server/httpserver)：

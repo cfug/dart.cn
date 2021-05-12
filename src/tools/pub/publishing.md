@@ -134,6 +134,11 @@ Pub 在 `pub.dev/packages/<your_package>` 里，
   **README.md:** `README.md` 文件是你 package 页面的主要组成部分。
   它的内容将会按 [Markdown][Markdown] 格式渲染。
 
+  For guidance on how to write a great README, see
+  [Writing package pages](/guides/libraries/writing-package-pages).
+
+  想按照规范编写一个超棒的 README 吗，请参阅 [编写 package 介绍页](/guides/libraries/writing-package-pages)。
+
 * **CHANGELOG.md:** Your package's `CHANGELOG.md` file, if found,
   is also featured in a tab on your package's page,
   so that developers can read it right from pub.dev.
