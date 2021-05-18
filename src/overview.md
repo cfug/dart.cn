@@ -360,14 +360,13 @@ More information:
 
   [用于 JIT 运行或 AOT 编译为机器码的 `dart` 工具](/tools/dart-tool)
 
-
 * [Write command-line apps](/tutorials/server/cmdline)
 
   [编写命令行应用应用程序](/tutorials/server/cmdline)
 
-* [Write HTTP clients and servers](/tutorials/server/httpserver)
+* [Write HTTP servers](/tutorials/server/httpserver)
 
-  [编写 HTTP 客户端和服务器](/tutorials/server/httpserver)
+  [编写 HTTP 服务器](/tutorials/server/httpserver)
 
 #### Dart Web (JavaScript dev & prod) {#web-platform}
 

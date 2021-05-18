@@ -6,7 +6,7 @@ description: Google 将如何使用你输入到 DartPad 里的代码。
 toc: false
 ---
 
-DartPad is a free, open-source service to help developers learn about the Dart
+DartPad is a free, open source service to help developers learn about the Dart
 language and libraries. Source code entered into DartPad may be sent to servers
 running in Google Cloud Platform to be analyzed for errors/warnings, compiled to
 JavaScript, and returned to the browser.

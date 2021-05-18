@@ -27,7 +27,7 @@ The following libraries and packages are useful across Dart platforms:
   [dart:convert](/guides/libraries/library-tour#dartconvert---decoding-and-encoding-json-utf-8-and-more)<br>
   包含 JSON 数据和 UTF-8（JSON 数据需要的字符编码）的转换器。
 
-* [package:json_serializable]({{site.pub}}/packages/json_serializable)<br>
+* [package:json_serializable]({{site.pub-pkg}}/json_serializable)<br>
   An easy-to-use code generation package.
   When you add some metadata annotations
   and use the builder provided by this package,
@@ -36,7 +36,7 @@ The following libraries and packages are useful across Dart platforms:
   [package:json_serializable]({{site.pub}}/packages/json_serializable)<br>
   一个易于使用的代码生成包。当你添加一些元注解以及使用该包提供的构建器时，Dart 编译器可以为你生成序列化和反序列化的代码。
 
-* [package:built_value]({{site.pub}}/packages/built_value)<br>
+* [package:built_value]({{site.pub-pkg}}/built_value)<br>
   A powerful, opinionated alternative to json_serializable.
 
   [package:built_value]({{site.pub}}/packages/built_value)<br>
@@ -68,15 +68,16 @@ The following libraries and packages are useful across Dart platforms:
 
 [通过 HttpRequest 使用 HTTP 资源](/guides/libraries/library-tour#using-http-resources-with-httprequest)：向你演示如何使用 HttpRequest 与服务器交换数据。该资源是 [dart:html 库概览](/guides/libraries/library-tour#darthtml) 的一部分。
 
+{% comment %}
 ## VM resources
 
 ## 相关的 VM 资源
 
-[Write HTTP Clients & Servers](/tutorials/server/httpserver)
+[Write HTTP servers](/tutorials/server/httpserver)
 : Walks through how to implement command-line clients and servers
   that exchange JSON data.
 
-[开发 HTTP 客户端和服务端](/tutorials/server/httpserver)：手把手教你如何实现一个命令行式的客户端和服务端并使用 JSON 交换数据。
+[开发 HTTP 服务端](/tutorials/server/httpserver)：手把手教你如何实现一个命令行式的客户端和服务端并使用 JSON 交换数据。
 
 {% comment %}
 ## Other tools and resources
