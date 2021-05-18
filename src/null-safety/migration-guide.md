@@ -36,7 +36,7 @@ Here are the basic steps for migrating each package that you own:
    如果您已经在 pub.flutter-io.cn 发布了您的包，
    可以将迁移完成的空安全版本以 **预发布** 版本进行 [**发布**](#step5-publish)。
 
-{{ site.alert.info }}
+{{site.alert.info}}
 
   **Migrating an app is technically the same as migrating a package.**
   Before migrating an app,
@@ -45,7 +45,7 @@ Here are the basic steps for migrating each package that you own:
   **理论上，迁移应用和迁移软件包的过程一致。**
   在迁移应用之前，确保您所依赖的包全部迁移完成后，再进行迁移。
 
-{{ site.alert.end }}
+{{site.alert.end}}
 
 For an informal look at the experience of using the migration tool, watch this video:
 
@@ -83,7 +83,7 @@ then passing a nullable argument becomes a compile error.
 例如，如果您推测一个函数可以接受一个可空的参数，但依赖的包迁移后变为了非空，
 在传递可空的参数时便会出现编译错误。
 
-{{ site.alert.info }}
+{{site.alert.info}}
 
   **You can — and should — migrate your package before
   packages that depend on it are migrated.**
@@ -97,7 +97,7 @@ then passing a nullable argument becomes a compile error.
   您已迁移的软件包对于未进行迁移的包和应用而言，仍然可用（前提是使用的 Dart 2.12 及之后的版本）。
   例如，Dart 和 Flutter 的核心库现已完全迁移至空安全，而尚未进行迁移的应用仍然可以使用。
 
-{{ site.alert.end }}
+{{site.alert.end}}
 
 This section tells you how to
 check and update your package's dependencies,
@@ -147,7 +147,7 @@ null-safe releases, if they exist.
 如果您看到所有依赖都已支持空安全，就意味着您可以开始迁移了。
 否则请使用 **Resolvable** 列内列举的已迁移至空安全的版本。
 
-{{ site.alert.info }}
+{{site.alert.info}}
 
   **Why do all dependencies need to support null safety?**
   When all of an app's direct dependencies support null safety,
@@ -162,7 +162,7 @@ null-safe releases, if they exist.
   同样，当开发期依赖也已支持时，您可以在健全的空安全下 **进行测试**。
   您可能会因为需要生成代码，而使用已迁移到空安全的开发期依赖。
 
-{{ site.alert.end }}
+{{site.alert.end}}
 
 Here's an example of the output for a simple package.
 The green checkmarked version for each package supports null safety:
@@ -185,7 +185,7 @@ You can find contact details on the package page on [pub.dev][].
 我们推荐您联系对应依赖的作者。
 您可以在 [pub.flutter-io.cn][pub.dev] 对应依赖包的页面，找到作者的联系信息。
 
-[pub.dev]: {{ site.pub }}
+[pub.dev]: {{site.pub}}
 
 
 ### Update dependencies
@@ -234,14 +234,14 @@ You have two options for migrating:
 
   [自己动手，丰衣足食。](#migrating-by-hand)
 
-{{ site.alert.tip }}
+{{site.alert.tip}}
 
   For additional help while migrating code, check the
   [null safety FAQ][].
 
   若您在迁移过程中需要额外的帮助，请查看 [空安全常见问题][null safety FAQ]。
 
-{{ site.alert.end }}
+{{site.alert.end}}
 
 [nullable type]: /null-safety#creating-variables
 [required]: /null-safety/understanding-null-safety#required-named-parameters

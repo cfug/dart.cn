@@ -443,7 +443,7 @@ directives should appear in. Each "section" should be separated by a blank line.
 每个“部分”应该使用空行分割。
 
 A single linter rule handles all the ordering guidelines:
-[directives_ordering.]({{ site.lints }}/directives_ordering.html)
+[directives_ordering.]({{site.lints}}/directives_ordering.html)
 
 
 ### DO place "dart:" imports before other imports.

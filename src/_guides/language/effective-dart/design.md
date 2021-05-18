@@ -2382,10 +2382,10 @@ to a more precise type before accessing members.
 即便如此，在调用和使用这些 API 的时候，将类型转换成一个更精确的类型之后
 再去调用成员会更好。
 
-{{ site.alert.version-note }}
+{{site.alert.version-note}}
 In code that hasn't been migrated to null safety yet, use `Object` to accept
 values of all types, including `null`.
-{{ site.alert.end }}
+{{site.alert.end}}
 
 ### DO use `Future<void>` as the return type of asynchronous members that do not produce values.
 
@@ -2748,9 +2748,9 @@ class Person {
 }
 {% endprettify %}
 
-{{ site.alert.version-note }}
+{{site.alert.version-note}}
 In code that has not been migrated to null safety yet, the `Object` type
 annotation permits `null`. Even so, Dart will never call your `==` method and
 pass `null` to it, so you don't need to handle `null` inside the body of the
 method.
-{{ site.alert.end }}
+{{site.alert.end}}

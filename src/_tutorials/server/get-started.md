@@ -116,7 +116,7 @@ This command creates a small Dart app that has the following:
   一个 pubspec 文件，`pubspec.yaml`，包含应用的元数据，包括应用依赖的
   [package](/guides/packages) 信息以及所需的版本等。
 
-{{ site.alert.note }}
+{{site.alert.note}}
 
   Under the hood, `dart create` runs [`dart pub get`][], which
   scans the generated pubspec file and downloads dependencies.
@@ -127,7 +127,7 @@ This command creates a small Dart app that has the following:
   扫描生成的 pubspec 文件和下载的依赖。
   如果你在 pubspec 文件中添加了其他的依赖，执行 `dart pub get` 进行下载。
 
-{{ site.alert.end }}
+{{site.alert.end}}
 
 [`dart pub get`]: /tools/pub/cmd/pub-get
 
@@ -278,7 +278,6 @@ If you get stuck, find help at [Community and support.](/community)
 如果你在这一步无法继续进行，可以从 [社区和帮助](/community) 中查找帮助。
 
 [Arithmetic operators]: /guides/language/language-tour#arithmetic-operators
-[stagehand]: {{site.pub-pkg}}/stagehand
 [DartPad documentation]: /tools/dartpad
 [Dart language tour]: /guides/language/language-tour
 [Dart library tour]: /guides/libraries/library-tour

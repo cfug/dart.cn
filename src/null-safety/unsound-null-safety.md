@@ -36,7 +36,7 @@ followed by details on testing and running mixed-version programs.
 
 本文将描述健全和非健全的空安全之间的区别，让您可以为何时进行空安全迁移下定论。
 
-{{ site.alert.note }}
+{{site.alert.note}}
 
   We recommend that, if possible, you wait for dependencies to migrate
   before you migrate your package.
@@ -45,7 +45,7 @@ followed by details on testing and running mixed-version programs.
   我们希望您能尽可能地等到所有您依赖的库都迁移完成后，再对您的软件包进行空安全迁移。
   更多细节，请参考 [迁移指南][migration guide]。
 
-{{ site.alert.end }}
+{{site.alert.end}}
 
 [migration guide]: /null-safety/migration-guide
 
@@ -306,5 +306,3 @@ when you've finished the incremental migration of your libraries.
 当您完成增量迁移后，也请记得将测试代码 **重新** 迁移至空安全。
 
 [language version comment]: /guides/language/evolution#per-library-language-version-selection
-[package config]: https://pub.dev/packages/package_config
-

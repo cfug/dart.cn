@@ -5,13 +5,13 @@ description: Learn how to create library packages in Dart.
 description: 学习如何在 Dart 里创建可复用的库。
 ---
 
-The Dart ecosystem uses [packages][]
+The Dart ecosystem uses [packages](/guides/packages)
 to share software such as libraries and tools.
 This page tells you how to create a package,
 with a focus on the most common kind of package,
 [_library_ packages](/tools/pub/glossary#library-package).
 
-在 Dart 生态系统中使用 [Package][] 实现共享软件，
+在 Dart 生态系统中使用 [packages](/guides/packages) 实现共享软件，
 比如一些 Library 和工具。
 本章将通过最常见的 [Library Package](/tools/pub/glossary#library-package)
 来介绍如何创建一个 Package。
@@ -19,8 +19,6 @@ with a focus on the most common kind of package,
 {% comment %}
 TODO: Add coverage of packages that contain tools.
 {% endcomment %}
-
-[packages]: /guides/packages
 
 ## What makes a library package
 
@@ -45,11 +43,12 @@ pubspec file
 pubspec 文件
 </dt>
 <dd markdown="1">
-The `pubspec.yaml` file for a library is the same
+<br>The `pubspec.yaml` file for a library is the same
 as for an application package&mdash;there is no special
 designation to indicate that the package is a library.
 
-Library 的 `pubspec.yaml` 文件与应用程序的 `pubspec.yaml` 文件相同&mdash; `pubspec.yaml` 文件中并没有特别的指出这个 Package 是一个 Library 。
+<br>Library 的 `pubspec.yaml` 文件与应用程序的 `pubspec.yaml` 文件相同&mdash;
+`pubspec.yaml` 文件中并没有特别的指出这个 Package 是一个 Library 。
 </dd>
 
 <dt markdown="1">
@@ -58,7 +57,7 @@ lib directory
 lib 目录
 </dt>
 <dd markdown="1">
-As you might expect, the library code lives under the _lib_
+<br>As you might expect, the library code lives under the _lib_
 directory and is public to other packages.
 You can create any hierarchy under lib, as needed.
 By convention, implementation code is placed under _lib/src_.
@@ -67,7 +66,7 @@ other packages should never need to import `src/...`.
 To make APIs under lib/src public, you can export lib/src files
 from a file that's directly under lib.
 
-如你所料， Library 的代码位于 _lib_ 目录下，且对于其他 Package 是公开的。
+<br>如你所料， Library 的代码位于 _lib_ 目录下，且对于其他 Package 是公开的。
 你可以根据需要在 **lib** 下任意创建组织文件结构。
 按照惯例，实现代码会放在 **lib/src** 目录下。
 lib/src 目录下的代码被认为是私有的。
@@ -76,10 +75,7 @@ lib/src 目录下的代码被认为是私有的。
 对 lib/src 目录中 API 的公开。
 </dd>
 
-<aside class="alert alert-info" markdown="1">
-**Note:**
-
-**提示：**
+{{site.alert.note}}
 
 When the `library` directive isn't specified, a unique
 tag is generated for each library based on its path and filename.
@@ -91,7 +87,7 @@ your code unless you plan to
 生成一个唯一标记。
 因此，这里我们建议在你的代码中忽略 `library` 命令，除非想要
 [生成 Library-Level 文档](#documenting-a-library)。
-</aside>
+{{site.alert.end}}
 
 </dl>
 
@@ -109,14 +105,16 @@ you have a situation where two classes are tightly coupled.
 Library Package 非常容易维护，扩展和测试。
 大多数情况下，除非存在两个类紧密耦合的情况，否则每个类都应该将自己视为一个 Mini Library 。
 
-<aside class="alert alert-info" markdown="1">
-**Note:** You may have heard of the `part` directive, which allows
-you to split a library into multiple Dart files. We recommend
-that you avoid using `part` and create mini libraries instead.
+{{site.alert.note}}
 
-**提示：** 在文件的头部使用 `part` 命令，能够将一个 Library 分割成多个 Dart 文件。
-这里，我们建议应该创建 Mini Library ，而避免使用 `part` 命令。
-</aside>
+  You may have heard of the `part` directive, which allows
+  you to split a library into multiple Dart files. We recommend
+  that you avoid using `part` and create mini libraries instead.
+
+  在文件的头部使用 `part` 命令，能够将一个 Library 分割成多个 Dart 文件。
+  这里，我们建议应该创建 Mini Library ，而避免使用 `part` 命令。
+
+{{site.alert.end}}
 
 Create a "main" library file directly under lib,
 lib/_&lt;package-name&gt;_.dart, that
@@ -130,7 +128,7 @@ by importing a single file.
 
 The lib directory might also include other importable, non-src, libraries.
 For example, perhaps your main library works across platforms, but
-you create separate libraries that rely on dart:io or dart:html.
+you create separate libraries that rely on `dart:io` or `dart:html`.
 Some packages have separate libraries that are meant to be imported
 with a prefix, when the main library is not.
 
@@ -157,10 +155,7 @@ Directly under lib, the main library file,
 
 主 Library 文件 `shelf.dart` 在 lib 目录下，通过 `shelf.dart` 文件导出 lib/src 目录下的若干文件：
 
-在 shelf Package 中同样包含了 Mini Library：shelf_io 。
-适配器用来处理来自 dart:io 的 HttpRequest 对象。
-
-{% prettify dart tag=pre+code %}
+```dart
 export 'src/cascade.dart';
 export 'src/handler.dart';
 export 'src/handlers/logger.dart';
@@ -171,28 +166,27 @@ export 'src/request.dart';
 export 'src/response.dart';
 export 'src/server.dart';
 export 'src/server_handler.dart';
-{% endprettify %}
+```
 
 The shelf package also contains a mini library: shelf_io.
-This adapter handles HttpRequest objects from dart:io.
+This adapter handles HttpRequest objects from `dart:io`.
 
-<aside class="alert alert-info" markdown="1">
-**Tip for web apps:**
+在 shelf Package 中同样包含了 Mini Library：shelf_io 。
+适配器用来处理来自 `dart:io` 的 HttpRequest 对象。
 
-**针对 Web 应用的提示：**
+{{site.alert.tip}}
 
-For the best performance when developing with
-[dartdevc,](/tools/dartdevc)
-put [implementation
-files](/tools/pub/package-layout#implementation-files) under `/lib/src`,
-instead of elsewhere under `/lib`.
-Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
+  For the best performance when developing with [dartdevc,](/tools/dartdevc)
+  put [implementation files](/tools/pub/package-layout#implementation-files) 
+  under `/lib/src`, instead of elsewhere under `/lib`.
+  Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
 
-为了在开发时使 [dartdevc](/tools/dartdevc) 工具能够达到最佳新能，
-应该将 [实现文件](/tools/pub/package-layout#implementation-files) 放到目录 `/lib/src` 下，
-而不是 `/lib` 目录的其他地方。
-另外，避免通过 <code>package:<em>package_name</em>/src/...</code> 导入文件。
-</aside>
+  为了在开发时使 [dartdevc](/tools/dartdevc) 工具能够达到最佳新能，
+  应该将 [实现文件](/tools/pub/package-layout#implementation-files) 放到目录 `/lib/src` 下，
+  而不是 `/lib` 目录的其他地方。
+  另外，避免通过 <code>package:<em>package_name</em>/src/...</code> 导入文件。
+
+{{site.alert.end}}
 
 
 ## Importing library files
@@ -205,9 +199,9 @@ the `package:` directive to specify the URI of that file.
 在从其他 package 导入 Library 文件时，
 使用 `package:` 命令来指定文件的 URI 。
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'package:utilities/utilities.dart';
-{% endprettify %}
+```
 
 When importing a library file from your own package,
 use a relative path when both files are inside of lib,
@@ -249,7 +243,7 @@ checks for the presence of `dart:io` and `dart:html`:
 下面是一个条件导出代码的样例，
 它将检查是否存在 `dart:io` and `dart:html` 库：
 
-<?code-excerpt "create_libraries/lib/hw_mp.dart (export)"?>
+<?code-excerpt "../null_safety_examples/create_libraries/lib/hw_mp.dart (export)"?>
 ```dart
 export 'src/hw_none.dart' // Stub implementation
     if (dart.library.io) 'src/hw_io.dart' // dart:io implementation
@@ -303,11 +297,11 @@ For example, here's the `dart:io` implementation:
 所有条件导出的库必须实现相同的 API。
 下面是 `dart:io` 实现的一个例子：
 
-<?code-excerpt "create_libraries/lib/src/hw_io.dart"?>
+<?code-excerpt "../null_safety_examples/create_libraries/lib/src/hw_io.dart"?>
 ```dart
 import 'dart:io';
 
-void alarm([String text]) {
+void alarm([String? text]) {
   stderr.writeln(text ?? message);
 }
 
@@ -316,13 +310,14 @@ String get message => 'Hello World from the VM!';
 <div class="prettify-filename">lib/src/hw_io.dart</div>
 
 And here's the default implementation,
-which is a stub that throws UnsupportedErrors:
+which uses stubs that throw `UnsupportedError`:
+
 
 这是一个默认实现，它会导致抛出 UnsupportedErrors：
 
-<?code-excerpt "create_libraries/lib/src/hw_none.dart"?>
+<?code-excerpt "../null_safety_examples/create_libraries/lib/src/hw_none.dart"?>
 ```dart
-void alarm([String text]) => throw UnsupportedError('hw_none alarm');
+void alarm([String? text]) => throw UnsupportedError('hw_none alarm');
 
 String get message => throw UnsupportedError('hw_none message');
 ```
@@ -333,7 +328,7 @@ you can import the library that has the conditional export code:
 
 在任何平台上，你都可以导入具有条件导出代码的库：
 
-<?code-excerpt "create_libraries/example/hw_example.dart" replace="/create_libraries/hw_mp/g"?>
+<?code-excerpt "../null_safety_examples/create_libraries/example/hw_example.dart" replace="/create_libraries/hw_mp/g"?>
 ```dart
 import 'package:hw_mp/hw_mp.dart';
 
@@ -346,7 +341,7 @@ void main() {
 
 ## 提供额外文件
 
-A well designed library package is easy to test.
+A well-designed library package is easy to test.
 We recommend that you write tests using the
 [test](https://github.com/dart-lang/test) package,
 placing the test code in the `test` directory at the
@@ -359,11 +354,11 @@ top of the package.
 If you create any command-line tools intended for public consumption,
 place those in the `bin` directory, which is public.
 Enable running a tool from the command line, using
-[`pub global activate`](/tools/pub/cmd/pub-global#activating-a-package).
+[`dart pub global activate`](/tools/pub/cmd/pub-global#activating-a-package).
 Listing the tool in the
 [`executables` section](/tools/pub/pubspec#executables)
 of the pubspec allows a user to run it directly without calling
-[`pub global run`](/tools/pub/cmd/pub-global#running-a-script-using-pub-global-run).
+[`dart pub global run`](/tools/pub/cmd/pub-global#running-a-script-using-pub-global-run).
 
 如果要创建一个公用的命令行工具，应该将这些工具放到公共目录 `bin` 中。
 使用 [`pub global activate`](/tools/pub/cmd/pub-global#activating-a-package) 命令行
@@ -384,7 +379,7 @@ public use go into the `tool` directory.
 在开发过程中任何非公开的工具或可执行程序，应该放到 `tool` 文件夹。
 
 Other files that are required if you publish your library to the
-pub.dev site, such as `README.md` and `CHANGELOG.md`, are
+[pub.dev]({{site.pub}}) site, such as `README.md` and `CHANGELOG.md`, are
 described in [Publishing a package](/tools/pub/publishing).
 For more information on how to organize a package directory,
 see the [pub package layout conventions](/tools/pub/package-layout).
@@ -419,10 +414,7 @@ For an example of generated docs, see the
 
 文档生成示例，参见 [shelf 文档]({{site.pub-api}}/shelf/latest)。
 
-<aside class="alert alert-info" markdown="1">
-**Note:**
-
-**提示：**
+{{site.alert.note}}
 
 To include any library-level documentation in the generated docs,
 you must specify the `library` directive.
@@ -430,7 +422,8 @@ See [issue 1082.](https://github.com/dart-lang/dartdoc/issues/1082)
 
 在生成的文档中要包含任何 Library-Level 的文档，必须要指定 `library` 命令。
 参见 [issue 1082](https://github.com/dart-lang/dartdoc/issues/1082)。
-</aside>
+
+{{site.alert.end}}
 
 ## Distributing an open source library {#distributing-a-library}
 
