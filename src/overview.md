@@ -139,7 +139,8 @@ class Point {
 }
 ```
 
-{{ site.alert.info }}
+{{site.alert.info}}
+
   This example is running in an embedded [DartPad](/tools/dartpad).
   You can also
   <a href="{{site.dartpad}}/4d688b6e468fb4c53d312250f557ec5c"
@@ -147,7 +148,8 @@ class Point {
 
   此示例在嵌入式 [DartPad](/tools/dartpad) 中运行。您也可以
   <a href="{{site.dartpad}}/4d688b6e468fb4c53d312250f557ec5c" target="_blank">在此示例自己的窗口中打开它</a>。
-{{ site.alert.end }}
+
+{{site.alert.end}}
 
 ## Dart: The libraries {#libraries}
 

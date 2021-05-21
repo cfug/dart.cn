@@ -167,15 +167,14 @@ Also updates `pubspec.yaml` with the new constraints.
 
 [`dart pub outdated`]: /tools/pub/cmd/pub-outdated
 
-{{ site.alert.tip }}
+{{site.alert.tip}}
 
   Commit the `pubspec.yaml` file before running this command,
   so that you can undo the changes if necessary.
 
   在运行该命令前提交 `pubspec.yaml` 文件的修改，这样如果有需要时可以进行回滚。
 
-{{ site.alert.end }}
-
+{{site.alert.end}}
 To check which dependencies will be upgraded,
 you can use `dart pub upgrade --major-versions --dry-run`.
 
@@ -197,14 +196,14 @@ This command is similar to `--major-versions`.
 同时 `pubspec.yaml` 文件中的限制也会更新。
 该命令与 `--major-versions` 类似。
 
-{{ site.alert.tip }}
+{{site.alert.tip}}
 
   Commit the `pubspec.yaml` file before running this command,
   so that you can undo the changes if necessary.
 
   在运行该命令前提交 `pubspec.yaml` 文件的修改，这样如果有需要时可以进行回滚。
 
-{{ site.alert.end }}
+{{site.alert.end}}
 
 ### `--offline`
 

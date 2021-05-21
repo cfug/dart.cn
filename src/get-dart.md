@@ -112,7 +112,7 @@ Dart SDK 支持 Windows、Linux 和 macOS。
 
   **支持的架构：**x64、ia32、arm、arm64。
 
-{{ site.alert.note }}
+{{site.alert.note}}
 
   The arm support requires glibc 2.23 or newer due to a
   [dynamic linker bug](https://sourceware.org/bugzilla/show_bug.cgi?id=14341).
@@ -120,7 +120,7 @@ Dart SDK 支持 Windows、Linux 和 macOS。
   由于 [动态链接的缺陷](https://sourceware.org/bugzilla/show_bug.cgi?id=14341)，
   Arm 的支持需要使用 glibc 2.23 或更新的版本。
 
-{{ site.alert.end }}
+{{site.alert.end}}
 
 ### macOS
 
