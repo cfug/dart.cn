@@ -178,6 +178,7 @@ mind:
 
     {{site.alert.version-note}}
       [Null safety][ns] was introduced in Dart 2.12.
+      Using null safety requires a [language version][] of at least 2.12.
     {{site.alert.end}}
 
     所有变量引用的都是 **对象**，每个对象都是一个 **类** 的实例。
@@ -692,7 +693,7 @@ and [spread operators](#spread-operator) (`...` and `...?`):
 ```dart
 const Object i = 3; // Where i is a const Object with an int value...
 const list = [i as int]; // Use a typecast.
-const map = {if (i is int) i: "int"}; // Use is and collection if.
+const map = {if (i is int) i: 'int'}; // Use is and collection if.
 const set = {if (list is List<int>) ...list}; // ...and a spread.
 ```
 
@@ -2003,19 +2004,6 @@ void doStuff(
 }
 ```
 
-{% comment %}
-https://gist.github.com/d988cfce0a54c6853799
-{{site.dartpad}}/d988cfce0a54c6853799
-(The gist needs updating: see https://github.com/dart-lang/site-www/issues/189)
-<iframe
-src="{{site.dartpad-embed-inline}}?id=d988cfce0a54c6853799&ga_id=default_parameter_values"
-    width="100%"
-    height="450px"
-    style="border: 1px solid #ccc;">
-</iframe>
-{% endcomment %}
-
-
 ### The main() function
 
 ### main() 函数
@@ -2137,7 +2125,7 @@ List 中的每个元素都会调用这个函数，打印元素位置和值的字
 
 <?code-excerpt "../null_safety_examples/misc/test/language_tour/functions_test.dart (anonymous-function)"?>
 ```dart
-var list = ['apples', 'bananas', 'oranges'];
+const list = ['apples', 'bananas', 'oranges'];
 list.forEach((item) {
   print('${list.indexOf(item)}: $item');
 });
@@ -2145,19 +2133,17 @@ list.forEach((item) {
 
 Click **Run** to execute the code.
 
-点击运行按钮执行代码。
+点击 **Run** 按钮执行代码。
 
-{% comment %}
-https://gist.github.com/chalin/5d70bc1889d055c7a18d35d77874af88
-{{site.dartpad}}/5d70bc1889d055c7a18d35d77874af88
-{% endcomment %}
-
-<iframe
-src="{{site.dartpad-embed-inline}}?id=5d70bc1889d055c7a18d35d77874af88&split=60&ga_id=anonymous_functions"
-    width="100%"
-    height="400px"
-    style="border: 1px solid #ccc;">
-</iframe>
+<?code-excerpt "../null_safety_examples/misc/test/language_tour/functions_test.dart (anonymous-function-main)"?>
+```dart:run-dartpad:height-400px:ga_id-anonymous_functions:null_safety-true
+void main() {
+  const list = ['apples', 'bananas', 'oranges'];
+  list.forEach((item) {
+    print('${list.indexOf(item)}: $item');
+  });
+}
+```
 
 If the function contains only a single expression or return statement,
 you can shorten it using arrow
@@ -2278,7 +2264,7 @@ class A {
 }
 
 void main() {
-  var x;
+  Function x;
 
   // 比较顶层函数是否相等。
   x = foo;
@@ -2878,9 +2864,9 @@ querySelector('#confirm') // Get an object.
 
 {{site.alert.version-note}}
 
-  The `?..` syntax was introduced in 2.12.
+  The `?..` syntax requires a [language version][] of at least 2.12.
 
-  `?..` 语法是在 2.12 中引入的。
+  `?..` 运行在 2.12 和以上的 [版本][language version] 中可用。
 
 {{site.alert.end}}
 
@@ -4523,8 +4509,8 @@ interfaces. For example:
 // A person. The implicit interface contains greet().
 // Person 类的隐式接口中包含 greet() 方法。
 class Person {
-  // _name 变量同样包含在接口中，但它只是库内可见的。
-  final _name;
+  // In the interface, but visible only in this library.
+  final String _name;
 
   // 构造函数不在接口中。
   Person(this._name);
@@ -4535,7 +4521,7 @@ class Person {
 
 // Person 接口的一个实现。
 class Impostor implements Person {
-  get _name => '';
+  String get _name => '';
 
   String greet(String who) => '你好$who。你知道我是谁吗？';
 }
@@ -4649,8 +4635,8 @@ class A {
   // 除非你重写 noSuchMethod，否则调用一个不存在的成员会导致 NoSuchMethodError。
   @override
   void [!noSuchMethod!](Invocation invocation) {
-  print('你尝试使用一个不存在的成员：' +
-  '${invocation.memberName}');
+    print('You tried to use a non-existent member: '
+        '${invocation.memberName}');
   }
 }
 {% endprettify %}
@@ -5487,7 +5473,7 @@ When you need the library, invoke
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/libraries/greeter.dart (loadLibrary)"?>
 ```dart
-Future greet() async {
+Future<void> greet() async {
   await hello.loadLibrary();
   hello.printGreeting();
 }
@@ -5621,7 +5607,7 @@ function marked as `async`:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/async.dart (checkVersion)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future checkVersion() [!async!] {
+Future<void> checkVersion() [!async!] {
   var version = [!await!] lookUpVersion();
   // 使用 version 继续处理逻辑
 }
@@ -5664,7 +5650,7 @@ for the results of functions:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/async.dart (repeated-await)"?>
 ```dart
-var entrypoint = await findEntrypoint();
+var entrypoint = await findEntryPoint();
 var exitCode = await runExecutable(entrypoint, args);
 await flushThenExit(exitCode);
 ```
@@ -5688,7 +5674,7 @@ the body of `main()` must be marked as `async`:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/async.dart (main)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future main() [!async!] {
+Future<void> main() [!async!] {
   checkVersion();
   print('在 Main 函数中执行：版本是 ${[!await!] lookUpVersion()}');
 }
@@ -5828,7 +5814,7 @@ the body of `main()` must be marked as `async`:
 <?code-excerpt "misc/lib/language_tour/async.dart (number_thinker)" replace="/async|await for/[!$&!]/g"?>
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/async.dart (number_thinker)" replace="/async|await for/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future main() [!async!] {
+Future<void> main() [!async!] {
   // ...
   [!await for!] (var request in requestServer) {
     handleRequest(request);
@@ -5925,12 +5911,8 @@ and appending an exclamation. Click **Run** to execute the code.
 函数接受三个字符串参数，函数体将三个字符串拼接，字符串间用空格分割，
 并在结尾附加了一个感叹号。单击运行按钮执行代码。
 
-{% comment %}
-https://gist.github.com/405379bacf30335f3aed
-{{site.dartpad}}/405379bacf30335f3aed
-
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/callable_classes.dart"?>
-```dart
+```dart:run-dartpad:height-350px:ga_id-callable_classes:null_safety-true
 class WannabeFunction {
   String call(String a, String b, String c) => '$a $b $c!';
 }
@@ -5938,17 +5920,8 @@ class WannabeFunction {
 var wf = WannabeFunction();
 var out = wf('你好', '，使用 Dart 的', '朋友');
 
-main() => print(out);
+void main() => print(out);
 ```
-{% endcomment %}
-
-<iframe
-src="{{site.dartpad-embed-inline}}?id=3723fcf3915ca935d13393b8a9f86fd5&ga_id=callable_classes"
-    width="100%"
-    height="350px"
-    style="border: 1px solid #ccc;">
-</iframe>
-
 
 ## Isolates
 
@@ -5994,83 +5967,34 @@ For more information, see the following:
 
 ## Typedefs
 
-## 类型定义
+A type alias — often called a _typedef_ because
+it's declared with the keyword `typedef` — is
+a concise way to refer to a type.
+Here's an example of declaring and using a type alias named `IntList`:
 
-In Dart, functions are objects, just like strings and numbers are
-objects. A *typedef*, or *function-type alias*, gives a function type a
-name that you can use when declaring fields and return types. A typedef
-retains type information when a function type is assigned to a variable.
-
-在 Dart 语言中，函数与 String 和 Number 一样都是对象，可以使用 **类型定义**（或者叫 **方法类型别名**）来为函数的类型命名。使用函数命名将该函数类型的函数赋值给一个变量时，类型定义将会保留相关的类型信息。
-
-Consider the following code, which doesn't use a typedef:
-
-比如下面的代码没有使用类型定义：
-
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/sorted_collection_1.dart"?>
+<?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/misc.dart (int-list)"?>
 ```dart
-class SortedCollection {
-  Function compare;
-
-  SortedCollection(int f(Object a, Object b)) : compare = f;
-}
-
-// 简单的不完整实现。
-int sort(Object a, Object b) => 0;
-
-void main() {
-  SortedCollection coll = SortedCollection(sort);
-
-  // 我们知道 compare 是一个函数类型的变量，但是具体是什么样的函数却不得而知。
-  assert(coll.compare is Function);
-}
+typedef IntList = List<int>;
+IntList il = [1, 2, 3];
 ```
 
-Type information is lost when assigning `f` to `compare`. The type of
-`f` is `(Object, ``Object)` → `int` (where → means returns), yet the
-type of `compare` is Function. If we change the code to use explicit
-names and retain type information, both developers and tools can use
-that information.
+A type alias can have type parameters:
 
-上述代码中，当将参数 `f` 赋值给 `compare` 时，函数的类型信息丢失了，
-这里 `f` 这个函数的类型为 `(Object, Object) → int`（→ 代表返回），
-当然该类型也是一个 Function 的子类，但是将 `f` 赋值给 `compare` 后，
-`f` 的类型 `(Object, Object) → int` 就会丢失。
-我们可以使用 `typedef` 显式地保留类型信息：
-
-<?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/sorted_collection_2.dart"?>
+<?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/misc.dart (list-mapper)"?>
 ```dart
-typedef Compare = int Function(Object a, Object b);
-
-class SortedCollection {
-  Compare compare;
-
-  SortedCollection(this.compare);
-}
-
-// 简单的不完整实现。
-int sort(Object a, Object b) => 0;
-
-void main() {
-  SortedCollection coll = SortedCollection(sort);
-  assert(coll.compare is Function);
-  assert(coll.compare is Compare);
-}
+typedef ListMapper<X> = Map<X, List<X>>;
+Map<String, List<String>> m1; // Verbose.
+ListMapper<String> m2; // Same thing but shorter and clearer.
 ```
 
-{{site.alert.note}}
-
-  Currently, typedefs are restricted to function types. We expect this to
-  change.
-
-  目前类型定义只能用在函数类型上，但是将来可能会有变化。
-
+{{site.alert.version-note}}
+  Before 2.13, typedefs were restricted to function types.
+  Using the new typedefs requires a [language version][] of at least 2.13.
 {{site.alert.end}}
 
-Because typedefs are simply aliases, they offer a way to check the type
-of any function. For example:
-
-因为类型定义只是别名，因此我们可以使用它判断任意函数类型的方法：
+We recommend using [inline function types][] instead of typedefs for functions,
+in most situations.
+However, function typedefs can still be useful:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/misc.dart (compare)"?>
 ```dart
@@ -6082,6 +6006,10 @@ void main() {
   assert(sort is Compare<int>); // True!
 }
 ```
+
+[typedef-functions]: /guides/language/effective-dart/design#dont-use-the-legacy-typedef-syntax
+[inline function types]: /guides/language/effective-dart/design#prefer-inline-function-types-over-typedefs
+
 
 ## Metadata
 
@@ -6340,6 +6268,7 @@ To learn more about Dart's core libraries, see
 [`int`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
 [`Iterable`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
 [js numbers]: https://stackoverflow.com/questions/2802957/number-of-bits-in-javascript-numbers/2803010#2803010
+[language version]: /guides/language/evolution#language-versioning
 [`List`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [`Map`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
 [meta]: {{site.pub-pkg}}/meta

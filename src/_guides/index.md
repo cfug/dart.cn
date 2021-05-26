@@ -7,6 +7,12 @@ toc: false
 ---
 
 Welcome to the Dart documentation!
+For a list of changes to this site —
+new pages, new guidelines, and more —
+see the [What's new page][].
+
+[What's new page]: /guides/whats-new
+
 Here are some of this site's most visited pages:
 
 欢迎来到 Dart 语言开发文档页面！
@@ -27,12 +33,3 @@ To update these cards, edit src/_data/docs_cards.yml.
 {% endfor -%}
 </div>
 
-<br>
-For a list of changes to this site —
-new pages, new guidelines, and more —
-see the [What's new page][].
-
-有关网站更新的内容，请参考
-[What's new 页面][What's new page]。
-
-[What's new page]: /guides/whats-new

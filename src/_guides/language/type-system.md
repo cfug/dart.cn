@@ -63,9 +63,9 @@ above) at the call of `printInts(list)`:
 上面的代码在调用 `printInts(list)` 时会在 `list` （高亮提示）上产生类型错误：
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/List.*strong_analysis.*argument_type_not_assignable/" replace="/. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
+<?code-excerpt "strong/analyzer-results-stable.txt" retain="/strong_analysis.*List.*argument_type_not_assignable/" replace="/. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 ```nocode
-error - The argument type 'List<dynamic>' can't be assigned to the parameter type 'List<int>' at lib/strong_analysis.dart:27:17 - (argument_type_not_assignable)
+error - lib/strong_analysis.dart:27:17 - The argument type 'List<dynamic>' can't be assigned to the parameter type 'List<int>'. - argument_type_not_assignable
 ```
 
 The error highlights an unsound implicit cast from `List<dynamic>` to `List<int>`.
@@ -663,7 +663,7 @@ In the following example, you can assign a `MaineCoon` list to `myCats` because
 {:.passes-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-MaineCoon)" replace="/MaineCoon/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-List<Cat> myCats = List<[!MaineCoon!]>();
+List<Cat> myCats = <[!MaineCoon!]>[];
 {% endprettify %}
 
 {% comment %}
@@ -680,7 +680,7 @@ What about going in the other direction? Can you assign an `Animal` list to a `L
 {:.passes-sa}
 <?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-Animal)" replace="/Animal/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-List<Cat> myCats = List<[!Animal!]>();
+List<Cat> myCats = <[!Animal!]>[];
 {% endprettify %}
 
 This assignment passes static analysis,
@@ -690,7 +690,7 @@ but it creates an implicit cast. It is equivalent to:
 
 <?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-implied-cast)" replace="/as.*(?=;)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-List<Cat> myCats = List<Animal>() [!as List<Cat>!];
+List<Cat> myCats = <Animal>[] [!as List<Cat>!];
 {% endprettify %}
 
 The code may fail at runtime. You can disallow implicit casts

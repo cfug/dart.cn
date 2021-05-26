@@ -3,7 +3,7 @@ title: "Asynchronous programming: Streams"
 title: 异步编程：使用 stream
 description: Learn how to consume single-subscriber and broadcast streams.
 description: 了解如何使用 single-subscriber 和 broadcast streams。
-
+js: [{url: 'https://dartpad.cn/inject_embed.dart.js', defer: true}]
 ---
 
 <div class="mini-toc" markdown="1">
@@ -59,11 +59,11 @@ Streams can be created in many ways, which is a topic for another
 article, but they can all be used in the same way: the _asynchronous
 for loop_ (commonly just called **await for**)
 iterates over the events of a stream like the **for loop** iterates
-over an Iterable. For example:
+over an [Iterable][]. For example:
 
 Stream 可以通过许多方式创建，这个话题我们会在另一篇文章详述，而这些所有的创建方式都可以相同的方式在代码中使用：像使用 **for 循环** 迭代一个 Iterable 一样，我们可以使用 _异步 for 循环_ （通常我们直接称之为 **await for**）来迭代 Stream 中的事件。例如：
 
-<?code-excerpt "misc/lib/tutorial/sum_stream.dart (sumStream)" replace="/async|await for/[!$&!]/g"?>
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/sum_stream.dart (sumStream)" replace="/async|await for/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 Future<int> sumStream(Stream<int> stream) [!async!] {
   var sum = 0;
@@ -101,11 +101,8 @@ generating a simple stream of integers using an `async*` function:
   
 {{site.alert.end}}
 
-{% comment %}
-https://gist.github.com/Sfshaza/15d5ef986238c97dbc14
-
-<?code-excerpt "misc/lib/tutorial/sum_stream.dart"?>
-```dart
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/sum_stream.dart"?>
+```dart:run-dartpad:null_safety-true
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
   await for (var value in stream) {
@@ -120,20 +117,12 @@ Stream<int> countStream(int to) async* {
   }
 }
 
-main() async {
+Future<void> main() async {
   var stream = countStream(10);
   var sum = await sumStream(stream);
   print(sum); // 55
 }
 ```
-{% endcomment %}
-
-<iframe
-src="{{site.dartpad-embed-inline}}?id=15d5ef986238c97dbc14&ga_id=receiving_stream_events"
-    width="100%"
-    height="490px"
-    style="border: 1px solid #ccc;">
-</iframe>
 
 {{site.alert.note}}
   
@@ -177,11 +166,8 @@ error when the loop iterator equals 4:
 
 当使用 **await for** 读取 Stream 时，如果出现错误，则由循环语句抛出，同时循环结束。你可以使用 **try-catch** 语句捕获错误。下面的示例会在循环迭代到参数值等于 4 时抛出一个错误：
 
-{% comment %}
-https://gist.github.com/chalin/df7c1168a5c6b20fda2a76d6ff33a1da
-
-<?code-excerpt "misc/lib/tutorial/sum_stream_with_catch.dart"?>
-```dart
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/sum_stream_with_catch.dart"?>
+```dart:run-dartpad:null_safety-true
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
   try {
@@ -204,20 +190,12 @@ Stream<int> countStream(int to) async* {
   }
 }
 
-main() async {
+Future<void> main() async {
   var stream = countStream(10);
   var sum = await sumStream(stream);
   print(sum); // -1
 }
 ```
-{% endcomment %}
-
-<iframe
-src="{{site.dartpad-embed-inline}}?id=df7c1168a5c6b20fda2a76d6ff33a1da&ga_id=error_events"
-    width="100%"
-    height="450px"
-    style="border: 1px solid #ccc;">
-</iframe>
 
 {{site.alert.note}}
 
@@ -239,7 +217,7 @@ For example, you can find the last positive integer in a stream using
 
 Stream 类中包含了许多像 [Iterable][Iterable] 类中一样的辅助方法帮助你实现一些常用的操作。例如，你可以使用 Stream API 中的 `lastWhere()` 方法从 Stream 中找出最后一个正整数。
 
-<?code-excerpt "misc/lib/tutorial/misc.dart (lastPositive)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/misc.dart (lastPositive)"?>
 ```dart
 Future<int> lastPositive(Stream<int> stream) =>
     stream.lastWhere((x) => x >= 0);
@@ -301,7 +279,7 @@ result:
 
 下面这些 [Stream\<T>][Stream] 类中的方法可以对 Stream 进行处理并返回结果：
 
-<?code-excerpt "misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/^\s*Stream/"?>
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/^\s*Stream/"?>
 ```dart
 Future<T> get first;
 Future<bool> get isEmpty;
@@ -309,18 +287,18 @@ Future<T> get last;
 Future<int> get length;
 Future<T> get single;
 Future<bool> any(bool Function(T element) test);
-Future<bool> contains(Object needle);
-Future<E> drain<E>([E futureValue]);
+Future<bool> contains(Object? needle);
+Future<E> drain<E>([E? futureValue]);
 Future<T> elementAt(int index);
 Future<bool> every(bool Function(T element) test);
-Future<T> firstWhere(bool Function(T element) test, {T Function() orElse});
+Future<T> firstWhere(bool Function(T element) test, {T Function()? orElse});
 Future<S> fold<S>(S initialValue, S Function(S previous, T element) combine);
 Future forEach(void Function(T element) action);
-Future<String> join([String separator = ""]);
-Future<T> lastWhere(bool Function(T element) test, {T Function() orElse});
+Future<String> join([String separator = '']);
+Future<T> lastWhere(bool Function(T element) test, {T Function()? orElse});
 Future pipe(StreamConsumer<T> streamConsumer);
 Future<T> reduce(T Function(T previous, T element) combine);
-Future<T> singleWhere(bool Function(T element) test, {T Function() orElse});
+Future<T> singleWhere(bool Function(T element) test, {T Function()? orElse});
 Future<List<T>> toList();
 Future<Set<T>> toSet();
 ```
@@ -333,9 +311,9 @@ For example, some implementations could be:
 
 上述所有的方法，除了 `drain()` and `pipe()` 方法外，都在 [Iterable][Iterable] 类中有对应的相似方法。如果你在异步函数中使用了 **await for** 循环（或者只是在另一个方法中使用），那么使用上述的这些方法将会更加容易。例如，一些代码实现大概是这样的：
 
-<?code-excerpt "misc/lib/tutorial/misc.dart (mock-stream-method-implementations)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/misc.dart (mock-stream-method-implementations)"?>
 ```dart
-Future<bool> contains(Object needle) async {
+Future<bool> contains(Object? needle) async {
   await for (var event in this) {
     if (event == needle) return true;
   }
@@ -350,12 +328,12 @@ Future forEach(void Function(T element) action) async {
 
 Future<List<T>> toList() async {
   final result = <T>[];
-  await this.forEach(result.add);
+  await forEach(result.add);
   return result;
 }
 
-Future<String> join([String separator = ""]) async =>
-    (await this.toList()).join(separator);
+Future<String> join([String separator = '']) async =>
+    (await toList()).join(separator);
 ```
 
 (The actual implementations are slightly more complex,
@@ -374,7 +352,7 @@ listening on the original.
 
 下面的方法可以对原始的 Stream 进行处理并返回新的 Stream。当调用了这些方法后，设置在原始 Stream 上的监听器会先监听被转换后的新 Stream，待新的 Stream 处理完成后才会转而回去监听原始的 Stream。
 
-<?code-excerpt "misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/async\w+|distinct|transform/" retain="/^\s*Stream/"?>
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/async\w+|distinct|transform/" retain="/^\s*Stream/"?>
 ```dart
 Stream<R> cast<R>();
 Stream<S> expand<S>(Iterable<S> Function(T element) convert);
@@ -393,11 +371,11 @@ with an **await for** loop.
 
 在 [Iterable][] 类中也有一些将一个 iterable 转换为另一个 iterable 的方法，上述的这些方法与 [Iterable][] 类中的这些方法相似。如果你在异步函数中使用了 **await for** 循环，那么使用上述的这些方法将会更加容易。
 
-<?code-excerpt "misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/transform/" retain="/async\w+|distinct/"?>
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/transform/" retain="/async\w+|distinct/"?>
 ```dart
-Stream<E> asyncExpand<E>(Stream<E> Function(T event) convert);
+Stream<E> asyncExpand<E>(Stream<E>? Function(T event) convert);
 Stream<E> asyncMap<E>(FutureOr<E> Function(T event) convert);
-Stream<T> distinct([bool Function(T previous, T next) equals]);
+Stream<T> distinct([bool Function(T previous, T next)? equals]);
 ```
 
 The `asyncExpand()` and `asyncMap()` functions are similar to
@@ -407,11 +385,11 @@ The `distinct()` function doesn't exist on `Iterable`, but it could have.
 
 `asyncExpand()` 和 `asyncMap()` 方法与 `expand()` 和 `map()` 方法类似，不同的是前两者允许将一个异步函数作为函数参数。`Iterable` 中没有与 `distinct()` 类似的方法，但是在不久的将来可能会加上。
 
-<?code-excerpt "misc/lib/tutorial/stream_interface.dart (special-stream-members)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/stream_interface.dart (special-stream-members)"?>
 ```dart
-Stream<T> handleError(Function onError, {bool test(error)});
+Stream<T> handleError(Function onError, {bool test(error)?});
 Stream<T> timeout(Duration timeLimit,
-    {void Function(EventSink<T> sink) onTimeout});
+    {void Function(EventSink<T> sink)? onTimeout});
 Stream<S> transform<S>(StreamTransformer<T, S> streamTransformer);
 ```
 
@@ -420,15 +398,15 @@ They involve error handling which an **await for** loop
 can't do&mdash;the first error reaching the loops will end
 the loop and its subscription on the stream.
 There is no recovering from that.
-The following code shows how to use `handleError()` to remove errors from a stream
-before using it in an **await for** loop.
+The following code shows how to use `handleError()` to remove errors
+from a stream before using it in an **await for** loop.
 
 最后这三个方法比较特殊。它们用于处理 **await for** 循环不能处理的错误：
 当循环执行过程中出现错误时，该循环会结束同时取消 Stream 上的订阅且不能恢复。
 你可以使用 `handleError()` 方法在 **await for** 循环中
 使用 Stream 前将相关错误移除。
 
-<?code-excerpt "misc/lib/tutorial/misc.dart (mapLogErrors)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/misc.dart (mapLogErrors)"?>
 ```dart
 Stream<S> mapLogErrors<S, T>(
   Stream<T> stream,
@@ -474,7 +452,7 @@ All lines are printed, except any that begin with a hashtag, `#`.
 
 下面的代码示例读取一个文件并在其 Stream 上执行了两次变换。第一次转换是将文件数据转换成 UTF-8 编码格式，然后将转换后的数据变换成一个 [LineSplitter][LineSplitter] 执行。文件中除了 `#` 开头的行外其它的行都会被打印出来。
 
-<?code-excerpt "misc/bin/cat_no_hash.dart"?>
+<?code-excerpt "../null_safety_examples/misc/bin/cat_no_hash.dart"?>
 ```dart
 import 'dart:convert';
 import 'dart:io';
@@ -499,10 +477,10 @@ method&mdash;all other stream functions are defined in terms of `listen()`.
 
 最后一个重要的方法是 `listen()`。这是一个“底层”方法，其它所有的 Stream 方法都根据 `listen()` 方法定义。
 
-<?code-excerpt "misc/lib/tutorial/stream_interface.dart (listen)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/tutorial/stream_interface.dart (listen)"?>
 ```dart
-StreamSubscription<T> listen(void Function(T event) onData,
-    {Function onError, void Function() onDone, bool cancelOnError});
+StreamSubscription<T> listen(void Function(T event)? onData,
+    {Function? onError, void Function()? onDone, bool? cancelOnError});
 ```
 
 To create a new `Stream` type, you can just extend the `Stream`

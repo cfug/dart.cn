@@ -1670,10 +1670,10 @@ local lazy evaluation.
 
 To guarantee that you never see a `null` parameter with a non-nullable type, the
 type checker requires all optional parameters to either have a nullable type or
-a default value. What if you want to have a named parameter with a nullable type
-and no default value? That would imply that you want to require the caller to
-*always* pass it. In other words, you want a parameter that is *named* but not
-optional.
+a default value. What if you want to have a named parameter with a non-nullable
+type and no default value? That would imply that you want to require the caller
+to *always* pass it. In other words, you want a parameter that is *named*
+but not optional.
 
 为了保证您永远不会看到一个非空类型的参数值为 `null`，
 类型检查器给所有的可选参数提出了要求，要么是一个可空的类型，要么包含一个默认值。
