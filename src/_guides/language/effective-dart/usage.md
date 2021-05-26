@@ -31,7 +31,7 @@ consistent, maintainable way. To keep these guidelines brief, they use "import"
 to cover `import` and `export` directives. The guidelines apply equally to both.
 
 这些准则可以帮助你在多个文件编写程序的情况下保证一致性和可维护性。
-为了让准则简洁，这里使用“import”来同事代表 `import` 和 `export` 。
+为了让准则简洁，这里使用“import”来同时代表 `import` 和 `export` 。
 准则同时适用于这两者。
 
 ### DO use strings in `part of` directives.
