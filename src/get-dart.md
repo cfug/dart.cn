@@ -51,8 +51,9 @@ As the following instructions show,
 you can use a package manager
 to easily install and update a stable channel Dart SDK.
 Alternatively, you can
-[build the SDK from source][] or install from
-[any release channel](#release-channels) by
+[build the SDK from source][],
+grab a [Dart Docker image][], or
+install from [any release channel](#release-channels) by
 [downloading the SDK as a zip file][].
 
 如下所述，你可以使用包管理轻松地安装和更新 Dart SDK。
@@ -210,8 +211,8 @@ Dart SDK 的非稳定版 (**测试版 (Beta)** 和 **开发版 (Dev)**) 构建�
 You can get stable channel releases using
 the [instructions above](#install), or you can
 get stable, beta, or dev channel releases
-using [a package manager][]
-or by [downloading the SDK as a zip file][].
+using [a package manager][] or [Dart Docker image][], or
+by [downloading the SDK as a zip file][].
 
 你可以通过 [instructions above](#install) 获得 stable 和 dev 渠道，
 或者你也可以直接[下载 SDK 的压缩包](/tools/sdk/archive)。
@@ -224,6 +225,7 @@ For more information, see the [Dart 2 page.][Dart 2]
 [Dart 2]: /dart-2
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
 [Dart libraries]: /guides/libraries/library-tour
+[Dart Docker image]: https://hub.docker.com/_/dart
 [downloading the SDK as a zip file]: /tools/sdk/archive
 [Debian stable]: https://www.debian.org/releases
 [Ubuntu LTS]: https://wiki.ubuntu.com/Releases

@@ -917,7 +917,7 @@ You can also use a getter to define a computed property:
 <?code-excerpt "../null_safety_examples/misc/bin/getter_compute.dart"?>
 ```dart
 class MyClass {
-  List<int> _values = [];
+  final List<int> _values = [];
 
   void addValue(int value) {
     _values.add(value);
@@ -1260,7 +1260,7 @@ class. It should take three named, nullable parameters:
 * `String? newString`
 * `double? newDouble`
 
-Your`copyWith()` method should return a new `MyDataObject`
+Your `copyWith()` method should return a new `MyDataObject`
 based on the current instance,
 with data from the preceding parameters (if any)
 copied into the object's properties.
