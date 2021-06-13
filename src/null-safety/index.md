@@ -124,7 +124,8 @@ The templates used by the [`dart create`][] command and IDEs
 aren't null safe yet, so you need to migrate the code they create.
 For example:
 
-使用 [`dart create`][] 命令或 IDE 创建的模板尚未迁移至空安全。
+使用 Dart 2.13 以前版本的 [`dart create`][] 命令或 IDE 创建的模板，
+尚未迁移至空安全。
 在创建后你还需要对它们进行迁移。举个例子：
 
 ```terminal
@@ -171,7 +172,7 @@ Dart 团队已知晓以下问题：
     [null-safe packages from the Dart team][ns-dart-pkgs].
 
     pub.dev 上属于 Dart 团队的一些 package 尚有部分未进行迁移。
-    你可以查看 pub.dev 上 [Dart 团队已迁移的 package][ns-dart-pkgs]。
+    你可以查看 pub.flutter-io.cn 上 [Dart 团队已迁移的 package][ns-dart-pkgs]。
 
   * Packages that have unit tests typically have
     a dev dependency on the [`test` package][`test`].
