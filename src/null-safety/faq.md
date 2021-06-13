@@ -2,7 +2,7 @@
 title: "Null safety: Frequently asked questions"
 title: 空安全：常见问题
 description: FAQs to help you migrate your Dart code to null safety
-description: 帮助您迁移到空安全的常见问题解答
+description: 帮助你迁移到空安全的常见问题解答
 short-title: FAQ (null safety)
 short-title: 空安全常见问题
 ---
@@ -33,7 +33,7 @@ code:
 
 Two exceptions to be aware of are:
 
-但是有两项例外您需要注意：
+但是有两项例外你需要注意：
 
 -   The `!` operator is a runtime null check in all modes, for all users. So,
     when migrating, ensure that you only add `!` where it's an error for a
@@ -41,14 +41,14 @@ Two exceptions to be aware of are:
     yet.
 
     对于任何模式而言，`!` 操作符都是在运行时进行的空检查。
-    所以在进行迁移时，请确保您仅对 `null` 可能由混合模式造成污染的代码位置添加 `!`，
+    所以在进行迁移时，请确保你仅对 `null` 可能由混合模式造成污染的代码位置添加 `!`，
     就算发起调用的代码还未迁移至空安全，也应如此。
 
 -   Runtime checks associated with the `late` keyword apply in all modes, for
     all users. Only mark a field `late` if you are sure it is always initialized
     before it is used.
 
-    `late` 会在运行时检查。所以请您仅在确定它被使用前一定会被初始化的情况下使用 `late`。
+    `late` 会在运行时检查。所以请你仅在确定它被使用前一定会被初始化的情况下使用 `late`。
 
 ## What if a value is only `null` in tests?
 
@@ -57,7 +57,7 @@ Two exceptions to be aware of are:
 If a value is only ever `null` in tests, the code can be improved by marking it
 non-nullable and making the tests pass non-null values.
 
-如果在测试中某个值始终为 `null`，可以通过将测试传值和测试需要的值改为非空，来改进您的测试。
+如果在测试中某个值始终为 `null`，可以通过将测试传值和测试需要的值改为非空，来改进你的测试。
 
 ## How does `@required` compare to the new `required` keyword?
 
@@ -86,7 +86,7 @@ cause an analyzer hint.
 When null safe code is called from null safe code, failing to supply a
 `required` argument is an error.
 
-当您在空安全的代码中使用空安全代码时，如果 `required` 修饰的参数未传递，
+当你在空安全的代码中使用空安全代码时，如果 `required` 修饰的参数未传递，
 会显示一个错误。
 
 What does this mean for migration? Be careful if adding `required` where there
@@ -95,9 +95,9 @@ will no longer compile. Instead, you could add a default or make the argument
 type nullable.
 
 那么它对于迁移来说意味着什么呢？
-当您给以前没有使用 `@required` 注解的参数加上 `required` 时要十分小心。
+当你给以前没有使用 `@required` 注解的参数加上 `required` 时要十分小心。
 任何没有传递新需要的参数的代码，都无法进行编译。
-实际上，您可以加上默认值，或是将参数变为可空类型。
+实际上，你可以加上默认值，或是将参数变为可空类型。
 
 ## How should I migrate non-nullable fields that should be `final`, but aren't?
 
@@ -124,7 +124,7 @@ Vec2D(Map<String, dynamic> object) {
 
 you can do:
 
-您可以这样做：
+你可以这样做：
 
 {:.good}
 {% prettify dart tag=pre+code %}
@@ -142,7 +142,7 @@ it to be non-nullable; if it's initialized too late, then it's `null` until it's
 initialized, and must be nullable. Fortunately, you have options:
 
 然而，在构造函数中通过计算进行初始化的字段，是无法为 `final` 的。
-在使用空安全的时候，您会发现想让它们的类型为非空，也不是一件容易的事。
+在使用空安全的时候，你会发现想让它们的类型为非空，也不是一件容易的事。
 如果初始化的时机不合适，那么直到初始化前，它都只能是可空的类型。
 幸运的是，你还有其他选择：
 
@@ -155,7 +155,7 @@ initialized, and must be nullable. Fortunately, you have options:
     将构造转变为工厂方法，并将其委托给一个直接初始化所有字段的真正的构造函数。
     在 Dart 中，这样的私有构造通常是一个下划线：`_`。
     如此一来，字段就可以是 `final` 且非空了。
-    在空安全迁移介入 **之前**，您就可以这样进行调整。
+    在空安全迁移介入 **之前**，你就可以这样进行调整。
 
 -   Or, mark the field `late final`. This enforces that it's initialized exactly
     once. It must be initialized before it can be read.
@@ -251,8 +251,8 @@ into a static method so it is allowed to return `null`.
 The assert will be unnecessary when everything is fully migrated, but for now it
 *is* needed if you actually want to keep the check. Options:
 
-对于完全迁移的代码而言，这个断言是不必要的，但是如果您希望保留该检查，那么它 **也需要** 留下。
-几种方式可供您选择：
+对于完全迁移的代码而言，这个断言是不必要的，但是如果你希望保留该检查，那么它 **也需要** 留下。
+几种方式可供你选择：
 
 -   Decide that the assert is not really necessary, and remove it. This is a
     change in behavior when asserts are enabled.
@@ -314,7 +314,7 @@ behavior, the null check should remain.
 Import `package:collection` and use the extension method `firstWhereOrNull`
 instead of `firstWhere`.
 
-导入 `package:collection` 包并使用 `firstWhereOrNull` 扩展方法代替 `firstWhere`。
+导入 `package:collection` package 并使用 `firstWhereOrNull` 扩展方法代替 `firstWhere`。
 
 ## How do I deal with attributes that have setters?
 
@@ -329,7 +329,7 @@ expected to be set sometime later.
 
 In such cases, you have two options:
 
-在这样的情况下，您有两种选择：
+在这样的情况下，你有两种选择：
 
 -   Set it to an initial value. Often times, the omission of an initial value is
     by mistake rather than deliberate.
@@ -339,7 +339,7 @@ In such cases, you have two options:
 -   If you are _sure_ that the attribute needs to be set before accessed, mark
     it as `late`.
 
-    如果您 **确定** 这个属性需要在访问之前被赋值，将它标记为 `late`。
+    如果你 **确定** 这个属性需要在访问之前被赋值，将它标记为 `late`。
 
     WARNING: The `late` keyword adds a runtime check. If any user calls `get`
     before `set` they'll get an error at runtime.
@@ -364,7 +364,7 @@ the language that the value is guaranteed to be there.
 In this case, you should use the bang operator (`!`) to cast the value back to
 V:
 
-在这种情况下，您应该使用强制非空操作符 (`!`) 将可空的类型转为非空 (V)。
+在这种情况下，你应该使用强制非空操作符 (`!`) 将可空的类型转为非空 (V)。
 
 ```dart
 return blockTypes[key]!;
@@ -372,7 +372,7 @@ return blockTypes[key]!;
 
 Which will throw if the map returns null. If you want explicit handling for that case:
 
-如果 map 返回了 null，则会抛出异常。如果您希望手动处理这些情况：
+如果 map 返回了 null，则会抛出异常。如果你希望手动处理这些情况：
 
 ```dart
 var result = blockTypes[key];
@@ -397,12 +397,12 @@ This implies `fooList` might contain null values. This might happen if you are
 initializing the list with length and filling it in via a loop.
 
 它隐含了 `fooList` 可能包含空值的信息。
-在您以长度初始化列表并循环填入值时，这种情况可能会出现。
+在你以长度初始化列表并循环填入值时，这种情况可能会出现。
 
 If you are simply initializing the list with the same value, you should instead
 use the [`filled`](https://api.dart.dev/stable/dart-core/List/List.filled.html) constructor.
 
-如果您仅仅想要以相同的值初始化列表，您应该使用
+如果你仅仅想要以相同的值初始化列表，你应该使用
 [`filled`](https://api.dart.cn/stable/dart-core/List/List.filled.html)
 构造。
 
@@ -423,7 +423,7 @@ If you are setting the elements of the list via an index, you should instead use
 the `add` function to build the list. That is less error-prone and more
 readable.
 
-如果您需要通过索引来设置元素，您应该使用 `add` 函数来构建列表。
+如果你需要通过索引来设置元素，你应该使用 `add` 函数来构建列表。
 这个方法不会轻易出错，且可读性更好。
 
 ## What happened to the default List constructor?
@@ -432,7 +432,7 @@ readable.
 
 You may encounter this error:
 
-您可能会遇到这样的错误：
+你可能会遇到这样的错误：
 
 ```none
 The default 'List' constructor isn't available when null safety is enabled. #default_list_constructor
@@ -457,7 +457,7 @@ when you enable null safety.
 
 通过 ffi 发送的列表只能是 `List<dynamic>`，
 而不能是 `List<Object>` 或 `List<Object?>`。
-就算您未在迁移过程中手动更改类型，类型也可能会被改变，
+就算你未在迁移过程中手动更改类型，类型也可能会被改变，
 因为启用空安全后，类型推导推算出了这样的结果。
 
 The fix is to explicitly create such lists as `List<dynamic>`.
@@ -487,11 +487,16 @@ it knows ("it looks like this condition will always be false!") and lets you
 decide what to do.
 
 在这些情况下，迁移工具无法区分防御性编码情况或是确实需要空值的情况。 
-那么该工具会告诉您「这看起来永远为 false！」并让您进行决定。
+那么该工具会告诉你「这看起来永远为 false！」并让你进行决定。
 
 ## Resources
 
 ## 资源
 
 *   [DartPad with Null Safety](https://nullsafety.dartpad.dev)
+
+    [支持空安全的 DartPad](https://dartpad.cn/?null_safety=true)
+
 *   [Sound null safety](/null-safety)
+
+    [健全的空安全](/null-safety)
