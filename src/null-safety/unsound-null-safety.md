@@ -183,12 +183,12 @@ you cannot un-migrate a file once it has been migrated.
 
 If you want to incrementally migrate a package by hand, follow these steps:
 
-手动对软件包进行迁移时，请参考以下步骤：
+手动对 package 进行迁移时，请参考以下步骤：
 
 1. Edit the package's `pubspec.yaml` file,
    setting the minimum SDK constraint to `2.12.0`:
 
-   编辑软件包的 `pubspec.yaml` 文件，将最低 SDK 版本设置到 `2.12.0`：
+   编辑 package 的 `pubspec.yaml` 文件，将最低 SDK 版本设置到 `2.12.0`：
 
    ```yaml
 environment:
@@ -197,7 +197,7 @@ environment:
 
 2. Regenerate the [package configuration file][]:
 
-   重新生成 [软件包的配置文件][package configuration file]：
+   重新生成 [Package 的配置文件][package configuration file]：
 
    ```terminal
    $ dart pub get
@@ -210,14 +210,14 @@ environment:
    every library in the package to 2.12,
    opting them all in to null safety.
 
-   在版本低于 `2.12.0-0` 的 SDK 上运行 `dart pub get` 时，
-   会将每个包的默认 SDK 版本设定为 2.12，并且默认它们已经迁移至空安全。
+   在版本低于 `2.12.0` 的 SDK 上运行 `dart pub get` 时，
+   会将每个 package 的默认 SDK 版本设定为 2.12，并且默认它们已经迁移至空安全。
 
 3. Open the package in your IDE. <br>
    You're likely to see a lot of analysis errors.
    That's OK.
 
-   在你的 IDE 上打开软件包。<br>
+   在你的 IDE 上打开 package。<br>
    你也许会看到很多错误，没关系，让我们继续。
 
 4. Add a [language version comment][] to the top of
@@ -238,7 +238,7 @@ environment:
    parameter type is non-nullable,
    even though a 2.9 file might pass in a null value.
 
-   在 2.12 软件包中为库指定 2.9 的语言版本可以减少一些未迁移的分析错误。
+   在 2.12 的 package 中为库指定 2.9 的语言版本可以减少一些未迁移的分析错误。
    然而，**非健全的空安全减少了分析器中可用的信息**。
    例如，就算 2.9 版本的文件中一个参数可能会传入空值，分析器也可能会假定参数类型不为空，
 
@@ -283,7 +283,7 @@ You can do this in two ways:
   或者，设定程序入口的语言版本 &mdash;&mdash;
   包含 `main()` 函数的文件 &mdash;&mdash; 设定为 2.9。
   在 Flutter 应用中，一般是 `lib/main.dart`。
-  在命令行应用中，一般是 `bin/<软件包名>.dart`。
+  在命令行应用中，一般是 `bin/<package 名称>.dart`。
   同时你也可以设定 `test` 下的文件，因为它们也包含程序入口。
   例如
 

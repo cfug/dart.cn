@@ -9,21 +9,21 @@ This page describes how and when to migrate your code to [null safety][].
 Here are the basic steps for migrating each package that you own:
 
 本文将介绍如何将你的代码迁移至 [空安全][null safety]。
-以下是对你的软件包逐个迁移的基本步骤：
+以下是对你的 package 逐个迁移的基本步骤：
 
 1. [**Wait**](#step1-wait) for the packages
    that you depend on to migrate.
 
-   [**等待**](#step1-wait) 你依赖的软件包迁移完成。
+   [**等待**](#step1-wait) 你依赖的 package 迁移完成。
 
 2. [**Migrate**](#step2-migrate) your package's code,
    preferably using the interactive migration tool.
 
-   [**迁移**](#step2-migrate) 你的包的代码，最好使用交互式的迁移工具。
+   [**迁移**](#step2-migrate) 你的 package 的代码，最好使用交互式的迁移工具。
 
 3. [**Statically analyze**](#step3-analyze) your package's code.
 
-   [**静态分析**](#step3-analyze) 包的代码。
+   [**静态分析**](#step3-analyze) package 的代码。
 
 4. [**Test**](#step4-test) to make sure your changes work.
 
@@ -33,7 +33,7 @@ Here are the basic steps for migrating each package that you own:
    [**publish**](#step5-publish) the null-safe version
    as a **prerelease** version.
 
-   如果你已经在 pub.flutter-io.cn 发布了你的包，
+   如果你已经在 pub.flutter-io.cn 发布了你的 package，
    可以将迁移完成的空安全版本以 **预发布** 版本进行 [**发布**](#step5-publish)。
 
 {{site.alert.info}}
@@ -42,8 +42,8 @@ Here are the basic steps for migrating each package that you own:
   Before migrating an app,
   make sure that all of your dependencies are ready.
 
-  **理论上，迁移应用和迁移软件包的过程一致。**
-  在迁移应用之前，确保你所依赖的包全部迁移完成后，再进行迁移。
+  **理论上，迁移应用和迁移 package 的过程一致。**
+  在迁移应用之前，确保你所依赖的 package 全部迁移完成后，再进行迁移。
 
 {{site.alert.end}}
 
@@ -80,7 +80,7 @@ then passing a nullable argument becomes a compile error.
 
 虽然你在你的所有依赖迁移完成前就 [**可以** 进行迁移][Unsound null safety]，
 但在它们迁移完成后，你可能需要再对你的代码进行调整。
-例如，如果你推测一个函数可以接受一个可空的参数，但依赖的包迁移后变为了非空，
+例如，如果你推测一个函数可以接受一个可空的参数，但依赖的 package 迁移后变为了非空，
 在传递可空的参数时便会出现编译错误。
 
 {{site.alert.info}}
@@ -93,8 +93,9 @@ then passing a nullable argument becomes a compile error.
   For example, the Dart and Flutter core libraries are null safe,
   and they're still usable by apps that haven't migrated to null safety.
 
-  **你应当在其他依赖于你的软件包进行迁移之前，对你的包进行迁移。**
-  你已迁移的软件包对于未进行迁移的包和应用而言，仍然可用（前提是使用的 Dart 2.12 及之后的版本）。
+  **你应当在其他依赖于你的 package 进行迁移之前，对你的 package 进行迁移。**
+  你已迁移的 package 对于未进行迁移的package 和应用而言，
+  仍然可用（前提是使用的 Dart 2.12 或更高的版本）。
   例如，Dart 和 Flutter 的核心库现已完全迁移至空安全，而尚未进行迁移的应用仍然可以使用。
 
 {{site.alert.end}}
@@ -133,7 +134,7 @@ $ dart --version
 Get the migration state of your package's dependencies,
 using the following command:
 
-通过以下命令检查你的依赖包的迁移状态：
+通过以下命令检查你的 package 的迁移状态：
 
 ```terminal
 $ dart pub outdated --mode=null-safety
@@ -167,23 +168,23 @@ null-safe releases, if they exist.
 Here's an example of the output for a simple package.
 The green checkmarked version for each package supports null safety:
 
-这是一个简单的包的输入示例。
-每个包的绿色对勾代表着对应版本已支持空安全：
+这是一个简单的 package 的输入示例。
+每个 package 的绿色对勾代表着对应版本已支持空安全：
 
 ![Output of dart pub outdated](/null-safety/pub-outdated-output.png)
 
 The output shows that all of the package's dependencies
 have resolvable prereleases that support null safety.
 
-上面的输出说明了所有依赖的包都有可使用的已支持空安全的预发布版本。
+上面的输出说明了所有依赖的 package 都有可使用的已支持空安全的预发布版本。
 
 If any of your package's dependencies _don't_ yet support null safety,
 we encourage you to reach out to the package owner.
 You can find contact details on the package page on [pub.dev][].
 
-如果你的软件包的依赖中，有一些 **尚未** 支持空安全，
+如果你的 package 的依赖中，有一些 **尚未** 支持空安全，
 我们推荐你联系对应依赖的作者。
-你可以在 [pub.flutter-io.cn][pub.dev] 对应依赖包的页面，找到作者的联系信息。
+你可以在 [pub.flutter-io.cn][pub.dev] 对应 package 的页面，找到作者的联系信息。
 
 [pub.dev]: {{site.pub}}
 
@@ -260,7 +261,7 @@ and converts it to null safety.
 You can guide the tool's conversion by
 adding [hint markers][] to your Dart code.
 
-迁移工具会带上一个非空安全的包，将它转换至空安全。
+迁移工具会带上一个非空安全的 package ，将它转换至空安全。
 你可以先在代码中添加 [提示标记][hint markers] 来引导迁移工具的转换。
 
 [hint markers]: #hint-markers
@@ -291,7 +292,7 @@ $ dart migrate
 If your package is ready to migrate,
 then the tool produces a line like the following:
 
-如果你的包可以进行迁移，工具会输出类似以下的内容：
+如果你的 package 可以进行迁移，工具会输出类似以下的内容：
 
 ```terminal
 View the migration suggestions by visiting:
@@ -507,7 +508,7 @@ which opts the package into null safety.
 
 当你觉得迁移工具提示的更改部分可以应用了，点击 **Apply migration**。
 迁移工具会删除所有的提示标记，保存迁移后的代码。
-同时，迁移工具也会更改 pubspec 的 SDK 限制，将包迁移至空安全。
+同时，迁移工具也会更改 pubspec 的 SDK 限制，将 package 迁移至空安全。
 
 The next step is to [statically analyze your code](#step3-analyze).
 If it's valid, then [test your code](#step4-test).
@@ -516,7 +517,7 @@ Then, if you've published your code on pub.dev,
 
 下一步就是对代码进行 [**静态分析**](#step3-analyze)。
 如果一切正常，下一步就是 [测试你的代码](#step4-test)。
-最后，如果你已经将包发布至 pub.flutter-io.cn，
+最后，如果你已经将 package 发布至 pub.flutter-io.cn，
 [发布空安全的预览版本](#step5-publish)。
 
 ### Migrating by hand
@@ -534,7 +535,7 @@ Then migrate libraries that directly depend on the leaf libraries.
 End by migrating the libraries that have the most
 intra-package dependencies.
 
-我们推荐你 **优先迁移最下层的库** &mdash;&mdash; 指的是没有导入其他包的库。
+我们推荐你 **优先迁移最下层的库** &mdash;&mdash; 指的是没有导入其他 package 的库。
 接着迁移直接依赖了下层库的依赖库。
 最后再迁移依赖项最多的库。
 
@@ -547,7 +548,7 @@ If any libraries have cyclic imports
 (for example, A imports B which imports C, and C imports A),
 consider migrating those libraries together.
 
-举个例子，假设你的 `lib/src/util.dart` 导入了其他（空安全）的软件包和核心库，
+举个例子，假设你的 `lib/src/util.dart` 导入了其他（空安全）的 package 和核心库，
 但它没有包含任何 `import '<本地路径>'` 的引用。
 那么你应当优先考虑迁移 `util.dart`，然后迁移依赖了 `util.dart` 的文件。
 如果有一些循环引用的库（例如 A 引用了 B，B 引用了 C，C 引用了 A），
@@ -555,12 +556,12 @@ consider migrating those libraries together.
 
 To migrate a package by hand, follow these steps:
 
-手动对软件包进行迁移时，请参考以下步骤：
+手动对 package 进行迁移时，请参考以下步骤：
 
 1. Edit the package's `pubspec.yaml` file,
    setting the minimum SDK constraint to `2.12.0`:
 
-   编辑软件包的 `pubspec.yaml` 文件，将最低 SDK 版本设置到 `2.12.0`：
+   编辑 package 的 `pubspec.yaml` 文件，将最低 SDK 版本设置到 `2.12.0`：
 
    ```yaml
    environment:
@@ -569,7 +570,7 @@ To migrate a package by hand, follow these steps:
 
 2. Regenerate the [package configuration file][]:
 
-   重新生成 [软件包的配置文件][package configuration file]：
+   重新生成 [package 的配置文件][package configuration file]：
 
    ```terminal
    $ dart pub get
@@ -583,13 +584,13 @@ To migrate a package by hand, follow these steps:
    opting them all in to null safety.
 
    在版本最低是 `2.12.0-0` 的 SDK 上运行 `dart pub get` 时，
-   会将每个包的默认 SDK 版本设定为 2.12，并且默认它们已经迁移至空安全。
+   会将每个 package 的默认 SDK 版本设定为 2.12，并且默认它们已经迁移至空安全。
 
 3. Open the package in your IDE. <br>
    You're likely to see a lot of analysis errors.
    That's OK.
 
-   在你的 IDE 上打开软件包。<br>
+   在你的 IDE 上打开package 。<br>
    你也许会看到很多错误，没关系，让我们继续。
 
 4. Migrate the code of each Dart file,
@@ -617,7 +618,7 @@ Update your packages
 Then use your IDE or the command line
 to perform [static analysis][] on your code:
 
-更新你的软件包（在 IDE 或命令行工具中使用 `pub get`）
+更新你的 package（在 IDE 或命令行工具中使用 `dart pub get`）
 后在 IDE 或命令行工具中对你的代码进行 [静态分析][static analysis]：
 
 ```terminal
@@ -685,11 +686,11 @@ With these constraints,
 packages that are published during null safety beta
 can still work with the next stable release of the Dart SDK.
 
-在空安全测试期间以这种形式进行发布的包，能在下一个 Dart SDK 稳定版中继续使用。
+在空安全测试期间以这种形式进行发布的 package，能在下一个 Dart SDK 稳定版中继续使用。
 
 ### Package version
 
-### 软件包的版本
+### Package 的版本
 
 Update the version of the package
 to indicate a breaking change:
@@ -701,7 +702,7 @@ to indicate a breaking change:
   For example, if the previous version is `2.3.2`,
   the new version is `3.0.0`.
 
-  如果你的软件包版本已经大于或等于 1.0.0，请提升主版本。
+  如果你的 package 版本已经大于或等于 1.0.0，请提升主版本。
   例如，上一个版本为 `2.3.2`，那么新版本应该为 **`3.0.0-nullsafety.0`**。
 
 * If your package hasn't reached 1.0.0 yet,
@@ -709,7 +710,7 @@ to indicate a breaking change:
   For example, if the previous version is `0.3.2`,
   the new version is either `0.4.0` or `1.0.0`.
 
-  如果你的软件包的版本还未高于 1.0.0，
+  如果你的 package 的版本还未高于 1.0.0，
   你可以 **提升次版本**，也可以 **提升至 1.0.0**。
   例如，上一个版本为 `0.3.2`，那么新版本可以是 **`0.4.0`** 或 **`1.0.0`**。
 
@@ -735,7 +736,7 @@ you should have a fully migrated, null-safe Dart package.
 If all of the packages you depend on are migrated too,
 then your program is sound with respect to null-reference errors.
 
-如果你走到了这一步，你应该已经完全将你的 Dart 软件包迁移至空安全了。
+如果你走到了这一步，你应该已经完全将你的 Dart package 迁移至空安全了。
 当你的所有依赖也都完成了迁移，那么你的程序就是健全的，同时可以正确处理空引用的错误。
 
 From all of the Dart team, *thank you* for migrating your code.

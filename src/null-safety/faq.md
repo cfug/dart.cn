@@ -314,7 +314,7 @@ behavior, the null check should remain.
 Import `package:collection` and use the extension method `firstWhereOrNull`
 instead of `firstWhere`.
 
-导入 `package:collection` 包并使用 `firstWhereOrNull` 扩展方法代替 `firstWhere`。
+导入 `package:collection` package 并使用 `firstWhereOrNull` 扩展方法代替 `firstWhere`。
 
 ## How do I deal with attributes that have setters?
 
