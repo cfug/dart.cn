@@ -50,11 +50,11 @@ To display text on the console, you can use the top-level `print()` function:
 每个应用都有一个 `main()` 函数。你可以使用顶层函数 `print()` 来将一段文本输出显示到控制台：
 
 <?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (hello-world)"?>
-{% prettify dart tag=pre+code %}
+```dart
 void main() {
   print('Hello, World!');
 }
-{% endprettify %}
+```
 
 
 ## Variables
@@ -67,8 +67,8 @@ thanks to type inference:
 虽然 Dart 是代码类型安全的语言，但是由于其支持类型推断，因此大多数变量不需要显式地指定类型：
 
 <?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (var)"?>
-{% prettify dart tag=pre+code %}
-var name = '旅行者一号';
+```dart
+var name = 'Voyager I';
 var year = 1977;
 var antennaDiameter = 3.7;
 var flybyObjects = ['木星', '土星', '天王星', '海王星'];
@@ -76,9 +76,10 @@ var image = {
   'tags': ['土星'],
   'url': '//path/to/saturn.jpg'
 };
-{% endprettify %}
+```
 
-[Read more](/guides/language/language-tour#variables) about variables in Dart, including default values, the `final` and `const` keywords, and static types.
+[Read more](/guides/language/language-tour#variables) about variables in Dart, 
+including default values, the `final` and `const` keywords, and static types.
 
 你可以 [阅读更多](/guides/language/language-tour#variables) Dart 中关于变量的内容，包括变量的默认值，`final` 和 `const` 关键字以及静态类型等。
 
@@ -91,7 +92,7 @@ Dart supports the usual control flow statements:
 Dart 支持常用的流程控制语句：
 
 <?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (control-flow)"?>
-{% prettify dart tag=pre+code %}
+```dart
 if (year >= 2001) {
   print('21st century');
 } else if (year >= 1901) {
@@ -109,9 +110,10 @@ for (int month = 1; month <= 12; month++) {
 while (year < 2016) {
   year += 1;
 }
-{% endprettify %}
+```
 
-[Read more](/guides/language/language-tour#control-flow-statements) about control flow statements in Dart,
+[Read more](/guides/language/language-tour#control-flow-statements) 
+about control flow statements in Dart,
 including `break` and `continue`, `switch` and `case`, and `assert`.
 
 你可以 [阅读更多](/guides/language/language-tour#control-flow-statements) Dart 中关于控制流程语句的内容，包括 `break` 和 `continue` 关键字、`switch` 语句和 `case` 子句以及 `assert` 语句。
@@ -126,14 +128,14 @@ specifying the types of each function's arguments and return value:
 [我们建议](/guides/language/effective-dart/design#types) 为每个函数的参数以及返回值都指定类型：
 
 <?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (functions)"?>
-{% prettify dart tag=pre+code %}
+```dart
 int fibonacci(int n) {
   if (n == 0 || n == 1) return n;
   return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 var result = fibonacci(20);
-{% endprettify %}
+```
 
 A shorthand `=>` (_arrow_) syntax is handy for functions that
 contain a single statement.
@@ -143,9 +145,9 @@ This syntax is especially useful when passing anonymous functions as arguments:
 该语法在将匿名函数作为参数传递时非常有用：
 
 <?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (arrow)"?>
-{% prettify dart tag=pre+code %}
-flybyObjects.where((name) => name.contains('土星')).forEach(print);
-{% endprettify %}
+```dart
+flybyObjects.where((name) => name.contains('turn')).forEach(print);
+```
 
 Besides showing an anonymous function (the argument to `where()`),
 this code shows that you can use a function as an argument:
@@ -166,15 +168,14 @@ Dart comments usually start with `//`.
 
 Dart 通常使用双斜杠 `//` 作为注释的开始。
 
-{% prettify dart tag=pre+code %}
-// 这是一个普通的单行注释。
+```dart
 
 /// 这是一个文档注释。
 /// 文档注释用于为库、类以及类的成员添加注释。
 /// 像 IDE 和 dartdoc 这样的工具可以专门处理文档注释。
 
 /* 也可以像这样使用单斜杠和星号的注释方式 */
-{% endprettify %}
+```
 
 [Read more](/guides/language/language-tour#comments) about comments in Dart,
 including how the documentation tooling works.
@@ -190,7 +191,7 @@ To access APIs defined in other libraries, use `import`.
 使用 `import` 关键字来访问在其它库中定义的 API。
 
 <?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (import)" plaster="none"?>
-{% prettify dart tag=pre+code %}
+```
 // 导入核心库
 import 'dart:math';
 
@@ -199,10 +200,12 @@ import 'package:test/test.dart';
 
 // 导入文件
 import 'path/to/my_other_file.dart';
-{% endprettify %}
+```
 
-[Read more](/guides/language/language-tour#libraries-and-visibility) about libraries and visibility in Dart,
-including library prefixes, `show` and `hide`, and lazy loading through the `deferred` keyword.
+[Read more](/guides/language/language-tour#libraries-and-visibility) 
+about libraries and visibility in Dart,
+including library prefixes, `show` and `hide`, 
+and lazy loading through the `deferred` keyword.
 
 你可以 [阅读更多](/guides/language/language-tour#libraries-and-visibility) Dart 中有关库和可见性的内容，包括库前缀、`show` 和 `hide` 关键字以及通过 `deferred` 关键字实现的懒加载。
 
@@ -222,10 +225,12 @@ the constructors: https://github.com/dart-lang/linter/issues/859.
 {% endcomment %}
 
 <?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (class)"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Spacecraft {
   String name;
   DateTime? launchDate;
+
+  int? get launchYear => launchDate?.year; // read-only non-final property
 
   // 构造函数，带有可以直接为成员变量赋值的语法糖。
   Spacecraft(this.name, this.launchDate) {
@@ -234,9 +239,6 @@ class Spacecraft {
 
   // 命名构造函数，转发到默认构造函数。
   Spacecraft.unlaunched(String name) : this(name, null);
-
-  int? get launchYear =>
-      launchDate?.year; // 只读的非 final 的属性
 
   // 方法。
   void describe() {
@@ -250,20 +252,20 @@ class Spacecraft {
     }
   }
 }
-{% endprettify %}
+```
 
 You might use the `Spacecraft` class like this:
 
 你可以像下面这样使用 `Spacecraft` 类：
 
 <?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (use class)" plaster="none"?>
-{% prettify dart tag=pre+code %}
+```dart
 var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
 voyager.describe();
 
 var voyager3 = Spacecraft.unlaunched('Voyager III');
 voyager3.describe();
-{% endprettify %}
+```
 
 [Read more](/guides/language/language-tour#classes) about classes in Dart,
 including initializer lists, optional `new` and `const`, redirecting constructors,
@@ -280,16 +282,17 @@ Dart has single inheritance.
 Dart 支持单继承。
 
 <?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (extends)"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Orbiter extends Spacecraft {
   double altitude;
 
   Orbiter(String name, DateTime launchDate, this.altitude)
       : super(name, launchDate);
 }
-{% endprettify %}
+```
 
-[Read more](/guides/language/language-tour#extending-a-class) about extending classes, the optional `@override` annotation, and more.
+[Read more](/guides/language/language-tour#extending-a-class) 
+about extending classes, the optional `@override` annotation, and more.
 
 你可以 [阅读更多](/guides/language/language-tour#extending-a-class) Dart 中有关类继承的内容，比如可选的 `@override` 注解等等。
 
@@ -301,7 +304,7 @@ a mixin declaration:
 Mixin 是一种在多个类层次结构中重用代码的方法。下面的是声明一个 Mixin 的做法：
 
 <?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (mixin)"?>
-{% prettify dart tag=pre+code %}
+```dart
 mixin Piloted {
   int astronauts = 1;
 
@@ -309,7 +312,7 @@ mixin Piloted {
     print('Number of astronauts: $astronauts');
   }
 }
-{% endprettify %}
+```
 
 To add a mixin's capabilities to a class, just extend the class with the mixin.
 
@@ -334,22 +337,26 @@ class PilotedCraft extends Spacecraft [!with!] Piloted {
 
 ## 接口和抽象类
 
-Dart has no `interface` keyword. Instead, all classes implicitly define an interface. Therefore, you can implement any class.
+Dart has no `interface` keyword. 
+Instead, all classes implicitly define an interface. 
+Therefore, you can implement any class.
 
 Dart 没有 `interface` 关键字。相反，所有的类都隐式定义了一个接口。因此，任意类都可以作为接口被实现。
 
 <?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (implements)"?>
-{% prettify dart tag=pre+code %}
+```dart
 class MockSpaceship implements Spacecraft {
   // ···
 }
-{% endprettify %}
+```
 
 [Read more](/guides/language/language-tour#implicit-interfaces) about implicit interfaces.
 
 你可以 [阅读更多](/guides/language/language-tour#implicit-interfaces) 关于隐式接口的内容。
 
-You can create an abstract class to be extended (or implemented) by a concrete class. Abstract classes can contain abstract methods (with empty bodies).
+You can create an abstract class 
+to be extended (or implemented) by a concrete class. 
+Abstract classes can contain abstract methods (with empty bodies).
 
 你可以创建一个被任意具体类扩展（或实现）的抽象类。抽象类可以包含抽象方法（不含方法体的方法）。
 
@@ -366,11 +373,13 @@ You can create an abstract class to be extended (or implemented) by a concrete c
 }
 {% endprettify %}
 
-Any class extending `Describable` has the `describeWithEmphasis()` method, which calls the extender's implementation of `describe()`.
+Any class extending `Describable` has the `describeWithEmphasis()` method, 
+which calls the extender's implementation of `describe()`.
 
 任意一个扩展了 `Describable` 的类都拥有 `describeWithEmphasis()` 方法，这个方法又会去调用实现类中实现的 `describe()` 方法。
 
-[Read more](/guides/language/language-tour#abstract-classes) about abstract classes and methods.
+[Read more](/guides/language/language-tour#abstract-classes) 
+about abstract classes and methods.
 
 你可以 [阅读更多](/guides/language/language-tour#abstract-classes) 关于抽象类和抽象方法的内容。
 
@@ -398,13 +407,13 @@ The method above is equivalent to:
 上面的方法相当于：
 
 <?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (Future.then)"?>
-{% prettify dart tag=pre+code %}
+```dart
 Future<void> printWithDelay(String message) {
   return Future.delayed(oneSecond).then((_) {
     print(message);
   });
 }
-{% endprettify %}
+```
 
 As the next example shows, `async` and `await` help make asynchronous code
 easy to read.
@@ -412,7 +421,7 @@ easy to read.
 如下一个示例所示，`async` 和 `await` 关键字有助于使异步代码变得易于阅读。
 
 <?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (await)"?>
-{% prettify dart tag=pre+code %}
+```dart
 Future<void> createDescriptions(Iterable<String> objects) async {
   for (var object in objects) {
     try {
@@ -430,21 +439,21 @@ Future<void> createDescriptions(Iterable<String> objects) async {
     }
   }
 }
-{% endprettify %}
+```
 
 You can also use `async*`, which gives you a nice, readable way to build streams.
 
 你也可以使用 `async*` 关键字，其可以为你提供一个可读性更好的方式去生成 Stream。
 
 <?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (async*)"?>
-{% prettify dart tag=pre+code %}
+```dart
 Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
   for (var object in objects) {
     await Future.delayed(oneSecond);
     yield '${craft.name} flies by $object';
   }
 }
-{% endprettify %}
+```
 
 [Read more](/guides/language/language-tour#asynchrony-support) about
 asynchrony support, including `async` functions, `Future`, `Stream`,
@@ -461,18 +470,18 @@ To raise an exception, use `throw`:
 使用 `throw` 关键字抛出一个异常：
 
 <?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (throw)"?>
-{% prettify dart tag=pre+code %}
+```dart
 if (astronauts == 0) {
   throw StateError('No astronauts.');
 }
-{% endprettify %}
+```
 
 To catch an exception, use a `try` statement with `on` or `catch` (or both):
 
 使用 `try` 语句配合 `on` 或 `catch`（两者也可同时使用）关键字来捕获一个异常:
 
 <?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (try)"?>
-{% prettify dart tag=pre+code %}
+```
 try {
   for (var object in flybyObjects) {
     var description = await File('$object.txt').readAsString();
@@ -483,15 +492,16 @@ try {
 } finally {
   flybyObjects.clear();
 }
-{% endprettify %}
+```
 
 Note that the code above is asynchronous;
 `try` works for both synchronous code and code in an `async` function.
 
 注意上述代码是异步的；同步代码以及异步函数中得代码都可以使用 `try` 捕获异常。
 
-[Read more](/guides/language/language-tour#exceptions) about exceptions, including stack traces, `rethrow`, and the difference between
-Error and Exception.
+[Read more](/guides/language/language-tour#exceptions) about exceptions, 
+including stack traces, `rethrow`, 
+and the difference between `Error` and `Exception`.
 
 你可以 [阅读更多](/guides/language/language-tour#exceptions) 关于异常的内容，包括栈追踪、`rethrow` 关键字以及 Error 和 Exception 之间的区别。
 

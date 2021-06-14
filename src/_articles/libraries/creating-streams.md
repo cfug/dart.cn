@@ -4,7 +4,7 @@ title: 在 Dart 里使用 Stream
 description: A stream is a sequence of results; learn how to create your own.
 description: Stream 是一个结果序列，本篇带你学会如何创建自己的 Stream。
 original-date: 2013-04-08
-date: 2018-09-26
+date: 2021-05-16
 category: libraries
 ---
 
@@ -13,7 +13,7 @@ category: libraries
 </style>
 
 _Written by Lasse Nielsen <br>
-April 2013 (updated October 2018)_
+April 2013 (updated May 2021)_
 
 The dart:async library contains two types
 that are important for many Dart APIs:
@@ -85,9 +85,9 @@ outputs new events. Example:
 对于这种情况，常用的办法是创建一个新的 Stream 去等待获取原 Stream 的事件，
 然后再将新 Stream 中的事件输出。例如：
 
-<?code-excerpt "misc/lib/articles/creating-streams/line_stream_generator.dart (split into lines)"?>
-{% prettify dart tag=pre+code %}
-/// 将连续的字符串 Stream 拆分为行。
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/line_stream_generator.dart (split into lines)"?>
+```dart
+/// Splits a stream of consecutive strings into lines.
 ///
 /// 输入的字符串来自于"源" Stream 并以较小的 chunk 块提供。
 Stream<String> lines(Stream<String> source) async* {
@@ -105,7 +105,7 @@ Stream<String> lines(Stream<String> source) async* {
   // 最后如果最终的字符串行不为空则将其添加至输出流。
   if (partial.isNotEmpty) yield partial;
 }
-{% endprettify %}
+```
 
 For many common transformations,
 you can use `Stream`-supplied transforming methods
@@ -121,20 +121,20 @@ Here's how it might be implemented:
 例如，假设你有一个名为 `counterStream` 的 Stream，
 用于每秒打印输出一个自增的整数。其实现过程可能如下：
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic usage)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (basic usage)"?>
+```dart
 var counterStream =
     Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
-{% endprettify %}
+```
 
 To quickly see the events, you can use code like this:
 
 你可以使用下面的代码快速查看事件：
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic for each)"?>
-{% prettify dart tag=pre+code %}
-counterStream.forEach(print); // 每秒打印一个整数，共打印15次。
-{% endprettify %}
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (basic for each)"?>
+```dart
+counterStream.forEach(print); // Print an integer every second, 15 times.
+```
 
 To transform the stream events, you can invoke a transforming method
 such as `map()` on the stream before listening to it.
@@ -143,12 +143,12 @@ The method returns a new stream.
 你可以在监听 Stream 前调用一个类似 `map()` 
 的转换方法来转换 Stream 的事件。该方法将返回一个新的 Stream。
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-map)"?>
-{% prettify dart tag=pre+code %}
-// 将每次事件中的整数乘以2。
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (use-map)"?>
+```dart
+// Double the integer in each event.
 var doubleCounterStream = counterStream.map((int x) => x * 2);
 doubleCounterStream.forEach(print);
-{% endprettify %}
+```
 
 Instead of `map()`, you could use any other transforming method,
 such as the following:
@@ -156,12 +156,12 @@ such as the following:
 你可以使用任意其它的变换方法替代 `map()`，
 比如类似下面的这些：
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-where)"?>
-{% prettify dart tag=pre+code %}
-.where((int x) => x.isEven) // 只保留整型事件中整数为偶数的事件。
-.expand((var x) => [x, x]) // 复制每一个事件。
-.take(5) // 开始五个事件后停止。
-{% endprettify %}
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (use-where)"?>
+```dart
+.where((int x) => x.isEven) // Retain only even integer events.
+.expand((var x) => [x, x]) // Duplicate each event.
+.take(5) // Stop after the first five events.
+```
 
 Often, a transforming method is all you need.
 However, if you need even more control over the transformation,
@@ -180,12 +180,12 @@ Dart 平台库为许多常见的任务需求提供了 Stream 转换器。
 例如下面的代码使用了由 dart:convert 库提供的
 `utf8.decoder` 和 `LineSplitter` 转换器。
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-transform)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (use-transform)"?>
+```dart
 Stream<List<int>> content = File('someFile.txt').openRead();
 List<String> lines =
     await content.transform(utf8.decoder).transform(LineSplitter()).toList();
-{% endprettify %}
+```
 
 
 ## Creating a stream from scratch
@@ -211,9 +211,9 @@ Here's a primitive example that emits numbers at regular intervals:
 
 下面是一个周期性发送整数的函数例子：
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (async-generator)" replace="/timedCounterGenerator/timedCounter/g"?>
-{% prettify dart tag=pre+code %}
-Stream<int> timedCounter(Duration interval, [int maxCount]) async* {
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (async-generator)" replace="/timedCounterGenerator/timedCounter/g"?>
+```dart
+Stream<int> timedCounter(Duration interval, [int? maxCount]) async* {
   int i = 0;
   while (true) {
     await Future.delayed(interval);
@@ -221,7 +221,7 @@ Stream<int> timedCounter(Duration interval, [int maxCount]) async* {
     if (i == maxCount) break;
   }
 }
-{% endprettify %}
+```
 
 {% comment %}
 [PENDING: show code that uses it, so we have some context for
@@ -270,15 +270,15 @@ a sequence of futures to a stream:
 
 另外，一个更有用的示例是将一个 Future 序列转换为 Stream 的函数：
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (stream-from-futures)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (stream-from-futures)"?>
+```dart
 Stream<T> streamFromFutures<T>(Iterable<Future<T>> futures) async* {
   for (var future in futures) {
     var result = await future;
     yield result;
   }
 }
-{% endprettify %}
+```
 
 This function asks the `futures` iterable for a new future,
 waits for that future, emits the resulting value, and then loops.
@@ -331,11 +331,7 @@ You return the stream and keep the controller to yourself.
 控制器对象你可以自行处理而只需返回调用者所需的 Stream 即可。
 
 The following example
-(from [stream_controller_bad.dart](code/stream_controller_bad.dart))
-{%- comment -%}
-TODO: update that link to point to examples directory on GitHub,
-and then delete the old file.
-{% endcomment %}
+(from [stream_controller_bad.dart][])
 shows a basic, though flawed, usage of `StreamController`
 to implement the `timedCounter()` function from the previous examples.
 This code creates a stream to return,
@@ -349,12 +345,14 @@ which are neither futures nor stream events.
 该代码将数据直接添加至 `StreamController` 而不是从 Future 或 Stream 中获取，
 并在最后返回 `StreamController` 中的 Stream。
 
+[stream_controller_bad.dart]: https://github.com/dart-lang/site-www/blob/master/null_safety_examples/misc/lib/articles/creating-streams/stream_controller_bad.dart
+
 {:.bad}
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (flawed stream)"?>
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller_bad.dart (flawed stream)"?>
 {% prettify dart tag=pre+code %}
-// 注意：该实现有缺陷。
-// 它在它拥有订阅者之前开始并且它没有实现暂停逻辑。
-Stream<int> timedCounter(Duration interval, [int maxCount]) {
+// NOTE: This implementation is FLAWED!
+// It starts before it has subscribers, and it doesn't implement pause.
+Stream<int> timedCounter(Duration interval, [int? maxCount]) {
   var controller = StreamController<int>();
   int counter = 0;
   void tick(Timer timer) {
@@ -379,11 +377,11 @@ As before, you can use the stream returned by `timedCounter()` like this:
 **[PENDING: Did we show this before?]**
 {% endcomment %}
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (using stream)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller_bad.dart (using stream)"?>
+```dart
 var counterStream = timedCounter(const Duration(seconds: 1), 15);
-counterStream.listen(print); // 每秒打印输出一个整数，共打印 15 次。
-{% endprettify %}
+counterStream.listen(print); // Print an integer every second, 15 times.
+```
 
 This implementation of `timedCounter()` has
 a couple of problems:
@@ -431,8 +429,8 @@ Try changing the code that uses the stream to the following:
 
 将上面示例中使用 Stream 的代码更改为如下：
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (pre-subscribe problem)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller_bad.dart (pre-subscribe problem)"?>
+```dart
 void listenAfterDelay() async {
   var counterStream = timedCounter(const Duration(seconds: 1), 15);
   await Future.delayed(const Duration(seconds: 5));
@@ -442,7 +440,7 @@ void listenAfterDelay() async {
     print(n); // 每秒打印输出一个整数，共打印 15 次。
   }
 }
-{% endprettify %}
+```
 
 When this code runs,
 nothing is printed for the first 5 seconds,
@@ -503,11 +501,11 @@ try changing the code that uses the stream to the following:
 为了可以查看在不支持暂停的时候会发生什么，
 我们将上面使用 Stream 的代码更改为如下：
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (pause problem)"?>
-{% prettify dart tag=pre+code %}
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller_bad.dart (pause problem)"?>
+```dart
 void listenWithPause() {
   var counterStream = timedCounter(const Duration(seconds: 1), 15);
-  StreamSubscription<int> subscription;
+  late StreamSubscription<int> subscription;
 
   subscription = counterStream.listen((int counter) {
     print(counter); // 每秒打印输出一个整数。
@@ -517,7 +515,7 @@ void listenWithPause() {
     }
   });
 }
-{% endprettify %}
+```
 
 When the five seconds of pause are up,
 the events fired during that time are all received at once.
@@ -533,11 +531,7 @@ and it then empties its buffer when the stream becomes unpaused.
 然后，当 Stream 从暂停中恢复时，它会清空并输出其缓存。
 
 The following version of `timedCounter()`
-(from [stream_controller.dart](code/stream_controller.dart))
-{%- comment -%}
-TODO: update that link to point to examples directory on GitHub,
-and then delete the old file.
-{% endcomment %}
+(from [stream_controller.dart][])
 implements pause by using the
 `onListen`, `onPause`, `onResume`, and `onCancel` callbacks
 on the `StreamController`.
@@ -547,19 +541,21 @@ on the `StreamController`.
 通过使用 `StreamController` 中的
 `onListen`、`onPause`、`onResume` 和 `onCancel` 回调实现暂停功能。
 
-<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (better stream)"?>
-{% prettify dart tag=pre+code %}
-Stream<int> timedCounter(Duration interval, [int maxCount]) {
-  StreamController<int> controller;
-  Timer timer;
+[stream_controller.dart]: https://github.com/dart-lang/site-www/blob/master/null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart
+
+<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (better stream)"?>
+```dart
+Stream<int> timedCounter(Duration interval, [int? maxCount]) {
+  late StreamController<int> controller;
+  Timer? timer;
   int counter = 0;
 
   void tick(_) {
     counter++;
     controller.add(counter); // 请求stream将计数器值作为事件发送。
     if (counter == maxCount) {
-      timer.cancel();
-      controller.close(); // 请求 stream 关闭并告知监听器。
+      timer?.cancel();
+      controller.close(); // Ask stream to shut down and tell listeners.
     }
   }
 
@@ -568,10 +564,8 @@ Stream<int> timedCounter(Duration interval, [int maxCount]) {
   }
 
   void stopTimer() {
-    if (timer != null) {
-      timer.cancel();
-      timer = null;
-    }
+    timer?.cancel();
+    timer = null;
   }
 
   controller = StreamController<int>(
@@ -582,7 +576,7 @@ Stream<int> timedCounter(Duration interval, [int maxCount]) {
 
   return controller.stream;
 }
-{% endprettify %}
+```
 
 Run this code with the `listenWithPause()` function above.
 You'll see that it stops counting while paused,
@@ -652,9 +646,9 @@ keep these tips in mind:
   例如，在下面的代码中，`onListen` 回调有可能会在 `subscription`
   变量被初始化为一个有效值之前被触发（同时 `处理器` 被调用）。
 
-  {% prettify dart tag=pre+code %}
-subscription = stream.listen(handler);
-  {% endprettify %}
+  ```dart
+  subscription = stream.listen(handler);
+  ```
 
 * The `onListen`, `onPause`, `onResume`, and `onCancel`
   callbacks defined by `StreamController` are
@@ -686,7 +680,7 @@ subscription = stream.listen(handler);
   implementing the `listen` method and the extra functionality on top,
   that is generally not recommended because
   it introduces a new type that users have to consider.
-  Instead you can often make a class that _has_ a `Stream` (and more) —
+  Instead, you can often make a class that _has_ a `Stream` (and more) —
   instead of one that _is_ a Stream (and more).
 
   尽管你可以通过扩展 `Stream` 类并实现 `listen` 方法来实现更多额外的功能，
