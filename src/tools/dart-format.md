@@ -21,7 +21,7 @@ Provide a list of files or directories to the `dart format` command.
 For example, here's how to format all the Dart files
 in or under the current directory:
 
-`dartfmt` 命令接收一系列文件或目录作为参数。
+`dart format` 命令接收一系列文件或目录作为参数。
 例如，下面是如何格式化当前目录下所有 Dart 文件的示例：
 
 ```terminal
