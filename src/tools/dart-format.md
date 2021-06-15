@@ -19,12 +19,26 @@ when using an IDE or editor that has Dart support.
 
 Provide a list of files or directories to the `dart format` command.
 For example, here's how to format all the Dart files
-under the current directory's `bin`, `lib`, and `test` directories:
+in or under the current directory:
 
-`dartfmt` 命令接收一系列文件或目录作为参数。例如，下面是如何格式化当前目录下 `bin`、`lib` 和 `test` 目录下的所有 Dart 文件示例：
+`dart format` 命令接收一系列文件或目录作为参数。
+例如，下面是如何格式化当前目录下所有 Dart 文件的示例：
 
 ```terminal
-$ dart format bin lib test
+$ dart format .
+```
+
+To specify multiple files or directories,
+use a space-delimited list.
+The following command formats all Dart files under the `lib` directory,
+plus one Dart file under the `bin` directory:
+
+要指定多个文件或目录，请使用以空格符号分割的列表。
+下面的命令将会对 `lib` 目录中的所有 Dart 文件，
+以及一个 `bin` 目录下的 Dart 文件进行格式整理。
+
+```terminal
+$ dart format lib bin/updater.dart 
 ```
 
 {{site.alert.warn}}

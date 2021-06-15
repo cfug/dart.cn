@@ -116,23 +116,21 @@ see the [migration guide][].
 
 若你需要代码迁移的指导，请查看 [迁移至空安全][migration guide]。
 
-### Creating a null-safe package or app {#create}
+{{site.alert.version-note}}
 
-### 创建空安全版本的 package 或应用 {#create}
+  Before Dart 2.13, the templates used by the [`dart create`][] command
+  and IDEs aren't null safe, so you need to migrate the code they create.
+  For example:
 
-The templates used by the [`dart create`][] command and IDEs
-aren't null safe yet, so you need to migrate the code they create.
-For example:
+  使用 Dart 2.13 以前版本的 [`dart create`][] 命令或 IDE 创建的模板，
+  尚未迁移至空安全。在创建后你还需要对它们进行迁移。举个例子：
 
-使用 Dart 2.13 以前版本的 [`dart create`][] 命令或 IDE 创建的模板，
-尚未迁移至空安全。
-在创建后你还需要对它们进行迁移。举个例子：
-
-```terminal
-$ dart create -t console-full my_cli
-$ cd my_cli
-$ dart migrate --apply-changes
-```
+  ```terminal
+  $ dart create -t console-full my_cli
+  $ cd my_cli
+  $ dart migrate --apply-changes
+  ```
+{{site.alert.end}}
 
 ### Behind the scenes: SDK constraints {#constraints}
 

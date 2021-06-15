@@ -51,7 +51,7 @@ greeting to use another language.
 
 {{site.alert.end}}
 
-<?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
+<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (hello-world)"?>
 ```dart:run-dartpad:ga_id-hello_world
 void main() {
   print('Hello, World!');
@@ -164,7 +164,7 @@ Let's customize the app you just created.
     编辑 `lib/cli.dart` 以返回一个不同的结果。例如，将先前的值除以2。
     （关于 `~/` 的详情请查看 [Arithmetic operators][]）：
 
-    <?code-excerpt "misc/test/tutorial/get_started.dart (calculate)" replace="/~\/ 2/[!$&!]/g"?>
+    <?code-excerpt "../null_safety_examples/misc/test/tutorial/get_started.dart (calculate)" replace="/~\/ 2/[!$&!]/g"?>
     {% prettify dart tag=pre+code %}
     int calculate() {
       return 6 * 7 [!~/ 2!];
