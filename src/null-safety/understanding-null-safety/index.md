@@ -337,7 +337,7 @@ underlying type. You can also safely pass `null` to something expecting a nullab
 那么原有类型是如何与可空类型交互的呢？
 我们知道，将一个 **非** 空类型的值传递给可空类型是一定安全的。
 如果一个函数接受 `String?`，那么向其传递 `String` 是允许的，不会有任何问题。
-在此次改动中，我们将所有的可空类型作为基础类型的子类。
+在此次改动中，我们将所有的可空类型作为基础类型的超类。
 你也可以将 `null` 传递给一个可空的类型，即 `Null` 也是任何可空类型的子类：
 
 <img src="understanding-null-safety/nullable-hierarchy.png" width="235">
