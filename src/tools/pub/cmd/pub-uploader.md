@@ -1,8 +1,8 @@
 ---
 title: dart pub uploader
-title: dart pub uploader
+title: dart pub 上传
 description: Use dart pub uploader to add or remove uploaders for your Dart package on the pub.dev site.
-description: 使用 dart pub uploader 命令为你在 pub.dev 网站上的 Dart Package 添加或删除上传者。
+description: 使用 dart pub 上传命令为你在 pub.dev 网站上的 Dart Package 添加或删除上传者。
 toc: false
 ---
 
@@ -39,12 +39,11 @@ add/remove as an uploader. For example:
 
 ```terminal
 ~/code/transmogrify$ dart pub uploader add bob@example.com
-We have sent an invitation to bob@example.com, they will be added as uploader after they confirm it.
-// 我们已经向 bob@example.com 发送了一份邀请函，在他/她确认后就会成被加入上传者（权限）
+We've sent an invitation email to bob@example.com.
+They'll be added as an uploader after they accept the invitation.
 
 ~/code/transmogrify$ dart pub uploader remove bob@example.com
-Successfully removed uploader from package.
-// 成功将该上传者从 package 中移除
+bob@example.com has been removed as an uploader for this package.
 ```
 
 If a package has only one uploader, that uploader can't be removed. You can
@@ -64,8 +63,8 @@ package by name. For example:
 
 ```terminal
 $ dart pub uploader --package=transmogrify add bob@example.com
-We have sent an invitation to bob@example.com, they will be added as uploader after they confirm it.
-// 我们已经向 bob@example.com 发送了一份邀请函，在他/她确认后就会成被加入上传者（权限）
+We've sent an invitation email to bob@example.com.
+They'll be added as an uploader after they accept the invitation.
 ```
 
 Note that uploaders are identified by their Google accounts, so use a Gmail or

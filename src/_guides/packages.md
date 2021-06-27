@@ -102,11 +102,11 @@ and the documentation for the packages that you want to use.
 
 ## 获取包
 
-Once you have a pubspec, you can run <code class="literal">dart pub
-get</code> from the top directory of your application:
+Once you have a pubspec, you can run [`dart pub get`][get] from the top 
+directory of your application:
 
 项目中一旦拥有了 pubspec 文件，就可以在项目根目录中执行
-<code class="literal">pub get</code> 命令：
+[`dart pub get`][get] 命令：
 
 ```terminal
 $ cd <path-to-my_app>
@@ -117,7 +117,8 @@ This process is called _getting the dependencies_.
 
 上面的操作即 **获取依赖**。
 
-The [`dart pub get`][`get`] command determines which packages your app depends on,
+The `dart pub get` command
+determines which packages your app depends on,
 and puts them in a central [system cache](/tools/pub/glossary#system-cache).
 If your app depends on a published package, pub downloads that package from the
 [pub.dev site.]({{site.pub}})
@@ -235,9 +236,9 @@ uses the same versions of code.
 同样加入到 lockfile 可以保证部署的应用使用的是同一版本的代码。
 
 When you're ready to upgrade your dependencies to the latest versions,
-use the [`dart pub upgrade`][`upgrade`] command:
+use the [`dart pub upgrade`][upgrade] command:
 
-如果已经准备更新依赖到最新版本，使用 [`dart pub upgrade`][`upgrade`] 命令：
+如果已经准备更新依赖到最新版本，使用 [`dart pub upgrade`][upgrade] 命令：
 
 ```terminal
 $ dart pub upgrade
@@ -264,12 +265,12 @@ The `dart pub upgrade` command can't always upgrade every package
 to its latest version,
 due to conflicting version constraints in the pubspec.
 To identify out-of-date packages that require editing the pubspec,
-use [`dart pub outdated`][`outdated`].
+use [`dart pub outdated`][outdated].
 
 `dart pub upgrade`] 命令并非总是可以将所有的 package 更新到最新版本，
 原因是 pubspec 文件中的一些 package 之间有版本限制的冲突。
 想要确定 pubspec 里已经过时且需要编辑的 package，
-请使用 [`dart pub outdated`][`outdated`] 命令。
+请使用 [`dart pub outdated`][outdated] 命令。
 
 ## More information
 
@@ -345,3 +346,6 @@ you might encounter when using pub.
 [Pub 故障排除](/tools/pub/troubleshoot) 提供使用中可能遇到问题的解决方法。
 
 [Dart-savvy IDEs]: /tools#ides-and-editors
+[get]: /tools/pub/cmd/pub-get
+[upgrade]: /tools/pub/cmd/pub-upgrade
+[outdated]: /tools/pub/cmd/pub-outdated
