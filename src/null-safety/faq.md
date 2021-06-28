@@ -390,7 +390,7 @@ It is typically a code smell to end up with nullable code like this:
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-List?<Foo?> fooList; // fooList can contain null values
+List<Foo?> fooList; // fooList can contain null values
 {% endprettify %}
 
 This implies `fooList` might contain null values. This might happen if you are
@@ -408,23 +408,39 @@ use the [`filled`](https://api.dart.dev/stable/dart-core/List/List.filled.html) 
 
 {:.bad}
 {% prettify dart tag=pre+code %}
-_jellyPoints = List<Vec2D>(jellyMax + 1);
+_jellyCounts = List<int?>(jellyMax + 1);
 for (var i = 0; i <= jellyMax; i++) {
-  _jellyPoints[i] = Vec2D(); // List initalized with the same value
+  _jellyCounts[i] = 0; // List initialized with the same value
 }
 {% endprettify %}
 
 {:.good}
 {% prettify dart tag=pre+code %}
-_jellyPoints = List<Vec2D>.filled(jellyMax + 1, Vec2D()); // List initialized with filled constructor
+_jellyCounts = List<int>.filled(jellyMax + 1, 0); // List initialized with filled constructor
 {% endprettify %}
 
-If you are setting the elements of the list via an index, you should instead use
-the `add` function to build the list. That is less error-prone and more
-readable.
+If you are setting the elements of the list via an index, or you are populating
+each element of the list with a distinct value, you should instead use the
+list literal syntax to build the list.
 
-如果你需要通过索引来设置元素，你应该使用 `add` 函数来构建列表。
-这个方法不会轻易出错，且可读性更好。
+如果你需要通过索引来设置元素，或者使用不同的值填充每个元素，
+则应该使用列表的字面量表达式来构建列表。
+
+{:.bad}
+{% prettify dart tag=pre+code %}
+_jellyPoints = List<Vec2D?>(jellyMax + 1);
+for (var i = 0; i <= jellyMax; i++) {
+  _jellyPoints[i] = Vec2D(); // Each list element is a distinct Vec2D
+}
+{% endprettify %}
+
+{:.good}
+{% prettify dart tag=pre+code %}
+_jellyPoints = [
+  for (var i = 0; i <= jellyMax; i++)
+    Vec2D() // Each list element is a distinct Vec2D
+];
+{% endprettify %}
 
 ## What happened to the default List constructor?
 
@@ -486,9 +502,125 @@ and situations where a null value is really expected. So the tool tells you what
 it knows ("it looks like this condition will always be false!") and lets you
 decide what to do.
 
-在这些情况下，迁移工具无法区分防御性编码情况或是确实需要空值的情况。 
+在这些情况下，迁移工具无法区分防御性编码情况或是确实需要空值的情况。
 那么该工具会告诉你「这看起来永远为 false！」并让你进行决定。
 
+## What should I know about dart2js and null safety?
+
+## 空安全对 dart2js 有何影响？
+
+For a long time, the dart2js compiler has had optimizations specifically
+targeting null values and null checks. Because of that, null safety is not
+expected to affect much the output of the compiler.
+
+长久以来，dart2js 编译器针对空值和空检查都有特殊的优化。
+因此空安全并不会对编译产出带来太大影响。
+
+A few notes that are worth highlighting:
+
+依然有几点值得注意：
+
+* dart2js emits `!` null assertions, but you may not notice them.
+  That's because pre null-safety dart2js already emitted null checks
+  (so they are already in the existing programs).
+
+  dart2js 添加了 `!` 空断言，但你可能不会注意到它。
+  这是因为 dart2js 早已支持了对空值进行检查（所以它们已在你的程序中存在）。
+
+* dart2js emits these null assertions regardless of sound/unsound null safety
+  and regardless of optimization level. In fact, dart2js doesn't remove
+  `!` when using `-O3` or `--omit-implicit-checks`.
+
+  无论是健全或非健全的安全，又或是不同的优化等级，dart2js 都会添加这些空断言。
+  实际上在使用 `-O3` 或 `--omit-implicit-checks` 时 dart2js 都不会移除 `!`。
+
+* dart2js may optimize away unnecessary null checks. This is because the same
+  optimizations done by dart2js in the past will be able to eliminate
+  unnecessary null checks when it knows the value is not null.
+
+  dart2js 可能会优化掉不必要的空检查。
+  这是因为 dart2js 过去在优化时，能够在值不为空时清除不必要的空检查。
+
+* By default dart2js would generate parameter subtype checks (runtime checks
+  used to ensure covariant virtual calls are given appropriate arguments).
+  These are elided with the `--omit-implicit-checks` flag just as before.
+  Recall that this flag can make programs have unexpected behavior if types
+  are invalid, so we continue to recommend that the code has strong test
+  coverage to avoid any surprises. In particular, dart2js optimizes code based
+  on the fact that inputs should comply with the type declaration. If
+  the code provides arguments of an invalid type, those optimizations would
+  be wrong and the program could misbehave. This was true for inconsistent
+  types before, and is true with inconsistent nullabilities now with sound
+  null-safety.
+
+  默认情况下，dart2js 会生成参数子类型的检查
+  （用于确保协变的虚拟调用使用了合适的参数的运行时检查）。
+  与先前相同，使用 `--omit-implicit-checks` 会省略它们。
+  回想一下，如果类型无效，这个开关会让程序出现异常，
+  因此我们依然建议代码测试覆盖率尽可能地高，以避免任何事故。
+  特别是 dart2js 会基于传入值符合类型声明这一条件来优化代码。
+  如果代码提供了无效类型的参数，优化将不是正确的，导致程序异常。
+  这对于之前的类型不一致是正确的，对于现在健全的空安全的可空性不一致也是如此。
+
+* You may notice that DDC and the Dart VM have special error
+  messages for null checks, but to keep applications small dart2js does not.
+
+  你可能会注意到 DDC 和 Dart VM 对于空检查的错误有比较特殊的错误提示，
+  但是为了保持应用的轻量体积，dart2js 并没有这样的提示。
+
+* You may see errors indicating that `.toString` is not found on `null`.
+  This is not a bug, it is how dart2js has always encoded some null checks.
+  That is, dart2js represents some null checks compactly by making an unguarded
+  access of a property of the
+  receiver. So instead of `if (a == null) throw`, it generates `a.toString`.
+  The `toString` method is defined in JavaScript Object and is a fast
+  way to verify that an object is not null.
+
+  你可能会看到 `.toString` 在 `null` 上未找到的错误。
+  这不是一个 bug，是 dart2js 一直以来添加的空检查。
+  dart2js 通过对接收者对象属性的访问来压缩一些空检查。
+  它生成的是 `a.toString` 而不是 `if (a == null) throw`。
+  在 JavaScript 对象中定义的 `toString` 方法可以快速验证对象是否可空。
+
+  If the very first action after a null check is an action that
+  will crash when the value is null, dart2js can remove the null check and
+  let the action cause the error.
+
+  如果空检查后的第一个行为是当值为空时会崩溃，dart2js 可以删除空检查并让动作抛出错误。
+
+  For example, a Dart expression `print(a!.foo());` could turn directly into:
+
+  例如，`print(a!.foo());` 语句可以直接转换为：
+
+  ```js
+    P.print(a.foo$0());
+  ```
+
+  This is because the call `a.foo$()` will crash if `a` is null.
+  If dart2js inlines `foo`, it will preserve the null check.
+  So for example, if `foo` was `int foo() => 1;`  the compiler might generate:
+
+  这是因为调用 `a.foo$()` 会在 `a` 为空时崩溃。
+  如果 dart2js 内联 `foo`，它将保留空检查。
+  例如，如果 `foo` 是 `int foo() => 1;`，编译器可能会生成：
+
+  ```js
+    a.toString;
+    P.print(1);
+  ```
+
+  If by chance the first thing the inlined method did was a field access on the
+  receiver, for example  `int foo() => this.x + 1;`, then again dart2js
+  can remove the redundant `a.toString` null check, just like
+  non-inlined calls, and generate:
+
+  如果内联方法做的第一件事是对接收者的字段访问，例如 `int foo() => this.x + 1;`，
+  那么 dart2js 可以再次删除多余的 `a.toString` 空检查，就像非内联调用一样生成：
+
+  ```js
+    P.print(a.x + 1);
+  ```
+    
 ## Resources
 
 ## 资源
