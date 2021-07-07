@@ -2606,15 +2606,6 @@ if (employee is Person) {
 }
 ```
 
-You can make the code shorter using the `as` operator:
-
-你可以使用 `as` 运算符进行缩写：
-
-<?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp as Person)"?>
-```dart
-(emp as Person).firstName = 'Bob';
-```
-
 {{site.alert.note}}
 
   The code isn’t equivalent. If `employee` is null or not a `Person`, the
