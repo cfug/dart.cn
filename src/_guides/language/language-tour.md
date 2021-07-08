@@ -6002,7 +6002,7 @@ We recommend using [inline function types][] instead of typedefs for functions,
 in most situations.
 However, function typedefs can still be useful:
 
-针对函数，在大多数情况下，我们推荐使用[内联函数类型][]替代typedefs。然而，函数的typedefs仍然是有用的:
+针对函数，在大多数情况下，我们推荐使用[内联函数类型][inline function types]替代typedefs。然而，函数的typedefs仍然是有用的:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/misc.dart (compare)"?>
 ```dart
