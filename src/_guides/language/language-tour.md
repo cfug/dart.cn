@@ -5974,7 +5974,7 @@ it's declared with the keyword `typedef` — is
 a concise way to refer to a type.
 Here's an example of declaring and using a type alias named `IntList`:
   
-类型别名是引用某一类型的简便方法，因为其使用关键字`typedef`，因此通常被称作_typedef_。下面是一个使用`IntList`来声明和使用类型别名的例子:
+类型别名是引用某一类型的简便方法，因为其使用关键字 `typedef`，因此通常被称作 **typedef**。下面是一个使用 `IntList` 来声明和使用类型别名的例子:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/misc.dart (int-list)"?>
 ```dart
