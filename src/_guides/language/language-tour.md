@@ -5545,7 +5545,7 @@ for advice on how to implement a library package, including:
 * How to use conditional imports and exports to implement
   a library that supports multiple platforms.
 
-  如何使用倒入和导出命令实现多平台的库支持。
+  如何使用导入和导出命令实现多平台的库支持。
 
 
 <a id="asynchrony"></a>
