@@ -5973,6 +5973,8 @@ A type alias — often called a _typedef_ because
 it's declared with the keyword `typedef` — is
 a concise way to refer to a type.
 Here's an example of declaring and using a type alias named `IntList`:
+  
+类型别名是引用某一类型的简便方法，因为其使用关键字`typedef`，因此通常被称作_typedef_。下面是一个使用`IntList`来声明和使用类型别名的例子:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/misc.dart (int-list)"?>
 ```dart
@@ -5981,6 +5983,8 @@ IntList il = [1, 2, 3];
 ```
 
 A type alias can have type parameters:
+
+类型别名可以有类型参数:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/misc.dart (list-mapper)"?>
 ```dart
@@ -5997,6 +6001,8 @@ ListMapper<String> m2 = {}; // Same thing but shorter and clearer.
 We recommend using [inline function types][] instead of typedefs for functions,
 in most situations.
 However, function typedefs can still be useful:
+
+针对函数，在大多数情况下，我们推荐使用[内联函数类型][]替代typedefs。然而，函数的typedefs仍然是有用的:
 
 <?code-excerpt "../null_safety_examples/misc/lib/language_tour/typedefs/misc.dart (compare)"?>
 ```dart
