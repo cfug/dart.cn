@@ -5,11 +5,10 @@ description: Why and how to write sound Dart code.
 description: 如何写出优雅的 Dart 代码。
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /([A-Z]\w*)\d\b/$1/g; /\b(main)\d\b/$1/g"?>
+<?code-excerpt path-base="type_system"?>
 
-{% include not-null-safe.md %}
-
-The Dart language is type safe: it uses a combination of static type checking and
-[runtime checks](#runtime-checks) to
+The Dart language is type safe: it uses a combination of static type checking
+and [runtime checks](#runtime-checks) to
 ensure that a variable's value always matches the variable's static type,
 sometimes referred to as sound typing.
 Although _types_ are mandatory, type _annotations_ are optional
@@ -45,7 +44,7 @@ and `main()` creates a list and passes it to `printInts()`.
 由 `printInts()` 函数打印这个整数列表。
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/strong_analysis.dart (opening-example)" replace="/list(?=\))/[!$&!]/g"?>
+<?code-excerpt "lib/strong_analysis.dart (opening-example)" replace="/list(?=\))/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void printInts(List<int> a) => print(a);
 
@@ -63,9 +62,9 @@ above) at the call of `printInts(list)`:
 上面的代码在调用 `printInts(list)` 时会在 `list` （高亮提示）上产生类型错误：
 
 {:.console-output}
-<?code-excerpt "strong/analyzer-results-stable.txt" retain="/strong_analysis.*List.*argument_type_not_assignable/" replace="/. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
+<?code-excerpt "analyzer-results-stable.txt" retain="/strong_analysis.*List.*argument_type_not_assignable/" replace="/-(.*?):(.*?):(.*?)-/-/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 ```nocode
-error - lib/strong_analysis.dart:27:17 - The argument type 'List<dynamic>' can't be assigned to the parameter type 'List<int>'. - argument_type_not_assignable
+error - The argument type 'List<dynamic>' can't be assigned to the parameter type 'List<int>'. - argument_type_not_assignable
 ```
 
 The error highlights an unsound implicit cast from `List<dynamic>` to `List<int>`.
@@ -81,15 +80,16 @@ causing a mismatch of types.
 `printInts()` 函数需要 `List<int>` 类型的参数，因此导致类型不匹配。
 
 When adding a type annotation (`<int>`) on creation of the list
-(highlighted below) the analyzer complains that a string argument can't be assigned to
-an `int` parameter. Removing the quotes in `list.add("2")` results
-in code that passes static analysis and runs with no errors or warnings.
+(highlighted below) the analyzer complains that
+a string argument can't be assigned to an `int` parameter. 
+Removing the quotes in `list.add('2')` results in code
+that passes static analysis and runs with no errors or warnings.
 
 在创建 `list` 时添加类型注释 `<int>`（代码中高亮显示部分）后，分析器会提示无法将字符串参数分配给 `int` 参数。
 删除 `list.add("2")` 中的字符串引号使代码通过静态分析并能够正常执行。
 
 {:.passes-sa}
-<?code-excerpt "strong/test/strong_test.dart (opening-example)" replace="/<int.(?=\[)|2/[!$&!]/g"?>
+<?code-excerpt "test/strong_test.dart (opening-example)" replace="/<int.(?=\[)|2/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void printInts(List<int> a) => print(a);
 
@@ -100,11 +100,6 @@ void main() {
   printInts(list);
 }
 {% endprettify %}
-
-{% comment %}
-  Note: DartPad does not yet support no-implicit-casts, but it does
-  report a runtime type error.
-{% endcomment -%}
 
 [Try it in DartPad]({{site.dartpad}}/f64e963cb5f894e2146c2b28d5efa4ed).
 
@@ -128,9 +123,8 @@ when you evaluate it.
 Dart's type system, like the type systems in Java and C#, is sound. It
 enforces that soundness using a combination of static checking
 (compile-time errors) and runtime checks. For example, assigning a `String`
-to `int` is a compile-time error. Casting an `Object` to a string using
-`as String` fails with a runtime error if the object isn't a
-string.
+to `int` is a compile-time error. Casting an object to a `String` using
+`as String` fails with a runtime error if the object isn't a `String`.
 
 Dart 的类型系统，同 Java 和 C＃ 中的类型系统类似，是安全的。
 它使用静态检查（编译时错误）和运行时检查的组合来强制执行类型安全。
@@ -217,13 +211,13 @@ type hierarchy:
 ### 重写方法时，使用类型安全的返回值
 
 The return type of a method in a subclass must be the same type or a
-subtype of the return type of the method in the superclass. Consider
-the getter method in the Animal class:
+subtype of the return type of the method in the superclass. 
+Consider the getter method in the `Animal` class:
 
 子类方法中返回值类型必须与父类方法中返回值类型的类型相同或其子类型。
 考虑 Animal 类中的 Getter 方法：
 
-<?code-excerpt "strong/lib/animal.dart (Animal)" replace="/Animal get.*/[!$&!]/g"?>
+<?code-excerpt "lib/animal.dart (Animal)" replace="/Animal get.*/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class Animal {
   void chase(Animal a) { ... }
@@ -231,16 +225,16 @@ class Animal {
 }
 {% endprettify %}
 
-The `parent` getter method returns an Animal. In the HoneyBadger subclass,
-you can replace the getter's return type with HoneyBadger (or any other subtype
-of Animal), but an unrelated type is not allowed.
+The `parent` getter method returns an `Animal`. In the `HoneyBadger` subclass,
+you can replace the getter's return type with `HoneyBadger` 
+(or any other subtype of `Animal`), but an unrelated type is not allowed.
 
 `父类` Getter 方法返回一个 Animal 。在 HoneyBadger 子类中，
 可以使用 HoneyBadger（或 Animal 的任何其他子类型）替换 Getter 的返回值类型，
 但不允许使用其他的无关类型。
 
 {:.passes-sa}
-<?code-excerpt "strong/lib/animal.dart (HoneyBadger)" replace="/(\w+)(?= get)/[!$&!]/g"?>
+<?code-excerpt "lib/animal.dart (HoneyBadger)" replace="/(\w+)(?= get)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class HoneyBadger extends Animal {
   @override
@@ -275,18 +269,19 @@ subtype of the original parameter.
 子类方法的参数必须与父类方法中参数的类型相同或是其参数的父类型。
 不要使用原始参数的子类型，替换原有类型，这样会导致参数类型"收紧"。
 
-<aside class="alert alert-info" markdown="1">
-  **Note:** If you have a valid reason to use a subtype, you can use the
+{{site.alert.note}}
+
+  If you have a valid reason to use a subtype, you can use the
   [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
-
+  
   **提示：** 如果有合理的理由使用子类型，可以使用 [`covariant` 关键字](/guides/language/sound-problems#the-covariant-keyword)。
-</aside>
+{{site.alert.end}}
 
-Consider the `chase(Animal)` method for the Animal class:
+Consider the `chase(Animal)` method for the `Animal` class:
 
 考虑 Animal 的 `chase(Animal)` 方法：
 
-<?code-excerpt "strong/lib/animal.dart (Animal)" replace="/void chase.*/[!$&!]/g"?>
+<?code-excerpt "lib/animal.dart (Animal)" replace="/void chase.*/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class Animal {
   [!void chase(Animal a) { ... }!]
@@ -294,14 +289,14 @@ class Animal {
 }
 {% endprettify %}
 
-The `chase()` method takes an Animal. A HoneyBadger chases anything.
-It's OK to override the `chase()` method to take anything (Object).
+The `chase()` method takes an `Animal`. A `HoneyBadger` chases anything.
+It's OK to override the `chase()` method to take anything (`Object`).
 
 `chase()` 方法的参数类型是 Animal 。一个 HoneyBadger 可以追逐任何东西。
 因此可以在重写 `chase()` 方法时将参数类型指定为任意类型 （Object） 。
 
 {:.passes-sa}
-<?code-excerpt "strong/lib/animal.dart (chase-Object)" replace="/Object/[!$&!]/g"?>
+<?code-excerpt "lib/animal.dart (chase-Object)" replace="/Object/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class HoneyBadger extends Animal {
   @override
@@ -313,7 +308,7 @@ class HoneyBadger extends Animal {
 {% endprettify %}
 
 The following code tightens the parameter on the `chase()` method
-from Animal to Mouse, a subclass of Animal.
+from `Animal` to `Mouse`, a subclass of `Animal`.
 
 Mouse 是 Animal 的子类，下面的代码将 `chase()`
 方法中参数的范围从 Animal 缩小到 Mouse 。
@@ -343,9 +338,9 @@ a.chase([!Alligator!]()); // Not type safe or feline safe.
 
 ### 不要将动态类型的 List 看做是有类型的 List 
 
-A dynamic list is good when you want to have a list with
+A `dynamic` list is good when you want to have a list with
 different kinds of things in it. However, you can't use a
-dynamic list as a typed list.
+`dynamic` list as a typed list.
 
 当期望在一个 List 中可以包含不同类型的对象时，动态列表是很好的选择。
 但是不能将动态类型的 List 看做是有类型的 List 。
@@ -354,10 +349,10 @@ This rule also applies to instances of generic types.
 
 这个规则也适用于泛型类型的实例。
 
-The following code creates a dynamic list of Dog, and assigns it to
-a list of type Cat, which generates an error during static analysis.
+The following code creates a `dynamic` list of `Dog`, and assigns it to
+a list of type `Cat`, which generates an error during static analysis.
 
-下面代码创建一个 Dog 的动态 List ，并将其分配给 Cat 类型的 List ，
+下面代码创建一个 `Dog` 的动态 List ，并将其分配给 `Cat` 类型的 List ，
 表达式在静态分析期间会产生错误。
 
 {:.fails-sa}
@@ -376,24 +371,24 @@ void main() {
 
 ## 运行时检查
 
-Runtime checks in tools like the [Dart VM][] and [dartdevc][]
+Runtime checks in the Dart VM and [dartdevc][]
 deal with type safety issues that the analyzer can't catch.
 
 运行时检查工具，比如 [Dart VM][] 和 [dartdevc][]，
 处理分析器无法捕获的类型安全问题。
 
-For example, the following code throws an exception at runtime because it is an error
-to assign a list of Dogs to a list of Cats:
+For example, the following code throws an exception at runtime
+because it is an error to cast a list of dogs to a list of cats:
 
 例如，以下代码在运行时会抛出异常，
 因为将 Dog 类型的 List 赋值给 Cat 类型的 List 是错误的：
 
 {:.runtime-fail}
-<?code-excerpt "strong/test/strong_test.dart (runtime-checks)" replace="/cats[^;]*/[!$&!]/g"?>
+<?code-excerpt "test/strong_test.dart (runtime-checks)" replace="/animals as[^;]*/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void main() {
   List<Animal> animals = [Dog()];
-  List<Cat> [!cats = animals!];
+  List<Cat> cats = [!animals as List<Cat>!];
 }
 {% endprettify %}
 
@@ -421,16 +416,16 @@ If you explicitly type the variable, you might write this:
 
 如果显式键入变量，则可以这样写：
 
-<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-1-orig)" replace="/Map<String, dynamic\x3E/[!$&!]/g"?>
+<?code-excerpt "lib/strong_analysis.dart (type-inference-1-orig)" replace="/Map<String, dynamic\x3E/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 [!Map<String, dynamic>!] arguments = {'argA': 'hello', 'argB': 42};
 {% endprettify %}
 
-Alternatively, you can use `var` and let Dart infer the type:
+Alternatively, you can use `var` or `final` and let Dart infer the type:
 
 或者，使用 `var` 让 Dart 来推断类型：
 
-<?code-excerpt "strong/lib/strong_analysis.dart (type-inference-1)" replace="/var/[!$&!]/g"?>
+<?code-excerpt "lib/strong_analysis.dart (type-inference-1)" replace="/var/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 [!var!] arguments = {'argA': 'hello', 'argB': 42}; // Map<String, Object>
 {% endprettify %}
@@ -438,7 +433,7 @@ Alternatively, you can use `var` and let Dart infer the type:
 The map literal infers its type from its entries,
 and then the variable infers its type from the map literal's type.
 In this map, the keys are both strings, but the values have different
-types (String and int, which have the upper bound Object).
+types (`String` and `int`, which have the upper bound `Object`).
 So the map literal has the type `Map<String, Object>`,
 and so does the `arguments` variable.
 
@@ -489,14 +484,14 @@ If so, you can add a type annotation.
 如果是这样，可以为他们添加类型注释。
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/strong_analysis.dart (local-var-type-inference-error)"?>
+<?code-excerpt "lib/strong_analysis.dart (local-var-type-inference-error)"?>
 {% prettify dart tag=pre+code %}
 var x = 3; // x is inferred as an int.
 x = 4.0;
 {% endprettify %}
 
 {:.passes-sa}
-<?code-excerpt "strong/lib/strong_analysis.dart (local-var-type-inference-ok)"?>
+<?code-excerpt "lib/strong_analysis.dart (local-var-type-inference-ok)"?>
 {% prettify dart tag=pre+code %}
 num y = 3; // A num can be double or int.
 y = 4.0;
@@ -507,8 +502,8 @@ y = 4.0;
 ### 参数类型推断
 
 Type arguments to constructor calls and
-[generic method](/guides/language/language-tour#using-generic-methods) invocations are
-inferred based on a combination of downward information from the context
+[generic method](/guides/language/language-tour#using-generic-methods) invocations
+are inferred based on a combination of downward information from the context
 of occurrence, and upward information from the arguments to the constructor
 or generic method. If inference is not doing what you want or expect,
 you can always explicitly specify the type arguments.
@@ -519,7 +514,7 @@ you can always explicitly specify the type arguments.
 如果推断没有按照意愿或期望进行，那么你可以显式的指定他们的参数类型。
 
 {:.passes-sa}
-<?code-excerpt "strong/lib/strong_analysis.dart (type-arg-inference)"?>
+<?code-excerpt "lib/strong_analysis.dart (type-arg-inference)"?>
 {% prettify dart tag=pre+code %}
 // Inferred as if you wrote <int>[].
 List<int> listOfInt = [];
@@ -590,52 +585,53 @@ Consider the following type hierarchy:
 
 <img src="images/type-hierarchy.png" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
 
-Consider the following simple assignment where `Cat c` is a _consumer_ and `Cat()`
-is a _producer_:
+Consider the following simple assignment where `Cat c` is a _consumer_
+and `Cat()` is a _producer_:
 
-思考下面示例中的普通赋值，其中 `Cat c` 是_消费者_而 `Cat()` 是_生产者_：
+思考下面示例中的普通赋值，
+其中 `Cat c` 是 **消费者** 而 `Cat()` 是 **生产者**：
 
-<?code-excerpt "strong/lib/strong_analysis.dart (Cat-Cat-ok)"?>
+<?code-excerpt "lib/strong_analysis.dart (Cat-Cat-ok)"?>
 {% prettify dart tag=pre+code %}
 Cat c = Cat();
 {% endprettify %}
 
 In a consuming position, it's safe to replace something that consumes a
 specific type (`Cat`) with something that consumes anything (`Animal`),
-so replacing `Cat c` with `Animal c` is allowed, because Animal is
-a supertype of Cat.
+so replacing `Cat c` with `Animal c` is allowed, because `Animal` is
+a supertype of `Cat`.
 
 在消费者的位置，任意类型（`Animal`）的对象替换特定类型（`Cat`）的对象是安全的。
 因此使用 `Animal c` 替换 `Cat c` 是允许的，因为 Animal 是 Cat 的父类。
 
 {:.passes-sa}
-<?code-excerpt "strong/lib/strong_analysis.dart (Animal-Cat-ok)"?>
+<?code-excerpt "lib/strong_analysis.dart (Animal-Cat-ok)"?>
 {% prettify dart tag=pre+code %}
 Animal c = Cat();
 {% endprettify %}
 
 But replacing `Cat c` with `MaineCoon c` breaks type safety, because the
 superclass may provide a type of Cat with different behaviors, such
-as Lion:
+as `Lion`:
 
 但是使用 `MaineCoon c` 替换 `Cat c` 会打破类型的安全性，
 因为父类可能会提供一种具有不同行为的 Cat ，例如 Lion ：
 
 {:.fails-sa}
-<?code-excerpt "strong/lib/strong_analysis.dart (MaineCoon-Cat-err)"?>
+<?code-excerpt "lib/strong_analysis.dart (MaineCoon-Cat-err)"?>
 {% prettify dart tag=pre+code %}
 MaineCoon c = Cat();
 {% endprettify %}
 
 In a producing position, it's safe to replace something that produces a
-type (Cat) with a more specific type (MaineCoon). So, the following
+type (`Cat`) with a more specific type (`MaineCoon`). So, the following
 is allowed:
 
-在生产者的位置，可以安全地将生产类型 (Cat) 替换成一个更具体的类型 （MaineCoon）的对象。
-因此，下面的操作是允许的：
+在生产者的位置，可以安全地将生产类型 (Cat) 替换成一个更具体的类型
+（MaineCoon）的对象。因此，下面的操作是允许的：
 
 {:.passes-sa}
-<?code-excerpt "strong/lib/strong_analysis.dart (Cat-MaineCoon-ok)"?>
+<?code-excerpt "lib/strong_analysis.dart (Cat-MaineCoon-ok)"?>
 {% prettify dart tag=pre+code %}
 Cat c = MaineCoon();
 {% endprettify %}
@@ -645,8 +641,8 @@ Cat c = MaineCoon();
 ### 泛型赋值
 
 Are the rules the same for generic types? Yes. Consider the hierarchy
-of lists of animals&mdash;a List of Cat is a subtype of a List of
-Animal, and a supertype of a List of MaineCoon:
+of lists of animals&mdash;a `List` of `Cat` is a subtype of a `List` of
+`Animal`, and a supertype of a `List` of `MaineCoon`:
 
 上面的规则同样适用于泛型类型吗？是的。
 考虑动物列表的层次结构&mdash; Cat 类型的 List 是 Animal 类型 List 的子类型，
@@ -661,7 +657,7 @@ In the following example, you can assign a `MaineCoon` list to `myCats` because
 因为 `List<MaineCoon>` 是 `List<Cat>` 的子类型：
 
 {:.passes-sa}
-<?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-MaineCoon)" replace="/MaineCoon/[!$&!]/g"?>
+<?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-MaineCoon)" replace="/MaineCoon/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 List<Cat> myCats = <[!MaineCoon!]>[];
 {% endprettify %}
@@ -673,31 +669,44 @@ DartPad: {{site.dartpad}}/4a2a9bc2242042ba5338533d091213c0
 [Try it in DartPad]({{site.dartpad}}/4a2a9bc2242042ba5338533d091213c0).
 {% endcomment %}
 
-What about going in the other direction? Can you assign an `Animal` list to a `List<Cat>`?
+What about going in the other direction? 
+Can you assign an `Animal` list to a `List<Cat>`?
 
-从另一个角度看？可以将 `Animal` 类型的 List 赋值给 `List<Cat>` 吗？
+从另一个角度看，可以将 `Animal` 类型的 List 赋值给 `List<Cat>` 吗？
 
-{:.passes-sa}
-<?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-Animal)" replace="/Animal/[!$&!]/g"?>
+{:.fails-sa}
+<?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-Animal)" replace="/Animal/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 List<Cat> myCats = <[!Animal!]>[];
 {% endprettify %}
 
-This assignment passes static analysis,
-but it creates an implicit cast. It is equivalent to:
+This assignment doesn't pass static analysis 
+because it creates an implicit downcast, 
+which is disallowed from non-`dynamic` types such as `Animal`.
 
-上面的赋值通过了静态分析，但它进行了隐式的强制转换。上面的赋值相当于：
+这个赋值不能通过静态分析，因为它创建了一个隐式的向下转型 (downcast)，
+这在非 `dynamic` 类型中是不允许的，比如 `Animal`。
 
-<?code-excerpt "strong/lib/strong_analysis.dart (generic-type-assignment-implied-cast)" replace="/as.*(?=;)/[!$&!]/g"?>
+{{site.alert.version-note}}
+  In packages that use a [language version][] before 2.12
+  (when support for [null safety][] was introduced),
+  code can implicitly downcast from these non-`dynamic` types.
+  You can disallow non-`dynamic` downcasts in a pre-2.12 project
+  by specifying `implicit-casts: false` 
+  in the [analysis options file.][analysis]
+{{site.alert.end}}
+
+To make this code pass static analysis, 
+use an explicit cast, 
+which might fail at runtime.
+
+若要这段代码能够通过静态分析，需要使用一个显式转换，
+这可能会在运行时导致失败。
+
+<?code-excerpt "lib/strong_analysis.dart (generic-type-assignment-implied-cast)" replace="/as.*(?=;)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 List<Cat> myCats = <Animal>[] [!as List<Cat>!];
 {% endprettify %}
-
-The code may fail at runtime. You can disallow implicit casts
-by specifying `implicit-casts: false` in the [analysis options file.][analysis_options.yaml]
-
-代码在运行时可能会执行失败。通过在 [静态分析配置文件][analysis_options.yaml] 
-中指定 `implicit-casts: false` 来禁止隐式强制转换。
 
 
 ### Methods
@@ -738,27 +747,37 @@ The following resources have further information on sound Dart:
 以下是更多关于 Dart 类型安全的相关资源：
 
 * [Fixing common type problems](/guides/language/sound-problems) -
-  Errors you may encounter when
-  writing sound Dart code, and how to fix them.
+  Errors you may encounter when writing sound Dart code, and how to fix them.
 
   [修复常见类型问题](/guides/language/sound-problems) -
   编写类型安全的 Dart 代码时可能遇到的错误，
   以及解决错误的方法。
+  
+* [Fixing type promotion failures](/tools/non-promotion-reasons) - 
+  Understand and learn how to fix type promotion errors.
 
-* [Dart 2](/dart-2) - How to update Dart 1.x code to Dart 2.
+  [修复类型转换错误](/tools/non-promotion-reasons) -
+  了解和学习如何修复类型转换错误
 
-  [Dart 2](/dart-2) - 如何从 Dart 1.x 代码迁移到 Dart 2 。
+* [Sound null safety](/null-safety) - 
+  Learn about writing code with sound null safety enabled.
 
-* [Customizing static analysis][analysis] - How
-  to set up and customize the analyzer and linter using an analysis
-  options file.
+  [健全的空安全](/null-safety) - 
+  学习关于如何撰写健全的空安全代码。
+  
+* [Customizing static analysis][analysis] -
+  How to set up and customize the analyzer and linter
+  using an analysis options file.
 
-  [Customizing static analysis][analysis] - 如何使用
-  分析配置文件设置及自定义分析器和 linter。
+  [Customizing static analysis][analysis] - 
+  如何使用分析配置文件设置及自定义分析器和 linter。
+
+* [Dart 2 migration guide](/dart-2) - How to update Dart 1.x code to Dart 2.
+
+  [Dart 2 迁移指南](/dart-2) - 如何从 Dart 1.x 代码迁移到 Dart 2 。
 
 
-[analysis_options.yaml]: /guides/language/analysis-options
 [analysis]: /guides/language/analysis-options
-[Dart VM]: /server/tools/dart-vm
 [dartdevc]: /tools/dartdevc
-[strong mode]: /guides/language/type-system#how-to-enable-strong-mode
+[language version]: /guides/language/evolution#language-versioning
+[null safety]: /null-safety

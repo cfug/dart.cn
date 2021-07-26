@@ -106,7 +106,7 @@ Dart tools automatically run your program in sound mode if
 the main entrypoint library of your program has opted into null safety.
 If you import a null-unsafe library,
 the tools print a warning to let you know that
-they can only [run with unsound null safety](#analyzing-and-testing).
+they can only run with unsound null safety.
 
 健全的空安全唾手可得。
 当你的程序入口的库已经迁移至空安全，Dart 会自动以健全的空安全运行你的代码。

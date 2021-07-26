@@ -86,9 +86,11 @@ your app must itself be a package.
 Any app with a valid pubspec.yaml file in its top-level directory
 is a package and can therefore use external packages.
 
-想要使用外部的包，你的应用其本身也必须是一个包。任何在顶层目录中包含有效 pubspec.yaml 文件的应用都是一个包，从而可以使该应用使用外部的包。
+想要使用外部的包，你的应用其本身也必须是一个包。
+任何在顶层目录中包含有效 pubspec.yaml 文件的应用都是一个包，
+从而可以使该应用使用外部的包。
 
-You can use the `dart create` command to generate packages
+You can use the [`dart create`](/tools/dart-create) command to generate packages
 with valid pubspec.yaml files and directory structures.
 This command works either at the command line or (behind the scenes) in an IDE
 such as IntelliJ or WebStorm.
@@ -104,20 +106,24 @@ Install or update Stagehand using
 $ pub global activate stagehand
 ```
 
-Now run the `dart create` command to see what kinds of template files it can generate:
+Run the `dart create` command with the `--help` flag
+to see what kinds of template files it can generate:
 
 现在你可以运行 `dart create` 命令来查看它可以生成的模板文件：
 
 ```terminal
-$ dart create
+$ dart create --help
 ```
 
-You'll see a list of generators, including various web and server-side apps.
-One of the generators is named **console-full**.
+You'll see a list of templates, including various web and server-side apps.
+One of the templates is named **console-full**.
 
-你将会看到一系列的生成器，包括各种 Web 和 服务端应用的。其中一个生成器叫**console-full**。
+你将会看到一系列的生成器，包括各种 Web 和 服务端应用的。
+其中一个生成器叫 **console-full**。
 
-Use the `dart create` command to generate a command-line app named `vector_victor`:
+
+Use the `dart create` command to
+generate a command-line app named `vector_victor`:
 
 使用 `dart create` 工具来生成一个叫做 `vector_victor` 的命令行应用：
 
@@ -131,21 +137,25 @@ The pubspec.yaml file contains the package specification written in YAML.
 for in-depth coverage.)
 The contents of your pubspec.yaml file should look something like this:
 
-pubspec.yaml 文件包含了由 YAML 语言撰写的包规格。（访问 <a href="/tools/pub/pubspec">Pubspec 格式 </a> 获取更多深入的介绍。）而你的 pubspec.yaml 文件看起来则应该是这样的：
+pubspec.yaml 文件包含了由 YAML 语言撰写的包规格。
+（访问 <a href="/tools/pub/pubspec">Pubspec 格式 </a> 获取更多深入的介绍。）
+而你的 pubspec.yaml 文件看起来则应该是这样的：
 
 ```yaml
 name: vector_victor
 description: A sample command-line application.
+version: 1.0.0
+# homepage: https://www.example.com
 
 environment:
-  sdk: '>=2.8.1 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 
-#dependencies:
-#  path: ^1.7.0
+# dependencies:
+#   path: ^1.8.0
 
 dev_dependencies:
-  pedantic: ^1.9.0
-  test: ^1.14.4
+  lints: ^1.0.0
+  test: ^1.16.0
 ```
 
 ## Name the package dependencies
@@ -160,7 +170,8 @@ Each item in the dependencies list
 specifies the name and version
 of a package that your app uses.
 
-为了能够使用外部包，你需要将其添加到你应用 pubspec.yaml 文件的依赖里。依赖中的每一项都指定了你应用所使用的包名以及包版本。
+为了能够使用外部包，你需要将其添加到你应用 pubspec.yaml 文件的依赖里。
+依赖中的每一项都指定了你应用所使用的包名以及包版本。
 
 Let's make the vector_victor app have a dependency
 on the vector_math package,
@@ -200,7 +211,8 @@ which is available at the [pub.dev site]({{site.pub}}).
     pub.dev site. Be careful to keep the indentation the same; YAML is
     picky! For example:
 
-    在 dependencies 部分，将上面你从 pub.dev 网站拷贝来的文本粘贴添加至这里。这里要注意缩进；必须严格按照 YAML 语言规范！例如：
+    在 dependencies 部分，将上面你从 pub.dev 网站拷贝来的文本粘贴添加至这里。
+    这里要注意缩进；必须严格按照 YAML 语言规范！例如：
 
     ```yaml
     environment:
@@ -405,7 +417,11 @@ use the `package:` prefix.
    docs]({{site.pub}}/documentation/vector_math/latest),
    which you can find from the pub.dev site entry.
 
-   在你的 vector_victor 应用中，编辑 `lib/vector_victor.dart` 文件，由此它导入 vector_math 库并使用了它的一些 API。你可以阅读 [vector_math API 文档]({{site.pub}}/documentation/vector_math/latest) 获取更多相关信息。
+   在你的 vector_victor 应用中，编辑 `lib/vector_victor.dart` 文件，
+   由此它导入 vector_math 库并使用了它的一些 API。
+   你可以阅读 
+   [vector_math API 文档]({{site.pub}}/documentation/vector_math/latest) 
+   获取更多相关信息。
 
    <aside class="alert alert-info" markdown="1">
      **Note:** You specify a filename, not a library name,
@@ -429,3 +445,4 @@ use the `package:` prefix.
   for more information on using and sharing packages.
 
   你也可以查阅 [pub 包文档](/guides/packages) 获取更多有关如何使用和分享包的信息。
+

@@ -239,7 +239,7 @@ Dart 提供了一系列方便的运算符用于处理可能会为空值的变量
 TBD: Make this and all non-trivial snippets testable.
 {% endcomment %}
 
-<?code-excerpt "../null_safety_examples/misc/bin/null_aware_operators.dart (null-aware-operators)"?>
+<?code-excerpt "misc/bin/null_aware_operators.dart (null-aware-operators)"?>
 ```dart
 int? a; // = null
 a ??= 3;
@@ -257,7 +257,7 @@ in which case it evaluates and returns the expression on its right:
 另外一个避空运算符是 `??`，如果该运算符左边的表达式返回的是空值，
 则会计算并返回右边的表达式。
 
-<?code-excerpt "../null_safety_examples/misc/bin/null_aware_operators.dart (null-aware-operators-2)"?>
+<?code-excerpt "misc/bin/null_aware_operators.dart (null-aware-operators-2)"?>
 ```dart
 print(1 ?? 3); // <-- Prints 1.
 print(null ?? 12); // <-- Prints 12.
@@ -438,9 +438,10 @@ you could do it like this: str?.toLowerCase()
 Dart has built-in support for lists, maps, and sets.
 You can create them using literals:
 
-Dart 内置了对 list、map 以及 set 的支持。你可以通过字面量直接创建它们：
+Dart 内置了对 list、map 以及 set 的支持。
+你可以通过字面量直接创建它们：
 
-<?code-excerpt "../null_safety_examples/misc/bin/collection_literals.dart (collection-literals)"?>
+<?code-excerpt "misc/bin/collection_literals.dart (collection-literals)"?>
 ```dart
 final aListOfStrings = ['one', 'two', 'three'];
 final aSetOfStrings = {'one', 'two', 'three'};
@@ -461,7 +462,7 @@ Or you can specify the type yourself:
 
 你也可以手动指定类型：
 
-<?code-excerpt "../null_safety_examples/misc/bin/collection_literals.dart (collection-literals-2)"?>
+<?code-excerpt "misc/bin/collection_literals.dart (collection-literals-2)"?>
 ```dart
 final aListOfInts = <int>[];
 final aSetOfInts = <int>{};
@@ -895,7 +896,7 @@ For example, you can make sure a property's value is valid:
 
 例如，你可以用来确保属性值合法：
 
-<?code-excerpt "../null_safety_examples/misc/bin/getters_setters.dart"?>
+<?code-excerpt "misc/bin/getters_setters.dart"?>
 ```dart
 class MyClass {
   int _aProperty = 0;
@@ -914,7 +915,7 @@ You can also use a getter to define a computed property:
 
 你还可以使用 getter 来定义计算属性：
 
-<?code-excerpt "../null_safety_examples/misc/bin/getter_compute.dart"?>
+<?code-excerpt "misc/bin/getter_compute.dart"?>
 ```dart
 class MyClass {
   final List<int> _values = [];
@@ -1061,7 +1062,7 @@ you're likely familiar with:
 
 Dart 有两种传参方法：位置参数和命名参数。位置参数你可能会比较熟悉：
 
-<?code-excerpt "../null_safety_examples/misc/bin/optional_positional_args.dart (optional-positional-args)"?>
+<?code-excerpt "misc/bin/optional_positional_args.dart (optional-positional-args)"?>
 ```dart
 int sumUp(int a, int b, int c) {
   return a + b + c;
@@ -1074,7 +1075,7 @@ With Dart, you can make these positional parameters optional by wrapping them in
 
 在 Dart 中，你可以通过将这些参数包裹在大括号中使其变成可选位置参数：
 
-<?code-excerpt "../null_safety_examples/misc/bin/optional_positional_args.dart (optional-positional-args-2)" replace="/total2/total/g"?>
+<?code-excerpt "misc/bin/optional_positional_args.dart (optional-positional-args-2)" replace="/total2/total/g"?>
 ```dart
 int sumUpToFive(int a, [int? b, int? c, int? d, int? e]) {
   int sum = a;
@@ -1093,9 +1094,10 @@ Optional positional parameters are always last
 in a function's parameter list.
 Their default value is null unless you provide another default value:
 
-可选位置参数永远放在方法参数列表的最后。除非你给它们提供一个默认值，否则默认为 null。
+可选位置参数永远放在方法参数列表的最后。
+除非你给它们提供一个默认值，否则默认为 null:
 
-<?code-excerpt "../null_safety_examples/misc/bin/optional_positional_args2.dart"?>
+<?code-excerpt "misc/bin/optional_positional_args2.dart"?>
 ```dart
 int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
 // ···
@@ -1113,7 +1115,8 @@ Implement a function called `joinWithCommas()` that accepts one to
 five integers, then returns a string of those numbers separated by commas.
 Here are some examples of function calls and returned values:
 
-实现一个名为 `joinWithCommas` 的方法，它接收一至五个整数，然后返回由逗号分隔的包含这些数字的字符串。
+实现一个名为 `joinWithCommas` 的方法，它接收一至五个整数，
+然后返回由逗号分隔的包含这些数字的字符串。
 以下是方法调用和返回值的一些示例：
 
 | <t>Function call</t><t>方法调用</t> | | <t>Returned value</t><t>返回值</t> |
@@ -1210,7 +1213,7 @@ you can define optional parameters that have names.
 
 你可以使用大括号语法定义可选命名参数。
 
-<?code-excerpt "../null_safety_examples/misc/bin/optional_named_params.dart"?>
+<?code-excerpt "misc/bin/optional_named_params.dart"?>
 ```dart
 void printName(String firstName, String lastName, {String? suffix}) {
   print('$firstName $lastName ${suffix ?? ''}');
@@ -1434,7 +1437,7 @@ use `finally`:
 
 要执行一段无论是否抛出异常都会执行的代码，请使用 `finally`：
 
-<?code-excerpt "../null_safety_examples/misc/bin/exceptions.dart"?>
+<?code-excerpt "misc/bin/exceptions.dart"?>
 ```dart
 try {
   breedMoreLlamas();
@@ -1636,9 +1639,11 @@ Dart provides a handy shortcut for assigning
 values to properties in a constructor:
 use `this.propertyName` when declaring the constructor:
 
-Dart 提供了一个方便的快捷方式，用于为构造方法中的属性赋值：在声明构造方法时使用 `this.propertyName`。
+Dart 提供了一个方便的快捷方式，
+用于为构造方法中的属性赋值：
+在声明构造方法时使用 `this.propertyName`。
 
-<?code-excerpt "../null_safety_examples/misc/bin/this_constructor.dart"?>
+<?code-excerpt "misc/bin/this_constructor.dart"?>
 ```dart
 class MyColor {
   int red;
@@ -1912,7 +1917,7 @@ Dart supports named constructors:
 为了允许一个类具有多个构造方法，
 Dart 支持命名构造方法：
 
-<?code-excerpt "../null_safety_examples/misc/bin/named_constructor.dart"?>
+<?code-excerpt "misc/bin/named_constructor.dart"?>
 ```dart
 class Point {
   double x, y;
@@ -2018,9 +2023,10 @@ Dart supports factory constructors,
 which can return subtypes or even null.
 To create a factory constructor, use the `factory` keyword:
 
-Dart 支持工厂构造方法。它能够返回其子类甚至 null 对象。要创建一个工厂构造方法，请使用 `factory` 关键字。
+Dart 支持工厂构造方法。它能够返回其子类甚至 null 对象。
+要创建一个工厂构造方法，请使用 `factory` 关键字。
 
-<?code-excerpt "../null_safety_examples/misc/bin/factory_constructors.dart"?>
+<?code-excerpt "misc/bin/factory_constructors.dart"?>
 ```dart
 class Square extends Shape {}
 
@@ -2232,9 +2238,10 @@ another constructor in the same class.
 A redirecting constructor’s body is empty,
 with the constructor call appearing after a colon (`:`).
 
-有时一个构造方法仅仅用来重定向到该类的另一个构造方法。重定向方法没有主体，它在冒号（`:`）之后调用另一个构造方法。
+有时一个构造方法仅仅用来重定向到该类的另一个构造方法。
+重定向方法没有主体，它在冒号（`:`）之后调用另一个构造方法。
 
-<?code-excerpt "../null_safety_examples/misc/bin/redirecting_const_constructors.dart (redirecting-constructors)"?>
+<?code-excerpt "misc/bin/redirecting_const_constructors.dart (redirecting-constructors)"?>
 ```dart
 class Automobile {
   String make;
@@ -2336,9 +2343,11 @@ If your class produces objects that never change, you can make these objects com
 do this, define a `const` constructor and make sure that all instance variables
 are final.
 
-如果你的类生成的对象永远都不会更改，则可以让这些对象成为编译时常量。为此，请定义 `const` 构造方法并确保所有实例变量都是 final 的。
+如果你的类生成的对象永远都不会更改，
+则可以让这些对象成为编译时常量。
+为此，请定义 `const` 构造方法并确保所有实例变量都是 final 的。
 
-<?code-excerpt "../null_safety_examples/misc/bin/redirecting_const_constructors.dart (const-constructors)"?>
+<?code-excerpt "misc/bin/redirecting_const_constructors.dart (const-constructors)"?>
 ```dart
 class ImmutablePoint {
   const ImmutablePoint(this.x, this.y);

@@ -198,9 +198,13 @@ IDE 和 `webdev` CLI 在运行开发服务器时会使用 `dartdevc`。
 The following tools support developing or running
 command-line apps and servers:
 
+<<<<<<< HEAD
 下面的工具对开发或运行命令行应用和服务器有特别的支持：
 
 [`dart`](/tools/dart-vm)
+=======
+[`dart run`](/tools/dart-run)
+>>>>>>> 73788c181fda251034b0e9024122584e3bcb8597
 : Use the `dart run` command to run uncompiled Dart command-line apps
   and some kinds of snapshots.
 

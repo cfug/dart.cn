@@ -8,7 +8,7 @@ description: 使用 js 这个 package 在你的 Dart Web 应用里集成 JavaScr
 toc: false
 ---
 
-The [Dart web platform](/overview#web-platform/) supports calling
+The [Dart web platform](/overview#web-platform) supports calling
 JavaScript using the `js` package,
 also known as _package:js_.
 

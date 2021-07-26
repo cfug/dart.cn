@@ -1,7 +1,8 @@
 ---
 title: Resources
 title: 资源
-description: Landing page for dartlang's resources.
+description: Landing page for Dart language resources.
+description: Dart 编程语言资源主页
 toc: false
 ---
 

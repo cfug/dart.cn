@@ -85,7 +85,7 @@ outputs new events. Example:
 对于这种情况，常用的办法是创建一个新的 Stream 去等待获取原 Stream 的事件，
 然后再将新 Stream 中的事件输出。例如：
 
-<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/line_stream_generator.dart (split into lines)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/line_stream_generator.dart (split into lines)"?>
 ```dart
 /// Splits a stream of consecutive strings into lines.
 ///
@@ -121,17 +121,17 @@ Here's how it might be implemented:
 例如，假设你有一个名为 `counterStream` 的 Stream，
 用于每秒打印输出一个自增的整数。其实现过程可能如下：
 
-<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (basic usage)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic usage)"?>
 ```dart
 var counterStream =
-    Stream<int>.periodic(Duration(seconds: 1), (x) => x).take(15);
+    Stream<int>.periodic(const Duration(seconds: 1), (x) => x).take(15);
 ```
 
 To quickly see the events, you can use code like this:
 
 你可以使用下面的代码快速查看事件：
 
-<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (basic for each)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (basic for each)"?>
 ```dart
 counterStream.forEach(print); // Print an integer every second, 15 times.
 ```
@@ -143,7 +143,7 @@ The method returns a new stream.
 你可以在监听 Stream 前调用一个类似 `map()` 
 的转换方法来转换 Stream 的事件。该方法将返回一个新的 Stream。
 
-<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (use-map)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-map)"?>
 ```dart
 // Double the integer in each event.
 var doubleCounterStream = counterStream.map((int x) => x * 2);
@@ -156,7 +156,7 @@ such as the following:
 你可以使用任意其它的变换方法替代 `map()`，
 比如类似下面的这些：
 
-<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (use-where)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-where)"?>
 ```dart
 .where((int x) => x.isEven) // Retain only even integer events.
 .expand((var x) => [x, x]) // Duplicate each event.
@@ -180,7 +180,7 @@ Dart 平台库为许多常见的任务需求提供了 Stream 转换器。
 例如下面的代码使用了由 dart:convert 库提供的
 `utf8.decoder` 和 `LineSplitter` 转换器。
 
-<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (use-transform)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-transform)"?>
 ```dart
 Stream<List<int>> content = File('someFile.txt').openRead();
 List<String> lines =
@@ -211,7 +211,7 @@ Here's a primitive example that emits numbers at regular intervals:
 
 下面是一个周期性发送整数的函数例子：
 
-<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (async-generator)" replace="/timedCounterGenerator/timedCounter/g"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (async-generator)" replace="/timedCounterGenerator/timedCounter/g"?>
 ```dart
 Stream<int> timedCounter(Duration interval, [int? maxCount]) async* {
   int i = 0;
@@ -270,7 +270,7 @@ a sequence of futures to a stream:
 
 另外，一个更有用的示例是将一个 Future 序列转换为 Stream 的函数：
 
-<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (stream-from-futures)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (stream-from-futures)"?>
 ```dart
 Stream<T> streamFromFutures<T>(Iterable<Future<T>> futures) async* {
   for (var future in futures) {
@@ -345,10 +345,10 @@ which are neither futures nor stream events.
 该代码将数据直接添加至 `StreamController` 而不是从 Future 或 Stream 中获取，
 并在最后返回 `StreamController` 中的 Stream。
 
-[stream_controller_bad.dart]: https://github.com/dart-lang/site-www/blob/master/null_safety_examples/misc/lib/articles/creating-streams/stream_controller_bad.dart
+[stream_controller_bad.dart]: https://github.com/dart-lang/site-www/blob/master/examples/misc/lib/articles/creating-streams/stream_controller_bad.dart
 
 {:.bad}
-<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller_bad.dart (flawed stream)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (flawed stream)"?>
 {% prettify dart tag=pre+code %}
 // NOTE: This implementation is FLAWED!
 // It starts before it has subscribers, and it doesn't implement pause.
@@ -377,7 +377,7 @@ As before, you can use the stream returned by `timedCounter()` like this:
 **[PENDING: Did we show this before?]**
 {% endcomment %}
 
-<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller_bad.dart (using stream)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (using stream)"?>
 ```dart
 var counterStream = timedCounter(const Duration(seconds: 1), 15);
 counterStream.listen(print); // Print an integer every second, 15 times.
@@ -429,7 +429,7 @@ Try changing the code that uses the stream to the following:
 
 将上面示例中使用 Stream 的代码更改为如下：
 
-<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller_bad.dart (pre-subscribe problem)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (pre-subscribe problem)"?>
 ```dart
 void listenAfterDelay() async {
   var counterStream = timedCounter(const Duration(seconds: 1), 15);
@@ -501,7 +501,7 @@ try changing the code that uses the stream to the following:
 为了可以查看在不支持暂停的时候会发生什么，
 我们将上面使用 Stream 的代码更改为如下：
 
-<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller_bad.dart (pause problem)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (pause problem)"?>
 ```dart
 void listenWithPause() {
   var counterStream = timedCounter(const Duration(seconds: 1), 15);
@@ -537,13 +537,13 @@ implements pause by using the
 on the `StreamController`.
 
 下面代码所实现的 `timedCounter()` 版本
-（出自 [stream_controller.dart](code/stream_controller.dart)）
+（出自 [stream_controller.dart][]）
 通过使用 `StreamController` 中的
 `onListen`、`onPause`、`onResume` 和 `onCancel` 回调实现暂停功能。
 
-[stream_controller.dart]: https://github.com/dart-lang/site-www/blob/master/null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart
+[stream_controller.dart]: https://github.com/dart-lang/site-www/blob/master/examples/misc/lib/articles/creating-streams/stream_controller.dart
 
-<?code-excerpt "../null_safety_examples/misc/lib/articles/creating-streams/stream_controller.dart (better stream)"?>
+<?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (better stream)"?>
 ```dart
 Stream<int> timedCounter(Duration interval, [int? maxCount]) {
   late StreamController<int> controller;

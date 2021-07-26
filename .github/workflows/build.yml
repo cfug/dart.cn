@@ -30,27 +30,17 @@ jobs:
         task:
           - ./tool/build.sh --check-links
           - ./tool/check-code.sh
-          - ./tool/check-code.sh --null-safety
-        experimental: [true] # false needed.. #TODO
+        experimental: [false]
         include:
           - sdk: dev
             task: ./tool/analyze-and-test-examples.sh
-            experimental: true
+            experimental: false
           - sdk: beta
             task: ./tool/analyze-and-test-examples.sh
-            experimental: true
+            experimental: false
           - sdk: stable
             task: ./tool/analyze-and-test-examples.sh
-            experimental: true
-          - sdk: dev
-            task: ./tool/analyze-and-test-examples.sh --null-safety
-            experimental: true
-          - sdk: beta
-            task: ./tool/analyze-and-test-examples.sh --null-safety
-            experimental: true
-          - sdk: stable
-            task: ./tool/analyze-and-test-examples.sh --null-safety
-            experimental: true
+            experimental: false
     steps:
       - uses: actions/checkout@v2
         with:

@@ -10,7 +10,7 @@ prevpage:
 ---
 <?code-excerpt replace="/([A-Z]\w*)\d\b/$1/g"?>
 <?code-excerpt plaster="none"?>
-<?code-excerpt path-base="../null_safety_examples/misc/lib/effective_dart"?>
+<?code-excerpt path-base="misc/lib/effective_dart"?>
 
 Here are some guidelines for writing consistent, usable APIs for libraries.
 
@@ -276,15 +276,12 @@ closingWindow // Returns a bool or a window?
 showPopup     // Sounds like it shows the popup.
 {% endprettify %}
 
-**Exception:** Input properties in [Angular][] components sometimes use
+**Exception:** Input properties in [AngularDart][] components sometimes use
 imperative verbs for boolean setters because these setters are invoked in
 templates, not from other Dart code.
 
-这条规则有一个例外。[Angular][] 组件中的输入属性有时会使用命令式动词来表示布尔设置器，
+这条规则有一个例外。[AngularDart][] 组件中的输入属性有时会使用命令式动词来表示布尔设置器，
 因为这些 setter 是在模板中调用的，而不是从其它 Dart 代码中调用的。
-
-[angular]: {{site.angulardart}}
-
 
 ### CONSIDER omitting the verb for a named boolean *parameter*.
 
@@ -373,11 +370,11 @@ negative case for that property.
 选择“肯定”方式，将会迫使在他们到处使用 `!` 对属性进行取反操作。
 这样相反，属性应该使用“否定”形式进行命名。
 
-**Exception:** Properties accessed in [Angular][]
+**Exception:** Properties accessed in [AngularDart][]
 templates are often better in the negative form because the property is used to
 *hide* or *disable* content.
 
-**例外:**  在 [Angular][] 的模板中属性的否定形式是更好的实践，
+**例外:**  在 [AngularDart][] 的模板中属性的否定形式是更好的实践，
 因为这些属性通常是为了 **隐藏** 或者 **禁用** 内容。
 
 ### PREFER an imperative verb phrase for a function or method whose main purpose is a side effect.
@@ -531,14 +528,15 @@ previous guidelines state, either:
 
 ### **推荐** 使用 `to___()` 来命名把对象的状态转换到一个新的对象的函数。
 
-{% include linter-rule.html rule="use_to_and_as_if_applicable" %}
+{% include linter-rule-mention.html rule="use_to_and_as_if_applicable" %}
 
 A *conversion* method is one that returns a new object containing a copy of
 almost all of the state of the receiver but usually in some different form or
 representation. The core libraries have a convention that these methods are
 named starting with `to` followed by the kind of result.
 
-一个转换函数返回一个新的对象，里面包含一些原对象的状态，但通常新对象的形式或表现方式与原对象不同。
+一个转换函数返回一个新的对象，里面包含一些原对象的状态，
+但通常新对象的形式或表现方式与原对象不同。
 核心库有一个约定，这些类型结果的方法名应该以 `to` 作为开头。
 
 If you define a conversion method, it's helpful to follow that convention.
@@ -558,7 +556,7 @@ dateTime.toLocal();
 
 ### **推荐** 使用 `as___()` 来命名把原来对象转换为另外一种表现形式的函数。
 
-{% include linter-rule.html rule="use_to_and_as_if_applicable" %}
+{% include linter-rule-mention.html rule="use_to_and_as_if_applicable" %}
 
 Conversion methods are "snapshots". The resulting object has its own copy of the
 original object's state. There are other conversion-like methods that return
@@ -804,7 +802,7 @@ Dart是一种 “纯粹的” 面向对象语言，因为所有对象都是类�
 
 ### **避免** 避免为了使用一个简单的函数而去定义一个单一成员的抽象类
 
-{% include linter-rule.html rule="one_member_abstracts" %}
+{% include linter-rule-mention.html rule="one_member_abstracts" %}
 
 Unlike Java, Dart has first-class functions, closures, and a nice light syntax
 for using them. If all you need is something like a callback, just use a
@@ -835,7 +833,7 @@ abstract class Predicate<E> {
 
 ### **避免** 定义仅包含静态成员的类。
 
-{% include linter-rule.html rule="avoid_classes_with_only_static_members" %}
+{% include linter-rule-mention.html rule="avoid_classes_with_only_static_members" %}
 
 In Java and C#, every definition *must* be inside a class, so it's common to see
 "classes" that exist only as a place to stuff static members. Other classes are
@@ -1003,7 +1001,7 @@ comment.
 
 ### **要** 对支持 mixin 的类在文档注明
 
-{% include linter-rule.html rule="prefer_mixin" %}
+{% include linter-rule-mention.html rule="prefer_mixin" %}
 
 Dart originally didn't have a separate syntax for declaring a class intended to
 be mixed in to other classes. Instead, any class that met certain restrictions
@@ -1038,12 +1036,11 @@ mixin ClickableMixin implements Control {
 You might still encounter older code using `class` to define mixins, but the new
 syntax is preferred.
 
-
 ### AVOID mixing in a type that isn't intended to be a mixin. {#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin}
 
 ### **避免** 去 mixin 一个不期望被 mixin 的类 {#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin}
 
-{% include linter-rule.html rule="prefer_mixin" %}
+{% include linter-rule-mention.html rule="prefer_mixin" %}
 
 For compatibility, Dart still allows you to mix in classes that aren't defined
 using `mixin`. However, that's risky. If the author of the class doesn't intend
@@ -1107,7 +1104,7 @@ A member belongs to an object and can be either methods or instance variables.
 
 ### **推荐** 指定字段或顶级变量为 `final` 。
 
-{% include linter-rule.html rule="prefer_final_fields" %}
+{% include linter-rule-mention.html rule="prefer_final_fields" %}
 
 State that is not *mutable*&mdash;that does not change over time&mdash;is
 easier for programmers to reason about. Classes and libraries that minimize the
@@ -1120,7 +1117,8 @@ Of course, it is often useful to have mutable data. But, if you don't need it,
 your default should be to make fields and top-level variables `final` when you
 can.
 
-当然，可变数据是非常有用的。但是，如果并不需要可变数据，应该尽可能默认指定字段和顶级变量为 `final` 。
+当然，可变数据是非常有用的。但是，如果并不需要可变数据，
+应该尽可能默认指定字段和顶级变量为 `final` 。
 
 Sometimes an instance field doesn't change after it has been initialized, but
 can't be initialized until after the instance is constructed. For example, it
@@ -1187,8 +1185,11 @@ as the caller knows. That implies:
     of work, you may want to draw their attention to that by making it a method
     whose name is a verb describing what it does.
 
-    这并*不*意味着操作必须特别快才能成为 getter 方法。`IterableBase.length` 复杂度是
-     `O(n)`，是可以的。使用 getter 方法进行重要计算是没问题的。但是如果它做了*超*大量的工作，你可能需要通过一个描述其功能的动词的方法来引起使用者的注意。
+    这并*不*意味着操作必须特别快才能成为 getter 方法。
+    `IterableBase.length` 复杂度是 `O(n)`，是可以的。
+    使用 getter 方法进行重要计算是没问题的。
+    但是如果它做了 **超** 大量的工作，
+    你可能需要通过一个描述其功能的动词的方法来引起使用者的注意。
 
     {:.bad}
     {% prettify dart tag=pre+code %}
@@ -1269,7 +1270,6 @@ should be getters.
 如果操作符合上述描述，那么它应该是一个 getter 方法。看似满足这一系列要求的成员并不多，但实际上
 会超出你的想象。许多操作只是对某些状态进行一些计算，其中大多数能够，并且也应该作为 getter 方法。
 
-
 {:.good}
 {% prettify dart tag=pre+code %}
 rectangle.area;
@@ -1278,12 +1278,11 @@ button.canShow;
 dataSet.minimumValue;
 {% endprettify %}
 
-
 ### DO use setters for operations that conceptually change properties.
 
 ### **要** 对概念上是修改的属性使用 setter 方法。
 
-{% include linter-rule.html rule="use_setters_to_change_properties" %}
+{% include linter-rule-mention.html rule="use_setters_to_change_properties" %}
 
 Deciding between a setter versus a method is similar to deciding between a
 getter versus a method. In both cases, the operation should be "field-like".
@@ -1325,7 +1324,7 @@ button.visible = false;
 
 ### **不要** 在没有对应的 getter 的情况下定义 setter。
 
-{% include linter-rule.html rule="avoid_setters_without_getters" %}
+{% include linter-rule-mention.html rule="avoid_setters_without_getters" %}
 
 Users think of getters and setters as visible properties of an object. A
 "dropbox" property that can be written to but not seen is confusing and
@@ -1341,19 +1340,18 @@ you want to add. Objects shouldn't generally expose more state than they need
 to. If you have some piece of an object's state that can be modified but not
 exposed in the same way, use a method instead.
 
-本规则意义并*不*是说，你需要先添加一个 getter 才被允许添加 setter ，对象通常不应该暴露出
-多余的状态。如果某个对象的某个状态可以修改但不能以相同的方式访问，请改用方法实现。
+本规则意义并 **不是** 说，你需要先添加一个 getter 才被允许添加 setter ，
+对象通常不应该暴露出多余的状态。
+如果某个对象的某个状态可以修改但不能以相同的方式访问，请改用方法实现。
 
-**Exception:** An [Angular][] component class may expose setters that are
+**Exception:** An [AngularDart][] component class may expose setters that are
 invoked from a template to initialize the component. Often, these setters are
 not intended to be invoked from Dart code and don't need a corresponding getter.
 (If they are used from Dart code, they *should* have a getter.)
 
-**例外：** 在 [Angular][] 组件类上，从模板调用的初始化组件 setter 可以公开。
-通常，这些 setter 是不打算在 Dart 中调用的，也就不���要相应的 getter。（如果在 Dart 代码
-中使用它们，那么它们*应该*有一个对应的 getter 。）
-
-[angular]: {{site.angulardart}}
+**例外：** 在 [AngularDart][] 组件类上，从模板调用的初始化组件 setter 可以公开。
+通常，这些 setter 是不打算在 Dart 中调用的，也就不需要相应的 getter。
+（如果在 Dart 代码中使用它们，那么它们 **应该** 有一个对应的 getter）
 
 ### AVOID using runtime type tests to fake overloading.
 
@@ -1421,7 +1419,7 @@ empty container, it might make sense to use a nullable type.
 
 ### **避免** 为了书写流畅，而从方法中返回 `this` 。
 
-{% include linter-rule.html rule="avoid_returning_this" %}
+{% include linter-rule-mention.html rule="avoid_returning_this" %}
 
 Method cascades are a better solution for chaining method calls.
 
@@ -1455,17 +1453,20 @@ that flow into different parts of your code. Types can appear in two kinds of
 places: *type annotations* on declarations and type arguments to *generic
 invocations*.
 
-程序中的类型用于约束流入代码各位置的*值*的不同类型。类型会出现在两种位置：声明中的*类型注解（type 
-annotations）*和*泛型调用（generic invocations）*的类型参数。
+程序中的类型用于约束流入代码各位置的 **值** 的不同类型。
+类型会出现在两种位置：
+声明中的 **类型注解（type annotations）** 和
+**泛型调用（generic invocations）** 的类型参数。
 
 Type annotations are what you normally think of when you think of "static
 types". You can type annotate a variable, parameter, field, or return type. In
 the following example, `bool` and `String` are type annotations. They hang off
 the static declarative structure of the code and aren't "executed" at runtime.
 
-当你想到*静态类型*时，通常会联想到类型注解。类型注解可以用于为变量，参数，字段，或者返回值
-声明类型。在下面的示例中，`bool` 和 `String` 是类型注解。他们位于代码静态声明结构的前面，
-并且他们不会在运行时"执行"。
+当你想到 **静态类型** 时，通常会联想到类型注解。
+类型注解可以用于为变量，参数，字段，或者返回值声明类型。
+在下面的示例中，`bool` 和 `String` 是类型注解。
+他们位于代码静态声明结构的前面，并且他们不会在运行时"执行"。
 
 <?code-excerpt "design_good.dart (annotate-declaration)"?>
 {% prettify dart tag=pre+code %}
@@ -1581,7 +1582,7 @@ various cases, but the rough summary is:
 
 ### DO type annotate variables without initializers.
 
-{% include linter-rule.html rule="prefer_typing_uninitialized_variables" %}
+{% include linter-rule-mention.html rule="prefer_typing_uninitialized_variables" %}
 
 The type of a variable&mdash;top-level, local, static field, or instance
 field&mdash;can often be inferred from its initializer. However, if there is no
@@ -1616,7 +1617,7 @@ if (node is Constructor) {
 
 ### **推荐** 为类型不明显的公共字段和公共顶级变量指定类型注解。
 
-{% include linter-rule.html rule="type_annotate_public_apis" %}
+{% include linter-rule-mention.html rule="type_annotate_public_apis" %}
 
 Type annotations are important documentation for how a library should be used.
 They form boundaries between regions of a program to isolate the source of a
@@ -1657,11 +1658,11 @@ const screenWidth = 640; // Inferred as int.
 这里的"明显"并没有精确的定义，下面这些可以作为很好的参考：
 
 * Literals.
-  
+
   字面量。
 
 * Constructor invocations.
- 
+
   构造函数调用。
 
 * References to other constants that are explicitly typed.
@@ -1681,6 +1682,10 @@ If you think the initializer expression&mdash;whatever it is&mdash;is
 sufficiently clear, then you may omit the annotation. But if you think
 annotating helps make the code clearer, then add one.
 
+如果你认为初始化表达式&mdash;无论是什么表达式&mdash;足够清晰，
+那么可以省略它的注解。但是如果你认为注解有助于使代码更清晰，
+那么你应该加上这个注解。
+
 When in doubt, add a type annotation. Even when a type is obvious, you may still
 wish to explicitly annotate. If the inferred type relies on values or
 declarations from other libraries, you may want to type annotate *your*
@@ -1694,22 +1699,22 @@ This rule applies to both public and private declarations. Just as type
 annotations on APIs help *users* of your code, types on private members help
 *maintainers*.
 
-如果你认为初始化表达式&mdash;无论是什么表达式&mdash;足够清晰，那么可以省略它的注解。但是
-如果你认为注解有助于使代码更清晰，那么你应该加上这个注解。
-
+这条规则同时适用于公有和私有声明。
+就像 API 里的类型注释可以更好帮助代码的 **用户**，
+私有成员上的类型可以帮助 **维护者**。
 
 ### DON'T redundantly type annotate initialized local variables.
 
 ### **避免** 为初始化的局部变量添加冗余地类型注解。
 
-{% include linter-rule.html rule="omit_local_variable_types" %}
+{% include linter-rule-mention.html rule="omit_local_variable_types" %}
 
 Local variables, especially in modern code where functions tend to be small,
 have very little scope. Omitting the type focuses the reader's attention on the
 more important *name* of the variable and its initialized value.
 
-局部变量，特别是现代的函数往往很少，范围也很小。省略局部变量类型会将读者的注意力集中在变量的
-*名称* 及初始化值上。
+局部变量，特别是现代的函数往往很少，范围也很小。
+省略局部变量类型会将读者的注意力集中在变量的 **名称** 及初始化值上。
 
 {:.good}
 <?code-excerpt "design_good.dart (omit-types-on-locals)"?>
@@ -1764,7 +1769,8 @@ Dart doesn't generally infer the return type of a function declaration from its 
 unlike some other languages. That means you should write a type annotation for
 the return type yourself.
 
-如果局部变量没有初始值设定项，那么就无法判断它的类型了。这种情况下，最好是为变量加上类型注解。
+如果局部变量没有初始值设定项，那么就无法判断它的类型了。
+这种情况下，最好是为变量加上类型注解。
 否则，你的到的会是一个 `dynamic` 类型，并失去静态类型的好处。
 
 
@@ -1788,7 +1794,6 @@ Note that this guideline only applies to *named* function declarations:
 top-level functions, methods, and local functions. Anonymous function
 expressions infer a return type from their body. In fact, the syntax doesn't
 even allow a return type annotation.
-
 
 ### DO annotate parameter types on function declarations.
 
@@ -1824,7 +1829,7 @@ void sayRepeatedly(message, {count = 2}) {
 
 ### **避免** 在函数表达式上注解推断的参数类型。
 
-{% include linter-rule.html rule="avoid_types_on_closure_parameters" %}
+{% include linter-rule-mention.html rule="avoid_types_on_closure_parameters" %}
 
 Anonymous functions are almost always immediately passed to a method taking a
 callback of some type.
@@ -1865,7 +1870,7 @@ function's parameters. In those cases, you may need to annotate.
 
 ### DON'T type annotate initializing formals.
 
-{% include linter-rule.html rule="type_init_formals" %}
+{% include linter-rule-mention.html rule="type_init_formals" %}
 
 If a constructor parameter is using `this.` to initialize a field, then the type
 of the parameter is inferred to have the same type as the field.
@@ -2138,7 +2143,7 @@ void handleError([!void Function()!] operation, [!Function!] errorHandler) {
 
 ### **不要** 为 setter 方法指定返回类型。
 
-{% include linter-rule.html rule="avoid_return_types_on_setters" %}
+{% include linter-rule-mention.html rule="avoid_return_types_on_setters" %}
 
 Setters always return `void` in Dart. Writing the word is pointless.
 
@@ -2161,7 +2166,7 @@ set foo(Foo value) { ... }
 
 ### **不要** 使用弃用的 typedef 语法。
 
-{% include linter-rule.html rule="prefer_generic_function_type_aliases" %}
+{% include linter-rule-mention.html rule="prefer_generic_function_type_aliases" %}
 
 Dart has two notations for defining a named typedef for a function type. The
 original syntax looks like:
@@ -2248,9 +2253,9 @@ it's deprecated.
 
 ### PREFER inline function types over typedefs.
 
-### **推荐** 优先使用内联函数类型，而后是 typedef 。
+### **推荐** 优先使用内联函数类型，而后是 typedef。
 
-{% include linter-rule.html rule="avoid_private_typedef_functions" %}
+{% include linter-rule-mention.html rule="avoid_private_typedef_functions" %}
 
 In Dart 1, if you wanted to use a function type for a field, variable, or
 generic type argument, you had to first define a typedef for it. Dart 2 supports
@@ -2295,7 +2300,7 @@ that clarity.
 
 ### **考虑** 在参数上使用函数类型语法。
 
-{% include linter-rule.html rule="use_function_type_syntax_for_parameters" %}
+{% include linter-rule-mention.html rule="use_function_type_syntax_for_parameters" %}
 
 Dart has a special syntax when defining a parameter whose type is a function.
 Sort of like in C, you surround the parameter's name with the function's return
@@ -2465,9 +2470,11 @@ parameter whose type is itself a function, then the callback's return type is
 now in contravariant position and the callback's parameters are covariant. This
 means it's OK for a *callback's* type to return `FutureOr<T>`:
 
-对这条规则更准确的描述是，*仅在 [逆变][contravariant] 位置使用 `FutureOr<T>` *。参数是逆变（contravariant），
-返回类型是协变（covariant）。在嵌套函数类型中，描述是相反的&mdash;如果一个参数自身就是函数参数类型，那么此时
-回调函数的返回类型处于逆变位置，回调函数的参数是协变。这意味着回调中的函数类型可以返回 `FutureOr<T>` ：
+对这条规则更准确的描述是，**仅在 [逆变][contravariant] 位置使用 `FutureOr<T>`**。
+参数是逆变（contravariant），返回类型是协变（covariant）。
+在嵌套函数类型中，描述是相反的&mdash;如果一个参数自身就是函数参数类型，
+那么此时回调函数的返回类型处于逆变位置，回调函数的参数是协变。
+这意味着回调中的函数类型可以返回 `FutureOr<T>` ：
 
 [contravariant]: https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)
 
@@ -2495,7 +2502,7 @@ In Dart, optional parameters can be either positional or named, but not both.
 
 ### **避免** 布尔类型的位置参数。
 
-{% include linter-rule.html rule="avoid_positional_boolean_parameters" %}
+{% include linter-rule-mention.html rule="avoid_positional_boolean_parameters" %}
 
 Unlike other types, booleans are usually used in literal form. Values like
 numbers are usually wrapped in named constants, but we typically pass around
@@ -2651,7 +2658,7 @@ elements to follow.
 
 ### **要** 对重写 `==` 操作符的类，重写 `hashCode` 方法。
 
-{% include linter-rule.html rule="hash_and_equals" %}
+{% include linter-rule-mention.html rule="hash_and_equals" %}
 
 The default hash code implementation provides an *identity* hash&mdash;two
 objects generally only have the same hash code if they are the exact same
@@ -2698,7 +2705,7 @@ you're trying to express.
 
 ### **避免** 为可变类自定义相等。
 
-{% include linter-rule.html rule="avoid_equals_and_hash_code_on_mutable_classes" %}
+{% include linter-rule-mention.html rule="avoid_equals_and_hash_code_on_mutable_classes" %}
 
 When you define `==`, you also have to define `hashCode`. Both of those should
 take into account the object's fields. If those fields *change* then that
@@ -2718,7 +2725,7 @@ true.
 
 ### **不要** 使用 `==` 操作符与可空值比较。
 
-{% include linter-rule.html rule="avoid_null_checks_in_equality_operators" %}
+{% include linter-rule-mention.html rule="avoid_null_checks_in_equality_operators" %}
 
 The language specifies that `null` is equal only to itself, and that the `==`
 method is called only if the right-hand side is not `null`.
@@ -2754,3 +2761,6 @@ annotation permits `null`. Even so, Dart will never call your `==` method and
 pass `null` to it, so you don't need to handle `null` inside the body of the
 method.
 {{site.alert.end}}
+
+
+[AngularDart]: {{site.angulardart}}

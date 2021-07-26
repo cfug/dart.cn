@@ -137,12 +137,12 @@ Dart SDK 支持 Windows、Linux 和 macOS。
   - macOS 10.15 (Catalina)
   - macOS 11 (Big Sur)
 
-* **Supported architectures:** x64.
-  Support for arm64 is [in progress](https://github.com/dart-lang/sdk/issues/42773).
+* **Supported architectures:** x64, arm64.
+  Support for arm64 is in preview, and is available only in the dev and beta channels.
 
   **支持的架构：**x64。
-  针对 arm64 的支持正在
-  [进行中](https://github.com/dart-lang/sdk/issues/42773)。
+  针对 arm64 的支持处在预览版本，目前在 dev 和 beta 渠道可以使用。
+
 
 ## About release channels and version strings {#release-channels}
 
