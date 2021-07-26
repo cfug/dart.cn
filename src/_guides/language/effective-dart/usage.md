@@ -462,13 +462,9 @@ Here are some best practices to keep in mind when composing strings in Dart.
 
 ### DO use adjacent strings to concatenate string literals.
 
-<<<<<<< HEAD
 ### **要** 使用相邻字符串的方式连接字面量字符串。
 
-{% include linter-rule.html rule="prefer_adjacent_string_concatenation" %}
-=======
 {% include linter-rule-mention.html rule="prefer_adjacent_string_concatenation" %}
->>>>>>> 73788c181fda251034b0e9024122584e3bcb8597
 
 If you have two string literals&mdash;not values, but the actual quoted literal
 form&mdash;you do not need to use `+` to concatenate them. Just like in C and
@@ -1286,13 +1282,9 @@ variables). The following best practices apply to an object's members.
 
 ### DON'T wrap a field in a getter and setter unnecessarily.
 
-<<<<<<< HEAD
 ### **不要** 为字段创建不必要的 getter 和 setter 方法。
 
-{% include linter-rule.html rule="unnecessary_getters_setters" %}
-=======
 {% include linter-rule-mention.html rule="unnecessary_getters_setters" %}
->>>>>>> 73788c181fda251034b0e9024122584e3bcb8597
 
 In Java and C#, it's common to hide all fields behind getters and setters (or
 properties in C#), even if the implementation just forwards to the field. That

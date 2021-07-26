@@ -82,17 +82,13 @@ More information:
 
 ## 3. Create a small app
 
-<<<<<<< HEAD
 ## 3. 创建一个小应用
 
-Use the `dart create` command and the `console-full` template
-to create a command-line app:
-=======
 Use the [`dart create`](/tools/dart-create) command
 and the `console-full` template to create a command-line app:
->>>>>>> 73788c181fda251034b0e9024122584e3bcb8597
 
-使用 `dart create` 命令，以 `console-full` 模板创建一个命令行应用：
+使用 [`dart create`](/tools/dart-create) 命令，
+以 `console-full` 模板创建一个命令行应用：
 
 ```terminal
 $ dart create -t console-full cli
@@ -166,14 +162,10 @@ Let's customize the app you just created.
  1. Edit `lib/cli.dart` to calculate a different result. For example, divide the
     previous value by two (for details about `~/`, see [Arithmetic operators][]):
 
-<<<<<<< HEAD
     编辑 `lib/cli.dart` 以返回一个不同的结果。例如，将先前的值除以2。
     （关于 `~/` 的详情请查看 [Arithmetic operators][]）：
 
-    <?code-excerpt "../null_safety_examples/misc/test/tutorial/get_started.dart (calculate)" replace="/~\/ 2/[!$&!]/g"?>
-=======
     <?code-excerpt "misc/test/tutorial/get_started.dart (calculate)" replace="/~\/ 2/[!$&!]/g"?>
->>>>>>> 73788c181fda251034b0e9024122584e3bcb8597
     {% prettify dart tag=pre+code %}
     int calculate() {
       return 6 * 7 [!~/ 2!];

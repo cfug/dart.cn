@@ -107,13 +107,9 @@ before a declaration and uses the special `///` syntax that dartdoc looks for.
 
 ### DO use `///` doc comments to document members and types.
 
-<<<<<<< HEAD
 ### **要** 使用 `///` 文档注释来注释成员和类型。
 
-{% include linter-rule.html rule="slash_for_doc_comments" %}
-=======
 {% include linter-rule-mention.html rule="slash_for_doc_comments" %}
->>>>>>> 73788c181fda251034b0e9024122584e3bcb8597
 
 Using a doc comment instead of a regular comment enables [dartdoc][] to find it
 and generate documentation for it.
