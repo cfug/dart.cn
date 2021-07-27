@@ -10,7 +10,10 @@ introduction to the language for people who like to learn by example.
 You might also want to check out the language and library tours,
 or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
 
-本文向你展示的 Dart 语言用法并不全面&mdash;这里只是对那些喜欢通过示例了解语言的人提供一个简单的介绍。你也许会对 [Dart 语言的速查表 CodeLab](/codelabs/dart-cheatsheet) 或 Dart 语言概览和库概览更感兴趣。
+本文向你展示的 Dart 语言用法并不全面&mdash;
+这里只是对那些喜欢通过示例了解语言的人提供一个简单的介绍。
+你也许会对 [Dart 语言的速查表 CodeLab](/codelabs/dart-cheatsheet) 或
+Dart 语言概览和库概览更感兴趣。
 
 <div class="card-grid no_toc_section">
   <div class="card">
@@ -22,7 +25,8 @@ or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
       point to the language tour.
     </p>
     <p>
-      包含示例的 Dart 语言全面概览。本文中大部分的 <strong>阅读更多</strong> 链接均会跳转到此概览中。
+      包含示例的 Dart 语言全面概览。
+      本文中大部分的 <strong>阅读更多</strong> 链接均会跳转到此概览中。
     </p>
   </div>
   <div class="card">
@@ -34,7 +38,9 @@ or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
       dates and times, streams, and more.
     </p>
     <p>
-      通过各种示例向你介绍 Dart 的核心库。通过此概览你可以了解更多关于内置类型、集合、日期时间、异步 Stream 以及其它 Dart 核心功能的相关信息。
+      通过各种示例向你介绍 Dart 的核心库。
+      通过此概览你可以了解更多关于内置类型、集合、
+      日期时间、异步 Stream 以及其它 Dart 核心功能的相关信息。
     </p>
   </div>
 </div>
@@ -73,9 +79,9 @@ thanks to type inference:
 var name = 'Voyager I';
 var year = 1977;
 var antennaDiameter = 3.7;
-var flybyObjects = ['木星', '土星', '天王星', '海王星'];
+var flybyObjects = ['Jupiter', 'Saturn', 'Uranus', 'Neptune'];
 var image = {
-  'tags': ['土星'],
+  'tags': ['saturn'],
   'url': '//path/to/saturn.jpg'
 };
 ```
@@ -195,13 +201,14 @@ To access APIs defined in other libraries, use `import`.
 
 <?code-excerpt "misc/test/samples_test.dart (import)" plaster="none"?>
 ```
-// 导入核心库
+// Importing core libraries
 import 'dart:math';
 
-// 从外部 Package 中导入库
+// Importing libraries from external packages
 import 'package:test/test.dart';
 
-// 导入文件
+
+// Importing files
 import 'path/to/my_other_file.dart';
 ```
 
@@ -235,15 +242,15 @@ class Spacecraft {
   // Read-only non-final property
   int? get launchYear => launchDate?.year;
 
-  // 构造函数，带有可以直接为成员变量赋值的语法糖。
+  // Constructor, with syntactic sugar for assignment to members.
   Spacecraft(this.name, this.launchDate) {
-    // 这里可以实现初始化代码。
+    // Initialization code goes here.
   }
 
-  // 命名构造函数，转发到默认构造函数。
+  // Named constructor that forwards to the default one.
   Spacecraft.unlaunched(String name) : this(name, null);
 
-  // 方法。
+  // Method.
   void describe() {
     print('Spacecraft: $name');
     // Type promotion doesn't work on getters.
