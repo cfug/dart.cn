@@ -1072,7 +1072,10 @@ You can create a “raw” string by prefixing it with `r`:
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (raw-strings)"?>
 ```dart
 var s = r'In a raw string, not even \n gets special treatment.';
+```
 
+<!--skip-->
+```dart
 // 代码中文解释
 var s = r'在 raw 字符串中，转义字符串 \n 会直接输出 “\n” 而不是转义为换行。';
 ```
@@ -1086,7 +1089,9 @@ Literal strings are compile-time constants,
 as long as any interpolated expression is a compile-time constant
 that evaluates to null or a numeric, string, or boolean value.
 
-字符串字面量是一个编译时常量，只要是编译时常量都可以作为字符串字面量的插值表达式：
+字符串字面量是一个编译时常量，
+只要是编译时常量 (null、数字、字符串、布尔)
+都可以作为字符串字面量的插值表达式：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (string-literals)"?>
 ```dart
@@ -1108,7 +1113,9 @@ const validConstString = '$aConstNum $aConstBool $aConstString';
 For more information on using strings, see
 [Strings and regular expressions](/guides/libraries/library-tour#strings-and-regular-expressions).
 
-可以查阅 [字符串和正则表达式](/guides/libraries/library-tour#strings-and-regular-expressions) 获取更多关于如何使用字符串的信息。
+可以查阅
+[字符串和正则表达式](/guides/libraries/library-tour#strings-and-regular-expressions)
+获取更多关于如何使用字符串的信息。
 
 ### Booleans
 
@@ -1130,22 +1137,21 @@ Dart 的类型安全不允许你使用类似 <code>if (<em>nonbooleanValue</em>)
 或者 <code>assert (<em>nonbooleanValue</em>)</code> 这样的代码检查布尔值。
 相反，你应该总是显示地检查布尔值，比如像下面的代码这样：
 
-<!--skip-->
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (no-truthy)"?>
 ```dart
-// 检查是否为空字符串 (Check for an empty string).
+// Check for an empty string.
 var fullName = '';
 assert(fullName.isEmpty);
 
-// 检查是否小于等于零。
+// Check for zero.
 var hitPoints = 0;
 assert(hitPoints <= 0);
 
-// 检查是否为 null。
+// Check for null.
 var unicorn;
 assert(unicorn == null);
 
-// 检查是否为 NaN。
+// Check for NaN.
 var iMeantToDoThis = 0 / 0;
 assert(iMeantToDoThis.isNaN);
 ```
@@ -1377,12 +1383,11 @@ or assign `{}` to a variable of type `Set`:
 可以使用在 `{}` 前加上类型参数的方式创建一个空的 Set，
 或者将 `{}` 赋值给一个 Set 类型的变量：
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (set-vs-map)"?>
 ```dart
-var names = <String>{}; // 类型+{}的形式创建Set。
-// Set<String> names = {}; // 声明类型变量的形式创建 Set (This works, too).
-// var names = {}; // 这样的形式将创建一个 Map 而不是 Set (Creates a map, not a set.)
+var names = <String>{};
+// Set<String> names = {}; // This works, too.
+// var names = {}; // Creates a map, not a set.
 ```
 
 {{site.alert.info}}
@@ -1975,14 +1980,12 @@ Here's an example of setting default values for named parameters:
 
 下面是设置可选参数默认值示例：
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/functions.dart (named-parameter-default-values)"?>
 ```dart
-/// 设置 [bold] 和 [hidden] 标识……
 /// Sets the [bold] and [hidden] flags ...
 void enableFlags({bool bold = false, bool hidden = false}) {...}
 
-// bold 的值将为 true；而 hidden 将为 false。
+// bold will be true; hidden will be false.
 enableFlags(bold: true);
 ```
 
@@ -2076,10 +2079,8 @@ takes arguments:
 
 下面是使用命令行访问带参数的 `main()` 函数示例：
 
-<!--skip-->
 <?code-excerpt "misc/test/language_tour/functions_test.dart (main-args)"?>
 ```dart
-// 使用命令 dart args.dart 1 test 运行该应用
 // Run the app like this: dart args.dart 1 test
 void main(List<String> arguments) {
   print(arguments);
@@ -2111,7 +2112,7 @@ void printElement(int element) {
 
 var list = [1, 2, 3];
 
-// 将 printElement 函数作为参数传递。
+// Pass printElement as a parameter.
 list.forEach(printElement);
 ```
 
@@ -2269,10 +2270,8 @@ returned function goes, it remembers `addBy`.
 函数 `makeAdder()` 捕获了变量 `addBy`。
 无论函数在什么时候返回，它都可以使用捕获的 `addBy` 变量。
 
-<!--skip-->
 <?code-excerpt "misc/test/language_tour/functions_test.dart (function-closure)"?>
 ```dart
-/// 返回一个将 [addBy] 添加到该函数参数的函数。
 /// Returns a function that adds [addBy] to the
 /// function's argument.
 Function makeAdder(int addBy) {
@@ -2280,10 +2279,10 @@ Function makeAdder(int addBy) {
 }
 
 void main() {
-  // 生成加 2 的函数。
+  // Create a function that adds 2.
   var add2 = makeAdder(2);
 
-  // 生成加 4 的函数。
+  // Create a function that adds 4.
   var add4 = makeAdder(4);
 
   assert(add2(3) == 5);
@@ -2301,37 +2300,38 @@ instance methods for equality:
 
 下面是顶级函数，静态方法和示例方法相等性的测试示例：
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/function_equality.dart"?>
 ```dart
-void foo() {} // 定义顶层函数 (A top-level function)
+void foo() {} // A top-level function
 
 class A {
-  static void bar() {} // 定义静态方法
-  void baz() {} // 定义实例方法
+  static void bar() {} // A static method
+  void baz() {} // An instance method
 }
 
 void main() {
   Function x;
 
-  // 比较顶层函数是否相等。
+  // Comparing top-level functions.
   x = foo;
   assert(foo == x);
 
-  // 比较静态方法是否相等。
+  // Comparing static methods.
   x = A.bar;
   assert(A.bar == x);
 
-  // 比较实例方法是否相等。
-  var v = A(); // A 的实例 #1
-  var w = A(); // A 的实例 #2
+  // Comparing instance methods.
+  var v = A(); // Instance #1 of A
+  var w = A(); // Instance #2 of A
   var y = w;
   x = w.baz;
 
-  // 这两个闭包引用了相同的实例对象，因此它们相等。
+  // These closures refer to the same instance (#2),
+  // so they're equal.
   assert(y.baz == x);
 
-  // 这两个闭包引用了不同的实例对象，因此它们不相等。
+  // These closures refer to different instances,
+  // so they're unequal.
   assert(v.baz != w.baz);
 }
 ```
@@ -2442,14 +2442,12 @@ way:
 例如：`%` 运算符优先级高于 `==` ，而 `==` 高于 `&&`。
 根据优先级规则，那么意味着以下两行代码执行的效果相同：
 
-<!--skip-->
 <?code-excerpt "misc/test/language_tour/operators_test.dart (precedence)"?>
 ```dart
-// 括号提高了可读性。
 // Parentheses improve readability.
 if ((n % i == 0) && (d % i == 0)) ...
 
-// 难以理解，但是与上面的代码效果一样。
+// Harder to read, but equivalent.
 if (n % i == 0 && d % i == 0) ...
 ```
 
@@ -2490,15 +2488,14 @@ Example:
 
 示例：
 
-<!--skip-->
 <?code-excerpt "misc/test/language_tour/operators_test.dart (arithmetic)"?>
 ```dart
 assert(2 + 3 == 5);
 assert(2 - 3 == -1);
 assert(2 * 3 == 6);
-assert(5 / 2 == 2.5); // 结果是一个浮点数
-assert(5 ~/ 2 == 2); // 结果是一个整数
-assert(5 % 2 == 1); // 取余
+assert(5 / 2 == 2.5); // Result is a double
+assert(5 ~/ 2 == 2); // Result is an int
+assert(5 % 2 == 1); // Remainder
 
 assert('5/2 = ${5 ~/ 2} r ${5 % 2}' == '5/2 = 2 r 1');
 ```
@@ -2521,26 +2518,25 @@ Example:
 
 示例：
 
-<!--skip-->
 <?code-excerpt "misc/test/language_tour/operators_test.dart (increment-decrement)"?>
 ```dart
 int a;
 int b;
 
 a = 0;
-b = ++a; // 在 b 赋值前将 a 增加 1。
+b = ++a; // Increment a before b gets its value.
 assert(a == b); // 1 == 1
 
 a = 0;
-b = a++; // 在 b 赋值后将 a 增加 1。
+b = a++; // Increment a AFTER b gets its value.
 assert(a != b); // 1 != 0
 
 a = 0;
-b = --a; // 在 b 赋值前将 a 减少 1。
+b = --a; // Decrement a before b gets its value.
 assert(a == b); // -1 == -1
 
 a = 0;
-b = a--; // 在 b 赋值后将 a 减少 1。
+b = a--; // Decrement a AFTER b gets its value.
 assert(a != b); // -1 != 0
 ```
 
@@ -2709,11 +2705,10 @@ operators:
 
 下面的例子展示了如何使用赋值以及复合赋值运算符：
 
-<!--skip-->
 <?code-excerpt "misc/test/language_tour/operators_test.dart (op-assign)"?>
 ```dart
-var a = 2; // 使用 = 赋值 (Assign using =)
-a *= 3; // 赋值并做乘法运算 Assign and multiply: a = a * 3
+var a = 2; // Assign using =
+a *= 3; // Assign and multiply: a = a * 3
 assert(a == 6);
 ```
 
@@ -2776,12 +2771,12 @@ Here’s an example of using bitwise and shift operators:
 final value = 0x22;
 final bitmask = 0x0f;
 
-assert((value & bitmask) == 0x02); // 按位与 (AND)
-assert((value & ~bitmask) == 0x20); // 取反后按位与 (AND NOT)
-assert((value | bitmask) == 0x2f); // 按位或 (OR)
-assert((value ^ bitmask) == 0x2d); // 按位异或 (XOR)
-assert((value << 4) == 0x220); // 位左移 (Shift left)
-assert((value >> 4) == 0x02); // 位右移 (Shift right)
+assert((value & bitmask) == 0x02); // AND
+assert((value & ~bitmask) == 0x20); // AND NOT
+assert((value | bitmask) == 0x2f); // OR
+assert((value ^ bitmask) == 0x2d); // XOR
+assert((value << 4) == 0x220); // Shift left
+assert((value >> 4) == 0x02); // Shift right
 ```
 
 
@@ -2795,17 +2790,18 @@ that might otherwise require [if-else](#if-and-else) statements:
 Dart 有两个特殊的运算符可以用来替代 [if-else](#if-和-else) 语句：
 
 <code><em>condition</em> ? <em>expr1</em> : <em>expr2</em></code>
-: If _condition_ is true, evaluates _expr1_ (and returns its value);
+<br> If _condition_ is true, evaluates _expr1_ (and returns its value);
   otherwise, evaluates and returns the value of _expr2_.
 
 <code><em>条件</em> ? <em>表达式 1</em> : <em>表达式 2</em></code>
-：如果条件为 true，执行表达式 1并返回执行结果，否则执行表达式 2 并返回执行结果。
+<br> 如果条件为 true，执行表达式 1并返回执行结果，否则执行表达式 2 并返回执行结果。
 
 <code><em>expr1</em> ?? <em>expr2</em></code>
-: If _expr1_ is non-null, returns its value;
+<br> If _expr1_ is non-null, returns its value;
   otherwise, evaluates and returns the value of _expr2_.
 
-<code><em>表达式 1</em> ?? <em>表达式 2</em></code>：如果表达式 1 为非 null 则返回其值，否则执行表达式 2 并返回其值。
+<code><em>表达式 1</em> ?? <em>表达式 2</em></code>
+<br>如果表达式 1 为非 null 则返回其值，否则执行表达式 2 并返回其值。
 
 When you need to assign a value
 based on a boolean expression,
@@ -2947,12 +2943,11 @@ an actual object. For example, the following code fails:
 
 在返回对象的函数中谨慎使用级联操作符。例如，下面的代码是错误的：
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/operators.dart (cannot-cascade-on-void)" plaster="none"?>
 ```dart
 var sb = StringBuffer();
 sb.write('foo')
-  ..write('bar'); // 出错：void 对象中没有方法 write (Error: method 'write' isn't defined for 'void').
+  ..write('bar'); // Error: method 'write' isn't defined for 'void'.
 ```
 
 The `sb.write()` call returns void,
@@ -3261,14 +3256,13 @@ thus generating an error:
 
 下面的例子忽略了 `case` 子句的 `break` 语句，因此会产生错误：
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (switch-break-omitted)" plaster="none"?>
 ```dart
 var command = 'OPEN';
 switch (command) {
   case 'OPEN':
     executeOpen();
-    // 错误: 没有 break
+    // ERROR: Missing break
 
   case 'CLOSED':
     executeClosed();
@@ -3285,9 +3279,9 @@ fall-through:
 ```dart
 var command = 'CLOSED';
 switch (command) {
-  case 'CLOSED': // case 语句为空时的 fall-through 形式。
+  case 'CLOSED': // Empty case falls through.
   case 'NOW_CLOSED':
-    // case 条件值为 CLOSED 和 NOW_CLOSED 时均会执行该语句。
+    // Runs for both CLOSED and NOW_CLOSED.
     executeNowClosed();
     break;
 }
@@ -3299,7 +3293,6 @@ a label:
 在非空 `case` 语句中想要实现 fall-through 的形式，
 可以使用 `continue` 语句配合 label 的方式实现:
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (switch-continue)"?>
 ```dart
 var command = 'CLOSED';
@@ -3307,11 +3300,11 @@ switch (command) {
   case 'CLOSED':
     executeClosed();
     continue nowClosed;
-  // 继续执行标签为 nowClosed 的 case 子句。
+  // Continues executing at the nowClosed label.
 
   nowClosed:
   case 'NOW_CLOSED':
-    // case 条件值为 CLOSED 和 NOW_CLOSED 时均会执行该语句。
+    // Runs for both CLOSED and NOW_CLOSED.
     executeNowClosed();
     break;
 }
@@ -3338,16 +3331,15 @@ throughout this tour. Here are some more:
 来打断代码的执行。你可以在本文中找到大量使用 assert 的例子。
 下面是相关示例：
 
-<!--skip-->
 <?code-excerpt "misc/test/language_tour/control_flow_test.dart (assert)"?>
 ```dart
-// 确保变量值不为 null (Make sure the variable has a non-null value)
+// Make sure the variable has a non-null value.
 assert(text != null);
 
-// 确保变量值小于 100。
+// Make sure the value is less than 100.
 assert(number < 100);
 
-// 确保这是一个 https 地址。
+// Make sure this is an https URL.
 assert(urlString.startsWith('https'));
 ```
 
@@ -3501,19 +3493,18 @@ specify a type, that clause can handle any type of thrown object:
 每个语句分别对应一个异常类型，
 如果 catch 语句没有指定异常类型则表示可以捕获任意异常类型：
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try-catch)"?>
 ```dart
 try {
   breedMoreLlamas();
 } on OutOfLlamasException {
-  // 指定异常
+  // A specific exception
   buyMoreLlamas();
 } on Exception catch (e) {
-  // 其它类型的异常
+  // Anything else that is an exception
   print('Unknown exception: $e');
 } catch (e) {
-  // // 不指定类型，处理其它全部
+  // No specified type, handles all
   print('Something really unknown: $e');
 }
 ```
@@ -3746,7 +3737,7 @@ canonical instance:
 var a = const ImmutablePoint(1, 1);
 var b = const ImmutablePoint(1, 1);
 
-assert(identical(a, b)); // 它们是同一个实例 (They are the same instance!)
+assert(identical(a, b)); // They are the same instance!
 ```
 
 Within a _constant context_, you can omit the `const` before a constructor
@@ -3756,11 +3747,9 @@ or literal. For example, look at this code, which creates a const map:
 你可以省略掉构造函数或字面量前的 `const` 关键字。
 例如下面的例子中我们创建了一个常量 Map：
 
-<!--skip-->
 <?code-excerpt "misc/test/language_tour/classes_test.dart (const-context-withconst)" replace="/pointAndLine1/pointAndLine/g"?>
 ```dart
 // Lots of const keywords here.
-// 这里有很多 const 关键字
 const pointAndLine = const {
   'point': const [const ImmutablePoint(0, 0)],
   'line': const [const ImmutablePoint(1, 10), const ImmutablePoint(-2, 11)],
@@ -3772,11 +3761,9 @@ You can omit all but the first use of the `const` keyword:
 根据上下文，你可以只保留第一个 `const` 关键字，
 其余的全部省略：
 
-<!--skip-->
 <?code-excerpt "misc/test/language_tour/classes_test.dart (const-context-noconst)" replace="/pointAndLine2/pointAndLine/g"?>
 ```dart
 // Only one const, which establishes the constant context.
-// 只需要一个 const 关键字，其它的则会隐式地根据上下文进行关联。
 const pointAndLine = {
   'point': [ImmutablePoint(0, 0)],
   'line': [ImmutablePoint(1, 10), ImmutablePoint(-2, 11)],
@@ -3790,13 +3777,12 @@ it creates a **non-constant object**:
 但是如果无法根据上下文判断是否可以省略 `const`，
 则不能省略掉 `const` 关键字，否则将会创建一个 **非常量对象** 例如：
 
-<!--skip-->
 <?code-excerpt "misc/test/language_tour/classes_test.dart (nonconst-const-constructor)"?>
 ```dart
-var a = const ImmutablePoint(1, 1); // 创建一个常量 (Creates a constant)
-var b = ImmutablePoint(1, 1); // 不会创建一个常量 (Does NOT create a constant)
+var a = const ImmutablePoint(1, 1); // Creates a constant
+var b = ImmutablePoint(1, 1); // Does NOT create a constant
 
-assert(!identical(a, b)); // 这两变量并不相同 (NOT the same instance!)
+assert(!identical(a, b)); // NOT the same instance!
 ```
 
 {{site.alert.version-note}}
@@ -3860,7 +3846,6 @@ see [Getters and setters](#getters-and-setters).
 非终值的实例变量和 `late final` 声明但未声明初始化的实例变量还会隐式地声明一个 *Setter* 方法。
 你可以查阅 [Getter 和 Setter](#getters-and-setters) 获取更多相关信息。
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class+main)" replace="/(double .*?;).*/$1/g" plaster="none"?>
 ```dart
 class Point {
@@ -3870,9 +3855,9 @@ class Point {
 
 void main() {
   var point = Point();
-  point.x = 4; // 使用 x 的 Setter 方法。
-  assert(point.x == 4); // 使用 x 的 Getter 方法。
-  assert(point.y == null); // 默认值为 null。
+  point.x = 4; // Use the setter method for x.
+  assert(point.x == 4); // Use the getter method for x.
+  assert(point.y == null); // Values default to null.
 }
 ```
 
@@ -3914,7 +3899,6 @@ a new instance of a class:
 （对于[命名式构造函数](#named-constructors) 还可以添加额外的标识符）。
 大部分的构造函数形式是生成式构造函数，其用于创建一个类的实例：
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (constructor-long-way)" plaster="none"?>
 ```dart
 class Point {
@@ -3922,7 +3906,7 @@ class Point {
   double y = 0;
 
   Point(double x, double y) {
-    // 还会有更好的方式来实现此逻辑，敬请期待。
+    // There's a better way to do this, stay tuned.
     this.x = x;
     this.y = y;
   }
@@ -3947,14 +3931,14 @@ is so common, Dart has syntactic sugar to make it easy:
 
 对于大多数编程语言来说在构造函数中为实例变量赋值的过程都是类似的，而 Dart 则提供了一种特殊的语法糖来简化该步骤：
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (constructor-initializer)" plaster="none"?>
 ```dart
 class Point {
   double x = 0;
   double y = 0;
 
-  // 在构造函数体执行前用于设置 x 和 y 的语法糖。
+  // Syntactic sugar for setting x and y
+  // before the constructor body runs.
   Point(this.x, this.y);
 }
 ```
@@ -4128,12 +4112,10 @@ initializers with commas.
 [TODO #2950: Maybe change example or point to discussion of ! (in map section?).]
 {% endcomment %}
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list)"?>
 ```dart
 // Initializer list sets instance variables before
 // the constructor body runs.
-// 使用初始化列表在构造函数体执行前设置实例变量。
 Point.fromJson(Map<String, double> json)
     : x = json['x']!,
       y = json['y']! {
@@ -4207,10 +4189,10 @@ empty, with the constructor call appearing after a colon (:).
 class Point {
   double x, y;
 
-  // 该类的主构造函数。
+  // The main constructor for this class.
   Point(this.x, this.y);
 
-  // 委托实现给主构造函数。
+  // Delegates to the main constructor.
   Point.alongXAxis(double x) : this(x, 0);
 }
 ```
@@ -4272,14 +4254,14 @@ initializes a final variable from a JSON object.
 和 `Logger.fromJson` 工厂构造函数从 JSON 对象中
 初始化一个最终变量。
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/classes/logger.dart"?>
 ```dart
 class Logger {
   final String name;
   bool mute = false;
 
-  // _cache 变量是库私有的，因为在其名字前面有下划线。
+  // _cache is library-private, thanks to
+  // the _ in front of its name.
   static final Map<String, Logger> _cache =
       <String, Logger>{};
 
@@ -4438,7 +4420,6 @@ Getter 和 Setter 是一对用来读写对象属性的特殊方法，
 如果为非 final 属性的话还会有一个 Setter 方法，
 你可以使用 `get` 和 `set` 关键字为额外的属性添加 Getter 和 Setter 方法：
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/classes/rectangle.dart"?>
 ```dart
 class Rectangle {
@@ -4446,7 +4427,7 @@ class Rectangle {
 
   Rectangle(this.left, this.top, this.width, this.height);
 
-  // 定义两个计算产生的属性：right 和 bottom。
+  // Define two calculated properties: right and bottom.
   double get right => left + width;
   set right(double value) => left = value - width;
   double get bottom => top + height;
@@ -4497,18 +4478,17 @@ To make a method abstract, use a semicolon (;) instead of a method body:
 
 直接使用分号（;）替代方法体即可声明一个抽象方法：
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/classes/doer.dart"?>
 ```dart
 abstract class Doer {
-  // 定义实例变量和方法等等……
+  // Define instance variables and methods...
 
-  void doSomething(); // 定义一个抽象方法。
+  void doSomething(); // Define an abstract method.
 }
 
 class EffectiveDoer extends Doer {
   void doSomething() {
-    // 提供一个实现，所以在这里该方法不再是抽象的……
+    // Provide an implementation, so the method is not abstract here...
   }
 }
 ```
@@ -4536,16 +4516,14 @@ method:
 抽象类常常会包含 [抽象方法](#abstract-methods)。
 下面是一个声明具有抽象方法的抽象类示例：
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/classes/misc.dart (abstract)"?>
 ```dart
 // This class is declared abstract and thus
 // can't be instantiated.
-// 该类被声明为抽象的，因此它不能被实例化。
 abstract class AbstractContainer {
-  // 定义构造函数、字段、方法等……
+  // Define constructors, fields, methods...
 
-  void updateChildren(); // 抽象方法。
+  void updateChildren(); // Abstract method.
 }
 ```
 
@@ -4571,33 +4549,31 @@ interfaces. For example:
 一个类可以通过关键字 `implements` 来实现一个或多个接口
 并实现每个接口定义的 API：
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/classes/impostor.dart"?>
 ```dart
 // A person. The implicit interface contains greet().
-// Person 类的隐式接口中包含 greet() 方法。
 class Person {
   // In the interface, but visible only in this library.
   final String _name;
 
-  // 构造函数不在接口中。
+  // Not in the interface, since this is a constructor.
   Person(this._name);
 
-  // greet() 方法在接口中。
-  String greet(String who) => '你好，$who。我是$_name。';
+  // In the interface.
+  String greet(String who) => 'Hello, $who. I am $_name.';
 }
 
-// Person 接口的一个实现。
+// An implementation of the Person interface.
 class Impostor implements Person {
   String get _name => '';
 
-  String greet(String who) => '你好$who。你知道我是谁吗？';
+  String greet(String who) => 'Hi $who. Do you know who I am?';
 }
 
-String greetBob(Person person) => person.greet('小芳');
+String greetBob(Person person) => person.greet('Bob');
 
 void main() {
-  print(greetBob(Person('小芸')));
+  print(greetBob(Person('Kathy')));
   print(greetBob(Impostor()));
 }
 ```
@@ -4700,7 +4676,8 @@ instance variable, you can override `noSuchMethod()`:
 <?code-excerpt "misc/lib/language_tour/classes/no_such_method.dart" replace="/noSuchMethod(?!,)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class A {
-  // 除非你重写 noSuchMethod，否则调用一个不存在的成员会导致 NoSuchMethodError。
+  // Unless you override noSuchMethod, using a
+  // non-existent member results in a NoSuchMethodError.
   @override
   void [!noSuchMethod!](Invocation invocation) {
     print('You tried to use a non-existent member: '
@@ -4832,19 +4809,18 @@ you'll get a warning if you don't handle all of the enum's values:
 但是需要注意的是必须处理枚举值的每一种情况，
 即每一个枚举值都必须成为一个 case 子句，不然会出现警告：
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (switch)"?>
 ```dart
 var aColor = Color.blue;
 
 switch (aColor) {
   case Color.red:
-    print('红如玫瑰！');
+    print('Red as roses!');
     break;
   case Color.green:
-    print('绿如草原！');
+    print('Green as grass!');
     break;
-  default: // 没有该语句会出现警告。
+  default: // Without this, you see a WARNING.
     print(aColor); // 'Color.blue'
 }
 ```
@@ -5200,15 +5176,14 @@ List、Set 以及 Map 字面量也可以是参数化的。
 定义参数化的 Map 只需要在大括号前添加
 <code>&lt;<em>keyType</em>, <em>valueType</em>></code>：
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/generics/misc.dart (collection-literals)"?>
 ```dart
-var names = <String>['小芸', '小芳', '小民'];
-var uniqueNames = <String>{'小芸', '小芳', '小民'};
+var names = <String>['Seth', 'Kathy', 'Lars'];
+var uniqueNames = <String>{'Seth', 'Kathy', 'Lars'};
 var pages = <String, String>{
-  'index.html': '主页',
-  'robots.txt': '网页机器人提示',
-  'humans.txt': '我们是人类，不是机器'
+  'index.html': 'Homepage',
+  'robots.txt': 'Hints for web robots',
+  'humans.txt': 'We are people, not machines'
 };
 ```
 
@@ -5282,8 +5257,8 @@ You can do this using `extends`.
 <?code-excerpt "misc/lib/language_tour/generics/base_class.dart" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class Foo<T [!extends SomeBaseClass!]> {
-  // 具体实现……
-  String toString() => "'Foo<$T>' 的实例";
+  // Implementation goes here...
+  String toString() => "Instance of 'Foo<$T>'";
 }
 
 class Extender extends SomeBaseClass {...}
@@ -5306,7 +5281,7 @@ It's also OK to specify no generic argument:
 <?code-excerpt "misc/test/language_tour/generics_test.dart (no-generic-arg-ok)" replace="/expect\((.*?).toString\(\), .(.*?).\);/print($1); \/\/ $2/g"?>
 ```dart
 var foo = Foo();
-print(foo); // 'Foo<SomeBaseClass>' 的实例 (Instance of 'Foo<SomeBaseClass>')
+print(foo); // Instance of 'Foo<SomeBaseClass>'
 ```
 
 Specifying any non-`SomeBaseClass` type results in an error:
@@ -5330,13 +5305,12 @@ A newer syntax, called _generic methods_, allows type arguments on methods and f
 
 <!-- {{site.dartpad}}/a02c53b001977efa4d803109900f21bb -->
 <!-- https://gist.github.com/a02c53b001977efa4d803109900f21bb -->
-<!--skip-->
 <?code-excerpt "misc/test/language_tour/generics_test.dart (method)" replace="/<T.(?=\()|T/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 [!T!] first[!<T>!](List<[!T!]> ts) {
-  // 处理一些初始化工作或错误检测……
+  // Do some initial work or error checking, then...
   [!T!] tmp = ts[0];
-  // 处理一些额外的检查……
+  // Do some additional checking or processing...
   return tmp;
 }
 {% endprettify %}
@@ -5461,10 +5435,10 @@ this:
 import 'package:lib1/lib1.dart';
 import 'package:lib2/lib2.dart' as lib2;
 
-// 使用 lib1 的 Element 类。
+// Uses Element from lib1.
 Element element1 = Element();
 
-// 使用 lib2 的 Element 类。
+// Uses Element from lib2.
 lib2.Element element2 = lib2.Element();
 ```
 
@@ -5477,13 +5451,12 @@ the library. For example:
 
 如果你只想使用代码库中的一部分，你可以有选择地导入代码库。例如：
 
-<!--skip-->
 <?code-excerpt "misc/lib/language_tour/libraries/show_hide.dart" replace="/(lib\d)\.dart/package:$1\/$&/g"?>
 ```dart
-// 只导入 lib1 中的 foo。(Import only foo).
+// Import only foo.
 import 'package:lib1/lib1.dart' show foo;
 
-// 导入 lib2 中除了 foo 外的所有。
+// Import all names EXCEPT foo.
 import 'package:lib2/lib2.dart' hide foo;
 ```
 
@@ -5682,7 +5655,7 @@ function marked as `async`:
 {% prettify dart tag=pre+code %}
 Future<void> checkVersion() [!async!] {
   var version = [!await!] lookUpVersion();
-  // 使用 version 继续处理逻辑
+  // Do something with version
 }
 {% endprettify %}
 
@@ -5711,7 +5684,7 @@ Use `try`, `catch`, and `finally` to handle errors and cleanup in code that uses
 try {
   version = await lookUpVersion();
 } catch (e) {
-  // 无法找到版本时做出的反应
+  // React to inability to look up the version
 }
 ```
 
@@ -5719,7 +5692,8 @@ You can use `await` multiple times in an `async` function.
 For example, the following code waits three times
 for the results of functions:
 
-你可以在异步函数中多次使用 `await` 关键字。例如，下面代码中等待了三次函数结果：
+你可以在异步函数中多次使用 `await` 关键字。
+例如，下面代码中等待了三次函数结果：
 
 <?code-excerpt "misc/lib/language_tour/async.dart (repeated-await)"?>
 ```dart
@@ -5735,7 +5709,10 @@ This Future object indicates a promise to return an object.
 The value of <code>await <em>expression</em></code> is that returned object.
 The await expression makes execution pause until that object is available.
 
-<code>await <em>表达式的返回值通常是一个 Future 对象；如果不是的话也会自动将其包裹在一个 Future 对象里。Future 对象代表一个“承诺”，<code>await <em>表达式</em></code>会阻塞直到需要的对象返回。
+<code>await <em>表达式的返回值通常是一个 Future 对象；
+如果不是的话也会自动将其包裹在一个 Future 对象里。
+Future 对象代表一个“承诺”，
+<code>await <em>表达式</em></code>会阻塞直到需要的对象返回。
 
 **If you get a compile-time error when using `await`,
 make sure `await` is in an `async` function.**
@@ -5743,13 +5720,14 @@ For example, to use `await` in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
 **如果在使用 `await` 时导致编译错误，请确保 `await` 在一个异步函数中使用**。
-例如，如果想在 main() 函数中使用 `await`，那么 `main()` 函数就必须使用 `async` 关键字标识。
+例如，如果想在 main() 函数中使用 `await`，
+那么 `main()` 函数就必须使用 `async` 关键字标识。
 
 <?code-excerpt "misc/lib/language_tour/async.dart (main)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 Future<void> main() [!async!] {
   checkVersion();
-  print('在 Main 函数中执行：版本是 ${[!await!] lookUpVersion()}');
+  print('In main: version is ${[!await!] lookUpVersion()}');
 }
 {% endprettify %}
 
@@ -5768,7 +5746,8 @@ Adding the `async` keyword to a function makes it return a Future.
 For example, consider this synchronous function,
 which returns a String:
 
-将关键字 `async` 添加到函数并让其返回一个 Future 对象。假设有如下返回 String 对象的方法：
+将关键字 `async` 添加到函数并让其返回一个 Future 对象。
+假设有如下返回 String 对象的方法：
 
 <?code-excerpt "misc/lib/language_tour/async.dart (sync-lookUpVersion)"?>
 ```dart
@@ -5847,7 +5826,7 @@ An asynchronous for loop has the following form:
 <?code-excerpt "misc/lib/language_tour/async.dart (await-for)"?>
 ```dart
 await for (varOrType identifier in expression) {
-  // 每当 Stream 发出一个值时会执行
+  // Executes each time the stream emits a value.
 }
 ```
 
@@ -5984,7 +5963,6 @@ and appending an exclamation. Click **Run** to execute the code.
 函数接受三个字符串参数，函数体将三个字符串拼接，字符串间用空格分割，
 并在结尾附加了一个感叹号。单击运行按钮执行代码。
 
-
 <?code-excerpt "misc/lib/language_tour/callable_classes.dart"?>
 ```dart:run-dartpad:height-350px:ga_id-callable_classes:null_safety-true
 class WannabeFunction {
@@ -5992,7 +5970,7 @@ class WannabeFunction {
 }
 
 var wf = WannabeFunction();
-var out = wf('你好', '，使用 Dart 的', '朋友');
+var out = wf('Hi', 'there,', 'gang');
 
 void main() => print(out);
 ```
@@ -6124,7 +6102,7 @@ class Television {
     turnOn();
   }
 
-  /// 打开 TV 的电源。
+  /// Turns the TV's power on.
   void turnOn() {...}
 }
 {% endprettify %}
