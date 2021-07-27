@@ -10,7 +10,7 @@ introduction to the language for people who like to learn by example.
 You might also want to check out the language and library tours,
 or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
 
-本文向你展示的 Dart 语言用法并不全面&mdash;
+本文向你展示的 Dart 语言用法并不全面&mdash;&mdash;
 这里只是对那些喜欢通过示例了解语言的人提供一个简单的介绍。
 你也许会对 [Dart 语言的速查表 CodeLab](/codelabs/dart-cheatsheet) 或
 Dart 语言概览和库概览更感兴趣。
