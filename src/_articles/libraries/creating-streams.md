@@ -89,20 +89,21 @@ outputs new events. Example:
 ```dart
 /// Splits a stream of consecutive strings into lines.
 ///
-/// 输入的字符串来自于"源" Stream 并以较小的 chunk 块提供。
+/// The input string is provided in smaller chunks through
+/// the `source` stream.
 Stream<String> lines(Stream<String> source) async* {
-  // 存储从上一个数据块中分离出的字符串行。
+  // Stores any partial line from the previous chunk.
   var partial = '';
-  // 等到新的数据块可用时开始处理。
+  // Wait until a new chunk is available, then process it.
   await for (var chunk in source) {
     var lines = chunk.split('\n');
-    lines[0] = partial + lines[0]; // 追加拼接行。
-    partial = lines.removeLast(); // 删除剩余不完整的行。
+    lines[0] = partial + lines[0]; // Prepend partial line.
+    partial = lines.removeLast(); // Remove new partial line.
     for (var line in lines) {
-      yield line; // 将分离的每个字符串行添加至输出 Stream。
+      yield line; // Add lines to output stream.
     }
   }
-  // 最后如果最终的字符串行不为空则将其添加至输出流。
+  // Add final partial line to output stream, if any.
   if (partial.isNotEmpty) yield partial;
 }
 ```
@@ -339,7 +340,7 @@ and then feeds data into it based on timer events,
 which are neither futures nor stream events.
 
 下面的代码将为你展示一个简单的示例
-（出自 [stream_controller_bad.dart](code/stream_controller_bad.dart)），
+（出自 [stream_controller_bad.dart][]），
 该示例使用 `StreamController` 来实现上一个示例中的 `timedCounter()` 函数。
 尽管该示例有一定的缺陷，但其为你展示了 `StreamController` 的基本用法。
 该代码将数据直接添加至 `StreamController` 而不是从 Future 或 Stream 中获取，
@@ -357,14 +358,14 @@ Stream<int> timedCounter(Duration interval, [int? maxCount]) {
   int counter = 0;
   void tick(Timer timer) {
     counter++;
-    controller.add(counter); // 请求 Stream 将计数器值作为事件发送。
+    controller.add(counter); // Ask stream to send counter values as event.
     if (maxCount != null && counter >= maxCount) {
       timer.cancel();
-      controller.close(); // 请求 Stream 关闭并告知监听器。
+      controller.close(); // Ask stream to shut down and tell listeners.
     }
   }
 
-  Timer.periodic(interval, tick); // 缺点：在其拥有订阅者之前开始了。
+  Timer.periodic(interval, tick); // BAD: Starts before it has subscribers.
   return controller.stream;
 }
 {% endprettify %}
@@ -435,9 +436,9 @@ void listenAfterDelay() async {
   var counterStream = timedCounter(const Duration(seconds: 1), 15);
   await Future.delayed(const Duration(seconds: 5));
 
-  // 5 秒后添加一个监听器。
+  // After 5 seconds, add a listener.
   await for (int n in counterStream) {
-    print(n); // 每秒打印输出一个整数，共打印 15 次。
+    print(n); // Print an integer every second, 15 times.
   }
 }
 ```
@@ -508,9 +509,9 @@ void listenWithPause() {
   late StreamSubscription<int> subscription;
 
   subscription = counterStream.listen((int counter) {
-    print(counter); // 每秒打印输出一个整数。
+    print(counter); // Print an integer every second.
     if (counter == 5) {
-      // 打印输出 5 次后暂停 5 秒然后恢复。
+      // After 5 ticks, pause for five seconds, then resume.
       subscription.pause(Future.delayed(const Duration(seconds: 5)));
     }
   });
@@ -552,7 +553,7 @@ Stream<int> timedCounter(Duration interval, [int? maxCount]) {
 
   void tick(_) {
     counter++;
-    controller.add(counter); // 请求stream将计数器值作为事件发送。
+    controller.add(counter); // Ask stream to send counter values as event.
     if (counter == maxCount) {
       timer?.cancel();
       controller.close(); // Ask stream to shut down and tell listeners.
