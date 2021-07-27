@@ -4,7 +4,7 @@ title: 动态获取数据
 description: Use HttpRequest to fetch data from a file or a server.
 description: 使用 HttpRequest 从服务器或文件里获得数据。
 ---
-<?code-excerpt path-base="../null_safety_examples/fetch_data"?>
+<?code-excerpt path-base="fetch_data"?>
 
 <div class="mini-toc" markdown="1">
   <h4>What's the point?</h4>
@@ -131,7 +131,8 @@ void _populateFromJson() {
     "favoriteThings": ["monkeys", "parrots", "lattes"]
   }''';
 
-  Map jsonData = json.decode(jsonDataAsString) as Map;
+  Map<String, dynamic> jsonData =
+      json.decode(jsonDataAsString) as Map<String, dynamic>;
 
   favoriteNumber.value = jsonData['favoriteNumber'].toString();
   valueOfPi.value = jsonData['valueOfPi'].toString();
@@ -253,7 +254,7 @@ void _showJson([Event? _]) {
 Shown below is the JSON string that results from the code
 using the original values from the app:
 
-<img class="scale-img-max" src="images/jsonstring.png"
+<img class="scale-img-max" src="images/jsonstring.svg"
      alt="The JSON string for the its_all_about_you app">
 
 - **Numeric** and boolean values
@@ -290,7 +291,8 @@ const jsonDataAsString = '''{
   "favoriteThings": ["monkeys", "parrots", "lattes"]
 }''';
 
-Map jsonData = json.decode(jsonDataAsString) as Map;
+Map<String, dynamic> jsonData =
+    json.decode(jsonDataAsString) as Map<String, dynamic>;
 ```
 
 This code calls [json.decode()][] with a properly formatted JSON
@@ -310,7 +312,7 @@ JSON data from a file that is co-located with the code for the app.
 The `json.decode()` function reads the string and
 builds Dart objects from it.
 In this example,
-the `json.decode()` function creates a `Map` object based on
+the `json.decode()` function creates a `Map<String, dynamic>` object based on
 the information in the JSON string.
 The `Map` contains objects of various types
 including an integer, a double, a boolean value, a regular string,
@@ -334,7 +336,7 @@ contain three pieces of information:
 
 For example, the URL for this page breaks down as follows:
 
-<img class="scale-img-max" src="images/uri-details.png"
+<img class="scale-img-max" src="images/uri-details.svg"
      alt="The tutorial URL">
 
 This URL specifies the HTTP protocol.
@@ -343,7 +345,7 @@ the browser sends an HTTP GET request to a web server,
 and the web server sends an HTTP response that contains the
 contents of the page (or an error message).
 
-<img class="scale-img-max" src="images/client-server.png"
+<img class="scale-img-max" src="images/client-server.svg"
      alt="Basic HTTP communication between client and server">
 
 Most HTTP requests in a web browser are simple GET requests
@@ -481,7 +483,7 @@ Future<void> makeRequest(Event _) async {
 }
 ```
 
-<img class="scale-img-max" src="images/portmanteaux-code.png"
+<img class="scale-img-max" src="images/portmanteaux-code.svg"
      alt="Making an HTTP GET request">
 
 ### Sending the request
@@ -511,7 +513,7 @@ that in turn calls `requestComplete()`.
 This callback function is called when the request completes,
 either successfully or unsuccessfully.
 
-<img class="scale-img-max" src="images/set-callback.png"
+<img class="scale-img-max" src="images/set-callback.svg"
      alt="Set up a callback function for request completion">
 
 The `requestComplete()` function

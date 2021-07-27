@@ -35,9 +35,10 @@ The Dart 2 language specification is available in PDF format:
 [LaTeX file]: https://github.com/dart-lang/language/blob/master/specification/dartLangSpec.tex
 
 
-New language features are typically described using informal language feature specifications in the dart-lang/language repo:
+New language features are typically described using 
+informal language feature specifications in the [dart-lang/language][] repo:
 
-在 dart-lang/language 仓库中通常使用非正式语言功能规范来描述新的语言功能：
+在 [dart-lang/language][] 仓库中通常使用非正式语言功能规范来描述新的语言功能：
 
   * [Accepted informal proposals][]
 
@@ -47,6 +48,7 @@ New language features are typically described using informal language feature sp
 
     [潜在的功能草案][Drafts of potential features]
 
+[dart-lang/language]: https://github.com/dart-lang/language
 [Accepted informal proposals]: https://github.com/dart-lang/language/tree/master/accepted
 [Drafts of potential features]: https://github.com/dart-lang/language/tree/master/working
 
@@ -68,7 +70,7 @@ the Ecma International website:
 
 正式的 Dart 1.x 语言规范可从 Ecma International 网站获得：
 
-* <a href="http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-408.pdf"
+* <a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-408/"
    target="_blank" rel="noopener">Dart Programming Language Specification, 4<sup>th</sup> Edition</a>
 
   <a href="http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-408.pdf"

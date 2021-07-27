@@ -48,14 +48,17 @@ which the following packages provide:
   partially determines the [score]({{site.pub}}/help/scoring) of
   packages uploaded to [pub.dev]({{site.pub}}).
 
-[effective_dart][]
-: A set of rules corresponding to the guidelines in [Effective Dart][].
+[effective_dart][] (_deprecated_)
+: The deprecated set of rules previously used to
+  conform to the guidelines in [Effective Dart][].
+  Consider migrating to one of the rule sets in
+  the [lints][] or [flutter_lints][] packages.
 
 [pedantic][] (_deprecated_)
 : The deprecated set of rules previously used to match
   the rules used for all Google-internal Dart code.
   Consider migrating to one of the rule sets in
-  the [lints][] or [flutter_lints][] package.
+  the [lints][] or [flutter_lints][] packages.
   See [Migrating from pedantic][] for more information on switching.
    
 [Migrating from pedantic]: https://github.com/dart-lang/lints#migrating-from-packagepedantic
@@ -109,19 +112,7 @@ These rules identify possible errors and other mistakes in your code.
 
 {% if lint.group == "errors" %}
 
-### {{lint.name}}
-
-{{lint.description}}
-
-{% if lint.maturity != "stable" %}
-_This rule is currently **{{lint.maturity}}**._
-{% endif %}
-
-{% include incompatible-rules.md incompatible=lint.incompatible %}
-
-#### Details
-
-{{lint.details}}
+{% include linter-rule.md lint=lint %}
 
 {% endif %}
 
@@ -136,19 +127,7 @@ largely derived from the [Dart style guide][].
 
 {% if lint.group == "style" %}
 
-### {{lint.name}}
-
-{{lint.description}}
-
-{% if lint.maturity != "stable" %}
-_This rule is currently **{{lint.maturity}}**._
-{% endif %}
-
-{% include incompatible-rules.md incompatible=lint.incompatible %}
-
-#### Details
-
-{{lint.details}}
+{% include linter-rule.md lint=lint %}
 
 {% endif %}
 
@@ -163,19 +142,7 @@ These rules identify possible issues around
 
 {% if lint.group == "pub" %}
 
-### {{lint.name}}
-
-{{lint.description}}
-
-{% if lint.maturity != "stable" %}
-_This rule is currently **{{lint.maturity}}**._
-{% endif %}
-
-{% include incompatible-rules.md incompatible=lint.incompatible %}
-
-#### Details
-
-{{lint.details}}
+{% include linter-rule.md lint=lint %}
 
 {% endif %}
 

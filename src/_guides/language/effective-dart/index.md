@@ -43,7 +43,7 @@ write consistent, robust, fast code too. There are two overarching themes:
     cramming a whole program into a single line. The goal is code that is
     *economical*, not *dense*.
 
-    如果有多种方式来描述一件事情，那么你通常应该选择其中最简洁的方式。这并不意味着你要像 [Code Golf][code golf]（代码高尔夫挑战赛）一样将所有代码塞到一行中。而是应该让代码变得 **简约** 而非 **密集**。
+    如果有多种方式来描述一件事情，那么你通常应该选择其中最简洁的方式。这并不意味着你要像 [code golf][]（代码高尔夫挑战赛）一样将所有代码塞到一行中。而是应该让代码变得 **简约** 而非 **密集**。
 
 [code golf]: https://en.wikipedia.org/wiki/Code_golf
 
@@ -51,16 +51,19 @@ The Dart analyzer has a linter to help you write good, consistent code.
 If a linter rule exists that can help you follow a guideline,
 then the guideline links to that rule. Here's an example:
 
-Dart Analyzer 中有一个 Linter 工具，该工具可以帮助你编写优秀的、一致性的代码。如果存在一个 Linter 规则可以帮助你遵循某个指南准则，那么该指南准则将链接到该规则。比如下面的示例：
+Dart Analyzer 中有一个 Linter 工具，该工具可以帮助你编写优秀的、一致性的代码。
+如果存在一个 Linter 规则可以帮助你遵循某个指南准则，
+那么该指南准则将链接到该规则。比如下面的示例：
 
-{% include linter-rule.html rule="prefer_collection_literals" %}
+{% include linter-rule-mention.html rule="prefer_collection_literals" %}
 
 For help on
 [enabling linter rules](/guides/language/analysis-options#enabling-linter-rules),
 see the documentation for
 [customizing static analysis](/guides/language/analysis-options).
 
-更多关于 [开启 Linter 规则](/guides/language/analysis-options#enabling-linter-rules) 的帮助，请查阅 [自定义静态分析](/guides/language/analysis-options) 文档。
+更多关于 [开启 Linter 规则](/guides/language/analysis-options#enabling-linter-rules) 的帮助，
+请查阅 [自定义静态分析](/guides/language/analysis-options) 文档。
 
 ## The guides
 
@@ -75,7 +78,7 @@ We split the guidelines into a few separate pages for easy digestion:
     you. The style guide also specifies how identifiers are formatted:
     `camelCase`, `using_underscores`, etc.
 
-    **[风格指南][Style Guide]** &ndash; 该部分定义了布局和组织代码的规则，或者说是 [dart format] 不能为你格式化的那些代码的布局和组织规则。风格指南还为你指定了标识符的格式，比如：驼峰式大小写、下划线的使用等等。
+    **[风格指南][Style Guide]** &ndash; 该部分定义了布局和组织代码的规则，或者说是 [dart format][] 不能为你格式化的那些代码的布局和组织规则。风格指南还为你指定了标识符的格式，比如：驼峰式大小写、下划线的使用等等。
 
   * **[Documentation Guide][]** &ndash; This tells you everything you need to
     know about what goes inside comments. Both doc comments and regular,
@@ -99,7 +102,8 @@ We split the guidelines into a few separate pages for easy digestion:
 For links to all the guidelines, see the
 [summary](#summary-of-all-rules).
 
-有关所有指南的链接，请查阅 [概览](#summary-of-all-rules)。
+有关所有指南的链接，
+请查阅 [概览](#summary-of-all-rules)。
 
 {% comment %}
 <aside class="alert alert-info" markdown="1">
@@ -135,36 +139,43 @@ Each guideline starts with one of these words:
   idea. Hopefully, we don't have as many of these as other languages do because
   we have less historical baggage.
 
-  **不要**  准则所描述的内容是相反的：描述的准则不是一个好注意。幸运的是，我们不会像其他语言有那么多这样的准则，因为我们没有太多的历史包袱。
+  **不要**  准则所描述的内容是相反的：描述的准则不是一个好注意。
+  幸运的是，我们不会像其他语言有那么多这样的准则，因为我们没有太多的历史包袱。
 
 * **PREFER** guidelines are practices that you *should* follow. However, there
   may be circumstances where it makes sense to do otherwise. Just make sure you
   understand the full implications of ignoring the guideline when you do.
 
-  **推荐** 准则所描述的内容 **应该** 被遵守。但是在有些情况下，可能有更好的或者更合理的做法。请确保在你完全理解准则的情况下，再忽视这些准则。
+  **推荐** 准则所描述的内容 **应该** 被遵守。但是在有些情况下，
+  可能有更好的或者更合理的做法。请确保在你完全理解准则的情况下，再忽视这些准则。
 
 * **AVOID** guidelines are the dual to "prefer": stuff you shouldn't do but
   where there may be good reasons to on rare occasions.
 
-  **避免** 该单词描述的准则与 “推荐” 描述的准则相反：显然，这些事不应该做，但不排除在极少数场合下有充分的理由可以做。
+  **避免** 该单词描述的准则与 “推荐” 描述的准则相反：
+  显然，这些事不应该做，但不排除在极少数场合下有充分的理由可以做。
 
 * **CONSIDER** guidelines are practices that you might or might not want to
   follow, depending on circumstances, precedents, and your own preference.
 
-  **考虑**  准则所描述的内容可以遵守也可以不遵守。取决于具体的情况、习惯做法以及自己的偏好。
+  **考虑**  准则所描述的内容可以遵守也可以不遵守。
+  取决于具体的情况、习惯做法以及自己的偏好。
 
 Some guidelines describe an **exception** where the rule does *not* apply. When
 listed, the exceptions may not be exhaustive&mdash;you might still need to use
 your judgement on other cases.
 
-某些准则描述了规则 **不** 适用的 **例外情况**。当这些例外列出时，也有可能不是详尽的&mdash;你可能还需要对其它的情况作出判断。
+某些准则描述了规则 **不** 适用的 **例外情况**。
+当这些例外列出时，也有可能不是详尽的&mdash;你可能还需要对其它的情况作出判断。
 
 This sounds like the police are going to beat down your door if you don't have
 your laces tied correctly. Things aren't that bad. Most of the guidelines here
 are common sense and we're all reasonable people. The goal, as always, is nice,
 readable and maintainable code.
 
-这听起来好像有点小题大做。其实并没有那么糟糕。大部分的准则都是常识，也符合我们的认知。最终要达到的目标是写出优雅，可读，可维护的代码。
+这听起来好像有点小题大做。其实并没有那么糟糕。
+大部分的准则都是常识，也符合我们的认知。
+最终要达到的目标是写出优雅，可读，可维护的代码。
 
 ## Glossary
 

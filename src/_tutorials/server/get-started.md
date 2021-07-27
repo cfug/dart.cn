@@ -51,7 +51,7 @@ greeting to use another language.
 
 {{site.alert.end}}
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (hello-world)"?>
+<?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
 ```dart:run-dartpad:ga_id-hello_world
 void main() {
   print('Hello, World!');
@@ -84,10 +84,11 @@ More information:
 
 ## 3. 创建一个小应用
 
-Use the `dart create` command and the `console-full` template
-to create a command-line app:
+Use the [`dart create`](/tools/dart-create) command
+and the `console-full` template to create a command-line app:
 
-使用 `dart create` 命令，以 `console-full` 模板创建一个命令行应用：
+使用 [`dart create`](/tools/dart-create) 命令，
+以 `console-full` 模板创建一个命令行应用：
 
 ```terminal
 $ dart create -t console-full cli
@@ -164,7 +165,7 @@ Let's customize the app you just created.
     编辑 `lib/cli.dart` 以返回一个不同的结果。例如，将先前的值除以2。
     （关于 `~/` 的详情请查看 [Arithmetic operators][]）：
 
-    <?code-excerpt "../null_safety_examples/misc/test/tutorial/get_started.dart (calculate)" replace="/~\/ 2/[!$&!]/g"?>
+    <?code-excerpt "misc/test/tutorial/get_started.dart (calculate)" replace="/~\/ 2/[!$&!]/g"?>
     {% prettify dart tag=pre+code %}
     int calculate() {
       return 6 * 7 [!~/ 2!];
@@ -272,6 +273,8 @@ Check out these resources:
     [Dart 工具](/tools)
 
   * [IDEs](/tools#ides-and-editors)
+* Other examples of natively compiled apps
+  * [native_app](https://github.com/dart-lang/samples/tree/master/native_app)
 
 If you get stuck, find help at [Community and support.](/community)
 

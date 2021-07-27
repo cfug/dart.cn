@@ -243,7 +243,7 @@ checks for the presence of `dart:io` and `dart:html`:
 下面是一个条件导出代码的样例，
 它将检查是否存在 `dart:io` and `dart:html` 库：
 
-<?code-excerpt "../null_safety_examples/create_libraries/lib/hw_mp.dart (export)"?>
+<?code-excerpt "create_libraries/lib/hw_mp.dart (export)"?>
 ```dart
 export 'src/hw_none.dart' // Stub implementation
     if (dart.library.io) 'src/hw_io.dart' // dart:io implementation
@@ -297,7 +297,7 @@ For example, here's the `dart:io` implementation:
 所有条件导出的库必须实现相同的 API。
 下面是 `dart:io` 实现的一个例子：
 
-<?code-excerpt "../null_safety_examples/create_libraries/lib/src/hw_io.dart"?>
+<?code-excerpt "create_libraries/lib/src/hw_io.dart"?>
 ```dart
 import 'dart:io';
 
@@ -312,10 +312,9 @@ String get message => 'Hello World from the VM!';
 And here's the default implementation,
 which uses stubs that throw `UnsupportedError`:
 
+这是一个默认实现，它会导致抛出 `UnsupportedErrors`：
 
-这是一个默认实现，它会导致抛出 UnsupportedErrors：
-
-<?code-excerpt "../null_safety_examples/create_libraries/lib/src/hw_none.dart"?>
+<?code-excerpt "create_libraries/lib/src/hw_none.dart"?>
 ```dart
 void alarm([String? text]) => throw UnsupportedError('hw_none alarm');
 
@@ -328,7 +327,7 @@ you can import the library that has the conditional export code:
 
 在任何平台上，你都可以导入具有条件导出代码的库：
 
-<?code-excerpt "../null_safety_examples/create_libraries/example/hw_example.dart" replace="/create_libraries/hw_mp/g"?>
+<?code-excerpt "create_libraries/example/hw_example.dart" replace="/create_libraries/hw_mp/g"?>
 ```dart
 import 'package:hw_mp/hw_mp.dart';
 
@@ -358,7 +357,7 @@ Enable running a tool from the command line, using
 Listing the tool in the
 [`executables` section](/tools/pub/pubspec#executables)
 of the pubspec allows a user to run it directly without calling
-[`dart pub global run`](/tools/pub/cmd/pub-global#running-a-script-using-pub-global-run).
+[`dart pub global run`](/tools/pub/cmd/pub-global#running-a-script-using-dart-pub-global-run).
 
 如果要创建一个公用的命令行工具，应该将这些工具放到公共目录 `bin` 中。
 使用 [`pub global activate`](/tools/pub/cmd/pub-global#activating-a-package) 命令行

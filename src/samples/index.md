@@ -47,9 +47,10 @@ or the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet).
 Every app has a `main()` function.
 To display text on the console, you can use the top-level `print()` function:
 
-每个应用都有一个 `main()` 函数。你可以使用顶层函数 `print()` 来将一段文本输出显示到控制台：
+每个应用都有一个 `main()` 函数。你可以使用顶层函数
+`print()` 来将一段文本输出显示到控制台：
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (hello-world)"?>
+<?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
 ```dart
 void main() {
   print('Hello, World!');
@@ -64,9 +65,10 @@ void main() {
 Even in type-safe Dart code, most variables don't need explicit types,
 thanks to type inference:
 
-虽然 Dart 是代码类型安全的语言，但是由于其支持类型推断，因此大多数变量不需要显式地指定类型：
+虽然 Dart 是代码类型安全的语言，但是由于其支持类型推断，
+因此大多数变量不需要显式地指定类型：
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (var)"?>
+<?code-excerpt "misc/test/samples_test.dart (var)"?>
 ```dart
 var name = 'Voyager I';
 var year = 1977;
@@ -91,7 +93,7 @@ Dart supports the usual control flow statements:
 
 Dart 支持常用的流程控制语句：
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (control-flow)"?>
+<?code-excerpt "misc/test/samples_test.dart (control-flow)"?>
 ```dart
 if (year >= 2001) {
   print('21st century');
@@ -125,9 +127,10 @@ including `break` and `continue`, `switch` and `case`, and `assert`.
 [We recommend](/guides/language/effective-dart/design#types)
 specifying the types of each function's arguments and return value:
 
-[我们建议](/guides/language/effective-dart/design#types) 为每个函数的参数以及返回值都指定类型：
+[我们建议](/guides/language/effective-dart/design#types)
+为每个函数的参数以及返回值都指定类型：
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (functions)"?>
+<?code-excerpt "misc/test/samples_test.dart (functions)"?>
 ```dart
 int fibonacci(int n) {
   if (n == 0 || n == 1) return n;
@@ -144,7 +147,7 @@ This syntax is especially useful when passing anonymous functions as arguments:
 `=>` (**胖箭头**) 简写语法用于仅包含一条语句的函数。
 该语法在将匿名函数作为参数传递时非常有用：
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (arrow)"?>
+<?code-excerpt "misc/test/samples_test.dart (arrow)"?>
 ```dart
 flybyObjects.where((name) => name.contains('turn')).forEach(print);
 ```
@@ -190,7 +193,7 @@ To access APIs defined in other libraries, use `import`.
 
 使用 `import` 关键字来访问在其它库中定义的 API。
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (import)" plaster="none"?>
+<?code-excerpt "misc/test/samples_test.dart (import)" plaster="none"?>
 ```
 // 导入核心库
 import 'dart:math';
@@ -207,7 +210,9 @@ about libraries and visibility in Dart,
 including library prefixes, `show` and `hide`, 
 and lazy loading through the `deferred` keyword.
 
-你可以 [阅读更多](/guides/language/language-tour#libraries-and-visibility) Dart 中有关库和可见性的内容，包括库前缀、`show` 和 `hide` 关键字以及通过 `deferred` 关键字实现的懒加载。
+你可以 [阅读更多](/guides/language/language-tour#libraries-and-visibility)
+Dart 中有关库和可见性的内容，包括库前缀、`show` 和 `hide`
+关键字以及通过 `deferred` 关键字实现的懒加载。
 
 ## Classes
 
@@ -217,20 +222,18 @@ Here's an example of a class with three properties, two constructors,
 and a method. One of the properties can't be set directly, so it's
 defined using a getter method (instead of a variable).
 
-下面的示例中向你展示了一个包含三个属性、两个构造函数以及一个方法的类。其中一个属性不能直接赋值，因此它被定义为一个 getter 方法（而不是变量）。
+下面的示例中向你展示了一个包含三个属性、
+两个构造函数以及一个方法的类。其中一个属性不能直接赋值，
+因此它被定义为一个 getter 方法（而不是变量）。
 
-{% comment %}
-The linter rule sort_constructors_first made us put the getter below
-the constructors: https://github.com/dart-lang/linter/issues/859.
-{% endcomment %}
-
-<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (class)"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (class)"?>
 ```dart
 class Spacecraft {
   String name;
   DateTime? launchDate;
 
-  int? get launchYear => launchDate?.year; // read-only non-final property
+  // Read-only non-final property
+  int? get launchYear => launchDate?.year;
 
   // 构造函数，带有可以直接为成员变量赋值的语法糖。
   Spacecraft(this.name, this.launchDate) {
@@ -243,9 +246,11 @@ class Spacecraft {
   // 方法。
   void describe() {
     print('Spacecraft: $name');
-    var launchDate = this.launchDate; // Type promotion doesn't work on getters.
+    // Type promotion doesn't work on getters.
+    var launchDate = this.launchDate;
     if (launchDate != null) {
-      int years = DateTime.now().difference(launchDate).inDays ~/ 365;
+      int years =
+          DateTime.now().difference(launchDate).inDays ~/ 365;
       print('Launched: $launchYear ($years years ago)');
     } else {
       print('Unlaunched');
@@ -258,7 +263,7 @@ You might use the `Spacecraft` class like this:
 
 你可以像下面这样使用 `Spacecraft` 类：
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (use class)" plaster="none"?>
+<?code-excerpt "misc/test/samples_test.dart (use class)" plaster="none"?>
 ```dart
 var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
 voyager.describe();
@@ -271,7 +276,10 @@ voyager3.describe();
 including initializer lists, optional `new` and `const`, redirecting constructors,
 `factory` constructors, getters, setters, and much more.
 
-你可以 [阅读更多](/guides/language/language-tour#classes) Dart 中有关类的内容，包括初始化列表、可选的 `new` 和 `const` 关键字、重定向构造函数、由 `factory` 关键字定义的工厂构造函数以及 Getter 和 Setter 方法等等。
+你可以 [阅读更多](/guides/language/language-tour#classes)
+Dart 中有关类的内容，包括初始化列表、可选的 `new` 和 `const` 关键字、
+重定向构造函数、由 `factory` 关键字定义的工厂构造函数
+以及 Getter 和 Setter 方法等等。
 
 ## Inheritance
 
@@ -281,7 +289,7 @@ Dart has single inheritance.
 
 Dart 支持单继承。
 
-<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (extends)"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (extends)"?>
 ```dart
 class Orbiter extends Spacecraft {
   double altitude;
@@ -303,7 +311,7 @@ a mixin declaration:
 
 Mixin 是一种在多个类层次结构中重用代码的方法。下面的是声明一个 Mixin 的做法：
 
-<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (mixin)"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (mixin)"?>
 ```dart
 mixin Piloted {
   int astronauts = 1;
@@ -318,7 +326,7 @@ To add a mixin's capabilities to a class, just extend the class with the mixin.
 
 现在你只需使用 Mixin 的方式继承这个类就可将该类中的功能添加给其它类。
 
-<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (mixin use)" replace="/with/[!$&!]/g"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (mixin-use)" replace="/with/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class PilotedCraft extends Spacecraft [!with!] Piloted {
   // ···
@@ -341,9 +349,11 @@ Dart has no `interface` keyword.
 Instead, all classes implicitly define an interface. 
 Therefore, you can implement any class.
 
-Dart 没有 `interface` 关键字。相反，所有的类都隐式定义了一个接口。因此，任意类都可以作为接口被实现。
+Dart 没有 `interface` 关键字。
+相反，所有的类都隐式定义了一个接口。
+因此，任意类都可以作为接口被实现。
 
-<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (implements)"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (implements)"?>
 ```dart
 class MockSpaceship implements Spacecraft {
   // ···
@@ -358,9 +368,10 @@ You can create an abstract class
 to be extended (or implemented) by a concrete class. 
 Abstract classes can contain abstract methods (with empty bodies).
 
-你可以创建一个被任意具体类扩展（或实现）的抽象类。抽象类可以包含抽象方法（不含方法体的方法）。
+你可以创建一个被任意具体类扩展（或实现）的抽象类。
+抽象类可以包含抽象方法（不含方法体的方法）。
 
-<?code-excerpt "../null_safety_examples/misc/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
+<?code-excerpt "misc/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 [!abstract!] class Describable {
   void describe();
@@ -376,7 +387,8 @@ Abstract classes can contain abstract methods (with empty bodies).
 Any class extending `Describable` has the `describeWithEmphasis()` method, 
 which calls the extender's implementation of `describe()`.
 
-任意一个扩展了 `Describable` 的类都拥有 `describeWithEmphasis()` 方法，这个方法又会去调用实现类中实现的 `describe()` 方法。
+任意一个扩展了 `Describable` 的类都拥有 `describeWithEmphasis()` 方法，
+这个方法又会去调用实现类中实现的 `describe()` 方法。
 
 [Read more](/guides/language/language-tour#abstract-classes) 
 about abstract classes and methods.
@@ -390,9 +402,10 @@ about abstract classes and methods.
 Avoid callback hell and make your code much more readable by
 using `async` and `await`.
 
-使用 `async` 和 `await` 关键字可以让你避免回调地狱（Callback Hell） 并使你的代码更具可读性。
+使用 `async` 和 `await` 关键字可以让你避免
+回调地狱（Callback Hell）并使你的代码更具可读性。
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
+<?code-excerpt "misc/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 const oneSecond = Duration(seconds: 1);
 // ···
@@ -406,7 +419,7 @@ The method above is equivalent to:
 
 上面的方法相当于：
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (Future.then)"?>
+<?code-excerpt "misc/test/samples_test.dart (Future.then)"?>
 ```dart
 Future<void> printWithDelay(String message) {
   return Future.delayed(oneSecond).then((_) {
@@ -420,7 +433,7 @@ easy to read.
 
 如下一个示例所示，`async` 和 `await` 关键字有助于使异步代码变得易于阅读。
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (await)"?>
+<?code-excerpt "misc/test/samples_test.dart (await)"?>
 ```dart
 Future<void> createDescriptions(Iterable<String> objects) async {
   for (var object in objects) {
@@ -445,7 +458,7 @@ You can also use `async*`, which gives you a nice, readable way to build streams
 
 你也可以使用 `async*` 关键字，其可以为你提供一个可读性更好的方式去生成 Stream。
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (async*)"?>
+<?code-excerpt "misc/test/samples_test.dart (async*)"?>
 ```dart
 Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
   for (var object in objects) {
@@ -459,7 +472,9 @@ Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
 asynchrony support, including `async` functions, `Future`, `Stream`,
 and the asynchronous loop (`await for`).
 
-你可以 [阅读更多](/guides/language/language-tour#asynchrony-support) 关于异步支持的内容，包括异步函数、`Future`、`Stream` 以及异步循环（`await for`）。
+你可以 [阅读更多](/guides/language/language-tour#asynchrony-support)
+关于异步支持的内容，
+包括异步函数、`Future`、`Stream` 以及异步循环（`await for`）。
 
 ## Exceptions
 
@@ -469,7 +484,7 @@ To raise an exception, use `throw`:
 
 使用 `throw` 关键字抛出一个异常：
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (throw)"?>
+<?code-excerpt "misc/test/samples_test.dart (throw)"?>
 ```dart
 if (astronauts == 0) {
   throw StateError('No astronauts.');
@@ -478,9 +493,10 @@ if (astronauts == 0) {
 
 To catch an exception, use a `try` statement with `on` or `catch` (or both):
 
-使用 `try` 语句配合 `on` 或 `catch`（两者也可同时使用）关键字来捕获一个异常:
+使用 `try` 语句配合 `on` 或 `catch`（两者也可同时使用）
+关键字来捕获一个异常:
 
-<?code-excerpt "../null_safety_examples/misc/test/samples_test.dart (try)"?>
+<?code-excerpt "misc/test/samples_test.dart (try)"?>
 ```
 try {
   for (var object in flybyObjects) {
@@ -503,7 +519,8 @@ Note that the code above is asynchronous;
 including stack traces, `rethrow`, 
 and the difference between `Error` and `Exception`.
 
-你可以 [阅读更多](/guides/language/language-tour#exceptions) 关于异常的内容，包括栈追踪、`rethrow` 关键字以及 Error 和 Exception 之间的区别。
+你可以 [阅读更多](/guides/language/language-tour#exceptions) 
+关于异常的内容，包括栈追踪、`rethrow` 关键字以及 Error 和 Exception 之间的区别。
 
 ## Other topics
 
@@ -515,4 +532,6 @@ Many more code samples are in the
 Also see the [Dart API reference,]({{site.dart_api}})
 which often contains examples.
 
-[语言概览](/guides/language/language-tour) 和 [库概览](/guides/libraries/library-tour) 中会有更多的代码示例。你也可以查阅 [Dart API reference,]({{site.dart_api}})，里面也常常会有示例代码。
+[语言概览](/guides/language/language-tour) 和
+[库概览](/guides/libraries/library-tour) 中会有更多的代码示例。
+你也可以查阅 [Dart API 文档]({{site.dart_api}})，里面也常常会有示例代码。

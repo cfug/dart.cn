@@ -22,7 +22,6 @@ Equivalent: `‘Substitution’ + val`
 ### `<type>[ ]`
 
 Creates an object of type `List<type>`.
-Equivalent: `new List<type>();`
 
 ### `const [1, 2, 3]`
 
@@ -35,9 +34,9 @@ Equivalent: `new Map<>();`
 
 ## Declaring fields
 
-| `var` | Generic `var` (dynamic) |
-| `final` | Same as `var` but final |
-| `const` | Constant |
+| `var` | Generic `var` with type inference |
+| `final` | Same as `var` but cannot be reassigned |
+| `const` | Compile-time constant |
 {:.table}
 
 
@@ -77,7 +76,7 @@ Equivalent: `a == null ? null : a.b`
 
 ## Implementing functions
 
-### `fn({bool bold: false, bool hidden: false})`
+### `fn({bool bold = false, bool hidden = false})`
 
 Named params with default values.
 
@@ -136,7 +135,7 @@ Point.alongXAxis(num x) : this(x, 0);
 const ImmutablePoint(this.x, this.y);
 ```
 
-Produces an object that will never change. All vars have to be final.
+Produces an object that will never change. All fields have to be final.
 
 ### Initializer list
 

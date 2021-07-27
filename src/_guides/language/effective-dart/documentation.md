@@ -13,7 +13,7 @@ prevpage:
   title: 代码风格
 ---
 
-<?code-excerpt path-base="../null_safety_examples/misc/lib/effective_dart"?>
+<?code-excerpt path-base="misc/lib/effective_dart"?>
 
 It's easy to think your code is obvious today without realizing how much you
 rely on context already in your head. People new to your code, and
@@ -109,7 +109,7 @@ before a declaration and uses the special `///` syntax that dartdoc looks for.
 
 ### **要** 使用 `///` 文档注释来注释成员和类型。
 
-{% include linter-rule.html rule="slash_for_doc_comments" %}
+{% include linter-rule-mention.html rule="slash_for_doc_comments" %}
 
 Using a doc comment instead of a regular comment enables [dartdoc][] to find it
 and generate documentation for it.
@@ -150,7 +150,7 @@ up.
 
 ### **推荐** 为公开发布的 API 编写文档注释。
 
-{% include linter-rule.html rule1="package_api_docs" rule2="public_member_api_docs"%}
+{% include linter-rule-mention.html rule1="package_api_docs" rule2="public_member_api_docs"%}
 
 You don't have to document every single library, top-level variable, type, and
 member, but you should document most of them.
@@ -429,9 +429,9 @@ makes an API easier to learn.
 
 ### DO use square brackets in doc comments to refer to in-scope identifiers.
 
-### **要** 使用方括号在文档注释中引用作用域内的标识符。
+### **要** 使用方括号在文档注释中引用作用域内的标识符
 
-{% include linter-rule.html rule="comment_references" %}
+{% include linter-rule-mention.html rule="comment_references" %}
 
 If you surround things like variable, method, or type names in square brackets,
 then dartdoc looks up the name and links to the relevant API docs. Parentheses

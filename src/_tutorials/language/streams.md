@@ -61,9 +61,13 @@ for loop_ (commonly just called **await for**)
 iterates over the events of a stream like the **for loop** iterates
 over an [Iterable][]. For example:
 
-Stream 可以通过许多方式创建，这个话题我们会在另一篇文章详述，而这些所有的创建方式都可以相同的方式在代码中使用：像使用 **for 循环** 迭代一个 Iterable 一样，我们可以使用 _异步 for 循环_ （通常我们直接称之为 **await for**）来迭代 Stream 中的事件。例如：
+Stream 可以通过许多方式创建，这个话题我们会在另一篇文章详述，
+而这些所有的创建方式都可以相同的方式在代码中使用：
+像使用 **for 循环** 迭代一个 Iterable 一样，
+我们可以使用 **异步 for 循环** （通常我们直接称之为 **await for**）
+来迭代 Stream 中的事件。例如：
 
-<?code-excerpt "../null_safety_examples/misc/lib/tutorial/sum_stream.dart (sumStream)" replace="/async|await for/[!$&!]/g"?>
+<?code-excerpt "misc/lib/tutorial/sum_stream.dart (sumStream)" replace="/async|await for/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 Future<int> sumStream(Stream<int> stream) [!async!] {
   var sum = 0;
@@ -79,7 +83,9 @@ adds them up, and returns (a future of) the sum.
 When the loop body ends,
 the function is paused until the next event arrives or the stream is done.
 
-该代码只是简单地接收整型事件流中的每一个事件并将它们相加，然后返回（被 Future 包裹）相加后的整型值。当循环体结束时，函数会暂停直到下一个事件到达或 Stream 完成。
+该代码只是简单地接收整型事件流中的每一个事件并将它们相加，
+然后返回（被 Future 包裹）相加后的整型值。
+当循环体结束时，函数会暂停直到下一个事件到达或 Stream 完成。
 
 The function is marked with the `async` keyword, which is required
 when using the **await for** loop.
@@ -89,7 +95,8 @@ when using the **await for** loop.
 The following example tests the previous code by
 generating a simple stream of integers using an `async*` function:
 
-下面的示例中使用了 `async*` 函数生成一个简单的整型 Stream 来测试上一个代码片段：
+下面的示例中使用了 `async*` 函数生成一个简单的
+整型 Stream 来测试上一个代码片段：
 
 {{site.alert.note}}
 
@@ -101,7 +108,7 @@ generating a simple stream of integers using an `async*` function:
   
 {{site.alert.end}}
 
-<?code-excerpt "../null_safety_examples/misc/lib/tutorial/sum_stream.dart"?>
+<?code-excerpt "misc/lib/tutorial/sum_stream.dart"?>
 ```dart:run-dartpad:null_safety-true
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
@@ -142,14 +149,19 @@ it is notified that a new event arrives.
 When reading events using an **await for** loop,
 the loops stops when the stream is done.
 
-当 Stream 再也没有需要处理的事件时会变为完成状态，与此同时，调用者可以像接收到新事件回调那样接收 Stream 完成的事件回调。当使用 **await for** 循环读取事件时，循环会在 Stream 完成时停止。
+当 Stream 再也没有需要处理的事件时会变为完成状态，
+与此同时，调用者可以像接收到新事件回调那样接收 Stream 完成的事件回调。
+当使用 **await for** 循环读取事件时，循环会在 Stream 完成时停止。
 
 In some cases, an error happens before the stream is done;
 perhaps the network failed while fetching a file from a remote server,
 or perhaps the code creating the events has a bug,
 but someone needs to know about it.
 
-有时在 Stream 完成前会出现错误；比如从远程服务器获取文件时出现网络请求失败，或者创建事件时出现 bug，尽管错误总是会有可能存在，但它出现时应该告知使用者。
+有时在 Stream 完成前会出现错误；
+比如从远程服务器获取文件时出现网络请求失败，
+或者创建事件时出现 bug，尽管错误总是会有可能存在，
+但它出现时应该告知使用者。
 
 Streams can also deliver error events like it delivers data events.
 Most streams will stop after the first error,
@@ -157,16 +169,22 @@ but it is possible to have streams that deliver more than one error,
 and streams that deliver more data after an error event.
 In this document we only discuss streams that deliver at most one error.
 
-Stream 可以像提供数据事件那样提供错误事件。大多数 Stream 会在第一次错误出现后停止，但其也可以提供多次错误并可以在在出现错误后继续提供数据事件。在本篇文档中我们只讨论 Stream 最多出现并提供一次错误事件的情况。
+Stream 可以像提供数据事件那样提供错误事件。
+大多数 Stream 会在第一次错误出现后停止，
+但其也可以提供多次错误并可以在在出现错误后继续提供数据事件。
+在本篇文档中我们只讨论 Stream 最多出现并提供一次错误事件的情况。
 
 When reading a stream using **await for**, the error is thrown by the
 loop statement. This ends the loop, as well. You can catch the
 error using **try-catch**.  The following example throws an
 error when the loop iterator equals 4:
 
-当使用 **await for** 读取 Stream 时，如果出现错误，则由循环语句抛出，同时循环结束。你可以使用 **try-catch** 语句捕获错误。下面的示例会在循环迭代到参数值等于 4 时抛出一个错误：
+当使用 **await for** 读取 Stream 时，
+如果出现错误，则由循环语句抛出，同时循环结束。
+你可以使用 **try-catch** 语句捕获错误。
+下面的示例会在循环迭代到参数值等于 4 时抛出一个错误：
 
-<?code-excerpt "../null_safety_examples/misc/lib/tutorial/sum_stream_with_catch.dart"?>
+<?code-excerpt "misc/lib/tutorial/sum_stream_with_catch.dart"?>
 ```dart:run-dartpad:null_safety-true
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
@@ -215,9 +233,12 @@ similar to the methods on an [Iterable.][Iterable]
 For example, you can find the last positive integer in a stream using
 `lastWhere()` from the Stream API.
 
-Stream 类中包含了许多像 [Iterable][Iterable] 类中一样的辅助方法帮助你实现一些常用的操作。例如，你可以使用 Stream API 中的 `lastWhere()` 方法从 Stream 中找出最后一个正整数。
+Stream 类中包含了许多像 [Iterable][Iterable]
+类中一样的辅助方法帮助你实现一些常用的操作。
+例如，你可以使用 Stream API 中的 `lastWhere()`
+方法从 Stream 中找出最后一个正整数。
 
-<?code-excerpt "../null_safety_examples/misc/lib/tutorial/misc.dart (lastPositive)"?>
+<?code-excerpt "misc/lib/tutorial/misc.dart (lastPositive)"?>
 ```dart
 Future<int> lastPositive(Stream<int> stream) =>
     stream.lastWhere((x) => x >= 0);
@@ -242,7 +263,9 @@ missing any of them.
 This is the kind of stream you get when you read a file or receive
 a web request.
 
-最常见的类型是一个 Stream 只包含了某个众多事件序列的一个。而这些事件需要按顺序提供并且不能丢失。当你读取一个文件或接收一个网页请求时就需要使用这种类型的 Stream。
+最常见的类型是一个 Stream 只包含了某个众多事件序列的一个。
+而这些事件需要按顺序提供并且不能丢失。
+当你读取一个文件或接收一个网页请求时就需要使用这种类型的 Stream。
 
 Such a stream can only be listened to once.
 Listening again later could mean missing out on initial events,
@@ -250,7 +273,9 @@ and then the rest of the stream makes no sense.
 When you start listening,
 the data will be fetched and provided in chunks.
 
-这种 Stream 只能设置一次监听。重复设置则会丢失原来的事件，而导致你所监听到的剩余其它事件毫无意义。当你开始监听时，数据将以块的形式提供和获取。
+这种 Stream 只能设置一次监听。重复设置则会丢失原来的事件，
+而导致你所监听到的剩余其它事件毫无意义。
+当你开始监听时，数据将以块的形式提供和获取。
 
 ### Broadcast streams {#broadcast-streams}
 
@@ -260,7 +285,8 @@ The other kind of stream is intended for individual messages that
 can be handled one at a time. This kind of stream can be used for
 mouse events in a browser, for example.
 
-另一种流是针对单个消息的，这种流可以一次处理一个消息。例如可以将其用于浏览器的鼠标事件。
+另一种流是针对单个消息的，这种流可以一次处理一个消息。
+例如可以将其用于浏览器的鼠标事件。
 
 You can start listening to such a stream at any time,
 and you get the events that are fired while you listen.
@@ -268,7 +294,10 @@ More than one listener can listen at the same time,
 and you can listen again later after canceling a previous
 subscription.
 
-你可以在任何时候监听这种 Stream，且在此之后你可以获取到任何触发的事件。这种流可以在同一时间设置多个不同的监听器同时监听，同时你也可以在取消上一个订阅后再次对其发起监听。
+你可以在任何时候监听这种 Stream，
+且在此之后你可以获取到任何触发的事件。
+这种流可以在同一时间设置多个不同的监听器同时监听，
+同时你也可以在取消上一个订阅后再次对其发起监听。
 
 ## Methods that process a stream {#process-stream-methods}
 
@@ -279,7 +308,7 @@ result:
 
 下面这些 [Stream\<T>][Stream] 类中的方法可以对 Stream 进行处理并返回结果：
 
-<?code-excerpt "../null_safety_examples/misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/^\s*Stream/"?>
+<?code-excerpt "misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/^\s*Stream/"?>
 ```dart
 Future<T> get first;
 Future<bool> get isEmpty;
@@ -309,9 +338,12 @@ Each one can be written easily by using an `async` function
 with an **await for** loop (or just using one of the other methods).
 For example, some implementations could be:
 
-上述所有的方法，除了 `drain()` and `pipe()` 方法外，都在 [Iterable][Iterable] 类中有对应的相似方法。如果你在异步函数中使用了 **await for** 循环（或者只是在另一个方法中使用），那么使用上述的这些方法将会更加容易。例如，一些代码实现大概是这样的：
+上述所有的方法，除了 `drain()` and `pipe()` 方法外，
+都在 [Iterable][Iterable] 类中有对应的相似方法。
+如果你在异步函数中使用了 **await for** 循环（或者只是在另一个方法中使用），
+那么使用上述的这些方法将会更加容易。例如，一些代码实现大概是这样的：
 
-<?code-excerpt "../null_safety_examples/misc/lib/tutorial/misc.dart (mock-stream-method-implementations)"?>
+<?code-excerpt "misc/lib/tutorial/misc.dart (mock-stream-method-implementations)"?>
 ```dart
 Future<bool> contains(Object? needle) async {
   await for (var event in this) {
@@ -350,9 +382,12 @@ on the original stream.
 Each one waits until someone listens on the new stream before
 listening on the original.
 
-下面的方法可以对原始的 Stream 进行处理并返回新的 Stream。当调用了这些方法后，设置在原始 Stream 上的监听器会先监听被转换后的新 Stream，待新的 Stream 处理完成后才会转而回去监听原始的 Stream。
+下面的方法可以对原始的 Stream 进行处理并返回新的 Stream。
+当调用了这些方法后，设置在原始 Stream 上的监听器
+会先监听被转换后的新 Stream，
+待新的 Stream 处理完成后才会转而回去监听原始的 Stream。
 
-<?code-excerpt "../null_safety_examples/misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/async\w+|distinct|transform/" retain="/^\s*Stream/"?>
+<?code-excerpt "misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/async\w+|distinct|transform/" retain="/^\s*Stream/"?>
 ```dart
 Stream<R> cast<R>();
 Stream<S> expand<S>(Iterable<S> Function(T element) convert);
@@ -369,9 +404,12 @@ which transform an iterable into another iterable.
 All of these can be written easily using an `async` function
 with an **await for** loop.
 
-在 [Iterable][] 类中也有一些将一个 iterable 转换为另一个 iterable 的方法，上述的这些方法与 [Iterable][] 类中的这些方法相似。如果你在异步函数中使用了 **await for** 循环，那么使用上述的这些方法将会更加容易。
+在 [Iterable][] 类中也有一些将一个 iterable 转换为另一个 iterable 的方法，
+上述的这些方法与 [Iterable][] 类中的这些方法相似。
+如果你在异步函数中使用了 **await for** 循环，
+那么使用上述的这些方法将会更加容易。
 
-<?code-excerpt "../null_safety_examples/misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/transform/" retain="/async\w+|distinct/"?>
+<?code-excerpt "misc/lib/tutorial/stream_interface.dart (main-stream-members)" remove="/transform/" retain="/async\w+|distinct/"?>
 ```dart
 Stream<E> asyncExpand<E>(Stream<E>? Function(T event) convert);
 Stream<E> asyncMap<E>(FutureOr<E> Function(T event) convert);
@@ -383,9 +421,12 @@ The `asyncExpand()` and `asyncMap()` functions are similar to
 but allow their function argument to be an asynchronous function.
 The `distinct()` function doesn't exist on `Iterable`, but it could have.
 
-`asyncExpand()` 和 `asyncMap()` 方法与 `expand()` 和 `map()` 方法类似，不同的是前两者允许将一个异步函数作为函数参数。`Iterable` 中没有与 `distinct()` 类似的方法，但是在不久的将来可能会加上。
+`asyncExpand()` 和 `asyncMap()` 方法与 `expand()` 和 `map()` 方法类似，
+不同的是前两者允许将一个异步函数作为函数参数。
+`Iterable` 中没有与 `distinct()` 类似的方法，
+但是在不久的将来可能会加上。
 
-<?code-excerpt "../null_safety_examples/misc/lib/tutorial/stream_interface.dart (special-stream-members)"?>
+<?code-excerpt "misc/lib/tutorial/stream_interface.dart (special-stream-members)"?>
 ```dart
 Stream<T> handleError(Function onError, {bool Function(dynamic error)? test});
 Stream<T> timeout(Duration timeLimit,
@@ -406,7 +447,7 @@ from a stream before using it in an **await for** loop.
 你可以使用 `handleError()` 方法在 **await for** 循环中
 使用 Stream 前将相关错误移除。
 
-<?code-excerpt "../null_safety_examples/misc/lib/tutorial/misc.dart (mapLogErrors)"?>
+<?code-excerpt "misc/lib/tutorial/misc.dart (mapLogErrors)"?>
 ```dart
 Stream<S> mapLogErrors<S, T>(
   Stream<T> stream,
@@ -450,9 +491,12 @@ It first converts the data from UTF8 and then runs it through
 a [LineSplitter.][LineSplitter]
 All lines are printed, except any that begin with a hashtag, `#`.
 
-下面的代码示例读取一个文件并在其 Stream 上执行了两次变换。第一次转换是将文件数据转换成 UTF-8 编码格式，然后将转换后的数据变换成一个 [LineSplitter][LineSplitter] 执行。文件中除了 `#` 开头的行外其它的行都会被打印出来。
+下面的代码示例读取一个文件并在其 Stream 上执行了两次变换。
+第一次转换是将文件数据转换成 UTF-8 编码格式，
+然后将转换后的数据变换成一个 [LineSplitter][LineSplitter] 执行。
+文件中除了 `#` 开头的行外其它的行都会被打印出来。
 
-<?code-excerpt "../null_safety_examples/misc/bin/cat_no_hash.dart"?>
+<?code-excerpt "misc/bin/cat_no_hash.dart"?>
 ```dart
 import 'dart:convert';
 import 'dart:io';
@@ -475,9 +519,10 @@ Future<void> main(List<String> args) async {
 The final method on Stream is `listen()`. This is a "low-level"
 method&mdash;all other stream functions are defined in terms of `listen()`.
 
-最后一个重要的方法是 `listen()`。这是一个“底层”方法，其它所有的 Stream 方法都根据 `listen()` 方法定义。
+最后一个重要的方法是 `listen()`。这是一个“底层”方法，
+其它所有的 Stream 方法都根据 `listen()` 方法定义。
 
-<?code-excerpt "../null_safety_examples/misc/lib/tutorial/stream_interface.dart (listen)"?>
+<?code-excerpt "misc/lib/tutorial/stream_interface.dart (listen)"?>
 ```dart
 StreamSubscription<T> listen(void Function(T event)? onData,
     {Function? onError, void Function()? onDone, bool? cancelOnError});
@@ -487,7 +532,8 @@ To create a new `Stream` type, you can just extend the `Stream`
 class and implement the `listen()` method&mdash;all other methods
 on `Stream` call `listen()` in order to work.
 
-你只需继承 `Stream` 类并实现 `listen()` 方法来创建一个 `Stream` 类型的子类。`Stream` 类中所有其它的方法都依赖于对 `listen()` 方法的调用。
+你只需继承 `Stream` 类并实现 `listen()` 方法来创建一个 `Stream` 类型的子类。
+`Stream` 类中所有其它的方法都依赖于对 `listen()` 方法的调用。
 
 The `listen()` method allows you to start listening on a stream.
 Until you do so,
@@ -498,7 +544,13 @@ active stream producing events.
 This is similar to how an `Iterable` is just a collection of objects,
 but the iterator is the one doing the actual iteration.
 
-`listen()` 方法可以让你对一个 Stream 进行监听。在你对一个 Stream 进行监听前，它只不过是个惰性对象，该对象描述了你想查看的事件。当你对其进行监听后，其会返回一个 [StreamSubscription][] 对象，该对象用以表示一个生产事件的活跃的 Stream。这与 `Iterable` 对象的实现方式类似，不同的是 `Iterable` 对象可返回迭代器并可以进行真实的迭代操作。
+`listen()` 方法可以让你对一个 Stream 进行监听。
+在你对一个 Stream 进行监听前，它只不过是个惰性对象，
+该对象描述了你想查看的事件。当你对其进行监听后，
+其会返回一个 [StreamSubscription][] 对象，
+该对象用以表示一个生产事件的活跃的 Stream。
+这与 `Iterable` 对象的实现方式类似，
+不同的是 `Iterable` 对象可返回迭代器并可以进行真实的迭代操作。
 
 The stream subscription allows you to pause the subscription,
 resume it after a pause,
@@ -506,7 +558,9 @@ and cancel it completely.
 You can set callbacks to be called for each data event or
 error event, and when the stream is closed.
 
-Stream 允许你暂停、继续甚至完全取消一个订阅。你也可以为其设置一个回调，该回调会在每一个数据事件、错误事件以及 Stream 自身关闭时通知调用者。
+Stream 允许你暂停、继续甚至完全取消一个订阅。
+你也可以为其设置一个回调，该回调会在每一个数据事件、
+错误事件以及 Stream 自身关闭时通知调用者。
 
 ## Other resources
 

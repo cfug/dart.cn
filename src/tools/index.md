@@ -133,7 +133,7 @@ The Dart SDK includes the following general-purpose tools:
 Dart SDK 中包含下面的通用工具：
 
 [`dart`](/tools/dart-tool)
-: A command-line interface (CLI) for creating, formatting, analyzing,
+<br> A command-line interface (CLI) for creating, formatting, analyzing,
   testing, compiling, and running Dart code,
   as well as working with the [pub package manager](/guides/packages).
 
@@ -142,7 +142,7 @@ Dart SDK 中包含下面的通用工具：
 同时包含 [pub package 管理器](/guides/packages)。
 
 [`dartdoc`](/tools/dartdoc)
-: A documentation generator.
+<br> A documentation generator.
   For examples of dartdoc's output, see the API reference documentation
   published at [api.dart.dev]({{site.dart_api}}) and pub.dev
   (for example, the [`path` API reference]({{site.pub-api}}/path)).
@@ -155,10 +155,10 @@ Dart SDK 中包含下面的通用工具：
 ### 调试工具
 
 [Dart DevTools](/tools/dart-devtools)
-: A suite of debugging and performance tools.
+<br> A suite of debugging and performance tools.
 
 [Dart 开发者工具](/tools/dart-devtools) 
-: 一个工具套装帮助调试和性能测试。
+<br> 一个工具套装帮助调试和性能测试。
 
 ## Tools for developing web apps {#web}
 
@@ -169,14 +169,14 @@ The following tools support developing web apps:
 下面工具主要针对 Web 应用开发：
 
 [`webdev`](/tools/webdev)
-: A CLI for Dart web app development,
+<br> A CLI for Dart web app development,
   including building and serving web apps.
 
 [`webdev` 命令](/tools/webdev)
 <br>用于构建和提供 Dart Web 应用开发的命令行接口（CLI）。
 
 [`dart2js`](/tools/dart2js)
-: The original Dart-to-JavaScript compiler, with tree shaking.
+<br> The original Dart-to-JavaScript compiler, with tree shaking.
   IDEs and the `webdev` CLI use `dart2js` when building web apps for deployment.
 
 [`dart2js` 命令](/tools/dart2js)
@@ -184,7 +184,7 @@ The following tools support developing web apps:
 在构建用于部署的 Web 应用时，IDE 和 `webdev` CLI 使用 dart2js。
 
 [`dartdevc`](/tools/dartdevc)
-: The Dart dev compiler, a modular Dart-to-JavaScript compiler.
+<br> The Dart dev compiler, a modular Dart-to-JavaScript compiler.
   IDEs and the `webdev` CLI use `dartdevc` when running a development server.
 
 [`dartdevc` 命令](/tools/dartdevc)
@@ -200,15 +200,15 @@ command-line apps and servers:
 
 下面的工具对开发或运行命令行应用和服务器有特别的支持：
 
-[`dart`](/tools/dart-vm)
-: Use the `dart run` command to run uncompiled Dart command-line apps
+[`dart run`](/tools/dart-run)
+<br> Use the `dart run` command to run uncompiled Dart command-line apps
   and some kinds of snapshots.
 
 [`dart`](/tools/dart-vm)
-<br> 通过 `dart run` 命令来运行未编译的 Dart 命令行应用和一些其他的快照。
+<br> 通过 [`dart run`](/tools/dart-run) 命令来运行未编译的 Dart 命令行应用和一些其他的快照。
 
 [`dartaotruntime`](/tools/dartaotruntime)
-: Use this Dart runtime to run AOT snapshots.
+<br> Use this Dart runtime to run AOT snapshots.
 
 [`dartaotruntime` 命令](/tools/dartaotruntime)
 <br> Dart 运行时环境，可以运行 AOT 快照。

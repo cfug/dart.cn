@@ -9,13 +9,10 @@ description: 一些帮助你构建 Dart Web 应用的库和 package。
 
 The [Dart SDK][] contains [dart:html][] and other libraries
 that provide low-level web APIs.
-You can supplement or replace these APIs using
-[web packages,][web packages]
-such as those in the [AngularDart][] framework.
+You can supplement or replace these APIs using web packages.
 
 [Dart SDK]: /tools/sdk
 [dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html/dart-html-library.html
-[web packages]: {{site.pub}}/web
 
 
 ## SDK libraries
@@ -41,8 +38,11 @@ that provide low-level web APIs.
 
 ## Web packages
 
-Many [packages](/guides/packages) support web development with Dart. Here
-are a few:
+Many [packages](/guides/packages) support web development with Dart.
+In particular, the [Flutter framework][flutter] has [web support][flutter-web],
+in addition to mobile, desktop, and embedded device support.
+
+Here are a few packages that are web-specific:
 
 |-----------------+---------------------------------+--------------------------|
 | Library         | Packages                        | Notes                    |
@@ -55,6 +55,10 @@ are a few:
 | Vue             | [vue][]                         | Bindings for the Vue.js library. |
 {:.table .table-striped}
 
+
+[flutter]: {{site.flutter}}
+[flutter-web]: {{site.flutter}}/web
+[AngularDart]: {{site.angulardart}}
 [js]: {{site.pub-pkg}}/js
 [JavaScript interoperability]: /web/js-interop
 [md_core,]: {{site.pub-pkg}}/m4d_core
@@ -63,19 +67,8 @@ are a few:
 [vue]: {{site.pub-pkg}}/vue
 [react]: {{site.pub-pkg}}/react
 
-To find more libraries that support writing web apps, search for
-[web packages.][web packages]
-
-{% comment %}
-Check out these pages:
-
-https://github.com/TheBosZ/dartins
-https://medium.com/@thebosz/creating-a-dart-to-javascript-interop-library-c97da204c34a#.up26ibqyb
-{% endcomment %}
+To find more libraries that support writing web apps, search pub.dev for
+[web packages][].
 
 
----
-
-Also see the [FAQ.](/faq)
-
-[AngularDart]: {{site.angulardart}}
+[web packages]: {{site.pub}}/web

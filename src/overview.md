@@ -93,7 +93,7 @@ tour](/guides/language/language-tour).
 想要查找使用更多 Dart 功能的示例，请参阅 [示例页面](/samples)。
 要了解有关 Dart 语言的更多信息，请参阅 [Dart 语言之旅](/guides/language/language-tour)。
 
-<?code-excerpt "../null_safety_examples/misc/lib/overview_pi.dart"?>
+<?code-excerpt "misc/lib/overview_pi.dart"?>
 ```dart:run-dartpad:ga_id-overview:null_safety-true
 import 'dart:math' show Random;
 

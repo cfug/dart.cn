@@ -31,9 +31,6 @@ These changes are necessary because of the following:
 
   Dart 2 [语言和库变化。][dart-2]
 
-See also: [Angular Migration Guide v4 to v5]({{site.angulardart}}/note/migrating-to-v5)
-
-你也可以查阅：[Angular 迁移指南从 v4 到 v5]({{site.angulardart}}/note/migrating-to-v5)
 
 ## Tools
 
@@ -68,24 +65,26 @@ To migrate to Dart 2, you'll need to edit your web app's project files:
 
 为了迁移到 Dart 2，你需要编辑你 Web 应用项目的一些文件：
 
-- `pubspec.yaml`, [see details below.](#pubspec)
+- `pubspec.yaml`. [See details below.](#pubspec)
 
-  `pubspec.yaml`, [see details below.](#pubspec)
+  `pubspec.yaml`, [详细信息见下方](#pubspec)。
 
 - HTML files with `<script src="foo.dart"...>` elements,
   such as `web/index.html`. [See details below.](#web-index-html)
 
-  HTML files with `<script src="foo.dart"...>` elements,
-  such as `web/index.html`. [See details below.](#web-index-html)
+  包含 `<script src="foo.dart"...>` 标签的 HTML 文件,
+  比如 `web/index.html`，[详细信息见下方](#web-index-html)。
 
 - Dart code, due to changes in the [Dart language and libraries.][dart-2]
 
-  Dart code, due to changes in the [Dart language and libraries.][dart-2]
+  由于 [Dart 语言和库的变化][dart-2]，需要修改的 Dart 代码。
 
-For complete examples of migrated apps, compare the `4.x` and `master` branches
-of any one of the [angular-examples][] apps, such as these:
+For complete examples of migrating apps,
+look at the files changed between the `4.x` and `master` branches
+of the following apps:
 
-你可以对比 `4.x` 和 `master` 分支的任意 [Angular 示例][angular-examples] 应用来获取完整的迁移示例，比如这些：
+你可以对比 `4.x` 和 `master` 分支的任意示例应用来获取完整的迁移示例，
+比如这些：
 
 - [Quickstart][angular-examples/quickstart]
 
@@ -96,6 +95,8 @@ of any one of the [angular-examples][] apps, such as these:
   [英雄之路，第五章][angular-examples/toh-5]
 
 ### Pubspec
+
+### Pubspec 文件
 
 Make these changes to your `pubspec.yaml` file:
 
@@ -129,8 +130,8 @@ Make these changes to your `pubspec.yaml` file:
   - <del>`dart_to_js_script_rewriter`</del>
   - <del>`test/pub_serve`</del>
 
-For example, here is a diff of
-[angular-examples/quickstart/pubspec.yaml][]
+For example, look at the differences in
+the [Quickstart example's pubspec][angular-examples/quickstart/pubspec.yaml]
 with these changes applied.
 
 例如，[angular-examples/quickstart/pubspec.yaml][] 是一个应用了这些差异修改的示例。
@@ -152,33 +153,33 @@ You'll need to make these changes:
 - Replace <del>`<script defer src="foo.dart" type="application/dart"></script>`</del> by<br>
   `<script defer src="foo.dart.js"></script>`
 
-- 替换为 <del>`<script defer src="foo.dart" type="application/dart"></script>`</del> 由 <br>`<script defer src="foo.dart.js"></script>`
+  替换为 <del>`<script defer src="foo.dart" type="application/dart"></script>`</del>
+  由 <br>`<script defer src="foo.dart.js"></script>`
 
-Here is a diff of
-[angular-examples/quickstart/web/index.html][]
+For example, look at the differences in the [Quickstart example's
+web/index.html page][angular-examples/quickstart/web/index.html]
 with these changes applied.
+
+比如，查看这个
+[快速入门范例的 web/index.html 页面][angular-examples/quickstart/web/index.html]
+在应用这些变化后的差异。
 
 [angular-examples/quickstart/web/index.html][] 中向你展示了如何应用这些更改。
 
 ## Additional resources
 
-## 额外资源
+## 其他资源
 
-- [Dart 2 Updates:][dart-2]
-  Information about changes in Dart 2, and how to migrate your code from Dart 1.x.
+The [Dart 2 migration guide][dart-2] has
+information about changes in Dart 2, and how to migrate your code from Dart 1.x.
 
-  [Dart 2 更新：][dart-2]关于 Dart 2 的变更信息，以及如何从 Dart 1.x 迁移你的代码。
+[Dart 2 迁移指南][dart-2] 中有关于 Dart 2 变化的信息，
+以及如何从 Dart 1.x 版本迁移你的代码。
 
-- [Changelog][Documentation changelog]:
-  Lists changes made to this site's documentation and examples.
-
-  [变更日志][Documentation changelog]：列出对本网站文档和示例所做的更改。
-
-[angular-examples]: https://github.com/angular-examples
-[angular-examples/quickstart]: https://github.com/angular-examples/quickstart/compare/4.x...master
-[angular-examples/quickstart/pubspec.yaml]: https://github.com/angular-examples/quickstart/compare/4.x...master#diff-4
-[angular-examples/quickstart/web/index.html]: https://github.com/angular-examples/quickstart/compare/4.x...master#diff-6
-[angular-examples/toh-5]: https://github.com/angular-examples/toh-5/compare/4.x...master
+[angular-examples/quickstart]: https://github.com/googlearchive/quickstart/compare/4.x...master
+[angular-examples/quickstart/pubspec.yaml]: https://github.com/googlearchive/quickstart/compare/4.x...master#diff-8b7e9df87668ffa6a04b32e1769a33434999e54ae081c52e5d943c541d4c0d25
+[angular-examples/quickstart/web/index.html]: https://github.com/googlearchive/quickstart/compare/4.x...master#diff-8f62b6ced28d3396b501d2e89a2e7cb761d16cd7dc977aebece03d4a5da5c24e
+[angular-examples/toh-5]: https://github.com/googlearchive/toh-5/compare/4.x...master
 [build]: https://github.com/dart-lang/build
 [dart-2]: /dart-2
 [dartdevc]: /tools/dartdevc
