@@ -475,7 +475,7 @@ then every variable has a nullable type.)
 Even variables with numeric types are initially null,
 because numbers—like everything else in Dart—are objects.
 
-在 Dart 中，未初始化的变量拥有一个默认的初始化值：`null`。
+在 Dart 中，未初始化的、可空类型的变量拥有一个默认的初始值：`null`。
 （如果你未迁移至 [空安全][ns]，所有变量都为可空类型。）
 即便数字也是如此，因为在 Dart 中一切皆为对象，数字也不例外。
 

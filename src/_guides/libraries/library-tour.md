@@ -17,37 +17,43 @@ consult the [Dart API reference.][Dart API]
 当你需要有关类的更多详细信息时，请参阅[Dart API 参考][Dart API]。
 
 [dart:core](#dartcore---numbers-collections-strings-and-more)
-: Built-in types, collections, and other core functionality.
+<br> Built-in types, collections, and other core functionality.
   This library is automatically imported into every Dart program.
 
-  内置类型，集合和其他核心功能。
+[dart:core](#dartcore---numbers-collections-strings-and-more)
+<br> 内置类型，集合和其他核心功能。
   该库会被自动导入到所有的 Dart 程序。
 
 [dart:async](#dartasync---asynchronous-programming)
-: Support for asynchronous programming, with classes such as Future and Stream.
+<br> Support for asynchronous programming, with classes such as Future and Stream.
 
-  支持异步编程，包括Future和Stream等类。
+[dart:async](#dartasync---asynchronous-programming)
+<br> 支持异步编程，包括Future和Stream等类。
 
 [dart:math](#dartmath---math-and-random)
-: Mathematical constants and functions, plus a random number generator.
+<br> Mathematical constants and functions, plus a random number generator.
 
-  数学常数和函数，以及随机数生成器。
+[dart:math](#dartmath---math-and-random)
+<br> 数学常数和函数，以及随机数生成器。
 
 [dart:convert](#dartconvert---decoding-and-encoding-json-utf-8-and-more)
-: Encoders and decoders for converting between different data representations, including JSON and UTF-8.
+<br> Encoders and decoders for converting between different data representations, including JSON and UTF-8.
 
-  用于在不同数据表示之间进行转换的编码器和解码器，包括 JSON 和 UTF-8。
+[dart:convert](#dartconvert---decoding-and-encoding-json-utf-8-and-more)
+<br> 用于在不同数据表示之间进行转换的编码器和解码器，包括 JSON 和 UTF-8。
 
 [dart:html](#darthtml)
-: DOM and other APIs for browser-based apps.
+<br> DOM and other APIs for browser-based apps.
 
-  用于基于浏览器应用的 DOM 和其他 API。
+[dart:html](#darthtml)
+<br> 用于基于浏览器应用的 DOM 和其他 API。
 
 [dart:io](#dartio)
-: I/O for programs that can use the Dart VM,
+<br> I/O for programs that can use the Dart VM,
   including Flutter apps, servers, and command-line scripts.
 
-  服务器和命令行应用程序的 I/O 操作，
+[dart:io](#dartio)
+<br> 服务器和命令行应用程序的 I/O 操作，
   包括 Flutter 应用，服务端应用，以及命令行脚本。
 
 This page is just an overview;
