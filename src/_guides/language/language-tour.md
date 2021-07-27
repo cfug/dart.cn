@@ -3737,7 +3737,7 @@ canonical instance:
 var a = const ImmutablePoint(1, 1);
 var b = const ImmutablePoint(1, 1);
 
-assert(identical(a, b)); // 它们是同一个实例 (They are the same instance!)
+assert(identical(a, b)); // They are the same instance!
 ```
 
 Within a _constant context_, you can omit the `const` before a constructor
@@ -5257,8 +5257,8 @@ You can do this using `extends`.
 <?code-excerpt "misc/lib/language_tour/generics/base_class.dart" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 class Foo<T [!extends SomeBaseClass!]> {
-  // 具体实现……
-  String toString() => "'Foo<$T>' 的实例";
+  // Implementation goes here...
+  String toString() => "Instance of 'Foo<$T>'";
 }
 
 class Extender extends SomeBaseClass {...}
@@ -5281,7 +5281,7 @@ It's also OK to specify no generic argument:
 <?code-excerpt "misc/test/language_tour/generics_test.dart (no-generic-arg-ok)" replace="/expect\((.*?).toString\(\), .(.*?).\);/print($1); \/\/ $2/g"?>
 ```dart
 var foo = Foo();
-print(foo); // 'Foo<SomeBaseClass>' 的实例 (Instance of 'Foo<SomeBaseClass>')
+print(foo); // Instance of 'Foo<SomeBaseClass>'
 ```
 
 Specifying any non-`SomeBaseClass` type results in an error:
@@ -5435,10 +5435,10 @@ this:
 import 'package:lib1/lib1.dart';
 import 'package:lib2/lib2.dart' as lib2;
 
-// 使用 lib1 的 Element 类。
+// Uses Element from lib1.
 Element element1 = Element();
 
-// 使用 lib2 的 Element 类。
+// Uses Element from lib2.
 lib2.Element element2 = lib2.Element();
 ```
 
@@ -5655,7 +5655,7 @@ function marked as `async`:
 {% prettify dart tag=pre+code %}
 Future<void> checkVersion() [!async!] {
   var version = [!await!] lookUpVersion();
-  // 使用 version 继续处理逻辑
+  // Do something with version
 }
 {% endprettify %}
 
@@ -5963,7 +5963,6 @@ and appending an exclamation. Click **Run** to execute the code.
 函数接受三个字符串参数，函数体将三个字符串拼接，字符串间用空格分割，
 并在结尾附加了一个感叹号。单击运行按钮执行代码。
 
-
 <?code-excerpt "misc/lib/language_tour/callable_classes.dart"?>
 ```dart:run-dartpad:height-350px:ga_id-callable_classes:null_safety-true
 class WannabeFunction {
@@ -5971,7 +5970,7 @@ class WannabeFunction {
 }
 
 var wf = WannabeFunction();
-var out = wf('你好', '，使用 Dart 的', '朋友');
+var out = wf('Hi', 'there,', 'gang');
 
 void main() => print(out);
 ```
