@@ -1073,7 +1073,7 @@ int sumUp(int a, int b, int c) {
 
 With Dart, you can make these positional parameters optional by wrapping them in brackets:
 
-在 Dart 中，你可以通过将这些参数包裹在方括号中使其变成可选位置参数：
+在 Dart 里，你可以将这些参数包裹在方括号中，使其变成可选位置参数：
 
 <?code-excerpt "misc/bin/optional_positional_args.dart (optional-positional-args-2)" replace="/total2/total/g"?>
 ```dart
