@@ -1,4 +1,3 @@
-
 ---
 title: A tour of the core libraries
 title: Dart 语言核心库一览
@@ -157,13 +156,9 @@ assert(num.parse('0.50') is double);
 
 To specify the base of an integer, add a `radix` parameter:
 
-<<<<<<< HEAD
 通过添加 `radix` 参数，指定整数的进制基数：
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (radix)"?>
-=======
 <?code-excerpt "misc/test/library_tour/core_test.dart (radix)"?>
->>>>>>> 73788c181fda251034b0e9024122584e3bcb8597
 ```dart
 assert(int.parse('42', radix: 16) == 66);
 ```
@@ -482,14 +477,17 @@ methods. Also see the API reference for [StringBuffer,][StringBuffer]
 Dart ships with a core collections API, which includes classes for
 lists, sets, and maps.
 
-<<<<<<< HEAD
-Dart 附带了核心集合 API ，其中包括 list ，set 和 map 类。
-=======
+Dart 附带了核心集合 API ，其中包括 list、set 和 map 类。
+
 {{site.alert.tip}}
+  
   To practice using APIs that are available to both lists and sets,
   follow the [Iterable collections codelab](/codelabs/iterables).
+  
+  如果你需要尝试一下对列表 (list) 和集合 (set) 都可用的 API，
+  请试试看 [遍历集合](/codelabs/iterables) 这个 codelab 教程。
+  
 {{site.alert.end}}
->>>>>>> 73788c181fda251034b0e9024122584e3bcb8597
 
 #### Lists
 
@@ -498,15 +496,11 @@ initialize [lists](#lists). Alternatively, use one of the List
 constructors. The List class also defines several methods for adding
 items to and removing items from lists.
 
-<<<<<<< HEAD
 如语言概览中介绍，[lists](#lists) 可以通过字面量来创建和初始化。
 另外，也可以使用 List 的构造函数。
 List 类还定义了若干方法，用于向列表添加或删除项目。
 
-<?code-excerpt "../null_safety_examples/misc/test/library_tour/core_test.dart (List)"?>
-=======
 <?code-excerpt "misc/test/library_tour/core_test.dart (List)"?>
->>>>>>> 73788c181fda251034b0e9024122584e3bcb8597
 ```dart
 // Create an empty list of strings.
 var grains = <String>[];

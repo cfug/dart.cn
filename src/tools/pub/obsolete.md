@@ -11,7 +11,7 @@ They're replaced by the **build system**,
 which includes the **build_runner** tool.
 
 从 Dart 2 开始，pub 不再支持 `pub build`、`pub serve` 以及变换器。
-它们均由**build_runner**工具中的**build system**替代。
+它们均由 **build_runner** 工具中的 **build system** 替代。
 
 For information about building and serving apps in Dart 2, see the following:
 

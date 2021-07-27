@@ -3073,8 +3073,12 @@ for (var candidate in candidates) {
 ```
 
 {{site.alert.tip}}
+
   To practice using `for-in`, follow the
   [Iterable collections codelab](/codelabs/iterables).
+  
+  若想练习使用 `for-in`，请参考 [遍历集合 codelab](/codelabs/iterables)。
+  
 {{site.alert.end}}
 
 Iterable classes also have a [forEach()][] method as another option:
