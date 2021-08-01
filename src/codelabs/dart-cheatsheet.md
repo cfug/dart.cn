@@ -441,7 +441,7 @@ You can create them using literals:
 Dart 内置了对 list、map 以及 set 的支持。
 你可以通过字面量直接创建它们：
 
-<?code-excerpt "misc/bin/collection_literals.dart (collection-literals)"?>
+<?code-excerpt "misc/bin/cheatsheet/collection_literals.dart (collection-literals)"?>
 ```dart
 final aListOfStrings = ['one', 'two', 'three'];
 final aSetOfStrings = {'one', 'two', 'three'};
@@ -462,7 +462,7 @@ Or you can specify the type yourself:
 
 你也可以手动指定类型：
 
-<?code-excerpt "misc/bin/collection_literals.dart (collection-literals-2)"?>
+<?code-excerpt "misc/bin/cheatsheet/collection_literals.dart (collection-literals-2)"?>
 ```dart
 final aListOfInts = <int>[];
 final aSetOfInts = <int>{};
@@ -474,6 +474,7 @@ but still want the list to be `List<BaseType>`:
 
 在使用子类型的内容初始化列表，但仍希望列表为 `List <BaseType>` 时，指定其类型很方便：
 
+<?code-excerpt "misc/bin/cheatsheet/collection_literals.dart (collection-literals-3)"?>
 ```dart
 final aListOfBaseType = <BaseType>[SubType(), SubType()];
 ```
@@ -599,6 +600,7 @@ For example, consider this call to the `List` class's
 
 例如，考虑调用这个 `List` 类中的 `any` 方法：
 
+<?code-excerpt "misc/bin/cheatsheet/arrow_functions.dart (has-empty-long)"?>
 ```dart
 bool hasEmpty = aListOfStrings.any((s) {
   return s.isEmpty;
@@ -609,6 +611,7 @@ Here’s a simpler way to write that code:
 
 这里是一个更简单的代码实现：
 
+<?code-excerpt "misc/bin/cheatsheet/arrow_functions.dart (has-empty-short)"?>
 ```dart
 bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 ```
@@ -726,6 +729,7 @@ We've all seen an expression like this:
 
 要对同一对象执行一系列操作，请使用级联（`..`）。我们都看到过这样的表达式：
 
+<?code-excerpt "misc/bin/cheatsheet/cascades.dart (no-cascade)" replace="/;//g"?>
 ```dart
 myObject.someMethod()
 ```
@@ -739,15 +743,19 @@ Here's the same expression with a cascade:
 
 下面是一个使用级连语法的相同表达式：
 
+<?code-excerpt "misc/bin/cheatsheet/cascades.dart (uses-cascade)" replace="/;//g"?>
 ```dart
 myObject..someMethod()
 ```
 
 Although it still invokes `someMethod()` on `myObject`, the result
 of the expression **isn't** the return value — it's a reference to `myObject`!
+
 Using cascades, you can chain together operations that
 would otherwise require separate statements.
-For example, consider this code:
+For example, consider the following code,
+which uses the conditional member access operator (`?.`)
+to read properties of `button` if it isn't `null`:
 
 虽然它仍然在 `myObject` 上调用了 `someMethod`，
 但表达式的结果却**不是**该方法返回值，
@@ -755,23 +763,29 @@ For example, consider this code:
 使用级联，你可以将需要单独操作的语句链接在一起。
 例如，请考虑以下代码：
 
+<?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-without-cascades)"?>
 ```dart
 var button = querySelector('#confirm');
-button.text = 'Confirm';
-button.classes.add('important');
-button.onClick.listen((e) => window.alert('Confirmed!'));
+button?.text = 'Confirm';
+button?.classes.add('important');
+button?.onClick.listen((e) => window.alert('Confirmed!'));
 ```
 
-With cascades, the code becomes much shorter,
-and you don’t need the `button` variable:
+To instead use cascades, 
+you can start with the _null-shorting_ cascade (`?..`), 
+which guarantees that none of the cascade operations
+are attempted on a `null` object.
+Using cascades shortens the code
+and makes the `button` variable unnecessary:
 
 使用级连能够让代码变得更加简洁，而且你也不再需要 `button` 变量了。
 
+<?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-with-cascades)"?>
 ```dart
 querySelector('#confirm')
-..text = 'Confirm'
-..classes.add('important')
-..onClick.listen((e) => window.alert('Confirmed!'));
+  ?..text = 'Confirm'
+  ..classes.add('important')
+  ..onClick.listen((e) => window.alert('Confirmed!'));
 ```
 
 ### Code example
@@ -897,6 +911,7 @@ For example, you can make sure a property's value is valid:
 例如，你可以用来确保属性值合法：
 
 <?code-excerpt "misc/bin/getters_setters.dart"?>
+<?code-excerpt "misc/bin/cheatsheet/getters_setters.dart"?>
 ```dart
 class MyClass {
   int _aProperty = 0;
@@ -915,7 +930,7 @@ You can also use a getter to define a computed property:
 
 你还可以使用 getter 来定义计算属性：
 
-<?code-excerpt "misc/bin/getter_compute.dart"?>
+<?code-excerpt "misc/bin/cheatsheet/getter_compute.dart"?>
 ```dart
 class MyClass {
   final List<int> _values = [];
@@ -1390,6 +1405,7 @@ allowed to throw any non-null object:
 
 虽然 Dart 提供了 Exception 和 Error 类型，但是你可以抛出任何非空对象：
 
+<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (simple-throws)"?>
 ```dart
 throw Exception('Something bad happened.');
 throw 'Waaaaaaah!';
@@ -1399,6 +1415,7 @@ Use the `try`, `on`, and `catch` keywords when handling exceptions:
 
 使用 `try`、`on` 以及 `catch` 关键字来处理异常： 
 
+<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (try-on-catch)"?>
 ```dart
 try {
   breedMoreLlamas();
@@ -1423,6 +1440,7 @@ to propagate the exception:
 
 如果你无法完全处理该异常，请使用 `rethrow` 关键字再次抛出异常：
 
+<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (try-catch)"?>
 ```dart
 try {
   breedMoreLlamas();
@@ -1437,7 +1455,7 @@ use `finally`:
 
 要执行一段无论是否抛出异常都会执行的代码，请使用 `finally`：
 
-<?code-excerpt "misc/bin/exceptions.dart"?>
+<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (try-catch-finally)"?>
 ```dart
 try {
   breedMoreLlamas();

@@ -37,7 +37,7 @@ If this doesn't work, you might need to
 如果该操作无效，你可能需要 [设置你的路径](#running-a-script-from-your-path)。
 
 To run a Dart script from within a package, or from a
-package that your package depends on, see [dart run](/tools/dart-tool).
+package that your package depends on, see [dart run](/tools/dart-run).
 
 如果想要从 Package 中运行 Dart 脚本，或者从 Package 所依赖的其它 Package 中运行脚本，请查阅 [pub run](/tools/pub/cmd/pub-run) 命令。
 

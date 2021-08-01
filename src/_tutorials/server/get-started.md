@@ -137,7 +137,7 @@ This command creates a small Dart app that has the following:
 ## 4. 运行应用
 
 To run the app from the command line, use the Dart VM by running the
-[`dart run`](/tools/dart-tool) command in the app's top directory:
+[`dart run`](/tools/dart-run) command in the app's top directory:
 
 想要从命令行运行应用，请使用 [`dart run](/tools/dart-vm) 命令
 在应用的根目录运行 Dart VM：

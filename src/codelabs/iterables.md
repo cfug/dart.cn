@@ -8,10 +8,6 @@ js: [{url: 'https://dartpad.cn/inject_embed.dart.js', defer: true}]
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
 
-{% comment %}
-Code converted to null safety: https://github.com/dart-lang/site-www/pull/2805
-{% endcomment %}
-
 This codelab teaches you how to use collections that
 implement the [Iterable][iterable class] class —
 for example [List][list class] and [Set.][set class]
@@ -45,7 +41,8 @@ Estimated time to complete this codelab: 60 minutes.
 ## What are collections?
 
 A collection is an object that
-represents a group of objects, which are called _elements_. Iterables are a kind of collection.
+represents a group of objects, which are called _elements_. 
+Iterables are a kind of collection.
 
 A collection can be empty, or it can contain many elements.
 Depending on the purpose,
@@ -126,7 +123,7 @@ The following example shows you how to read elements using  a `for-in` loop.
 {% comment %} TODO: use code-excerpt here {% endcomment %}
 ```dart:run-dartpad:ga_id-for_in_loop:null_safety-true
 void main() {
-  var iterable = ['Salad', 'Popcorn', 'Toast'];
+  const iterable = ['Salad', 'Popcorn', 'Toast'];
   for (var element in iterable) {
     print(element);
   }
@@ -174,7 +171,7 @@ but you can use the `last` property.
 {% comment %} TODO: use code-excerpt here {% endcomment %}
 ```dart:run-dartpad:ga_id-first_and_last:null_safety-true
 void main() {
-  Iterable iterable = ['Salad', 'Popcorn', 'Toast'];
+  Iterable<String> iterable = ['Salad', 'Popcorn', 'Toast'];
   print('The first element is ${iterable.first}');
   print('The last element is ${iterable.last}');
 }
@@ -215,8 +212,8 @@ bool predicate(String element) {
   return element.length > 5;
 }
 
-main() {
-  var items = ['Salad', 'Popcorn', 'Toast', 'Lasagne'];
+void main() {
+  const items = ['Salad', 'Popcorn', 'Toast', 'Lasagne'];
 
   // You can find with a simple expression:
   var element1 = items.firstWhere((element) => element.length > 5);
@@ -325,11 +322,12 @@ String singleWhere(Iterable<String> items) {
 {$ end main.dart $}
 {$ begin solution.dart $}
 String singleWhere(Iterable<String> items) {
-  return items.singleWhere((element) => element.startsWith('M') && element.contains('a'));
+  return items.singleWhere(
+      (element) => element.startsWith('M') && element.contains('a'));
 }
 {$ end solution.dart $}
 {$ begin test.dart $}
-var items = [
+const items = [
   'Salad',
   'Popcorn',
   'Milk',
@@ -378,7 +376,7 @@ Use the methods `contains()` and `startsWith()` from the `String` class.
 ## Checking conditions
 
 When working with `Iterable`, sometimes you need to verify that
-all of the elements of a collection satisfy some condition.
+all the elements of a collection satisfy some condition.
 
 You might be tempted to write a solution using a `for-in` loop like this one:
 
@@ -401,7 +399,7 @@ return items.every((element) => element.length >= 5);
 {% endprettify %}
 
 Using the `every()` method results in code that is more
-readable, compact, and less error prone.
+readable, compact, and less error-prone.
 
 ### Example: Using any() and every()
 
@@ -416,7 +414,7 @@ Run this exercise to see them in action.
 {% comment %} TODO: use code-excerpt here {% endcomment %}
 ```dart:run-dartpad:height-255px:ga_id-using_any_and_every:null_safety-true
 void main() {
-  var items = ['Salad', 'Popcorn', 'Toast'];
+  const items = ['Salad', 'Popcorn', 'Toast'];
   
   if (items.any((element) => element.contains('a'))) {
     print('At least one element contains "a"');
@@ -647,8 +645,8 @@ methods like `any()`.
 
 {% comment %} TODO: use code-excerpt here {% endcomment %}
 ```dart:run-dartpad:height-380px:ga_id-using_where:null_safety-true
-main() {
-  var evenNumbers = [1, -2, 3, 42].where((number) => number.isEven);
+void main() {
+  var evenNumbers = const [1, -2, 3, 42].where((number) => number.isEven);
 
   for (var number in evenNumbers) {
     print('$number is even.');
@@ -688,35 +686,35 @@ help you filter elements from an `Iterable`.
 Run this example to see how `takeWhile()` and `skipWhile()` can
 split an `Iterable` containing numbers.
 
-{% comment %} TODO: use code-excerpt here {% endcomment %}
+<?code-excerpt "iterables/bin/take_while.dart"?>
 ```dart:run-dartpad:ga_id-using_takewhile:null_safety-true
-main() {
-  var numbers = [1, 3, -2, 0, 4, 5];
+void main() {
+  const numbers = [1, 3, -2, 0, 4, 5];
 
   var numbersUntilZero = numbers.takeWhile((number) => number != 0);
   print('Numbers until 0: $numbersUntilZero');
 
-  var numbersAfterZero = numbers.skipWhile((number) => number != 0);
-  print('Numbers after 0: $numbersAfterZero');
+  var numbersStartingAtZero = numbers.skipWhile((number) => number != 0);
+  print('Numbers starting at 0: $numbersStartingAtZero');
 }
 ```
 
 In this example, `takeWhile()` returns an `Iterable` that
-contains all the elements leading to the element that
+contains all the elements before the one that
 satisfies the predicate.
-On the other hand, `skipWhile()` returns an `Iterable` while
-skipping all the elements before the one that satisfies the predicate.
-Note that the element that satisfies the predicate is also included.
+On the other hand, `skipWhile()` returns an `Iterable` 
+that contains all elements after and including the first one
+that _doesn't_ satisfy the predicate.
 
 After running the example,
 change `takeWhile()` to take elements until
 it reaches the first negative number.
 
 <?code-excerpt "iterables/test/iterables_test.dart (takewhile)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var numbersUntilNegative =
     numbers.takeWhile((number) => !number.isNegative);
-{% endprettify %}
+```
 
 Notice that the condition `number.isNegative` is negated with `!`.
 
@@ -869,9 +867,9 @@ What do you think the output will be?
 
 {% comment %} TODO: use code-excerpt here {% endcomment %}
 ```dart:run-dartpad:ga_id-using_map:null_safety-true
-main() {
-  var numbersByTwo = [1, -2, 3, 42].map((number) => number * 2);
-  print('Numbers: $numbersByTwo.');
+void main() {
+  var numbersByTwo = const [1, -2, 3, 42].map((number) => number * 2);
+  print('Numbers: $numbersByTwo');
 }
 ```
 
@@ -883,7 +881,7 @@ Both the input and the output of that operation were an `Iterable` of `int`.
 
 In this exercise, your code takes an `Iterable` of `User`,
 and you need to return an `Iterable` that
-contains strings containing user name and age.
+contains strings containing each user's name and age.
 
 Each string in the `Iterable` must follow this format:
 `'{name} is {age}'`—for example `'Alice is 21'`.
@@ -974,12 +972,12 @@ which has a constructor that takes a string.
 Another provided function is `isValidEmailAddress()`,
 which tests whether an email address is valid.
 
-|----------------------+-------------------+----------------------------------|
-| Constructor/function | Type signature    | Description                       |
-|----------------------|-------------------|----------------------------------|
-| EmailAddress() | `EmailAddress(String address)` | Creates an `EmailAddress` for the specified address. | 
+|-----------------------+------------------------------------------+---------------------------------------------------------|
+| Constructor/function  | Type signature                           | Description                                             |
+|-----------------------|------------------------------------------|---------------------------------------------------------|
+| EmailAddress()        | `EmailAddress(String address)`           | Creates an `EmailAddress` for the specified address.    | 
 | isValidEmailAddress() | `bool isValidEmailAddress(EmailAddress)` | Returns `true` if the provided `EmailAddress` is valid. | 
-|----------------------+-------------------+----------------------------------|
+|-----------------------+------------------------------------------+---------------------------------------------------------|
 {:.table .table-striped}
 
 Write the following code:
@@ -1022,7 +1020,7 @@ Iterable<EmailAddress> validEmailAddresses(Iterable<EmailAddress> emails) {
 }
 
 class EmailAddress {
-  String address;
+  final String address;
 
   EmailAddress(this.address);
 
@@ -1055,7 +1053,7 @@ Iterable<EmailAddress> validEmailAddresses(Iterable<EmailAddress> emails) {
 }
 
 class EmailAddress {
-  String address;
+  final String address;
 
   EmailAddress(this.address);
 
@@ -1076,7 +1074,7 @@ class EmailAddress {
 }
 {$ end solution.dart $}
 {$ begin test.dart $}
-var input = [
+const input = [
   'ali@gmail.com',
   'bobgmail.com',
   'cal@gmail.com',
