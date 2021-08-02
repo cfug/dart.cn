@@ -4179,10 +4179,12 @@ void main() {
 
 Sometimes a constructor’s only purpose is to redirect to another
 constructor in the same class. A redirecting constructor’s body is
-empty, with the constructor call appearing after a colon (:).
+empty, with the constructor call
+(using `this` instead of the class name)
+appearing after a colon (:).
 
 有时候类中的构造函数仅用于调用类中其它的构造函数，此时该构造函数没有函数体，
-只需在函数签名后使用（:）指定需要重定向到的其它构造函数：
+只需在函数签名后使用（:）指定需要重定向到的其它构造函数 (使用 `this` 而非类名)：
 
 <?code-excerpt "misc/lib/language_tour/classes/point_redirecting.dart"?>
 ```dart

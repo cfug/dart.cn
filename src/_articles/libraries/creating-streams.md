@@ -647,6 +647,7 @@ keep these tips in mind:
   例如，在下面的代码中，`onListen` 回调有可能会在 `subscription`
   变量被初始化为一个有效值之前被触发（同时 `处理器` 被调用）。
 
+  <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (stream-listen-hint)"?>
   ```dart
   subscription = stream.listen(handler);
   ```
