@@ -910,7 +910,6 @@ For example, you can make sure a property's value is valid:
 
 例如，你可以用来确保属性值合法：
 
-<?code-excerpt "misc/bin/getters_setters.dart"?>
 <?code-excerpt "misc/bin/cheatsheet/getters_setters.dart"?>
 ```dart
 class MyClass {
