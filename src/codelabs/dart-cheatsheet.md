@@ -761,7 +761,7 @@ to read properties of `button` if it isn't `null`:
 但表达式的结果却**不是**该方法返回值，
 而是是 `myObject` 对象的引用！
 使用级联，你可以将需要单独操作的语句链接在一起。
-例如，请考虑以下代码：
+例如，下方的代码使用了空判断调用符 (`?.`) 在 `button` 不为 `null` 时获取属性：
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-without-cascades)"?>
 ```dart
@@ -778,7 +778,9 @@ are attempted on a `null` object.
 Using cascades shortens the code
 and makes the `button` variable unnecessary:
 
-使用级连能够让代码变得更加简洁，而且你也不再需要 `button` 变量了。
+现在你可以在第一个级联位置，使用 **空判断** 级联操作符 (`?..`)，
+它可以确保级联操作均在实例不为 `null` 时执行。
+使用空判断级联后，你也不再需要 `button` 变量了：
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-with-cascades)"?>
 ```dart

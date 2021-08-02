@@ -39,7 +39,8 @@ If this doesn't work, you might need to
 To run a Dart script from within a package, or from a
 package that your package depends on, see [dart run](/tools/dart-run).
 
-如果想要从 Package 中运行 Dart 脚本，或者从 Package 所依赖的其它 Package 中运行脚本，请查阅 [pub run](/tools/pub/cmd/pub-run) 命令。
+如果想要从 Package 中运行 Dart 脚本，或者从 Package 所依赖的其它 Package 中运行脚本，
+请查阅 [dart run](/tools/dart-run) 命令。
 
 ## Activating a package
 
