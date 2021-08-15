@@ -113,7 +113,8 @@ If the program name matches the package name
 (that is, it's the main program),
 then you can also omit the program name.
 
-当当前目录与包名匹配时(也就是说，你在的目录与pubspec中的`name`属性匹配)，可以省略包名。如果程序名与包名匹配(也就是说，它是main程序)，也可以省略程序名。
+当当前的路径与包名匹配时（等同于文件夹名称与 pubspec 中的 `name` 属性相同），
+可以省略包名。如果程序名与包名匹配（也就是它是 main 程序），也可以省略程序名。
 
 Here's the shortest form of `dart run`,
 which runs the main program for the current package.
