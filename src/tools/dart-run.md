@@ -152,7 +152,7 @@ $ dart run tool/debug.dart
 To supply [arguments to the `main()` function][args],
 put them at the end of the command:
 
-[给 `main()` 函数传递参数][args]，只需要在命令行后面添加参数:
+若你需要 [给 `main()` 函数传递参数][args]，在命令行后面添加参数即可：
 
 ```terminal
 $ dart run tool/debug.dart arg1 arg2
