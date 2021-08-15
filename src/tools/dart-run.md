@@ -13,7 +13,9 @@ and the Dart VM tool.
 To run a program from an arbitrary location,
 use the [pub global](/tools/pub/cmd/pub-global) command.
 
-`dart run` 命令支持从文件、当前包或者当前包的依赖中运行Dart程序。该命令提供以前在`pub run`和Dart虚拟机工具提供的功能。
+`dart run` 命令支持运行文件、当前 package
+或者当前 package 的依赖中运行Dart程序。
+该命令提供了以前在 `pub run` 和 Dart VM 工具里提供的功能。
 如果想从任意位置运行程序，可以使用 [pub global](/tools/pub/cmd/pub-global) 命令。
 
 ```
