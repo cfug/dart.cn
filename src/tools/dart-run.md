@@ -197,4 +197,4 @@ See `dart run --help` for details.
 To enable new features and enhancements that are currently in development,
 use [experiment flags](/tools/experiment-flags).
 
-如果在开发中想尝试实验性功能, 可以通过传入 [experiment flags](/tools/experiment-flags) 参数。
+如果在开发中想尝试实验性功能, 可以使用 [实验性功能开关](/tools/experiment-flags)。
