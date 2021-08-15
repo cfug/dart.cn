@@ -22,7 +22,7 @@ dart run [options] [<DART_FILE> | <PACKAGE_TARGET>] [args]
 
 Here's an example of creating a new app and running it:
 
-下面的例子演示了如何创建并且运行一个Dart程序:
+下面的例子演示了如何创建并且运行一个 Dart 程序：
 
 ```terminal
 $ dart create myapp
