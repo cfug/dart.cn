@@ -1,6 +1,8 @@
 ---
 title: dart run
+title: dart run 命令
 description: Command-line tool for running a Dart program.
+description: 运行Dart程序的命令行工具。
 ---
 
 The `dart run` command supports running a Dart program —
