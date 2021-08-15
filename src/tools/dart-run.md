@@ -55,7 +55,7 @@ from the directory that's at the top of a Dart package
 For information on the directory structure of Dart packages, see
 [package layout conventions](/guides/libraries/create-library-packages).
 
-本节中的说明假设你在当前Dart包的根目录执行'dart run'命令。
+本节说明的前提是你在 package 的根目录执行 `dart run` 命令。
 更多关于Dart包目录结构的介绍，请查阅
 [包布局约定](/guides/libraries/create-library-packages).
 
