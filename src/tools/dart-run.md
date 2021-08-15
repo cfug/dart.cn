@@ -70,7 +70,8 @@ To run such a program,
 specify the depended-on package name and the program name.
 You can omit the program name if it's the same as the package name.
 
-你可以运行当前包所依赖的任何包的Dart程序, 只要它在`bin`目录下。运行时请指定依赖的包名和程序名。
+你可以运行当前 package 所依赖的任何 package 的 Dart 程序, 只要它在 `bin` 目录下。
+运行时请指定依赖的包名和程序名。
 如果程序名与包名相同，则可以省略。
 
 For example, say you're in the top directory of a package
