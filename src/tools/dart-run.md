@@ -81,7 +81,9 @@ that depends on the `bar` package.
 To run the main program that's in the `bar` package (`bin/bar.dart`),
 you can use this command:
 
-例如，你现在位于依赖 package `bar` 的 package 的根目录，想运行 package `bar`中的 main 程序 (`bin/bar.dart`)， 那么你可以使用下面的命令：
+例如，在 package 的根目录，
+想运行一个名为 `bar` 的依赖 package 中的 main 程序（`bin/bar.dart`），
+使用如下命令：
 
 ```terminal
 $ dart run bar
@@ -92,8 +94,9 @@ use the form `<package name>:<program name>`. For example,
 to run the program `bin/baz.dart` that's in the `bar` package,
 use this command:
 
-如果程序名和 package 名不同，则需要使用 `<package 名>:<程序名>` 的形式来运行程序。
-比如 `bin/baz.dart` 程序在 package `bar` 中, 我们就可以这样运行:
+如果程序名和 package 名不同，
+则需要使用 `<package 名>:<程序名>` 的形式来运行程序。
+比如 `bin/baz.dart` 程序在名为 `bar` 的 package 中, 我们就可以这样运行:
 
 ```terminal
 $ dart run bar:baz
@@ -119,15 +122,18 @@ then you can also omit the program name.
 
 当当前的路径与 package 名匹配时（即文件夹名称与 pubspec 中的 `name` 属性相同），
 可以省略 package 名。
-如果程序名与 package 名匹配（也就是它是 main 程序），也可以省略程序名。
+如果程序名与 package 名匹配（也就是它是 main 程序），
+也可以省略程序名。
 
 Here's the shortest form of `dart run`,
 which runs the main program for the current package.
 For example, if you're in the top directory of the `foo` package,
 this command runs `bin/foo.dart`:
 
-`dart run` 是运行 Dart 程序最短的形式，它会运行当前 package 的主程序。
-例如，如果你在 package `foo` 的根目录执行下面命令，实际上会运行 `bin/foo.dart` 文件：
+`dart run` 是运行 Dart 程序最短的形式，
+它会运行当前 package 的主程序。
+例如，如果你在名为 `foo` 的 package 根目录执行下面命令，
+实际上会运行 `bin/foo.dart` 文件：
 
 ```terminal
 $ dart run
