@@ -117,7 +117,7 @@ If the program name matches the package name
 (that is, it's the main program),
 then you can also omit the program name.
 
-当当前的路径与 package 名匹配时（等同于文件夹名称与 pubspec 中的 `name` 属性相同），
+当当前的路径与 package 名匹配时（即文件夹名称与 pubspec 中的 `name` 属性相同），
 可以省略 package 名。
 如果程序名与 package 名匹配（也就是它是 main 程序），也可以省略程序名。
 
@@ -126,8 +126,8 @@ which runs the main program for the current package.
 For example, if you're in the top directory of the `foo` package,
 this command runs `bin/foo.dart`:
 
-`dart run` 是运行 Dart 程序最短的形式，它运行当前 package 的主程序。
-例如，如果你在 package `foo` 的根目录，通过下面命令则会运行 `bin/foo.dart` 文件：
+`dart run` 是运行 Dart 程序最短的形式，它会运行当前 package 的主程序。
+例如，如果你在 package `foo` 的根目录执行下面命令，实际上会运行 `bin/foo.dart` 文件：
 
 ```terminal
 $ dart run
@@ -137,7 +137,8 @@ If the program name doesn't match the package name,
 then add a colon and the program name.
 For example, this command runs `bin/baz.dart` in the current package:
 
-如果程序名和 package 名不同，需要使用 `:<程序名>` 的形式来运行程序，比如运行当前 package 中的 `bin/baz.dart` 文件:
+如果程序名和 package 名不同，需要使用 `:<程序名>` 的形式来运行程序，
+比如运行当前 package 中的 `bin/baz.dart` 文件:
 
 ```terminal
 $ dart run :baz
@@ -146,7 +147,7 @@ $ dart run :baz
 To run a program that's in the current package but not in the `bin` directory,
 pass a relative path (as shown before):
 
-要运行的程序在当前 package，但不在 `bin` 目录时，通过传递相对路径运行（如前面说的）：
+要运行在当前 package 但不在 `bin` 目录的程序时，通过传递相对路径运行（如前文所示）：
 
 ```terminal
 $ dart run tool/debug.dart
@@ -170,7 +171,8 @@ add the package name.
 Here's an example of running `bin/foo.dart` with arguments
 while you're in the top directory of the `foo` package:
 
-在当前 package 中运行 `main` 程序需要添加 package 名，比如要传递参数并运行位于 `foo` package 根目录中的 `bin/foo.dart` 程序：
+在当前 package 中运行 `main` 程序需要添加 package 名，
+比如要传递参数并运行位于 `foo` package 根目录中的 `bin/foo.dart` 程序：
 
 ```terminal
 $ dart run foo arg1 arg2
