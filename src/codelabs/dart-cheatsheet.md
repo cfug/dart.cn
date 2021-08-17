@@ -123,11 +123,12 @@ reference them inside single quotes, with a space in between.
 ## 可空的变量
 
 Dart 2.12 introduced sound null safety,
-meaning that (when you [enable null safety][])
+meaning that (when you [enable null safety](/null-safety#enable-null-safety))
 values can’t be null unless you say they can be.
 In other words, types are non-nullable by default.
 
-Dart 2.12 引入了健全的空安全，这意味着在您启用了空安全时，
+Dart 2.12 引入了健全的空安全，这意味着在您
+[启用了空安全](/null-safety#enable-null-safety) 时，
 除非变量显式声明为可空类型，否则它们将不能为空。
 换句话说，类型默认是不可为空的。
 
@@ -138,20 +139,22 @@ a variable of type `int` can't have the value `null`:
 举个例子，下面的代码在空安全下是有错误的，
 因为 `int` 类型的变量不能为 `null`：
 
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/bin/cheatsheet/nullable.dart (invalid-null)" replace="/null;/[!null!];/g"?>
+```dart
 int a = [!null!]; // INVALID in null-safe Dart.
-{% endprettify %}
+```
 
 When creating a variable in Dart 2.12 or higher,
 you can add `?` to the type to indicate
-that the variable can be null:
+that the variable can be `null`:
 
 在 Dart 2.12 或更高版本的 Dart 中（需要限制 SDK 为 2.12 及以上），
 你可以通过在类型后添加 `?` 来表示该类型可空：
 
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/bin/cheatsheet/nullable.dart (valid-null)" replace="/int\?/[!int?!]/g"?>
+```dart
 [!int?!] a = null; // Valid in null-safe Dart.
-{% endprettify %}
+```
 
 You can simplify that code a bit because, in all versions of Dart,
 `null` is the default value for uninitialized variables:
@@ -159,16 +162,15 @@ You can simplify that code a bit because, in all versions of Dart,
 在所有 Dart 版本中，`null` 在未初始化的变量里都是默认值，
 所以你可以这样简化你的代码：
 
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/bin/cheatsheet/nullable.dart (simple-null)"?>
+```dart
 int? a; // The initial value of a is null.
-{% endprettify %}
+```
 
 For more information about null safety in Dart,
 read the [sound null safety guide](/null-safety).
 
 想了解更多有关 Dart 的空安全的内容，请阅读 [健全的空安全](/null-safety)。
-
-[enable null safety]: https://dart.cn/null-safety#enable-null-safety
 
 ### Code example
 
@@ -190,10 +192,7 @@ Ignore all initial errors in the DartPad.
 
 可以忽略以下代码一开始在 DartPad 中的错误。
 
-{% comment %}
-TODO: Add new ga_id tag.
-{% endcomment -%}
-```dart:run-dartpad:null_safety-true
+```dart:run-dartpad:ga_id-nullable_variables:null_safety-true
 {$ begin main.dart $}
 // Declare the two variables here
 {$ end main.dart $}
@@ -235,11 +234,7 @@ variable is currently null:
 Dart 提供了一系列方便的运算符用于处理可能会为空值的变量。
 其中一个是 `??=` 赋值运算符，仅当该变量为空值时才为其赋值：
 
-{% comment %}
-TBD: Make this and all non-trivial snippets testable.
-{% endcomment %}
-
-<?code-excerpt "misc/bin/null_aware_operators.dart (null-aware-operators)"?>
+<?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (null-aware-operators)"?>
 ```dart
 int? a; // = null
 a ??= 3;
@@ -257,7 +252,7 @@ in which case it evaluates and returns the expression on its right:
 另外一个避空运算符是 `??`，如果该运算符左边的表达式返回的是空值，
 则会计算并返回右边的表达式。
 
-<?code-excerpt "misc/bin/null_aware_operators.dart (null-aware-operators-2)"?>
+<?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (null-aware-operators-2)"?>
 ```dart
 print(1 ?? 3); // <-- Prints 1.
 print(null ?? 12); // <-- Prints 12.
@@ -343,6 +338,7 @@ put a question mark (`?`) before the dot (`.`):
 
 要保护可能会为空的属性的正常访问，请在点（`.`）之前加一个问号（`?`）。
 
+<?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (conditional-property-access)" replace="/result = //g; /;//g;"?>
 ```dart
 myObject?.someProperty
 ```
@@ -351,6 +347,7 @@ The preceding code is equivalent to the following:
 
 上述代码等效于以下内容：
 
+<?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (conditional-property-access-equivalent)" replace="/result = //g; /;//g;"?>
 ```dart
 (myObject != null) ? myObject.someProperty : null
 ```
@@ -359,6 +356,7 @@ You can chain multiple uses of `?.` together in a single expression:
 
 你可以在一个表达式中连续使用多个 `?.`：
 
+<?code-excerpt "misc/test/cheatsheet/null_aware_test.dart (conditional-property-access-multiple)" replace="/result = //g; /;//g;"?>
 ```dart
 myObject?.someProperty?.someMethod()
 ```
@@ -441,7 +439,7 @@ You can create them using literals:
 Dart 内置了对 list、map 以及 set 的支持。
 你可以通过字面量直接创建它们：
 
-<?code-excerpt "misc/bin/cheatsheet/collection_literals.dart (collection-literals)"?>
+<?code-excerpt "misc/test/cheatsheet/collections_test.dart (collection-literals-inferred)"?>
 ```dart
 final aListOfStrings = ['one', 'two', 'three'];
 final aSetOfStrings = {'one', 'two', 'three'};
@@ -462,7 +460,7 @@ Or you can specify the type yourself:
 
 你也可以手动指定类型：
 
-<?code-excerpt "misc/bin/cheatsheet/collection_literals.dart (collection-literals-2)"?>
+<?code-excerpt "misc/test/cheatsheet/collections_test.dart (collection-literals-specified)"?>
 ```dart
 final aListOfInts = <int>[];
 final aSetOfInts = <int>{};
@@ -474,7 +472,7 @@ but still want the list to be `List<BaseType>`:
 
 在使用子类型的内容初始化列表，但仍希望列表为 `List <BaseType>` 时，指定其类型很方便：
 
-<?code-excerpt "misc/bin/cheatsheet/collection_literals.dart (collection-literals-3)"?>
+<?code-excerpt "misc/test/cheatsheet/collections_test.dart (collection-literals-subtypes)"?>
 ```dart
 final aListOfBaseType = <BaseType>[SubType(), SubType()];
 ```
@@ -600,7 +598,7 @@ For example, consider this call to the `List` class's
 
 例如，考虑调用这个 `List` 类中的 `any` 方法：
 
-<?code-excerpt "misc/bin/cheatsheet/arrow_functions.dart (has-empty-long)"?>
+<?code-excerpt "misc/test/cheatsheet/arrow_functions_test.dart (has-empty-long)"?>
 ```dart
 bool hasEmpty = aListOfStrings.any((s) {
   return s.isEmpty;
@@ -611,7 +609,7 @@ Here’s a simpler way to write that code:
 
 这里是一个更简单的代码实现：
 
-<?code-excerpt "misc/bin/cheatsheet/arrow_functions.dart (has-empty-short)"?>
+<?code-excerpt "misc/test/cheatsheet/arrow_functions_test.dart (has-empty-short)"?>
 ```dart
 bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 ```
@@ -912,7 +910,7 @@ For example, you can make sure a property's value is valid:
 
 例如，你可以用来确保属性值合法：
 
-<?code-excerpt "misc/bin/cheatsheet/getters_setters.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/getters_setters.dart"?>
 ```dart
 class MyClass {
   int _aProperty = 0;
@@ -931,7 +929,7 @@ You can also use a getter to define a computed property:
 
 你还可以使用 getter 来定义计算属性：
 
-<?code-excerpt "misc/bin/cheatsheet/getter_compute.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/getter_compute.dart"?>
 ```dart
 class MyClass {
   final List<int> _values = [];
@@ -1078,7 +1076,7 @@ you're likely familiar with:
 
 Dart 有两种传参方法：位置参数和命名参数。位置参数你可能会比较熟悉：
 
-<?code-excerpt "misc/bin/optional_positional_args.dart (optional-positional-args)"?>
+<?code-excerpt "misc/lib/cheatsheet/optional_positional_args.dart (optional-positional-args)"?>
 ```dart
 int sumUp(int a, int b, int c) {
   return a + b + c;
@@ -1091,7 +1089,7 @@ With Dart, you can make these positional parameters optional by wrapping them in
 
 在 Dart 里，你可以将这些参数包裹在方括号中，使其变成可选位置参数：
 
-<?code-excerpt "misc/bin/optional_positional_args.dart (optional-positional-args-2)" replace="/total2/total/g"?>
+<?code-excerpt "misc/lib/cheatsheet/optional_positional_args.dart (optional-positional-args-2)" replace="/total2/total/g"?>
 ```dart
 int sumUpToFive(int a, [int? b, int? c, int? d, int? e]) {
   int sum = a;
@@ -1113,7 +1111,7 @@ Their default value is null unless you provide another default value:
 可选位置参数永远放在方法参数列表的最后。
 除非你给它们提供一个默认值，否则默认为 null:
 
-<?code-excerpt "misc/bin/optional_positional_args2.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/optional_positional_args2.dart"?>
 ```dart
 int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
 // ···
@@ -1229,7 +1227,7 @@ you can define optional parameters that have names.
 
 你可以使用大括号语法定义可选命名参数。
 
-<?code-excerpt "misc/bin/optional_named_params.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/optional_named_params.dart"?>
 ```dart
 void printName(String firstName, String lastName, {String? suffix}) {
   print('$firstName $lastName ${suffix ?? ''}');
@@ -1255,11 +1253,12 @@ or mark the parameter as `required`
 如果一个参数的类型是非空的，那么你必须要提供一个默认值（如下方代码所示），
 或者将其标记为 `required`（如 [构造部分](#using-this-in-a-constructor)所示）。
 
-{% prettify dart tag=pre+code %}
+<?code-excerpt "misc/test/cheatsheet/arguments_test.dart (defaulted-suffix)" replace="/ = ''/[! = ''!]/g;"?>
+```dart
 void printName(String firstName, String lastName, {String suffix[! = ''!]}) {
   print('$firstName $lastName $suffix');
 }
-{% endprettify %}
+```
 
 A function can't have both optional positional and optional named parameters.
 
@@ -1406,7 +1405,7 @@ allowed to throw any non-null object:
 
 虽然 Dart 提供了 Exception 和 Error 类型，但是你可以抛出任何非空对象：
 
-<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (simple-throws)"?>
+<?code-excerpt "misc/test/cheatsheet/exceptions_test.dart (simple-throws)"?>
 ```dart
 throw Exception('Something bad happened.');
 throw 'Waaaaaaah!';
@@ -1416,7 +1415,7 @@ Use the `try`, `on`, and `catch` keywords when handling exceptions:
 
 使用 `try`、`on` 以及 `catch` 关键字来处理异常： 
 
-<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (try-on-catch)"?>
+<?code-excerpt "misc/test/cheatsheet/exceptions_test.dart (try-on-catch)"?>
 ```dart
 try {
   breedMoreLlamas();
@@ -1441,7 +1440,7 @@ to propagate the exception:
 
 如果你无法完全处理该异常，请使用 `rethrow` 关键字再次抛出异常：
 
-<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (try-catch)"?>
+<?code-excerpt "misc/test/cheatsheet/exceptions_test.dart (try-catch)"?>
 ```dart
 try {
   breedMoreLlamas();
@@ -1456,7 +1455,7 @@ use `finally`:
 
 要执行一段无论是否抛出异常都会执行的代码，请使用 `finally`：
 
-<?code-excerpt "misc/bin/cheatsheet/exceptions.dart (try-catch-finally)"?>
+<?code-excerpt "misc/test/cheatsheet/exceptions_test.dart (try-catch-finally)"?>
 ```dart
 try {
   breedMoreLlamas();
@@ -1662,7 +1661,7 @@ Dart 提供了一个方便的快捷方式，
 用于为构造方法中的属性赋值：
 在声明构造方法时使用 `this.propertyName`。
 
-<?code-excerpt "misc/bin/this_constructor.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/this_constructor.dart (required-positional)"?>
 ```dart
 class MyColor {
   int red;
@@ -1680,6 +1679,7 @@ Property names become the names of the parameters:
 
 此技巧同样也适用于命名参数。属性名为参数的名称：
 
+<?code-excerpt "misc/lib/cheatsheet/this_constructor.dart (required-named)" replace="/int.*;/.../g; /olorRN/olor/g;"?>
 ```dart
 class MyColor {
   ...
@@ -1700,6 +1700,7 @@ If you add default values, you can omit `required`:
 
 对于可选参数，默认值为期望值：
 
+<?code-excerpt "misc/lib/cheatsheet/this_constructor.dart (defaulted)" replace="/olorO/olor/g; /.positional//g; /.named//g;"?>
 ```dart
 MyColor([this.red = 0, this.green = 0, this.blue = 0]);
 // or
@@ -1803,10 +1804,11 @@ which goes between the constructor's signature and its body:
 例如，final 修饰的字段必须在构造函数体执行之前赋值。
 在初始化列表中执行此操作，该列表位于构造函数的签名与其函数体之间：
 
+<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-no-comment)"?>
 ```dart
-Point.fromJson(Map<String, num> json)
-    : x = json['x'],
-      y = json['y'] {
+Point.fromJson(Map<String, double> json)
+    : x = json['x']!,
+      y = json['y']! {
   print('In Point.fromJson(): ($x, $y)');
 }
 ```
@@ -1816,6 +1818,7 @@ which run only during development:
 
 初始化列表也是放置断言的便利位置，它仅会在开发期间运行：
 
+<?code-excerpt "misc/lib/cheatsheet/initializer_lists.dart (assert)"?>
 ```dart
 NonNegativePoint(this.x, this.y)
     : assert(x >= 0),
@@ -1936,7 +1939,7 @@ Dart supports named constructors:
 为了允许一个类具有多个构造方法，
 Dart 支持命名构造方法：
 
-<?code-excerpt "misc/bin/named_constructor.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/named_constructor.dart (point-class)"?>
 ```dart
 class Point {
   double x, y;
@@ -1953,6 +1956,7 @@ To use a named constructor, invoke it using its full name:
 
 为了使用命名构造方法，请使用全名调用它：
 
+<?code-excerpt "misc/test/cheatsheet/constructor_test.dart (origin-point)"?>
 ```dart
 final myPoint = Point.origin();
 ```
@@ -2045,7 +2049,7 @@ To create a factory constructor, use the `factory` keyword:
 Dart 支持工厂构造方法。它能够返回其子类甚至 null 对象。
 要创建一个工厂构造方法，请使用 `factory` 关键字。
 
-<?code-excerpt "misc/bin/factory_constructors.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/factory_constructors.dart"?>
 ```dart
 class Square extends Shape {}
 
@@ -2058,8 +2062,7 @@ class Shape {
     if (typeName == 'square') return Square();
     if (typeName == 'circle') return Circle();
 
-    print('I don\'t recognize $typeName');
-    throw Error();
+    throw ArgumentError('Unrecognized $typeName');
   }
 }
 ```
@@ -2260,7 +2263,7 @@ with the constructor call appearing after a colon (`:`).
 有时一个构造方法仅仅用来重定向到该类的另一个构造方法。
 重定向方法没有主体，它在冒号（`:`）之后调用另一个构造方法。
 
-<?code-excerpt "misc/bin/redirecting_const_constructors.dart (redirecting-constructors)"?>
+<?code-excerpt "misc/lib/cheatsheet/redirecting_constructors.dart (redirecting-constructors)"?>
 ```dart
 class Automobile {
   String make;
@@ -2366,15 +2369,15 @@ are final.
 则可以让这些对象成为编译时常量。
 为此，请定义 `const` 构造方法并确保所有实例变量都是 final 的。
 
-<?code-excerpt "misc/bin/redirecting_const_constructors.dart (const-constructors)"?>
+<?code-excerpt "misc/lib/cheatsheet/redirecting_constructors.dart (const-constructors)"?>
 ```dart
 class ImmutablePoint {
-  const ImmutablePoint(this.x, this.y);
+  static const ImmutablePoint origin = ImmutablePoint(0, 0);
 
   final int x;
   final int y;
 
-  static const ImmutablePoint origin = ImmutablePoint(0, 0);
+  const ImmutablePoint(this.x, this.y);
 }
 ```
 

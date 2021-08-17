@@ -109,7 +109,7 @@ so that you can easily undo any changes.
 该节会讲述如何在空安全模式下，使用 `dart pub outdated` 检查并更新你的依赖。
 如果你的代码应用了 **版本管理**，你可以随时回滚所有的改动。
 
-### Switch to the Dart 2.12 release
+### Switch to the latest stable Dart release
 
 ### 切换至 2.12 beta 版本
 

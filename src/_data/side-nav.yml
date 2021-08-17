@@ -144,8 +144,8 @@
           permalink: /web/js-interop
     - title: Google APIs
       permalink: /guides/google-apis
-    - title: Mobile apps
-      permalink: /mobile
+    - title: 跨平台应用
+      permalink: /multiplatform-apps
     - title: 命令行和服务端应用
       children:
         - title: 综述
