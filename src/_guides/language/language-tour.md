@@ -1683,7 +1683,7 @@ The output, depending on your environment, looks something like this:
 输出取决于你的环境，大致类似于：
 
 ```terminal
-$ dart bin/main.dart
+$ dart run bin/main.dart
 Hi 🇩🇰
 The end of the string: ???
 The last character: 🇩🇰
@@ -3707,14 +3707,6 @@ var p1 = new Point(2, 2);
 var p2 = new Point.fromJson({'x': 1, 'y': 2});
 ```
 
-{{site.alert.version-note}}
-
-  The `new` keyword became optional in Dart 2.
-
-  从 Dart 2 开始，`new` 关键字是可选的。
-
-{{site.alert.end}}
-
 Some classes provide [constant constructors](#constant-constructors).
 To create a compile-time constant using a constant constructor,
 put the `const` keyword before the constructor name:
@@ -3785,14 +3777,6 @@ var b = ImmutablePoint(1, 1); // Does NOT create a constant
 assert(!identical(a, b)); // NOT the same instance!
 ```
 
-{{site.alert.version-note}}
-
-  The `const` keyword became optional within a constant context in Dart 2.
-
-  只有从 Dart 2 开始才能根据上下文判断省略 `const` 关键字。
-
-{{site.alert.end}}
-
 
 ### Getting an object's type
 
@@ -3809,6 +3793,13 @@ which returns a [`Type`][] object.
 ```dart
 print('The type of a is ${a.runtimeType}');
 ```
+
+{{site.alert.warn}}
+  Use a [type test operator][] rather than `runtimeType`
+  to test an object's type.
+  In production environments, the test `object is Type` is more stable
+  than the test `object.runtimeType == Type`.
+{{site.alert.end}}
 
 Up to here, you've seen how to _use_ classes.
 The rest of this section shows how to _implement_ classes.
@@ -6350,5 +6341,6 @@ To learn more about Dart's core libraries, see
 [synchronous-async-start]: https://github.com/dart-lang/sdk/blob/master/docs/newsletter/20170915.md#synchronous-async-start
 [top-and-bottom]: /null-safety/understanding-null-safety#top-and-bottom
 [trailing commas]: #trailing-comma
+[type test operator]: #type-test-operators
 [`Type`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Type-class.html
 [Understanding null safety]: /null-safety/understanding-null-safety

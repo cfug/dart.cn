@@ -169,7 +169,18 @@ With pub you can publish packages and command-line apps.
 
 使用 pub 命令你还可以发布 Package 和命令行应用。
 
-{% include tools/pub-was-a-builder.md %}
+{{site.alert.note}}
+
+Pub used to support building apps
+through commands like `pub build` and `pub serve`.
+That functionality is now in other tools such as the build system.
+For details, see [Obsolete Pub Features](/tools/pub/obsolete).
+
+Pub 一直以来支持通过 `pub build` 个 `pub serve` 等命令构建应用。
+这些功能已经被转移到其他工具链中。
+更多细节请查看 [过时的 Pub 功能](/tools/pub/obsolete)。
+
+{{site.alert.end}}
 
 #### Packages
 
@@ -213,51 +224,51 @@ These include:
 有几个命令行选线可以用于所有 pub 命令。它们包括：
 
 `--help` or `-h`
-<br> Print usage information.
+: Print usage information.
 
 `--help` 或 `-h`
 <br>显示使用说明。
 
 `--version`
-<br> Print version of pub.
+: Print version of pub.
 
 `--version`
 <br>显示当前 pub 命令的版本。
 
 `--trace`
-<br> Print debugging information when an error occurs.
+: Print debugging information when an error occurs.
 
 `--trace`
 <br>当出现错误时输出调试信息。
 
 `--verbosity=<level>`
-<br> The specified level determines the amount of information that is displayed:
+: The specified level determines the amount of information that is displayed:
 
 `--verbosity=<level>`
 <br>指定输出信息的级别：
 
 * `all`
-<br> Show all output, including internal tracing messages.
+: Show all output, including internal tracing messages.
 
   `all`：显示所有出输出，包括内部追踪信息。
 
 * `io`
-<br> Show I/O operations.
+: Show I/O operations.
 
   `io`：显示 I/O 操作。
 
 * `normal`
-<br> Show errors, warnings, and user messages.
+: Show errors, warnings, and user messages.
 
   `normal`：显示错误、警告以及用户信息。
 
 * `solver`
-<br> Show steps during version resolution.
+: Show steps during version resolution.
 
   `solver`：显示版本解析的步骤。
 
 `-verbose` or `-v`
-<br> Equivalent to `--verbosity=all`.
+: Equivalent to `--verbosity=all`.
 
 `-verbose` 或 `-v`
 <br> 等同于 `--verbosity=all`。

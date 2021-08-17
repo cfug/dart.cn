@@ -68,6 +68,8 @@ The following table lists the Dart core libraries that work on the
 | Library                                       | Notes                         |
 |-----------------------------------------------|-------------------------------|
 | 库名称                                        | 备忘                         |
+| [`dart:ffi`][dart-ffi]                  <br> Foreign Function Interface for interoperability with the C programming language. | |
+| [`dart:ffi`][dart-ffi]                  <br> 与 C 语言集成调用的 外部函数接口。| |
 | [`dart:io`][dart-io]                    <br> File, socket, HTTP, and other I/O support for non-web applications. | |
 | [`dart:io`][dart-io]                    <br> 用于支持非 Web 应用的文件、Socket、HTTP 和其它 I/O 操作。| |
 | [`dart:isolate`][dart-isolate]          <br> Concurrent programming using isolates: independent workers similar to threads. | |
@@ -88,21 +90,23 @@ The following table lists the Dart core libraries that work on the
 
 <div class="table-wrapper" markdown="1">
 |-----------------------------------------------+-------------------------------|
-| Library                                       | Notes                         |
+| Library                                       | Notes   |
 |-----------------------------------------------|-------------------------------|
 | 库名称                                        | 备忘                         |
 | [`dart:html`][dart-html]                <br> HTML elements and other resources for web-based applications. | |
 | [`dart:html`][dart-html]                <br> 为 Web 应用开发所提供的 HTML 元素和其它资源。| |
 | [`dart:indexed_db`][dart-indexed_db]    <br> Client-side key-value store with support for indexes. | |
 | [`dart:indexed_db`][dart-indexed_db]    <br> 客户端上使用的可以索引的键值对存储。| |
-| [`dart:web_audio`][dart-web_audio]      <br> High-fidelity audio programming in the browser. | |
-| [`dart:web_audio`][dart-web_audio]      <br> 用于浏览器的高保真音频编程。| |
-| [`dart:web_gl`][dart-web_gl]            <br> 3D programming in the browser. | |
-| [`dart:web_gl`][dart-web_gl]            <br> 用于浏览器的 3D 编程。| |
 | [`dart:js`][dart-js]                    <br> _Don't use._ Instead, use the `js` package, as described in [JavaScript interoperability][]. | *DEPRECATED* |
 | [`dart:js`][dart-js]                    <br> **不要使用该库**，请使用 `js` 这个 Package 替代，就像我们在 [JavaScript 互相调用][JavaScript interoperability] 中说的那样。| **已弃用** |
 | [`dart:js_util`][dart-js_util]          <br> APIs to supplement missing functionality in `dart:html` or the `js` package. | |
 | [`dart:js_util`][dart-js_util]          <br> 补充 `dart:html` 或 `js` 包中缺少的功能性 API。 | |
+| [`dart:svg`][dart-svg]                  <br> Scalable Vector Graphics. | |
+| [`dart:svg`][dart-svg]                  <br> 用于可缩放的矢量图形 (SVG)。 | |
+| [`dart:web_audio`][dart-web_audio]      <br> High-fidelity audio programming in the browser. | |
+| [`dart:web_audio`][dart-web_audio]      <br> 用于浏览器的高保真音频编程。| |
+| [`dart:web_gl`][dart-web_gl]            <br> 3D programming in the browser. | |
+| [`dart:web_gl`][dart-web_gl]            <br> 用于浏览器的 3D 编程。| |
 {:.table .table-striped}
 
 </div>
@@ -112,6 +116,7 @@ The following table lists the Dart core libraries that work on the
 [dart-convert]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
 [dart-core]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html
 [dart-developer]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-developer/dart-developer-library.html
+[dart-ffi]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/dart-ffi-library.html
 [dart-math]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
 [dart-collection]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html
 [dart-typed_data]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
