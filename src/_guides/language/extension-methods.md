@@ -11,7 +11,7 @@ For example, when you use code completion in an IDE,
 it suggests extension methods alongside regular methods.
 
 <iframe width="560" height="315"
-  src="https://www.youtube.com/embed/D3j0OSfT9ZI"
+  src="https://player.bilibili.com/player.html?aid=547449672&bvid=BV1Hq4y1M7zi&cid=391150414&page=1"
   frameborder="0"
   allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen>
