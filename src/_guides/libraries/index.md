@@ -68,8 +68,8 @@ The following table lists the Dart core libraries that work on the
 | Library                                       | Notes                         |
 |-----------------------------------------------|-------------------------------|
 | 库名称                                        | 备忘                         |
-| [`dart:ffi`][dart-ffi]                  <br> Foreign Function Interface for interoperability with the C programming language. | |
-| [`dart:ffi`][dart-ffi]                  <br> 与 C 语言集成调用的 外部函数接口。| |
+| [`dart:ffi`][dart-ffi]                  <br> A foreign function interface that lets Dart code use native C APIs. | |
+| [`dart:ffi`][dart-ffi]                  <br> Dart 代码可以通过这个外部函数接口使用原生的 C 语言 API。| |
 | [`dart:io`][dart-io]                    <br> File, socket, HTTP, and other I/O support for non-web applications. | |
 | [`dart:io`][dart-io]                    <br> 用于支持非 Web 应用的文件、Socket、HTTP 和其它 I/O 操作。| |
 | [`dart:isolate`][dart-isolate]          <br> Concurrent programming using isolates: independent workers similar to threads. | |

@@ -105,16 +105,6 @@ are a few additional requirements for uploading a package:
   你必须有一个 [Google 账户][Google Account]，pub 将使用它来管理 package 上传权限。
   你的 Google 账户可以与 Gmail 或其他任何邮箱地址关联。
 
-{{site.alert.note}}
-  
-  Unless you publish using a [verified publisher][],
-  **pub.dev displays the email address associated with your Google Account.**
-
-  除非你的发布使用了 [已验证发布者][verified publisher]，
-  ** pub.dev 将展示与你 Google 账户关联的邮箱**
-
-{{site.alert.end}}
-
 ### Important files
 
 ### 重要的文件

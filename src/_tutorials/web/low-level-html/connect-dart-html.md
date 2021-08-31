@@ -9,6 +9,8 @@ nextpage:
   title: 向 DOM 添加元素
 ---
 
+{% include not-null-safe.md %}
+
 This tutorial is the first of a series on
 basic, low-level web programming with the dart:html library.
 If you use a web framework,
