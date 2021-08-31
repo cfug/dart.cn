@@ -1584,9 +1584,11 @@ The `then().catchError()` pattern is the asynchronous version of
 #### 链式异步编程
 
 The `then()` method returns a Future, providing a useful way to run
-multiple asynchronous functions in a certain order. If the callback
-registered with `then()` returns a Future, `then()` returns an
-equivalent Future. If the callback returns a value of any other type,
+multiple asynchronous functions in a certain order. 
+If the callback registered with `then()` returns a Future, 
+`then()` returns a Future that will complete
+with the same result as the Future returned from the callback. 
+If the callback returns a value of any other type,
 `then()` creates a new Future that completes with the value.
 
 `then()` 方法返回一个 Future 对象，
@@ -1689,7 +1691,6 @@ passing in a function literal that searches each file or directory.
 它使用 Stream 的 `listen()` 方法来订阅文件列表，
 传入一个搜索文件或目录的函数
 
-<!-- OLD dart-tutorials-samples/cmdline/bin/dgrep.dart -->
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (listen)" replace="/listen/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
 void main(List<String> arguments) {

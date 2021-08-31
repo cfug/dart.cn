@@ -55,7 +55,7 @@ Dart Analyzer 中有一个 Linter 工具，该工具可以帮助你编写优秀�
 如果存在一个 Linter 规则可以帮助你遵循某个指南准则，
 那么该指南准则将链接到该规则。比如下面的示例：
 
-{% include linter-rule-mention.html rule="prefer_collection_literals" %}
+{% include linter-rule-mention.md rule="prefer_collection_literals" %}
 
 For help on
 [enabling linter rules](/guides/language/analysis-options#enabling-linter-rules),
