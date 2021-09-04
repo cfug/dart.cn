@@ -223,47 +223,55 @@ These include:
 
 有几个命令行选线可以用于所有 pub 命令。它们包括：
 
-`--help` or `-h`
+### `--help` or `-h`
 : Print usage information.
 
-`--help` 或 `-h`
+### `--help` 或 `-h`
 <br>显示使用说明。
 
-`--version`
+### `--version`
 : Print version of pub.
 
-`--version`
+### `--version`
 <br>显示当前 pub 命令的版本。
 
-`--trace`
+### `--trace`
 : Print debugging information when an error occurs.
 
-`--trace`
+### `--trace`
 <br>当出现错误时输出调试信息。
 
-`--verbosity=<level>`
+### `--verbosity=<level>`
 : The specified level determines the amount of information that is displayed:
 
 `--verbosity=<level>`
 <br>指定输出信息的级别：
 
 * `all`
-: Show all output, including internal tracing messages.
+: Shows all output, including internal tracing messages.
 
   `all`：显示所有出输出，包括内部追踪信息。
 
 * `io`
-: Show I/O operations.
+: Shows I/O operations.
 
   `io`：显示 I/O 操作。
 
 * `normal`
-: Show errors, warnings, and user messages.
+: Shows errors, warnings, and user messages.
 
   `normal`：显示错误、警告以及用户信息。
 
 * `solver`
-: Show steps during version resolution.
+: Shows steps during version resolution.
+
+### `--verbose` or `-v`
+
+Equivalent to `--verbosity=all`.
+
+### `--directory=<dir>` or `-C <dir>`
+
+Runs the command in the specified directory.
 
   `solver`：显示版本解析的步骤。
 

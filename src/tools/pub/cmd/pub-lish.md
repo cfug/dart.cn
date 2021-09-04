@@ -10,9 +10,9 @@ _Publish_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 _Publish_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
 
-{% prettify nocode tag=pre+code %}
+```nocode
 $ dart pub publish [options]
-{% endprettify %}
+```
 
 This command publishes your package on the
 [pub.dev site]({{site.pub}}) for anyone to download and depend
@@ -62,8 +62,10 @@ either don't use `--force`, or use `--dry-run` first.
 若你想确保你的 Package 在上传前没有警告，
 请确保不要使用 `--force` 和 `--dry-run` 选项。
 
-<aside class="alert alert-info" markdown="1">
-  *Problems?* See [Troubleshooting pub](/tools/pub/troubleshoot).
+{{site.alert.info}}
+  *Problems?* 
+  See [Troubleshooting pub](/tools/pub/troubleshoot).
 
-  **有疑问？** 请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
-</aside>
+  **有疑问？** 
+  请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
+{{site.alert.end}}

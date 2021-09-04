@@ -8,9 +8,9 @@ _Upgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 _Upgrade_ 命令是 [Pub 工具](/tools/pub/cmd)中的一个命令。
 
-{% prettify nocode tag=pre+code %}
+```nocode
 $ dart pub upgrade [args] [dependencies]
-{% endprettify %}
+```
 
 Like [`dart pub get`](/tools/pub/cmd/pub-get),
 `dart pub upgrade` gets dependencies.
@@ -137,12 +137,16 @@ run `dart pub upgrade` again to upgrade to a later version.
 ## 选项
 
 The `dart pub upgrade` command supports the
-[`dart pub get` options](/tools/pub/cmd/pub-get#options).
+[`dart pub get` options](/tools/pub/cmd/pub-get#options), and more.
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
 `pub upgrade` 命令支持 [`pub get` 的命令选项](/tools/pub/cmd/pub-get#options)。
 你可以查阅[全局选项](/tools/pub/cmd#global-options)获取 Pub 命令所支持的命令选项。
+
+### `--[no-]offline`
+
+{% include tools/pub-option-no-offline.md %}
 
 ### `--dry-run` or `-n`
 
@@ -154,6 +158,30 @@ want to analyze updates before making them.
 
 打印出可能变化的依赖，但不会实际作出更改。
 如果你想要在变更前进行分析，该命令非常有用。
+
+### `--[no-]precompile`
+
+By default, pub precompiles executables
+in immediate dependencies (`--precompile`).
+To prevent precompilation, use `--no-precompile`.
+
+默认情况下，pub 预编译将直接执行依赖的 (`--precompile`)。
+要取消预编译，请使用 `--no-precompile`。
+
+### `--null-safety`
+
+Gets the packages that
+[`dart pub outdated --mode=null-safety`][`dart pub outdated`]
+lists as _resolvable_,
+ignoring any upper-bound constraint in the `pubspec.yaml` file.
+Also updates `pubspec.yaml` with the new constraints.
+This command is similar to `--major-versions`.
+
+拉取依赖包使用 [`dart pub outdated --mode=null-safety`][`dart pub outdated`]
+将会把依赖列表标记为 _resolvable_，
+它会忽略 `pubspec.yaml` 文件中的全部约束上限。
+也会将 `pubspec.yaml` 更新到最新约束。
+这个命令类似于 `--major-versions`。
 
 ### `--major-versions`
 
@@ -169,12 +197,13 @@ Also updates `pubspec.yaml` with the new constraints.
 
 {{site.alert.tip}}
 
-  Commit the `pubspec.yaml` file before running this command,
-  so that you can undo the changes if necessary.
+Commit the `pubspec.yaml` file before running this command,
+so that you can undo the changes if necessary.
 
-  在运行该命令前提交 `pubspec.yaml` 文件的修改，这样如果有需要时可以进行回滚。
+在运行该命令前提交 `pubspec.yaml` 文件的修改，这样如果有需要时可以进行回滚。
 
 {{site.alert.end}}
+
 To check which dependencies will be upgraded,
 you can use `dart pub upgrade --major-versions --dry-run`.
 
@@ -205,11 +234,6 @@ This command is similar to `--major-versions`.
 
 {{site.alert.end}}
 
-### `--offline`
-
-Uses cached packages rather than downloading
-from the network.
-For details, see [Upgrading while offline](#upgrading-while-offline).
 
 使用缓存的 package 而不是从网上下载。
 更多细节，请查看 [离线时升级](#upgrading-while-offline)。
@@ -221,10 +245,10 @@ project's executables in direct dependencies.
 
 以直接依赖的方式创建项目中可执行文件的快照。
 
-<aside class="alert alert-info" markdown="1">
+{{site.alert.info}}
 *Problems?*
 See [Troubleshooting Pub](/tools/pub/troubleshoot).
 
 **有疑问？**
 请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
-</aside>
+{{site.alert.end}}
