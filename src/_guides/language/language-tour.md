@@ -1025,7 +1025,7 @@ assert(s2 == 'The + operator works, as well.');
 ```
 
 <!--skip-->
-```
+```dart
 // 代码中文解释
 var s1 = '可以拼接'
     '字符串'
