@@ -139,9 +139,7 @@ Dart SDK 支持 Windows、Linux 和 macOS。
 
 * **Supported architectures:** x64, arm64.
 
-  **支持的架构：**x64。
-  针对 arm64 的支持处在预览版本，目前在 dev 和 beta 渠道可以使用。
-
+  **支持的架构：**x64、arm64。
 
 ## About release channels and version strings {#release-channels}
 

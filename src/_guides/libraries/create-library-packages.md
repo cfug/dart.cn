@@ -156,7 +156,9 @@ To avoid exposing more API than intended —
 and to give developers an overview of the entire public API of the package —
 `shelf.dart` uses `show` to specify exactly which symbols to export:
 
-主 Library 文件 `shelf.dart` 在 lib 目录下，通过 `shelf.dart` 文件导出 lib/src 目录下的若干文件：
+主 Library 文件 `shelf.dart` 在 lib 目录下，通过 `shelf.dart` 文件导出 lib/src 目录下的若干文件。
+为了不导出过多的 API，并且为开发者提供公开的 API 的概览，
+`shelf.dart` 使用了 `show` 来指定哪些内容需要导出：
 
 ```dart
 export 'src/cascade.dart' show Cascade;
