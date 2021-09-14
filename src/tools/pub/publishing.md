@@ -75,18 +75,19 @@ are a few additional requirements for uploading a package:
   You must also have the legal right to
   redistribute anything that you upload as part of your package.
 
-  你必须带有一个包含 `LICENSE` 文件。
+  你的 package 必须包含一个 `LICENSE` 文件。
   我们推荐 [BSD 3-clause 许可证][BSD 3-clause license]，
   也就是 Dart 和 Flutter 团队所使用的开源许可证。
   同时，对于你所上传的 package 任意部分，你必须拥有重新发布的合法权利。
 
-* Your package must be less than 100 MB large after gzip compression. If
-  it's too large, consider splitting it into multiple packages, or cutting down
+* Your package must be smaller than 100 MB after gzip compression. If 
+  it's too large, consider splitting it into multiple packages, using a 
+  `.pubignore` file to remove unnecessary content, or cutting down
   on the number of included resources or examples.
 
-  通过 gzip 压缩后，你的 package 大小必须小于 100 MB。
-  如果它所占空间过大，考虑将它分割为几个小的 package，
-  或者减少包含资源或实例的数量。
+  通过 gzip 压缩后，你的 package 必须小于 100 MB。
+  如果它所占空间过大，考虑将它分割为几个小的 package、
+  使用 `.pubignore` 移除不需要的文件，或者减少包含资源或实例的数量。
 
 * Your package should depend only on hosted dependencies (from the default pub
   package server) and SDK dependencies (`sdk: flutter`). These restrictions
@@ -356,47 +357,67 @@ Here's how to transfer a package to a verified publisher:
 
 ## What files are published?
 
-## 那些文件会被发布？
+## 哪些文件会被发布？
 
-**All files** in your package are included in the published package, with
-the following exceptions:
+**All files** under the package root directory are
+included in the published package,
+with the following exceptions:
 
-在你 package 中的 **所有文件** 都会被包含在发布的 package 中，除了以下几个例外： 
+在你 package 中的 **所有文件** 都会被包含在发布的 package 中，
+除了以下几个例外：
 
-* Any `packages` directories.
+* Any _hidden_ files or directories —
+  that is, files with names that begin with dot (`.`)
 
-  任何 `packages` 目录。
+  所有 **隐藏** 文件和文件夹&mdash;&mdash;即文件名以 `.` 开头的文件
 
-* Your package's [lockfile](/tools/pub/glossary#lockfile).
+* Any directories with the name `packages`
 
-  你的 package 的 [lockfile](/tools/pub/glossary#lockfile) 文件。
+  所有名字中包含 `packages` 的文件夹
 
-* If you aren't using Git, all _hidden_ files (that is,
-  files whose names begin with `.`).
+* Files and directories ignored by a `.pubignore` or `.gitignore` file
 
-  如果你没有使用 Git，所有的 **隐藏** 文件（即文件名以 `.` 开头的那些）。
+  `.pubignore` 和 `.gitignore` 文件忽略的所有文件
 
-* If you're using Git, any files ignored by your `.gitignore` file.
+{{site.alert.version-note}}
 
-  如果你在使用 Git，所有通过 `.gitignore` 文件所忽略的文件。
+  Support for `.pubignore` files was added in Dart 2.14.
 
+  Dart 2.14 加入了 `.pubignore` 文件的支持。
 
-{% comment %}
+{{site.alert.end}}
 
-PENDING: Here only to make it easy to find the packages discussion: packages-dir.html
+If you want different ignore rules for `git` and `dart pub publish`,
+then overrule the `.gitignore` file in a given directory by
+creating a `.pubignore` file.
+(If a directory contains both a `.pubignore` file and a `.gitignore` file,
+then  `dart pub publish` doesn't read that directory's `.gitignore` file.)
+The format of `.pubignore` files is the same as the
+[`.gitignore` file format][git-ignore-format].
 
-待定：仅用于更容易的发现 package 的讨论区： packages-dir.html
+如果你需要 `git` 和 `dart pub publish` 有不同的规则，
+你可以创建 `.pubignore` 对 `.gitignore` 进行重载。
+（如果一个文件夹既有 `.pubignore` 又有 `.gitignore` 文件，
+则 `dart pub publish` 不会采用 `.gitignore` 的规则）
+`.pubignore` 文件的格式与 [`.gitignore` 文件格式][git-ignore-format] 相同。
 
-{% endcomment %}
+To avoid publishing unwanted files,
+follow these practices:
 
-Be sure to delete any files you don't want to include (or add them to
-`.gitignore`). `dart pub publish` lists all files that it's going to publish
-before uploading your package,
-so examine the list carefully before completing your upload.
+如果你不想发布一些文件，请参考以下步骤：
 
-确认删除了所有你不想包含在 package 中的文件（或者把他们添加到 `.gitignore` 中）。
-`pub publish` 命令会在上传之前列出所有准备发布的文件，
-请在发布结束之前仔细检查这个列表。
+* Either delete any files that you don't want to include,
+  or add them to a `.pubignore`  or `.gitignore` file.
+
+  删除它们，或者把它们加入 `.pubignore` 或 `.gitignore` 文件。
+
+* When uploading your package,
+  carefully examine the list of files that
+  `dart pub publish` says it's going to publish.
+  Cancel the upload if any undesired files appear in that list.
+
+  执行 `dart pub publish` 上传前仔细检查文件列表。
+  如果发现了不需要的文件，则取消这次上传。
 
 ## Uploaders
 
@@ -571,3 +592,4 @@ For more information, see the reference pages for the following `pub` commands:
 [pubspec]: /tools/pub/pubspec
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
 [verified publisher]: /tools/pub/verified-publishers
+[git-ignore-format]: https://git-scm.com/docs/gitignore#_pattern_format

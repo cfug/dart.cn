@@ -9,9 +9,9 @@ _Downgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 _Downgrade_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
 
-{% prettify sh tag=pre+code %}
+```nocode
 $ dart pub downgrade [--[no-]offline] [-n|--dry-run] [dependencies...] 
-{% endprettify %}
+```
 
 Without any additional arguments, `dart pub downgrade` gets the lowest versions of
 all the dependencies listed in the [`pubspec.yaml`](/tools/pub/pubspec) file
@@ -138,21 +138,21 @@ For options that apply to all pub commands, see
 
 你可以查阅 [全局选项](/tools/pub/cmd#global-options) 获取 Pub 命令所支持的命令选项。
 
-`--[no-]offline`
-: By default, pub connects to the network to check for hosted 
-dependencies (`--no-offline`). To use cached packages instead, use `--offline`.
+### `--[no-]offline`
 
-`--[no-]offline`
-: 默认情况下，pub 将会通过网络检查 host 依赖（`--no-offline`）。要使用缓存的包，请使用 `--offline`。
+{% include tools/pub-option-no-offline.md %}
 
-`--dry-run` or `-n`
-: Report what dependencies would change but don't change any.
+### `--dry-run` or `-n`
 
-`--dry-run` 或 `-n`
-: 报告将要改变的依赖项，但不会真的改变它。
+Reports what dependencies would change but doesn't change any.
 
-<aside class="alert alert-info" markdown="1">
-  *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).
+报告将要改变的依赖项，但不会真的改变它。
+
+{{site.alert.info}}
+
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
 
   **有疑问？** 请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
-</aside>
+
+{{site.alert.end}}

@@ -47,7 +47,7 @@ package that your package depends on, see [dart run](/tools/dart-run).
 ## Package 激活
 
 ```nocode
-dart pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [constraint]
+dart pub global activate [--noexecutables] [--executable=<name>] [--overwrite] <package> [version-constraint]
 ```
 
 Activate a package when you want to be able to run
@@ -71,7 +71,7 @@ constraint.  See the [constraint](#options) flag for usage examples.
 ### 激活 pub.dev 网站上的 Package
 
 ```terminal
-$ dart pub global activate <pub.dartlang package>
+$ dart pub global activate <pub.dev package>
 ```
 
 Specify a package on the pub.dev site to activate it. For example:
@@ -162,12 +162,14 @@ $ webdev serve
 Verify that the `bin` directory for the system cache is in your path.
 The following `PATH` variable, on macOS, includes the system cache:
 
-此时你需要确认 Pub 系统缓存的 `bin` 目录是否已经添加至 PATH 路径中。例如在 macOS 上，使用下述命令可以查看你的 `PATH` 路径是否已经包含了 Pub 系统缓存的 `bin` 目录：
+此时你需要确认 Pub 系统缓存的 `bin` 目录是否已经添加至 PATH 路径中。
+例如在 macOS 上，使用下述命令可以查看你的 `PATH` 路径是否已经包含了
+Pub 系统缓存的 `bin` 目录：
 
-{% prettify none tag=pre+code %}
+```terminal
 $ echo $PATH
 /Users/<user>/homebrew/bin:/usr/local/bin:/usr/bin:/bin:[!/Users/<user>/.pub-cache/bin!]
-{% endprettify %}
+```
 
 If this directory is missing from your `PATH`,
 locate the file for your platform and add it.
@@ -196,7 +198,7 @@ You can now directly invoke the command:
 
 现在你可以直接调用命令了：
 
-{% prettify none tag=pre+code %}
+{% prettify nocode tag=pre+code %}
 $ cd web_project
 $ [!webdev serve!]
 {% endprettify %}
@@ -242,14 +244,17 @@ entry of the pubspec file.  For example, the following pubspec file
 identifies `bin/helloworld.dart` as an executable for the helloworld
 package:
 
-Package 可以暴露它的一些脚本以直接从命令行运行。这些脚本必须在 pubspec 文件的 [`executables`](/tools/pub/pubspec#executables) 标签下列出。例如，下述名为 helloworld 的 Package 在其 pubspec 文件中将 `bin/helloworld.dart` 暴露为可以运行：
+Package 可以暴露它的一些脚本以直接从命令行运行。
+这些脚本必须在 pubspec 文件的 [`executables`](/tools/pub/pubspec#executables)
+标签下列出。例如，下述名为 helloworld 的 Package 在其 pubspec 文件中将
+`bin/helloworld.dart` 暴露为可以运行：
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: helloworld
 
 executables:
   helloworld:
-{% endprettify %}
+```
 
 Failing to list a script under the `executables` tag reduces the script's
 usability: unlisted scripts can be executed using `dart pub global run`, but not
@@ -300,61 +305,79 @@ For options that apply to all pub commands, see
 
 你可以查阅 [全局选项](/tools/pub/cmd#global-options) 获取 Pub 命令所支持的命令选项。
 
-`<constraint>`
-: Optional for `dart pub global activate`. The constraint allows you to pull
-  in a specific version of the package. For example,
-  the following command pulls the 0.6.0 version of the `markdown`
-  package:
+### `[version-constraint]`
 
-`<版本限制参数>`：`dart pub global activate` 命令的可选选项。使用版本限制参数可以允许你拉取 Package 的指定版本。例如，下述命令会拉取 `markdown` 这个 Package 的 0.6.0 版本：
+Use `dart pub global activate <package> [version-constraint]`
+to specify a specific version of the package.
+For example, the following command pulls
+the 0.6.0 version of the `markdown` package:
 
-  ```terminal
-  $ dart pub global activate markdown 0.6.0
-  ```
+使用 `dart pub global activate` 拉取 Package 的指定版本。
+例如，下述命令会拉取 `markdown` 这个 Package 的 0.6.0 版本：
 
-  If you specify a range, pub picks the best version that meets that
-  constraint. For example:
+```terminal
+$ dart pub global activate markdown 0.6.0
+```
+
+If you specify a range, pub picks the best version that meets that
+constraint. For example:
 
 如果你指定的是一个范围，Pub 则会在这个范围内选取一个最适合的版本。例如：
 
-  ```terminal
-  $ dart pub global activate foo <3.0.0
-  ```
+```terminal
+$ dart pub global activate foo <3.0.0
+```
 
-`--executable=<name>` or `-x<name>`
-: Optional for `dart pub global activate`.
-  Adds the specified executable to your PATH.
-  You can pass more than one of these flags.
-  For example, the following command adds `bar` and `baz` (but not
-  any other executables that `foo` might define) to your PATH.
+### `--no-executables`
 
-  ```terminal
-  $ dart pub global activate foo -x bar -x baz
-  ```
+Use `dart pub global activate <package> --no-executables`
+to globally activate the specified package,
+but not put any executables in `bin`.
+You have to use `dart pub global run` to run any executables.
 
-`--executable=<name>` 或 `-x<name>`：`dart pub global activate` 命令的可选选项。将指定的可执行对象添加至你的 PATH 路径中。你可以在一次命令执行中多次使用该选项以添加多个可执行对象到你的 PATH 路径中。例如，下述命令添加了 foo 中的 `bar` 和 `baz` 两个可执行对象（不包括 foo 中定义的其它可执行对象）到你的 PATH 中。
+会在全局范围内激活 Package 但不会在 `bin` 目录下生成任何文件。
+你必须使用 `dart pub global run` 来运行任意这些可执行的对象。
 
-`--no-executables`
-: Optional for `dart pub global activate`.
-  Globally activates the package but doesn't put any
-  executables in `bin`. You have to use `dart pub global run` to
-  run any executables.
+### `--executable=<name>` or `-x <name>`
 
-`--no-executables`：`dart pub global activate` 命令的可选选项。会在全局范围内激活 Package 但不会在 `bin` 目录下生成任何文件。你必须使用 `pub global run` 来运行任意这些可执行的对象。
+### `--executable=<name>` 或 `-x <name>`
 
-`--overwrite`
-: Optional for `dart pub global activate`.
-  Normally, if executables from two global packages have a name
-  collision, the preexisting executable wins. If you specify this flag,
-  the new executable overwrites the previously activated executable.
+Use with `dart pub global activate`
+to add the specified executable to your PATH.
+You can pass more than one of these flags.
 
-`--overwrite`：`dart pub global activate` 命令的可选选项。默认情况下，如果执行的两个全局 Package 名字冲突了，那么会优先执行最先执行过的那个。但是如果你指定该标识，那么新执行的 Package 则会覆盖之前执行的那些。
+将指定的可执行对象添加至你的 PATH 路径中。
+你可以在一次命令执行中多次使用该选项以添加多个可执行对象到你的 PATH 路径中。
 
-<aside class="alert alert-info" markdown="1">
-  *Problems?* See [Troubleshooting pub](/tools/pub/troubleshoot).
+For example, the following command adds `bar` and `baz`,
+(but not any other executables that `foo` might define)
+to your PATH.
+
+例如，下述命令添加了 foo 中的 `bar` 和 `baz` 两个可执行对象
+（不包括 foo 中定义的其它可执行对象）到你的 PATH 中。
+
+```terminal
+$ dart pub global activate foo -x bar -x baz
+```
+
+### `--overwrite`
+
+Use `dart pub global activate <package> --overwrite`
+to overwrite any previously activated global executables
+with the same name. If you don't specify this flag,
+the preexisting executable will not be replaced.
+
+默认情况下，如果执行的两个全局 Package 名字冲突了，那么会优先执行最先执行过的那个。
+但是如果你指定该标识，那么新执行的 Package 则会覆盖之前执行的那些。
+
+{{site.alert.info}}
+
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
 
   **有疑问？** 请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
-</aside>
+
+{{site.alert.end}}
 
 [system cache]: /tools/pub/glossary#system-cache
 [webdev]: /tools/webdev

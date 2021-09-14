@@ -2049,6 +2049,8 @@ You can also use a nullable *bound*:
 class Interval<T extends num?> {
   T min, max;
 
+  Interval(this.min, this.max);
+
   bool get isEmpty {
     var localMin = min;
     var localMax = max;
@@ -2061,22 +2063,15 @@ class Interval<T extends num?> {
 ```
 
 This means that in the body of the class you get the flexibility of treating the
-type parameter as nullable. Note we have no constructor this time, and that's
-OK. The fields will be implicitly initialized to `null`. You can declare
-uninitialized variables of the type parameter's type.
+type parameter as nullable, but you also have the limitations of nullability. 
+You can't call anything on a variable of that type
+unless you deal with the nullability first. In the example here, 
+we copy the fields in local variables and check those locals for `null` 
+so that flow analysis promotes them to non-nullable types before we use `<=`.
 
-这意味着在类的主体中，你拥有了将类型参数作为可空类型来处理的灵活性。
-请注意，这一次我们没有构造函数，但这也是没问题的。
-字段将会被隐式初始化为 `null`。
-你可以将未初始化的变量声明为类型参数的类型。
 
-But you also have the limitations of nullability&mdash;you can't call anything
-on a variable of that type unless you deal with the nullability first. In the
-example here, we copy the fields in local variables and check those locals for
-`null` so that flow analysis promotes them to non-nullable types before we use
-`<=`.
-
-但你也受到了可空性的限制，除非你先处理了可空状态，否则你无法调用变量的任何方法。
+这意味着在类的主体中，你拥有了将类型参数作为可空类型来处理的灵活性，
+但你也受到了可空性的限制&mdash;&mdash;除非你先处理了可空状态，否则你无法调用变量的任何方法。
 在此处的例子中，我们将字段拷贝至局部变量，并且检查了它们是否为 `null`，
 所以在我们调用 `<=` 前，流程分析将它们提升成了非空类型。
 
@@ -2085,14 +2080,15 @@ with non-nullable types. A nullable bound means that the type argument *can* be
 nullable, not that it *must*. (In fact, the default bound on type parameters if
 you don't write an `extends` clause is the nullable bound `Object?`.) There is
 no way to *require* a nullable type argument. If you want uses of the type
-parameter to reliably be nullable, you can use `T?` inside the body of the
-class.
+parameter to reliably be nullable and be implicitly initialized to `null`, 
+you can use `T?` inside the body of the class.
 
 请注意，可空的类型约束并不会阻止用户使用非空类型对类进行实例化。
 一个可空的类型约束意味着类型参数 **可以** 为空，而不是 **必须** 为空。
 （实际上，如果你没有写上 `extends` 语句，类型参数的默认类型约束是可空的 `Object?`。）
 你没有办法声明一个 **必需的** 可空类型参数。
-如果你希望确保类型参数一定是可空的，你可以在类的主体中使用 `T?`。
+如果你希望确保类型参数一定是可空且以 `null` 隐式初始化，
+你可以在类的主体中使用 `T?`。
 
 ## Core library changes
 
