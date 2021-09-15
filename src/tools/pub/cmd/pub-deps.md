@@ -78,23 +78,23 @@ The specified style determines the output format:
 指定的样式输出格式。
 
 * `tree`
-: Prints dependency information as a tree. This is the 
+<br> Prints dependency information as a tree. This is the 
 default format.
 
-  `tree`
-：以树状的形式打印依赖信息。这是默认格式。
+  `tree`<br>
+以树状的形式打印依赖信息。这是默认格式。
 
 * `list`
-: Prints dependency information as a list.
+<br>  Prints dependency information as a list.
 
   `list`
-： 以列表的形式打印依赖信息。
+  <br>以列表的形式打印依赖信息。
 
 * `compact`
-: Prints dependency information as a compact list.
+<br> Prints dependency information as a compact list.
 
   `compact`
-： 以紧凑列表的形式打印依赖信息。
+<br> 以紧凑列表的形式打印依赖信息。
 
 ### `--[no-]dev`
 
