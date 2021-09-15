@@ -905,17 +905,25 @@ String piAsString = 3.14159.toStringAsFixed(2);
 assert(piAsString == '3.14');
 ```
 
-The int type specifies the traditional bitwise shift (\<\<, \>\>), AND
-(&), and OR (|) operators. For example:
+The `int` type specifies the traditional bitwise shift (`<<`, `>>`, `>>>`),
+complement (`~`), AND (`&`), OR (`|`), and XOR (`^`) operators,
+which are useful for manipulating and masking flags in bit fields.
+For example:
 
-整型支持传统的位移操作，比如移位（\<\<、\>\>）、按位与（&）、按位或（\|），例如：
+整型支持传统的位移操作，比如移位（`<<`、`>>` 和 `>>>`）、
+补码 (`~`)、按位与 (`&`)、按位或 (`|`) 以及按位异或 (`^`)，例如：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (bit-shifting)"?>
 ```dart
 assert((3 << 1) == 6); // 0011 << 1 == 0110
-assert((3 >> 1) == 1); // 0011 >> 1 == 0001
 assert((3 | 4) == 7); // 0011 | 0100 == 0111
+assert((3 & 4) == 0); // 0011 & 0100 == 0000
 ```
+
+For more examples, see the
+[bitwise and shift operator](#bitwise-and-shift-operators) section.
+
+更多示例请查看 [移位操作符](#bitwise-and-shift-operators) 小节。
 
 Literal numbers are compile-time constants.
 Many arithmetic expressions are also compile-time constants,
@@ -2685,8 +2693,9 @@ an operation with an assignment.
 
 像 `+=` 这样的赋值运算符将算数运算符和赋值运算符组合在了一起。
 
-| `=`  | `–=` | `/=`  | `%=`  | `>>=` | `^=`
-| `+=` | `*=` | `~/=` | `<<=` | `&=`  | `|=`
+| `=`  | `*=`  | `%=`  | `>>>=` | `^=`
+| `+=` | `/=`  | `<<=` | `&=`   | `|=`
+| `-=` | `~/=` | `>>=`
 {:.table}
 
 Here’s how compound assignment operators work:
@@ -2760,6 +2769,7 @@ you’d use these bitwise and shift operators with integers.
 | <code>~<em>表达式</em></code> | 按位取反（即将 “0” 变为 “1”，“1” 变为 “0”）
 | `<<`                         | 位左移
 | `>>`                         | 位右移
+| `>>>`                        | 无符号右移
 {:.table .table-striped}
 
 Here’s an example of using bitwise and shift operators:
@@ -2777,8 +2787,19 @@ assert((value | bitmask) == 0x2f); // OR
 assert((value ^ bitmask) == 0x2d); // XOR
 assert((value << 4) == 0x220); // Shift left
 assert((value >> 4) == 0x02); // Shift right
+assert((value >>> 4) == 0x02); // Unsigned shift right
+assert((-value >> 4) == -0x03); // Shift right
+assert((-value >>> 4) > 0); // Unsigned shift right
 ```
 
+{{site.alert.version-note}}
+
+  The `>>>` operator (known as _triple-shift_ or _unsigned shift_)
+  requires a [language version][] of at least 2.14.
+
+  `>>>` 操作符在 2.14 以上的 [Dart 版本][language version] 中可用。
+
+{{site.alert.end}}
 
 ### Conditional expressions
 
@@ -4343,11 +4364,11 @@ Dart allows you to define operators with the following names:
 运算符是有着特殊名称的实例方法。
 Dart 允许您使用以下名称定义运算符：
 
-`<`  | `+`  | `|`  | `[]`
-`>`  | `/`  | `^`  | `[]=`
-`<=` | `~/` | `&`  | `~`
-`>=` | `*`  | `<<` | `==`
-`–`  | `%`  | `>>`
+`<`  | `+`  | `|`  | `>>>`
+`>`  | `/`  | `^`  | `[]`
+`<=` | `~/` | `&`  | `[]=`
+`>=` | `*`  | `<<` | `~`
+`–`  | `%`  | `>>` | `==`
 {:.table}
 
 {{site.alert.note}}
@@ -5617,9 +5638,12 @@ you have two options:
 
 可以通过下面两种方式，获得 Future 执行完成的结果：
 
-* Use `async` and `await`.
+* Use `async` and `await`, as described here and in the
+  [asynchronous programming codelab](/codelabs/async-await).
 
-  使用 `async` 和 `await`；
+  使用 `async` 和 `await`，在
+  [异步编程 codelab](/codelabs/async-await)
+  中有更多描述；
 
 * Use the Future API, as described
   [in the library tour](/guides/libraries/library-tour#future).
@@ -5723,6 +5747,27 @@ Future<void> main() [!async!] {
   print('In main: version is ${[!await!] lookUpVersion()}');
 }
 {% endprettify %}
+
+{{site.alert.note}}
+
+  The preceding example uses an `async` function (`checkVersion()`)
+  without waiting for a result —
+  a practice that can cause problems
+  if the code assumes that the function has finished executing.
+  To avoid this problem,
+  use the [unawaited_futures linter rule][].
+
+  如上的例子使用了声明为 `async` 的函数 `checkVersion()`，但没有等待其结果。
+  在实际的开发中，如果代码假设函数已经执行完成，则可能导致一些异步的问题。
+  想要避免这些问题，请使用
+  [unawaited_futures 提示规则][unawaited_futures linter rule]。
+
+{{site.alert.end}}
+
+[unawaited_futures linter rule]: /tools/linter-rules#unawaited_futures
+
+For an interactive introduction to using futures, `async`, and `await`,
+see the [asynchronous programming codelab](/codelabs/async-await).
 
 
 <a id="async"></a>

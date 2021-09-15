@@ -1,18 +1,17 @@
 ---
 title: dart pub deps
 title: dart pub deps
-description: Use pub deps to print a dependency graph for a package.
+description: Use dart pub deps to print a dependency graph for a package.
 description: 使用 dart pub deps 命令可以将 Package 的依赖项打印出来。
-toc: false
 ---
 
 _Deps_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 _Deps_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
 
-{% prettify none tag=pre+code %}
-$ dart pub deps [--style=<style>] [--dev] [--no-dev] [--executables]
-{% endprettify %}
+```nocode
+$ dart pub deps [--style=<style>] [--[no-]dev] [--executables]
+```
 
 This command prints the dependency graph for a package.
 The graph includes both the
@@ -36,11 +35,11 @@ the following dependencies:
 
 例如，markdown_converter 这个示例的 pubspec 文件中声明了如下依赖信息：
 
-{% prettify yaml tag=pre+code %}
+```yaml
 dependencies:
   barback: ^0.15.2
   markdown: ^0.7.2
-{% endprettify %}
+```
 
 Here's an example of the `dart pub deps` output for markdown_converter:
 
@@ -70,56 +69,59 @@ For options that apply to all pub commands, see
 
 你可以查阅 [全局选项](/tools/pub/cmd#global-options) 获取 Pub 命令所支持的命令选项。
 
-`--style=<style>` or `-s <style>`
-: The specified style determines the output format.
+### `--style=<style>` or `-s <style>`
 
-`--style=<style>` 或 `-s <style>`
-： 指定的样式输出格式。
+### `--style=<style>` 或 `-s <style>`
+
+The specified style determines the output format:
+
+指定的样式输出格式。
 
 * `tree`
-: Prints dependency information as a tree. This is the 
+<br> Prints dependency information as a tree. This is the 
 default format.
 
-  `tree`
-：以树状的形式打印依赖信息。这是默认格式。
+  `tree`<br>
+以树状的形式打印依赖信息。这是默认格式。
 
 * `list`
-: Prints dependency information as a list.
+<br>  Prints dependency information as a list.
 
   `list`
-： 以列表的形式打印依赖信息。
+  <br>以列表的形式打印依赖信息。
 
 * `compact`
-: Prints dependency information as a compact list.
+<br> Prints dependency information as a compact list.
 
   `compact`
-： 以紧凑列表的形式打印依赖信息。
+<br> 以紧凑列表的形式打印依赖信息。
 
-`--dev`
-: Prints all package dependencies, including dev dependencies. Dev 
-dependencies are included by default.
+### `--[no-]dev`
 
-`--dev`
-： 打印所有包依赖信息，包括开发时期依赖。它是默认选项。
+By default, prints all dependencies, 
+including dev dependencies (`--dev`).
+To remove dev dependencies, use `--no-dev`.
 
-`--no-dev`
-: Prints all package dependencies, excluding dev dependencies. 
+打印所有包依赖信息，包括开发依赖。
+如果你不想打印开发依赖，使用 `--no-dev`。
 
-`--no-dev`
-： 打印除了开发期依赖之外的所有包依赖。
+### `--executables`
 
-`--executables`
-: Prints all available executables.
+Prints all available executables.
 
-`--executables`
-：打印所有可用的可执行文件。
+打印所有可用的可执行文件。
 
-`--style=<style>` 选项或 `-s <style>` 选项：可选的选项。用于指定依赖项打印输出的样式。共有 `简洁`、`树状` 和 `列表` 三种，默认是树状样式。
+### `--json`
 
-<aside class="alert alert-info" markdown="1">
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
+Generates output in JSON format.
 
-**有疑问？**
-请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
-</aside>
+以 JSON 格式输出。
+
+{{site.alert.info}}
+
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
+
+  **有疑问？**请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
+
+{{site.alert.end}}

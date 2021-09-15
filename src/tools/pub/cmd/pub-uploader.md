@@ -3,7 +3,6 @@ title: dart pub uploader
 title: dart pub 上传
 description: Use dart pub uploader to add or remove uploaders for your Dart package on the pub.dev site.
 description: 使用 dart pub 上传命令为你在 pub.dev 网站上的 Dart Package 添加或删除上传者。
-toc: false
 ---
 
 {{site.alert.tip}}
@@ -21,9 +20,9 @@ _Uploader_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 _Uploader_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
 
-{% prettify nocode tag=pre+code %}
+```nocode
 $ dart pub uploader [options] {add/remove} <email>
-{% endprettify %}
+```
 
 This command allows
 [uploaders](/tools/pub/glossary#uploader) of a
@@ -96,8 +95,18 @@ For options that apply to all pub commands, see
 
 你可以查阅 [全局选项](/tools/pub/cmd#global-options) 获取 Pub 命令所支持的命令选项。
 
-<aside class="alert alert-info" markdown="1">
-  *Problems?* See [Troubleshooting Pub](/tools/pub/troubleshoot).
+### `--package=`_`<package name>`_
+
+Specifies which package to modify the uploaders for.
+Defaults to the package in the current directory.
+
+指定上传器要修改哪个 package。默认为当前目录下的 package。
+
+{{site.alert.info}}
+
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
 
   **有疑问？** 请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
-</aside>
+
+{{site.alert.end}}

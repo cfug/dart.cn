@@ -9,9 +9,9 @@ _Get_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 _Get_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。
 
-{% prettify nocode tag=pre+code %}
-$ dart pub get [args]
-{% endprettify %}
+```
+$ dart pub get [options]
+```
 
 This command gets all the dependencies listed in the
 [`pubspec.yaml`](/tools/pub/pubspec) file in the current working
@@ -46,9 +46,9 @@ For example, if a package depends on `test`:
 一旦依赖获取完毕，就可以在 Dart 代码中引用。
 例如，假如 package 依赖了名为 `test` 的 package，则可以使用该 package 下的资源：
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'package:test/test.dart';
-{% endprettify %}
+```
 
 When `dart pub get` gets new dependencies, it writes a
 [lockfile](/tools/pub/glossary#lockfile) to ensure that future
@@ -90,25 +90,21 @@ Before the `.packages` file, pub used to create `packages` directories.
 默认情况下，pub 会创建一个 `.packages` 文件用于映射 package 名到位置 URI。
 在创建 `.packages` 文件之前，pub 常常还会创建一个 `packages` 目录。
 
-<aside class="alert alert-info" markdown="1">
+{{site.alert.note}}
 
-**Note:** Don't check the generated `.packages` file,
-`packages` directories (if present), or
-`.dart_tool` directory into your repo;
-add them to your repo's `.gitignore` file.
-For more information, see
-[What Not to Commit](/guides/libraries/private-files).
+  Don't check the generated `.packages` file,
+  `packages` directories (if present), or
+  `.dart_tool` directory into your repo;
+  add them to your repo's `.gitignore` file.
+  For more information,
+  see [What not to commit](/guides/libraries/private-files).
 
-**注意：** 不要去检出你仓库中由 pub 自动生成的 `.packages` 文件、
-`packages` 目录（如果存在的话）或者 `.dart_tool` 目录；
-请将它们添加至 Git 仓库的 `.gitignore` 文件中。
-更多信息请查阅 [你不应该提交哪些文件](/guides/libraries/private-files)。
+  不要去检出你仓库中由 pub 自动生成的 `.packages` 文件、
+  `packages` 目录（如果存在的话）或者 `.dart_tool` 目录；
+  请将它们添加至 Git 仓库的 `.gitignore` 文件中。
+  更多信息请查阅 [你不应该提交哪些文件](/guides/libraries/private-files)。
 
-{% comment %}
-PENDING: here just to make it easy to find discussions of `packages`...
-{% include packages-dir.html %}
-{% endcomment %}
-</aside>
+{{site.alert.end}}
 
 For more information, see the
 [package specification file proposal.](https://github.com/lrhn/dep-pkgspec/blob/master/DEP-pkgspec.md#proposal)
@@ -226,6 +222,10 @@ For options that apply to all pub commands, see
 
 你可以查阅 [全局选项](/tools/pub/cmd#global-options) 获取 pub 命令所支持的命令选项。
 
+### `--[no-]offline`
+
+{% include tools/pub-option-no-offline.md %}
+
 ### `--dry-run` or `-n`
 
 ### `--dry-run` 或 `-n`
@@ -237,26 +237,20 @@ want to analyze updates before making them.
 打印出可能变化的依赖，但不会实际作出更改。
 如果你想要在变更前进行分析，该命令非常有用。
 
-### `--offline`
+### `--[no-]precompile`
 
-Uses cached packages rather than downloading
-from the network.
-For details, see [Getting while offline](#getting-while-offline).
+By default, pub precompiles executables
+in immediate dependencies (`--precompile`).
+To prevent precompilation, use `--no-precompile`.
 
-使用缓存的 package 而不是从网上下载。
-更多细节，请查看 [离线时获取](#getting-while-offline)。
+默认情况下，pub 将预编译直接依赖的 package 中的可执行文件 (`--precompile`)。
+若你不需要预编译，请使用 `--no-precompile`。
 
-### `--precompile`
+{{site.alert.info}}
 
-Creates snapshots of the
-project's executables in direct dependencies.
+  *Problems?*
+  See [Troubleshooting Pub](/tools/pub/troubleshoot).
 
-以直接依赖的方式创建项目中可执行文件的快照。
+  **有疑问？** 请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
 
-<aside class="alert alert-info" markdown="1">
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-
-**有疑问？**
-请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
-</aside>
+{{site.alert.end}}
