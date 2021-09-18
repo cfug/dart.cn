@@ -850,9 +850,9 @@ better fit. Libraries support import prefixes and show/hide combinators. Those
 are powerful tools that let the consumer of your code handle name collisions in
 the way that works best for *them*.
 
-在 Java 和 C# 中，所有的定义*必须*要在类中。所有常常会看到一些这样的类，这些
-类中仅仅放置了些静态成员。其他类仅用于命名空间&mdash;一种为一堆成员提供共享
-前缀将它们相互关联或避免名称冲突的方法。
+Dart 有顶层函数、变量和常量，因此你不*需要*一个仅为了定义一些东西的类。
+如果你想要的是一个命名空间，那么一个库是更合适的。库支持导入时指定前缀，以及仅导入其一部分。
+这些强大的功能可以让你的代码的使用者以最适合*他们*的方式处理名称冲突。
 
 If a function or variable isn't logically tied to a class, put it at the top
 level. If you're worried about name collisions, give it a more precise name or
