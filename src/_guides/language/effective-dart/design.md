@@ -852,7 +852,7 @@ the way that works best for *them*.
 
 Dart 有顶层函数、变量和常量，因此你 **不需要** 仅仅为了定义一些内容而创建一个类。
 如果你想要的是一个命名空间，那么一个库是更合适的。库支持导入时指定前缀，以及仅导入其一部分。
-这些强大的功能可以让你的代码的使用者以最适合*他们*的方式处理名称冲突。
+这些强大的功能让调用的代码可以以最适合的方式处理 **它们的** 名称冲突。
 
 If a function or variable isn't logically tied to a class, put it at the top
 level. If you're worried about name collisions, give it a more precise name or
