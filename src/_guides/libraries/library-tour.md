@@ -802,7 +802,7 @@ if and only if the key does not already exist in a map. You must provide
 a function that returns the value.
 
 如果当且仅当该 key 不存在于 map 中，且要为这个 key 赋值，
-可使用`putIfAbsent（）`方法。
+可使用 `putIfAbsent()` 方法。
 该方法需要一个方法返回这个 value。
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (putIfAbsent)"?>
