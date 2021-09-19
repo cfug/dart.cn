@@ -850,7 +850,7 @@ better fit. Libraries support import prefixes and show/hide combinators. Those
 are powerful tools that let the consumer of your code handle name collisions in
 the way that works best for *them*.
 
-Dart 有顶层函数、变量和常量，因此你不*需要*一个仅为了定义一些东西的类。
+Dart 有顶层函数、变量和常量，因此你 **不需要** 仅仅为了定义一些内容而创建一个类。
 如果你想要的是一个命名空间，那么一个库是更合适的。库支持导入时指定前缀，以及仅导入其一部分。
 这些强大的功能可以让你的代码的使用者以最适合*他们*的方式处理名称冲突。
 
