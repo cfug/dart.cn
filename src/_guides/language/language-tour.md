@@ -525,7 +525,10 @@ if (weLikeToCount) {
 print(lineCount);
 ```
 
-<!-- TODO: Point to coverage of ! and late -->
+Top-level and class variables are lazily initialized;
+the initialization code runs
+the first time the variable is used.
+
 
 ### Late variables
 
@@ -586,8 +589,7 @@ then the expensive `_readThermometer()` function is never called:
 If you never intend to change a variable, use `final` or `const`, either
 instead of `var` or in addition to a type. A final variable can be set
 only once; a const variable is a compile-time constant. (Const variables
-are implicitly final.) A final top-level or class variable is initialized
-the first time it's used.
+are implicitly final.)
 
 如果你不想更改一个变量，可以使用关键字 `final` 或者 `const` 修饰变量，
 这两个关键字可以替代 `var` 关键字或者加在一个具体的类型前。
@@ -4641,7 +4643,8 @@ class SmartTelevision [!extends!] Television {
 
 #### 重写类成员
 
-Subclasses can override instance methods (including [operators](#_operators)), getters, and setters.
+Subclasses can override instance methods (including [operators](#_operators)),
+getters, and setters.
 You can use the `@override` annotation to indicate that you are
 intentionally overriding a member:
 
@@ -4651,16 +4654,43 @@ Getter 以及 Setter 方法。
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (override)" replace="/@override/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
+class Television {
+  // ···
+  set contrast(int value) {...}
+}
+
 class SmartTelevision extends Television {
   [!@override!]
-  void turnOn() {...}
+  set contrast(num value) {...}
   // ···
 }
 {% endprettify %}
 
-To narrow the type of a method parameter or instance variable in code that is
-[type safe](/guides/language/type-system),
-you can use the [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
+An overriding method declaration must match
+the method (or methods) that it overrides in several ways:
+
+* The return type must be the same type as (or a subtype of)
+  the overridden method's return type.
+* Argument types must be the same type as (or a supertype of)
+  the overridden method's argument types.
+  In the preceding example, the `contrast` setter of `SmartTelevision`
+  changes the argument type from `int` to a supertype, `num`.
+* If the overridden method accepts _n_ positional parameters,
+  then the overriding method must also accept _n_ positional parameters.
+* A [generic method](#using-generic-methods) can't override a non-generic one,
+  and a non-generic method can't override a generic one.
+
+Sometimes you might want to narrow the type of
+a method parameter or an instance variable.
+This violates the normal rules, and
+it's similar to a downcast in that it can cause a type error at runtime.
+Still, narrowing the type is possible
+if the code can guarantee that a type error won't occur.
+In this case, you can use the 
+[`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword)
+in a parameter declaration.
+For details, see the 
+[Dart language specification][].
 
 你可以使用 [`covariant` 关键字](/guides/language/sound-problems#the-covariant-keyword)
 来缩小代码中那些符合 [类型安全](/guides/language/type-system) 的方法参数或实例变量的类型。
@@ -4719,7 +4749,7 @@ that's different from the one in class `Object`.
   方法且具体的实现与 `Object` 中的不同。
 
 For more information, see the informal
-[noSuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
+[noSuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/main/docs/language/informal/nosuchmethod-forwarding.md)
 
 你可以查阅
 [noSuchMethod 转发规范](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
@@ -6142,6 +6172,7 @@ class Television {
 
   /// Turns the TV's power on.
   void turnOn() {...}
+  // ···
 }
 {% endprettify %}
 
@@ -6383,7 +6414,7 @@ To learn more about Dart's core libraries, see
 [`Stream`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [`String`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
 [`Symbol`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
-[synchronous-async-start]: https://github.com/dart-lang/sdk/blob/master/docs/newsletter/20170915.md#synchronous-async-start
+[synchronous-async-start]: https://github.com/dart-lang/sdk/blob/main/docs/newsletter/20170915.md#synchronous-async-start
 [top-and-bottom]: /null-safety/understanding-null-safety#top-and-bottom
 [trailing commas]: #trailing-comma
 [type test operator]: #type-test-operators
