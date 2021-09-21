@@ -6,9 +6,9 @@ short-title: 归档
 description: Download specific stable, beta, dev, and main channel versions of the Dart SDK and the Dart API documentation.
 description: 下载特定的稳定版、测试版、开发版和主分支开发版的 Dart SDK 和 Dart API 文档。
 js:
-- url: /tools/sdk/archive/out/web/download_archive.dart_cn.js
+- url: /get-dart/archive/out/web/download_archive.dart_cn.js
   defer: true
-- url: /tools/sdk/archive/assets/install.js
+- url: /get-dart/archive/assets/install.js
   defer: true
 ---
 
@@ -73,7 +73,7 @@ Dev channel builds are not suitable for production use.
 ## 主分支开发版渠道
 
 Main channel builds are the latest, raw builds from
-the main (`master`) branch of the Dart SDK repository.
+the `main` branch of the Dart SDK repository.
 These are the freshest builds available,
 and they're likely to contain bugs.
 Main channel builds are suitable only for

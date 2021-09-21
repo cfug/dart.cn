@@ -4,7 +4,7 @@ title: 获取 Dart SDK
 description: Get the libraries and command-line tools that you need to develop Dart web, command-line, and server apps.
 description: 获得 Dart 命令行工具和库，用以编写 Dart web，命令行以及服务端应用。
 js:
-- url: /tools/sdk/archive/assets/install.js
+- url: /get-dart/archive/assets/install.js
   defer: true
 ---
 
@@ -67,7 +67,7 @@ so it's easy to find (but not more tempting than package managers).
 {% endcomment %}
 
 {{site.alert.warn}}
-  {% include_relative tools/sdk/archive/_sdk-terms.md %}
+  {% include_relative archive/_sdk-terms.md %}
 {{site.alert.end}}
 
 <ul class="tabs__top-bar">
@@ -76,13 +76,13 @@ so it's easy to find (but not more tempting than package managers).
   <li class="tab-link" data-tab="tab-sdk-install-mac">macOS</li>
 </ul>
 <div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
-{% include_relative tools/sdk/_windows.md %}
+{% include_relative _windows.md %}
 </div>
 <div id="tab-sdk-install-linux" class="tabs__content" markdown="1">
-{% include_relative tools/sdk/_linux.md %}
+{% include_relative _linux.md %}
 </div>
 <div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
-{% include_relative tools/sdk/_mac.md %}
+{% include_relative _mac.md %}
 </div>
 
 ## System requirements
@@ -223,7 +223,7 @@ For more information, see the [Dart 2 page.][Dart 2]
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
 [Dart libraries]: /guides/libraries/library-tour
 [Dart Docker image]: https://hub.docker.com/_/dart
-[downloading the SDK as a zip file]: /tools/sdk/archive
+[downloading the SDK as a zip file]: /get-dart/archive
 [Debian stable]: https://www.debian.org/releases
 [Ubuntu LTS]: https://wiki.ubuntu.com/Releases
 [flutter]: https://flutter.dev/docs/get-started/install
