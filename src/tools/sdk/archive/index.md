@@ -18,7 +18,7 @@ Use this archive to download
 and the [Dart API documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
 
 你可以在此页面下载 [特定版本](/get-dart#release-channels)
-的 [Dart SDK]((/tools/sdk)) 和
+的 [Dart SDK](/tools/sdk) 和
 [Dart API 文档](({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}))。
 
 Want to install Dart with your OS's package manager?
