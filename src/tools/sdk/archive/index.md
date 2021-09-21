@@ -49,7 +49,7 @@ We recommend testing, but not releasing, your apps against beta
 to preview new features or test compatibility with future releases.
 Beta channel builds are not suitable for production use.
 
-测试版渠道的构建是稳定版的前置预览。我们推进你使用该渠道对你的应用进行测试，
+测试版渠道的构建是稳定版的前置预览。我们推荐你使用该渠道对你的应用进行测试，
 包括新特性和对未来发布内容的兼容性，但不要用于发布。
 **测试版渠道的构建不适合在生产环境使用。**
 
@@ -79,7 +79,7 @@ and they're likely to contain bugs.
 Main channel builds are suitable only for
 experimental development use, not for production use.
 
-主分支开发版的构建是最新且最原始的，来自
+主分支开发版的构建是最新且最原始的，是来自
 Dart SDK 仓库的主分支 (`master`) 的构建。
 这些构建是永远是最新的，所以它们有可能包含多个 BUG。
 **主分支开发版的构建只适用于更专业的开发，而不是生产用途的开发**。
