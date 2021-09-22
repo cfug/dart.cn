@@ -173,14 +173,16 @@ import 'file-system.dart';
 import 'SliderMenu.dart';
 {% endprettify %}
 
-<aside class="alert alert-info" markdown="1">
-  **Note:** This guideline specifies *how* to name a library *if you choose to
-  name it*. It is fine to _omit_ the library directive in a file if you want.
+{{site.alert.note}}
 
-  **注意：** 如果你*选择命名库*，本准则给定了*如何*为库取名。
-  如果需要，可以在文件中_省略_库指令。
-</aside>
+  **Note:** This guideline specifies *how* to name a library
+  *if you choose to name it*.
+  It is fine to _omit_ the library directive in a file if you want.
 
+  **注意：** 如果你 **选择命名库**，本准则给定了 **如何** 为库取名。
+  如果需要，可以在文件中 **省略** 库指令。
+
+{{site.alert.end}}
 
 ### DO name import prefixes using `lowercase_with_underscores`.
 
@@ -279,13 +281,13 @@ as in the following cases:
 * When generating Dart code that's parallel to Java code —
   for example, in enumerated types generated from [protobufs.][]
 
-  生成与 Java 代码并行的 Dart 代码时。例如，来自 [protobufs][] 的枚举类型
+  生成与 Java 代码并行的 Dart 代码时。例如，来自 [protobufs][] 的枚举类型。
 
-<aside class="alert alert-info" markdown="1">
-  **Note:** We initially used Java's `SCREAMING_CAPS` style for constants. We
+{{site.alert.note}}
+  We initially used Java's `SCREAMING_CAPS` style for constants. We
   changed for a few reasons:
 
-  **注意：** 我们一开始使用 Java `SCREAMING_CAPS` 风格来命名常量。
+  我们一开始使用 Java `SCREAMING_CAPS` 风格来命名常量。
   我们之所以不再使用，是因为：
 
   *   `SCREAMING_CAPS` looks bad for many cases, particularly enum values for
@@ -303,7 +305,7 @@ as in the following cases:
 
       在枚举类型中自动定义的 `values` 属性为常量并且是小写字母形式的。
 
-</aside>
+{{site.alert.end}}
 
 [protobufs.]: {{site.pub-pkg}}/protobuf
 [protobufs]: {{site.pub-pkg}}/protobuf

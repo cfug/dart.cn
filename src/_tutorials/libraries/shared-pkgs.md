@@ -56,16 +56,17 @@ just change the package name when you get to that step.
 This tutorial also describes some of the resources you can expect to find
 in a well-built package.
 
-本教程将向你展示如何使用 `dart pub` 命令&mdash;Dart 的包管理命令&mdash;即用以安装仓库中某个包
+本教程将向你展示如何使用 `dart pub` 命令
+&mdash;Dart 的包管理命令&mdash;即用以安装仓库中某个包
 （比如 vector_math 包）的命令。
 你可以使用这些步骤来安装由 [pub.dev 网站]({{site.pub}}) 提供的任意一个包；
 当你想安装其它你想要使用的包时只需修改这些步骤中的示例包名即可。
 本教程同时也会向你展示一些你可能会使用到的优秀的包。
 
-<aside class="alert alert-info" markdown="1">
+{{site.alert.info}}
   **Flutter note:**
 
-  **使用 Flutter 的请注意：**
+  **使用 Flutter 时请注意：**
 
   This page doesn't describe the tools you use with Flutter, but the
   concepts are the same, and you can share packages between
@@ -73,8 +74,11 @@ in a well-built package.
   For more information, see the
   [Flutter package documentation.]({{site.flutter}}/docs/development/packages-and-plugins/using-packages)
 
-  本文不会向你展示那些只针对 Flutter 的包，但是 Flutter 使用到的 Dart 包会被介绍，你也可以将你的包分享为可以在 Flutter、Web 或服务端应用上使用。更多相关信息，请查阅 [Flutter 包文档。]({{site.flutter}}/docs/development/packages-and-plugins/using-packages)
-</aside>
+  本文不会向你展示那些只针对 Flutter 的 package，但它们的概念是一致的，
+  你也可以将你的 package 分享为可以在 Flutter、Web 或服务端应用上使用。
+  更多相关信息，请查阅 [Flutter 的 package 文档。]({{site.flutter}}/docs/development/packages-and-plugins/using-packages)
+
+{{site.alert.end}}
 
 
 ## About the pubspec.yaml file
@@ -419,16 +423,18 @@ use the `package:` prefix.
 
    在你的 vector_victor 应用中，编辑 `lib/vector_victor.dart` 文件，
    由此它导入 vector_math 库并使用了它的一些 API。
-   你可以阅读 
-   [vector_math API 文档]({{site.pub}}/documentation/vector_math/latest) 
+   你可以阅读
+   [vector_math API 文档]({{site.pub}}/documentation/vector_math/latest)
    获取更多相关信息。
 
-   <aside class="alert alert-info" markdown="1">
-     **Note:** You specify a filename, not a library name,
+   {{site.alert.note}}
+
+     You specify a filename, not a library name,
      when you import a library from a package.
 
-     **注意：**当你从包中导入一个库时你指定的是文件名而不是库名。
-   </aside>
+     当你从包中导入一个库时你指定的是文件名而不是库名。
+
+   {{site.alert.end}}
 
 
 ## Other resources
@@ -445,4 +451,3 @@ use the `package:` prefix.
   for more information on using and sharing packages.
 
   你也可以查阅 [pub 包文档](/guides/packages) 获取更多有关如何使用和分享包的信息。
-

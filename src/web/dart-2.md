@@ -49,12 +49,7 @@ Dart 2 的 Web 应用开发环境与 Dart 1.x 不同。以下是重点：
 
 | `pub build` | [`webdev build`](/tools/webdev#build) |
 | `pub serve` | [`webdev serve`](/tools/webdev#serve) |
-| `pub run angular_test` | `pub run build_runner test -- -p chrome`. See: [Running tests][] |
-
-| `pub run angular_test` | `pub run build_runner test -- -p chrome`. See: [Running tests][] |
-
-| pub transformers | [build][] package transformers. See: [Transforming code][] |
-
+| `pub run angular_test` | `pub run build_runner test -- -p chrome`. |
 | pub transformers | [build][] package transformers. See: [Transforming code][] |
 
 ## Code
@@ -184,5 +179,4 @@ information about changes in Dart 2, and how to migrate your code from Dart 1.x.
 [dart-2]: /dart-2
 [dartdevc]: /tools/dartdevc
 [Documentation changelog]: https://web.archive.org/web/20181003225323/https://webdev.dartlang.org/changelog
-[Running tests]: {{site.angulardart}}/guide/testing/component/running-tests
 [Transforming code]: https://github.com/dart-lang/build/blob/master/docs/transforming_code.md

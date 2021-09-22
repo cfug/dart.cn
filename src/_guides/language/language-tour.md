@@ -2576,24 +2576,22 @@ objects are the exact same object, use the [identical()][]
 function instead.) Here’s how the `==` operator works:
 
 要判断两个对象 x 和 y 是否表示相同的事物使用 `==` 即可。
-（在极少数情况下，可能需要使用 [identical()][] 函数来确定两个对象是否完全相同。）。下面是 `==` 运算符的一些规则：
+（在极少数情况下，可能需要使用 [identical()][] 函数来确定两个对象是否完全相同）。
+下面是 `==` 运算符的一些规则：
 
 1.  If *x* or *y* is null, return true if both are null, and false if only
     one is null.
 
-    假设有变量 *x* 和 *y*，且 x 和 y 至少有一个为 null，
-    则当且仅当 x 和 y 均为 null 时 x == y 才会返回 true，否则只有一个为 null 则返回 false。
+    当 **x** 和 **y** 同时为空时返回 true，而只有一个为空时返回 false。
 
-2.  Return the result of the method invocation
-    <code><em>x</em>.==(<em>y</em>)</code>. (That’s right,
-    operators such as `==` are methods that are invoked on their first
-    operand. For details, see
-    [Operators](#_operators).)
+2.  Return the result of invoking the `==` method on *x* with the argument *y*.
+    (That’s right, operators such as `==` are methods that
+    are invoked on their first operand.
+    For details, see [Operators](#_operators).)
 
-    <code><em>x</em>.==(<em>y</em>)</code> 将会返回值，
-    这里不管有没有 y，即 y 是可选的。
-    也就是说 `==` 其实是 x 中的一个方法，并且可以被重写。
-    详情请查阅[重写运算符](#overridable-operators)。
+    返回对 **x** 调用 `==` 方法的结果，参数为 **y**。
+    （像 `==` 这样的操作符是对左侧内容进行调用的。
+    详情请查阅 [操作符](#_operators)。）
 
 Here’s an example of using each of the equality and relational
 operators:
@@ -3893,11 +3891,12 @@ class ProfileMark {
 }
 ```
 
-If you want to assign the value of a `final` instance variable
-after the constructor body starts, you can use `late final`,
-[but _be careful_][late-final-ivar].
+If you need to assign the value of a `final` instance variable
+after the constructor body starts, you can use one of the following:
 
-[late-final-ivar]: /guides/language/effective-dart/design#avoid-public-late-final-fields-without-initializers
+* Use a [factory constructor](#factory-constructors).
+* Use `late final`, but [_be careful:_][late-final-ivar]
+  a `late final` without an initializer adds a setter to the API.
 
 ### Constructors
 
@@ -4259,6 +4258,16 @@ logic that can't be handled in the initializer list.
 使用 `factory` 关键字标识类的构造函数将会令该构造函数变为工厂构造函数，
 这将意味着使用该构造函数构造类的实例时并非总是会返回新的实例对象。
 例如，工厂构造函数可能会从缓存中返回一个实例，或者返回一个子类型的实例。
+
+{{site.alert.tip}}
+
+  Another way to handle late initialization of a final variable
+  is to [use `late final` (carefully!)][late-final-ivar].
+
+  另一种处理懒加载变量的方式是
+  [使用 `late final`（谨慎使用）][late-final-ivar]。
+
+{{site.alert.end}}
 
 In the following example,
 the `Logger` factory constructor returns objects from a cache,
@@ -4636,6 +4645,11 @@ class SmartTelevision [!extends!] Television {
 }
 {% endprettify %}
 
+For another usage of `extends`, see the discussion of
+[parameterized types](#restricting-the-parameterized-type)
+in [generics](#generics).
+
+想了解其他 `extends` 的用法，
 
 <a name="overridable-operators"></a>
 
@@ -5293,10 +5307,31 @@ print(names is List<String>); // true
 ### 限制参数化类型
 
 When implementing a generic type,
-you might want to limit the types of its parameters.
+you might want to limit the types that can be provided as arguments,
+so that the argument must be a subtype of a particular type.
 You can do this using `extends`.
 
-有时使用泛型的时候可能会想限制泛型的类型范围，这时候可以使用 `extends` 关键字：
+有时使用泛型的时候，你可能会想限制可作为参数的泛型范围，
+也就是参数必须是指定类型的子类，
+这时候可以使用 `extends` 关键字。
+
+A common use case is ensuring that a type is non-nullable
+by making it a subtype of `Object`
+(instead of the default, [`Object?`][top-and-bottom]).
+
+一种常见的非空类型处理方式，是将子类限制继承 `Object`
+（而不是默认的 [`Object?`][top-and-bottom]）。
+
+<?code-excerpt "misc/lib/language_tour/generics/misc.dart (non-nullable)"?>
+```dart
+class Foo<T extends Object> {
+  // Any type provided to Foo for T must be non-nullable.
+}
+```
+
+You can use `extends` with other types besides `Object`.
+Here's an example of extending `SomeBaseClass`,
+so that members of `SomeBaseClass` can be called on objects of type `T`:
 
 <?code-excerpt "misc/lib/language_tour/generics/base_class.dart" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
@@ -5308,7 +5343,7 @@ class Foo<T [!extends SomeBaseClass!]> {
 class Extender extends SomeBaseClass {...}
 {% endprettify %}
 
-It's OK to use `SomeBaseClass` or any of its subclasses as generic argument:
+It's OK to use `SomeBaseClass` or any of its subtypes as the generic argument:
 
 这时候就可以使用 `SomeBaseClass` 或者它的子类来作为泛型参数：
 
@@ -6400,6 +6435,7 @@ To learn more about Dart's core libraries, see
 [iteration]: /guides/libraries/library-tour#iteration
 [js numbers]: https://stackoverflow.com/questions/2802957/number-of-bits-in-javascript-numbers/2803010#2803010
 [language version]: /guides/language/evolution#language-versioning
+[late-final-ivar]: /guides/language/effective-dart/design#avoid-public-late-final-fields-without-initializers
 [`List`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [`Map`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
 [meta]: {{site.pub-pkg}}/meta
