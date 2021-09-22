@@ -13,6 +13,7 @@ by using [documentation comments][],
 which can contain markdown formatting.
 For guidance on writing doc comments,
 see the [documentation part of Effective Dart][effective doc].
+
 {{site.alert.note}}
   To generate documentation, your package must pass [dart analyze][]
   without errors.

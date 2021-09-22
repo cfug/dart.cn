@@ -319,18 +319,20 @@ environment:
   sdk: '>=2.1.0 <3.0.0'
 ```
 
-<aside class="alert alert-warning" markdown="1">
+{{site.alert.warning}}
+
   **Packages must have an upper constraint of `<3.0.0`** to work in
   Dart 2 stable and subsequent Dart 2 releases.
   Dart 2 dev builds _before_ the stable release have
   lax upper constraint checking and can use packages that have
   no SDK constraints or an upper constraint of `<2.0.0`.
 
-**Package 版本必须有 `<3.0.0` 的上限限制**
-以便在 Dart 2 稳定版以及随后的发行版中使用。
-Dart 2 在构建编译稳定发行版前的开发版本时有较为宽松的上限限制检查，
-你可以在此情况下使用没有 SDK 限制或者上限限制 `<2.0.0` 的 package。
-</aside>
+  **Package 版本必须有 `<3.0.0` 的上限限制**
+  以便在 Dart 2 稳定版以及随后的发行版中使用。
+  Dart 2 在构建编译稳定发行版前的开发版本时有较为宽松的上限限制检查，
+  你可以在此情况下使用没有 SDK 限制或者上限限制 `<2.0.0` 的 package。
+
+{{site.alert.end}}
 
 ## More resources
 
