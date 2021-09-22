@@ -276,12 +276,6 @@ closingWindow // Returns a bool or a window?
 showPopup     // Sounds like it shows the popup.
 {% endprettify %}
 
-**Exception:** Input properties in [AngularDart][] components sometimes use
-imperative verbs for boolean setters because these setters are invoked in
-templates, not from other Dart code.
-
-这条规则有一个例外。[AngularDart][] 组件中的输入属性有时会使用命令式动词来表示布尔设置器，
-因为这些 setter 是在模板中调用的，而不是从其它 Dart 代码中调用的。
 
 ### CONSIDER omitting the verb for a named boolean *parameter*.
 
@@ -367,15 +361,8 @@ negate the property with `!` everywhere. Instead, it may be better to use the
 negative case for that property.
 
 **例外:**  “否定”用户绝大多数用到的形式。
-选择“肯定”方式，将会迫使在他们到处使用 `!` 对属性进行取反操作。
-这样相反，属性应该使用“否定”形式进行命名。
-
-**Exception:** Properties accessed in [AngularDart][]
-templates are often better in the negative form because the property is used to
-*hide* or *disable* content.
-
-**例外:**  在 [AngularDart][] 的模板中属性的否定形式是更好的实践，
-因为这些属性通常是为了 **隐藏** 或者 **禁用** 内容。
+选择「肯定」方式，将会迫使在他们到处使用 `!` 对属性进行取反操作。
+这样相反，属性应该使用「否定」形式进行命名。
 
 ### PREFER an imperative verb phrase for a function or method whose main purpose is a side effect.
 
@@ -1344,15 +1331,6 @@ exposed in the same way, use a method instead.
 对象通常不应该暴露出多余的状态。
 如果某个对象的某个状态可以修改但不能以相同的方式访问，请改用方法实现。
 
-**Exception:** An [AngularDart][] component class may expose setters that are
-invoked from a template to initialize the component. Often, these setters are
-not intended to be invoked from Dart code and don't need a corresponding getter.
-(If they are used from Dart code, they *should* have a getter.)
-
-**例外：** 在 [AngularDart][] 组件类上，从模板调用的初始化组件 setter 可以公开。
-通常，这些 setter 是不打算在 Dart 中调用的，也就不需要相应的 getter。
-（如果在 Dart 代码中使用它们，那么它们 **应该** 有一个对应的 getter）
-
 ### AVOID using runtime type tests to fake overloading.
 
 It's common for an API to support similar operations
@@ -2064,20 +2042,22 @@ distinction is a little subtle. It's OK to allow inference to *propagate*
 you don't want it to summon `dynamic` *ex nihilo* when nothing in your code ever
 requested it.
 
-<aside class="alert alert-info" markdown="1">
+{{site.alert.info}}
 
-Before Dart 2, this guideline stated the exact opposite: *don't* annotate with
-`dynamic` when it is implicit. With the new stronger type system and type
-inference, users now expect Dart to behave like an inferred statically-typed
-language. With that mental model, it is an unpleasant surprise to discover that
-a region of code has silently lost all of the safety and performance of static
-types.
+  Before Dart 2, this guideline stated the exact opposite: 
+  *don't* annotate with `dynamic` when it is implicit. 
+  With the new stronger type system and type inference, 
+  users now expect Dart to behave like an inferred statically-typed language. 
+  With that mental model, 
+  it is an unpleasant surprise to discover that
+  a region of code has silently lost all of the
+  safety and performance of static types.
 
-在 Dart 2 之前，本规则恰恰是相反的：*不要* 为隐性类型的成员指定 `dynamic` 注解。基于强类型系统
-和类型推断，现在的开发者更希望 Dart 的行为类似于推断的静态类型语言。基于这种心理模型，我们发现
-代码区域慢慢地失去了静态类型所具有的安全及性能。
+  在 Dart 2 之前，本规则恰恰是相反的：**不要** 为隐性类型的成员指定 `dynamic` 注解。
+  基于强类型系统和类型推断，现在的开发者更希望 Dart 的行为类似于推断的静态类型语言。
+  基于这种心理模型，我们发现代码区域慢慢地失去了静态类型所具有的安全及性能。
 
-</aside>
+{{site.alert.end}}
 
 
 ### PREFER signatures in function type annotations.
@@ -2761,6 +2741,3 @@ annotation permits `null`. Even so, Dart will never call your `==` method and
 pass `null` to it, so you don't need to handle `null` inside the body of the
 method.
 {{site.alert.end}}
-
-
-[AngularDart]: {{site.angulardart}}
