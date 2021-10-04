@@ -112,7 +112,7 @@ More information:
 
 ## 3. Get CLI tools or an IDE (or both)
 
-## 3. 获取 CLI 工具或者 IDE (或者2者)
+## 3. 获取 CLI 工具或者 IDE (或两者都有)
 
 <i class="fas fa-terminal dark"></i>
 If you like to use the command line, install [webdev][]:
