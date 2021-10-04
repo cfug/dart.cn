@@ -22,8 +22,29 @@ def check_path(path):
 
             files.set_postfix(file=filename)
 
-            with file.open() as f:
-                html = check_output("pandoc", stdin=f, encoding="utf8")
+            with file.open(encoding="utf8") as f:
+                md = f.read()
+
+            # remove such lines:
+            # {% prettify dart tag=pre+code %} ... {% endprettify %}
+            md = re.sub(
+                r"{% prettify dart tag=pre\+code %}.*?{% endprettify %}",
+                "",
+                md,
+                flags=re.DOTALL,
+            )
+
+            # remove such lines:
+            # <div class="table-wrapper" markdown="1"> ... </div>
+            # for `src/_guides/language/language-tour.md`
+            md = re.sub(
+                r'<div class="table-wrapper" markdown="1">.*?</div>',
+                "",
+                md,
+                flags=re.DOTALL,
+            )
+
+            html = check_output("pandoc", input=md, encoding="utf8")
 
             # remove code blocks
             html = re.sub(r"<pre.*?</pre>", "", html, flags=re.DOTALL)
