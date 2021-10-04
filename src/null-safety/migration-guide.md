@@ -484,7 +484,7 @@ except for a 2.9 [version comment][].
 
 尽管我们希望你能一次性完成迁移工作，但对于大体量的应用或 package 而言并不是简单的事。
 如果你想只迁移部分文件，请将暂时不迁移的文件前方的绿色勾选框取消勾选。
-稍后应用迁移更改时，这些文件会加上 Dart 2.9 [版本注释][[version comment]]，
+稍后应用迁移更改时，这些文件会加上 Dart 2.9 [版本注释][version comment]，
 其他内容保持不变。
 
 For more information about incremental migration, see

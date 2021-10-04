@@ -184,7 +184,7 @@ mind:
     所有变量引用的都是 **对象**，每个对象都是一个 **类** 的实例。
     数字、函数以及 `null` 都是对象。
     除去 `null` 以外（如果你开启了 [空安全][ns]）,
-    所有的类都继承于 [Object][] 类。
+    所有的类都继承于 [`Object`][] 类。
 
 -   Although Dart is strongly typed, type annotations are optional
     because Dart can infer types. In the code above, `number`
@@ -825,7 +825,7 @@ and `floor()`, among other methods.
 If num and its subtypes don’t have what you’re looking for, the
 [dart:math][] library might.
 
-`int` 和 `double` 都是 [`num`][num] 的子类。
+`int` 和 `double` 都是 [`num`][] 的子类。
 num 中定义了一些基本的运算符比如 +、-、\*、/ 等，
 还定义了 `abs()`、`ceil()` 和 `floor()` 等方法
 （位运算符，比如 \>\> 定义在 int 中）。
@@ -1706,20 +1706,6 @@ for the characters package.
 有关使用 characters 包操作字符串的详细信息，请参阅用于 characters 包的[样例][characters example]
 和 [API 参考][characters API]。
 
-{{site.alert.note}}
-
-  Be careful when manipulating runes using list operations. This approach can
-  easily break down, depending on the particular language, character set, and
-  operation. For more information, see [How do I reverse a String in Dart?][] on
-  Stack Overflow.
-
-  在使用 List 操作 Rune 的时候需要小心，
-  根据所操作的语种、字符集等不同可能会导致字符串出现问题，
-  具体可参考 Stack Overflow 中的提问：
-  [我如何在 Dart 中反转一个字符串？][How do I reverse a String in Dart?]。
-
-{{site.alert.end}}
-
 ### Symbols
 
 A [`Symbol`][] object
@@ -1865,8 +1851,7 @@ followed either by *named* parameters or by *optional positional* parameters
 You can use [trailing commas][] when you pass arguments to a function
 or when you define function parameters.
 
-向函数传入参数或者定义函数参数时，可以使用
-[尾随逗号][trailing comma]。
+向函数传入参数或者定义函数参数时，可以使用 [尾逗号][trailing commas]。
 
 #### Named parameters
 
