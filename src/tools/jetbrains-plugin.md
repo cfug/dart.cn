@@ -68,6 +68,10 @@ Install a JetBrains IDE if you don't already have one. Choose one:
 
   [查找其它的 JetBrains 产品][Other]{:target="_blank" rel="noopener"}
 
+[IDEA]: https://www.jetbrains.com/idea/download/
+[IDEA EAP]: https://www.jetbrains.com/idea/nextversion/
+[Other]: https://www.jetbrains.com/products.html
+
 {{site.alert.note}}
   
   The Community Edition of IntelliJ IDEA has limited functionality.

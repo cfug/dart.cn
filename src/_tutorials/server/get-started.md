@@ -64,15 +64,15 @@ More information:
 
 * [DartPad documentation][]
 
-  [DartPad 文档][]
+  [DartPad 文档][DartPad documentation]
 
 * [Dart language tour][]
 
-  [Dart 语言概览][]
+  [Dart 语言概览][Dart language tour]
 
 * [Dart library tour][]
 
-  [Dart 库概览][]
+  [Dart 库概览][Dart library tour]
 
 ## 2. Install Dart
 

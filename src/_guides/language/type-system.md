@@ -374,7 +374,7 @@ void main() {
 Runtime checks in the Dart VM and [dartdevc][]
 deal with type safety issues that the analyzer can't catch.
 
-运行时检查工具，比如 [Dart VM][] 和 [dartdevc][]，
+运行时检查工具，比如 Dart VM 和 [dartdevc][]，
 处理分析器无法捕获的类型安全问题。
 
 For example, the following code throws an exception at runtime

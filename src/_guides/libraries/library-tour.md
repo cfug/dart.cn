@@ -72,7 +72,7 @@ You can find API documentation for all dart:* libraries in the
 the [Flutter API reference.][docs.flutter]
 
 更多库信息可以在
-[Pub site][pub.dartlang] 和
+[Pub site]({{site.pub}}) 和
 [Dart web developer library guide.][webdev libraries] 查找。
 所有 dart:* 库的 API 文档可以在
 [Dart API reference][Dart API] 查找， 如果使用的是 Flutter
@@ -83,7 +83,8 @@ the [Flutter API reference.][docs.flutter]
   **DartPad tip:** You can play with the code in this page by copying it into a
   [DartPad.]({{site.dartpad}})
 
-  **DartPad tip：** 可以通过将该页中的代码拷贝到 [DartPad]({{site.dartpad}}) 中进行演示。
+  **DartPad 提示：**
+  可以通过将该页中的代码拷贝到 [DartPad]({{site.dartpad}}) 中进行演示。
 
 {{site.alert.end}}
 
