@@ -128,19 +128,20 @@ Transitive dependencies are included, too.
 For example, if the `js` package depends on the `test` package, `pub`
 grabs both the `js` package and the `test` package.
 
-[`dart pub get`][`get`] 命令确定当前应用所依赖的包，
-并将它们保存到中央[系统缓存](/tools/pub/glossary#system-cache)（central system cache）中。
-如果当前应用依赖了一个公开包， Pub 会从 [Pub 站点]({{site.pub}}) 该包。
-对于一个 [Git 依赖](/tools/pub/dependencies#git-packages)， Pub 会 Clone 该 Git 仓库。
-同样包括包的相关依赖也会被下载。
-例如，如果 `js` 包依赖 `test` 包， `pub` 会同时获取 `js` 包和 `test` 包。
+`dart pub get` 命令确定当前应用所依赖的包，
+并将它们保存到中央 [系统缓存](/tools/pub/glossary#system-cache)
+(central system cache) 中。
+如果当前应用依赖了一个公开包， Pub 会从 [Pub 站点]({{site.pub}}) 获取该包。
+对于一个 [Git 依赖](/tools/pub/dependencies#git-packages)，
+Pub 会 Clone 该 Git 仓库。同样包括包的相关依赖也会被下载。
+例如，如果 `js` 包依赖 `test` 包，`pub` 会同时获取 `js` 包和 `test` 包。
 
 Pub creates a
 `.packages` file (under your app’s top directory)
 that maps each package name
 that your app depends on to the corresponding package in the system cache.
 
-Pub 会创建一个`.packages` 文件（位于应用程序的根路目录下），
+Pub 会创建一个 `.packages` 文件（位于应用程序的根路目录下），
 该文件将应用程序所依赖的每个包名相应的映射到系统缓存中的包。
 
 {% comment %}
