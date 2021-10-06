@@ -2,6 +2,17 @@ name: Markdown links reference check
 
 on: [push, pull_request]
 
+env:
+  _OS_NAME: linux
+  DART_SITE_ENV_DEFS: 1
+  JEKYLL_ENV: production
+  PUB_ENVIRONMENT: bot.github
+  SITE_LOCALHOST_PORT: 5000
+  SITE_JEKYLL_DEST: _site
+  SITE_JEKYLL_SRC: src
+  TMP: ${{ github.workspace }}/tmp
+  TZ: US/Pacific # normalize build timestamp
+
 jobs:
   check_reference_links:
     runs-on: ubuntu-latest
@@ -10,7 +21,7 @@ jobs:
         with:
           # submodules param for checkout action to get site-shared, 'true' might be enough
           submodules: "recursive"
-      - run: mkdir -p ${{ github.workspace }}/tmp
+      - run: mkdir -p $TMP
       - uses: actions/setup-node@v2
         with:
           node-version: 14
