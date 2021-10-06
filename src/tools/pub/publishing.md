@@ -246,7 +246,8 @@ and then uploads your package to [pub.dev.]({{site.pub}}) Pub also shows you all
 the files it intends to publish. Here's an example of publishing a package
 named `transmogrify`:
 
-Pub 会确认你的 package 符合 [pubspec 格式][pubspec] 和 [package 布局惯例][]，
+Pub 会确认你的 package 符合 [pubspec 格式][pubspec]
+和 [package 布局惯例][package layout conventions]，
 然后把它上传至 [pub.dev]({{site.pub}})。
 Pub 也会提前向你展示所有准备发布的文件。
 如下是一个示例，展示了将要发布的名为 `transmogrify` 的 package：
