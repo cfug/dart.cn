@@ -1,4 +1,4 @@
-name: Markdown links reference check
+name: Links reference check
 
 on: [push, pull_request]
 
