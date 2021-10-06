@@ -2,24 +2,19 @@ name: Markdown links reference check
 
 on: [push, pull_request]
 
-env:
-  NODE_ENV: production
-  NODE_VERSION: 15
-
 jobs:
   check_reference_links:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
+          # submodules param for checkout action to get site-shared, 'true' might be enough
           submodules: "recursive"
       - run: mkdir -p ${{ github.workspace }}/tmp
-      - name: Install Node
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version: 14
       - uses: ruby/setup-ruby@v1
-        if: contains(matrix.task, 'build.sh')
         with:
           bundler-cache: true
           ruby-version: 2.6.5
@@ -27,7 +22,7 @@ jobs:
         with:
           sdk: stable
       - name: Install node dependencies
-        # TODO: caching requires a lockfile for node deps, so does npm ci.
+        # TOOD: caching requires a lockfile for node deps, so does npm ci.
         run: npm install
       - name: Install dart dependencies
         run: dart pub get
