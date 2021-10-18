@@ -444,7 +444,7 @@ This runtime is responsible for the following critical tasks:
   [type check and cast operators](/guides/language/language-tour#type-test-operators).
 
   执行 Dart 语言的类型体系：
-  尽管 Dart 语言里大多数类型检查都是静态的 (编译时)，还有一些检查是动态的 (运行时)。
+  Dart 语言里大多数类型检查都是静态的（编译时)，但仍有部分检查是动态的（运行时）。
   比如，Dart 运行时环境会在遇到
   [类型判断运算符](/guides/language/language-tour#type-test-operators)
   时执行动态检查。
@@ -454,7 +454,7 @@ This runtime is responsible for the following critical tasks:
   and any other isolates that the app creates.
 
   管理 [isolates](/guides/language/language-tour#isolates)：
-  Dart 运行时环境会负责控制主 isolate (代码通常在这里运行)
+  Dart 运行时环境会负责控制主 isolate（代码通常在这里运行）
   以及其他应用创建的 isolate。
 
 On native platforms, the Dart runtime is automatically
@@ -463,8 +463,7 @@ and is part of the Dart VM provided by
 the [`dart run`](/tools/dart-run) command.
 
 在原生平台上，Dart 运行时环境被自动包含在独立的可执行文件中，
-是 [`dart run`](/tools/dart-run) 命令提供的
-Dart 虚拟机的一部分。
+是 [`dart run`](/tools/dart-run) 命令提供的 Dart VM 的一部分。
 
 ## Learning Dart {#learning-dart}
 
