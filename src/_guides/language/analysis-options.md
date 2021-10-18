@@ -5,7 +5,7 @@ description: Use an analysis options file and code comments to customize static 
 description: 通过对分析文件和代码注释来自定义静态分析的内容。
 ---
 
-<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 
 <style>
 li.L0, li.L1, li.L2, li.L3,
@@ -296,8 +296,8 @@ linter:
     - one_member_abstracts
     - only_throw_errors
     - package_api_docs
+    - prefer_final_in_for_each
     - prefer_single_quotes
-    - sort_child_properties_last
 ```
 
 
