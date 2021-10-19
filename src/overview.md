@@ -444,7 +444,7 @@ This runtime is responsible for the following critical tasks:
   [type check and cast operators](/guides/language/language-tour#type-test-operators).
 
   执行 Dart 语言的类型体系：
-  Dart 语言里大多数类型检查都是静态的（编译时)，但仍有部分检查是动态的（运行时）。
+  Dart 语言里大多数类型检查都是静态的（编译时），但仍有部分检查是动态的（运行时）。
   比如，Dart 运行时环境会在遇到
   [类型判断运算符](/guides/language/language-tour#type-test-operators)
   时执行动态检查。
