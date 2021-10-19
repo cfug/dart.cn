@@ -107,7 +107,7 @@ if (year >= 2001) {
   print('20th century');
 }
 
-for (var object in flybyObjects) {
+for (final object in flybyObjects) {
   print(object);
 }
 
@@ -442,7 +442,7 @@ easy to read.
 <?code-excerpt "misc/test/samples_test.dart (await)"?>
 ```dart
 Future<void> createDescriptions(Iterable<String> objects) async {
-  for (var object in objects) {
+  for (final object in objects) {
     try {
       var file = File('$object.txt');
       if (await file.exists()) {
@@ -467,7 +467,7 @@ You can also use `async*`, which gives you a nice, readable way to build streams
 <?code-excerpt "misc/test/samples_test.dart (async*)"?>
 ```dart
 Stream<String> report(Spacecraft craft, Iterable<String> objects) async* {
-  for (var object in objects) {
+  for (final object in objects) {
     await Future.delayed(oneSecond);
     yield '${craft.name} flies by $object';
   }
@@ -505,7 +505,7 @@ To catch an exception, use a `try` statement with `on` or `catch` (or both):
 <?code-excerpt "misc/test/samples_test.dart (try)"?>
 ```
 try {
-  for (var object in flybyObjects) {
+  for (final object in flybyObjects) {
     var description = await File('$object.txt').readAsString();
     print(description);
   }

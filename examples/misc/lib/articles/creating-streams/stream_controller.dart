@@ -15,7 +15,7 @@ Stream<int> timedCounterGenerator(Duration interval, [int? maxCount]) async* {
 
 // #docregion stream-from-futures
 Stream<T> streamFromFutures<T>(Iterable<Future<T>> futures) async* {
-  for (var future in futures) {
+  for (final future in futures) {
     var result = await future;
     yield result;
   }
@@ -136,8 +136,10 @@ void useWhere() {
 void useTransform() async {
   // #docregion use-transform
   Stream<List<int>> content = File('someFile.txt').openRead();
-  List<String> lines =
-      await content.transform(utf8.decoder).transform(LineSplitter()).toList();
+  List<String> lines = await content
+      .transform(utf8.decoder)
+      .transform(const LineSplitter())
+      .toList();
   // #enddocregion use-transform
 
   print(lines);

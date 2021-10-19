@@ -5,7 +5,7 @@ description: Learn about the major features in Dart's libraries.
 description: 学习更多关于 Dart 语言核心库的特性。
 short-title: Library tour
 ---
-<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /\n? *\/\/\s+ignore:[^\n]+//g"?>
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
 
 This page shows you how to use the major features in Dart’s core libraries.
@@ -283,7 +283,7 @@ assert('Never odd or even'[0] == 'N');
 // Use split() with an empty string parameter to get
 // a list of all characters (as Strings); good for
 // iterating.
-for (var char in 'hello'.split('')) {
+for (final char in 'hello'.split('')) {
   print(char);
 }
 
@@ -458,7 +458,7 @@ var someDigits = 'llamas live 15 to 20 years';
 assert(numbers.hasMatch(someDigits));
 
 // Loop through all matches.
-for (var match in numbers.allMatches(someDigits)) {
+for (final match in numbers.allMatches(someDigits)) {
   print(match.group(0)); // 15, then 20
 }
 ```
@@ -1317,7 +1317,7 @@ class Processes extends IterableBase<Process> {
 
 void main() {
   // Iterable objects can be used with for-in.
-  for (var process in Processes()) {
+  for (final process in Processes()) {
     // Do something with the process.
   }
 }
@@ -1724,7 +1724,7 @@ Future<void> main(List<String> arguments) async {
   // ...
   if (await FileSystemEntity.isDirectory(searchPath)) {
     final startingDir = Directory(searchPath);
-    [!await for!] (var entity in startingDir.list()) {
+    [!await for!] (final entity in startingDir.list()) {
       if (entity is File) {
         searchFile(entity, searchTerms);
       }
@@ -1820,7 +1820,7 @@ different type of data:
 ```dart
 var lines = inputStream
     .transform(utf8.decoder)
-    .transform(LineSplitter());
+    .transform(const LineSplitter());
 ```
 
 This example uses two transformers. First it uses utf8.decoder to
@@ -1869,9 +1869,9 @@ Future<void> readFileAwaitFor() async {
 
   var lines = inputStream
       .transform(utf8.decoder)
-      .transform(LineSplitter());
+      .transform(const LineSplitter());
   [!try!] {
-    await for (var line in lines) {
+    await for (final line in lines) {
       print('Got ${line.length} characters from stream');
     }
     print('file is now closed');
@@ -1898,7 +1898,7 @@ Stream<List<int>> inputStream = config.openRead();
 
 inputStream
     .transform(utf8.decoder)
-    .transform(LineSplitter())
+    .transform(const LineSplitter())
     .listen((String line) {
   print('Got ${line.length} characters from stream');
 }, [!onDone!]: () {
@@ -2182,10 +2182,11 @@ To convert a stream of UTF-8 characters into a Dart string, specify
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (utf8-decoder)" replace="/utf8.decoder/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-var lines =
-    [!utf8.decoder!].bind(inputStream).transform(LineSplitter());
+var lines = [!utf8.decoder!]
+    .bind(inputStream)
+    .transform(const LineSplitter());
 try {
-  await for (var line in lines) {
+  await for (final line in lines) {
     print('Got ${line.length} characters from stream');
   }
   print('file is now closed');

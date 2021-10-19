@@ -4,9 +4,9 @@ title: Dart 开发语言概览
 description: A tour of all the major Dart language features.
 description: Dart 开发语言的主要特性概览。
 short-title: Language tour
-js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+js: [{url: 'https://dartpad.cn/inject_embed.dart.js', defer: true}]
 ---
-<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
 This page shows you how to use each major Dart feature, from
 variables and operators to classes and libraries, with the assumption
@@ -3103,7 +3103,7 @@ you can use the `for-in` form of [iteration][]:
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (collection)"?>
 ```dart
-for (var candidate in candidates) {
+for (final candidate in candidates) {
   candidate.interview();
 }
 ```
@@ -3620,7 +3620,7 @@ Dart is an object-oriented language with classes and mixin-based
 inheritance. Every object is an instance of a class, and all classes
 except `Null` descend from [`Object`][].
 *Mixin-based inheritance* means that although every class
-(except for the [top class][top-and-bottom],`Object?`)
+(except for the [top class][top-and-bottom], `Object?`)
 has exactly one superclass, a class body can be reused in
 multiple class hierarchies.
 [Extension methods](#extension-methods) are a way to
@@ -5955,7 +5955,7 @@ the body of `main()` must be marked as `async`:
 {% prettify dart tag=pre+code %}
 Future<void> main() [!async!] {
   // ...
-  [!await for!] (var request in requestServer) {
+  [!await for!] (final request in requestServer) {
     handleRequest(request);
   }
   // ...

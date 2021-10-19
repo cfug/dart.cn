@@ -71,7 +71,7 @@ Stream 可以通过许多方式创建，这个话题我们会在另一篇文章�
 {% prettify dart tag=pre+code %}
 Future<int> sumStream(Stream<int> stream) [!async!] {
   var sum = 0;
-  [!await for!] (var value in stream) {
+  [!await for!] (final value in stream) {
     sum += value;
   }
   return sum;
@@ -112,7 +112,7 @@ generating a simple stream of integers using an `async*` function:
 ```dart:run-dartpad:null_safety-true
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
-  await for (var value in stream) {
+  await for (final value in stream) {
     sum += value;
   }
   return sum;
@@ -189,7 +189,7 @@ error when the loop iterator equals 4:
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
   try {
-    await for (var value in stream) {
+    await for (final value in stream) {
       sum += value;
     }
   } catch (e) {
@@ -346,14 +346,14 @@ For example, some implementations could be:
 <?code-excerpt "misc/lib/tutorial/misc.dart (mock-stream-method-implementations)"?>
 ```dart
 Future<bool> contains(Object? needle) async {
-  await for (var event in this) {
+  await for (final event in this) {
     if (event == needle) return true;
   }
   return false;
 }
 
 Future forEach(void Function(T element) action) async {
-  await for (var event in this) {
+  await for (final event in this) {
     action(event);
   }
 }
@@ -454,7 +454,7 @@ Stream<S> mapLogErrors<S, T>(
   S Function(T event) convert,
 ) async* {
   var streamWithoutErrors = stream.handleError((e) => log(e));
-  await for (var event in streamWithoutErrors) {
+  await for (final event in streamWithoutErrors) {
     yield convert(event);
   }
 }
@@ -505,8 +505,8 @@ Future<void> main(List<String> args) async {
   var file = File(args[0]);
   var lines = utf8.decoder
       .bind(file.openRead())
-      .transform(LineSplitter());
-  await for (var line in lines) {
+      .transform(const LineSplitter());
+  await for (final line in lines) {
     if (!line.startsWith('#')) print(line);
   }
 }

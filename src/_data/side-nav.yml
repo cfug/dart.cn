@@ -26,7 +26,7 @@
 - title: Dart 开发语言
   expanded: false
   children:
-    - title: 概览
+    - title: 语言概览
       permalink: /guides/language/language-tour
     - title: 类型系统
       permalink: /guides/language/type-system
