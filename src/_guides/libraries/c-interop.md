@@ -49,7 +49,7 @@ The following examples show how to use the dart:ffi library:
 The [hello_world example][hello_world] has the minimum necessary code for
 calling a C library.
 
-[hello_world 示例][hello_world] 包含了最少的调用 C 语言库的代码。
+[hello_world 示例][hello_world] 展示了如何用最少的代码调用 C 语言库。
 
 ### Files
 
@@ -247,7 +247,7 @@ if (Platform.isMacOS) {
 Once you understand the hello_world example, you should be ready to look at the
 [other dart:ffi examples](#examples).
 
-当你理解 hello_world 示例的内容后，你可以进一步学习 [其他的 dart:ffi 示例](#examples)。
+当你理解 hello_world 示例的内容后，可以进一步学习 [其他的 dart:ffi 示例](#examples)。
 
 ## Bundling and loading C libraries
 
