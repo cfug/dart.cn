@@ -85,9 +85,8 @@ as a result.
 ## 获取新的依赖项
 
 If a dependency is added to the pubspec before `dart pub downgrade` is run,
-it gets the new dependency and any of its transitive dependencies,
-placing them in the `.packages` file. This
-is the same behavior as `dart pub get`.
+it gets the new dependency and any of its transitive dependencies.
+This shares the same behavior as `dart pub get`.
 
 如果在执行 `dart pub downgrade` 命令前将某个依赖添加至 pubspec 文件中，则在执行该命令后会将该新的依赖项以及其间接依赖的其它依赖项下载并将其放到 `.packages` 文件中。这点与 `dart pub get` 命令一致。
 
@@ -95,14 +94,17 @@ is the same behavior as `dart pub get`.
 
 ## 移除依赖项
 
-If a dependency is removed from the pubspec before `dart pub downgrade` is
-run, it removes the dependency from the `.packages` file,
-thus making the dependency unavailable for
-importing. Any transitive dependencies of the removed dependency are
-also removed, as long as no remaining immediate dependencies also
-depend on them. This is the same behavior as `dart pub get`.
+If a dependency is removed from the pubspec before `dart pub downgrade` is run,
+the dependency is no longer available for importing.
+Any transitive dependencies of the removed dependency are also removed,
+as long as no remaining immediate dependencies also depend on them.
+This is the same behavior as `dart pub get`.
 
-如果在 `dart pub downgrade` 命令前从 pubspec 文件移除了某个依赖项，则在执行该命令后会将该依赖项从 `.packages` 文件中移除，且代码使用到该依赖项的相关导入将变得不可用。所有该依赖项依赖的间接依赖项也同时会被移除，只要这些间接依赖项没有没其它的依赖项所依赖。这点与 `dart pub get` 命令一致。
+如果在 `dart pub downgrade` 命令前从 pubspec 文件移除了某个依赖项，
+则在执行该命令后代码使用到该依赖项的相关导入将变得不可用。
+所有该依赖项依赖的间接依赖项也同时会被移除，
+只要这些间接依赖项没有没其它的依赖项所依赖。
+这点与 `dart pub get` 命令一致。
 
 ## Downgrading while offline
 

@@ -137,11 +137,11 @@ Pub 会 Clone 该 Git 仓库。同样包括包的相关依赖也会被下载。
 例如，如果 `js` 包依赖 `test` 包，`pub` 会同时获取 `js` 包和 `test` 包。
 
 Pub creates a
-`.packages` file (under your app’s top directory)
+`package_config.json` file (under the `.dart_tool/` directory)
 that maps each package name
 that your app depends on to the corresponding package in the system cache.
 
-Pub 会创建一个 `.packages` 文件（位于应用程序的根路目录下），
+Pub 会创建一个 `package_config.json` 文件（位于 `.dart_tool/` 目录下），
 该文件将应用程序所依赖的每个包名相应的映射到系统缓存中的包。
 
 {% comment %}
@@ -164,11 +164,11 @@ import 'package:intl/intl.dart';
 ```
 
 The Dart runtime takes everything after `package:`
-and looks it up within the `.packages` file for
+and looks it up within the `package_config.json` file for
 your app.
 
 Dart 运行时会抓取 `package:` 之后的内容，
-并在应用程序的 `.packages` 文件中查找它。
+并在应用程序的 `package_config.json` 文件中查找它。
 
 You can also use this style to import libraries from within your own package.
 Consider the following pubspec file, which declares a dependency on
