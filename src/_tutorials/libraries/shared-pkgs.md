@@ -273,7 +273,7 @@ Each package can contain libraries and other assets.
 Pub works recursively;
 if an included package has dependencies, those packages are installed as well.
 Pub caches the files for each package your app depends on,
-pointing to them from a file named `.packages`.
+pointing to them from the `.dart_tool/package_config.json` file.
 
 `dart pub get` 命令会安装你应用依赖列表中的包。而每一个包可能还会包含其它的库或资源，Pub 同样会将它们依次安装；如果一个依赖包已经安装过，则会直接使用。Pub 会缓存你应用依赖过的每一个包并将其缓存至一个名为 `.packages` 的文件中。
 

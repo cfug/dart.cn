@@ -76,7 +76,7 @@ jobs:
 #    steps:
 #      - uses: actions/checkout@v2
 #      - run: mkdir -p $TMP
-#      - uses: dart-lang/setup-dart@v1.0
+#      - uses: dart-lang/setup-dart@v1.3
 #        with:
 #          sdk: stable
 #      - run: ./tool/check-diagnostics.sh

@@ -104,29 +104,25 @@ unlocked until a compatible set of versions is found.
 ## 获取一个新的依赖项
 
 If a dependency is added to the pubspec before `dart pub upgrade` is run,
-it gets the new dependency and any of its transitive dependencies,
-placing them in the `.packages` file. This
-is the same behavior as `dart pub get`.
+it gets the new dependency and any of its transitive dependencies.
+This shares the same behavior as `dart pub get`.
 
 如果在运行 `dart pub upgrade` 命令前将一个依赖项添加至 pubspec 文件，
-则在运行该命令后会获取新的依赖项以及该依赖项所依赖的其它依赖项，
-并将它们放在`.packages`文件中。
+则在运行该命令后会更新依赖项以及该依赖项所依赖的其它依赖项。
 该行为与 `dart pub get` 命令一致。
 
 ## Removing a dependency
 
 ## 删除一个依赖项
 
-If a dependency is removed from the pubspec before `dart pub upgrade` is
-run, it removes the dependency from the `.packages` file,
-thus making the dependency unavailable for
-importing. Any transitive dependencies of the removed dependency are
-also removed, as long as no remaining immediate dependencies also
-depend on them. This is the same behavior as `dart pub get`.
+If a dependency is removed from the pubspec before `dart pub upgrade` is run,
+the dependency is no longer available for importing.
+Any transitive dependencies of the removed dependency are also removed,
+as long as no remaining immediate dependencies also depend on them.
+This is the same behavior as `dart pub get`.
 
 如果在运行 `dart pub upgrade` 命令前将一个依赖项从 pubspec 文件删除，
-则在运行该命令后会删除 `.packages` 文件中对应的依赖项，
-且会导致已经导入使用的该依赖项相关代码不可用。
+则在运行该命令后会导致已经导入使用的该依赖项相关代码不可用。
 任何该依赖项所依赖的其它依赖项也会被同时删除。
 该行为与 `dart pub get` 命令一致。
 
