@@ -2360,40 +2360,23 @@ Dart 支持下表的操作符。
 你可以将这些运算符实现为 [一个类的成员](#_operators)。
 
 |--------------------------+------------------------------------------------|
-|Description               | Operator                                       |
-|--------------------------|------------------------------------------------|
 | 描述                     | 运算符                                         |
-| unary postfix            | <code><em>expr</em>++</code>   <code><em>expr</em>--</code>   `()`   `[]`   `.`   `?.`     |
+|--------------------------|------------------------------------------------|
 | 一元后缀                 | <code><em>表达式</em>++</code>   <code><em>表达式</em>--</code>   `()`   `[]`   `.`   `?.` |
-| unary prefix             | <code>-<em>expr</em></code>   <code>!<em>expr</em></code>   <code>~<em>expr</em></code>   <code>++<em>expr</em></code>   <code>--<em>expr</em></code>    <code>await <em>expr</em></code>   |
 | 一元前缀      | <code>-<em>表达式</em></code>   <code>!<em>表达式</em></code>   <code>~<em>表达式</em></code>   <code>++<em>表达式</em></code>   <code>--<em>表达式</em></code>  |
-| multiplicative           | `*`   `/`   `%`    `~/`                      |
 | 乘除法        | `*`   `/`   `%`    `~/`                                     |
-| additive                 | `+`   `-`                                     |
 | 加减法        | `+`   `-`                                                    |
-| shift                    | `<<`   `>>`   `>>>`                          |
 | 位运算        | `<<`   `>>`   `>>>`                                         |
-| bitwise AND              | `&`                                            |
 | 二进制与      | `&`                                                           |
-| bitwise XOR              | `^`                                            |
 | 二进制异或     | `^`                                                           |
-| bitwise OR               | `|`                                            |
 | 二进制或      | `|`                                                           |
-| relational&nbsp;and&nbsp;type&nbsp;test | `>=`   `>`   `<=`   `<`   `as`   `is`   `is!` |
 | 关系和类型测试 | `>=`   `>`   `<=`   `<`   `as`   `is`   `is!`           |
-| equality                 | `==`   `!=`                                  |
 | 相等判断      | `==`   `!=`                                                 |
-| logical AND              | `&&`                                           |
 | 逻辑与        | `&&`                                                          |
-| logical OR               | `||`                                           |
 | 逻辑或        | `||`                                                          |
-| if null                  | `??`                                           |
 | 空判断        | `??`                                                          |
-| conditional              | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code> |
 | 条件表达式     | <code><em>表达式 1</em> ? <em>表达式 2</em> : <em>表达式 3</em></code> |
-| cascade                  | `..` &nbsp;&nbsp; `?..`                        |
 | 级联          | `..`   `?..`                                      |
-| assignment               | `=`   `*=`   `/=`   `+=`   `-=`   `&=`   `^=`   <em>etc.</em> |
 | 赋值          | `=`   `*=`   `/=`   `+=`   `-=`   `&=`   `^=`   <em>等等……</em> |
 {:.table .table-striped}
 
@@ -2980,10 +2963,11 @@ You've seen most of the remaining operators in other examples:
 大多数其它的运算符，已经在其它的示例中使用过：
 
 |----------+-------------------------------------------|
-|   运算符  | 名字                  |          描述      |
+|   运算符  | 名字                  | 描述               |
 |-----------+------------------------------------------|
 | `()`     | 使用方法               | 代表调用一个方法
 | `[]`     | 访问 List             | 访问 List 中特定位置的元素
+| `?[]`    | 判空访问 List          | 左侧调用者不为空时，访问 List 中特定位置的元素
 | `.`      | 访问成员               | 成员访问符
 | `?.`     | 条件访问成员            | 与上述成员访问符类似，但是左边的操作对象不能为 null，例如 foo?.bar，如果 foo 为 null 则返回 null ，否则返回 bar
 {:.table .table-striped}
@@ -6102,7 +6086,7 @@ For more information, see the following:
 [isolates article]: https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
 [Isolate.spawn()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
 [TransferableTypedData]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/TransferableTypedData-class.html
-[background json]: {{site.flutter}}/docs/cookbook/networking/background-parsing
+[background json]: {{site.flutter_docs}}/cookbook/networking/background-parsing
 [Isolate sample app]: https://github.com/flutter/samples/tree/master/isolate_example
 
 ## Typedefs
@@ -6409,7 +6393,7 @@ To learn more about Dart's core libraries, see
 [`Exception`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
 [extension methods page]: /guides/language/extension-methods
 [Flutter]: {{site.flutter}}
-[Flutter debug mode]: {{site.flutter}}/docs/testing/debugging#debug-mode-assertions
+[Flutter debug mode]: {{site.flutter_docs}}/testing/debugging#debug-mode-assertions
 [forEach()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
 [Function API reference]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 [`Future`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html

@@ -13,9 +13,10 @@ port: 4000
 # use case:
 #   {{site.flutter}}/docs
 
-dart-site: ''
-dart_vm:  /server
-flutter:  https://flutter.cn
+dart-site: '' 
+dart_vm: /server
+flutter: https://flutter.cn
+flutter_docs: https://flutter.cn/docs
 dart_api: https://api.dart.dev
 flutter_api: https://api.flutter.cn
 pub: https://pub.flutter-io.cn

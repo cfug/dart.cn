@@ -769,7 +769,7 @@ you don't care about the type, then use `toList()`.
 
 ### **要** 使用 `whereType()` 按类型过滤集合。
 
-{% include linter-rule-mention.md rule="prefer_iterable_whereType" %}
+{% include linter-rule-mention.md rule="prefer_iterable_wheretype" %}
 
 Let's say you have a list containing a mixture of objects, and you want to get
 just the integers out of it. You could use `where()` like this:

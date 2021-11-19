@@ -262,9 +262,10 @@ print(null ?? 12); // <-- Prints 12.
 
 ### 代码样例
 
-Try putting the `??=` and `??` operators to work below.
+Try substituting in the `??=` and `??` operators
+to implement the described behavior in the following snippet.
 
-尝试在下面使用 `??=` 和 `??` 操作符。
+尝试在下面的代码片段中交替使用 `??=` 和 `??` 操作符，实现期望的需求。
 
 Ignore all initial errors in the DartPad.
 

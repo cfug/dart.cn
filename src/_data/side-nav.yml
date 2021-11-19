@@ -253,6 +253,10 @@
         permalink: /guides/language/analysis-options
       - title: 修复常见的类型问题
         permalink: /guides/language/sound-problems
+      - title: 诊断消息
+        permalink: /tools/diagnostic-messages
+      - title: Linter 规则
+        permalink: /tools/linter-rules
   - title: 测试和调优
     children:
       - title: 测试
