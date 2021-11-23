@@ -102,12 +102,12 @@ Choose one:
 选一个吧：
 
 * [Download the Dart SDK](/get-dart)
- 
-  [下载 Dart SDK](/get-dart)
-
-* [Download the Flutter SDK]({{site.flutter}}/docs/get-started/install)
 
   [下载 Dart SDK](/get-dart)
+
+* [Download the Flutter SDK]({{site.flutter_docs}}/get-started/install)
+
+  [下载 Flutter SDK]({{site.flutter_docs}}/get-started/install)
 
 
 ### Configuring Dart support

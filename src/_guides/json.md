@@ -47,11 +47,13 @@ The following libraries and packages are useful across Dart platforms:
 
 ## 相关的 Flutter 资源
 
-[JSON and serialization]({{site.flutter}}/docs/development/data-and-backend/json)
+## 相关的 Flutter 资源
+
+[JSON and serialization]({{site.flutter_docs}}/development/data-and-backend/json)
 <br> Shows how Flutter apps can serialize and deserialize both
   with dart:convert and with json_serializable.
 
-[JSON 和序列化]({{site.flutter}}/docs/development/data-and-backend/json)
+[JSON 和序列化]({{site.flutter_docs}}/development/data-and-backend/json)
 <br> 向你展示 Flutter 应用是如何使用 dart:convert 和
   json_serializable 进行序列化和反序列化的。
 

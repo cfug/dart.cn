@@ -64,6 +64,7 @@ in a well-built package.
 本教程同时也会向你展示一些你可能会使用到的优秀的包。
 
 {{site.alert.info}}
+
   **Flutter note:**
 
   **使用 Flutter 时请注意：**
@@ -72,11 +73,11 @@ in a well-built package.
   concepts are the same, and you can share packages between
   your Flutter and web or server-side apps.
   For more information, see the
-  [Flutter package documentation.]({{site.flutter}}/docs/development/packages-and-plugins/using-packages)
+  [Flutter package documentation.]({{site.flutter_docs}}/development/packages-and-plugins/using-packages)
 
   本文不会向你展示那些只针对 Flutter 的 package，但它们的概念是一致的，
   你也可以将你的 package 分享为可以在 Flutter、Web 或服务端应用上使用。
-  更多相关信息，请查阅 [Flutter 的 package 文档。]({{site.flutter}}/docs/development/packages-and-plugins/using-packages)
+  更多相关信息，请查阅 [Flutter 的 package 文档。]({{site.flutter_docs}}/development/packages-and-plugins/using-packages)
 
 {{site.alert.end}}
 
