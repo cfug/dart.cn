@@ -92,7 +92,7 @@ jobs:
       - run: ./tool/firebase-checks.sh
 
   deploy:
-    needs: [test, firebase-checks]
+    needs: [test]
     runs-on: ubuntu-latest
     if: |
       github.event_name == 'push'
