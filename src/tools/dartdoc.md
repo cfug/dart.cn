@@ -14,7 +14,21 @@ which can contain markdown formatting.
 For guidance on writing doc comments,
 see the [documentation part of Effective Dart][effective doc].
 
-`dartdoc` 命令可以从你 Dart 源代码中生成 API 参考文档。您可以使用 [文档注释][documentation comments] 向生成的文档添加说明，该说明支持 MarkDown 格式。你可以查阅 [高效 Dart 的文档部分][effective doc] 获取更多关于如何撰写文档注释的信息。
+{{site.alert.note}}
+  To generate documentation, your package must pass [dart analyze][]
+  without errors.
+{{site.alert.end}}
+
+`dartdoc` 命令可以从你 Dart 源代码中生成 API 参考文档。
+您可以使用 [文档注释][documentation comments]
+向生成的文档添加说明，该说明支持 MarkDown 格式。
+你可以查阅 [高效 Dart 的文档部分][effective doc]
+获取更多关于如何撰写文档注释的信息。
+
+{{site.alert.note}}
+  你的 package 必须在 [dart analyze][]
+  静态分析中未出现错误才能生成文档。
+{{site.alert.end}}
 
 Run `dartdoc` from the root directory of your package. For example:
 
@@ -52,6 +66,7 @@ $ dartdoc --help
 
 [documentation comments]: /guides/language/language-tour#documentation-comments
 [effective doc]: /guides/language/effective-dart/documentation
+[dart analyze]: /tools/dart-analyze
 [dartdoc package.]: {{site.pub-pkg}}/dartdoc
 
 {% comment %}

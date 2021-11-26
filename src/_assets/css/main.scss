@@ -4,7 +4,6 @@
 @import 'colors';
 @import 'bootstrap_config';
 @import 'bootstrap';
-@import 'bootstrap_config_shared'; // FIXME(chalin): this should be before the bootstrap import; move to site file.
 @import 'bootstrap_adjust';
 
 @import 'font-awesome-sprockets';
@@ -31,9 +30,6 @@ $font-weight-light-bold: ($font-weight-normal + $font-weight-bold)/2;
 /* -----------------------------------------
   Global
   ----------------------------------------- */
-html {
-  background-color: $site-color-header;
-}
 
 body {
   font-family: $font-family-base;
@@ -364,7 +360,7 @@ img {
   }
 }
 #subnav {
-  height: 32px;
+  min-height: 32px;
   line-height: 32px;
   margin-bottom: 10px;
   ul {
@@ -1392,7 +1388,7 @@ body.obsolete {
 }
 
 blockquote {
-  border: 1px solid #b3b3b3;
+  border: solid #b3b3b3;
   border-width: 1px 0px;
   margin: 20px;
   padding: 10px 20px 0 20px;

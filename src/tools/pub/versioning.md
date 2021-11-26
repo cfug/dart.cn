@@ -127,7 +127,7 @@ wiggle room to move our dependencies forward to newer versions. As long as there
 is overlap in their ranges, we can still find a single version that makes them
 both happy.
 
-This is the model that [bundler](https://gembundler.com/) follows,
+This is the model that [bundler](https://bundler.io/) follows,
 and is pub's model too. When you add a dependency in your pubspec,
 you can specify a _range_ of versions that you can accept.
 If the pubspec for `widgets` looked like this:
@@ -161,13 +161,13 @@ dependencies:
   collection: ^2.3.5
 {% endprettify %}
 
-<aside class="alert alert-info" markdown="1">
-**Note:**
-This example uses _caret syntax_ to express a range of versions.
-The string `^2.3.5` means "the range of all versions from 2.3.5
-to 3.0.0, not including 3.0.0." For more information, see
-[Caret syntax](/tools/pub/dependencies#caret-syntax).
-</aside>
+{{site.alert.note}}
+  This example uses _caret syntax_ to express a range of versions.
+  The string `^2.3.5` means 
+  "the range of all versions from 2.3.5  to 3.0.0, not including 3.0.0." 
+  For more information, 
+  see [Caret syntax](/tools/pub/dependencies#caret-syntax).
+{{site.alert.end}}
 
 To make this work, then, we need to come up with that set of promises.
 Fortunately, other smart people have done the work of figuring this all out and
@@ -268,9 +268,9 @@ on the context. In `my_app`, `widgets` will use `collection 1.9.9`. But
 in `other_app`, `widgets` will get saddled with `collection 1.4.9` because of
 the _other_ constraint that `otherapp` places on it.
 
-This is why each app gets its own `.packages` file: The concrete version
-selected for each package depends on the entire dependency graph of the
-containing app.
+This is why each app gets its own `package_config.json` file: 
+The concrete version selected for each package depends on
+the entire dependency graph of the containing app.
 
 ## Constraint solving for exported dependencies
 
@@ -344,10 +344,11 @@ directly or indirectly and the best version of that package that will work with
 your app's constraints.
 
 Pub takes that and writes it out to a **lockfile** in your app's directory
-called `pubspec.lock`. When pub builds the `.packages` file for your app, it
-uses the lockfile to know what versions of each package to refer to. (And if
-you're curious to see what versions it selected, you can read the lockfile to
-find out.)
+called `pubspec.lock`. 
+When pub builds the `.dart_tool/package_config.json` file for your app, 
+it uses the lockfile to know what versions of each package to refer to. 
+(And if you're curious to see what versions it selected, 
+you can read the lockfile to find out.)
 
 The next important thing pub does is it _stops touching the lockfile_. Once
 you've got a lockfile for your app, pub won't touch it until you tell it to.

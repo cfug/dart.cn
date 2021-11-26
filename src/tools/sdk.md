@@ -1,9 +1,6 @@
 ---
 title: Dart SDK overview
 description: Dart libraries and command-line tools.
-js:
-- url: /tools/sdk/archive/assets/install.js
-  defer: true
 ---
 
 The Dart SDK has the libraries and command-line tools that you need to develop
@@ -52,7 +49,7 @@ directory that has these command-line tools:
 {{site.alert.end}}
 
 For more information about the SDK, see its
-[README file.](https://github.com/dart-lang/sdk/blob/master/README.dart-sdk)
+[README file.](https://github.com/dart-lang/sdk/blob/main/README.dart-sdk)
 
 
 ## Filing bugs and feature requests

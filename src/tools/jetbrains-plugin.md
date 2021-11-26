@@ -68,6 +68,10 @@ Install a JetBrains IDE if you don't already have one. Choose one:
 
   [查找其它的 JetBrains 产品][Other]{:target="_blank" rel="noopener"}
 
+[IDEA]: https://www.jetbrains.com/idea/download/
+[IDEA EAP]: https://www.jetbrains.com/idea/nextversion/
+[Other]: https://www.jetbrains.com/products.html
+
 {{site.alert.note}}
   
   The Community Edition of IntelliJ IDEA has limited functionality.
@@ -98,12 +102,12 @@ Choose one:
 选一个吧：
 
 * [Download the Dart SDK](/get-dart)
- 
-  [下载 Dart SDK](/get-dart)
-
-* [Download the Flutter SDK]({{site.flutter}}/docs/get-started/install)
 
   [下载 Dart SDK](/get-dart)
+
+* [Download the Flutter SDK]({{site.flutter_docs}}/get-started/install)
+
+  [下载 Flutter SDK]({{site.flutter_docs}}/get-started/install)
 
 
 ### Configuring Dart support

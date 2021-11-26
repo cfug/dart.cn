@@ -319,18 +319,20 @@ environment:
   sdk: '>=2.1.0 <3.0.0'
 ```
 
-<aside class="alert alert-warning" markdown="1">
+{{site.alert.warning}}
+
   **Packages must have an upper constraint of `<3.0.0`** to work in
   Dart 2 stable and subsequent Dart 2 releases.
   Dart 2 dev builds _before_ the stable release have
   lax upper constraint checking and can use packages that have
   no SDK constraints or an upper constraint of `<2.0.0`.
 
-**Package 版本必须有 `<3.0.0` 的上限限制**
-以便在 Dart 2 稳定版以及随后的发行版中使用。
-Dart 2 在构建编译稳定发行版前的开发版本时有较为宽松的上限限制检查，
-你可以在此情况下使用没有 SDK 限制或者上限限制 `<2.0.0` 的 package。
-</aside>
+  **Package 版本必须有 `<3.0.0` 的上限限制**
+  以便在 Dart 2 稳定版以及随后的发行版中使用。
+  Dart 2 在构建编译稳定发行版前的开发版本时有较为宽松的上限限制检查，
+  你可以在此情况下使用没有 SDK 限制或者上限限制 `<2.0.0` 的 package。
+
+{{site.alert.end}}
 
 ## More resources
 
@@ -364,9 +366,9 @@ Dart 2 在构建编译稳定发行版前的开发版本时有较为宽松的上�
 [build system]: https://github.com/dart-lang/build/tree/master/docs
 [automated tests]: /guides/testing
 [customize static analysis]: /guides/language/analysis-options
-[Flutter analyzer]: {{site.flutter}}/docs/testing/debugging#the-dart-analyzer
+[Flutter analyzer]: {{site.flutter_docs}}/testing/debugging#the-dart-analyzer
 [dartanalyzer]: /tools/dart-analyze
-[flutter pub upgrade]: {{site.flutter}}/docs/development/packages-and-plugins/using-packages#updating-package-dependencies
+[flutter pub upgrade]: {{site.flutter_docs}}/development/packages-and-plugins/using-packages#updating-package-dependencies
 [pub upgrade]: /guides/packages#upgrading-a-dependency
 [dart2_fix]: https://github.com/dart-lang/dart2_fix
 [angular-examples repos]: https://github.com/angular-examples
@@ -377,13 +379,13 @@ Dart 2 在构建编译稳定发行版前的开发版本时有较为宽松的上�
 [creating library packages]: /guides/libraries/create-library-packages
 [Dart 2 announcement]: https://medium.com/dartlang/announcing-dart-2-80ba01f43b6
 [Dart Language Specification]: /guides/language/spec
-[dart-lang/sdk CHANGELOG]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md#200
+[dart-lang/sdk CHANGELOG]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#200
 [Dartium news]: {{site.group}}/2017/06/a-stronger-dart-for-everyone.html
 [Fixing Common Type Problems]: /guides/language/sound-problems
-[Flutter SDK upgrade]: {{site.flutter}}/docs/development/tools/sdk/upgrading
+[Flutter SDK upgrade]: {{site.flutter_docs}}/development/tools/sdk/upgrading
 [Dart SDK install]: /get-dart
 [Leaf's email]: https://groups.google.com/d/msg/flutter-dev/H8dDhWg_c8I/_Ql78q_6AgAJ
-[newsletters]: https://github.com/dart-lang/sdk/tree/master/docs/newsletter#dart-language-and-library-newsletters
+[newsletters]: https://github.com/dart-lang/sdk/tree/main/docs/newsletter#dart-language-and-library-newsletters
 [prerelease]: /get-dart#release-channels
 [runtime errors]: /guides/language/sound-problems#runtime-errors
 [SDK constraints]: /tools/pub/pubspec#sdk-constraints
@@ -392,4 +394,4 @@ Dart 2 在构建编译稳定发行版前的开发版本时有较为宽松的上�
 [Updating your pub package to Dart 2,]: https://medium.com/@filiph/updating-your-pub-package-to-dart-2-cd8ca343b1be
 [Using constructors]: /guides/language/language-tour#using-constructors
 [webdev dart2]: /web/dart-2
-[sync async start]: https://github.com/dart-lang/sdk/blob/master/docs/newsletter/20170915.md#synchronous-async-start
+[sync async start]: https://github.com/dart-lang/sdk/blob/main/docs/newsletter/20170915.md#synchronous-async-start

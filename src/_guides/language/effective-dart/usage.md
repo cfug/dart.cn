@@ -235,7 +235,7 @@ variable to `null` to be "safe".
 Item? bestDeal(List<Item> cart) {
   Item? bestItem;
 
-  for (var item in cart) {
+  for (final item in cart) {
     if (bestItem == null || item.price < bestItem.price) {
       bestItem = item;
     }
@@ -251,7 +251,7 @@ Item? bestDeal(List<Item> cart) {
 Item? bestDeal(List<Item> cart) {
   Item? bestItem[! = null!];
 
-  for (var item in cart) {
+  for (final item in cart) {
     if (bestItem == null || item.price < bestItem.price) {
       bestItem = item;
     }
@@ -674,7 +674,7 @@ over a sequence, the idiomatic way to do that is using a loop.
 {:.good}
 <?code-excerpt "usage_good.dart (avoid-forEach)"?>
 {% prettify dart tag=pre+code %}
-for (var person in people) {
+for (final person in people) {
   ...
 }
 {% endprettify %}
@@ -769,7 +769,7 @@ you don't care about the type, then use `toList()`.
 
 ### **要** 使用 `whereType()` 按类型过滤集合。
 
-{% include linter-rule-mention.md rule="prefer_iterable_whereType" %}
+{% include linter-rule-mention.md rule="prefer_iterable_wheretype" %}
 
 Let's say you have a list containing a mixture of objects, and you want to get
 just the integers out of it. You could use `where()` like this:
@@ -968,7 +968,7 @@ Here is **casting each element on access:**
 {% prettify dart tag=pre+code %}
 void printEvens(List<Object> objects) {
   // We happen to know the list only contains ints.
-  for (var n in objects) {
+  for (final n in objects) {
     if ([!(n as int)!].isEven) print(n);
   }
 }
@@ -979,7 +979,7 @@ void printEvens(List<Object> objects) {
 {% prettify dart tag=pre+code %}
 void printEvens(List<Object> objects) {
   // We happen to know the list only contains ints.
-  for (var n in objects.cast<int>()) {
+  for (final n in objects.cast<int>()) {
     if (n.isEven) print(n);
   }
 }

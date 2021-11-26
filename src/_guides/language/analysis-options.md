@@ -5,7 +5,7 @@ description: Use an analysis options file and code comments to customize static 
 description: 通过对分析文件和代码注释来自定义静态分析的内容。
 ---
 
-<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 
 <style>
 li.L0, li.L1, li.L2, li.L3,
@@ -79,7 +79,7 @@ and other suggested guidelines in
 [Effective Dart][]. Dart tools such as the
 [Dart compiler (`dart compile`)](/tools/dart-compile),
 [`dart analyze`](/tools/dart-analyze),
-[`flutter analyze`]({{site.flutter}}/docs/testing/debugging#the-dart-analyzer),
+[`flutter analyze`]({{site.flutter_docs}}/testing/debugging#the-dart-analyzer),
 and [JetBrains IDEs](/tools/jetbrains-plugin)
 use the analyzer package to evaluate your code.
 
@@ -87,7 +87,7 @@ This document explains how to customize the behavior of the analyzer
 using either an analysis options file or comments in Dart source code. If you want to
 add static analysis to your tool, see the
 [analyzer package]({{site.pub-pkg}}/analyzer) docs and the
-[Analysis Server API Specification.](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/doc/api.html)
+[Analysis Server API Specification.](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/api.html)
 
 {{site.alert.note}}
   To view various analyzer diagnostics with explanations and common fixes,
@@ -140,7 +140,8 @@ The sample illustrates the most common top-level entries:
 - Use the `linter:` entry to configure [linter rules](#enabling-linter-rules).
 
 {{site.alert.warn}}
-  **YAML is sensitive to whitespace.** Don't use tabs in a YAML file,
+  **YAML is sensitive to whitespace.** 
+  Don't use tabs in a YAML file,
   and use 2 spaces to denote each level of indentation.
 {{site.alert.end}}
 
@@ -266,11 +267,11 @@ include: package:lints/recommended.yaml
 ```
 
 {{site.alert.important}}
-When a **new version of `lints`** is published,
-code that previously passed analysis might **start failing analysis.**
-We recommend updating your code to work with the new rules.
-Other options are to explicitly enable individual linter rules 
-or [disable individual rules][].
+  When a **new version of `lints`** is published,
+  code that previously passed analysis might **start failing analysis.**
+  We recommend updating your code to work with the new rules.
+  Other options are to explicitly enable individual linter rules 
+  or [disable individual rules][].
 {{site.alert.end}}
 
 [lints package]: {{site.pub-pkg}}/lints
@@ -295,8 +296,8 @@ linter:
     - one_member_abstracts
     - only_throw_errors
     - package_api_docs
+    - prefer_final_in_for_each
     - prefer_single_quotes
-    - sort_child_properties_last
 ```
 
 
@@ -482,7 +483,7 @@ Use the following resources to learn more about static analysis in Dart:
 * [analyzer package]({{site.pub-pkg}}/analyzer)
 
 [invalid_null_aware_operator]: /tools/diagnostic-messages#invalid_null_aware_operator
-[analyzer error codes]: https://github.com/dart-lang/sdk/blob/master/pkg/analyzer/lib/error/error.dart
+[analyzer error codes]: https://github.com/dart-lang/sdk/blob/main/pkg/analyzer/lib/error/error.dart
 [change the severity of rules]: #changing-the-severity-of-rules
 [diagnostics]: /tools/diagnostic-messages
 [invalid_assignment]: /tools/diagnostic-messages#invalid_assignment

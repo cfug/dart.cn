@@ -4,9 +4,9 @@ title: Dart 开发语言概览
 description: A tour of all the major Dart language features.
 description: Dart 开发语言的主要特性概览。
 short-title: Language tour
-js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+js: [{url: 'https://dartpad.cn/inject_embed.dart.js', defer: true}]
 ---
-<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
 
 This page shows you how to use each major Dart feature, from
 variables and operators to classes and libraries, with the assumption
@@ -184,7 +184,7 @@ mind:
     所有变量引用的都是 **对象**，每个对象都是一个 **类** 的实例。
     数字、函数以及 `null` 都是对象。
     除去 `null` 以外（如果你开启了 [空安全][ns]）,
-    所有的类都继承于 [Object][] 类。
+    所有的类都继承于 [`Object`][] 类。
 
 -   Although Dart is strongly typed, type annotations are optional
     because Dart can infer types. In the code above, `number`
@@ -525,7 +525,10 @@ if (weLikeToCount) {
 print(lineCount);
 ```
 
-<!-- TODO: Point to coverage of ! and late -->
+Top-level and class variables are lazily initialized;
+the initialization code runs
+the first time the variable is used.
+
 
 ### Late variables
 
@@ -586,8 +589,7 @@ then the expensive `_readThermometer()` function is never called:
 If you never intend to change a variable, use `final` or `const`, either
 instead of `var` or in addition to a type. A final variable can be set
 only once; a const variable is a compile-time constant. (Const variables
-are implicitly final.) A final top-level or class variable is initialized
-the first time it's used.
+are implicitly final.)
 
 如果你不想更改一个变量，可以使用关键字 `final` 或者 `const` 修饰变量，
 这两个关键字可以替代 `var` 关键字或者加在一个具体的类型前。
@@ -823,7 +825,7 @@ and `floor()`, among other methods.
 If num and its subtypes don’t have what you’re looking for, the
 [dart:math][] library might.
 
-`int` 和 `double` 都是 [`num`][num] 的子类。
+`int` 和 `double` 都是 [`num`][] 的子类。
 num 中定义了一些基本的运算符比如 +、-、\*、/ 等，
 还定义了 `abs()`、`ceil()` 和 `floor()` 等方法
 （位运算符，比如 \>\> 定义在 int 中）。
@@ -1704,20 +1706,6 @@ for the characters package.
 有关使用 characters 包操作字符串的详细信息，请参阅用于 characters 包的[样例][characters example]
 和 [API 参考][characters API]。
 
-{{site.alert.note}}
-
-  Be careful when manipulating runes using list operations. This approach can
-  easily break down, depending on the particular language, character set, and
-  operation. For more information, see [How do I reverse a String in Dart?][] on
-  Stack Overflow.
-
-  在使用 List 操作 Rune 的时候需要小心，
-  根据所操作的语种、字符集等不同可能会导致字符串出现问题，
-  具体可参考 Stack Overflow 中的提问：
-  [我如何在 Dart 中反转一个字符串？][How do I reverse a String in Dart?]。
-
-{{site.alert.end}}
-
 ### Symbols
 
 A [`Symbol`][] object
@@ -1863,8 +1851,7 @@ followed either by *named* parameters or by *optional positional* parameters
 You can use [trailing commas][] when you pass arguments to a function
 or when you define function parameters.
 
-向函数传入参数或者定义函数参数时，可以使用
-[尾随逗号][trailing comma]。
+向函数传入参数或者定义函数参数时，可以使用 [尾逗号][trailing commas]。
 
 #### Named parameters
 
@@ -2373,40 +2360,23 @@ Dart 支持下表的操作符。
 你可以将这些运算符实现为 [一个类的成员](#_operators)。
 
 |--------------------------+------------------------------------------------|
-|Description               | Operator                                       |
-|--------------------------|------------------------------------------------|
 | 描述                     | 运算符                                         |
-| unary postfix            | <code><em>expr</em>++</code>   <code><em>expr</em>--</code>   `()`   `[]`   `.`   `?.`     |
+|--------------------------|------------------------------------------------|
 | 一元后缀                 | <code><em>表达式</em>++</code>   <code><em>表达式</em>--</code>   `()`   `[]`   `.`   `?.` |
-| unary prefix             | <code>-<em>expr</em></code>   <code>!<em>expr</em></code>   <code>~<em>expr</em></code>   <code>++<em>expr</em></code>   <code>--<em>expr</em></code>    <code>await <em>expr</em></code>   |
 | 一元前缀      | <code>-<em>表达式</em></code>   <code>!<em>表达式</em></code>   <code>~<em>表达式</em></code>   <code>++<em>表达式</em></code>   <code>--<em>表达式</em></code>  |
-| multiplicative           | `*`   `/`   `%`    `~/`                      |
 | 乘除法        | `*`   `/`   `%`    `~/`                                     |
-| additive                 | `+`   `-`                                     |
 | 加减法        | `+`   `-`                                                    |
-| shift                    | `<<`   `>>`   `>>>`                          |
 | 位运算        | `<<`   `>>`   `>>>`                                         |
-| bitwise AND              | `&`                                            |
 | 二进制与      | `&`                                                           |
-| bitwise XOR              | `^`                                            |
 | 二进制异或     | `^`                                                           |
-| bitwise OR               | `|`                                            |
 | 二进制或      | `|`                                                           |
-| relational&nbsp;and&nbsp;type&nbsp;test | `>=`   `>`   `<=`   `<`   `as`   `is`   `is!` |
 | 关系和类型测试 | `>=`   `>`   `<=`   `<`   `as`   `is`   `is!`           |
-| equality                 | `==`   `!=`                                  |
 | 相等判断      | `==`   `!=`                                                 |
-| logical AND              | `&&`                                           |
 | 逻辑与        | `&&`                                                          |
-| logical OR               | `||`                                           |
 | 逻辑或        | `||`                                                          |
-| if null                  | `??`                                           |
 | 空判断        | `??`                                                          |
-| conditional              | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code> |
 | 条件表达式     | <code><em>表达式 1</em> ? <em>表达式 2</em> : <em>表达式 3</em></code> |
-| cascade                  | `..` &nbsp;&nbsp; `?..`                        |
 | 级联          | `..`   `?..`                                      |
-| assignment               | `=`   `*=`   `/=`   `+=`   `-=`   `&=`   `^=`   <em>etc.</em> |
 | 赋值          | `=`   `*=`   `/=`   `+=`   `-=`   `&=`   `^=`   <em>等等……</em> |
 {:.table .table-striped}
 
@@ -2574,24 +2544,22 @@ objects are the exact same object, use the [identical()][]
 function instead.) Here’s how the `==` operator works:
 
 要判断两个对象 x 和 y 是否表示相同的事物使用 `==` 即可。
-（在极少数情况下，可能需要使用 [identical()][] 函数来确定两个对象是否完全相同。）。下面是 `==` 运算符的一些规则：
+（在极少数情况下，可能需要使用 [identical()][] 函数来确定两个对象是否完全相同）。
+下面是 `==` 运算符的一些规则：
 
 1.  If *x* or *y* is null, return true if both are null, and false if only
     one is null.
 
-    假设有变量 *x* 和 *y*，且 x 和 y 至少有一个为 null，
-    则当且仅当 x 和 y 均为 null 时 x == y 才会返回 true，否则只有一个为 null 则返回 false。
+    当 **x** 和 **y** 同时为空时返回 true，而只有一个为空时返回 false。
 
-2.  Return the result of the method invocation
-    <code><em>x</em>.==(<em>y</em>)</code>. (That’s right,
-    operators such as `==` are methods that are invoked on their first
-    operand. For details, see
-    [Operators](#_operators).)
+2.  Return the result of invoking the `==` method on *x* with the argument *y*.
+    (That’s right, operators such as `==` are methods that
+    are invoked on their first operand.
+    For details, see [Operators](#_operators).)
 
-    <code><em>x</em>.==(<em>y</em>)</code> 将会返回值，
-    这里不管有没有 y，即 y 是可选的。
-    也就是说 `==` 其实是 x 中的一个方法，并且可以被重写。
-    详情请查阅[重写运算符](#overridable-operators)。
+    返回对 **x** 调用 `==` 方法的结果，参数为 **y**。
+    （像 `==` 这样的操作符是对左侧内容进行调用的。
+    详情请查阅 [操作符](#_operators)。）
 
 Here’s an example of using each of the equality and relational
 operators:
@@ -2995,10 +2963,11 @@ You've seen most of the remaining operators in other examples:
 大多数其它的运算符，已经在其它的示例中使用过：
 
 |----------+-------------------------------------------|
-|   运算符  | 名字                  |          描述      |
+|   运算符  | 名字                  | 描述               |
 |-----------+------------------------------------------|
 | `()`     | 使用方法               | 代表调用一个方法
 | `[]`     | 访问 List             | 访问 List 中特定位置的元素
+| `?[]`    | 判空访问 List          | 左侧调用者不为空时，访问 List 中特定位置的元素
 | `.`      | 访问成员               | 成员访问符
 | `?.`     | 条件访问成员            | 与上述成员访问符类似，但是左边的操作对象不能为 null，例如 foo?.bar，如果 foo 为 null 则返回 null ，否则返回 bar
 {:.table .table-striped}
@@ -3118,7 +3087,7 @@ you can use the `for-in` form of [iteration][]:
 
 <?code-excerpt "misc/lib/language_tour/control_flow.dart (collection)"?>
 ```dart
-for (var candidate in candidates) {
+for (final candidate in candidates) {
   candidate.interview();
 }
 ```
@@ -3635,7 +3604,7 @@ Dart is an object-oriented language with classes and mixin-based
 inheritance. Every object is an instance of a class, and all classes
 except `Null` descend from [`Object`][].
 *Mixin-based inheritance* means that although every class
-(except for the [top class][top-and-bottom],`Object?`)
+(except for the [top class][top-and-bottom], `Object?`)
 has exactly one superclass, a class body can be reused in
 multiple class hierarchies.
 [Extension methods](#extension-methods) are a way to
@@ -3891,11 +3860,12 @@ class ProfileMark {
 }
 ```
 
-If you want to assign the value of a `final` instance variable
-after the constructor body starts, you can use `late final`,
-[but _be careful_][late-final-ivar].
+If you need to assign the value of a `final` instance variable
+after the constructor body starts, you can use one of the following:
 
-[late-final-ivar]: /guides/language/effective-dart/design#avoid-public-late-final-fields-without-initializers
+* Use a [factory constructor](#factory-constructors).
+* Use `late final`, but [_be careful:_][late-final-ivar]
+  a `late final` without an initializer adds a setter to the API.
 
 ### Constructors
 
@@ -4257,6 +4227,16 @@ logic that can't be handled in the initializer list.
 使用 `factory` 关键字标识类的构造函数将会令该构造函数变为工厂构造函数，
 这将意味着使用该构造函数构造类的实例时并非总是会返回新的实例对象。
 例如，工厂构造函数可能会从缓存中返回一个实例，或者返回一个子类型的实例。
+
+{{site.alert.tip}}
+
+  Another way to handle late initialization of a final variable
+  is to [use `late final` (carefully!)][late-final-ivar].
+
+  另一种处理懒加载变量的方式是
+  [使用 `late final`（谨慎使用）][late-final-ivar]。
+
+{{site.alert.end}}
 
 In the following example,
 the `Logger` factory constructor returns objects from a cache,
@@ -4634,6 +4614,11 @@ class SmartTelevision [!extends!] Television {
 }
 {% endprettify %}
 
+For another usage of `extends`, see the discussion of
+[parameterized types](#restricting-the-parameterized-type)
+in [generics](#generics).
+
+想了解其他 `extends` 的用法，
 
 <a name="overridable-operators"></a>
 
@@ -4641,7 +4626,8 @@ class SmartTelevision [!extends!] Television {
 
 #### 重写类成员
 
-Subclasses can override instance methods (including [operators](#_operators)), getters, and setters.
+Subclasses can override instance methods (including [operators](#_operators)),
+getters, and setters.
 You can use the `@override` annotation to indicate that you are
 intentionally overriding a member:
 
@@ -4651,16 +4637,43 @@ Getter 以及 Setter 方法。
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (override)" replace="/@override/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
+class Television {
+  // ···
+  set contrast(int value) {...}
+}
+
 class SmartTelevision extends Television {
   [!@override!]
-  void turnOn() {...}
+  set contrast(num value) {...}
   // ···
 }
 {% endprettify %}
 
-To narrow the type of a method parameter or instance variable in code that is
-[type safe](/guides/language/type-system),
-you can use the [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
+An overriding method declaration must match
+the method (or methods) that it overrides in several ways:
+
+* The return type must be the same type as (or a subtype of)
+  the overridden method's return type.
+* Argument types must be the same type as (or a supertype of)
+  the overridden method's argument types.
+  In the preceding example, the `contrast` setter of `SmartTelevision`
+  changes the argument type from `int` to a supertype, `num`.
+* If the overridden method accepts _n_ positional parameters,
+  then the overriding method must also accept _n_ positional parameters.
+* A [generic method](#using-generic-methods) can't override a non-generic one,
+  and a non-generic method can't override a generic one.
+
+Sometimes you might want to narrow the type of
+a method parameter or an instance variable.
+This violates the normal rules, and
+it's similar to a downcast in that it can cause a type error at runtime.
+Still, narrowing the type is possible
+if the code can guarantee that a type error won't occur.
+In this case, you can use the 
+[`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword)
+in a parameter declaration.
+For details, see the 
+[Dart language specification][].
 
 你可以使用 [`covariant` 关键字](/guides/language/sound-problems#the-covariant-keyword)
 来缩小代码中那些符合 [类型安全](/guides/language/type-system) 的方法参数或实例变量的类型。
@@ -4719,7 +4732,7 @@ that's different from the one in class `Object`.
   方法且具体的实现与 `Object` 中的不同。
 
 For more information, see the informal
-[noSuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
+[noSuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/main/docs/language/informal/nosuchmethod-forwarding.md)
 
 你可以查阅
 [noSuchMethod 转发规范](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
@@ -5263,10 +5276,31 @@ print(names is List<String>); // true
 ### 限制参数化类型
 
 When implementing a generic type,
-you might want to limit the types of its parameters.
+you might want to limit the types that can be provided as arguments,
+so that the argument must be a subtype of a particular type.
 You can do this using `extends`.
 
-有时使用泛型的时候可能会想限制泛型的类型范围，这时候可以使用 `extends` 关键字：
+有时使用泛型的时候，你可能会想限制可作为参数的泛型范围，
+也就是参数必须是指定类型的子类，
+这时候可以使用 `extends` 关键字。
+
+A common use case is ensuring that a type is non-nullable
+by making it a subtype of `Object`
+(instead of the default, [`Object?`][top-and-bottom]).
+
+一种常见的非空类型处理方式，是将子类限制继承 `Object`
+（而不是默认的 [`Object?`][top-and-bottom]）。
+
+<?code-excerpt "misc/lib/language_tour/generics/misc.dart (non-nullable)"?>
+```dart
+class Foo<T extends Object> {
+  // Any type provided to Foo for T must be non-nullable.
+}
+```
+
+You can use `extends` with other types besides `Object`.
+Here's an example of extending `SomeBaseClass`,
+so that members of `SomeBaseClass` can be called on objects of type `T`:
 
 <?code-excerpt "misc/lib/language_tour/generics/base_class.dart" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
@@ -5278,7 +5312,7 @@ class Foo<T [!extends SomeBaseClass!]> {
 class Extender extends SomeBaseClass {...}
 {% endprettify %}
 
-It's OK to use `SomeBaseClass` or any of its subclasses as generic argument:
+It's OK to use `SomeBaseClass` or any of its subtypes as the generic argument:
 
 这时候就可以使用 `SomeBaseClass` 或者它的子类来作为泛型参数：
 
@@ -5905,7 +5939,7 @@ the body of `main()` must be marked as `async`:
 {% prettify dart tag=pre+code %}
 Future<void> main() [!async!] {
   // ...
-  [!await for!] (var request in requestServer) {
+  [!await for!] (final request in requestServer) {
     handleRequest(request);
   }
   // ...
@@ -6052,7 +6086,7 @@ For more information, see the following:
 [isolates article]: https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
 [Isolate.spawn()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
 [TransferableTypedData]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/TransferableTypedData-class.html
-[background json]: {{site.flutter}}/docs/cookbook/networking/background-parsing
+[background json]: {{site.flutter_docs}}/cookbook/networking/background-parsing
 [Isolate sample app]: https://github.com/flutter/samples/tree/master/isolate_example
 
 ## Typedefs
@@ -6142,6 +6176,7 @@ class Television {
 
   /// Turns the TV's power on.
   void turnOn() {...}
+  // ···
 }
 {% endprettify %}
 
@@ -6358,7 +6393,7 @@ To learn more about Dart's core libraries, see
 [`Exception`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
 [extension methods page]: /guides/language/extension-methods
 [Flutter]: {{site.flutter}}
-[Flutter debug mode]: {{site.flutter}}/docs/testing/debugging#debug-mode-assertions
+[Flutter debug mode]: {{site.flutter_docs}}/testing/debugging#debug-mode-assertions
 [forEach()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
 [Function API reference]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 [`Future`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
@@ -6369,6 +6404,7 @@ To learn more about Dart's core libraries, see
 [iteration]: /guides/libraries/library-tour#iteration
 [js numbers]: https://stackoverflow.com/questions/2802957/number-of-bits-in-javascript-numbers/2803010#2803010
 [language version]: /guides/language/evolution#language-versioning
+[late-final-ivar]: /guides/language/effective-dart/design#avoid-public-late-final-fields-without-initializers
 [`List`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [`Map`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
 [meta]: {{site.pub-pkg}}/meta
@@ -6383,7 +6419,7 @@ To learn more about Dart's core libraries, see
 [`Stream`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [`String`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
 [`Symbol`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
-[synchronous-async-start]: https://github.com/dart-lang/sdk/blob/master/docs/newsletter/20170915.md#synchronous-async-start
+[synchronous-async-start]: https://github.com/dart-lang/sdk/blob/main/docs/newsletter/20170915.md#synchronous-async-start
 [top-and-bottom]: /null-safety/understanding-null-safety#top-and-bottom
 [trailing commas]: #trailing-comma
 [type test operator]: #type-test-operators

@@ -28,6 +28,6 @@ other kinds of Dart apps:
 
   Flutter 网站上的 [Visual Studio Code][vscode-flutter] 部分有如何使用 VS Code 开发 Flutter 应用的详细说明。
 
-[setup]: {{site.flutter}}/docs/get-started/editor?tab=vscode
+[setup]: {{site.flutter_docs}}/get-started/editor?tab=vscode
 [vs-code]: https://code.visualstudio.com/
-[vscode-flutter]: {{site.flutter}}/docs/development/tools/vs-code
+[vscode-flutter]: {{site.flutter_docs}}/development/tools/vs-code

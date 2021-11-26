@@ -17,17 +17,7 @@ using the [`dart test`][] command
 (or, for Flutter apps, [`flutter test`][]).
 
 [`dart test`]: /tools/dart-test
-[`flutter test`]: {{site.flutter}}/docs/reference/flutter-cli
-
-<aside class="alert alert-info" markdown="1">
-**Terminology: widget vs. component**<br>
-Flutter, a UI toolkit for building apps for any device,
-defines its GUI elements as _widgets_.
-Some frameworks, such as AngularDart,
-define GUI elements as _components_.
-This doc uses **component** (except when explicitly discussing Flutter),
-but both terms refer to the same concept.
-</aside>
+[`flutter test`]: {{site.flutter_docs}}/reference/flutter-cli
 
 ## Kinds of testing
 
@@ -94,7 +84,7 @@ following packages are useful across Dart platforms:
 
 Use the following resources to learn more about testing Flutter apps:
 
-* [Testing Flutter Apps]({{site.flutter}}/docs/testing)<br>
+* [Testing Flutter Apps]({{site.flutter_docs}}/testing)<br>
   How to perform unit, widget, or integration tests on a Flutter app.
 * [flutter_test]({{site.flutter_api}}/flutter/flutter_test/flutter_test-library.html)<br>
   A testing library for Flutter built on top of package:test.
@@ -105,19 +95,6 @@ Use the following resources to learn more about testing Flutter apps:
   Source code and tests for the Flutter gallery example.
 * [flutter/dev/manual_tests](https://github.com/flutter/flutter/tree/master/dev/manual_tests)<br>
   Many examples of tests in the Flutter SDK.
-
-## Web testing
-
-Use the following resources to learn more about testing Dart web
-applications:
-
-* [package:webdriver]({{site.pub-pkg}}/webdriver)<br>
-  A Dart package for interfacing with
-  [WebDriver](https://www.w3.org/TR/webdriver/) servers.
-* [Testing]({{site.angulardart}}/guide/testing)(a page
-  in the AngularDart guide)<br>
-  How to use the [angular_test]({{site.pub-pkg}}/angular_test)
-  package to test AngularDart components and subsystems.
 
 ## Other tools and resources
 

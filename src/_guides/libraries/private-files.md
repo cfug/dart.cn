@@ -10,13 +10,12 @@ When you put Dart source code in a repository—using the
 or another source code management system—don't include most of the files
 that your IDE or code editor, the pub tool, and other tools generate.
 
-<aside class="alert alert-info" markdown="1">
-**Note:**
-Except where noted, this page discusses only source code repositories,
-_not_ app deployment.
-Some files that you wouldn't normally put in a repository
-are useful or essential when you deploy an app.
-</aside>
+{{site.alert.note}}
+  Except where noted, this page discusses only source code repositories,
+  _not_ app deployment.
+  Some files that you wouldn't normally put in a repository
+  are useful or essential when you deploy an app.
+{{site.alert.end}}
 
 ## The rules
 
@@ -29,13 +28,6 @@ created by pub:
 build/
 pubspec.lock  # Except for application packages
 {% endprettify %}
-
-<aside class="alert alert-info" markdown="1">
-**Note:** The `.dart_tool` directory, which is new in Dart 2,
-is used by pub and other tools. It replaces the `.pub` directory as of
-the 2.0.0-dev.32.0 SDK release. The `.packages` file replaces the
-`packages` directories that early Dart versions produced.
-</aside>
 
 **Don't commit** the API documentation directory created by dartdoc:
 
@@ -88,12 +80,12 @@ For more information on `.gitignore` files,
 see the GitHub help page
 [Ignoring files.](https://help.github.com/articles/ignoring-files)
 
+### .dart_tool/
+
+The `.dart_tool/` directory contains files used by 
+various Dart tools.
 
 ### .packages
-
-The `.packages` file contains a list of dependencies used by your application.
-Users of your code should generate their own packages information
-using [pub get](/guides/packages#getting-packages).
 
 {% include packages-dir.html %}
 

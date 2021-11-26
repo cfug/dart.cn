@@ -1,0 +1,48 @@
+name: Links reference check
+
+on: [push, pull_request]
+
+env:
+  _OS_NAME: linux
+  DART_SITE_ENV_DEFS: 1
+  JEKYLL_ENV: production
+  PUB_ENVIRONMENT: bot.github
+  SITE_LOCALHOST_PORT: 5000
+  SITE_JEKYLL_DEST: _site
+  SITE_JEKYLL_SRC: src
+  TMP: ${{ github.workspace }}/tmp
+  TZ: US/Pacific # normalize build timestamp
+
+jobs:
+  check_reference_links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # submodules param for checkout action to get site-shared, 'true' might be enough
+          submodules: "recursive"
+      - run: mkdir -p $TMP
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: 2.6.5
+      - uses: dart-lang/setup-dart@v1.3
+        with:
+          sdk: stable
+      - name: Install node dependencies
+        # TOOD: caching requires a lockfile for node deps, so does npm ci.
+        run: npm install
+      - name: Install dart dependencies
+        run: dart pub get
+      - run: ./tool/shared/write-ci-info.sh -v
+      - name: Build
+        run: ./tool/build.sh
+
+      # check
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+      - run: python tool/html_check_reference_links.py _site https://dart.cn/

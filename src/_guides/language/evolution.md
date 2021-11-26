@@ -328,7 +328,7 @@ For more information about how language versioning works, see the
 [Dart FFI]: /guides/libraries/c-interop
 [dart-tool]: /tools/dart-tool
 [extension methods]: /guides/language/extension-methods
-[`flutter` tool]: {{site.flutter}}/docs/reference/flutter-cli
+[`flutter` tool]: {{site.flutter_docs}}/reference/flutter-cli
 [language funnel]: https://github.com/dart-lang/language/projects/1
 [language specification]: /guides/language/spec
 [language tour]: /guides/language/language-tour
@@ -336,7 +336,7 @@ For more information about how language versioning works, see the
 [migrated to Dart 2]: /dart-2
 [null safety]: /null-safety
 [pub outdated]: /tools/pub/cmd/pub-outdated
-[SDK changelog]: https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md
+[SDK changelog]: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
 [set literals]: /guides/language/language-tour#sets
 [sound null safety]: /null-safety
 [sound type system]: /guides/language/type-system

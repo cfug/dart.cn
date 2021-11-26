@@ -317,8 +317,9 @@ multi-platform UI toolkit that's powered by the Dart platform,
 and that provides tooling and UI libraries to build UI experiences that run
 on iOS, Android, macOS, Windows, Linux, and the web.
 
-Flutter 是 Google 开源的 UI 工具包，由 Dart 驱动的。
-它帮助开发者通过一套代码库高效构建多平台精美应用，支持移动、Web、桌面和嵌入式平台。
+[Flutter 框架]({{site.flutter}}) 是一款流行的多平台 UI 工具包，由 Dart 语言强力驱动，
+提供一套工具和 UI 库，帮助开发者们在 iOS、Android、macOS、Windows、Linux 和 Web 平台
+构建优秀的 UI 体验。
 
 #### Dart Native (machine code JIT and AOT) {#native-platform}
 
@@ -415,6 +416,54 @@ More information:
 * [Web deployment tips](/web/deployment)
 
   [网页部署提示](/web/deployment)
+
+#### The Dart runtime {#runtime}
+
+#### Dart 运行时环境 {#runtime}
+
+Regardless of which platform you use or how you compile your code,
+executing the code requires a Dart runtime.
+This runtime is responsible for the following critical tasks:
+
+不论你在哪个平台上使用、选择如何构建你的代码，
+执行代码时都需要一个 Dart 运行时环境。
+这个运行时环境负责下面的关键任务：
+
+* Managing memory:
+  Dart uses a managed memory model,
+  where unused memory is reclaimed by a garbage collector (GC). 
+
+  内存管理：
+  Dart 使用一个受管理的内存模型，
+  未被使用的内存会由垃圾收集器 (GC) 回收。
+
+* Enforcing the Dart type system:
+  Although most type checks in Dart are static (compile-time),
+  some type checks are dynamic (runtime).
+  For example, the Dart runtime enforces dynamic checks by
+  [type check and cast operators](/guides/language/language-tour#type-test-operators).
+
+  执行 Dart 语言的类型体系：
+  Dart 语言里大多数类型检查都是静态的（编译时），但仍有部分检查是动态的（运行时）。
+  比如，Dart 运行时环境会在遇到
+  [类型判断运算符](/guides/language/language-tour#type-test-operators)
+  时执行动态检查。
+
+* Managing [isolates](/guides/language/language-tour#isolates):
+  The Dart runtime controls the main isolate (where code normally runs)
+  and any other isolates that the app creates.
+
+  管理 [isolates](/guides/language/language-tour#isolates)：
+  Dart 运行时环境会负责控制主 isolate（代码通常在这里运行）
+  以及其他应用创建的 isolate。
+
+On native platforms, the Dart runtime is automatically
+included inside self-contained executables, 
+and is part of the Dart VM provided by
+the [`dart run`](/tools/dart-run) command.
+
+在原生平台上，Dart 运行时环境被自动包含在独立的可执行文件中，
+是 [`dart run`](/tools/dart-run) 命令提供的 Dart VM 的一部分。
 
 ## Learning Dart {#learning-dart}
 

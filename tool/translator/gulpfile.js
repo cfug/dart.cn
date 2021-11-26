@@ -10,5 +10,7 @@ gulp.task('remove-space', () => {
 gulp.task('mark-side-toc', () => {
   return gulp.src(['../../_site/**/*.html'])
       .pipe(replace(/<li class="toc-entry nav-item toc-h(\d)"><a class="nav-link" href="#(.*?)">(.*?)<\/a><\/li>\n.*>(?=.*[\u4e00-\u9fa5])(.*?)<\/a>/g, '<li class="toc-entry nav-item toc-h$1"><a class="nav-link" href="#$2"><p>$3</p><p>$4</p></a>'))
+      .pipe(replace(/<li class="toc-entry toc-h(\d)"><a href="#(.*?)">(.*?)<\/a><\/li>\n.*>(?=.*[\u4e00-\u9fa5])(.*?)<\/a>/g,
+          '<li class="toc-entry toc-h$1"><a href="#$2"><p>$3</p><p>$4</p></a>'))
       .pipe(gulp.dest('../../_site'));
 });

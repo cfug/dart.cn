@@ -34,39 +34,40 @@ The following libraries and packages are useful across Dart platforms:
   the Dart build system generates serialization and deserialization code for you.
 
   [package:json_serializable]({{site.pub}}/packages/json_serializable)<br>
-  一个易于使用的代码生成包。当你添加一些元注解以及使用该包提供的构建器时，Dart 编译器可以为你生成序列化和反序列化的代码。
+  一个易于使用的代码生成包。当你添加一些元注解以及使用该包提供的构建器时，
+  Dart 编译器可以为你生成序列化和反序列化的代码。
 
 * [package:built_value]({{site.pub-pkg}}/built_value)<br>
   A powerful, opinionated alternative to json_serializable.
 
   [package:built_value]({{site.pub}}/packages/built_value)<br>
-  一个强大的，可以作为 json_serializable 的替代品。
+  一个强大的，可以作为 json_serializable 替代的 package。
 
 ## Flutter resources
 
 ## 相关的 Flutter 资源
 
-[JSON and serialization]({{site.flutter}}/docs/development/data-and-backend/json)
-: Shows how Flutter apps can serialize and deserialize both
+## 相关的 Flutter 资源
+
+[JSON and serialization]({{site.flutter_docs}}/development/data-and-backend/json)
+<br> Shows how Flutter apps can serialize and deserialize both
   with dart:convert and with json_serializable.
 
-[JSON 和序列化]({{site.flutter}}/docs/development/data-and-backend/json)：向你展示 Flutter 应用是如何使用 dart:convert 和 json_serializable 进行序列化和反序列化的。
+[JSON 和序列化]({{site.flutter_docs}}/development/data-and-backend/json)
+<br> 向你展示 Flutter 应用是如何使用 dart:convert 和
+  json_serializable 进行序列化和反序列化的。
 
 ## Web app resources
 
 ## 相关的 Web 应用资源
 
-[AngularDart Tutorial, part 6: HTTP]({{site.angulardart}}/tutorial/toh-pt6)
-: Illustrates how a Dart web app can interact with a
-  RESTful backend using JSON data.
-
-[AngularDart 教程的第六部分：HTTP]({{site.angulardart}}/tutorial/toh-pt6)：向你说明 Dart Web 应用如何使用 JSON 数据与 RESTful 后端进行交互。
-
 [Using HTTP resources with HttpRequest](/guides/libraries/library-tour#using-http-resources-with-httprequest)
-: Demonstrates how to use HttpRequest to exchange data with a web server.
+<br> Demonstrates how to use HttpRequest to exchange data with a web server.
   Part of the [dart:html library tour.](/guides/libraries/library-tour#darthtml)
 
-[通过 HttpRequest 使用 HTTP 资源](/guides/libraries/library-tour#using-http-resources-with-httprequest)：向你演示如何使用 HttpRequest 与服务器交换数据。该资源是 [dart:html 库概览](/guides/libraries/library-tour#darthtml) 的一部分。
+[通过 HttpRequest 使用 HTTP 资源](/guides/libraries/library-tour#using-http-resources-with-httprequest)
+<br> 向你演示如何使用 HttpRequest 与服务器交换数据。
+  该资源是 [dart:html 库概览](/guides/libraries/library-tour#darthtml) 的一部分。
 
 {% comment %}
 ## VM resources
@@ -74,10 +75,11 @@ The following libraries and packages are useful across Dart platforms:
 ## 相关的 VM 资源
 
 [Write HTTP servers](/tutorials/server/httpserver)
-: Walks through how to implement command-line clients and servers
+<br> Walks through how to implement command-line clients and servers
   that exchange JSON data.
 
-[开发 HTTP 服务端](/tutorials/server/httpserver)：手把手教你如何实现一个命令行式的客户端和服务端并使用 JSON 交换数据。
+[开发 HTTP 服务端](/tutorials/server/httpserver)
+<br> 手把手教你如何实现一个命令行式的客户端和服务端并使用 JSON 交换数据。
 
 ## Other tools and resources
 {% endcomment %}

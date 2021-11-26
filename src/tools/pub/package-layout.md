@@ -16,7 +16,7 @@ package, and how to name things.
   **Note:**
   Flutter apps can use custom directories for their assets.
   For details, see
-  [Adding assets and images]({{site.flutter}}/assets-and-images/)
+  [Adding assets and images]({{site.flutter_docs}}/development/ui/assets-and-images)
   on the [Flutter website.]({{site.flutter}})
   </div>
 </div></aside>
@@ -61,7 +61,7 @@ enchilada/
     style.css
 {% endprettify %}
 
-\* The `.dart_tool` directory and `.packages` file exist after you've run
+\* The `.dart_tool/` directory and `.packages` file exist after you've run
    `pub get`. Don't check them into source control.
 
 \** The `pubspec.lock` file exists after you've run `pub get`.
@@ -239,14 +239,14 @@ you will discover that any `package:` imports it contains don't
 resolve. Instead, your entrypoints should go in the appropriate
 [entrypoint directory](/tools/pub/glossary#entrypoint-directory).
 
-<aside class="alert alert-info" markdown="1">
-**Tip for web apps:**
-For the best performance when developing with
-[dartdevc,](/tools/dartdevc)
-put [implementation files](#implementation-files) under `/lib/src`,
-instead of elsewhere under `/lib`.
-Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
-</aside>
+{{site.alert.info}}
+  **Tip for web apps:**
+  For the best performance when developing with
+  [dartdevc,](/tools/dartdevc)
+  put [implementation files](#implementation-files) under `/lib/src`,
+  instead of elsewhere under `/lib`.
+  Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
+{{site.alert.end}}
 
 For more information on library packages, see
 [Creating packages](/guides/libraries/create-library-packages).
@@ -287,10 +287,9 @@ for consumers of the package to use.
 These go in the top-level `lib` directory. You can put any kind of file
 in there and organize it with subdirectories however you like.
 
-<aside class="alert alert-warning" markdown="1">
-**Warning:**
-Old code might refer to assets using `/packages/<package>/<path>` URLs.
-</aside>
+{{site.alert.warning}}
+  Old code might refer to assets using `/packages/<package>/<path>` URLs.
+{{site.alert.end}}
 
 
 ## Implementation files
@@ -315,10 +314,25 @@ tests) but you should never import from another package's `lib/src` directory.
 Those files are not part of the package's public API, and they might change in
 ways that could break your code.
 
-When you use libraries from within your own package, even code in `src`, you
-can (and should) still use `package:` to import them. For example:
+How you import libraries from within your own package
+depends on the locations of the libraries:
+
+ * When [reaching inside or outside `lib/`][]
+   (lint: [_avoid_relative_lib_imports_][]),
+   use `package:`.
+ * Otherwise, [prefer relative imports][].
+ 
+ [reaching inside or outside `lib/`]: /guides/language/effective-dart/usage#dont-allow-an-import-path-to-reach-into-or-out-of-lib
+ [_avoid_relative_lib_imports_]: /tools/linter-rules#avoid_relative_lib_imports
+ [prefer relative imports]: /guides/language/effective-dart/usage#prefer-relative-import-paths
+
+For example:
 
 {% prettify dart tag=pre+code %}
+// When importing from lib/beans.dart
+import 'src/beans.dart';
+
+// When importing from test/beans_test.dart
 import 'package:enchilada/src/beans.dart';
 {% endprettify %}
 

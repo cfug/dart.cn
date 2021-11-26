@@ -26,6 +26,10 @@
 - title: Dart 开发语言
   expanded: false
   children:
+    - title: 语言概览
+      permalink: /guides/language/language-tour
+    - title: 类型系统
+      permalink: /guides/language/type-system
     - title: 高效指南 (Effective Dart)
       expanded: false
       children:
@@ -73,10 +77,6 @@
       permalink: /guides/language/evolution
     - title: 规范
       permalink: /guides/language/spec
-    - title: 概览
-      permalink: /guides/language/language-tour
-    - title: 类型系统
-      permalink: /guides/language/type-system
 
 - title: 核心库
   expanded: false
@@ -253,6 +253,10 @@
         permalink: /guides/language/analysis-options
       - title: 修复常见的类型问题
         permalink: /guides/language/sound-problems
+      - title: 诊断消息
+        permalink: /tools/diagnostic-messages
+      - title: Linter 规则
+        permalink: /tools/linter-rules
   - title: 测试和调优
     children:
       - title: 测试

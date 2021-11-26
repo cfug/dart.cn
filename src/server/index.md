@@ -23,30 +23,31 @@ that can help you develop command-line and server apps.
 ## 工具
 
 [DartPad](/tools/dartpad)
-: Handy for both beginners and experts,
+<br> Handy for both beginners and experts,
   DartPad lets you try out language features and dart:* APIs.
 
 [DartPad](/tools/dartpad)：
-<br> 不管是对新手还是专家来说都易于使用的工具，DartPad 可以让你尝试语言相关功能和 dart:* 的 API。
+<br> 不管是对新手还是专家来说都易于使用的工具，
+  DartPad 可以让你尝试语言相关功能和 dart:* 的 API。
 
-  <aside class="alert alert-info" markdown="1">
-  
-    **Note:** DartPad does **not** support using dart:io APIs or
+  {{site.alert.note}}
+
+    DartPad does **not** support using dart:io APIs or
     importing libraries from packages.
 
-    **注意:** DartPad 目前不支持 dart:io 的 API以及从其他 packages 中导入。
-    
-  </aside>
+    DartPad 目前不支持 dart:io 的 API 以及从其他 packages 中导入。
+
+  {{site.alert.end}}
 
 [Dart SDK](/tools/sdk)
-: [Install the Dart SDK](/get-dart) to get the core Dart
+<br> [Install the Dart SDK](/get-dart) to get the core Dart
   libraries and [tools](/tools).
 
 [Dart SDK](/tools/sdk)：
-<br>[安装 Dart SDK](/get-dart) 以获取 Dart 的核心库和 [工具](/tools)。
+<br> [安装 Dart SDK](/get-dart) 以获取 Dart 的核心库和 [工具](/tools)。
 
 More tools
-: The [Tools](/tools) page links to generally useful tools,
+<br> The [Tools](/tools) page links to generally useful tools,
   such as Dart plugins for your favorite IDE or editor.
 
 更多工具：
@@ -61,25 +62,25 @@ You might find the following tutorials helpful.
 你可能会发现以下的教程会比较有用。
 
 [Get started](/tutorials/server/get-started)
-: Learn how to use the Dart SDK to develop command-line and server apps.
+<br> Learn how to use the Dart SDK to develop command-line and server apps.
 
 [开始](/tutorials/server/get-started)：
 <br> 学习如何使用 Dart SDK 开发命令行或服务器应用。
 
 [gRPC Quickstart](https://grpc.io/docs/languages/dart/quickstart/)
-: Walks you through running and modifying a client-server example that uses the gRPC framework.
+<br> Walks you through running and modifying a client-server example that uses the gRPC framework.
 
 [gRPC 快速上手](https://grpc.io/docs/quickstart/dart.html)：
 <br> 手把手教你使用 gRPC 框架运行和修改一个客户端-服务器示例。
 
 [Write command-line apps](/tutorials/server/cmdline)
-: Introduces dart:io and the args package.
+<br> Introduces dart:io and the args package.
 
 [开发 command-line 应用](/tutorials/server/cmdline)：
 <br> dart:io 和 args package 的介绍。
 
 [Write HTTP servers](/tutorials/server/httpserver)
-: Features dart:io and the http_server package.
+<br> Features dart:io and the http_server package.
 
 [开发 HTTP 客户端和服务端](/tutorials/server/httpserver)：
 <br> dart:io 和 http_server 包的相关功能。
@@ -89,7 +90,7 @@ You might find the following tutorials helpful.
 ## 更多资源
 
 [Dart API]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
-: API reference for dart:* libraries.
+<br> API reference for dart:* libraries.
 
 [Dart API]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})：
 <br> dart:* 库的 API 参考。

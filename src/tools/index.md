@@ -16,8 +16,8 @@ If you aren't sure which tools you need, **get the Flutter SDK.**
 | App type   | Get started instructions          | Tool information         |
 |   应用类型 |             入门说明              |          工具信息        |
 |------------|-----------------------------------|--------------------------|
-| Flutter (mobile and more) | [Install Flutter]({{site.flutter}}/setup) | [Flutter tools]({{site.flutter}}/using-ide) |
-| Flutter (移动应用和其他平台) | [安装 Flutter]({{site.flutter}}/setup) | [Flutter tools]({{site.flutter}}/using-ide) |
+| Flutter (mobile and more) | [Install Flutter]({{site.flutter_docs}}/get-started/install) | [Flutter tools]({{site.flutter_docs}}/using-ide) |
+| Flutter (移动应用和其他平台) | [安装 Flutter]({{site.flutter_docs}}/setup) | [Flutter tools]({{site.flutter_docs}}/using-ide) |
 | Web app (non-Flutter) | [Install the Dart SDK](/tools/sdk) | [General-purpose tools][] and [web tools](#web) |
 | Web 应用 (非 Flutter) | [安装 Dart SDK](/tools/sdk) | [通用工具][General-purpose tools] and [Web 工具](#web) |
 | Server or command line | [Install the Dart SDK](/tools/sdk) | [General-purpose tools][] and [specialized tools](#server) |
@@ -120,7 +120,7 @@ A [Language Server Protocol implementation][LSP] is also available for
 [语言服务器协议实现][LSP] 同样适用于没有特定的 Dart 扩展但
 [支持 LSP 的编辑器][LSP-capable editors] 。
 
-[LSP]: https://github.com/dart-lang/sdk/blob/master/pkg/analysis_server/tool/lsp_spec/README.md
+[LSP]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/tool/lsp_spec/README.md
 [LSP-capable editors]: https://microsoft.github.io/language-server-protocol/implementors/tools/
 
 ### Command-line tools {#cli}

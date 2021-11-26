@@ -34,11 +34,13 @@ doesn't already contain the dependencies, `dart pub get`
 updates the cache,
 downloading dependencies if necessary.
 To map packages back to the system cache,
-this command creates a `.packages` file.
+this command creates a `package_config.json` file 
+in the `.dart_tool/` directory.
 
 如果 [Pub 的系统缓存](/tools/pub/glossary#system-cache) 中还没有该依赖项，
 则 `dart pub get` 命令会在必要时下载该依赖项并更新缓存。
-该命令会创建一个 `.packages` 文件并将之映射到 Pub 的系统缓存中。
+该命令会在 `.dart_tool/` 文件夹下创建一个
+`package_config.json` 文件并将之映射到 Pub 的系统缓存中。
 
 Once the dependencies are acquired, they may be referenced in Dart code.
 For example, if a package depends on `test`:
@@ -83,47 +85,43 @@ get the latest versions of all dependencies.
 
 ## Package 解析
 
-By default, pub creates a `.packages` file
-that maps from package names to location URIs.
-Before the `.packages` file, pub used to create `packages` directories.
+By default, pub creates a `package_config.json` file
+in the `.dart_tool/` directory that maps from package names to location URIs.
+Before the `package_config.json` file, 
+pub used to create a `.packages` file in the root directory.
 
-默认情况下，pub 会创建一个 `.packages` 文件用于映射 package 名到位置 URI。
-在创建 `.packages` 文件之前，pub 常常还会创建一个 `packages` 目录。
+默认情况下，pub 会在 `.dart_tool/` 文件夹下创建一个
+`.packages` 文件用于映射 package 名到位置 URI。
+在创建 `package_config.json` 文件之前，
+pub 常常还会在项目根目录下创建一个 `.packages` 文件。
 
 {{site.alert.note}}
 
-  Don't check the generated `.packages` file,
-  `packages` directories (if present), or
-  `.dart_tool` directory into your repo;
+  Don't check the generated `.packages` file
+  or the `.dart_tool/` directory into your repo;
   add them to your repo's `.gitignore` file.
   For more information,
   see [What not to commit](/guides/libraries/private-files).
 
-  不要去检出你仓库中由 pub 自动生成的 `.packages` 文件、
-  `packages` 目录（如果存在的话）或者 `.dart_tool` 目录；
+  不要将仓库中由 pub 自动生成的 `packages` 目录
+  （如果存在的话）或者 `.dart_tool` 目录添加至版本管理中；
   请将它们添加至 Git 仓库的 `.gitignore` 文件中。
   更多信息请查阅 [你不应该提交哪些文件](/guides/libraries/private-files)。
 
 {{site.alert.end}}
 
-For more information, see the
-[package specification file proposal.](https://github.com/lrhn/dep-pkgspec/blob/master/DEP-pkgspec.md#proposal)
-
-更多信息请查阅 [Package 文件规范建议](https://github.com/lrhn/dep-pkgspec/blob/master/DEP-pkgspec.md#proposal)。
 
 ## Getting a new dependency
 
 ## 获取一个新的依赖项
 
 If a dependency is added to the pubspec and then `dart pub get` is run,
-it gets the new dependency and any of its transitive dependencies and
-updates the mapping in the `.packages` file.
+it gets the new dependency and any of its transitive dependencies.
 However, pub won't change the versions of any already-acquired
 dependencies unless that's necessary to get the new dependency.
 
 如果在执行 `dart pub get` 命令前将某个依赖添加至 pubspec 文件中，
-则在执行该命令后会将该新的依赖项以及其间接依赖的其它依赖项下载
-并将其更新映射到 `.packages` 文件中。
+则在执行该命令后会更新依赖项以及其间接依赖的其它依赖项。
 但是，pub 不会更改哪些已经存在的依赖项除非有必要获取它们的新版本。
 
 ## Removing a dependency
@@ -131,16 +129,14 @@ dependencies unless that's necessary to get the new dependency.
 ## 移除一个依赖项
 
 If a dependency is removed from the pubspec and then `dart pub get` is run,
-it removes the dependency from the `.packages` file,
-making the dependency unavailable for importing.
+the dependency is no longer available for importing.
 Any transitive dependencies of the removed dependency are also removed,
 as long as no remaining immediate dependencies also depend on them.
 Removing a dependency never changes the versions of any
 already-acquired dependencies.
 
 如果在 `dart pub get` 命令前从 pubspec 文件移除了某个依赖项，
-则在执行该命令后会将该依赖项从 `.packages` 文件中移除，
-且代码使用到该依赖项的相关导入将变得不可用。
+则在执行该命令后代码使用到该依赖项的相关导入将变得不可用。
 所有该依赖项依赖的间接依赖项也同时会被移除，
 只要这些间接依赖项没有没其它的依赖项所依赖。
 移除某个依赖项不会对已经获得的依赖项版本产生任何影响。

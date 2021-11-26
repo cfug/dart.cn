@@ -48,17 +48,10 @@ which the following packages provide:
 : Contains the `flutter` rule set,
   which the Flutter team encourages you to use
   in Flutter apps, packages, and plugins.
-  This rule set is a superset of the [`recommended`](#recommended) set,
-  which is itself a superset of the [`core`](#core) set that
+  This rule set is a superset of the [`recommended`](#lints) set,
+  which is itself a superset of the [`core`](#lints) set that
   partially determines the [score]({{site.pub}}/help/scoring) of
   packages uploaded to [pub.dev]({{site.pub}}).
-
-<a id="effective_dart"></a>
-[effective_dart][] (_deprecated_)
-: The deprecated set of rules previously used to
-  conform to the guidelines in [Effective Dart][].
-  Consider migrating to one of the rule sets in
-  the [`lints`](#lints) or [`flutter_lints`](#flutter_lints) packages.
 
 <a id="pedantic"></a>
 [pedantic][] (_deprecated_)
@@ -71,14 +64,12 @@ which the following packages provide:
 [Migrating from pedantic]: https://github.com/dart-lang/lints#migrating-from-packagepedantic
 [lints]: {{site.pub-pkg}}/lints
 [flutter_lints]: {{site.pub-pkg}}/flutter_lints
-[effective_dart]: {{site.pub-pkg}}/effective_dart
 [pedantic]: {{site.pub-pkg}}/pedantic
 
 To learn how to use a specific rule set,
 see the documentation for [enabling and disabling linter rules][].
 
 [enabling and disabling linter rules]: /guides/language/analysis-options#enabling-linter-rules
-[Effective Dart]: /guides/language/effective-dart
 
 ## Rule types
 

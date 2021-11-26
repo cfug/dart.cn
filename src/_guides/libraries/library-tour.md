@@ -5,7 +5,7 @@ description: Learn about the major features in Dart's libraries.
 description: 学习更多关于 Dart 语言核心库的特性。
 short-title: Library tour
 ---
-<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /\n? *\/\/\s+ignore:[^\n]+//g"?>
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>
 
 This page shows you how to use the major features in Dart’s core libraries.
@@ -72,7 +72,7 @@ You can find API documentation for all dart:* libraries in the
 the [Flutter API reference.][docs.flutter]
 
 更多库信息可以在
-[Pub site][pub.dartlang] 和
+[Pub site]({{site.pub}}) 和
 [Dart web developer library guide.][webdev libraries] 查找。
 所有 dart:* 库的 API 文档可以在
 [Dart API reference][Dart API] 查找， 如果使用的是 Flutter
@@ -83,7 +83,8 @@ the [Flutter API reference.][docs.flutter]
   **DartPad tip:** You can play with the code in this page by copying it into a
   [DartPad.]({{site.dartpad}})
 
-  **DartPad tip：** 可以通过将该页中的代码拷贝到 [DartPad]({{site.dartpad}}) 中进行演示。
+  **DartPad 提示：**
+  可以通过将该页中的代码拷贝到 [DartPad]({{site.dartpad}}) 中进行演示。
 
 {{site.alert.end}}
 
@@ -282,7 +283,7 @@ assert('Never odd or even'[0] == 'N');
 // Use split() with an empty string parameter to get
 // a list of all characters (as Strings); good for
 // iterating.
-for (var char in 'hello'.split('')) {
+for (final char in 'hello'.split('')) {
   print(char);
 }
 
@@ -457,7 +458,7 @@ var someDigits = 'llamas live 15 to 20 years';
 assert(numbers.hasMatch(someDigits));
 
 // Loop through all matches.
-for (var match in numbers.allMatches(someDigits)) {
+for (final match in numbers.allMatches(someDigits)) {
   print(match.group(0)); // 15, then 20
 }
 ```
@@ -802,7 +803,7 @@ if and only if the key does not already exist in a map. You must provide
 a function that returns the value.
 
 如果当且仅当该 key 不存在于 map 中，且要为这个 key 赋值，
-可使用`putIfAbsent（）`方法。
+可使用 `putIfAbsent()` 方法。
 该方法需要一个方法返回这个 value。
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (putIfAbsent)"?>
@@ -1228,6 +1229,30 @@ unique, but it should be well distributed.
 相等的（通过 `==` ）对象必须拥有相同的哈希值。
 哈希值并不要求是唯一的， 但是应该具有良好的分布形态。
 
+{{site.alert.tip}}
+
+  To consistently and easily implement the `hashCode` getter,
+  consider using the static hashing methods provided by the `Object` class.
+
+  想要以一致且简便的方式实现 `hashCode` getter，
+  你可以尝试 `Object` 类提供的静态方法。
+
+  To generate a single hash code for multiple properties of an object,
+  you can use [`Object.hash()`][].
+  To generate a hash code for a collection,
+  you can use either [`Object.hashAll()`][] (if element order matters)
+  or [`Object.hashAllUnordered()`][].
+
+  想为对象内的多个属性生成单一的哈希值，你可以使用 [`Object.hash()`][]。
+  想为一组内容生成哈希值，你可以使用 [`Object.hashAll()`][]
+  （如果其中的元素需要保持顺序），或者 [`Object.hashAllUnordered()`][]。
+
+{{site.alert.end}}
+
+[`Object.hash()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hash.html
+[`Object.hashAll()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hashAll.html
+[`Object.hashAllUnordered()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hashAllUnordered.html
+
 {% comment %}
 Note: There’s disagreement over whether to include identical() in the ==
 implementation. It might improve speed, at least when you need to
@@ -1242,18 +1267,13 @@ class Person {
 
   Person(this.firstName, this.lastName);
 
-  // Override hashCode using strategy from Effective Java,
-  // Chapter 11.
+  // Override hashCode using the static hashing methods
+  // provided by the `Object` class.
   @override
-  int get hashCode {
-    int result = 17;
-    result = 37 * result + firstName.hashCode;
-    result = 37 * result + lastName.hashCode;
-    return result;
-  }
+  int get hashCode => Object.hash(firstName, lastName);
 
-  // You should generally implement operator == if you
-  // override hashCode.
+  // You should generally implement operator `==` if you
+  // override `hashCode`.
   @override
   bool operator ==(dynamic other) {
     return other is Person &&
@@ -1316,7 +1336,7 @@ class Processes extends IterableBase<Process> {
 
 void main() {
   // Iterable objects can be used with for-in.
-  for (var process in Processes()) {
+  for (final process in Processes()) {
     // Do something with the process.
   }
 }
@@ -1723,7 +1743,7 @@ Future<void> main(List<String> arguments) async {
   // ...
   if (await FileSystemEntity.isDirectory(searchPath)) {
     final startingDir = Directory(searchPath);
-    [!await for!] (var entity in startingDir.list()) {
+    [!await for!] (final entity in startingDir.list()) {
       if (entity is File) {
         searchFile(entity, searchTerms);
       }
@@ -1819,7 +1839,7 @@ different type of data:
 ```dart
 var lines = inputStream
     .transform(utf8.decoder)
-    .transform(LineSplitter());
+    .transform(const LineSplitter());
 ```
 
 This example uses two transformers. First it uses utf8.decoder to
@@ -1868,9 +1888,9 @@ Future<void> readFileAwaitFor() async {
 
   var lines = inputStream
       .transform(utf8.decoder)
-      .transform(LineSplitter());
+      .transform(const LineSplitter());
   [!try!] {
-    await for (var line in lines) {
+    await for (final line in lines) {
       print('Got ${line.length} characters from stream');
     }
     print('file is now closed');
@@ -1897,7 +1917,7 @@ Stream<List<int>> inputStream = config.openRead();
 
 inputStream
     .transform(utf8.decoder)
-    .transform(LineSplitter())
+    .transform(const LineSplitter())
     .listen((String line) {
   print('Got ${line.length} characters from stream');
 }, [!onDone!]: () {
@@ -2040,6 +2060,17 @@ var random = Random();
 random.nextBool(); // true or false
 ```
 
+{{site.alert.warning}}
+
+  The default implementation of `Random` supplies a stream of pseudorandom bits
+  that are unsuitable for cryptographic purposes.
+  To create a cryptographically secure random number generator,
+  use the [`Random.secure()`][] constructor.
+
+  `Random` 的默认实现提供的是不适合于加密用途的伪随机位流。
+  若你需要创建安全的随机数生成器，请使用 [`Random.secure()`] 构造。
+
+{{site.alert.end}}
 
 ### More information
 
@@ -2181,10 +2212,11 @@ To convert a stream of UTF-8 characters into a Dart string, specify
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (utf8-decoder)" replace="/utf8.decoder/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-var lines =
-    [!utf8.decoder!].bind(inputStream).transform(LineSplitter());
+var lines = [!utf8.decoder!]
+    .bind(inputStream)
+    .transform(const LineSplitter());
 try {
-  await for (var line in lines) {
+  await for (final line in lines) {
     print('Got ${line.length} characters from stream');
   }
   print('file is now closed');
@@ -2303,6 +2335,7 @@ To learn more about the Dart language, see the
 [Object]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
 [Pattern]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Pattern-class.html
 [Random]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/Random-class.html
+[`Random.secure()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/Random/Random.secure.html
 [RegExp]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/RegExp-class.html
 [Set]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
 [Stream]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
