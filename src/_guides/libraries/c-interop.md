@@ -40,7 +40,7 @@ The following examples show how to use the dart:ffi library:
 | [hello_world][] | How to call a C function with no arguments and no return value. |
 | [hello_world][] | 如何调用无参数和返回值的 C 语言函数。 |
 | [primitives][] | How to call C functions that have arguments and return values that are **ints or pointers**. Also demonstrates **varargs**. |
-| [primitives][] | 如何调用参数和返回值为 **整型和指针** 的 C 语言函数。同时演示 **varargs**。</t> |
+| [primitives][] | 如何调用参数和返回值为 **整型和指针** 的 C 语言函数。同时演示 **varargs**。 |
 | [structs][] | How to use structs to pass **strings** to and from C and to handle **simple and complex C structures**. |
 | [structs][] | 如何与 C 语言互相传递字符串，以及如何处理 **C 语言定义的结构**。 |
 | [sqlite][] | An example in the Dart SDK repo that comes with a [mini tutorial.][] |
