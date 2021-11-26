@@ -63,12 +63,18 @@ The hello_world example has the following files:
 
 hello_world 示例包含了以下文件：
 
-| **<t>Source file</t><t>源文件</t>** | **<t>Description</t><t>描述</t>** |
-| [hello.dart]({{page.hw}}/hello.dart) | <t>A Dart file that uses the `hello_world()` function from a C library.</t><t>使用了 C 语言库中的 `hello_world()` 函数的文件。</t> |
-| [pubspec.yaml]({{page.hw}}/pubspec.yaml) | <t>The usual Dart [pubspec](/tools/pub/pubspec), with a lower bounds on the SDK that's at least 2.6.</t><t>Dart 里常见的 [pubspec 文件](/tools/pub/pubspec)，最低 SDK 限制为 2.6。</t> |
-| [hello_library/hello.h]({{page.hw}}/hello_library/hello.h) | <t>Declares the `hello_world()` function.</t><t>声明了 `hello_world()` 函数。</t> |
-| [hello_library/hello.c]({{page.hw}}/hello_library/hello.c) | <t>A C file that imports `hello.h` and defines the `hello_world()` function.</t><t>该 C 文件导入了 `hello.h` 并实现了 `hello_world()` 函数。</t> |
-| [hello_library/CMakeLists.txt]({{page.hw}}/hello_library/CMakeLists.txt) | <t>A CMake build file for compiling the C code into a dynamic library.</t><t>将 C 文件代码编译为动态库的 CMake 文件。</t> |
+| **Source file** | **Description** |
+| **源文件** | **描述** |
+| [hello.dart]({{page.hw}}/hello.dart) | A Dart file that uses the `hello_world()` function from a C library. |
+| [hello.dart]({{page.hw}}/hello.dart) | 使用了 C 语言库中的 `hello_world()` 函数的文件。 |
+| [pubspec.yaml]({{page.hw}}/pubspec.yaml) | The usual Dart [pubspec](/tools/pub/pubspec), with a lower bounds on the SDK that's at least 2.6. |
+| [pubspec.yaml]({{page.hw}}/pubspec.yaml) | Dart 里常见的 [pubspec 文件](/tools/pub/pubspec)，最低 SDK 限制为 2.6。 |
+| [hello_library/hello.h]({{page.hw}}/hello_library/hello.h) | Declares the `hello_world()` function. |
+| [hello_library/hello.h]({{page.hw}}/hello_library/hello.h) | 声明了 `hello_world()` 函数。 |
+| [hello_library/hello.c]({{page.hw}}/hello_library/hello.c) | A C file that imports `hello.h` and defines the `hello_world()` function. |
+| [hello_library/hello.c]({{page.hw}}/hello_library/hello.c) | 该 C 文件导入了 `hello.h` 并实现了 `hello_world()` 函数。 |
+| [hello_library/CMakeLists.txt]({{page.hw}}/hello_library/CMakeLists.txt) | A CMake build file for compiling the C code into a dynamic library. |
+| [hello_library/CMakeLists.txt]({{page.hw}}/hello_library/CMakeLists.txt) | 将 C 文件代码编译为动态库的 CMake 文件。 |
 {:.table .table-striped }
 
 {% comment %}
