@@ -80,8 +80,8 @@ are a few additional requirements for uploading a package:
   也就是 Dart 和 Flutter 团队所使用的开源许可证。
   同时，对于你所上传的 package 任意部分，你必须拥有重新发布的合法权利。
 
-* Your package must be smaller than 100 MB after gzip compression. If 
-  it's too large, consider splitting it into multiple packages, using a 
+* Your package must be smaller than 100 MB after gzip compression. If
+  it's too large, consider splitting it into multiple packages, using a
   `.pubignore` file to remove unnecessary content, or cutting down
   on the number of included resources or examples.
 
@@ -503,25 +503,40 @@ or replace the package `README.md` and documentation.
 
 ## Publishing previews
 
+## 发布预览版本
+
 Previews can be useful when **all** of the following are true:
 
+在以下条件都满足时，预览版是非常有用的版本：
+
 * The next stable version of the package is complete.
+
+  下一个稳定版本是完整功能的版本。
 
 * That package version depends on an API or feature in the Dart SDK that
   hasn't yet been released in a stable version of the Dart SDK.
 
+  在最新的稳定版 Dart SDK 中，没有发布目前版本使用的 API。
+
 * You know that the API or feature that the package depends on is
   API-stable and won't change before it reaches the stable SDK.
 
+  你的 package 所依赖的 API 或功能在发布到稳定版 SDK 前不会再改变。
+
 As an example, consider a new version of `package:args` that has
-a finished version `2.0.0` but that 
+a finished version `2.0.0` but that
 depends on a feature in Dart `2.12.0-259.8.beta`,
 where Dart SDK version `2.12.0` stable hasn't been released yet.
 The pubspec might look like this:
 
+举个例子，假设 `package:args` 的 `2.0.0` 版本是已经完成的版本，
+但它依赖了 Dart `2.12.0-259.8.beta` 的功能，这时 `2.12.0` 的 SDK 尚未发布。
+它的 pubspec 如下：
+
 ```
 name: args
 version: 2.0.0
+
 environment:
   sdk: '>=2.12.0-259.8.beta <3.0.0'
 ```
@@ -532,19 +547,123 @@ as illustrated by the following screenshot,
 where the stable version is listed as
 `1.6.0` and the preview version is listed as `2.0.0`.
 
+当这个 package 发布到 pub.dev 上时，会被标记为预览版，如下图所示，
+`1.6.0` 是正式版而 `2.0.0` 是预览版。
+
 ![Illustration of a preview version](preview-version.png){:width="600px"}<br>
 
 When Dart `2.12.0` stable is released,
 pub.dev updates the package listing to display
 `2.0.0` as the stable version of the package.
 
+当 `2.12.0` 的稳定版 SDK 发布后，pub.dev 会更新 package 列表，
+此时 `2.0.0` 会显示为稳定版本。
+
 If all of the conditions at the beginning of this section are true,
-then you can ignore the following warning from `dart pub publish`: 
+then you can ignore the following warning from `dart pub publish`:
+
+如果上面的所有条件都满足，那么你可以在运行 `dart pub publish` 时忽略以下的警告：
 
    *"Packages with an SDK constraint on a pre-release of the Dart SDK should
    themselves be published as a pre-release version. If this package needs Dart
    version 2.12.0-0, consider publishing the package as a pre-release
    instead."*
+
+
+## Retracting a package version {#retract}
+
+## 撤回 package 的某个版本 {#retract}
+
+To prevent new package consumers from adopting a recently
+published version of your package, you can retract that package version
+within 7 days of publication.
+The retracted version can be restored again within 7 days of retraction.
+
+出于某些特殊情况，若你需要一个新版本被用户使用，
+你可以在发布后 7 天内撤回该软件包版本。
+撤回的版本可以在撤回后的 7 天内再次恢复。
+
+A retracted package version isn't deleted. It appears in the version
+listing of the package on pub.dev in the **Retracted versions** section. Also, the
+detailed view of that package version has a **RETRACTED** badge.
+
+被撤回的版本不会被删除，它会显示在 pub.dev 上的 **Retracted versions** 区域。
+同时，对应版本的详细信息内会有一个 **RETRACTED** 标签。
+
+Before retracting a package,
+consider publishing a new version instead.
+Retracting a package causes churn and can have a negative impact on package users.
+
+在撤回版本之前，你可以考虑直接发布一个新版本。
+撤回版本可能会对用户造成混乱和负面的使用体验。
+
+If you accidentally publish a new version with either
+a _missing dependency constraint_
+or a _dependency constraint that is too lax_, 
+then retracting the package version might be the only solution.
+Publishing a newer version of your package is
+insufficient to stop the version solver from picking the old version,
+which might be the only version pub can choose.
+By retracting the package version that has
+incorrect dependency constraints, you force users to either
+upgrade other dependencies or get a dependency conflict.
+
+如果你不小心发布了 **未有效限制依赖版本** 的新版本，
+那么撤回可能是唯一的选择。
+发布新版本对于这样的情况来说是无效的，因为 pub 依然能解析到新版。
+撤回未有效限制依赖版本的版本，可以让用户在尝试依赖时报错，或者升级到更新的版本。
+
+However, if your package merely contains a minor bug,
+then retraction is probably not necessary.
+Publishing a newer version with the bug fixed and a
+description of the fixed bug in `CHANGELOG.md`
+helps users to understand what happened.
+And publishing a newer version is less disruptive to package users.
+
+然而，如果你的新版本仅仅是包含了一个小 bug，便无需撤回版本。
+发布一个修复了 bug 的新版，并且在 `CHANGELOG.md` 中标注内容，
+可以帮助用户了解到问题所在。
+发布新版也会让用户的使用体验更好。
+
+{{site.alert.version-note}}
+
+  Package retraction was introduced in Dart 2.15.
+  In pre-2.15 SDKs, the pub version solver ignores the retracted status.
+
+  版本撤回在 Dart 2.15 中引入。
+  在早于 2.15 的 SDK 中，pub 版本解析会忽略版本的撤回状态。
+
+{{site.alert.end}}
+
+### How to use a retracted package version
+
+### 如何使用已撤回的版本
+
+If a package depends on a package version that later is retracted,
+it can still use that version as long as that version is in
+the dependent package's `pubspec.lock` file.
+To depend on a specific version that's already retracted,
+the dependent package must pin the version in the
+`dependency_overrides` section of the `pubspec.yaml` file.
+
+如果一个 package 的对应版本已被撤回，在 `pubspec.lock` 标明它被依赖时仍然能被使用。
+如果你想依赖某个撤回的版本，你可以在 `pubspec.yaml` 文件中的
+`dependency_overrides` 部分固定对应版本的使用。
+
+### How to retract or restore a package version
+
+### 如何撤回或恢复 package 的某个版本
+
+To retract or restore a package version,
+first sign in to pub.dev using a Google Account
+that's either an uploader or a [verified publisher][] admin for the package.
+Then go to the package's **Admin** tab,
+where you can retract or restore recent package versions.
+
+想要撤回或恢复 package 的某个版本，首先你需要使用 Google 账号登录到
+pub.dev，该账号需要是该 package 的上传者或
+[认证的发布者][verified publisher] 管理。
+接着进入到 package 页面上的 **Admin** 标签栏，进行撤回和恢复版本操作。
 
 ## Marking packages as discontinued {#discontinue}
 
@@ -559,17 +678,20 @@ doesn't appear in pub.dev search results.
 
 尽管 package 的发布总是会被保留，在需要时，把它标记为不再活跃的维护将会对开发者有帮助。
 为了达到这一点，你可以将一个 package 标记为 **终止**。
-终止的 package 曾经的发布依然留存在 pub.dev 上，并可以被看到，但是它有一个清楚的 **终止** 徽章，而且不会出现在搜索结果中。
+终止的 package 曾经的发布依然留存在 pub.dev 上，并可以被看到，
+但是它有一个清楚的 **终止** 徽章，而且不会出现在搜索结果中。
 
-To mark a package as discontinued, sign in to pub.dev using a Google Account
-that's an uploader or verified publisher admin for the package.
-Then use the **Admin** tab of the individual package to
-mark the package as discontinued.
+To mark a package as discontinued, first sign in to pub.dev using a Google Account
+that's either an uploader or a [verified publisher][] admin for the package.
+Then go to the package's **Admin** tab,
+where you can mark the package as discontinued.
 If you change your mind, you can remove the discontinued mark at any time.
 
-要把 package 标记为终止，需要使用一个上传者的 Google 账户或已验证发布者的管理员。
-接下来使用 package 单独的 **管理员** 选项卡，在其中将其标记为终止。
-如果您回心转意想继续维护，可在任意时候删除终止标记。
+要把 package 标记为终止，首先你需要使用 Google 账号登录到
+pub.dev，该账号需要是该 package 的上传者或
+[认证的发布者][verified publisher] 管理。
+接着进入到 package 页面上的 **Admin** 标签栏，在其中将其标记为终止。
+如果你回心转意想继续维护，可在任意时候移除终止标记。
 
 ## Resources
 

@@ -146,10 +146,10 @@ For example, your `pubspec.yaml` file might have the following constraints:
 设定为一个支持空安全的 SDK 版本。
 例如，你的 `pubspec.yaml` 可以设置为如下的限制：
 
-{% prettify yaml tag=pre+code %}
+```yaml
 environment:
-  sdk: ">=2.12.0 <3.0.0"
-{% endprettify %}
+  sdk: '>=2.12.0 <3.0.0'
+```
 
 [language version]: /guides/language/evolution#language-versioning
 

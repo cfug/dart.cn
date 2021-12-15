@@ -1077,16 +1077,15 @@ void main() {
 
 {% include linter-rule-mention.md rule="unnecessary_lambdas" %}
 
-If you refer to a method on an object but omit the parentheses, Dart gives you
-a "tear-off"&mdash;a closure that takes the same parameters as the method and
-invokes it when you call it.
+When you refer to a function, method, or named constructor but omit the
+parentheses, Dart creates a _tear-off_&mdash;a closure that takes the same
+parameters as the function and invokes the underlying function when you call it.
+If all you need is a closure that invokes a named function with the same
+parameters as the closure accepts, don't manually wrap the call in a lambda.
 
-如果你在一个对象上调用函数并省略了括号， 
-Dart 称之为"tear-off"&mdash;一个和函数使用同样参数的闭包，
-当你调用闭包的时候执行其中的函数。
-
-If you have a function that invokes a method with the same arguments as are
-passed to it, you don't need to manually wrap the call in a lambda.
+如果你引用了一个函数、方法或命名构造，但省略了括号，Dart 会尝试
+**tear-off**&mdash;&mdash;在调用时使用同样的参数对对应的方法创建闭包。
+如果你需要的仅仅是一个引用，请不要利用 lambda 手动包装。
 
 如果你有一个方法，这个方法调用了参数相同的另一个方法。
 那么，你不需要人为将这个方法包装到一个 lambda 表达式中。
@@ -1094,15 +1093,43 @@ passed to it, you don't need to manually wrap the call in a lambda.
 {:.good}
 <?code-excerpt "usage_good.dart (use-tear-off)"?>
 {% prettify dart tag=pre+code %}
-names.forEach(print);
+var charCodes = [68, 97, 114, 116];
+var buffer = StringBuffer();
+
+// Function:
+charCodes.forEach(print);
+
+// Method:
+charCodes.forEach(buffer.write);
+
+// Named constructor:
+var strings = charCodes.map(String.fromCharCode);
+
+// Unnamed constructor:
+var buffers = charCodes.map(StringBuffer.new);
 {% endprettify %}
 
 {:.bad}
 <?code-excerpt "usage_bad.dart (use-tear-off)"?>
 {% prettify dart tag=pre+code %}
-names.forEach((name) {
-  print(name);
+var charCodes = [68, 97, 114, 116];
+var buffer = StringBuffer();
+
+// Function:
+charCodes.forEach((code) {
+  print(code);
 });
+
+// Method:
+charCodes.forEach((code) {
+  buffer.write(code);
+});
+
+// Named constructor:
+var strings = charCodes.map((code) => String.fromCharCode(code));
+
+// Unnamed constructor:
+var buffers = charCodes.map((code) => StringBuffer(code));
 {% endprettify %}
 
 ### DO use `=` to separate a named parameter from its default value.
@@ -1289,7 +1316,7 @@ variables). The following best practices apply to an object's members.
 In Java and C#, it's common to hide all fields behind getters and setters (or
 properties in C#), even if the implementation just forwards to the field. That
 way, if you ever need to do more work in those members, you can without needing
-to touch the callsites. This is because calling a getter method is different
+to touch the call sites. This is because calling a getter method is different
 than accessing a field in Java, and accessing a property isn't binary-compatible
 with accessing a raw field in C#.
 

@@ -53,7 +53,7 @@ void addTodoItem(String item) {
   todoList.children.add(listElement);
 }
 
-late final UListElement todoList = querySelector('#todolist') as UListElement;
+final UListElement todoList = querySelector('#todolist') as UListElement;
 
 void main() {
   thingsTodo().forEach(addTodoItem);
