@@ -12,7 +12,7 @@ If you want to write a **multi-platform** app, then
 
 下面的步骤将指引你使用 Dart 开发 web 应用。
 如果你想编写 **跨平台** 应用，请
-[尝试 Flutter]({{site.flutter}}/web)
+[尝试 Flutter]({{site.flutter}}/web)。
 
 Still here?
 First you'll play with Dart in your browser, no download required.
@@ -45,7 +45,7 @@ to the list of pets.
 点击 **Run** 运行程序；
 输出界面显示在代码的右侧。
 尝试编辑源码，
-比如在 pets 列表中添加 “horses”。
+比如在 pets 列表中添加「horses」。
 
 {{site.alert.note}}
   {% include dartpad-embedded-troubleshooting.md %}
@@ -123,7 +123,7 @@ More information:
 <i class="fas fa-terminal dark"></i>
 If you like to use the command line, install [webdev][]:
 
-如果你想使用命令行，请安装 [webdev][]:
+如果你想使用命令行，请安装 [webdev][]：
 
 ```terminal
 $ dart pub global activate webdev
@@ -201,7 +201,7 @@ Once your app has compiled, the browser should display
 
 一旦应用程序编译完成，
 浏览器会显示
-"Your Dart app is running."
+「Your Dart app is running.」
 
 ![Launched bare-bones app]({% asset bare-bones-web-app.png @path %}){:width="500"}
 
