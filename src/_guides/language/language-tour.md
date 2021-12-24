@@ -6058,19 +6058,21 @@ concurrency is error prone and can lead to complicated code.
 
 大多数计算机中，甚至在移动平台上，都在使用多核 CPU。为了有效利用多核性能，开发者一般使用共享内存的方式让线程并发地运行。然而，多线程共享数据通常会导致很多潜在的问题，并导致代码运行出错。
 
-Instead of threads, all Dart code runs inside of *isolates*. Each
-isolate has its own memory heap, ensuring that no isolate’s state is
-accessible from any other isolate.
+Instead of threads, all Dart code runs inside of *isolates*. 
+Each Dart isolate has a single thread of execution and
+shares no mutable objects with other isolates.  
 
 为了解决多线程带来的并发问题，Dart 使用 isolate 替代线程，所有的 Dart 代码均运行在一个 **isolate** 中。每一个 isolate 有它自己的堆内存以确保其状态不被其它 isolate 访问。
+
+所有的 Dart 代码都是在一个 isolate 中运行，而非线程。
+每个 isolate 都有一个单独的执行线程，并且不与其他的 isolate 共享任何可变对象。
 
 For more information, see the following:
 
 你可以查阅下面的文档获取更多相关信息：
-
-* [Dart asynchronous programming: Isolates and event loops][isolates article]
-
-  [Dart 异步编程：隔离区和事件循环][isolates article]
+* [Concurrency in Dart](/guides/language/concurrency)
+  
+  [Dart 中的并发特性](/guides/language/concurrency)
 
 * [dart:isolate API reference,][dart:isolate]
   including [Isolate.spawn()][] and
@@ -6079,11 +6081,11 @@ For more information, see the following:
   [dart:isolate API 参考][dart:isolate] 介绍了 [Isolate.spawn()][] 和 [TransferableTypedData][] 的用法
 
 * [Background parsing][background json] cookbook on the Flutter site
+
+   Flutter 文档上关于 [后台解析][background json] 的实用教程
+
 * [Isolate sample app][]
 
-  Flutter 网站上关于[后台解析][background json]的 Cookbook
-
-[isolates article]: https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
 [Isolate.spawn()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
 [TransferableTypedData]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/TransferableTypedData-class.html
 [background json]: {{site.flutter_docs}}/cookbook/networking/background-parsing
