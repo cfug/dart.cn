@@ -1,6 +1,8 @@
 ---
 title: Concurrency in Dart
+title: Dart 中的并发
 description: Use isolates to enable parallel code execution on multiple processor cores.
+description: 使用 isolates 在多核设备上并发执行代码。
 ---
 
 <style>
