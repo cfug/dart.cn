@@ -18,6 +18,9 @@ classes such as `Future` and `Stream`.
 This page gives an overview of async-await, `Future`, and `Stream`,
 but it's mostly about isolates.
 
+Dart 通过 async-await、isolate 和 `Future` 及 `Stream` 两种类型概念支持了并发代码编程。
+本篇文章会对 async-await、`Future` 和 `Stream` 进行简略的介绍，而侧重点放在 isolate 的讲解上。
+
 Within an app, all Dart code runs in an _isolate._
 Each Dart isolate has a single thread of execution and
 shares no mutable objects with other isolates.
@@ -29,15 +32,29 @@ that the operating system provides,
 the Dart VM's use of these primitives
 is an implementation detail that this page doesn't discuss.
 
+在应用中，所有的 Dart 代码都运行在一个 **isolate** 内。
+每一个 Dart 的 isolate 都有独立的运行线程，它们无法与其他 isolate 共享可变对象。
+在需要进行交换的场景里，isolate 会使用消息通信机制。
+尽管 Dart 的 isolate 模型设计是基于操作系统提供的进程和线程等更为底层的原语进行设计的，
+但在本篇文章中，我们不对其具体实现展开讨论。
+
 Many Dart apps use only one isolate (the _main isolate_),
 but you can create additional isolates,
 enabling parallel code execution on multiple processor cores.
 
+大部分 Dart 应用只会使用一个 isolate（即 **主 isolate**），
+同时你也可以创建更多的 isolate，从而在多个处理器内核上达成并行执行代码的目的。
+
 {{site.alert.info}}
+
   **Platform note:**
   All apps can use async-await, `Future`, and `Stream`.
   Isolates are implemented only on the [Dart Native platform][];
   Dart web apps can use [web workers][] for similar functionality.
+
+  所有的 Dart 应用都可以使用 async-await、`Future` 和 `Stream`。
+  而 isolate 仅针对 [原生平台的使用][Dart Native platform] 进行实现。
+
 {{site.alert.end}}
 
 [Dart Native platform]: /overview#platform
@@ -47,13 +64,20 @@ enabling parallel code execution on multiple processor cores.
 
 ## Asynchrony types and syntax
 
+## 异步的类型和语法
+
 If you’re already familiar with `Future`, `Stream`, and async-await,
 then you can skip ahead to the [isolates section][].
+
+如果你已经对 `Future`、`Stream` 和 async-await 比较熟悉了，
+你可以直接跳到 [isolate 部分][isolates section] 进行阅读。
 
 [isolates section]: #how-isolates-work
 
 
 ### Future and Stream types
+
+### Future 和 Stream 类型
 
 The Dart language and libraries use `Future` and `Stream` objects to
 represent values to be provided in the future.
@@ -61,6 +85,11 @@ For example, a promise to eventually provide an `int` value
 is typed as `Future<int>`.
 A promise to provide a series of `int` values
 has the type `Stream<int>`.
+
+Dart 语言和库通过 `Future` 和 `Stream` 对象，来提供会在当前调用的未来返回某些值的功能。
+以 JavaScript 中的 Promise 为例，
+在 Dart 中一个最终会返回 `int` 类型值的 promise，应当声明为 `Future<int>`；
+一个会持续返回一系列 `int` 类型值的 promise，应当声明为 `Stream<int>`。
 
 As another example, consider the dart:io methods for reading files.
 The synchronous `File` method [`readAsStringSync()`][]
@@ -73,6 +102,13 @@ immediately returns an object of type `Future<String>`.
 At some point in the future,
 the `Future<String>` completes with either a string value or an error.
 
+让我们用 dart:io 来举另外一个例子。`File` 的同步方法 [`readAsStringSync()`][]
+会以同步调用的方式读取文件，在读取完成或者抛出错误前保持阻塞。
+这个会返回 `String` 类型的对象，或者抛出异常。
+而与它等效的异步方法 [`readAsString()`][]，会在调用时立刻返回
+`Future<String>` 类型的对象。
+在未来的某一刻，`Future<String>` 会结束，并返回一个字符串或错误。
+
 [`readAsStringSync()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsStringSync.html
 [`readAsString()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsString.html
 
@@ -83,13 +119,25 @@ but need to update its display or respond to user input
 before the HTTP request completes.
 Asynchronous code helps apps stay responsive.
 
+为什么一个方法是同步的还是异步的会如此重要？
+因为大部分应用需要在同一时刻做很多件事。
+例如，应用可能会发起一个 HTTP 请求，
+同时在请求返回前对用户的操作做出不同的界面更新。
+异步的代码会有助于应用保持更高的可交互状态。
+
 ### The async-await syntax
+
+### async-await 语法
 
 The `async` and `await` keywords provide
 a declarative way to define asynchronous functions
 and use their results.
 
+`async` 和 `await` 关键字是用声明来定义异步函数和获取它们的结果的方式。
+
 Here’s an example of some synchronous code that blocks while waiting for file I/O:
+
+下面是一段同步代码调用文件 I/O 时阻塞的例子：
 
 ```dart
 void main() {
@@ -109,6 +157,8 @@ String _readFileSync() {
 ```
 
 Here’s similar code, but with changes (highlighted) to make it asynchronous:
+
+下面是类似的代码，但是变成了 **异步调用**：
 
 {% prettify dart tag=pre+code %}
 void main() [!async!] {
@@ -134,9 +184,18 @@ Using `await` also has the effect of
 converting the `Future<String>` returned by `_readFileAsync()` into a `String`.
 As a result, the `contents` variable has the implicit type `String`.
 
+`main()` 函数在调用 `_readFileAsync()` 前使用了 `await` 关键字，
+让原生代码（文件 I/O）执行的同时，其他的 Dart 代码（例如事件处理器）能继续执行。
+使用 `await` 后，`_readFileAsync()` 调用返回的 `Future<String>` 类型也转换为了 `String`。
+从而在将结果 `content` 赋予变量时，隐式转换为 `String` 类型。
+
 {{site.alert.note}}
+
   The `await` keyword works only in functions that
   have `async` before the function body.
+
+  `await` 关键字仅在函数体前定义了 `async` 的函数中有效。
+
 {{site.alert.end}}
 
 As the following figure shows,
@@ -144,10 +203,17 @@ the Dart code pauses while `readAsString()` executes non-Dart code,
 in either the Dart virtual machine (VM) or the operating system (OS).
 Once `readAsString()` returns a value, Dart code execution resumes.
 
+如下图所示，无论是在 Dart VM 还是在系统中，
+Dart 代码都会在 `readAsString()` 执行非 Dart 代码时暂停。
+在 `readAsString()` 返回值后，Dart 代码将继续执行。
+
 ![Flowchart-like figure showing app code executing from start to exit, waiting for native I/O in between](/guides/language/concurrency/images/basics-await.png)
 
 If you’d like to learn more about using `async`, `await`, and futures,
 visit the [asynchronous programming codelab][].
+
+如果你想了解更多关于 `async`、`await` 和 `Future` 的内容，可以访问
+[异步编程 codelab][asynchronous programming codelab] 进行学习。
 
 [asynchronous programming codelab]: /codelabs/async-await
 
