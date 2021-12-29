@@ -220,12 +220,19 @@ visit the [asynchronous programming codelab][].
 
 ## How isolates work
 
+## Isolate 的工作原理
+
 Most modern devices have multi-core CPUs.
 To take advantage of all those cores,
 developers sometimes use shared-memory threads running concurrently.
 However, shared-state concurrency is
 [error prone](https://en.wikipedia.org/wiki/Race_condition#In_software) and
 can lead to complicated code.
+
+现代的设备通常会使用多核 CPU。开发者为了让程序在设备上有更好的表现，
+有时会使用共享内容的线程来并发运行代码。
+然而，状态的共享可能会 [产生竞态条件，从而造成错误](https://zh.wikipedia.org/wiki/%E7%AB%B6%E7%88%AD%E5%8D%B1%E5%AE%B3)，
+也可能会增加代码的复杂度。
 
 Instead of threads, all Dart code runs inside of isolates.
 Each isolate has its own memory heap,
@@ -234,17 +241,29 @@ any other isolate.
 Because there’s no shared memory, you don’t have to worry about
 [mutexes or locks](https://en.wikipedia.org/wiki/Lock_(computer_science)).
 
+Dart 代码并不在多个线程上运行，取而代之的是它们会在 isolate 内运行。
+每一个 isolate 会有自己的堆内存，从而确保 isolate 之间互相隔离，无法互相访问状态。
+由于这样的实现并不会共享内存，所以你也不需要担心
+[互斥锁和其他锁](https://zh.wikipedia.org/wiki/%E9%94%81_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6))。
+
 Using isolates, your Dart code can perform multiple independent tasks at once,
 using additional processor cores if they’re available.
 Isolates are like threads or processes,
 but each isolate has its own memory and a single thread running an event loop.
 
+在使用 isolate 时，你的 Dart 代码可以在同一时刻进行多个独立的任务，并且使用可用的处理器核心。
+Isolate 与线程和进程近似，但是每个 isolate 都拥有独立的内存，以及运行时间循环的独立线程。
 
 ### The main isolate
+
+### 主 isolate
 
 You often don’t need to think about isolates at all.
 A typical Dart app executes all its code in the app's main isolate,
 as shown in the following figure:
+
+在一般场景下，你完全无需关心 isolate。通常一个 Dart 应用会在主 isolate 下执行所有代码，
+如下图所示：
 
 ![A figure showing a main isolate, which runs `main()`, responds to events, and then exits](/guides/language/concurrency/images/basics-main-isolate.png)
 
@@ -256,8 +275,13 @@ getting to the event loop as soon as possible.
 The app then responds to each queued event promptly,
 using asynchronous operations as necessary.
 
+就算是只有一个 isolate 的应用，只要通过使用 async-await 来处理异步操作，也完全可以流畅运行。
+一个拥有良好性能的应用，会在快速启动后尽快进入事件循环。
+这使得应用可以通过异步操作快速响应对应的事件。
 
 ### The isolate life cycle
+
+### Isolate 的生命周期
 
 As the following figure shows,
 every isolate starts by running some Dart code,
@@ -267,6 +291,11 @@ to respond to user input or file I/O, for example.
 When the isolate's initial function returns,
 the isolate stays around if it needs to handle events.
 After handling the events, the isolate exits.
+
+如下图所示，每个 isolate 都是从运行 Dart 代码开始的，比如 `main()` 函数。
+执行的 Dart 代码可能会注册一些事件监听，例如处理用户操作或文件读写。
+当 isolate 执行的 Dart 代码结束后，如果它还需要处理已监听的事件，那么它依旧会继续被保持。
+处理完所有事件后，isolate 会退出。
 
 ![A more general figure showing that any isolate runs some code, optionally responds to events, and then exits](/guides/language/concurrency/images/basics-isolate.png)
 
