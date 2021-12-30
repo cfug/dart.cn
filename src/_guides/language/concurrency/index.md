@@ -302,11 +302,16 @@ After handling the events, the isolate exits.
 
 ### Event handling
 
+### 事件处理
+
 In a client app, the main isolate’s event queue might contain
 repaint requests and notifications of tap and other UI events.
 For example, the following figure shows a repaint event,
 followed by a tap event, followed by two repaint events.
 The event loop takes events from the queue in first in, first out order.
+
+在客户端应用中，主 isolate 的事件队列内，可能会包含重绘的请求、点击的通知或者其他界面事件。
+例如，下图展示了包含四个事件的事件队列，队列会按照先进先出的模式处理事件。
 
 ![A figure showing events being fed, one by one, into the event loop](/guides/language/concurrency/images/event-loop.png)
 
@@ -315,6 +320,9 @@ In the following figure, after `main()` exits,
 the main isolate handles the first repaint event.
 After that, the main isolate handles the tap event,
 followed by a repaint event.
+
+如下图所示，在 `main()` 方法执行完毕后，事件队列中的处理才开始，此时处理的是第一个重绘的事件。
+而后主 isolate 会处理点击事件，接着再处理另一个重绘事件。
 
 ![A figure showing the main isolate executing event handlers, one by one](/guides/language/concurrency/images/event-handling.png)
 
@@ -325,16 +333,25 @@ so subsequent events are handled too late.
 The app might appear to freeze,
 and any animation it performs might be jerky.
 
+如果某个同步执行的操作花费了很长的处理时间，应用看起来就像是失去了响应。
+在下图中，处理点击事件的代码比较耗时，导致紧随其后的事件并没有及时处理。
+这时应用可能会产生卡顿，所有的动画都无法顺畅播放。
+
 ![A figure showing a tap handler with a too-long execution time](/guides/language/concurrency/images/event-jank.png)
 
 In client apps, the result of a too-lengthy synchronous operation is often
 [janky (non-smooth) UI animation][jank].
 Worse, the UI might become completely unresponsive.
 
+在一个客户端应用中，耗时过长的同步操作，通常会导致 [卡顿的动画][jank]。
+而最糟糕的是，应用界面可能完全失去响应。
+
 [jank]: {{site.flutter_docs}}/perf/rendering
 
 
 ### Background workers
+
+### 后台运行对象
 
 If your app’s UI becomes unresponsive due to a time-consuming computation —
 [parsing a large JSON file][json], for example —
@@ -344,6 +361,11 @@ A common case, shown in the following figure,
 is spawning a simple worker isolate that
 performs a computation and then exits.
 The worker isolate returns its result in a message when the worker exits.
+
+如果你的应用受到耗时计算的影响而出现卡顿，例如 [解析较大的 JSON 文件][json]，
+你可以考虑将耗时计算转移到单独工作的 isolate，通常我们称这样的 isolate 为 **后台运行对象**。
+下图展示了一种常用场景，你可以生成一个 isolate，它将执行耗时计算，结束后退出。
+退出时该运行对象会把结果返回。
 
 [json]: {{site.flutter_docs}}/cookbook/networking/background-parsing
 
