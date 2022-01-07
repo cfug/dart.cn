@@ -380,8 +380,15 @@ none of the objects in the list is unsendable.
 If one of the objects is, say, a `Socket`, then
 the send fails because sockets are unsendable.
 
+每个 isolate 都可以通过消息通信传递一个对象，这个对象的所有内容都需要满足可传递的条件。
+并非所有的对象都满足传递条件，在无法满足条件时，消息发送会失败。
+举个例子，如果你想发送一个 `List<Object>`，你需要确保这个列表中所有元素都是可被传递的。
+假设这个列表中有一个 `Socket`，由于它无法被传递，所以你无法发送整个列表。
+
 For information on the kinds of objects that you can send in messages,
 see the API reference documentation for the [`send()` method][].
+
+你可以查阅 [`send()` 方法][`send()` method] 的文档来确定哪些类型可以进行传递。
 
 A worker isolate can perform I/O
 (reading and writing files, for example), set timers, and more.
@@ -389,22 +396,37 @@ It has its own memory and
 doesn’t share any state with the main isolate.
 The worker isolate can block without affecting other isolates.
 
+Isolate 工作对象可以进行 I/O 操作、设置定时器，以及其他各种行为。
+它会持有自己内存空间，与主 isolate 互相隔离。
+这个 isolate 在阻塞时也不会对其他 isolate 造成影响。
+
 [`send()` method]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
 
 
 ## Code examples
 
+## 代码示例
+
 This section discusses some examples
 that use the `Isolate` API
 to implement isolates.
 
+本节将重点讨论使用 `Isolate` API 实现 isolate 的一些示例。
+
 {{site.alert.info}}
+
   **Flutter note:**
   If you're using Flutter on a non-web platform,
   then instead of using the `Isolate` API directly,
   consider using the [Flutter `compute()` function][].
   The `compute()` function is a simple way to
   move a single function call to a worker isolate.
+
+  **Flutter 开发提示：**
+  如果你在非 Web 平台上使用 Flutter 进行开发，那么与其直接使用 `Isolate` API，
+  可以考虑使用 [Flutter 提供的 `compute()` 方法][Flutter `compute()` function]。
+  `compute()` 方法能以简单的方式将一个函数的调用封装至 isolate 工作对象内。
+
 {{site.alert.end}}
 
  [Flutter `compute()` function]: {{site.flutter_docs}}/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
@@ -412,16 +434,29 @@ to implement isolates.
 
 ### Implementing a simple worker isolate
 
+### 实现一个简单的 isolate 工作对象
+
 This section shows the implementation for a
 main isolate and the simple worker isolate that it spawns.
 The worker isolate executes a function and then exits,
 sending the main isolate a single message as it exits.
 (The [Flutter `compute()` function][] works in a similar way.)
 
+本节将展示一个主 isolate 与它生成的 isolate 工作对象的实现。
+Isolate 工作对象会执行一个函数，完成后结束对象，并将函数结果发送至主 isolate。
+（[Flutter 提供的 `compute()` 方法][Flutter `compute()` function] 也是以类似的方式工作的。）
+
 This example uses the following isolate-related API:
 
+下面的示例将使用到这些与 isolate 相关的 API：
+
 * [`Isolate.spawn()`][] and [`Isolate.exit()`][]
+
+  [`Isolate.spawn()`][] 和 [`Isolate.exit()`][]
+
 * [`ReceivePort`][] and [`SendPort`][]
+
+  [`ReceivePort`][] 和 [`SendPort`][]
 
 [`Isolate.exit()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
 [`Isolate.spawn()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
@@ -429,6 +464,8 @@ This example uses the following isolate-related API:
 [`SendPort`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
 
 Here’s the code for the main isolate:
+
+主 isolate 的代码如下：
 
 ```dart
 void main() async {
@@ -451,9 +488,14 @@ The `_parseInBackground()` function contains the code that
 _spawns_ (creates and starts) the isolate for the background worker,
 and then returns the result:
 
+`_parseInBackground()` 方法包含了 **生成** 后台 isolate 工作对象的代码，并返回结果：
+
 1. Before spawning the isolate, the code creates a `ReceivePort`,
    which enables the worker isolate
    to send messages to the main isolate.
+
+   在生成 isolate 之前，代码创建了一个 `ReceivePort`，
+   让 isolate 工作对象可以传递信息至主 isolate。 
 
 2. Next is the call to `Isolate.spawn()`,
    which creates and starts the isolate for the background worker.
@@ -464,14 +506,26 @@ and then returns the result:
    The code doesn't _create_ a `SendPort`;
    it uses the `sendPort` property of the `ReceivePort`.
 
+   接下来是调用 `Isolate.spawn()`，生成并启动一个在后台运行的 isolate 工作对象。
+   该方法的第一个参数是 isolate 工作对象执行的函数引用：`_readAndParseJson`。
+   第二个参数则是 isolate 用来与主 isolate 传递消息的 `SendPort`。
+   此处的代码并没有 **创建** 新的 `SendPort`，
+   而是直接使用了 `ReceivePort` 的 `sendPort` 属性。
+
 3. Once the isolate is spawned, the main isolate waits for the result.
    Because the `ReceivePort` class implements `Stream`,
    the [`first`][] property is an easy way to get
    the single message that the worker isolate sends.
 
+   Isolate 初始化完成后，主 isolate 即开始等待它的结果。
+   由于 `ReceivePort` 实现了 `Stream`，你可以很方便地使用
+   [`first`][] 属性获得 isolate 工作对象返回的单个消息。
+
 [`first`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream/first.html
 
 The spawned isolate executes the following code:
+
+初始化后的 isolate 会执行以下代码：
 
 ```dart
 Future _readAndParseJson(SendPort p) async {
@@ -491,21 +545,38 @@ then the memory that holds the message in the exiting isolate isn’t copied,
 but instead is transferred to the receiving isolate.
 That transfer is quick and completes in constant time — O(1).
 
+在最后一句代码后，isolate 会退出，将 `jsonData` 通过传入的 `SendPort` 发送。
+在 isolate 之间传递消息时，通常会发生数据拷贝，
+所耗费的时间随着数据的大小而发生改变，复杂度为 O(n)。
+然而，当你使用 `Isolate.exit()` 发送数据时，isolate 中持有的消息并没有发生拷贝，
+而是直接转移到了接收的 isolate 中。
+这样的转移速度很快，耗费的时间复杂度仅为 O(1)。
+
 [big O notation]: https://en.wikipedia.org/wiki/Big_O_notation
 
 {{site.alert.version-note}}
+
   `Isolate.exit()` was added in 2.15.
   Previous releases support only explicit message passing,
   using `Isolate.send()` as shown in the next section's example.
+
+  `Isolate.exit()` 在 Dart 2.15 中被引入。
+  在先前的 Dart 版本中，仅支持通过 `Isolate.send()` 进行显式的消息传递，
+  下一个小节的示例中将进行说明。
+
 {{site.alert.end}}
 
 The following figure illustrates the communication between
 the main isolate and the worker isolate:
 
+下图说明了主 isolate 和 isolate 工作对象之间的通信流程：
+
 ![A figure showing the previous snippets of code running in the main isolate and in the worker isolate](/guides/language/concurrency/images/isolate-api.png)
 
 
 ### Sending multiple messages between isolates
+
+### 在 isolate 之间发送多次消息内容
 
 If you need more communication between isolates,
 then you need to use the [`send()` method][] of `SendPort`.
@@ -513,18 +584,33 @@ One common pattern, which the following figure shows,
 is for the main isolate to send a request message to the worker isolate,
 which then sends one or more reply messages.
 
+如果你想在 isolate 之间建立更多的通信，那么你需要使用
+`SendPort` 的 [`send()` 方法][`send()` method]。
+下图展示了一种常见的场景，主 isolate 会发送请求消息至 isolate 工作对象，
+然后它们之间会继续进行多次通信，进行请求和回复。
+
 ![A figure showing the main isolate spawning the isolate and then sending a request message, which the worker isolate responds to with a reply message; two request-reply cycles are shown](/guides/language/concurrency/images/isolate-custom-bg-worker.png)
 
 For examples of sending multiple messages,
 see the following [isolate samples][]:
 
+下方列举的 [isolate 示例][isolate samples]
+包含了发送多次消息的使用方法：
+
 * [send_and_receive.dart][],
   which shows how to send a message from
   the main isolate to the spawned isolate.
   It’s otherwise similar to the preceding example.
+
+  [send_and_receive.dart][] 展示了如何从主 isolate 发送消息至生成的 isolate。
+  与前面的示例较为接近。
+
 * [long_running_isolate.dart][],
   which shows how to spawn a long-running isolate that
   receives and sends multiple times.
+
+  [long_running_isolate.dart][] 展示了如何生成一个长期运行，
+  且多次发送和接收消息的 isolate。
 
 {% assign samples = "https://github.com/dart-lang/samples/tree/master/isolates" %}
 
@@ -535,6 +621,8 @@ see the following [isolate samples][]:
 
 ## Performance and isolate groups
 
+## 性能和 isolate 组
+
 When an isolate calls [`Isolate.spawn()`][],
 the two isolates have the same executable code
 and are in the same _isolate group_.
@@ -542,6 +630,11 @@ Isolate groups enable performance optimizations such as sharing code;
 a new isolate immediately runs the code owned by the isolate group.
 Also, `Isolate.exit()` works only when the isolates
 are in the same isolate group.
+
+当一个 isolate 调用了 [`Isolate.spawn()`][]，
+两个 isolate 将拥有同样的执行代码，并归入同一个 **isolate 组** 中。
+Isolate 组会带来性能优化，例如新的 isolate 会运行由 isolate 组持有的代码，即共享代码调用。
+同时，`Isolate.exit()` 仅在对应的 isolate 属于同一组时有效。
 
 In some special cases,
 you might need to use [`Isolate.spawnUri()`][],
@@ -552,11 +645,21 @@ and the new isolate isn't in its spawner's isolate group.
 Another performance consequence is that message passing
 is slower when isolates are in different groups.
 
+某些场景下，你可能需要使用 [`Isolate.spawnUri()`][]，
+使用执行的 URI 生成新的 isolate，并且包含代码的副本。
+然而，`spawnUri()` 会比 `spawn()` 慢很多，
+并且新生成的 isolate 会位于新的 isolate 组。
+另外，当 isolate 在不同的组中，它们之间的消息传递会变得更慢。
+
 [`Isolate.spawnUri()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawnUri.html
 
 {{ site.alert.info }}
+
   **Flutter note:**
   Flutter doesn't support `Isolate.spawnUri()`.
+
+  **在 Flutter 开发中请注意：** Flutter 不支持 `Isolate.spawnUri()`。
+
 {{ site.alert.end }}
 
 {% comment %}
