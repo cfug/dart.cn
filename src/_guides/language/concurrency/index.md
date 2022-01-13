@@ -18,8 +18,10 @@ classes such as `Future` and `Stream`.
 This page gives an overview of async-await, `Future`, and `Stream`,
 but it's mostly about isolates.
 
-Dart 通过 async-await、isolate 和 `Future` 及 `Stream` 两种类型概念支持了并发代码编程。
-本篇文章会对 async-await、`Future` 和 `Stream` 进行简略的介绍，而侧重点放在 isolate 的讲解上。
+Dart 通过 async-await、isolate 以及一些异步类型概念
+（例如 `Future` 和 `Stream`）支持了并发代码编程。
+本篇文章会对 async-await、`Future` 和 `Stream`
+进行简略的介绍，而侧重点放在 isolate 的讲解上。
 
 Within an app, all Dart code runs in an _isolate._
 Each Dart isolate has a single thread of execution and
