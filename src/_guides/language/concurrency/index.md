@@ -32,9 +32,9 @@ that the operating system provides,
 the Dart VM's use of these primitives
 is an implementation detail that this page doesn't discuss.
 
-在应用中，所有的 Dart 代码都运行在一个 **isolate** 内。
+在应用中，所有的 Dart 代码都在 **isolate** 中运行。
 每一个 Dart 的 isolate 都有独立的运行线程，它们无法与其他 isolate 共享可变对象。
-在需要进行交换的场景里，isolate 会使用消息通信机制。
+在需要进行通信的场景里，isolate 会使用消息机制。
 尽管 Dart 的 isolate 模型设计是基于操作系统提供的进程和线程等更为底层的原语进行设计的，
 但在本篇文章中，我们不对其具体实现展开讨论。
 
@@ -52,6 +52,7 @@ enabling parallel code execution on multiple processor cores.
   Isolates are implemented only on the [Dart Native platform][];
   Dart web apps can use [web workers][] for similar functionality.
 
+  **多平台使用时注意：**
   所有的 Dart 应用都可以使用 async-await、`Future` 和 `Stream`。
   而 isolate 仅针对 [原生平台的使用][Dart Native platform] 进行实现。
 
@@ -70,7 +71,7 @@ If you’re already familiar with `Future`, `Stream`, and async-await,
 then you can skip ahead to the [isolates section][].
 
 如果你已经对 `Future`、`Stream` 和 async-await 比较熟悉了，
-你可以直接跳到 [isolate 部分][isolates section] 进行阅读。
+可以直接跳到 [isolate 部分][isolates section] 进行阅读。
 
 [isolates section]: #how-isolates-work
 
@@ -252,7 +253,7 @@ Isolates are like threads or processes,
 but each isolate has its own memory and a single thread running an event loop.
 
 在使用 isolate 时，你的 Dart 代码可以在同一时刻进行多个独立的任务，并且使用可用的处理器核心。
-Isolate 与线程和进程近似，但是每个 isolate 都拥有独立的内存，以及运行时间循环的独立线程。
+Isolate 与线程和进程近似，但是每个 isolate 都拥有独立的内存，以及运行事件循环的独立线程。
 
 ### The main isolate
 
@@ -335,7 +336,7 @@ and any animation it performs might be jerky.
 
 如果某个同步执行的操作花费了很长的处理时间，应用看起来就像是失去了响应。
 在下图中，处理点击事件的代码比较耗时，导致紧随其后的事件并没有及时处理。
-这时应用可能会产生卡顿，所有的动画都无法顺畅播放。
+这时应用可能会产生卡顿，所有的动画都无法流畅播放。
 
 ![A figure showing a tap handler with a too-long execution time](/guides/language/concurrency/images/event-jank.png)
 
@@ -364,8 +365,8 @@ The worker isolate returns its result in a message when the worker exits.
 
 如果你的应用受到耗时计算的影响而出现卡顿，例如 [解析较大的 JSON 文件][json]，
 你可以考虑将耗时计算转移到单独工作的 isolate，通常我们称这样的 isolate 为 **后台运行对象**。
-下图展示了一种常用场景，你可以生成一个 isolate，它将执行耗时计算，结束后退出。
-退出时该运行对象会把结果返回。
+下图展示了一种常用场景，你可以生成一个 isolate，它将执行耗时计算的任务，并在结束后退出。
+这个 isolate 工作对象退出时会把结果返回。
 
 [json]: {{site.flutter_docs}}/cookbook/networking/background-parsing
 
