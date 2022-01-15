@@ -57,12 +57,13 @@ enabling parallel code execution on multiple processor cores.
   **多平台使用时注意：**
   所有的 Dart 应用都可以使用 async-await、`Future` 和 `Stream`。
   而 isolate 仅针对 [原生平台的使用][Dart Native platform] 进行实现。
+  使用 Dart 构建的网页应用可以 [使用 Web Workers][] 实现相似的功能。
 
 {{site.alert.end}}
 
 [Dart Native platform]: /overview#platform
 [web workers]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
-
+[使用 Web Workers]: https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers
 
 
 ## Asynchrony types and syntax
@@ -234,7 +235,7 @@ can lead to complicated code.
 
 现代的设备通常会使用多核 CPU。开发者为了让程序在设备上有更好的表现，
 有时会使用共享内容的线程来并发运行代码。
-然而，状态的共享可能会 [产生竞态条件，从而造成错误](https://zh.wikipedia.org/wiki/%E7%AB%B6%E7%88%AD%E5%8D%B1%E5%AE%B3)，
+然而，状态的共享可能会 [产生竞态条件，从而造成错误](https://baike.baidu.com/l/kex6qKvt)，
 也可能会增加代码的复杂度。
 
 Instead of threads, all Dart code runs inside of isolates.
@@ -247,7 +248,7 @@ Because there’s no shared memory, you don’t have to worry about
 Dart 代码并不在多个线程上运行，取而代之的是它们会在 isolate 内运行。
 每一个 isolate 会有自己的堆内存，从而确保 isolate 之间互相隔离，无法互相访问状态。
 由于这样的实现并不会共享内存，所以你也不需要担心
-[互斥锁和其他锁](https://zh.wikipedia.org/wiki/%E9%94%81_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6))。
+[互斥锁和其他锁](https://baike.baidu.com/l/My2bXiba)。
 
 Using isolates, your Dart code can perform multiple independent tasks at once,
 using additional processor cores if they’re available.
@@ -612,7 +613,7 @@ see the following [isolate samples][]:
   which shows how to spawn a long-running isolate that
   receives and sends multiple times.
 
-  [long_running_isolate.dart][] 展示了如何生成一个长期运行，
+  [long_running_isolate.dart][] 展示了如何生成一个长期运行、
   且多次发送和接收消息的 isolate。
 
 {% assign samples = "https://github.com/dart-lang/samples/tree/master/isolates" %}
@@ -661,7 +662,8 @@ is slower when isolates are in different groups.
   **Flutter note:**
   Flutter doesn't support `Isolate.spawnUri()`.
 
-  **在 Flutter 开发中请注意：** Flutter 不支持 `Isolate.spawnUri()`。
+  **在 Flutter 开发中请注意：** 
+  Flutter 不支持 `Isolate.spawnUri()`。
 
 {{ site.alert.end }}
 
