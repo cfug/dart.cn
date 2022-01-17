@@ -45,17 +45,11 @@ int? aNullableInt = null;
 You can
 [use null safety](#enable-null-safety) in your normal development environment,
 [migrate existing code][migration guide] to use null safety,
-enable null safety in [DartPad]({{site.dartpad}}),
-or learn about null safety using
-[DartPad with Null Safety][nullsafety.dartpad.dev]
-(shown in the following screenshot).
+or try null safety in [DartPad]({{site.dartpad}}).
 
-你可以 [在你的开发项目里尝试空安全](#enable-null-safety)、
-[迁移你项目中的代码][migration guide] 至空安全、
-或者通过 [支持空安全的 DartPad][nullsafety.dartpad.dev] 进行练习，
-如下面的截图所示。
-
-![Screenshot of DartPad in null-safe mode](/null-safety/dartpad-snippet.png)
+你可以在你的普通开发环境中 [使用空安全](#enable-null-safety)，
+也建议 [迁移你项目中的代码][migration guide] 至空安全，
+或者通过 [支持空安全的 DartPad]({{site.dartpad}}) 进行空安全特性实验。
 
 For an interactive, example-driven introduction to null safety language features,
 see the [null safety codelab][Null safety codelab].
@@ -220,9 +214,9 @@ For more information about null safety, see the following resources:
 
   [空安全常见问题和解答][Null safety FAQ]
   
-* [DartPad with null safety][nullsafety.dartpad.dev]
+* [DartPad with null safety]({{site.dartpad}})
 
-  [支持空声明的 DartPad (DartPad with null safety)][nullsafety.dartpad.dev]
+  [支持空声明的 DartPad (DartPad with null safety)]({{site.dartpad}})
 
 * [Null safety sample code][calculate_lix]
 
@@ -234,7 +228,7 @@ For more information about null safety, see the following resources:
 
 * [Dart blog][]
 
-  [Dart 官方博客)][Dart blog]
+  [Dart 官方博客][Dart blog]
 
 [110]: https://github.com/dart-lang/language/issues/110
 [calculate_lix]: https://github.com/dart-lang/samples/tree/master/null_safety/calculate_lix
@@ -243,6 +237,5 @@ For more information about null safety, see the following resources:
 [migration guide]: /null-safety/migration-guide
 [Null safety FAQ]: /null-safety/faq
 [Null safety codelab]: /codelabs/null-safety
-[nullsafety.dartpad.dev]: https://nullsafety.dartpad.dev
 [Understanding null safety]: /null-safety/understanding-null-safety
 
