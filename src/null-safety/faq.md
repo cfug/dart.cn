@@ -625,9 +625,9 @@ A few notes that are worth highlighting:
 
 ## 资源
 
-*   [DartPad with Null Safety](https://nullsafety.dartpad.dev)
+*   [DartPad with Null Safety]({{site.dartpad}})
 
-    [支持空安全的 DartPad](https://dartpad.cn/?null_safety=true)
+    [支持空安全的 DartPad]({{site.dartpad}})
 
 *   [Sound null safety](/null-safety)
 

@@ -22,7 +22,7 @@ flutter_api: https://api.flutter-io.cn
 pub: https://pub.flutter-io.cn
 pub-api: https://pub.flutter-io.cn/documentation
 pub-pkg: https://pub.flutter-io.cn/packages
-lints: https://dart-lang.github.io/linter/lints
+lints: https://dart.cn/tools/linter-rules
 dartpad: https://dartpad.cn
 dartpad-embed: https://dartpad.cn/embed-dart.html
 dartpad-embed-html: https://dartpad.cn/embed-html.html
