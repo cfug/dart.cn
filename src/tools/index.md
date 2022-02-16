@@ -61,7 +61,7 @@ and to experiment with Dart language features.
 It supports Dart's core libraries,
 except for VM libraries such as dart:io.
 
-<img src="{% asset dartpad-hello.png @path %}" alt="DartPad Hello World" width="200px" align="right" /> 
+<img src="/assets/img/dartpad-hello.png" alt="DartPad Hello World" width="200px" align="right" />
 [DartPad](/tools/dartpad) 是一个用于学习 Dart 语法以及
 体验 Dart 语言功能的在线工具。
 它支持 Dart 的核心库，但不支持类似 dart:io 这样的 VM 库。

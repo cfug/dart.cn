@@ -264,7 +264,7 @@ Let's customize the app you just created.
     在浏览器刷新应用。
     现在你简易的 Dart 程序已经有了一个待办列表！
     如下图所示：<br>
-    ![Running the revised app]({% asset bare-bones-todo.png @path %}){:width="500"}
+    ![Running the revised app](/assets/img/bare-bones-todo.png){:width="500"}
 
  6. Optionally, improve the formatting by editing `web/styles.css`,
     then reload the app to check your changes.

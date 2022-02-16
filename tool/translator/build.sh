@@ -42,6 +42,8 @@ bundle exec jekyll build;
 set -x
 set -e
 pwd
+
+mkdir -p _site/assets/
 cp -r tool/translator/assets/*  _site/assets/
 cp tool/translator/robots.txt _site
 cd tool/translator
