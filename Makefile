@@ -96,43 +96,12 @@ build:
 
 # Overwrite robots.txt with production version
 write-prod-robots:
-	@echo "User-agent: *\nDisallow:\n\nSitemap: https://dart.dev/sitemap.xml" \
+	@echo "User-agent: *\nDisallow:\n\nSitemap: https://dart.cn/sitemap.xml" \
     		> _site/robots.txt
 
 # Deploy locally
 deploy:
-ifeq ("${FIREBASE_PROJECT}", "default")
-	make write-prod-robots
-endif
-	npx firebase deploy -m ${BUILD_COMMIT} \
-		--only hosting \
-		--project ${FIREBASE_PROJECT}
-
-# Deploy to Firebase hosting on CI/CD
-# Requires that a `FIREBASE_TOKEN` is set in ENV
-deploy-ci:
-ifeq ("${FIREBASE_PROJECT}", "default")
-	make write-prod-robots
-endif
-	npx firebase deploy -m ${BUILD_COMMIT} \
-		--only hosting \
-		--project ${FIREBASE_PROJECT} \
-		--token ${FIREBASE_TOKEN} \
-		--debug
-
-# Deploy to Firebase via a staging channel
-# Usage: `make stage [FIREBASE_CHANNEL=<name>]`
-stage:
-	npx firebase hosting:channel:deploy ${FIREBASE_CHANNEL} \
-		--project ${FIREBASE_PROJECT}
-
-# Test hosting locally with Firebase emulator
-emulate:
-	npx firebase emulators:start \
-		--only hosting \
-		--project ${FIREBASE_PROJECT}
-
-
+	sh tool/translator/deploy-cn.sh
 
 ################## UTILS ##################
 

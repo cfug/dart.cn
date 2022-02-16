@@ -2,7 +2,7 @@
 
 # set -e -o pipefail
 
-source ./tool/shared/env-set-check.sh
+# source ./tool/shared/env-set-check.sh // shared folder no longer exists
 
 # while [[ "$1" == -* ]]; do
 #   case "$1" in

@@ -163,7 +163,8 @@ ENV TOOL_DIR=$BASE_DIR/tool
 
 ARG BUILD_CONFIGS=_config.yml
 ENV BUILD_CONFIGS=$BUILD_CONFIGS
-RUN bundle exec jekyll build --config $BUILD_CONFIGS
+# RUN bundle exec jekyll build --config $BUILD_CONFIGS
+RUN tool/translator/build.sh
 
 
 # ============== DEPLOY to FIREBASE ==============
