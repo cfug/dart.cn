@@ -51,7 +51,7 @@ to the list of pets.
   {% include dartpad-embedded-troubleshooting.md %}
 {{site.alert.end}}
 
-```dart:run-dartpad:mode-html:ga_id-play_with_a_web_app:null_safety-true
+```dart:run-dartpad:mode-html:ga_id-play_with_a_web_app
 {$ begin main.dart $}
 import 'dart:html';
 
@@ -203,7 +203,7 @@ Once your app has compiled, the browser should display
 浏览器会显示
 「Your Dart app is running.」
 
-![Launched bare-bones app]({% asset bare-bones-web-app.png @path %}){:width="500"}
+![Launched bare-bones app](/assets/img/bare-bones-web-app.png){:width="500"}
 
 
 ## 6. Add custom code to the app
@@ -258,7 +258,7 @@ Let's customize the app you just created.
     Refresh the app's browser window.
     Now your simple Dart app has a todo list!
     It should look something like this:<br>
-    ![Running the revised app]({% asset bare-bones-todo.png @path %}){:width="500"}
+    ![Running the revised app](/assets/img/bare-bones-todo.png){:width="500"}
 
     webdev 工具会自动重新构建你的应用程序。
     在浏览器刷新应用。

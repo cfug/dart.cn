@@ -101,7 +101,7 @@ class.
 import 'dart:convert';
 import 'dart:io';
 
-Future<void> main() async {
+void main() async {
   var file = File(Platform.script.toFilePath());
   print(await (file.readAsString(encoding: ascii)));
 }
@@ -131,7 +131,7 @@ until it encounters the char code for `;`.
 ```dart
 import 'dart:io';
 
-Future<void> main() async {
+void main() async {
   final semicolon = ';'.codeUnitAt(0);
   final result = <int>[];
 
@@ -168,7 +168,7 @@ this stream (using `await for`) and the data is given in chunks.
 ```dart
 import 'dart:io';
 
-Future<void> main() async {
+void main() async {
   final result = <int>[];
 
   Stream<List<int>> stream = File(Platform.script.toFilePath()).openRead();
@@ -208,7 +208,7 @@ need interactive control over the process.
 ```dart
 import 'dart:io';
 
-Future<void> main() async {
+void main() async {
   // List all files in the current directory,
   // in UNIX-like operating systems.
   ProcessResult results = await Process.run('ls', ['-l']);
@@ -242,7 +242,7 @@ we use a
 import 'dart:convert';
 import 'dart:io';
 
-Future<void> main() async {
+void main() async {
   final process = await Process.start('ls', ['-l']);
   final lineStream = process.stdout
       .transform(const Utf8Decoder())
@@ -272,7 +272,7 @@ to pipe the output of the process to a file.
 ```dart
 import 'dart:io';
 
-Future<void> main() async {
+void main() async {
   final output = File('output.txt').openWrite();
   Process process = await Process.start('ls', ['-l']);
 
@@ -303,7 +303,7 @@ that just answers 'Hello, world' to any request.
 ```dart
 import 'dart:io';
 
-Future<void> main() async {
+void main() async {
   final server = await HttpServer.bind('127.0.0.1', 8082);
   await for (final request in server) {
     request.response.write('Hello, world');
@@ -363,7 +363,7 @@ Future<void> sendNotFound(HttpResponse response) async {
   await response.close();
 }
 
-Future<void> main() async {
+void main() async {
   // Compute base path for the request based on the location of the
   // script, and then start the server.
   final script = File(Platform.script.toFilePath());

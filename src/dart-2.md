@@ -162,9 +162,9 @@ from either Dart 1.x or an earlier version of Dart 2.
 
      Flutter：[`flutter pub upgrade`][flutter pub upgrade]
 
-   * Server-side or web: [`pub upgrade`][pub upgrade]
+   * Server-side or web: [`dart pub upgrade`][pub upgrade]
 
-     服务端或 Web：[`pub upgrade`][pub upgrade]
+     服务端或 Web：[`dart pub upgrade`][pub upgrade]
 
 3. **Run the [dart2_fix tool.][dart2_fix]** It helps migrate some
    usages of deprecated Dart 1.x APIs to Dart 2.
@@ -182,9 +182,9 @@ from either Dart 1.x or an earlier version of Dart 2.
      Flutter：[`flutter analyze`][Flutter analyzer]
      或使用 Android Studio/IntelliJ 或 VS Code 的问题视图。
 
-   * Server-side or web: [`dartanalyzer`][dartanalyzer]
+   * Server-side or web: [`dart analyze`][dartanalyzer]
 
-     服务端或 Web：[`dartanalyzer`][dartanalyzer]
+     服务端或 Web：[`dart analyze`][dartanalyzer]
 
 5. **Fix issues in your code and run the analyzer again**,
    repeating until your code passes static analysis.
@@ -367,9 +367,9 @@ environment:
 [automated tests]: /guides/testing
 [customize static analysis]: /guides/language/analysis-options
 [Flutter analyzer]: {{site.flutter_docs}}/testing/debugging#the-dart-analyzer
-[dartanalyzer]: /tools/dart-analyze
+[dart analyze]: /tools/dart-analyze
 [flutter pub upgrade]: {{site.flutter_docs}}/development/packages-and-plugins/using-packages#updating-package-dependencies
-[pub upgrade]: /guides/packages#upgrading-a-dependency
+[dart pub upgrade]: /guides/packages#upgrading-a-dependency
 [dart2_fix]: https://github.com/dart-lang/dart2_fix
 [angular-examples repos]: https://github.com/angular-examples
 [apiref]: {{site.dart_api}}/dev

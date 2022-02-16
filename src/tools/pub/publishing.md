@@ -167,12 +167,11 @@ Using a verified publisher has the following advantages:
 
   你可以避免让 pub.dev 展示你的个人邮箱，pub.dev 将展示发布者域名和联系地址作为代替。
 
-* A verified publisher badge {% asset verified-publisher.svg
-  alt="pub.dev verified publisher logo" %} is displayed next to your package name
-  on both search pages and individual package pages.
+* A verified publisher badge <img src="/assets/img/verified-publisher.svg" alt="pub.dev verified publisher logo"> is displayed next to your package name on both search pages and individual package pages.
 
-  一个已验证发布者徽章 {% asset verified-publisher.svg
-  alt="pub.dev verified publisher logo" %} 将在你的 package 名字旁边展示，
+  一个已验证发布者徽章
+  <img src="/assets/img/verified-publisher.svg" alt="pub.dev verified publisher logo">
+  将在你的 package 名字旁边展示，
   不论是在搜索页面还是单独的 package 页面。
 
 ### Creating a verified publisher {#create-verified-publisher}
@@ -419,6 +418,18 @@ follow these practices:
 
   执行 `dart pub publish` 上传前仔细检查文件列表。
   如果发现了不需要的文件，则取消这次上传。
+
+## Platform support
+
+The [pub.dev site]({{site.pub}}) detects which platforms a package supports,
+displaying these platforms on the package page.
+Users of pub.dev can filter searches by platform.
+
+To change the automatically generated list of supported platforms,
+[specify supported platforms][] in the pubspec.
+
+[specify supported platforms]: /tools/pub/pubspec#platforms
+
 
 ## Uploaders
 

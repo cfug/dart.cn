@@ -3,125 +3,55 @@ name: build
 on:
   # Run on PRs and pushes to the default branch.
   push:
-    branches: [ master ]
+    branches:
+      - master
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
   schedule:
     - cron: "0 0 * * 0"
 
 env:
-  _OS_NAME: linux
-  DART_SITE_ENV_DEFS: 1
-  JEKYLL_ENV: production
+  # Keep for Dart SDK reporting
   PUB_ENVIRONMENT: bot.github
-  SITE_LOCALHOST_PORT: 5000
-  SITE_JEKYLL_DEST: _site
-  SITE_JEKYLL_SRC: src
-  TMP: ${{ github.workspace }}/tmp
-  TZ: US/Pacific # normalize build timestamp
+  # LTS
+  NODE_VERSION: '16'
+  # Tool location
+  BASE_DIR: ${{ github.workspace }}
+  TOOL_DIR: ${{ github.workspace }}/tool
 
 jobs:
+
   test:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        sdk: [dev, beta, stable]
-        task:
-          - ./tool/build.sh --check-links
-          - ./tool/check-code.sh
-        experimental: [true]
-        # TODO: should be false to all.
-        include:
-          - sdk: dev
-            task: ./tool/analyze-and-test-examples.sh
-            experimental: true
-          - sdk: beta
-            task: ./tool/analyze-and-test-examples.sh
-            experimental: true
-          - sdk: stable
-            task: ./tool/analyze-and-test-examples.sh
-            experimental: true
+        sdk: [stable, beta, dev]
     steps:
       - uses: actions/checkout@v2
         with:
-          # submodules param for checkout action to get site-shared, 'true' might be enough
-          submodules: "recursive"
-      - run: mkdir -p $TMP
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 16
-      - uses: ruby/setup-ruby@v1
-        if: contains(matrix.task, 'build.sh')
-        with:
-          bundler-cache: true
-          ruby-version: 2.7.4
-      - uses: dart-lang/setup-dart@v1.3
+          submodules: recursive
+      - uses: dart-lang/setup-dart@v1
         with:
           sdk: ${{ matrix.sdk }}
-      - name: Install node dependencies
-        # TODO: caching requires a lockfile for node deps, so does npm ci.
-        run: npm install
-      - name: Install dart dependencies
-        run: dart pub get
-      - run: ./tool/shared/write-ci-info.sh -v
-        if: contains(matrix.task, 'build.sh')
-      - run: ${{ matrix.task }}
-        continue-on-error: ${{ matrix.experimental }}
-
-#  sdk-files-up-to-date:
-#    runs-on: ubuntu-latest
-#    if: |
-#      github.event_name == 'push'
-#      && github.ref == 'refs/heads/master'
-#    steps:
-#      - uses: actions/checkout@v2
-#      - run: mkdir -p $TMP
-#      - uses: dart-lang/setup-dart@v1.3
-#        with:
-#          sdk: stable
-#      - run: ./tool/check-diagnostics.sh
-
-  firebase-checks:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: mkdir -p $TMP
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - run: ./tool/firebase-checks.sh
+      - run: dart pub get
+      - run: tool/test.sh
+        continue-on-error: true
+        env:
+          DART_CHANNEL: ${{ matrix.sdk }}
 
   deploy:
-    needs: [test]
+    if: ${{ github.event_name == 'push' && 
+            github.ref == 'refs/heads/master' && 
+            github.repository == 'cfug/dart.cn' }}
+    needs: test
     runs-on: ubuntu-latest
-    if: |
-      github.event_name == 'push'
-      && github.ref == 'refs/heads/master'
-      && github.repository == 'cfug/dart.cn'
+    env:
+      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      FIREBASE_PROJECT: default
     steps:
       - uses: actions/checkout@v2
         with:
-          # submodules param for checkout action to get site-shared, 'true' might be enough
-          submodules: "recursive"
-      - run: mkdir -p $TMP
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 16
-      - uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-          ruby-version: 2.7.4
-      - uses: dart-lang/setup-dart@v1.3
-        with:
-          sdk: stable
-      - name: Install node dependencies
-        # TOOD: caching requires a lockfile for node deps, so does npm ci.
-        run: npm install
-      - name: Install dart dependencies
-        run: dart pub get
-      - run: ./tool/shared/write-ci-info.sh -v
-      - run: ./tool/translator/build.sh
-      - run: ./tool/translator/deploy-cn.sh --robots ok default
-        env:
-          DEPLOY_TOKEN: ${{ secrets.CHENGLU_DEPLOY_KEY }}
+          submodules: recursive
+      - run: make build

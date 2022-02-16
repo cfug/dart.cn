@@ -188,7 +188,7 @@ Here's one way to configure Dart support:
   
     The **Dart SDK** specifies the directory that
     contains the SDK's `bin` and `lib` directories;
-    the `bin` directory contains tools such as `dart` and `dartdoc`.
+    the `bin` directory contains tools such as `dart` and `dartaotruntime`.
     The IDE ensures that the path is valid.
     
     **Dart SDK** 路径为包含了 `bin` 和 `lib` 目录的路径；

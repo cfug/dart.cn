@@ -41,7 +41,7 @@ instead of the JavaScript that [dartdevc][] produces.
 For more information on using Chrome DevTools,
 see the [Chrome DevTools documentation.][Chrome DevTools]
 
-[source maps]: https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps
+[source maps]: https://developer.chrome.com/docs/devtools/javascript/source-maps/
 
 To use the Dart DevTools or Chrome DevTools
 to debug a Dart web app, you need the following software:
@@ -65,7 +65,7 @@ or can't use the Chrome browser to debug, see the tips in the
 
 ## Getting started with Dart DevTools {#using-dart-devtools}
 
-{% asset dart-devtools-screenshot.png %}
+<img src="/assets/img/dart-devtools-screenshot.png" alt="DevTools">
 
 This section leads you through the basics of
 using Dart DevTools to debug a web app.
@@ -124,8 +124,7 @@ but you'll need to adjust the instructions to match your app.
    * If Dart Debug Extension is installed and
      you used the `--debug-extension` flag to `webdev`,
      click the Dart logo
-     {% asset shared/dart/icon/64.png width="16px" alt="Dart logo"
-     class="align-baseline" %}
+     <img src="/assets/shared/dart/icon/64.png" width="16" alt="Dart logo" class="align-baseline">
      at the top right of the browser window.
      
    * If you used the `--debug` flag to `webdev`,
@@ -204,13 +203,12 @@ For more information, see the following:
 
 * Documentation for [your IDE][IDE]
 * [Dart DevTools documentation][Dart DevTools]
-* [devtools package documentation][devtools-pkg]
 * [dartdevc FAQ][]
 * [webdev tool documentation][webdev]
 * [webdev package documentation][webdev-pkg]
 * [Tips for debugging dart2js-produced code][dart2js-debug]
 
-[Chrome DevTools]: https://developers.google.com/web/tools/chrome-devtools
+[Chrome DevTools]: https://developer.chrome.com/docs/devtools/
 [Dart Debug Extension]: https://chrome.google.com/webstore/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm
 [Dart DevTools]: /tools/dart-devtools
 [IDE]: /tools#ides-and-editors
@@ -219,10 +217,9 @@ For more information, see the following:
 [dart2js-debug]: /tools/dart2js#debugging
 [dartdevc]: /tools/dartdevc
 [dartdevc FAQ]: /tools/dartdevc/faq
-[devtools-pkg]: {{site.pub-pkg}}/devtools
 [Google Chrome]: https://www.google.com/chrome
 [issue 1925]: https://github.com/flutter/devtools/issues/1925
-[JavaScript debugging reference]: https://developers.google.com/web/tools/chrome-devtools/javascript/reference
+[JavaScript debugging reference]: https://developer.chrome.com/docs/devtools/javascript/reference/
 [dart pub global documentation]: /tools/pub/cmd/pub-global
 [webdev]: /tools/webdev
 [webdev repo,]: https://github.com/dart-lang/webdev

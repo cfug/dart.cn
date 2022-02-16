@@ -31,26 +31,13 @@ directory that has these command-line tools:
 
 [`dart`](/tools/dart-tool)
 : The command-line interface for creating, formatting, analyzing, testing,
-  compiling, and running Dart code.
+  documenting, compiling, and running Dart code.
   
 [`dartaotruntime`](/tools/dartaotruntime)
 : A Dart runtime for AOT-compiled snapshots.
 
-[`dartdoc`](/tools/dartdoc)
-: The API documentation generator.
-
-{{site.alert.note}}
-  The Dart SDK also contains `dart2js`, `dart2native`, `dartanalyzer`,
-  `dartdevc`, `dartfmt`, and `pub` commands.
-  However, as of 2.10 the `dart` tool provides a unified interface
-  to their functionality.
-  We recommend that you transition to using
-  [the `dart` tool](/tools/dart-tool).
-{{site.alert.end}}
-
 For more information about the SDK, see its
 [README file.](https://github.com/dart-lang/sdk/blob/main/README.dart-sdk)
-
 
 ## Filing bugs and feature requests
 

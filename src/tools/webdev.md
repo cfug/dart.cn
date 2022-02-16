@@ -155,7 +155,7 @@ $ webdev build --output web:build
 Use the `build_runner test` command to run your app's component tests:
 
 ```
-$ dart pub run build_runner test [build_runner options] -- -p <platform> [test options]
+$ dart run build_runner test [build_runner options] -- -p <platform> [test options]
 ```
 
 {{site.alert.tip}}
@@ -166,13 +166,13 @@ $ dart pub run build_runner test [build_runner options] -- -p <platform> [test o
 For example, here's how to run all Chrome platform tests:
 
 ```terminal
-$ dart pub run build_runner test -- -p chrome
+$ dart run build_runner test -- -p chrome
 ```
 
 To see all available build_runner options, use the `--help` or `-h` option:
 
 ```terminal
-$ dart pub run build_runner test -h
+$ dart run build_runner test -h
 ```
 
 Arguments after the empty `--` argument
@@ -181,7 +181,7 @@ To see all command-line options for the test package runner,
 use this command:
 
 ```terminal
-$ dart pub run test -h
+$ dart test -h
 ```
 
 

@@ -29,7 +29,9 @@ library package:
 
 下图展示了最简单的 Library Package 布局：
 
-{% asset libraries/simple-lib2.png alt="root directory contains pubspec.yaml and lib/file.dart" %}
+<img 
+  src="/assets/img/libraries/simple-lib2.png" 
+  alt="root directory contains pubspec.yaml and lib/file.dart">
 
 The minimal requirements for a library are:
 
@@ -148,7 +150,9 @@ library packages:
 提供了一种使用 Dart 创建 Web 服务器的简便方法，
 它的布局在 Dart Library Package 中是一种常用布局：
 
-{% asset libraries/shelf.png alt="shelf root directory contains example, lib, test, and tool subdirectories" %}
+<img 
+  src="/assets/img/libraries/shelf.png"
+  alt="shelf root directory contains example, lib, test, and tool subdirectories">
 
 Directly under lib, the main library file,
 `shelf.dart`, exports API from several files in lib/src.
@@ -226,7 +230,9 @@ to import `lib/foo/a.dart` from both lib and web.
 
 下面图片展示分别从 lib 和 web 目录中导入 `lib/foo/a.dart` 。
 
-{% asset libraries/import-lib-rules.png alt="lib/bar/b.dart uses a relative import; web/main.dart uses a package import" %}
+<img 
+  src="/assets/img/libraries/import-lib-rules.png"
+  alt="lib/bar/b.dart uses a relative import; web/main.dart uses a package import">
 
 ## Conditionally importing and exporting library files
 
@@ -399,8 +405,8 @@ see the [pub package layout conventions](/tools/pub/package-layout).
 ## 为 Library 制作文档
 
 You can generate API docs for your library using
-the [dartdoc][] tool.
-Dartdoc parses the source looking for
+the [`dart doc`][] tool.
+`dart doc` parses the source looking for
 [documentation comments](/guides/language/effective-dart/documentation#doc-comments),
 which use the `///` syntax:
 
@@ -471,10 +477,11 @@ follow these steps:
 为了确保 Package 的 API 文档在 Pub 网站上看起来更美观，
 请遵循以下步骤：
 
-* Before publishing your package, run the [dartdoc][] tool
+* Before publishing your package, run the [`dart doc`][] tool
   to make sure that your docs generate successfully and look as expected.
 
-  在发布 Package 前，请通过执行 [dartdoc][] 工具确保文档能够生成成功且符合预期。
+  在发布 Package 前，请通过执行 [`dart doc`][]
+  工具确保文档能够生成成功且符合预期。
 
 * After publishing your package, check the **Versions** tab
   to make sure that the docs generated successfully.
@@ -482,7 +489,7 @@ follow these steps:
   在发布 Package 后，请检查 **Versions** 选项卡，确保文档生成成功。
 
 * If the docs didn't generate at all,
-  click **failed** in the **Versions** tab to see the dartdoc output.
+  click **failed** in the **Versions** tab to see the `dart doc` output.
 
   如果文档没有生成，点击 **Versions** 选项卡中的 **failed** 查看 dartdoc 的输出。
 
@@ -529,4 +536,4 @@ Use the following resources to learn more about library packages:
   [source_gen](https://github.com/dart-lang/source_gen) 以及
   [test](https://github.com/dart-lang/test) 。
 
-[dartdoc]: https://github.com/dart-lang/dartdoc#dartdoc
+[`dart doc`]: /tools/dart-doc
