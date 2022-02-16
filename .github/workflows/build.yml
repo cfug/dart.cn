@@ -55,3 +55,6 @@ jobs:
         with:
           submodules: recursive
       - run: make build
+      - run: make deploy
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
