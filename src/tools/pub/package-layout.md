@@ -11,7 +11,7 @@ They describe how you organize the files and directories within your
 package, and how to name things.
 
 <aside class="alert alert-info"><div class="alert-with-image">
-  <img src="{% asset shared/flutter/logo/default.svg @path %}" alt="[Flutter]">
+  <img src="/assets/img/shared/flutter/logo/default.svg" alt="Flutter">
   <div markdown="1">
   **Note:**
   Flutter apps can use custom directories for their assets.
@@ -69,7 +69,7 @@ enchilada/
     [application package](/tools/pub/glossary#application-package).
 
 \*** The `doc/api` directory exists locally after you've run
-      [dartdoc.](https://github.com/dart-lang/dartdoc#dartdoc)
+      [`dart doc`](/tools/dart-doc).
       Don't check the `api` directory into source control.
 
 {% include packages-dir.html %}
@@ -415,7 +415,7 @@ enchilada/
 If you've got code and tests, the next piece you might want
 is good documentation. That goes inside a directory named `doc`.
 
-When you run the [dartdoc](https://github.com/dart-lang/dartdoc#dartdoc)
+When you run the [`dart doc`](/tools/dart-doc)
 tool, it places the API documentation, by default, under `doc/api`.
 Since the API documentation is generated from the source code,
 you should not place it under source control.

@@ -13,36 +13,6 @@ The Dart SDK has the libraries and command-line tools that you need to develop
 Dart command-line, server, and non-Flutter web apps.
 For details, see the [Dart SDK overview](/tools/sdk).
 
-本页面指引你如何下载 Dart SDK。
-Dart SDK 包含开发 Web、命令行和服务端应用所需要的库和命令行工具。
-更多详细内容，请参考 [Dart SDK 概览](/tools/sdk) 文档。
-
-**As of Flutter 1.21, the [Flutter SDK][flutter] includes the full Dart SDK.**
-So if you have Flutter installed,
-you might not need to explicitly download the Dart SDK.
-Consider downloading the Dart SDK if
-any of the following are true:
-
-**从 Flutter 1.21 版本开始，[Flutter SDK][flutter] 会同时包含完整的 Dart SDK**
-因此如果你已经安装了 Flutter，可能就无需再特别下载 Dart SDK 了。
-如果你有下述的需求，请考虑下载 Dart SDK：
-
-* You don't use Flutter.
-
-  不需要使用 Flutter；
-  
-* You use a pre-1.21 version of Flutter.
-
-  使用 Flutter 1.21 之前的版本；
-  
-* You want to reduce disk space requirements or download time,
-  and your use case doesn't require Flutter.
-  For example, you might have a continuous integration (CI)
-  setup that requires Dart but not Flutter.
-
-  希望降低电脑存储空间的使用，此次用例并不需要 Flutter，比如：
-  设置 CI 时，需要 Dart 并不需要 Flutter。
-
 ## Installing the Dart SDK {#install}
 
 ## 安装 Dart SDK {#install}
@@ -65,6 +35,10 @@ install from [any release channel](#release-channels) by
 NOTE to editors: Keep the zip file link as the last thing in the paragraph,
 so it's easy to find (but not more tempting than package managers).
 {% endcomment %}
+
+*Note*: The Flutter SDK includes the full Dart SDK,
+and has Dart's [`dart`](/tools/dart-tool) command-line interface
+in its `bin` folder.
 
 {{site.alert.warn}}
   {% include_relative archive/_sdk-terms.md %}

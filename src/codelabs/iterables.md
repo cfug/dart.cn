@@ -121,7 +121,7 @@ using a `for-in` loop.
 The following example shows you how to read elements using  a `for-in` loop.
 
 <?code-excerpt "iterables/test/iterables_test.dart (for-in)"?>
-```dart:run-dartpad:ga_id-for_in_loop:null_safety-true
+```dart:run-dartpad:ga_id-for_in_loop
 void main() {
   const iterable = ['Salad', 'Popcorn', 'Toast'];
   for (final element in iterable) {
@@ -169,7 +169,7 @@ but you can use the `last` property.
 {{site.alert.end}}
 
 <?code-excerpt "iterables/test/iterables_test.dart (first-last)"?>
-```dart:run-dartpad:ga_id-first_and_last:null_safety-true
+```dart:run-dartpad:ga_id-first_and_last
 void main() {
   Iterable<String> iterable = const ['Salad', 'Popcorn', 'Toast'];
   print('The first element is ${iterable.first}');
@@ -207,7 +207,7 @@ Run the following example to see how `firstWhere()` works.
 Do you think all the functions will give the same result?
 
 <?code-excerpt "iterables/test/iterables_test.dart (first-where-long)"?>
-```dart:run-dartpad:height-565px:ga_id-using_firstwhere:null_safety-true
+```dart:run-dartpad:height-565px:ga_id-using_firstwhere
 bool predicate(String item) {
   return item.length > 5;
 }
@@ -310,7 +310,7 @@ satisfies the following conditions:
 All the elements in the test data are [strings][String class];
 you can check the class documentation for help.
 
-```dart:run-dartpad:theme-dark:ga_id-practice_writing_a_test_predicate:null_safety-true
+```dart:run-dartpad:theme-dark:ga_id-practice_writing_a_test_predicate
 {$ begin main.dart $}
 // Implement the predicate of singleWhere
 // with the following conditions
@@ -412,7 +412,7 @@ you can use to verify conditions:
 Run this exercise to see them in action.
 
 <?code-excerpt "iterables/test/iterables_test.dart (any-every)"?>
-```dart:run-dartpad:height-255px:ga_id-using_any_and_every:null_safety-true
+```dart:run-dartpad:height-255px:ga_id-using_any_and_every
 void main() {
   const items = ['Salad', 'Popcorn', 'Toast'];
 
@@ -461,7 +461,7 @@ Use `any()` and `every()` to implement two functions:
 * Part 2: Implement `everyUserOver13()`.
   * Return `true` if all users are 14 or older.
 
-```dart:run-dartpad:theme-dark:height-395px:ga_id-verify_iterable:null_safety-true
+```dart:run-dartpad:theme-dark:height-395px:ga_id-verify_iterable
 {$ begin main.dart $}
 bool anyUserUnder18(Iterable<User> users) {
   TODO('Implement this method');
@@ -644,7 +644,7 @@ Run this example to see how `where()` can be used together with other
 methods like `any()`.
 
 <?code-excerpt "iterables/test/iterables_test.dart (numbers-where)"?>
-```dart:run-dartpad:height-380px:ga_id-using_where:null_safety-true
+```dart:run-dartpad:height-380px:ga_id-using_where
 void main() {
   var evenNumbers = const [1, -2, 3, 42].where((number) => number.isEven);
 
@@ -687,7 +687,7 @@ Run this example to see how `takeWhile()` and `skipWhile()` can
 split an `Iterable` containing numbers.
 
 <?code-excerpt "iterables/test/iterables_test.dart (take-while-long)"?>
-```dart:run-dartpad:ga_id-using_takewhile:null_safety-true
+```dart:run-dartpad:ga_id-using_takewhile
 void main() {
   const numbers = [1, 3, -2, 0, 4, 5];
 
@@ -731,7 +731,7 @@ Use `where()` to implement two functions:
   * Return an `Iterable` containing all users with
     names of length 3 or less.
 
-```dart:run-dartpad:theme-dark:height-380px:ga_id-filtering_elements_from_a_list:null_safety-true
+```dart:run-dartpad:theme-dark:height-380px:ga_id-filtering_elements_from_a_list
 {$ begin main.dart $}
 Iterable<User> filterOutUnder21(Iterable<User> users) {
   TODO('Implement this method');
@@ -866,7 +866,7 @@ multiply all the elements of an `Iterable` by 2.
 What do you think the output will be?
 
 <?code-excerpt "iterables/test/iterables_test.dart (numbers-by-two)"?>
-```dart:run-dartpad:ga_id-using_map:null_safety-true
+```dart:run-dartpad:ga_id-using_map
 void main() {
   var numbersByTwo = const [1, -2, 3, 42].map((number) => number * 2);
   print('Numbers: $numbersByTwo');
@@ -886,7 +886,7 @@ contains strings containing each user's name and age.
 Each string in the `Iterable` must follow this format:
 `'{name} is {age}'`—for example `'Alice is 21'`.
 
-```dart:run-dartpad:theme-dark:height-310px:ga_id-mapping_to_a_different_type:null_safety-true
+```dart:run-dartpad:theme-dark:height-310px:ga_id-mapping_to_a_different_type
 {$ begin main.dart $}
 Iterable<String> getNameAndAges(Iterable<User> users) {
   TODO('Implement this method');
@@ -1005,7 +1005,7 @@ Part 3: Implement `validEmailAddresses()`.
 - Use the provided function `isValidEmailAddress()` to evaluate whether
   an `EmailAddress` is valid.
 
-```dart:run-dartpad:theme-dark:height-600px:ga_id-putting_it_all_together:null_safety-true
+```dart:run-dartpad:theme-dark:height-600px:ga_id-putting_it_all_together
 {$ begin main.dart $}
 Iterable<EmailAddress> parseEmailAddresses(Iterable<String> strings) {
   TODO('Implement this method');

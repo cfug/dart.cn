@@ -194,12 +194,12 @@ recommend pausing on all exceptions.
 To debug in Chrome:
 
 1. Open the Developer Tools window, as described in the
-   [Chrome DevTools documentation.](https://developer.chrome.com/devtools/index)
+   [Chrome DevTools documentation.](https://developer.chrome.com/docs/devtools/)
 2. Turn on source maps, as described in the video
    [SourceMaps in Chrome.](https://bit.ly/YugIUY)
 3. Enable debugging, either on all exceptions or only on uncaught exceptions,
    as described in
-   [How to set breakpoints.](https://developers.google.com/web/tools/chrome-devtools/debug/breakpoints/add-breakpoints)
+   [How to set breakpoints.](https://developer.chrome.com/docs/devtools/javascript/breakpoints/)
 4. Reload your app.
 
 ### Edge {#dart2js-debugging-ie}
@@ -225,7 +225,7 @@ To debug in Firefox:
 
 2. Click <strong>Pause on exceptions</strong>, as shown in the
    following figure.
-   <img src="{% asset ff-debug.png @path %}" alt="Firefox Toolbar"><br /><br />
+   <img src="/assets/img/ff-debug.png" alt="Firefox Toolbar"><br /><br />
 3. Reload your app.
 
 

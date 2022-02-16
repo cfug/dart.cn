@@ -54,8 +54,7 @@ The following tools support the Dart language on all platforms.
 
 ### DartPad
 
-<img src="{% asset dartpad-hello.png @path %}" alt="DartPad Hello World"
- width="200px" align="right" />
+<img src="/assets/img/dartpad-hello.png" alt="DartPad Hello World" width="200px" align="right" />
 [DartPad](/tools/dartpad) is
 a great, no-download-required way to learn Dart syntax
 and to experiment with Dart language features.
@@ -77,18 +76,16 @@ Dart plugins exist for these commonly used IDEs.
 
 <ul class="col2">
 <li>
-<img src="{% asset tools/android_studio.svg @path %}"
-     width="48" alt="Android Studio logo">
+<img src="/assets/img/tools/android_studio.svg" width="48" alt="Android Studio logo">
 <a href="/tools/jetbrains-plugin"><b>Android Studio</b></a>
 </li>
 <li>
-<img src="{% asset tools/intellij-idea.svg @path %}"
-     width="48" alt="IntelliJ logo">
+<img src="/assets/img/tools/intellij-idea.svg" width="48" alt="IntelliJ logo">
 <a href="/tools/jetbrains-plugin"><b>IntelliJ IDEA<br>
 (以及其它的 JetBrains IDE)</b></a>
 </li>
 <li>
-<img src="{% asset tools/vscode.svg @path %}"
+<img src="/assets/img/tools/vscode.svg"
      width="48" alt="Visual Studio Code logo">
 <a href="/tools/vs-code"><b>Visual Studio Code</b></a>
 </li>
@@ -101,15 +98,15 @@ thanks to the Dart community.
 
 <ul class="col2">
 <li>
-<img src="{% asset tools/emacs.png @path %}" alt="Emacs logo">
+<img src="/assets/img/tools/emacs.png" alt="Emacs logo">
 <a class="no-automatic-external" href="https://github.com/nex3/dart-mode"><b>Emacs</b></a>
 </li>
 <li>
-<img src="{% asset tools/vim.png @path %}" alt="Vim logo">
+<img src="/assets/img/tools/vim.png" alt="Vim logo">
 <a class="no-automatic-external" href="https://github.com/dart-lang/dart-vim-plugin"><b>Vim</b></a>
 </li>
 <li>
-<img src="{% asset tools/eclipse-logo.png @path %}" alt="Eclipse logo">
+<img src="/assets/img/tools/eclipse-logo.png" alt="Eclipse logo">
 <a class="no-automatic-external" href="https://github.com/eclipse/dartboard"><b>Eclipse</b></a>
 </li>
 </ul>
@@ -127,29 +124,19 @@ A [Language Server Protocol implementation][LSP] is also available for
 
 ### 命令行工具 {#cli}
 
-The Dart SDK includes the following general-purpose tools:
+The Dart SDK includes the following general-purpose `dart` tool:
 
-Dart SDK 中包含下面的通用工具：
+Dart SDK 中包含下面的 `dart` 工具：
 
 [`dart`](/tools/dart-tool)
-: A command-line interface (CLI) for creating, formatting, analyzing,
-  testing, compiling, and running Dart code,
+<br> A command-line interface (CLI) for creating, formatting, analyzing,
+  testing, documenting, compiling, and running Dart code,
   as well as working with the [pub package manager](/guides/packages).
 
 [`dart`](/tools/dart-tool)
-<br>用于创建、格式化、分析、测试、编译和运行 Dart 代码的命令行工具 (CLI)，
-同时包含 [pub package 管理器](/guides/packages)。
+<br> 用于创建、格式化、分析、测试、编译和运行 Dart 代码的命令行工具 (CLI)，
+  同时包含 [pub package 管理器](/guides/packages)。
 
-[`dartdoc`](/tools/dartdoc)
-: A documentation generator.
-  For examples of dartdoc's output, see the API reference documentation
-  published at [api.dart.dev]({{site.dart_api}}) and pub.dev
-  (for example, the [`path` API reference]({{site.pub-api}}/path)).
-
-[`dartdoc` 命令](/tools/dartdoc)
-<br>生成 API 参考文档。
-  dartdoc 的实例可以查看 [api.dart.cn]({{site.dart_api}}) 和 pub.dev
-  （例如，[`path` 的 API 文档]({{site.pub-api}}/path)）。
 
 ### Debugging
 

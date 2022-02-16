@@ -6,8 +6,10 @@ description: Dart 的简单介绍
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 
-<img style="padding: 30px; float: right; width: 300px" src="{% asset
-logo_lockup_dart_horizontal.png @path %}" alt="Dart product logo">
+<img 
+  style="padding: 30px; float: right; width: 300px" 
+  src="/assets/img/logo_lockup_dart_horizontal.png" 
+  alt="Dart product logo">
 
 Dart is a client-optimized language for developing fast apps on any platform.
 Its goal is to offer the most productive programming language for
@@ -94,7 +96,7 @@ tour](/guides/language/language-tour).
 要了解有关 Dart 语言的更多信息，请参阅 [Dart 语言之旅](/guides/language/language-tour)。
 
 <?code-excerpt "misc/lib/overview_pi.dart"?>
-```dart:run-dartpad:ga_id-overview:null_safety-true
+```dart:run-dartpad:ga_id-overview
 import 'dart:math' show Random;
 
 void main() async {
@@ -309,8 +311,10 @@ Dart 的编译器技术可让您以不同的方式运行代码：
   Dart 拥有开发时编译器 (dartdevc) 和生产时编译器 (dart2js)。
   两种编译器均能将 Dart 转换为 JavaScript。
 
-<img src="{% asset Dart-platforms.svg @path %}" width="800px" alt="An
-illustration of the targets supported by Dart">
+<img 
+  src="/assets/img/Dart-platforms.svg" 
+  width="800" 
+  alt="An illustration of the targets supported by Dart">
 
 The [Flutter framework]({{site.flutter}}) is a popular,
 multi-platform UI toolkit that's powered by the Dart platform,

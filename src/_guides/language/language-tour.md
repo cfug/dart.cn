@@ -335,7 +335,7 @@ The following table lists the words that the Dart language treats specially.
 [export]: /guides/libraries/create-library-packages
 [extends]: #extending-a-class
 [extension]: #extension-methods
-[external]: https://stackoverflow.com/questions/24929659/what-does-external-mean-in-dart
+[external]: https://spec.dart.dev/DartLangSpecDraft.pdf#External%20Functions
 [factory]: #factory-constructors
 [false]: #booleans
 [final]: #final-and-const
@@ -348,7 +348,7 @@ The following table lists the words that the Dart language treats specially.
 [implements]: #implicit-interfaces
 [import]: #using-libraries
 [in]: #for-loops
-[interface]: https://stackoverflow.com/questions/28595501/was-the-interface-keyword-removed-from-dart
+[interface]: #implicit-interfaces
 [is]: #type-test-operators
 [late]: #late-variables
 [library]: #libraries-and-visibility
@@ -393,8 +393,7 @@ However, if necessary, the keywords marked with superscripts can be identifiers:
   带有上标 **1** 的关键字为 **上下文关键字**，只有在特定的场景才有意义，它们可以在任何地方作为有效的标识符。
 
 * Words with the superscript **2** are **built-in identifiers**.
-  To simplify the task of porting JavaScript code to Dart,
-  these keywords are valid identifiers in most places,
+  These keywords are valid identifiers in most places,
   but they can't be used as class or type names, or as import prefixes.
 
   带有上标 **2** 的关键字为 **内置标识符**，其作用只是在JavaScript代码转为Dart代码时更简单，这些关键字在大多数时候都可以作为有效的标识符，但是它们不能用作类名或者类型名或者作为导入前缀使用。
@@ -1964,8 +1963,8 @@ assert(say('Bob', 'Howdy', 'smoke signal') ==
 
 #### 默认参数值
 
-Your function can use `=` to define default values for both named and positional
-parameters. The default values must be compile-time constants.
+Your function can use `=` to define default values for optional parameters,
+both named and positional. The default values must be compile-time constants.
 If no default value is provided, the default value is `null`.
 
 可以用 `=` 为函数的命名参数和位置参数定义默认值，默认值必须为编译时常量，
@@ -2178,7 +2177,7 @@ Click **Run** to execute the code.
 点击 **Run** 按钮执行代码。
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function-main)"?>
-```dart:run-dartpad:height-400px:ga_id-anonymous_functions:null_safety-true
+```dart:run-dartpad:height-400px:ga_id-anonymous_functions
 void main() {
   const list = ['apples', 'bananas', 'oranges'];
   list.forEach((item) {
@@ -4025,7 +4024,7 @@ constructor for its superclass, Person. Click **Run** to execute the code.
 点击运行按钮执行示例代码。
 
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (super)" plaster="none"?>
-```dart:run-dartpad:height-450px:ga_id-non_default_superclass_constructor:null_safety-true
+```dart:run-dartpad:height-450px:ga_id-non_default_superclass_constructor
 class Person {
   String? firstName;
 
@@ -4134,7 +4133,7 @@ the code.
 点击运行按钮执行示例代码。
 
 <?code-excerpt "misc/lib/language_tour/classes/point_with_distance_field.dart"?>
-```dart:run-dartpad:height-340px:ga_id-initializer_list:null_safety-true
+```dart:run-dartpad:height-340px:ga_id-initializer_list
 import 'dart:math';
 
 class Point {
@@ -5776,7 +5775,7 @@ the body of `main()` must be marked as `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (main)" replace="/async|await/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future<void> main() [!async!] {
+void main() [!async!] {
   checkVersion();
   print('In main: version is ${[!await!] lookUpVersion()}');
 }
@@ -5937,7 +5936,7 @@ the body of `main()` must be marked as `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (number_thinker)" replace="/async|await for/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-Future<void> main() [!async!] {
+void main() [!async!] {
   // ...
   [!await for!] (final request in requestServer) {
     handleRequest(request);
@@ -6036,7 +6035,7 @@ and appending an exclamation. Click **Run** to execute the code.
 并在结尾附加了一个感叹号。单击运行按钮执行代码。
 
 <?code-excerpt "misc/lib/language_tour/callable_classes.dart"?>
-```dart:run-dartpad:height-350px:ga_id-callable_classes:null_safety-true
+```dart:run-dartpad:height-350px:ga_id-callable_classes
 class WannabeFunction {
   String call(String a, String b, String c) => '$a $b $c!';
 }
@@ -6342,14 +6341,14 @@ and `[Food]` becomes a link to the docs for the `Food` class.
 `[Food]` 会成为一个链接，指向 `Food` 类的 API 文档。
 
 To parse Dart code and generate HTML documentation, you can use Dart's
-[documentation generation tool.](/tools/dartdoc)
-For an example of generated documentation, see the [Dart API
-documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}) For advice on how to structure
-your comments, see
-[Guidelines for Dart Doc Comments.](/guides/language/effective-dart/documentation)
+documentation generation tool, [`dart doc`](/tools/dart-doc).
+For an example of generated documentation, see the 
+[Dart API documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}) 
+For advice on how to structure your comments, see
+[Effective Dart: Documentation.](/guides/language/effective-dart/documentation)
 
-解析 Dart 代码并生成 HTML 文档，可以使用 Dart 的
-[文档生成工具](/tools/dartdoc)。
+解析 Dart 代码并生成 HTML 文档，
+可以使用 Dart 的文档生成工具 [`dart doc`](/tools/dartdoc)。
 关于生成文档的示例，请参考
 [Dart API documentation]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
 查看关于文档结构的建议，

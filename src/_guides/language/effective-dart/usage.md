@@ -515,6 +515,9 @@ it's almost always cleaner and shorter to use interpolation:
 'Hello, ' + name + '! You are ' + (year - birth).toString() + ' y...';
 {% endprettify %}
 
+Note that this guideline applies to combining *multiple* literals and values.
+It's fine to use `.toString()` when converting only a single object to a string.
+
 ### AVOID using curly braces in interpolation when not needed.
 
 ### **避免** 在字符串插值中使用不必要的大括号。

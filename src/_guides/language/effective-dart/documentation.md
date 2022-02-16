@@ -95,14 +95,15 @@ of code, but all other comments should use `//`.
 
 ## 文档注释
 
-Doc comments are especially handy because [dartdoc][] parses them and generates
-[beautiful doc pages][docs] from them. A doc comment is any comment that appears
-before a declaration and uses the special `///` syntax that dartdoc looks for.
+Doc comments are especially handy because [`dart doc`][] parses them
+and generates [beautiful doc pages][docs] from them.
+A doc comment is any comment that appears before a declaration
+and uses the special `///` syntax that `dart doc` looks for.
 
-文档注释特别有用，应为通过 [dartdoc][] 解析这些注释可以生成 [漂亮的文档网页][docs]。
+文档注释特别有用，应为通过 [`dart doc`][] 解析这些注释可以生成 [漂亮的文档网页][docs]。
 文档注释包括所有出现在声明之前并使用 `///` 语法的注释，这些注释使用使用 dartdoc 检索。
 
-[dartdoc]: https://github.com/dart-lang/dartdoc
+[`dart doc`]: /tools/dart-doc
 [docs]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}
 
 ### DO use `///` doc comments to document members and types.
@@ -111,7 +112,8 @@ before a declaration and uses the special `///` syntax that dartdoc looks for.
 
 {% include linter-rule-mention.md rule="slash_for_doc_comments" %}
 
-Using a doc comment instead of a regular comment enables [dartdoc][] to find it
+Using a doc comment instead of a regular comment enables 
+[`dart doc`][] to find it
 and generate documentation for it.
 
 使用文档注释可以让 [dartdoc][] 来为你生成代码 API 文档。
@@ -130,7 +132,7 @@ int get length => ...
 int get length => ...
 {% endprettify %}
 
-For historical reasons, dartdoc supports two syntaxes of doc comments: `///`
+For historical reasons, `dart doc` supports two syntaxes of doc comments: `///`
 ("C# style") and `/** ... */` ("JavaDoc style"). We prefer `///` because it's
 more compact. `/**` and `*/` add two content-free lines to a multiline doc
 comment. The `///` syntax is also easier to read in some situations, such as
@@ -258,7 +260,7 @@ rest in later paragraphs.
 如果不止一个解释句子有用，请将其余部分放在后面的段落中。
 
 This helps you write a tight first sentence that summarizes the documentation.
-Also, tools like dartdoc use the first paragraph as a short summary in places
+Also, tools like `dart doc` use the first paragraph as a short summary in places
 like lists of classes and members.
 
 这有助于您编写一个紧凑的第一句话来总结文档。 
@@ -375,9 +377,9 @@ int get checkedCount => ...
 {% endprettify %}
 
 If a property has both a getter and a setter, then create a doc comment for
-only one of them. Dartdoc treats the getter and setter like a single field,
+only one of them. `dart doc` treats the getter and setter like a single field,
 and if both the getter and the setter have doc comments, then
-dartdoc discards the setter's doc comment.
+`dart doc` discards the setter's doc comment.
 
 如果一个属性同时包含 getter 和 setter，请只为其中一个添加文档。
 Dartdoc 会将 getter 和 setter 作为同一个属性进行处理，而如果它们
@@ -434,9 +436,9 @@ makes an API easier to learn.
 {% include linter-rule-mention.md rule="comment_references" %}
 
 If you surround things like variable, method, or type names in square brackets,
-then dartdoc looks up the name and links to the relevant API docs. Parentheses
-are optional, but can make it clearer when you're referring to a method or
-constructor.
+then `dart doc` looks up the name and links to the relevant API docs.
+Parentheses are optional, 
+but can make it clearer when you're referring to a method or constructor.
 
 如果给变量，方法，或类型等名称加上方括号，则 dartdoc 会查找名称并链接到相关的 API 文档。
 括号是可选的，但是当你在引用一个方法或者构造函数时，可以让注释更清晰。
@@ -528,7 +530,7 @@ class ToggleComponent {}
 ## Markdown
 
 You are allowed to use most [markdown][] formatting in your doc comments and
-dartdoc will process it accordingly using the [markdown package.][]
+`dart doc` will process it accordingly using the [markdown package.][]
 
 文档注释中允许使用大多数 [markdown][] 格式，
 并且 dartdoc 会根据 [markdown package.][] 进行解析。

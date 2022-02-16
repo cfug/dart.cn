@@ -109,7 +109,7 @@ generating a simple stream of integers using an `async*` function:
 {{site.alert.end}}
 
 <?code-excerpt "misc/lib/tutorial/sum_stream.dart"?>
-```dart:run-dartpad:null_safety-true
+```dart:run-dartpad
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
   await for (final value in stream) {
@@ -124,7 +124,7 @@ Stream<int> countStream(int to) async* {
   }
 }
 
-Future<void> main() async {
+void main() async {
   var stream = countStream(10);
   var sum = await sumStream(stream);
   print(sum); // 55
@@ -185,7 +185,7 @@ error when the loop iterator equals 4:
 下面的示例会在循环迭代到参数值等于 4 时抛出一个错误：
 
 <?code-excerpt "misc/lib/tutorial/sum_stream_with_catch.dart"?>
-```dart:run-dartpad:null_safety-true
+```dart:run-dartpad
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
   try {
@@ -208,7 +208,7 @@ Stream<int> countStream(int to) async* {
   }
 }
 
-Future<void> main() async {
+void main() async {
   var stream = countStream(10);
   var sum = await sumStream(stream);
   print(sum); // -1
@@ -501,7 +501,7 @@ All lines are printed, except any that begin with a hashtag, `#`.
 import 'dart:convert';
 import 'dart:io';
 
-Future<void> main(List<String> args) async {
+void main(List<String> args) async {
   var file = File(args[0]);
   var lines = utf8.decoder
       .bind(file.openRead())
