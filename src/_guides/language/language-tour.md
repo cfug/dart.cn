@@ -396,7 +396,7 @@ However, if necessary, the keywords marked with superscripts can be identifiers:
   These keywords are valid identifiers in most places,
   but they can't be used as class or type names, or as import prefixes.
 
-  带有上标 **2** 的关键字为 **内置标识符**，其作用只是在JavaScript代码转为Dart代码时更简单，这些关键字在大多数时候都可以作为有效的标识符，但是它们不能用作类名或者类型名或者作为导入前缀使用。
+  带有上标 **2** 的关键字为 **内置标识符**，这些关键字在大多数时候都可以作为有效的标识符，但是它们不能用作类名或者类型名或者作为导入前缀使用。
 
 * Words with the superscript **3** are limited reserved words related to
   [asynchrony support](#asynchrony-support).
