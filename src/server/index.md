@@ -32,12 +32,19 @@ that can help you develop command-line and server apps.
 
   {{site.alert.note}}
 
-    DartPad does **not** support using dart:io APIs or
-    importing libraries from packages.
+    DartPad does **not** support using VM libraries, such as `dart:io`,
+    or importing libraries from packages
+    besides the [currently supported packages][].
 
-    DartPad 目前不支持 dart:io 的 API 以及从其他 packages 中导入。
-
+    DartPad 尚且 **不支持** 使用 VM 库，比如 `dart:io`，
+    也不支持从导入其他 package，除了
+    目前已经支持了导入 `bloc`、`characters`、`collection` 等 package，
+    除了 [列举出的这些支持的 package][currently supported packages] 之外，
+    DartPad 尚且 **不支持** 导入其他 package。
+    
   {{site.alert.end}}
+
+[currently supported packages]: https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
 
 [Dart SDK](/tools/sdk)
 <br> [Install the Dart SDK](/get-dart) to get the core Dart

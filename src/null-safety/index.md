@@ -147,49 +147,6 @@ environment:
 
 [language version]: /guides/language/evolution#language-versioning
 
-## Known issues
-
-## 已知问题
-
-Some parts of the Dart ecosystem still need additional work to
-[migrate to null safety][migration guide].
-
-Dart 的生态 [迁移到空安全][migration guide] 仍然需要一些额外的工作。
-
-The Dart team is currently aware of the following issues:
-
-Dart 团队已知晓以下问题：
-
-  * Migration of the pub.dev packages owned by the Dart team
-    is nearly complete, but a few are still missing. See pub.dev for
-    [null-safe packages from the Dart team][ns-dart-pkgs].
-
-    pub.dev 上属于 Dart 团队的一些 package 尚有部分未进行迁移。
-    你可以查看 pub.flutter-io.cn 上 [Dart 团队已迁移的 package][ns-dart-pkgs]。
-
-  * Packages that have unit tests typically have
-    a dev dependency on the [`test` package][`test`].
-    A few packages extend the framework in package:test,
-    and might have a direct dependency on it.
-    When publishing these packages you might get pub warnings about
-    the `test` package not being fully migrated.
-    As long as your package doesn't ignore any of the
-    `import_of_legacy_library_into_null_safe` or
-    [`export_legacy_symbol`][] analyzer warnings,
-    then you can ignore this warning and safely publish your package.
-
-    包含单元测试的 package，均通过开发依赖引用了 [`test` package][`test`]。
-    部分 package 由于扩展了 test package 的框架，可能有直接引用的关联。
-    在你发布 package 时可能会遇到 `test` package 尚未迁移的警告。
-    只要你未让分析器忽略 `import_of_legacy_library_into_null_safe` 或者
-    [`export_legacy_symbol`][] 的警告，你实际上可以忽略这个迁移警告。
-
-[`export_legacy_symbol`]: /tools/diagnostic-messages#export_legacy_symbol
-[`test`]: {{site.pub-pkg}}/test
-
-[ns-dart-pkgs]: {{site.pub-pkg}}?q=publisher%3Adart.dev&null-safe=1
-
-
 ## Where to learn more
 
 ## 学习更多

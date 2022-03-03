@@ -19,8 +19,8 @@ Perform the following **one-time setup**:
 ```terminal
 $ sudo apt-get update
 $ sudo apt-get install apt-transport-https
-$ sudo sh -c 'wget -qO- https://dl.google.com/linux/linux_signing_key.pub | apt-key add -'
-$ sudo sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
+$ wget -qO- https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/dart.gpg
+$ echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' | sudo tee /etc/apt/sources.list.d/dart_stable.list
 ```
 
 Developers from China: please considering replace to
@@ -30,7 +30,7 @@ the mirror site that you trusted.
 storage.googleapis.com 替换为 storage.flutter-io.cn，如下：
 
 ```terminal
-$ sudo sh -c 'wget -qO- https://storage.flutter-io.cn/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
+$ echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.flutter-io.cn/download.dartlang.org/linux/debian stable main' | sudo tee /etc/apt/sources.list.d/dart_stable.
 ```
 
 Note: we didn't fully tested this mirror, it could be unstable,
@@ -53,7 +53,7 @@ $ sudo apt-get install dart
 #### 使用 Debian 安装包
 
 Alternatively, download Dart SDK [as a Debian package](#){:.debian-link-stable}
-in the `.deb` package format. 
+in the `.deb` package format.
 
 通过 [`.deb` 软件包](#){:.debian-link-stable} 下载 Dart SDK。
 

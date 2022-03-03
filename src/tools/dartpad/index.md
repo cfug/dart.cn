@@ -53,13 +53,18 @@ multi-platform and web platform. When writing Flutter apps,
 DartPad also supports the `package:flutter`
 and `dart:ui` libraries.
 
-DartPad 支持标记为支持多平台以及 web 平台的 `dart:*` [核心库](/guides/libraries)。
-不支持原生平台的库，也不支持 [延迟加载][deferred loading]。
+DartPad 支持标记为支持多平台以及 Web 平台的 `dart:*` [核心库](/guides/libraries)。
+还支持在 Flutter 应用里使用 `package:flutter` 和 `dart:ui` 库。
 
-DartPad doesn't support [deferred loading][] or any other libraries. 
-For example, DartPad doesn't support using packages from 
-the [pub.dev]({{site.pub}}) package repository. 
-(Package support might change; for details, see [issue 901][].)
+DartPad doesn't support [deferred loading][] 
+or using packages from the [pub.dev]({{site.pub}}) package repository
+besides the [currently supported packages][].
+
+DartPad 尚不支持 [延迟加载][deferred loading]，
+除了 [列举出的这些支持的 package][currently supported packages] 之外，
+DartPad 尚不支持使用其他在 pub.dev 上的 package。
+
+[currently supported packages]: https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
 
 DartPad 不支持 [延迟加载][deferred loading] 以及其他三方库。
 例如，DartPad 不支持使用 [pub.dev]({{site.pub}}) 仓库中的 package。
@@ -206,4 +211,3 @@ For technical details on embedding DartPads, see the
 [DartPad embedding guide.]: https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide
 [deferred loading]: /guides/language/language-tour#lazily-loading-a-library
 [futures codelab]: /codelabs/async-await
-[issue 901]: https://github.com/dart-lang/dart-pad/issues/901

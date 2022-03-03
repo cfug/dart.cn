@@ -216,6 +216,16 @@ This command is similar to `--major-versions`.
 同时 `pubspec.yaml` 文件中的限制也会更新。
 该命令与 `--major-versions` 类似。
 
+{{site.alert.tip}}
+
+  Commit the `pubspec.yaml` file before running this command,
+  so that you can undo the changes if necessary.
+
+  在运星这个命令之前先提交 `pubspec.yaml` 文件，
+  这样就可以在需要的时候撤销这些改动。
+
+{{site.alert.end}}
+
 ### `--major-versions`
 
 Gets the packages that [`dart pub outdated`][] lists as _resolvable_,
@@ -248,6 +258,7 @@ you can use `dart pub upgrade --major-versions --dry-run`.
   *Problems?*
   See [Troubleshooting Pub](/tools/pub/troubleshoot).
 
-  **有疑问？** 请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
+  **有疑问？** 
+  请查阅 [Pub 疑难协助](/tools/pub/troubleshoot)。
 
 {{site.alert.end}}

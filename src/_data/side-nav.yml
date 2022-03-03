@@ -47,6 +47,8 @@
           permalink: /guides/language/effective-dart/design
     - title: Extension 方法
       permalink: /guides/language/extension-methods
+    - title: 并发
+      permalink: /guides/language/concurrency
     - title: 数字
       permalink: /guides/language/numbers
     - title: 空安全

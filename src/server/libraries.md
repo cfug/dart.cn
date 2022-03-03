@@ -41,14 +41,15 @@ Dart SDK 包含 dart:io 和其它提供底层 web API 的库。
 
 ## Community packages
 
-## 社区上的一些第三方 package
+## 社区贡献的一些三方 package
 
-The [pub.dev site]({{site.pub}}) doesn't currently support
-limiting your search to packages that support command-line and server apps.
-You can, however, search for words that describe the functionality you need.
+The [pub.dev site]({{site.pub}}) allows you to search for packages
+that support command-line and server apps
+by specifying the platforms your app needs to support.
+You can also search for words that describe the functionality you need.
 
-[pub.dev 网站]({{site.pub}}) 暂时还不支持仅搜索命令行和服务器应用相关的 package。
-但是你可以搜索描述所需功能的单词。
+[pub.dev 网站]({{site.pub}}) 可以通过选择「命令行」或「服务器端」来检索和过滤平台支持，
+你也可以搜索描述所需功能的关键字。
 
 ### Command-line packages
 
@@ -57,7 +58,8 @@ You can, however, search for words that describe the functionality you need.
 Command-line apps often use the following packages,
 in addition to [general-purpose packages][] such as `archive`, `intl`, and `yaml`:
 
-命令行应用常常使用下述列表中列出的 package，除此之外还有像 `archive`、`intl` 和 `yaml` 这样的 [通用 package][general-purpose packages]：
+命令行应用常常使用下述列表中列出的 package，
+除此之外还有像 `archive`、`intl` 和 `yaml` 这样的 [通用 package][general-purpose packages]：
 
 | **Package**                   | **Description** |
 

@@ -59,7 +59,7 @@ The following tools support the Dart language on all platforms.
 a great, no-download-required way to learn Dart syntax
 and to experiment with Dart language features.
 It supports Dart's core libraries,
-except for VM libraries such as dart:io.
+except for VM libraries such as `dart:io`.
 
 <img src="/assets/img/dartpad-hello.png" alt="DartPad Hello World" width="200px" align="right" />
 [DartPad](/tools/dartpad) 是一个用于学习 Dart 语法以及

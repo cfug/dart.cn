@@ -379,14 +379,6 @@ with the following exceptions:
 
   `.pubignore` 和 `.gitignore` 文件忽略的所有文件
 
-{{site.alert.version-note}}
-
-  Support for `.pubignore` files was added in Dart 2.14.
-
-  Dart 2.14 加入了 `.pubignore` 文件的支持。
-
-{{site.alert.end}}
-
 If you want different ignore rules for `git` and `dart pub publish`,
 then overrule the `.gitignore` file in a given directory by
 creating a `.pubignore` file.
@@ -419,14 +411,33 @@ follow these practices:
   执行 `dart pub publish` 上传前仔细检查文件列表。
   如果发现了不需要的文件，则取消这次上传。
 
+{{site.alert.note}}
+
+  Most packages don't need a  `.pubignore` file.
+  More information about useful scenarios for this
+  can be found in this [StackOverflow answer][pubignore-when].
+
+  大部分 package 不会需要一个 `.pubignore` 文件，
+  这个文件的应用场景可以在 [这个回答][pubignore-when] 里找到。
+
+{{site.alert.end}}
+
 ## Platform support
+
+## 平台支持
 
 The [pub.dev site]({{site.pub}}) detects which platforms a package supports,
 displaying these platforms on the package page.
 Users of pub.dev can filter searches by platform.
 
+pub.dev 会检测 package 支持哪些平台，并呈现到 package 的页面上。
+用户可以过滤查找特定平台的 package。
+
 To change the automatically generated list of supported platforms,
 [specify supported platforms][] in the pubspec.
+
+若要改变自动检测生成的支持平台列表，则需要在 pubspec 文件中
+[指定平台][specify supported platforms]。
 
 [specify supported platforms]: /tools/pub/pubspec#platforms
 
@@ -727,3 +738,4 @@ For more information, see the reference pages for the following `pub` commands:
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
 [verified publisher]: /tools/pub/verified-publishers
 [git-ignore-format]: https://git-scm.com/docs/gitignore#_pattern_format
+[pubignore-when]: https://stackoverflow.com/a/69767697
