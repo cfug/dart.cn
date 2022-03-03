@@ -6,7 +6,7 @@ dev-url: https://debug.dart.cn
 repo:
   this: https://github.com/cfug/dart.cn
   shared: &repo-shared https://github.com/dart-lang/site-shared
-branch: main
+branch: master
 port: 4000
 source: src
 strict_front_matter: true
