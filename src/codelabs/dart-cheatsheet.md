@@ -721,7 +721,7 @@ For joinWithCommas, try using the join method found in the List class.
 
 ## Cascades
 
-## 级连
+## 级联
 
 To perform a sequence of operations on the same object, use cascades (`..`).
 We've all seen an expression like this:
