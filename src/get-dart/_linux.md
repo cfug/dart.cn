@@ -27,17 +27,12 @@ Developers from China: please considering replace to
 the mirror site that you trusted.
 
 中国的开发者，请将上面最后一行命令行的
-storage.googleapis.com 替换为 storage.flutter-io.cn，如下：
+storage.googleapis.com 替换为
+storage.flutter-io.cn，完整命令如下：
 
 ```terminal
 $ echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.flutter-io.cn/download.dartlang.org/linux/debian stable main' | sudo tee /etc/apt/sources.list.d/dart_stable.
 ```
-
-Note: we didn't fully tested this mirror, it could be unstable,
-if you have any questions, please file an issue to us.
-
-我们尚未完整测试和保证这个镜像的稳定性，
-不过有任何问题，您都可以点击文档右上方进行反馈。
 
 Then install the Dart SDK:
 

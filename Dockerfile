@@ -33,22 +33,22 @@ ENV PATH=$DART_SDK/bin:$PATH
 RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       amd64_stable) \
-        DART_SHA256="3cc63a0c21500bc5eb9671733843dcc20040b39fdc02f35defcf7af59f88d459"; \
+        DART_SHA256="7a0ad877b0785e19018873c8144db3a29c4ab50e7c1aa968800280fd47a25e72"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="de9d1c528367f83bbd192bd565af5b7d9d48f76f79baa4c0e4cf64723e3fb8be"; \
+        DART_SHA256="be67ab8d79140149c8f058cafbadaa2ea8044e603e04b3c4657171c18a48f8a6"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
-        DART_SHA256="3cc63a0c21500bc5eb9671733843dcc20040b39fdc02f35defcf7af59f88d459"; \
+        DART_SHA256="edca0fe2afb7cb2a5d6c1ebc65cc9cf92db50940cad452de8ff0040272fe4444"; \
         SDK_ARCH="x64";; \
       arm64_beta) \
-        DART_SHA256="de9d1c528367f83bbd192bd565af5b7d9d48f76f79baa4c0e4cf64723e3fb8be"; \
+        DART_SHA256="4bb7866c4fdda23e3d9603b27b3c669376b3740b7b9eca2feb8e9ccbc1673bb8"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="ea79cc9738915f6637032c20772f5da5b3c8ed4e276fb16319c25f94622140c1"; \
+        DART_SHA256="6b84458228e95951cacd22ff9b0439e3abc4b53780496e002e4b9aa43956d539"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="b6ddac9f32bd48a69c79aab6322393e4350ce4a99d177412bce510fe590e6d98"; \
+        DART_SHA256="63632477f9b480f1e97e5e326e1b0413f1f6c70279f4b376a1c10103f087c3a9"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
@@ -62,6 +62,7 @@ RUN set -eu; \
     ); \
     unzip "$SDK" > /dev/null && mv dart-sdk "$DART_SDK" && rm "$SDK";
 ENV PUB_CACHE="${HOME}/.pub-cache"
+RUN dart --disable-analytics
 RUN echo -e "Successfully installed Dart SDK:" && dart --version
 
 

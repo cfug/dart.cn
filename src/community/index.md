@@ -18,19 +18,24 @@ For details, see our [code of conduct](/code-of-conduct).
 
 ## 请持续关注下列消息源
 
-* [Dart announce]({{site.group}}/d/forum/announce) -
-  Low traffic announcements of new releases, breaking changes,
-  and other important news. Recommended!
+[Dart announce]({{site.group}}/d/forum/announce)
+<br> Low traffic announcements of new releases, breaking changes,
+     and other important news. Recommended!
 
-  [Dart 公告群组]({{site.group}}/d/forum/announce) - 
-  第一时间公布新的发行版本、重大变化以及其他重要新闻。推荐！
+[Dart 公告群组]({{site.group}}/d/forum/announce)
+<br> 第一时间公布新的发行版本、重大变化以及其他重要新闻。推荐！
 
-* [@dart_lang](https://twitter.com/dart_lang) -
-  The official Twitter account.
-* [Dart blog](https://medium.com/dartlang) - 
-  The latest news and insights from a diverse group of Dart users.
+[@dart_lang](https://twitter.com/dart_lang)
+<br> The official Twitter account.
 
-  [@dart_lang](https://twitter.com/dart_lang) - Twitter 官方账号。
+[@dart_lang](https://twitter.com/dart_lang)
+<br> Twitter 官方账号。
+
+[Dart blog](https://medium.com/dartlang)
+<br> The latest news and insights from a diverse group of Dart users.
+
+[Dart 博客](https://medium.com/dartlang)
+<br> 来自不同 Dart 用户群体的最新消息和观点。
 
 ## Join the conversation
 
@@ -44,46 +49,86 @@ Get answers and connect with Dart developers.
 
 #### 社区
 
-* [StackOverflow](https://stackoverflow.com/tags/dart) -
-  The best place for how-to questions.
+[StackOverflow](https://stackoverflow.com/tags/dart)
+<br> The best place for how-to questions.
 
-  [StackOverflow](https://stackoverflow.com/tags/dart) - 提问题的最佳场所。
+[StackOverflow](https://stackoverflow.com/tags/dart)
+<br> 提问题的最佳场所。
 
-* [Gitter](https://gitter.im/dart-lang/home) -
-  Chat with Dart team and community members.
+[Gitter](https://gitter.im/dart-lang/home)
+<br> Chat with Dart team and community members.
 
-  [Gitter](https://gitter.im/dart-lang/home) - 与 Dart 团队及社区成员交流。
+[Gitter](https://gitter.im/dart-lang/home)
+<br> 与 Dart 团队及社区成员交流。
 
-* [Dart on Reddit](https://www.reddit.com/r/dartlang)
+[Dart on Reddit](https://www.reddit.com/r/dartlang)
+<br> The subreddit for all things related to Dart.
+
+[Dart on Reddit](https://www.reddit.com/r/dartlang)
+<br> Reddit 上的 Dart 内容子区。
+
+[The Unofficial Dart Community Discord](https://discord.gg/Qt6DgfAWWx)
+<br> Chat with and get help from other Dart developers.
+
+[非 Dart 官方的 Discord 社区频道](https://discord.gg/Qt6DgfAWWx)
+<br> 与其他 Dart 开发者交流及寻求帮助。
 
 #### Google Groups
 
-#### Google 团队
+#### Google 团队讨论组
 
-* [General discussions]({{site.group}}/d/forum/misc)
+[General discussions]({{site.group}}/d/forum/misc)
+<br> Discuss miscellaneous Dart topics.
 
-  [通用讨论区]({{site.group}}/d/forum/misc)
+[通用讨论区]({{site.group}}/d/forum/misc)
+<br> 讨论 Dart 的各种话题。
 
-* [Dart analyzer]({{site.group}}/d/forum/analyzer-discuss)
+[Dart analyzer]({{site.group}}/d/forum/analyzer-discuss)
+<br> Get help understanding the [Dart analyzer](/tools/dart-analyze).
+
+[Dart analyzer]({{site.group}}/d/forum/analyzer-discuss)
+<br> 讨论 [Dart analyzer](/tools/dart-analyze) 的深入理解。
 
 ## Contribute
 
 ## 贡献
 
-Dart is open source. Learn how to
+Dart is open source.
+Learn how to
 [contribute to the core SDK.](https://github.com/dart-lang/sdk/blob/main/CONTRIBUTING.md)
 
-Dart 是开源项目。了解如何 [为核心 SDK 做贡献](https://github.com/dart-lang/sdk/blob/master/CONTRIBUTING.md)。
+Dart 是开源项目。了解如何
+[为核心 SDK 做贡献](https://github.com/dart-lang/sdk/blob/master/CONTRIBUTING.md)。
 
-* [Dart GitHub repositories](https://github.com/dart-lang/)
+[Dart GitHub repositories](https://github.com/dart-lang/)
+<br> Track new changes and contribute to various Dart projects.
+
+[Dart GitHub 仓库](https://github.com/dart-lang/)
+<br> 跟踪改动并为 Dart 的各类项目作出贡献。
+
   * [Core SDK](https://github.com/dart-lang/sdk/)
     ([issue tracker](https://github.com/dart-lang/sdk/issues/))
+
+    [核心 SDK](https://github.com/dart-lang/sdk/)
+    （[跟踪 issue](https://github.com/dart-lang/sdk/issues/)）
+
+  * [The Dart Language](https://github.com/dart-lang/language)
+    ([issue tracker](https://github.com/dart-lang/language/issues))
+
+  * [Dart 语言](https://github.com/dart-lang/language)
+    （[跟踪 issue](https://github.com/dart-lang/language/issues)）
+
   * [This site](https://github.com/dart-lang/site-www/)
     ([issue tracker](https://github.com/dart-lang/site-www/issues/))
-* [Dart reviews]({{site.group}}/d/forum/reviews) -
-  High-traffic list of all core SDK code reviews.
 
-  [Dart reviews]({{site.group}}/d/forum/reviews) - 所有核心 SDK 的高频率 code review 列表。
+    [该仓库](https://github.com/dart-lang/sdk/)
+    （[跟踪 issue](https://github.com/dart-lang/site-www/issues/)）
+
+[Dart reviews]({{site.group}}/d/forum/reviews)
+<br> High-traffic list of all core SDK code reviews.
+
+[Dart reviews]({{site.group}}/d/forum/reviews)
+<br> 所有核心 SDK 的高频率 code review 列表。
 
 ## Additional community resources
 
@@ -95,7 +140,7 @@ Our wonderful community has provided these resources.
 
 * [Chinese version of this site (此网站的中文版)](https://dart.cn)
 
-  [Dart 中文文档（本站）](https://dart.cn/)
+  [Dart 中文文档（本站）](https://dart.cn)
 
 * [Russian version of this site](https://dart-docs-ru.web.app/)
 

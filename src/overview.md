@@ -148,11 +148,12 @@ class Point {
 
   This example is running in an embedded [DartPad](/tools/dartpad).
   You can also
-  <a href="{{site.dartpad}}/4d688b6e468fb4c53d312250f557ec5c"
+  <a href="{{site.dartpad}}/bc63d212c3252e44058ff76f34ef5730"
   target="_blank">open this example in its own window</a>.
 
   此示例在嵌入式 [DartPad](/tools/dartpad) 中运行。您也可以
-  <a href="{{site.dartpad}}/4d688b6e468fb4c53d312250f557ec5c" target="_blank">在此示例自己的窗口中打开它</a>。
+  <a href="{{site.dartpad}}/4d688b6e468fb4c53d312250f557ec5c"
+  target="_blank" rel="noopener">在此示例自己的窗口中打开它</a>。
 
 {{site.alert.end}}
 
@@ -183,7 +184,8 @@ Dart 拥有 [丰富的核心库](/guides/libraries)，为许多日常编程任�
   including JSON and UTF-8
   (`dart:convert`)
 
-  用于在不同的数据表示形式之间进行转换编码器和解码器，包括 JSON 和 UTF-8
+  用于在不同的数据表示形式之间进行转换编码器和解码器，
+  包括 JSON 和 UTF-8
   (`dart:convert`)
 
 * Mathematical constants and functions, and random number generation
@@ -209,7 +211,8 @@ Dart 拥有 [丰富的核心库](/guides/libraries)，为许多日常编程任�
   (for example, unsigned 8-byte integers) and SIMD numeric types
   (`dart:typed_data`)
 
-  能够有效处理固定大小的数据 (例如，无符号的 8 字节整数) 和 SIMD 数字类型的列表
+  能够有效处理固定大小的数据（例如，无符号的 8 字节整数）
+  和 SIMD 数字类型的列表
   (`dart:typed_data`)
 
 * Foreign function interfaces for interoperability with
@@ -224,14 +227,16 @@ Dart 拥有 [丰富的核心库](/guides/libraries)，为许多日常编程任�
   don't share memory, communicating only through messages
   (`dart:isolate`)
 
-  使用 **isolates** 的并发编程 — 这些独立的工作程序与线程相似但它们不共享内存并仅通过消息进行通信
+  使用 **isolates** 的并发编程 —
+  这些独立的工作程序与线程相似但它们不共享内存并仅通过消息进行通信
   (`dart:isolate`)
 
 * HTML elements and other resources for web-based applications that need to
   interact with the browser and the Document Object Model (DOM)
   (`dart:html`)
 
-  基于 Web 的应用程序中需要与浏览器和文档对象模型 (DOM) 交互的 HTML 元素和其他资源
+  基于 Web 的应用程序中需要与浏览器和文档对象模型
+  (DOM) 交互的 HTML 元素和其他资源
   (`dart:html`)
 
 Beyond the core libraries, many APIs are provided through

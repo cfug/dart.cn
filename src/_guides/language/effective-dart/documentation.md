@@ -461,14 +461,15 @@ separated by a dot:
 /// Similar to [Duration.inDays], but handles fractional days.
 {% endprettify %}
 
-The dot syntax can also be used to refer to named constructors:
+The dot syntax can also be used to refer to named constructors. For the unnamed
+constructor, use `.new` after the class name:
 
 点语法也可用于引用命名构造函数。 对于未命名的构造函数，在类名后面加上括号：
 
 {:.good}
 <?code-excerpt "docs_good.dart (ctor)"?>
 {% prettify dart tag=pre+code %}
-/// To create a point from polar coordinates, use [Point.polar()].
+/// To create a point, call [Point.new] or use [Point.polar] to ...
 {% endprettify %}
 
 ### DO use prose to explain parameters, return values, and exceptions.

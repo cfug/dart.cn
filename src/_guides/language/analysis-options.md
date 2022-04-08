@@ -115,9 +115,8 @@ include: package:lints/recommended.yaml
 analyzer:
   exclude: [build/**]
   language:
+    strict-casts: true
     strict-raw-types: true
-  strong-mode:
-    implicit-casts: false
 
 linter:
   rules:
@@ -267,7 +266,7 @@ for (final n in numbers) {
 {% endprettify %}
 
 {:.console-output}
-<?code-excerpt "analysis/analyzer-results-stable.txt" retain="The generic type" replace="/. Use explicit.*'List<dynamic>'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
+<?code-excerpt "analysis/analyzer-results-stable.txt" retain="The generic type" replace="/. Use explicit.*\. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
 ```nocode
 info - The generic type 'List<dynamic>' should have explicit type arguments but doesn't - strict_raw_type
 ```
@@ -354,11 +353,11 @@ linter:
     - cancel_subscriptions
     - close_sinks
     - comment_references
+    - depend_on_referenced_packages
+    - library_private_types_in_public_api
     - one_member_abstracts
     - only_throw_errors
-    - package_api_docs
-    - prefer_final_in_for_each
-    - prefer_single_quotes
+    - no_leading_underscores_for_library_prefixes
 ```
 
 
