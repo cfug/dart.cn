@@ -464,7 +464,8 @@ separated by a dot:
 The dot syntax can also be used to refer to named constructors. For the unnamed
 constructor, use `.new` after the class name:
 
-点语法也可用于引用命名构造函数。 对于未命名的构造函数，在类名后面加上括号：
+点语法也可用于引用命名构造函数。
+对于未命名的构造函数，在类名后面加上 `.new` 来使用默认构造：
 
 {:.good}
 <?code-excerpt "docs_good.dart (ctor)"?>

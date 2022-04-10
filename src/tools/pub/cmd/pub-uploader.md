@@ -13,7 +13,7 @@ description: 使用 dart pub 上传命令为你在 pub.dev 网站上的 Dart Pac
   `https://pub.dev/packages/<package>/admin`.
 
   `dart pub uploader` 命令 **已被废弃** 并且将在 Dart 2.17 中移除。
-  早期版本中它也不再有使用效果。
+  在更早的版本中它已经无法使用。
   Package 的作者可以在 pub.dev 的管理页面管理上传者：
   `https://pub.dev/packages/<package>/admin`。
 
