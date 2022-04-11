@@ -73,6 +73,8 @@ hello_world 示例包含了以下文件：
 | [hello_library/hello.h]({{page.hw}}/hello_library/hello.h) | 声明了 `hello_world()` 函数。 |
 | [hello_library/hello.c]({{page.hw}}/hello_library/hello.c) | A C file that imports `hello.h` and defines the `hello_world()` function. |
 | [hello_library/hello.c]({{page.hw}}/hello_library/hello.c) | 该 C 文件导入了 `hello.h` 并实现了 `hello_world()` 函数。 |
+| [hello_library/hello.def]({{page.hw}}/hello_library/hello.def) | A module-definition file which specifies information used when building a DLL. |
+| [hello_library/hello.def]({{page.hw}}/hello_library/hello.def) | 包含 DLL 构建信息的模块定义。 |
 | [hello_library/CMakeLists.txt]({{page.hw}}/hello_library/CMakeLists.txt) | A CMake build file for compiling the C code into a dynamic library. |
 | [hello_library/CMakeLists.txt]({{page.hw}}/hello_library/CMakeLists.txt) | 将 C 文件代码编译为动态库的 CMake 文件。 |
 {:.table .table-striped }

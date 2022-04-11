@@ -1276,7 +1276,6 @@ you can avoid exceptions by using a null-aware spread operator (`...?`):
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (list-null-spread)"?>
 ```dart
-var list;
 var list2 = [0, ...?list];
 assert(list2.length == 1);
 ```
@@ -2350,7 +2349,7 @@ Dart 支持下表的操作符。
 |--------------------------+------------------------------------------------|
 | 描述                     | 运算符                                         |
 |--------------------------|------------------------------------------------|
-| 一元后缀                 | <code><em>表达式</em>++</code>   <code><em>表达式</em>--</code>   `()`   `[]`   `.`   `?.` |
+| 一元后缀                 | <code><em>表达式</em>++</code>   <code><em>表达式</em>--</code> `()` `[]` `.` `?.` `!` |
 | 一元前缀      | <code>-<em>表达式</em></code>   <code>!<em>表达式</em></code>   <code>~<em>表达式</em></code>   <code>++<em>表达式</em></code>   <code>--<em>表达式</em></code>  |
 | 乘除法        | `*`   `/`   `%`    `~/`                                     |
 | 加减法        | `+`   `-`                                                    |
@@ -2950,14 +2949,15 @@ You've seen most of the remaining operators in other examples:
 
 大多数其它的运算符，已经在其它的示例中使用过：
 
-|----------+-------------------------------------------|
+|----------+-----------------------+-------------------|
 |   运算符  | 名字                  | 描述               |
-|-----------+------------------------------------------|
+|----------+-----------------------+-------------------|
 | `()`     | 使用方法               | 代表调用一个方法
 | `[]`     | 访问 List             | 访问 List 中特定位置的元素
 | `?[]`    | 判空访问 List          | 左侧调用者不为空时，访问 List 中特定位置的元素
 | `.`      | 访问成员               | 成员访问符
 | `?.`     | 条件访问成员            | 与上述成员访问符类似，但是左边的操作对象不能为 null，例如 foo?.bar，如果 foo 为 null 则返回 null ，否则返回 bar
+| `!`      | 空断言操作符            | 将表达式的类型转换为其基础类型，如果转换失败会抛出运行时异常。例如 `foo!.bar`，如果 `foo` 为 null，则抛出运行时异常
 {:.table .table-striped}
 
 For more information about the `.`, `?.`, and `..` operators, see
@@ -3638,11 +3638,6 @@ when the leftmost operand is null:
 
 使用 `?.` 代替 `.` 可以避免因为左边表达式为 null 而导致的问题：
 
-{% comment %}
-{{site.dartpad}}/0cb25997742ed5382e4a
-https://gist.github.com/0cb25997742ed5382e4a
-{% endcomment %}
-
 <?code-excerpt "misc/test/language_tour/classes_test.dart (safe-member-access)"?>
 ```dart
 // If p is non-null, set a variable equal to its y value.
@@ -3876,7 +3871,8 @@ class Point {
   double y = 0;
 
   Point(double x, double y) {
-    // There's a better way to do this, stay tuned.
+    // See initializing parameters for a better way
+    // to initialize instance variables.
     this.x = x;
     this.y = y;
   }
@@ -3889,25 +3885,37 @@ The `this` keyword refers to the current instance.
 
 {{site.alert.note}}
 
-  Use `this` only when there is a name conflict. Otherwise, Dart style
-  omits the `this`.
+  Use `this` only when there is a name conflict. 
+  Otherwise, Dart style omits the `this`.
 
   当且仅当命名冲突时使用 `this` 关键字才有意义，否则 Dart 会忽略 `this` 关键字。
 
 {{site.alert.end}}
 
-The pattern of assigning a constructor argument to an instance variable
-is so common, Dart has syntactic sugar to make it easy:
 
-对于大多数编程语言来说在构造函数中为实例变量赋值的过程都是类似的，而 Dart 则提供了一种特殊的语法糖来简化该步骤：
+#### Initializing parameters
+
+The pattern of assigning a constructor argument to an instance variable
+is so common, 
+Dart has initializing parameters to make it easy.
+
+对于大多数编程语言来说在构造函数中为实例变量赋值的过程都是类似的，
+而 Dart 则提供了一种特殊的语法糖来简化该步骤。
+
+Initializing parameters can also be used to initialize
+non-nullable or `final` instance variables,
+which both must be initialized or provided a default value.
+
+构造中初始化的参数可以用于初始化非空或 `final` 修饰的变量，
+它们都必须被初始化或提供一个默认值。
 
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (constructor-initializer)" plaster="none"?>
 ```dart
 class Point {
-  double x = 0;
-  double y = 0;
+  final double x;
+  final double y;
 
-  // Syntactic sugar for setting x and y
+  // Sets the x and y instance variables
   // before the constructor body runs.
   Point(this.x, this.y);
 }
@@ -3948,8 +3956,8 @@ const double xOrigin = 0;
 const double yOrigin = 0;
 
 class Point {
-  double x = 0;
-  double y = 0;
+  final double x;
+  final double y;
 
   Point(this.x, this.y);
 
@@ -4307,8 +4315,8 @@ instance method:
 import 'dart:math';
 
 class Point {
-  double x = 0;
-  double y = 0;
+  final double x;
+  final double y;
 
   Point(this.x, this.y);
 

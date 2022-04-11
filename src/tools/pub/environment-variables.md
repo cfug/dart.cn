@@ -5,6 +5,7 @@ short-title: Pub environment variables
 short-title: pub 的环境变量
 description: How to configure your environment for Dart's package management tool, pub.
 description: 如何在你的开发环境里为 Dart 的 package 管理工具 pub 配置环境变量。
+toc: false
 ---
 
 Environment variables allow you to customize pub to suit your needs.
@@ -24,9 +25,12 @@ Environment variables allow you to customize pub to suit your needs.
   To specify the location of a particular mirror server,
   use the `PUB_HOSTED_URL` environment variable. For example:
 
-{% prettify sh tag=pre+code %}
-PUB_HOSTED_URL = http://user:password@177.0.0.1:9999
-{% endprettify %}
+```shell
+PUB_HOSTED_URL = https://pub.example.com
+```
+
+For more information about using a private package repository,
+see [Overriding the default package repository][].
 
 {{site.alert.note}}
   If you are attempting to use `pub get` behind a corporate firewall
@@ -37,3 +41,4 @@ PUB_HOSTED_URL = http://user:password@177.0.0.1:9999
 {{site.alert.end}}
 
 [`pub get` fails from behind a corporate firewall]: /tools/pub/troubleshoot#pub-get-fails-from-behind-a-corporate-firewall
+[Overriding the default package repository]: /tools/pub/custom-package-repositories#overriding-the-default-package-repository

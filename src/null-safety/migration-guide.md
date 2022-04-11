@@ -36,6 +36,16 @@ Here are the basic steps for migrating each package that you own:
    如果你已经在 pub.flutter-io.cn 发布了你的 package，
    可以将迁移完成的空安全版本以 **预发布** 版本进行 [**发布**](#step5-publish)。
 
+{{site.alert.tip}}
+
+  If your application or library is large, check out
+  [Gradual null safety migration for large Dart projects][].
+
+  如果你的应用或库过大，请参考
+  [渐进迁移大型 Dart 项目至空安全][Gradual null safety migration for large Dart projects]。
+
+{{site.alert.end}}
+
 {{site.alert.info}}
 
   **Migrating an app is technically the same as migrating a package.**
@@ -54,6 +64,7 @@ For an informal look at the experience of using the migration tool, watch this v
 <iframe width="560" height="315" src="https://www.youtube.com/embed/eBr5tlumwlg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 [null safety]: /null-safety
+[Gradual null safety migration for large Dart projects]: https://medium.com/dartlang/gradual-null-safety-migration-for-large-dart-projects-85acb10b64a9
 
 **可交互的迁移工具让你可以简化迁移至空安全的过程。**
 

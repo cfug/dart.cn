@@ -1,5 +1,6 @@
 // ignore_for_file: type_annotate_public_apis, unused_element, unused_local_variable
-// ignore_for_file: prefer_function_declarations_over_variables, strict_raw_type, prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_function_declarations_over_variables, strict_raw_type,
+// ignore_for_file: prefer_initializing_formals, prefer_typing_uninitialized_variables
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
@@ -349,7 +350,7 @@ class Response {
   String get reason => '';
 }
 
-// #docregion copy-nullable-field
+// #docregion shadow-nullable-field
 class UploadException {
   final Response? response;
 
@@ -357,7 +358,7 @@ class UploadException {
 
   @override
   String toString() {
-    var response = this.response;
+    final response = this.response;
     if (response != null) {
       return 'Could not complete upload to ${response.url} '
           '(error code ${response.errorCode}): ${response.reason}.';
@@ -366,7 +367,7 @@ class UploadException {
     return 'Could not upload (no response).';
   }
 }
-// #enddocregion copy-nullable-field
+// #enddocregion shadow-nullable-field
 
 //----------------------------------------------------------------------------
 

@@ -5,6 +5,8 @@ description: Use isolates to enable parallel code execution on multiple processo
 description: 使用 isolates 在多核设备上并发执行代码。
 ---
 
+<?code-excerpt path-base="concurrency"?>
+
 <style>
   img {
     padding: 15px 0;
@@ -143,6 +145,7 @@ Here’s an example of some synchronous code that blocks while waiting for file 
 
 下面是一段同步代码调用文件 I/O 时阻塞的例子：
 
+<?code-excerpt "lib/sync_number_of_keys.dart"?>
 ```dart
 void main() {
   // Read some data.
@@ -164,6 +167,7 @@ Here’s similar code, but with changes (highlighted) to make it asynchronous:
 
 下面是类似的代码，但是变成了 **异步调用**：
 
+<?code-excerpt "lib/async_number_of_keys.dart" replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
 {% prettify dart tag=pre+code %}
 void main() [!async!] {
   // Read some data.
@@ -471,20 +475,21 @@ Here’s the code for the main isolate:
 
 主 isolate 的代码如下：
 
+<?code-excerpt "lib/simple_worker_isolate.dart (main)"?>
 ```dart
 void main() async {
   // Read some data.
   final jsonData = await _parseInBackground();
 
   // Use that data
-  print('number of JSON keys = ${jsonData.length}');
+  print('Number of JSON keys: ${jsonData.length}');
 }
 
 // Spawns an isolate and waits for the first message
 Future<Map<String, dynamic>> _parseInBackground() async {
   final p = ReceivePort();
   await Isolate.spawn(_readAndParseJson, p.sendPort);
-  return await p.first;
+  return await p.first as Map<String, dynamic>;
 }
 ```
 
@@ -531,8 +536,9 @@ The spawned isolate executes the following code:
 
 初始化后的 isolate 会执行以下代码：
 
+<?code-excerpt "lib/simple_worker_isolate.dart (spawned)"?>
 ```dart
-Future _readAndParseJson(SendPort p) async {
+Future<void> _readAndParseJson(SendPort p) async {
   final fileData = await File(filename).readAsString();
   final jsonData = jsonDecode(fileData);
   Isolate.exit(p, jsonData);
@@ -670,8 +676,6 @@ is slower when isolates are in different groups.
 {% comment %}
 TODO:
 * After publishing:
-  * Use code excerpts. [parlough will do!]
-  * Add this page to the sidenav. Link to it appropriately.
   * Figure out how to save an editable version of the source that has the right fonts. (The SVG files don't like the custom fonts; otherwise, I would've used SVGs instead of PNGs.)
 * Maybe:
   * Add a new macro & style for flutter notes?

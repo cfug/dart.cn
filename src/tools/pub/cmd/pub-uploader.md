@@ -5,14 +5,17 @@ description: Use dart pub uploader to add or remove uploaders for your Dart pack
 description: 使用 dart pub 上传命令为你在 pub.dev 网站上的 Dart Package 添加或删除上传者。
 ---
 
-{{site.alert.tip}}
+{{site.alert.warning}}
 
-  Instead of specifying uploaders for each package you publish,
-  consider using a
-  [verified publisher](/tools/pub/verified-publishers).
+  The `dart pub uploader` command is _deprecated_ and will be
+   removed in Dart 2.17. It won't work for earlier versions, either.
+  Package owners can manage uploaders using the admin page on pub.dev:
+  `https://pub.dev/packages/<package>/admin`.
 
-  除了可以明确指定你发布的每个软件包的发布者之外，
-  你还可以考虑使用 [verified publisher](/tools/pub/verified-publishers)。
+  `dart pub uploader` 命令 **已被废弃** 并且将在 Dart 2.17 中移除。
+  在更早的版本中它已经无法使用。
+  Package 的作者可以在 pub.dev 的管理页面管理上传者：
+  `https://pub.dev/packages/<package>/admin`。
 
 {{site.alert.end}}
 
@@ -44,6 +47,17 @@ They'll be added as an uploader after they accept the invitation.
 ~/code/transmogrify$ dart pub uploader remove bob@example.com
 bob@example.com has been removed as an uploader for this package.
 ```
+
+{{site.alert.tip}}
+
+  Instead of specifying uploaders for each package that you publish,
+  consider using a
+  [verified publisher](/tools/pub/verified-publishers).
+
+  你可以考虑使用 [认证的发布者](/tools/pub/verified-publishers)
+  代替为每一个 package 指定上传者。
+
+{{site.alert.end}}
 
 If a package has only one uploader, that uploader can't be removed. You can
 remove yourself as an uploader (as long as other uploaders are available),

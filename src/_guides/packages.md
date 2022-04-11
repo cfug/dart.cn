@@ -34,8 +34,8 @@ Or you can use [`dart pub` on the command line](/tools/pub/cmd).
 
 At a minimum,
 a Dart package is a directory containing a [pubspec file](/tools/pub/pubspec).
-The pubspec contains some metadata about the package. Additionally,
-a package can contain dependencies (listed in the pubspec),
+The pubspec contains some metadata about the package. 
+Additionally, a package can contain dependencies (listed in the pubspec),
 Dart libraries, apps, resources, tests, images, and examples.
 
 Dart 包目录中至少包含一个 [pubspec 文件](/tools/pub/pubspec)。
@@ -54,9 +54,9 @@ To use a package, do the following:
   创建一个 pubspec （一个名为 `pubspec.yaml` 文件，
   文件列出依赖的包以及包含的其他元数据，比如当前包的版本）。
 
-* Use pub to get your package's dependencies.
+* Use [`dart pub get`][get] to retrieve your package's dependencies.
 
-  使用 Pub 获取当前所依赖的包。
+  使用 [`dart pub get`][get] 获取当前所依赖的包。
 
 * If your Dart code depends on a library in the package, import the library.
 
@@ -66,30 +66,31 @@ To use a package, do the following:
 
 ## 创建 pubspec
 
-The pubspec is a file named <code class="literal">pubspec.yaml</code>
+The pubspec is a file named `pubspec.yaml`
 that's in the top directory of your application.
 The simplest possible pubspec lists only the package name:
 
-pubspec 是一个名为 <code class="literal">pubspec.yaml</code> 的文件，
+pubspec 是一个名为 `pubspec.yaml` 的文件，
 文件位于应用的根路径。
 最简单的 pubspec 只需要列出包名：
 
-{% comment %} TODO: make 3-backtick-yaml the same as prettify yaml {% endcomment %}
-{% prettify yaml tag=pre+code %}
+```yaml
 name: my_app
-{% endprettify %}
+```
 
 Here is an example of a pubspec that declares dependencies on
 two packages (`js` and `intl`) that are hosted on the pub.dev site:
 
-下面是一个 pubspec 的示例，示例中声明依赖了在 Pub 站点上托管的两个包（ `js` 和 `intl` ）：
+下面是一个 pubspec 的示例，示例中声明依赖了在
+Pub 站点上托管的两个 package（`js` 和 `intl`）：
 
-{% prettify yaml tag=pre+code %}
+```yaml
 name: my_app
+
 dependencies:
   js: ^0.6.0
-  intl: ^0.15.8
-{% endprettify %}
+  intl: ^0.17.0
+```
 
 For details on creating a pubspec,
 see the [pubspec documentation](/tools/pub/pubspec)
@@ -138,8 +139,8 @@ Pub 会 Clone 该 Git 仓库。同样包括包的相关依赖也会被下载。
 
 Pub creates a
 `package_config.json` file (under the `.dart_tool/` directory)
-that maps each package name
-that your app depends on to the corresponding package in the system cache.
+that maps each package name that your app depends on
+to the corresponding package in the system cache.
 
 Pub 会创建一个 `package_config.json` 文件（位于 `.dart_tool/` 目录下），
 该文件将应用程序所依赖的每个包名相应的映射到系统缓存中的包。
@@ -153,10 +154,10 @@ packages-dir.html
 
 ## 从包中导入库
 
-To import libraries found in packages, use the
-<code class="literal">package:</code> prefix:
+To import libraries found in packages, 
+use the `package:` prefix:
 
-使用 <code class="literal">package:</code> 前缀，导入包中的库：
+使用 `package:` 前缀，导入包中的库：
 
 ```dart
 import 'package:js/js.dart' as js;
@@ -187,7 +188,7 @@ Let's say that the `transmogrify` package is laid out as follows:
 
 假如 `transmogrify` 这个 package 的布局如下：
 
-{% prettify none tag=pre+code %}
+```nocode
 transmogrify/
   lib/
     transmogrify.dart
@@ -195,15 +196,15 @@ transmogrify/
   test/
     parser/
       parser_test.dart
-{% endprettify %}
+```
 
 The `parser_test.dart` file can import `parser.dart` like this:
 
 `parser_test.dart` 就可以通过下面的方式导入 `parser.dart`：
 
-{% prettify dart tag=pre+code %}
+```dart
 import 'package:transmogrify/parser.dart';
-{% endprettify %}
+```
 
 
 ## Upgrading a dependency
@@ -215,9 +216,10 @@ pub downloads the latest version of it that's compatible with
 your other dependencies.
 It then locks your package to *always* use that version by
 creating a **lockfile**.
-This is a file named `pubspec.lock` that pub creates and stores next to your
-pubspec. It lists the specific versions of each dependency (immediate and
-transitive) that your package uses.
+This is a file named `pubspec.lock` that pub creates
+and stores next to your pubspec. 
+It lists the specific versions of each dependency (immediate and transitive) 
+that your package uses.
 
 第一次获取依赖时，Pub 会下载依赖及其兼容的最新版本。
 然后通过创建 **lockfile** 锁定依赖，以始终使用这个版本。
@@ -228,7 +230,7 @@ If your package is an application package,
 you should check this file into
 [source control](/guides/libraries/private-files).
 That way, everyone working on your app uses the same versions
-of all of the packages.
+of all of its dependencies.
 Checking in the lockfile also ensures that your deployed app
 uses the same versions of code.
 

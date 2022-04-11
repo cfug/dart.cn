@@ -56,10 +56,10 @@ Dart 的编译系统是反射（目前还有些性能问题）和宏指令（Dar
 To use build_runner, add a [dev dependency][] on **build_runner**
 to your app's pubspec:
 
-在你应用 pubspec 文件的 [dev dependency][] 层添加 
+在你应用 pubspec 文件的 [dev dependency][] 层添加
 **build_runner** 依赖以开启使用 build_runner：
 
-<?code-excerpt "build_runner_usage/pubspec.yaml" from="dev_dependencies" replace="/args.*/# ···/g"?>
+<?code-excerpt "build_runner_usage/pubspec.yaml" from="dev_dependencies" to="build_test" replace="/args.*/# ···/g"?>
 ```yaml
 dev_dependencies:
   # ···
