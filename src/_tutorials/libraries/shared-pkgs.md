@@ -1,8 +1,8 @@
 ---
 title: Install shared packages
 title: 使用共享的 package
-description: Packages are bundles of source code, tools, and resources that help you to organize and share code.
-description: Package 是用于在 Dart 语言里打包代码、工具和资源的东西，可以帮助你更好的组织和分享代码。
+description: Packages are bundles of source code, tools, and resources that help you to organize and share code
+description: Package 是用于在 Dart 语言里打包代码、工具和资源的东西，可以帮助你更好的组织和分享代码
 ---
 
 ### Borrow and share code.
@@ -73,14 +73,13 @@ in a well-built package.
   concepts are the same, and you can share packages between
   your Flutter and web or server-side apps.
   For more information, see the
-  [Flutter package documentation.]({{site.flutter_docs}}/development/packages-and-plugins/using-packages)
+  [Flutter package documentation.]({{site.flutter-docs}}/development/packages-and-plugins/using-packages)
 
   本文不会向你展示那些只针对 Flutter 的 package，但它们的概念是一致的，
   你也可以将你的 package 分享为可以在 Flutter、Web 或服务端应用上使用。
-  更多相关信息，请查阅 [Flutter 的 package 文档。]({{site.flutter_docs}}/development/packages-and-plugins/using-packages)
+  更多相关信息，请查阅 [Flutter 的 package 文档。]({{site.flutter-docs}}/development/packages-and-plugins/using-packages)
 
 {{site.alert.end}}
-
 
 ## About the pubspec.yaml file
 
@@ -423,13 +422,13 @@ use the `package:` prefix.
    so that it imports the vector_math library and uses some of its API.
    For inspiration, look at the
    [vector_math API
-   docs]({{site.pub}}/documentation/vector_math/latest),
+   docs]({{site.pub-api}}/vector_math/latest),
    which you can find from the pub.dev site entry.
 
    在你的 vector_victor 应用中，编辑 `lib/vector_victor.dart` 文件，
    由此它导入 vector_math 库并使用了它的一些 API。
    你可以阅读
-   [vector_math API 文档]({{site.pub}}/documentation/vector_math/latest)
+   [vector_math API 文档]({{site.pub-api}}/documentation/vector_math/latest)
    获取更多相关信息。
 
    {{site.alert.note}}

@@ -7,15 +7,18 @@ description: 使用 dart pub 上传命令为你在 pub.dev 网站上的 Dart Pac
 
 {{site.alert.warning}}
 
-  The `dart pub uploader` command is _deprecated_ and will be
-   removed in Dart 2.17. It won't work for earlier versions, either.
-  Package owners can manage uploaders using the admin page on pub.dev:
-  `https://pub.dev/packages/<package>/admin`.
+  The `dart pub uploader` command is _deprecated_ 
+  and will be removed in Dart 2.17. 
+  It won't work for earlier versions either.
+  For information on allowing other users
+  to modify and upload new versions of your package,
+  see [Uploaders](/tools/pub/publishing#uploaders).
 
-  `dart pub uploader` 命令 **已被废弃** 并且将在 Dart 2.17 中移除。
+  `dart pub uploader` 命令 **已被废弃**
+  并且将在 Dart 2.17 中移除。
   在更早的版本中它已经无法使用。
-  Package 的作者可以在 pub.dev 的管理页面管理上传者：
-  `https://pub.dev/packages/<package>/admin`。
+  若你作为 package 的作者想要管理上传者，参阅
+  [管理上传者](/tools/pub/publishing#uploaders)。
 
 {{site.alert.end}}
 

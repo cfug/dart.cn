@@ -16,8 +16,8 @@ If you aren't sure which tools you need, **get the Flutter SDK.**
 | App type   | Get started instructions          | Tool information         |
 |   应用类型 |             入门说明              |          工具信息        |
 |------------|-----------------------------------|--------------------------|
-| Flutter (mobile and more) | [Install Flutter]({{site.flutter_docs}}/get-started/install) | [Flutter tools]({{site.flutter_docs}}/using-ide) |
-| Flutter (移动应用和其他平台) | [安装 Flutter]({{site.flutter_docs}}/setup) | [Flutter tools]({{site.flutter_docs}}/using-ide) |
+| Flutter (mobile and more) | [Install Flutter]({{site.flutter-docs}}/get-started/install) | [Flutter tools]({{site.flutter-docs}}/using-ide) |
+| Flutter (移动应用和其他平台) | [安装 Flutter]({{site.flutter-docs}}/setup) | [Flutter tools]({{site.flutter-docs}}/using-ide) |
 | Web app (non-Flutter) | [Install the Dart SDK](/tools/sdk) | [General-purpose tools][] and [web tools](#web) |
 | Web 应用 (非 Flutter) | [安装 Dart SDK](/tools/sdk) | [通用工具][General-purpose tools] and [Web 工具](#web) |
 | Server or command line | [Install the Dart SDK](/tools/sdk) | [General-purpose tools][] and [specialized tools](#server) |
@@ -157,27 +157,29 @@ The following tools support developing web apps:
 下面工具主要针对 Web 应用开发：
 
 [`webdev`](/tools/webdev)
-: A CLI for Dart web app development,
+<br> A CLI for Dart web app development,
   including building and serving web apps.
 
 [`webdev` 命令](/tools/webdev)
-<br>用于构建和提供 Dart Web 应用开发的命令行接口（CLI）。
+<br> 用于构建和提供 Dart Web 应用开发的命令行接口（CLI）。
 
-[`dart2js`](/tools/dart2js)
-: The original Dart-to-JavaScript compiler, with tree shaking.
-  IDEs and the `webdev` CLI use `dart2js` when building web apps for deployment.
+[dart2js](/tools/dart2js)
+<br> The original Dart-to-JavaScript compiler, with tree shaking.
+  IDEs, `dart compile js`, and the `webdev` CLI 
+  use dart2js when building web apps for deployment.
 
-[`dart2js` 命令](/tools/dart2js)
+[dart2js 命令](/tools/dart2js)
 <br> 支持 Tree-shaking 的原始的 Dart-to-JavaScript 编译器。
-在构建用于部署的 Web 应用时，IDE 和 `webdev` CLI 使用 dart2js。
+  在构建用于部署的 Web 应用时，IDE、`dart compile js`
+  和 `webdev` CLI 使用 dart2js。
 
-[`dartdevc`](/tools/dartdevc)
+[dartdevc](/tools/dartdevc)
 : The Dart dev compiler, a modular Dart-to-JavaScript compiler.
-  IDEs and the `webdev` CLI use `dartdevc` when running a development server.
+  IDEs and the `webdev` CLI use dartdevc when running a development server.
 
-[`dartdevc` 命令](/tools/dartdevc)
+[dartdevc 命令](/tools/dartdevc)
 <br> Dart dev 编译器，一个模块化的 Dart-to-Javascript 编译器。
-IDE 和 `webdev` CLI 在运行开发服务器时会使用 `dartdevc`。
+IDE 和 `webdev` CLI 在运行开发服务器时会使用 dartdevc。
 
 ## Tools for developing command-line apps and servers {#server}
 

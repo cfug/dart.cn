@@ -45,6 +45,11 @@
           permalink: /guides/language/effective-dart/usage
         - title: API 设计
           permalink: /guides/language/effective-dart/design
+    - title: 从其他平台转向 Dart
+      expanded: false
+      children:
+        - title: 从 JavaScript 到 Dart
+          permalink: /guides/language/coming-from/js-to-dart
     - title: Extension 方法
       permalink: /guides/language/extension-methods
     - title: 并发

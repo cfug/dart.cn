@@ -1,6 +1,6 @@
 # Site settings
 title: Dart
-description: Dart is a platform for building structured apps. It includes a language, a VM, libraries, tools, and compilers to many targets, including JavaScript.
+description: Dart is a client-optimized language for developing fast apps on any platform.
 url: https://dart.cn
 dev-url: https://debug.dart.cn
 repo:
@@ -25,10 +25,9 @@ toc:
   no_toc_section_class: no_toc_section # ignore if in no_toc_section element
 
 
-dart-site: '' 
-dart_vm: /server
+dart-site: ''
 flutter: https://flutter.cn
-flutter_docs: https://flutter.cn/docs
+flutter-docs: https://flutter.cn/docs
 dart_api: https://api.dart.cn
 flutter_api: https://api.flutter-io.cn
 pub: https://pub.flutter-io.cn
@@ -36,7 +35,6 @@ pub-api: https://pub.flutter-io.cn/documentation
 pub-pkg: https://pub.flutter-io.cn/packages
 dartpad: https://dartpad.cn
 news: https://news.dartlang.org
-group: https://groups.google.com/a/dartlang.org
 
 show_banner: true
 
@@ -96,11 +94,6 @@ og_image_vers: "?2"
 
 
 ## Site-wide shorthands
-
-os-list:
-  - Windows
-  - macOS
-  - Linux
 
 alert:
   important: >-

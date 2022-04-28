@@ -105,7 +105,7 @@ Choose one:
 
   [下载 Dart SDK](/get-dart)
 
-* [Download the Flutter SDK]({{site.flutter_docs}}/get-started/install)
+* [Download the Flutter SDK]({{site.flutter-docs}}/get-started/install)
 
   [下载 Flutter SDK]({{site.flutter_docs}}/get-started/install)
 

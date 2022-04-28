@@ -397,12 +397,12 @@ Dart 的 Web 支持让你可以在 JavaScript 驱动的网页平台上运行 Dar
 例如: [Chrome](https://www.google.com/chrome/) 中的 [V8](https://v8.dev/)。
 
 Dart web contains both an incremental dev compiler enabling a fast developer
-cycle, and an optimizing production compiler, `dart2js`, which compiles Dart
+cycle, and an optimizing production compiler, dart2js, which compiles Dart
 code to fast, compact, deployable JavaScript using techniques such as dead-code
 elimination.
 
 Dart Web 包含了可以实现快速开发周期的增量开发编译器，
-同时还有用于针对生产环境优化的编译器 `dart2js`。
+同时还有用于针对生产环境优化的编译器 dart2js。
 后者使用了类似移除不可访问代码的技术，
 将 Dart 代码编译为快速、紧凑、随时随地可部署的 JavaScript。
 
@@ -414,9 +414,13 @@ More information:
 
   [快速上手：网页应用程序](/tutorials/web/get-started)
 
-* [`dartdevc` compiler](/tools/dartdevc)
+* [dart2js compiler](/tools/dart2js)
 
-  [`dartdevc` 编译器](/tools/dartdevc)
+  [dart2js 编译器](/tools/dart2js)
+
+* [dartdevc compiler](/tools/dartdevc)
+
+  [dartdevc 编译器](/tools/dartdevc)
 
 * [`webdev` tool](/tools/webdev)
 
