@@ -354,7 +354,7 @@ Worse, the UI might become completely unresponsive.
 在一个客户端应用中，耗时过长的同步操作，通常会导致 [卡顿的动画][jank]。
 而最糟糕的是，应用界面可能完全失去响应。
 
-[jank]: {{site.flutter_docs}}/perf/rendering
+[jank]: {{site.flutter-docs}}/perf/rendering-performance
 
 
 ### Background workers
@@ -375,7 +375,7 @@ The worker isolate returns its result in a message when the worker exits.
 下图展示了一种常用场景，你可以生成一个 isolate，它将执行耗时计算的任务，并在结束后退出。
 这个 isolate 工作对象退出时会把结果返回。
 
-[json]: {{site.flutter_docs}}/cookbook/networking/background-parsing
+[json]: {{site.flutter-docs}}/cookbook/networking/background-parsing
 
 ![A figure showing a main isolate and a simple worker isolate](/guides/language/concurrency/images/isolate-bg-worker.png)
 
@@ -437,7 +437,7 @@ to implement isolates.
 
 {{site.alert.end}}
 
- [Flutter `compute()` function]: {{site.flutter_docs}}/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
+[Flutter `compute()` function]: {{site.flutter-docs}}/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
 
 
 ### Implementing a simple worker isolate

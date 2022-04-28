@@ -21,10 +21,10 @@ but if your current directory holds a Flutter app
 or other Flutter-specific code,
 use `flutter pub <subcommand>` instead.
 For more information, see
-[Using packages]({{site.flutter_docs}}/development/packages-and-plugins/using-packages)
+[Using packages]({{site.flutter-docs}}/development/packages-and-plugins/using-packages)
 on the [Flutter website]({{site.flutter}}).
 
-[flutter-cli]: {{site.flutter_docs}}/reference/flutter-cli
+[flutter-cli]: {{site.flutter-docs}}/reference/flutter-cli
 [dart-cli]: /tools/dart-tool
 
 {{site.alert.version-note}}
@@ -188,9 +188,11 @@ Pub 一直以来支持通过 `pub build` 个 `pub serve` 等命令构建应用�
 
 To share your Dart packages with the world, you can
 use the [`publish`](/tools/pub/cmd/pub-lish) subcommand to upload the
-package to the [pub.dev site]({{site.pub}}). The
-[`uploader`](/tools/pub/cmd/pub-uploader) subcommand enables specific
-users to modify and upload new versions of your package.
+package to the [pub.dev site]({{site.pub}}).
+For information on allowing other users 
+to modify and upload new versions of your package,
+see [Uploaders](/tools/pub/publishing#uploaders).
+
 
 你可以使用 [`publish`](/tools/pub/cmd/pub-lish) 命令将
 Package 上传至 [Pub 网站]({{site.pub}})以分享给全世界的开发者使用。

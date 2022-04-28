@@ -291,7 +291,7 @@ safety, it will be possible for `arg` to be null.
 在所有代码都迁移且运行在完全的空安全模式下前，`arg` 仍然可能为空。
 
 The simplest way to preserve behavior is change the check into
-[`ArgumentError.checkNotNull`](https://api.dart.dev/stable/dart-core/ArgumentError/checkNotNull.html).
+[`ArgumentError.checkNotNull`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError/checkNotNull.html).
 
 保留这项行为的最简单的方法是将判断改为
 [`ArgumentError.checkNotNull`](https://api.dart.cn/stable/dart-core/ArgumentError/checkNotNull.html)。
@@ -352,7 +352,7 @@ In such cases, you have two options:
 ## 我需要怎样标记映射的返回值为非空类型？
 
 The
-[lookup operator](https://api.dart.dev/stable/dart-core/Map/operator_get.html)
+[lookup operator]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map/operator_get.html)
 on Map (`[]`) by default returns a nullable type. There's no way to signal to
 the language that the value is guaranteed to be there.
 
@@ -400,7 +400,9 @@ initializing the list with length and filling it in via a loop.
 在你以长度初始化列表并循环填入值时，这种情况可能会出现。
 
 If you are simply initializing the list with the same value, you should instead
-use the [`filled`](https://api.dart.dev/stable/dart-core/List/List.filled.html) constructor.
+use the 
+[`filled`]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List/List.filled.html) 
+constructor.
 
 如果你仅仅想要以相同的值初始化列表，你应该使用
 [`filled`](https://api.dart.cn/stable/dart-core/List/List.filled.html)

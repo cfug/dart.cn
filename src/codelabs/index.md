@@ -67,6 +67,6 @@ which was introduced in Dart 2.12.
 ## Flutter
 
 To learn about Flutter, try one of the
-[Flutter codelabs.]({{site.flutter_docs}}/codelabs)
+[Flutter codelabs.]({{site.flutter-docs}}/codelabs)
 
-尝试在 [Flutter Codelab]({{site.flutter}}/codelabs)，学习和了解 Flutter。
+尝试在 [Flutter Codelab]({{site.flutter-docs}}/codelabs)，学习和了解 Flutter。

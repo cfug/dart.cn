@@ -3,6 +3,7 @@ permalink: /community
 title: Community and support
 title: 社区和支持
 description: Communities, mailing lists, and bug databases for the Dart project.
+group: https://groups.google.com/a/dartlang.org
 ---
 
 Track the Dart project, get help, and talk with other Dart developers.
@@ -18,11 +19,11 @@ For details, see our [code of conduct](/code-of-conduct).
 
 ## 请持续关注下列消息源
 
-[Dart announce]({{site.group}}/d/forum/announce)
+[Dart announce]({{page.group}}/d/forum/announce)
 <br> Low traffic announcements of new releases, breaking changes,
      and other important news. Recommended!
 
-[Dart 公告群组]({{site.group}}/d/forum/announce)
+[Dart 公告群组]({{page.group}}/d/forum/announce)
 <br> 第一时间公布新的发行版本、重大变化以及其他重要新闻。推荐！
 
 [@dart_lang](https://twitter.com/dart_lang)
@@ -77,16 +78,16 @@ Get answers and connect with Dart developers.
 
 #### Google 团队讨论组
 
-[General discussions]({{site.group}}/d/forum/misc)
+[General discussions]({{page.group}}/d/forum/misc)
 <br> Discuss miscellaneous Dart topics.
 
-[通用讨论区]({{site.group}}/d/forum/misc)
+[通用讨论区]({{page.group}}/d/forum/misc)
 <br> 讨论 Dart 的各种话题。
 
-[Dart analyzer]({{site.group}}/d/forum/analyzer-discuss)
+[Dart analyzer]({{page.group}}/d/forum/analyzer-discuss)
 <br> Get help understanding the [Dart analyzer](/tools/dart-analyze).
 
-[Dart analyzer]({{site.group}}/d/forum/analyzer-discuss)
+[Dart analyzer]({{page.group}}/d/forum/analyzer-discuss)
 <br> 讨论 [Dart analyzer](/tools/dart-analyze) 的深入理解。
 
 ## Contribute
@@ -124,10 +125,10 @@ Dart 是开源项目。了解如何
     [该仓库](https://github.com/dart-lang/sdk/)
     （[跟踪 issue](https://github.com/dart-lang/site-www/issues/)）
 
-[Dart reviews]({{site.group}}/d/forum/reviews)
+[Dart reviews]({{page.group}}/d/forum/reviews)
 <br> High-traffic list of all core SDK code reviews.
 
-[Dart reviews]({{site.group}}/d/forum/reviews)
+[Dart reviews]({{page.group}}/d/forum/reviews)
 <br> 所有核心 SDK 的高频率 code review 列表。
 
 ## Additional community resources

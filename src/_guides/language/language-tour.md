@@ -3357,10 +3357,10 @@ That depends on the tools and framework you're using:
 
   一些开发工具比如 [dartdevc][] 通常情况下是默认生效的。
 
-* Some tools, such as [`dart run`][] and [`dart2js`][]
+* Some tools, such as [`dart run`][] and [dart2js][]
   support assertions through a command-line flag: `--enable-asserts`.
 
-  其他一些工具，比如 [`dart run`][]以及 [`dart2js`][]
+  其他一些工具，比如 [`dart run`][] 以及 [dart2js][]
   通过在运行 Dart 程序时添加命令行参数 `--enable-asserts` 使 assert 生效。
 
 In production code, assertions are ignored, and
@@ -6081,7 +6081,7 @@ For more information, see the following:
 
 [Isolate.spawn()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
 [TransferableTypedData]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/TransferableTypedData-class.html
-[background json]: {{site.flutter_docs}}/cookbook/networking/background-parsing
+[background json]: {{site.flutter-docs}}/cookbook/networking/background-parsing
 [Isolate sample app]: https://github.com/flutter/samples/tree/master/isolate_example
 
 ## Typedefs
@@ -6375,7 +6375,7 @@ To learn more about Dart's core libraries, see
 [characters API]: {{site.pub-api}}/characters
 [characters example]: {{site.pub-pkg}}/characters/example
 [characters package]: {{site.pub-pkg}}/characters
-[`dart2js`]: /tools/dart2js
+[dart2js]: /tools/dart2js
 [`dart run`]: /tools/dart-run
 [dart:html]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html
 [dart:isolate]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate
@@ -6388,7 +6388,7 @@ To learn more about Dart's core libraries, see
 [`Exception`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
 [extension methods page]: /guides/language/extension-methods
 [Flutter]: {{site.flutter}}
-[Flutter debug mode]: {{site.flutter_docs}}/testing/debugging#debug-mode-assertions
+[Flutter debug mode]: {{site.flutter-docs}}/testing/debugging#debug-mode-assertions
 [forEach()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
 [Function API reference]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 [`Future`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html

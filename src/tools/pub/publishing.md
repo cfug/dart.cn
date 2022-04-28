@@ -449,12 +449,15 @@ To change the automatically generated list of supported platforms,
 Whoever publishes the first version of a package automatically becomes
 the first and only person authorized to upload additional versions of that package.
 To allow or disallow other people to upload versions,
-use the [`dart pub uploader`][] command
-or transfer the package to a [verified publisher][].
+transfer the package to a [verified publisher][] or
+manage authorized uploaders on the admin page for the package:
+`https://pub.dev/packages/<package>/admin`.
 
 发布 package 第一个版本的人，将自动成为唯一有权对其进行更新的人。
-要允许或取消其他人更新版本，可使用 [`dart pub uploader`][] 命令，
-或把 package 转移至 [已验证的发布者][verified publisher]。
+要允许或取消其他人更新版本，可把 package 转移至
+[已验证的发布者][verified publisher]，
+或在管理页面管理 package 的上传者：
+`https://pub.dev/packages/<package>/admin` 。
 
 If a package has a verified publisher,
 then the pub.dev page for that package displays the publisher domain.
@@ -715,17 +718,8 @@ pub.dev，该账号需要是该 package 的上传者或
 接着进入到 package 页面上的 **Admin** 标签栏，在其中将其标记为终止。
 如果你回心转意想继续维护，可在任意时候移除终止标记。
 
-## Resources
 
-## 资源
-
-For more information, see the reference pages for the following `pub` commands:
-
-想了解更多信息，请查阅以下 `pub` 命令的参考页面：
-
-* [`dart pub publish`][]
-* [`dart pub uploader`][]
-
+[Create a verified publisher]: {{site.pub}}/create-publisher
 [BSD 3-clause license]: https://opensource.org/licenses/BSD-3-Clause
 [Google Account]: https://support.google.com/accounts/answer/27441
 [Markdown]: {{site.pub-pkg}}/markdown
@@ -733,7 +727,6 @@ For more information, see the reference pages for the following `pub` commands:
 [policy]: {{site.pub}}/policy
 [pub]: /guides/packages
 [`dart pub publish`]: /tools/pub/cmd/pub-lish
-[`dart pub uploader`]: /tools/pub/cmd/pub-uploader
 [pubspec]: /tools/pub/pubspec
 [semver]: https://semver.org/spec/v2.0.0-rc.1.html
 [verified publisher]: /tools/pub/verified-publishers
