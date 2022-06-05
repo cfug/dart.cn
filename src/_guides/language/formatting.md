@@ -17,9 +17,9 @@ When a bit of code stands out and catches your eye, it should do so for a useful
 在面对代码格式化的问题时，哪个参数更好是一种主观感受，
 无法完全解决。
 
-Fortunately, you can use the [`dart format` tool][dart format] —
-from the command line or in your favorite [Dart-savvy IDE][ide] —
-to perform most of the drudge work of formatting your code.
+Fortunately, you can use the [`dart format` tool][dart format]—from the 
+command line or in your favorite [Dart-savvy IDE][ide]—to 
+perform most of the drudge work of formatting your code.
 For example, here's how to format all the Dart files
 under the current directory's `bin`, `lib`, and `test` directories:
 

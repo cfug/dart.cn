@@ -43,9 +43,17 @@ Here are some common asynchronous operations:
 * Writing to a database.
 * Reading data from a file.
 
-To perform asynchronous operations in Dart, 
-you can use the `Future` class
-and the `async` and `await` keywords.
+Such asynchronous computations usually provide their result as a `Future`
+or, if the result has multiple parts, as a `Stream`.
+These computations introduce asynchrony into a program.
+To accommodate that initial asynchrony, 
+other plain Dart functions also need to become asynchronous.
+
+To interact with these asynchronous results,
+you can use the `async` and `await` keywords.
+Most asynchronous functions are just async Dart functions
+that depend, possibly deep down, 
+on an inherently asynchronous computation.
 
 ### Example: Incorrectly using an asynchronous function
 
@@ -262,8 +270,8 @@ print([!await!] createOrderMessage());
 As the following two examples show, the `async` and `await` keywords 
 result in asynchronous code that looks a lot like synchronous code.
 The only differences are highlighted in the asynchronous example, 
-which — if your window is wide enough — 
-is to the right of the synchronous example.
+which—if your window is wide enough—is 
+to the right of the synchronous example.
 
 <div class="container">
 <div class="row">
@@ -1052,7 +1060,7 @@ are some suggestions for where to go next:
   - [Streams tutorial](/tutorials/language/streams):
     Learn how to work with a sequence of asynchronous events.
   - [Concurrency in Dart](/guides/language/concurrency)
-    Learn how to implement concurrency in Dart.
+    Understand and learn how to implement concurrency in Dart.
   - [Dart videos from Google:][Dart videos]
     Watch one or more of the videos about asynchronous coding.
     Or, if you prefer, read the articles that are based on these videos.

@@ -5,8 +5,8 @@ description: Command-line tool for compiling Dart source code.
 
 Use the `dart compile` command to compile
 a Dart program to a [target platform](/platforms).
-The output — which you specify using a subcommand —
-can either include a [Dart runtime][] or be a _module_
+The output—which you specify using a subcommand—can 
+either include a [Dart runtime][] or be a _module_
 (also known as a _snapshot_).
 
 {% include tools/dart-tool-note.md %}
@@ -51,8 +51,8 @@ The `dart compile` command replaces the
 {{site.alert.note}}
   You don't need to compile Dart programs before running them.
   Instead, you can use the [`dart run` command][dart-run],
-  which uses the Dart VM's JIT (just-in-time) compiler —
-  a feature that's especially useful during development.
+  which uses the Dart VM's JIT (just-in-time) compiler—a 
+  feature that's especially useful during development.
   For more information on AOT and JIT compilation,
   see the [platforms discussion](/overview#platform).
 {{site.alert.end}}
@@ -145,6 +145,19 @@ $ cd /tmp
 $ ./myapp
 ```
 
+#### Signing
+
+Executables created with `dart compile exe`
+support signing on macOS and Windows.
+
+For detailed documentation,
+see the platform documentation for those operating systems,
+such as the Windows [`SignTool.exe` documentation][],
+and the [Apple Code Signing guide][].
+
+[`SignTool.exe` documentation]: https://docs.microsoft.com/dotnet/framework/tools/signtool-exe
+[Apple Code Signing guide]: https://developer.apple.com/support/code-signing/
+
 #### Known limitations
 
 The `exe` and `aot-snapshot` subcommands have some known limitations:
@@ -152,15 +165,10 @@ The `exe` and `aot-snapshot` subcommands have some known limitations:
 No cross-compilation support ([issue 28617][])
 : The compiler supports creating machine code only for
   the operating system it’s running on.
-  You need to run the compiler three times —
-  on macOS, Windows, and Linux —
-  to create executables for all three operating systems.
+  You need to run the compiler three times—on macOS, Windows, and Linux—to 
+  create executables for all three operating systems.
   A workaround is to use a CI (continuous integration) provider
   that supports all three operating systems.
-
-No signing support ([issue 39106][])
-: The format of the executables isn’t compatible with
-  standard signing tools such as codesign and SignTool.
 
 No support for `dart:mirrors` and `dart:developer`
 : For a complete list of the core libraries you can use,
@@ -267,7 +275,7 @@ see the [dart2js compiler options](/tools/dart2js#options).
   The [`webdev build`][] command, by default,
   also produces deployable JavaScript.
   The [`webdev serve`][] command, by default,
-  uses the [dartdevc compiler][]
+  uses [dartdevc][] to compile web apps
   for running and debugging during development.
 {{site.alert.end}}
 
@@ -278,4 +286,4 @@ check out [Web deployment](/web/deployment).
 [`webdev build`]: /tools/webdev#build
 [`webdev serve`]: /tools/webdev#serve
 [Dart runtime]: /overview#runtime
-[dartdevc compiler]: /tools/dartdevc/faq
+[dartdevc]: /tools/dartdevc

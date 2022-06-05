@@ -7,9 +7,8 @@ description: 一些常用的 package 的列表。
 
 This page lists some of the most popular and useful
 [packages](/guides/packages) that Dart developers have published.
-To find more packages —
-and search [core libraries](/guides/libraries), as well —
-use the [pub.dev site.]({{site.pub}})
+To find more packages—and search [core libraries](/guides/libraries)
+as well—use the [pub.dev site.]({{site.pub}})
 
 本章列出了一些 Dart 开发者发布的非常流行的有用的 [package](/guides/packages)。
 到 [Pub 网站]({{site.pub}}) 发现更多 package 及 [核心库](/guides/libraries)。

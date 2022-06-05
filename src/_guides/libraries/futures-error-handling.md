@@ -8,7 +8,7 @@ description: 错误处理和在异步应用时候的异常捕捉。
 The Dart language has native
 [asynchrony support](/guides/language/language-tour#asynchrony-support),
 making asynchronous Dart code much easier to read and write.
-However, some code — especially older code — might still use
+However, some code—especially older code—might still use
 [Future methods][Future class]
 such as `then()`, `catchError()`, and `whenComplete()`.
 
@@ -17,8 +17,8 @@ when using those Future methods.
 
 {{site.alert.warning}}
   You don't need this page if your code uses
-  the language's asynchrony support — `async`, `await`,
-  and error handling using try-catch.
+  the language's asynchrony support:
+  `async`, `await`, and error handling using try-catch.
   For more information, see the
   [asynchronous programming codelab](/codelabs/async-await).
 {{site.alert.end}}

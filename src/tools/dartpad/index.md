@@ -7,16 +7,15 @@ description: 在浏览器里体验 Dart 编程语言的工具。
 
 DartPad is an [open source tool](https://github.com/dart-lang/dart-pad)
 that lets you play with the Dart language in any modern browser.
-
-DartPad 是一个可以让你在任何现代化的浏览器中体验 Dart 编程语言线上工具，
-它是 [开源](https://github.com/dart-lang/dart-pad) 的。
-
-Many pages in this site — especially [codelabs](/codelabs) —
-have [embedded DartPads](#embedding).
+Many pages in this site—especially [codelabs](/codelabs)—have
+[embedded DartPads](#embedding).
 To open DartPad as a standalone web page, visit 
 the [DartPad site (dartpad.dev)][DartPad]{:target="_blank" rel="noopener"}.
 
-本网页里一些页面，尤其是 [codelabs](/codelabs) 页面，包含了很多[内嵌的 DartPads](#embedding)。
+DartPad 是一个可以让你在任何现代化的浏览器中体验 Dart 编程语言线上工具，
+它是 [开源](https://github.com/dart-lang/dart-pad) 的。
+本网页里一些页面，尤其是 [codelabs](/codelabs) 页面，
+包含了很多[内嵌的 DartPads](#embedding)。
 你可以在浏览器里输入下面的网址打开一个 DartPad 页面。
 <a href="{{site.dartpad}}"
 target="_blank">DartPad 页面 (dartpad.cn).</a>

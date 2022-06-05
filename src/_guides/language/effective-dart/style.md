@@ -274,8 +274,8 @@ as in the following cases:
 
   将代码添加到已使用 `SCREAMING_CAPS` 的文件或库时。
 
-* When generating Dart code that's parallel to Java code —
-  for example, in enumerated types generated from [protobufs.][]
+* When generating Dart code that's parallel to Java code—for example, 
+  in enumerated types generated from [protobufs.][]
 
   生成与 Java 代码并行的 Dart 代码时。例如，来自 [protobufs][] 的枚举类型。
 

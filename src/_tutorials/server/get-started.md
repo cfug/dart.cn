@@ -38,7 +38,7 @@ APIs, no download necessary.
 
 For example, here's an embedded DartPad that lets you play with the code for a
 small Hello World program. Click **Run** to run the app; output appears in the
-console view. Try editing the source code &mdash; perhaps you'd like to change the
+console view. Try editing the source code—perhaps you'd like to change the
 greeting to use another language.
 
 例如，下面这个内嵌的 DartPad 可以让你尝试一个简单的 Hello World 程序代码。
@@ -85,13 +85,13 @@ More information:
 ## 3. 创建一个小应用
 
 Use the [`dart create`](/tools/dart-create) command
-and the `console-full` template to create a command-line app:
+and the `console` template to create a command-line app:
 
 使用 [`dart create`](/tools/dart-create) 命令，
 以 `console-full` 模板创建一个命令行应用：
 
 ```terminal
-$ dart create -t console-full cli
+$ dart create -t console cli
 ```
 
 This command creates a small Dart app that has the following:

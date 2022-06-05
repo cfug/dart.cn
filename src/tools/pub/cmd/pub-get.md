@@ -87,25 +87,19 @@ get the latest versions of all dependencies.
 
 By default, pub creates a `package_config.json` file
 in the `.dart_tool/` directory that maps from package names to location URIs.
-Before the `package_config.json` file, 
-pub used to create a `.packages` file in the root directory.
 
 默认情况下，pub 会在 `.dart_tool/` 文件夹下创建一个
 `.packages` 文件用于映射 package 名到位置 URI。
-在创建 `package_config.json` 文件之前，
-pub 常常还会在项目根目录下创建一个 `.packages` 文件。
 
 {{site.alert.note}}
 
-  Don't check the generated `.packages` file
-  or the `.dart_tool/` directory into your repo;
-  add them to your repo's `.gitignore` file.
-  For more information,
+  Don't check the generated `.dart_tool/` directory into your repo;
+  add it to your repo's `.gitignore` file.
+  For more information, 
   see [What not to commit](/guides/libraries/private-files).
 
-  不要将仓库中由 pub 自动生成的 `packages` 目录
-  （如果存在的话）或者 `.dart_tool` 目录添加至版本管理中；
-  请将它们添加至 Git 仓库的 `.gitignore` 文件中。
+  不要将仓库中由 pub 自动生成的 `.dart_tool` 目录添加至版本管理中；
+  请将它添加至 Git 仓库的 `.gitignore` 文件中。
   更多信息请查阅 [你不应该提交哪些文件](/guides/libraries/private-files)。
 
 {{site.alert.end}}

@@ -687,7 +687,7 @@ You refer to them by name instead. By default,
 these are optional, unless they're flagged as required.
 Named parameters are defined by surrounding them with curly braces.
 You can combine named parameters with required
-positional parameters&mdash;in this scenario,
+positional parameters—in this scenario,
 the named parameters are always placed after positional.
 When calling a function with named parameters,
 pass values by prefixing the passed value with the
@@ -883,6 +883,35 @@ although some have additional uses when it comes
 to collections
 (discussed in more detail in the [Collections](#collections) section).
 
+#### Iteration
+
+While both JavaScript and Dart have `for-in` loops,
+their behavior is different.
+
+JavaScript's `for-in` loop iterates over an object's properties,
+so to iterate over an iterable object's elements,
+you must instead `for-of` or `Array.forEach()`.
+Dart's `for-in` loop does this natively.
+
+The following example shows iterating
+over a collection and printing out each element:
+
+_Dart_
+```dart
+for (final element in list) {
+  print(element)
+}
+```
+
+_JavaScript_
+```js
+for (const element of list) {
+  console.log(element);
+}
+```
+
+#### Switch
+
 {{site.alert.note}}
   One key difference with the `switch` statement
   in JavaScript and Dart: when a case has no `break`,
@@ -1051,7 +1080,7 @@ Since JavaScript makes use of type coercion,
 it doesn't have an equivalent. 
 
 Use the typecast operator to cast an object
-to a particular type if&mdash;and only if&mdash;you
+to a particular type if—and only if—you
 are sure that the object is of that type.
 
 For example:
@@ -1090,7 +1119,7 @@ of both languages are identical.
 {:.table .table-striped}
 
 Dart does not have the concept of "truthy" or "falsy"
-values&mdash;only actual booleans. Because of this,
+values—only actual booleans. Because of this,
 Logical OR and Logical AND expressions always resolve
 to a boolean, not one of the two values like these
 operators do in JavaScript.
@@ -1302,7 +1331,7 @@ Use `length` to obtain the number of values in the `List`:
 _Dart_
 ```dart
 final fruits = <String>['apple', 'orange', 'pear'];
-assert(fruits.length == 2);
+assert(fruits.length == 3);
 ```
 
 Use `isEmpty` to check if the `List` is empty:
@@ -1420,7 +1449,7 @@ Use `length` to get the number of values in the `Set`:
 _Dart_
 ```dart
 final fruits = {'apple', 'orange', 'pear'};
-assert(fruits.length == 2);
+assert(fruits.length == 3);
 ```
 
 Use `isEmpty` to check if the `Set` is empty:
@@ -1932,7 +1961,7 @@ stream.listen((int value) {
 ##### Async generators
 
 Another way to create streams is by using async generator
-functions&mdash;these have the same syntax as a
+functions—these have the same syntax as a
 synchronous generator function, but use the `async*`
 keyword instead of `sync*`,
 and always return a `Stream` instead of an `Iterable`.

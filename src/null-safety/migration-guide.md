@@ -96,7 +96,7 @@ then passing a nullable argument becomes a compile error.
 
 {{site.alert.info}}
 
-  **You can — and should — migrate your package before
+  **You can—and should—migrate your package before
   packages that depend on it are migrated.**
   Your null-safe package is usable by packages and apps that
   don't use null safety yet,
@@ -540,13 +540,13 @@ you can migrate manually.
 
 如果你不想使用迁移工具，你也可以手动进行迁移。
 
-We recommend that you **first migrate leaf libraries** —
-libraries that don't import other files from the package.
+We recommend that you **first migrate leaf libraries**—libraries 
+that don't import other files from the package.
 Then migrate libraries that directly depend on the leaf libraries.
 End by migrating the libraries that have the most
 intra-package dependencies.
 
-我们推荐你 **优先迁移最下层的库** &mdash;&mdash; 指的是没有导入其他 package 的库。
+我们推荐你 **优先迁移最下层的库** —— 指的是没有导入其他 package 的库。
 接着迁移直接依赖了下层库的依赖库。
 最后再迁移依赖项最多的库。
 
@@ -669,9 +669,8 @@ If so, revert your code changes before using the migration tool again.
 
 ## 5. 发布 {#step5-publish}
 
-We encourage you to publish packages — 
-possibly as prereleases — 
-as soon as you migrate:
+We encourage you to publish packages—possibly as prereleases—as 
+soon as you migrate:
 
 我们希望你完成迁移后尽快将其发布，可以作为预览版：
 

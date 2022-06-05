@@ -44,10 +44,11 @@ you're ready to leverage code written by other programmers.
 Many interesting and useful packages of reusable Dart code
 are available at the [pub.dev site]({{site.pub}}) repository.
 
-当你可以创建和运行 Dart 应用时，你就已经准备复用其他程序员编写的代码了。[pub.dev 网站]({{site.pub}}) 仓库有许多可用的使用 Dart 代码编写的包。
+当你可以创建和运行 Dart 应用时，你就已经准备复用其他程序员编写的代码了。
+[pub.dev 网站]({{site.pub}}) 仓库有许多可用的使用 Dart 代码编写的包。
 
-This tutorial shows how to use `dart pub`&mdash;a package manager
-that comes with Dart&mdash;to
+This tutorial shows how to use `dart pub`—a package manager
+that comes with Dart—to
 install one of the packages in the repository,
 the vector_math package.
 You can follow these same steps to install any package hosted at
@@ -120,7 +121,7 @@ $ dart create --help
 ```
 
 You'll see a list of templates, including various web and server-side apps.
-One of the templates is named **console-full**.
+One of the templates is named **console**.
 
 你将会看到一系列的生成器，包括各种 Web 和 服务端应用的。
 其中一个生成器叫 **console-full**。
@@ -132,7 +133,7 @@ generate a command-line app named `vector_victor`:
 使用 `dart create` 工具来生成一个叫做 `vector_victor` 的命令行应用：
 
 ```terminal
-$ dart create -t console-full vector_victor 
+$ dart create -t console vector_victor 
 $ cd vector_victor
 ```
 
@@ -158,7 +159,7 @@ environment:
 #   path: ^1.8.0
 
 dev_dependencies:
-  lints: ^1.0.0
+  lints: ^2.0.0
   test: ^1.16.0
 ```
 
@@ -280,10 +281,6 @@ pointing to them from the `.dart_tool/package_config.json` file.
 如果一个依赖包已经安装过，则会直接使用。
 Pub 会缓存你应用依赖过的每一个包并将其缓存至
 `.dart_tool/package_config.json` 的文件中。
-
-{% comment %}
-PENDING: Here only to make it easy to find the packages discussion: packages-dir.html
-{% endcomment %}
 
 Pub creates a file called `pubspec.lock`
 that identifies the specific versions of the packages that were installed.

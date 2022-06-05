@@ -1380,7 +1380,76 @@ For more information, see
 [Exceptions](/guides/language/language-tour#exceptions)
 (in the language tour) and the [Exception API reference.][Exception]
 
-更多内容，参考 [Exceptions](#exceptions) 以及 [Exception API 文档。][Exception]
+更多内容，参考 [Exceptions](#exceptions) 以及
+[Exception API 文档。][Exception]
+
+### Weak references and finalizers
+
+### 弱引用和终结器 (finalizers)
+
+Dart is a [garbage-collected][] language,
+which means that any Dart object
+that isn't referenced
+can be disposed by the garbage collector. 
+This default behavior might not be desirable in
+some scenarios involving native resources or 
+if the target object can't be modified.
+
+Dart 语言支持 [垃圾回收 (GC)][garbage-collected]，
+即所有未被引用的 Dart 对象最终都会被垃圾回收并销毁。
+某些涉及到原生资源和目标对象无法修改的场景，
+GC 的行为可能不会符合预期。
+
+A [WeakReference][]
+stores a reference to the target object
+that does not affect how it is 
+collected by the garbage collector.
+Another option is to use an [Expando][]
+to add properties to an object.
+
+[WeakReference][] 会保存目标对象的引用，
+并且不会影响目标对象被 GC。
+另一种方案是使用 [Expando][] 对对象添加一些属性。
+
+A [Finalizer][] can be used to execute a callback function
+after an object is no longer referenced.
+However, it is not guaranteed to execute this callback.
+
+[终结器 (Finalizer)][Finalizer]
+可以在对象已不再被引用时执行一个回调函数。
+然而，终结器的回调并不保证一定会执行。
+
+A [NativeFinalizer][]
+provides stronger guarantees
+for interacting with native code using [dart:ffi][];
+its callback is invoked at least once
+after the object is no longer referenced.
+Also, it can be used to close native resources
+such as a database connection or open files.
+
+[NativeFinalizer][] 为使用 [dart:ffi][]
+与原生交互的代码提供了更加强力的回调保证。
+它的回调会在对象不再引用后至少调用一次。
+同时，它也可以用来关闭原生资源，例如数据库链接和打开的文件。
+
+To ensure that an object won't be
+garbage collected and finalized too early,
+classes can implement the [Finalizable][] interface.
+When a local variable is Finalizable, 
+it won't be garbage collected
+until the code block where it is declared has exited.
+
+想要确保一个对象不会过早地被回收，
+其对应的类可以实现 [Finalizable][] 接口。
+当一个方法内的变量是 Finalizable，直到代码执行完毕后它才会被回收。
+
+{{site.alert.version-note}}
+
+  Support for weak references and finalizers was added in Dart 2.17.
+
+  弱引用和终结器的支持在 Dart 2.17 后开始支持。
+
+{{site.alert.end}}
 
 ## dart:async - asynchronous programming
 
@@ -2280,51 +2349,58 @@ sampling of what you can install using pub.
 To learn more about the Dart language, see the
 [language tour][].
 
-要了解有关 Dart 语言的更多信息，请参考
-[language tour][]。
+要了解有关 Dart 语言的更多信息，请参考 [语言概览][language tour]。
 
-[language tour]: /guides/language/language-tour
-[docs.flutter]: {{site.flutter_api}}
-[Assert]: /guides/language/language-tour#assert
 [ArgumentError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
+[Assert]: /guides/language/language-tour#assert
 [Comparable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Comparable-class.html
-[dart:core]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html
-[dart:async]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html
-[dart:collection]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html
-[dart:convert]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
-[dart:io tour]: #dartio
-[dart:math]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
-[dart:typed\_data]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
 [Dart API]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}
 [DateTime]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/DateTime-class.html
-[double]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
 [Duration]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Duration-class.html
 [Exception]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
-[Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
+[Expando]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Expando-class.html
+[Finalizable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Finalizable-class.html
+[Finalizer]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Finalizer-class.html
 [Future.wait()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future/wait.html
+[Future]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
 [IndexedDB]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-indexed_db/dart-indexed_db-library.html
-[int]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
 [Iterable]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
 [Iterator]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterator-class.html
 [JSON]: https://www.json.org/
 [List]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [Map]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
 [Match]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Match-class.html
+[NativeFinalizer]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/NativeFinalizer-class.html
 [NoSuchMethodError]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/NoSuchMethodError-class.html
-[num]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
 [Object]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
 [Pattern]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Pattern-class.html
 [Random]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/Random-class.html
-[`Random.secure()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/Random/Random.secure.html
 [RegExp]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/RegExp-class.html
 [Set]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
 [Stream]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
-[String]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
 [StringBuffer]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StringBuffer-class.html
+[String]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
 [Symbol]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
+[UTF-8]: https://en.wikipedia.org/wiki/UTF-8
+[Uri]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri-class.html
+[WeakReference]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/WeakReference-class.html
+[`Random.secure()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/Random/Random.secure.html
+[dart:async]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html
+[dart:collection]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html
+[dart:convert]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
+[dart:core]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html
+[dart:ffi]: /guides/libraries/c-interop
+[dart:io tour]: #dartio
+[dart:math]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
+[dart:typed\_data]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
+[docs.flutter]: {{site.flutter_api}}
+[double]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
+[garbage-collected]: https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30
+[int]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
+[language tour]: /guides/language/language-tour
+[num]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
 [toStringAsFixed()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/toStringAsFixed.html
 [toStringAsPrecision()]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/toStringAsPrecision.html
-[UTF-8]: https://en.wikipedia.org/wiki/UTF-8
+[weak reference]: https://en.wikipedia.org/wiki/Weak_reference
 [web audio]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
-[Uri]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri-class.html
 [webdev libraries]: /web/libraries

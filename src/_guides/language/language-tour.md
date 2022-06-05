@@ -214,9 +214,9 @@ mind:
 
 -   When you want to explicitly say
     that any type is allowed, use the type `Object?`
-    (if you've [enabled null safety][ns-enable]), `Object`, or —
-    if you must defer type checking until runtime —
-    the [special type `dynamic`][ObjectVsDynamic].
+    (if you've [enabled null safety][ns-enable]), `Object`,
+    or—if you must defer type checking until runtime—the
+    [special type `dynamic`][ObjectVsDynamic].
 
     如果你想要显式地声明允许任意类型，使用 `Object?`（如果你 [开启了空安全][ns-enable]）、
     `Object` 或者 [特殊类型 `dynamic`][ObjectVsDynamic] 将检查延迟到运行时进行。
@@ -577,8 +577,8 @@ then the expensive `_readThermometer()` function is never called:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-late-lazy)" replace="/late/[!$&!]/g"?>
 ```dart
-// This is the program's only call to _readThermometer().
-[!late!] String temperature = _readThermometer(); // Lazily initialized.
+// This is the program's only call to readThermometer().
+[!late!] String temperature = readThermometer(); // Lazily initialized.
 ```
 
 ### Final and const
@@ -758,6 +758,7 @@ use the `Map()` constructor to create a map.
 Some other types also have special roles in the Dart language:
 
 * `Object`: The superclass of all Dart classes except `Null`.
+* `Enum`: The superclass of all enums.
 * `Future` and `Stream`: Used in [asynchrony support](#asynchrony-support).
 * `Iterable`: Used in [for-in loops][iteration] and
   in synchronous [generator functions](#generator).
@@ -1175,10 +1176,13 @@ is the *array*, or ordered group of objects. In Dart, arrays are
 在 Dart 中数组由 [`List`][] 对象表示。
 通常称之为 **List**。
 
-Dart list literals look like JavaScript array literals. Here’s a simple
-Dart list:
+Dart list literals are denoted by
+a comma separated list of expressions or values,
+enclosed in square brackets (`[]`).
+Here's a simple Dart list:
 
-Dart 中 List 字面量看起来与 JavaScript 中数组字面量一样。下面是一个 Dart List 的示例：
+Dart 中的列表字面量是由逗号分隔的一串表达式或值并以方括号 (`[]`) 包裹而组成的。
+下面是一个 Dart List 的示例：
 
 <?code-excerpt "misc/lib/language_tour/built_in_types.dart (list-literal)"?>
 ```dart
@@ -1217,9 +1221,9 @@ var list = [
 ```
 
 Lists use zero-based indexing, where 0 is the index of the first value
-and `list.length - 1` is the index of the last value. You can get a
-list’s length and refer to list values just as you would in
-JavaScript:
+and `list.length - 1` is the index of the last value. 
+You can get a list’s length using the `.length` property
+and access a list's values using the subscript operator (`[]`):
 
 List 的下标索引从 0 开始，第一个元素的下标为 0，
 最后一个元素的下标为 `list.length - 1`。
@@ -1536,8 +1540,8 @@ nobleGases[18] = 'argon';
 
 {{site.alert.end}}
 
-Add a new key-value pair to an existing map just as you would in
-JavaScript:
+Add a new key-value pair to an existing map
+using the subscript assignment operator (`[]=`):
 
 向现有的 Map 中添加键值对与 JavaScript 的操作类似：
 
@@ -1547,7 +1551,7 @@ var gifts = {'first': 'partridge'};
 gifts['fourth'] = 'calling birds'; // Add a key-value pair
 ```
 
-Retrieve a value from a map the same way you would in JavaScript:
+Retrieve a value from a map using the subscript operator (`[]`):
 
 从一个 Map 中获取一个值的操作也与 JavaScript 类似：
 
@@ -1557,7 +1561,7 @@ var gifts = {'first': 'partridge'};
 assert(gifts['first'] == 'partridge');
 ```
 
-If you look for a key that isn’t in a map, you get a null in return:
+If you look for a key that isn’t in a map, you get `null` in return:
 
 如果检索的 Key 不存在于 Map 中则会返回一个 null：
 
@@ -1829,7 +1833,7 @@ followed either by *named* parameters or by *optional positional* parameters
 
 {{site.alert.note}}
 
-  Some APIs — notably [Flutter][] widget constructors — use only named
+  Some APIs—notably [Flutter][] widget constructors—use only named
   parameters, even for parameters that are mandatory. See the next section for
   details.
 
@@ -1847,21 +1851,10 @@ or when you define function parameters.
 
 #### 命名参数
 
-Named parameters are optional unless they're specifically marked as `required`.
+Named parameters are optional
+unless they're explicitly marked as `required`.
 
 命名参数默认为可选参数，除非他们被特别标记为 `required`。
-
-When calling a function, you can specify named parameters using
-<code><em>paramName</em>: <em>value</em></code>. For example:
-
-当你调用函数时，可以使用
-<code><em>参数名</em>: <em>参数值</em></code> 的形式来指定命名参数。
-例如：
-
-<?code-excerpt "misc/lib/language_tour/functions.dart (use-named-parameters)"?>
-```dart
-enableFlags(bold: true, hidden: false);
-```
 
 When defining a function, use
 <code>{<em>param1</em>, <em>param2</em>, …}</code>
@@ -1877,6 +1870,27 @@ to specify named parameters:
 void enableFlags({bool? bold, bool? hidden}) {...}
 ```
 
+When calling a function, 
+you can specify named arguments using
+<code><em>paramName</em>: <em>value</em></code>. 
+For example:
+
+<?code-excerpt "misc/lib/language_tour/functions.dart (use-named-parameters)"?>
+```dart
+enableFlags(bold: true, hidden: false);
+```
+
+Although it often makes sense to place positional arguments first,
+named arguments can be placed anywhere in the argument list
+when it suits your API:
+
+<?code-excerpt "misc/lib/language_tour/functions.dart (named-arguments-anywhere)"?>
+```dart
+repeat(times: 2, () {
+  ...
+});
+```
+
 {{site.alert.tip}}
   If a parameter is optional but can't be `null`,
   provide a [default value](#default-parameter-values).
@@ -1884,8 +1898,8 @@ void enableFlags({bool? bold, bool? hidden}) {...}
 
 Although named parameters are a kind of optional parameter,
 you can annotate them with `required` to indicate
-that the parameter is mandatory —
-that users must provide a value for the parameter.
+that the parameter is mandatory—that users
+must provide a value for the parameter.
 For example:
 
 虽然命名参数是可选参数的一种类型，
@@ -1895,7 +1909,7 @@ For example:
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/required/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}
-const Scrollbar({Key? key, [!required!] Widget child})
+const Scrollbar({super.key, [!required!] Widget child});
 {% endprettify %}
 
 If someone tries to create a `Scrollbar`
@@ -2130,8 +2144,8 @@ for example, you can add or remove it from a collection.
 你可以将匿名方法赋值给一个变量然后使用它，
 比如将该变量添加到集合或从中删除。
 
-An anonymous function looks similar to a named function&mdash;
-zero or more parameters, separated by commas
+An anonymous function looks similar
+to a named function—zero or more parameters, separated by commas
 and optional type annotations, between parentheses.
 
 匿名方法看起来与命名方法类似，在括号之间可以定义参数，参数之间用逗号分割。
@@ -2441,7 +2455,7 @@ Dart 支持常用的算术运算符：
 | 运算符                       | 描述                                       |
 |-----------------------------+-------------------------------------------|
 | `+`                         | 加
-| `–`                         | 减
+| `-`                         | 减
 | <code>-<em>表达式</em></code>| 一元负, 也可以作为反转（反转表达式的符号）
 | `*`                         | 乘
 | `/`                         | 除
@@ -2475,8 +2489,8 @@ Dart 还支持自增自减操作。
 |-----------------------------+-------------------------------------------|
 | <code>++<em>var</em></code> | <code><em>var</em> = <em>var</em> + 1</code> (表达式的值为 <code><em>var</em> + 1</code>)
 | <code><em>var</em>++</code> | <code><em>var</em> = <em>var</em> + 1</code> (表达式的值为 <code><em>var</em></code>)
-| <code>--<em>var</em></code> | <code><em>var</em> = <em>var</em> – 1</code> (表达式的值为 <code><em>var</em> – 1</code>)
-| <code><em>var</em>--</code> | <code><em>var</em> = <em>var</em> – 1</code> (表达式的值为 <code><em>var</em></code>)
+| <code>--<em>var</em></code> | <code><em>var</em> = <em>var</em> - 1</code> (表达式的值为 <code><em>var</em> - 1</code>)
+| <code><em>var</em>--</code> | <code><em>var</em> = <em>var</em> - 1</code> (表达式的值为 <code><em>var</em></code>)
 {:.table .table-striped}
 
 Example:
@@ -2826,8 +2840,8 @@ String playerName(String? name) {
 ### 级联运算符
 
 Cascades (`..`, `?..`) allow you to make a sequence of operations
-on the same object. In addition to function calls,
-you can also access fields on that same object.
+on the same object. In addition to accessing instance members,
+you can also call instance methods on that same object.
 This often saves you the step of creating a temporary variable and
 allows you to write more fluid code.
 
@@ -2861,10 +2875,6 @@ paint.strokeCap = StrokeCap.round;
 paint.strokeWidth = 5.0;
 ```
 
-{% comment %}
-[TODO #2950: make sure `?..` is covered in /null-safety]
-{% endcomment %}
-
 If the object that the cascade operates on can be null,
 then use a _null-shorting_ cascade (`?..`) for the first operation.
 Starting with `?..` guarantees that none of the cascade operations
@@ -2875,7 +2885,8 @@ are attempted on that null object.
 querySelector('#confirm') // Get an object.
   ?..text = 'Confirm' // Use its members.
   ..classes.add('important')
-  ..onClick.listen((e) => window.alert('Confirmed!'));
+  ..onClick.listen((e) => window.alert('Confirmed!'))
+  ..scrollIntoView();
 ```
 
 {{site.alert.version-note}}
@@ -2896,6 +2907,7 @@ var button = querySelector('#confirm');
 button?.text = 'Confirm';
 button?.classes.add('important');
 button?.onClick.listen((e) => window.alert('Confirmed!'));
+button?.scrollIntoView();
 ```
 
 You can also nest cascades. For example:
@@ -3023,8 +3035,9 @@ if (isRaining()) {
 }
 ```
 
-Unlike JavaScript, conditions must use boolean values, nothing else. See
-[Booleans](#booleans) for more information.
+The statement conditions must be expressions
+that evaluate to boolean values, nothing else.
+See [Booleans](#booleans) for more information.
 
 不同于 JavaScript，Dart 的 if 语句中的条件必须是布尔值而不能为其它类型。
 详情请查阅[布尔值](#booleans)。
@@ -3298,11 +3311,11 @@ the scope of that clause.
 
 ### 断言
 
-During development, use an assert statement
-— <code>assert(<em>condition</em>, <em>optionalMessage</em>)</code>; —
-to disrupt normal execution if a boolean
-condition is false. You can find examples of assert statements
-throughout this tour. Here are some more:
+During development, use an assert 
+statement—<code>assert(<em>condition</em>, <em>optionalMessage</em>)</code>;—to
+disrupt normal execution if a boolean condition is false. 
+You can find examples of assert statements throughout this tour. 
+Here are some more:
 
 在开发过程中，可以在条件表达式为 false 时
 使用 — <code>assert(<em>条件</em>, <em>可选信息</em>)</code>; — 语句
@@ -3871,7 +3884,7 @@ class Point {
   double y = 0;
 
   Point(double x, double y) {
-    // See initializing parameters for a better way
+    // See initializing formal parameters for a better way
     // to initialize instance variables.
     this.x = x;
     this.y = y;
@@ -3893,11 +3906,13 @@ The `this` keyword refers to the current instance.
 {{site.alert.end}}
 
 
-#### Initializing parameters
+#### Initializing formal parameters
+
+#### 终值初始化
 
 The pattern of assigning a constructor argument to an instance variable
 is so common, 
-Dart has initializing parameters to make it easy.
+Dart has initializing formal parameters to make it easy.
 
 对于大多数编程语言来说在构造函数中为实例变量赋值的过程都是类似的，
 而 Dart 则提供了一种特殊的语法糖来简化该步骤。
@@ -3920,6 +3935,11 @@ class Point {
   Point(this.x, this.y);
 }
 ```
+
+The variables introduced by the initializing formals
+are implicitly final and only in scope of the initializer list.
+
+在初始化时出现的变量默认是隐式终值，且只在初始化时可用。
 
 #### Default constructors
 
@@ -4032,8 +4052,8 @@ class Person {
 
 class Employee extends Person {
   // Person does not have a default constructor;
-  // you must call super.fromJson(data).
-  Employee.fromJson(Map data) : super.fromJson(data) {
+  // you must call super.fromJson().
+  Employee.fromJson(super.data) : super.fromJson() {
     print('in Employee');
   }
 }
@@ -4073,6 +4093,71 @@ class Employee extends Person {
   子类的实例对象也就还未初始化，
   因此所有的实例成员都不能被访问，但是类成员可以。
 
+{{site.alert.end}}
+
+#### Super parameters
+
+#### 超类参数
+
+To avoid having to manually pass each parameter
+into the super invocation of a constructor,
+you can use super-initializer parameters to forward parameters
+to the specified or default superclass constructor.
+This feature can't be used with redirecting constructors.
+Super-initializer parameters have similar syntax and semantics to
+[initializing formal parameters](#initializing-formal-parameters):
+
+为了不重复地将参数传递到超类构造的指定参数，
+你可以使用超类参数，直接在子类的构造中使用超类构造的某个参数。
+超类参数不能和重定向的参数一起使用。
+超类参数的表达式和写法与
+[终值初始化](#initializing-formal-parameters) 类似：
+
+<?code-excerpt "misc/lib/language_tour/classes/super_initializer_parameters.dart (positional)" plaster="none"?>
+```dart
+class Vector2d {
+  final double x;
+  final double y;
+
+  Vector2d(this.x, this.y);
+}
+
+class Vector3d extends Vector2d {
+  final double z;
+
+  // Forward the x and y parameters to the default super constructor like:
+  // Vector3d(final double x, final double y, this.z) : super(x, y);
+  Vector3d(super.x, super.y, this.z);
+}
+```
+
+Super-initializer parameters cannot be positional 
+if the super-constructor invocation already has positional arguments,
+but they can always be named:
+
+<?code-excerpt "misc/lib/language_tour/classes/super_initializer_parameters.dart (named)" plaster="none"?>
+```dart
+class Vector2d {
+  // ...
+
+  Vector2d.named({required this.x, required this.y});
+}
+
+class Vector3d extends Vector2d {
+  // ...
+
+  // Forward the y parameter to the named super constructor like:
+  // Vector3d.yzPlane({required double y, required this.z})
+  //       : super.named(x: 0, y: y);
+  Vector3d.yzPlane({required super.y, required this.z}) : super.named(x: 0);
+}
+```
+
+{{site.alert.version-note}}
+  Using super-initializer parameters 
+  requires a [language version][] of at least 2.17.
+  If you're using an earlier language version,
+  you must manually pass in all super constructor parameters.
 {{site.alert.end}}
 
 #### Initializer list
@@ -4342,7 +4427,7 @@ Dart 允许您使用以下名称定义运算符：
 `>`  | `/`  | `^`  | `[]`
 `<=` | `~/` | `&`  | `[]=`
 `>=` | `*`  | `<<` | `~`
-`–`  | `%`  | `>>` | `==`
+`-`  | `%`  | `>>` | `==`
 {:.table}
 
 {{site.alert.note}}
@@ -4515,7 +4600,7 @@ abstract class AbstractContainer {
 }
 ```
 
-
+<a id="interfaces"></a>
 ### Implicit interfaces
 
 ### 隐式接口
@@ -4778,21 +4863,115 @@ a fixed number of constant values.
 枚举类型是一种特殊的类型，也称为 **enumerations** 或 **enums**，
 用于定义一些固定数量的常量值。
 
+{{site.alert.note}}
 
-#### Using enums
+  All enums automatically extend the [`Enum`][] class.
+  They are also sealed, 
+  meaning they cannot be subclassed, implemented, mixed in, 
+  or otherwise explicitly instantiated.
 
-### 使用枚举
+  所有的枚举都继承于 [`Enum`][] 类。
+  枚举类是封闭的，即不能被继承、被实现、被 mixin 混入或显式被实例化。
 
-Declare an enumerated type using the `enum` keyword:
+  Abstract classes and mixins can explicitly implement or extend `Enum`,
+  but unless they are then implemented by or mixed into an enum declaration,
+  no objects can actually implement the type of that class or mixin.
 
-使用关键字 `enum` 来定义枚举类型：
+  抽象类和 mixin 可以显式的实现或继承 `Enum`，
+  但只有枚举可以实现或混入这个类，其他类无法享有同样的操作。
+
+{{site.alert.end}}
+
+#### Declaring simple enums
+
+#### 声明简单的枚举
+
+To declare a simple enumerated type,
+use the `enum` keyword and
+list the values you want to be enumerated:
+
+你可以使用关键字 `enum` 来定义简单的枚举类型和枚举值：
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (enum)"?>
 ```dart
 enum Color { red, green, blue }
 ```
 
-You can use [trailing commas][] when declaring an enumerated type.
+{{site.alert.tip}}
+  You can also use [trailing commas][] when declaring an enumerated type
+  to help prevent copy-paste errors.
+{{site.alert.end}}
+
+#### Declaring enhanced enums
+
+Dart also allows enum declarations to declare classes
+with fields, methods, and const constructors
+which are limited to a fixed number of known constant instances.
+
+To declare an enhanced enum,
+follow a syntax similar to normal [classes](#classes),
+but with a few extra requirements:
+
+* Instance variables must be `final`, 
+  including those added by [mixins](#mixins).
+* All [generative constructors](#constant-constructors) must be constant.
+* [Factory constructors](#factory-constructors) can only return
+  one of the fixed, known enum instances.
+* No other class can be extended as [`Enum`] is automatically extended.
+* There cannot be overrides for `index`, `hashCode`, the equality operator `==`.
+* A member named `values` cannot be declared in an enum,
+  as it would conflict with the automatically generated static `values` getter.
+* All instances of the enum must be declared
+  in the beginning of the declaration,
+  and there must be at least one instance declared.
+
+Here is an example that declares an enhanced enum
+with multiple instances, instance variables,
+a getter, and an implemented interface:
+
+<?code-excerpt "misc/lib/language_tour/classes/enum.dart (enhanced)"?>
+```dart
+enum Vehicle implements Comparable<Vehicle> {
+  car(tires: 4, passengers: 5, carbonPerKilometer: 400),
+  bus(tires: 6, passengers: 50, carbonPerKilometer: 800),
+  bicycle(tires: 2, passengers: 1, carbonPerKilometer: 0);
+
+  const Vehicle({
+    required this.tires,
+    required this.passengers,
+    required this.carbonPerKilometer,
+  });
+
+  final int tires;
+  final int passengers;
+  final int carbonPerKilometer;
+
+  int get carbonFootprint => (carbonPerKilometer / passengers).round();
+
+  @override
+  int compareTo(Vehicle other) => carbonFootprint - other.carbonFootprint;
+}
+```
+
+To learn more about declaring enhanced enums,
+see the section on [Classes](#classes).
+
+{{site.alert.version-note}}
+  Enhanced enums require a [language version][] of at least 2.17.
+{{site.alert.end}}
+
+#### Using enums
+
+Access the enumerated values like
+any other [static variable](#static-variables):
+
+<?code-excerpt "misc/lib/language_tour/classes/enum.dart (access)"?>
+```dart
+final favoriteColor = Color.blue;
+if (favoriteColor == Color.blue) {
+  print('Your favorite color is blue!');
+}
+```
 
 你可以在声明枚举类型时使用 [尾随逗号][trailing commas]。
 
@@ -4812,7 +4991,7 @@ assert(Color.green.index == 1);
 assert(Color.blue.index == 2);
 ```
 
-To get a list of all of the values in the enum,
+To get a list of all the enumerated values,
 use the enum's `values` constant.
 
 想要获得全部的枚举值，使用枚举类的 `values` 方法获取包含它们的列表：
@@ -4846,23 +5025,20 @@ switch (aColor) {
 }
 ```
 
-Enumerated types have the following limits:
+If you need to access the name of an enumerated value,
+such as `'blue'` from `Color.blue`,
+use the `.name` property:
 
-枚举类型有如下两个限制：
+如果你想要获取一个枚举值的名称，例如 `Color.blue` 的 `'blue'`，
+请使用 `.name` 属性：
 
-* You can't subclass, mix in, or implement an enum.
-
-  枚举不能成为子类，也不可以 mix in，你也不可以实现一个枚举。
-
-* You can't explicitly instantiate an enum.
-
-  不能显式地实例化一个枚举类。
-
-For more information, see the [Dart language specification][].
-
-你可以查阅 [Dart 编程语言规范][Dart language specification] 获取更多相关信息。
+<?code-excerpt "misc/lib/language_tour/classes/enum.dart (name)"?>
+```dart
+print(Color.blue.name); // 'blue'
+```
 
 
+<a id="mixins"></a>
 ### Adding features to a class: mixins
 
 ### 使用 Mixin 为类添加功能
@@ -5778,8 +5954,7 @@ void main() [!async!] {
 {{site.alert.note}}
 
   The preceding example uses an `async` function (`checkVersion()`)
-  without waiting for a result —
-  a practice that can cause problems
+  without waiting for a result—a practice that can cause problems
   if the code assumes that the function has finished executing.
   To avoid this problem,
   use the [unawaited_futures linter rule][].
@@ -6086,8 +6261,8 @@ For more information, see the following:
 
 ## Typedefs
 
-A type alias — often called a _typedef_ because
-it's declared with the keyword `typedef` — is
+A type alias—often called a _typedef_ because
+it's declared with the keyword `typedef`—is
 a concise way to refer to a type.
 Here's an example of declaring and using a type alias named `IntList`:
   
@@ -6384,6 +6559,7 @@ To learn more about Dart's core libraries, see
 [dartdevc]: /tools/dartdevc
 [DON’T use const redundantly]: /guides/language/effective-dart/usage#dont-use-const-redundantly
 [`double`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
+[`Enum`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Enum-class.html
 [`Error`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Error-class.html
 [`Exception`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
 [extension methods page]: /guides/language/extension-methods

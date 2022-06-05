@@ -33,22 +33,22 @@ ENV PATH=$DART_SDK/bin:$PATH
 RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       amd64_stable) \
-        DART_SHA256="7a0ad877b0785e19018873c8144db3a29c4ab50e7c1aa968800280fd47a25e72"; \
+        DART_SHA256="68f9a09ac61aab1c135ad2e64a39bfac088900d439941dee275d8ea8c8541b95"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="be67ab8d79140149c8f058cafbadaa2ea8044e603e04b3c4657171c18a48f8a6"; \
+        DART_SHA256="c993247b5adaab432fbb4d4b144d5a52c4c4011656312d2b008ef6ec51eaeadb"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
-        DART_SHA256="dc3123d87c1b6b43087520ba9fa7e6fd91f3c4652178d55ca41825f4fc7100fe"; \
+        DART_SHA256="9f7915db20ce8e5a42f43e0501d74632c86e42aa0f8c7e6306e8ecc7a9007d28"; \
         SDK_ARCH="x64";; \
       arm64_beta) \
-        DART_SHA256="f6c0f0777241fb8b2d0607295f794956b9a91d3251f639c32fd351902dfae931"; \
+        DART_SHA256="b81c548873460df0dd0107b58fd8a309cd6102182037460c6acad661f461ece8"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="619f42f8ab08826ffb7ebdaa2f91d47360bd54fa03865994320674540a3a94c3"; \
+        DART_SHA256="e6011fd465e20daf5ee8913dce1e6f019d2272523c556884f5b169e53fabc387"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="6dc38ab557a380f2c009fb30db50dc26cc233ab77f65cec92ce85e5af76725a1"; \
+        DART_SHA256="5dadef203b4e71eabf7af32a9dd4250c8f6a3850c258a70767cd63c9dbb837ca"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
@@ -80,7 +80,7 @@ CMD ["./tool/test.sh"]
 FROM dart as node
 RUN set -eu; \
     NODE_PPA="node_ppa.sh"; \
-    NODE_SHA256=9e7ae5cb709609546a44c5a17233a464db1c757e173d676c487b0653ac36c984; \
+    NODE_SHA256=915d0c7c80f0780146f3320468a6e51798e50dd61ae8ae399e80d67de880b43a; \
     curl -fsSL https://deb.nodesource.com/setup_lts.x -o "$NODE_PPA"; \
     echo "$NODE_SHA256 $NODE_PPA" | sha256sum --check --status --strict - || (\
         echo -e "\n\nNODE CHECKSUM FAILED! Run tool/fetch-node-ppa-sum.sh for updated values.\n\n" && \
@@ -111,8 +111,8 @@ RUN npm install
 
 COPY ./ ./
 
-# Get root packages after full copy
-# See https://registry.hub.docker.com/r/google/dart/
+# Ensure packages are still up-to-date if anything has changed
+# RUN dart pub get --offline
 RUN dart pub get
 
 # Let's not play "which dir is this"

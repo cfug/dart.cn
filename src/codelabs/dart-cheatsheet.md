@@ -10,10 +10,10 @@ js: [{url: 'https://dartpad.cn/inject_embed.dart.js', defer: true}]
 The Dart language is designed to be easy to learn for
 coders coming from other languages,
 but it has a few unique features.
-This codelab — which is based on a
+This codelab—which is based on a
 [Dart language cheatsheet](/guides/language/cheatsheet)
-written by and for Google engineers —
-walks you through the most important of these language features.
+written by and for Google engineers—walks you through
+the most important of these language features.
 
 Dart 语言旨在让从其他编程语言转来的开发者们能够轻松学习，但也有它的独特之处。
 本篇将基于谷歌工程师编写的
@@ -748,7 +748,7 @@ myObject..someMethod()
 ```
 
 Although it still invokes `someMethod()` on `myObject`, the result
-of the expression **isn't** the return value — it's a reference to `myObject`!
+of the expression **isn't** the return value—it's a reference to `myObject`!
 
 Using cascades, you can chain together operations that
 would otherwise require separate statements.
@@ -768,6 +768,7 @@ var button = querySelector('#confirm');
 button?.text = 'Confirm';
 button?.classes.add('important');
 button?.onClick.listen((e) => window.alert('Confirmed!'));
+button?.scrollIntoView();
 ```
 
 To instead use cascades, 
@@ -786,7 +787,8 @@ and makes the `button` variable unnecessary:
 querySelector('#confirm')
   ?..text = 'Confirm'
   ..classes.add('important')
-  ..onClick.listen((e) => window.alert('Confirmed!'));
+  ..onClick.listen((e) => window.alert('Confirmed!'))
+  ..scrollIntoView();
 ```
 
 ### Code example
@@ -1072,8 +1074,8 @@ with a function you give it
 
 ## 可选位置参数
 
-Dart has two kinds of function parameters: positional and named. Positional parameters are the kind
-you're likely familiar with:
+Dart has two kinds of function parameters: positional and named. 
+Positional parameters are the kind you're likely familiar with:
 
 Dart 有两种传参方法：位置参数和命名参数。位置参数你可能会比较熟悉：
 
@@ -1218,29 +1220,36 @@ before you add them to the final string.
 {$ end hint.txt $}
 ```
 
+<a id="optional-named-parameters"></a>
+## Named parameters
 
-## Optional named parameters
+## 命名参数
 
-## 可选命名参数
+Using a curly brace syntax at the end of the parameter list,
+you can define parameters that have names.
 
-Using a curly brace syntax,
-you can define optional parameters that have names.
+你可以在参数列表的靠后位置使用中括号来定义命名参数。
 
-你可以使用大括号语法定义可选命名参数。
+Named parameters are optional
+unless they're explicitly marked as `required`.
 
-<?code-excerpt "misc/lib/cheatsheet/optional_named_params.dart"?>
+除非显式使用 `required` 进行标记，否则命名参数默认是可选的。
+
+<?code-excerpt "misc/lib/cheatsheet/named_parameters.dart"?>
 ```dart
-void printName(String firstName, String lastName, {String? suffix}) {
-  print('$firstName $lastName ${suffix ?? ''}');
+void printName(String firstName, String lastName, {String? middleName}) {
+  print('$firstName ${middleName ?? ''} $lastName');
 }
 // ···
-  printName('Avinash', 'Gupta');
-  printName('Poshmeister', 'Moneybuckets', suffix: 'IV');
+  printName('Dash', 'Dartisan');
+  printName('John', 'Smith', middleName: 'Who');
+  // Named arguments can be placed anywhere in the argument list
+  printName('John', middleName: 'Who', 'Smith');
 ```
 
 As you might expect,
-the default value of an optional named parameter is `null`,
-but you can provide a default value.
+the default value of a nullable named parameter is `null`,
+but you can provide a custom default value.
 
 正如你所料，这些参数默认为 null，但你也可以为其提供默认值。
 
@@ -1254,14 +1263,14 @@ or mark the parameter as `required`
 如果一个参数的类型是非空的，那么你必须要提供一个默认值（如下方代码所示），
 或者将其标记为 `required`（如 [构造部分](#using-this-in-a-constructor)所示）。
 
-<?code-excerpt "misc/test/cheatsheet/arguments_test.dart (defaulted-suffix)" replace="/ = ''/[! = ''!]/g;"?>
+<?code-excerpt "misc/test/cheatsheet/arguments_test.dart (defaulted-middle)" replace="/ = ''/[! = ''!]/g;"?>
 ```dart
-void printName(String firstName, String lastName, {String suffix[! = ''!]}) {
-  print('$firstName $lastName $suffix');
+void printName(String firstName, String lastName, {String middleName[! = ''!]}) {
+  print('$firstName $middleName $lastName');
 }
 ```
 
-A function can't have both optional positional and optional named parameters.
+A function can't have both optional positional and named parameters.
 
 一个方法不能同时使用可选位置参数和可选命名参数。
 
