@@ -1875,6 +1875,9 @@ you can specify named arguments using
 <code><em>paramName</em>: <em>value</em></code>. 
 For example:
 
+当调用函数时，你可以使用 <code><em>参数名</em>: <em>参数值</em></code>
+指定一个命名参数的值。例如：
+
 <?code-excerpt "misc/lib/language_tour/functions.dart (use-named-parameters)"?>
 ```dart
 enableFlags(bold: true, hidden: false);
@@ -1884,6 +1887,9 @@ Although it often makes sense to place positional arguments first,
 named arguments can be placed anywhere in the argument list
 when it suits your API:
 
+尽管先使用位置参数会比较合理，但你也可以在任意位置使用命名参数，
+让整个调用的方式看起来更适合你的 API：
+
 <?code-excerpt "misc/lib/language_tour/functions.dart (named-arguments-anywhere)"?>
 ```dart
 repeat(times: 2, () {
@@ -1892,8 +1898,13 @@ repeat(times: 2, () {
 ```
 
 {{site.alert.tip}}
+
   If a parameter is optional but can't be `null`,
   provide a [default value](#default-parameter-values).
+
+  如果一个参数是可选的，但是不能为 `null`，
+  你需要为它提供一个 [默认值](#default-parameter-values)。
+
 {{site.alert.end}}
 
 Although named parameters are a kind of optional parameter,
@@ -3039,8 +3050,8 @@ The statement conditions must be expressions
 that evaluate to boolean values, nothing else.
 See [Booleans](#booleans) for more information.
 
-不同于 JavaScript，Dart 的 if 语句中的条件必须是布尔值而不能为其它类型。
-详情请查阅[布尔值](#booleans)。
+Dart 的 if 语句中的条件必须是布尔值而不能为其它类型。
+详情请查阅 [布尔值](#booleans)。
 
 
 ### For loops
@@ -4135,6 +4146,10 @@ Super-initializer parameters cannot be positional
 if the super-constructor invocation already has positional arguments,
 but they can always be named:
 
+如果超类构造的位置参数已被使用，
+那么超类构造参数就不能再继续使用被占用的位置。
+但是超类构造参数可以始终是命名参数：
+
 <?code-excerpt "misc/lib/language_tour/classes/super_initializer_parameters.dart (named)" plaster="none"?>
 ```dart
 class Vector2d {
@@ -4154,10 +4169,15 @@ class Vector3d extends Vector2d {
 ```
 
 {{site.alert.version-note}}
+
   Using super-initializer parameters 
   requires a [language version][] of at least 2.17.
   If you're using an earlier language version,
   you must manually pass in all super constructor parameters.
+
+  使用超类参数需要 [Dart SDK 版本][language version] 至少为 2.17。
+  在先前的版本中，你必须手动传递所有的超类构造参数。
+
 {{site.alert.end}}
 
 #### Initializer list
@@ -4904,30 +4924,63 @@ enum Color { red, green, blue }
 
 #### Declaring enhanced enums
 
+#### 声明增强的枚举类型
+
 Dart also allows enum declarations to declare classes
 with fields, methods, and const constructors
 which are limited to a fixed number of known constant instances.
+
+Dart 中的枚举也支持定义字段、方法和常量构造，
+常量构造只能构造出已知数量的常量实例（已定义的枚举值）。
 
 To declare an enhanced enum,
 follow a syntax similar to normal [classes](#classes),
 but with a few extra requirements:
 
+你可以使用与定义 [类](#classes) 类似的语句来定义增强的枚举，
+但是这样的定义有一些限制条件：
+
 * Instance variables must be `final`, 
   including those added by [mixins](#mixins).
+
+  实例的字段必须是 `final`，包括由 [mixin](#mixins) 混入的字段。
+
 * All [generative constructors](#constant-constructors) must be constant.
+
+  所有的 [实例化构造](#constant-constructors) 必须以 `const` 修饰。
+
 * [Factory constructors](#factory-constructors) can only return
   one of the fixed, known enum instances.
+
+  [工厂构造](#factory-constructors) 只能返回已知的一个枚举实例。
+
 * No other class can be extended as [`Enum`] is automatically extended.
+
+  由于 [`Enum`][] 已经自动进行了继承，所以枚举类不能再继承其他类。
+
 * There cannot be overrides for `index`, `hashCode`, the equality operator `==`.
+
+  不能重载 `index`、`hashCode` 和比较操作符 `==`。
+
 * A member named `values` cannot be declared in an enum,
   as it would conflict with the automatically generated static `values` getter.
+
+  不能声明 `values` 字段，否则它将与枚举本身的静态 `values` getter 冲突。
+
 * All instances of the enum must be declared
   in the beginning of the declaration,
   and there must be at least one instance declared.
 
+  在进行枚举定义时，所有的实例都需要首先进行声明，
+  且至少要声明一个枚举实例。
+
+
 Here is an example that declares an enhanced enum
 with multiple instances, instance variables,
 a getter, and an implemented interface:
+
+下方是一个增强枚举的例子，
+它包含多个枚举实例、成员变量、getter 并且实现了接口：
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (enhanced)"?>
 ```dart
@@ -4956,14 +5009,25 @@ enum Vehicle implements Comparable<Vehicle> {
 To learn more about declaring enhanced enums,
 see the section on [Classes](#classes).
 
+想要了解更多关于定义增强枚举的内容，
+可以阅读 [类](#classes) 小节。
+
 {{site.alert.version-note}}
+
   Enhanced enums require a [language version][] of at least 2.17.
+
+  增强枚举仅在 [Dart SDK 版本][language version] 2.17 以上可用。
+
 {{site.alert.end}}
 
 #### Using enums
 
+#### 使用枚举
+
 Access the enumerated values like
 any other [static variable](#static-variables):
+
+你可以像访问 [静态变量](#static-variables) 一样访问枚举值：
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (access)"?>
 ```dart
@@ -4972,8 +5036,6 @@ if (favoriteColor == Color.blue) {
   print('Your favorite color is blue!');
 }
 ```
-
-你可以在声明枚举类型时使用 [尾随逗号][trailing commas]。
 
 Each value in an enum has an `index` getter,
 which returns the zero-based position of the value in the enum declaration.
