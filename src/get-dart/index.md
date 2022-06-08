@@ -69,7 +69,7 @@ Dart SDK 支持 Windows、Linux 和 macOS。
 
 ### Windows
 
-* **Supported versions:** Windows 10.
+* **Supported versions:** Windows 10 and 11.
 
   **支持的版本：**Windows 10 和 11。
 
