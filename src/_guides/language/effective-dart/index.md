@@ -152,7 +152,7 @@ Each guideline starts with one of these words:
   取决于具体的情况、习惯做法以及自己的偏好。
 
 Some guidelines describe an **exception** where the rule does *not* apply. When
-listed, the exceptions may not be exhaustive&mdash;you might still need to use
+listed, the exceptions may not be exhaustive—you might still need to use
 your judgement on other cases.
 
 某些准则描述了规则 **不** 适用的 **例外情况**。

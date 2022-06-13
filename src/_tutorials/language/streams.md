@@ -45,7 +45,7 @@ The future will tell you when the result is ready.
 Future 表示一个不会立即完成的计算过程。与普通函数直接返回结果不同的是异步函数返回一个将会包含结果的 Future。该 Future 会在结果准备好时通知调用者。
 
 A stream is a sequence of asynchronous events.
-It is like an asynchronous Iterable&mdash;where, instead of getting
+It is like an asynchronous Iterable—where, instead of getting
 the next event when you ask for it, the stream tells you that
 there is an event when it is ready.
 
@@ -436,7 +436,7 @@ Stream<S> transform<S>(StreamTransformer<T, S> streamTransformer);
 
 The final three functions are more special.
 They involve error handling which an **await for** loop
-can't do&mdash;the first error reaching the loops will end
+can't do—the first error reaching the loops will end
 the loop and its subscription on the stream.
 There is no recovering from that.
 The following code shows how to use `handleError()` to remove errors
@@ -517,7 +517,7 @@ void main(List<String> args) async {
 ## listen() 方法 {#listen-method}
 
 The final method on Stream is `listen()`. This is a "low-level"
-method&mdash;all other stream functions are defined in terms of `listen()`.
+method—all other stream functions are defined in terms of `listen()`.
 
 最后一个重要的方法是 `listen()`。这是一个“底层”方法，
 其它所有的 Stream 方法都根据 `listen()` 方法定义。
@@ -529,7 +529,7 @@ StreamSubscription<T> listen(void Function(T event)? onData,
 ```
 
 To create a new `Stream` type, you can just extend the `Stream`
-class and implement the `listen()` method&mdash;all other methods
+class and implement the `listen()` method—all other methods
 on `Stream` call `listen()` in order to work.
 
 你只需继承 `Stream` 类并实现 `listen()` 方法来创建一个 `Stream` 类型的子类。

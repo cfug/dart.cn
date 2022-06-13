@@ -684,8 +684,8 @@ keep these tips in mind:
   implementing the `listen` method and the extra functionality on top,
   that is generally not recommended because
   it introduces a new type that users have to consider.
-  Instead, you can often make a class that _has_ a `Stream` (and more) —
-  instead of one that _is_ a Stream (and more).
+  Instead of a class that _is_ a `Stream` (and more), 
+  you can often make a class that _has_ a `Stream` (and more).
 
   尽管你可以通过扩展 `Stream` 类并实现 `listen` 方法来实现更多额外的功能，
   但一般不建议这么做，因为这样会引入一个调用者必须考虑的新类型。

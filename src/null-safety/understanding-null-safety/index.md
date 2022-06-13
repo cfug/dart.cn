@@ -219,12 +219,12 @@ In type theory lingo, the `Null` type was treated as a subtype of all types:
 
 <img src="understanding-null-safety/hierarchy-before.png" width="335">
 
-The set of operations&mdash;getters, setters, methods, and
-operators&mdash;allowed on some expression are defined by its type. If the type
+The set of operations—getters, setters, methods, and
+operators—allowed on some expressions are defined by its type. If the type
 is `List`, you can call `.add()` or `[]` on it. If it's `int`, you can call `+`.
 But the `null` value doesn't define any of those methods. Allowing `null` to
 flow into an expression of some other type means any of those operations can
-fail. This is really the crux of null reference errors&mdash;every failure comes
+fail. This is really the crux of null reference errors—every failure comes
 from trying to look up a method or property on `null` that it doesn't have.
 
 类型会定义一些操作对象，包括 getters、setters、方法和操作符，在表达式中使用。
@@ -1021,8 +1021,8 @@ promotion to also look at `== null` and `!= null` expressions.
 流程分析是对变量和局部变量进行处理的主要方法之一。
 我们在分析 `== null` 和 `!= null` 表达式时也进行了类型提升的扩展。
 
-If you check a variable with nullable type to see if it is not `null`, Dart then
-promotes the variable to the underlying non-nullable type:
+If you check a local variable with nullable type to see if it is not `null`, 
+Dart then promotes the variable to the underlying non-nullable type:
 
 如果你判断了一个可空的变量是否不为 `null`，进行到下一步后
 Dart 就会将这个变量的类型提升至非空的对应类型：
@@ -1087,6 +1087,15 @@ Dart 语言也对什么表达式需要提升变量判断地更智能了。
 以及我们马上就要提到的后置操作符 `!` 也会进行类型提升。
 总体来说的目标是：如果代码是动态正确的，而静态分析时又是合理的，
 那么分析结果也足够聪明，会对其进行类型提升。
+
+Note that type promotion only works on local variables,
+not on fields or top-level variables.
+For more information about working with non-local variables,
+see [Working with nullable fields](#working-with-nullable-fields).
+
+请注意，类型提升仅对当前方法内的变量有效，对字段和顶层变量无效。
+想要了解更多针对非方法内的变量的处理，阅读
+[与可空字段共舞](#working-with-nullable-fields)。
 
 ### Unnecessary code warnings
 
@@ -1176,7 +1185,7 @@ locals and parameters.
 而流程分析也仅对局部变量和参数起作用。
 
 To try to regain as much of the flexibility that Dart had before null
-safety&mdash;and to go beyond it on some places&mdash;we have a handful of other
+safety—and to go beyond it on some places—we have a handful of other
 new features.
 
 为了尽可能地保持 Dart 在拥有空安全之前的灵活度，并且在一定程度上超越它，
@@ -1646,8 +1655,8 @@ class Coffee {
 Unlike normal `final` fields, you do not have to initialize the field in its
 declaration or in the constructor initialization list. You can assign to it
 later at runtime. But you can only assign to it *once*, and that fact is checked
-at runtime. If you try to assign to it more than once&mdash;like calling both
-`heat()` and `chill()` here&mdash;the second assignment throws an exception.
+at runtime. If you try to assign to it more than once—like calling both
+`heat()` and `chill()` here—the second assignment throws an exception.
 This is a great way to model state that gets initialized eventually and is
 immutable afterwards.
 
@@ -1883,7 +1892,13 @@ to *change* the value, just remember to store back to the field and not just the
 local.
 
 对于局部变量而言，类型提升是有效的，所以它会正常运行。
-如果你需要**更改**它的值，记得要存储回原有的字段，不要只更新了你的局部变量。
+如果你需要 **更改** 它的值，记得要存储回原有的字段，不要只更新了你的局部变量。
+
+For more information on handling these and other type promotion issues,
+see [Fixing type promotion failures](/tools/non-promotion-reasons).
+
+想要了解更多关于如何处理类型提升问题的方法，查看
+[处理类型提升的失败情况](/tools/non-promotion-reasons)。
 
 ### Nullability and generics
 
@@ -2022,7 +2037,7 @@ class Interval<T extends num> {
 ```
 
 If the bound is non-nullable, then the type parameter is also non-nullable. This
-means you have the restrictions of non-nullable types&mdash;you can't leave
+means you have the restrictions of non-nullable types—you can't leave
 fields and variables uninitialized. The example class here must have a
 constructor that initializes the fields.
 

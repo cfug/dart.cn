@@ -67,7 +67,7 @@ Dart null safety support is based on the following three core design principles:
 
 Dart 的空安全支持基于以下三条核心原则：
 
-*  **Non-nullable by default**. Unless you explicitly tell Dart that a variable
+* **Non-nullable by default**. Unless you explicitly tell Dart that a variable
    can be null, it's considered non-nullable. This default was chosen
    after research found that non-null was by far the most common choice in APIs.
 
@@ -86,13 +86,15 @@ Dart 的空安全支持基于以下三条核心原则：
 * **Fully sound**. Dart’s null safety is sound, which enables compiler optimizations.
   If the type system determines that something isn’t null, then that thing can _never_ be
   null. Once you migrate your whole project
-  and its dependencies to null safety, you reap the full benefits of soundness
-  — not only fewer bugs, but smaller binaries and faster execution.
+  and its dependencies to null safety, 
+  you reap the full benefits of soundness—not only 
+  fewer bugs, but smaller binaries and faster execution.
 
   **完全可靠**。Dart 的空安全是非常可靠的，意味着编译期间包含了很多优化。
   如果类型系统推断出某个变量不为空，那么它 **永远** 不为空。
   当你将整个项目和其依赖完全迁移至空安全后，
-  你会享有健全性带来的所有优势&mdash;&mdash;更少的 BUG、更小的二进制文件以及更快的执行速度。
+  你会享有健全性带来的所有优势&mdash;&mdash;
+  更少的 BUG、更小的二进制文件以及更快的执行速度。
 
 ## Enabling null safety {#enable-null-safety}
 
@@ -121,7 +123,7 @@ see the [migration guide][].
   尚未迁移至空安全。在创建后你还需要对它们进行迁移。举个例子：
 
   ```terminal
-  $ dart create -t console-full my_cli
+  $ dart create -t console my_cli
   $ cd my_cli
   $ dart migrate --apply-changes
   ```

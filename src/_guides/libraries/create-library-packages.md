@@ -37,58 +37,50 @@ The minimal requirements for a library are:
 
 Library 的最基本要求包括：
 
-<dl markdown="1">
-
-<dt markdown="1">
 pubspec file
+<br> The `pubspec.yaml` file for a library is the same
+  as for an application package—there is no special
+  designation to indicate that the package is a library.
 
 pubspec 文件
-</dt>
-<dd markdown="1">
-<br>The `pubspec.yaml` file for a library is the same
-as for an application package&mdash;there is no special
-designation to indicate that the package is a library.
+<br> Library 的 `pubspec.yaml` 文件与应用程序的
+  `pubspec.yaml` 文件相同&mdash; `pubspec.yaml`
+  文件中并没有特别的指出这个 Package 是一个 Library 。
 
-<br>Library 的 `pubspec.yaml` 文件与应用程序的 `pubspec.yaml` 文件相同&mdash;
-`pubspec.yaml` 文件中并没有特别的指出这个 Package 是一个 Library 。
-</dd>
-
-<dt markdown="1">
 lib directory
+<br> As you might expect, the library code lives under the _lib_
+  directory and is public to other packages.
+  You can create any hierarchy under lib, as needed.
+  By convention, implementation code is placed under _lib/src_.
+  Code under lib/src is considered private;
+  other packages should never need to import `src/...`.
+  To make APIs under lib/src public, you can export lib/src files
+  from a file that's directly under lib.
 
 lib 目录
-</dt>
-<dd markdown="1">
-<br>As you might expect, the library code lives under the _lib_
-directory and is public to other packages.
-You can create any hierarchy under lib, as needed.
-By convention, implementation code is placed under _lib/src_.
-Code under lib/src is considered private;
-other packages should never need to import `src/...`.
-To make APIs under lib/src public, you can export lib/src files
-from a file that's directly under lib.
+<br> 如你所料， Library 的代码位于 _lib_ 目录下，
+  且对于其他 Package 是公开的。
+  你可以根据需要在 **lib** 下任意创建组织文件结构。
+  按照惯例，实现代码会放在 **lib/src** 目录下。
+  lib/src 目录下的代码被认为是私有的。
+  其他 Package 应该永远不需要导入 `src/...` 目录下代码。
+  通过导出 lib/src 目录的文件到一个 lib 目录的文件，实现
+  对 lib/src 目录中 API 的公开。
 
-<br>如你所料， Library 的代码位于 _lib_ 目录下，且对于其他 Package 是公开的。
-你可以根据需要在 **lib** 下任意创建组织文件结构。
-按照惯例，实现代码会放在 **lib/src** 目录下。
-lib/src 目录下的代码被认为是私有的。
-其他 Package 应该永远不需要导入 `src/...` 目录下代码。
-通过导出 lib/src 目录的文件到一个 lib 目录的文件，实现
-对 lib/src 目录中 API 的公开。
-</dd>
 
 {{site.alert.note}}
 
-When the `library` directive isn't specified, a unique
-tag is generated for each library based on its path and filename.
-Therefore, we suggest that you omit the `library` directive from
-your code unless you plan to
-[generate library-level documentation](#documenting-a-library).
+  When the `library` directive isn't specified, a unique
+  tag is generated for each library based on its path and filename.
+  Therefore, we suggest that you omit the `library` directive from
+  your code unless you plan to
+  [generate library-level documentation](#documenting-a-library).
 
-在未指定 `library` 命令下，每个 Library 会根据它的路径及文件
-生成一个唯一标记。
-因此，这里我们建议在你的代码中忽略 `library` 命令，除非想要
-[生成 Library-Level 文档](#documenting-a-library)。
+  在未指定 `library` 命令下，每个 Library 会根据它的路径及文件
+  生成一个唯一标记。
+  因此，这里我们建议在你的代码中忽略 `library` 命令，除非想要
+  [生成 Library-Level 文档](#documenting-a-library)。
+
 {{site.alert.end}}
 
 </dl>
@@ -155,12 +147,14 @@ library packages:
   alt="shelf root directory contains example, lib, test, and tool subdirectories">
 
 Directly under lib, the main library file,
-`shelf.dart`, exports API from several files in lib/src.
-To avoid exposing more API than intended —
-and to give developers an overview of the entire public API of the package —
-`shelf.dart` uses `show` to specify exactly which symbols to export:
+`shelf.dart`, exports API from several files in `lib/src`.
+To avoid exposing more API than intended—and 
+to give developers an overview of the entire
+public API of the package—`shelf.dart` 
+uses `show` to specify exactly which symbols to export:
 
-主 Library 文件 `shelf.dart` 在 lib 目录下，通过 `shelf.dart` 文件导出 lib/src 目录下的若干文件。
+主 Library 文件 `shelf.dart` 在 lib 目录下，
+通过 `shelf.dart` 文件导出 lib/src 目录下的若干文件。
 为了不导出过多的 API，并且为开发者提供公开的 API 的概览，
 `shelf.dart` 使用了 `show` 来指定哪些内容需要导出：
 

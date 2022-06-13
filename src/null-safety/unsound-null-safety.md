@@ -124,13 +124,13 @@ while still being able to run your program and its tests.
 因为 Dart 支持混合模式的空安全，
 所以你可以一个个迁移你的库（通常是一个文件），同时能正常运行程序和测试。
 
-We recommend that you **first migrate leaf libraries** —
-libraries that don't import other files from the package.
+We recommend that you **first migrate leaf libraries**—libraries 
+that don't import other files from the package.
 Then migrate libraries that directly depend on the leaf libraries.
 End by migrating the libraries that have the most
 intra-package dependencies.
 
-我们推荐你 **优先迁移最下层的库** &mdash;&mdash; 指的是没有导入其他包的库。
+我们推荐你 **优先迁移最下层的库**——指的是没有导入其他包的库。
 接着迁移直接依赖了下层库的依赖库。
 最后再迁移依赖项最多的库。
 
@@ -272,20 +272,19 @@ You can do this in two ways:
   $ flutter run --no-sound-null-safety
   ```
 
-* Alternatively, set the language version in the entrypoint —
-  the file that contains `main()` function — to 2.9.
+* Alternatively, set the language version in the 
+  entrypoint—the file that contains `main()` function—to 2.9.
   In Flutter apps, this file is often named `lib/main.dart`.
   In command-line apps, this file is often named `bin/<packageName>.dart`.
   You can also opt out files under `test`,
   because they are also entrypoints.
   Example:
 
-  或者，设定程序入口的语言版本 &mdash;&mdash;
-  包含 `main()` 函数的文件 &mdash;&mdash; 设定为 2.9。
+  或者，设定包含 `main()` 函数的文件程序入口的语言版本为 2.9。
   在 Flutter 应用中，一般是 `lib/main.dart`。
   在命令行应用中，一般是 `bin/<package 名称>.dart`。
   同时你也可以设定 `test` 下的文件，因为它们也包含程序入口。
-  例如
+  例如：
 
   ```dart
   // @dart=2.9

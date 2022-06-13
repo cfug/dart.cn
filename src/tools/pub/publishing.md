@@ -366,10 +366,10 @@ with the following exceptions:
 在你 package 中的 **所有文件** 都会被包含在发布的 package 中，
 除了以下几个例外：
 
-* Any _hidden_ files or directories —
-  that is, files with names that begin with dot (`.`)
+* Any _hidden_ files or directories—that is,
+  files with names that begin with dot (`.`)
 
-  所有 **隐藏** 文件和文件夹&mdash;&mdash;即文件名以 `.` 开头的文件
+  所有 **隐藏** 文件和文件夹——即文件名以 `.` 开头的文件
 
 * Any directories with the name `packages`
 

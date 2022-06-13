@@ -105,12 +105,13 @@ Dart 语言、库、编译系统以及 Web 开发工具都已经有所变化。
 
   * The new build system [replaces `pub build` and `pub serve`.][build_runner web]
 
-    新的编译系统 [替代 `pub build` 和 `pub serve`。][build_runner web]
+    新的编译系统 [替代 `pub build` 和 `pub serve`][build_runner web]。
 
-  * Dartium is no longer supported. Instead, use [dartdevc][] and Chrome.
+  * Dartium is no longer supported.
+    Instead, use the [`webdev` tool][] and Chrome.
 
-    Dartium 不再支持。作为替代，使用 [dartdevc][] 和 Chrome。
-
+  * Dartium 不再支持。作为替代，
+    使用 [`webdev` 工具][`webdev` tool] 和 Chrome。
 
 ## Migrating your code {#migration}
 
@@ -364,7 +365,7 @@ environment:
   这篇文章包含了更新代码和使用 Travis 执行可持续集成 (CI) 测试的技巧。
 
 [analysis options file]: /guides/language/analysis-options#the-analysis-options-file
-[dartdevc]: /tools/dartdevc
+[`webdev` tool]: /tools/webdev
 [build system]: https://github.com/dart-lang/build/tree/master/docs
 [automated tests]: /guides/testing
 [Flutter analyzer]: {{site.flutter-docs}}/testing/debugging#the-dart-analyzer

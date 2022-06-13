@@ -467,13 +467,14 @@ Here are some best practices to keep in mind when composing strings in Dart.
 
 {% include linter-rule-mention.md rule="prefer_adjacent_string_concatenation" %}
 
-If you have two string literals&mdash;not values, but the actual quoted literal
-form&mdash;you do not need to use `+` to concatenate them. Just like in C and
+If you have two string literals—not values, but the actual quoted literal
+form—you do not need to use `+` to concatenate them. Just like in C and
 C++, simply placing them next to each other does it. This is a good way to make
 a single long string that doesn't fit on one line.
 
-如果你有两个字面量字符串（不是变量，是放在引号中的字符串），你不需要使用 `+` 来连接它们。
-应该想 C 和 C++ 一样，只需要将它们挨着在一起就可以了。
+如果你有两个字面量字符串（不是变量，是放在引号中的字符串），
+你不需要使用 `+` 来连接它们。
+应该像 C 和 C++ 一样，只需要将它们挨着在一起就可以了。
 这种方式非常适合不能放到一行的长字符串的创建。
 
 {:.good}
@@ -1014,7 +1015,7 @@ int median(List<Object> objects) {
 {% endprettify %}
 
 These alternatives don't always work, of course, and sometimes `cast()` is the
-right answer. But consider that method a little risky and undesirable&mdash;it
+right answer. But consider that method a little risky and undesirable—it
 can be slow and may fail at runtime if you aren't careful.
 
 当然，这些替代方案并不总能解决问题，显然，这时候就应该选择 `cast()` 方式了。
@@ -1080,7 +1081,7 @@ void main() {
 {% include linter-rule-mention.md rule="unnecessary_lambdas" %}
 
 When you refer to a function, method, or named constructor but omit the
-parentheses, Dart creates a _tear-off_&mdash;a closure that takes the same
+parentheses, Dart creates a _tear-off_—a closure that takes the same
 parameters as the function and invokes the underlying function when you call it.
 If all you need is a closure that invokes a named function with the same
 parameters as the closure accepts, don't manually wrap the call in a lambda.
@@ -1221,7 +1222,7 @@ problem that merits that trade-off?
 他们减少了 CPU 消耗却增加了内存消耗。
 我们还没有权衡，到底存不存在性能问题？
 
-Worse, the code is *wrong*. The problem with caches is *invalidation*&mdash;how
+Worse, the code is *wrong*. The problem with caches is *invalidation*—how
 do you know when the cache is out of date and needs to be recalculated? Here, we
 never do, even though `radius` is mutable. You can assign a different value and
 the `area` and `circumference` will retain their previous, now incorrect values.
@@ -1418,8 +1419,8 @@ String capitalize(String name) =>
 
 People *writing* code seem to love `=>`, but it's very easy to abuse it and end
 up with code that's hard to *read*. If your declaration is more than a couple of
-lines or contains deeply nested expressions&mdash;cascades and conditional
-operators are common offenders&mdash;do yourself and everyone who has to read
+lines or contains deeply nested expressions—cascades and conditional
+operators are common offenders—do yourself and everyone who has to read
 your code a favor and use a block body and some statements.
 
 *编写*代码的人似乎很喜欢 `=>` 语法，但是它很容易被滥用，最后导致代码不容易被*阅读*。
@@ -1469,8 +1470,8 @@ set x(num value) => center = Point(value, center.y);
 {% include linter-rule-mention.md rule="unnecessary_this" %}
 
 JavaScript requires an explicit `this.` to refer to members on the object whose
-method is currently being executed, but Dart&mdash;like C++, Java, and
-C#&mdash;doesn't have that limitation.
+method is currently being executed, but Dart—like C++, Java, and
+C#—doesn't have that limitation.
 
 JavaScript 需要使用 `this.` 来引用对象的成员变量，
 但是 Dart&mdash;和 C++, Java, 以及C#&mdash;没有这种限制。
@@ -1566,7 +1567,7 @@ class Box extends BaseBox {
 {% endprettify %}
 
 This looks surprising, but works like you want. Fortunately, code like this is
-relatively rare thanks to initializing formals.
+relatively rare thanks to initializing formals and super initializers.
 
 这看起来很令人惊讶，但是实际结果是你想要的。
 幸运的是，由于初始化规则的特殊性，上面的代码很少见到。
@@ -1607,7 +1608,7 @@ class ProfileMark {
 {% endprettify %}
 
 Some fields can't be initialized at their declarations because they need to reference
-`this` — to use other fields or call methods, for example. However, if the
+`this`—to use other fields or call methods, for example. However, if the
 field is marked `late`, then the initializer *can* access `this`.
 
 Of course, if a field depends on constructor parameters, or is initialized
@@ -1820,7 +1821,7 @@ expression inside:
 
   一个常量声明的初始化方法。
 
-* A switch case expression&mdash;the part right after `case` before the `:`, not
+* A switch case expression—the part right after `case` before the `:`, not
   the body of the case.
 
   switch case 表达式—— `case` 和 `:` 中间的部分，不是 case 执行体。

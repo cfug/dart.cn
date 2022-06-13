@@ -303,7 +303,7 @@ var regExp = RegExp(pattern, caseSensitive: false);
 
 Most boolean names have conceptually "positive" and "negative" forms where the
 former feels like the fundamental concept and the latter is its
-negation&mdash;"open" and "closed", "enabled" and "disabled", etc. Often the
+negation—"open" and "closed", "enabled" and "disabled", etc. Often the
 latter name literally has a prefix that negates the former: "visible" and
 "*in*-visible", "connected" and "*dis*-connected", "zero" and "*non*-zero".
 
@@ -315,8 +315,8 @@ latter name literally has a prefix that negates the former: "visible" and
 "connected" 和 "*dis*-connected"，
 "zero" 和 "*non*-zero"。
 
-When choosing which of the two cases that `true` represents &mdash; and thus
-which case the property is named for &mdash; prefer the positive or more
+When choosing which of the two cases that `true` represents—and thus
+which case the property is named for—prefer the positive or more
 fundamental one. Boolean members are often nested inside logical expressions,
 including negation operators. If your property itself reads like a negation,
 it's harder for the reader to mentally perform the double negation and
@@ -547,7 +547,7 @@ dateTime.toLocal();
 
 Conversion methods are "snapshots". The resulting object has its own copy of the
 original object's state. There are other conversion-like methods that return
-*views*&mdash;they provide a new object, but that object refers back to the
+*views*—they provide a new object, but that object refers back to the
 original. Later changes to the original object are reflected in the view.
 
 转换函数提供的是“快照功能”。返回的对象有自己的数据副本，
@@ -718,7 +718,7 @@ library. This is not mere convention, but is built into the language itself.
 
 ### **推荐** 使用私有声明。
 
-A public declaration in a library&mdash;either top level or in a class&mdash;is
+A public declaration in a library—either top level or in a class—is
 a signal that other libraries can and should access that member. It is also a
 commitment on your library's part to support that and behave properly when it
 happens.
@@ -745,7 +745,7 @@ doesn't know if any code outside of its view is using it.
 ### **考虑** 声明多个类在一个库中。
 
 Some languages, such as Java, tie the organization of files to the organization of
-classes&mdash;each file may only define a single top level class. Dart does not
+classes—each file may only define a single top level class. Dart does not
 have that limitation. Libraries are distinct entities separate from classes.
 It's perfectly fine for a single library to contain multiple classes, top level
 variables, and functions if they all logically belong together.
@@ -779,7 +779,7 @@ class in a single library.
 
 Dart is a "pure" object-oriented language in that all objects are instances of
 classes. But Dart does not require all code to be defined inside a
-class&mdash;you can define top-level variables, constants, and functions like
+class—you can define top-level variables, constants, and functions like
 you can in a procedural or functional language.
 
 Dart是一种 “纯粹的” 面向对象语言，因为所有对象都是类的实例。但是 Dart 并没有要求所有代码都
@@ -824,7 +824,7 @@ abstract class Predicate<E> {
 
 In Java and C#, every definition *must* be inside a class, so it's common to see
 "classes" that exist only as a place to stuff static members. Other classes are
-used as namespaces&mdash;a way to give a shared prefix to a bunch of members to
+used as namespaces—a way to give a shared prefix to a bunch of members to
 relate them to each other or avoid a name collision.
 
 在 Java 和 C# 中，所有的定义*必须*要在类中。所有常常会看到一些这样的类，这些
@@ -1056,7 +1056,7 @@ constructors*.
 If you have a class where all the fields are final, and the constructor does
 nothing but initialize them, you can make that constructor `const`. That lets
 users create instances of your class in places where constants are
-required&mdash;inside other larger constants, switch cases, default parameter
+required—inside other larger constants, switch cases, default parameter
 values, etc.
 
 如果一个类，它所有的字段都是 final ，并且构造函数出了初始化他们之外没有任
@@ -1093,7 +1093,7 @@ A member belongs to an object and can be either methods or instance variables.
 
 {% include linter-rule-mention.md rule="prefer_final_fields" %}
 
-State that is not *mutable*&mdash;that does not change over time&mdash;is
+State that is not *mutable*—that does not change over time—is
 easier for programmers to reason about. Classes and libraries that minimize the
 amount of mutable state they work with tend to be easier to maintain.
 
@@ -1127,7 +1127,7 @@ to [initialize the field at its declaration][init at decl].
 Deciding when a member should be a getter versus a method is a subtle but
 important part of good API design, hence this very long guideline.
 Some other language's cultures shy away from getters. They only use them when
-the operation is almost exactly like a field&mdash;it does a minuscule amount of
+the operation is almost exactly like a field—it does a minuscule amount of
 calculation on state that lives entirely on the object. Anything more complex or
 heavyweight than that gets `()` after the name to signal "computation goin' on
 here!" because a bare name after a `.` means "field".
@@ -1139,7 +1139,7 @@ API 设计是非常重要的，也导致本规则会很长。其他的一些语�
 意味着是"字段"。
 
 Dart is *not* like that. In Dart, *all* dotted names are member invocations that
-may do computation. Fields are special&mdash;they're getters whose
+may do computation. Fields are special—they're getters whose
 implementation is provided by the language. In other words, getters are not
 "particularly slow fields" in Dart; fields are "particularly fast getters".
 
@@ -1562,8 +1562,8 @@ various cases, but the rough summary is:
 
 {% include linter-rule-mention.md rule="prefer_typing_uninitialized_variables" %}
 
-The type of a variable&mdash;top-level, local, static field, or instance
-field&mdash;can often be inferred from its initializer. However, if there is no
+The type of a variable—top-level, local, static field, or instance
+field—can often be inferred from its initializer. However, if there is no
 initializer, inference fails.
 
 {:.good}
@@ -1656,7 +1656,7 @@ const screenWidth = 640; // Inferred as int.
 
   读者熟悉的工厂方法，如 `int.parse()`， `Future.wait()` 等。
 
-If you think the initializer expression&mdash;whatever it is&mdash;is
+If you think the initializer expression—whatever it is—is
 sufficiently clear, then you may omit the annotation. But if you think
 annotating helps make the code clearer, then add one.
 
@@ -2445,7 +2445,7 @@ FutureOr<int> triple(FutureOr<int> value) {
 
 The more precise formulation of this guideline is to *only use `FutureOr<T>` in
 [contravariant][] positions.* Parameters are contravariant and return types are
-covariant. In nested function types, this gets flipped&mdash;if you have a
+covariant. In nested function types, this gets flipped—if you have a
 parameter whose type is itself a function, then the callback's return type is
 now in contravariant position and the callback's parameters are covariant. This
 means it's OK for a *callback's* type to return `FutureOr<T>`:
@@ -2640,7 +2640,7 @@ elements to follow.
 
 {% include linter-rule-mention.md rule="hash_and_equals" %}
 
-The default hash code implementation provides an *identity* hash&mdash;two
+The default hash code implementation provides an *identity* hash—two
 objects generally only have the same hash code if they are the exact same
 object. Likewise, the default behavior for `==` is identity.
 
@@ -2691,10 +2691,11 @@ When you define `==`, you also have to define `hashCode`. Both of those should
 take into account the object's fields. If those fields *change* then that
 implies the object's hash code can change.
 
-定义 `==` 时，必须要定义 `hashCode` 。两者都需要考虑对象的字段。如果这些字段发生了变化，
-则意味着对象的哈希值可能会改变。
+定义 `==` 时，必须要定义 `hashCode`。
+两者都需要考虑对象的字段。
+如果这些字段发生了变化，则意味着对象的哈希值可能会改变。
 
-Most hash-based collections don't anticipate that&mdash;they assume an object's
+Most hash-based collections don't anticipate that—they assume an object's
 hash code will be the same forever and may behave unpredictably if that isn't
 true.
 

@@ -6,15 +6,15 @@ toc: false
 
 The `dart` tool (`bin/dart`)
 is a command-line interface to the [Dart SDK](/tools/sdk).
-The tool is available no matter how you get the Dart SDK —
-whether you download the Dart SDK explicitly or download only
-the [Flutter SDK.]({{site.flutter}})
+The tool is available no matter how you get the Dart SDK—whether 
+you download the Dart SDK explicitly 
+or download only the [Flutter SDK.]({{site.flutter}})
 
 Here's how you might use the `dart` tool
 to create, analyze, test, and run an app:
 
 ```terminal
-$ dart create -t console-full my_app
+$ dart create -t console my_app
 $ cd my_app
 $ dart analyze
 $ dart test
@@ -64,7 +64,7 @@ you might use the [`flutter` tool][] instead.
 
 For additional help on any of the commands, enter `dart help <command>`
 or follow the links in the **More information** column.
-You can also get details on `pub` commands — for example,
+You can also get details on `pub` commands—for example,
 `dart help pub outdated`.
 
 [`dartdoc`]: {{site.pub-pkg}}/dartdoc

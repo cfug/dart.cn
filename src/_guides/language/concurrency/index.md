@@ -118,18 +118,40 @@ the `Future<String>` completes with either a string value or an error.
 [`readAsStringSync()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsStringSync.html
 [`readAsString()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsString.html
 
-Why does it matter whether a method is synchronous or asynchronous?
-It matters because most apps need to do more than one thing at a time.
+#### Why asynchronous code matters
+
+#### 为什么异步的代码如此重要？
+
+It matters whether a method is synchronous or asynchronous
+because most apps need to do more than one thing at a time.
+
+Asynchronous computations are often the result of performing computations
+outside of the current Dart code; 
+this includes computations that don't complete immediately, 
+and where you aren't willing to block your Dart code waiting for the result.
 For example, an app might start an HTTP request,
 but need to update its display or respond to user input
 before the HTTP request completes.
 Asynchronous code helps apps stay responsive.
 
-为什么一个方法是同步的还是异步的会如此重要？
-因为大部分应用需要在同一时刻做很多件事。
+大部分应用需要在同一时刻做很多件事。
 例如，应用可能会发起一个 HTTP 请求，
 同时在请求返回前对用户的操作做出不同的界面更新。
 异步的代码会有助于应用保持更高的可交互状态。
+
+These scenarios include operating system calls like
+non-blocking I/O, performing an HTTP request, or communicating with a browser. 
+Other scenarios include waiting for computations
+performed in another Dart isolate as described below, 
+or maybe just waiting for a timer to trigger. 
+All of these processes either run in a different thread, 
+or are handled by the operating system or the Dart runtime, 
+which allows Dart code to run concurrently with the computation.
+
+异步场景包括调用系统 API，例如非阻塞的 I/O 操作、HTTP 请求或与浏览器交互。
+还有一些场景是利用 Dart 的 isolate 进行计算，或等待一个计时器的触发。
+这些场景要么是在不同的线程运行，要么是被系统或 Dart 运行时处理，
+让 Dart 代码可以在计算时同步运行。
 
 ### The async-await syntax
 
@@ -141,7 +163,8 @@ and use their results.
 
 `async` 和 `await` 关键字是用声明来定义异步函数和获取它们的结果的方式。
 
-Here’s an example of some synchronous code that blocks while waiting for file I/O:
+Here’s an example of some synchronous code
+that blocks while waiting for file I/O:
 
 下面是一段同步代码调用文件 I/O 时阻塞的例子：
 
@@ -294,8 +317,8 @@ using asynchronous operations as necessary.
 As the following figure shows,
 every isolate starts by running some Dart code,
 such as the `main()` function.
-This Dart code might register some event listeners —
-to respond to user input or file I/O, for example.
+This Dart code might register some event listeners—to 
+respond to user input or file I/O, for example.
 When the isolate's initial function returns,
 the isolate stays around if it needs to handle events.
 After handling the events, the isolate exits.
@@ -361,9 +384,9 @@ Worse, the UI might become completely unresponsive.
 
 ### 后台运行对象
 
-If your app’s UI becomes unresponsive due to a time-consuming computation —
-[parsing a large JSON file][json], for example —
-consider offloading that computation to a worker isolate,
+If your app’s UI becomes unresponsive due to 
+a time-consuming computation—[parsing a large JSON file][json], 
+for example—consider offloading that computation to a worker isolate,
 often called a _background worker._
 A common case, shown in the following figure,
 is spawning a simple worker isolate that
@@ -548,12 +571,12 @@ Future<void> _readAndParseJson(SendPort p) async {
 The relevant statement is the last one, which exits the isolate,
 sending `jsonData` to the passed-in `SendPort`.
 Message passing between isolates normally involves data copying,
-and thus can be slow and increases with the size of the message —
-O(n) in [big O notation][].
+and thus can be slow and increases linearly
+with the size of the message (`O(n)` in [big O notation][]).
 However, when you send the data using `Isolate.exit()`,
 then the memory that holds the message in the exiting isolate isn’t copied,
 but instead is transferred to the receiving isolate.
-That transfer is quick and completes in constant time — O(1).
+That transfer is quick and completes in constant time (`O(1)`).
 
 在最后一句代码后，isolate 会退出，将 `jsonData` 通过传入的 `SendPort` 发送。
 在 isolate 之间传递消息时，通常会发生数据拷贝，

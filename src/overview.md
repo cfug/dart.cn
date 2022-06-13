@@ -21,8 +21,8 @@ Dart 是一种针对客户优化的语言，可在任何平台上开发快速的
 并为应用程序框架搭配了
 [灵活的运行时执行平台](#platform)。
 
-Languages are defined by their _technical envelope_ —
-the choices made during development that
+Languages are defined by their _technical envelope_—the 
+choices made during development that
 shape the capabilities and strengths of a language.
 Dart is designed for a technical envelope that is
 particularly suited to client development,
@@ -221,9 +221,9 @@ Dart 拥有 [丰富的核心库](/guides/libraries)，为许多日常编程任�
 
   用于提供 C 语言风格代码互通性支持的外部函数接口
   (`dart:ffi`)
-  
-* Concurrent programming using _isolates_ —
-  independent workers that are similar to threads but
+
+* Concurrent programming using _isolates_—independent workers
+  that are similar to threads but
   don't share memory, communicating only through messages
   (`dart:isolate`)
 
@@ -339,14 +339,15 @@ The Dart VM offers a just-in-time compiler (JIT) with
 incremental recompilation (enabling hot reload), live metrics collections
 (powering [DevTools](/tools/dart-devtools)), and rich debugging support.
 
-在开发过程中，快速的开发周期对于迭代至关重要。Dart VM 提供了一个实时编译器 (JIT) ，
-编译器拥有增量重编译功能 (支持热重载)、运行数据收集 (用于驱动 [DevTools](/tools/dart-devtools))
+在开发过程中，快速的开发周期对于迭代至关重要。
+Dart VM 提供了一个实时编译器 (JIT)，编译器拥有增量重编译功能 (支持热重载)、
+运行数据收集（用于驱动 [DevTools](/tools/dart-devtools)）
 以及丰富的开发调试支持。
 
-When apps are ready to be deployed to production —
-whether you're publishing to an app store or
-deploying to a production backend —
-the Dart AOT compiler enables ahead-of-time compilation to
+When apps are ready to be deployed to production—whether
+you're publishing to an app store 
+or deploying to a production backend—the 
+Dart AOT compiler enables ahead-of-time compilation to
 native ARM or x64 machine code.
 Your AOT-compiled app launches with consistent, short startup time.
 
@@ -389,7 +390,7 @@ More information:
 
 Dart Web enables running Dart code on web platforms powered by
 JavaScript. With Dart Web, you compile Dart code to JavaScript code, which in
-turn runs in a browser — for example, [V8](https://v8.dev/) inside
+turn runs in a browser—for example, [V8](https://v8.dev/) inside
 [Chrome](https://www.google.com/chrome/).
 
 Dart 的 Web 支持让你可以在 JavaScript 驱动的网页平台上运行 Dart 代码。
@@ -418,7 +419,7 @@ More information:
 
   [dart2js 编译器](/tools/dart2js)
 
-* [dartdevc compiler](/tools/dartdevc)
+* [dartdevc](/tools/dartdevc)
 
   [dartdevc 编译器](/tools/dartdevc)
 

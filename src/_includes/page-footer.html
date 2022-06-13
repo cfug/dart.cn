@@ -1,35 +1,29 @@
 <footer id="page-footer">
-  <div class="container">
-    <div class="content">
-      <div class="text-center">
-        {%- assign dateFormat = '%Y/%m/%d %R %Z' -%}
-        <ul class="menu">
-          <li><a href="/terms">Terms</a></li>
-          <li><a href="/security">Security</a></li>
-          <li><a href="https://policies.google.cn/privacy" class="no-automatic-external">Privacy</a></li>
-          <li>Site&nbsp;<a href="http://creativecommons.org/licenses/by/4.0/" class="no-automatic-external">CC&nbsp;BY&nbsp;4.0</a></li>
-          <li><a href="#" class="no-automatic-external">由北京千跃优意维护基础设施资源</a></li>
-          <li><a href="http://beian.miit.gov.cn" class="no-automatic-external">京ICP备13029451号-6</a></li>
-          <li><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802029624" class="no-automatic-external">京公网安备11010802029624号</a></li>
-          <li>
-            <a href="{{site.repo.this}}"
-               title="This site's source is on GitHub."
-               class="no-automatic-external"><i class="fab fa-github fa-sm"></i></a>
-            &nbsp;
-            <a href="{{site.repo.this}}/issues/new/choose"
-               title="File an issue about this site."
-               class="no-automatic-external"><i class="fas fa-bug fa-sm"></i></a>
-            &nbsp;
-            <a {% if site.data.ci.build-id %}
-               href="{{site.repo.this}}/actions/runs/{{site.data.ci.build-id}}"
-               title="Site build #{{site.data.ci.build-number}} ({{site.data.ci.build-time | date: dateFormat}})"
-               {% else %}
-               title="Site built on {{site.now | default: site.time | date: dateFormat}}"
-               {% endif %}
-               class="no-automatic-external"><i class="fas fa-wrench fa-sm"></i></a>
-          </li>
-        </ul>
-      </div>
+  <div class="footer-section footer-main">
+    <a href="/" class="brand" title="Dart">
+      <img src="/assets/img/shared/dart/logo+text/horizontal/white.svg" alt="Dart" width="164px">
+    </a>
+    <div class="footer-social-links">
+      <a href="https://github.com/cfug/dart.cn" target="_blank" rel="noopener" title="GitHub" class="no-automatic-external">
+        <svg>
+          <use href="/assets/img/social/github.svg#github"></use>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-section footer-tray">
+    <div class="footer-licenses">
+      引用中文内容需注明本站及链接作为出处，英文内容和示例代码均遵从源站授权协议。
+    </div>
+    <div class="footer-utility-links">
+      <ul>
+        <li><a href="/terms" title="使用条款">使用条款</a></li>
+        <li><a href="https://policies.google.cn/privacy" target="_blank" rel="noopener" title="隐私政策" class="no-automatic-external">隐私政策</a></li>
+        <li><a href="/security" title="Security philosophy and practices">Dart 代码安全说明</a></li>
+        <li><a href="https://flutter.cn/about" target="_blank">关于中文文档</a>
+        <li><a href="https://flutter.cn/disclaimer" target="_blank">免责条款</a>
+        <li><small><a href="http://beian.miit.gov.cn" class="no-automatic-external">京ICP备13029451号-6</a> | <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802029624" class="no-automatic-external">京公网安备11010802029624号</a></small></li>
+      </ul>
     </div>
   </div>
 </footer>

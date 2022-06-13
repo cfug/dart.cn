@@ -145,11 +145,6 @@ to the corresponding package in the system cache.
 Pub 会创建一个 `package_config.json` 文件（位于 `.dart_tool/` 目录下），
 该文件将应用程序所依赖的每个包名相应的映射到系统缓存中的包。
 
-{% comment %}
-PENDING: Here only to make it easy to find the packages discussion:
-packages-dir.html
-{% endcomment %}
-
 ## Importing libraries from packages
 
 ## 从包中导入库

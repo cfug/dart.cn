@@ -371,14 +371,13 @@ void main() {
 
 ## 运行时检查
 
-Runtime checks in the Dart VM and [dartdevc][]
-deal with type safety issues that the analyzer can't catch.
+Runtime checks deal with type safety issues
+that can't be detected at compile time.
 
-运行时检查工具，比如 Dart VM 和 [dartdevc][]，
-处理分析器无法捕获的类型安全问题。
+运行时检查工具会处理分析器无法捕获的类型安全问题。
 
 For example, the following code throws an exception at runtime
-because it is an error to cast a list of dogs to a list of cats:
+because it's an error to cast a list of dogs to a list of cats:
 
 例如，以下代码在运行时会抛出异常，
 因为将 Dog 类型的 List 赋值给 Cat 类型的 List 是错误的：
@@ -641,7 +640,7 @@ Cat c = MaineCoon();
 ### 泛型赋值
 
 Are the rules the same for generic types? Yes. Consider the hierarchy
-of lists of animals&mdash;a `List` of `Cat` is a subtype of a `List` of
+of lists of animals—a `List` of `Cat` is a subtype of a `List` of
 `Animal`, and a supertype of a `List` of `MaineCoon`:
 
 上面的规则同样适用于泛型类型吗？是的。

@@ -177,8 +177,9 @@ Or run the app from your IDE.
 
 或者从 IDE 运行应用程序。
 
-To view your app, use the Chrome browser to visit the app's URL —
-for example, [localhost:8080](localhost:8080).
+To view your app, use the Chrome browser
+to visit the app's URL—for example, 
+[localhost:8080](localhost:8080).
 
 使用 Chrome 浏览器访问应用程序的 URL
 即可查看你的应用程序。
