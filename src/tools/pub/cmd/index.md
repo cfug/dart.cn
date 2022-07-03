@@ -90,7 +90,7 @@ or any modification of the pubspec.
 一些 IDE 会在创建项目或修改了 pubspec 文件后自动执行此操作。
 
 [`cache`](/tools/pub/cmd/pub-cache)
-: Manages pub's local package cache. Use this subcommand to add packages
+<br> Manages pub's local package cache. Use this subcommand to add packages
   to your cache, or to perform a clean reinstall of all packages in
   your cache.
 
@@ -99,13 +99,13 @@ or any modification of the pubspec.
 或者清除所有缓存的 Package 并重新安装。
 
 [`deps`](/tools/pub/cmd/pub-deps)
-: Lists all dependencies used by the current package.
+<br> Lists all dependencies used by the current package.
 
 [`deps`](/tools/pub/cmd/pub-deps) 命令
 <br>用于显示当前 Package 使用的所有依赖项。
 
 [`downgrade`](/tools/pub/cmd/pub-downgrade)
-: Retrieves the lowest versions of all the packages that are
+<br> Retrieves the lowest versions of all the packages that are
   listed as dependencies used by the current package. Used for testing
   the lower range of your package's dependencies.
 
@@ -114,7 +114,7 @@ or any modification of the pubspec.
 用于测试这些较低版本依赖项的 Package 在当前 Package 上的兼容性。
 
 [`get`](/tools/pub/cmd/pub-get)
-: Retrieves the packages that are listed as the dependencies for
+<br> Retrieves the packages that are listed as the dependencies for
   the current package.
   If a `pubspec.lock` file already exists, fetches the version
   of each dependency (if possible) as listed in the lock file.
@@ -127,7 +127,7 @@ or any modification of the pubspec.
 如有必要，将会创建或更新该文件。
 
 [`outdated`](/tools/pub/cmd/pub-outdated)
-: Looks at every package that the current package depends on,
+<br> Looks at every package that the current package depends on,
   determines which package dependencies are out of date,
   and gives you advice on how to update them.
   Use this subcommand when you want to update package dependencies.
@@ -137,7 +137,7 @@ or any modification of the pubspec.
 并为您提供有关如何更新它们的建议。当您要更新 package 的依赖性时，请使用此命令。
 
 [`upgrade`](/tools/pub/cmd/pub-upgrade)
-: Retrieves the latest version of each package listed
+<br> Retrieves the latest version of each package listed
   as dependencies used by the current package. If a `pubspec.lock`
   file exists, ignores the versions listed in the lock file and fetches
   the newest versions that honor the constraints in the pubspec.

@@ -143,7 +143,7 @@ Dart SDK 中包含下面的 `dart` 工具：
 ### 调试工具
 
 [Dart DevTools](/tools/dart-devtools)
-: A suite of debugging and performance tools.
+<br>A suite of debugging and performance tools.
 
 [Dart 开发者工具](/tools/dart-devtools) 
 <br> 一个工具套装帮助调试和性能测试。
@@ -174,7 +174,7 @@ The following tools support developing web apps:
   和 `webdev` CLI 使用 dart2js。
 
 [dartdevc](/tools/dartdevc)
-: The Dart dev compiler, a modular Dart-to-JavaScript compiler.
+<br> The Dart dev compiler, a modular Dart-to-JavaScript compiler.
   IDEs and the `webdev` CLI use dartdevc when running a development server.
 
 [dartdevc 命令](/tools/dartdevc)
@@ -191,14 +191,14 @@ command-line apps and servers:
 下面的工具对开发或运行命令行应用和服务器有特别的支持：
 
 [`dart run`](/tools/dart-run)
-: Use the `dart run` command to run uncompiled Dart command-line apps
+<br> Use the `dart run` command to run uncompiled Dart command-line apps
   and some kinds of snapshots.
 
 [`dart`](/tools/dart-vm)
 <br> 通过 [`dart run`](/tools/dart-run) 命令来运行未编译的 Dart 命令行应用和一些其他的快照。
 
 [`dartaotruntime`](/tools/dartaotruntime)
-: Use this Dart runtime to run AOT snapshots.
+<br> Use this Dart runtime to run AOT snapshots.
 
 [`dartaotruntime` 命令](/tools/dartaotruntime)
 <br> Dart 运行时环境，可以运行 AOT 快照。

@@ -101,29 +101,34 @@ The build_runner package includes the following commands:
 
 build_runner 中包含下述几个命令：
 
-build
-: Performs a one-time build.
+`build`
+<br> Performs a one-time build.
 
-build 命令：处理一次性构建。
+`build` 命令：
+<br> 处理一次性构建。
 
-serve
-: Runs a development server.
+`serve`
+<br> Runs a development server.
   Instead of directly using this command,
   you can use [`webdev serve`,][webdev serve]
   which has convenient default behavior.
 
-serve 命令：运行一个用于开发的服务器。你可以使用 [`webdev serve`][webdev serve] 替代该命令，它会包含一些方便的默认功能。
+`serve` 命令：运行一个用于开发的服务器。
+你可以使用 [`webdev serve`][webdev serve] 替代该命令，
+它会包含一些方便的默认功能。
 
-test
-: Runs [tests.][tests]
+`test`
+<br> Runs [tests.][tests]
 
-test 命令：用于运行 [测试][tests]。
+`test` 命令
+<br>用于运行 [测试][tests]。
 
-watch
-: Launches a build server that watches for edits to input files.
+`watch`
+<br> Launches a build server that watches for edits to input files.
   Responds to changes by performing incremental rebuilds.
 
-watch 命令：启动一个构建服务器用于监听输入文件的编辑。通过处理增量重建来响应代码的修改。
+`watch` 命令
+<br> 启动一个构建服务器用于监听输入文件的编辑。通过处理增量重建来响应代码的修改。
 
 ## More information
 
