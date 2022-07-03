@@ -51,7 +51,7 @@ cd tool/translator
 npm i
 npx gulp mark-side-toc
 npx nt inject '../../_site/**/!(*_cn).html' -c /assets/translator/css/translator.css -s /assets/translator/js/translator.js -m ./url-map.json -t ./text-map.json
-npx nt mark '../../_site/**/!(*_cn).html'
+npx nt mark '../../_site/**/!(*_cn).html' --mono
 npx gulp remove-space
 cd -
 
