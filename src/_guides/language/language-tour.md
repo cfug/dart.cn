@@ -3801,7 +3801,8 @@ print('The type of a is ${a.runtimeType}');
 Up to here, you've seen how to _use_ classes.
 The rest of this section shows how to _implement_ classes.
 
-到目前为止，我们已经解了如何 **使用** 类。本节的其余部分将向你介绍如何 **实现** 一个类。
+到目前为止，我们已经了解了如何 **使用** 类。
+本节的其余部分将向你介绍如何 **实现** 一个类。
 
 ### Instance variables
 
