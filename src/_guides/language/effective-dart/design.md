@@ -768,10 +768,8 @@ Of course, this guideline doesn't mean you *should* put all of your classes into
 a huge monolithic library, just that you are allowed to place more than one
 class in a single library.
 
-将多个类组织到一个库中，就可以使用一些有用的模式。因为在 Dart 中私有特性是在库级别上有效，
-而不是在类级别，基于这个模式你可以定义类似于 C++ 中的 "friend" 类。所有定义在同一个库中
-的类可以互相访问彼此的私有成员，但库以外的代码无法发访问。
-
+当然，指南并不建议你 **应该** 把所有的类都放在单个巨大的库中，
+你可以同时在一个库中放置多个类。
 
 ## Classes and mixins
 
