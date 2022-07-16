@@ -1228,7 +1228,7 @@ before you add them to the final string.
 Using a curly brace syntax at the end of the parameter list,
 you can define parameters that have names.
 
-你可以在参数列表的靠后位置使用中括号来定义命名参数。
+你可以在参数列表的靠后位置使用花括号 (`{}`) 来定义命名参数。
 
 Named parameters are optional
 unless they're explicitly marked as `required`.
