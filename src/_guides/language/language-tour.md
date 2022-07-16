@@ -3801,7 +3801,8 @@ print('The type of a is ${a.runtimeType}');
 Up to here, you've seen how to _use_ classes.
 The rest of this section shows how to _implement_ classes.
 
-到目前为止，我们已经解了如何 **使用** 类。本节的其余部分将向你介绍如何 **实现** 一个类。
+到目前为止，我们已经了解了如何 **使用** 类。
+本节的其余部分将向你介绍如何 **实现** 一个类。
 
 ### Instance variables
 
@@ -4717,7 +4718,8 @@ For another usage of `extends`, see the discussion of
 [parameterized types](#restricting-the-parameterized-type)
 in [generics](#generics).
 
-想了解其他 `extends` 的用法，
+想了解其他 `extends` 的用法，请查看 [泛型](#generics) 部分中的
+[参数化类型](#restricting-the-parameterized-type)。
 
 <a name="overridable-operators"></a>
 
