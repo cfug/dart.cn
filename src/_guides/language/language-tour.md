@@ -4717,7 +4717,8 @@ For another usage of `extends`, see the discussion of
 [parameterized types](#restricting-the-parameterized-type)
 in [generics](#generics).
 
-想了解其他 `extends` 的用法，
+想了解其他 `extends` 的用法，请查看 [泛型](#generics) 部分中的
+[参数化类型](#restricting-the-parameterized-type)。
 
 <a name="overridable-operators"></a>
 
