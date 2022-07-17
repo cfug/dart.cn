@@ -122,7 +122,7 @@ so that you can easily undo any changes.
 
 ### Switch to the latest stable Dart release
 
-### 切换至 2.12 beta 版本
+### 切换至最新的 beta 版本
 
 Switch to the **latest stable release**
 of either the Dart SDK or the Flutter SDK.
