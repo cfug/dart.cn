@@ -33,7 +33,7 @@ Here are the basic steps for migrating each package that you own:
    [**publish**](#step5-publish) the null-safe version
    as a **prerelease** version.
 
-   如果你已经在 pub.flutter-io.cn 发布了你的 package，
+   如果你已经在 pub.dev 上发布了你的 package，
    可以将迁移完成的空安全版本以 **预发布** 版本进行 [**发布**](#step5-publish)。
 
 {{site.alert.tip}}
@@ -213,12 +213,12 @@ update its dependencies to null-safe versions:
    supporting null safety.
    **Note:** This command changes your `pubspec.yaml` file.
 
-   运行 `dart pub upgrade --null-safety` 将依赖升级至支持空安全的最新版本。
+   运行命令 `dart pub upgrade --null-safety` 将依赖升级至支持空安全的最新版本。
    **注意：** 该命令会更改你的 `pubspec.yaml` 文件。
 
 2. Run `dart pub get`.
 
-   运行 `dart pub upgrade`。
+   运行命令 `dart pub get`。
 
 ## 2. Migrate {#step2-migrate}
 
@@ -692,16 +692,6 @@ soon as you migrate:
 
 [publish the package as a prerelease]: /tools/pub/publishing#publishing-prereleases
 
-Set the lower SDK constraint to 2.12.0:
-
-```yaml
-environment:
-  sdk: '>=2.12.0 <3.0.0'
-```
-
-With these constraints,
-packages that are published during null safety beta
-can still work with the next stable release of the Dart SDK.
 
 ### Update the package version {#package-version}
 
