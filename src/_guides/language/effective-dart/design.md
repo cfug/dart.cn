@@ -1371,6 +1371,7 @@ Unless you *do* want users to call the setter, it's better to pick one of the
 following solutions:
 
 * Don't use `late`.
+* Use a factory constructor to compute the `final` field values.
 * Use `late`, but initialize the `late` field at its declaration.
 * Use `late`, but make the `late` field private and define a public getter for it.
 
@@ -2057,6 +2058,7 @@ code did not specify one.
 
 {{site.alert.end}}
 
+**Exception**: Type annotations on unused parameters (`_`) can be omitted.
 
 ### PREFER signatures in function type annotations.
 
@@ -2072,7 +2074,7 @@ function.
 专门的 [Function][] 类型说明。使用 `Function` 类型要稍微比使用 `dynamic` 更好些。
 如果要使用 `Function` 来进行类型注解，注解类型应该包含函数的所有参数及返回值类型。
 
-[Function]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
+[Function]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
 
 {:.good}
 <?code-excerpt "design_good.dart (avoid-Function)" replace="/bool Function(\(.*?\))?/[!$&!]/g"?>

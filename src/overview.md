@@ -506,9 +506,9 @@ You have many choices for learning Dart. Here are a few that we recommend:
 * [Work through extensive online training][udemy]
   from Dart experts.
 
-  来自 Dart 专家的 [在线课程][udemy]
+  来自 Dart 专家的 [在线课程][udemy]。
 
-* [Explore the API documentation]({{site.dart_api}}) that
+* [Explore the API documentation]({{site.dart-api}}) that
   describes the Dart core libraries.
 
   [探索 API 文档]({{site.dart_api}}) - 描述了 Dart 核心库。

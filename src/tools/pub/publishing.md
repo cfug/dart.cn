@@ -448,25 +448,43 @@ To change the automatically generated list of supported platforms,
 
 Whoever publishes the first version of a package automatically becomes
 the first and only person authorized to upload additional versions of that package.
-To allow or disallow other people to upload versions,
-transfer the package to a [verified publisher][] or
-manage authorized uploaders on the admin page for the package:
-`https://pub.dev/packages/<package>/admin`.
 
 发布 package 第一个版本的人，将自动成为唯一有权对其进行更新的人。
-要允许或取消其他人更新版本，可把 package 转移至
-[已验证的发布者][verified publisher]，
-或在管理页面管理 package 的上传者：
-`https://pub.dev/packages/<package>/admin` 。
+
+To allow or disallow other people to upload versions, either:
+
+要允许或取消其他人更新版本，可以从下列两种方法中任选一种：
+
+* Manage authorized uploaders on the admin page for the package:
+  `https://pub.dev/packages/<package>/admin`.
+
+  管理页面管理授权的 package 上传者：
+  `https://pub.dev/packages/<package>/admin`。
+
+* Transfer the package to a [verified publisher][];
+  all members of a publisher are authorized to upload.
+
+  将 package 转给一个 [已验证的发布者][verified publisher]，
+  这个发布者的所有成员都有上传的权利。
+  
+## Locating the package publisher
+
+## 发布者展示
 
 If a package has a verified publisher,
 then the pub.dev page for that package displays the publisher domain.
-Otherwise, the page displays the email addresses of
-the authorized uploaders for the package.
 
 如果 package 有了已验证发布者，
-那么 pub.dev 中其页面将展示已验证发布者域名。
-另外，页面将展示该 package 经过授权的上传者的邮箱。
+pub.dev 页面将展示已验证发布者域名。
+
+For packages published without a publisher,
+the publisher is not disclosed for privacy reasons
+(the Publisher field just says "unverified uploader").
+
+如果 package 的发布者没有选择认证，
+出于隐私原因，我们不会披露发布者的信息。
+(Publisher 会显示 "unverified uploader"，
+即：未经验证的上传者)。
 
 ## Publishing prereleases
 

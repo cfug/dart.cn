@@ -160,6 +160,13 @@ $(function() {
     $(document.body).toggleClass('open_menu');
   });
 
+  // Remove open_menu when switched back to normal sidenav
+  $(window).smartresize((e) => {
+    if (document.body.clientWidth > 1025) {
+      document.body.classList.remove('open_menu');
+    }
+  });
+
   var topLevelMenuTogglers = ['#page-header', '.banner', '#page-content', '#page-footer'];
   for (var i = 0; i < topLevelMenuTogglers.length; i++) {
     $(topLevelMenuTogglers[i]).on('click', function (e) {
@@ -170,10 +177,13 @@ $(function() {
     });
   }
 
-  $(window).smartresize(fixNav());
+  $(window).smartresize(fixNav);
 
   // Add external link indicators
-  $('a[href^="http"], a[target="_blank"]').not('.no-automatic-external').addClass('external');
+  $('a[href^="http"], a[target="_blank"]')
+      .not('.no-automatic-external')
+      .not('a[href^="https://dart.dev"]')
+      .addClass('external');
 
   // Collapsible inline TOC expand/collapse
   $(".site-toc--inline__toggle").on('click', function () {

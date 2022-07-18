@@ -1,4 +1,4 @@
-Scripts and utilities for [dart.dev/tools/sdk/archive](https://dart.dev/get-dart/archive).
+Scripts and utilities for [dart.dev/get-dart/archive](https://dart.dev/get-dart/archive).
 
 ## Developing
 
@@ -17,4 +17,4 @@ webdev serve
 
 ## Publishing
 
-See `../archive/_README.md`
+See `../archive/README.md`

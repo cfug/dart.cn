@@ -5,6 +5,11 @@ description: How Dart 2 is different from Dart 1.x, and how you can convert your
 description: Dart 2 和 1.x 版本的区别，以及如何迁移到 Dart 2。
 ---
 
+<style>
+del { color: rgba(255,0,0,.35); }
+del code { color: darkred; }
+</style>
+
 Dart 2 has a few key differences from earlier versions of Dart.
 This page briefly covers those differences and
 gives general advice on migrating your code to Dart 2.
@@ -120,7 +125,7 @@ Dart 语言、库、编译系统以及 Web 开发工具都已经有所变化。
 How to migrate your code depends on how old your code is
 and what platforms it runs on.
 For help with migrating web apps,
-see the [web app migration guide.][webdev dart2]
+see [Migrating web apps](#web-migration).
 If you're migrating a Flutter app,
 consult the [breaking change notification.][Leaf's email]
 If you publish packages,
@@ -260,6 +265,33 @@ As a package owner, you need to do the following:
 
   如果代码的变更导致无法向后兼容，请升级最低的 SDK 版本限制。
 
+
+### Migrating web apps {#web-migration}
+
+### 迁移 Web 应用 {#web-migration}
+
+To update your web app to Dart 2,
+you need to first update your tool usage
+as described in [Tools](#tools).
+
+如果需要将你的 Web 应用更新到使用 Dart 2.x，
+你需要先更新一波 [工具](#tools)。
+
+You'll also need to make the following changes
+to the `<script>` elements referencing your compiled Dart code:
+
+你还要对 `<script>` 元素进行如下的改动，以更新编译后的 Dart 代码引用：
+
+- Drop <del>`<script defer src="packages/browser/dart.js"></script>`</del>
+
+  删除 <del>`<script defer src="packages/browser/dart.js"></script>`</del>
+
+- Replace <del>`<script defer src="foo.dart" type="application/dart"></script>`</del> by<br>
+  `<script defer src="foo.dart.js"></script>`
+
+  用 `<script defer src="foo.dart.js"></script>` 替换<br>
+  <del>`<script defer src="foo.dart" type="application/dart"></script>`</del>
+
 #### Changes and backward compatibility
 
 #### 变化以及向后兼容性
@@ -373,7 +405,7 @@ environment:
 [flutter pub upgrade]: {{site.flutter-docs}}/development/packages-and-plugins/using-packages#updating-package-dependencies
 [dart pub upgrade]: /guides/packages#upgrading-a-dependency
 [dart2_fix]: https://github.com/dart-archive/dart2_fix
-[apiref]: {{site.dart_api}}/dev
+[apiref]: {{site.dart-api}}/dev
 [assert statements]: /guides/language/language-tour#assert
 [build_runner web]: /tools/build_runner
 [compile-time errors]: /guides/language/sound-problems#static-errors-and-warnings
@@ -391,5 +423,4 @@ environment:
 [testing]: /guides/testing
 [Updating your pub package to Dart 2,]: https://filiph.medium.com/updating-your-pub-package-to-dart-2-cd8ca343b1be
 [Using constructors]: /guides/language/language-tour#using-constructors
-[webdev dart2]: /web/dart-2
-[sync async start]: https://github.com/dart-lang/sdk/blob/main/docs/newsletter/20170915.md#synchronous-async-start
+[sync async start]: https://github.com/dart-lang/language/blob/master/archive/newsletter/20170915.md#synchronous-async-start
