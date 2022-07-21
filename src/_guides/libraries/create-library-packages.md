@@ -16,6 +16,23 @@ with a focus on the most common kind of package,
 本章将通过最常见的 [Library Package](/tools/pub/glossary#library-package)
 来介绍如何创建一个 Package。
 
+
+## Creating a new package
+
+## 创建一个新的 package
+
+To create the initial directory and structure for a package,
+use the [`dart create`](/tools/dart-create) command
+and the `package` template:
+
+若要为 package 创建一个初始化的目录和结构，
+使用 [`dart create`](/tools/dart-create) 命令，
+并加入 `package` 作为命令参数来创建：
+
+```terminal
+$ dart create -t package <PACKAGE_NAME>
+```
+
 {% comment %}
 TODO: Add coverage of packages that contain tools.
 {% endcomment %}

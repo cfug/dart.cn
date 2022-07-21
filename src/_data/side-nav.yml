@@ -219,25 +219,25 @@
         - title: dart 命令
           permalink: /tools/dart-tool
           urlExactMatch: true
-        - title: dart analyze
+        - title: dart analyze 命令
           permalink: /tools/dart-analyze
-        - title: dart compile
+        - title: dart compile 命令
           permalink: /tools/dart-compile
-        - title: dart create
+        - title: dart create 命令
           permalink: /tools/dart-create
-        - title: dart doc
+        - title: dart doc 命令
           permalink: /tools/dart-doc
-        - title: dart fix
+        - title: dart fix 命令
           permalink: /tools/dart-fix
-        - title: dart format 
+        - title: dart format 命令
           permalink: /tools/dart-format
-        - title: dart pub
+        - title: dart pub 命令
           permalink: /tools/pub/cmd
-        - title: dart run
+        - title: dart run 命令
           permalink: /tools/dart-run
-        - title: dart test
+        - title: dart test 命令
           permalink: /tools/dart-test
-        - title: dartaotruntime
+        - title: dartaotruntime 命令
           permalink: /tools/dartaotruntime
         - title: 实验性命令标记
           permalink: /tools/experiment-flags
@@ -292,11 +292,7 @@
           urlExactMatch: true
           match-page-url-exactly: true
           permalink: /dart-2
-        - title: Web 应用迁移到 Dart&nbsp;2
-          permalink: /web/dart-2
-        - title: 已失效的 pub 命令
-          permalink: /tools/pub/obsolete
-    - title: Videos
+    - title: 视频资源
       permalink: /resources/videos
 
 - title: 相关站点

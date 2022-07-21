@@ -1081,14 +1081,18 @@ const input = [
   'cal@gmail.com',
 ];
 
+const correctInput = ['dash@gmail.com', 'sparky@gmail.com'];
+
 bool isValidEmailAddress(EmailAddress email) {
   return email.address.contains('@');
 }
 
 void main() {
   Iterable<EmailAddress> emails;
+  Iterable<EmailAddress> correctEmails;
   try {
     emails = parseEmailAddresses(input);
+    correctEmails = parseEmailAddresses(correctInput);
     if (emails.isEmpty) {
       _result(false, [
         'Tried running `parseEmailAddresses`, but received an empty list.'
@@ -1119,7 +1123,14 @@ void main() {
     final out = anyInvalidEmailAddress(emails);
     if (!out) {
       _result(false, [
-        'Looks like `anyInvalidEmailAddress` is wrong. Keep trying! There is at least one invalid address.'
+        'Looks like `anyInvalidEmailAddress` is wrong. Keep trying! The result should be false with at least one invalid address.'
+      ]);
+      return;
+    }
+    final falseOut = anyInvalidEmailAddress(correctEmails);
+    if (falseOut) {
+      _result(false, [
+        'Looks like `anyInvalidEmailAddress` is wrong. Keep trying! The result should be false with all valid addresses.'
       ]);
       return;
     }
@@ -1190,11 +1201,11 @@ here are some suggestions for where to go next:
 * Read the [Iterable API reference][iterable class]
   to learn about methods not covered by this codelab.
 
-[hashmap class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/HashMap-class.html
-[iterable class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
-[iterator class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterator-class.html
-[list class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
-[map class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
-[set class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
-[StateError class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StateError-class.html
-[String class]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
+[hashmap class]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/HashMap-class.html
+[iterable class]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
+[iterator class]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterator-class.html
+[list class]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
+[map class]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
+[set class]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
+[StateError class]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StateError-class.html
+[String class]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html

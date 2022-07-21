@@ -38,6 +38,9 @@ For details, see our [code of conduct](/code-of-conduct).
 [Dart 博客](https://medium.com/dartlang)
 <br> 来自不同 Dart 用户群体的最新消息和观点。
 
+[This Week in Dart](https://thisweekindart.dev/)
+: A community ran, weekly newsletter covering the Dart ecosystem.
+
 ## Join the conversation
 
 ## 加入讨论

@@ -67,6 +67,7 @@ Here are some examples of using string interpolation:
 | `'$myObject'`               | | `myObject.toString()` 的值|
 
 ### Code example
+{: .no_toc}
 
 ### 代码样例
 
@@ -173,6 +174,7 @@ read the [sound null safety guide](/null-safety).
 想了解更多有关 Dart 的空安全的内容，请阅读 [健全的空安全](/null-safety)。
 
 ### Code example
+{: .no_toc}
 
 ### 代码样例
 
@@ -259,6 +261,7 @@ print(null ?? 12); // <-- Prints 12.
 ```
 
 ### Code example
+{: .no_toc}
 
 ### 代码样例
 
@@ -369,6 +372,7 @@ null.
 如果 `myObject` 或 `myObject.someProperty` 为空，则前面的代码返回 null（并不再调用 `someMethod`）。
 
 ### Code example
+{: .no_toc}
 
 ### 代码样例
 
@@ -479,6 +483,7 @@ final aListOfBaseType = <BaseType>[SubType(), SubType()];
 ```
 
 ### Code example
+{: .no_toc}
 
 ### 代码样例
 
@@ -616,6 +621,7 @@ bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 ```
 
 ### Code example
+{: .no_toc}
 
 ### 代码样例
 
@@ -792,6 +798,7 @@ querySelector('#confirm')
 ```
 
 ### Code example
+{: .no_toc}
 
 ### 代码样例
 
@@ -949,6 +956,7 @@ class MyClass {
 ```
 
 ### Code example
+{: .no_toc}
 
 ### 代码样例
 
@@ -1125,6 +1133,7 @@ int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
 ```
 
 ### Code example
+{: .no_toc}
 
 ### 代码样例
 
@@ -1275,6 +1284,7 @@ A function can't have both optional positional and named parameters.
 一个方法不能同时使用可选位置参数和可选命名参数。
 
 ### Code example
+{: .no_toc}
 
 ### 代码样例
 
@@ -1478,6 +1488,7 @@ try {
 ```
 
 ### Code example
+{: .no_toc}
 
 ### 代码样例
 
@@ -1718,6 +1729,7 @@ MyColor({this.red = 0, this.green = 0, this.blue = 0});
 ```
 
 ### Code example
+{: .no_toc}
 
 ### 代码样例
 
@@ -1838,6 +1850,7 @@ NonNegativePoint(this.x, this.y)
 ```
 
 ### Code example
+{: .no_toc}
 
 ### 代码样例
 
@@ -1972,6 +1985,7 @@ final myPoint = Point.origin();
 ```
 
 ### Code example
+{: .no_toc}
 
 ### 代码样例
 
@@ -2078,6 +2092,7 @@ class Shape {
 ```
 
 ### Code example
+{: .no_toc}
 
 ### 代码样例
 
@@ -2292,6 +2307,7 @@ class Automobile {
 ```
 
 ### Code example
+{: .no_toc}
 
 ### 代码样例
 
@@ -2392,6 +2408,7 @@ class ImmutablePoint {
 ```
 
 ### Code example
+{: .no_toc}
 
 ### 代码样例
 

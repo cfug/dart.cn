@@ -169,19 +169,6 @@ With pub you can publish packages and command-line apps.
 
 使用 pub 命令你还可以发布 Package 和命令行应用。
 
-{{site.alert.note}}
-
-Pub used to support building apps
-through commands like `pub build` and `pub serve`.
-That functionality is now in other tools such as the build system.
-For details, see [Obsolete Pub Features](/tools/pub/obsolete).
-
-Pub 一直以来支持通过 `pub build` 个 `pub serve` 等命令构建应用。
-这些功能已经被转移到其他工具链中。
-更多细节请查看 [过时的 Pub 功能](/tools/pub/obsolete)。
-
-{{site.alert.end}}
-
 #### Packages
 
 ### Package

@@ -115,8 +115,8 @@ the `Future<String>` completes with either a string value or an error.
 `Future<String>` 类型的对象。
 在未来的某一刻，`Future<String>` 会结束，并返回一个字符串或错误。
 
-[`readAsStringSync()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsStringSync.html
-[`readAsString()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsString.html
+[`readAsStringSync()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsStringSync.html
+[`readAsString()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsString.html
 
 #### Why asynchronous code matters
 
@@ -431,7 +431,7 @@ Isolate 工作对象可以进行 I/O 操作、设置定时器，以及其他各�
 它会持有自己内存空间，与主 isolate 互相隔离。
 这个 isolate 在阻塞时也不会对其他 isolate 造成影响。
 
-[`send()` method]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
+[`send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
 
 
 ## Code examples
@@ -444,9 +444,8 @@ to implement isolates.
 
 本节将重点讨论使用 `Isolate` API 实现 isolate 的一些示例。
 
-{{site.alert.info}}
+{{site.alert.flutter-note}}
 
-  **Flutter note:**
   If you're using Flutter on a non-web platform,
   then instead of using the `Isolate` API directly,
   consider using the [Flutter `compute()` function][].
@@ -489,10 +488,10 @@ This example uses the following isolate-related API:
 
   [`ReceivePort`][] 和 [`SendPort`][]
 
-[`Isolate.exit()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
-[`Isolate.spawn()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
-[`ReceivePort`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html
-[`SendPort`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
+[`Isolate.exit()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
+[`Isolate.spawn()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
+[`ReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html
+[`SendPort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
 
 Here’s the code for the main isolate:
 
@@ -553,7 +552,7 @@ and then returns the result:
    由于 `ReceivePort` 实现了 `Stream`，你可以很方便地使用
    [`first`][] 属性获得 isolate 工作对象返回的单个消息。
 
-[`first`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream/first.html
+[`first`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream/first.html
 
 The spawned isolate executes the following code:
 
@@ -570,22 +569,20 @@ Future<void> _readAndParseJson(SendPort p) async {
 
 The relevant statement is the last one, which exits the isolate,
 sending `jsonData` to the passed-in `SendPort`.
-Message passing between isolates normally involves data copying,
-and thus can be slow and increases linearly
-with the size of the message (`O(n)` in [big O notation][]).
+Message passing using `SendPort.send` normally involves data copying,
+and thus can be slow.
 However, when you send the data using `Isolate.exit()`,
 then the memory that holds the message in the exiting isolate isn’t copied,
 but instead is transferred to the receiving isolate.
-That transfer is quick and completes in constant time (`O(1)`).
+The sender will nonetheless perform a verification pass to ensure
+the objects are allowed to be transferred.
 
-在最后一句代码后，isolate 会退出，将 `jsonData` 通过传入的 `SendPort` 发送。
+在最后一句代码后，isolate 会退出，
+将 `jsonData` 通过传入的 `SendPort` 发送。
 在 isolate 之间传递消息时，通常会发生数据拷贝，
-所耗费的时间随着数据的大小而发生改变，复杂度为 O(n)。
-然而，当你使用 `Isolate.exit()` 发送数据时，isolate 中持有的消息并没有发生拷贝，
+然而，当你使用 `Isolate.exit()` 发送数据时，
+isolate 中持有的消息并没有发生拷贝，
 而是直接转移到了接收的 isolate 中。
-这样的转移速度很快，耗费的时间复杂度仅为 O(1)。
-
-[big O notation]: https://en.wikipedia.org/wiki/Big_O_notation
 
 {{site.alert.version-note}}
 
@@ -684,17 +681,15 @@ is slower when isolates are in different groups.
 并且新生成的 isolate 会位于新的 isolate 组。
 另外，当 isolate 在不同的组中，它们之间的消息传递会变得更慢。
 
-[`Isolate.spawnUri()`]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawnUri.html
+[`Isolate.spawnUri()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawnUri.html
 
-{{ site.alert.info }}
+{{site.alert.flutter-note}}
 
-  **Flutter note:**
   Flutter doesn't support `Isolate.spawnUri()`.
 
-  **在 Flutter 开发中请注意：** 
   Flutter 不支持 `Isolate.spawnUri()`。
 
-{{ site.alert.end }}
+{{site.alert.end}}
 
 {% comment %}
 TODO:

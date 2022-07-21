@@ -96,7 +96,7 @@ You might find the following tutorials helpful.
 
 ## 更多资源
 
-[Dart API]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
+[Dart API]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}})
 <br> API reference for dart:* libraries.
 
 [Dart API]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})：

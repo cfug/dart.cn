@@ -204,5 +204,5 @@ For more information, see the [Dart 2 page.][Dart 2]
 [Debian stable]: https://www.debian.org/releases
 [Ubuntu LTS]: https://wiki.ubuntu.com/Releases
 [flutter]: https://flutter.dev/docs/get-started/install
-[site SDK version]: {{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/{{site.data.pkg-vers.SDK.vers}}/index.html
+[site SDK version]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/{{site.data.pkg-vers.SDK.vers}}/index.html
 [a package manager]: https://github.com/dart-lang/sdk/wiki/Installing-beta-and-dev-releases-with-brew,-choco,-and-apt-get

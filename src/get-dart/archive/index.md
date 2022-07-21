@@ -15,7 +15,7 @@ js:
 Use this archive to download
 [specific versions](/get-dart#release-channels) of the
 [Dart SDK](/tools/sdk)
-and the [Dart API documentation.]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
+and the [Dart API documentation.]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}})
 
 你可以在此页面下载 [特定版本](/get-dart#release-channels)
 的 [Dart SDK](/tools/sdk) 和
