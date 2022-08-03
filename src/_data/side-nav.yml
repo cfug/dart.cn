@@ -147,7 +147,9 @@
       children:
         - title: 与 C 互调
           permalink: /guides/libraries/c-interop
-        - title: JavaScript 互调
+        - title: 与 Objective-C 互调
+          permalink: /guides/libraries/objective-c-interop
+        - title: 与 JavaScript 互调
           permalink: /web/js-interop
     - title: Google APIs
       permalink: /guides/google-apis
