@@ -21,4 +21,4 @@ To control the submission of metrics, use the following options on the
 
 * `--disable-analytics`: Disables anonymous analytics.
 
-  `--enable-analytics`：禁用匿名分析。
+  `--disable-analytics`：禁用匿名分析。
