@@ -1998,19 +1998,28 @@ void enableFlags({bool bold = false, bool hidden = false}) {...}
 enableFlags(bold: true);
 ```
 
-{{site.alert.info}}
+{{site.alert.secondary}}
 
-  **Deprecation note:** Old code might use a colon (`:`) instead of `=` to set
-  default values of named parameters. The reason is that originally, only `:`
-  was supported for named parameters. That support might be deprecated, so we
-  recommend that you **[use `=` to specify default values.][use =]**
+  **Deprecation note:** Old code might use a colon (`:`) instead of `=`
+  to specify default values of named parameters. 
+  The reason is that originally, only `:` was supported for named parameters. 
+  That support is deprecated and will be removed, 
+  so we recommend that you **[use `=` to specify default values.][use =]**
+
+  If you have the [`prefer_equal_for_default_values`][] linter rule enabled,
+  you can use [`dart fix`][] to migrate to the suggested `=` syntax.
 
   在老版本的 Dart 代码中会使用 冒号（`:`）而不是 `=` 来设置命名参数的默认值。
-  原因在于刚开始的时候命名参数只支持 `:`。不过现在这个支持已经过时，
-  所以我们建议你现在仅 **[使用 `=` 来指定默认值][use =]**。
+  原因在于刚开始的时候命名参数只支持 `:`。
+  不过现在这个支持已经过时并且会被移除掉，
+  所以我们建议你仅 **[使用 `=` 来指定默认值][use =]**。
+
+  如果你启用了 [`prefer_equal_for_default_values`][] 这个 linter 规则，
+  你可以使用 [`dart fix`][] 命令来迁移到建议的 `=` 语法。
 
   [use =]: /guides/language/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value
-
+  [`prefer_equal_for_default_values`]: /tools/linter-rules#prefer_equal_for_default_values
+  [`dart fix`]: /tools/dart-fix
 {{site.alert.end}}
 
 {% comment %}
@@ -3369,21 +3378,22 @@ continues. If it's false, the assertion fails and an exception (an
 When exactly do assertions work?
 That depends on the tools and framework you're using:
 
-如何判断 assert 是否生效？assert 是否生效依赖开发工具和使用的框架：
+如何判断断言是否生效？
+断言是否生效依赖开发工具和使用的框架：
 
 * Flutter enables assertions in [debug mode.][Flutter debug mode]
 
-  Flutter 在[调试模式][Flutter debug mode]时生效。
+  Flutter 在 [调试模式][Flutter debug mode] 时生效。
 
-* Development-only tools such as [dartdevc][]
+* Development-only tools such as [`webdev serve`][]
   typically enable assertions by default.
 
-  一些开发工具比如 [dartdevc][] 通常情况下是默认生效的。
+  一些开发工具比如 [`webdev serve`][] 通常情况下是默认生效的。
 
-* Some tools, such as [`dart run`][] and [dart2js][]
+* Some tools, such as [`dart run`][] and [`dart compile js`][]
   support assertions through a command-line flag: `--enable-asserts`.
 
-  其他一些工具，比如 [`dart run`][] 以及 [dart2js][]
+  其他一些工具，比如 [`dart run`][] 以及 [`dart compile js`][]
   通过在运行 Dart 程序时添加命令行参数 `--enable-asserts` 使 assert 生效。
 
 In production code, assertions are ignored, and
@@ -3392,6 +3402,8 @@ the arguments to `assert` aren't evaluated.
 在生产环境代码中，断言会被忽略，
 与此同时传入 `assert` 的参数不被判断。
 
+[webdev serve]: /tools/webdev#serve
+[dart compile js]: /tools/dart-compile#js
 
 ## Exceptions
 
@@ -3399,8 +3411,8 @@ the arguments to `assert` aren't evaluated.
 
 Your Dart code can throw and catch exceptions. Exceptions are errors
 indicating that something unexpected happened. If the exception isn’t
-caught, the [isolate](#isolates) that raised the exception is suspended, and
-typically the isolate and its program are terminated.
+caught, the [isolate](#isolates) that raised the exception is suspended,
+and typically the isolate and its program are terminated.
 
 Dart 代码可以抛出和捕获异常。异常表示一些未知的错误情况，
 如果异常没有捕获则会被抛出从而导致抛出异常的代码终止执行。
@@ -5769,14 +5781,14 @@ Here are some cases when you might use deferred loading:
 
 {{site.alert.warn}}
 
-  **Only dart2js supports deferred loading.**
-  Flutter, the Dart VM, and dartdevc don't support deferred loading.
-  For more information, see
+  **Only `dart compile js` supports deferred loading.**
+  Flutter and the Dart VM don't support deferred loading.
+  To learn more, see
   [issue #33118](https://github.com/dart-lang/sdk/issues/33118) and
   [issue #27776.](https://github.com/dart-lang/sdk/issues/27776)
 
-  **目前只有 dart2js 支持延迟加载**
-  Flutter、Dart VM 以及 DartDevc 目前都不支持延迟加载。
+  **目前只有 `dart compile js` 支持延迟加载**
+  Flutter 和 Dart VM目前都不支持延迟加载。
   你可以查阅 [issue #33118](https://github.com/dart-lang/sdk/issues/33118)
   和 [issue #27776](https://github.com/dart-lang/sdk/issues/27776) 获取更多的相关信息。
 
@@ -6613,7 +6625,6 @@ To learn more about Dart's core libraries, see
 [characters API]: {{site.pub-api}}/characters
 [characters example]: {{site.pub-pkg}}/characters/example
 [characters package]: {{site.pub-pkg}}/characters
-[dart2js]: /tools/dart2js
 [`dart run`]: /tools/dart-run
 [dart:html]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html
 [dart:isolate]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate

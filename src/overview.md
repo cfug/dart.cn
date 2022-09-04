@@ -307,14 +307,12 @@ Dart 的编译器技术可让您以不同的方式运行代码：
   **原生平台**：针对面向移动和桌面设备的应用程序，
   Dart 拥有具有实时 (JIT) 编译功能的 Dart VM 和用于生成机器代码的提前 (AOT) 编译器。
 
-* **Web platform**: For apps targeting the web,
-  Dart includes both a development time compiler (dartdevc) and
-  a production time compiler (dart2js).
-  Both compilers translate Dart into JavaScript.
+* **Web platform**: For apps targeting the web, Dart can compile for
+  development or production purposes. Its web compiler translates Dart
+  into JavaScript.
 
-  **Web 平台**：针对面向 Web 的应用程序，
-  Dart 拥有开发时编译器 (dartdevc) 和生产时编译器 (dart2js)。
-  两种编译器均能将 Dart 转换为 JavaScript。
+  **Web 平台**：Dart 可用于编译开发和生产阶段的面向 Web 的应用，
+  它的 Web 编译器可以将 Dart 转换为 JavaScript。
 
 <img 
   src="/assets/img/Dart-platforms.svg" 
@@ -344,15 +342,14 @@ Dart VM 提供了一个实时编译器 (JIT)，编译器拥有增量重编译功
 运行数据收集（用于驱动 [DevTools](/tools/dart-devtools)）
 以及丰富的开发调试支持。
 
-When apps are ready to be deployed to production—whether
-you're publishing to an app store 
-or deploying to a production backend—the 
-Dart AOT compiler enables ahead-of-time compilation to
-native ARM or x64 machine code.
-Your AOT-compiled app launches with consistent, short startup time.
+When apps are ready to be deployed to production—whether you're
+publishing to an app store or deploying to a production backend—the 
+Dart ahead-of-time (AOT) compiler can compile to native ARM or x64
+machine code. Your AOT-compiled app launches with consistent, short
+startup time.
 
-当应用程序可以部署到生产环境时 (无论是发布到应用程序商店还是部署到生产后端)，
-Dart AOT 编译器提供原生的 ARM 或 x64 机器码的 AOT 编译。
+当应用程序可以部署到生产环境时 (无论是发布到应用商店还是部署到生产后端)，
+Dart AOT 编译器可以编译成原生的 ARM 或 x64 的机器码。
 经过 AOT 编译的应用程序将稳定快速地启动。
 
 The AOT-compiled code runs inside an efficient Dart runtime that
@@ -395,17 +392,22 @@ turn runs in a browser—for example, [V8](https://v8.dev/) inside
 
 Dart 的 Web 支持让你可以在 JavaScript 驱动的网页平台上运行 Dart 代码。
 使用 Web 环境下的 Dart 时，你可以将 Dart 编译为在浏览器中运行的 JavaScript 代码，
-例如: [Chrome](https://www.google.com/chrome/) 中的 [V8](https://v8.dev/)。
+例如: [Chrome](https://www.google.cn/chrome/) 中的 [V8](https://v8.dev/)。
 
-Dart web contains both an incremental dev compiler enabling a fast developer
-cycle, and an optimizing production compiler, dart2js, which compiles Dart
-code to fast, compact, deployable JavaScript using techniques such as dead-code
-elimination.
+Dart web contains two compiliation modes:
 
-Dart Web 包含了可以实现快速开发周期的增量开发编译器，
-同时还有用于针对生产环境优化的编译器 dart2js。
-后者使用了类似移除不可访问代码的技术，
-将 Dart 代码编译为快速、紧凑、随时随地可部署的 JavaScript。
+Dart Web 包含两种编译模式:
+
+* An incremental development compiler enabling a fast developer cycle
+
+  一个为快速开发提供帮助的增量编译器。
+
+* An optimizing production compiler which compiles Dart code to fast,
+  compact, deployable JavaScript. These effeciencies come from
+  techniques such as dead-code elimination.
+
+  一个为生产环境优化的编译器，可以将 Dart 代码编译成快速、紧凑、可部署的 JavaScript。
+  它的高效之处在于使用了类似消除无用代码的优化。
 
 More information:
 
@@ -415,14 +417,7 @@ More information:
 
   [快速上手：网页应用程序](/tutorials/web/get-started)
 
-* [dart2js compiler](/tools/dart2js)
-
-  [dart2js 编译器](/tools/dart2js)
-
-* [dartdevc](/tools/dartdevc)
-
-  [dartdevc 编译器](/tools/dartdevc)
-
+* [`dart compile js`](/tools/dart-compile#js)
 * [`webdev` tool](/tools/webdev)
 
   [`webdev` 工具](/tools/webdev)

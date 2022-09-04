@@ -236,6 +236,17 @@ To prevent precompilation, use `--no-precompile`.
 默认情况下，pub 将预编译直接依赖的 package 中的可执行文件 (`--precompile`)。
 若你不需要预编译，请使用 `--no-precompile`。
 
+### `--legacy-packages-file`
+
+If you're using Dart 2.18 and use any third-party tools
+that rely on the discontinued `.packages` file,
+use `--legacy-packages-file` to generate a `.packages` file.
+Support for this flag will be removed in Dart 2.19.
+
+如果你正在使用 Dart 2.18 并且使用了一些依赖于已经停止支持了的
+`.packages` 文件，请使用 `--legacy-packages-file` 来生成一个
+`.packages` 文件，这个命令行标记将会在 Dart 2.19 中被移除。
+
 {{site.alert.info}}
 
   *Problems?*
