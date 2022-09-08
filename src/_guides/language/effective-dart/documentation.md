@@ -357,7 +357,7 @@ void start() {
 
 ### PREFER starting a non-boolean variable or property comment with a noun phrase.
 
-### **推荐** 使用名词短语来开始变量、getter、setter 的注释。
+### **推荐** 使用名词短语来为非布尔值变量或属性注释。
 
 The doc comment should stress what the property *is*. This is true even for
 getters which may do calculation or other work. What the caller cares about is
