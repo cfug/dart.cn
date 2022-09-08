@@ -355,9 +355,9 @@ void start() {
 }
 {% endprettify %}
 
-### PREFER starting variable, getter, or setter comments with noun phrases.
+### PREFER starting a non-boolean variable or property comment with a noun phrase.
 
-### **推荐** 使用名词短语来开始变量、getter、setter 的注释。
+### **推荐** 使用名词短语来为非布尔值变量或属性注释。
 
 The doc comment should stress what the property *is*. This is true even for
 getters which may do calculation or other work. What the caller cares about is
@@ -367,7 +367,7 @@ the *result* of that work, not the work itself.
 但是也要求这样，调用者关心的是其*结果*而不是如何计算的。
 
 {:.good}
-<?code-excerpt "docs_good.dart (noun-phrases-for-var-etc)"?>
+<?code-excerpt "docs_good.dart (noun-phrases-for-non-boolean-var-etc)"?>
 {% prettify dart tag=pre+code %}
 /// The current day of the week, where `0` is Sunday.
 int weekday;
@@ -376,14 +376,61 @@ int weekday;
 int get checkedCount => ...
 {% endprettify %}
 
+### PREFER starting a boolean variable or property comment with "Whether" followed by a noun or gerund phrase.
+
+The doc comment should clarify the states this variable represents. 
+This is true even for getters which may do calculation or other work. 
+What the caller cares about is the *result* of that work, not the work itself.
+
+{:.good}
+<?code-excerpt "docs_good.dart (noun-phrases-for-boolean-var-etc)"?>
+{% prettify dart tag=pre+code %}
+/// Whether the modal is currently displayed to the user.
+bool isVisible;
+
+/// Whether the modal should confirm the user's intent on navigation.
+bool get shouldConfirm => ...
+
+/// Whether resizing the current browser window will also resize the modal.
+bool get canResize => ...
+{% endprettify %}
+
+{{site.alert.note}}
+  This guideline intentionally doesn't include using "Whether or not". In many
+  cases, usage of "or not" with "whether" is superfluous and can be omitted,
+  especially when used in this context.
+{{site.alert.end}}
+
+### DON'T write documentation for both the getter and setter of a property.
+
 If a property has both a getter and a setter, then create a doc comment for
 only one of them. `dart doc` treats the getter and setter like a single field,
 and if both the getter and the setter have doc comments, then
 `dart doc` discards the setter's doc comment.
 
 如果一个属性同时包含 getter 和 setter，请只为其中一个添加文档。
-Dartdoc 会将 getter 和 setter 作为同一个属性进行处理，而如果它们
-都包含文档注释，setter 的文档将被忽略。
+`dart doc` 命令会将 getter 和 setter 作为同一个属性进行处理，
+而如果它们都包含文档注释，`dart docs` 命令会将 setter 的文档忽略。
+
+{:.good}
+<?code-excerpt "docs_good.dart (getter-and-setter)"?>
+{% prettify dart tag=pre+code %}
+/// The pH level of the water in the pool.
+///
+/// Ranges from 0-14, representing acidic to basic, with 7 being neutral.
+int get phLevel => ...
+set phLevel(int level) => ...
+{% endprettify %}
+
+{:.bad}
+<?code-excerpt "docs_bad.dart (getter-and-setter)"?>
+{% prettify dart tag=pre+code %}
+/// The depth of the water in the pool, in meters.
+int get waterDepth => ...
+
+/// Updates the water depth to a total of [meters] in height.
+set waterDepth(int meters) => ...
+{% endprettify %}
 
 ### PREFER starting library or type comments with noun phrases.
 

@@ -276,19 +276,22 @@ The assert will be unnecessary when everything is fully migrated, but for now it
 
 ## 我应该如何迁移现在提示不必要的运行时空判断？
 
-An explicit runtime null check, for example `if (arg == null) throw
-ArgumentError(...)`, will be flagged as an unnecessary comparison if you make
-`arg` non-nullable.
+The compiler flags an explicit runtime null check as an unnecessary
+comparison if you make `arg` non-nullable.
 
-类似 `if (arg == null) throw ArgumentError(...)` 这样的显式空判断，
-会在 `arg` 为非空时标记为不必要。
+如果 `arg` 为非空时，编译器会在运行时将显式空安全判断标记为非必要。
 
-But, the check *is* still needed if the program is a mixed-version one.  Until
-everything is fully migrated and the code switches to running with sound null
-safety, it will be possible for `arg` to be null.
+```dart
+if (arg == null) throw ArgumentError(...)`
+```
 
-但是在混合模式下的程序 **仍然需要** 这样的判断。
-在所有代码都迁移且运行在完全的空安全模式下前，`arg` 仍然可能为空。
+You must include this check if the program is a mixed-version one.
+Until everything is fully migrated and the code switches to running
+with sound null safety, `arg` might be set to `null`.
+
+混合模式下的程序必须包含这样的判断。
+在所有代码都迁移且运行在完全的空安全模式下前，
+`arg` 仍然可能为 `null`。
 
 The simplest way to preserve behavior is change the check into
 [`ArgumentError.checkNotNull`]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError/checkNotNull.html).
@@ -507,90 +510,105 @@ decide what to do.
 在这些情况下，迁移工具无法区分防御性编码情况或是确实需要空值的情况。
 那么该工具会告诉你「这看起来永远为 false！」并让你进行决定。
 
-## What should I know about dart2js and null safety?
+## What should I know about compiling to JavaScript and null safety?
 
-## 空安全对 dart2js 有何影响？
+## 关于编译为 JavaScript 时的空安全我应该知道什么？
 
-For a long time, the dart2js compiler has had optimizations specifically
-targeting null values and null checks. Because of that, null safety is not
-expected to affect much the output of the compiler.
+Null safety brings many benefits like reduced code size and improved
+app performance. Such benefits surface more when compiled to native
+targets like Flutter and AOT. Previous work on the production web
+compiler had introduced optimizations similar to what null safety
+later introduced. This may make resulting gains to production web apps
+seem less than their native targets.
 
-长久以来，dart2js 编译器针对空值和空检查都有特殊的优化。
-因此空安全并不会对编译产出带来太大影响。
+空安全带来了代码体积减小及性能提升等优化。
+表面上 Flutter 编译为原生端的构建的优化会更加明显，例如 AOT。
+我们先前已经在 Web 的生产构建器上已经引入了一些类似空安全的优化。
+所以，Web 应用上的变化可能并不如原生端明显。
 
 A few notes that are worth highlighting:
 
 依然有几点值得注意：
 
-* dart2js emits `!` null assertions, but you may not notice them.
-  That's because pre null-safety dart2js already emitted null checks
-  (so they are already in the existing programs).
+* The production JavaScript compiler generates `!` null assertions. You might
+  not notice them when comparing the output of the compiler before and
+  after adding null assertions. That's because the compiler already
+  generated null checks in programs that weren't null safe.
 
-  dart2js 添加了 `!` 空断言，但你可能不会注意到它。
-  这是因为 dart2js 早已支持了对空值进行检查（所以它们已在你的程序中存在）。
+  生产环境下的 JavaScript 编译器会生成 `!` 空断言，
+  在比较输出的时候你可能不会注意到它。
+  这是因为编译器已支持了对空值进行检查。
 
-* dart2js emits these null assertions regardless of sound/unsound null safety
-  and regardless of optimization level. In fact, dart2js doesn't remove
-  `!` when using `-O3` or `--omit-implicit-checks`.
+* The compiler generates these null assertions regardless of the
+  soundness of null safety or optimization level. In fact, the compiler
+  doesn't remove `!` when using `-O3` or `--omit-implicit-checks`.
 
-  无论是健全或非健全的安全，又或是不同的优化等级，dart2js 都会添加这些空断言。
-  实际上在使用 `-O3` 或 `--omit-implicit-checks` 时 dart2js 都不会移除 `!`。
+  无论是健全或非健全的安全，又或是不同的优化等级，编译器都会生成这些空断言，
+  实际上在使用 `-O3` 或 `--omit-implicit-checks` 时编译器都不会移除 `!`。
 
-* dart2js may optimize away unnecessary null checks. This is because the same
-  optimizations done by dart2js in the past will be able to eliminate
-  unnecessary null checks when it knows the value is not null.
+* The production JavaScript compiler might remove unnecessary null checks.
+  This happens because the optimizations that the production web
+  compiler made prior to null safety removed those checks when it
+  knew the value was not null.
 
-  dart2js 可能会优化掉不必要的空检查。
-  这是因为 dart2js 过去在优化时，能够在值不为空时清除不必要的空检查。
+  生产环境下的 JavaScript 编译器可能会移除没有必要的空检查，
+  一般会发生在生产环境下的 Web 编译器在空安全之前做了一些优化，
+  当它知道值不为空的时候，就删除了这些检查。
 
-* By default dart2js would generate parameter subtype checks (runtime checks
-  used to ensure covariant virtual calls are given appropriate arguments).
-  These are elided with the `--omit-implicit-checks` flag just as before.
-  Recall that this flag can make programs have unexpected behavior if types
-  are invalid, so we continue to recommend that the code has strong test
-  coverage to avoid any surprises. In particular, dart2js optimizes code based
+* By default, the compiler would generate parameter subtype checks.
+  These runtime checks ensure covariant virtual calls have appropriate
+  arguments. The compiler skips these checks with the
+  `--omit-implicit-checks` option. Using this option can generate apps
+  with unexpected behavior if the code includes invalid types.
+  To avoid any surprises, continue provide strong test coverage for
+  your code. In particular, the compiler optimizes code based
   on the fact that inputs should comply with the type declaration. If
-  the code provides arguments of an invalid type, those optimizations would
-  be wrong and the program could misbehave. This was true for inconsistent
-  types before, and is true with inconsistent nullabilities now with sound
-  null-safety.
+  the code provides arguments of an invalid type, those optimizations
+  would be wrong and the program could misbehave. This was true for
+  inconsistent types before, and is true with inconsistent 
+  nullabilities now with sound null-safety.
 
-  默认情况下，dart2js 会生成参数子类型的检查
+  默认情况下，编译器会生成参数子类型的检查。
   （用于确保协变的虚拟调用使用了合适的参数的运行时检查）。
-  与先前相同，使用 `--omit-implicit-checks` 会省略它们。
+  与先前相同，使用 `--omit-implicit-checks` 编译器会省略它们。
   回想一下，如果类型无效，这个开关会让程序出现异常，
   因此我们依然建议代码测试覆盖率尽可能地高，以避免任何事故。
-  特别是 dart2js 会基于传入值符合类型声明这一条件来优化代码。
+  特别是编译器会基于传入值符合类型声明这一条件来优化代码。
   如果代码提供了无效类型的参数，优化将不是正确的，导致程序异常。
   这对于之前的类型不一致是正确的，对于现在健全的空安全的可空性不一致也是如此。
 
-* You may notice that DDC and the Dart VM have special error
-  messages for null checks, but to keep applications small dart2js does not.
+* You may notice that the development JavaScript compiler and the Dart 
+  VM have special error messages for null checks, but to keep 
+  applications small, the production JavaScript compiler does not.
 
-  你可能会注意到 DDC 和 Dart VM 对于空检查的错误有比较特殊的错误提示，
-  但是为了保持应用的轻量体积，dart2js 并没有这样的提示。
+  你可能会注意到开发版的 JavaScript 编译器和 Dart VM
+  对于空检查的错误有比较特殊的错误提示，
+  但是为了保持应用的轻量体积，
+  生产环境下的编译器并没有这样的提示。
 
 * You may see errors indicating that `.toString` is not found on `null`.
-  This is not a bug, it is how dart2js has always encoded some null checks.
-  That is, dart2js represents some null checks compactly by making an unguarded
-  access of a property of the
-  receiver. So instead of `if (a == null) throw`, it generates `a.toString`.
-  The `toString` method is defined in JavaScript Object and is a fast
-  way to verify that an object is not null.
+  This is not a bug. The compiler has always encoded some null checks
+  in this way. That is, the compiler represents some null checks
+  compactly by making an unguarded access of a property of the
+  receiver. So instead of `if (a == null) throw`, it generates
+  `a.toString`. The `toString` method is defined in JavaScript Object
+  and is a fast way to verify that an object is not null.
 
   你可能会看到 `.toString` 在 `null` 上未找到的错误。
-  这不是一个 bug，是 dart2js 一直以来添加的空检查。
-  dart2js 通过对接收者对象属性的访问来压缩一些空检查。
+  这不是一个 bug，是编译器一直以来添加的空检查。
+  编译器会通过对接收者对象属性的访问来压缩一些空检查。
   它生成的是 `a.toString` 而不是 `if (a == null) throw`。
   在 JavaScript 对象中定义的 `toString` 方法可以快速验证对象是否可空。
 
-  If the very first action after a null check is an action that
-  will crash when the value is null, dart2js can remove the null check and
+  If the very first action after a null check is an action that crashes
+  when the value is null, the compiler can remove the null check and
   let the action cause the error.
 
-  如果空检查后的第一个行为是当值为空时会崩溃，dart2js 可以删除空检查并让动作抛出错误。
+  如果空检查后的第一个行为是当值为空时会崩溃，
+  编译器可以删除空检查并让动作抛出错误。
 
-  For example, a Dart expression `print(a!.foo());` could turn directly into:
+  For example, a Dart expression `print(a!.foo());` could turn directly
+  into:
 
   例如，`print(a!.foo());` 语句可以直接转换为：
 
@@ -599,8 +617,9 @@ A few notes that are worth highlighting:
   ```
 
   This is because the call `a.foo$()` will crash if `a` is null.
-  If dart2js inlines `foo`, it will preserve the null check.
-  So for example, if `foo` was `int foo() => 1;`  the compiler might generate:
+  If the compiler inlines `foo`, it will preserve the null check.
+  So for example, if `foo` was `int foo() => 1;`  the compiler might 
+  generate:
 
   这是因为调用 `a.foo$()` 会在 `a` 为空时崩溃。
   如果 dart2js 内联 `foo`，它将保留空检查。
@@ -611,10 +630,10 @@ A few notes that are worth highlighting:
     P.print(1);
   ```
 
-  If by chance the first thing the inlined method did was a field access on the
-  receiver, for example  `int foo() => this.x + 1;`, then again dart2js
-  can remove the redundant `a.toString` null check, just like
-  non-inlined calls, and generate:
+  If the inlined method first accessed a field on the receiver, like
+  `int foo() => this.x + 1;`, then the production compiler can remove
+  the redundant `a.toString` null check, as non-inlined calls, and
+  generate:
 
   如果内联方法做的第一件事是对接收者的字段访问，例如 `int foo() => this.x + 1;`，
   那么 dart2js 可以再次删除多余的 `a.toString` 空检查，就像非内联调用一样生成：
