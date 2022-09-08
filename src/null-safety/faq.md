@@ -521,6 +521,11 @@ compiler had introduced optimizations similar to what null safety
 later introduced. This may make resulting gains to production web apps
 seem less than their native targets.
 
+空安全带来了代码体积减小及性能提升等优化。
+表面上 Flutter 编译为原生端的构建的优化会更加明显，例如 AOT。
+我们先前已经在 Web 的生产构建器上已经引入了一些类似空安全的优化。
+所以，Web 应用上的变化可能并不如原生端明显。
+
 A few notes that are worth highlighting:
 
 依然有几点值得注意：

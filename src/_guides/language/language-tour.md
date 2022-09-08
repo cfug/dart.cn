@@ -2020,6 +2020,7 @@ enableFlags(bold: true);
   [use =]: /guides/language/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value
   [`prefer_equal_for_default_values`]: /tools/linter-rules#prefer_equal_for_default_values
   [`dart fix`]: /tools/dart-fix
+
 {{site.alert.end}}
 
 {% comment %}
