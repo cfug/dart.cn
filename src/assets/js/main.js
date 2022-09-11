@@ -115,31 +115,31 @@ function setPopovers(root, viewport) {
 /**
  * Activate the cookie notice footer
  */
-function initCookieNotice() {
-  const notice = document.getElementById('cookie-notice');
-  const agreeBtn = document.getElementById('cookie-consent');
-  const cookieKey = 'dart-site-cookie-consent';
-  const cookieConsentValue = 'true'
-  const activeClass = 'show';
+// function initCookieNotice() {
+//   const notice = document.getElementById('cookie-notice');
+//   const agreeBtn = document.getElementById('cookie-consent');
+//   const cookieKey = 'dart-site-cookie-consent';
+//   const cookieConsentValue = 'true'
+//   const activeClass = 'show';
 
-  if (Cookies.get(cookieKey) === cookieConsentValue) {
-    return;
-  }
+//   if (Cookies.get(cookieKey) === cookieConsentValue) {
+//     return;
+//   }
 
-  notice.classList.add(activeClass);
+//   notice.classList.add(activeClass);
 
-  agreeBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    Cookies.set(cookieKey, cookieConsentValue, { sameSite: 'strict', expires: 30});
-    notice.classList.remove(activeClass);
-  });
-}
+//   agreeBtn.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     Cookies.set(cookieKey, cookieConsentValue, { sameSite: 'strict', expires: 30});
+//     notice.classList.remove(activeClass);
+//   });
+// }
 
 $(function() {
   fixNav(); // Adjust heights for navigation elements
   prettyPrint(); // Initiate Syntax Highlighting
   setupOsTabs();
-  initCookieNotice();
+  // initCookieNotice();
 
   // Sidenav
   $('#sidenav i').on('click', function (e) {
