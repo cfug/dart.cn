@@ -139,7 +139,7 @@ $(function() {
   fixNav(); // Adjust heights for navigation elements
   prettyPrint(); // Initiate Syntax Highlighting
   setupOsTabs();
-  initCookieNotice();
+  // initCookieNotice();
 
   // Sidenav
   $('#sidenav i').on('click', function (e) {
