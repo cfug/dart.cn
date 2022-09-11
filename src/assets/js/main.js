@@ -122,7 +122,7 @@ function initCookieNotice() {
   const cookieConsentValue = 'true'
   const activeClass = 'show';
 
-  if (Cookies.get(cookieKey) === cookieConsentValue) {
+  if (window.Cookie === undefined || Cookies.get(cookieKey) === cookieConsentValue) {
     return;
   }
 
