@@ -104,20 +104,11 @@ such as IntelliJ or WebStorm.
 你可以使用命令行工具来调用 Stagehand 工具，
 也可以使用类似 IntelliJ 或 WebStorm 这样的 IDE 来间接使用 Stagehand 工具。
 
-Install or update Stagehand using
-[pub global activate](/tools/pub/cmd/pub-global):
-
-你可以使用 [pub global activate](/tools/pub/cmd/pub-global)
-命令安装或更新 Stagehand 工具：
-
-```terminal
-$ pub global activate stagehand
-```
-
 Run the `dart create` command with the `--help` flag
 to see what kinds of template files it can generate:
 
-现在你可以运行 `dart create` 命令来查看它可以生成的模板文件：
+现在你可以运行 `dart create` 命令，使用
+`--help` 来查看它可以生成的模板文件：
 
 ```terminal
 $ dart create --help
@@ -147,8 +138,9 @@ The contents of your pubspec.yaml file should look something like this:
 
 pubspec.yaml 文件包含了由 YAML 语言撰写的 package 规格。
 （访问 <a href="/tools/pub/pubspec">Pubspec 格式 </a> 获取更多深入的介绍。）
-而你的 pubspec.yaml 文件看起来则应该是这样的：
+而你的 pubspec.yaml 文件看起来则应该是这样的
 
+<?code-excerpt "vector_victor/pubspec.yaml" to="test"?>
 ```yaml
 name: vector_victor
 description: A sample command-line application.
@@ -156,7 +148,7 @@ version: 1.0.0
 # homepage: https://www.example.com
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.18.0 <3.0.0'
 
 # dependencies:
 #   path: ^1.8.0
@@ -182,58 +174,43 @@ of a package that your app uses.
 依赖中的每一项都指定了你应用所使用的 package 名称以及版本。
 
 Let's make the vector_victor app have a dependency
-on the vector_math package,
+on the `vector_math` package,
 which is available at the [pub.dev site]({{site.pub}}).
 
 下面让我们为 vector_victor 应用添加一个名为 vector_math 的 package，
 这个 package 可以在 [pub.dev 网站]({{site.pub}}) 中找到。
 
- 1. Get the current installation details for the package:
+Run the [`dart pub add`](/tools/pub/cmd/pub-add) command 
+and specify `vector_math`
+to add a dependency on the package:
 
-    获取 package 当前的安装细节信息：
+运行 [`dart pub add`](/tools/pub/cmd/pub-add) 命令并指定
+使用 `vector_math`，将其加入你的依赖中。
 
-    {: type="a"}
-     1. Go to [vector_math's entry on the Package
-        site.]({{site.pub-pkg}}/vector_math)
+```terminal
+$ dart pub add vector_math
+Resolving dependencies... 
++ vector_math 2.1.3
+Downloading vector_math 2.1.3...
+Changed 1 dependency!
+```
 
-        打开 [pub.dev 网站中 vector_math package 的网页。]({{site.pub-pkg}}/vector_math)
+This will add `vector_math` to the
+`dependencies` entry of your `pubspec.yaml`,
+resulting in the following:
 
-     2. Click the **Installing** tab.
+这个命令将会将 `vector_math` 加入你工程文件中
+`pubspec.yaml` 的 `dependencies` 部分:
 
-        点击**Installing**标签。
+<?code-excerpt "vector_victor/pubspec.yaml" from="/^dependencies/"?>
+```yaml
+dependencies:
+  vector_math: ^2.1.3
+```
 
-     3. Copy the **vector_math** line from the sample **dependencies** entry.
-        The entry should look something like this:
-
-        拷贝示例 _dependencies_ 实体中有 _vector_math_ 的那一行。 _dependencies_ 实体看起来像下面那样：
-
-        ```yaml
-        dependencies:
-          vector_math: ^2.0.8
-        ```
-
- 2. Edit `pubspec.yaml`.
-
-    编辑 `pubspec.yaml` 文件。
-
- 3. In the dependencies section, add the string you copied from the
-    pub.dev site. Be careful to keep the indentation the same; YAML is
-    picky! For example:
-
-    在 dependencies 部分，将上面你从 pub.dev 网站拷贝来的文本粘贴添加至这里。
-    这里要注意缩进；必须严格按照 YAML 语言规范！例如：
-
-    ```yaml
-    environment:
-      sdk: '>=2.8.1 <3.0.0'
-
-    dependencies:
-      vector_math: ^2.0.8
-
-    dev_dependencies:
-      pedantic: ^1.9.0
-      test: ^1.14.4
-    ```
+You can also find your desired version on the
+[`vector_math` page on pub.dev]({{site.pub-pkg}}/vector_math)
+and add it manually to the dependency section.
 
 For details of what version numbers mean
 and how you can format them,
@@ -259,10 +236,11 @@ as we have done here.
 
 ## 安装依赖的 package
 
-If you're using an IDE or Dart-savvy editor to edit `pubspec.yaml`,
+If you're using a Dart-savvy editor or `dart pub` to edit `pubspec.yaml`,
 it might automatically install the packages your app depends on.
 
-如果你使用 IDE 或适配了 Dart 语言开发的编辑器去编辑 `pubspec.yaml` 文件，
+如果你使用适配了 Dart 语言开发的编辑器或者
+`dart pub` 命令了编辑 `pubspec.yaml` 文件，
 其可能会在你编辑了该文件后自动下载安装相关依赖的 package。
 
 If not, do it yourself by running
@@ -274,7 +252,7 @@ If not, do it yourself by running
 ```terminal
 $ dart pub get
 Resolving dependencies...
-+ vector_math 2.0.8
++ vector_math 2.1.3
 Changed 1 dependency!
 ```
 
@@ -307,25 +285,26 @@ Pub 会创建一个名为 `pubspec.lock` 的文件来标识哪些 package 的哪
 ## 你可以从中获取（或不可获取）什么？
 
 Besides the Dart libraries,
-the vector_math package has other resources that might be useful to you
+the `vector_math` package has other resources that might be useful to you
 that do not get installed into your app directory.
 Let's take a step back for a moment to look at what
 you got and where it came from.
 
-除了 Dart 库以外，vector_math package
+除了 Dart 库以外，`vector_math` package
 可能包含其它对你有用但不会安装到你应用目录的资源。
 让我们后退一步看看你在获取依赖时得到了什么以及它们从何而来。
 
-To see the contents of the vector_math package,
+To see the contents of the `vector_math` package,
 visit the
-<a href="https://github.com/johnmccutchan/vector_math"
+<a href="https://github.com/google/vector_math"
 target="_blank" rel="noopener">Dart vector math repository</a>
-at GitHub.
+on GitHub.
 Although many files and directories are in the repository,
 only one, `lib`, was installed when you ran pub get.
 
-访问 <a href="https://github.com/johnmccutchan/vector_math" target="_blank">Dart 数学矢量仓库 </a>
-的 Github 仓库查看 vector_math package 的具体内容。
+访问 Github 仓库
+<a href="https://github.com/google/vector_math" target="_blank" rel="noopener">Dart 数学矢量仓库</a>
+来查看 `vector_math` package 的具体内容。
 尽管该仓库中有大量的文件和目录，
 但是只有 `lib` 目录下的文件会在你执行 pub get 命令时安装。
 
@@ -425,35 +404,34 @@ Dart SDK 库是内置的且由特殊的 `dart:` 前缀标识。
    获取 package 中主要库的导入流程：
 
    {: type="a"}
-   1. Go to [vector_math's entry on the Package
-      site.]({{site.pub-pkg}}/vector_math)
+   1. Go to the [`vector_math` page on pub.dev.]({{site.pub-pkg}}/vector_math)
 
-      打开
-      [pub.dev 网站中 vector_math package 的网页。]({{site.pub-pkg}}/vector_math)
+      打开 [pub.dev 网站中 `vector_math` package 的网页。]({{site.pub-pkg}}/vector_math)
 
    2. Click the **Installing** tab.
 
-      点击**Installing**标签。
+      点击 **Installing** 标签。
 
    3. Copy the **import** line. It should look something like this:
 
-      拷贝有**import**的这一行代码。其看起来像下面这样：
+      拷贝有 **import** 的这一行代码。其看起来像下面这样：
 
+      <?code-excerpt "vector_victor/lib/vector_victor.dart (import)"?>
       ```dart
       import 'package:vector_math/vector_math.dart';
       ```
 
 2. In your vector_victor app, edit `lib/vector_victor.dart`,
-   so that it imports the vector_math library and uses some of its API.
+   so that it imports the `vector_math` library and uses some of its API.
    For inspiration, look at the
-   [vector_math API
+   [`vector_math` API
    docs]({{site.pub-api}}/vector_math/latest),
    which you can find from the pub.dev site entry.
 
    在你的 vector_victor 应用中，编辑 `lib/vector_victor.dart` 文件，
    由此它导入 vector_math 库并使用了它的一些 API。
    你可以阅读
-   [vector_math API 文档]({{site.pub-api}}/documentation/vector_math/latest)
+   [vector_math API 文档]({{site.pub-api}}/vector_math/latest)
    获取更多相关信息。
 
    {{site.alert.note}}
