@@ -81,7 +81,7 @@ the Dart Analysis Server and other tools use the
 to perform static analysis.
 
 在 Dart 生态系统中，Dart 分析服务和其他相关工具使用了
-[analyzer 包]({{site.pub-pkg}}/analyzer)
+[analyzer]({{site.pub-pkg}}/analyzer)
 来提供静态分析。
 
 You can customize static analysis to look for a variety of potential
@@ -102,12 +102,12 @@ use the analyzer package to evaluate your code.
 包括在 [Dart 编程语言规范](/guides/language/spec) 中规定的错误和警告。
 你同样能通过配置 linter ——分析器的一个插件，
 来确保你的代码遵循 [Dart 代码风格指南](/guides/language/effective-dart/style)
-和 [高效 Dart][] 中其他建议的准则。
+和 [高效 Dart][Effective Dart] 中其他建议的准则。
 诸如 [Dart 编译器 (`dart compile`)](/tools/dart-compile)，
 [`dart analyze`](/tools/dart-analyze),
 [`flutter analyze`]({{site.flutter-docs}}/testing/debugging#the-dart-analyzer),
 和 [JetBrains IDEs](/tools/jetbrains-plugin)
-等 Dart 工具会使用 analyzer 包来评估你的代码。
+等 Dart 工具都会使用 analyzer package 来评估你的代码。
 
 This document explains how to customize the behavior of the analyzer
 using either an analysis options file or comments in Dart source code. If you want to
@@ -117,8 +117,8 @@ add static analysis to your tool, see the
 
 这篇文档解释了如何通过使用 analysis 配置文件，
 或在 Dart 源代码中添加注释来自定义分析器的行为。
-如果你想在工具中添加静态分析规则，请参考 [analyzer 包]({{site.pub-pkg}}/analyzer)的文档
-和 [Analysis Server API 规范.](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/api.html)
+如果你想在工具中添加静态分析规则，请参考 [analyzer package]({{site.pub-pkg}}/analyzer) 的文档
+和 [Analysis Server API 规范](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/api.html)。
 
 {{site.alert.note}}
   
@@ -180,24 +180,28 @@ The sample illustrates the most common top-level entries:
   from a file in the `lints` package.
   Because YAML doesn't allow duplicate keys,
   you can include at most one file.
+  
+  使用 <code>include: <em>url</em></code> 来从指定的 URL 引入选项 —— 在这种情况下，
+  通常是引入来自 lints 包中的文件。
+  由于 YAML 不支持多个重复的 key，你只能引入最多一个文件；
+  
 - Use the `analyzer:` entry to customize static analysis:
   [enabling stricter type checks](#enabling-additional-type-checks),
   [excluding files](#excluding-files),
   [ignoring specific rules](#ignoring-rules),
   [changing the severity of rules](#changing-the-severity-of-rules), or
   [enabling experiments](/tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide).
-- Use the `linter:` entry to configure [linter rules](#enabling-linter-rules).
-
-- 使用 <code>include: <em>url</em></code> 来从指定的 URL 引入选项 —— 在这种情况下，
-  通常是引入来自 lints 包中的文件。
-  由于 YAML 不支持多个重复的 key，你只能引入最多一个文件。
-- 使用 `analyzer:` 入口来自定义静态分析：
+  
+  使用 `analyzer:` 入口来自定义静态分析：
   [启用更严格的类型检查](#enabling-additional-type-checks),
   [排除文件](#excluding-files),
   [忽略特定规则](#ignoring-rules),
   [改变规则的警告等级](#changing-the-severity-of-rules), or
-  [开启实验性功能](/tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide).
-- 使用 `linter:` 入口来配置 [linter 规则](#enabling-linter-rules)。
+  [开启实验性功能](/tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide)；
+
+- Use the `linter:` entry to configure [linter rules](#enabling-linter-rules).
+
+  使用 `linter:` 入口来配置 [linter 规则](#enabling-linter-rules)。
 
 {{site.alert.warn}}
 
@@ -215,7 +219,7 @@ If the analyzer can't find an analysis options file at the package root,
 it walks up the directory tree, looking for one.
 If no file is available, the analyzer defaults to standard checks.
 
-如果分析器在包的根目录下无法找到一个 analysis 配置文件，
+如果分析器在 package 的根目录下无法找到一个 analysis 配置文件，
 它将会往下查找整个目录树。
 如果还是没有可用的配置文件，分析器则默认使用标准检查规则。
 
@@ -262,7 +266,7 @@ You can use the modes together or separately; all default to `false`.
 你可以单独或一起使用这些模式，他们默认都为 `false` 状态。
 
 `strict-casts: <bool>`
-: A value of `true` ensures that the type inference engine never
+<br> A value of `true` ensures that the type inference engine never
   implicitly casts from `dynamic` to a more specific type.
   The following valid Dart code includes an implicit downcast from the
   `dynamic` value returned by `jsonDecode` to `List<String>`
@@ -271,7 +275,7 @@ You can use the modes together or separately; all default to `false`.
   requiring you to add an explicit cast or otherwise adjust your code.
 
 `strict-casts: <bool>`
-: 设为 `true` 可确保类型推理引擎不再将 `dynamic` 进行隐式类型转换。
+<br> 设为 `true` 可确保类型推理引擎不再将 `dynamic` 进行隐式类型转换。
   下方的 Dart 代码在 `List<String>` 参数上传递了一个 `jsonDecode` 方法的返回值，
   实际是将返回的 `dynamic` 做了隐式向下转换，在运行时可能导致错误。
   该模式会报告此类潜在的错误，要求你添加一个显示的类型转换或者调整你的代码。
@@ -312,14 +316,14 @@ error - The argument type 'dynamic' can't be assigned to the parameter type 'Lis
 {{site.alert.end}}
 
 `strict-inference: <bool>`
-: A value of `true` ensures that the type inference engine never chooses
+<br> A value of `true` ensures that the type inference engine never chooses
   the `dynamic` type when it can't determine a static type.
   The following valid Dart code creates a `Map`
   whose type argument cannot be inferred, 
   resulting in an inference failure hint by this mode:
 
 `strict-inference: <bool>`
-: 设为 `true` 可确保当类型推理引擎无法确定静态类型时，不再选择`dynamic` 类型。
+<br> 设为 `true` 可确保当类型推理引擎无法确定静态类型时，不再选择`dynamic` 类型。
   下方合法 Dart 代码创建了一个类型参数无法被推断的 `Map`，
   在该模式下会触发推断失败的 hint 提示：
 
@@ -349,23 +353,22 @@ info - The type argument(s) of 'Map' can't be inferred - inference_failure_on_co
   See [Conditions for strict inference failure][] 
   for an exhaustive list of inference failure conditions.
 
-  查看 [严格类型推断失败的条件][] 来了解详细的推断失败条件清单。
+  查看 [严格类型推断失败的条件][Conditions for strict inference failure]
+  来了解详细的推断失败条件清单。
 
 {{site.alert.end}}
 
 [Conditions for strict inference failure]: https://github.com/dart-lang/language/blob/master/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure
 
-[严格类型推断失败的条件]: https://github.com/dart-lang/language/blob/master/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure
-
 `strict-raw-types: <bool>`
-: A value of `true` ensures that the type inference engine never chooses
+<br> A value of `true` ensures that the type inference engine never chooses
   the `dynamic` type when it can't determine a static type
   due to omitted type arguments.
   The following valid Dart code has a `List` variable with a raw type,
   resulting in a raw type hint by this mode:
 
 `strict-raw-types: <bool>`
-: 设为 `true` 可确保当类型推理引擎，由于省略类型参数而无法确定静态类型时，
+<br> 设为 `true` 可确保当类型推理引擎，由于省略类型参数而无法确定静态类型时，
   不再选择`dynamic` 类型。
   下方合法 Dart 代码中有一个原始类型的 `List` 变量，
   导致在该模式下触发了原始类型 hint 提示。
@@ -396,7 +399,7 @@ For example, some rules are more appropriate for library packages
 and others are designed for Flutter apps.
 Note that linter rules can have false positives, unlike static analysis.
 
-analyzer 包同样提供一个代码 linter，并包含一份广泛多样的 [linter 规则][]。
+analyzer 包同样提供一个代码 linter，并包含一份广泛多样的 [linter 规则][linter rules]。
 linters 往往是无关联性的，各种规则之间不必彼此遵守。
 例如，有些规则更合适支持库，而另一些则是为 Flutter 应用设计的。
 注意，linter 规则可以主动设置为 false，不像静态分析只能设为 true。
@@ -408,10 +411,10 @@ linters 往往是无关联性的，各种规则之间不必彼此遵守。
 The Dart team provides two sets of recommended linter rules
 in the [lints package][]:
 
-Dart 团队在 [lints 包][] 中提供了 2 个推荐的 linter 规则集合：
+Dart 团队在 [lints package][] 中提供了 2 个推荐的 linter 规则集合：
 
 Core rules
-: Help identify critical issues that are likely to lead to problems
+<br> Help identify critical issues that are likely to lead to problems
   when running or consuming Dart code.
   All code should pass these linter rules.
   Packages that are uploaded to [pub.dev]({{site.pub}})
@@ -419,20 +422,20 @@ Core rules
   that's based in part on passing these rules.
 
 核心规则
-: 帮助确认可能导致在运行或使用 Dart 代码时引发问题的关键事项。
+<br> 帮助确认可能导致在运行或使用 Dart 代码时引发问题的关键事项。
   所有类型的代码都应该符合这些 linter 规则。
-  被上传至 [pub.dev]({{site.pub}}) 的包，
-  会有一个部分基于通过这些规则的情况而生成的 [包评分]({{site.pub}}/help/scoring)。
+  被上传至 [pub.dev]({{site.pub}}) 的 package，
+  会有一个部分基于通过这些规则的情况而生成的 [package 评分]({{site.pub}}/help/scoring)。
 
 Recommended rules
-: Help identify additional issues
+<br> Help identify additional issues
   that may lead to problems when running or consuming Dart code,
   and enforce a single, idiomatic style and format.
   We recommend that all Dart code use these rules,
   which are a superset of the core rules.
 
 推荐规则
-: 帮助确认其他可能导致运行或使用 Dart 代码时引发问题的事项，
+<br> 帮助确认其他可能导致运行或使用 Dart 代码时引发问题的事项，
   并强制使用单一、惯用的代码风格和代码格式化。
   作为一个核心规则的超集，我们推荐所有的 Dart 代码使用它。
 
@@ -443,14 +446,14 @@ Recommended rules
   which provides a superset of the recommended rules.
 
   如果你专注于 Flutter 代码，可以用 [`flutter_lints`]({{site.pub-pkg}}/flutter_lints)
-  来取代 `lints` 包，它提供了一个推荐规则的超集。
+  来取代 `lints` package，它提供了一个推荐规则的超集。
 
 {{site.alert.end}}
 
 To enable either set of lints,
 add the [lints package][] as a dev dependency:
 
-将 [lints 包][] 作为 dev dependency 添加，
+将 [lints package][] 作为 dev dependency 添加，
 来启用任意 lints 集合。
 
 ```terminal
@@ -485,13 +488,11 @@ include: package:lints/recommended.yaml
   当一个**新版本的 `lints`** 上线后，
   之前通过 analysis 检查的代码，有可能**开始无法通过**。
   我们推荐更新你的代码以符合新版规则。
-  其他选项可以通过显式的方法，启用单条规则或 [停用单条规则][]。
+  其他选项可以通过显式的方法，启用单条规则或 [停用单条规则][disable individual rules]。
 
 {{site.alert.end}}
 
 [lints package]: {{site.pub-pkg}}/lints
-
-[lints 包]: {{site.pub-pkg}}/lints
 
 ### Enabling individual rules {#individual-rules}
 
@@ -587,7 +588,7 @@ Or a linter rule might cause a false positive
 that you want to suppress.
 
 有时候，让一些代码保持无法通过 analysis 检查的状态是可以的。
-例如，你也许依赖于某个不属于你的包所生成的代码，
+例如，你也许依赖于某个不属于你 package 所生成的代码，
 这些代码可以正常运行，但是在静态检查中会产生警告。
 或者某个 linter 规则可能会出现你想关掉的误报。
 
@@ -596,19 +597,23 @@ You have a few ways to exclude code from analysis:
 有几种方法可以从 analysis 中排除代码：
 
 * Exclude entire files from analysis.
+
+  从 analysis 中排除整个文件。
+
 * Stop specific non-error rules from being applied to individual files.
+
+  在单个文件中停止特定的非错误规则的生效。
+  
 * Stop specific non-error rules from being applied to individual lines of code.
 
-* 从 analysis 中排除整个文件。
-* 在单个文件中停止特定的非错误规则的生效。
-* 在单个文件的某几行中，停止特定的非错误规则的生效。
+  在单个文件的某几行中，停止特定的非错误规则的生效。
 
 You can also [disable specific rules][disable individual rules]
 for all files or
 [change the severity of rules][].
 
 你同样可以对所有文件 [停用特定的规则][disable individual rules]，
-或者 [改变规则的警告等级][]。
+或者 [改变规则的警告等级][change the severity of rules]。
 
 ### Excluding files
 
@@ -738,29 +743,29 @@ The analyzer supports three severity levels:
 分析器支持三种警告等级：
 
 `info`
-: An informational message that doesn't cause analysis to fail.
+<br> An informational message that doesn't cause analysis to fail.
   Example: [`dead_code`][dead_code]
 
 `info`
-: 消息，不会造成 analysis 验证失败。
+<br> 消息，不会造成 analysis 验证失败。
   例如：[`dead_code`][dead_code]
 
 `warning`
-: A warning that doesn't cause analysis to fail unless
+<br> A warning that doesn't cause analysis to fail unless
   the analyzer is configured to treat warnings as errors.
   Example: [`invalid_null_aware_operator`][invalid_null_aware_operator]
 
 `warning`
-: 警告，一般不会造成 analysis 验证失败，
+<br> 警告，一般不会造成 analysis 验证失败，
   除非分析器被配置了对待警告与错误一致。
   例如：[`invalid_null_aware_operator`][invalid_null_aware_operator]
 
 `error`
-: An error that causes analysis to fail.
+<br> An error that causes analysis to fail.
   Example: [`invalid_assignment`][invalid_assignment]
 
 `error`
-: 错误，会造成 analysis 验证失败。
+<br> 错误，会造成 analysis 验证失败。
   例如：[`invalid_assignment`][invalid_assignment]
 
 ### Ignoring rules
@@ -773,7 +778,7 @@ List the rule, followed by <code>:&nbsp;ignore</code>. For example, the followin
 analysis options file instructs the analysis tools to ignore the TODO rule:
 
 你可以通过使用 `errors:` 字段，
-来忽略特定的 [分析器错误码][] and [linter 规则][]。
+来忽略特定的 [分析器错误码][analyzer error codes] and [linter 规则][linter rules]。
 列出规则，在后面加上 <code>:&nbsp;ignore</code>。
 例如下方的 analysis 配置文件，指示分析器工具忽略了 TODO 规则：
 
