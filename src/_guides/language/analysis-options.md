@@ -115,7 +115,7 @@ add static analysis to your tool, see the
 [analyzer package]({{site.pub-pkg}}/analyzer) docs and the
 [Analysis Server API Specification.](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/api.html)
 
-这篇文档解释了如何通过使用 analysis 配置文件，
+这篇文档解释了如何通过使用分析配置文件，
 或在 Dart 源代码中添加注释来自定义分析器的行为。
 如果你想在工具中添加静态分析规则，请参考 [analyzer package]({{site.pub-pkg}}/analyzer) 的文档
 和 [Analysis Server API 规范](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/api.html)。
@@ -136,7 +136,7 @@ add static analysis to your tool, see the
 Place the analysis options file, `analysis_options.yaml`,
 at the root of the package, in the same directory as the pubspec file.
 
-将 analysis 配置文件 `analysis_options.yaml` 放在包的根目录，
+将分析配置文件 `analysis_options.yaml` 放在包的根目录，
 即和 pubspec 文件同样的目录下。
 
 {{site.alert.tip}}
@@ -146,7 +146,7 @@ at the root of the package, in the same directory as the pubspec file.
   To upgrade an `.analysis_options` file,
   just change its name to `analysis_options.yaml`.
 
-  analysis 配置文件的旧名称是 `.analysis_options`，
+  分析配置文件的旧名称是 `.analysis_options`，
   自 Dart 2.8 起已经停止了对该文件名的支持。
   只需将文件名改为 `analysis_options.yaml`，便可从旧文件升级。
 
@@ -154,7 +154,7 @@ at the root of the package, in the same directory as the pubspec file.
 
 Here's a sample analysis options file:
 
-这是一个 analysis 配置文件的示例：
+这是一个分析配置文件的示例：
 
 <?code-excerpt "analysis_options.yaml" from="include" remove="implicit-dynamic" retain="/^$|\w+:|- cancel/" remove="https:"?>
 ```yaml
@@ -219,7 +219,7 @@ If the analyzer can't find an analysis options file at the package root,
 it walks up the directory tree, looking for one.
 If no file is available, the analyzer defaults to standard checks.
 
-如果分析器在 package 的根目录下无法找到一个 analysis 配置文件，
+如果分析器在 package 的根目录下无法找到一个分析配置文件，
 它将会往下查找整个目录树。
 如果还是没有可用的配置文件，分析器则默认使用标准检查规则。
 
@@ -505,7 +505,7 @@ On subsequent lines, specify the rules that you want to apply,
 prefixed with dashes (the syntax for a YAML list).
 For example:
 
-在 analysis 配置文件中添加顶层 key `linter:` 来启用单条规则，
+在分析配置文件中添加顶层 key `linter:` 来启用单条规则，
 紧跟着用 `rules:` 作为二级 key。
 在后续行中，以短横杠为前缀（YAML 列表的语法），指定你想要添加的规则。
 例如：
@@ -538,7 +538,7 @@ as the value for the `rules:` entry,
 so each line should contain the name of a rule followed by
 either `: false` or `: true`.
 
-如果你引入了一个 analysis 配置文件（比如 `lints` 中的某一个），
+如果你引入了一个分析配置文件（比如 `lints` 中的某一个），
 你可能会想要停用其中的一部分。
 停用单条规则和启用单条规则是类似的，
 但要求使用键值对而不是列表来作为 `rules:` 的值。
@@ -549,7 +549,7 @@ that uses all the recommended rules from `lints`
 except `avoid_shadowing_type_parameters`.
 It also enables the lint `await_only_futures`:
 
-这里是一个 analysis 配置文件的示例，
+这里是一个分析配置文件的示例，
 其中使用了来自 `lints` 的所有推荐规则，
 除了 `avoid_shadowing_type_parameters` 被单独停用。
 这里同样单独启用了 `await_only_futures` 这条 lint。
@@ -735,7 +735,7 @@ the severity of individual rules, or to always ignore some rules.
 
 每个 [分析器错误码][analyzer error codes] 和 [linter 规则][linter rules] 
 都有一个默认的警告等级。
-你可以使用 analysis 配置文件来改变单个规则的警告等级，
+你可以使用分析配置文件来改变单个规则的警告等级，
 或者总是忽略某些规则。
 
 The analyzer supports three severity levels:
@@ -780,7 +780,7 @@ analysis options file instructs the analysis tools to ignore the TODO rule:
 你可以通过使用 `errors:` 字段，
 来忽略特定的 [分析器错误码][analyzer error codes] and [linter 规则][linter rules]。
 列出规则，在后面加上 <code>:&nbsp;ignore</code>。
-例如下方的 analysis 配置文件，指示分析器工具忽略了 TODO 规则：
+例如下方的分析配置文件，指示分析器工具忽略了 TODO 规则：
 
 <?code-excerpt "analysis_alt/analysis_options.yaml (errors)" to="ignore"?>
 ```yaml
@@ -802,7 +802,7 @@ and to provide information (but not a warning or error) about dead code:
 
 你可以全局修改单个规则的警告等级。
 这项技术对于常规的 analysis 问题和 lints 问题都有效。
-例如下方的 analysis 配置文件，指示分析器工具把无效的赋值配置为警告，
+例如下方的分析配置文件，指示分析器工具把无效的赋值配置为警告，
 把缺少返回值配置为错误，而对于无法执行到的代码，仅提供并非警告和错误的信息通知。
 
 <?code-excerpt "analysis_alt/analysis_options.yaml (errors)" remove="ignore"?>
