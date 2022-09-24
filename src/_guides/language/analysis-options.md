@@ -25,8 +25,8 @@ executing a single line of code. It's a powerful tool
 used to prevent bugs and ensure that code conforms to style
 guidelines.
 
-静态分析使你能在代码被执行之前发现问题，
-对于防止 Bug 和确保代码符合指南中的代码风格很有帮助。
+静态分析让你的代码问题能在运行前被发现，
+它在防止问题产生和代码风格指南的遵循上很有帮助。
 
 With the help of the analyzer, you can find
 simple typos. For example, perhaps an accidental semicolon
@@ -131,7 +131,7 @@ add static analysis to your tool, see the
 
 ## The analysis options file
 
-## analysis 配置文件
+## 分析配置文件
 
 Place the analysis options file, `analysis_options.yaml`,
 at the root of the package, in the same directory as the pubspec file.
@@ -147,8 +147,8 @@ at the root of the package, in the same directory as the pubspec file.
   just change its name to `analysis_options.yaml`.
 
   analysis 配置文件的旧名称是 `.analysis_options`，
-  对这个文件名的支持从 Dart 2.8 起停止。
-  要升级这种旧文件，只需将文件名改为 `analysis_options.yaml`。
+  自 Dart 2.8 起已经停止了对该文件名的支持。
+  只需将文件名改为 `analysis_options.yaml`，便可从旧文件升级。
 
 {{site.alert.end}}
 
@@ -400,9 +400,9 @@ and others are designed for Flutter apps.
 Note that linter rules can have false positives, unlike static analysis.
 
 analyzer 包同样提供一个代码 linter，并包含一份广泛多样的 [linter 规则][linter rules]。
-linters 往往是无关联性的，各种规则之间不必彼此遵守。
+提示规则之间往往是无关联性的，各种规则之间不必彼此遵守。
 例如，有些规则更合适支持库，而另一些则是为 Flutter 应用设计的。
-注意，linter 规则可以主动设置为 false，不像静态分析只能设为 true。
+注意，linter 规则可能会触发误报，静态分析则不会。
 
 ### Enabling Dart team recommended linter rules {#lints}
 
@@ -485,8 +485,8 @@ include: package:lints/recommended.yaml
   Other options are to explicitly enable individual linter rules 
   or [disable individual rules][].
 
-  当一个**新版本的 `lints`** 上线后，
-  之前通过 analysis 检查的代码，有可能**开始无法通过**。
+  当一个 **新版本的 `lints`** 上线后，
+  之前通过 analysis 检查的代码，有可能 **开始无法通过**。
   我们推荐更新你的代码以符合新版规则。
   其他选项可以通过显式的方法，启用单条规则或 [停用单条规则][disable individual rules]。
 
@@ -587,7 +587,7 @@ but produces warnings during static analysis.
 Or a linter rule might cause a false positive
 that you want to suppress.
 
-有时候，让一些代码保持无法通过 analysis 检查的状态是可以的。
+有时候，部分代码可能允许包含分析出的警告和提示。
 例如，你也许依赖于某个不属于你 package 所生成的代码，
 这些代码可以正常运行，但是在静态检查中会产生警告。
 或者某个 linter 规则可能会出现你想关掉的误报。
@@ -817,11 +817,11 @@ analyzer:
 
 ## Resources
 
-## 资源
+## 更多资源
 
 Use the following resources to learn more about static analysis in Dart:
 
-通过以下资源来了解更多关于 Dart 的静态分析：
+你还可以通过以下资源来深入了解 Dart 的静态分析：
 
 * [Dart's type system][type-system]
 * [Dart linter](https://github.com/dart-lang/linter#linter-for-dart)
