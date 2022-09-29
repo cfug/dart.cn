@@ -281,9 +281,9 @@ For details, see the following:
 根据平台和库的类型的不同，捆绑（或 **打包** 和 **分发**）
 C 库到 package 或应用并进行加载的方式，有所不同。
 
-* [Flutter `dart:ffi` page][binding]
+* Flutter `dart:ffi` pages: [Android][android], [iOS][ios], and [macOS][macos] 
 
-  [Flutter `dart:ffi` 页面][binding]
+  Flutter 的 `dart:ffi` 页面: [Android][android]、[iOS][ios] 和 [macOS][macos]
 
 * [`dart:ffi` examples]({{page.samples}})
 
@@ -374,7 +374,9 @@ to automatically create FFI wrappers from C header files.
 
 [ABI]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Abi-class.html
 [AbiSpecificInteger]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/AbiSpecificInteger-class.html
-[binding]: {{site.flutter-docs}}/development/platform-integration/c-interop
+[ios]: {{site.flutter-docs}}/development/platform-integration/ios/c-interop
+[android]: {{site.flutter-docs}}/development/platform-integration/android/c-interop
+[macos]: {{site.flutter-docs}}/development/platform-integration/macos/c-interop
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
 [hello_world]: {{page.hw}}
 [primitives]: {{page.samples}}/primitives

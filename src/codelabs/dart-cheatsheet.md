@@ -2488,7 +2488,7 @@ To make the constructor const, you'll need to make all the properties final.
 {$ end hint.txt $}
 ```
 
-## What next?
+## What's next?
 
 ## 下一步是什么？
 
