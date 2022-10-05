@@ -4482,7 +4482,8 @@ Dart 允许您使用以下名称定义运算符：
 {% endcomment %}
 
 An operator declaration is identified using the built-in identifier `operator`.
-The following example defines vector addition (`+`) and subtraction (`-`):
+The following example defines vector 
+addition (`+`), subtraction (`-`), and equality (`==`):
 
 为了表示重写操作符，我们使用 `operator` 标识来进行标记。
 下面是重写 `+` 和 `-` 操作符的例子
@@ -4497,8 +4498,12 @@ class Vector {
   Vector operator +(Vector v) => Vector(x + v.x, y + v.y);
   Vector operator -(Vector v) => Vector(x - v.x, y - v.y);
 
-  // Operator == and hashCode not shown.
-  // ···
+  @override
+  bool operator ==(Object other) =>
+      other is Vector && x == other.x && y == other.y;
+
+  @override
+  int get hashCode => Object.hash(x, y);
 }
 
 void main() {
@@ -4845,12 +4850,11 @@ that's different from the one in class `Object`.
   方法且具体的实现与 `Object` 中的不同。
 
 For more information, see the informal
-[noSuchMethod forwarding specification.](https://github.com/dart-lang/sdk/blob/main/docs/language/informal/nosuchmethod-forwarding.md)
+[noSuchMethod forwarding specification.](https://github.com/dart-lang/language/blob/master/archive/feature-specifications/nosuchmethod-forwarding.md)
 
 你可以查阅
-[noSuchMethod 转发规范](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)
+[noSuchMethod 转发规范](https://github.com/dart-lang/language/blob/master/archive/feature-specifications/nosuchmethod-forwarding.md)
 获取更多相关信息。
-
 
 ### Extension methods
 
@@ -6333,7 +6337,7 @@ For more information, see the following:
 [Isolate.spawn()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
 [TransferableTypedData]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/TransferableTypedData-class.html
 [background json]: {{site.flutter-docs}}/cookbook/networking/background-parsing
-[Isolate sample app]: https://github.com/flutter/samples/tree/master/isolate_example
+[Isolate sample app]: https://github.com/flutter/samples/tree/main/isolate_example
 
 ## Typedefs
 

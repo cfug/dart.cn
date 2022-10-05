@@ -1,10 +1,10 @@
 <form class="form-inline">
   <div class="form-group select">
-    <label for="{{include.channel}}-versions">Version:</label>
+    <label for="{{include.channel}}-versions">版本:</label>
     <select id="{{include.channel}}-versions"></select>
   </div>
   <div class="form-group select">
-    <label for="{{include.channel}}-os">OS:</label>
+    <label for="{{include.channel}}-os">操作系统:</label>
     <select id="{{include.channel}}-os">
       <option value="all">All</option>
       <option value="macos" id="{{include.channel}}-macos" class="macos-option">macOS</option>
@@ -19,7 +19,8 @@
       <th><t>Version</t><t>版本</t></th>
       <th><t>OS</t><t>系统</t></th>
       <th><t>Architecture</t><t>支持的架构</t></th>
-      <th><t>Downloads</t><t>下载</t></th>
+      <th><t></t>Release date</t><t>发布日期</t></th>
+      <th><t>Downloads</t><t>下载链接</t></th>
     </tr>
   </thead>
   <tbody>
@@ -33,6 +34,7 @@
       {% endif %}
       <td>Windows</td>
       <td>64-width</td>
+      <td>01/01/1970</td>
       <td>JSON-formatted API documentation</td>
     </tr>
   </tbody>

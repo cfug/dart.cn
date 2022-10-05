@@ -226,32 +226,6 @@ Prints debugging information when an error occurs.
 
 当出现错误时输出调试信息。
 
-### `--verbosity=`_`<level>`_
-
-The specified level determines the amount of information that is displayed:
-
-指定输出信息的级别：
-
-* `all`
-: Shows all output, including internal tracing messages.
-
-  `all`：显示所有出输出，包括内部追踪信息。
-
-* `io`
-: Shows I/O operations.
-
-  `io`：显示 I/O 操作。
-
-* `normal`
-: Shows errors, warnings, and user messages.
-
-  `normal`：显示错误、警告以及用户信息。
-
-* `solver`
-: Shows steps during version resolution.
-
-  `solver`：显示版本解析的步骤。
-
 ### `--verbose` or `-v`
 
 ### `-verbose` 或 `-v`
@@ -267,3 +241,17 @@ Equivalent to `--verbosity=all`.
 Runs the command in the specified directory.
 
 在指定的目录下运行命令。
+
+### `--[no-]color`
+
+Adds color to the output for emphasis (`--color`).
+The default depends on whether you're using this command at a terminal.
+At a terminal, `--color` is the default,
+otherwise, `--no-color` is the default.
+Use `--no-color` to disable color in all environments.
+
+在输出内容中加入颜色来增强显示效果 (使用 `--color`)。
+默认值在不同编程环境中是不同的，取决于是否在终端中使用，
+如果在终端中使用 `--color` 是默认的，
+其他环境默认是 `--no-color`。
+使用 `--no-color` 可以在所有环境中禁用色彩显示。
