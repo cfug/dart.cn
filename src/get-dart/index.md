@@ -13,6 +13,10 @@ The Dart SDK has the libraries and command-line tools that you need to develop
 Dart command-line, server, and non-Flutter web apps.
 For details, see the [Dart SDK overview](/tools/sdk).
 
+本页面主要引介绍如何下载 Dart SDK，Dart SDK 包含了各种
+库和命令行工具帮助你构建 Dart 命令行、服务端、以及 Web (非 Flutter) 应用。
+了解更多，请查看 [Dart SDK 概览](/tools/sdk)。
+
 ## Installing the Dart SDK {#install}
 
 ## 安装 Dart SDK {#install}
@@ -111,8 +115,8 @@ Dart SDK 支持 Windows、Linux 和 macOS。
   - macOS 11 (Big Sur)
   - macOS 12 (Monterey)
 
-    **支持的版本：**最新的三个主要版本。
-    截止 2021 年 11 月，支持以下版本：
+  **支持的版本：**最新的三个主要版本。
+  截止 2021 年 11 月，支持以下版本：
   - macOS 10.15 (Catalina)
   - macOS 11 (Big Sur)
   - macOS 12 (Monterey)
@@ -132,7 +136,7 @@ Dart SDK 有三个发布渠道：
 * **Stable** channel: **stable releases**, updated roughly every three months;
   currently `[calculating]`{:.editor-build-rev-stable}.
 
-  稳定版 (Stable)渠道：**稳定发行版**，每 **三个月** 更新一次；
+  稳定版 (Stable) 渠道：**稳定发行版**，每 **三个月** 更新一次；
   当前版本 `[calculating]`{:.editor-build-rev-stable}.
   
   Stable releases are suitable for production use.
@@ -156,7 +160,7 @@ Dart SDK 有三个发布渠道：
 * **Dev** channel: **prereleases**, usually updated twice a week;
   currently `[calculating]`{:.editor-build-rev-dev}.
 
-  开发版 (Dev)渠道：也称 **预发行版**，通常每 **双周** 更新一次；
+  开发版 (Dev) 渠道：也称 **预发行版**，通常每 **双周** 更新一次；
   当前版本 `[calculating]`{:.editor-build-rev-dev}.
   
   Dev channel releases are the most current with latest changes, may be broken,
@@ -191,8 +195,11 @@ get stable, beta, or dev channel releases
 using [a package manager][] or [Dart Docker image][], or
 by [downloading the SDK as a zip file][].
 
-你可以通过 [instructions above](#install) 获得 stable 和 dev 渠道，
-或者你也可以直接[下载 SDK 的压缩包](/tools/sdk/archive)。
+你可以通过本页面 [上方安装部分](#install) 的介绍来获取稳定版渠道的 Dart，
+或者通过 [任一个包管理器 (如 brew、choco、apt get)][a package manager][]
+或者通过 Dart 的 [Docker 镜像][Dart Docker image] 来获取
+稳定版 (Stable)、测试板 (Beta)、开发版 (Dev) 渠道的 Dart SDK，
+再或者，你也可以直接 [下载各个版本的 SDK 压缩包][downloading the SDK as a zip file]。
 
 For more information, see the [Dart 2 page.][Dart 2]
 
