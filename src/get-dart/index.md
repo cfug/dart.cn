@@ -198,7 +198,7 @@ by [downloading the SDK as a zip file][].
 你可以通过本页面 [上方安装部分](#install) 的介绍来获取稳定版渠道的 Dart，
 或者通过 [任一个包管理器 (如 brew、choco、apt get)][a package manager][]
 或者通过 Dart 的 [Docker 镜像][Dart Docker image] 来获取
-稳定版 (Stable)、测试板 (Beta)、开发版 (Dev) 渠道的 Dart SDK，
+稳定版 (Stable)、测试版 (Beta)、开发版 (Dev) 渠道的 Dart SDK，
 再或者，你也可以直接 [下载各个版本的 SDK 压缩包][downloading the SDK as a zip file]。
 
 For more information, see the [Dart 2 page.][Dart 2]
