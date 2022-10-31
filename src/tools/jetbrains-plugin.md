@@ -10,7 +10,7 @@ to IntelliJ Platform-based IDEs developed by JetBrains.
 These IDEs provide features unique to specific development technologies.
 The IDEs recommended for Dart and Flutter development include:
 
-Dart 插件为 JetBrains 公司开发的 IntelliJ 系列 IDE，
+Dart 插件为 JetBrains 公司开发的 IntelliJ 系列 IDE 提供了支持，
 这些系列的 IDE 大都是为不同的平台、不同的语言和技术而开发的。
 推荐使用下列 IDE 都是来做 Dart 和 Flutter 开发:
 
