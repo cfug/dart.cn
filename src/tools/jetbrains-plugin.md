@@ -103,7 +103,7 @@ Choose one:
 
 * [Download the Flutter SDK]({{site.flutter-docs}}/get-started/install)
 
-  [下载 Flutter SDK]({{site.flutter_docs}}/get-started/install)
+  [下载 Flutter SDK]({{site.flutter-docs}}/get-started/install)
 
 
 ### Configuring Dart support
