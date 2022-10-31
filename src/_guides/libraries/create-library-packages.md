@@ -384,11 +384,11 @@ of the pubspec allows a user to run it directly without calling
 [`dart pub global run`](/tools/pub/cmd/pub-global#running-a-script-using-dart-pub-global-run).
 
 如果要创建一个公用的命令行工具，应该将这些工具放到公共目录 `bin` 中。
-使用 [`pub global activate`](/tools/pub/cmd/pub-global#activating-a-package) 命令行
+使用 [`dart pub global activate`](/tools/pub/cmd/pub-global#activating-a-package) 命令行
 来运行工具。
 在 pubspec 的 [`executables` 部分](/tools/pub/pubspec#executables)
 列出的工具允许用户直接运行它而无需调用
-[`pub global run`](/tools/pub/cmd/pub-global#running-a-script-using-pub-global-run)。
+[`dart pub global run`](/tools/pub/cmd/pub-global#running-a-script-using-dart-pub-global-run)。
 
 It's helpful if you include an example of how to use your library.
 This goes into the `example` directory at the top of the package.
