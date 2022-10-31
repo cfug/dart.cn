@@ -1251,7 +1251,7 @@ var constantList = const [1, 2, 3];
 ```
 
 <a id="spread-operator"> </a>
-Dart 2.3 introduced the **spread operator** (`...`) and the
+Dart supports the **spread operator** (`...`) and the
 **null-aware spread operator** (`...?`),
 which provide a concise way to insert multiple values into a collection.
 
@@ -6278,7 +6278,6 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 }
 ```
 
-
 ## Callable classes
 
 ## 可调用类
@@ -6288,11 +6287,18 @@ implement the `call()` method.
 
 通过实现类的 `call()` 方法，允许使用类似函数调用的方式来使用该类的实例。
 
-In the following example, the `WannabeFunction` class defines a call() function
+The `call()` method allows any class that defines it to emulate a function.
+This method supports the same functionality as normal [functions](#functions)
+such as parameters and return types.
+
+所有的类都可以定义并模拟 `call()` 方法，这个方法与普通 [函数](#functions) 是一样的，
+支持传参和定义返回类型等。
+
+In the following example, the `WannabeFunction` class defines a `call()` function
 that takes three strings and concatenates them, separating each with a space,
 and appending an exclamation. Click **Run** to execute the code.
 
-在下面的示例中，`WannabeFunction` 类定义了一个 call() 函数，
+在下面的示例中，`WannabeFunction` 类定义了一个 `call()` 函数，
 函数接受三个字符串参数，函数体将三个字符串拼接，字符串间用空格分割，
 并在结尾附加了一个感叹号。单击运行按钮执行代码。
 
