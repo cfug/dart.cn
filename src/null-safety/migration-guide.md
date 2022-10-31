@@ -676,7 +676,7 @@ soon as you migrate:
 
 * [Set the package version to indicate a breaking change.](#package-version)
 
-  [调整 package 的版本，表示该版本包含了破坏性的改动。](#version)
+  [调整 package 的版本，表示该版本包含了破坏性的改动。](#package-version)
 
 * [Update the SDK constraints and package dependencies.](#check-your-pubspec)
 
