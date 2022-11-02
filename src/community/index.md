@@ -138,7 +138,7 @@ Dart 是开源项目。了解如何
 
 ## 其他社区资源
 
-Our wonderful community has provided these resources.
+Our wonderful community has provided these resources:
 
 我们丰富的社区还提供了这些资源。
 
@@ -146,10 +146,6 @@ Our wonderful community has provided these resources.
 
   [Dart 中文文档（本站）](https://dart.cn)
 
-* [Russian version of this site](https://dart-docs-ru.web.app/)
-
-  [Dart 俄文文档](https://dart-docs-ru.web.app/)
-
 Also see the [Flutter community page.]({{site.flutter}}/community)
 
-另见 [Flutter 社区]({{site.flutter}}/community)。
+还有一些社区内容，相见 [Flutter 社区]({{site.flutter}}/community) 页面。

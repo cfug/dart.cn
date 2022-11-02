@@ -1207,6 +1207,7 @@ You can add a comma after the last item in a Dart collection literal.
 This _trailing comma_ doesn't affect the collection,
 but it can help prevent copy-paste errors.
 
+<a name="trailing-comma"></a>
 你可以在 Dart 的集合类型的最后一个项目后添加逗号。
 这个尾随逗号并不会影响集合，但它能有效避免「复制粘贴」的错误。
 
@@ -1251,10 +1252,11 @@ var constantList = const [1, 2, 3];
 ```
 
 <a id="spread-operator"> </a>
-Dart 2.3 introduced the **spread operator** (`...`) and the
+Dart supports the **spread operator** (`...`) and the
 **null-aware spread operator** (`...?`),
 which provide a concise way to insert multiple values into a collection.
 
+<a id="spread-operator"> </a>
 Dart 在 2.3 引入了 **扩展操作符**（`...`）和 **空感知扩展操作符**（`...?`），
 它们提供了一种将多个元素插入集合的简洁方法。
 
@@ -1293,6 +1295,7 @@ Dart also offers **collection if** and **collection for**,
 which you can use to build collections using conditionals (`if`)
 and repetition (`for`).
 
+<a id="collection-operators"> </a>
 Dart 还同时引入了 **集合中的 if** 和 **集合中的 for** 操作，
 在构建集合时，可以使用条件判断 (`if`) 和循环 (`for`)。
 
@@ -1778,7 +1781,7 @@ Although Effective Dart recommends
 the function still works if you omit the types:
 
 虽然高效 Dart 指南建议在
-[公开的 API 上定义返回类型](/guides/language/effective-dart/design#prefer-type-annotating-public-fields-and-top-level-variables-if-the-type-isnt-obvious)，
+[公开的 API 上定义返回类型](/guides/language/effective-dart/design#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious)，
 不过即便不定义，该函数也依然有效：
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (function-omitting-types)"?>
@@ -2180,9 +2183,13 @@ The code block that follows contains the function's body:
 }; <br>
 </code>
 
-The following example defines an anonymous function with an untyped parameter, `item`.
+The following example defines an anonymous function
+with an untyped parameter, `item`,
+and passes it to the `map` function.
 The function, invoked for each item in the list,
-prints a string that includes the value at the specified index.
+converts each string to uppercase.
+Then in the anonymous function passed to `forEach`,
+each converted string is printed out alongside its length.
 
 下面代码定义了只有一个参数 `item` 且没有参数类型的匿名方法。
 List 中的每个元素都会调用这个函数，打印元素位置和值的字符串：
@@ -2190,8 +2197,10 @@ List 中的每个元素都会调用这个函数，打印元素位置和值的字
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anonymous-function)"?>
 ```dart
 const list = ['apples', 'bananas', 'oranges'];
-list.forEach((item) {
-  print('${list.indexOf(item)}: $item');
+list.map((item) {
+  return item.toUpperCase();
+}).forEach((item) {
+  print('$item: ${item.length}');
 });
 ```
 
@@ -2203,23 +2212,27 @@ Click **Run** to execute the code.
 ```dart:run-dartpad:height-400px:ga_id-anonymous_functions
 void main() {
   const list = ['apples', 'bananas', 'oranges'];
-  list.forEach((item) {
-    print('${list.indexOf(item)}: $item');
+  list.map((item) {
+    return item.toUpperCase();
+  }).forEach((item) {
+    print('$item: ${item.length}');
   });
 }
 ```
 
 If the function contains only a single expression or return statement,
-you can shorten it using arrow
-notation. Paste the following line into DartPad and click **Run** to verify that
-it is functionally equivalent.
+you can shorten it using arrow notation. 
+Paste the following line into DartPad and click **Run**
+to verify that it is functionally equivalent.
 
 如果函数体内只有一行返回语句，你可以使用胖箭头缩写法。
 粘贴下面代码到 DartPad 中并点击运行按钮，验证两个函数是否一致。
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (anon-func)"?>
 ```dart
-list.forEach((item) => print('${list.indexOf(item)}: $item'));
+list
+    .map((item) => item.toUpperCase())
+    .forEach((item) => print('$item: ${item.length}'));
 ```
 
 
@@ -2797,7 +2810,7 @@ assert((-value >>> 4) > 0); // Unsigned shift right
 Dart has two operators that let you concisely evaluate expressions
 that might otherwise require [if-else](#if-and-else) statements:
 
-Dart 有两个特殊的运算符可以用来替代 [if-else](#if-和-else) 语句：
+Dart 有两个特殊的运算符可以用来替代 [if-else](#if-and-else) 语句：
 
 <code><em>condition</em> ? <em>expr1</em> : <em>expr2</em></code>
 <br> If _condition_ is true, evaluates _expr1_ (and returns its value);
@@ -3091,7 +3104,10 @@ var callbacks = [];
 for (var i = 0; i < 2; i++) {
   callbacks.add(() => print(i));
 }
-callbacks.forEach((c) => c());
+
+for (final c in callbacks) {
+  c();
+}
 ```
 
 The output is `0` and then `1`, as expected. In contrast, the example
@@ -5085,7 +5101,7 @@ assert(colors[2] == Color.blue);
 You can use enums in [switch statements](#switch-and-case), and
 you'll get a warning if you don't handle all of the enum's values:
 
-你可以在 [Switch 语句](#switch-和-case)中使用枚举，
+你可以在 [Switch 语句](#switch-and-case)中使用枚举，
 但是需要注意的是必须处理枚举值的每一种情况，
 即每一个枚举值都必须成为一个 case 子句，不然会出现警告：
 
@@ -6265,7 +6281,6 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 }
 ```
 
-
 ## Callable classes
 
 ## 可调用类
@@ -6275,11 +6290,18 @@ implement the `call()` method.
 
 通过实现类的 `call()` 方法，允许使用类似函数调用的方式来使用该类的实例。
 
-In the following example, the `WannabeFunction` class defines a call() function
+The `call()` method allows any class that defines it to emulate a function.
+This method supports the same functionality as normal [functions](#functions)
+such as parameters and return types.
+
+所有的类都可以定义并模拟 `call()` 方法，这个方法与普通 [函数](#functions) 是一样的，
+支持传参和定义返回类型等。
+
+In the following example, the `WannabeFunction` class defines a `call()` function
 that takes three strings and concatenates them, separating each with a space,
 and appending an exclamation. Click **Run** to execute the code.
 
-在下面的示例中，`WannabeFunction` 类定义了一个 call() 函数，
+在下面的示例中，`WannabeFunction` 类定义了一个 `call()` 函数，
 函数接受三个字符串参数，函数体将三个字符串拼接，字符串间用空格分割，
 并在结尾附加了一个感叹号。单击运行按钮执行代码。
 

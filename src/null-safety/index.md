@@ -88,6 +88,7 @@ final b = Foo();
 To indicate that a variable might have the value `null`,
 just add `?` to its type declaration:
 
+<a id="creating-variables"></a>
 若你想让变量可以为 `null`，只需要在类型声明后加上 `?`。
 
 ```dart
@@ -157,6 +158,7 @@ To enable sound null safety, set the
 to a [language version][] of 2.12 or later.
 For example, your `pubspec.yaml` file might have the following constraints:
 
+<a id="constraints"></a>
 想要启用健全空安全，你需要将 [SDK 的最低版本约束](/tools/pub/pubspec#sdk-constraints)
 设定为 2.12 或者更高的 [语言版本][language version]。
 例如，你的 `pubspec.yaml` 可以设置为如下的限制：

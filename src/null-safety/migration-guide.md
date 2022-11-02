@@ -588,7 +588,7 @@ To migrate a package by hand, follow these steps:
    $ dart pub get
    ```
 
-   [package configuration file]: https://github.com/dart-lang/language/blob/master/accepted/future-releases/language-versioning/package-config-file-v2.md
+   [package configuration file]: https://github.com/dart-lang/language/blob/master/accepted/2.8/language-versioning/package-config-file-v2.md
 
    Running `dart pub get` with a lower SDK constraint of at least `2.12.0`
    sets the default language version of
@@ -676,7 +676,7 @@ soon as you migrate:
 
 * [Set the package version to indicate a breaking change.](#package-version)
 
-  [调整 package 的版本，表示该版本包含了破坏性的改动。](#version)
+  [调整 package 的版本，表示该版本包含了破坏性的改动。](#package-version)
 
 * [Update the SDK constraints and package dependencies.](#check-your-pubspec)
 

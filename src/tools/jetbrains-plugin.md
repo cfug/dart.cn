@@ -5,19 +5,27 @@ description: Use Dart with a variety of IDEs and editors from JetBrains.
 description: 使用由 JetBrains 开发的各种 IDE 和编辑器开发 Dart 应用。
 ---
 
-The [Dart plugin][] adds Dart support to JetBrains IDEs such as
-IntelliJ IDEA and Android Studio.
-IntelliJ IDEA is an intelligent Java IDE
-with support for many other languages and frameworks.
-Android Studio is an IDE based on IntelliJ IDEA
-that's used for Android and Flutter development.
+The [Dart plugin][] adds Dart support
+to IntelliJ Platform-based IDEs developed by JetBrains.
+These IDEs provide features unique to specific development technologies.
+The IDEs recommended for Dart and Flutter development include:
 
-Dart 插件为类似 IntelliJ IDEA 和 Android Studio
-这样 JetBrains 的 IDE 提供了 Dart 支持。
-IntelliJ IDEA 是一款优秀的 Java IDE，
-除此之外它还支持许多其它的语言和框架。
-Android Studio 是一款基于 IntelliJ IDEA 的 IDE，
-其常用作开发 Android 和 Flutter。
+Dart 插件为 JetBrains 公司开发的 IntelliJ 系列 IDE 提供了支持，
+这些系列的 IDE 大都是为不同的平台、不同的语言和技术而开发的。
+推荐使用下列 IDE 都是来做 Dart 和 Flutter 开发:
+
+- [IntelliJ IDEA][] which specializes in JVM-based language development.
+
+  [IntelliJ IDEA][] 是专门用于基于 JVM 语言开发的 IDE。
+
+- [WebStorm][] which specializes in web app development.
+
+  [WebStorm][] 是专门用于 Web 开发的。
+
+- [Android Studio][] which specializes in Android and Flutter development.
+
+  [Android Studio][] 专门用来从事 Android 和 Flutter 应用开发。
+
 
 Whichever JetBrains IDE you choose for Dart development,
 this page has resources to help you get started quickly
@@ -26,16 +34,9 @@ and find more information when you need it.
 不管你选择哪一款 JetBrains 的 IDE 用于 Dart 开发，
 本文所包含的资源都可以帮助你快速入门并在你需要时给你提供更多的信息。
 
-{{site.alert.note}}
-
-  [WebStorm,](https://www.jetbrains.com/webstorm/)
-  a JetBrains IDE for client-side development,
-  comes with the Dart plugin pre-installed.
-  
-   **注意：** JetBrains 专门针对客户端开发的另一款 IDE
-  [WebStorm](https://www.jetbrains.com/webstorm/) 则已经预装了 Dart 插件。
-  
-{{site.alert.end}}
+[IntelliJ IDEA]: https://www.jetbrains.com/idea/
+[WebStorm]: https://www.jetbrains.com/webstorm/
+[Android Studio]: https://developer.android.com/studio
 
 ## Getting started
 
@@ -54,22 +55,17 @@ Install a JetBrains IDE if you don't already have one. Choose one:
 
 如果你还没有一款 JetBrains 的 IDE，请选择一款：
 
-* [IntelliJ IDEA][IDEA]{:target="_blank" rel="noopener"}
-
-  [下载 IntelliJ IDEA][IDEA]{:target="_blank" rel="noopener"}
-  
-* [IntelliJ IDEA EAP][IDEA EAP]{:target="_blank" rel="noopener"}
-  (for early access to the latest Dart language features and IntelliJ functionality)
-
-  [下载 IntelliJ IDEA EAP][IDEA EAP]{:target="_blank" rel="noopener"}
-  早期产品试用，尝试使用最新的 Dart 语言特性，
-
+* [IntelliJ IDEA][IDEA-Install]{:target="_blank" rel="noopener"}
+* [IntelliJ IDEA EAP][IDEA-EAP-Install]{:target="_blank" rel="noopener"}
+  (获取早期 Dart 语言特性和 IntelliJ 新功能体验)
+* [WebStorm][WS-Install]{:target="_blank" rel="noopener"}
+* [Android Studio][AS-Install]{:target="_blank" rel="noopener"}
 * [Another JetBrains product][Other]{:target="_blank" rel="noopener"}
 
-  [查找其它的 JetBrains 产品][Other]{:target="_blank" rel="noopener"}
-
-[IDEA]: https://www.jetbrains.com/idea/download/
-[IDEA EAP]: https://www.jetbrains.com/idea/nextversion/
+[IDEA-Install]: https://www.jetbrains.com/idea/download/
+[IDEA-EAP-Install]: https://www.jetbrains.com/idea/nextversion/
+[WS-Install]: https://www.jetbrains.com/webstorm/download/
+[AS-Install]: https://developer.android.com/studio/install
 [Other]: https://www.jetbrains.com/products.html
 
 {{site.alert.note}}
@@ -107,7 +103,7 @@ Choose one:
 
 * [Download the Flutter SDK]({{site.flutter-docs}}/get-started/install)
 
-  [下载 Flutter SDK]({{site.flutter_docs}}/get-started/install)
+  [下载 Flutter SDK]({{site.flutter-docs}}/get-started/install)
 
 
 ### Configuring Dart support
@@ -170,7 +166,7 @@ Here's one way to configure Dart support:
 <li>
   <p>
     If you don't see a value for the <b>Dart SDK</b> path,
-    enter it.
+    enter or select it.
   </p>
   <p>
     如果 <b>Dart SDK</b> 路径为空请先设置。
@@ -270,6 +266,5 @@ See the JetBrains website for more information.
   * [Features](https://www.jetbrains.com/idea/features/)
   * [Quick start](https://www.jetbrains.com/help/idea/getting-started.html)
 * [Dart Plugin by JetBrains][Dart plugin]
-* [Eclipse to IntelliJ migration guide](https://www.jetbrains.com/help/idea/migrating-from-eclipse-to-intellij-idea.html)
 
 [Dart plugin]: https://plugins.jetbrains.com/plugin/6351-dart/

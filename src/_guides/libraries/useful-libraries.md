@@ -88,7 +88,7 @@ See [Using packages]({{site.flutter-docs}}/development/packages-and-plugins/usin
 on the Flutter site.
 Or use the pub.dev site to [search for Flutter packages.]({{site.pub}}/flutter)
 
-在 Flutter 网站，查看 [package 的使用]({{site.flutter_docs}}/development/packages-and-plugins/using-packages)。
+在 Flutter 网站，查看 [package 的使用]({{site.flutter-docs}}/development/packages-and-plugins/using-packages)。
 或者使用 Pub 网站 [查找 Flutter package]({{site.pub}}/flutter)。
 
 ### Web packages
