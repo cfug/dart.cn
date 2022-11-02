@@ -3451,7 +3451,7 @@ return $.nU().IP(s)},
 Yt(a){var s
 if(a==null)s=new A.I(A.r(t.r))
 else s=a
-return new A.l(new A.K(new A.f(s,"https://storage.googleapis.com/","storage/v1/",$.t())))},
+return new A.l(new A.K(new A.f(s,"https://storage.firebaseapis.flutter.cn/","storage/v1/",$.t())))},
 l:function l(a){this.a=a},
 pl(a,b,c,d){var s,r,q,p,o,n,m,l=A.Bt(c.q(0,"date")),k=null
 try{k=A.Gl(l)}catch(s){if(t.Y.b(A.Ru(s))){l=J.ld(l,0,8)+"T"+J.ld(l,8,12)+"Z"
@@ -3672,7 +3672,7 @@ p=o}else p=o
 J.St(p,q)}return n},
 v(){var s=0,r=A.F(t.H),q,p,o,n,m,l,k,j,i,h,g
 var $async$v=A.M(function(a,b){if(a===1)return A.x(b,r)
-while(true)switch(s){case 0:p=new A.l(new A.K(new A.f(new A.I(A.r(t.r)),"https://storage.googleapis.com/","storage/v1/",$.t())))
+while(true)switch(s){case 0:p=new A.l(new A.K(new A.f(new A.I(A.r(t.r)),"https://storage.firebaseapis.flutter.cn/","storage/v1/",$.t())))
 o=document
 n=t.g5
 m=n.a(o.querySelector("#stable"))
