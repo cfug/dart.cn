@@ -190,20 +190,46 @@ $ dart run foo arg1 arg2
 
 ## 调试
 
-To enable debugging, pass one or more debugging options.
-Here's an example of enabling [`assert` statements][assert]:
+To enable debugging, 
+add one or more of these common debugging options
+to your `dart run` command:
 
-可以通过传递一个或者多个调试选项来开启调试功能，下面是一个开启 [断言][assert] 功能的例子：
+若要启用调试功能，
+将下面的调试选项加入到 `dart run` 命令中:
 
-```terminal
-$ dart run --enable-asserts tool/debug.dart
-```
+- To enable [`assert` statements][assert],
+  add the `--enable-asserts` flag:
 
-See `dart run --help` for details.
+  要启用 [`assert` 断言][assert]，
+  加入 `--enable-asserts` 命令行参数:
+
+  ```terminal
+  $ dart run --enable-asserts tool/debug.dart
+  ```
+
+- To enable debugging and performance analysis
+  through [Dart DevTools](/tools/dart-devtools),
+  add the `--observe` flag:
+
+  若要使用 [Dart 开发者工具](/tools/dart-devtools) 
+  来调试和做性能分析，加入 `--observe` 命令行参数:
+
+  ```terminal
+  $ dart run --observe tool/debug.dart
+  ```
+  
+  To learn more about debugging with Dart DevTools,
+  see [Using DevTools with a command-line app][].
+
+  了解更多使用 Dart 开发者工具进行调试的信息，
+  请查阅文档: [在 Dart 命令行中使用开发者工具][Using DevTools with a command-line app]。
+
+To learn more about other debugging options, run `dart run --help`.
 
 运行 `dart run --help` 获取更多信息。
 
 [assert]: /guides/language/language-tour#assert
+[Using DevTools with a command-line app]: /tools/dart-devtools#using-devtools-with-a-command-line-app
 
 ## Enabling experimental features
 
