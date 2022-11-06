@@ -1671,17 +1671,16 @@ Here's an example of using the characters API:
 它将返回 [`Characters`][] 对象作为一系列 grapheme clusters
 的字符串。下面是使用 characters API 的样例：
 
-{% comment %}
-TODO #2950: add test code
-{% endcomment %}
-
+<?code-excerpt "misc/lib/language_tour/characters.dart"?>
 ```dart
 import 'package:characters/characters.dart';
-...
-var hi = 'Hi 🇩🇰';
-print(hi);
-print('The end of the string: ${hi.substring(hi.length - 1)}');
-print('The last character: ${hi.characters.last}\n');
+
+void main() {
+  var hi = 'Hi 🇩🇰';
+  print(hi);
+  print('The end of the string: ${hi.substring(hi.length - 1)}');
+  print('The last character: ${hi.characters.last}');
+}
 ```
 
 The output, depending on your environment, looks something like this:
@@ -5611,10 +5610,9 @@ var foo = [!Foo<Object>!]();
 
 ### 使用泛型方法
 
-Initially, Dart's generic support was limited to classes.
-A newer syntax, called _generic methods_, allows type arguments on methods and functions:
+Methods and functions also allow type arguments:
 
-起初 Dart 只支持在类的声明时指定泛型，现在同样也可以在方法上使用泛型，称之为 **泛型方法**：
+方法和参数也可以使用类型参数了:
 
 <!-- {{site.dartpad}}/a02c53b001977efa4d803109900f21bb -->
 <!-- https://gist.github.com/a02c53b001977efa4d803109900f21bb -->
