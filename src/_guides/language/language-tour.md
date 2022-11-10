@@ -593,8 +593,7 @@ are implicitly final.)
 如果你不想更改一个变量，可以使用关键字 `final` 或者 `const` 修饰变量，
 这两个关键字可以替代 `var` 关键字或者加在一个具体的类型前。
 一个 final 变量只可以被赋值一次；
-一个 const 变量是一个编译时常量（const 变量同时也是 final 的）。
-顶层的 final 变量或者类的 final 变量在其第一次使用的时候被初始化。
+一个 const 变量是一个编译时常量 (const 变量同时也是 final 的)。
 
 
 {{site.alert.note}}
