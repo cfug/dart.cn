@@ -1009,8 +1009,9 @@ assert('使用${s.substring(3,5)}表达式也非常方便' == '使用插值表�
   strings are equivalent if they contain the same sequence of code
   units.
 
-  `==` 运算符负责判断两个对象的内容是否一样，
-  如果两个字符串包含一样的字符编码序列，则表示相等。
+  `==` 运算符负责判断两个对象的是否等同，
+  比如，如果两个字符串包含一样的字符编码序列，
+  则表示他们是等同的。
 
 {{site.alert.end}}
 
