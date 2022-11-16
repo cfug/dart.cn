@@ -2623,7 +2623,7 @@ runtime.
 | Operator  | Meaning                                   |
 |-----------+-------------------------------------------|
 | `as`      | Typecast (also used to specify [library prefixes](#specifying-a-library-prefix))
-| `as`      | 类型转换（也用作指定 [类前缀](#specifying-a-library-prefix))）
+| `as`      | 类型转换（也用作指定 [库前缀](#specifying-a-library-prefix))）
 | `is`      | True if the object has the specified type
 | `is`      | 如果对象是指定类型则返回 true
 | `is!`     | True if the object doesn't have the specified type
@@ -2701,7 +2701,7 @@ an operation with an assignment.
 
 Here’s how compound assignment operators work:
 
-下表解释了符合运算符的原理：
+下表解释了复合运算符的原理：
 
 |-----------+----------------------+-----------------------|
 |    场景    |       复合运算        |        等效表达式       |
