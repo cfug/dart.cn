@@ -1888,7 +1888,7 @@ Although it often makes sense to place positional arguments first,
 named arguments can be placed anywhere in the argument list
 when it suits your API:
 
-尽管先使用位置参数会比较合理，但你也可以在任意位置使用命名参数，
+尽管将位置参数放在最前面通常比较合理，但你也可以将命名参数放在参数列表的任意位置，
 让整个调用的方式看起来更适合你的 API：
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (named-arguments-anywhere)"?>
