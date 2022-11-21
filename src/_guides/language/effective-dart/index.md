@@ -129,7 +129,7 @@ Each guideline starts with one of these words:
   idea. Hopefully, we don't have as many of these as other languages do because
   we have less historical baggage.
 
-  **不要**  准则所描述的内容是相反的：描述的准则不是一个好注意。
+  **不要**  准则所描述的内容是相反的：描述的准则不是一个好主意。
   幸运的是，我们不会像其他语言有那么多这样的准则，因为我们没有太多的历史包袱。
 
 * **PREFER** guidelines are practices that you *should* follow. However, there
