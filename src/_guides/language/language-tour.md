@@ -500,7 +500,7 @@ assert(lineCount == null);
 If you enable null safety, then you must initialize the values
 of non-nullable variables before you use them:
 
-若您启用了 [空安全][ns]，您必须在使用变量前初始化它的值。
+若你启用了空安全，你必须在使用变量前初始化它的值。
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-ns-init)"?>
 ```dart
@@ -513,7 +513,7 @@ For example, the following code is valid because
 Dart can detect that `lineCount` is non-null by the time
 it's passed to `print()`:
 
-您并不需要在声明变量时初始化，只需在第一次用到这个变量前初始化即可。
+你并不需要在声明变量时初始化，只需在第一次用到这个变量前初始化即可。
 例如，下面的代码是正确的，因为 Dart 可以在 `lineCount` 被传递到 `print()` 时检测它是否为空:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-ns-flow)"?>
