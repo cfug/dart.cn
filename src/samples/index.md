@@ -298,7 +298,7 @@ in a way which ensures that there cannot be any other instances of that type.
 Here is an example of a simple `enum` that defines
 a simple list of predefined planet types:
 
-下面是一个简单型枚举的示例，定义了一组行星类别：
+下面这个简单的枚举示例定义了一组行星类别：
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (simple-enum)"?>
 ```dart
@@ -355,7 +355,8 @@ if (!yourPlanet.isGiant) {
 including enhanced enum requirements, automatically introduced properties,
 accessing enumerated value names, switch statement support, and much more.
 
-你可以 [阅读更多](/guides/language/language-tour#enums) Dart 中有关枚举的内容，包括增强型枚举的限制条件、自动引入的属性、如何获取枚举值的名称以及在 `switch` 语句中使用枚举等等。
+你可以 [阅读更多](/guides/language/language-tour#enums) Dart 中有关枚举的内容，
+包括增强型枚举的限制条件、枚举默认包含的属性、如何获取枚举值的名称以及在 `switch` 语句中使用枚举等等。
 
 ## Inheritance
 
