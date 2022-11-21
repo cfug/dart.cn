@@ -472,7 +472,7 @@ import 'util.dart';
 
 ### DO specify exports in a separate section after all imports.
 
-### **要** 把导出（export）语句作为一个单独的部分放到所有导入语句之后。
+### **要** 把导出 (export) 语句作为一个单独的部分放到所有导入语句之后。
 
 {% include linter-rule-mention.md rule="directives_ordering" %}
 

@@ -1221,7 +1221,7 @@ as the caller knows. That implies:
     completes to the same value, and the list contains the same elements.
 
     这里"相同的结果"并不意味着 getter 方法必须一定要在每次调用成功后都返回相同的对象。如果
-    按这样的要求会迫使很过 getter 方法需要进行脆弱的缓存（brittle caching），这样就否定了
+    按这样的要求会迫使很过 getter 方法需要进行脆弱的缓存 (brittle caching) ，这样就否定了
     使用 getter 的全部意义。常见的非常好的示例是，每次调用一个 getter 方法返回一个新的 
     future 或 list。重点在于， future 完成后返回相同的值，list 包含了相同的元素。
 
@@ -1432,8 +1432,8 @@ invocations*.
 
 程序中的类型用于约束流入代码各位置的 **值** 的不同类型。
 类型会出现在两种位置：
-声明中的 **类型注解（type annotations）** 和
-**泛型调用（generic invocations）** 的类型参数。
+声明中的 **类型注解 (type annotations) ** 和
+**泛型调用 (generic invocations) ** 的类型参数。
 
 Type annotations are what you normally think of when you think of "static
 types". You can type annotate a variable, parameter, field, or return type. In
@@ -2462,7 +2462,7 @@ now in contravariant position and the callback's parameters are covariant. This
 means it's OK for a *callback's* type to return `FutureOr<T>`:
 
 对这条规则更准确的描述是，**仅在 [逆变][contravariant] 位置使用 `FutureOr<T>`**。
-参数是逆变（contravariant），返回类型是协变（covariant）。
+参数是逆变 (contravariant) ，返回类型是协变 (covariant) 。
 在嵌套函数类型中，描述是相反的&mdash;如果一个参数自身就是函数参数类型，
 那么此时回调函数的返回类型处于逆变位置，回调函数的参数是协变。
 这意味着回调中的函数类型可以返回 `FutureOr<T>` ：

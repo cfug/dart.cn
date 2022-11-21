@@ -193,7 +193,7 @@ including how the documentation tooling works.
 
 ## Imports
 
-## 导入（ Import ）
+## 导入 (Import)
 
 To access APIs defined in other libraries, use `import`.
 
@@ -222,7 +222,7 @@ Dart 中有关库和可见性的内容，包括库前缀、`show` 和 `hide`
 
 ## Classes
 
-## 类（ Class ）
+## 类 (Class)
 
 Here's an example of a class with three properties, two constructors,
 and a method. One of the properties can't be set directly, so it's
@@ -288,7 +288,7 @@ Dart 中有关类的内容，包括初始化列表、可选的 `new` 和 `const`
 
 ## Enums
 
-## 枚举类型（ Enum ）
+## 枚举类型 (Enum)
 
 Enums are a way of enumerating a predefined set of values or instances
 in a way which ensures that there cannot be any other instances of that type.
@@ -478,7 +478,7 @@ Avoid callback hell and make your code much more readable by
 using `async` and `await`.
 
 使用 `async` 和 `await` 关键字可以让你避免
-回调地狱（Callback Hell）并使你的代码更具可读性。
+回调地狱 (Callback Hell) 并使你的代码更具可读性。
 
 <?code-excerpt "misc/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}

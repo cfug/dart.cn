@@ -934,9 +934,9 @@ Prefer any of these options instead:
     elements, that laziness can be good. But in many cases, the overhead of lazy
     validation and of wrapping outweighs the benefits.
 
-    `cast()` 方法返回一个惰性集合（lazy collection），*每个操作*都会对元素进行检查。
+    `cast()` 方法返回一个惰性集合 (lazy collection) ，*每个操作*都会对元素进行检查。
     如果只对少数元素执行少量操作，那么这种惰性方式就非常合适。
-    但在许多情况下，惰性验证和包裹（wrapping）所产生的开销已经超过了它们所带来的好处。
+    但在许多情况下，惰性验证和包裹 (wrapping) 所产生的开销已经超过了它们所带来的好处。
 
 Here is an example of **creating it with the right type:**
 
@@ -1916,7 +1916,7 @@ user or rethrow it, but do not silently discard it.
 
 如果你真的期望捕获一段代码内的 *所有* 异常，
 请*在捕获异常的地方做些事情*。 记录下来并显示给用户，
-或者重新抛出（rethrow）异常信息，记得不要默默的丢弃该异常信息。
+或者重新抛出 (rethrow) 异常信息，记得不要默默的丢弃该异常信息。
 
 
 ### DO throw objects that implement `Error` only for programmatic errors.
@@ -2118,7 +2118,7 @@ Future<String> asyncValue() async => 'value';
 
 ### CONSIDER using higher-order methods to transform a stream.
 
-### **考虑** 使用高阶函数来转换事件流（stream）。
+### **考虑** 使用高阶函数来转换事件流 (stream) 。
 
 This parallels the above suggestion on iterables. Streams support many of the
 same methods and also handle things like transmitting errors, closing, etc.
