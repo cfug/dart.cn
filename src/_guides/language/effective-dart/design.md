@@ -308,7 +308,7 @@ latter name literally has a prefix that negates the former: "visible" and
 "*in*-visible", "connected" and "*dis*-connected", "zero" and "*non*-zero".
 
 大多数布尔值名称具有概念形式上的“肯定”和“否定”，
-前者感觉更现实基本描述，后者是对基本描述的否定，例如：
+前者感觉更像是基本描述，后者是对基本描述的否定，例如：
 "open" 和 "closed"， "enabled" 和 "disabled"，等等。
 通常后者的名称字面上有个前缀，用来否定前者：
 "visible" 和 "*in*-visible"，
