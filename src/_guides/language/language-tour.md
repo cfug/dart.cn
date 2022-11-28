@@ -1859,7 +1859,11 @@ unless they're explicitly marked as `required`.
 
 When defining a function, use
 <code>{<em>param1</em>, <em>param2</em>, …}</code>
-to specify named parameters:
+to specify named parameters.
+If you don't provide a default value
+or mark a named parameter as `required`,
+their types must be nullable
+as their default value will be `null`:
 
 定义函数时，使用
 <code>{<em>参数1</em>, <em>参数2</em>, …}</code>
@@ -1884,9 +1888,48 @@ For example:
 enableFlags(bold: true, hidden: false);
 ```
 
-Although it often makes sense to place positional arguments first,
-named arguments can be placed anywhere in the argument list
-when it suits your API:
+<a id="default-parameters"></a>
+To define a default value for a named parameter besides `null`,
+use `=` to specify a default value.
+The specified value must be a compile-time constant.
+For example:
+
+<?code-excerpt "misc/lib/language_tour/functions.dart (named-parameter-default-values)"?>
+```dart
+/// Sets the [bold] and [hidden] flags ...
+void enableFlags({bool bold = false, bool hidden = false}) {...}
+
+// bold will be true; hidden will be false.
+enableFlags(bold: true);
+```
+
+If you instead want a named parameter to be mandatory,
+requiring callers to provide a value for the parameter,
+annotate them with `required`:
+
+<?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/required/[!$&!]/g"?>
+```dart
+const Scrollbar({super.key, [!required!] Widget child});
+```
+
+If someone tries to create a `Scrollbar`
+without specifying the `child` argument,
+then the analyzer reports an issue.
+
+{{site.alert.note}}
+  A parameter marked as `required`
+  can still be nullable:
+
+  <?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters-nullable)" replace="/Widget\?/[!$&!]/g; /ScrollbarTwo/Scrollbar/g;"?>
+  ```dart
+  const Scrollbar({super.key, required [!Widget?!] child});
+  ```
+{{site.alert.end}}
+
+You might want to place positional arguments first,
+but Dart doesn't require it.
+Dart allows named arguments to be placed anywhere in the
+argument list when it suits your API:
 
 尽管先使用位置参数会比较合理，但你也可以在任意位置使用命名参数，
 让整个调用的方式看起来更适合你的 API：
@@ -1898,51 +1941,19 @@ repeat(times: 2, () {
 });
 ```
 
-{{site.alert.tip}}
-
-  If a parameter is optional but can't be `null`,
-  provide a [default value](#default-parameter-values).
-
-  如果一个参数是可选的，但是不能为 `null`，
-  你需要为它提供一个 [默认值](#default-parameter-values)。
-
-{{site.alert.end}}
-
-Although named parameters are a kind of optional parameter,
-you can annotate them with `required` to indicate
-that the parameter is mandatory—that users
-must provide a value for the parameter.
-For example:
-
-虽然命名参数是可选参数的一种类型，
-但是你仍然可以使用 `required` 来标识一个命名参数是必须的参数，
-此时调用者必须为该参数提供一个值。
-例如：
-
-<?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/required/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
-const Scrollbar({super.key, [!required!] Widget child});
-{% endprettify %}
-
-If someone tries to create a `Scrollbar`
-without specifying the `child` argument,
-then the analyzer reports an issue.
-
-如果调用者想要通过 `Scrollbar` 的构造函数构造一个 Scrollbar 对象而不提供 `child` 参数，
-则会导致编译错误。
-
-{% comment %}
-NULLSAFE: Rewrite this section.
-{% endcomment %}
-
 #### Optional positional parameters
 
 #### 可选的位置参数
 
-Wrapping a set of function parameters in `[]` marks them as optional
-positional parameters:
+Wrapping a set of function parameters in `[]`
+marks them as optional positional parameters.
+If you don't provide a default value,
+their types must be nullable
+as their default value will be `null`:
 
-使用 `[]` 将一系列参数包裹起来作为位置参数：
+使用 `[]` 将一系列参数包裹起来，即可将其标记为位置参数，
+因为它们的默认值是 `null`，所以如果你没有提供默认值的话，
+它们的类型必须得是允许为空 (nullable) 的类型。
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-parameters)"?>
 ```dart
@@ -1955,8 +1966,8 @@ String say(String from, String msg, [String? device]) {
 }
 ```
 
-Here’s an example of calling this function without the optional
-parameter:
+Here’s an example of calling this function
+without the optional parameter:
 
 下面是不使用可选参数调用上述函数的示例
 
@@ -1975,64 +1986,14 @@ assert(say('Bob', 'Howdy', 'smoke signal') ==
     'Bob says Howdy with a smoke signal');
 ```
 
-<a id="default-parameters"></a>
-#### Default parameter values
+To define a default value for an optional positional parameter besides `null`,
+use `=` to specify a default value.
+The specified value must be a compile-time constant.
+For example:
 
-#### 默认参数值
-
-Your function can use `=` to define default values for optional parameters,
-both named and positional. The default values must be compile-time constants.
-If no default value is provided, the default value is `null`.
-
-可以用 `=` 为函数的命名参数和位置参数定义默认值，默认值必须为编译时常量，
-没有指定默认值的情况下默认值为 `null`。
-
-Here's an example of setting default values for named parameters:
-
-下面是设置可选参数默认值示例：
-
-<?code-excerpt "misc/lib/language_tour/functions.dart (named-parameter-default-values)"?>
-```dart
-/// Sets the [bold] and [hidden] flags ...
-void enableFlags({bool bold = false, bool hidden = false}) {...}
-
-// bold will be true; hidden will be false.
-enableFlags(bold: true);
-```
-
-{{site.alert.secondary}}
-
-  **Deprecation note:** Old code might use a colon (`:`) instead of `=`
-  to specify default values of named parameters. 
-  The reason is that originally, only `:` was supported for named parameters. 
-  That support is deprecated and will be removed, 
-  so we recommend that you **[use `=` to specify default values.][use =]**
-
-  If you have the [`prefer_equal_for_default_values`][] linter rule enabled,
-  you can use [`dart fix`][] to migrate to the suggested `=` syntax.
-
-  在老版本的 Dart 代码中会使用 冒号（`:`）而不是 `=` 来设置命名参数的默认值。
-  原因在于刚开始的时候命名参数只支持 `:`。
-  不过现在这个支持已经过时并且会被移除掉，
-  所以我们建议你仅 **[使用 `=` 来指定默认值][use =]**。
-
-  如果你启用了 [`prefer_equal_for_default_values`][] 这个 linter 规则，
-  你可以使用 [`dart fix`][] 命令来迁移到建议的 `=` 语法。
-
-  [use =]: /guides/language/effective-dart/usage#do-use--to-separate-a-named-parameter-from-its-default-value
-  [`prefer_equal_for_default_values`]: /tools/linter-rules#prefer_equal_for_default_values
-  [`dart fix`]: /tools/dart-fix
-
-{{site.alert.end}}
-
-{% comment %}
-TODO #2950: Update if/when we drop support for `:`.
-See `defaultNamedParameter` in the language spec.
-{% endcomment %}
-
-The next example shows how to set default values for positional parameters:
-
-下一个示例将向你展示如何为位置参数设置默认值：
+若为除了 `null` 以外的可选位置参数提供一个默认值的话，需要使用 `=` 来定义。
+设定的这个值必须是一个编译时的常量。
+例如：
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-param-default)"?>
 ```dart
@@ -2042,33 +2003,6 @@ String say(String from, String msg, [String device = 'carrier pigeon']) {
 }
 
 assert(say('Bob', 'Howdy') == 'Bob says Howdy with a carrier pigeon');
-```
-
-You can also pass lists or maps as default values.
-The following example defines a function, `doStuff()`,
-that specifies a default list for the `list`
-parameter and a default map for the `gifts` parameter.
-
-List 或 Map 同样也可以作为默认值。下面的示例定义了一个名为 `doStuff()` 的函数，
-并为其名为 `list` 和 `gifts` 的参数指定了一个 List 类型的值和 Map 类型的值。
-
-{% comment %}
-The function is called three times with different values. Click **Run** to see
-list and map default values in action.
-{% endcomment %}
-
-<?code-excerpt "misc/lib/language_tour/functions.dart (list-map-default-function-param)"?>
-```dart
-void doStuff(
-    {List<int> list = const [1, 2, 3],
-    Map<String, String> gifts = const {
-      'first': 'paper',
-      'second': 'cotton',
-      'third': 'leather'
-    }}) {
-  print('list:  $list');
-  print('gifts: $gifts');
-}
 ```
 
 ### The main() function
@@ -2387,11 +2321,53 @@ assert(foo() == null);
 ## 运算符
 
 Dart supports the operators shown in the following table.
+The table shows Dart's operator associativity 
+and [operator precedence](#operator-precedence-example) from highest to lowest,
+which are an **approximation** of Dart's operator relationships.
 You can implement many of these [operators as class members](#_operators).
 
-Dart 支持下表的操作符。
+Dart 支持下表所示的操作符，它也体现了 Dart
+运算符的关联性和 [优先级](#operator-precedence-example) 的从高到低的顺序。
+这也是 Dart 运算符关系的近似值。
 你可以将这些运算符实现为 [一个类的成员](#_operators)。
 
+|-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------|
+| Description                             | Operator                                                                                                                                                                                          | Associativity |
+|-----------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------|
+| unary postfix                           | <code><em>expr</em>++</code>    <code><em>expr</em>--</code>    `()`    `[]`    `?[]`    `.`    `?.`    `!`                                                                                       | None          |
+| unary prefix                            | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>      <code>await <em>expr</em></code>    | None          |
+| multiplicative                          | `*`    `/`    `%`    `~/`                                                                                                                                                                         | Left          |
+| additive                                | `+`    `-`                                                                                                                                                                                        | Left          |
+| shift                                   | `<<`    `>>`    `>>>`                                                                                                                                                                             | Left          |
+| bitwise AND                             | `&`                                                                                                                                                                                               | Left          |
+| bitwise XOR                             | `^`                                                                                                                                                                                               | Left          |
+| bitwise OR                              | `|`                                                                                                                                                                                               | Left          |
+| relational&nbsp;and&nbsp;type&nbsp;test | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!`                                                                                                                                               | None          |
+| equality                                | `==`    `!=`                                                                                                                                                                                      | None          |
+| logical AND                             | `&&`                                                                                                                                                                                              | Left          |
+| logical OR                              | `||`                                                                                                                                                                                              | Left          |
+| if null                                 | `??`                                                                                                                                                                                              | Left          |
+| conditional                             | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code>                                                                                                                                     | Right         |
+| cascade                                 | `..` &nbsp;&nbsp; `?..`                                                                                                                                                                           | Right         |
+| assignment                              | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em>                                                                                                                              | Right         |
+{:.table .table-striped}
+
+{{site.alert.warning}}
+
+  The previous table should only be used as a helpful guide.
+  The notion of operator precedence and associativity
+  is an approximation of the truth found in the language grammar.
+  You can find the authoritative behavior of Dart's operator relationships
+  in the grammar defined in the [Dart language specification][].
+
+  上述的表格只是作为一个比较实用的指南，
+  操作符的优先级和关联性概念是从编程语言的语法中整理发现的。
+  你可以在 [Dart 编程语言规范][Dart language specification]
+  文档中找到更为权威的解释。
+
+{{site.alert.end}}
+
+{% comment %}
 |--------------------------+------------------------------------------------|
 | 描述                     | 运算符                                         |
 |--------------------------|------------------------------------------------|
@@ -2411,18 +2387,12 @@ Dart 支持下表的操作符。
 | 条件表达式     | <code><em>表达式 1</em> ? <em>表达式 2</em> : <em>表达式 3</em></code> |
 | 级联          | `..`   `?..`                                      |
 | 赋值          | `=`   `*=`   `/=`   `+=`   `-=`   `&=`   `^=`   <em>等等……</em> |
-{:.table .table-striped}
 
-{{site.alert.warning}}
+#TODO
+先让英文原文完成编译，然后再动 markdown 表格吧，在源代码中看着太乱了。
 
-  Operator precedence is an approximation of the behavior of a Dart parser.
-  For definitive answers, consult the grammar in the
-  [Dart language specification][].
+{% endcomment %}
 
-  上述运算符优先级是对 Dart 解析器行为的效仿。更准确的描述，
-  请参阅 [Dart 语言规范][Dart language specification] 中的语法。
-
-{{site.alert.end}}
 
 When you use operators, you create expressions. Here are some examples
 of operator expressions:
@@ -2439,6 +2409,7 @@ c ? a : b
 a is T
 ```
 
+<a id="operator-precedence-example"></a>
 In the [operator table](#operators),
 each operator has higher precedence than the operators in the rows
 that follow it. For example, the multiplicative operator `%` has higher
@@ -6457,8 +6428,6 @@ defining a `@Todo` annotation that takes two arguments:
 
 <?code-excerpt "misc/lib/language_tour/metadata/todo.dart"?>
 ```dart
-library todo;
-
 class Todo {
   final String who;
   final String what;
@@ -6473,11 +6442,9 @@ And here’s an example of using that `@Todo` annotation:
 
 <?code-excerpt "misc/lib/language_tour/metadata/misc.dart"?>
 ```dart
-import 'todo.dart';
-
-@Todo('seth', 'make this do something')
+@Todo('Dash', 'Implement this function')
 void doSomething() {
-  print('do something');
+  print('Do something');
 }
 ```
 
