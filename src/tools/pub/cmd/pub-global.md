@@ -108,6 +108,9 @@ To specify a different location,
 use the `--git-path` option with
 a path relative to the repository root:
 
+Pub 会尝试在 Git 仓库的根目录寻找 package。
+你可以使用 `--git-path` 选项为 Pub 指定用于查找的相对于仓库的路径：
+
 ```terminal
 $ dart pub global activate -sgit https://github.com/dart-lang/http.git --git-path pkgs/http/
 ```

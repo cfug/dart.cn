@@ -1894,6 +1894,9 @@ use `=` to specify a default value.
 The specified value must be a compile-time constant.
 For example:
 
+你可以使用 `=` 来为一个命名参数指定除了 `null` 以外的默认值。
+指定的默认值必须要为编译时的常量，例如：
+
 <?code-excerpt "misc/lib/language_tour/functions.dart (named-parameter-default-values)"?>
 ```dart
 /// Sets the [bold] and [hidden] flags ...
@@ -1906,6 +1909,9 @@ enableFlags(bold: true);
 If you instead want a named parameter to be mandatory,
 requiring callers to provide a value for the parameter,
 annotate them with `required`:
+
+如果你希望一个命名参数是强制需要使用的，调用者需要提供它的值，
+则你可以使用 `required` 进行声明：
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters)" replace="/required/[!$&!]/g"?>
 ```dart

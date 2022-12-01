@@ -451,6 +451,9 @@ To generate a fixed-length list,
 use the [`List.generate`][] constructor
 with the `growable` parameter set to `false`:
 
+你可以使用 [`List.generate`][] 构造加
+`growable` 参数设置为 `false` 来生成固定长度的列表：
+
 ```dart
 _jellyPoints = List.generate(jellyMax, (_) => Vec2D(), growable: false);
 ```
