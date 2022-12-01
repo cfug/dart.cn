@@ -623,7 +623,7 @@ so you have to do that manually.
 an import or export), it may remain whole even if it causes the line to go over
 80 characters. This makes it easier to search source files for a path.
 
-**例外：** 当情况出现在注释或字符串是（通常在导入和导出语句中），
+**例外：** 当 URI 及文件路径出现在注释或字符串中时（通常在导入和导出语句中），
 即使文字超出行限制，也可能会保留在一行中。
 这样可以更轻松地搜索给定路径的源文件。
 
