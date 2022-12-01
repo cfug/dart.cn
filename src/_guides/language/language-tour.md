@@ -1997,9 +1997,8 @@ use `=` to specify a default value.
 The specified value must be a compile-time constant.
 For example:
 
-若为除了 `null` 以外的可选位置参数提供一个默认值的话，需要使用 `=` 来定义。
-设定的这个值必须是一个编译时的常量。
-例如：
+你可以使用 `=` 来为一个位置可选参数指定除了 `null` 以外的默认值。
+指定的默认值必须要为编译时的常量，例如：
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (optional-positional-param-default)"?>
 ```dart
