@@ -522,7 +522,7 @@ constructor, use `.new` after the class name:
 
 ### DO use prose to explain parameters, return values, and exceptions.
 
-### **要** 使用普通的语句来描述参数、返回值以及异常信息。
+### **要** 使用平白简单的语句来描述参数、返回值以及异常信息。
 
 Other languages use verbose tags and sections to describe what the parameters
 and returns of a method are.
