@@ -193,7 +193,7 @@ including how the documentation tooling works.
 
 ## Imports
 
-## 导入（ Import ）
+## 导入 (Import)
 
 To access APIs defined in other libraries, use `import`.
 
@@ -222,7 +222,7 @@ Dart 中有关库和可见性的内容，包括库前缀、`show` 和 `hide`
 
 ## Classes
 
-## 类（ Class ）
+## 类 (Class)
 
 Here's an example of a class with three properties, two constructors,
 and a method. One of the properties can't be set directly, so it's
@@ -288,11 +288,17 @@ Dart 中有关类的内容，包括初始化列表、可选的 `new` 和 `const`
 
 ## Enums
 
+## 枚举类型 (Enum)
+
 Enums are a way of enumerating a predefined set of values or instances
 in a way which ensures that there cannot be any other instances of that type.
 
+枚举类型的取值范围是一组预定义的值或实例。
+
 Here is an example of a simple `enum` that defines
 a simple list of predefined planet types:
+
+下面这个简单的枚举示例定义了一组行星类别：
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (simple-enum)"?>
 ```dart
@@ -303,6 +309,8 @@ Here is an example of an enhanced enum declaration
 of a class describing planets,
 with a defined set of constant instances,
 namely the planets of our own solar system.
+
+下面是一个增强型枚举的示例，定义了一组行星类的常量实例，即太阳系的行星：
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (enhanced-enum)"?>
 ```dart
@@ -332,6 +340,8 @@ enum Planet {
 
 You might use the `Planet` enum like this:
 
+你可以这样使用 `Planet` 枚举：
+
 <?code-excerpt "misc/test/samples_test.dart (use enum)" plaster="none"?>
 ```dart
 final yourPlanet = Planet.earth;
@@ -345,6 +355,8 @@ if (!yourPlanet.isGiant) {
 including enhanced enum requirements, automatically introduced properties,
 accessing enumerated value names, switch statement support, and much more.
 
+你可以 [阅读更多](/guides/language/language-tour#enums) Dart 中有关枚举的内容，
+包括增强型枚举的限制条件、枚举默认包含的属性、如何获取枚举值的名称以及在 `switch` 语句中使用枚举等等。
 
 ## Inheritance
 
@@ -467,7 +479,7 @@ Avoid callback hell and make your code much more readable by
 using `async` and `await`.
 
 使用 `async` 和 `await` 关键字可以让你避免
-回调地狱（Callback Hell）并使你的代码更具可读性。
+回调地狱 (Callback Hell) 并使你的代码更具可读性。
 
 <?code-excerpt "misc/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
 {% prettify dart tag=pre+code %}

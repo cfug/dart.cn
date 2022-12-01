@@ -889,7 +889,7 @@ loudTeas.forEach(print);
   The object returned by `map()` is an Iterable that’s *lazily evaluated*: your
   function isn’t called until you ask for an item from the returned object.
 
-  `map()` 方法返回的对象是一个 *懒求值（lazily evaluated）*对象：
+  `map()` 方法返回的对象是一个 *懒求值 (lazily evaluated) *对象：
   只有当访问对象里面的元素时，函数才会被调用。
 
 {{site.alert.end}}
@@ -1852,7 +1852,7 @@ Dart language features, see the
 
 #### Listening for stream data
 
-#### 监听流数据（stream data）
+#### 监听流数据 (stream data)
 
 To get each value as it arrives, either use `await for` or
 subscribe to the stream using the `listen()` method:
@@ -1897,7 +1897,7 @@ If you care about a subset of events, you can use methods such as
 
 #### Transforming stream data
 
-#### 传递流数据（stream data）
+#### 传递流数据 (stream data)
 
 Often, you need to change the format of a stream's data before you can
 use it. Use the `transform()` method to produce a stream with a

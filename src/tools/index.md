@@ -159,7 +159,7 @@ The following tool supports developing web apps:
 <br> A CLI to build and serve Dart web apps.
 
 [`webdev`](/tools/webdev)
-<br> 用于构建和提供 Dart Web 应用开发的命令行接口（CLI）。
+<br> 用于构建和提供 Dart Web 应用开发的命令行接口 (CLI) 。
 
 ## Tools for developing command-line apps and servers {#server}
 

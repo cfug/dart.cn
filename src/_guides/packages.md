@@ -60,7 +60,7 @@ To use a package, do the following:
 
 * If your Dart code depends on a library in the package, import the library.
 
-  如果当前 Dart 代码依赖包中的某个库，导入（import）该库。
+  如果当前 Dart 代码依赖包中的某个库，导入 (import) 该库。
 
 ## Creating a pubspec
 

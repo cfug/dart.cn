@@ -293,7 +293,7 @@ The `chase()` method takes an `Animal`. A `HoneyBadger` chases anything.
 It's OK to override the `chase()` method to take anything (`Object`).
 
 `chase()` 方法的参数类型是 Animal 。一个 HoneyBadger 可以追逐任何东西。
-因此可以在重写 `chase()` 方法时将参数类型指定为任意类型 （Object） 。
+因此可以在重写 `chase()` 方法时将参数类型指定为任意类型  (Object)  。
 
 {:.passes-sa}
 <?code-excerpt "lib/animal.dart (chase-Object)" replace="/Object/[!$&!]/g"?>
@@ -401,7 +401,7 @@ and most generic type arguments.
 When the analyzer doesn't have enough information to infer
 a specific type, it uses the `dynamic` type.
 
-分析器（analyzer）可以推断字段，方法，局部变量和大多数泛型类型参数的类型。
+分析器 (analyzer) 可以推断字段，方法，局部变量和大多数泛型类型参数的类型。
 当分析器没有足够的信息来推断出一个特定类型时，会使用 `dynamic` 作为类型。
 
 Here's an example of how type inference works with generics.
@@ -627,7 +627,7 @@ type (`Cat`) with a more specific type (`MaineCoon`). So, the following
 is allowed:
 
 在生产者的位置，可以安全地将生产类型 (Cat) 替换成一个更具体的类型
-（MaineCoon）的对象。因此，下面的操作是允许的：
+ (MaineCoon) 的对象。因此，下面的操作是允许的：
 
 {:.passes-sa}
 <?code-excerpt "lib/strong_analysis.dart (Cat-MaineCoon-ok)"?>

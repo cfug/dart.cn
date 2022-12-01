@@ -436,7 +436,7 @@ you could do it like this: str?.toLowerCase()
 
 ## Collection literals
 
-## 集合字面量（Collection literals）
+## 集合字面量 (Collection literals) 
 
 Dart has built-in support for lists, maps, and sets.
 You can create them using literals:

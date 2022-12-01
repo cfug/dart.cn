@@ -79,7 +79,7 @@ adding functionality and filling in missing features:
 Here are some tips for finding packages that are more specialized,
 such as packages for mobile (Flutter) and web development.
 
-以下是一些查找更专业软件 package 的技巧，例如用于移动开发（Flutter）和 Web 开发的 package。
+以下是一些查找更专业软件 package 的技巧，例如用于移动开发 (Flutter) 和 Web 开发的 package。
 
 
 ### Flutter packages
