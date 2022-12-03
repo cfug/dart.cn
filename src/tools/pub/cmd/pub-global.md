@@ -103,6 +103,18 @@ $ dart pub global activate --source git https://github.com/dart-lang/async_await
 $ dart pub global activate -sgit https://github.com/dart-lang/async_await.git
 ```
 
+Pub expects to find the package in the root of the Git repository.
+To specify a different location, 
+use the `--git-path` option with
+a path relative to the repository root:
+
+Pub 会尝试在 Git 仓库的根目录寻找 package。
+你可以使用 `--git-path` 选项为 Pub 指定用于查找的相对于仓库的路径：
+
+```terminal
+$ dart pub global activate -sgit https://github.com/dart-lang/http.git --git-path pkgs/http/
+```
+
 ### Activating a package on your local machine
 
 ### 激活当前设备上的 Package

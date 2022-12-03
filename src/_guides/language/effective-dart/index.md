@@ -47,24 +47,6 @@ write consistent, robust, fast code too. There are two overarching themes:
 
 [code golf]: https://en.wikipedia.org/wiki/Code_golf
 
-The Dart analyzer has a linter to help you write good, consistent code.
-If a linter rule exists that can help you follow a guideline,
-then the guideline links to that rule. Here's an example:
-
-Dart Analyzer 中有一个 Linter 工具，该工具可以帮助你编写优秀的、一致性的代码。
-如果存在一个 Linter 规则可以帮助你遵循某个指南准则，
-那么该指南准则将链接到该规则。比如下面的示例：
-
-{% include linter-rule-mention.md rule="prefer_collection_literals" %}
-
-For help on
-[enabling linter rules](/guides/language/analysis-options#enabling-linter-rules),
-see the documentation for
-[customizing static analysis](/guides/language/analysis-options).
-
-更多关于 [开启 Linter 规则](/guides/language/analysis-options#enabling-linter-rules) 的帮助，
-请查阅 [自定义静态分析](/guides/language/analysis-options) 文档。
-
 ## The guides
 
 ## 指南
@@ -166,6 +148,33 @@ readable and maintainable code.
 这听起来好像有点小题大做。其实并没有那么糟糕。
 大部分的准则都是常识，也符合我们的认知。
 最终要达到的目标是写出优雅，可读，可维护的代码。
+
+The Dart analyzer provides a linter
+to help you write good, consistent code
+that follows these and other guidelines.
+If one or more [linter rules][lints] exist
+that can help you follow a guideline
+then the guideline links to those rules.
+The links use the following format:
+
+Dart 分析器提供了一个 Linter 工具，
+可以帮助你编写优秀的、一致性的以及符合各种指南的代码。
+如果存在一个或者多个 [linter 规则][lints]
+来帮助你遵循某个指南准则，那么这些指南的链接也会有显示。
+比如下面的示例：
+
+{% include linter-rule-mention.md rule="unnecessary_getters_setters" %}
+
+To learn how to use the linter,
+see [Enabling linter rules][]
+and the list of [linter rules][lints].
+
+学习如何使用 linter，请查阅文档
+[启用 linter 规则][Enabling linter rules]，
+以及可用的各种 [linter 规则][lints]。
+
+[Enabling linter rules]: /guides/language/analysis-options#enabling-linter-rules
+[lints]: /tools/linter-rules
 
 ## Glossary
 

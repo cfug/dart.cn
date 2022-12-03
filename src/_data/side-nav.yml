@@ -96,9 +96,7 @@
       permalink: /guides/libraries/library-tour
     - title: 介绍文章
       children:
-        - title: dart:io 库介绍
-          permalink: /articles/libraries/dart-io
-        - title: 使用 stream
+        - title: 创建 stream
           permalink: /articles/libraries/creating-streams
 
 - title: Packages
