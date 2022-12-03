@@ -23,7 +23,7 @@ hours of time.
 
 你可能没有意识到，今天你很容易想出来的代码，有多么依赖你当时思路。
 人们不熟悉你的代码，甚至你也忘记了当时代码功能中有这样的思路。
-简明、扼要的注释只需花费几秒钟的时间去写，但可以让每个这样的人节约几个小时。
+写下简明扼要的注释只需要几秒钟，但可以让看这段代码的每个人节约几个小时。
 
 We all know code should be self-documenting and not all comments are helpful.
 But the reality is that most of us don't write as many comments as we should.
