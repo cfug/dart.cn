@@ -1365,7 +1365,7 @@ class Box {
 If you have a field that outside code should be able to see but not assign to, a
 simple solution that works in many cases is to simply mark it `final`.
 
-如果你有一个变量，对于外部代码来说只能读取不能修改，
+如果一个变量对于外部代码来说只能读取不能修改，
 最简单的做法就是使用 `final` 关键字来标记这个变量。
 
 {:.good}
