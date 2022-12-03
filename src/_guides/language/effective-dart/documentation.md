@@ -545,7 +545,7 @@ Flag addFlag(String name, String abbr) => ...
 The convention in Dart is to integrate that into the description of the method
 and highlight parameters using square brackets.
 
-Dart 的惯例是将其整合到方法的描述中，并使用方括号强调参数。
+Dart 的惯例是将其整合到方法的描述中，使用方括号高亮并标记参数。
 
 {:.good}
 <?code-excerpt "docs_good.dart (no-annotations)"?>
