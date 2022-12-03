@@ -234,7 +234,8 @@ or give it a [default value][].
 
 你的代码里大部分需要更改的代码，都是可以轻易推导的。
 例如，如果一个变量可以为空，[它的类型需要 `?` 后缀][nullable type]。
-一个不可以为空的命名参数，需要使用 [`required` 标记][required]。
+一个不可以为空的命名参数，需要使用 [`required` 标记][required]，
+或者给定其一个 [默认值][default value]。
 
 You have two options for migrating:
 

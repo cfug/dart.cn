@@ -1868,6 +1868,10 @@ as their default value will be `null`:
 定义函数时，使用
 <code>{<em>参数1</em>, <em>参数2</em>, …}</code>
 来指定命名参数：
+如果你没有提供一个默认值，
+也没有使用 `required` 标记的话，
+那么它一定可空的类型，
+因为他们的默认值会是 `null`：
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (specify-named-parameters)"?>
 ```dart
@@ -1922,9 +1926,16 @@ If someone tries to create a `Scrollbar`
 without specifying the `child` argument,
 then the analyzer reports an issue.
 
+当你创建一个不带 `child` 参数的 `Scrollbar` 时，
+分析器就会报告这里出了问题。
+
 {{site.alert.note}}
+
   A parameter marked as `required`
   can still be nullable:
+
+  一个标记了 `required` 的参数
+  仍然是可空的类型:
 
   <?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters-nullable)" replace="/Widget\?/[!$&!]/g; /ScrollbarTwo/Scrollbar/g;"?>
   ```dart
