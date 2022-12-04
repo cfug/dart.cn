@@ -79,10 +79,10 @@ Dart SDK 支持 Windows、Linux 和 macOS。
 
 * **Supported architectures:** x64, IA32, ARM64.<br>
   Support for ARM64 is experimental,
-  and is available only in the beta and dev channels.
+  and is available only in the dev channel.
 
   **支持的架构：** x64、ia32、ARM64<br>
-  ARM64 的支持处于实验性阶段，只在 Beta 和 Dev 渠道提供。
+  ARM64 的支持处于实验性阶段，仅在 Dev 渠道可用。
 
 ### Linux
 
@@ -92,10 +92,10 @@ Dart SDK 支持 Windows、Linux 和 macOS。
 
 * **Supported architectures:** x64, IA32, ARM64, ARM, RISC-V (RV64GC).<br>
   Support for RISC-V is experimental, 
-  and is available only in the beta and dev channels.
+  and is available only in the dev channel.
 
   **支持的架构：** x64、IA32、ARM64、ARM、RISC-V (RV64GC)。<br>
-  RISC-V 的支持目前还在实验阶段，仅在 beta 和 dev 渠道可用。
+  RISC-V 的支持目前还在实验阶段，仅在 Dev 渠道可用。
 
 {{site.alert.note}}
 
