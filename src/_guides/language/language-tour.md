@@ -1898,6 +1898,7 @@ use `=` to specify a default value.
 The specified value must be a compile-time constant.
 For example:
 
+<a id="default-parameters"></a>
 你可以使用 `=` 来为一个命名参数指定除了 `null` 以外的默认值。
 指定的默认值必须要为编译时的常量，例如：
 
@@ -2434,6 +2435,7 @@ which has higher precedence than the logical AND operator `&&`. That
 precedence means that the following two lines of code execute the same
 way:
 
+<a id="operator-precedence-example"></a>
 在 [运算符表](#operators) 中，运算符的优先级按先后排列，
 即第一行优先级最高，最后一行优先级最低，
 而同一行中，最左边的优先级最高，最右边的优先级最低。
