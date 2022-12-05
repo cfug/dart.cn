@@ -2326,7 +2326,7 @@ void main() {
 Here's an example of testing top-level functions, static methods, and
 instance methods for equality:
 
-下面是顶级函数，静态方法和实例方法相等性的测试示例：
+下面是顶级函数、静态方法和实例方法相等性的测试示例：
 
 <?code-excerpt "misc/lib/language_tour/function_equality.dart"?>
 ```dart
