@@ -1949,7 +1949,7 @@ but Dart doesn't require it.
 Dart allows named arguments to be placed anywhere in the
 argument list when it suits your API:
 
-尽管先使用位置参数会比较合理，但你也可以在任意位置使用命名参数，
+尽管将位置参数放在最前面通常比较合理，但你也可以将命名参数放在参数列表的任意位置，
 让整个调用的方式看起来更适合你的 API：
 
 <?code-excerpt "misc/lib/language_tour/functions.dart (named-arguments-anywhere)"?>
@@ -2277,7 +2277,7 @@ void main() {
 Here's an example of testing top-level functions, static methods, and
 instance methods for equality:
 
-下面是顶级函数，静态方法和示例方法相等性的测试示例：
+下面是顶级函数、静态方法和实例方法相等性的测试示例：
 
 <?code-excerpt "misc/lib/language_tour/function_equality.dart"?>
 ```dart
@@ -2612,7 +2612,7 @@ runtime.
 | Operator  | Meaning                                   |
 |-----------+-------------------------------------------|
 | `as`      | Typecast (also used to specify [library prefixes](#specifying-a-library-prefix))
-| `as`      | 类型转换（也用作指定 [类前缀](#specifying-a-library-prefix))）
+| `as`      | 类型转换（也用作指定 [库前缀](#specifying-a-library-prefix))）
 | `is`      | True if the object has the specified type
 | `is`      | 如果对象是指定类型则返回 true
 | `is!`     | True if the object doesn't have the specified type
@@ -2690,7 +2690,7 @@ an operation with an assignment.
 
 Here’s how compound assignment operators work:
 
-下表解释了符合运算符的原理：
+下表解释了复合运算符的原理：
 
 |-----------+----------------------+-----------------------|
 |    场景    |       复合运算        |        等效表达式       |
