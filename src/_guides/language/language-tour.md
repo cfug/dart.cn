@@ -533,15 +533,16 @@ Top-level and class variables are lazily initialized;
 the initialization code runs
 the first time the variable is used.
 
-顶级变量以及类变量是懒惰初始化的，
-也就是说检查这个变量是否为空的程序会在它第一次被使用的时候运行。
-
+顶级变量以及类变量是延迟初始化的，
+即检查变量的初始化会在它第一次被使用的时候完成。
 
 ### Late variables
 
+### 延迟初始化变量
+
 Dart 2.12 added the `late` modifier, which has two use cases:
 
-Dart 2.12 开始加入了 `late` 修改器，这个修改器会在以下两种情况下被使用：
+Dart 2.12 新增了 `late` 修饰符，这个修饰符可以在以下情况中使用：
 
 * Declaring a non-nullable variable that's initialized after its declaration.
   
@@ -549,7 +550,7 @@ Dart 2.12 开始加入了 `late` 修改器，这个修改器会在以下两种�
 
 * Lazily initializing a variable.
 
-  懒惰初始化一个变量
+   延迟初始化一个变量。
 
 Often Dart's control flow analysis can detect when a non-nullable variable
 is set to a non-null value before it's used,
@@ -558,16 +559,16 @@ Two common cases are top-level variables and instance variables:
 Dart often can't determine whether they're set,
 so it doesn't try.
 
-通常而言， Dart 的语言分析会在一个已经声明是非空的变量被使用前检查它是否已经被赋值，
+通常 Dart 的语义分析会在一个已声明为非空的变量被使用前检查它是否已经被赋值，
 但有时这个分析会失败。
-例如：在顶级变量和实例变量的检查上， Dart 通常不能得知他们是否已经被声明，因此有时这个检查不会被运行。
+例如：在检查顶级变量和实例变量时，分析通常无法判断它们是否已经被初始化，因此不会进行分析。
 
 If you're sure that a variable is set before it's used,
 but Dart disagrees,
 you can fix the error by marking the variable as `late`:
 
 如果你确定这个变量在使用前就已经被声明，但 Dart 判断失误的话，
-你可以在声明变量的时候打上 `late` 的标记来解决这个问题。
+你可以在声明变量的时候使用 `late` 修饰来解决这个问题。
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-late-top-level)" replace="/late/[!$&!]/g"?>
 ```dart
@@ -584,8 +585,8 @@ void main() {
   If you fail to initialize a `late` variable,
   a runtime error occurs when the variable is used.
   
-  若你声明带 `late` 标记的变量后没有初始化，
-  在你使用这个变量时，会抛出运行时异常。
+  若 `late` 标记的变量在使用前没有初始化，
+  在变量被使用时会抛出运行时异常。
   
 {{site.alert.end}}
 
@@ -593,26 +594,26 @@ When you mark a variable as `late` but initialize it at its declaration,
 then the initializer runs the first time the variable is used.
 This lazy initialization is handy in a couple of cases:
 
-若你声明了一个带 `late` 标记的变量，且在声明的时候就立即初始化，
-它实际的初始化进程可能是在第一次被使用的时候，而并不一定遵照你的要求 (立即初始化）。
-这种懒惰加载可能发生在这样一些情况：
+如果一个 `late` 修饰的变量在声明时就指定了初始化方法，
+那么它实际的初始化过程会发生在第一次被使用的时候。
+这样的延迟初始化在以下场景中会带来便利：
 
 * The variable might not be needed,
   and initializing it is costly.
   
-  Dart 认为这个变量可能在后文中没被使用，而且初始化它的代价很大。
+  Dart 认为这个变量可能在后文中没被使用，而且初始化时将产生较大的代价。
   
 * You're initializing an instance variable,
   and its initializer needs access to `this`.
   
-  你可能正在初始化一个实例变量，因此它的初始化程序需要获得 `this` 的权限。
+  你正在初始化一个实例变量，它的初始化方法需要调用 `this`。
 
 In the following example,
 if the `temperature` variable is never used,
 then the expensive `readThermometer()` function is never called:
 
 在下面这个例子中，如果 `temperature` 变量从未被使用的话，
-那么 `readThermometer()` 将永远不会被调用，因为调用它的代价相当大:
+那么 `readThermometer()` 将永远不会被调用：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-late-lazy)" replace="/late/[!$&!]/g"?>
 ```dart
