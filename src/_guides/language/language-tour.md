@@ -500,6 +500,8 @@ assert(lineCount == null);
 If you enable null safety, then you must initialize the values
 of non-nullable variables before you use them:
 
+若你启用了空安全，你必须在使用变量前初始化它的值。
+
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-ns-init)"?>
 ```dart
 int lineCount = 0;
@@ -510,6 +512,9 @@ but you do need to assign it a value before it's used.
 For example, the following code is valid because
 Dart can detect that `lineCount` is non-null by the time
 it's passed to `print()`:
+
+你并不需要在声明变量时初始化，只需在第一次用到这个变量前初始化即可。
+例如，下面的代码是正确的，因为 Dart 可以在 `lineCount` 被传递到 `print()` 时检测它是否为空:
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-ns-flow)"?>
 ```dart
@@ -528,13 +533,24 @@ Top-level and class variables are lazily initialized;
 the initialization code runs
 the first time the variable is used.
 
+顶级变量以及类变量是延迟初始化的，
+即检查变量的初始化会在它第一次被使用的时候完成。
 
 ### Late variables
 
+### 延迟初始化变量
+
 Dart 2.12 added the `late` modifier, which has two use cases:
 
+Dart 2.12 新增了 `late` 修饰符，这个修饰符可以在以下情况中使用：
+
 * Declaring a non-nullable variable that's initialized after its declaration.
+  
+  声明一个非空变量，但不在声明时初始化。
+
 * Lazily initializing a variable.
+
+   延迟初始化一个变量。
 
 Often Dart's control flow analysis can detect when a non-nullable variable
 is set to a non-null value before it's used,
@@ -543,9 +559,16 @@ Two common cases are top-level variables and instance variables:
 Dart often can't determine whether they're set,
 so it doesn't try.
 
+通常 Dart 的语义分析会在一个已声明为非空的变量被使用前检查它是否已经被赋值，
+但有时这个分析会失败。
+例如：在检查顶级变量和实例变量时，分析通常无法判断它们是否已经被初始化，因此不会进行分析。
+
 If you're sure that a variable is set before it's used,
 but Dart disagrees,
 you can fix the error by marking the variable as `late`:
+
+如果你确定这个变量在使用前就已经被声明，但 Dart 判断失误的话，
+你可以在声明变量的时候使用 `late` 修饰来解决这个问题。
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-late-top-level)" replace="/late/[!$&!]/g"?>
 ```dart
@@ -558,22 +581,39 @@ void main() {
 ```
 
 {{site.alert.warn}}
+
   If you fail to initialize a `late` variable,
   a runtime error occurs when the variable is used.
+  
+  若 `late` 标记的变量在使用前没有初始化，
+  在变量被使用时会抛出运行时异常。
+  
 {{site.alert.end}}
 
 When you mark a variable as `late` but initialize it at its declaration,
 then the initializer runs the first time the variable is used.
 This lazy initialization is handy in a couple of cases:
 
+如果一个 `late` 修饰的变量在声明时就指定了初始化方法，
+那么它实际的初始化过程会发生在第一次被使用的时候。
+这样的延迟初始化在以下场景中会带来便利：
+
 * The variable might not be needed,
   and initializing it is costly.
+  
+  Dart 认为这个变量可能在后文中没被使用，而且初始化时将产生较大的代价。
+  
 * You're initializing an instance variable,
   and its initializer needs access to `this`.
+  
+  你正在初始化一个实例变量，它的初始化方法需要调用 `this`。
 
 In the following example,
 if the `temperature` variable is never used,
 then the expensive `readThermometer()` function is never called:
+
+在下面这个例子中，如果 `temperature` 变量从未被使用的话，
+那么 `readThermometer()` 将永远不会被调用：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-late-lazy)" replace="/late/[!$&!]/g"?>
 ```dart
