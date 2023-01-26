@@ -2405,7 +2405,7 @@ Dart 支持下表所示的操作符，它也体现了 Dart
 | logical OR                              | `||`                                                                                                                                                                                              | Left          |
 | if null                                 | `??`                                                                                                                                                                                              | Left          |
 | conditional                             | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code>                                                                                                                                     | Right         |
-| cascade                                 | `..` &nbsp;&nbsp; `?..`                                                                                                                                                                           | Right         |
+| cascade                                 | `..` &nbsp;&nbsp; `?..`                                                                                                                                                                           | Left          |
 | assignment                              | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em>                                                                                                                              | Right         |
 {:.table .table-striped}
 
@@ -5688,7 +5688,7 @@ The `import` and `library` directives can help you create a
 modular and shareable code base. Libraries not only provide APIs, but
 are a unit of privacy: identifiers that start with an underscore (`_`)
 are visible only inside the library. *Every Dart app is a library*, even
-if it doesn’t use a `library` directive.
+if it doesn’t use a [`library`](#library-directive) directive.
 
 `import` 和 `library` 关键字可以帮助你创建一个模块化和可共享的代码库。
 代码库不仅只是提供 API 而且还起到了封装的作用：以下划线（`_`）开头的成员仅在代码库中可见。
@@ -5756,7 +5756,6 @@ import 'package:test/test.dart';
   **URL**（统一资源定位符）是一种常见的 URI。
 
 {{site.alert.end}}
-
 
 #### Specifying a library prefix
 
@@ -5900,6 +5899,21 @@ Keep in mind the following when you use deferred loading:
   <code>deferred as <em>命名空间</em></code> 的类中。
   `loadLibrary()` 函数返回的是一个 [Future](/guides/libraries/library-tour#future)。
 
+#### The `library` directive {#library-directive}
+
+To specify library-level [doc comments][] or [metadata annotations][],
+attach them to a `library` declaration at the start of the file.
+
+<?code-excerpt "misc/lib/effective_dart/docs_good.dart (library-doc)"?>
+{% prettify dart tag=pre+code %}
+/// A really great test library.
+@TestOn('browser')
+library;
+{% endprettify %}
+
+[doc comments]: /guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment
+[metadata annotations]: /guides/language/language-tour#metadata
+
 ### Implementing libraries
 
 ### 实现库
@@ -5921,10 +5935,6 @@ for advice on how to implement a library package, including:
 * When to use the `part` directive.
 
   何时使用 `part` 命令。
-
-* When to use the `library` directive.
-
-  何时使用 `library` 命令。
 
 * How to use conditional imports and exports to implement
   a library that supports multiple platforms.
@@ -6004,21 +6014,21 @@ Future<void> checkVersion() [!async!] {
 
 {{site.alert.note}}
 
-  Although an `async` function might perform time-consuming operations, it
-  doesn't wait for those operations. Instead, the `async` function executes only
-  until it encounters its first `await` expression
-  ([details][synchronous-async-start]). Then it returns a Future object,
+  Although an `async` function might perform time-consuming operations, 
+  it doesn't wait for those operations. 
+  Instead, the `async` function executes only
+  until it encounters its first `await` expression.
+  Then it returns a `Future` object,
   resuming execution only after the `await` expression completes.
 
-  尽管异步函数可以处理耗时操作，但是它并不会等待这些耗时操作完成，
-  异步函数执行时会在其遇到第一个 `await` 表达式
-  （[代码行][synchronous-async-start]）时返回一个 Future 对象，
-  然后等待 await 表达式执行完毕后继续执行。
+  尽管 `async` 函数可能会执行一些耗时操作，但是它并不会等待这些耗时操作完成，
+  相反，异步函数执行时会在其遇到第一个 `await` 表达式时返回一个 Future 对象，
+  然后等待 `await` 表达式执行完毕后继续执行。
 
 {{site.alert.end}}
 
-Use `try`, `catch`, and `finally` to handle errors and cleanup in code that uses
-`await`:
+Use `try`, `catch`, and `finally` to handle errors and cleanup
+in code that uses `await`:
 
 使用 `try`、`catch` 以及 `finally` 来处理使用 `await` 导致的异常：
 
@@ -6356,8 +6366,11 @@ concurrency is error prone and can lead to complicated code.
 大多数计算机中，甚至在移动平台上，都在使用多核 CPU。为了有效利用多核性能，开发者一般使用共享内存的方式让线程并发地运行。然而，多线程共享数据通常会导致很多潜在的问题，并导致代码运行出错。
 
 Instead of threads, all Dart code runs inside of *isolates*. 
-Each Dart isolate has a single thread of execution and
-shares no mutable objects with other isolates.  
+Each Dart isolate uses a single thread of execution and
+shares no mutable objects with other isolates.
+Spinning up multiple isolates creates multiple threads of execution.
+This enables multi-threading without its primary drawback,
+[race conditions](https://en.wikipedia.org/wiki/Race_condition#In_software)
 
 为了解决多线程带来的并发问题，Dart 使用 isolate 替代线程，所有的 Dart 代码均运行在一个 **isolate** 中。每一个 isolate 有它自己的堆内存以确保其状态不被其它 isolate 访问。
 
@@ -6714,7 +6727,6 @@ To learn more about Dart's core libraries, see
 [`Stream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
 [`String`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
 [`Symbol`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
-[synchronous-async-start]: https://github.com/dart-lang/language/blob/master/archive/newsletter/20170915.md#synchronous-async-start
 [top-and-bottom]: /null-safety/understanding-null-safety#top-and-bottom
 [trailing commas]: #trailing-comma
 [type test operator]: #type-test-operators

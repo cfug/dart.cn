@@ -8,11 +8,9 @@ description: 使用 isolates 在多核设备上并发执行代码。
 <?code-excerpt path-base="concurrency"?>
 
 <style>
-  img {
+  article img {
     padding: 15px 0;
   }
-}
-
 </style>
 
 Dart supports concurrent programming with async-await, isolates, and
@@ -30,43 +28,24 @@ Each Dart isolate has a single thread of execution and
 shares no mutable objects with other isolates.
 To communicate with each other,
 isolates use message passing.
+Many Dart apps use only one isolate, the _main isolate_.
+You can create additional isolates to enable
+parallel code execution on multiple processor cores.
+
+在应用中，所有的 Dart 代码都在 **isolate** 中运行。
+每一个 Dart 的 isolate 都有独立的运行线程，它们无法与其他 isolate 共享可变对象。
+在需要进行通信的场景里，isolate 会使用消息机制。
+很多 Dart 应用都只使用一个 isolate，也就是 main isolate。
+你可以创建额外的 isolate 以便在多个处理器核心上执行并行代码。
+
 Although Dart's isolate model is built with underlying primitives
 such as processes and threads
 that the operating system provides,
 the Dart VM's use of these primitives
 is an implementation detail that this page doesn't discuss.
 
-在应用中，所有的 Dart 代码都在 **isolate** 中运行。
-每一个 Dart 的 isolate 都有独立的运行线程，它们无法与其他 isolate 共享可变对象。
-在需要进行通信的场景里，isolate 会使用消息机制。
 尽管 Dart 的 isolate 模型设计是基于操作系统提供的进程和线程等更为底层的原语进行设计的，
-但在本篇文章中，我们不对其具体实现展开讨论。
-
-Many Dart apps use only one isolate (the _main isolate_),
-but you can create additional isolates,
-enabling parallel code execution on multiple processor cores.
-
-大部分 Dart 应用只会使用一个 isolate（即 **主 isolate**），
-同时你也可以创建更多的 isolate，从而在多个处理器内核上达成并行执行代码的目的。
-
-{{site.alert.info}}
-
-  **Platform note:**
-  All apps can use async-await, `Future`, and `Stream`.
-  Isolates are implemented only on the [Dart Native platform][];
-  Dart web apps can use [web workers][] for similar functionality.
-
-  **多平台使用时注意：**
-  所有的 Dart 应用都可以使用 async-await、`Future` 和 `Stream`。
-  而 isolate 仅针对 [原生平台的使用][Dart Native platform] 进行实现。
-  使用 Dart 构建的网页应用可以 [使用 Web Workers][] 实现相似的功能。
-
-{{site.alert.end}}
-
-[Dart Native platform]: /overview#platform
-[web workers]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
-[使用 Web Workers]: https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers
-
+Dart 虚拟机对其的使用是一个具体的实现，在本篇文章中，我们不对其具体实现展开讨论。
 
 ## Asynchrony types and syntax
 
@@ -285,12 +264,22 @@ but each isolate has its own memory and a single thread running an event loop.
 在使用 isolate 时，你的 Dart 代码可以在同一时刻进行多个独立的任务，并且使用可用的处理器核心。
 Isolate 与线程和进程近似，但是每个 isolate 都拥有独立的内存，以及运行事件循环的独立线程。
 
+{{site.alert.info}}
+  **Platform note:**
+    Only the [Dart Native platform][] implements isolates.
+    To learn more about the Dart Web platform,
+    see the [Concurrency on the web](#concurrency-on-the-web) section.
+{{site.alert.end}}
+
+[Dart Native platform]: /overview#platform
+
 ### The main isolate
 
 ### 主 isolate
 
 You often don’t need to think about isolates at all.
-A typical Dart app executes all its code in the app's main isolate,
+Dart programs run in the main isolate by default.
+It's the thread where a program starts to run and execute, 
 as shown in the following figure:
 
 在一般场景下，你完全无需关心 isolate。通常一个 Dart 应用会在主 isolate 下执行所有代码，
@@ -433,7 +422,6 @@ Isolate 工作对象可以进行 I/O 操作、设置定时器，以及其他各�
 
 [`send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
 
-
 ## Code examples
 
 ## 代码示例
@@ -444,56 +432,41 @@ to implement isolates.
 
 本节将重点讨论使用 `Isolate` API 实现 isolate 的一些示例。
 
-{{site.alert.flutter-note}}
-
-  If you're using Flutter on a non-web platform,
-  then instead of using the `Isolate` API directly,
-  consider using the [Flutter `compute()` function][].
-  The `compute()` function is a simple way to
-  move a single function call to a worker isolate.
-
-  **Flutter 开发提示：**
-  如果你在非 Web 平台上使用 Flutter 进行开发，那么与其直接使用 `Isolate` API，
-  可以考虑使用 [Flutter 提供的 `compute()` 方法][Flutter `compute()` function]。
-  `compute()` 方法能以简单的方式将一个函数的调用封装至 isolate 工作对象内。
-
-{{site.alert.end}}
-
-[Flutter `compute()` function]: {{site.flutter-docs}}/cookbook/networking/background-parsing#4-move-this-work-to-a-separate-isolate
-
-
 ### Implementing a simple worker isolate
 
 ### 实现一个简单的 isolate 工作对象
 
-This section shows the implementation for a
-main isolate and the simple worker isolate that it spawns.
-The worker isolate executes a function and then exits,
-sending the main isolate a single message as it exits.
-(The [Flutter `compute()` function][] works in a similar way.)
+These examples implement a main isolate
+that spawns a simple worker isolate.
+[`Isolate.run()`][] simplifies the steps behind
+setting up and managing worker isolates:
 
-本节将展示一个主 isolate 与它生成的 isolate 工作对象的实现。
-Isolate 工作对象会执行一个函数，完成后结束对象，并将函数结果发送至主 isolate。
-（[Flutter 提供的 `compute()` 方法][Flutter `compute()` function] 也是以类似的方式工作的。）
+1. Spawns (starts and creates) an isolate
+2. Runs a function on the spawned isolate
+3. Captures the result
+4. Returns the result to the main isolate
+5. Terminates the isolate once work is complete
+6. Checks, captures, and throws exceptions and errors back to the main isolate
 
-This example uses the following isolate-related API:
+[`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
 
-下面的示例将使用到这些与 isolate 相关的 API：
+{{site.alert.flutter-note}}
+  If you're using Flutter,
+  consider using [Flutter's `compute()` function][]
+  instead of `Isolate.run()`.
+  The `compute` function
+  allows your code to work  on both
+  [native and non-native platforms][].
+  Use `Isolate.run()` when targeting native platforms only
+  for a more ergonomic API.
+{{site.alert.end}}
 
-* [`Isolate.spawn()`][] and [`Isolate.exit()`][]
+[native and non-native platforms]: /overview#platform
+[Flutter's `compute()` function]: {{site.flutter-api}}/flutter/foundation/compute.html
 
-  [`Isolate.spawn()`][] 和 [`Isolate.exit()`][]
+#### Running an existing method in a new isolate
 
-* [`ReceivePort`][] and [`SendPort`][]
-
-  [`ReceivePort`][] 和 [`SendPort`][]
-
-[`Isolate.exit()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
-[`Isolate.spawn()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
-[`ReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html
-[`SendPort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
-
-Here’s the code for the main isolate:
+The main isolate contains the code that spawns a new isolate: 
 
 主 isolate 的代码如下：
 
@@ -501,115 +474,119 @@ Here’s the code for the main isolate:
 ```dart
 void main() async {
   // Read some data.
-  final jsonData = await _parseInBackground();
+  final jsonData = await Isolate.run(_readAndParseJson);
 
-  // Use that data
+  // Use that data.
   print('Number of JSON keys: ${jsonData.length}');
-}
-
-// Spawns an isolate and waits for the first message
-Future<Map<String, dynamic>> _parseInBackground() async {
-  final p = ReceivePort();
-  await Isolate.spawn(_readAndParseJson, p.sendPort);
-  return await p.first as Map<String, dynamic>;
 }
 ```
 
-The `_parseInBackground()` function contains the code that
-_spawns_ (creates and starts) the isolate for the background worker,
-and then returns the result:
-
-`_parseInBackground()` 方法包含了 **生成** 后台 isolate 工作对象的代码，并返回结果：
-
-1. Before spawning the isolate, the code creates a `ReceivePort`,
-   which enables the worker isolate
-   to send messages to the main isolate.
-
-   在生成 isolate 之前，代码创建了一个 `ReceivePort`，
-   让 isolate 工作对象可以传递信息至主 isolate。 
-
-2. Next is the call to `Isolate.spawn()`,
-   which creates and starts the isolate for the background worker.
-   The first argument to `Isolate.spawn()` is the function that
-   the worker isolate executes: `_readAndParseJson`.
-   The second argument is the `SendPort`
-   that the worker isolate can use to send messages to the main isolate.
-   The code doesn't _create_ a `SendPort`;
-   it uses the `sendPort` property of the `ReceivePort`.
-
-   接下来是调用 `Isolate.spawn()`，生成并启动一个在后台运行的 isolate 工作对象。
-   该方法的第一个参数是 isolate 工作对象执行的函数引用：`_readAndParseJson`。
-   第二个参数则是 isolate 用来与主 isolate 传递消息的 `SendPort`。
-   此处的代码并没有 **创建** 新的 `SendPort`，
-   而是直接使用了 `ReceivePort` 的 `sendPort` 属性。
-
-3. Once the isolate is spawned, the main isolate waits for the result.
-   Because the `ReceivePort` class implements `Stream`,
-   the [`first`][] property is an easy way to get
-   the single message that the worker isolate sends.
-
-   Isolate 初始化完成后，主 isolate 即开始等待它的结果。
-   由于 `ReceivePort` 实现了 `Stream`，你可以很方便地使用
-   [`first`][] 属性获得 isolate 工作对象返回的单个消息。
-
-[`first`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream/first.html
-
-The spawned isolate executes the following code:
-
-初始化后的 isolate 会执行以下代码：
+The spawned isolate executes the function
+passed as the first argument, `_readAndParseJson`:
 
 <?code-excerpt "lib/simple_worker_isolate.dart (spawned)"?>
 ```dart
-Future<void> _readAndParseJson(SendPort p) async {
+Future<Map<String, dynamic>> _readAndParseJson() async {
   final fileData = await File(filename).readAsString();
-  final jsonData = jsonDecode(fileData);
-  Isolate.exit(p, jsonData);
+  final jsonData = jsonDecode(fileData) as Map<String, dynamic>;
+  return jsonData;
 }
 ```
 
-The relevant statement is the last one, which exits the isolate,
-sending `jsonData` to the passed-in `SendPort`.
-Message passing using `SendPort.send` normally involves data copying,
-and thus can be slow.
-However, when you send the data using `Isolate.exit()`,
-then the memory that holds the message in the exiting isolate isn’t copied,
-but instead is transferred to the receiving isolate.
-The sender will nonetheless perform a verification pass to ensure
-the objects are allowed to be transferred.
+1. `Isolate.run()` spawns an isolate, the background worker,
+   while `main()` waits for the result.
 
-在最后一句代码后，isolate 会退出，
-将 `jsonData` 通过传入的 `SendPort` 发送。
-在 isolate 之间传递消息时，通常会发生数据拷贝，
-然而，当你使用 `Isolate.exit()` 发送数据时，
-isolate 中持有的消息并没有发生拷贝，
-而是直接转移到了接收的 isolate 中。
+2. The spawned isolate executes the argument passed to `run()`:
+   the function `_readAndParseJson()`.
 
-{{site.alert.version-note}}
+3. `Isolate.run()` takes the result from `return`
+   and sends the value back to the main isolate,
+   shutting down the worker isolate.
 
-  `Isolate.exit()` was added in 2.15.
-  Previous releases support only explicit message passing,
-  using `Isolate.send()` as shown in the next section's example.
+4. The worker isolate *transfers* the memory holding the result
+   to the main isolate. It *does not copy* the data.
+   The worker isolate performs a verification pass to ensure
+   the objects are allowed to be transferred.
 
-  `Isolate.exit()` 在 Dart 2.15 中被引入。
-  在先前的 Dart 版本中，仅支持通过 `Isolate.send()` 进行显式的消息传递，
-  下一个小节的示例中将进行说明。
+`_readAndParseJson()` is an existing,
+asynchronous function that could just as easily
+run directly in the main isolate.
+Using `Isolate.run()` to run it instead enables concurrency.
+The worker isolate completely abstracts the computations
+of `_readAndParseJson()`. It can complete without blocking the main isolate.
 
-{{site.alert.end}}
+The result of `Isolate.run()` is always a Future,
+because code in the main isolate continues to run.
+Whether the computation the worker isolate executes
+is synchronous or asynchronous doesn't impact the
+main isolate, because it's running concurrently either way.
 
-The following figure illustrates the communication between
-the main isolate and the worker isolate:
+{% comment %}
+TODO:
+Should create a diagram for the current example.
+Previous example's diagram and text for reference:
 
-下图说明了主 isolate 和 isolate 工作对象之间的通信流程：
+  The following figure illustrates the communication between
+  the main isolate and the worker isolate:
+  
+  ![A figure showing the previous snippets of code running in the main isolate and in the worker isolate](/guides/language/concurrency/images/isolate-api.png)
+{% endcomment %}
 
-![A figure showing the previous snippets of code running in the main isolate and in the worker isolate](/guides/language/concurrency/images/isolate-api.png)
+#### Sending closures with isolates
 
+You can also create a simple worker isolate with `run()` using a
+function literal, or closure, directly in the main isolate.
+
+<?code-excerpt "lib/simple_isolate_closure.dart (main)"?>
+```dart
+void main() async {
+  // Read some data.
+  final jsonData = await Isolate.run(() async {
+    final fileData = await File(filename).readAsString();
+    final jsonData = jsonDecode(fileData) as Map<String, dynamic>;
+    return jsonData;
+  });
+
+  // Use that data.
+  print('Number of JSON keys: ${jsonData.length}');
+}
+```
+
+This example accomplishes the same as the previous.
+A new isolate spawns, computes something, and sends back the result.
+
+However, now the isolate sends a [closure][].
+Closures are less limited than typical named functions,
+both in how they function and how they're written into the code.
+In this example, `Isolate.run()` executes what looks like local code, concurrently.
+In that sense, you can imagine `run()` to work like a [control flow operator][]
+for “run in parallel”.
+
+[closure]: /guides/language/language-tour#anonymous-functions
+[control flow operator]: /guides/language/language-tour#control-flow-statements
 
 ### Sending multiple messages between isolates
 
-### 在 isolate 之间发送多次消息内容
+### 实现一个简单的 isolate 工作对象
 
-If you need more communication between isolates,
-then you need to use the [`send()` method][] of `SendPort`.
+`Isolate.run()` abstracts a handful of lower-level, 
+isolate-related API to simplify isolate management:
+
+* [`Isolate.spawn()`][] and [`Isolate.exit()`][]
+* [`ReceivePort`][] and [`SendPort`][]
+
+[`Isolate.exit()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
+[`Isolate.spawn()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
+[`ReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html
+[`SendPort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
+
+You can use these primitives directly for more granular
+control over isolate functionality. For example, `run()` shuts
+down its isolate after returning a single message. 
+What if you want to allow multiple messages to pass between isolates?
+You can set up your own isolate much the same way `run()` is implemented,
+just utilizing the [`send()` method][] of `SendPort` in a slightly different way.
+
 One common pattern, which the following figure shows,
 is for the main isolate to send a request message to the worker isolate,
 which then sends one or more reply messages.
@@ -630,10 +607,12 @@ see the following [isolate samples][]:
 * [send_and_receive.dart][],
   which shows how to send a message from
   the main isolate to the spawned isolate.
-  It’s otherwise similar to the preceding example.
+  It’s otherwise similar to the preceding examples,
+  but doesn't use `run()`.
 
-  [send_and_receive.dart][] 展示了如何从主 isolate 发送消息至生成的 isolate。
-  与前面的示例较为接近。
+  [send_and_receive.dart][] 展示了如何从主 isolate
+  发送消息至生成的 isolate，与前面的示例较为接近，
+  不过没有使用 `run()` 方法；
 
 * [long_running_isolate.dart][],
   which shows how to spawn a long-running isolate that
@@ -691,14 +670,34 @@ is slower when isolates are in different groups.
 
 {{site.alert.end}}
 
-{% comment %}
-TODO:
-* After publishing:
-  * Figure out how to save an editable version of the source that has the right fonts. (The SVG files don't like the custom fonts; otherwise, I would've used SVGs instead of PNGs.)
-* Maybe:
-  * Add a new macro & style for flutter notes?
-  * Add the following text somewhere in this page (or in the FAQ):
-    * Sometimes Dart is called a _single-threaded language._
-    * Dart code executes in a predictable sequence that can’t be interrupted by other Dart code.
-  * Add a figure up high in the doc? (if so, what?)
-{% endcomment %}
+## Concurrency on the web
+
+All Dart apps can use `async-await`, `Future`, and `Stream`
+for non-blocking, interleaved computations.
+The [Dart web platform][], however, does not support isolates.
+Dart web apps can use [web workers][] to
+run scripts in background threads
+similar to isolates.
+Web workers' functionality and capabilities
+differ somewhat from isolates, though.
+
+For instance, when web workers send data between threads,
+they copy the data back and forth.
+Data copying can be very slow, though,
+especially for large messages. 
+Isolates do the same, but also provide APIs
+that can more efficiently _transfer_
+the memory that holds the message instead.
+
+Creating web workers and isolates also differs.
+You can only create web workers by declaring
+a separate program entrypoint and compiling it separately.
+Starting a web worker is similar to using `Isolate.spawnUri` to start an isolate.
+You can also start an isolate with `Isolate.spawn`,
+which requires fewer resources because it
+[reuses some of the same code and data](#performance-and-isolate-groups)
+as the spawning isolate. 
+Web workers don't have an equivalent API.
+
+[Dart web platform]: /overview#platform
+[web workers]: https://developer.mozilla.org/docs/Web/API/Web_Workers_API/Using_web_workers

@@ -98,6 +98,22 @@ To download a main channel build, use a
 若你想下载主分支开发版渠道的构建，请使用
 [主分支开发版渠道的链接](#main-channel-url-scheme)。
 
+## Dart 3 alpha
+
+Dart 3 alpha -- the preview of our next major release --
+is currently available in two ways:
+
+* For a standalone Dart SDK, use any **dev channel** Dart SDK
+downloaded after 25 January 2023
+(`dart --version` should report `3.0.0-151.0.dev` or later).
+
+* For the Dart SDK embedded in the Flutter SDK,
+use any [Flutter **master channel** SDK][]
+downloaded after 25 January 2023 
+(`dart --version` should report `3.0.0-151.0.dev` or later).
+
+[Flutter **master channel** SDK]: https://docs.flutter.dev/development/tools/sdk/upgrading#switching-flutter-channels
+
 ## Download URLs
 
 ## 下载链接

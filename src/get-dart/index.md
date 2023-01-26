@@ -134,20 +134,20 @@ The Dart SDK has three release channels:
 Dart SDK 有三个发布渠道：
 
 * **Stable** channel: **stable releases**, updated roughly every three months;
-  currently `[calculating]`{:.editor-build-rev-stable}.
+  currently `[calculating]`{:.build-rev-stable}.
 
   稳定版 (Stable) 渠道：**稳定发行版**，每 **三个月** 更新一次；
-  当前版本 `[calculating]`{:.editor-build-rev-stable}.
+  当前版本 `[calculating]`{:.build-rev-stable}.
   
   Stable releases are suitable for production use.
   
-  稳定版可适用于生产环节。
+  稳定版可适用于生产环境。
   
 * **Beta** channel: **preview releases**, usually updated every month;
-  currently `[calculating]`{:.editor-build-rev-beta}.
+  currently `[calculating]`{:.build-rev-beta}.
 
   测试版 (Beta) 渠道：也称 **发行预览版**，通常 **每月** 更新一次；
-  当前版本 `[calculating]`{:.editor-build-rev-dev}.
+  当前版本 `[calculating]`{:.build-rev-beta}.
   
   Beta channel builds are preview builds for the stable channel. We recommend
   testing, but not releasing, your apps against beta to preview new features or
@@ -158,10 +158,10 @@ Dart SDK 有三个发布渠道：
   预览新功能或测试与未来版本的兼容性。
   
 * **Dev** channel: **prereleases**, usually updated twice a week;
-  currently `[calculating]`{:.editor-build-rev-dev}.
+  currently `[calculating]`{:.build-rev-dev}.
 
   开发版 (Dev) 渠道：也称 **预发行版**，通常每 **双周** 更新一次；
-  当前版本 `[calculating]`{:.editor-build-rev-dev}.
+  当前版本 `[calculating]`{:.build-rev-dev}.
   
   Dev channel releases are the most current with latest changes, may be broken,
   are unsupported, and may contain unvetted breaking changes.

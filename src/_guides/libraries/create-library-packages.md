@@ -84,24 +84,6 @@ lib 目录
   通过导出 lib/src 目录的文件到一个 lib 目录的文件，实现
   对 lib/src 目录中 API 的公开。
 
-
-{{site.alert.note}}
-
-  When the `library` directive isn't specified, a unique
-  tag is generated for each library based on its path and filename.
-  Therefore, we suggest that you omit the `library` directive from
-  your code unless you plan to
-  [generate library-level documentation](#documenting-a-library).
-
-  在未指定 `library` 命令下，每个 Library 会根据它的路径及文件
-  生成一个唯一标记。
-  因此，这里我们建议在你的代码中忽略 `library` 命令，除非想要
-  [生成 Library-Level 文档](#documenting-a-library)。
-
-{{site.alert.end}}
-
-</dl>
-
 ## Organizing a library package
 
 ## 组织 Library Package
@@ -437,16 +419,14 @@ For an example of generated docs, see the
 
 文档生成示例，参见 [shelf 文档]({{site.pub-api}}/shelf/latest)。
 
-{{site.alert.note}}
+To include any *library-level* documentation in the generated docs,
+add a `library` directive and attach the comment directly above it.
+For the how-and-why of documenting libraries, see
+[Effective Dart: Documentation](/guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment).
 
-To include any library-level documentation in the generated docs,
-you must specify the `library` directive.
-See [issue 1082.](https://github.com/dart-lang/dartdoc/issues/1082)
-
-在生成的文档中要包含任何 Library-Level 的文档，必须要指定 `library` 命令。
-参见 [issue 1082](https://github.com/dart-lang/dartdoc/issues/1082)。
-
-{{site.alert.end}}
+若要自动生成任何库级别的文档，请添加一个 `library` 指令并直接在其上方附加注释。
+更多详情，请参阅文档
+[Effective Dart: Documentation](/guides/language/effective-dart/documentation#consider-writing-a-library-level-doc-comment).
 
 ## Distributing an open source library {#distributing-a-library}
 

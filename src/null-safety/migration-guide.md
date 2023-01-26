@@ -122,20 +122,21 @@ so that you can easily undo any changes.
 
 ### Switch to the latest stable Dart release
 
-### 切换至最新的 beta 版本
+### 切换至最新的稳定版本
 
-Switch to the **latest stable release**
-of either the Dart SDK or the Flutter SDK.
+Switch to the **Dart 2.19 stable release**
+of the Dart SDK. This is included in the Flutter 3.7 SDK.
 
-**切换至最新的稳定版本** 的 Dart SDK 或 Flutter SDK。
-你可以根据你的使用情况，参考以下的方式获取 SDK：
+切换到 Dart SDK 的 **Dart 2.19 稳定版**，
+它包含在 Flutter 3.7 SDK 中。
 
-Check that you have Dart 2.12 or later:
+Check that you have Dart 2.19:
 
-查看你的 Dart 版本是否为 2.12 或更高：
+执行下面代码查看是否使用了 Dart 2.19 版本:
 
-  ```terminal
+```terminal
 $ dart --version
+Dart SDK version: 2.19.0
 ```
 
 ### Check dependency status
@@ -506,6 +507,11 @@ For more information about incremental migration, see
 
 更多有关渐进迁移空安全的内容，请阅读 [非健全的空安全][Unsound null safety]。
 
+Note that only fully migrated apps and packages 
+are compatible with Dart 3.
+
+请注意，从 Dart 3 开始，只支持完全迁移到空安全的应用和 package。
+
 [version comment]: /guides/language/evolution#per-library-language-version-selection
 
 
@@ -748,8 +754,14 @@ we strongly recommend following these pubspec rules:
 
 If you made it this far,
 you should have a fully migrated, null-safe Dart package.
+
 If all of the packages you depend on are migrated too,
 then your program is sound with respect to null-reference errors.
+You should see output like this when running or compiling your code:
+
+```terminal
+Compiling with sound null safety
+```
 
 如果你走到了这一步，你应该已经完全将你的 Dart package 迁移至空安全了。
 当你的所有依赖也都完成了迁移，那么你的程序就是健全的，同时可以正确处理空引用的错误。

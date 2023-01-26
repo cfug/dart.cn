@@ -196,12 +196,22 @@ functionality provided within. Consider including:
 
   和库相关领域的外部链接。
 
-You document a library by placing a doc comment right above the `library`
-directive at the start of the file. If the library doesn't have a `library`
-directive, you can add one just to hang the doc comment off of it.
+To document a library, place a doc comment before
+the `library` directive and any annotations that might be attached
+at the start of the file.
 
-你可以通过在文件开头的 `library` 的上方放置 doc 注释来文档注释一个库。
-如果库没有 `library` 指令，您可以添加一个，只是挂起 doc 注释。
+若要给某个库生成文档，你需要在 `library`
+和任何可能会放置在文件开头的注释之前，
+加入文档注释。
+
+{:.good}
+<?code-excerpt "docs_good.dart (library-doc)"?>
+{% prettify dart tag=pre+code %}
+/// A really great test library.
+@TestOn('browser')
+library;
+{% endprettify %}
+
 
 ### CONSIDER writing doc comments for private APIs.
 

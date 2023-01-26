@@ -142,9 +142,9 @@ Our wonderful community has provided these resources:
 
 我们丰富的社区还提供了这些资源。
 
-* [Chinese version of this site (此网站的中文版)](https://dart.cn)
-
-  [Dart 中文文档（本站）](https://dart.cn)
+* [Korean version of this site (한국어)](https://dart-ko.dev/)
+* [Simplified Chinese version of this site (简体中文版)](https://dart.cn)
+* [Traditional Chinese version of this site (正體中文版)](https://dart.tw.gh.miniasp.com/)
 
 Also see the [Flutter community page.]({{site.flutter}}/community)
 

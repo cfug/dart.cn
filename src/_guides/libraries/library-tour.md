@@ -1092,9 +1092,10 @@ local time zone.
 
 DateTime 对象代表某个时刻，时区可以是 UTC 或者 本地时区。
 
-You can create DateTime objects using several constructors:
 
-DateTime 对象可以通过若干构造函数创建：
+You can create DateTime objects using several constructors and methods:
+
+DateTime 对象可以通过若干构造函数和方法创建：
 
 <?code-excerpt "misc/test/library_tour/core_test.dart (DateTime)"?>
 ```dart
@@ -1113,10 +1114,15 @@ y2k = DateTime.utc(2000); // 1/1/2000, UTC
 // Specify a date and time in ms since the Unix epoch.
 y2k = DateTime.fromMillisecondsSinceEpoch(946684800000, isUtc: true);
 
-// Parse an ISO 8601 date.
+// Parse an ISO 8601 date in the UTC time zone.
 y2k = DateTime.parse('2000-01-01T00:00:00Z');
-```
 
+// Create a new DateTime from an existing one, adjusting just some properties:
+var sameTimeLastYear = now.copyWith(year: now.year - 1);
+```
+{{site.alert.warning}}
+  `DateTime` operations might give unexpected results related to Daylight Savings Time and other non-standard time adjustments.  
+{{site.alert.end}}
 The `millisecondsSinceEpoch` property of a date returns the number of
 milliseconds since the “Unix epoch”—January 1, 1970, UTC:
 
@@ -1277,7 +1283,7 @@ class Person {
   // You should generally implement operator `==` if you
   // override `hashCode`.
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return other is Person &&
         other.firstName == firstName &&
         other.lastName == lastName;

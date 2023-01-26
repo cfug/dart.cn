@@ -148,7 +148,7 @@ To create a web app from the command line, use these commands:
 通过在命令行输入以下命令，创建一个 web 应用：
 
 ```terminal
-$ dart create -t web-simple quickstart
+$ dart create -t web quickstart
 ```
 
 <i class="material-icons">web</i>

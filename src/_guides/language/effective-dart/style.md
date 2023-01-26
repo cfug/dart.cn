@@ -135,13 +135,13 @@ extension SmartIterable<T> on Iterable<T> { ... }
 
 [extensions]: /guides/language/extension-methods
 
-### DO name libraries, packages, directories, and source files using `lowercase_with_underscores`. {#do-name-libraries-and-source-files-using-lowercase_with_underscores}
+<a id="do-name-libraries-and-source-files-using-lowercase_with_underscores"></a>
+### DO name packages, directories, and source files using `lowercase_with_underscores`. {#do-name-packages-and-file-system-entities-using-lowercase-with-underscores}
 
-### **要** 在`库`，`package`，`文件夹`，`源文件` 中使用 `lowercase_with_underscores` 方式命名。 {#do-name-libraries-and-source-files-using-lowercase_with_underscores}
+### **要** 在`库`，`package`，`文件夹`，`源文件` 中使用 `lowercase_with_underscores` 方式命名。 {#do-name-packages-and-file-system-entities-using-lowercase-with-underscores}
 
-{% include linter-rule-mention.md rule1="library_names" rule2="file_names" %}
+{% include linter-rule-mention.md rule1="file_names" rule2="package_names" %}
 <!-- source for rules (update these if you update the guideline):
-https://github.com/dart-lang/linter/blob/master/lib/src/rules/library_names.dart
 https://github.com/dart-lang/linter/blob/master/lib/src/rules/file_names.dart -->
 
 Some file systems are not case-sensitive, so many projects require filenames to
@@ -155,27 +155,20 @@ symbolic imports.
 如果语言后续支持符号导入，这将会起到非常大的帮助。
 
 {:.good}
-<?code-excerpt "style_lib_good.dart" replace="/foo\///g"?>
-{% prettify dart tag=pre+code %}
-library peg_parser.source_scanner;
-
-import 'file_system.dart';
-import 'slider_menu.dart';
-{% endprettify %}
+```text
+my_package
+└─ lib
+   └─ file_system.dart
+   └─ slider_menu.dart
+```
 
 {:.bad}
-<?code-excerpt "style_lib_good.dart" replace="/foo\///g;/file./file-/g;/slider_menu/SliderMenu/g;/source_scanner/SourceScanner/g;/peg_parser/pegparser/g"?>
-{% prettify dart tag=pre+code %}
-library pegparser.SourceScanner;
-
-import 'file-system.dart';
-import 'SliderMenu.dart';
-{% endprettify %}
-
-{{site.alert.note}}
-
-  This guideline specifies *how* to name a library *if you choose to name it*. 
-  It is fine to _omit_ the library directive in a file if you want.
+```text
+mypackage
+└─ lib
+   └─ file-system.dart
+   └─ SliderMenu.dart
+```
 
   如果你 **选择命名库**，本准则给定了 **如何** 为库取名。
   如果需要，可以在文件中 **省略** 库指令。
@@ -422,6 +415,31 @@ defaultTimeout
 kDefaultTimeout
 {% endprettify %}
 
+### DON'T explicitly name libraries
+
+Appending a name to the `library` directive is technically possible,
+but is a legacy feature and discouraged. 
+
+Dart generates a unique tag for each library
+based on its path and filename.
+Naming libraries overrides this generated URI.
+Without the URI, it can be harder for tools to find
+the main library file in question. 
+
+{:.bad}
+<?code-excerpt "usage_bad.dart (library-dir)"?>
+{% prettify dart tag=pre+code %}
+
+library my_library;
+{% endprettify %}
+
+{:.good}
+<?code-excerpt "docs_good.dart (library-doc)"?>
+{% prettify dart tag=pre+code %}
+/// A really great test library.
+@TestOn('browser')
+library;
+{% endprettify %}
 
 ## Ordering
 
@@ -437,7 +455,7 @@ A single linter rule handles all the ordering guidelines:
 [directives_ordering.](/tools/linter-rules#directives_ordering)
 
 
-### DO place "dart:" imports before other imports.
+### DO place `dart:` imports before other imports.
 
 ### **要** 把 "dart:" 导入语句放到其他导入语句之前。
 
@@ -454,7 +472,7 @@ import 'package:foo/foo.dart';
 {% endprettify %}
 
 
-### DO place "package:" imports before relative imports.
+### DO place `package:` imports before relative imports.
 
 ### **要** 把 "package:" 导入语句放到项目相关导入语句之前。
 
