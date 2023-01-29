@@ -3,7 +3,7 @@
     To re-generate it, please run the following command from root of
     the project:
 
-      $ dart run deploy/effective-dart-rules/bin/main.dart
+      $ dart run tool/effective_dart_rules/bin/main.dart
 
     {% endcomment %}
     
@@ -16,7 +16,7 @@
 
 * <a href='/guides/language/effective-dart/style#do-name-types-using-uppercamelcase'>DO name types using <code>UpperCamelCase</code>.</a>
 * <a href='/guides/language/effective-dart/style#do-name-extensions-using-uppercamelcase'>DO name extensions using <code>UpperCamelCase</code>.</a>
-* <a href='/guides/language/effective-dart/style#do-name-libraries-and-source-files-using-lowercase_with_underscores'>DO name libraries, packages, directories, and source files using <code>lowercase_with_underscores</code>.</a>
+* <a href='/guides/language/effective-dart/style#do-name-packages-and-file-system-entities-using-lowercase-with-underscores'>DO name packages, directories, and source files using <code>lowercase_with_underscores</code>.</a>
 * <a href='/guides/language/effective-dart/style#do-name-import-prefixes-using-lowercase_with_underscores'>DO name import prefixes using <code>lowercase_with_underscores</code>.</a>
 * <a href='/guides/language/effective-dart/style#do-name-other-identifiers-using-lowercamelcase'>DO name other identifiers using <code>lowerCamelCase</code>.</a>
 * <a href='/guides/language/effective-dart/style#prefer-using-lowercamelcase-for-constant-names'>PREFER using <code>lowerCamelCase</code> for constant names.</a>
@@ -24,11 +24,12 @@
 * <a href='/guides/language/effective-dart/style#prefer-using-_-__-etc-for-unused-callback-parameters'>PREFER using <code>_</code>, <code>__</code>, etc. for unused callback parameters.</a>
 * <a href='/guides/language/effective-dart/style#dont-use-a-leading-underscore-for-identifiers-that-arent-private'>DON'T use a leading underscore for identifiers that aren't private.</a>
 * <a href='/guides/language/effective-dart/style#dont-use-prefix-letters'>DON'T use prefix letters.</a>
+* <a href='/guides/language/effective-dart/style#dont-explicitly-name-libraries'>DON'T explicitly name libraries</a>
 
 **Ordering**
 
-* <a href='/guides/language/effective-dart/style#do-place-dart-imports-before-other-imports'>DO place "dart:" imports before other imports.</a>
-* <a href='/guides/language/effective-dart/style#do-place-package-imports-before-relative-imports'>DO place "package:" imports before relative imports.</a>
+* <a href='/guides/language/effective-dart/style#do-place-dart-imports-before-other-imports'>DO place <code>dart:</code> imports before other imports.</a>
+* <a href='/guides/language/effective-dart/style#do-place-package-imports-before-relative-imports'>DO place <code>package:</code> imports before relative imports.</a>
 * <a href='/guides/language/effective-dart/style#do-specify-exports-in-a-separate-section-after-all-imports'>DO specify exports in a separate section after all imports.</a>
 * <a href='/guides/language/effective-dart/style#do-sort-sections-alphabetically'>DO sort sections alphabetically.</a>
 
@@ -101,7 +102,7 @@
 
 * <a href='/guides/language/effective-dart/usage#dont-explicitly-initialize-variables-to-null'>DON'T explicitly initialize variables to <code>null</code>.</a>
 * <a href='/guides/language/effective-dart/usage#dont-use-an-explicit-default-value-of-null'>DON'T use an explicit default value of <code>null</code>.</a>
-* <a href='/guides/language/effective-dart/usage#prefer-using--to-convert-null-to-a-boolean-value'>PREFER using <code>??</code> to convert <code>null</code> to a boolean value.</a>
+* <a href='/guides/language/effective-dart/usage#dont-use-true-or-false-in-equality-operations'>DON'T use <code>true</code> or <code>false</code> in equality operations</a>
 * <a href='/guides/language/effective-dart/usage#avoid-late-variables-if-you-need-to-check-whether-they-are-initialized'>AVOID <code>late</code> variables if you need to check whether they are initialized.</a>
 * <a href='/guides/language/effective-dart/usage#consider-assigning-a-nullable-field-to-a-local-variable-to-enable-type-promotion'>CONSIDER assigning a nullable field to a local variable to enable type promotion.</a>
 

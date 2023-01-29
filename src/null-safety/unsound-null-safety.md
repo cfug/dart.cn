@@ -5,15 +5,26 @@ description: Mixing language versions lets you migrate to null safety at your ow
 description: 非健全的空安全让你可以以自己的步调迁移到空安全，同时可以享受一些空安全的好处。
 ---
 
-A Dart program can contain some libraries that
+A Dart program may contain some libraries that
 are [null safe][] and some that aren't.
 These **mixed-version programs**
-execute with **unsound null safety**.
+rely on **unsound null safety**.
+
+{{site.alert.warn}}
+Dart 3---planned for a mid-2023 release---requires sound null safety. 
+It will prevent code from running without
+null safety, or with unsound null safety.
+All existing code must be [migrated][] to sound null safety
+to be compatible with Dart 3.
+To learn more, see the [Dart 3 sound null safety tracking issue][].
+{{site.alert.end}}
 
 一个 Dart 程序可以同时包含已经是 [空安全][null safe] 和未迁移至空安全的库。
 这些 **混合模式的程序** 会运行在 **非健全的空安全** 下。
 
 [null safe]: /null-safety
+[migrated]: /null-safety#migrate
+[Dart 3 sound null safety tracking issue]: https://github.com/dart-lang/sdk/issues/49530
 
 The ability to mix [language versions][]
 frees package maintainers to migrate their code,

@@ -50,6 +50,8 @@
       children:
         - title: 从 JavaScript 到 Dart
           permalink: /guides/language/coming-from/js-to-dart
+        - title: 从 Swift 到 Dart
+          permalink: /guides/language/coming-from/swift-to-dart
     - title: Extension 方法
       permalink: /guides/language/extension-methods
     - title: 并发
@@ -163,6 +165,8 @@
           permalink: /tutorials/server/get-started
         - title: 命令行应用
           permalink: /tutorials/server/cmdline
+        - title: 从网络上获取数据
+          permalink: /tutorials/server/fetch-data
         - title: 编写 HTTP 服务端应用
           permalink: /tutorials/server/httpserver
         - title: 库和 package
@@ -177,8 +181,6 @@
           permalink: /web
         - title: 开始使用
           permalink: /tutorials/web/get-started
-        - title: 动态获取数据
-          permalink: /tutorials/web/fetch-data
         - title: 底层 Web 编程
           children:
           - title: Dart 与 HTML 关联

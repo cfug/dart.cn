@@ -52,7 +52,7 @@ produces the following warning:
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="empty_statements" replace="/lib\/lint.dart/example.dart/g"?>
 ```nocode
-info - example.dart:9:19 - Avoid empty statements. - empty_statements
+info - example.dart:9:19 - Unnecessary empty statement. Try removing the empty statement or restructuring the code. - empty_statements
 ```
 </blockquote>
 
@@ -138,19 +138,6 @@ at the root of the package, in the same directory as the pubspec file.
 
 将分析配置文件 `analysis_options.yaml` 放在包的根目录，
 即和 pubspec 文件同样的目录下。
-
-{{site.alert.tip}}
-
-  The older name for the analysis options file was `.analysis_options`;
-  support for that filename was dropped in Dart 2.8.
-  To upgrade an `.analysis_options` file,
-  just change its name to `analysis_options.yaml`.
-
-  分析配置文件的旧名称是 `.analysis_options`，
-  自 Dart 2.8 起已经停止了对该文件名的支持。
-  只需将文件名改为 `analysis_options.yaml`，便可从旧文件升级。
-
-{{site.alert.end}}
 
 Here's a sample analysis options file:
 
