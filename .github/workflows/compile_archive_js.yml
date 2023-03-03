@@ -1,0 +1,36 @@
+name: Compile Archive JS
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "download_archive.dart.js"
+
+permissions: write
+
+jobs:
+  compile_archive_js:
+    if: ${{ github.actor.login != "cfug-dev" &&
+            github.repository == 'cfug/dart.cn' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+        with:
+          submodules: recursive
+          token: ${{ secrets.CFUG_DEV_TOKEN }}
+      - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
+      - name: Build Dart archives downloading JS
+        run: >
+          bash tool/get-dart/archive/compile.sh
+          git add src/get-dart/archive/assets/download_archive.dart.js
+      - name: Commit files
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "[sync] Update download_archive.dart.js"
+      - name: Run if changes have been detected
+        if: steps.auto-commit-action.outputs.changes_detected == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.CFUG_DEV_TOKEN }}
+          branch: ${{ github.head_ref }}

@@ -44,8 +44,8 @@ jobs:
     permissions:
       checks: write
       pull-requests: write
-    if: ${{ github.event_name == 'push' && 
-            github.ref == 'refs/heads/master' && 
+    if: ${{ github.event_name == 'push' &&
+            github.ref == 'refs/heads/master' &&
             github.repository == 'cfug/dart.cn' }}
     needs: test
     runs-on: ubuntu-latest
