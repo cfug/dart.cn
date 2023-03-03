@@ -14,7 +14,7 @@ We pledge to maintain an open and welcoming environment.
 To learn more about our community standards, check out
 our [code of conduct](/community/code-of-conduct).
 
-我们承诺为你营造一个开放和热情的环境。详情请参考我们的 [行为准则](/code-of-conduct)。
+我们承诺为你营造一个开放和热情的环境。详情请参考我们的 [行为准则](/community/code-of-conduct)。
 
 ## Stay informed
 

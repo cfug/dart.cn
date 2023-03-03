@@ -101,10 +101,9 @@ use the analyzer package to evaluate your code.
 你同样能通过配置 linter ——分析器的一个插件，
 来确保你的代码遵循 [Dart 代码风格指南](/guides/language/effective-dart/style)
 和 [高效 Dart][Effective Dart] 中其他建议的准则。
-诸如 [Dart 编译器 (`dart compile`)](/tools/dart-compile)，
-[`dart analyze`](/tools/dart-analyze),
+诸如 [`dart analyze`](/tools/dart-analyze),
 [`flutter analyze`]({{site.flutter-docs}}/testing/debugging#the-dart-analyzer),
-和 [JetBrains IDEs](/tools/jetbrains-plugin)
+以及 [IDE 和编辑器](/tools#ides-and-editors)
 等 Dart 工具都会使用 analyzer package 来评估你的代码。
 
 This document explains how to customize the behavior of the analyzer
