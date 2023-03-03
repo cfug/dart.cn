@@ -7,11 +7,12 @@ on:
     paths:
       - "**/download_archive.dart.js"
 
-permissions: write
+permissions:
+  contents: write
 
 jobs:
   compile_archive_js:
-    if: ${{ github.actor.login != "cfug-dev" &&
+    if: ${{ github.actor.login != 'cfug-dev' &&
             github.repository == 'cfug/dart.cn' }}
     runs-on: ubuntu-latest
     steps:
@@ -28,9 +29,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "[sync] Update download_archive.dart.js"
-      - name: Run if changes have been detected
-        if: steps.auto-commit-action.outputs.changes_detected == 'true'
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.CFUG_DEV_TOKEN }}
-          branch: ${{ github.head_ref }}
+          commit_author: "CFUG Dev Team <47591151+cfug-dev@users.noreply.github.com>"
+          commit_user_name: "cfug-dev"
+          commit_user_email: "47591151+cfug-dev@users.noreply.github.com"

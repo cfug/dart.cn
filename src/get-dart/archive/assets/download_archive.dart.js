@@ -7176,7 +7176,7 @@ n=l.querySelectorAll(o!=="all"?s+('[data-os="'+A.Ej(o)+'"]'):s)
 n.toString
 A.TT(new A.wz(n,k)).Rz(0,q)}},
 PS(b7){var s,r,q,p,o,n,m,l,k,j,i,h,g,f,e,d,c,b,a,a0,a1,a2,a3,a4,a5,a6,a7,a8,a9,b0,b1,b2,b3,b4,b5="data-version",b6="href"
-for(s=B.lj.gvc(),s=s.gkz(s),r=this.a,q="https://storage.flutter-io.cn/dart-archive/channels/"+r+"/release/",p=b7.a,o=t.l,n=p.f,m=b7.e,l=t.V,k=this.c,j=t.fD,i=b7.c,h=B.nv.a,r=r==="dev",g=b7.b.a;s.G();){f=s.gl()
+for(s=B.lj.gvc(),s=s.gkz(s),r=this.a,q="https://storage.googleapis.com/dart-archive/channels/"+r+"/release/",p=b7.a,o=t.l,n=p.f,m=b7.e,l=t.V,k=this.c,j=t.fD,i=b7.c,h=B.nv.a,r=r==="dev",g=b7.b.a;s.G();){f=s.gl()
 e=B.lj.q(0,f)
 if(e==null)e=B.iH
 for(d=e.length,c=f==="Windows",b=f==="macOS",a=0;a<d;++a){a0=e[a]
