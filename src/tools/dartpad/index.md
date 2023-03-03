@@ -206,7 +206,7 @@ For technical details on embedding DartPads, see the
 有关嵌入式 DartPads 的具体技术细节，参见 [DartPad 嵌入指南。][DartPad embedding guide.]
 
 [DartPad]: {{site.dartpad}}
-[best practices for using DartPad in tutorials]: /resources/dartpad-best-practices
+[best practices for using DartPad in tutorials]: /tools/dartpad/dartpad-best-practices
 [DartPad embedding guide.]: https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide
 [deferred loading]: /guides/language/language-tour#lazily-loading-a-library
 [futures codelab]: /codelabs/async-await

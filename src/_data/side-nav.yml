@@ -30,34 +30,10 @@
       permalink: /guides/language/language-tour
     - title: 类型系统
       permalink: /guides/language/type-system
-    - title: 高效指南 (Effective Dart)
-      expanded: false
-      children:
-        - title: 概述
-          urlExactMatch: true
-          match-page-url-exactly: true
-          permalink: /guides/language/effective-dart
-        - title: 代码风格
-          permalink: /guides/language/effective-dart/style
-        - title: 文档
-          permalink: /guides/language/effective-dart/documentation
-        - title: 用法示例
-          permalink: /guides/language/effective-dart/usage
-        - title: API 设计
-          permalink: /guides/language/effective-dart/design
-    - title: 从其他平台转向 Dart
-      expanded: false
-      children:
-        - title: 从 JavaScript 到 Dart
-          permalink: /guides/language/coming-from/js-to-dart
-        - title: 从 Swift 到 Dart
-          permalink: /guides/language/coming-from/swift-to-dart
-    - title: Extension 方法
+    - title: 扩展 (Extension) 方法
       permalink: /guides/language/extension-methods
     - title: 并发
       permalink: /guides/language/concurrency
-    - title: 数字
-      permalink: /guides/language/numbers
     - title: 空安全
       expanded: false
       children:
@@ -82,10 +58,26 @@
           match-page-url-exactly: true
           permalink: /null-safety/faq
 
-    - title: 版本演变
+    - title: Evolution
       permalink: /guides/language/evolution
-    - title: 规范
+    - title: Specification
       permalink: /guides/language/spec
+
+- title: 高效指南 (Effective Dart)
+  expanded: false
+  children:
+  - title: 概述
+    urlExactMatch: true
+    match-page-url-exactly: true
+    permalink: /guides/language/effective-dart
+  - title: 代码风格
+    permalink: /guides/language/effective-dart/style
+  - title: 文档
+    permalink: /guides/language/effective-dart/documentation
+  - title: 用法示例
+    permalink: /guides/language/effective-dart/usage
+  - title: API 设计
+    permalink: /guides/language/effective-dart/design
 
 - title: 核心库
   expanded: false
@@ -143,12 +135,16 @@
       permalink: /tutorials/language/streams
     - title: 使用 JSON
       permalink: /guides/json
-    - title: 与其他相互调用
+    - title: Dart 中的数字
+      permalink: /guides/language/numbers
+    - title: 与其他语言进行交互调用
       children:
         - title: 与 C 互调
           permalink: /guides/libraries/c-interop
         - title: 与 Objective-C 和 Swift 互调
           permalink: /guides/libraries/objective-c-interop
+        - title: 与 Java 和 Kotlin 互调
+          permalink: /guides/libraries/java-interop
         - title: 与 JavaScript 互调
           permalink: /web/js-interop
     - title: Google APIs
@@ -193,6 +189,8 @@
           permalink: /web/deployment
         - title: 常用 Web 库和 package
           permalink: /web/libraries
+    - title: 环境变量声明
+      permalink: /guides/environment-declarations
 
 - title: 开发工具和使用技巧
   expanded: false
@@ -210,7 +208,15 @@
       - title: Dart 开发者工具
         permalink: /tools/dart-devtools
       - title: 在线运行 Dart 代码
-        permalink: /tools/dartpad
+        children:
+          - title: Overview
+            urlExactMatch: true
+            match-page-url-exactly: true
+            permalink: /tools/dartpad
+          - title: DartPad 教程
+            permalink: /tools/dartpad/dartpad-best-practices
+          - title: DartPad 疑难解答
+            permalink: /tools/dartpad/troubleshoot
   - title: 命令行工具
     children:
     - title: Dart SDK
@@ -233,6 +239,8 @@
           permalink: /tools/dart-fix
         - title: dart format 命令
           permalink: /tools/dart-format
+        - title: dart info 命令
+          permalink: /tools/dart-info
         - title: dart pub 命令
           permalink: /tools/pub/cmd
         - title: dart run 命令
@@ -276,24 +284,21 @@
 - title: 资源
   expanded: false
   children:
-    - title: 概览
-      urlExactMatch: true
-      match-page-url-exactly: true
-      permalink: /resources
-    - title: 书籍
-      permalink: /resources/books
-    - title: 教程中的 DartPad&#58; 最佳实践
-      permalink: /resources/dartpad-best-practices
-    - title: 行为准则
-      permalink: /code-of-conduct
     - title: 常见问题
       permalink: /faq
-    - title: 历史文档
+    - title: 版本演变
+      permalink: /guides/language/evolution
+    - title: 语言规范
+      permalink: /guides/language/spec
+    - title: 从其他平台转向 Dart
+      expanded: false
       children:
-        - title: 迁移到 Dart&nbsp;2
-          urlExactMatch: true
-          match-page-url-exactly: true
-          permalink: /dart-2
+        - title: 从 JavaScript 到 Dart
+          permalink: /guides/language/coming-from/js-to-dart
+        - title: 从 Swift 到 Dart
+          permalink: /guides/language/coming-from/swift-to-dart
+    - title: 书籍资源
+      permalink: /resources/books
     - title: 视频资源
       permalink: /resources/videos
 

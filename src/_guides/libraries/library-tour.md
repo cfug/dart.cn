@@ -1516,13 +1516,13 @@ dart:async 库可以工作在 web 应用及 command-line 应用。
 import 'dart:async';
 ```
 
-{{site.alert.version-note}}
+{{site.alert.tip}}
 
-  As of Dart 2.1, you don't need to import dart:async to use the Future and
+  You don't need to import dart:async to use the Future and
   Stream APIs, because dart:core exports those classes.
 
-  从 Dart 2.1 开始，使用 Future 和 Stream 不需要导入 dart:async ，
-  因为 dart:core 库 export 了这些类。
+  使用 Future 和 Stream 不需要导入 dart:async ，
+  因为 dart:core 已经导出了这些类。
 
 {{site.alert.end}}
 

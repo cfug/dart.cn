@@ -11,7 +11,8 @@ Track the Dart project, get help, and talk with other Dart developers.
 请持续关注 Dart 项目的进展，你可以在 Dart 社区获取到帮助以及与其他 Dart 开发者交流。
 
 We pledge to maintain an open and welcoming environment.
-For details, see our [code of conduct](/code-of-conduct).
+To learn more about our community standards, check out
+our [code of conduct](/community/code-of-conduct).
 
 我们承诺为你营造一个开放和热情的环境。详情请参考我们的 [行为准则](/code-of-conduct)。
 
