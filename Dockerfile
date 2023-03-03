@@ -106,7 +106,7 @@ RUN BUNDLE_WITHOUT="test production" bundle install --jobs=4 --retry=2
 
 ENV NODE_ENV=development
 COPY package.json package-lock.json ./
-RUN npm install -g firebase-tools@11.23.1
+
 RUN npm install
 
 COPY ./ ./
@@ -165,10 +165,4 @@ RUN tool/translator/build.sh
 
 # ============== DEPLOY to FIREBASE ==============
 FROM build as deploy
-RUN npm install -g firebase-tools@11.23.1
-ARG FIREBASE_TOKEN
-ENV FIREBASE_TOKEN=$FIREBASE_TOKEN
-ARG FIREBASE_PROJECT=default
-ENV FIREBASE_PROJECT=$FIREBASE_PROJECT
-RUN [[ -z "$FIREBASE_TOKEN" ]] && echo "FIREBASE_TOKEN is required for container deploy!"
 RUN make deploy-ci
