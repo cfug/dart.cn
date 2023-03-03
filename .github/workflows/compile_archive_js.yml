@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - "download_archive.dart.js"
+      - "**/download_archive.dart.js"
 
 permissions: write
 
