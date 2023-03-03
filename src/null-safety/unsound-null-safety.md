@@ -197,7 +197,7 @@ If you want to incrementally migrate a package by hand, follow these steps:
 手动对 package 进行迁移时，请参考以下步骤：
 
 1. Edit the package's `pubspec.yaml` file,
-   setting the minimum SDK constraint to `2.12.0`:
+   setting the minimum SDK constraint to at least `2.12.0`:
 
    编辑 package 的 `pubspec.yaml` 文件，
    将最低 SDK 版本设置到 `2.12.0`：

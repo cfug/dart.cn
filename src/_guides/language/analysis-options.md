@@ -87,15 +87,13 @@ to perform static analysis.
 You can customize static analysis to look for a variety of potential
 problems, including errors and warnings specified in the
 [Dart language spec](/guides/language/spec).
-You can also configure the linter, one of the analyzer's plugins,
+You can also configure linter rules,
 to ensure that your code complies with the
 [Dart Style Guide](/guides/language/effective-dart/style)
-and other suggested guidelines in
-[Effective Dart][]. Dart tools such as the
-[Dart compiler (`dart compile`)](/tools/dart-compile),
-[`dart analyze`](/tools/dart-analyze),
+and other suggested guidelines in [Effective Dart][]. 
+Tools such as [`dart analyze`](/tools/dart-analyze),
 [`flutter analyze`]({{site.flutter-docs}}/testing/debugging#the-dart-analyzer),
-and [JetBrains IDEs](/tools/jetbrains-plugin)
+and [IDEs and editors](/tools#ides-and-editors)
 use the analyzer package to evaluate your code.
 
 你可以自定义静态分析以寻找各种潜在的问题，
@@ -103,10 +101,9 @@ use the analyzer package to evaluate your code.
 你同样能通过配置 linter ——分析器的一个插件，
 来确保你的代码遵循 [Dart 代码风格指南](/guides/language/effective-dart/style)
 和 [高效 Dart][Effective Dart] 中其他建议的准则。
-诸如 [Dart 编译器 (`dart compile`)](/tools/dart-compile)，
-[`dart analyze`](/tools/dart-analyze),
+诸如 [`dart analyze`](/tools/dart-analyze),
 [`flutter analyze`]({{site.flutter-docs}}/testing/debugging#the-dart-analyzer),
-和 [JetBrains IDEs](/tools/jetbrains-plugin)
+以及 [IDE 和编辑器](/tools#ides-and-editors)
 等 Dart 工具都会使用 analyzer package 来评估你的代码。
 
 This document explains how to customize the behavior of the analyzer

@@ -6,8 +6,6 @@ description: You have questions about Dart, we have answers.
 description: Dart 常见问题和解答。
 ---
 
-_Updated June 2019_
-
 This page collects some of the top questions we've heard from the community
 since Dart was open sourced.
 

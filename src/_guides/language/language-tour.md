@@ -207,7 +207,7 @@ mind:
 
     如果你开启了 [空安全][ns]，变量在未声明为可空类型时不能为 `null`。
     你可以通过在类型后加上问号 (`?`) 将类型声明为可空。
-    例如，`int?` 类型的变量可以是整形数字或 `null`。
+    例如，`int?` 类型的变量可以是整型数字或 `null`。
     如果你 **明确知道** 一个表达式不会为空，但 Dart 不这么认为时，
     你可以在表达式后添加 `!` 来断言表达式不为空（为空时将抛出异常）。
     例如：`int x = nullableButNotNullInt!`
@@ -1184,7 +1184,7 @@ Instead, explicitly check for values, like this:
 
 Dart 的类型安全不允许你使用类似 <code>if (<em>nonbooleanValue</em>)</code>
 或者 <code>assert (<em>nonbooleanValue</em>)</code> 这样的代码检查布尔值。
-相反，你应该总是显示地检查布尔值，比如像下面的代码这样：
+相反，你应该总是显式地检查布尔值，比如像下面的代码这样：
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (no-truthy)"?>
 ```dart
@@ -1197,7 +1197,7 @@ var hitPoints = 0;
 assert(hitPoints <= 0);
 
 // Check for null.
-var unicorn;
+var unicorn = null;
 assert(unicorn == null);
 
 // Check for NaN.
@@ -2363,7 +2363,7 @@ void main() {
 All functions return a value. If no return value is specified, the
 statement `return null;` is implicitly appended to the function body.
 
-所有的函数都有返回值。没有显示返回语句的函数最后一行默认为执行 `return null;`。
+所有的函数都有返回值。没有显式返回语句的函数最后一行默认为执行 `return null;`。
 
 <?code-excerpt "misc/test/language_tour/functions_test.dart (implicit-return-null)"?>
 ```dart
@@ -3891,6 +3891,14 @@ see [Getters and setters](#getters-and-setters).
 非终值的实例变量和 `late final` 声明但未声明初始化的实例变量还会隐式地声明一个 *Setter* 方法。
 你可以查阅 [Getter 和 Setter](#getters-and-setters) 获取更多相关信息。
 
+If you initialize a non-`late` instance variable where it's declared,
+the value is set when the instance is created,
+which is before the constructor and its initializer list execute.
+As a result, non-`late` instance variable initializers can't access `this`.
+
+如果你在实例中声明了没有 `late` 修饰的变量，它会在实例初始化时早于构造方法进行赋值。
+因此，没有使用 `late`修饰的变量无法访问到 `this`。
+
 <?code-excerpt "misc/lib/language_tour/classes/point_with_main.dart (class+main)" replace="/(double .*?;).*/$1/g" plaster="none"?>
 ```dart
 class Point {
@@ -4736,7 +4744,7 @@ void main() {
 Here’s an example of specifying that a class implements multiple
 interfaces:
 
-如果需要实现多个类接口，可以使用逗号分割每个接口类：
+如果需要实现多个类接口，可以使用逗号分隔每个接口类：
 
 <?code-excerpt "misc/lib/language_tour/classes/misc.dart (point_interfaces)"?>
 ```dart
@@ -5310,7 +5318,7 @@ Static variables aren’t initialized until they’re used.
   recommendation](/guides/language/effective-dart/style#identifiers)
   of preferring `lowerCamelCase` for constant names.
 
-  本文代码准守
+  本文代码遵循
   [风格推荐指南](/guides/language/effective-dart/style#identifiers)
   中的命名规则，使用 `驼峰式大小写` 来命名常量。
 

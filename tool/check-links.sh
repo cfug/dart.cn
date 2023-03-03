@@ -14,20 +14,10 @@ clean_up() {
   echo -e "$(blue "Done!")\n"
 }
 
-echo -e "$(blue "Starting Firebase emulator async...")"
-npx firebase emulators:start \
-  --only hosting \
-  --project default > /dev/null 2>&1 &
-emulator_status=$?
+echo -e "$(blue "Starting emulator async...")"
+python3 -m http.server --directory=_site $EMULATOR_PORT > /dev/null &
 
-sleep 3
-
-if [[ -z "$emulator_status" ]]; then
-  echo -e "$(red "Emulator did not start...")"
-  exit 1
-else 
-  echo -e "$(blue "Emulator is running")"
-fi
+sleep 5 # wait a few just in case
 
 SKIP_FILE="$TOOL_DIR/config/linkcheck-skip-list.txt"
 dart run linkcheck :$EMULATOR_PORT --skip-file $SKIP_FILE

@@ -1,4 +1,4 @@
-FROM ruby:3.2-slim-bullseye@sha256:931af3418a0d1cca687691e183554960d5ee0e95ea3dd4f92b3a820c383c5320 as base
+FROM ruby:3.2-slim-bullseye@sha256:cae4a499f8ca1d9084dfa7ccfbaa35f3e2d0088368132c0acdf2cff556cc99d4 as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Pacific
@@ -33,22 +33,22 @@ ENV PATH=$DART_SDK/bin:$PATH
 RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       amd64_stable) \
-        DART_SHA256="aa2abe166d898b1bc1f67f87836d52087ec29c19e6f8940b4c370f969899d44a"; \
+        DART_SHA256="93b5db66868b0a0fd7f3615f2ae279985430de57f5e925e498d35b7d79ab0747"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="71f312f7448d42386b23361b82380cba2b0f0d60406190d25714b9d21e6f7208"; \
+        DART_SHA256="af6e4aa9a146aab0844bca502c3bb3ebad33895d78f48743ff3513a7ef3dd163"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
-        DART_SHA256="5d53a4966ca90b115ee967b198e780c37716fbde9a9a692ad54d1620213caaed"; \
+        DART_SHA256="da65d6733d9cca10f04cf981c97f3af7835e51afda84dce73f2e6fea8848c21b"; \
         SDK_ARCH="x64";; \
       arm64_beta) \
-        DART_SHA256="4e66f4a4609412eb057c42334e976f1d83a579771fceef3c42ac906ca268816c"; \
+        DART_SHA256="b0cd5dacc35e56ca569125a0cdab4539580465a4c0f820311c3f7e22e6f817b4"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="e04321b5aa415b36a346d7948c2495f8072288c32f021ded7f4f55d22a509c21"; \
+        DART_SHA256="f2ed05b9c72172fa1c562f054fb1f4dd3fd1dfce7e0b4d92879c62656bfb96ee"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="f01c5c9e3975de6f1ababdc2f63bb057ec0899e56785e83ec44c458c5e7d9253"; \
+        DART_SHA256="b8fbdbdf2a1de3a3ee5eb608b930d200c45d623d0ea2f0431477a0ec0f1bc501"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
@@ -106,7 +106,7 @@ RUN BUNDLE_WITHOUT="test production" bundle install --jobs=4 --retry=2
 
 ENV NODE_ENV=development
 COPY package.json package-lock.json ./
-RUN npm install -g firebase-tools@11.19.0
+
 RUN npm install
 
 COPY ./ ./
@@ -165,10 +165,4 @@ RUN tool/translator/build.sh
 
 # ============== DEPLOY to FIREBASE ==============
 FROM build as deploy
-RUN npm install -g firebase-tools@11.19.0
-ARG FIREBASE_TOKEN
-ENV FIREBASE_TOKEN=$FIREBASE_TOKEN
-ARG FIREBASE_PROJECT=default
-ENV FIREBASE_PROJECT=$FIREBASE_PROJECT
-RUN [[ -z "$FIREBASE_TOKEN" ]] && echo "FIREBASE_TOKEN is required for container deploy!"
 RUN make deploy-ci
