@@ -58,11 +58,6 @@
           match-page-url-exactly: true
           permalink: /null-safety/faq
 
-    - title: Evolution
-      permalink: /guides/language/evolution
-    - title: Specification
-      permalink: /guides/language/spec
-
 - title: 高效指南 (Effective Dart)
   expanded: false
   children:
