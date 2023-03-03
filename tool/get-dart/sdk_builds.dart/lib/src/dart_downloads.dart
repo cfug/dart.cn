@@ -12,7 +12,7 @@ import 'version_info.dart';
 ///
 /// This will help to modify the base easily
 /// if any site is using a different storage base.
-const storageBaseUrl = 'https://storage.googleapis.com/';
+const storageBaseUrl = 'https://storage.flutter-io.cn/';
 
 const _dartChannel = 'dart-archive';
 const _flavor = 'release';
