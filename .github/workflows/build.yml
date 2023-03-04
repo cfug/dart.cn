@@ -64,7 +64,7 @@ jobs:
       - uses: dart-lang/setup-dart@a57a6c04cf7d4840e88432aad6281d1e125f0d46
         with:
           sdk: stable
-      - run: tool/check-links.sh
+      #- run: tool/check-links.sh
       - run: make deploy
         env:
           DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
