@@ -6663,7 +6663,7 @@ For advice on how to structure your comments, see
 [Effective Dart: Documentation.](/guides/language/effective-dart/documentation)
 
 解析 Dart 代码并生成 HTML 文档，
-可以使用 Dart 的文档生成工具 [`dart doc`](/tools/dartdoc)。
+可以使用 Dart 的文档生成工具 [`dart doc`](/tools/dart-doc)。
 关于生成文档的示例，请参考
 [Dart API documentation]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})
 查看关于文档结构的建议，

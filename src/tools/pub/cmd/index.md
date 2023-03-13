@@ -183,7 +183,7 @@ see [Uploaders](/tools/pub/publishing#uploaders).
 
 你可以使用 [`publish`](/tools/pub/cmd/pub-lish) 命令将
 Package 上传至 [Pub 网站]({{site.pub}})以分享给全世界的开发者使用。
-[`uploader`](/tools/pub/cmd/pub-uploader) 命令则可以允许指定用户
+[`uploader`](/tools/pub/publishing#uploaders) 命令则可以允许指定用户
 修改 Package 和上传新版本的 Package。
 
 #### Command-line apps

@@ -31,7 +31,7 @@ restores the editor to its original state.
 在这篇 codelab 中的嵌入式编辑器已经完成了部分代码片段。
 你可以在这些编辑器上将代码补充完整，然后点击 **Run (运行)** 按钮进行测试。
 如果你需要帮助，请点击 **Hint (提示)** 按钮。
-要运行代码格式化 ([dart format](/tools/dartfmt))，
+要运行代码格式化 ([dart format](/tools/dart-format))，
 点击 **Format (格式化)** 按钮，**Reset (重置)** 按钮将会清除你的操作，
 并把编辑器恢复到初始状态。
 
