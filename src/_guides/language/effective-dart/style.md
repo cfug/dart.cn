@@ -50,7 +50,7 @@ Identifiers come in three flavors in Dart.
     even for acronyms,
     and separate words with `_`.
 
-    `lowercase_with_underscores` 只是用小写字母单词，即使是缩略词，
+    `lowercase_with_underscores` 只使用小写字母单词，即使是缩略词，
     并且单词之间使用 `_` 连接。
 
 
