@@ -75,7 +75,7 @@ The following function takes two integers as parameters.
 Make it return a string containing both integers separated by a space.
 For example, `stringify(2, 3)` should return `'2 3'`.
 
-下面的方法接收两个整形变量作为参数，
+下面的方法接收两个整型变量作为参数，
 然后让它返回一个包含以空格分隔的整数的字符串。
 例如，`stringify(2, 3)` 应该返回 `'2 3'`。
 
