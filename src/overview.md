@@ -3,7 +3,7 @@ title: Dart overview
 title: Dart 概览
 description: A short introduction to Dart
 description: Dart 的简单介绍
-js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
+js: [{url: 'https://dartpad.cn/inject_embed.dart.js', defer: true}]
 ---
 
 <img 
@@ -16,7 +16,7 @@ Its goal is to offer the most productive programming language for
 multi-platform development, paired with a
 [flexible execution runtime platform](#platform) for app frameworks.
 
-Dart 是一种针对客户优化的语言，可在任何平台上开发快速的应用程序。
+Dart 是一种针对客户端优化的语言，可在任何平台上开发快速的应用程序。
 其目标是为多平台开发提供最高效的编程语言，
 并为应用程序框架搭配了
 [灵活的运行时执行平台](#platform)。
