@@ -3,10 +3,10 @@ name: build
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 # Declare default permissions as read only.
 permissions: read-all
@@ -45,7 +45,7 @@ jobs:
       checks: write
       pull-requests: write
     if: ${{ github.event_name == 'push' &&
-            github.ref == 'refs/heads/master' &&
+            github.ref == 'refs/heads/main' &&
             github.repository == 'cfug/dart.cn' }}
     needs: test
     runs-on: ubuntu-latest
