@@ -3,7 +3,7 @@ name: Compile Archive JS
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - "**/download_archive.dart.js"
 
