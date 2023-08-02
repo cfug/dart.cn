@@ -1,4 +1,4 @@
-FROM ruby:3.2-slim-bullseye@sha256:cae4a499f8ca1d9084dfa7ccfbaa35f3e2d0088368132c0acdf2cff556cc99d4 as base
+FROM ruby:3.2-slim-bookworm@sha256:2de48b02b2c3383799991fd5573462a7646a92a068b4afbb0e161ad166a3de9a as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Pacific
@@ -33,22 +33,22 @@ ENV PATH=$DART_SDK/bin:$PATH
 RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
       amd64_stable) \
-        DART_SHA256="93b5db66868b0a0fd7f3615f2ae279985430de57f5e925e498d35b7d79ab0747"; \
+        DART_SHA256="cccd5300faa5a9abce12a5f77586e26350028cea82bb4ff8eeb55641b58a2e1d"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="af6e4aa9a146aab0844bca502c3bb3ebad33895d78f48743ff3513a7ef3dd163"; \
+        DART_SHA256="2c8eeaf0d3da60c4e14beec45ce3b39aca754f71b9fa3fb0c635ee28d6f44708"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
-        DART_SHA256="da65d6733d9cca10f04cf981c97f3af7835e51afda84dce73f2e6fea8848c21b"; \
+        DART_SHA256="e3bdf39358dda7f0fd02b25d4d4539536fff53b4ab257da31a5fbbe42edc28c9"; \
         SDK_ARCH="x64";; \
       arm64_beta) \
-        DART_SHA256="b0cd5dacc35e56ca569125a0cdab4539580465a4c0f820311c3f7e22e6f817b4"; \
+        DART_SHA256="7e7c2d1d4c8c8a6a47d916f422ddad2d5497307a147fa860b7b063ffdd162939"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="f2ed05b9c72172fa1c562f054fb1f4dd3fd1dfce7e0b4d92879c62656bfb96ee"; \
+        DART_SHA256="53368087f4c191d8b55338d13c32a70bf6cbfb0a99b6b4d86e53cb366bfce446"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="b8fbdbdf2a1de3a3ee5eb608b930d200c45d623d0ea2f0431477a0ec0f1bc501"; \
+        DART_SHA256="474a251dfa7f6ba41f68d889b774569c4d2da5b4262f0c48fa53424e5b42f200"; \
         SDK_ARCH="arm64";; \
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
@@ -80,7 +80,7 @@ CMD ["./tool/test.sh"]
 FROM dart as node
 RUN set -eu; \
     NODE_PPA="node_ppa.sh"; \
-    NODE_SHA256=061519c83ce8799cc00d36e3bab85ffcb9a8b4164c57b536cc2837048de9939f; \
+    NODE_SHA256=4ef190086f051a5242b8f9e7dff891d94c72bd484672d4a962f7189556977994; \
     curl -fsSL https://deb.nodesource.com/setup_lts.x -o "$NODE_PPA"; \
     echo "$NODE_SHA256 $NODE_PPA" | sha256sum --check --status --strict - || (\
         echo -e "\n\nNODE CHECKSUM FAILED! Run tool/fetch-node-ppa-sum.sh for updated values.\n\n" && \
@@ -106,7 +106,6 @@ RUN BUNDLE_WITHOUT="test production" bundle install --jobs=4 --retry=2
 
 ENV NODE_ENV=development
 COPY package.json package-lock.json ./
-
 RUN npm install
 
 COPY ./ ./
@@ -125,7 +124,7 @@ EXPOSE 35729
 
 # Firebase emulator port
 # Airplay runs on :5000 by default now
-EXPOSE 5500 
+EXPOSE 5500
 
 # re-enable defult in case we want to test packages
 ENV DEBIAN_FRONTEND=dialog

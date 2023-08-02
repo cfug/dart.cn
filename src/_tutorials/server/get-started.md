@@ -251,17 +251,17 @@ Check out these resources:
 
     [示例代码](/samples)
 
-  * [Language tour](/guides/language/language-tour)
+  * [Language tour](/language)
 
-    [语言概览](/guides/language/language-tour)
+    [语言概览](/language)
 
   * [Library tour](/guides/libraries/library-tour)
 
     [库概览](/guides/libraries/library-tour)
 
-  * [Effective Dart](/guides/language/effective-dart)
+  * [Effective Dart](/effective-dart)
 
-    [高效 Dart 编程](/guides/language/effective-dart)
+    [高效 Dart 编程](/effective-dart)
 
 * Tools and libraries
 
@@ -274,14 +274,14 @@ Check out these resources:
 
   * [IDEs](/tools#ides-and-editors)
 * Other examples of natively compiled apps
-  * [native_app](https://github.com/dart-lang/samples/tree/master/native_app)
+  * [native_app](https://github.com/dart-lang/samples/tree/main/native_app)
 
 If you get stuck, find help at [Community and support.](/community)
 
 如果你在这一步无法继续进行，可以从 [社区和帮助](/community) 中查找帮助。
 
-[Arithmetic operators]: /guides/language/language-tour#arithmetic-operators
+[Arithmetic operators]: /language/operators#arithmetic-operators
 [DartPad documentation]: /tools/dartpad
-[Dart language tour]: /guides/language/language-tour
+[Dart language tour]: /language
 [Dart library tour]: /guides/libraries/library-tour
 [ide]: /tools#ides-and-editors

@@ -2,12 +2,12 @@
   expanded: false
   children:
     - title: 语言概览
-      permalink: /samples
+      match-page-url-exactly: true
+      permalink: /tutorials
     - title: Codelabs
       expanded: true
       children:
         - title: Codelabs 列表
-          urlExactMatch: true
           match-page-url-exactly: true
           permalink: /codelabs
         - title: Dart 速查表
@@ -18,67 +18,124 @@
           permalink: /codelabs/async-await
         - title: 空安全
           permalink: /codelabs/null-safety
-    - title: 教程一览
-      urlExactMatch: true
-      match-page-url-exactly: true
-      permalink: /tutorials
-
 - title: Dart 开发语言
   expanded: false
   children:
-    - title: 语言概览
-      permalink: /guides/language/language-tour
-    - title: 类型系统
-      permalink: /guides/language/type-system
-    - title: 扩展 (Extension) 方法
-      permalink: /guides/language/extension-methods
+    - title: 介绍
+      match-page-url-exactly: true
+      permalink: /language
+    - title: 基础表达式
+      children:
+        - title: 变量
+          permalink: /language/variables
+        - title: 操作符
+          permalink: /language/operators
+        - title: 注释
+          permalink: /language/comments
+        - title: 注解
+          permalink: /language/metadata
+        - title: 库 & 导库
+          permalink: /language/libraries
+        - title: 关键字
+          permalink: /language/keywords
+    - title: 类型
+      children:
+        - title: 基本类型
+          permalink: /language/built-in-types
+        - title: 记录 (Records)
+          permalink: /language/records
+        - title: 集合 (Collections)
+          permalink: /language/collections
+        - title: 泛型 (Generics)
+          permalink: /language/generics
+        - title: 别名 (Typedefs)
+          permalink: /language/typedefs
+        - title: 类型系统
+          permalink: /language/type-system
+    - title: 模式匹配
+      children:
+        - title: 概览 & 用法
+          permalink: /language/patterns
+        - title: 模式匹配类型
+          permalink: /language/pattern-types
+    - title: 函数方法
+      permalink: /language/functions
+    - title: 控制流
+      children:
+        - title: 循环
+          permalink: /language/loops
+        - title: 分支
+          permalink: /language/branches
+    - title: 错误处理
+      permalink: /language/error-handling
+    - title: 类 & 对象
+      children:
+        - title: 类
+          permalink: /language/classes
+        - title: 构造方法
+          permalink: /language/constructors
+        - title: 成员方法
+          permalink: /language/methods
+        - title: 继承
+          permalink: /language/extend
+        - title: 混入 (Mixin)
+          permalink: /language/mixins
+        - title: 枚举
+          permalink: /language/enums
+        - title: 扩展方法
+          permalink: /language/extension-methods
+        - title: 可调用的对象
+          permalink: /language/callable-objects
+    - title: 类型修饰符
+      children:
+        - title: 概览 & 用法
+          match-page-url-exactly: true
+          permalink: /language/class-modifiers
+        - title: API 维护者应该用的类型修饰符
+          permalink: /language/class-modifiers-for-apis
+        - title: 速查表
+          permalink: /language/modifier-reference
     - title: 并发
-      permalink: /guides/language/concurrency
-    - title: 空安全
+      children:
+        - title: 异步支持
+          permalink: /language/async
+        - title: Isolates
+          permalink: /language/concurrency
+    - title: Null safety
       expanded: false
       children:
-        - title: 概览：健全的空安全
-          urlExactMatch: true
+        - title: 健全的空安全
           match-page-url-exactly: true
           permalink: /null-safety
         - title: 迁移到空安全
-          urlExactMatch: true
-          match-page-url-exactly: true
           permalink: /null-safety/migration-guide
         - title: 深入理解空安全
-          urlExactMatch: true
-          match-page-url-exactly: true
           permalink: /null-safety/understanding-null-safety
         - title: 非健全的空安全
-          urlExactMatch: true
-          match-page-url-exactly: true
           permalink: /null-safety/unsound-null-safety
         - title: 空安全常见问题和解答
-          urlExactMatch: true
-          match-page-url-exactly: true
           permalink: /null-safety/faq
 
 - title: 高效指南 (Effective Dart)
   expanded: false
+  permalink: /effective-dart
   children:
-  - title: 概述
-    urlExactMatch: true
-    match-page-url-exactly: true
-    permalink: /guides/language/effective-dart
-  - title: 代码风格
-    permalink: /guides/language/effective-dart/style
-  - title: 文档
-    permalink: /guides/language/effective-dart/documentation
-  - title: 用法示例
-    permalink: /guides/language/effective-dart/usage
-  - title: API 设计
-    permalink: /guides/language/effective-dart/design
+    - title: 概述
+      match-page-url-exactly: true
+      permalink: /effective-dart
+    - title: 代码风格
+      permalink: /effective-dart/style
+    - title: 文档
+      permalink: /effective-dart/documentation
+    - title: 用法示例
+      permalink: /effective-dart/usage
+    - title: API 设计
+      permalink: /effective-dart/design
 
 - title: 核心库
   expanded: false
   children:
-    - title: 综述
-      urlExactMatch: true
+    - title: 概览
       match-page-url-exactly: true
       permalink: /guides/libraries
     - title: 概览
@@ -96,7 +153,7 @@
     - title: 常用 package 介绍
       permalink: /guides/libraries/useful-libraries
     - title: 创建 package
-      permalink: /guides/libraries/create-library-packages
+      permalink: /guides/libraries/create-packages
     - title: 发布 package
       permalink: /tools/pub/publishing
     - title: 设置 package 介绍页
@@ -148,8 +205,7 @@
       permalink: /multiplatform-apps
     - title: 命令行和服务端应用
       children:
-        - title: 综述
-          urlExactMatch: true
+        - title: 概览
           match-page-url-exactly: true
           permalink: /server
         - title: 起步教程
@@ -166,8 +222,7 @@
           permalink: /server/google-cloud
     - title: 网页端 (Web) 应用
       children:
-        - title: 综述
-          urlExactMatch: true
+        - title: 概览
           match-page-url-exactly: true
           permalink: /web
         - title: 开始使用
@@ -187,11 +242,11 @@
     - title: 环境变量声明
       permalink: /guides/environment-declarations
 
+
 - title: 开发工具和使用技巧
   expanded: false
   children:
-  - title: 综述
-    urlExactMatch: true
+  - title: 概览
     match-page-url-exactly: true
     permalink: /tools
   - title: 编辑器和调试工具
@@ -205,7 +260,6 @@
       - title: 在线运行 Dart 代码
         children:
           - title: Overview
-            urlExactMatch: true
             match-page-url-exactly: true
             permalink: /tools/dartpad
           - title: DartPad 教程
@@ -217,11 +271,10 @@
     - title: Dart SDK
       expanded: true
       children:
-        - title: 综述
+        - title: 概览
           permalink: /tools/sdk
         - title: dart 命令
           permalink: /tools/dart-tool
-          urlExactMatch: true
         - title: dart analyze 命令
           permalink: /tools/dart-analyze
         - title: dart compile 命令
@@ -262,7 +315,7 @@
   - title: 静态分析
     children:
       - title: 自定义静态分析
-        permalink: /guides/language/analysis-options
+        permalink: /tools/analysis
       - title: 修复常见的类型问题
         permalink: /guides/language/sound-problems
       - title: 诊断消息
@@ -280,11 +333,13 @@
   expanded: false
   children:
     - title: 常见问题
-      permalink: /faq
+      permalink: /resources/faq
     - title: 版本演变
       permalink: /guides/language/evolution
     - title: 语言规范
       permalink: /guides/language/spec
+    - title: Dart 3 迁移指南
+      permalink: /resources/dart-3-migration
     - title: 从其他平台转向 Dart
       expanded: false
       children:
@@ -292,6 +347,8 @@
           permalink: /guides/language/coming-from/js-to-dart
         - title: 从 Swift 到 Dart
           permalink: /guides/language/coming-from/swift-to-dart
+    - title: 词汇表
+      permalink: /resources/glossary
     - title: 书籍资源
       permalink: /resources/books
     - title: 视频资源
@@ -318,8 +375,3 @@
       permalink: https://flutter.cn/about/docs-cn
     - title: 免责条款 (Disclaimer)
       permalink: https://flutter.cn/disclaimer
-
-# - title: Books
-#   permalink: /resources/books
-# - title: Videos
-#   permalink: /resources/videos

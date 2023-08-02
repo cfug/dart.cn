@@ -3,8 +3,8 @@ title: "C interop using dart:ffi"
 title: "使用 dart:ffi 与 C 进行交互"
 description: "To use C code in your Dart program, use the dart:ffi library."
 description: "在你的 Dart 程序中使用 dart:ffi 库调用 C 语言的代码。"
-hw: "https://github.com/dart-lang/samples/tree/master/ffi/hello_world"
-samples: "https://github.com/dart-lang/samples/tree/master/ffi"
+hw: "https://github.com/dart-lang/samples/tree/main/ffi/hello_world"
+samples: "https://github.com/dart-lang/samples/tree/main/ffi"
 ---
 
 Dart mobile, command-line, and server apps 
@@ -39,7 +39,7 @@ The following examples show how to use the `dart:ffi` library:
 | **示例**        | **描述**                                                                                                                     |
 | [hello_world][] | How to call a C function with no arguments and no return value.                                                             |
 | [hello_world][] | 如何调用无参数和返回值的 C 语言函数。                                                                                           |
-| [primitives][]  | How to call C functions that have arguments and return values that are **ints or pointers**. Also demonstrates **varargs**. |
+| [primitives][]  | How to call C functions that have arguments and return values that are **ints or pointers**.                                |
 | [primitives][]  | 如何调用参数和返回值为 **整型和指针** 的 C 语言函数。同时演示 **varargs**。                                                        |
 | [structs][]     | How to use structs to pass **strings** to and from C and to handle **simple and complex C structures**.                     |
 | [structs][]     | 如何与 C 语言互相传递字符串，以及如何处理 **C 语言定义的结构**。                                                                   |

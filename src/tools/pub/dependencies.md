@@ -275,17 +275,6 @@ dependencies:
   string_scanner: ^0.1.2
 ```
 
-Because caret syntax was introduced in Dart 1.8.3,
-it requires an [SDK constraint][]
-(using [traditional syntax](#traditional-syntax))
-to ensure that older versions of pub don't try to process it.
-For example:
-
-```yaml
-environment:
-  sdk: '>=1.8.3 <3.0.0'
-```
-
 ### Traditional syntax
 
 A version constraint that uses _traditional syntax_
@@ -369,7 +358,7 @@ You can use `dependency_overrides` to temporarily override all references
 to a dependency.
 
 For example, perhaps you are updating a local copy of transmogrify, a
-published library package. Transmogrify is used by other packages in your
+published package. Transmogrify is used by other packages in your
 dependency graph, but you don't want to clone each package locally
 and change each pubspec to test your local copy of transmogrify.
 

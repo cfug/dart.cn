@@ -10,6 +10,9 @@ branch: master
 port: 4000
 source: src
 strict_front_matter: true
+liquid:
+  error_mode: strict
+  strict_filters: true
 future: true # In support of https://github.com/dart-lang/site-www/issues/1111
 sass:
   sass_dir: _sass
@@ -95,34 +98,34 @@ og_image_vers: "?2"
 alert:
   important: >-
     <aside class="alert alert-warning" role="alert" markdown="1">
-    <i class="fas fa-exclamation-circle"></i> **重要说明:**
+    <i class="material-icons" aria-hidden="true">error</i> **重要说明:**
   info: >-
     <aside class="alert alert-info" role="alert" markdown="1">
-    <i class="fas fa-info-circle"></i>
+    <i class="material-icons" aria-hidden="true">info</i>
   note: >-
     <aside class="alert alert-info" role="alert" markdown="1">
-    <i class="fas fa-info-circle"></i> **备注:**
+    <i class="material-icons" aria-hidden="true">info</i> **备注:**
   flutter-note: >-
     <aside class="alert alert-info" role="alert" markdown="1">
     <img src="/assets/img/shared/flutter/icon/64.png" width="24" alt="Flutter logo"> **与 Flutter 相关的备注:**
   version-note: >-
     <aside class="alert alert-info" role="alert" markdown="1">
-    <i class="fas fa-code-branch"></i> **版本提示:**
+    <i class="material-icons" aria-hidden="true">merge_type</i> **版本提示:**
   secondary: >-
     <aside class="alert alert-secondary" role="alert" markdown="1">
   tip: >-
     <aside class="alert alert-success" role="alert" markdown="1">
-    <i class="far fa-lightbulb"></i> **小提示:**
+    <i class="material-icons" aria-hidden="true">tips_and_updates</i> **小提示:**
   warn: >-
     <aside class="alert alert-warning" role="alert" markdown="1">
-    <i class="fas fa-exclamation-triangle"></i>
+    <i class="material-icons" aria-hidden="true">report_problem</i>
   warning: >-
     <aside class="alert alert-warning" role="alert" markdown="1">
-    <i class="fas fa-exclamation-triangle"></i> **请注意:**
+    <i class="material-icons" aria-hidden="true">report_problem</i> **请注意:**
   end: </aside>
 
 why:
   learn: >-
     <div class="mini-toc" markdown="1">
-      <h4 class="no_toc">What you'll learn</h4>
+      <h4 class="no_toc">你将会学习:</h4>
   end: </div>

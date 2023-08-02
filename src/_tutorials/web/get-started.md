@@ -120,7 +120,7 @@ More information:
 
 ## 3. 获取 CLI 工具或者 IDE（或两者都有）
 
-<i class="fas fa-terminal dark"></i>
+<i class="material-icons">terminal</i>
 If you like to use the command line, install [webdev][]:
 
 如果你想使用命令行，请安装 [webdev][]：
@@ -142,7 +142,7 @@ For a list of available IDEs, see the
 
 ## 4. 创建一个 web 应用
 
-<i class="fas fa-terminal dark"></i>
+<i class="material-icons">terminal</i>
 To create a web app from the command line, use these commands:
 
 通过在命令行输入以下命令，创建一个 web 应用：
@@ -162,7 +162,7 @@ create a project using the template named **Bare-bones Web App**.
 
 ## 5. 运行应用
 
-<i class="fas fa-terminal dark"></i>
+<i class="material-icons">terminal</i>
 To run the app from the command line, use [webdev][] to build and serve the app:
 
 要从命令行运行应用程序，可以使用 [webdev][] 构建和运行应用程序：
@@ -320,10 +320,9 @@ Check out these resources:
   * [Tutorials](/tutorials)
   * [Codelabs](/codelabs)
 * Dart language, libraries, and conventions
-  * [Sample code](/samples)
-  * [Language tour](/guides/language/language-tour)
+  * [Language tour](/language)
   * [Library tour](/guides/libraries/library-tour)
-  * [Effective Dart](/guides/language/effective-dart)
+  * [Effective Dart](/effective-dart)
 * Tools & libraries
   * [Dart SDK](/tools/sdk)
   * [Dart tools](/tools)
@@ -336,7 +335,7 @@ If you get stuck, find help at [Community and support.](/community)
 
 [dartdevc]: /tools/dartdevc
 [DartPad documentation]: /tools/dartpad
-[Dart language tour]: /guides/language/language-tour
+[Dart language tour]: /language
 [Dart library tour]: /guides/libraries/library-tour
 [Dart tools]: /tools
 [Debugging Dart Web Apps]: /web/debugging

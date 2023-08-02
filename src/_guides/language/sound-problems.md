@@ -10,8 +10,8 @@ description: 常见的跟类型相关的问题，以及如何修复这方面的�
 
 If you're having problems with type checks,
 this page can help. To learn more, read about
-[Dart's type system](/guides/language/type-system),
-and see [these other resources](/guides/language/type-system#other-resources).
+[Dart's type system](/language/type-system),
+and see [these other resources](/language/type-system#other-resources).
 
 {{site.alert.info}}
   **Help us improve this page!** If you encounter a warning or error that isn't
@@ -29,7 +29,7 @@ A variable with an `int` type can't store a number with a decimal place.
 Dart checks variable values against their types at
 [compile-time](#static-errors-and-warnings) and [runtime](#runtime-errors).
 
-you can't get into a situation where the value stored in a variable is
+You can't get into a situation where the value stored in a variable is
 different from the variable's static type. Like most modern statically
 typed languages, Dart accomplishes this with a combination of
 [static (compile-time)](#static-errors-and-warnings) and [dynamic (runtime)](#runtime-errors) checking.
@@ -269,7 +269,7 @@ class MyAdder extends NumberAdder {
 {% endprettify %}
 
 For more information, see 
-[Use proper input parameter types when overriding methods](/guides/language/type-system#use-proper-param-types).
+[Use proper input parameter types when overriding methods](/language/type-system#use-proper-param-types).
 
 {{site.alert.note}}
   If you have a valid reason to use a subtype, you can use the
@@ -343,7 +343,7 @@ analyzer:
 ```
 
 To learn more about customizing the analyzer's behavior,
-see [Customizing static analysis](/guides/language/analysis-options).
+see [Customizing static analysis](/tools/analysis).
 
 <hr>
 
@@ -497,8 +497,8 @@ filterValues((x) => (x [!as String!]).contains('Hello'));
 
 ### Incorrect type inference
 
-On rare occasions, Dart's enhanced type inference might infer
-the wrong type for function literal arguments in a generic constructor invocation.
+On rare occasions, Dart's type inference might infer the 
+wrong type for function literal arguments in a generic constructor invocation.
 This primarily affects `Iterable.fold`.
 
 #### Example
@@ -509,7 +509,7 @@ type inference will infer that `a` has a type of `Null`:
 {:.fails-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart (type-inf-null)"?>
 {% prettify dart tag=pre+code %}
-List<int> ints = [1, 2, 3];
+var ints = [1, 2, 3];
 var maximumOrNull = ints.fold(null, (a, b) => a == null || a < b ? b : a);
 {% endprettify %}
 
@@ -518,7 +518,7 @@ var maximumOrNull = ints.fold(null, (a, b) => a == null || a < b ? b : a);
 {:.passes-sa}
 <?code-excerpt "lib/common_fixes_analysis.dart  (type-inf-fix)"?>
 {% prettify dart tag=pre+code %}
-List<int> ints = [1, 2, 3];
+var ints = [1, 2, 3];
 var maximumOrNull =
     ints.fold<int?>(null, (a, b) => a == null || a < b ? b : a);
 {% endprettify %}
@@ -530,7 +530,7 @@ var maximumOrNull =
 ## Runtime errors
 
 The errors discussed in this section are reported at
-[runtime](type-system#runtime-checks).
+[runtime](/language/type-system#runtime-checks).
 
 ### Invalid casts
 
@@ -642,6 +642,5 @@ also supported on setters and fields.
 [bottom type]: https://en.wikipedia.org/wiki/Bottom_type
 [cast()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/cast.html
 [Iterable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
-[implicit casts]: /guides/language/analysis-options#enabling-additional-type-checks
 [List]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
 [top type]: https://en.wikipedia.org/wiki/Top_type

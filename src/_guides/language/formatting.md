@@ -53,7 +53,7 @@ More information:
   [高效 Dart 语言指南：代码风格][style guidelines]
 
 [dart format]: /tools/dart-format
-[Effective Dart]: /guides/language/effective-dart
-[formatting guidelines]: /guides/language/effective-dart/style#formatting
+[Effective Dart]: /effective-dart
+[formatting guidelines]: /effective-dart/style#formatting
 [ide]: /tools/#ides-and-editors
-[style guidelines]: /guides/language/effective-dart/style
+[style guidelines]: /effective-dart/style

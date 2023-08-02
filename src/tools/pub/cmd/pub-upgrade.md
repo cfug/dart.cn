@@ -45,15 +45,15 @@ Dependencies upgraded!
 
 When `dart pub upgrade` upgrades dependency versions, it writes a lockfile to ensure that
 [`dart pub get`](/tools/pub/cmd/pub-get) will use the same versions of those
-dependencies. For application packages, check in the lockfile to
+dependencies. For [application packages][], check in the lockfile to
 source control; this ensures the application has the exact same
 versions of all dependencies for all developers and when deployed to
-production. For library packages, don't check in the lockfile,
-because libraries are expected to work with a range of dependency versions.
+production. For regular packages, don't check in the lockfile,
+because packages are expected to work with a range of dependency versions.
 
 `dart pub upgrade` 命令会在更新依赖的版本时写入一个 lockfile 文件以确保后续使用
 [`dart pub get`](/tools/pub/cmd/pub-get) 命令时使用的是相同的依赖版本。
-对应用 Package 而言，签入 lockfile 文件以控制来源；
+对 [应用 Package][application package] 而言，签入 lockfile 文件以控制来源；
 此操作可以确保当你将应用部署到生产环境时，
 所有的开发者使用的依赖项都是完全相同的版本以避免冲突。
 而对库 Package 而言，则不要签入 lockfile 文件，
@@ -70,6 +70,8 @@ on package resolution and the system package cache.
 
 你可以查阅 [`dart pub get` 命令文档](/tools/pub/cmd/pub-get)
 获取更多关于 Package 解析以及系统 Package 缓存的信息。
+
+[application packages]: /tools/pub/glossary#application-package
 
 ## Upgrading specific dependencies
 

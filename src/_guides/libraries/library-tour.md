@@ -121,7 +121,7 @@ print('I drink $tea.');
 ```
 
 For more information on basic strings and `toString()`, see
-[Strings](/guides/language/language-tour#strings) in the language tour.
+[Strings](/language/built-in-types#strings) in the language tour.
 
 有关基本字符串和 `toString()` 的更多信息，参考
 [Strings](/guides/language/language-tour#strings) in the language tour.
@@ -207,7 +207,7 @@ the [dart:math section](#dartmath---math-and-random).
 
 A string in Dart is an immutable sequence of UTF-16 code units.
 The language tour has more information about
-[strings](/guides/language/language-tour#strings).
+[strings](/language/built-in-types#strings).
 You can use regular expressions (RegExp objects)
 to search within strings and to
 replace parts of strings.
@@ -572,7 +572,7 @@ assert(fruits[0] == 'apples');
 ```
 
 Lists are parameterized types
-([generics](/guides/language/language-tour#generics)),
+([generics](/language/generics)),
 so you can specify the type that a list
 should contain:
 
@@ -600,7 +600,7 @@ fruits.add(5); // Error: 'int' can't be assigned to 'String'
   In many cases, you don't
   need to explicitly specify generic
   types, because Dart will
-  [infer](/guides/language/type-system#type-inference)
+  [infer](/language/type-system#type-inference)
   them for you.
   A list like `['Dash', 'Dart']` is understood
   to be a `List<String>` (read: list of strings).
@@ -1399,7 +1399,7 @@ class FooException implements Exception {
 ```
 
 For more information, see
-[Exceptions](/guides/language/language-tour#exceptions)
+[Exceptions](/language/error-handling#exceptions)
 (in the language tour) and the [Exception API reference.][Exception]
 
 更多内容，参考 [Exceptions](#exceptions) 以及
@@ -1758,6 +1758,75 @@ await Future.wait([
 print('Done with all the long steps!');
 ```
 
+`Future.wait()` returns a future which completes once all the provided
+futures have completed. It completes either with their results,
+or with an error if any of the provided futures fail. 
+
+#### Handling errors for multiple futures
+
+You can also wait for parallel operations on an [iterable]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/FutureIterable/wait.html)
+or [record]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/FutureRecord2/wait.html)
+of futures.
+
+These extensions return a future with the resulting values of all provided
+futures. Unlike `Future.wait`, they also let you handle errors. 
+
+If any future in the collection completes with an error, `wait` completes with a
+[`ParallelWaitError`][]. This allows the caller to handle individual errors and
+dispose successful results if necessary.
+
+When you _don't_ need the result values from each individual future,
+use `wait` on an _iterable_ of futures:
+
+```dart
+void main() async {
+  Future<void> delete() async =>  ...
+  Future<void> copy() async =>  ...
+  Future<void> errorResult() async =>  ...
+  
+  try {
+    // Wait for each future in a list, returns a list of futures:
+    var results = await [delete(), copy(), errorResult()].wait;
+
+    } on ParallelWaitError<List<bool?>, List<AsyncError?>> catch (e) {
+
+    print(e.values[0]);    // Prints successful future
+    print(e.values[1]);    // Prints successful future
+    print(e.values[2]);    // Prints null when the result is an error
+
+    print(e.errors[0]);    // Prints null when the result is successful
+    print(e.errors[1]);    // Prints null when the result is successful
+    print(e.errors[2]);    // Prints error
+  }
+
+}
+```
+
+When you _do_ need the individual result values from each future,
+use `wait` on a _record_ of futures.
+This provides the additional benefit that the futures can be of different types:
+
+```dart
+void main() async {
+  Future<int> delete() async =>  ...
+  Future<String> copy() async =>  ...
+  Future<bool> errorResult() async =>  ...
+
+  try {    
+    // Wait for each future in a record, returns a record of futures:
+    (int, String, bool) result = await (delete(), copy(), errorResult()).wait;
+  
+  } on ParallelWaitError<(int?, String?, bool?),
+      (AsyncError?, AsyncError?, AsyncError?)> catch (e) {
+    // ...
+    }
+
+  // Do something with the results:
+  var deleteInt  = result.$1;
+  var copyString = result.$2;
+  var errorBool  = result.$3;
+}
+```
 
 ### Stream
 
@@ -2374,7 +2443,7 @@ To learn more about the Dart language, see the
 要了解有关 Dart 语言的更多信息，请参考 [语言概览][language tour]。
 
 [ArgumentError]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
-[Assert]: /guides/language/language-tour#assert
+[Assert]: /language/error-handling#assert
 [Comparable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Comparable-class.html
 [Dart API]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
 [DateTime]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/DateTime-class.html
@@ -2395,6 +2464,7 @@ To learn more about the Dart language, see the
 [NativeFinalizer]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/NativeFinalizer-class.html
 [NoSuchMethodError]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/NoSuchMethodError-class.html
 [Object]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
+[`ParallelWaitError`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/ParallelWaitError-class.html
 [Pattern]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Pattern-class.html
 [Random]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/Random-class.html
 [RegExp]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/RegExp-class.html
@@ -2419,7 +2489,7 @@ To learn more about the Dart language, see the
 [double]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
 [garbage-collected]: https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30
 [int]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
-[language tour]: /guides/language/language-tour
+[language tour]: /language
 [num]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
 [toStringAsFixed()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/toStringAsFixed.html
 [toStringAsPrecision()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/toStringAsPrecision.html

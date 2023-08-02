@@ -4,7 +4,6 @@ title: webdev 命令
 description: Command-line tools for Dart web development.
 description: Dart Web 应用开发命令行工具。
 ---
-<!--?code-excerpt path-base="examples/ng/doc"?-->
 
 This page explains how to use `webdev` to compile your app and
 `build_runner` to test your app.
@@ -44,13 +43,12 @@ If you're testing the app, it must also depend on **build_test**.
 To depend on these packages, add the following [dev_dependencies][] to
 your app's `pubspec.yaml` file:
 
-<!--?code-excerpt "quickstart/pubspec.yaml (build dependencies)"?-->
 ```yaml
   dev_dependencies:
     # ···
-    build_runner: ^2.1.0
-    build_test: ^2.1.0
-    build_web_compilers: ^3.0.0
+    build_runner: ^2.4.1
+    build_test: ^2.1.7
+    build_web_compilers: ^4.0.3
 ```
 
 As usual after `pubspec.yaml` changes, run `dart pub get` or 
@@ -67,12 +65,12 @@ This tool can compile in two ways: one that makes debugging easier
 
 The development compiler supports incremental updates and produces
 [Asynchronous Module Definition (AMD) modules.](https://github.com/amdjs/amdjs-api/blob/master/AMD.md#amd).
-With [`webdev serve`][serve], you can edit your Dart files, refresh in
+With [`webdev serve`](#serve), you can edit your Dart files, refresh in
 Chrome, and see your edits in short order. This speed comes from
 compiling updated modules, not all the packages that your app requires.
 
 The first compilation takes the longest as it compiles the entire app.
-While [`serve`][serve] command runs, successive builds should compile
+While [`serve`](#serve) command runs, successive builds should compile
 faster.
 
 The production compiler generates a single, minified JavaScript file.
@@ -214,6 +212,6 @@ Also see the following pages:
 [Dart DevTools]: /tools/dart-devtools
 [dev_dependencies]: /tools/pub/dependencies#dev-dependencies
 [PATH]: /tools/pub/cmd/pub-global#running-a-script-from-your-path
-[supported browsers]: /faq#q-what-browsers-do-you-support-as-javascript-compilation-targets
+[supported browsers]: /resources/faq#q-what-browsers-do-you-support-as-javascript-compilation-targets
 [test package]: {{site.pub-pkg}}/test
 [webdev]: {{site.pub-pkg}}/webdev

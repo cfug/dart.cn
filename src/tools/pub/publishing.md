@@ -25,6 +25,12 @@ command.
 
 {{site.alert.end}}
 
+Watch the following video for an overview of building and publishing packages.
+
+观看下面的视频以了解构建和发布 package 的基本流程。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8V_TLiWszK0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## Publishing is forever
 
 ## 发布是永久的
@@ -376,18 +382,14 @@ with the following exceptions:
 在你 package 中的 **所有文件** 都会被包含在发布的 package 中，
 除了以下几个例外：
 
-* Any _hidden_ files or directories—that is,
-  files with names that begin with dot (`.`)
+ * Any _hidden_ files or directories—that is, 
+   files with names that begin with dot (`.`)
 
-  所有 **隐藏** 文件和文件夹——即文件名以 `.` 开头的文件
+   所有 **隐藏** 文件和文件夹——即文件名以 `.` 开头的文件
 
-* Any directories with the name `packages`
+ * Files and directories ignored by a `.pubignore` or `.gitignore` file
 
-  所有名字中包含 `packages` 的文件夹
-
-* Files and directories ignored by a `.pubignore` or `.gitignore` file
-
-  `.pubignore` 和 `.gitignore` 文件忽略的所有文件
+   `.pubignore` 和 `.gitignore` 文件忽略的所有文件
 
 If you want different ignore rules for `git` and `dart pub publish`,
 then overrule the `.gitignore` file in a given directory by
@@ -578,12 +580,12 @@ Previews can be useful when **all** of the following are true:
 
 As an example, consider a new version of `package:args` that has
 a finished version `2.0.0` but that
-depends on a feature in Dart `2.12.0-259.8.beta`,
-where Dart SDK version `2.12.0` stable hasn't been released yet.
+depends on a feature in Dart `3.0.0-417.1.beta`,
+where Dart SDK version `3.0.0` stable hasn't been released yet.
 The pubspec might look like this:
 
 举个例子，假设 `package:args` 的 `2.0.0` 版本是已经完成的版本，
-但它依赖了 Dart `2.12.0-259.8.beta` 的功能，这时 `2.12.0` 的 SDK 尚未发布。
+但它依赖了 Dart `3.0.0-417.1.beta` 的功能，这时 `3.0.0` 的 SDK 尚未发布。
 它的 pubspec 如下：
 
 ```
@@ -591,7 +593,7 @@ name: args
 version: 2.0.0
 
 environment:
-  sdk: '>=2.12.0-259.8.beta <3.0.0'
+  sdk: '>=3.0.0-417.1.beta <4.0.0'
 ```
 
 When this package is published to pub.dev,
@@ -605,11 +607,11 @@ where the stable version is listed as
 
 ![Illustration of a preview version](preview-version.png){:width="600px"}<br>
 
-When Dart `2.12.0` stable is released,
+When Dart `3.0.0` stable is released,
 pub.dev updates the package listing to display
 `2.0.0` as the stable version of the package.
 
-当 `2.12.0` 的稳定版 SDK 发布后，pub.dev 会更新 package 列表，
+当 `3.0.0` 的稳定版 SDK 发布后，pub.dev 会更新 package 列表，
 此时 `2.0.0` 会显示为稳定版本。
 
 If all of the conditions at the beginning of this section are true,
@@ -619,7 +621,7 @@ then you can ignore the following warning from `dart pub publish`:
 
    *"Packages with an SDK constraint on a pre-release of the Dart SDK should
    themselves be published as a pre-release version. If this package needs Dart
-   version 2.12.0-0, consider publishing the package as a pre-release
+   version 3.0.0-0, consider publishing the package as a pre-release
    instead."*
 
 
@@ -687,6 +689,7 @@ And publishing a newer version is less disruptive to package users.
   在早于 2.15 的 SDK 中，pub 版本解析会忽略版本的撤回状态。
 
 {{site.alert.end}}
+
 
 ### How to use a retracted package version
 

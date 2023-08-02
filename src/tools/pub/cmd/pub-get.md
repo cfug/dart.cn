@@ -55,15 +55,15 @@ import 'package:test/test.dart';
 When `dart pub get` gets new dependencies, it writes a
 [lockfile](/tools/pub/glossary#lockfile) to ensure that future
 gets will use the same versions of those dependencies.
-Application packages should check in the lockfile to source control;
+[Application packages][] should check in the lockfile to source control;
 this ensures the application will use the exact same versions
 of all dependencies for all developers and when deployed to production.
-Library packages should not check in the lockfile, though, since they're
+Regular packages should not check in the lockfile, though, since they're
 expected to work with a range of dependency versions.
 
 `dart pub get` 命令获取新依赖项后会写入一个 [lockfile](/tools/pub/glossary#lockfile) 文件
 以确保下次执行该命令时会使用相同的依赖项版本。
-应用型的 package 应该总是签入该 lockfile 文件以控制来源；
+[应用型的 package][Application package] 应该总是签入该 lockfile 文件以控制来源；
 从而确保在将 package 部署到生产环境时所有的依赖项对于所有开发者而言都是相同的版本。
 库类型的 package 则不需要签入 lockfile 文件，因为它们可能需要使用到不同的依赖项版本。
 
@@ -80,6 +80,8 @@ get the latest versions of all dependencies.
 [限定的版本](/tools/pub/glossary#version-constraint) 中最新的那个依赖项版本。
 这是 `dart pub get` 命令与 [`dart pub upgrade`](/tools/pub/cmd/pub-upgrade) 命令最大的不同点，
 后者总是会去尝试使用依赖项的最新版本。
+
+[Application packages]: /tools/pub/glossary#application-package
 
 ## Package resolution
 

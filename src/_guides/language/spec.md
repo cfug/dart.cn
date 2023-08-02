@@ -9,10 +9,52 @@ description: 一些常见的 Dart 编程语言里的规范。
 
 Use this page to find the formal Dart language specification.
 For a gentler introduction to Dart, see the
-[language tour](/guides/language/language-tour).
+[language tour](/language).
 
 使用此页面查找正式的 Dart 语言规范。 有关 Dart 的一般性介绍，
-请参阅[语言概览](/guides/language/language-tour)。
+请参阅[语言概览](/language)。
+
+## Dart 3
+
+The Dart 3 language specification is in progress.
+You can find the in-progress specification in PDF format:
+
+Dart 3 的语言规范仍然在制定中。
+你可以查阅正在制定中的规范 PDF 文件：
+
+* [Latest, in-progress specification][latest draft]
+  (produced from a [LaTeX file][])
+
+  [最新的制定中的规范][latest draft]（由 [LaTeX 文件][LaTeX file] 导出）
+
+[latest draft]: https://spec.dart.dev/DartLangSpecDraft.pdf
+[LaTeX file]: https://github.com/dart-lang/language/blob/main/specification/dartLangSpec.tex
+
+New language features are typically described using
+informal language feature specifications in the [dart-lang/language][] repo:
+
+在 [dart-lang/language][] 仓库中通常使用非正式语言功能规范来描述新的语言功能：
+
+* [Accepted informal proposals][]
+
+  [已接受的非正式提案][Accepted informal proposals]
+
+* [Drafts of potential features][]
+
+  [潜在的功能草案][Drafts of potential features]
+
+[dart-lang/language]: https://github.com/dart-lang/language
+[Accepted informal proposals]: https://github.com/dart-lang/language/tree/main/accepted
+[Drafts of potential features]: https://github.com/dart-lang/language/tree/main/working
+
+{{site.alert.info}}
+
+  Dart 3 changed the Dart language in a few ways,
+  primarily requiring [sound null safety](/null-safety).
+
+  Dart 3 修改了一些内容，主要是要求使用 [健全的空安全](/null-safety)。
+
+{{site.alert.end}}
 
 ## Dart 2
 
@@ -20,48 +62,18 @@ The Dart 2 language specification is available in PDF format:
 
 正式的 Dart 2 规范以 PDF 格式提供：
 
-  * [Formal specification (Dart 2.10)][formal spec]
+  * [Formal specification (Dart 2.10)][2-10 formal spec]
 
     [正式的规范文档 (Dart 2.10 版本)][formal spec]
 
-  * [Latest, in-progress specification][latest draft]
-    (produced from a [LaTeX file][])
+[2-10 formal spec]: /guides/language/specifications/DartLangSpec-v2.10.pdf
 
-    [最新的规范文档][latest draft]
-    (源文件是一个 [LaTeX 格式的文件][LaTeX file]
+For information on Dart versions 2.12 and later, 
+which have support for [null safety](/null-safety), 
+check out the in-progress [Dart 3 specification](#dart-3).
 
-[formal spec]: /guides/language/specifications/DartLangSpec-v2.10.pdf
-[latest draft]: https://spec.dart.dev/DartLangSpecDraft.pdf
-[LaTeX file]: https://github.com/dart-lang/language/blob/master/specification/dartLangSpec.tex
-
-
-New language features are typically described using 
-informal language feature specifications in the [dart-lang/language][] repo:
-
-在 [dart-lang/language][] 仓库中通常使用非正式语言功能规范来描述新的语言功能：
-
-  * [Accepted informal proposals][]
-
-    [已接受的非正式提案][Accepted informal proposals]
-
-  * [Drafts of potential features][]
-
-    [潜在的功能草案][Drafts of potential features]
-
-[dart-lang/language]: https://github.com/dart-lang/language
-[Accepted informal proposals]: https://github.com/dart-lang/language/tree/master/accepted
-[Drafts of potential features]: https://github.com/dart-lang/language/tree/master/working
-
-{{site.alert.info}}
-
-  Dart 2 changed the Dart language in many ways, some of which are not
-  backward-compatible with Dart 1.x.
-  For details, see the [Dart 2 page](/dart-2).
-  
-  Dart 2 修改了很多内容，其中有一些与 Dart 1.x 版本不兼容。
-  详细信息请参考 [Dart 2 页面](/dart-2)。
-
-{{site.alert.end}}
+对于 Dart 2.12 及之后支持了 [空安全](/null-safety) 的版本，
+请查阅正在制定的 [Dart 3 语言规范](#dart-3)。
 
 ## Dart 1.x
 

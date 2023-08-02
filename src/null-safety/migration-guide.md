@@ -135,12 +135,13 @@ so that you can easily undo any changes.
 该节会讲述如何在空安全模式下，使用 `dart pub outdated` 检查并更新你的依赖。
 如果你的代码应用了 **版本管理**，你可以随时回滚所有的改动。
 
-### Switch to the latest stable Dart release
+<a id="switch-to-the-latest-stable-dart-release"></a>
+### Switch to the latest Dart 2.19 release
 
-### 切换至最新的稳定版本
+### 切换至 Dart 2.19 版本
 
-Switch to the **Dart 2.19 stable release**
-of the Dart SDK. This is included in the Flutter 3.7 SDK.
+Switch to the latest **Dart 2.19 release** of the Dart SDK. 
+This is included in the Flutter 3.7 SDK.
 
 切换到 Dart SDK 的 **Dart 2.19 稳定版**，
 它包含在 Flutter 3.7 SDK 中。
@@ -151,7 +152,7 @@ Check that you have Dart 2.19:
 
 ```terminal
 $ dart --version
-Dart SDK version: 2.19.2
+Dart SDK version: 2.19.6
 ```
 
 ### Check dependency status
@@ -277,7 +278,7 @@ You have two options for migrating:
 
 [nullable type]: /null-safety#creating-variables
 [required]: /null-safety/understanding-null-safety#required-named-parameters
-[default value]: /guides/language/language-tour#default-parameters
+[default value]: /language/functions#default-parameters
 [migration tool]: #migration-tool
 [null safety FAQ]: /null-safety/faq
 
@@ -612,7 +613,7 @@ To migrate a package by hand, follow these steps:
    $ dart pub get
    ```
 
-   [package configuration file]: https://github.com/dart-lang/language/blob/master/accepted/2.8/language-versioning/package-config-file-v2.md
+   [package configuration file]: https://github.com/dart-lang/language/blob/main/accepted/2.8/language-versioning/package-config-file-v2.md
 
    Running `dart pub get` with a lower SDK constraint of at least `2.12.0`
    sets the default language version of
@@ -663,7 +664,7 @@ $ dart pub get
 $ dart analyze     # or `flutter analyze`
 ```
 
-[static analysis]: /guides/language/analysis-options
+[static analysis]: /tools/analysis
 
 
 ## 4. Test {#step4-test}
