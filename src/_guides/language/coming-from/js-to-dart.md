@@ -7,7 +7,7 @@ body_class: highlight-languages
 This guide aims to leverage your JavaScript programming knowledge
 when learning Dart.
 It showcases key similarities and differences in both languages,
-and introduces Dart concepts that unsupported in JavaScript.
+and introduces Dart concepts that are unsupported in JavaScript.
 As a JavaScript developer, Dart should feel quite familiar,
 as both languages share many concepts.
 
@@ -46,9 +46,10 @@ follow the [Customizing static analysis][] instructions.
 
 Dart provides [`dart fix`][] to find and fix errors.
 
-Dart also provides a code formatter similar to JavaScript tools like [Prettier][].
-To format code in any Dart project, run [`dart format`](/tools/dart-format) on
-your command line. In Flutter, use `flutter format`.
+Dart also provides a code formatter similar to
+JavaScript tools like [Prettier][].
+To format code in any Dart project, run
+[`dart format`](/tools/dart-format) on your command line.
 The IDE plugins for Dart and Flutter also provide this ability.
 
 Dart supports trailing commas for comma-separated lists of collections,
@@ -69,9 +70,9 @@ JavaScript supports trailing commas in list and map literals only.
   * Writing good Dart code, read [Effective Dart][].
 {{site.alert.end}}
 
-[Customizing static analysis]: /guides/language/analysis-options
+[Customizing static analysis]: /tools/analysis
 [`dart fix`]: /tools/dart-fix
-[Effective Dart]: /guides/language/effective-dart
+[Effective Dart]: /effective-dart
 [Linter rules]: /tools/linter-rules
 [Prettier]: https://prettier.io/
 [Using trailing commas]: {{site.flutter-docs}}/development/tools/formatting#using-trailing-commas
@@ -102,7 +103,7 @@ Dart supports the following built-in types:
 * Symbols (`Symbol`)
 * The value `null` (`Null`)
 
-To learn more, see [Built-in types][] in the [Dart Language Tour][].
+To learn more, check out [Built-in types][] in the [Dart Language Tour][].
 
 All non-`Null` types in Dart are subtypes of Object.
 All values are also objects.
@@ -121,7 +122,7 @@ This means only one `int` value with the numerical value `1` exists.
   consider themselves as equal.
 {{site.alert.end}}
 
-[Built-in types]: /guides/language/language-tour#built-in-types
+[Built-in types]: /language/built-in-types
 [Dart Language Tour]: /guides/language
 
 For example:
@@ -213,7 +214,7 @@ final unicode = '\u{1F60E}'; // 😎,  Unicode scalar U+1F60E
   see [Runes and grapheme clusters][].
 {{site.alert.end}}
 
-[Runes and grapheme clusters]: /guides/language/language-tour#characters
+[Runes and grapheme clusters]: /language/built-in-types#runes-and-grapheme-clusters
 
 ##### String interpolation
 
@@ -227,9 +228,9 @@ These use backtick (`` ` ``) character delimiters for the following reasons:
 In Dart, you don't need to enclose a string in backticks to concatenate
 strings or use interpolations within string literals.
 
-To learn more, see [Strings][] in the [Dart Language Tour][].
+To learn more, check out [Strings][] in the Dart Language Tour.
 
-[Strings]: /guides/language/language-tour#strings
+[Strings]: /language/built-in-types#strings
 
 As in JavaScript template literals,
 you can use the `${<expression>}` syntax to insert expressions into
@@ -327,7 +328,7 @@ A Dart variable gets its type in one of two ways:
    By [convention][omit_local_variable_types], 
    use `var` or `final` when the analyzer can infer the type.
 
-[omit_local_variable_types]: /guides/language/effective-dart/design#dont-redundantly-type-annotate-initialized-local-variables
+[omit_local_variable_types]: /effective-dart/design#dont-redundantly-type-annotate-initialized-local-variables
 
 ```js
 // Declare and initialize a variable at once
@@ -819,7 +820,7 @@ and return an `Iterable`.
 Add items to the final iterable using the
 `yield` keyword, or add whole sets of items using `yield*`.
 
-[_generator functions_]: /guides/language/language-tour#generators
+[_generator functions_]: /language/functions#generators
 
 The following example shows how to write a
 basic generator function:
@@ -1178,7 +1179,7 @@ let visibility = isPublic ? "public" : "private";
 final visibility = isPublic ? 'public' : 'private';
 ```
 
-[if-else]: /guides/language/language-tour#if-and-else
+[if-else]: /language/branches#if
 
 ### Assignment operators
 
@@ -2044,7 +2045,7 @@ class Point {
 Point p = Point(3, 5);
 ```
 
-[initializing parameters]: /guides/language/language-tour#constructors
+[initializing parameters]: /language/constructors
 
 Similar to functions, constructors have the
 option to take positioned or named parameters:
@@ -2570,7 +2571,7 @@ By default, Dart limits access to private class members to code in the same file
 To expand the scope of a library beyond one file, add the `part` directive.
 When possible, [avoid using `part`][]. Reserve using `part` for code generators.
 
-[avoid using `part`]: /guides/libraries/create-library-packages#organizing-a-library-package
+[avoid using `part`]: /guides/libraries/create-packages#organizing-a-package
 
 ### Late variables
 
@@ -2753,7 +2754,7 @@ int get length => ...
 ```
 
 [`dart doc`]: /tools/dart-doc
-[doc comments]: /guides/language/effective-dart/documentation#doc-comments
+[doc comments]: /effective-dart/documentation#doc-comments
 
 ## Next steps
 
@@ -2775,7 +2776,7 @@ Some possible next steps:
 * [Effective Dart][] to learn about common conventions
   and guidelines when writing Dart code
 
-[Language tour]:  /guides/language/language-tour
+[Language tour]:  /language
 [Library tour]:   /guides/libraries/library-tour
 [Dart codelabs]:  /codelabs
-[Effective Dart]: /guides/language/effective-dart
+[Effective Dart]: /effective-dart

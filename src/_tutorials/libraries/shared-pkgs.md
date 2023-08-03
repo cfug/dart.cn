@@ -140,7 +140,7 @@ pubspec.yaml 文件包含了由 YAML 语言撰写的 package 规格。
 （访问 <a href="/tools/pub/pubspec">Pubspec 格式 </a> 获取更多深入的介绍。）
 而你的 pubspec.yaml 文件看起来则应该是这样的
 
-<?code-excerpt "vector_victor/pubspec.yaml" to="test"?>
+<?code-excerpt "vector_victor/pubspec.yaml" to="test" replace="/-0//g"?>
 ```yaml
 name: vector_victor
 description: A sample command-line application.
@@ -148,21 +148,21 @@ version: 1.0.0
 # homepage: https://www.example.com
 
 environment:
-  sdk: '>=2.19.0 <3.0.0'
+  sdk: ^3.0.0
 
 # dependencies:
 #   path: ^1.8.0
 
 dev_dependencies:
-  lints: ^2.0.0
-  test: ^1.16.0
+  lints: ^2.1.0
+  test: ^1.24.2
 ```
 
 ## Name the package dependencies
 
 ## 依赖 package 的命名
 
-To use an external library package,
+To use an external package,
 you need to add the package to your
 app's list of dependencies
 in the pubspec.yaml file.
@@ -170,7 +170,7 @@ Each item in the dependencies list
 specifies the name and version
 of a package that your app uses.
 
-为了能够使用外部的 package，你需要将其添加到你应用 pubspec.yaml 文件的依赖里。
+为了能够使用 package，你需要将其添加到你应用 pubspec.yaml 文件的依赖里。
 依赖中的每一项都指定了你应用所使用的 package 名称以及版本。
 
 Let's make the vector_victor app have a dependency
@@ -190,8 +190,8 @@ to add a dependency on the package:
 ```terminal
 $ dart pub add vector_math
 Resolving dependencies... 
-+ vector_math 2.1.3
-Downloading vector_math 2.1.3...
++ vector_math 2.1.4
+Downloading vector_math 2.1.4...
 Changed 1 dependency!
 ```
 
@@ -205,7 +205,7 @@ resulting in the following:
 <?code-excerpt "vector_victor/pubspec.yaml" from="/^dependencies/"?>
 ```yaml
 dependencies:
-  vector_math: ^2.1.3
+  vector_math: ^2.1.4
 ```
 
 You can also find your desired version on the
@@ -252,7 +252,7 @@ If not, do it yourself by running
 ```terminal
 $ dart pub get
 Resolving dependencies...
-+ vector_math 2.1.3
++ vector_math 2.1.4
 Changed 1 dependency!
 ```
 

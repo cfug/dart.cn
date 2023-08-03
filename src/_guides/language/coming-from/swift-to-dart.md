@@ -11,8 +11,8 @@ and introduces Dart concepts that aren't present in Swift.
 As a Swift developer, Dart might feel familiar,
 as both languages share many concepts. 
 
-Both Swift and Dart support sound null safety&mdash;in
-each language, variables can't be null by default.
+Both Swift and Dart support sound null safety. 
+Neither language allows variables to be null by default.
  
 Like Swift, Dart has similar support for
 [collections](#collections), [generics](#generics),
@@ -49,7 +49,7 @@ follow the [Customizing static analysis][] instructions.
 (Note that the IDE plugins for Dart and Flutter also
 provide this functionality.)
 
-[Customizing static analysis]: /guides/language/analysis-options
+[Customizing static analysis]: /tools/analysis
 
 {{site.alert.secondary}}
   **Pro tip:** Dart provides [`dart fix`][],
@@ -82,7 +82,7 @@ or through the IDE.
 For more information about Dart conventions and linting,
 check out [Effective Dart][] and [Linter rules][]. 
 
-[Effective Dart]: /guides/language/effective-dart
+[Effective Dart]: /effective-dart
 [Linter rules]: /tools/linter-rules
 
 ## Variables
@@ -116,7 +116,7 @@ You can replace `var` in Dart with an explicit type.
 However, by convention, [`var` is recommended
 when the analyzer can implicitly infer the type][inference].
 
-[inference]: /guides/language/effective-dart/design#types
+[inference]: /effective-dart/design#types
 
 ```dart
 // Declare a variable first:
@@ -154,7 +154,7 @@ assign it to `Object?` rather than `dynamic`.
 For more information, check out the
 [Variables section][] in the Dart language tour.
 
-[Variables section]: /guides/language/language-tour#variables
+[Variables section]: /language/variables
 
 ### Final
 
@@ -262,7 +262,7 @@ libraries, such as:
 For more information, check out [Built-in types][]
 in the Dart language tour.
 
-[Built-in types]: /guides/language/language-tour#built-in-types
+[Built-in types]: /language/built-in-types
 
 ### Numbers
 
@@ -383,7 +383,7 @@ unicode characters, check out
 [Runes and grapheme clusters][]
 in the Dart language tour.
 
-[Runes and grapheme clusters]: /guides/language/language-tour#runes-and-grapheme-clusters
+[Runes and grapheme clusters]: /language/built-in-types#runes-and-grapheme-clusters
 
 #### String concatenation and multiline declaration
 
@@ -507,24 +507,21 @@ to check if a string is empty with `isEmpty`.
 There are other convenience methods,
 such as `toUpperCase` and `toLowerCase`.
 For more information,
-check out [Strings][] in the [Dart language tour][]. 
+check out [Strings][] in the Dart language tour. 
 
-[Strings]: /guides/language/language-tour#strings
-[Dart language tour]: /guides/language/language-tour
+[Strings]: /language/built-in-types#strings
 
 ### Booleans
 
 Booleans represent a binary value in both Dart
 (`bool`) and Swift (`Bool`).
 
-### Null safety 
+### Null safety
 
-Dart supports null safety, making any type
-non-nullable by default (as of Dart 2.12).
-This works pretty much the same as Swift's _optionals_.
-By default, types can't contain a null value,
-unless marked as `nullable` (`optional` in Swift),
-with a question mark at the end of the type.
+Dart enforces sound null safety.
+By default, types don't allow a null value unless marked as nullable.
+Dart indicates this with a question mark (`?`) at the end of the type.
+This works like Swift's _optionals_.
 
 ### Null-aware operators
 
@@ -542,21 +539,20 @@ let str: String? = nil
 let count = str?.count ?? 0
 ```
 
-Additionally, Dart offers a
-[null safe version of the cascade operator][] (`?..`),
-which ignores any operations when
-the target object is `null`.
+In addition, Dart offers a
+null safe version of the cascade operator (`?..`).
+This operator ignores any operations when
+the target expression resolves to `null`.
 Dart also offers the null assignment operator (`??=`),
 which Swift doesn't.
-It allows you to only assign a value to a variable
-with a nullable type when its current value is `null`.
-It's expressed as `a ??= b;` and is shorthand for
-the following:
+If a variable with a nullable type has a current value of `null`,
+this operator assigns a value to that variable.
+Expressed as `a ??= b;`, it serves as shorthand for the following:
 
 ```dart
 a = a ?? b;
 
-// equivalent to:
+// Assign b to a if a is null; otherwise, a stays the same
 a ??= b; 
 ```
 
@@ -768,9 +764,8 @@ func multiply(_ a: Int, _ b: Int) -> Int {
 ```
 
 When creating named parameters in Dart,
-they must be defined separately in a
-block of curly braces,
-after any positional parameters:
+define them in a separate block of curly braces,
+after positional parameters:
 
 ```dart
 int multiply(int a, int b, {int c = 1, int d = 1}) {
@@ -791,14 +786,15 @@ func multiply(_ a: Int, _ b: Int, c: Int = 1, d: Int = 1) -> Int {
 }
 ```
 
-Named parameters must have a default value,
-be marked as nullable (which defaults to a `null` value,
-if not explicitly provided), or be marked as `required`
-for the function to compile.
-Nullable types and [null safety](#null-safety)
-are covered in a later section.
+Named parameters must include one of the following:
 
-To make a named parameter required in Dart,
+* A default value
+* A `?` at the end of the type to set the type as nullable
+* The keyword `required` before the variable type
+
+To learn more about nullable types, check out [null safety](#null-safety).
+
+To mark a named parameter as required in Dart,
 you must prefix it with the `required` keyword:
 
 ```dart
@@ -809,7 +805,7 @@ int multiply(int a, int b, { required int c }) {
 multiply(3, 5, c: 2);
 ```
 
-Lastly, a third parameter type is the _optional
+A third parameter type is the _optional
 positional parameter_. As the name suggests,
 these are similar to the default positional parameters,
 but they can be omitted when calling the function.
@@ -835,7 +831,7 @@ func multiply(_ a: Int, _ b: Int, _ c: Int = 1, _ d: Int = 1) -> Int {
 ```
 
 Like named parameters, optional positional parameters
-must have either a default value or a nullable type. 
+must have either a default value or a nullable type.
 
 ### First-class functions
 
@@ -946,7 +942,7 @@ items that are built lazily. Add items
 to the final iterable using the `yield` keyword,
 or add whole collections of items using `yield*`.
 
-[_generator functions_]: /guides/language/language-tour#generators
+[_generator functions_]: /language/functions#generators
 
 The following example shows how to write a basic
 generator function:
@@ -1628,7 +1624,7 @@ and even override existing members.
 For more information, check out
 [Declaring enhanced enums][] in the Dart language tour.
 
-[Declaring enhanced enums]: /guides/language/language-tour#declaring-enhanced-enums
+[Declaring enhanced enums]: /language/enums#declaring-enhanced-enums
 
 ### Constructors 
 
@@ -2108,7 +2104,7 @@ class Bat extends Walker {}
   [Extending a class][] in the Dart language tour.
 {{site.alert.end}}
 
-[Extending a class]: /guides/language/language-tour#restricting-the-parameterized-type
+[Extending a class]: /language/generics#restricting-the-parameterized-type
 
 Since you can use multiple mixins,
 their methods or fields can overlap with
@@ -2184,7 +2180,7 @@ cover the most important differences,
 but check out [Extension methods][] for a complete
 overview.
 
-[Extension methods]: /guides/language/extension-methods
+[Extension methods]: /language/extension-methods
 
 {{site.alert.note}}
   Dart doesn't support extending an existing type
@@ -2411,7 +2407,7 @@ and won't be covered here.
 Each isolate has its own event loop.
 For more information, see [How isolates work][].
 
-[How isolates work]: /guides/language/concurrency#how-isolates-work
+[How isolates work]: /language/concurrency#how-isolates-work
 
 ### Futures
 
@@ -2712,8 +2708,8 @@ You might notice that this process is similar to how
 you add comments for various documentation generation
 tools in Swift.
 
-[doc comments]: /guides/language/effective-dart/documentation
-[dartdoc]: /tools/dart-doc
+[doc comments]: /effective-dart/documentation
+[`dart doc`]: /tools/dart-doc
 
 As in Swift, you define a doc comment by
 using three forward slashes instead of two (`///`):
@@ -2820,9 +2816,9 @@ class Parrot extends _Animal {
 ```
 
 For more information, check out
-[creating library packages][].
+[creating packages][].
 
-[creating library packages]: /guides/libraries/create-library-packages#organizing-a-library-package
+[creating packages]: /guides/libraries/create-packages#organizing-a-package
 
 ## Next steps
 

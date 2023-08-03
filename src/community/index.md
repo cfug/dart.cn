@@ -39,9 +39,6 @@ our [code of conduct](/community/code-of-conduct).
 [Dart 博客](https://medium.com/dartlang)
 <br> 来自不同 Dart 用户群体的最新消息和观点。
 
-[This Week in Dart](https://thisweekindart.dev/)
-: A community ran, weekly newsletter covering the Dart ecosystem.
-
 ## Join the conversation
 
 ## 加入讨论
@@ -59,12 +56,6 @@ Get answers and connect with Dart developers.
 
 [StackOverflow](https://stackoverflow.com/tags/dart)
 <br> 提问题的最佳场所。
-
-[Gitter](https://gitter.im/dart-lang/home)
-<br> Chat with Dart team and community members.
-
-[Gitter](https://gitter.im/dart-lang/home)
-<br> 与 Dart 团队及社区成员交流。
 
 [Dart on Reddit](https://www.reddit.com/r/dartlang)
 <br> The subreddit for all things related to Dart.

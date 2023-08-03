@@ -67,8 +67,8 @@ use the `help` command:
 $ dart help doc
 ```
 
-[documentation comments]: /guides/language/language-tour#documentation-comments
-[effective doc]: /guides/language/effective-dart/documentation
+[documentation comments]: /language/comments#documentation-comments
+[effective doc]: /effective-dart/usage#do-use-strings-in-part-of-directives
 [Markdown]: {{site.pub-pkg}}/markdown
 
 {% comment %}

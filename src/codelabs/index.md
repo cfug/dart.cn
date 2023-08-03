@@ -13,20 +13,6 @@ hands-on coding experience—no download required!
 
 ## General
 
-## 一般的
-
-<img src="/codelabs/images/from-java-to-dart.png" width="150px" alt="Bicycle image from codelab" align="right">
-
-### [Intro to Dart for Java Developers](https://codelabs.developers.google.com/codelabs/from-java-to-dart/)
-
-### [面向 Java 开发者的 Dart 介绍](https://codelabs.developers.google.com/codelabs/from-java-to-dart/)
-
-Use DartPad to explore how
-Dart makes writing apps easy and fun.
-
-使用 DartPad 来探索 Dart 是如何轻松有趣地编写
-现代应用程序的。
-
 ### [Dart cheatsheet](/codelabs/dart-cheatsheet)
 
 Use DartPad to learn or remind yourself of
@@ -55,14 +41,25 @@ asynchronous code using futures and the `async` and `await` keywords.
 
 使用 DartPad 来学习使用 futures、async 和 await 来写异步代码。
 
+### [Records and Patterns in Dart 3](https://codelabs.developers.google.com/codelabs/dart-patterns-records)
+
+### [Dart 3 中的记录类型和模式匹配](https://codelabs.developers.google.com/codelabs/dart-patterns-records)
+
+Discover Dart 3's new records and patterns features.
+Learn how you can use them in a Flutter app to help you
+write more readable and maintainable Dart code.
+
+探索 Dart 3 带来的记录类型和模式匹配。
+你可以学习如何在你的 Flutter 应用中使用它们，
+带来更加可读且易于维护的 Dart 代码。
+
 ### [Null safety](/codelabs/null-safety)
 
 ### [空安全](/codelabs/null-safety)
 
-Use DartPad to learn about Dart's null-safe type system,
-which was introduced in Dart 2.12.
+Use DartPad to learn about Dart's null-safe type system.
 
-使用 DartPad 来学习在 Dart 2.12 中引入的 Dart 空安全类型系统。
+使用 DartPad 来学习在 Dart 空安全类型系统。
 
 ## Flutter
 

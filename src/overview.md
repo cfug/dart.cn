@@ -64,36 +64,33 @@ Dart 语言是类型安全的；
 Dart 的类型系统也很灵活，允许结合使用 dynamic 类型与运行时检查，
 在测试开发期间，或是遇到需要特别指定为动态类型的代码时，这项特性很有帮助。
 
-Dart offers [sound null safety](/null-safety),
-meaning that values can’t be null unless you say they can be.
+Dart has built-in [sound null safety](/null-safety).
+This means values can’t be null unless you say they can be.
 With sound null safety, Dart can protect you from
 null exceptions at runtime through static code analysis.
 Unlike many other null-safe languages,
 when Dart determines that a variable is non-nullable,
-that variable is _always_ non-nullable.
+that variable can never be null.
 If you inspect your running code in the debugger,
-you’ll see that non-nullability is retained at runtime
-(hence _sound_ null safety).
+you see that non-nullability is retained at runtime; hence _sound_ null safety.
 
-与其他许多空安全语言不同，
-Dart 提供 [健全的空值安全](/null-safety)，
+Dart 内置了 [健全的空值安全](/null-safety)，
 这意味着只有您声明值可以为空的情况下，值才可以为空；
 当 Dart 确定变量不可为空时，
 该变量 **永远** 不可为空。
 凭借健全的空值安全，Dart 可以通过静态代码分析在运行时保护您免受空值异常的影响。
-如果你在调试器中审查正在运行的代码，你会看到不可为空性仍在运行时被保留 (所以是完全空值安全)。
+如果你在调试器中审查正在运行的代码，你会看到不可为空性仍在运行时被保留，所以是完全的空安全。
 
 The following code sample showcases several Dart language features,
 including libraries, async calls, nullable and non-nullable types,
 arrow syntax, generators, streams, and getters.
-To find examples of using additional Dart features,
-see the [samples page](/samples).
 To learn more about the language, take the [Dart language
-tour](/guides/language/language-tour).
+tour](/language).
 
-以下代码示例展示了 Dart 语言的一些功能，包括库、异步调用、可空和不可空的类型、箭头语法、生成器、流和 getter。
-想要查找使用更多 Dart 功能的示例，请参阅 [示例页面](/samples)。
-要了解有关 Dart 语言的更多信息，请参阅 [Dart 语言之旅](/guides/language/language-tour)。
+以下代码示例展示了 Dart 语言的一些功能，
+包括库、异步调用、可空和不可空的类型、箭头语法、生成器、流和 getter。
+要了解有关 Dart 语言的更多信息，
+请参阅 [Dart 语言之旅](/guides/language/language-tour)。
 
 <?code-excerpt "misc/lib/overview_pi.dart"?>
 ```dart:run-dartpad:ga_id-overview
@@ -450,19 +447,19 @@ This runtime is responsible for the following critical tasks:
   Although most type checks in Dart are static (compile-time),
   some type checks are dynamic (runtime).
   For example, the Dart runtime enforces dynamic checks by
-  [type check and cast operators](/guides/language/language-tour#type-test-operators).
+  [type check and cast operators](/language/operators#type-test-operators).
 
   执行 Dart 语言的类型体系：
   Dart 语言里大多数类型检查都是静态的（编译时），但仍有部分检查是动态的（运行时）。
   比如，Dart 运行时环境会在遇到
-  [类型判断运算符](/guides/language/language-tour#type-test-operators)
+  [类型判断运算符](/language/operators#type-test-operators)
   时执行动态检查。
 
-* Managing [isolates](/guides/language/language-tour#isolates):
+* Managing [isolates](/language/concurrency):
   The Dart runtime controls the main isolate (where code normally runs)
   and any other isolates that the app creates.
 
-  管理 [isolates](/guides/language/language-tour#isolates)：
+  管理 [isolates](/language/concurrency)：
   Dart 运行时环境会负责控制主 isolate（代码通常在这里运行）
   以及其他应用创建的 isolate。
 
@@ -487,10 +484,10 @@ You have many choices for learning Dart. Here are a few that we recommend:
 
   [在浏览器中探索 Dart]({{site.dartpad}}/) - DartPad 是一个基于网页的 Dart 代码执行环境。
 
-* [Take a tour of the Dart language](/guides/language/language-tour),
+* [Take a tour of the Dart language](/language),
   which shows you how to use each major Dart feature.
 
-  [Dart 开发语言概览](/guides/language/language-tour)，
+  [Dart 开发语言概览](/language)，
   它展示了如何使用 Dart 的主要特性。
 
 * [Complete a Dart tutorial](/tutorials/server/cmdline) that 

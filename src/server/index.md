@@ -123,7 +123,7 @@ You might find the following tutorials helpful.
 [Dart API]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}})：
 <br> dart:* 库的 API 参考。
 
-[dart:io section of the library tour](/guides/libraries/library-tour/#dartio)
+[dart:io section of the library tour](/guides/libraries/library-tour#dartio)
 <br> Shows how to use the major features of the dart:io library.
   You can use the dart:io library in command-line scripts, servers, and
   non-web [Flutter apps.]({{site.flutter}})

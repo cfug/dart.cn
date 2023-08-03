@@ -1,5 +1,7 @@
 @Tags(['browser'])
 @TestOn('browser')
+library;
+
 import 'dart:async';
 import 'dart:html';
 import 'package:test/test.dart';
@@ -59,7 +61,7 @@ void main() {
     expect(querySelector('.windows')!.hidden, isTrue);
   });
 
-  test('getString', () async {
+  test('getString', skip: 'httpbin timing out', () async {
     final url = 'https://httpbin.org';
     // #docregion getString
     Future<void> main() async {
@@ -77,7 +79,7 @@ void main() {
     await main();
   });
 
-  test('request', () async {
+  test('request', skip: 'httpbin timing out', () async {
     final url = 'https://httpbin.org/headers';
     // #docregion request
     Future<void> main() async {
@@ -97,7 +99,7 @@ void main() {
     await main();
   });
 
-  test('POST', () async {
+  test('POST', skip: 'httpbin timing out', () async {
     const url = 'https://httpbin.org/post';
     // #docregion POST
     String encodeMap(Map<String, String> data) => data.entries

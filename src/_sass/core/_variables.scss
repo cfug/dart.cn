@@ -1,6 +1,3 @@
-/* -----------------------------------------
-   Variables (from Flutter)
------------------------------------------ */
 
 // Colors
 $flutter-color-teal: #60caf6;
@@ -65,23 +62,8 @@ $site-font-size-header: 16px;
 $site-color-primary: $brand-primary;
 $site-color-sidebar-active: #1389FD;
 
-// Typography
-$font-size-base:            1.0rem; // 16px
-$font-family-base:          "Google Sans", "Noto Sans SC", Roboto, "Helvetica Neue", "Helvetica", Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
-$font-family-monospace:     "Google Sans Mono", "Roboto Mono", Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
-$google-font-family:        "Google Sans", $font-family-base;
-
 // Sidenav, toc, and footer
 $font-size-small:         14px;
-
-// TODO #2859: use / override BS defaults named $hX-font-size.
-// Headings
-$font-size-h1:            48px;
-$font-size-h2:            24px;
-$font-size-h3:            21px;
-$font-size-h4:            18px;
-$font-size-h5:            15px;
-$font-size-h6:            15px;
 
 // Spacing
 $live-content-width:      1280px;
@@ -89,14 +71,20 @@ $content-padding:         32px;
 $top-content-padding:     55px;
 
 // Fonts
-$site-font-family-roboto: 'Roboto', sans-serif;
+$site-font-family-roboto: "Google Sans", "Noto Sans SC", Roboto, "Helvetica Neue", "Helvetica", Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 $site-font-family-gsans: 'Google Sans', 'Roboto', sans-serif;
 $site-font-family-gsans-display: 'Google Sans Display', 'Google Sans', 'Roboto', sans-serif;
 $site-font-family-base: $site-font-family-roboto;
 $site-font-family-alt: $site-font-family-gsans;
 $site-font-family-icon: 'Material Icons';
-$site-font-family-monospace: 'Google Sans Mono', 'Roboto Mono', monospace;
+$site-font-family-monospace: 'Google Sans Mono', 'Roboto Mono', Menlo, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Consolas, monospace;
 $site-font-icon: 24px/1 $site-font-family-icon;
+
+// Typography
+$font-size-base: 1.0rem; // 16px
+$font-size-base-weight: 400;
+$font-family-base: $site-font-family-base;
+$font-family-monospace: $site-font-family-monospace;
 
 // Layout
 $site-header-height: 50px;
@@ -109,6 +97,7 @@ $site-content-max-width: 960px;
 $site-sidebar-side-padding: 16px;
 $site-nav-mobile-side-padding: 20px;
 $site-snackbar-padding: 20px;
+$site-spacer: 1rem;
 
 // Alerts
 $alert-success-bg:        #ecfaf7;
@@ -117,3 +106,15 @@ $alert-info-bg:           #e7f8ff;
 $alert-warning-bg:        #fcf8e3;
 $alert-danger-bg:         #fde9ee;
 $alert-danger-fg:         #cb1425;
+
+// Dash colors
+$dash-callout: #121a26;
+$dash-sub-grey: #8d9399;
+$dash-dark-grey: #82878c;
+$dash-off-white: #f8f9fa;
+$dash-dark-black: #4a4a4a;
+$dash-highlight: #1967d2;
+$dash-off-black: #12202f;
+$dark-darker-black: #0d1520;
+$dash-header-bg: #17212f;
+$dash-dartpad-border: #293542;

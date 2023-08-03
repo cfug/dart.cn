@@ -92,7 +92,11 @@ A pubspec can have the following fields:
   on the [pub.dev site]({{site.pub}}).
   [_Learn more._](#screenshots)
 
-Pub ignores all other fields,
+`topics`
+: Optional. List of topics for the package.
+  [_Learn more._](#topics)
+
+Pub ignores all other fields.
 
 {{site.alert.flutter-note}}
   Pubspecs for [Flutter apps]({{site.flutter}}) can have
@@ -135,14 +139,7 @@ dev_dependencies:
 
 ## Details
 
-This section has more information about most of the pubspec fields.
-
-{% comment %}
-TODO: Consider adding subsection for publish_to and anything else
-that's missing so we don't have to say "most of".
-https://github.com/dart-lang/site-www/issues/702
-{% endcomment %}
-
+This section has more information about each of the pubspec fields.
 
 ### Name
 
@@ -153,7 +150,7 @@ The name should be all lowercase, with underscores to separate words,
 `just_like_this`. Use only basic Latin letters and Arabic digits:
 `[a-z0-9_]`. Also, make sure the name is a valid Dart identifier—that it
 doesn't start with digits and isn't a
-[reserved word](/guides/language/language-tour#keywords).
+[reserved word](/language/keywords).
 
 Try to pick a name that is clear, terse, and not already in use.
 A quick search of packages on the
@@ -245,17 +242,17 @@ can be run directly from the command line. To make a script publicly
 available, list it under the `executables` field.
 Entries are listed as key/value pairs:
 
-{% prettify none tag=pre+code %}
+```nocode
 <name-of-executable>: <Dart-script-from-bin>
-{% endprettify %}
+```
 
 For example, the following pubspec entry lists two scripts:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 executables:
   slidy: main
   fvm:
-{% endprettify %}
+```
 
 Once the package is activated using `pub global activate`,
 typing `slidy` executes `bin/main.dart`.
@@ -319,9 +316,9 @@ a package from being published. This setting can be used to specify a
 [custom pub package server](/tools/pub/custom-package-repositories)
 to publish.
 
-{% prettify yaml tag=pre+code %}
+```yaml
 publish_to: none
-{% endprettify %}
+```
 
 
 ### Funding
@@ -364,11 +361,11 @@ and in all `.pem` files in the `test/localhost_certificates/` directory:
 
 [publish a package]: /tools/pub/publishing
 
-{% prettify yaml tag=pre+code %}
+```yaml
 false_secrets:
  - /lib/src/hardcoded_api_key.dart
  - /test/localhost_certificates/*.pem
-{% endprettify %}
+```
 
 Starting a `gitignore` pattern with slash (`/`) ensures that
 the pattern is considered relative to the package's root directory.
@@ -388,13 +385,16 @@ the pattern is considered relative to the package's root directory.
 
 ### Screenshots
 
-Packages can showcase their widgets or other visual elements using screenshots
-displayed on their page.
+Packages can showcase their widgets or other visual elements
+using screenshots displayed on their pub.dev page. 
+To specify screenshots for the package to display,
+use the `screenshots` field.
 
 A package can list up to 10 screenshots under the `screenshots` field.
+Don't include logos or other branding imagery in this section.
 Each screenshot includes one `description` and one `path`. 
-The `description` explains what the screenshot depicts in no more than 160 
-characters. 
+The `description` explains what the screenshot depicts in
+no more than 160 characters. 
 For example:
 
 ```yaml
@@ -419,6 +419,34 @@ Each download of the package includes all screenshot files.
 Pub.dev generates the package's thumbnail image from the first screenshot. If 
 this screenshot uses animation, pub.dev uses its first frame.
  
+### Topics
+
+Package authors can use the `topics` field to categorize their package. Topics
+can be used to assist discoverability during search with filters on pub.dev.
+Pub.dev displays the topics on the package page as well as in the search
+results.
+
+The field consists of a list of names. For example:
+
+```yaml
+topics:
+  - network
+  - http
+```
+
+Pub.dev requires topics to follow these specifications:
+
+- Tag each package with at most 5 topics.
+- Write the topic name following these requirements:
+  - Use between 2 and 32 characters.
+  - Use only lowercase alphanumeric characters or hyphens (`a-z`, `0-9`, `-`).
+  - Don't use two consecutive hyphens (`--`).
+  - Start the name with lowercase alphabet characters (`a-z`).
+  - End with alphanumeric characters (`a-z` or `0-9`).
+
+When choosing topics, consider if [existing topics]({{site.pub}}/topics)
+are relevant. Tagging with existing topics helps users discover your package.
+
 ### SDK constraints
 
 A package can indicate which versions of its dependencies it supports, but
@@ -436,42 +464,42 @@ dependencies.
   For a package to use a feature introduced after 2.0,
   its pubspec must have a lower constraint that's at least
   the version when the feature was introduced.
-  For details, see the [language evolution page][].
+  For details, check out [Language versioning][].
 {{site.alert.end}}
 
-[language evolution page]: /guides/language/evolution
+[Language versioning]: /guides/language/evolution#language-versioning
 
 For example, the following constraint says that this package
-works with any Dart SDK that's version 2.12.0 or higher:
+works with any Dart SDK that's version 3.0.0 or higher:
 
 ```yaml
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ^3.0.0
 ```
 
 Pub tries to find the latest version of a package whose SDK constraint works
 with the version of the Dart SDK that you have installed.
 
-As of Dart 2.12, omitting the SDK constraint is an error.
+Omitting the SDK constraint is an error.
 When the pubspec has no SDK constraint,
-`pub get` fails with a message like the following:
+`dart pub get` fails with a message like the following:
 
 ```
 pubspec.yaml has no lower-bound SDK constraint.
 You should edit pubspec.yaml to contain an SDK constraint:
 
 environment:
-  sdk: '>=2.19.0 <3.0.0'
+  sdk: '^3.0.0'
   
 See https://dart.dev/go/sdk-constraint
 ```
 
-{{site.alert.warning}}
-  Caret syntax (`^`) is a compact way to represent version ranges, 
-  but **don't use it for the SDK constraint.** 
-  Instead, **include an upper bound for the SDK** (`<3.0.0`, usually). 
-  For more information, 
-  see the [Caret syntax](/tools/pub/dependencies#caret-syntax) documentation.
+{{site.alert.version-note}}
+  Before Dart 2.19, pub disallowed caret syntax in SDK constraints.
+  In earlier versions, provide a complete range,
+  such as `'>=2.12.0 <3.0.0'`.
+  For more information, check out
+  the [Caret syntax](/tools/pub/dependencies#caret-syntax) documentation.
 {{site.alert.end}}
 
 
@@ -497,4 +525,3 @@ at least 1.19.0, to ensure that older versions of pub won't
 accidentally install packages that need Flutter.
 
 [pubsite]: {{site.pub}}
-[semantic versioning]: https://semver.org/spec/v2.0.0-rc.1.html

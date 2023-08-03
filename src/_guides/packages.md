@@ -92,6 +92,21 @@ dependencies:
   intl: ^0.17.0
 ```
 
+To update the `pubspec.yaml` file, without manual editing, 
+you can run `dart pub add` command.
+The following example adds a dependency on `vector_math`.
+
+你可以使用 `dart pub add` 来操作 `pubspec.yaml` 文件，无需手动修改。
+下面的例子使用了命令来添加 `vector_math` package。
+
+```terminal
+$ dart pub add vector_math
+Resolving dependencies... 
++ vector_math 2.1.3
+Downloading vector_math 2.1.3...
+Changed 1 dependency!
+```
+
 For details on creating a pubspec,
 see the [pubspec documentation](/tools/pub/pubspec)
 and the documentation for the packages that you want to use.
@@ -221,7 +236,7 @@ that your package uses.
 Pub 会在 pubspec 旁创建并存储一个名为 `pubspec.lock` 文件。
 它列出了使用的每个依赖包的指定版本（当前包或传递包的版本）。
 
-If your package is an application package,
+If your package is an [application package](/tools/pub/glossary#application-package)
 you should check this file into
 [source control](/guides/libraries/private-files).
 That way, everyone working on your app uses the same versions
@@ -229,7 +244,8 @@ of all of its dependencies.
 Checking in the lockfile also ensures that your deployed app
 uses the same versions of code.
 
-如果包是一个应用程序包，那么应该将此文件加入到 [源文件管理](/guides/libraries/private-files)。
+如果包是一个 [应用程序包](/tools/pub/glossary#application-package)，
+那么应该将此文件加入到 [源文件管理](/guides/libraries/private-files)。
 这样，在应用上开发的每个人都能够使用所有相同版本的包。
 同样加入到 lockfile 可以保证部署的应用使用的是同一版本的代码。
 
@@ -284,9 +300,9 @@ the pub package manager.
 
 ### 如何使用
 
-* [Creating packages](/guides/libraries/create-library-packages)
+* [Creating packages](/guides/libraries/create-packages)
 
-  [创建包](/guides/libraries/create-library-packages)
+  [创建包](/guides/libraries/create-packages)
 
 * [Publishing packages](/tools/pub/publishing)
 

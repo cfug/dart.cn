@@ -16,7 +16,7 @@ and completing exercises.
 
 To get the most out of this codelab, you should have the following:
 
-* Knowledge of [basic Dart syntax](/samples).
+* Knowledge of [basic Dart syntax](/language).
 * Some experience writing asynchronous code in another language.
 
 This codelab covers the following material:
@@ -601,7 +601,7 @@ Remember: reportUserRole() needs to return a future!
 
 {{site.alert.note}}
   If your code passes the tests, you can ignore
-  [info-level messages.](/guides/language/analysis-options#customizing-analysis-rules)
+  [info-level messages.](/tools/analysis#customizing-analysis-rules)
 {{site.alert.end}}
 
 ## Handling errors
@@ -619,7 +619,7 @@ try {
 ```
 
 Within an `async` function, you can write 
-[try-catch clauses](/guides/language/language-tour#catch)
+[try-catch clauses](/language/error-handling#catch)
 the same way you would in synchronous code.
 
 ### Example: async and await with try-catch
@@ -1084,7 +1084,7 @@ are some suggestions for where to go next:
 - Learn more about futures and asynchrony:
   - [Streams tutorial](/tutorials/language/streams):
     Learn how to work with a sequence of asynchronous events.
-  - [Concurrency in Dart](/guides/language/concurrency)
+  - [Concurrency in Dart](/language/concurrency)
     Understand and learn how to implement concurrency in Dart.
   - [Dart videos from Google:][Dart videos]
     Watch one or more of the videos about asynchronous coding.
@@ -1095,11 +1095,11 @@ are some suggestions for where to go next:
 If you're interested in using embedded DartPads, like this codelab does, see
 [best practices for using DartPad in tutorials][].
 
-[best practices for using DartPad in tutorials]: /resources/dartpad-best-practices
+[best practices for using DartPad in tutorials]: /tools/dartpad/dartpad-best-practices
 [Dart videos]: https://www.youtube.com/playlist?list=PLjxrf2q8roU0Net_g1NT5_vOO3s_FR02J
 [article]: https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a
 [Future]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
-[style guide]: /guides/language/effective-dart/style
-[documentation guide]: /guides/language/effective-dart/documentation
-[usage guide]: /guides/language/effective-dart/usage
-[design guide]: /guides/language/effective-dart/design
+[style guide]: /effective-dart/style
+[documentation guide]: /effective-dart/documentation
+[usage guide]: /effective-dart/usage
+[design guide]: /effective-dart/design

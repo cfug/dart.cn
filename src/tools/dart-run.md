@@ -55,11 +55,11 @@ you're executing the `dart run` command
 from the directory that's at the top of a Dart package
 (the _current package_).
 For information on the directory structure of Dart packages, see
-[package layout conventions](/guides/libraries/create-library-packages).
+[package layout conventions](/guides/libraries/create-packages).
 
 本节说明的前提是你在 package 的根目录执行 `dart run` 命令。
 更多关于 package 目录结构的介绍，请查阅
-[package 布局约定](/guides/libraries/create-library-packages)。
+[package 结构约定](/guides/libraries/create-packages)。
 
 ### In a depended-on package
 
@@ -184,7 +184,7 @@ while you're in the top directory of the `foo` package:
 $ dart run foo arg1 arg2
 ```
 
-[args]: /guides/language/language-tour#the-main-function
+[args]: /language/functions#the-main-function
 
 ## Debugging
 
@@ -228,7 +228,7 @@ To learn more about other debugging options, run `dart run --help`.
 
 运行 `dart run --help` 获取更多信息。
 
-[assert]: /guides/language/language-tour#assert
+[assert]: /language/error-handling#assert
 [Using DevTools with a command-line app]: /tools/dart-devtools#using-devtools-with-a-command-line-app
 
 ## Enabling experimental features

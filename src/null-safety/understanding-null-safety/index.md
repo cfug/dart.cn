@@ -5,9 +5,9 @@ description: A deep dive into Dart language and library changes related to null 
 description: 深入了解 Dart 语言及其依赖在空安全方面的改动。
 ---
 
-_July 2020, Written by Bob Nystrom_
-
-_文/ Bob Nystrom, Google Dart 团队工程师_
+_Written by Bob Nystrom<br>
+July 2020_
+_文/ Bob Nystrom, Google Dart 团队工程师, 2020 年 7 月_
 
 Null safety is the largest change we've made to Dart since we replaced the
 original unsound optional type system with [a sound static type system][strong]
@@ -22,7 +22,7 @@ problem.][billion] Here is an example:
 时至今日，Kotlin、Swift、Rust 及众多语言都拥有他们自己的解决方案，
 空安全已经成为 [屡见不鲜的话题][billion]。让我们来看下面这个例子：
 
-[strong]: /guides/language/type-system
+[strong]: /language/type-system
 [billion]: https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/
 
 ```dart
@@ -217,7 +217,7 @@ In type theory lingo, the `Null` type was treated as a subtype of all types:
 
 从类型理论的角度来说，`Null` 类型被看作是所有类型的子类；
 
-<img src="understanding-null-safety/hierarchy-before.png" width="335">
+<img src="/null-safety/understanding-null-safety/hierarchy-before.png" width="335">
 
 The set of operations—getters, setters, methods, and
 operators—allowed on some expressions are defined by its type. If the type
@@ -246,7 +246,7 @@ Instead, the type hierarchy looks like this:
 `Null` 类型仍然存在，但它不再是所有类型的子类。
 现在的类型层级看起来是这样的：
 
-<img src="understanding-null-safety/hierarchy-after.png" width="344">
+<img src="/null-safety/understanding-null-safety/hierarchy-after.png" width="344">
 
 Since `Null` is no longer a subtype, no type except the special `Null` class
 permits the value `null`. We've made all types *non-nullable by default*. If you
@@ -340,7 +340,7 @@ underlying type. You can also safely pass `null` to something expecting a nullab
 在此次改动中，我们将所有的可空类型作为基础类型的超类。
 你也可以将 `null` 传递给一个可空的类型，即 `Null` 也是任何可空类型的子类：
 
-<img src="understanding-null-safety/nullable-hierarchy.png" width="235">
+<img src="/null-safety/understanding-null-safety/nullable-hierarchy.png" width="235">
 
 But going the other direction and passing a nullable type to something expecting
 the underlying non-nullable type is unsafe. Code that expects a `String` may
@@ -453,7 +453,7 @@ your program and split them into two halves:
 （我是谁我在哪？刚刚说到哪了？）
 所以正如我们在类型世界中将所有类型拆分成两半一样：
 
-<img src="understanding-null-safety/bifurcate.png" width="668">
+<img src="/null-safety/understanding-null-safety/bifurcate.png" width="668">
 
 There is a region of non-nullable types. Those types let you access all of the
 interesting methods, but can never ever contain `null`. And then there is a
@@ -525,7 +525,7 @@ Dart 中没有 **令人熟知的** 顶层类型。如果你需要一个顶层类
 同样的，`Null` 也不再是底层类型，否则所有类型都仍将是可空。
 取而代之是一个全新的底层类型 `Never`：
 
-<img src="understanding-null-safety/top-and-bottom.png" width="360">
+<img src="/null-safety/understanding-null-safety/top-and-bottom.png" width="360">
 
 In practice, this means:
 
@@ -542,8 +542,14 @@ In practice, this means:
 
 *   On the rare occasion that you need a bottom type, use `Never` instead of
     `Null`. If you don't know if you need a bottom type, you probably don't.
+*   On the rare occasion that you need a bottom type, use
+    `Never` instead of `Null`.
+    This is particularly useful to indicate a function never returns
+    to [help reachability analysis](#never-for-unreachable-code).
+    If you don't know if you need a bottom type, you probably don't.
 
     在极少数需要底层类型的情况下，请使用 `Never` 代替 `Null`。
+    对于不会调用成功返回的方法，它可以 [帮助代码可达性分析](#never-for-unreachable-code)。
     如果你不了解是否需要一个底层类型，那么你基本上不会需要它。
 
 ## Ensuring correctness
@@ -831,7 +837,7 @@ powerful in several ways.][flow analysis]
 在空安全中，我们 [从不同的维度增强了][flow analysis] 这项能力，
 让它不再只能进行有限的分析。
 
-[flow analysis]: https://github.com/dart-lang/language/blob/master/resources/type-system/flow-analysis.md
+[flow analysis]: https://github.com/dart-lang/language/blob/main/resources/type-system/flow-analysis.md
 
 ### Reachability analysis
 

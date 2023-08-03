@@ -9,12 +9,23 @@ finds and fixes two types of issues:
 
 * Analysis issues identified by [`dart analyze`][]
   that have associated automated fixes
-  (sometimes called _quick-fixes_ or _code actions_)
+  (sometimes called _quick-fixes_ or _code actions_).
 
 * Outdated API usages when updating to
   newer releases of the Dart and Flutter SDKs.
 
-{% include tools/dart-tool-note.md %}
+{{site.alert.tip}}
+  To learn about `dart fix` in a video format,
+  check out this deep dive on **Decoding Flutter**:
+
+  <iframe width="560" height="315" 
+  src="https://www.youtube.com/embed/OBIuSrg_Quo" title="Using 'dart fix' YouTube video" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen></iframe>
+{{site.alert.end}}  
+
+## Usage
 
 To preview proposed changes, use the `--dry-run` flag:
 
@@ -28,13 +39,13 @@ To apply the proposed changes, use the `--apply` flag:
 $ dart fix --apply
 ```
 
-## Customizing dart fix
+## Customization
 
 The `dart fix` command only applies fixes 
 when there is a "problem" identified by a diagnostic. 
 Some diagnostics, such as compilation errors, are implicitly enabled,
 while others, such as lints, must be explicitly enabled 
-in the [analysis options file](/guides/language/analysis-options),
+in the [analysis options file](/tools/analysis),
 as individual preferences for these vary.
 
 You can sometimes increase the number of fixes that can be applied
@@ -101,7 +112,22 @@ lib/myapp.dart
 ```
 
 To learn more about customizing analysis results and behavior,
-see [Customizing static analysis](/guides/language/analysis-options).
+see [Customizing static analysis](/tools/analysis).
 
 [`dart analyze`]: /tools/dart-analyze
 [language version]: /guides/language/evolution#language-versioning
+
+## VS Code
+
+When you open a project in VS Code,
+the Dart plugin scans the project for issues that `dart fix` can repair.
+If it finds issues for repair, VS Code displays a prompt to remind you.
+
+<img src="/assets/img/tools/vscode/dart_fix_notification.png" width="550" height="175" alt="VS Code notification about 'dart fix'">
+
+After running `dart pub get` or `dart pub upgrade`,
+VS Code might also display this prompt if package changes
+add issues that `dart fix` can repair.
+
+Save all of your files before running `dart fix`.
+This ensures that Dart uses the latest versions of your files.

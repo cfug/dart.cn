@@ -574,17 +574,17 @@ and asynchronous programming in Dart.
 * [Creating Streams in Dart](/articles/libraries/creating-streams),
   an article about creating your own streams
 
-  [在 Dart 中创建 Stream](/articles/libraries/creating-streams), 该文将向你介绍如何创建 Stream
+  [在 Dart 中创建 Stream](/articles/libraries/creating-streams), 该文将向你介绍如何创建 Stream。
 
 * [Futures and Error Handling](/guides/libraries/futures-error-handling),
   an article that explains how to handle errors using the Future API
 
-  [Futures以及错误处理](/guides/libraries/futures-error-handling), 该文将向你介绍如何在使用 Future API 时处理相关错误。
+  [Futures 以及错误处理](/guides/libraries/futures-error-handling), 该文将向你介绍如何在使用 Future API 时处理相关错误。
 
-* [Asynchrony support](/guides/language/language-tour#asynchrony-support),
-  a section in the [language tour](/guides/language/language-tour)
+* [Asynchrony support](/language/async),
+  a section in the [language tour](/language)
 
-  [Dart开发语言概览](/guides/language/language-tour) 中的 [异步支持](/guides/language/language-tour#asynchrony-support) 部分。
+  [Dart 开发语言概览](/language) 中的 [异步支持](/language/async) 部分。
 
 * [Stream API reference]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html)
 
