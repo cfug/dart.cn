@@ -45,8 +45,8 @@ body:
   - type: checkboxes
     id: volunteer
     attributes:
-      label: I would like to fix this problem.
-      description: Let us know if you want to try fixing this yourself.
+      label: 我想来解决这个问题。
+      description: 如果你想自己尝试修复，请告诉我们。
       options:
-        - label: I will try and fix this problem on dart.dev.
+        - label: 我会尝试在 dart.cn 上解决这个问题。
           required: false
