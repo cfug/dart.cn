@@ -14,22 +14,20 @@ nextpage:
 
 Declare a constructor by creating a function with the same name as its
 class (plus, optionally, an additional identifier as described in
-[Named constructors](#named-constructors)).
-The most common form of constructor, the generative constructor, creates
-a new instance of a class:
+[Named constructors](#named-constructors)). 
 
-<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (constructor-long-way)" plaster="none"?>
+Use the most common constructor, the generative constructor, to create a new
+instance of a class, and [initializing formal parameters](#initializing-formal-parameters)
+to instantiate any instance variables, if necessary:
+
+<?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (idiomatic-constructor)" plaster="none"?>
 ```dart
 class Point {
   double x = 0;
   double y = 0;
 
-  Point(double x, double y) {
-    // See initializing formal parameters for a better way
-    // to initialize instance variables.
-    this.x = x;
-    this.y = y;
-  }
+  // Generative constructor with initializing formal parameters:
+  Point(this.x, this.y);
 }
 ```
 
@@ -43,13 +41,14 @@ The `this` keyword refers to the current instance.
 
 ## Initializing formal parameters
 
-The pattern of assigning a constructor argument to an instance variable
-is so common, 
-Dart has initializing formal parameters to make it easy.
+Dart has *initializing formal parameters* to simplify the common pattern of
+assigning a constructor argument to an instance variable. 
+Use `this.propertyName` directly in the constructor declaration,
+and omit the body. 
 
-Initializing parameters can also be used to initialize
+Initializing parameters also allow you to initialize
 non-nullable or `final` instance variables,
-which both must be initialized or provided a default value.
+which both must be initialized or provided a default value:
 
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (constructor-initializer)" plaster="none"?>
 ```dart
@@ -57,26 +56,32 @@ class Point {
   final double x;
   final double y;
 
+  Point(this.x, this.y);
   // Sets the x and y instance variables
   // before the constructor body runs.
-  Point(this.x, this.y);
 }
 ```
 
 The variables introduced by the initializing formals
-are implicitly final and only in scope of the initializer list.
+are implicitly final and only in scope of the
+[initializer list](/language/constructors#initializer-list).
+
+If you need to perform some logic that cannot be expressed in the initializer list,
+create a [factory constructor](#factory-constructors) 
+(or [static method][]) with that logic
+and then pass the computed values to a normal constructor.
 
 
 ## Default constructors
 
-If you don’t declare a constructor, a default constructor is provided
+If you don't declare a constructor, a default constructor is provided
 for you. The default constructor has no arguments and invokes the
 no-argument constructor in the superclass.
 
 
-## Constructors aren’t inherited
+## Constructors aren't inherited
 
-Subclasses don’t inherit constructors from their superclass. A subclass
+Subclasses don't inherit constructors from their superclass. A subclass
 that declares no constructors has only the default (no argument, no
 name) constructor.
 
@@ -105,14 +110,14 @@ class Point {
 {% endprettify %}
 
 Remember that constructors are not inherited, which means that a
-superclass’s named constructor is not inherited by a subclass. If you
+superclass's named constructor is not inherited by a subclass. If you
 want a subclass to be created with a named constructor defined in the
 superclass, you must implement that constructor in the subclass.
 
 
 ## Invoking a non-default superclass constructor
 
-By default, a constructor in a subclass calls the superclass’s unnamed,
+By default, a constructor in a subclass calls the superclass's unnamed,
 no-argument constructor.
 The superclass's constructor is called at the beginning of the
 constructor body. If an [initializer list](#initializer-list)
@@ -123,7 +128,7 @@ In summary, the order of execution is as follows:
 1. superclass's no-arg constructor
 1. main class's no-arg constructor
 
-If the superclass doesn’t have an unnamed, no-argument constructor,
+If the superclass doesn't have an unnamed, no-argument constructor,
 then you must manually call one of the constructors in the
 superclass. Specify the superclass constructor after a colon (`:`), just
 before the constructor body (if any).
@@ -292,8 +297,8 @@ void main() {
 
 ## Redirecting constructors
 
-Sometimes a constructor’s only purpose is to redirect to another
-constructor in the same class. A redirecting constructor’s body is
+Sometimes a constructor's only purpose is to redirect to another
+constructor in the same class. A redirecting constructor's body is
 empty, with the constructor call
 (using `this` instead of the class name)
 appearing after a colon (:).
@@ -336,7 +341,7 @@ For details, see the section on
 
 ## Factory constructors
 
-Use the `factory` keyword when implementing a constructor that doesn’t
+Use the `factory` keyword when implementing a constructor that doesn't
 always create a new instance of its class. For example, a factory
 constructor might return an instance from a cache, or it might
 return an instance of a subtype.
@@ -398,3 +403,4 @@ var loggerJson = Logger.fromJson(logMap);
 [language version]: /guides/language/evolution#language-versioning
 [using constructors]: /language/classes#using-constructors
 [late-final-ivar]: /effective-dart/design#avoid-public-late-final-fields-without-initializers
+[static method]: /language/classes#static-methods

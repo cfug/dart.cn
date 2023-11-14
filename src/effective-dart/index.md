@@ -1,7 +1,6 @@
 ---
 title: Effective Dart
-title: 高效 Dart 语言指南
-description: >
+description: >-
   Best practices for building consistent, maintainable,
   and efficient Dart libraries.
 description: 编写具有高效、一致性、可维护的 Dart 代码。
@@ -228,4 +227,4 @@ Dart constructs.
 
 ## 所有准则摘要
 
-{% include_relative toc.md %}
+{% include_relative _toc.md %}

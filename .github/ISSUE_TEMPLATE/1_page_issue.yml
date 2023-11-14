@@ -42,3 +42,11 @@ body:
       placeholder: 任何你认为我们需要知道的额外信息。
     validations:
       required: false
+  - type: checkboxes
+    id: volunteer
+    attributes:
+      label: I would like to fix this problem.
+      description: Let us know if you want to try fixing this yourself.
+      options:
+        - label: I will try and fix this problem on dart.dev.
+          required: false

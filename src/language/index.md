@@ -632,7 +632,7 @@ keep these facts and concepts in mind:
     is inferred to be of type `int`.
 
 -   If you enable [null safety][ns],
-    variables can’t contain `null` unless you say they can.
+    variables can't contain `null` unless you say they can.
     You can make a variable nullable by
     putting a question mark (`?`) at the end of its type.
     For example, a variable of type `int?` might be an integer,
@@ -661,8 +661,8 @@ keep these facts and concepts in mind:
     tied to a class or object (static and instance variables). Instance
     variables are sometimes known as *fields* or *properties*.
 
--   Unlike Java, Dart doesn’t have the keywords `public`, `protected`,
-    and `private`. If an identifier starts with an underscore (`_`), it’s
+-   Unlike Java, Dart doesn't have the keywords `public`, `protected`,
+    and `private`. If an identifier starts with an underscore (`_`), it's
     private to its library. For details, see
     [Libraries and imports][].
 
@@ -679,7 +679,7 @@ keep these facts and concepts in mind:
 
 -   Dart tools can report two kinds of problems: _warnings_ and _errors_.
     Warnings are just indications that your code might not work, but
-    they don’t prevent your program from executing. Errors can be either
+    they don't prevent your program from executing. Errors can be either
     compile-time or run-time. A compile-time error prevents the code
     from executing at all; a run-time error results in an
     [exception][] being raised while the code executes.
@@ -689,13 +689,13 @@ keep these facts and concepts in mind:
 
 ## 其他资源
 
-More code samples are in the the
+You can find more documentation and code samples in the
 [library tour](/guides/libraries/library-tour)
-and the [Dart API reference,]({{site.dart-api}}).
-This site’s code follows the conventions in the
+and the [Dart API reference]({{site.dart-api}}).
+This site's code follows the conventions in the
 [Dart style guide](/effective-dart/style).
 
-[语言概览](/guides/language/language-tour) 中会有更多的代码示例。
+[语言概览](/guides/language/language-tour) 中会有更多的文档和代码示例。
 你也可以查阅 [Dart API 文档]({{site.dart_api}})，里面也常常会有示例代码。
 
 [Dart language specification]: /guides/language/spec

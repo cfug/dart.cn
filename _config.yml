@@ -1,14 +1,16 @@
 # Site settings
 title: Dart
-description: Dart is a client-optimized language for developing fast apps on any platform.
+description: >-
+  Dart is a client-optimized language for developing fast apps on any platform.
 url: https://dart.cn
 dev-url: https://debug.dart.cn
 repo:
   this: https://github.com/cfug/dart.cn
-  shared: &repo-shared https://github.com/dart-lang/site-shared
-branch: master
+  shared: https://github.com/dart-lang/site-shared
+branch: main
 port: 4000
 source: src
+
 strict_front_matter: true
 liquid:
   error_mode: strict
@@ -16,7 +18,6 @@ liquid:
 future: true # In support of https://github.com/dart-lang/site-www/issues/1111
 sass:
   sass_dir: _sass
-  cache: false
   style: compressed
   load_paths:
     - ../node_modules/bootstrap-scss
@@ -25,7 +26,7 @@ plugins:
 toc:
   min_level: 2
   max_level: 3
-  no_toc_section_class: no_toc_section # ignore if in no_toc_section element
+  no_toc_section_class: no_toc_section
 
 
 dart-site: ''
@@ -40,19 +41,9 @@ dartpad: https://dartpad.cn
 dart-api: https://api.dart.cn
 flutter-api: https://api.flutter-io.cn
 news: https://news.dartlang.org
+announce: https://groups.google.com/a/dartlang.org/g/announce
 
 show_banner: true
-
-collections:
-  articles:
-    output: true
-    permalink: /articles/:path
-  tutorials:
-    output: true
-    permalink: /tutorials/:path
-  guides:
-    output: true
-    permalink: /guides/:path
 
 defaults:
 - scope:

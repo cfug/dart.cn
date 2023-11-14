@@ -5,19 +5,17 @@ description: Mixing language versions lets you migrate to null safety at your ow
 description: 非健全的空安全让你可以以自己的步调迁移到空安全，同时可以享受一些空安全的好处。
 ---
 
+{{site.alert.version-note}}
+Dart 3 and later does not support code without
+null safety or with unsound null safety.
+All code must be soundly null safe.
+To learn more, check out the [Dart 3 sound null safety tracking issue][].
+{{site.alert.end}}
+
 A Dart program may contain some libraries that
 are [null safe][] and some that aren't.
 These **mixed-version programs**
 rely on **unsound null safety**.
-
-{{site.alert.warn}}
-Dart 3---planned for a mid-2023 release---requires sound null safety. 
-It will prevent code from running without
-null safety, or with unsound null safety.
-All existing code must be [migrated][] to sound null safety
-to be compatible with Dart 3.
-To learn more, see the [Dart 3 sound null safety tracking issue][].
-{{site.alert.end}}
 
 一个 Dart 程序可以同时包含已经是 [空安全][null safe] 和未迁移至空安全的库。
 这些 **混合模式的程序** 会运行在 **非健全的空安全** 下。
@@ -174,7 +172,7 @@ all files in the `bin` directory are opted out.
 如果你需要排除部分文件或文件夹，勾选绿色的勾选框。
 下方的截图中，`bin` 文件夹的所有文件都已被排除。
 
-![Screenshot of file viewer in migration tool](/null-safety/migration-tool-incremental.png)
+![Screenshot of file viewer in migration tool](/assets/img/null-safety/migration-tool-incremental.png)
 
 [migration tool]: /null-safety/migration-guide#step2-migrate
 

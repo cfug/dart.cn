@@ -605,7 +605,7 @@ where the stable version is listed as
 当这个 package 发布到 pub.dev 上时，会被标记为预览版，如下图所示，
 `1.6.0` 是正式版而 `2.0.0` 是预览版。
 
-![Illustration of a preview version](preview-version.png){:width="600px"}<br>
+![Illustration of a preview version](/assets/img/tools/pub/preview-version.png){:width="600px"}<br>
 
 When Dart `3.0.0` stable is released,
 pub.dev updates the package listing to display

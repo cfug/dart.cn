@@ -97,9 +97,9 @@ int? aNullableInt = null;
 
 ## 空安全的原则
 
-Dart supports null safety using the following three core design principles:
+Dart supports null safety using the following two core design principles:
 
-Dart 的空安全支持基于以下三条核心原则：
+Dart 的空安全支持基于以下两条核心原则：
 
 * **Non-nullable by default**. Unless you explicitly tell Dart that a variable
    can be null, it's considered non-nullable. This default was chosen
@@ -108,8 +108,8 @@ Dart 的空安全支持基于以下三条核心原则：
    **默认不可空**。除非你将变量显式声明为可空，否则它一定是非空的类型。
    我们在研究后发现，非空是目前的 API 中最常见的选择，所以选择了非空作为默认值。
 
-* **Fully sound**. Dart’s null safety is sound, which enables compiler optimizations.
-  If the type system determines that something isn’t null, then that thing can _never_ be
+* **Fully sound**. Dart's null safety is sound, which enables compiler optimizations.
+  If the type system determines that something isn't null, then that thing can _never_ be
   null. Once you migrate your whole project
   and its dependencies to null safety, 
   you reap the full benefits of soundness—not only 

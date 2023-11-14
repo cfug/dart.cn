@@ -11,12 +11,14 @@ Add them to your
 [`analysis_options.yaml`](/tools/analysis) file
 and adjust as you see fit.
 
+{% assign sorted_lints = site.data.linter_rules | sort: "name" %}
+
 <?code-excerpt ?>
 ```yaml
 linter:
   rules:
-    {% for lint in site.data.linter_rules %}
-    {%- if lint.sinceDartSdk != "Unreleased" and lint.state != "removed" -%}
+    {% for lint in sorted_lints %}
+    {%- if lint.sinceDartSdk != "Unreleased" and lint.state != "removed" and lint.state != "internal" -%}
     - {{lint.name}}
     {% endif -%}
     {% endfor -%}

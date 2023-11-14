@@ -10,7 +10,7 @@ description: 将你现有的代码带到空安全的世界
   Dart 2.19 is the final release that supports null-safety migration,
   including the `dart migrate` tool.
   To migrate your package to null safety,
-  use the latest Dart 2.19 SDK.
+  use the Dart 2.19.6 SDK.
   To learn more,
   see [Dart 3 and null safety](/null-safety#dart-3-and-null-safety).
 
@@ -95,7 +95,7 @@ then A should be migrated to null safety first, then B, then C.
 我们强烈建议你按顺序迁移代码，先迁移依赖关系中的处于最末端的依赖。
 例如，如果 C 依赖了 B，B 依赖了 A，那么应该按照 A -> B -> C 的顺序进行迁移。
 
-![Illustration of C/B/A sentence](/null-safety/null-safety-migration-order.png){:width="454px"}<br>
+![Illustration of C/B/A sentence](/assets/img/null-safety/null-safety-migration-order.png){:width="454px"}<br>
 
 Although you [_can_ migrate][Unsound null safety]
 before your dependencies support null safety,
@@ -136,19 +136,19 @@ so that you can easily undo any changes.
 如果你的代码应用了 **版本管理**，你可以随时回滚所有的改动。
 
 <a id="switch-to-the-latest-stable-dart-release"></a>
-### Switch to the latest Dart 2.19 release
+### Switch to the Dart 2.19.6 release
 
-### 切换至 Dart 2.19 版本
+### 切换至 Dart 2.19.6 版本
 
-Switch to the latest **Dart 2.19 release** of the Dart SDK. 
-This is included in the Flutter 3.7 SDK.
+Switch to the **2.19.6 release** of the Dart SDK. 
+This is included in the Flutter 3.7.12 SDK.
 
-切换到 Dart SDK 的 **Dart 2.19 稳定版**，
-它包含在 Flutter 3.7 SDK 中。
+切换到 Dart SDK 的 **2.19.6 稳定版**，
+它包含在 Flutter 3.7.12 SDK 中。
 
-Check that you have Dart 2.19:
+Check that you have Dart 2.19.6:
 
-执行下面代码查看是否使用了 Dart 2.19 版本:
+执行下面代码查看是否使用了 Dart 2.19.6 版本:
 
 ```terminal
 $ dart --version
@@ -199,7 +199,7 @@ The green checkmarked version for each package supports null safety:
 这是一个简单的 package 的输入示例。
 每个 package 的绿色对勾代表着对应版本已支持空安全：
 
-![Output of dart pub outdated](/null-safety/pub-outdated-output.png)
+![Output of dart pub outdated](/assets/img/null-safety/pub-outdated-output.png)
 
 The output shows that all of the package's dependencies
 have resolvable prereleases that support null safety.
@@ -226,8 +226,8 @@ update its dependencies to null-safe versions:
 
 在迁移你的 package 的代码之前，请将它的依赖项升级至空安全版本。
 
-1. Run `dart pub upgrade --null-safety` to upgrade to the latest versions
-   supporting null safety.
+1. Run `dart pub upgrade --null-safety` to upgrade to the
+   latest versions supporting null safety.
    **Note:** This command changes your `pubspec.yaml` file.
 
    运行命令 `dart pub upgrade --null-safety` 将依赖升级至支持空安全的最新版本。
@@ -301,9 +301,9 @@ Before starting the tool, make sure you're ready:
 
 开始转换前，请做好如下的准备：
 
-* Use the latest 2.19 release of the Dart SDK.
+* Use the 2.19.6 release of the Dart SDK.
 
-  使用最新的 Dart 2.19 SDK 版本。
+  使用 Dart SDK 的 2.19.6 版本。
 
 * Use `dart pub outdated --mode=null-safety` to make sure that
   all dependencies are null safe and up-to-date.
@@ -337,7 +337,7 @@ where you can guide the migration process:
 
 使用 Chrome 浏览器访问 URL，你可以看到一个交互式的界面，引导你进行迁移：
 
-![Screenshot of migration tool](/null-safety/migration-tool.png)
+![Screenshot of migration tool](/assets/img/null-safety/migration-tool.png)
 
 For every variable and type annotation,
 you can see what nullability the tool infers.

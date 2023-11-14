@@ -334,6 +334,8 @@
   children:
     - title: 常见问题
       permalink: /resources/faq
+    - title: 破坏性改动
+      permalink: /resources/breaking-changes
     - title: 版本演变
       permalink: /guides/language/evolution
     - title: 语言规范

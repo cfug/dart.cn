@@ -57,9 +57,9 @@ that can help you develop command-line and server apps.
 
 ## 框架
 
-Server-side frameworks written in Dart:
+Server-side frameworks written in Dart include:
 
-使用 Dart 写的、适用于服务器端的框架:
+使用 Dart 编写的服务器端框架包括:
 
 [Serverpod](https://serverpod.dev)
 <br> A scalable app server that supports code generation,
@@ -80,6 +80,10 @@ More tools
 
 更多工具：
 <br> [工具](/tools) 界面链接了一些有用的工具，比如你喜欢的 IDE 或编辑器的 Dart 插件。
+
+For additional options, see [#server packages on pub.dev]({{site.pub}}/packages?q=topic%3Aserver).
+
+关于其他方案，请浏览 [#server packages on pub.dev]({{site.pub}}/packages?q=topic%3Aserver).
 
 ## Tutorials
 
