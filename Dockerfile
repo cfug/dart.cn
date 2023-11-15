@@ -1,7 +1,12 @@
 FROM ruby:3.2-slim-bookworm@sha256:adc7f93df5b83c8627b3fadcc974ce452ef9999603f65f637e32b8acec096ae1 as base
 
+SHELL ["/usr/bin/bash", "-c"]
+
+# Configure Debian mirrors.
+RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources
+
 ENV DEBIAN_FRONTEND=noninteractive
-ENV TZ=US/Pacific
+ENV TZ=Asia/Shanghai
 RUN apt update && apt install -yq --no-install-recommends \
       build-essential \
       ca-certificates \
@@ -55,7 +60,7 @@ RUN set -eu; \
       # END dart-sha
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
-    BASEURL="https://storage.googleapis.com/dart-archive/channels"; \
+    BASEURL="https://storage.flutter-io.cn/dart-archive/channels"; \
     URL="$BASEURL/$DART_CHANNEL/release/$DART_VERSION/sdk/$SDK"; \
     curl -fsSLO "$URL"; \
     echo "$DART_SHA256 *$SDK" | sha256sum --check --status --strict - || (\
@@ -102,7 +107,7 @@ RUN BUNDLE_WITHOUT="test production" bundle install --jobs=4 --retry=2
 ENV NODE_ENV=development
 COPY package.json package-lock.json ./
 RUN npm install -g firebase-tools@12.8.1
-RUN npm install
+RUN npm ci
 
 COPY ./ ./
 
@@ -133,7 +138,7 @@ CMD ["make", "emulate"]
 
 
 # ============== BUILD PROD JEKYLL SITE ==============
-FROM node AS build
+FROM node as build
 WORKDIR /app
 
 ENV JEKYLL_ENV=production
@@ -143,7 +148,7 @@ RUN BUNDLE_WITHOUT="test development" bundle install --jobs=4 --retry=2 --quiet
 
 ENV NODE_ENV=production
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm ci
 
 COPY ./ ./
 
@@ -160,10 +165,10 @@ RUN tool/translator/build.sh
 
 # ============== DEPLOY to FIREBASE ==============
 FROM build as deploy
-RUN npm install -g firebase-tools@12.8.1
-ARG FIREBASE_TOKEN
-ENV FIREBASE_TOKEN=$FIREBASE_TOKEN
-ARG FIREBASE_PROJECT=default
-ENV FIREBASE_PROJECT=$FIREBASE_PROJECT
-RUN [[ -z "$FIREBASE_TOKEN" ]] && echo "FIREBASE_TOKEN is required for container deploy!"
+# RUN npm install -g firebase-tools@12.8.1
+# ARG FIREBASE_TOKEN
+# ENV FIREBASE_TOKEN=$FIREBASE_TOKEN
+# ARG FIREBASE_PROJECT=default
+# ENV FIREBASE_PROJECT=$FIREBASE_PROJECT
+# RUN [[ -z "$FIREBASE_TOKEN" ]] && echo "FIREBASE_TOKEN is required for container deploy!"
 RUN make deploy-ci
