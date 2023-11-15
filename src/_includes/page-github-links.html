@@ -8,13 +8,13 @@ Style the button pair using the `#page-github-links` selector.
 {% assign title = page.title | default: page.url -%}
 {% assign url = site.url | append: page.url -%}
 
-{% capture issueTitle -%} title=[PAGE ISSUE]: '{{title}}' {%- endcapture -%}
+{% capture issueTitle -%} title=[页面问题] '{{title}}' {%- endcapture -%}
 
 <div id="page-github-links" class="btn-group" aria-label="Page GitHub links" role="group">
-  <a href="{{path}}" class="btn no-automatic-external" title="View page source" target="_blank" rel="noopener">
+  <a href="{{path}}" class="btn no-automatic-external" title="查看文档源码" target="_blank" rel="noopener">
     <i class="material-icons">description</i>
   </a>
-  <a href="{{repo}}/issues/new?template=1_page_issue.yml&{{issueTitle}}&page-url={{url}}&page-source={{path}}" class="btn no-automatic-external" title="Report an issue with this page"
+  <a href="{{repo}}/issues/new?template=1_page_issue.yml&{{issueTitle}}&page-url={{url}}&page-source={{path}}" class="btn no-automatic-external" title="为本页面内容提出建议"
     target="_blank" rel="noopener">
     <i class="material-icons">bug_report</i>
   </a>
