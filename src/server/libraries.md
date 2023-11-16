@@ -104,6 +104,10 @@ and [general-purpose packages][] such as `logging`:
 | [grpc]({{site.pub-pkg}}/grpc) | 实现 [gRPC][]，将移动和 HTTP/2 放在首位的高性能开源通用的 RPC 框架。|
 | [shelf]({{site.pub-pkg}}/shelf) | Provides a model for web server middleware that encourages composition and easy reuse. |
 | [shelf]({{site.pub-pkg}}/shelf) | 为 Web 服务器中间件提供一个模型，该模型促成组合和易于重用。|
+| [dart_frog]({{site.pub-pkg}}/dart_frog) | A fast, minimalistic backend framework for Dart built on top of Shelf. |
+| [dart_frog]({{site.pub-pkg}}/dart_frog) | 基于 Shelf 构建的快速、简洁的 Dart 后端框架。 |
+| [serverpod]({{site.pub-pkg}}/serverpod) | A scalable app server that supports code generation, authentication, real-time communication, databases, and caching. |
+| [serverpod]({{site.pub-pkg}}/serverpod) | 可扩展的应用服务器，支持代码生成、身份验证、实时通信、数据库和缓存。 |
 {:.table .table-striped .nowrap}
 
 [general-purpose packages]: /guides/libraries/useful-libraries#general-purpose-packages

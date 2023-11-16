@@ -1,5 +1,4 @@
 ---
-permalink: /community
 title: Community and support
 title: 社区和支持
 description: Communities, mailing lists, and bug databases for the Dart project.
@@ -28,7 +27,7 @@ our [code of conduct](/community/code-of-conduct).
 <br> 第一时间公布新的发行版本、重大变化以及其他重要新闻。推荐！
 
 [@dart_lang](https://twitter.com/dart_lang)
-<br> The official Twitter account.
+<br> The official X (Twitter) account.
 
 [@dart_lang](https://twitter.com/dart_lang)
 <br> Twitter 官方账号。
@@ -57,6 +56,9 @@ Get answers and connect with Dart developers.
 [StackOverflow](https://stackoverflow.com/tags/dart)
 <br> 提问题的最佳场所。
 
+[The dart_community Discord](https://discord.gg/Qt6DgfAWWx)
+: Chat with and get help from other Dart developers.
+
 [Dart on Reddit](https://www.reddit.com/r/dartlang)
 <br> The subreddit for all things related to Dart.
 
@@ -68,6 +70,12 @@ Get answers and connect with Dart developers.
 
 [非 Dart 官方的 Discord 社区频道](https://discord.gg/Qt6DgfAWWx)
 <br> 与其他 Dart 开发者交流及寻求帮助。
+
+[Flutter communities]({{site.flutter}}/community#community-grid)
+<br> Discuss and get help with Flutter.
+
+[Flutter 社区]({{site.flutter}}/community#community-grid)
+<br> 讨论 Flutter 或寻求帮助.
 
 #### Google Groups
 
@@ -137,7 +145,3 @@ Our wonderful community has provided these resources:
 * [Korean version of this site (한국어)](https://dart-ko.dev/)
 * [Simplified Chinese version of this site (简体中文版)](https://dart.cn)
 * [Traditional Chinese version of this site (正體中文版)](https://dart.tw.gh.miniasp.com/)
-
-Also see the [Flutter community page.]({{site.flutter}}/community)
-
-还有一些社区内容，相见 [Flutter 社区]({{site.flutter}}/community) 页面。

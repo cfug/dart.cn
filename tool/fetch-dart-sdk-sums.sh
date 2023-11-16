@@ -26,14 +26,13 @@ while (( "$#" )); do
   esac
 done
 
-BASEURL="https://storage.googleapis.com/dart-archive/channels"
+BASEURL="https://storage.flutter-io.cn/dart-archive/channels"
 CHANNELS="stable beta dev"
 ARCHS="amd64 arm64"
 ENDING='\\\n'
 
 printf "\n$(blue "Copy the following output and replace the existing code in the Dockerfile")\n"
 printf "$(blue "inside the 'set -eu' run statement:")\n\n"
-
 
 for CHANNEL in $CHANNELS; do
   for ARCH in $ARCHS; do

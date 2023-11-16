@@ -6,9 +6,9 @@ short-title: 归档
 description: Download specific stable, beta, dev, and main channel versions of the Dart SDK and the Dart API documentation.
 description: 下载特定的稳定版、测试版、开发版和主分支开发版的 Dart SDK 和 Dart API 文档。
 js:
-- url: /get-dart/archive/assets/download_archive.dart.js
+- url: /assets/js/get-dart/download_archive.dart.js
   defer: true
-- url: /get-dart/archive/assets/install.js
+- url: /assets/js/get-dart/install.js
   defer: true
 ---
 

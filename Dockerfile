@@ -1,12 +1,18 @@
-FROM ruby:3.2-slim-bookworm@sha256:2de48b02b2c3383799991fd5573462a7646a92a068b4afbb0e161ad166a3de9a as base
+FROM ruby:3.2-slim-bookworm@sha256:adc7f93df5b83c8627b3fadcc974ce452ef9999603f65f637e32b8acec096ae1 as base
+
+SHELL ["/usr/bin/bash", "-c"]
+
+# Configure Debian mirrors.
+RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV TZ=US/Pacific
+ENV TZ=Asia/Shanghai
 RUN apt update && apt install -yq --no-install-recommends \
       build-essential \
       ca-certificates \
       curl \
       git \
+      gnupg \
       lsof \
       make \
       unzip \
@@ -32,27 +38,29 @@ ENV DART_SDK=/usr/lib/dart
 ENV PATH=$DART_SDK/bin:$PATH
 RUN set -eu; \
     case "$(dpkg --print-architecture)_${DART_CHANNEL}" in \
+      # BEGIN dart-sha
       amd64_stable) \
-        DART_SHA256="cccd5300faa5a9abce12a5f77586e26350028cea82bb4ff8eeb55641b58a2e1d"; \
+        DART_SHA256="4342ba274a4e9f8057079cf9de43b1c7bdb002016ad538313e8ebe942b61bba8"; \
         SDK_ARCH="x64";; \
       arm64_stable) \
-        DART_SHA256="2c8eeaf0d3da60c4e14beec45ce3b39aca754f71b9fa3fb0c635ee28d6f44708"; \
+        DART_SHA256="0f0e19c276c99fa3efd6428ea4bef1502f742f2a1f9772959637eec775c10ba0"; \
         SDK_ARCH="arm64";; \
       amd64_beta) \
-        DART_SHA256="e3bdf39358dda7f0fd02b25d4d4539536fff53b4ab257da31a5fbbe42edc28c9"; \
+        DART_SHA256="b3aa85b15bd13d619ba924524d5c7f082dc256a062ad34fe12ec824c9f05c2b3"; \
         SDK_ARCH="x64";; \
       arm64_beta) \
-        DART_SHA256="7e7c2d1d4c8c8a6a47d916f422ddad2d5497307a147fa860b7b063ffdd162939"; \
+        DART_SHA256="b7644435c8acf1e73da3f1ce16889b7222fbab37a75111aff225422a1cc61cab"; \
         SDK_ARCH="arm64";; \
       amd64_dev) \
-        DART_SHA256="53368087f4c191d8b55338d13c32a70bf6cbfb0a99b6b4d86e53cb366bfce446"; \
+        DART_SHA256="ae283eec0aa6e044064a79fc524af3dffec0543c48488538fc1a01a1fae7567b"; \
         SDK_ARCH="x64";; \
       arm64_dev) \
-        DART_SHA256="474a251dfa7f6ba41f68d889b774569c4d2da5b4262f0c48fa53424e5b42f200"; \
+        DART_SHA256="99153759fe1edbc5c1c6a8c5e5164fad11671eed8a8899bf127a17412b701172"; \
         SDK_ARCH="arm64";; \
+      # END dart-sha
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
-    BASEURL="https://storage.googleapis.com/dart-archive/channels"; \
+    BASEURL="https://storage.flutter-io.cn/dart-archive/channels"; \
     URL="$BASEURL/$DART_CHANNEL/release/$DART_VERSION/sdk/$SDK"; \
     curl -fsSLO "$URL"; \
     echo "$DART_SHA256 *$SDK" | sha256sum --check --status --strict - || (\
@@ -78,21 +86,13 @@ CMD ["./tool/test.sh"]
 
 # ============== NODEJS INSTALL ==============
 FROM dart as node
-RUN set -eu; \
-    NODE_PPA="node_ppa.sh"; \
-    NODE_SHA256=4ef190086f051a5242b8f9e7dff891d94c72bd484672d4a962f7189556977994; \
-    curl -fsSL https://deb.nodesource.com/setup_lts.x -o "$NODE_PPA"; \
-    echo "$NODE_SHA256 $NODE_PPA" | sha256sum --check --status --strict - || (\
-        echo -e "\n\nNODE CHECKSUM FAILED! Run tool/fetch-node-ppa-sum.sh for updated values.\n\n" && \
-        rm "$NODE_PPA" && \
-        exit 1 \
-    ); \
-    sh "$NODE_PPA" && rm "$NODE_PPA"; \
-    apt-get update -q && apt-get install -yq --no-install-recommends \
-      nodejs \
-    && rm -rf /var/lib/apt/lists/*
-# Ensure latest NPM
-RUN npm install -g npm
+
+RUN mkdir -p /etc/apt/keyrings \
+    && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
+    && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
+    && apt-get update -yq \
+    && apt-get install nodejs -yq \
+    && npm install -g npm # Ensure latest npm
 
 
 # ============== DEV/JEKYLL SETUP ==============
@@ -106,7 +106,8 @@ RUN BUNDLE_WITHOUT="test production" bundle install --jobs=4 --retry=2
 
 ENV NODE_ENV=development
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm install -g firebase-tools@12.8.1
+RUN npm ci
 
 COPY ./ ./
 
@@ -137,7 +138,7 @@ CMD ["make", "emulate"]
 
 
 # ============== BUILD PROD JEKYLL SITE ==============
-FROM node AS build
+FROM node as build
 WORKDIR /app
 
 ENV JEKYLL_ENV=production
@@ -147,7 +148,7 @@ RUN BUNDLE_WITHOUT="test development" bundle install --jobs=4 --retry=2 --quiet
 
 ENV NODE_ENV=production
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm ci
 
 COPY ./ ./
 
@@ -164,4 +165,10 @@ RUN tool/translator/build.sh
 
 # ============== DEPLOY to FIREBASE ==============
 FROM build as deploy
+# RUN npm install -g firebase-tools@12.8.1
+# ARG FIREBASE_TOKEN
+# ENV FIREBASE_TOKEN=$FIREBASE_TOKEN
+# ARG FIREBASE_PROJECT=default
+# ENV FIREBASE_PROJECT=$FIREBASE_PROJECT
+# RUN [[ -z "$FIREBASE_TOKEN" ]] && echo "FIREBASE_TOKEN is required for container deploy!"
 RUN make deploy-ci

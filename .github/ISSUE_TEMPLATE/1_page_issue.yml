@@ -1,6 +1,6 @@
 name: 文档或页面问题
 description: 协助改进 dart.cn 的页面内容
-title: "[PAGE ISSUE]: '{请替换为页面的标题}'"
+title: '[页面问题] {请替换为页面的标题}'
 labels: ['E: 页面问题']
 body:
   - type: markdown
@@ -11,7 +11,7 @@ body:
     id: page-url
     attributes:
       label: 页面 URL
-      placeholder: "例如：https://dart.cn/docs"
+      placeholder: "例如：https://dart.cn/guides"
     validations:
       required: true
   - type: input
@@ -42,3 +42,11 @@ body:
       placeholder: 任何你认为我们需要知道的额外信息。
     validations:
       required: false
+  - type: checkboxes
+    id: volunteer
+    attributes:
+      label: 我想来解决这个问题。
+      description: 如果你想自己尝试修复，请告诉我们。
+      options:
+        - label: 我会尝试在 dart.cn 上解决这个问题。
+          required: false

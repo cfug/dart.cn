@@ -1,7 +1,7 @@
 ---
 title: Customizing static analysis
 title: 自定义静态分析
-description: >
+description: >-
   Use an analysis options file and code comments to customize static analysis.
 description: 通过对分析文件和代码注释来自定义静态分析的内容。
 ---
@@ -502,12 +502,12 @@ linter:
     - always_declare_return_types
     - cancel_subscriptions
     - close_sinks
-    - collection_methods_unrelated_type
     - combinators_ordering
     - comment_references
-    - dangling_library_doc_comments
-    - implicit_call_tearoffs
     - invalid_case_patterns
+    - library_annotations
+    - one_member_abstracts
+    - only_throw_errors
 ```
 
 
@@ -569,7 +569,7 @@ such as new diagnostics, quick fixes, and custom code completion.
 You can enable only one plugin per `analysis_options.yaml` file.
 Enabling an analyzer plugin increases how much memory the analyzer uses.
 
-Don’t use analyzer plugins if your situation meets
+Don't use analyzer plugins if your situation meets
 either of the following conditions:
 
 * You use a development machine with less than 16 GB of memory.

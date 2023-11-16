@@ -58,14 +58,26 @@ setup:
 	 --build-arg DART_CHANNEL=${DART_CHANNEL}
 
 # Serve the Jekyll site with livereload and incremental builds
+# Tip: livereload is not supported
 serve:
+# 	bundle exec jekyll serve \
+# 		--host ${JEKYLL_SITE_HOST} \
+# 		--port ${JEKYLL_SITE_PORT} \
+# 		--config _config.yml,_config_dev.yml \
+# 		--livereload \
+# 		--incremental \
+# 		--trace
+	bundle exec jekyll clean
+	bundle exec jekyll build \
+		--config _config.yml,_config_dev.yml \
+		--incremental \
+		--trace
+	bash tool/translator/build.sh
 	bundle exec jekyll serve \
 		--host ${JEKYLL_SITE_HOST} \
 		--port ${JEKYLL_SITE_PORT} \
-		--config _config.yml,_config_dev.yml \
-		--livereload \
-		--incremental \
-		--trace
+		--trace\
+		--skip-initial-build
 
 # Run all tests inside a built container
 test:
@@ -103,17 +115,26 @@ write-prod-robots:
 
 # Deploy locally
 deploy:
-	sh tool/translator/deploy-cn.sh
+	bash tool/translator/deploy-cn.sh
 
 ################## UTILS ##################
 
-# Fetch SDK sums for current Dart SDKs by arch, Node PPA
+# Fetch SDK sums for current Dart SDKs by arch
 # This outputs a bash case format to be copied to Dockerfile
 fetch-sums:
-	tool/fetch-dart-sdk-sums.sh \
+	bash tool/fetch-dart-sdk-sums.sh \
 		--version ${DART_VERSION} \
 		--channel ${DART_CHANNEL}
-	tool/fetch-node-ppa-sum.sh
+
+# Check Dart sums pulls the set of Dart SDK SHA256 hashes
+# and writes them to a temp file.
+check-sums:
+	bash tool/check-dart-sdk.sh
+
+# Update Dart sums replaces the Dart SDK SHA256 hashes
+# in the Dockerfile and deletes the temp file.
+update-sums:
+	bash tool/update-dart-sdk.sh
 
 # Test the dev container with pure docker
 test-builds:

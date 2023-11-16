@@ -128,12 +128,11 @@ To create a simple command-line app, use **New Pad**.
 
    然后修改代码。比如将 `main()` 函数中的代码修改为如下：
 
-   <!-- library-tour/string-tests/bin/main.dart -->
-   {% prettify dart tag=pre+code %}
+   ```dart
    for (final char in 'hello'.split('')) {
      print(char);
    }
-   {% endprettify %}  
+   ``` 
    
    As you type, DartPad shows hints, documentation,
    and autocomplete suggestions.

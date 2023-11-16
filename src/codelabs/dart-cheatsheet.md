@@ -10,9 +10,7 @@ js: [{url: 'https://dartpad.cn/inject_embed.dart.js', defer: true}]
 The Dart language is designed to be easy to learn for
 coders coming from other languages,
 but it has a few unique features.
-This codelab—which is based on a
-[Dart language cheatsheet](/guides/language/cheatsheet)
-written by and for Google engineers—walks you through
+This codelab walks you through
 the most important of these language features.
 
 Dart 语言旨在让从其他编程语言转来的开发者们能够轻松学习，但也有它的独特之处。
@@ -24,7 +22,8 @@ The embedded editors in this codelab have partially completed code snippets.
 You can use these editors to test your knowledge by completing the code and
 clicking the **Run** button.
 If you need help, click the **Hint** button.
-To run the code formatter ([dart format](/tools/dart-format)), click **Format**.
+To run the code formatter ([`dart format`](/tools/dart-format)), 
+click **Format**.
 The **Reset** button erases your work and
 restores the editor to its original state.
 
@@ -58,13 +57,16 @@ Here are some examples of using string interpolation:
 
 下面是一些使用字符串插值的例子：
 
-| String  | | Result |
+<div class="table-wrapper" markdown="1">
+| String                      | | Result |
 |-----------------------------+-+ -------|
 | 字符串  | | 结果 |
 | `'${3 + 2}'`                | | `'5'` |
 | `'${"word".toUpperCase()}'` | | `'WORD'` |
 | `'$myObject'`               | | The value of `myObject.toString()`|
 | `'$myObject'`               | | `myObject.toString()` 的值|
+
+</div>
 
 ### Code example
 {: .no_toc}
@@ -124,7 +126,7 @@ reference them inside single quotes, with a space in between.
 ## 可空的变量
 
 Dart enforces sound null safety.
-This means values can’t be null unless you say they can be.
+This means values can't be null unless you say they can be.
 In other words, types default to non-nullable.
 
 Dart 要求使用健全的空安全，
@@ -607,7 +609,7 @@ bool hasEmpty = aListOfStrings.any((s) {
 });
 ```
 
-Here’s a simpler way to write that code:
+Here's a simpler way to write that code:
 
 这里是一个更简单的代码实现：
 
@@ -1410,7 +1412,7 @@ This is a chance to get more practice with the ?? operator!
 
 ## 异常
 
-Dart code can throw and catch exceptions. In contrast to Java, all of Dart’s exceptions are unchecked
+Dart code can throw and catch exceptions. In contrast to Java, all of Dart's exceptions are unchecked
 exceptions. Methods don't declare which exceptions they might throw, and you aren't required to catch
 any exceptions.
 
@@ -2276,9 +2278,9 @@ IntegerSingle, IntegerDouble, or IntegerTriple as appropriate.
 
 ## 重定向构造方法
 
-Sometimes a constructor’s only purpose is to redirect to
+Sometimes a constructor's only purpose is to redirect to
 another constructor in the same class.
-A redirecting constructor’s body is empty,
+A redirecting constructor's body is empty,
 with the constructor call appearing after a colon (`:`).
 
 有时一个构造方法仅仅用来重定向到该类的另一个构造方法。

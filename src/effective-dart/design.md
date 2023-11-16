@@ -39,21 +39,21 @@ precedent.
 那么请继续使用这个命名。
 
 {:.good}
-{% prettify dart tag=pre+code %}
+```dart
 pageCount         // A field.
 updatePageCount() // Consistent with pageCount.
 toSomething()     // Consistent with Iterable's toList().
 asSomething()     // Consistent with List's asMap().
 Point             // A familiar concept.
-{% endprettify %}
+```
 
 {:.bad}
-{% prettify dart tag=pre+code %}
+```dart
 renumberPages()      // Confusingly different from pageCount.
 convertToSomething() // Inconsistent with toX() precedent.
 wrappedAsSomething() // Inconsistent with asX() precedent.
 Cartesian            // Unfamiliar to most users.
-{% endprettify %}
+```
 
 The goal is to take advantage of what the user already knows. This includes
 their knowledge of the problem domain itself, the conventions of the core
@@ -79,20 +79,20 @@ abbreviate. If you do abbreviate, [capitalize it correctly][caps].
 [caps]: /effective-dart/style#identifiers
 
 {:.good}
-{% prettify dart tag=pre+code %}
+```dart
 pageCount
 buildRectangles
 IOStream
 HttpRequest
-{% endprettify %}
+```
 
 {:.bad}
-{% prettify dart tag=pre+code %}
+```dart
 numPages    // "Num" is an abbreviation of "number (of)".
 buildRects
 InputOutputStream
 HypertextTransferProtocolRequest
-{% endprettify %}
+```
 
 
 ### PREFER putting the most descriptive noun last
@@ -106,19 +106,19 @@ prefix it with other words, such as adjectives, to further describe the thing.
 你可以在其前面添加其他单词，例如形容词，以进一步描述该事物。
 
 {:.good}
-{% prettify dart tag=pre+code %}
+```dart
 pageCount             // A count (of pages).
 ConversionSink        // A sink for doing conversions.
 ChunkedConversionSink // A ConversionSink that's chunked.
 CssFontFaceRule       // A rule for font faces in CSS.
-{% endprettify %}
+```
 
 {:.bad}
-{% prettify dart tag=pre+code %}
+```dart
 numPages                  // Not a collection of pages.
 CanvasRenderingContext2D  // Not a "2D".
 RuleFontFaceCss           // Not a CSS.
-{% endprettify %}
+```
 
 
 ### CONSIDER making the code read like a sentence
@@ -133,7 +133,7 @@ it like a sentence.
 
 {:.good}
 <?code-excerpt "design_good.dart (code-like-prose)"?>
-{% prettify dart tag=pre+code %}
+```dart
 // "If errors is empty..."
 if (errors.isEmpty) ...
 
@@ -142,11 +142,11 @@ subscription.cancel();
 
 // "Get the monsters where the monster has claws."
 monsters.where((monster) => monster.hasClaws);
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (code-like-prose)" replace="/ as bool//g"?>
-{% prettify dart tag=pre+code %}
+```dart
 // Telling errors to empty itself, or asking if it is?
 if (errors.empty) ...
 
@@ -155,7 +155,7 @@ subscription.toggle();
 
 // Filter the monsters with claws *out* or include *only* those?
 monsters.filter((monster) => monster.hasClaws);
-{% endprettify %}
+```
 
 It's helpful to try out your API and see how it "reads" when used in code, but
 you can go too far. It's not helpful to add articles and other parts of speech
@@ -166,11 +166,11 @@ to force your names to *literally* read like a grammatically correct sentence.
 
 {:.bad}
 <?code-excerpt "design_bad.dart (code-like-prose-overdone)"?>
-{% prettify dart tag=pre+code %}
+```dart
 if (theCollectionOfErrors.isEmpty) ...
 
 monsters.producesANewSequenceWhereEach((monster) => monster.hasClaws);
-{% endprettify %}
+```
 
 
 ### PREFER a noun phrase for a non-boolean property or variable
@@ -185,16 +185,16 @@ verb phrase name.
 如果用户更关心*如何*确定一个属性，则很可能应该是一个使用动词短语命名函数。
 
 {:.good}
-{% prettify dart tag=pre+code %}
+```dart
 list.length
 context.lineWidth
 quest.rampagingSwampBeast
-{% endprettify %}
+```
 
 {:.bad}
-{% prettify dart tag=pre+code %}
+```dart
 list.deleteItems
-{% endprettify %}
+```
 
 
 ### PREFER a non-imperative verb phrase for a boolean property or variable
@@ -207,10 +207,10 @@ that reads well there. Compare:
 布尔名称通常用在控制语句中当做条件，
 因此你要应该让这个名字在控制语句中读起来语感很好。比较下面的两个：
 
-{% prettify dart tag=pre+code %}
+```dart
 if (window.closeable) ...  // Adjective.
 if (window.canClose) ...   // Verb.
-{% endprettify %}
+```
 
 Good names tend to start with one of a few kinds of verbs:
 
@@ -257,24 +257,24 @@ method.)
 （如果这个属性*确实*修改了对象的状态，则它应该是一个函数。）
 
 {:.good}
-{% prettify dart tag=pre+code %}
+```dart
 isEmpty
 hasElements
 canClose
 closesWindow
 canShowPopup
 hasShownPopup
-{% endprettify %}
+```
 
 {:.bad}
-{% prettify dart tag=pre+code %}
+```dart
 empty         // Adjective or verb?
 withElements  // Sounds like it might hold elements.
 closeable     // Sounds like an interface.
               // "canClose" reads better as a sentence.
 closingWindow // Returns a bool or a window?
 showPopup     // Sounds like it shows the popup.
-{% endprettify %}
+```
 
 
 ### CONSIDER omitting the verb for a named boolean *parameter*
@@ -290,11 +290,11 @@ site.
 
 {:.good}
 <?code-excerpt "design_good.dart (omit-verb-for-bool-param)"?>
-{% prettify dart tag=pre+code %}
+```dart
 Isolate.spawn(entryPoint, message, paused: false);
 var copy = List.from(elements, growable: true);
 var regExp = RegExp(pattern, caseSensitive: false);
-{% endprettify %}
+```
 
 
 ### PREFER the "positive" name for a boolean property or variable
@@ -331,19 +331,19 @@ understand what the code means.
 
 {:.good}
 <?code-excerpt "design_good.dart (positive)"?>
-{% prettify dart tag=pre+code %}
+```dart
 if (socket.isConnected && database.hasData) {
   socket.write(database.read());
 }
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (positive)"?>
-{% prettify dart tag=pre+code %}
+```dart
 if (!socket.isDisconnected && !database.isEmpty) {
   socket.write(database.read());
 }
-{% endprettify %}
+```
 
 For some properties, there is no obvious positive form. Is a document that has
 been flushed to disk "saved" or "*un*-changed"? Is a document that *hasn't* been
@@ -386,11 +386,11 @@ clarifies the work the member performs.
 
 {:.good}
 <?code-excerpt "design_good.dart (verb-for-func-with-side-effect)"?>
-{% prettify dart tag=pre+code %}
+```dart
 list.add('element');
 queue.removeFirst();
 window.refresh();
-{% endprettify %}
+```
 
 This way, an invocation reads like a command to do that work.
 
@@ -421,11 +421,11 @@ member returns.
 
 {:.good}
 <?code-excerpt "design_good.dart (noun-for-func-returning-value)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var element = list.elementAt(3);
 var first = list.firstWhere(test);
 var char = string.codeUnitAt(4);
-{% endprettify %}
+```
 
 This guideline is deliberately softer than the previous one. Sometimes a method
 has no side effects but is still simpler to name with a verb phrase like
@@ -456,10 +456,10 @@ work.
 
 {:.good}
 <?code-excerpt "design_good.dart (verb-for-func-with-work)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var table = database.downloadData();
 var packageVersions = packageGraph.solveConstraints();
-{% endprettify %}
+```
 
 Note, though, that this guideline is softer than the previous two. The work an
 operation performs is often an implementation detail that isn't relevant to the
@@ -532,11 +532,11 @@ If you define a conversion method, it's helpful to follow that convention.
 
 {:.good}
 <?code-excerpt "design_good.dart (to___)"?>
-{% prettify dart tag=pre+code %}
+```dart
 list.toSet();
 stackTrace.toString();
 dateTime.toLocal();
-{% endprettify %}
+```
 
 
 ### PREFER naming a method `as___()` if it returns a different representation backed by the original object
@@ -562,11 +562,11 @@ The core library convention for you to follow is `as___()`.
 
 {:.good}
 <?code-excerpt "design_good.dart (as___)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var map = table.asMap();
 var list = bytes.asFloat32List();
 var future = subscription.asFuture();
-{% endprettify %}
+```
 
 
 ### AVOID describing the parameters in the function's or method's name
@@ -580,16 +580,16 @@ readability to also refer to it in the name itself.
 
 {:.good}
 <?code-excerpt "design_good.dart (avoid-desc-param-in-func)"?>
-{% prettify dart tag=pre+code %}
+```dart
 list.add(element);
 map.remove(key);
-{% endprettify %}
+```
 
 {:.bad}
-{% prettify dart tag=pre+code %}
+```dart
 list.addElement(element)
 map.removeKey(key)
-{% endprettify %}
+```
 
 However, it can be useful to mention a parameter to disambiguate it from other
 similarly-named methods that take different types:
@@ -599,10 +599,10 @@ similarly-named methods that take different types:
 
 {:.good}
 <?code-excerpt "design_good.dart (desc-param-in-func-ok)"?>
-{% prettify dart tag=pre+code %}
+```dart
 map.containsKey(key);
 map.containsValue(value);
-{% endprettify %}
+```
 
 
 ### DO follow existing mnemonic conventions when naming type parameters
@@ -622,12 +622,12 @@ The conventions are:
 
     {:.good}
     <?code-excerpt "design_good.dart (type-parameter-e)" replace="/\n\n/\n/g"?>
-    {% prettify dart tag=pre+code %}
+    ```dart
     class IterableBase<E> {}
     class List<E> {}
     class HashSet<E> {}
     class RedBlackTree<E> {}
-    {% endprettify %}
+    ```
 
 *   `K` and `V` for the **key** and **value** types in an associative
     collection:
@@ -636,11 +636,11 @@ The conventions are:
 
     {:.good}
     <?code-excerpt "design_good.dart (type-parameter-k-v)" replace="/\n\n/\n/g"?>
-    {% prettify dart tag=pre+code %}
+    ```dart
     class Map<K, V> {}
     class Multimap<K, V> {}
     class MapEntry<K, V> {}
-    {% endprettify %}
+    ```
 
 *   `R` for a type used as the **return** type of a function or a class's
     methods. This isn't common, but appears in typedefs sometimes and in classes
@@ -651,13 +651,13 @@ The conventions are:
 
     {:.good}
     <?code-excerpt "design_good.dart (type-parameter-r)"?>
-    {% prettify dart tag=pre+code %}
+    ```dart
     abstract class ExpressionVisitor<R> {
       R visitBinary(BinaryExpression node);
       R visitLiteral(LiteralExpression node);
       R visitUnary(UnaryExpression node);
     }
-    {% endprettify %}
+    ```
 
 *   Otherwise, use `T`, `S`, and `U` for generics that have a single type
     parameter and where the surrounding type makes its meaning obvious. There
@@ -670,11 +670,11 @@ The conventions are:
 
     {:.good}
     <?code-excerpt "design_good.dart (type-parameter-t)"?>
-    {% prettify dart tag=pre+code %}
+    ```dart
     class Future<T> {
       Future<S> then<S>(FutureOr<S> onValue(T value)) => ...
     }
-    {% endprettify %}
+    ```
 
     Here, the generic method `then<S>()` uses `S` to avoid shadowing the `T`
     on `Future<T>`.
@@ -688,7 +688,7 @@ mnemonic name or a descriptive name is fine:
 
 {:.good}
 <?code-excerpt "design_good.dart (type-parameter-graph)"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Graph<N, E> {
   final List<N> nodes = [];
   final List<E> edges = [];
@@ -698,7 +698,7 @@ class Graph<Node, Edge> {
   final List<Node> nodes = [];
   final List<Edge> edges = [];
 }
-{% endprettify %}
+```
 
 In practice, the existing conventions cover most type parameters.
 
@@ -801,17 +801,17 @@ just want a function.
 
 {:.good}
 <?code-excerpt "design_good.dart (one-member-abstract-class)"?>
-{% prettify dart tag=pre+code %}
+```dart
 typedef Predicate<E> = bool Function(E element);
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (one-member-abstract-class)"?>
-{% prettify dart tag=pre+code %}
+```dart
 abstract class Predicate<E> {
   bool test(E element);
 }
-{% endprettify %}
+```
 
 
 ### AVOID defining a class that contains only static members
@@ -848,17 +848,17 @@ move it to a separate library that can be imported with a prefix.
 
 {:.good}
 <?code-excerpt "design_good.dart (class-only-static)"?>
-{% prettify dart tag=pre+code %}
+```dart
 DateTime mostRecent(List<DateTime> dates) {
   return dates.reduce((a, b) => a.isAfter(b) ? a : b);
 }
 
 const _favoriteMammal = 'weasel';
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (class-only-static)"?>
-{% prettify dart tag=pre+code %}
+```dart
 class DateUtils {
   static DateTime mostRecent(List<DateTime> dates) {
     return dates.reduce((a, b) => a.isAfter(b) ? a : b);
@@ -868,7 +868,7 @@ class DateUtils {
 class _Favorites {
   static const mammal = 'weasel';
 }
-{% endprettify %}
+```
 
 In idiomatic Dart, classes define *kinds of objects*. A type that is never
 instantiated is a code smell.
@@ -876,15 +876,15 @@ instantiated is a code smell.
 通常在 Dart 中，类定义了*一类对象*。一个类型，如果类型从来没有被初始化，
 那么这是另一种的代码气息。
 
-However, this isn't a hard rule. With constants and enum-like types, it may be
-natural to group them in a class.
+However, this isn't a hard rule. For example, with constants and enum-like types,
+it may be natural to group them in a class.
 
-当然，这并不是一条硬性规则。对于常量和类似枚举的类型，将它们组合在一个类
+当然，这并不是一条硬性规则。例如，对于常量和类似枚举的类型，将它们组合在一个类
 中看起来也是很自然。
 
 {:.good}
 <?code-excerpt "design_bad.dart (class-only-static-exception)"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Color {
   static const red = '#f00';
   static const green = '#0f0';
@@ -892,7 +892,7 @@ class Color {
   static const black = '#000';
   static const white = '#fff';
 }
-{% endprettify %}
+```
 
 
 ### AVOID extending a class that isn't intended to be subclassed
@@ -982,60 +982,34 @@ comment.
 如果你的类可以被用作接口，那么将这个情况注明到类的文档中。
 
 
-### DO use `mixin` to define a mixin type
+### PREFER defining a pure `mixin` or pure `class` to a `mixin class`
+
+<a id="do-use-mixin-to-define-a-mixin-type"></a>
+
+<a id="avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin"></a>
 
 ### **要** 对支持 mixin 的类在文档注明
 
 {% include linter-rule-mention.md rule="prefer_mixin" %}
 
-Dart originally didn't have a separate syntax for declaring a class intended to
-be mixed in to other classes. Instead, any class that met certain restrictions
-(no non-default constructor, no superclass, etc.) could be used as a mixin. This
-was confusing because the author of the class might not have intended it to be
-mixed in.
+Dart previously (language version [2.12](/guides/language/evolution#dart-212)
+to [2.19](/guides/language/evolution#dart-219)) allowed any class that met certain restrictions
+(no non-default constructor, no superclass, etc.) to be mixed into other classes.
+This was confusing because the author of the class might not have intended it to
+be mixed in.
 
-Dart 2.1.0 added a `mixin` keyword for explicitly declaring a mixin. Types
-created using that can *only* be used as mixins, and the language also ensures
-that your mixin stays within the restrictions. When defining a new type that you
-intend to be used as a mixin, use this syntax.
+Dart 3.0.0 now requires that any type intended to be mixed into other classes,
+as well as treated as a normal class, must be explicitly declared as such with
+the `mixin class` declaration.
 
-{:.good}
-<?code-excerpt "design_good.dart (mixin)"?>
-{% prettify dart tag=pre+code %}
-mixin ClickableMixin implements Control {
-  bool _isDown = false;
+Types that need to be both a mixin and a class should be a rare case, however.
+The `mixin class` declaration is mostly meant to help migrate pre-3.0.0 classes
+being used as mixins to a more explicit declaration. New code should clearly
+define the behavior and intention of its declarations by using only pure `mixin`
+or pure `class` declarations, and avoid the ambiguity of mixin classes.
 
-  void click();
-
-  void mouseDown() {
-    _isDown = true;
-  }
-
-  void mouseUp() {
-    if (_isDown) click();
-    _isDown = false;
-  }
-}
-{% endprettify %}
-
-You might still encounter older code using `class` to define mixins, but the new
-syntax is preferred.
-
-
-### AVOID mixing in a type that isn't intended to be a mixin {#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin}
-
-### **避免** 去 mixin 一个不期望被 mixin 的类 {#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin}
-
-{% include linter-rule-mention.md rule="prefer_mixin" %}
-
-For compatibility, Dart still allows you to mix in classes that aren't defined
-using `mixin`. However, that's risky. If the author of the class doesn't intend
-the class to be used as a mixin, they might change the class in a way that
-breaks the mixin restrictions. For example, if they add a constructor, your
-class will break.
-
-If the class doesn't have a doc comment or an obvious name like `IterableMixin`,
-assume you cannot mix in the class if it isn't declared using `mixin`.
+Read [Migrating classes as mixins](/language/class-modifiers-for-apis#migrating-classes-as-mixins)
+for more guidance on `mixin` and `mixin class` declarations.
 
 ## Constructors
 
@@ -1178,10 +1152,10 @@ as the caller knows. That implies:
     你可能需要通过一个描述其功能的动词的方法来引起使用者的注意。
 
     {:.bad}
-    {% prettify dart tag=pre+code %}
+    ```dart
     connection.nextIncomingMessage; // Does network I/O.
     expression.normalForm; // Could be exponential to calculate.
-    {% endprettify %}
+    ```
 
 *   **The operation does not have user-visible side effects.** Accessing a real
     field does not alter the object or any other state in the program. It
@@ -1200,10 +1174,10 @@ as the caller knows. That implies:
     带外副作用。 getter 方法可以惰性计算和存储他们的结果，写入缓存， log 等。这样是没有问题的。
 
     {:.bad}
-    {% prettify dart tag=pre+code %}
+    ```dart
     stdout.newline; // Produces output.
     list.clear; // Modifies object.
-    {% endprettify %}
+    ```
 
 *   **The operation is *idempotent*.** "Idempotent" is an odd word that, in this
     context, basically means that calling the operation multiple times produces
@@ -1232,9 +1206,9 @@ as the caller knows. That implies:
     换句话说，*调用者关系的*是结果值应该相等。
 
     {:.bad}
-    {% prettify dart tag=pre+code %}
+    ```dart
     DateTime.now; // New result each time.
-    {% endprettify %}
+    ```
 
 *   **The resulting object doesn't expose all of the original object's state.**
     A field exposes only a piece of an object. If your operation returns a
@@ -1257,12 +1231,12 @@ should be getters.
 会超出你的想象。许多操作只是对某些状态进行一些计算，其中大多数能够，并且也应该作为 getter 方法。
 
 {:.good}
-{% prettify dart tag=pre+code %}
+```dart
 rectangle.area;
 collection.isEmpty;
 button.canShow;
 dataSet.minimumValue;
-{% endprettify %}
+```
 
 
 ### DO use setters for operations that conceptually change properties
@@ -1301,10 +1275,10 @@ For a setter, "field-like" means:
     来看，第二次调用似乎没做任何事情。
 
 {:.good}
-{% prettify dart tag=pre+code %}
+```dart
 rectangle.width = 3;
 button.visible = false;
-{% endprettify %}
+```
 
 
 ### DON'T define a setter without a corresponding getter
@@ -1407,21 +1381,21 @@ Method cascades are a better solution for chaining method calls.
 
 {:.good}
 <?code-excerpt "design_good.dart (cascades)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var buffer = StringBuffer()
   ..write('one')
   ..write('two')
   ..write('three');
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (cascades)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var buffer = StringBuffer()
     .write('one')
     .write('two')
     .write('three');
-{% endprettify %}
+```
 
 
 ## Types
@@ -1449,12 +1423,12 @@ the static declarative structure of the code and aren't "executed" at runtime.
 他们位于代码静态声明结构的前面，并且他们不会在运行时"执行"。
 
 <?code-excerpt "design_good.dart (annotate-declaration)"?>
-{% prettify dart tag=pre+code %}
+```dart
 bool isEmpty(String parameter) {
   bool result = parameter.isEmpty;
   return result;
 }
-{% endprettify %}
+```
 
 A generic invocation is a collection literal, a call to a generic class's
 constructor, or an invocation of a generic method. In the next example, `num`
@@ -1467,11 +1441,11 @@ runtime.
 在运行时会被提升并传递给调用。
 
 <?code-excerpt "design_good.dart (annotate-invocation)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var lists = <num>[1, 2];
 lists.addAll(List<num>.filled(3, 4));
 lists.cast<int>();
-{% endprettify %}
+```
 
 We stress the "generic invocation" part here, because type arguments can *also*
 appear in type annotations:
@@ -1479,9 +1453,9 @@ appear in type annotations:
 这里再强调一下"泛型调用"，因为类型参数 **也** 可以出现在类型注解中：
 
 <?code-excerpt "design_good.dart (annotate-type-arg)"?>
-{% prettify dart tag=pre+code %}
+```dart
 List<int> ints = [1, 2];
-{% endprettify %}
+```
 
 Here, `int` is a type argument, but it appears inside a type annotation, not a
 generic invocation. You usually don't need to worry about this distinction, but
@@ -1571,25 +1545,25 @@ initializer, inference fails.
 
 {:.good}
 <?code-excerpt "design_good.dart (uninitialized-local)"?>
-{% prettify dart tag=pre+code %}
+```dart
 List<AstNode> parameters;
 if (node is Constructor) {
   parameters = node.signature;
 } else if (node is Method) {
   parameters = node.parameters;
 }
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (uninitialized-local)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var parameters;
 if (node is Constructor) {
   parameters = node.signature;
 } else if (node is Method) {
   parameters = node.parameters;
 }
-{% endprettify %}
+```
 
 其余指南涵盖了和类型有关的其他具体问题。
 
@@ -1608,9 +1582,9 @@ type error. Consider:
 
 {:.bad}
 <?code-excerpt "design_bad.dart (type_annotate_public_apis)"?>
-{% prettify dart tag=pre+code %}
+```dart
 install(id, destination) => ...
-{% endprettify %}
+```
 
 Here, it's unclear what `id` is. A string? And what is `destination`? A string
 or a `File` object? Is this method synchronous or asynchronous? This is clearer:
@@ -1620,9 +1594,9 @@ or a `File` object? Is this method synchronous or asynchronous? This is clearer:
 
 {:.good}
 <?code-excerpt "design_good.dart (type_annotate_public_apis)"?>
-{% prettify dart tag=pre+code %}
+```dart
 Future<bool> install(PackageId id, String destination) => ...
-{% endprettify %}
+```
 
 In some cases, though, the type is so obvious that writing it is pointless:
 
@@ -1630,9 +1604,9 @@ In some cases, though, the type is so obvious that writing it is pointless:
 
 {:.good}
 <?code-excerpt "design_good.dart (inferred)"?>
-{% prettify dart tag=pre+code %}
+```dart
 const screenWidth = 640; // Inferred as int.
-{% endprettify %}
+```
 
 "Obvious" isn't precisely defined, but these are all good candidates:
 
@@ -1699,7 +1673,7 @@ more important *name* of the variable and its initialized value.
 
 {:.good}
 <?code-excerpt "design_good.dart (omit-types-on-locals)"?>
-{% prettify dart tag=pre+code %}
+```dart
 List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
   var desserts = <List<Ingredient>>[];
   for (final recipe in cookbook) {
@@ -1710,11 +1684,11 @@ List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
 
   return desserts;
 }
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (omit-types-on-locals)"?>
-{% prettify dart tag=pre+code %}
+```dart
 List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
   List<List<Ingredient>> desserts = <List<Ingredient>>[];
   for (final List<Ingredient> recipe in cookbook) {
@@ -1725,7 +1699,7 @@ List<List<Ingredient>> possibleDesserts(Set<Ingredient> pantry) {
 
   return desserts;
 }
-{% endprettify %}
+```
 
 Sometimes the inferred type is not the type you want the variable to have. For
 example, you may intend to assign values of other types later. In that case,
@@ -1733,7 +1707,7 @@ annotate the variable with the type you want.
 
 {:.good}
 <?code-excerpt "design_good.dart (upcast-local)" replace="/Widget result/[!Widget!] result/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 Widget build(BuildContext context) {
   [!Widget!] result = Text('You won!');
   if (applyPadding) {
@@ -1741,7 +1715,7 @@ Widget build(BuildContext context) {
   }
   return result;
 }
-{% endprettify %}
+```
 
 
 ### DO annotate return types on function declarations
@@ -1757,19 +1731,19 @@ the return type yourself.
 
 {:.good}
 <?code-excerpt "design_good.dart (annotate-return-types)"?>
-{% prettify dart tag=pre+code %}
+```dart
 String makeGreeting(String who) {
   return 'Hello, $who!';
 }
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (annotate-return-types)"?>
-{% prettify dart tag=pre+code %}
+```dart
 makeGreeting(String who) {
   return 'Hello, $who!';
 }
-{% endprettify %}
+```
 
 Note that this guideline only applies to *named* function declarations:
 top-level functions, methods, and local functions. Anonymous function
@@ -1786,23 +1760,23 @@ Dart doesn't infer an optional parameter's type from its default value.
 
 {:.good}
 <?code-excerpt "design_good.dart (annotate-parameters)"?>
-{% prettify dart tag=pre+code %}
+```dart
 void sayRepeatedly(String message, {int count = 2}) {
   for (var i = 0; i < count; i++) {
     print(message);
   }
 }
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (annotate-parameters)" replace="/\(count as num\)/count/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void sayRepeatedly(message, {count = 2}) {
   for (var i = 0; i < count; i++) {
     print(message);
   }
 }
-{% endprettify %}
+```
 
 **Exception:** Function expressions and initializing formals have
 different type annotation conventions, as described in the next two guidelines.
@@ -1832,15 +1806,15 @@ expects:
 
 {:.good}
 <?code-excerpt "design_good.dart (func-expr-no-param-type)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var names = people.map((person) => person.name);
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (func-expr-no-param-type)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var names = people.map((Person person) => person.name);
-{% endprettify %}
+```
 
 If the language is able to infer the type you want for a parameter in a function
 expression, then don't annotate. In rare cases, the surrounding
@@ -1863,7 +1837,7 @@ the field or super-constructor parameter respectively.
 
 {:.good}
 <?code-excerpt "design_good.dart (dont-type-init-formals)"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Point {
   double x, y;
   Point(this.x, this.y);
@@ -1872,11 +1846,11 @@ class Point {
 class MyWidget extends StatelessWidget {
   MyWidget({super.key});
 }
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (dont-type-init-formals)"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Point {
   double x, y;
   Point(double this.x, double this.y);
@@ -1885,7 +1859,7 @@ class Point {
 class MyWidget extends StatelessWidget {
   MyWidget({Key? super.key});
 }
-{% endprettify %}
+```
 
 
 ### DO write type arguments on generic invocations that aren't inferred
@@ -1900,17 +1874,17 @@ list explicitly.
 
 {:.good}
 <?code-excerpt "design_good.dart (non-inferred-type-args)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var playerScores = <String, int>{};
 final events = StreamController<Event>();
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (non-inferred-type-args)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var playerScores = {};
 final events = StreamController();
-{% endprettify %}
+```
 
 Sometimes the invocation occurs as the initializer to a variable declaration. If
 the variable is *not* local, then instead of writing the type argument list on the
@@ -1918,19 +1892,19 @@ invocation itself, you may put a type annotation on the declaration:
 
 {:.good}
 <?code-excerpt "design_good.dart (inferred-type-args)"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Downloader {
   final Completer<String> response = Completer();
 }
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (inferred-type-args)"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Downloader {
   final response = Completer();
 }
-{% endprettify %}
+```
 
 Annotating the variable also addresses this guideline because now the type
 arguments *are* inferred.
@@ -1946,34 +1920,34 @@ Dart do the work for you.
 
 {:.good}
 <?code-excerpt "design_good.dart (redundant)"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Downloader {
   final Completer<String> response = Completer();
 }
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (redundant)"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Downloader {
   final Completer<String> response = Completer<String>();
 }
-{% endprettify %}
+```
 
 Here, the type annotation on the field provides a surrounding context to infer
 the type argument of constructor call in the initializer.
 
 {:.good}
 <?code-excerpt "design_good.dart (explicit)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var items = Future.value([1, 2, 3]);
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (explicit)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var items = Future<List<int>>.value(<int>[1, 2, 3]);
-{% endprettify %}
+```
 
 Here, the types of the collection and instance can be inferred bottom-up from
 their elements and arguments.
@@ -1988,10 +1962,10 @@ types". For example:
 
 {:.bad}
 <?code-excerpt "design_bad.dart (incomplete-generic)" replace="/List|Map/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 [!List!] numbers = [1, 2, 3];
 var completer = Completer<[!Map!]>();
-{% endprettify %}
+```
 
 Here, `numbers` has a type annotation, but the annotation doesn't provide a type
 argument to the generic `List`. Likewise, the `Map` type argument to `Completer`
@@ -2005,10 +1979,10 @@ argument inside some invocation, make sure to write a complete type:
 
 {:.good}
 <?code-excerpt "design_good.dart (incomplete-generic)"?>
-{% prettify dart tag=pre+code %}
+```dart
 List<num> numbers = [1, 2, 3];
 var completer = Completer<Map<String, int>>();
-{% endprettify %}
+```
 
 
 ### DO annotate with `dynamic` instead of letting inference fail
@@ -2027,21 +2001,21 @@ clear and highlight that this code has less static safety.
 
 {:.good}
 <?code-excerpt "design_good.dart (prefer-dynamic)"?>
-{% prettify dart tag=pre+code %}
+```dart
 dynamic mergeJson(dynamic original, dynamic changes) => ...
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (prefer-dynamic)"?>
-{% prettify dart tag=pre+code %}
+```dart
 mergeJson(original, changes) => ...
-{% endprettify %}
+```
 
 Note that it's OK to omit the type when Dart *successfully* infers `dynamic`.
 
 {:.good}
 <?code-excerpt "design_good.dart (infer-dynamic)"?>
-{% prettify dart tag=pre+code %}
+```dart
 Map<String, dynamic> readJson() => ...
 
 void printUsers() {
@@ -2049,7 +2023,7 @@ void printUsers() {
   var users = json['users'];
   print(users);
 }
-{% endprettify %}
+```
 
 Here, Dart infers `Map<String, dynamic>` for `json` and then from that infers
 `dynamic` for `users`. It's fine to leave `users` without a type annotation. The
@@ -2095,15 +2069,15 @@ function.
 
 {:.good}
 <?code-excerpt "design_good.dart (avoid-Function)" replace="/bool Function(\(.*?\))?/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 bool isValid(String value, [!bool Function(String)!] test) => ...
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (avoid-Function)" replace="/Function/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 bool isValid(String value, [!Function!] test) => ...
-{% endprettify %}
+```
 
 [fn syntax]: #prefer-inline-function-types-over-typedefs
 
@@ -2119,7 +2093,7 @@ no way to precisely type that and you'd normally have to use `dynamic`.
 
 {:.good}
 <?code-excerpt "design_good.dart (function-arity)" replace="/(void )?Function(\(.*?\))?/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void handleError([!void Function()!] operation, [!Function!] errorHandler) {
   try {
     operation();
@@ -2133,7 +2107,7 @@ void handleError([!void Function()!] operation, [!Function!] errorHandler) {
     }
   }
 }
-{% endprettify %}
+```
 
 
 ### DON'T specify a return type for a setter
@@ -2148,15 +2122,15 @@ Setters always return `void` in Dart. Writing the word is pointless.
 
 {:.bad}
 <?code-excerpt "design_bad.dart (avoid_return_types_on_setters)"?>
-{% prettify dart tag=pre+code %}
+```dart
 void set foo(Foo value) { ... }
-{% endprettify %}
+```
 
 {:.good}
 <?code-excerpt "design_good.dart (avoid_return_types_on_setters)"?>
-{% prettify dart tag=pre+code %}
+```dart
 set foo(Foo value) { ... }
-{% endprettify %}
+```
 
 
 ### DON'T use the legacy typedef syntax
@@ -2172,9 +2146,9 @@ Dart 有两种为函数类型定义命名 typedef 注解语法。 原始语法�
 
 {:.bad}
 <?code-excerpt "design_bad.dart (old-typedef)"?>
-{% prettify dart tag=pre+code %}
+```dart
 typedef int Comparison<T>(T a, T b);
-{% endprettify %}
+```
 
 That syntax has a couple of problems:
 
@@ -2198,9 +2172,9 @@ That syntax has a couple of problems:
 
     {:.bad}
     <?code-excerpt "design_bad.dart (typedef-param)"?>
-    {% prettify dart tag=pre+code %}
+    ```dart
     typedef bool TestNumber(num);
-    {% endprettify %}
+    ```
 
     Most users expect this to be a function type that takes a `num` and returns
     `bool`. It is actually a function type that takes *any* object (`dynamic`)
@@ -2218,9 +2192,9 @@ The new syntax looks like this:
 
 {:.good}
 <?code-excerpt "design_good.dart (new-typedef)"?>
-{% prettify dart tag=pre+code %}
+```dart
 typedef Comparison<T> = int Function(T, T);
-{% endprettify %}
+```
 
 If you want to include a parameter's name, you can do that too:
 
@@ -2228,9 +2202,9 @@ If you want to include a parameter's name, you can do that too:
 
 {:.good}
 <?code-excerpt "design_good.dart (new-typedef-param-name)"?>
-{% prettify dart tag=pre+code %}
+```dart
 typedef Comparison<T> = int Function(T a, T b);
-{% endprettify %}
+```
 
 The new syntax can express anything the old syntax could express and more, and
 lacks the error-prone misfeature where a single identifier is treated as the
@@ -2254,16 +2228,17 @@ it's deprecated.
 
 {% include linter-rule-mention.md rule="avoid_private_typedef_functions" %}
 
-In Dart 1, if you wanted to use a function type for a field, variable, or
-generic type argument, you had to first define a typedef for it. Dart 2 supports
-a function type syntax that can be used anywhere a type annotation is allowed:
+In Dart, if you want to use a function type for a field, variable, or
+generic type argument, you can define a typedef for the function type.
+However, Dart supports an inline function type syntax that
+can be used anywhere a type annotation is allowed:
 
 在 Dart 1 中，如果要在字段，变量或泛型参数中使用函数类型，首选需要使用 typedef 定义这个类型。
 Dart 2 中任何使用类型注解的地方都可以使用函数类型声明语法：
 
 {:.good}
 <?code-excerpt "design_good.dart (function-type)"  replace="/(bool|void) Function\(Event\)/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 class FilteredObservable {
   final [!bool Function(Event)!] _predicate;
   final List<[!void Function(Event)!]> _observers;
@@ -2282,7 +2257,7 @@ class FilteredObservable {
     return last;
   }
 }
-{% endprettify %}
+```
 
 It may still be worth defining a typedef if the function type is particularly
 long or frequently used. But in most cases, users want to see what the function
@@ -2306,11 +2281,11 @@ type and parameter signature:
 在定义参数为函数类型时，Dart 具有特殊的语法。与 C 类似，使用参数名称作为函数参数的函数名：
 
 <?code-excerpt "design_bad.dart (function-type-param)"?>
-{% prettify dart tag=pre+code %}
+```dart
 Iterable<T> where(bool predicate(T element)) => ...
-{% endprettify %}
+```
 
-Before Dart 2 added function type syntax, this was the only way to give a
+Before Dart added function type syntax, this was the only way to give a
 parameter a function type without defining a typedef. Now that Dart has a
 general notation for function types, you can use it for function-typed
 parameters as well:
@@ -2320,9 +2295,9 @@ parameters as well:
 
 {:.good}
 <?code-excerpt "design_good.dart (function-type-param)"?>
-{% prettify dart tag=pre+code %}
+```dart
 Iterable<T> where(bool Function(T) predicate) => ...
-{% endprettify %}
+```
 
 The new syntax is a little more verbose, but is consistent with other locations
 where you must use the new syntax.
@@ -2363,7 +2338,7 @@ before you access it.
 
 {:.good}
 <?code-excerpt "design_good.dart (Object-vs-dynamic)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// Returns a Boolean representation for [arg], which must
 /// be a String or bool.
 bool convertToBool(Object arg) {
@@ -2371,7 +2346,7 @@ bool convertToBool(Object arg) {
   if (arg is String) return arg.toLowerCase() == 'true';
   throw ArgumentError('Cannot convert $arg to a bool.');
 }
-{% endprettify %}
+```
 
 The main exception to this rule is when working with existing APIs that use
 `dynamic`, especially inside a generic type. For example, JSON objects have type
@@ -2443,18 +2418,18 @@ either is hard to use correctly.
 
 {:.good}
 <?code-excerpt "design_good.dart (future-or)"?>
-{% prettify dart tag=pre+code %}
+```dart
 Future<int> triple(FutureOr<int> value) async => (await value) * 3;
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (future-or)"?>
-{% prettify dart tag=pre+code %}
+```dart
 FutureOr<int> triple(FutureOr<int> value) {
   if (value is int) return value * 3;
   return value.then((v) => v * 3);
 }
-{% endprettify %}
+```
 
 The more precise formulation of this guideline is to *only use `FutureOr<T>` in
 [contravariant][] positions.* Parameters are contravariant and return types are
@@ -2473,14 +2448,14 @@ means it's OK for a *callback's* type to return `FutureOr<T>`:
 
 {:.good}
 <?code-excerpt "design_good.dart (future-or-contra)" replace="/FutureOr.S./[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 Stream<S> asyncMap<T, S>(
     Iterable<T> iterable, [!FutureOr<S>!] Function(T) callback) async* {
   for (final element in iterable) {
     yield await callback(element);
   }
 }
-{% endprettify %}
+```
 
 
 ## Parameters
@@ -2506,12 +2481,12 @@ clear what the boolean represents:
 喜欢直接传 `true` 和 `false` 。如果不清楚布尔值的含义，这样会造成调用者的代码不可读：
 
 {:.bad}
-{% prettify dart tag=pre+code %}
+```dart
 new Task(true);
 new Task(false);
 new ListBox(false, true, true);
 new Button(false);
-{% endprettify %}
+```
 
 Instead, prefer using named arguments, named constructors, or named constants
 to clarify what the call is doing.
@@ -2520,12 +2495,12 @@ to clarify what the call is doing.
 
 {:.good}
 <?code-excerpt "design_good.dart (avoid-positional-bool-param)"?>
-{% prettify dart tag=pre+code %}
+```dart
 Task.oneShot();
 Task.repeating();
 ListBox(scroll: true, showScrollbars: true);
 Button(ButtonState.enabled);
-{% endprettify %}
+```
 
 Note that this doesn't apply to setters, where the name makes it clear what the
 value represents:
@@ -2533,10 +2508,10 @@ value represents:
 请注意，这并不适用于 setter ，因为 setter 的名称能够清楚的阐明值得含义：
 
 {:.good}
-{% prettify dart tag=pre+code %}
+```dart
 listBox.canScroll = true;
 button.isEnabled = false;
-{% endprettify %}
+```
 
 
 ### AVOID optional positional parameters if the user may want to omit earlier parameters
@@ -2553,7 +2528,7 @@ pass later one. You're better off using named arguments for that.
 
 {:.good}
 <?code-excerpt "design_good.dart (omit-optional-positional)"?>
-{% prettify dart tag=pre+code %}
+```dart
 String.fromCharCodes(Iterable<int> charCodes, [int start = 0, int? end]);
 
 DateTime(int year,
@@ -2572,7 +2547,7 @@ Duration(
     int seconds = 0,
     int milliseconds = 0,
     int microseconds = 0});
-{% endprettify %}
+```
 
 
 ### AVOID mandatory parameters that accept a special "no argument" value
@@ -2594,15 +2569,15 @@ providing a real value.
 
 {:.good}
 <?code-excerpt "design_good.dart (avoid-mandatory-param)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var rest = string.substring(start);
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (avoid-mandatory-param)"?>
-{% prettify dart tag=pre+code %}
+```dart
 var rest = string.substring(start, null);
-{% endprettify %}
+```
 
 
 ### DO use inclusive start and exclusive end parameters to accept a range
@@ -2623,10 +2598,10 @@ This is consistent with core libraries that do the same thing.
 
 {:.good}
 <?code-excerpt "../../test/effective_dart_test.dart (param-range)" replace="/expect\(//g; /, \/\*\*\// \/\//g; /\);//g"?>
-{% prettify dart tag=pre+code %}
+```dart
 [0, 1, 2, 3].sublist(1, 3) // [1, 2]
 'abcd'.substring(1, 3) // 'bc'
-{% endprettify %}
+```
 
 It's particularly important to be consistent here because these parameters are
 usually unnamed. If your API takes a length instead of an end point, the
@@ -2728,18 +2703,18 @@ Dart 指定此检查是自动完成的，只有当右侧不是 `null` 时才调�
 
 {:.good}
 <?code-excerpt "design_good.dart (eq-dont-check-for-null)" plaster?>
-{% prettify dart tag=pre+code %}
+```dart
 class Person {
   final String name;
   // ···
 
   bool operator ==(Object other) => other is Person && name == other.name;
 }
-{% endprettify %}
+```
 
 {:.bad}
 <?code-excerpt "design_bad.dart (eq-dont-check-for-null)" replace="/Object\?/[!$&!]/g" plaster?>
-{% prettify dart tag=pre+code %}
+```dart
 class Person {
   final String name;
   // ···
@@ -2747,5 +2722,5 @@ class Person {
   bool operator ==([!Object?!] other) =>
       other != null && other is Person && name == other.name;
 }
-{% endprettify %}
+```
 

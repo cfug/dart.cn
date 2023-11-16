@@ -4,7 +4,7 @@ title: 获取 Dart SDK
 description: Get the libraries and command-line tools that you need to develop Dart web, command-line, and server apps.
 description: 获得 Dart 命令行工具和库，用以编写 Dart web，命令行以及服务端应用。
 js:
-- url: /get-dart/archive/assets/install.js
+- url: /assets/js/get-dart/install.js
   defer: true
 ---
 
@@ -78,8 +78,7 @@ Dart SDK 支持 Windows、Linux 和 macOS。
   **支持的版本：**Windows 10 和 11。
 
 * **Supported architectures:** x64, IA32, ARM64.<br>
-  Support for ARM64 is experimental,
-  and is available only in the dev channel.
+  Support for ARM64 is in preview, and is available only in the dev and beta channels.
 
   **支持的架构：** x64、ia32、ARM64<br>
   ARM64 的支持处于实验性阶段，仅在 Dev 渠道可用。
@@ -109,17 +108,17 @@ Dart SDK 支持 Windows、Linux 和 macOS。
 ### macOS
 
 * **Supported versions:** Latest three major versions.
-Dart supports the following macOS versions as of November 2022:
-  - macOS 11 (Big Sur)
+Dart supports the following macOS versions as of November 2023:
   - macOS 12 (Monterey)
   - macOS 13 (Ventura)
+  - macOS 14 (Sonoma)
 
   **支持的版本：**最新的三个主要版本。
-  截止 2022 年 11 月，支持 macOS 的以下版本 (macOS 10.15 的支持已被移除)：
-  - macOS 11 (Big Sur)
+  截止 2022 年 11 月，支持 macOS 的以下版本：
   - macOS 12 (Monterey)
   - macOS 13 (Ventura)
-
+  - macOS 14 (Sonoma)
+  
 * **Supported architectures:** x64, ARM64.
 
   **支持的架构：** x64、ARM64。

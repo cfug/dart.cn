@@ -1,7 +1,7 @@
 ---
 title: Dart overview
 title: Dart 概览
-description: A short introduction to Dart
+description: A short introduction to Dart.
 description: Dart 的简单介绍
 js: [{url: 'https://dartpad.cn/inject_embed.dart.js', defer: true}]
 ---
@@ -48,7 +48,7 @@ Dart 作为 Flutter 应用程序的编程语言，为驱动应用运行提供了
 
 The Dart language is type safe;
 it uses static type checking to ensure that
-a variable’s value _always_ matches the variable’s static type.
+a variable's value _always_ matches the variable's static type.
 Sometimes, this is referred to as sound typing.
 Although types are mandatory,
 type annotations are optional because of type inference.
@@ -65,7 +65,7 @@ Dart 的类型系统也很灵活，允许结合使用 dynamic 类型与运行时
 在测试开发期间，或是遇到需要特别指定为动态类型的代码时，这项特性很有帮助。
 
 Dart has built-in [sound null safety](/null-safety).
-This means values can’t be null unless you say they can be.
+This means values can't be null unless you say they can be.
 With sound null safety, Dart can protect you from
 null exceptions at runtime through static code analysis.
 Unlike many other null-safe languages,
@@ -400,7 +400,7 @@ Dart Web 包含两种编译模式:
   一个为快速开发提供帮助的增量编译器。
 
 * An optimizing production compiler which compiles Dart code to fast,
-  compact, deployable JavaScript. These effeciencies come from
+  compact, deployable JavaScript. These efficiencies come from
   techniques such as dead-code elimination.
 
   一个为生产环境优化的编译器，可以将 Dart 代码编译成快速、紧凑、可部署的 JavaScript。
