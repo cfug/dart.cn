@@ -2,7 +2,7 @@
 title: Variables
 title: 变量
 description: Learn about variables in Dart.
-description: 了解Dart中的变量。
+description: 了解Dart 中的变量。
 prevpage:
   url: /language
   title: Basics
@@ -60,7 +60,7 @@ String name = 'Bob';
 
 The Dart language enforces sound null safety.
 
-Dart语言强制执行空安全。
+Dart 语言强制执行空安全。
 
 Null safety prevents an error that results from unintentional access
 of variables set to `null`. The error is called a null dereference error.
@@ -70,7 +70,7 @@ An exception to this rule is when `null` supports the property or method,
 like `toString()` or `hashCode`. With null safety, the Dart compiler
 detects these potential errors at compile time.
 
-空安全防止因意外访问被设置为 `null` 的变量而导致的错误。该错误被称为空解引用错误。访问一个求值为 `null` 的表达式的属性或调用方法时，会发生空解引用错误。此规则的一个例外是当 `null` 支持像 `toString()` 或 `hashCode` 这样的属性或方法。使用空安全，Dart编译器可以在编译时检测到这些潜在的错误。
+空安全防止因意外访问被设置为 `null` 的变量而导致的错误。该错误被称为空解引用错误。访问一个求值为 `null` 的表达式的属性或调用方法时，会发生空解引用错误。此规则的一个例外是当 `null` 支持像 `toString()` 或 `hashCode` 这样的属性或方法。使用空安全，Dart 编译器可以在编译时检测到这些潜在的错误。
 
 For example, say you want to find the absolute value of an `int` variable `i`.
 If `i` is `null`, calling `i.abs()` causes a null dereference error.
@@ -78,7 +78,7 @@ In other languages, trying this could lead to a runtime error,
 but Dart's compiler prohibits these actions.
 Therefore, Dart apps can't cause runtime errors.
 
-例如，假设你想要查找 `int` 变量 `i` 的绝对值。如果 `i` 是 `null` ，调用 `i.abs()` 会导致空解引用错误。在其他语言中，尝试这样做可能会导致运行时错误，但是Dart的编译器禁止这些操作。因此，Dart 应用程序不会引发运行时错误。
+例如，假设你想要查找 `int` 变量 `i` 的绝对值。如果 `i` 是 `null` ，调用 `i.abs()` 会导致空解引用错误。在其他语言中，尝试这样做可能会导致运行时错误，但是Dart 的编译器禁止这些操作。因此，Dart 应用程序不会引发运行时错误。
 
 Null safety introduces three key changes:
 
@@ -105,7 +105,7 @@ Null safety introduces three key changes:
     where the receiver's type can be `null`
     but `null` doesn't support the method or property used.
 
-    你必须在使用变量之前对其进行初始化。可空变量默认为 `null` ，所以它们是默认初始化的。Dart 不会为非可空类型设置初始值，而是强制你设置初始值。Dart不允许你观察未初始化的变量。这可以防止你在接收者类型可以为 `null` 但 `null` 不支持所使用的方法或属性 的情况下访问属性或调用方法。
+    你必须在使用变量之前对其进行初始化。可空变量默认为 `null` ，所以它们是默认初始化的。Dart 不会为非可空类型设置初始值，而是强制你设置初始值。Dart 不允许你观察未初始化的变量。这可以防止你在接收者类型可以为 `null` 但 `null` 不支持所使用的方法或属性 的情况下访问属性或调用方法。
 
 3.  You can't access properties or call methods on an expression with a
     nullable type. The same exception applies where it's a property or method that `null` supports like `hashCode` or `toString()`.
@@ -139,7 +139,7 @@ have an initial value of `null`.
 Even variables with numeric types are initially null,
 because numbers—like everything else in Dart—are objects.
 
-具有可空类型的未初始化变量的初始值为 `null` 。即使是具有数值类型的变量，初始值也为 null，因为数字(就像Dart中的其他所有东西一样)都是对象。
+具有可空类型的未初始化变量的初始值为 `null` 。即使是具有数值类型的变量，初始值也为 null，因为数字(就像Dart 中的其他所有东西一样)都是对象。
 
 <?code-excerpt "misc/test/language_tour/variables_test.dart (var-null-init)"?>
 ```dart
@@ -169,7 +169,7 @@ For example, the following code is valid because
 Dart can detect that `lineCount` is non-null by the time
 it's passed to `print()`:
 
-你不必在声明变量的地方初始化局部变量，但在使用之前需要为其赋值。例如，以下代码是合法的，因为Dart可以检测到 `lineCount` 在传递给 `print()` 时是非空的：
+你不必在声明变量时初始化变量，但在使用之前需要为其赋值。例如，以下代码是合法的，因为Dart 可以检测到 `lineCount` 在传递给 `print()` 时是非空的：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-ns-flow)"?>
 ```dart
@@ -188,7 +188,7 @@ Top-level and class variables are lazily initialized;
 the initialization code runs
 the first time the variable is used.
 
-顶级变量和类变量是延迟初始化的；初始化代码会在变量第一次被使用时运行。
+顶级变量和类变量是延迟初始化的；初始化代码会在变量第一次被使用时完成。
 
 
 ## Late variables
@@ -201,7 +201,7 @@ late修饰符有两种用法：
 
 * Declaring a non-nullable variable that's initialized after its declaration.
 
-  声明一个 在声明后进行初始化的非空变量。
+  声明一个非空变量，但不在声明时初始化。
 
 * Lazily initializing a variable.
 
@@ -214,13 +214,13 @@ Two common cases are top-level variables and instance variables:
 Dart often can't determine whether they're set,
 so it doesn't try.
 
-通常，Dart 的控制流分析可以检测非空变量在使用之前是否被设置为非空值，但有时分析会失败。两种常见情况是顶级变量和实例变量：Dart通常无法确定它们是否已设值，因此不会尝试分析。
+通常，Dart 的语义分析可以检测非空变量在使用之前是否被复制，但有时分析会失败。两种常见情况是顶级变量和实例变量：Dart 通常无法确定它们是否已设值，因此不会尝试分析。
 
 If you're sure that a variable is set before it's used,
 but Dart disagrees,
 you can fix the error by marking the variable as `late`:
 
-如果你确定变量在使用之前已设置，但Dart不同意，则可以通过将变量标记为 `late` 来修复错误：
+如果你确定变量在使用之前已设置，但 Dart 判断失误的话，则可以通过将变量标记为 `late` 来解决这个问题：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-late-top-level)" replace="/late/[!$&!]/g"?>
 ```dart
@@ -241,12 +241,12 @@ When you mark a variable as `late` but initialize it at its declaration,
 then the initializer runs the first time the variable is used.
 This lazy initialization is handy in a couple of cases:
 
-当你将一个变量标记为 `late` 但在声明时初始化它，那么初始化程序会在第一次使用变量时运行。这种延迟初始化在以下情况中很方便：
+当一个 `late` 修饰的变量在声明时就指定了初始化方法，那么初始化程序会在第一次使用变量时运行。这种延迟初始化在以下情况很方便：
 
 * The variable might not be needed,
   and initializing it is costly.
 
-  可能不需要该变量，并且初始化它开销很高。
+  (Dart 认为)可能不需要该变量，并且初始化它开销很高。
 
 * You're initializing an instance variable,
   and its initializer needs access to `this`.
