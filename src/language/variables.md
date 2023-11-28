@@ -119,10 +119,12 @@ Null safety flags a non-null variable when it has been either:
 空安全将潜在的**运行时错误**变为**编辑时**分析错误。当非空变量已经是以下情况之一时，空安全标志为非空变量：
 
 * Not initialized with a non-null value.
+
+  使用非空值不初始化。
+
 * Assigned a `null` value.
 
-* 使用非空值不初始化。
-* 赋值为 `null` 值。
+  赋值为 `null` 值。
 
 This check allows you to fix these errors _before_ deploying your app.
 
