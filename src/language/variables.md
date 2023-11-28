@@ -126,7 +126,7 @@ Null safety flags a non-null variable when it has been either:
 
 This check allows you to fix these errors _before_ deploying your app.
 
-此检查允许你在部署应用程序之前修复这些错误。
+此检查允许你在部署应用程序 _之前(before)_ 修复这些错误。
 
 ## Default value
 
@@ -314,7 +314,7 @@ You can also use it to create constant _values_,
 as well as to declare constructors that _create_ constant values.
 Any variable can have a constant value.
 
-`const` 关键字不仅用于声明常量变量。你还可以使用它来创建常量值，以及声明创建常量值的构造函数。任何变量都可以具有常量值。
+`const` 关键字不仅用于声明常量变量。你还可以使用它来创建常量 _值(values)_，以及声明 _创建(create)_ 常量值的构造函数。任何变量都可以具有常量值。
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const-vs-final)"?>
 ```dart
