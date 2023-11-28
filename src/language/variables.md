@@ -2,7 +2,7 @@
 title: Variables
 title: 变量
 description: Learn about variables in Dart.
-description: 了解Dart 中的变量。
+description: 了解 Dart 中的变量。
 prevpage:
   url: /language
   title: Basics
@@ -78,7 +78,7 @@ In other languages, trying this could lead to a runtime error,
 but Dart's compiler prohibits these actions.
 Therefore, Dart apps can't cause runtime errors.
 
-例如，假设你想要查找 `int` 变量 `i` 的绝对值。如果 `i` 是 `null` ，调用 `i.abs()` 会导致空解引用错误。在其他语言中，尝试这样做可能会导致运行时错误，但是Dart 的编译器禁止这些操作。因此，Dart 应用程序不会引发运行时错误。
+例如，假设你想要查找 `int` 变量 `i` 的绝对值。如果 `i` 是 `null` ，调用 `i.abs()` 会导致空解引用错误。在其他语言中，尝试这样做可能会导致运行时错误，但是 Dart 的编译器禁止这些操作。因此，Dart 应用程序不会引发运行时错误。
 
 Null safety introduces three key changes:
 
@@ -139,7 +139,7 @@ have an initial value of `null`.
 Even variables with numeric types are initially null,
 because numbers—like everything else in Dart—are objects.
 
-具有可空类型的未初始化变量的初始值为 `null` 。即使是具有数值类型的变量，初始值也为 null，因为数字(就像Dart 中的其他所有东西一样)都是对象。
+具有可空类型的未初始化变量的初始值为 `null` 。即使是具有数值类型的变量，初始值也为 null，因为数字(就像 Dart 中的其他所有东西一样)都是对象。
 
 <?code-excerpt "misc/test/language_tour/variables_test.dart (var-null-init)"?>
 ```dart
@@ -169,7 +169,7 @@ For example, the following code is valid because
 Dart can detect that `lineCount` is non-null by the time
 it's passed to `print()`:
 
-你不必在声明变量时初始化变量，但在使用之前需要为其赋值。例如，以下代码是合法的，因为Dart 可以检测到 `lineCount` 在传递给 `print()` 时是非空的：
+你不必在声明变量时初始化变量，但在使用之前需要为其赋值。例如，以下代码是合法的，因为 Dart 可以检测到 `lineCount` 在传递给 `print()` 时是非空的：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-ns-flow)"?>
 ```dart
