@@ -32,7 +32,7 @@ but you can change that type by specifying it.
 If an object isn't restricted to a single type,
 specify the `Object` type (or `dynamic` if necessary).
 
-变量 `name` 的类型被推断为 `String` ，但是您可以通过指定它来更改该类型。如果对象不限于单个类型，请指定为 `Object` 类型（如果需要，可以指定为 `dynamic` ）。
+变量 `name` 的类型被推断为 `String` ，但是你可以通过指定它来更改该类型。如果对象不限于单个类型，请指定为 `Object` 类型（如果需要，可以指定为 `dynamic` ）。
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (type-decl)"?>
 ```dart
@@ -70,7 +70,7 @@ An exception to this rule is when `null` supports the property or method,
 like `toString()` or `hashCode`. With null safety, the Dart compiler
 detects these potential errors at compile time.
 
-空安全可以防止由于意外访问被设置为 `null` 的变量而导致的错误。该错误被称为空解引用错误。当您访问被计算为 `null` 的表达式上的属性或调用方法时，会发生空解引用错误。此规则的一个例外是当 `null` 支持像 `toString()` 或 `hashCode` 这样的属性或方法。使用空安全，Dart编译器可以在编译时检测到这些潜在错误。
+空安全可以防止由于意外访问被设置为 `null` 的变量而导致的错误。该错误被称为空解引用错误。当你访问被计算为 `null` 的表达式上的属性或调用方法时，会发生空解引用错误。此规则的一个例外是当 `null` 支持像 `toString()` 或 `hashCode` 这样的属性或方法。使用空安全，Dart编译器可以在编译时检测到这些潜在错误。
 
 For example, say you want to find the absolute value of an `int` variable `i`.
 If `i` is `null`, calling `i.abs()` causes a null dereference error.
@@ -78,7 +78,7 @@ In other languages, trying this could lead to a runtime error,
 but Dart's compiler prohibits these actions.
 Therefore, Dart apps can't cause runtime errors.
 
-例如，假设您想要查找 `int` 变量 `i` 的绝对值。如果 `i` 是 `null` ，调用 `i.abs()` 会导致空解引用错误。在其他语言中，尝试这样做可能会导致运行时错误，但是Dart的编译器禁止这些操作。因此，Dart应用程序无法导致运行时错误。
+例如，假设你想要查找 `int` 变量 `i` 的绝对值。如果 `i` 是 `null` ，调用 `i.abs()` 会导致空解引用错误。在其他语言中，尝试这样做可能会导致运行时错误，但是Dart的编译器禁止这些操作。因此，Dart应用程序无法导致运行时错误。
 
 Null safety introduces three key changes:
 
@@ -88,7 +88,7 @@ Null safety introduces three key changes:
     relevant component, you can control whether the type allows `null`.
     To enable nullability, you add a `?` to the end of the type declaration.
 
-1.  当您为变量、参数或另一个相关组件指定类型时，可以控制该类型是否允许 `null` 。要启用可空性，你可以在类型声明的末尾添加 `?` 。
+    当你为变量、参数或另一个相关组件指定类型时，可以控制该类型是否允许 `null` 。要启用可空性，你可以在类型声明的末尾添加 `?` 。
 
     ```dart
     String? name  // Nullable type. Can be `null` or string.
@@ -105,12 +105,12 @@ Null safety introduces three key changes:
     where the receiver's type can be `null`
     but `null` doesn't support the method or property used.
 
-2.  您必须在使用变量之前对其进行初始化。可空变量默认为 `null` ，所以它们是默认初始化的。Dart不会将初始值设置为不可空类型。它强制您设置一个初始值。Dart不允许您去观察未初始化的变量。这会防止你在接收者类型可以为 `null` 但 `null` 却不支持所使用的方法或属性 的情况下访问属性或调用方法。
+    你必须在使用变量之前对其进行初始化。可空变量默认为 `null` ，所以它们是默认初始化的。Dart不会将初始值设置为不可空类型。它强制你设置一个初始值。Dart不允许你去观察未初始化的变量。这会防止你在接收者类型可以为 `null` 但 `null` 却不支持所使用的方法或属性 的情况下访问属性或调用方法。
 
 3.  You can't access properties or call methods on an expression with a
     nullable type. The same exception applies where it's a property or method that `null` supports like `hashCode` or `toString()`.
 
-3. 您不能在可空类型的表达式上访问属性或调用方法。同样的例外情况适用于 `null` 支持的属性或方法，例如 `hashCode` 或 `toString()` 。
+   你不能在可空类型的表达式上访问属性或调用方法。同样的例外情况适用于 `null` 支持的属性或方法，例如 `hashCode` 或 `toString()` 。
 
 Sound null safety changes potential **runtime errors**
 into **edit-time** analysis errors.
@@ -126,7 +126,7 @@ Null safety flags a non-null variable when it has been either:
 
 This check allows you to fix these errors _before_ deploying your app.
 
-此检查允许您在部署应用程序之前修复这些错误。
+此检查允许你在部署应用程序之前修复这些错误。
 
 ## Default value
 
@@ -154,7 +154,7 @@ assert(lineCount == null);
 With null safety, you must initialize the values
 of non-nullable variables before you use them:
 
-对于空安全，您必须在使用非空变量之前初始化它们的值：
+对于空安全，你必须在使用非空变量之前初始化它们的值：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-ns-init)"?>
 ```dart
@@ -216,7 +216,7 @@ If you're sure that a variable is set before it's used,
 but Dart disagrees,
 you can fix the error by marking the variable as `late`:
 
-如果您确定变量在使用之前已设置，但Dart不同意，则可以通过将变量标记为 `late` 来修复错误：
+如果你确定变量在使用之前已设置，但Dart不同意，则可以通过将变量标记为 `late` 来修复错误：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-late-top-level)" replace="/late/[!$&!]/g"?>
 ```dart
@@ -245,7 +245,7 @@ This lazy initialization is handy in a couple of cases:
   and its initializer needs access to `this`.
 
 * 可能不需要该变量，并且初始化它是高开销的。
-* 您正在初始化一个实例变量，其初始化程序需要访问 `this` 。
+* 你正在初始化一个实例变量，其初始化程序需要访问 `this` 。
 
 In the following example,
 if the `temperature` variable is never used,
@@ -269,7 +269,7 @@ instead of `var` or in addition to a type. A final variable can be set
 only once; a const variable is a compile-time constant. (Const variables
 are implicitly final.)
 
-如果您永远不打算更改变量，请使用 `final` 或 `const` ，而不是 `var` 或类型。一个final变量只能设置一次；const变量是编译时常量。（const变量隐式为final。）
+如果你永远不打算更改变量，请使用 `final` 或 `const` ，而不是 `var` 或类型。一个final变量只能设置一次；const变量是编译时常量。（const变量隐式为final。）
 
 {{site.alert.note}}
   [Instance variables][] can be `final` but not `const`.
@@ -301,7 +301,7 @@ Where you declare the variable, set the value to a compile-time constant
 such as a number or string literal, a const
 variable, or the result of an arithmetic operation on constant numbers:
 
-对您想变成**编译时常量**的变量使用 `const` 。如果const变量是类级别，请将其标记为 `static const` 。在声明变量的地方，将值设置为编译时常量，例如数值或字符串、const变量或常量数字上的算术运算的结果：
+对你想变成**编译时常量**的变量使用 `const` 。如果const变量是类级别，请将其标记为 `static const` 。在声明变量的地方，将值设置为编译时常量，例如数值或字符串、const变量或常量数字上的算术运算的结果：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const)"?>
 ```dart
@@ -314,7 +314,7 @@ You can also use it to create constant _values_,
 as well as to declare constructors that _create_ constant values.
 Any variable can have a constant value.
 
-`const` 关键字不仅用于声明常量变量。您还可以使用它来创建常量值，以及声明创建常量值的构造函数。任何变量都可以具有常量值。
+`const` 关键字不仅用于声明常量变量。你还可以使用它来创建常量值，以及声明创建常量值的构造函数。任何变量都可以具有常量值。
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const-vs-final)"?>
 ```dart
@@ -326,12 +326,12 @@ const baz = []; // Equivalent to `const []`
 You can omit `const` from the initializing expression of a `const` declaration,
 like for `baz` above. For details, see [DON'T use const redundantly][].
 
-您可以从 `const` 声明的初始化表达式中省略 `const` ，例如上面的 `baz` 。详细信息，请看[DON'T use const redundantly][]。
+你可以从 `const` 声明的初始化表达式中省略 `const` ，例如上面的 `baz` 。详细信息，请看[DON'T use const redundantly][]。
 
 You can change the value of a non-final, non-const variable,
 even if it used to have a `const` value:
 
-您可以更改非final、非const变量的值，即使它以前有 `const` 的值：
+你可以更改非final、非const变量的值，即使它以前有 `const` 的值：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (reassign-to-non-final)"?>
 ```dart
@@ -353,7 +353,7 @@ You can define constants that use
 [collection `if`][],
 and [spread operators][] (`...` and `...?`):
 
-您可以定义使用 [type checks and casts][](`is` 和 `as`)、[collection `if`][] 和 [spread operators][](`...` 和 `...?`)的常量：
+你可以定义使用 [type checks and casts][](`is` 和 `as`)、[collection `if`][] 和 [spread operators][](`...` 和 `...?`)的常量：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const-dart-25)"?>
 ```dart
