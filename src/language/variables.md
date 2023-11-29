@@ -50,9 +50,13 @@ String name = 'Bob';
 ```
 
 {{site.alert.note}}
+
   This page follows the
   [style guide recommendation](/effective-dart/design#types)
   of using `var`, rather than type annotations, for local variables.
+
+  该页面遵循 [风格指南推荐][style guide recommendation](/effective-dart/design#types) ，建议在局部变量中使用 `var`，而不是类型注解。
+
 {{site.alert.end}}
 
 ## Null safety
@@ -149,9 +153,13 @@ assert(lineCount == null);
 ```
 
 {{site.alert.note}}
+
   Production code ignores the `assert()` call. During development, on the other
   hand, <code>assert(<em>condition</em>)</code> throws an exception if
-  _condition_ is false. For details, check out [Assert][].
+  _condition_ is false. For details, check out [Assert].
+
+  当你在生产环境中运行代码时，`assert()` 调用会被忽略。另外，在开发过程中，<code>assert(<em>condition</em>)</code> 如果 **condition** 为 false，会抛出一个异常。有关详细信息，请参阅 [断言][Assert]。
+
 {{site.alert.end}}
 
 With null safety, you must initialize the values
@@ -279,7 +287,11 @@ are implicitly final.)
 如果你永不打算更改变量，可以使用 `final` 或 `const` ，而不是 `var` 或作为类型附加。一个 final 变量只能设置一次；const 变量是编译时常量。（const 变量隐式为 final。）
 
 {{site.alert.note}}
-  [Instance variables][] can be `final` but not `const`.
+
+  [Instance variables] can be `final` but not `const`.
+
+  [实例变量][Instance variables] 可以是 `final` 但不能是 `const`。
+
 {{site.alert.end}}
 
 Here's an example of creating and setting a `final` variable:
@@ -373,10 +385,14 @@ const set = {if (list is List<int>) ...list}; // ...and a spread.
 ```
 
 {{site.alert.note}}
+
   Although a `final` object cannot be modified,
   its fields can be changed. 
   In comparison, a `const` object and its fields
   cannot be changed: they're _immutable_.
+
+  虽然 `final` 对象不能被修改，但它的字段可以被更改。相比之下，`const` 对象及其字段不能被更改：它们是 **不可变的**。
+
 {{site.alert.end}}
 
 For more information on using `const` to create constant values, see
