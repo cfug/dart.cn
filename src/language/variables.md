@@ -343,9 +343,9 @@ const baz = []; // Equivalent to `const []`
 ```
 
 You can omit `const` from the initializing expression of a `const` declaration,
-like for `baz` above. For details, see [不要重复使用常量][DON'T use const redundantly][].
+like for `baz` above. For details, see [DON'T use const redundantly][].
 
-你可以省略 `const`  声明中的初始化表达式，就像上面的 `baz` 一样。详细信息，请看 [不要重复使用常量][DON'T use const redundantly][]。
+你可以省略 `const`  声明中的初始化表达式，就像上面的 `baz` 一样。详细信息，请看 [不要重复使用常量][DON'T use const redundantly]。
 
 You can change the value of a non-final, non-const variable,
 even if it used to have a `const` value:
@@ -398,7 +398,7 @@ const set = {if (list is List<int>) ...list}; // ...and a spread.
 For more information on using `const` to create constant values, see
 [Lists][], [Maps][], and [Classes][].
 
-有关使用 `const` 创建常量值的更多信息，请参见 [Lists][]、[Maps][] 和 [Classes][]。
+有关使用 `const` 创建常量值的更多信息，请参见 [Lists][Lists]、[Maps][Maps] 和 [Classes][Classes]。
 
 
 [Assert]: /language/error-handling#assert
