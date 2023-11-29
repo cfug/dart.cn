@@ -276,7 +276,7 @@ instead of `var` or in addition to a type. A final variable can be set
 only once; a const variable is a compile-time constant. (Const variables
 are implicitly final.)
 
-如果你永不打算更改变量，可以使用 `final` 或 `const` ，而不是 `var` 或作为类型附加。一个final变量只能设置一次；const变量是编译时常量。（const变量隐式为final。）
+如果你永不打算更改变量，可以使用 `final` 或 `const` ，而不是 `var` 或作为类型附加。一个 final 变量只能设置一次；const 变量是编译时常量。（const 变量隐式为 final。）
 
 {{site.alert.note}}
   [Instance variables][] can be `final` but not `const`.
@@ -321,7 +321,7 @@ You can also use it to create constant _values_,
 as well as to declare constructors that _create_ constant values.
 Any variable can have a constant value.
 
-`const` 关键字不仅用于声明常量变量。你还可以使用它来创建常量 _值(values)_，以及声明 _创建(create)_ 常量值的构造函数。任何变量都可以拥有常量值。
+`const` 关键字不仅用于声明常量变量。你还可以使用它来创建常量 **值(values)**，以及声明 **创建(create)** 常量值的构造函数。任何变量都可以拥有常量值。
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const-vs-final)"?>
 ```dart
@@ -333,7 +333,7 @@ const baz = []; // Equivalent to `const []`
 You can omit `const` from the initializing expression of a `const` declaration,
 like for `baz` above. For details, see [DON'T use const redundantly][].
 
-你可以省略 `const`  声明中的初始化表达式，就像上面的 `baz` 一样。详细信息，请看[DON'T use const redundantly][]。
+你可以省略 `const`  声明中的初始化表达式，就像上面的 `baz` 一样。详细信息，请看 [DON'T use const redundantly][]。
 
 You can change the value of a non-final, non-const variable,
 even if it used to have a `const` value:
