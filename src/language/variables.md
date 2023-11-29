@@ -32,7 +32,8 @@ but you can change that type by specifying it.
 If an object isn't restricted to a single type,
 specify the `Object` type (or `dynamic` if necessary).
 
-变量 `name` 的类型被推断为 `String`，但你可以通过指定类型来更改它。如果一个对象不受限于单一类型，可以指定为 `Object` 类型（或在必要时使用 `dynamic`）。
+变量 `name` 的类型被推断为 `String`，但你可以通过指定类型来更改它。
+如果一个对象不受限于单一类型，可以指定为 `Object` 类型（或在必要时使用 `dynamic`）。
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (type-decl)"?>
 ```dart
