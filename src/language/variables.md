@@ -25,7 +25,7 @@ var name = 'Bob';
 Variables store references. The variable called `name` contains a
 reference to a `String` object with a value of "Bob".
 
-变量存储引用。名为 `name` 的变量包含一个值为“Bob”的 `String` 对象的引用。
+变量会保存引用。`name` 变量包含一个值为 “Bob” 的 `String` 对象的引用。
 
 The type of the `name` variable is inferred to be `String`,
 but you can change that type by specifying it.
