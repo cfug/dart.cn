@@ -61,7 +61,7 @@ String name = 'Bob';
 
 The Dart language enforces sound null safety.
 
-Dart 语言强制执行空安全。
+Dart 语言要求以健全的空安全方式编写代码。
 
 Null safety prevents an error that results from unintentional access
 of variables set to `null`. The error is called a null dereference error.
