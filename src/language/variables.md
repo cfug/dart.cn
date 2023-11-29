@@ -360,7 +360,9 @@ You can define constants that use
 [collection `if`][],
 and [spread operators][] (`...` and `...?`):
 
-你可以定义使用 [type checks and casts][](`is` 和 `as`)、[collection `if`][] 和 [spread operators][](`...` 和 `...?`)的常量：
+你可以在定义常量时使用 [类型检查和转换][type checks and casts]（`is` 和 `as`）、
+[集合中的 `if`][collection `if`] 和
+[展开操作符][spread operators]（`...` 和 `...?`）：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const-dart-25)"?>
 ```dart
