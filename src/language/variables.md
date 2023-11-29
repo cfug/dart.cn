@@ -156,7 +156,7 @@ assert(lineCount == null);
 
   Production code ignores the `assert()` call. During development, on the other
   hand, <code>assert(<em>condition</em>)</code> throws an exception if
-  _condition_ is false. For details, check out [Assert].
+  _condition_ is false. For details, check out [Assert][].
 
   当你在生产环境中运行代码时，`assert()` 调用会被忽略。另外，在开发过程中，<code>assert(<em>condition</em>)</code> 如果 **condition** 为 false，会抛出一个异常。有关详细信息，请参阅 [断言][Assert]。
 
@@ -288,7 +288,7 @@ are implicitly final.)
 
 {{site.alert.note}}
 
-  [Instance variables] can be `final` but not `const`.
+  [Instance variables][] can be `final` but not `const`.
 
   [实例变量][Instance variables] 可以是 `final` 但不能是 `const`。
 
