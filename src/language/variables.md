@@ -15,7 +15,7 @@ nextpage:
 
 Here's an example of creating a variable and initializing it:
 
-下面是一个创建并初始化变量的例子：
+下面是创建并初始化变量的例子：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-decl)"?>
 ```dart
