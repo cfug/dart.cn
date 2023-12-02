@@ -76,7 +76,11 @@ An exception to this rule is when `null` supports the property or method,
 like `toString()` or `hashCode`. With null safety, the Dart compiler
 detects these potential errors at compile time.
 
-空安全防止因意外访问被设置为 `null` 的变量而导致的错误。该错误被称为空解引用错误。访问一个求值为 `null` 的表达式的属性或调用方法时，会发生空解引用错误。此规则的一个例外是当 `null` 支持像 `toString()` 或 `hashCode` 这样的属性或方法。使用空安全，Dart 编译器可以在编译时检测到这些潜在的错误。
+空安全能够防止意外访问 `null` 的变量而导致的错误。
+这样的错误也被称为空解引用错误。
+访问一个求值为 `null` 的表达式的属性或调用方法时，会发生空解引用错误。
+但是对于 `toString()` 方法和 `hashCode` 属性，空安全会体现出例外情况。
+Dart 编译器可以在空安全的基础上在编译期检测到这些潜在的错误。
 
 For example, say you want to find the absolute value of an `int` variable `i`.
 If `i` is `null`, calling `i.abs()` causes a null dereference error.
