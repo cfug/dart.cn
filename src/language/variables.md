@@ -365,7 +365,9 @@ like for `baz` above. For details, see [DON'T use const redundantly][].
 You can change the value of a non-final, non-const variable,
 even if it used to have a `const` value:
 
-你可以更改非final、非const变量的值，即使它以前有 `const` 的值：
+如果变量没有以 `final` 或者 `const` 修饰，
+即使它以前有的值是一个 `const` 修饰的值，
+你也可以修改这个变量：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (reassign-to-non-final)"?>
 ```dart
