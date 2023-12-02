@@ -251,7 +251,8 @@ If you're sure that a variable is set before it's used,
 but Dart disagrees,
 you can fix the error by marking the variable as `late`:
 
-如果你确定变量在使用之前已设置，但 Dart 判断失误的话，则可以通过将变量标记为 `late` 来解决这个问题：
+如果你确定变量在使用之前已设置，但 Dart 推断错误的话，
+可以将变量标记为 `late` 来解决这个问题：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-late-top-level)" replace="/late/[!$&!]/g"?>
 ```dart
