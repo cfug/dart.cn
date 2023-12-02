@@ -280,7 +280,7 @@ This lazy initialization is handy in a couple of cases:
 * The variable might not be needed,
   and initializing it is costly.
 
-  (Dart 认为)可能不需要该变量，并且初始化它开销很高。
+  （Dart 推断）可能不需要该变量，并且初始化它的开销很高。
 
 * You're initializing an instance variable,
   and its initializer needs access to `this`.
