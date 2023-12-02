@@ -396,7 +396,8 @@ const set = {if (list is List<int>) ...list}; // ...and a spread.
   In comparison, a `const` object and its fields
   cannot be changed: they're _immutable_.
 
-  虽然 `final` 对象不能被修改，但它的字段可以被更改。相比之下，`const` 对象及其字段不能被更改：它们是 **不可变的**。
+  虽然 `final` 对象不能被修改，但它的字段可能可以被更改。
+  相比之下，`const` 对象及其字段不能被更改：它们是 **不可变的**。
 
 {{site.alert.end}}
 
