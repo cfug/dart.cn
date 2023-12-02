@@ -138,7 +138,7 @@ Null safety flags a non-null variable when it has been either:
 
 This check allows you to fix these errors _before_ deploying your app.
 
-此检查允许你在部署应用程序 _之前(before)_ 修复这些错误。
+此检查允许你在部署应用程序 **之前** 修复这些错误。
 
 ## Default value
 
