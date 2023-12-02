@@ -55,7 +55,7 @@ String name = 'Bob';
   [style guide recommendation](/effective-dart/design#types)
   of using `var`, rather than type annotations, for local variables.
 
-  文章遵循 [代码风格指南][style guide recommendation](/effective-dart/design#types) ，
+  文章遵循 [代码风格指南](/effective-dart/design#types) ，
   使用的是 `var` 声明局部变量，而不是使用准确的类型。
 
 {{site.alert.end}}
