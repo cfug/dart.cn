@@ -291,7 +291,8 @@ In the following example,
 if the `temperature` variable is never used,
 then the expensive `readThermometer()` function is never called:
 
-在下面的例子中，如果从未使用 `temperature` 变量，则永远不会调用高开销的 `readThermometer()` 函数：
+在下面的例子中，如果 `temperature` 变量从未被使用，
+则 `readThermometer()` 这个开销较大的函数也永远不会被调用：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-late-lazy)" replace="/late/[!$&!]/g"?>
 ```dart
