@@ -310,7 +310,7 @@ instead of `var` or in addition to a type. A final variable can be set
 only once; a const variable is a compile-time constant. (Const variables
 are implicitly final.)
 
-如果你打算不再更改一个变量，可以使用 `final` 或 `const` 声明它 ，而不是 `var` 或作为类型附加。
+如果你不打算更改一个变量，可以使用 `final` 或 `const` 修饰它 ，而不是使用 `var` 或作为类型附加。
 一个 final 变量只能设置一次，const 变量是编译时常量。
 （const 常量隐式包含了 final。）
 
