@@ -348,7 +348,10 @@ Where you declare the variable, set the value to a compile-time constant
 such as a number or string literal, a const
 variable, or the result of an arithmetic operation on constant numbers:
 
-对于希望成为 **编译时常量** 的变量，请使用 `const`。如果 const 变量位于类级别，请将其标记为 `static const`。在声明变量的位置，将其值设置为编译时常量，比如数字或字符串字面量，`const` 变量，或在常量数字上进行的算术运算的结果：
+请使用 `const` 修饰 **编译时常量** 的变量。
+如果 const 变量位于类级别，请将其标记为 `static const`（静态常量）。
+在声明变量的位置，将其值设置为编译时常量，
+比如数字、字符串、`const` 常量或在常量数字上进行的算术运算的结果：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const)"?>
 ```dart
