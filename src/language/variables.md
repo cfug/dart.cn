@@ -98,7 +98,8 @@ Null safety introduces three key changes:
     relevant component, you can control whether the type allows `null`.
     To enable nullability, you add a `?` to the end of the type declaration.
 
-    当你为变量、参数或另一个相关组件指定类型时，可以控制该类型是否允许 `null` 。要启用可空性，你可以在类型声明的末尾添加 `?` 。
+    当你为变量、参数或另一个相关组件指定类型时，可以控制该类型是否允许 `null` 。
+    要让一个变量可以为空，你可以在类型声明的末尾添加 `?` 。
 
     ```dart
     String? name  // Nullable type. Can be `null` or string.
