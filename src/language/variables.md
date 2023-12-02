@@ -115,7 +115,12 @@ Null safety introduces three key changes:
     where the receiver's type can be `null`
     but `null` doesn't support the method or property used.
 
-    你必须在使用变量之前对其进行初始化。可空变量默认为 `null` ，所以它们是默认初始化的。Dart 不会为非可空类型设置初始值，而是强制你设置初始值。Dart 不允许你观察未初始化的变量。这可以防止你在接收者类型可以为 `null` 但 `null` 不支持所使用的方法或属性 的情况下访问属性或调用方法。
+    你必须在使用变量之前对其进行初始化。
+    可空变量是默认初始化为 `null` 的。
+    Dart 不会为非可空类型设置初始值，它强制要求你设置初始值。
+    Dart 不允许你观察未初始化的变量。
+    这可以防止你在接收者类型可以为 `null` 但 `null`
+    不支持的相关方法或属性的情况下使用它。
 
 3.  You can't access properties or call methods on an expression with a
     nullable type. The same exception applies where it's a property or method that `null` supports like `hashCode` or `toString()`.
