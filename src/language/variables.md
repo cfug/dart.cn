@@ -273,7 +273,9 @@ When you mark a variable as `late` but initialize it at its declaration,
 then the initializer runs the first time the variable is used.
 This lazy initialization is handy in a couple of cases:
 
-当一个 `late` 修饰的变量在声明时就指定了初始化方法，那么初始化程序会在第一次使用变量时运行。这种延迟初始化在以下情况很方便：
+当一个 `late` 修饰的变量在声明时就指定了初始化方法，
+那么内容会在第一次使用变量时运行初始化。
+这种延迟初始化在以下情况很方便：
 
 * The variable might not be needed,
   and initializing it is costly.
