@@ -292,7 +292,7 @@ then the expensive `readThermometer()` function is never called:
 
 ## Final and const
 
-## Final和const
+## 终值 (final) 和常量 (const)
 
 If you never intend to change a variable, use `final` or `const`, either
 instead of `var` or in addition to a type. A final variable can be set
