@@ -244,7 +244,8 @@ Two common cases are top-level variables and instance variables:
 Dart often can't determine whether they're set,
 so it doesn't try.
 
-通常，Dart 的语义分析可以检测非空变量在使用之前是否被复制，但有时分析会失败。两种常见情况是顶级变量和实例变量：Dart 通常无法确定它们是否已设值，因此不会尝试分析。
+通常 Dart 的语义分析可以检测非空变量在使用之前是否被复制，但有时分析会失败。
+两种常见情况是在分析顶级变量和实例变量时，Dart 通常无法确定它们是否已设值，因此不会尝试分析。
 
 If you're sure that a variable is set before it's used,
 but Dart disagrees,
