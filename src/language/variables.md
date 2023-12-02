@@ -403,7 +403,8 @@ const set = {if (list is List<int>) ...list}; // ...and a spread.
 For more information on using `const` to create constant values, see
 [Lists][], [Maps][], and [Classes][].
 
-有关使用 `const` 创建常量值的更多信息，请参见 [Lists][Lists]、[Maps][Maps] 和 [Classes][Classes]。
+有关使用 `const` 创建常量值的更多信息，请参见
+[Lists][]、[Maps][] 和 [Classes][]。
 
 
 [Assert]: /language/error-handling#assert
