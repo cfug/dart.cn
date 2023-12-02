@@ -214,7 +214,7 @@ Top-level and class variables are lazily initialized;
 the initialization code runs
 the first time the variable is used.
 
-顶级变量和类变量是延迟初始化的；初始化代码会在变量第一次被使用时完成。
+顶级变量和类变量是延迟初始化的，它们会在第一次被使用时再初始化。
 
 
 ## Late variables
