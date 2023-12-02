@@ -223,7 +223,7 @@ the first time the variable is used.
 
 The `late` modifier has two use cases:
 
-late修饰符有两种用法：
+`late` 修饰符有两种用法：
 
 * Declaring a non-nullable variable that's initialized after its declaration.
 
