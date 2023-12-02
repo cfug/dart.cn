@@ -88,7 +88,10 @@ In other languages, trying this could lead to a runtime error,
 but Dart's compiler prohibits these actions.
 Therefore, Dart apps can't cause runtime errors.
 
-例如，假设你想要查找 `int` 变量 `i` 的绝对值。如果 `i` 是 `null` ，调用 `i.abs()` 会导致空解引用错误。在其他语言中，尝试这样做可能会导致运行时错误，但是 Dart 的编译器禁止这些操作。因此，Dart 应用程序不会引发运行时错误。
+例如，假设你想要查找 `int` 变量 `i` 的绝对值。
+如果 `i` 是 `null` ，调用 `i.abs()` 会导致空解引用错误。
+在其他语言中，尝试这样做可能会导致运行时错误，但是 Dart 的编译器禁止这些操作。
+所以 Dart 应用程序不会引发运行时错误。
 
 Null safety introduces three key changes:
 
