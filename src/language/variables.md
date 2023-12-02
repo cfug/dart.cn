@@ -364,7 +364,8 @@ const baz = []; // Equivalent to `const []`
 You can omit `const` from the initializing expression of a `const` declaration,
 like for `baz` above. For details, see [DON'T use const redundantly][].
 
-你可以省略 `const`  声明中的初始化表达式，就像上面的 `baz` 一样。详细信息，请看 [不要重复使用常量][DON'T use const redundantly]。
+你可以省略以 `const` 声明中的值的 `const` 修饰，就像上面的 `baz` 一样。
+更多详细信息请参考 [不要重复使用常量][DON'T use const redundantly]。
 
 You can change the value of a non-final, non-const variable,
 even if it used to have a `const` value:
