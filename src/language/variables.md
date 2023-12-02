@@ -350,7 +350,9 @@ You can also use it to create constant _values_,
 as well as to declare constructors that _create_ constant values.
 Any variable can have a constant value.
 
-`const` 关键字不仅用于声明常量变量。你还可以使用它来创建常量 **值(values)**，以及声明 **创建(create)** 常量值的构造函数。任何变量都可以拥有常量值。
+`const` 关键字不仅仅可用于声明常量，
+你还可以使用它来创建常量 **值(values)**，以及声明 **创建(create)** 常量值的构造函数。
+任何变量都可以拥有常量值。
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (const-vs-final)"?>
 ```dart
