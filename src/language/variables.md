@@ -195,7 +195,8 @@ For example, the following code is valid because
 Dart can detect that `lineCount` is non-null by the time
 it's passed to `print()`:
 
-你不必在声明变量时初始化变量，但在使用之前需要为其赋值。例如，以下代码是合法的，因为 Dart 可以检测到 `lineCount` 在传递给 `print()` 时是非空的：
+你不必在声明变量时初始化变量，但在使用之前需要为其赋值。
+例如以下代码是合法的，因为 Dart 可以检测到 `lineCount` 在传递给 `print()` 时是非空的：
 
 <?code-excerpt "misc/lib/language_tour/variables.dart (var-ns-flow)"?>
 ```dart
