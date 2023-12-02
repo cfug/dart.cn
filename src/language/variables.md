@@ -144,7 +144,7 @@ Null safety flags a non-null variable when it has been either:
 
 * Assigned a `null` value.
 
-  赋值为 `null` 值。
+  赋值为 `null` 。
 
 This check allows you to fix these errors _before_ deploying your app.
 
@@ -244,8 +244,8 @@ Two common cases are top-level variables and instance variables:
 Dart often can't determine whether they're set,
 so it doesn't try.
 
-通常 Dart 的语义分析可以检测非空变量在使用之前是否被复制，但有时分析会失败。
-两种常见情况是在分析顶级变量和实例变量时，Dart 通常无法确定它们是否已设值，因此不会尝试分析。
+通常 Dart 的语义分析可以检测非空变量在使用之前是否被赋值，但有时会分析失败。
+常见的两种情况是在分析顶级变量和实例变量时，Dart 通常无法确定它们是否已设值，因此不会尝试分析。
 
 If you're sure that a variable is set before it's used,
 but Dart disagrees,
@@ -265,8 +265,12 @@ void main() {
 ```
 
 {{site.alert.warn}}
+
   If you fail to initialize a `late` variable,
   a runtime error occurs when the variable is used.
+
+  如果你没有初始化一个 `late` 变量，那么当变量被使用时会发生运行时错误。
+
 {{site.alert.end}}
 
 When you mark a variable as `late` but initialize it at its declaration,
@@ -395,7 +399,7 @@ foo = [1, 2, 3]; // Was const []
 
 You can't change the value of a `const` variable:
 
-你不能改变 `const` 变量的值：
+你不能修改 `const` 变量的值：
 
 {:.fails-sa}
 <?code-excerpt "misc/lib/language_tour/variables.dart (cant-assign-to-const)"?>
