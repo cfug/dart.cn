@@ -159,7 +159,9 @@ have an initial value of `null`.
 Even variables with numeric types are initially null,
 because numbers—like everything else in Dart—are objects.
 
-具有可空类型的未初始化变量的初始值为 `null` 。即使是具有数值类型的变量，初始值也为 null，因为数字(就像 Dart 中的其他所有东西一样)都是对象。
+具有可空类型的未初始化变量的初始值为 `null` 。
+即使是具有数值类型的变量，初始值也为空，
+因为数字（就像 Dart 中的其他所有东西一样）都是对象。
 
 <?code-excerpt "misc/test/language_tour/variables_test.dart (var-null-init)"?>
 ```dart
