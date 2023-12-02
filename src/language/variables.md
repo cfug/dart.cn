@@ -338,7 +338,7 @@ final String nickname = 'Bobby';
 
 You can't change the value of a `final` variable:
 
-你不能改变 `final` 变量的值：
+你不能修改 `final` 变量的值：
 
 {:.fails-sa}
 <?code-excerpt "misc/lib/language_tour/variables.dart (cant-assign-to-final)"?>
