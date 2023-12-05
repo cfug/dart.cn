@@ -189,16 +189,6 @@
       permalink: /guides/json
     - title: Dart 中的数字
       permalink: /guides/language/numbers
-    - title: 与其他语言进行交互调用
-      children:
-        - title: 与 C 互调
-          permalink: /guides/libraries/c-interop
-        - title: 与 Objective-C 和 Swift 互调
-          permalink: /guides/libraries/objective-c-interop
-        - title: 与 Java 和 Kotlin 互调
-          permalink: /guides/libraries/java-interop
-        - title: 与 JavaScript 互调
-          permalink: /web/js-interop
     - title: Google APIs
       permalink: /guides/google-apis
     - title: 跨平台应用
@@ -242,6 +232,17 @@
     - title: 环境变量声明
       permalink: /guides/environment-declarations
 
+- title: 与其他语言进行交互调用
+  expanded: false
+  children:
+  - title: 与 C 互调
+    permalink: /interop/c-interop
+  - title: 与 Objective-C 和 Swift 互调
+    permalink: /interop/objective-c-interop
+  - title: 与 Java 和 Kotlin 互调
+    permalink: /interop/java-interop
+  - title: 与 JavaScript 互调
+    permalink: /interop/js-interop
 
 - title: 开发工具和使用技巧
   expanded: false
@@ -306,28 +307,26 @@
           permalink: /tools/build_runner
         - title: webdev 命令
           permalink: /tools/webdev
-  - title: 源码管理
-    children:
-      - title: 代码格式化
-        permalink: /guides/language/formatting
-      - title: 不应提交的内容
-        permalink: /guides/libraries/private-files
   - title: 静态分析
     children:
       - title: 自定义静态分析
         permalink: /tools/analysis
-      - title: 修复常见的类型问题
-        permalink: /guides/language/sound-problems
       - title: 诊断消息
         permalink: /tools/diagnostic-messages
       - title: Linter 规则
         permalink: /tools/linter-rules
+      - title: 修复常见的类型问题
+        permalink: /guides/language/sound-problems
+      - title: 修复类型提升失败
+        permalink: /tools/non-promotion-reasons
   - title: 测试和调优
     children:
       - title: 测试
         permalink: /guides/testing
       - title: 调试 Web 应用
         permalink: /web/debugging
+  - title: 不应提交的内容
+    permalink: /guides/libraries/private-files
 
 - title: 资源
   expanded: false

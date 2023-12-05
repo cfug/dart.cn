@@ -365,7 +365,7 @@ main() {
 
 This program is not safe and we shouldn't allow it. However, Dart has always had
 this thing called *implicit downcasts*. If you, for example, pass a value of
-type `Object` to a function expecting an `String`, the type checker allows it:
+type `Object` to a function expecting a `String`, the type checker allows it:
 
 我们不会允许这样不安全的程序出现。
 然而，**隐式转换** 在 Dart 中一直存在。
@@ -1020,11 +1020,12 @@ crashing.
 
 But if the value isn't `null`, it would be good to be able to move it over to
 the non-nullable side so you can call methods on it. Flow analysis is one of the
-primary ways to do this for local variables and parameters. We've extended type
+primary ways to do this for local variables and parameters
+(and private final fields, as of Dart 3.2). We've extended type
 promotion to also look at `== null` and `!= null` expressions.
 
 而如果值不为 `null`，最好是直接将它移到非空的一侧，如此一来你就可以调用它的方法了。
-流程分析是对变量和局部变量进行处理的主要方法之一。
+流程分析是对局部变量和参数（包括 Dart 3.2 中的私有 final 字段）进行处理的主要方法之一。
 我们在分析 `== null` 和 `!= null` 表达式时也进行了类型提升的扩展。
 
 If you check a local variable with nullable type to see if it is not `null`, 
@@ -1083,24 +1084,26 @@ String makeCommand(String executable, [List<String>? arguments]) {
 
 The language is also smarter about what kinds of expressions cause promotion. An
 explicit `== null` or `!= null` of course works. But explicit casts using `as`,
-or assignments, or the postfix `!` operator we'll get to soon also cause
+or assignments, or the postfix `!` operator
+(which we'll cover [later on](#null-assertion-operator)) also cause
 promotion. The general goal is that if the code is dynamically correct and it's
 reasonable to figure that out statically, the analysis should be clever enough
 to do so.
 
 Dart 语言也对什么表达式需要提升变量判断地更智能了。
 除了显式的 `== null` 和 `!= null` 以外，显式使用 `as` 或赋值，
-以及我们马上就要提到的后置操作符 `!` 也会进行类型提升。
+以及后置操作符 `!` （我们 [稍后会介绍](#null-assertion-operator)）也会进行类型提升。
 总体来说的目标是：如果代码是动态正确的，而静态分析时又是合理的，
 那么分析结果也足够聪明，会对其进行类型提升。
 
-Note that type promotion only works on local variables,
-not on fields or top-level variables.
+Note that type promotion originally only worked on local variables,
+and now also works on private final fields as of Dart 3.2.
 For more information about working with non-local variables,
 see [Working with nullable fields](#working-with-nullable-fields).
 
-请注意，类型提升仅对当前方法内的变量有效，对字段和顶层变量无效。
-想要了解更多针对非方法内的变量的处理，阅读
+请注意，类型提升最初适用于局部变量，
+现在从 Dart 3.2 开始也适用于私有 final 字段。
+想要了解更多针对非局部变量的处理，请阅读
 [与可空字段共舞](#working-with-nullable-fields)。
 
 ### Unnecessary code warnings
@@ -1183,15 +1186,15 @@ We've now corralled `null` into the set of nullable types. With flow analysis,
 we can safely let some non-`null` values hop over the fence to the non-nullable
 side where we can use them. That's a big step, but if we stop here, the
 resulting system is still painfully restrictive. Flow analysis only helps with
-locals and parameters.
+locals, parameters, and private final fields.
 
 现在，我们已经将 `null` 归到了可空类型的集合中。
 有了流程分析，我们可以让一些非 `null` 值安全地越过栅栏，到达非空的那一侧，供我们使用。
 这是相当大的一步，但如果我们就此止步不前，产出的系统仍然饱含痛苦的限制，
-而流程分析也仅对局部变量和参数起作用。
+而流程分析也仅对局部变量、参数以及私有 final 字段起作用。
 
 To try to regain as much of the flexibility that Dart had before null
-safety—and to go beyond it on some places—we have a handful of other
+safety—and to go beyond it in some places—we have a handful of other
 new features.
 
 为了尽可能地保持 Dart 在拥有空安全之前的灵活度，并且在一定程度上超越它，
@@ -1832,7 +1835,17 @@ field has a value, and that requires making it nullable so you can observe the
 但在很多场景里，你仍然需要 **检查** 字段是否有值，
 这些情况下，字段会是可空的，你也能观测到 `null` 的存在。
 
-You might expect this to work:
+Nullable fields that are both private and final are able to type promote
+(barring [some particular reasons](/tools/non-promotion-reasons)).
+If you can't make a field private and final
+for whatever reason, you'll still need a workaround. 
+
+同时具有私有和 final 的可空字段可以进行类型提升
+（[某些特殊原因](/tools/non-promotion-reasons) 除外）。
+如果你由于某种原因无法将字段设为私有和 final，
+你就需要一种变通的办法。
+
+For example, you might expect this to work:
 
 以下这段代码，你可能会认为可以这么写：
 
@@ -1856,25 +1869,28 @@ class Coffee {
 
 Inside `checkTemp()`, we check to see if `_temperature` is `null`. If not, we
 access it and end up calling `+` on it. Unfortunately, this is not allowed.
-Flow-based type promotion does not apply to fields because the static analysis
-cannot *prove* that the field's value doesn't change between the point that you
-check for `null` and the point that you use it. (Consider that in pathological
-cases, the field itself could be overridden by a getter in a subclass that
-returns `null` the second time it is called.)
 
 在 `checkTemp()` 中，我们检查了 `_temperature` 是否为 `null`。
 如果不为空，我们会访问并对它调用 `+`。
 很遗憾，这样做是不被允许的。
-基于流程分析的类型提升并不适用于字段，
-因为静态分析不能 **证明** 这个字段的值在你判断后和使用前没有发生变化。
+
+Flow-based type promotion can only apply to fields that are *both private and final*.
+Otherwise, static analysis cannot *prove* that the field's value doesn't
+change between the point that you check for `null` and the point that you use it.
+(Consider that in pathological cases, the field itself could be overridden by a
+getter in a subclass that returns `null` the second time it is called.)
+
+基于流程分析的类型提升只适用于 **同时具备私有和 final** 的字段。
+否则，静态分析就无法 **证明** 这个字段的值在你判断后和使用前没有发生变化。
 （某些极端场景中，字段本身可能会被子类的 getter 重写，从而在第二次调用时返回 `null`。）
 
-So, since we care about soundness, fields don't promote and the above method
-does not compile. This is annoying. In simple cases like here, your best bet is
-to slap a `!` on the use of the field. It seems redundant, but that's more or
-less how Dart behaves today.
+So, since we care about soundness, public and/or non-final fields don't promote,
+and the above method does not compile. This is annoying.
+In simple cases like here, your best bet is to slap a `!` on the use of the field.
+It seems redundant, but that's more or less how Dart behaves today.
 
-因为代码的健全性也是我们在乎的指标，所以字段的类型不会被提升，且上面的方法也无法编译。
+因为代码的健全性也是我们在乎的指标，
+所以公共字段和（或）非 final 字段就不会生效，且上面的方法也无法编译。
 这其实不太舒服。在这样的简单例子中，最好的办法是在使用字段时加上 `!`。
 它看起来是多余的，但是目前的 Dart 需要这样的操作。
 
@@ -2356,11 +2372,13 @@ The core points to take away are:
     后缀空断言“重点”操作符 (`!`) 可以将可空的操作对象转换为对应的非空类型。
 
 *   Flow analysis lets you safely turn nullable local variables and parameters
+    (and private final fields, as of Dart 3.2)
     into usable non-nullable ones. The new flow analysis also has smarter rules
     for type promotion, missing returns, unreachable code, and variable
     initialization.
 
-    新的流程分析，让你更安全地将可空的局部变量和参数，转变为可用的非空类型。
+    新的流程分析，让你更安全地将可空的局部变量和参数（包括 Dart 3.2 的私有 final 字段），
+    转变为可用的非空类型。
     它同时还对类型提升、遗漏的返回、不可达的代码以及变量的初始化，有着更为智能的规则。
 
 *   The `late` modifier lets you use non-nullable types and `final` in places
