@@ -3,7 +3,7 @@ FROM ruby:3.2-slim-bookworm@sha256:02a091c83d1aa1070c0f6fefcbd2aff58ddd3430e2d56
 SHELL ["/usr/bin/bash", "-c"]
 
 # Configure Debian mirrors.
-RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources
+# RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Shanghai
@@ -60,7 +60,7 @@ RUN set -eu; \
       # END dart-sha
     esac; \
     SDK="dartsdk-linux-${SDK_ARCH}-release.zip"; \
-    BASEURL="https://storage.flutter-io.cn/dart-archive/channels"; \
+    BASEURL="https://storage.googleapis.com/dart-archive/channels"; \
     URL="$BASEURL/$DART_CHANNEL/release/$DART_VERSION/sdk/$SDK"; \
     curl -fsSLO "$URL"; \
     echo "$DART_SHA256 *$SDK" | sha256sum --check --status --strict - || (\
