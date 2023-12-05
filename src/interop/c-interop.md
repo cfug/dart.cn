@@ -35,12 +35,12 @@ The following examples show how to use the `dart:ffi` library:
 
 以下的示例将展示如何使用 `dart:ffi` 库：
 
-| <t>**Example**</t><t>**示例**</t>    |  <t>**Description**</t><t>**描述**</t>                                             |
+| <t>**Example**</t><t>示例</t>    |  <t>**Description**</t><t>描述</t>                                             |
 | --------------- | ------------------------------------------------------------------------------------------------------- |
 | [hello_world][] | How to call a C function with no arguments and no return value.                                         |
 | [hello_world][] | 如何调用无参数和返回值的 C 语言函数。                                                                      |
 | [primitives][]  | How to call C functions that have arguments and return values that are **ints or pointers**.            |
-| [primitives][]  | 如何调用参数和返回值为 **整型和指针** 的 C 语言函数。同时演示 **varargs**。                                 |
+| [primitives][]  | 如何调用参数和返回值为 **整型和指针** 的 C 语言函数。                                 |
 | [structs][]     | How to use structs to pass **strings** to and from C and to handle **simple and complex C structures**. |
 | [structs][]     | 如何与 C 语言互相传递字符串，以及如何处理 **C 语言定义的结构**。                                            |
 | [sqlite][]      | An example in the Dart SDK repo that comes with a [mini tutorial.][]                                    |
@@ -63,7 +63,7 @@ The hello_world example has the following files:
 
 hello_world 示例包含了以下文件：
 
-| <t>**Source file**</t><t>**源文件**</t>                                  | <t>**Description**</t><t>**描述**</t>                                                            |
+| <t>**Source file**</t><t>源文件</t>                                  | <t>**Description**</t><t>描述</t>                                                            |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
 | [hello.dart]({{page.hw}}/hello.dart)                                     | A Dart file that uses the `hello_world()` function from a C library.                             |
 | [hello.dart]({{page.hw}}/hello.dart)                                     | 使用了 C 语言库中的 `hello_world()` 函数的文件。                                                    |
