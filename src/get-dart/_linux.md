@@ -31,7 +31,7 @@ storage.googleapis.com 替换为
 storage.flutter-io.cn，完整命令如下：
 
 ```terminal
-$ echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.flutter-io.cn/download.dartlang.org/linux/debian stable main' | sudo tee /etc/apt/sources.list.d/dart_stable.
+$ echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.flutter-io.cn/download.dartlang.org/linux/debian stable main' | sudo tee /etc/apt/sources.list.d/dart_stable.list
 ```
 
 Then install the Dart SDK:
