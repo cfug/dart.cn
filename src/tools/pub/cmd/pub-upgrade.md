@@ -255,6 +255,17 @@ you can use `dart pub upgrade --major-versions --dry-run`.
 想查看哪些依赖会被更新，可以运行
 `dart pub upgrade --major-versions --dry-run`。
 
+### `--tighten`
+
+Updates the lower bounds of dependencies in `pubspec.yaml` to match the
+resolved versions, and returns a list of the changed constraints. 
+Can be applied to [specific dependencies](#upgrading-specific-dependencies).  
+
+更新 `pubspec.yaml` 文件中的依赖下限，
+并与已解析的版本相匹配后，返回已改变约束的依赖列表。
+可用于 [指定的依赖](#upgrading-specific-dependencies)。
+
+
 {{site.alert.info}}
 
   *Problems?*

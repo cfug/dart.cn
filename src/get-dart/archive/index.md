@@ -142,7 +142,7 @@ is available at URLs like the following:
 可以使用以下格式的链接进行下载：
 
 {% prettify none tag=pre+code %}
-https://storage.flutter-io.cn/dart-archive/channels/be/raw/latest/sdk/dartsdk-<[!platform!]>-<[!architecture!]>-release.zip
+https://storage.flutter-io.cn/dart-archive/channels/main/raw/latest/sdk/dartsdk-<[!platform!]>-<[!architecture!]>-release.zip
 {% endprettify %}
 
 Example:
@@ -150,7 +150,7 @@ Example:
 示例：
 
 {% prettify none tag=pre+code %}
-https://storage.flutter-io.cn/dart-archive/channels/be/raw/latest/sdk/dartsdk-windows-x64-release.zip
+https://storage.flutter-io.cn/dart-archive/channels/main/raw/latest/sdk/dartsdk-windows-x64-release.zip
 {% endprettify %}
 
 {{site.alert.note}}

@@ -35,16 +35,16 @@ The following examples show how to use the `dart:ffi` library:
 
 以下的示例将展示如何使用 `dart:ffi` 库：
 
-| **Example**     | **Description**                                                                                                             |
-| **示例**        | **描述**                                                                                                                     |
-| [hello_world][] | How to call a C function with no arguments and no return value.                                                             |
-| [hello_world][] | 如何调用无参数和返回值的 C 语言函数。                                                                                           |
-| [primitives][]  | How to call C functions that have arguments and return values that are **ints or pointers**.                                |
-| [primitives][]  | 如何调用参数和返回值为 **整型和指针** 的 C 语言函数。同时演示 **varargs**。                                                        |
-| [structs][]     | How to use structs to pass **strings** to and from C and to handle **simple and complex C structures**.                     |
-| [structs][]     | 如何与 C 语言互相传递字符串，以及如何处理 **C 语言定义的结构**。                                                                   |
-| [sqlite][]      | An example in the Dart SDK repo that comes with a [mini tutorial.][]                                                        |
-| [sqlite][]      | Dart SDK 仓库中包含的 [小型示例][mini tutorial.]。                                                                             |
+| <t>**Example**</t><t>示例</t>    |  <t>**Description**</t><t>描述</t>                                             |
+| --------------- | ------------------------------------------------------------------------------------------------------- |
+| [hello_world][] | How to call a C function with no arguments and no return value.                                         |
+| [hello_world][] | 如何调用无参数和返回值的 C 语言函数。                                                                      |
+| [primitives][]  | How to call C functions that have arguments and return values that are **ints or pointers**.            |
+| [primitives][]  | 如何调用参数和返回值为 **整型和指针** 的 C 语言函数。                                 |
+| [structs][]     | How to use structs to pass **strings** to and from C and to handle **simple and complex C structures**. |
+| [structs][]     | 如何与 C 语言互相传递字符串，以及如何处理 **C 语言定义的结构**。                                            |
+| [sqlite][]      | An example in the Dart SDK repo that comes with a [mini tutorial.][]                                    |
+| [sqlite][]      | Dart SDK 仓库中包含的 [小型示例][mini tutorial.]。                                                        |
 
 ## Walkthrough of hello_world
 
@@ -63,20 +63,20 @@ The hello_world example has the following files:
 
 hello_world 示例包含了以下文件：
 
-| **Source file** | **Description** |
-| **源文件** | **描述** |
-| [hello.dart]({{page.hw}}/hello.dart) | A Dart file that uses the `hello_world()` function from a C library. |
-| [hello.dart]({{page.hw}}/hello.dart) | 使用了 C 语言库中的 `hello_world()` 函数的文件。 |
-| [pubspec.yaml]({{page.hw}}/pubspec.yaml) | The usual Dart [pubspec](/tools/pub/pubspec), with a lower bounds on the SDK that's at least 2.6. |
-| [pubspec.yaml]({{page.hw}}/pubspec.yaml) | Dart 里常见的 [pubspec 文件](/tools/pub/pubspec)，最低 SDK 限制为 2.6。 |
-| [hello_library/hello.h]({{page.hw}}/hello_library/hello.h) | Declares the `hello_world()` function. |
-| [hello_library/hello.h]({{page.hw}}/hello_library/hello.h) | 声明了 `hello_world()` 函数。 |
-| [hello_library/hello.c]({{page.hw}}/hello_library/hello.c) | A C file that imports `hello.h` and defines the `hello_world()` function. |
-| [hello_library/hello.c]({{page.hw}}/hello_library/hello.c) | 该 C 文件导入了 `hello.h` 并实现了 `hello_world()` 函数。 |
-| [hello_library/hello.def]({{page.hw}}/hello_library/hello.def) | A module-definition file which specifies information used when building a DLL. |
-| [hello_library/hello.def]({{page.hw}}/hello_library/hello.def) | 包含 DLL 构建信息的模块定义。 |
-| [hello_library/CMakeLists.txt]({{page.hw}}/hello_library/CMakeLists.txt) | A CMake build file for compiling the C code into a dynamic library. |
-| [hello_library/CMakeLists.txt]({{page.hw}}/hello_library/CMakeLists.txt) | 将 C 文件代码编译为动态库的 CMake 文件。 |
+| <t>**Source file**</t><t>源文件</t>                                  | <t>**Description**</t><t>描述</t>                                                            |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| [hello.dart]({{page.hw}}/hello.dart)                                     | A Dart file that uses the `hello_world()` function from a C library.                             |
+| [hello.dart]({{page.hw}}/hello.dart)                                     | 使用了 C 语言库中的 `hello_world()` 函数的文件。                                                    |
+| [pubspec.yaml]({{page.hw}}/pubspec.yaml)                                 | The Dart [pubspec](/tools/pub/pubspec) file, with a lower bounds on the SDK that's at least 2.6. |
+| [pubspec.yaml]({{page.hw}}/pubspec.yaml)                                 | Dart [pubspec 文件](/tools/pub/pubspec)，最低 SDK 限制为 2.6。                                     |
+| [hello_library/hello.h]({{page.hw}}/hello_library/hello.h)               | Declares the `hello_world()` function.                                                           |
+| [hello_library/hello.h]({{page.hw}}/hello_library/hello.h)               | 声明了 `hello_world()` 函数。                                                                     |
+| [hello_library/hello.c]({{page.hw}}/hello_library/hello.c)               | A C file that imports `hello.h` and defines the `hello_world()` function.                        |
+| [hello_library/hello.c]({{page.hw}}/hello_library/hello.c)               | 该 C 文件导入了 `hello.h` 并实现了 `hello_world()` 函数。                                          |
+| [hello_library/hello.def]({{page.hw}}/hello_library/hello.def)           | A module-definition file which specifies information used when building a DLL.                   |
+| [hello_library/hello.def]({{page.hw}}/hello_library/hello.def)           | 包含 DLL 构建信息的模块定义。                                                                      |
+| [hello_library/CMakeLists.txt]({{page.hw}}/hello_library/CMakeLists.txt) | A CMake build file for compiling the C code into a dynamic library.                              |
+| [hello_library/CMakeLists.txt]({{page.hw}}/hello_library/CMakeLists.txt) | 将 C 文件代码编译为动态库的 CMake 文件。                                                            |
 {:.table .table-striped }
 
 {% comment %}
@@ -304,7 +304,7 @@ The following native types can be used as markers in type signatures
 and they (or their subtypes) can be instantiated in Dart code:
 
 | **Dart type**                                                                               | **Description**                                                  |
-|---------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | [Array]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Array-class.html)     | A fixed-sized array of items. Supertype of type specific arrays. |
 | [Pointer]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Pointer-class.html) | Represents a pointer into native C memory.                       |
 | [Struct]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Struct-class.html)   | The supertype of all FFI struct types.                           |
@@ -318,7 +318,7 @@ that are used only as markers in type signatures,
 and can't be instantiated in Dart code:
 
 | **Dart type**                                                                                             | **Description**                                   |
-|-----------------------------------------------------------------------------------------------------------|---------------------------------------------------|
+| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
 | [Bool]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Bool-class.html)                     | Represents a native bool in C.                    |
 | [Double]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Double-class.html)                 | Represents a native 64 bit double in C.           |
 | [Float]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Float-class.html)                   | Represents a native 32 bit float in C.            |
@@ -341,7 +341,7 @@ Refer to their linked API documentation for more information and
 a guideline on what types they map to on specific platforms:
 
 | **Dart type**                                                                                                 | **Description**                                                 |
-|---------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
+| ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | [AbiSpecificInteger][]                                                                                        | The supertype of all ABI-specific integer types.                |
 | [Int]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Int-class.html)                           | Represents the `int` type in C.                                 |
 | [IntPtr]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/IntPtr-class.html)                     | Represents the `intptr_t` type in C.                            |
@@ -372,6 +372,65 @@ to automatically create FFI wrappers from C header files.
 为大量的 API 编写绑定可能要花费你的大量时间。你可以使用 [`package:ffigen`][ffigen]
 绑定生成器，自动地从 C 头文件生成 FFI 包装，从而减少时间消耗。
 
+<a id="native-assets"></a>
+## Building and bundling native assets
+
+{{site.alert.note}}
+  The native assets feature is **experimental**,
+  and [in active development](https://github.com/dart-lang/sdk/issues/50565).
+{{site.alert.end}}
+
+The Native Assets feature aims to resolve a number of issues associated with
+the distribution of Dart packages that depend on native code.
+It does so by providing uniform hooks for integrating with various
+build systems involved in building Flutter and standalone Dart applications.
+
+The Native Assets feature aims to make it seamless for
+Dart packages to depend on and use native code:
+
+* It builds (if needed) the native code or
+  obtains the binaries using a package's `build.dart` script.
+* It bundles the native [`Asset`][] reported by the `build.dart` script.
+* It makes the native assets available at runtime through
+  declarative `@Native<>() extern` functions using the [`assetId`][].
+
+The `flutter run` / `flutter build` and `dart run` / `dart build` tools
+will now build and bundle native code when
+[opted in](#experiment-opt-in) to the native experiment.
+
+### Walkthrough of `native_add_library`
+
+The [`native_add_library`][] example has the minimum necessary code for
+building and bundling C code in a Dart package.
+
+The example has the following files:
+
+| **Source file**                                                                                                                                                          | **Description**                                                                                                                                                                |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`src/native_add_library.c`](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/src/native_add_library.c)                   | The C file containing the code for `add`.                                                                                                                                      |
+| [`lib/native_add_library.dart`](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/lib/native_add_library.dart)             | The Dart file that invokes the C function `add` in asset `package:native_add_library/native_add_library.dart` through FFI. (Note that _asset id_ defaults to the library uri.) |
+| [`test/native_add_library_test.dart`](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/test/native_add_library_test.dart) | A Dart test using the native code.                                                                                                                                             |
+| [`build.dart`](https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/example/native_add_library/build.dart)                                               | A script for compiling `src/native_add_library.c` and declaring the compiled asset with  id `package:native_add_library/native_add_library.dart`.                              |
+{:.table .table-striped }
+
+When a Dart or Flutter project depends on `package:native_add_library`,
+the `build.dart` script will automatically be
+invoked on `run`, `build`, and `test` commands.
+The [`native_add_app`][] example showcases a use of `native_add_library`.
+
+API documentation for the native assets in Dart FFI is available in
+the `dart:ffi` API reference for [`Native`][] and [`DefaultAsset`][].
+API documentation for the `build.dart` script is available
+on the [`package:native_assets_cli` API reference][].
+
+### Experiment opt-in
+
+For more information on how to enable the experiment and provide feedback,
+please refer to the tracking issues:
+
+* [Dart native assets](https://github.com/dart-lang/sdk/issues/50565)
+* [Flutter native assets](https://github.com/flutter/flutter/issues/129757)
+
 [ABI]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Abi-class.html
 [AbiSpecificInteger]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/AbiSpecificInteger-class.html
 [ios]: {{site.flutter-docs}}/development/platform-integration/ios/c-interop
@@ -385,3 +444,10 @@ to automatically create FFI wrappers from C header files.
 [mini tutorial.]: https://github.com/dart-lang/sdk/blob/main/samples/ffi/sqlite/docs/sqlite-tutorial.md
 [`NativeType`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/NativeType-class.html
 [ffigen]: {{site.pub-pkg}}/ffigen
+[`native_add_library`]: https://github.com/dart-lang/native/tree/main/pkgs/native_assets_cli/example/native_add_library
+[`native_add_app`]: https://github.com/dart-lang/native/tree/main/pkgs/native_assets_cli/example/native_add_app
+[`Native`]: {{site.dart-api}}/dart-ffi/Native-class.html
+[`DefaultAsset`]: {{site.dart-api}}/dart-ffi/DefaultAsset-class.html
+[`package:native_assets_cli` API reference]: {{site.pub-api}}/native_assets_cli/latest/
+[`assetId`]: {{site.dart-api}}/dart-ffi/Native/assetId.html
+[`Asset`]: {{site.pub-api}}/native_assets_cli/latest/native_assets_cli/Asset-class.html

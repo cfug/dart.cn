@@ -26,7 +26,7 @@ while (( "$#" )); do
   esac
 done
 
-BASEURL="https://storage.flutter-io.cn/dart-archive/channels"
+BASEURL="https://storage.googleapis.com/dart-archive/channels"
 CHANNELS="stable beta dev"
 ARCHS="amd64 arm64"
 ENDING='\\\n'
