@@ -129,8 +129,8 @@ Null safety introduces three key changes:
 3.  You can't access properties or call methods on an expression with a
     nullable type. The same exception applies where it's a property or method that `null` supports like `hashCode` or `toString()`.
 
-   你不能在可空类型的表达式上访问属性或调用方法。
-   同样的例外情况适用于 `null` 支持的属性或方法，例如 `hashCode` 或 `toString()` 。
+    你不能在可空类型的表达式上访问属性或调用方法。
+    同样的例外情况适用于 `null` 支持的属性或方法，例如 `hashCode` 或 `toString()` 。
 
 Sound null safety changes potential **runtime errors**
 into **edit-time** analysis errors.
