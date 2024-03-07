@@ -16,8 +16,7 @@
           permalink: /codelabs/iterables
         - title: Dart 异步编程
           permalink: /codelabs/async-await
-        - title: 空安全
-          permalink: /codelabs/null-safety
+
 - title: Dart 开发语言
   expanded: false
   children:
@@ -84,6 +83,8 @@
           permalink: /language/enums
         - title: 扩展方法
           permalink: /language/extension-methods
+        - title: 扩展类型
+          permalink: /language/extension-types
         - title: 可调用的对象
           permalink: /language/callable-objects
     - title: 类型修饰符
@@ -97,10 +98,12 @@
           permalink: /language/modifier-reference
     - title: 并发
       children:
+        - title: 概览
+          permalink: /language/concurrency
         - title: 异步支持
           permalink: /language/async
         - title: Isolates
-          permalink: /language/concurrency
+          permalink: /language/isolates
     - title: Null safety
       expanded: false
       children:
@@ -115,6 +118,32 @@
           permalink: /null-safety/unsound-null-safety
         - title: 空安全常见问题和解答
           permalink: /null-safety/faq
+
+- title: 核心库
+  expanded: false
+  children:
+    - title: 概览
+      match-page-url-exactly: true
+      permalink: /libraries
+    - title: dart:core
+      permalink: /libraries/dart-core
+    - title: dart:async
+      permalink: /libraries/dart-async
+    - title: dart:math
+      permalink: /libraries/dart-math
+    - title: dart:convert
+      permalink: /libraries/dart-convert
+    - title: dart:io
+      permalink: /libraries/dart-io
+    - title: dart:html
+      permalink: /libraries/dart-html
+    - divider
+    - title: 使用 stream
+      permalink: /tutorials/language/streams
+    - title: 创建 stream
+      permalink: /articles/libraries/creating-streams
+    - title: Future 和错误处理
+      permalink: /guides/libraries/futures-error-handling
 
 - title: 高效指南 (Effective Dart)
   expanded: false
@@ -131,19 +160,6 @@
       permalink: /effective-dart/usage
     - title: API 设计
       permalink: /effective-dart/design
-
-- title: 核心库
-  expanded: false
-  children:
-    - title: 概览
-      match-page-url-exactly: true
-      permalink: /guides/libraries
-    - title: 概览
-      permalink: /guides/libraries/library-tour
-    - title: 介绍文章
-      children:
-        - title: 创建 stream
-          permalink: /articles/libraries/creating-streams
 
 - title: Packages
   expanded: false
@@ -175,6 +191,8 @@
           permalink: /tools/pub/troubleshoot
         - title: 发布者认证
           permalink: /tools/pub/verified-publishers
+        - title: 安全通告
+          permalink: /tools/pub/security-advisories
         - title: 版本管理
           permalink: /tools/pub/versioning
 
@@ -183,9 +201,7 @@
   children:
     - title: Futures、async 和 await
       permalink: /codelabs/async-await
-    - title: Streams 介绍
-      permalink: /tutorials/language/streams
-    - title: 使用 JSON
+    - title: JSON
       permalink: /guides/json
     - title: Dart 中的数字
       permalink: /guides/language/numbers
@@ -216,15 +232,7 @@
           match-page-url-exactly: true
           permalink: /web
         - title: 开始使用
-          permalink: /tutorials/web/get-started
-        - title: 底层 Web 编程
-          children:
-          - title: Dart 与 HTML 关联
-            permalink: /tutorials/web/low-level-html/connect-dart-html
-          - title: 向 DOM 添加元素
-            permalink: /tutorials/web/low-level-html/add-elements
-          - title: 移除 DOM 元素
-            permalink: /tutorials/web/low-level-html/remove-elements
+          permalink: /web/get-started
         - title: 部署
           permalink: /web/deployment
         - title: 常用 Web 库和 package
@@ -242,7 +250,21 @@
   - title: 与 Java 和 Kotlin 互调
     permalink: /interop/java-interop
   - title: 与 JavaScript 互调
-    permalink: /interop/js-interop
+    children:
+      - title: 概览
+        permalink: /interop/js-interop
+        match-page-url-exactly: true
+      - title: 使用
+        permalink: /interop/js-interop/usage
+      - title: JS 类型
+        permalink: /interop/js-interop/js-types
+      - title: 教程
+        permalink: /interop/js-interop/tutorials
+      - title: 以往的 JS 互调
+        permalink: /interop/js-interop/past-js-interop
+      - divider
+      - title: 与 Web 互调
+        permalink: /interop/js-interop/package-web
 
 - title: 开发工具和使用技巧
   expanded: false
@@ -260,11 +282,9 @@
         permalink: /tools/dart-devtools
       - title: 在线运行 Dart 代码
         children:
-          - title: Overview
+          - title: 概览
             match-page-url-exactly: true
             permalink: /tools/dartpad
-          - title: DartPad 教程
-            permalink: /tools/dartpad/dartpad-best-practices
           - title: DartPad 疑难解答
             permalink: /tools/dartpad/troubleshoot
   - title: 命令行工具
@@ -311,15 +331,13 @@
     children:
       - title: 自定义静态分析
         permalink: /tools/analysis
-      - title: 诊断消息
-        permalink: /tools/diagnostic-messages
-      - title: Linter 规则
-        permalink: /tools/linter-rules
       - title: 修复常见的类型问题
         permalink: /guides/language/sound-problems
       - title: 修复类型提升失败
         permalink: /tools/non-promotion-reasons
-  - title: 测试和调优
+      - title: Linter 规则
+        permalink: /tools/linter-rules
+  - title: 测试和优化
     children:
       - title: 测试
         permalink: /guides/testing
@@ -328,11 +346,11 @@
   - title: 不应提交的内容
     permalink: /guides/libraries/private-files
 
+
+- divider
 - title: 资源
   expanded: false
   children:
-    - title: 常见问题
-      permalink: /resources/faq
     - title: 破坏性改动
       permalink: /resources/breaking-changes
     - title: 版本演变
@@ -348,6 +366,9 @@
           permalink: /guides/language/coming-from/js-to-dart
         - title: 从 Swift 到 Dart
           permalink: /guides/language/coming-from/swift-to-dart
+    - divider
+    - title: 常见问题
+      permalink: /resources/faq
     - title: 词汇表
       permalink: /resources/glossary
     - title: 书籍资源

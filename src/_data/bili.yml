@@ -1,0 +1,8 @@
+# These properties can be accessed as global data for
+# linking to or embedding Bilibili.
+# You can access these values in Liquid templates like `{{bili.embed}}`.
+set: 'frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"'
+set-short: 'frameborder="0" allowfullscreen loading="lazy"'
+video: 'https://www.bilibili.com/video'
+embed: 'https://player.bilibili.com/player.html'
+std-size: 'width="560" height="315"'

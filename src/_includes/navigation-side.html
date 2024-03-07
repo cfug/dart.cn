@@ -1,4 +1,4 @@
-<div id="sidenav" class="">
+<div id="sidenav">
   <form action="/search/" class="site-header__search form-inline">
     <input class="site-header__searchfield form-control search-field" type="search" name="q"
            id="search-side" autocomplete="off" placeholder="Search" aria-label="Search">
@@ -7,27 +7,23 @@
   <div class="site-sidebar">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a href="/overview" class="nav-link
-          {%- if page_url_path contains '/*/overview/' %} active {%- endif -%}">概览</a>
+        <a href="/overview" class="nav-link">概览</a>
       </li>
       <li class="nav-item">
-        <a href="/community" class="nav-link
-          {%- if page_url_path contains '/*/community/' %} active {%- endif -%}">社区</a>
+        <a href="/community" class="nav-link">社区</a>
       </li>
       <li class="nav-item">
-        <a href="https://dartpad.dev" class="nav-link
-          {%- if page_url_path contains '/*/#dartpad' %} active {%- endif -%}">尝试 Dart</a>
+        <a href="https://dartpad.cn" class="nav-link">尝试 Dart</a>
       </li>
       <li class="nav-item">
-        <a href="/get-dart" class="nav-link
-          {%- if page_url_path contains '/*/get-dart' %} active {%- endif -%}">获取 Dart SDK</a>
+        <a href="/get-dart" class="nav-link">获取 Dart SDK</a>
       </li>
       <li class="nav-item">
-        <a href="/guides" class="nav-link
-          {%- if page_url_path contains '/*/guides/' or page_url_path contains '/*/language/' or page_url_path contains '/*/resources/' or page_url_path contains '/*/codelabs/' or page_url_path contains '/*/samples/' or page_url_path contains '/*/tools/' or page_url_path contains '/*/tutorials/' or page_url_path contains '/*/server/' or page_url_path contains '/*/web/' %} active {%- endif -%}">文档</a>
+        <a href="/guides" class="nav-link">文档</a>
       </li>
+      <li aria-hidden="true"><div class="sidebar-primary-divider"></div></li>
     </ul>
 
-    {% include sidenav-level-1.html nav=site.data.side-nav %}
+    {% render 'sidenav-level-1.html', url:page.url, nav:side-nav %}
   </div>
 </div>

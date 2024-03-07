@@ -9,9 +9,7 @@
 // ignore_for_file: unchecked_use_of_nullable_value, unnecessary_library_directive
 
 // #docregion library-dir
-
 library my_library;
-
 // #enddocregion library-dir
 
 import 'dart:async';
@@ -98,12 +96,12 @@ void miscDeclAnalyzedButNotTested() {
   };
 
   (Iterable people) {
-    // #docregion avoid-forEach
+    // #docregion avoid-for-each
     people.forEach((person) {
       /*...*/
     });
 
-    // #enddocregion avoid-forEach
+    // #enddocregion avoid-for-each
   };
 
   {

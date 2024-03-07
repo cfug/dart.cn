@@ -24,7 +24,7 @@ jobs:
       - name: Build Dart archives downloading JS
         run: >
           bash tool/get-dart/archive/compile.sh
-          git add src/get-dart/archive/assets/download_archive.dart.js
+          git add src/content/assets/js/get-dart/download_archive.dart.js
       - name: Import GPG key
         uses: crazy-max/ghaction-import-gpg@v5
         with:
