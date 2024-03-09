@@ -7,6 +7,7 @@ cd tool/translator
 
 npm install
 npx gulp mark-side-toc
+npx gulp mark-side-level-title
 npx nt inject '../../_site/**/!(*_cn).html' -c /assets/translator/css/translator.css -s /assets/translator/js/translator.js -m ./url-map.json -t ./text-map.json
 npx nt export '../../_site/**/!(*_cn).html' --mono
 npx gulp remove-space
