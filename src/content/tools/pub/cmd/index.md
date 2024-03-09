@@ -134,7 +134,7 @@ or any modification of the pubspec.
 
 [`outdated`](/tools/pub/cmd/pub-outdated) 命令
 <br> 查看当前软件包所依赖的每个 package，确定哪些 package 的依赖项已过时，
-并为您提供有关如何更新它们的建议。当您要更新 package 的依赖性时，请使用此命令。
+并为你提供有关如何更新它们的建议。当你要更新 package 的依赖性时，请使用此命令。
 
 [`upgrade`](/tools/pub/cmd/pub-upgrade)
 <br> Retrieves the latest version of each package listed
@@ -163,7 +163,7 @@ To run globally available scripts, you must
 
 ### Deploying packages and apps
 
-## 部署 Package 和应用
+### 部署 Package 和应用
 
 With pub you can publish packages and command-line apps.
 
@@ -171,7 +171,7 @@ With pub you can publish packages and command-line apps.
 
 #### Packages
 
-### Package
+#### Package
 
 To share your Dart packages with the world, you can
 use the [`publish`](/tools/pub/cmd/pub-lish) subcommand to upload the

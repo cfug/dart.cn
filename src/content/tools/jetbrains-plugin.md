@@ -187,8 +187,8 @@ Here's one way to configure Dart support:
   the `bin` directory contains tools such as `dart` and `dartaotruntime`.
   The IDE ensures that the path is valid.
   
-  **Dart SDK** 路径为包含了 `bin` 和 `lib` 目录的路径；
-  `bin` 目录中包含了类似 `dart` 和 `dartfmt` 的工具。
+  **Dart SDK** 指定的目录包含 SDK 的 `bin` 和 `lib` 目录；
+  `bin` 目录中包含了类似 `dart` 和 `dartaotruntime` 等工具。
   IDE 需要确保路径有效。
   
   :::

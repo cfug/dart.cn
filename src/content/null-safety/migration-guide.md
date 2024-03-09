@@ -89,9 +89,9 @@ watch this video:
 
 **可交互的迁移工具让你可以简化迁移至空安全的过程。**
 
-<!-- ## 1. Wait to migrate {:#step1-wait} -->
+## 1. Wait to migrate {:#step1-wait}
 
-## 1. 等待迁移 {:#step1-wait}
+## 1. 等待迁移 {:#step1-等待迁移}
 
 We strongly recommend migrating code in order, 
 with the leaves of the dependency graph being migrated first.
@@ -243,9 +243,9 @@ update its dependencies to null-safe versions:
 
    运行命令 `dart pub get`。
 
-<!-- ## 2. Migrate {:#step2-migrate} -->
+## 2. Migrate {:#step2-migrate}
 
-## 2. 迁移 {:#step2-migrate}
+## 2. 迁移 {:#step2-迁移}
 
 Most of the changes that your code needs to be null safe
 are easily predictable.
@@ -289,9 +289,9 @@ For additional help while migrating code, check the
 [null safety FAQ]: /null-safety/faq
 
 
-<!-- ### Using the migration tool {:#migration-tool} -->
+### Using the migration tool {:#migration-tool}
 
-### 使用迁移工具 {:#migration-tool}
+### 使用迁移工具 {:#使用迁移工具}
 
 The migration tool takes a package of null-unsafe Dart code
 and converts it to null safety.
@@ -401,9 +401,9 @@ you can improve the migration result.
 点击 **line 3** 链接，你可以看到迁移工具添加 `!` 的原因。
 而因为你知道 `zero` 不会为空，所以你可以改进迁移结果。
 
-<!-- #### Improving migration results {:#hint-markers} -->
+#### Improving migration results {:#hint-markers}
 
-#### 改进迁移的结果 {:#hint-markers}
+#### 改进迁移的结果 {:#改进迁移的结果}
 
 When analysis infers the wrong nullability,
 you can override its proposed edits by inserting temporary hint markers:
@@ -656,9 +656,9 @@ for more help on migrating code by hand.
 [Unsound null safety]: /null-safety/unsound-null-safety
 
 
-<!-- ## 3. Analyze {:#step3-analyze} -->
+## 3. Analyze {:#step3-analyze}
 
-## 3. 分析 {:#step3-analyze}
+## 3. 分析 {:#step3-分析}
 
 Update your packages
 (using `dart pub get` in your IDE or on the command line).
@@ -676,9 +676,9 @@ $ dart analyze     # or `flutter analyze`
 [static analysis]: /tools/analysis
 
 
-<!-- ## 4. Test {:#step4-test} -->
+## 4. Test {:#step4-test}
 
-## 4. 测试 {:#step4-test}
+## 4. 测试 {:#step4-测试}
 
 If your code passes analysis, run tests:
 
@@ -699,9 +699,9 @@ If so, revert your code changes before using the migration tool again.
 如果你需要对代码作出大量的更改，那么你可能需要重新对代码进行迁移。
 这时请先回滚代码更改，再运行迁移工具进行迁移。
 
-<!-- ## 5. Publish {:#step5-publish} -->
+## 5. Publish {:#step5-publish}
 
-## 5. 发布 {:#step5-publish}
+## 5. 发布 {:#step5-发布}
 
 We encourage you to publish packages—possibly as prereleases—as 
 soon as you migrate:
@@ -726,9 +726,9 @@ soon as you migrate:
 
 [publish the package as a prerelease]: /tools/pub/publishing#publishing-prereleases
 
-<!-- ### Update the package version {:#package-version} -->
+### Update the package version {:#package-version}
 
-### 更新 package 的版本 {:#package-version}
+### 更新 package 的版本 {:#更新 package 的版本}
 
 Update the version of the package
 to indicate a breaking change:

@@ -64,7 +64,7 @@ expected to work with a range of dependency versions.
 
 `dart pub get` 命令获取新依赖项后会写入一个 [lockfile](/tools/pub/glossary#lockfile) 文件
 以确保下次执行该命令时会使用相同的依赖项版本。
-[应用型的 package][Application package] 应该总是签入该 lockfile 文件以控制来源；
+[应用型的 package][Application packages] 应该总是签入该 lockfile 文件以控制来源；
 从而确保在将 package 部署到生产环境时所有的依赖项对于所有开发者而言都是相同的版本。
 库类型的 package 则不需要签入 lockfile 文件，因为它们可能需要使用到不同的依赖项版本。
 

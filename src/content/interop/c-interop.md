@@ -24,7 +24,7 @@ API documentation is available in the
 [`dart:ffi` API reference.]({{site.dart-api}}/dart-ffi/dart-ffi-library.html)
 
 相关的 API 文档可在
-[`dart:ffi` API 文档]({{site.dart_api}}/dart-ffi/dart-ffi-library.html)
+[`dart:ffi` API 文档]({{site.dart-api}}/dart-ffi/dart-ffi-library.html)
 查看。
 
 ## Examples
@@ -138,7 +138,7 @@ see Apple's [Code Signing Guide.][codesign]
 The [`hello.dart` file]({{hw}}/hello.dart)
 illustrates the steps for using `dart:ffi` to call a C function:
 
-[`hello.dart` 文件]({{page.hw}}/hello.dart)
+[`hello.dart` 文件]({{hw}}/hello.dart)
 阐述了使用 dart:ffi 调用 C 函数的步骤：
 
 1. Import `dart:ffi`.
@@ -287,7 +287,7 @@ C 库到 package 或应用并进行加载的方式，有所不同。
 
 * [`dart:ffi` examples]({{samples}})
 
-  [`dart:ffi` 示例]({{page.samples}})
+  [`dart:ffi` 示例]({{samples}})
 
 ## Interfacing with native types
 

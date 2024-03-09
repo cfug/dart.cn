@@ -67,10 +67,6 @@ DartPad 尚不支持使用其他在 pub.dev 上的 package。
 [multi-platform]: /libraries#multi-platform-libraries
 [currently supported packages]: https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
 
-DartPad 不支持 [延迟加载][deferred loading] 以及其他三方库。
-例如，DartPad 不支持使用 [pub.dev]({{site.pub}}) 仓库中的 package。
-（对于 Package 的支持之后可能会有所变化，详情请关注[issue 901][]。）
-
 ## Getting started
 
 ## 开始体验
@@ -81,9 +77,9 @@ try running some samples and creating a simple command-line app.
 为了可以尽快熟悉 DartPad，
 你可以尝试在 DartPad 中运行一些示例，然后在 DartPad 中创建一个简单的命令行应用。
 
-<!-- ### Open DartPad and run a sample {:#step-1-open-and-run} -->
+### Open DartPad and run a sample {:#step-1-open-and-run}
 
-### 打开 DartPad 并运行一些示例 {:#step-1-open-and-run}
+### 打开 DartPad 并运行一些示例 {:#打开 DartPad 并运行一些示例}
 
 1. Go to [DartPad][]{:target="_blank" rel="noopener"}.
 
@@ -106,9 +102,9 @@ try running some samples and creating a simple command-line app.
    它的输出会出现在右边输出框里。
 
 
-<!-- ### Create a command-line app {:#step-2-server} -->
+### Create a command-line app {:#step-2-server}
 
-### 创建一个命令行应用 {:#step-2-server}
+### 创建一个命令行应用 {:#创建一个命令行应用}
 
 To create a simple command-line app,
 start by creating a new snippet:
@@ -182,9 +178,9 @@ You can find this SDK version at the bottom right of DartPad.
 DartPad 支持的语言功能和 API 取决于 DartPad 使用的 **Dart SDK** 版本。
 你可以在 DartPad 的右下方找到其所使用的 SDK 版本。
 
-<!-- ## Embedding DartPad in web pages {:#embedding} -->
+## Embedding DartPad in web pages {:#embedding}
 
-## 网页中嵌入 DartPad {:#embedding}
+## 网页中嵌入 DartPad {:#网页中嵌入 DartPad}
 
 You can embed DartPad inside of web pages,
 customizing it to suit your use case.

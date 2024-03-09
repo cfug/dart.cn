@@ -130,9 +130,9 @@ extension SmartIterable<T> on Iterable<T> { ... }
 [extensions]: /language/extension-methods
 
 <a id="do-name-libraries-and-source-files-using-lowercase_with_underscores"></a>
-<!-- ### DO name packages, directories, and source files using `lowercase_with_underscores` {:#do-name-packages-and-file-system-entities-using-lowercase-with-underscores} -->
+### DO name packages, directories, and source files using `lowercase_with_underscores` {:#do-name-packages-and-file-system-entities-using-lowercase-with-underscores}
 
-### **要** 在`库`，`package`，`文件夹`，`源文件` 中使用 `lowercase_with_underscores` 方式命名 {:#do-name-packages-and-file-system-entities-using-lowercase-with-underscores}
+### **要** 在`库`，`package`，`文件夹`，`源文件` 中使用 `lowercase_with_underscores` 方式命名 {:#要在库，package，文件夹，源文件中使用 lowercase_with_underscores 方式命名}
 
 {% include 'linter-rule-mention.md', rules:'file_names, package_names' %}
 
@@ -246,7 +246,7 @@ class Dice {
 You may use `SCREAMING_CAPS` for consistency with existing code,
 as in the following cases:
 
-您可以使用 `SCREAMING_CAPS` 与现有代码保持一致，比如：
+你可以使用 `SCREAMING_CAPS` 与现有代码保持一致，比如：
 
 * When adding code to a file or library that already uses `SCREAMING_CAPS`.
 
@@ -648,7 +648,7 @@ whole `if` statement fits on one line, you can omit the braces if you prefer:
 
 这里有一个例外：一个没有 `else` 的 `if` 语句，
 并且这个 `if` 语句以及它的执行体适合在一行中实现。
-在这种情况下，如果您愿意，可以不用括号：
+在这种情况下，如果你愿意，可以不用括号：
 
 <?code-excerpt "style_good.dart (one-line-if)"?>
 ```dart tag=good

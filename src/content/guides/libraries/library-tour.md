@@ -4,7 +4,7 @@ description: Learn about the major features in Dart's libraries.
 short-title: Library tour
 js: [{url: '/assets/js/library-tour-redirector.js'}]
 sitemap: false
-canonical: https://dart.dev/libraries
+canonical: https://dart.cn/libraries
 noindex: true
 ---
 

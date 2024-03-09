@@ -54,12 +54,13 @@ Package 的最基本要求包括：
 
 pubspec file
 <br> The `pubspec.yaml` file for a library is the same
-  as for an [application package]][]—there is no special
+  as for an [application package][]—there is no special
   designation to indicate that the package is a library.
 
 pubspec 文件
-<br> Package 的 `pubspec.yaml` 文件与应用程序的
-  `pubspec.yaml` 文件相同&mdash; `pubspec.yaml`
+<br> Package 的 `pubspec.yaml` 文件与
+  [应用程序的 `pubspec.yaml` 文件][application package]
+  相同&mdash; `pubspec.yaml`
   文件中并没有特别的指出这个 Package 是一个库。
 
 lib directory
@@ -84,7 +85,7 @@ lib 目录
 
 [application package]: /tools/pub/glossary#application-package
 
-## Organizing a library package
+## Organizing a package
 
 ## 组织 Package 的代码结构
 
@@ -126,9 +127,10 @@ Some packages have separate libraries that are meant to be imported
 with a prefix, when the main library is not.
 
 lib 目录还可能包含其他可导入的非 src 代码。
-例如，主 Library 可能是跨平台的，但创建的独立 Library 依赖于 dart:io 或 dart:html 。
+例如，主 Library 可能是跨平台的，
+但创建的独立 Library 依赖于 `dart:io` 或 `dart:js_interop` 。
 Some packages have separate libraries that are meant to be imported
-with a prefix, when the main library is not.（无法确切理解含义，暂未翻译）
+with a prefix, when the main library is not.
 
 Let's look at the organization of a real-world package: shelf. The
 [shelf](https://github.com/dart-lang/shelf)
@@ -401,7 +403,7 @@ the [`dart doc`][] tool.
 [documentation comments](/effective-dart/documentation#doc-comments),
 which use the `///` syntax:
 
-使用 [dartdoc][] 可以为 Library 生成 API 文档。
+使用 [`dart doc`][] 可以为 Library 生成 API 文档。
 dartdoc 解析源文件去查找使用 `///` 语法标注的
 [文档注释](/effective-dart/documentation#doc-comments)：
 
@@ -426,9 +428,9 @@ For the how-and-why of documenting libraries, see
 更多详情，请参阅文档
 [Effective Dart: Documentation](/effective-dart/documentation#consider-writing-a-library-level-doc-comment)。
 
-<!-- ## Distributing an open source library {:#distributing-a-library} -->
+## Distributing an open source library {:#distributing-a-library}
 
-## 分发开源 Library {:#distributing-a-library}
+## 分发开源 Library {:#分发开源 Library}
 
 If your library is open source,
 we recommend sharing it on the [pub.dev site.]({{site.pub}})

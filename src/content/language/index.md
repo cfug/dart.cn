@@ -481,7 +481,7 @@ which calls the extender's implementation of `describe()`.
 [Read more](/language/class-modifiers#abstract) 
 about abstract classes and methods.
 
-你可以 [阅读更多](/guides/language/language-tour#abstract-classes) 关于抽象类和抽象方法的内容。
+你可以 [阅读更多](/language/class-modifiers#abstract) 关于抽象类和抽象方法的内容。
 
 ## Async
 
@@ -609,7 +609,7 @@ Note that the code above is asynchronous;
 including stack traces, `rethrow`, 
 and the difference between `Error` and `Exception`.
 
-你可以 [阅读更多](/language/language-tour#exceptions) 
+你可以 [阅读更多](/language/error-handling#exceptions) 
 关于异常的内容，包括栈追踪、`rethrow` 关键字以及 Error 和 Exception 之间的区别。
 
 ## Important concepts
@@ -696,8 +696,9 @@ and the [Dart API reference]({{site.dart-api}}).
 This site's code follows the conventions in the
 [Dart style guide](/effective-dart/style).
 
-[语言概览](/guides/language/language-tour) 中会有更多的文档和代码示例。
-你也可以查阅 [Dart API 文档]({{site.dart_api}})，里面也常常会有示例代码。
+[核心库文档](/libraries/dart-core) 中会有更多的文档和代码示例。
+你也可以查阅 [Dart API 文档]({{site.dart-api}})，里面也常常会有示例代码。
+本网站的代码风格遵循 [Dart 代码风格指南](/effective-dart/style)。
 
 [Dart language specification]: /guides/language/spec
 [Comments]: /language/comments

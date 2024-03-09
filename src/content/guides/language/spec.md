@@ -64,7 +64,7 @@ The Dart 2 language specification is available in PDF format:
 
   * [Formal specification (Dart 2.10)][2-10 formal spec]
 
-    [正式的规范文档 (Dart 2.10 版本)][formal spec]
+    [正式的规范文档 (Dart 2.10 版本)][2-10 formal spec]
 
 [2-10 formal spec]: /guides/language/specifications/DartLangSpec-v2.10.pdf
 

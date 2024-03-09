@@ -24,7 +24,7 @@ Pub 的 `global` 选项允许你在任意位置下从命令行运行 Dart 脚本
 For example, say you want to use [webdev][] to serve
 your Dart web application from the command line.
 
-例如，假设你想要通过命令使用 [webdev][] 来部署您的 Dart Web 应用。
+例如，假设你想要通过命令使用 [webdev][] 来部署你的 Dart Web 应用。
 
 ```console
 $ dart pub global activate webdev

@@ -113,7 +113,7 @@ Using a doc comment instead of a regular comment enables
 [`dart doc`][] to find it
 and generate documentation for it.
 
-使用文档注释可以让 [dartdoc][] 来为你生成代码 API 文档。
+使用文档注释可以让 [`dart doc`][] 来为你生成代码 API 文档。
 
 <?code-excerpt "docs_good.dart (use-doc-comments)"?>
 ```dart tag=good
@@ -265,7 +265,7 @@ This helps you write a tight first sentence that summarizes the documentation.
 Also, tools like `dart doc` use the first paragraph as a short summary in places
 like lists of classes and members.
 
-这有助于您编写一个紧凑的第一句话来总结文档。 
+这有助于你编写一个紧凑的第一句话来总结文档。 
 此外，像Dartdoc这样的工具使用第一段作为类和类成员列表等地方的简短摘要。
 
 <?code-excerpt "docs_good.dart (first-sentence-a-paragraph)"?>
@@ -577,7 +577,7 @@ There are tons of guides out there already to introduce you to Markdown. Its
 universal popularity is why we chose it. Here's just a quick example to give you
 a flavor of what's supported:
 
-有很多指南已经向您介绍Markdown。 它普遍受欢迎是我们选择它的原因。 这里只是一个简单的例子，让您了解所支持的内容：
+有很多指南已经向你介绍Markdown。 它普遍受欢迎是我们选择它的原因。 这里只是一个简单的例子，让你了解所支持的内容：
 
 <?code-excerpt "docs_good.dart (markdown)"?>
 ````dart

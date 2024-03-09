@@ -677,7 +677,7 @@ people.forEach(print);
 Also note that it's always OK to use `Map.forEach()`. Maps aren't iterable, so
 this guideline doesn't apply.
 
-您可以调用 `Map.forEach()`。Map 是不可迭代的，所以该准则对它无效。
+你可以调用 `Map.forEach()`。Map 是不可迭代的，所以该准则对它无效。
 
 ### DON'T use `List.from()` unless you intend to change the type of the result
 
@@ -1368,7 +1368,7 @@ Treasure? openChest(Chest chest, Point where) => _opened.containsKey(chest)
 You can also use `=>` on members that don't return a value. This is idiomatic
 when a setter is small and has a corresponding getter that uses `=>`.
 
-您还可以对不返回值的成员使用 `=>` 。 
+你还可以对不返回值的成员使用 `=>` 。 
 这里有个惯例，就是当 setter 和 getter 都比较简单的时候使用 `=>` 。
 
 <?code-excerpt "usage_good.dart (arrow-setter)"?>
@@ -1797,8 +1797,8 @@ The answer is probably "no", in which case you should filter the types you
 catch. In most cases, you should have an `on` clause that limits you to the
 kinds of runtime failures you are aware of and are correctly handling.
 
-答案和可能是 "no"，在这种情况下，您应该过滤掉捕获的类型。
-在大多数情况下，您应该有一个 `on` 子句，
+答案和可能是 "no"，在这种情况下，你应该过滤掉捕获的类型。
+在大多数情况下，你应该有一个 `on` 子句，
 这样它能够捕获程序在运行时你所关注的限定类型的异常并进行恰当处理。
 
 In rare cases, you may wish to catch any runtime error. This is usually in

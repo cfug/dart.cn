@@ -42,9 +42,9 @@ Dart 也是 [Flutter]({{site.flutter}}) 的基础。
 Dart 作为 Flutter 应用程序的编程语言，为驱动应用运行提供了环境，
 同时 Dart 还支持许多核心的开发任务，例如格式化，分析和代码测试。
 
-<!-- ## Dart: The language {:#language} -->
+## Dart: The language {:#language}
 
-## Dart 语言 {:#language}
+## Dart 语言 {:#Dart-1}
 
 The Dart language is type safe;
 it uses static type checking to ensure that
@@ -75,10 +75,10 @@ If you inspect your running code in the debugger,
 you see that non-nullability is retained at runtime; hence _sound_ null safety.
 
 Dart 内置了 [健全的空值安全](/null-safety)，
-这意味着只有您声明值可以为空的情况下，值才可以为空；
+这意味着只有你声明值可以为空的情况下，值才可以为空；
 当 Dart 确定变量不可为空时，
 该变量 **永远** 不可为空。
-凭借健全的空值安全，Dart 可以通过静态代码分析在运行时保护您免受空值异常的影响。
+凭借健全的空值安全，Dart 可以通过静态代码分析在运行时保护你免受空值异常的影响。
 如果你在调试器中审查正在运行的代码，你会看到不可为空性仍在运行时被保留，所以是完全的空安全。
 
 The following code sample showcases several Dart language features,
@@ -87,10 +87,10 @@ arrow syntax, generators, streams, and getters.
 To learn more about the language, 
 check out the [Dart language tour](/language).
 
-以下代码示例展示了 Dart 语言的一些功能，
-包括库、异步调用、可空和不可空的类型、箭头语法、生成器、流和 getter。
+以下代码示例展示了 Dart 语言的一些特性，
+包括库、异步调用、可空和不可空的类型、箭头语法、生成器、流 (stream) 和 getter。
 要了解有关 Dart 语言的更多信息，
-请参阅 [Dart 语言之旅](/guides/language/language-tour)。
+请参阅 [Dart 简介](/language)。
 
 <?code-excerpt "misc/lib/overview_pi.dart"?>
 ```dart:run-dartpad:ga_id-overview
@@ -148,15 +148,15 @@ You can also
 <a href="{{site.dartpad}}/?id=bc63d212c3252e44058ff76f34ef5730"
 target="_blank" rel="noopener">open this example in its own window</a>.
 
-此示例在嵌入式 [DartPad](/tools/dartpad) 中运行。您也可以
+此示例在嵌入式 [DartPad](/tools/dartpad) 中运行。你也可以
 <a href="{{site.dartpad}}/?id=bc63d212c3252e44058ff76f34ef5730"
 target="_blank" rel="noopener">在此示例自己的窗口中打开它</a>。
 
 :::
 
-<!-- ## Dart: The libraries {:#libraries} -->
+## Dart: The libraries {:#libraries}
 
-## Dart 库 {:#libraries}
+## Dart 库 {:#Dart-2}
 
 Dart has [a rich set of core libraries](/libraries),
 providing essentials for many everyday programming tasks:
@@ -286,16 +286,16 @@ read the [core library documentation](/libraries).
 To find additional APIs, see the
 [commonly used packages page](/guides/libraries/useful-libraries).
 
-你可以访问 [库概览](/guides/libraries/library-tour)，查看关于 Dart 核心库的一系列示例。
+你可以访问 [核心库文档](/libraries)，查看关于 Dart 核心库的一系列示例。
 如果你想要查找其他 API，请参见 [常用软件包页面](/guides/libraries/useful-libraries)。
 
-<!-- ## Dart: The platforms {:#platform} -->
+## Dart: The platforms {:#platform}
 
-## Dart 平台 {:#platform}
+## Dart 平台 {:#Dart-3}
 
 Dart's compiler technology lets you run code in different ways:
 
-Dart 的编译器技术可让您以不同的方式运行代码：
+Dart 的编译器技术可让你以不同的方式运行代码：
 
 * **Native platform**: For apps targeting mobile and desktop devices,
   Dart includes both a Dart VM with just-in-time (JIT) compilation and
@@ -325,9 +325,9 @@ on iOS, Android, macOS, Windows, Linux, and the web.
 提供一套工具和 UI 库，帮助开发者们在 iOS、Android、macOS、Windows、Linux 和 Web 平台
 构建优秀的 UI 体验。
 
-<!-- #### Dart Native (machine code JIT and AOT) {:#native-platform} -->
+#### Dart Native (machine code JIT and AOT) {:#native-platform}
 
-#### 原生平台的 Dart (JIT 和 AOT 机器码) {:#native-platform}
+#### 原生平台的 Dart (JIT 和 AOT 机器码) {:#Dart-4}
 
 During development, a fast developer cycle is critical for iteration.
 The Dart VM offers a just-in-time compiler (JIT) with
@@ -378,9 +378,9 @@ More information:
 
   [编写 HTTP 服务器](/tutorials/server/httpserver)
 
-<!-- #### Dart Web (JavaScript dev & prod) {:#web-platform} -->
+#### Dart Web (JavaScript dev & prod) {:#web-platform}
 
-#### Web 平台的 Dart (使用 JavaScript 开发和部署) {:#web-platform}
+#### Web 平台的 Dart (使用 JavaScript 开发和部署) {:#Dart-5}
 
 Dart Web enables running Dart code on web platforms powered by
 JavaScript. With Dart Web, you compile Dart code to JavaScript code, which in
@@ -423,9 +423,9 @@ More information:
 
   [网页部署提示](/web/deployment)
 
-<!-- #### The Dart runtime {:#runtime} -->
+#### The Dart runtime {:#runtime}
 
-#### Dart 运行时环境 {:#runtime}
+#### Dart 运行时环境 {:#Dart-6}
 
 Regardless of which platform you use or how you compile your code,
 executing the code requires a Dart runtime.
@@ -471,9 +471,9 @@ the [`dart run`](/tools/dart-run) command.
 在原生平台上，Dart 运行时环境被自动包含在独立的可执行文件中，
 是 [`dart run`](/tools/dart-run) 命令提供的 Dart VM 的一部分。
 
-<!-- ## Learning Dart {:#learning-dart} -->
+## Learning Dart {:#learning-dart}
 
-## 学习 Dart {:#learning-dart}
+## 学习 Dart {:#学习 Dart}
 
 You have many choices for learning Dart. Here are a few that we recommend:
 
@@ -503,7 +503,7 @@ You have many choices for learning Dart. Here are a few that we recommend:
 * [Explore the API documentation]({{site.dart-api}}) that
   describes the Dart core libraries.
 
-  [探索 API 文档]({{site.dart_api}}) - 描述了 Dart 核心库。
+  [探索 API 文档]({{site.dart-api}}) - 描述了 Dart 核心库。
 
 * [Read a book about Dart programming](/resources/books).
 

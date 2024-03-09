@@ -243,17 +243,17 @@ Future<int> lastPositive(Stream<int> stream) =>
     stream.lastWhere((x) => x >= 0);
 ```
 
-<!-- ## Two kinds of streams {:#two-kinds-of-streams} -->
+## Two kinds of streams {:#two-kinds-of-streams}
 
-## Stream 的两种类型 {:#two-kinds-of-streams}
+## Stream 的两种类型 {:#Stream 的两种类型}
 
 There are two kinds of streams.
 
 Stream 有两种类型。
 
-<!-- ### Single subscription streams {:#single-subscription-streams} -->
+### Single subscription streams {:#single-subscription-streams}
 
-### Single-Subscription 类型的 Stream {:#single-subscription-streams}
+### Single-Subscription 类型的 Stream {:#Single-Subscription 类型的 Stream}
 
 The most common kind of stream contains a sequence of events that
 are parts of a larger whole.
@@ -276,9 +276,9 @@ the data will be fetched and provided in chunks.
 而导致你所监听到的剩余其它事件毫无意义。
 当你开始监听时，数据将以块的形式提供和获取。
 
-<!-- ### Broadcast streams {:#broadcast-streams} -->
+### Broadcast streams {:#broadcast-streams}
 
-### Broadcast 类型的 Stream {:#broadcast-streams}
+### Broadcast 类型的 Stream {:#Broadcast 类型的 Stream}
 
 The other kind of stream is intended for individual messages that
 can be handled one at a time. This kind of stream can be used for
@@ -298,9 +298,9 @@ subscription.
 这种流可以在同一时间设置多个不同的监听器同时监听，
 同时你也可以在取消上一个订阅后再次对其发起监听。
 
-<!-- ## Methods that process a stream {:#process-stream-methods} -->
+## Methods that process a stream {:#process-stream-methods}
 
-## 处理 Stream 的方法 {:#process-stream-methods}
+## 处理 Stream 的方法 {:#处理 Stream 的方法}
 
 The following methods on [Stream\<T>][Stream] process the stream and return a
 result:
@@ -372,9 +372,9 @@ but mainly for historical reasons.)
 
 （上述代码只是个简单的示例，实际的实现逻辑可能要稍微复杂一点。）
 
-<!-- ## Methods that modify a stream {:#modify-stream-methods} -->
+## Methods that modify a stream {:#modify-stream-methods}
 
-## 修改 Stream 的方法 {:#modify-stream-methods}
+## 修改 Stream 的方法 {:#修改 Stream 的方法}
 
 The following methods on Stream return a new stream based
 on the original stream.
@@ -459,9 +459,9 @@ Stream<S> mapLogErrors<S, T>(
 }
 ```
 
-<!-- ### The transform() function {:#transform-function} -->
+### The transform() function {:#transform-function}
 
-### transform() 方法 {:#transform-function}
+### transform() 方法 {:#transform() 方法}
 
 The `transform()` function is not just for error handling;
 it is a more generalized "map" for streams.
@@ -481,9 +481,9 @@ easily implemented by an `async` function.
 一个变换器只需要实现一个 [bind()][] 方法，
 其可通过 `async` 函数轻松实现。
 
-<!-- ### Reading and decoding a file {:#reading-decoding-file} -->
+### Reading and decoding a file {:#reading-decoding-file}
 
-### 读取和解码文件 {:#reading-decoding-file}
+### 读取和解码文件 {:#读取和解码文件}
 
 The following code reads a file and runs two transforms over the stream.
 It first converts the data from UTF8 and then runs it through
@@ -511,9 +511,9 @@ void main(List<String> args) async {
 }
 ```
 
-<!-- ## The listen() method {:#listen-method} -->
+## The listen() method {:#listen-method}
 
-## listen() 方法 {:#listen-method}
+## listen() 方法 {:#listen() 方法}
 
 The final method on Stream is `listen()`. This is a "low-level"
 method—all other stream functions are defined in terms of `listen()`.

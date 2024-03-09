@@ -120,9 +120,9 @@ A [Language Server Protocol implementation][LSP] is also available for
 [LSP]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/tool/lsp_spec/README.md
 [LSP-capable editors]: https://microsoft.github.io/language-server-protocol/implementors/tools/
 
-<!-- ### Command-line tools {:#cli} -->
+### Command-line tools {:#cli}
 
-### 命令行工具 {:#cli}
+### 命令行工具 {:#命令行工具}
 
 The Dart SDK includes the following general-purpose `dart` tool:
 
@@ -148,9 +148,9 @@ Dart SDK 中包含下面的 `dart` 工具：
 [Dart 开发者工具](/tools/dart-devtools) 
 <br> 一个工具套装帮助调试和性能测试。
 
-<!-- ## Tool for developing web apps {:#web} -->
+## Tool for developing web apps {:#web}
 
-## 开发 Web 应用的工具 {:#web}
+## 开发 Web 应用的工具 {:#开发 Web 应用的工具}
 
 The following tool supports developing web apps:
 
@@ -162,9 +162,9 @@ The following tool supports developing web apps:
 [`webdev`](/tools/webdev)
 <br> 用于构建和提供 Dart Web 应用开发的命令行接口 (CLI) 。
 
-<!-- ## Tools for developing command-line apps and servers {:#server} -->
+## Tools for developing command-line apps and servers {:#server}
 
-## 开发命令行应用和服务器的工具 {:#server}
+## 开发命令行应用和服务器的工具 {:#开发命令行应用和服务器的工具}
 
 The following tools support developing or running
 command-line apps and servers:

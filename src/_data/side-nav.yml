@@ -388,7 +388,7 @@
     - title: Flutter
       permalink: https://flutter.cn
     - title: Package 网站
-      permalink: https://pub.flutter-io.cn
+      permalink: https://pub-web.flutter-io.cn/
 
 - title: 关于 Dart 中文文档
   expanded: false

@@ -27,8 +27,8 @@ You can also pause while listening or stop listening to the stream
 before it is complete.
 
 dart:async 库中有两个类型，它们对许多 Dart API 来说都非常重要：
-[Stream]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html) 
-和 [Future]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html)。
+[Stream]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html) 
+和 [Future]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html)。
 Future 用于表示单个运算的结果，而 Stream 则表示多个结果的序列。
 你可以监听 Stream 以获取其结果（包括数据和错误）或其关闭事件。
 也可以在 Stream 完成前对其暂停或停止监听。
@@ -175,7 +175,7 @@ transformers provided by the dart:convert library.
 通常而言，使用各种转换方法足以满足你简单的使用需求。
 但是，如果你需要对转换进行更多的控制，
 你可以使用 `Stream` 类的 `transform()` 方法指定一个 
-[StreamTransformer]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamTransformer-class.html)。
+[StreamTransformer]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamTransformer-class.html)。
 Dart 平台库为许多常见的任务需求提供了 Stream 转换器。
 例如下面的代码使用了由 dart:convert 库提供的
 `utf8.decoder` 和 `LineSplitter` 转换器。
@@ -319,7 +319,7 @@ to create and populate the stream.
 如果你 Stream 的事件不仅来自于异步函数可以遍历的 Stream 和 Future，
 还来自于你程序的不同部分，这种情况使用上述两种方式生成 Stream 就显得比较困难。
 面对这种情况，我们可以使用一个
-[StreamController]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamController-class.html)
+[StreamController]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/StreamController-class.html)
 来创建和填充 Stream。
 
 A `StreamController` gives you a new stream
@@ -623,7 +623,7 @@ keep these tips in mind:
   使用同步控制器时要小心。
   例如，使用 `StreamController(sync: true)` 构造方法创建控制器。
   当你发送一个事件到一个未暂停的同步控制器
-  （例如：使用 [EventSink]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/EventSink-class.html) 
+  （例如：使用 [EventSink]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/EventSink-class.html) 
   中定义的 `add()`、`addError()` 或 `close()` 方法），
   事件立即发送给所有 Stream 的监听器。
   在添加监听器的代码返回之前，决不能调用 `Stream` 监听器，

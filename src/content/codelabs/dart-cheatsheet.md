@@ -25,10 +25,8 @@ clicking the **Run** button. The editors also contain thorough test code;
 
 在这篇 codelab 中的嵌入式编辑器已经完成了部分代码片段。
 你可以在这些编辑器上将代码补充完整，然后点击 **Run (运行)** 按钮进行测试。
-如果你需要帮助，请点击 **Hint (提示)** 按钮。
-要运行代码格式化 ([dart format](/tools/dart-format))，
-点击 **Format (格式化)** 按钮，**Reset (重置)** 按钮将会清除你的操作，
-并把编辑器恢复到初始状态。
+这些编辑器上还包含了健全的测试代码；
+你可以随时研究这些代码来学习测试方面的知识，但 **不要编辑测试代码**。
 
 :::note
 
@@ -54,6 +52,7 @@ Here are some examples of using string interpolation:
 下面是一些使用字符串插值的例子：
 
 <div class="table-wrapper" markdown="1">
+
 | <t>String</t><t>字符串</t>   | <t>Result</t><t>结果</t>           |
 |-----------------------------|------------------------------------|
 | `'${3 + 2}'`                | `'5'`                              |
@@ -1783,7 +1782,7 @@ before the constructor body executes.
 Do this work in an initializer list,
 which goes between the constructor's signature and its body:
 
-有时，当你在实现构造函数时，您需要在构造函数体执行之前进行一些初始化。
+有时，当你在实现构造函数时，你需要在构造函数体执行之前进行一些初始化。
 例如，final 修饰的字段必须在构造函数体执行之前赋值。
 在初始化列表中执行此操作，该列表位于构造函数的签名与其函数体之间：
 

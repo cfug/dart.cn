@@ -24,25 +24,31 @@ which you can get from skimming the
 Next, learn about futures by following the
 [asynchronous programming codelab](/codelabs/async-await).
 
-通过浏览 [language samples](/samples) 和 [language tour](/guides/language/language-tour)，你可以对 Dart 语言有一个初步了解，并且开始我们的 Dart 学习之旅了。
+以下内容假定你对 Dart 有基本的了解，
+你可以通过浏览 [Dart 简介](/language) 对 Dart 语言有一个初步了解，
+接下来，请跟随 [异步编程 codelab](/codelabs/async-await) 来学习 Future。
 
 Once you're familiar with the language and futures,
 learn about _streams_ and _packages_,
 which are fundamental to most Dart programs.
 
-当你熟悉该语言后，可以进一步了解 _streams_ 和 _futures_，它们是众多 Dart 程序的基础。
-接下来你可以开始学习如何安装包——共享代码能使你的学习更加高效。
+当你熟悉 Dart 语言以及 Future 后，
+就可以进一步了解 _Stream_ 和 _Package_，
+它们是众多 Dart 程序的基础。
 
 <div class="card-grid no_toc_section">
   <div class="card">
-    <h3><a href="/tutorials/language/streams">Asynchronous programming:
-       streams</a></h3>
+    <h3><a href="/tutorials/language/streams">
+      <t>Asynchronous programming: streams</t><t>异步编程：stream</t>
+    </a></h3>
     <p>Use streams to manage sequences of data.</p>
+    <p>使用 stream 数据流管理数据序列。</p>
   </div>
   <div class="card">
-    <h3><a href="/guides/packages">How to use packages</a></h3>
+    <h3><a href="/guides/packages"><t>How to use packages</t><t>如何使用 package</t></a></h3>
     <p>Organize and share code at the
        <a href="{{site.pub}}">pub.dev site.</a></p>
+    <p>在 <a href="{{site.pub}}">pub.dev 网站</a> 上组织和共享代码。</p>
   </div>
 </div>
 

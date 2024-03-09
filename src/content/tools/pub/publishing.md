@@ -158,9 +158,9 @@ Pub 在 `pub.dev/packages/<your_package>` 里，
   填写关于 package 本身的细节，例如它的描述，主页等等。
   这些信息将被展现在页面的右侧。
 
-<!-- ### Advantages of using a verified publisher {:#verified-publisher} -->
+### Advantages of using a verified publisher {:#verified-publisher}
 
-### 使用已验证发布者的优点 {:#verified-publisher}
+### 使用已验证发布者的优点 {:#使用已验证发布者的优点}
 
 You can publish packages using either a verified publisher (recommended)
 or an independent Google Account.
@@ -187,9 +187,9 @@ Using a verified publisher has the following advantages:
   将在你的 package 名字旁边展示，
   不论是在搜索页面还是单独的 package 页面。
 
-<!-- ### Creating a verified publisher {:#create-verified-publisher} -->
+### Creating a verified publisher {:#create-verified-publisher}
 
-### 创建一个已验证发布者 {:#create-verified-publisher}
+### 创建一个已验证发布者 {:#创建一个已验证发布者}
 
 To create a verified publisher, follow these steps:
 
@@ -643,9 +643,9 @@ then you can ignore the following warning from `dart pub publish`:
    instead."*
 
 
-<!-- ## Retracting a package version {:#retract} -->
+## Retracting a package version {:#retract}
 
-## 撤回 package 的某个版本 {:#retract}
+## 撤回 package 的某个版本 {:#撤回 package 的某个版本}
 
 To prevent new package consumers from adopting a recently
 published version of your package, you can retract that package version
@@ -782,9 +782,9 @@ pub.dev，该账号需要是该 package 的上传者或
 [认证的发布者][verified publisher] 管理。
 接着进入到 package 页面上的 **Admin** 标签栏，进行撤回和恢复版本操作。
 
-<!-- ## Marking packages as discontinued {:#discontinue} -->
+## Marking packages as discontinued {:#discontinue}
 
-## 把 package 标记为终止 {:#discontinue}
+## 把 package 标记为终止 {:#把 package 标记为终止}
 
 Although packages always remain published, it can be useful to signal to
 developers that a package is no longer being actively maintained.

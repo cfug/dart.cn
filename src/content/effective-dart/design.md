@@ -1054,7 +1054,7 @@ to [initialize the field at its declaration][init at decl].
 有时实例的某些字段在被初始化后不会再变化，但只能在实例被构造后才能被初始化。
 例如，某些字段可能需要引用 `this`。
 在这种情况下，请考虑将其声明为 `late final` 形式。
-当这样声明后，您也许可以 [在声明时完成初始化][init at decl]。
+当这样声明后，你也许可以 [在声明时完成初始化][init at decl]。
 
 [init at decl]: /effective-dart/usage#do-initialize-fields-at-their-declaration-when-possible
 
@@ -2256,7 +2256,7 @@ ensure that the value's runtime type supports the member you want to access
 before you access it.
 
 除此之外，我们建议你使用 `Object?` 或者 `Object`，并使用 `is` 来检查和进行类型升级，
-以确保在运行时访问判断这个值支持您要访问的成员。
+以确保在运行时访问判断这个值支持你要访问的成员。
 
 <?code-excerpt "design_good.dart (object-vs-dynamic)"?>
 ```dart tag=good
