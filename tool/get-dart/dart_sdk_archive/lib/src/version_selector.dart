@@ -10,7 +10,7 @@ import 'package:web/web.dart';
 import 'operating_system.dart';
 import 'util.dart';
 
-const _storageBase = '${storageBaseUrl}dart-archive';
+const _storageBase = '${dartArchiveBaseUrl}dart-archive';
 
 class VersionSelector {
   final String channel;
