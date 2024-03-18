@@ -140,7 +140,7 @@ Null safety flags a non-null variable when it has been either:
 
 * Not initialized with a non-null value.
 
-  使用非空值不初始化。
+  未使用非空值进行初始化。
 
 * Assigned a `null` value.
 
