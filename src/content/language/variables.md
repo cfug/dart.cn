@@ -136,11 +136,11 @@ Sound null safety changes potential **runtime errors**
 into **edit-time** analysis errors.
 Null safety flags a non-null variable when it has been either:
 
-空安全将潜在的 **运行时错误** 转变为 **编辑时** 分析错误。当非空变量已经是以下情况之一时，空安全标记为非空变量：
+空安全将潜在的 **运行时错误** 转变为 **编辑时** 分析错误。当非空变量处于以下任一状态时，空安全会识别该变量：
 
 * Not initialized with a non-null value.
 
-  使用非空值不初始化。
+  未使用非空值进行初始化。
 
 * Assigned a `null` value.
 
