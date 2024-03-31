@@ -101,12 +101,12 @@ This document explains how to customize the behavior of the analyzer
 using either an analysis options file or comments in Dart source code. If you want to
 add static analysis to your tool, see the
 [analyzer package]({{site.pub-pkg}}/analyzer) docs and the
-[Analysis Server API Specification.](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/api.html)
+[Analysis Server API Specification.](https://htmlpreview.github.io/?{{site.repo.dart.sdk}}/blob/main/pkg/analysis_server/doc/api.html)
 
 这篇文档解释了如何通过使用分析配置文件，
 或在 Dart 源代码中添加注释来自定义分析器的行为。
 如果你想在工具中添加静态分析规则，请参考 [analyzer package]({{site.pub-pkg}}/analyzer) 的文档
-和 [Analysis Server API 规范](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/api.html)。
+和 [Analysis Server API 规范](https://htmlpreview.github.io/?{{site.repo.dart.sdk}}/blob/main/pkg/analysis_server/doc/api.html)。
 
 :::note
   
@@ -330,7 +330,7 @@ for an exhaustive list of inference failure conditions.
 
 :::
 
-[Conditions for strict inference failure]: https://github.com/dart-lang/language/blob/main/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure
+[Conditions for strict inference failure]: {{site.repo.dart.lang}}/blob/main/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure
 
 `strict-raw-types: <bool>`
 <br> A value of `true` ensures that the type inference engine never chooses

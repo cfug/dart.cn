@@ -33,14 +33,14 @@ The following libraries and packages are useful across Dart platforms:
   and use the builder provided by this package,
   the Dart build system generates serialization and deserialization code for you.
 
-  [package:json_serializable]({{site.pub}}/packages/json_serializable)<br>
+  [package:json_serializable]({{site.pub-pkg}}/json_serializable)<br>
   一个易于使用的代码生成包。当你添加一些元注解以及使用该包提供的构建器时，
   Dart 编译器可以为你生成序列化和反序列化的代码。
 
 * [package:built_value]({{site.pub-pkg}}/built_value)<br>
   A powerful, opinionated alternative to json_serializable.
 
-  [package:built_value]({{site.pub}}/packages/built_value)<br>
+  [package:built_value]({{site.pub-pkg}}/built_value)<br>
   一个强大的，可以作为 json_serializable 替代的 package。
 
 ## Flutter resources

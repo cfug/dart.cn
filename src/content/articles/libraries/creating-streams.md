@@ -347,7 +347,7 @@ which are neither futures nor stream events.
 该代码将数据直接添加至 `StreamController` 而不是从 Future 或 Stream 中获取，
 并在最后返回 `StreamController` 中的 Stream。
 
-[stream_controller_bad.dart]: https://github.com/dart-lang/site-www/blob/main/examples/misc/lib/articles/creating-streams/stream_controller_bad.dart
+[stream_controller_bad.dart]: {{site.repo.dart.org}}/site-www/blob/main/examples/misc/lib/articles/creating-streams/stream_controller_bad.dart
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller_bad.dart (flawed-stream)"?>
 ```dart tag=bad
@@ -542,7 +542,7 @@ on the `StreamController`.
 通过使用 `StreamController` 中的
 `onListen`、`onPause`、`onResume` 和 `onCancel` 回调实现暂停功能。
 
-[stream_controller.dart]: https://github.com/dart-lang/site-www/blob/main/examples/misc/lib/articles/creating-streams/stream_controller.dart
+[stream_controller.dart]: {{site.repo.dart.org}}/site-www/blob/main/examples/misc/lib/articles/creating-streams/stream_controller.dart
 
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (better-stream)"?>
 ```dart

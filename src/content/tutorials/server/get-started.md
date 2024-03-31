@@ -277,7 +277,7 @@ Check out these resources:
 
   原生编译应用的其他示例
 
-  * [native_app](https://github.com/dart-lang/samples/tree/main/native_app)
+  * [native_app]({{site.repo.dart.org}}/samples/tree/main/native_app)
 
 If you get stuck, find help at [Community and support.](/community)
 

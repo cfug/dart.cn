@@ -99,10 +99,10 @@ Get answers and connect with Dart developers.
 
 Dart is open source.
 Learn how to
-[contribute to the core SDK.](https://github.com/dart-lang/sdk/blob/main/CONTRIBUTING.md)
+[contribute to the core SDK.]({{site.repo.dart.sdk}}/blob/main/CONTRIBUTING.md)
 
 Dart 是开源项目。了解如何
-[为核心 SDK 做贡献](https://github.com/dart-lang/sdk/blob/master/CONTRIBUTING.md)。
+[为核心 SDK 做贡献]({{site.repo.dart.sdk}}/blob/master/CONTRIBUTING.md)。
 
 [Dart GitHub repositories](https://github.com/dart-lang/)
 <br> Track new changes and contribute to various Dart projects.
@@ -110,22 +110,22 @@ Dart 是开源项目。了解如何
 [Dart GitHub 仓库](https://github.com/dart-lang/)
 <br> 跟踪改动并为 Dart 的各类项目作出贡献。
 
-  * [Core SDK](https://github.com/dart-lang/sdk/)
-    ([issue tracker](https://github.com/dart-lang/sdk/issues/))
+  * [Core SDK]({{site.repo.dart.sdk}}/)
+    ([issue tracker]({{site.repo.dart.sdk}}/issues/))
 
-    [核心 SDK](https://github.com/dart-lang/sdk/)
-    （[跟踪 issue](https://github.com/dart-lang/sdk/issues/)）
+    [核心 SDK]({{site.repo.dart.sdk}}/)
+    （[跟踪 issue]({{site.repo.dart.sdk}}/issues/)）
 
-  * [The Dart Language](https://github.com/dart-lang/language)
-    ([issue tracker](https://github.com/dart-lang/language/issues))
+  * [The Dart Language]({{site.repo.dart.lang}})
+    ([issue tracker]({{site.repo.dart.lang}}/issues))
 
-  * [Dart 语言](https://github.com/dart-lang/language)
-    （[跟踪 issue](https://github.com/dart-lang/language/issues)）
+  * [Dart 语言]({{site.repo.dart.lang}})
+    （[跟踪 issue]({{site.repo.dart.lang}}/issues)）
 
   * [This site](https://github.com/dart-lang/site-www/)
     ([issue tracker](https://github.com/dart-lang/site-www/issues/))
 
-    [该仓库](https://github.com/dart-lang/sdk/)
+    [该仓库](https://github.com/dart-lang/site-www/)
     （[跟踪 issue](https://github.com/dart-lang/site-www/issues/)）
 
 [Dart reviews]({{group}}/d/forum/reviews)

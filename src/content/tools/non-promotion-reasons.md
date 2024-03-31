@@ -352,7 +352,7 @@ Flow analysis considers `abstract` getters stable enough to allow type promotion
 as long as there are no conflicting declarations.
 :::
 
-[known bug]: https://github.com/dart-lang/language/issues/3328#issuecomment-1792511446
+[known bug]: {{site.repo.dart.lang}}/issues/3328#issuecomment-1792511446
 
 ### External fields can't be promoted {:#external}
 
@@ -1111,7 +1111,7 @@ the only write to `i` uses a non-null value and
 happens before `foo` is ever created.
 But [flow analysis isn't that smart][1536].
 
-[1536]: https://github.com/dart-lang/language/issues/1536
+[1536]: {{site.repo.dart.lang}}/issues/1536
 
 **Solution**:
 

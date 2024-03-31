@@ -44,7 +44,7 @@ that can help you develop command-line and server apps.
     
   :::
 
-[currently supported packages]: https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
+[currently supported packages]: {{site.repo.dart.org}}/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
 
 [Dart SDK](/tools/sdk)
 <br> [Install the Dart SDK](/get-dart) to get the core Dart
@@ -81,9 +81,9 @@ More tools
 更多工具：
 <br> [工具](/tools) 界面链接了一些有用的工具，比如你喜欢的 IDE 或编辑器的 Dart 插件。
 
-For additional options, see [#server packages on pub.dev]({{site.pub}}/packages?q=topic%3Aserver).
+For additional options, see [#server packages on pub.dev]({{site.pub-pkg}}?q=topic%3Aserver).
 
-关于其他方案，请浏览 [#server packages on pub.dev]({{site.pub}}/packages?q=topic%3Aserver).
+关于其他方案，请浏览 [#server packages on pub.dev]({{site.pub-pkg}}?q=topic%3Aserver).
 
 ## Tutorials
 

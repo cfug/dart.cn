@@ -251,5 +251,5 @@ TODO: add links (with stable) when ready:
 [`typeofEquals`]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension/typeofEquals.html
 [`instanceOfString`]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension/instanceOfString.html
 [`isA`]: https://api.dart.dev/dev/dart-js_interop/JSAnyUtilityExtension/isA.html
-[#4841]: https://github.com/dart-lang/linter/issues/4841
-[#54025]: https://github.com/dart-lang/sdk/issues/54025
+[#4841]: {{site.repo.dart.org}}/linter/issues/4841
+[#54025]: {{site.repo.dart.sdk}}/issues/54025
