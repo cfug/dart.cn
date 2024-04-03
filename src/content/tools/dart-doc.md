@@ -172,7 +172,7 @@ one of the following scenarios is possible:
    If the default behavior breaks links in your generated docs,
    please [file an issue][].
 
-[file an issue]: https://github.com/dart-lang/dartdoc/issues
+[file an issue]: {{site.repo.dart.org}}/dartdoc/issues
 
 ### Missing API documentation {:#troubleshoot-missing}
 

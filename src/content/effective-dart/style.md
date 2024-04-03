@@ -544,7 +544,7 @@ for you.
 其余格式指南用于 `dart format` 无法修复的一些规则。
 
 [`dart format`]: /tools/dart-format
-[dart format docs]: https://github.com/dart-lang/dart_style/wiki/Formatting-Rules
+[dart format docs]: {{site.repo.dart.org}}/dart_style/wiki/Formatting-Rules
 
 ### CONSIDER changing your code to make it more formatter-friendly
 

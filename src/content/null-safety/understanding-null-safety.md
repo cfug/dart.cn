@@ -837,7 +837,7 @@ powerful in several ways.][flow analysis]
 在空安全中，我们 [从不同的维度增强了][flow analysis] 这项能力，
 让它不再只能进行有限的分析。
 
-[flow analysis]: https://github.com/dart-lang/language/blob/main/resources/type-system/flow-analysis.md
+[flow analysis]: {{site.repo.dart.lang}}/blob/main/resources/type-system/flow-analysis.md
 
 ### Reachability analysis
 
@@ -854,7 +854,7 @@ way execution might terminate early in a function. Under null safety, this funct
 都将被考虑进来。
 在空安全下，下面的这个函数：
 
-[18921]: https://github.com/dart-lang/sdk/issues/18921
+[18921]: {{site.repo.dart.sdk}}/issues/18921
 
 ```dart
 // Using null safety:

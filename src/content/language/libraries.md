@@ -21,7 +21,7 @@ Libraries can be distributed using [packages](/guides/packages).
 :::note
 If you're curious why Dart uses underscores instead of
 access modifier keywords like `public` or `private`, see
-[SDK issue 33383](https://github.com/dart-lang/sdk/issues/33383).
+[SDK issue 33383]({{site.repo.dart.sdk}}/issues/33383).
 :::
 
 [library]: /tools/pub/glossary#library
@@ -106,8 +106,8 @@ Here are some cases when you might use deferred loading:
 **Only `dart compile js` supports deferred loading.**
 Flutter and the Dart VM don't support deferred loading.
 To learn more, see
-[issue #33118](https://github.com/dart-lang/sdk/issues/33118) and
-[issue #27776.](https://github.com/dart-lang/sdk/issues/27776)
+[issue #33118]({{site.repo.dart.sdk}}/issues/33118) and
+[issue #27776.]({{site.repo.dart.sdk}}/issues/27776)
 :::
 
 To lazily load a library, you must first

@@ -515,7 +515,7 @@ refer to the [`build.dart` hook documentation][].
 :::
 
 
-[`build.dart` hook documentation]: https://github.com/dart-lang/native/blob/main/pkgs/native_assets_cli/README.md
+[`build.dart` hook documentation]: {{site.repo.dart.org}}/native/blob/main/pkgs/native_assets_cli/README.md
 
 ## Project-specific caching for tools
 

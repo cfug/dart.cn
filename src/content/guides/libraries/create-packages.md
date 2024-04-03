@@ -133,12 +133,12 @@ Some packages have separate libraries that are meant to be imported
 with a prefix, when the main library is not.
 
 Let's look at the organization of a real-world package: shelf. The
-[shelf](https://github.com/dart-lang/shelf)
+[shelf]({{site.repo.dart.org}}/shelf)
 package provides an easy way to create web servers using Dart,
 and is laid out in a structure that is commonly used for Dart packages:
 
 这里让我们来看下一个真实 Library Package 的组织结构：shelf 。
-[shelf](https://github.com/dart-lang/shelf) Package
+[shelf]({{site.repo.dart.org}}/shelf) Package
 提供了一种使用 Dart 创建 Web 服务器的简便方法，
 它是一种 Dart Package 的常用结构：
 
@@ -348,12 +348,12 @@ void main() {
 
 A well-designed package is easy to test.
 We recommend that you write tests using the
-[test](https://github.com/dart-lang/test) package,
+[test]({{site.repo.dart.org}}/test) package,
 placing the test code in the `test` directory at the
 top of the package.
 
 一个设计良好的 Package 很容易被测试。
-我们建议使用 [test](https://github.com/dart-lang/test) Package
+我们建议使用 [test]({{site.repo.dart.org}}/test) Package
 编写测试用例，并将测试代码放到 Package 根目录的 `test` 目录中。
 
 If you create any command-line tools intended for public consumption,
@@ -445,7 +445,7 @@ for details on how to prepare your package for publishing.
 我们建议将他共享到 [Pub 网站]({{site.pub}})。
 使用 [pub publish](/tools/pub/cmd/pub-lish) 来发布或者更新 Library，
 该命令将会上传 Package 并创建或更新其页面。
-示例参见 [shelf Package]({{site.pub}}/packages/shelf) 页面。
+示例参见 [shelf Package]({{site.pub-pkg}}/shelf) 页面。
 有关如何准备发布 Package 的详细内容，参见 [发布 Package](/tools/pub/publishing)。
 
 The pub.dev site not only hosts your package,
@@ -509,20 +509,20 @@ Use the following resources to learn more about packages:
   [什么不应该被提交](private-files)包含了关于什么文件不应该被提交到源码仓库的介绍。
 
 * The newer packages under the
-  [dart-lang](https://github.com/dart-lang) organization tend
+  [dart-lang]({{site.repo.dart.org}}) organization tend
   to show best practices. Consider studying these examples:
-  [dart_style,](https://github.com/dart-lang/dart_style)
-  [path,](https://github.com/dart-lang/path)
-  [shelf,](https://github.com/dart-lang/shelf)
-  [source_gen,](https://github.com/dart-lang/source_gen) and
-  [test.](https://github.com/dart-lang/test)
+  [dart_style,]({{site.repo.dart.org}}/dart_style)
+  [path,]({{site.repo.dart.org}}/path)
+  [shelf,]({{site.repo.dart.org}}/shelf)
+  [source_gen,]({{site.repo.dart.org}}/source_gen) and
+  [test.]({{site.repo.dart.org}}/test)
 
-  [dart-lang](https://github.com/dart-lang) 组织下的最新 Package
+  [dart-lang]({{site.repo.dart.org}}) 组织下的最新 Package
   常常是最佳实践的提现。可以参考学些以下这些实例：
-  [dart_style](https://github.com/dart-lang/dart_style)，
-  [path](https://github.com/dart-lang/path)，
-  [shelf](https://github.com/dart-lang/shelf)，
-  [source_gen](https://github.com/dart-lang/source_gen) 以及
-  [test](https://github.com/dart-lang/test) 。
+  [dart_style]({{site.repo.dart.org}}/dart_style)，
+  [path]({{site.repo.dart.org}}/path)，
+  [shelf]({{site.repo.dart.org}}/shelf)，
+  [source_gen]({{site.repo.dart.org}}/source_gen) 以及
+  [test]({{site.repo.dart.org}}/test) 。
 
 [`dart doc`]: /tools/dart-doc

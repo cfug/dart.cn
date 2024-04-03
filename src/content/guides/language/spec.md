@@ -28,7 +28,7 @@ Dart 3 的语言规范仍然在制定中。
   [最新的制定中的规范][latest draft]（由 [LaTeX 文件][LaTeX file] 导出）
 
 [latest draft]: https://spec.dart.dev/DartLangSpecDraft.pdf
-[LaTeX file]: https://github.com/dart-lang/language/blob/main/specification/dartLangSpec.tex
+[LaTeX file]: {{site.repo.dart.lang}}/blob/main/specification/dartLangSpec.tex
 
 New language features are typically described using
 informal language feature specifications in the [dart-lang/language][] repo:
@@ -43,9 +43,9 @@ informal language feature specifications in the [dart-lang/language][] repo:
 
   [潜在的功能草案][Drafts of potential features]
 
-[dart-lang/language]: https://github.com/dart-lang/language
-[Accepted informal proposals]: https://github.com/dart-lang/language/tree/main/accepted
-[Drafts of potential features]: https://github.com/dart-lang/language/tree/main/working
+[dart-lang/language]: {{site.repo.dart.lang}}
+[Accepted informal proposals]: {{site.repo.dart.lang}}/tree/main/accepted
+[Drafts of potential features]: {{site.repo.dart.lang}}/tree/main/working
 
 :::version-note
 
