@@ -3,10 +3,10 @@
 title: 异步编程：使用 stream
 # description: Learn how to consume single-subscriber and broadcast streams.
 description: 了解如何使用 single-subscriber 和 broadcast streams。
-js: [{url: 'https://dartpad.cn/inject_embed.dart.js', defer: true}]
+js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 ---
 
-:::mini-toc 本章的重点
+:::secondary 本章的重点
 <!-- What's the point? -->
 
 * Streams provide an asynchronous sequence of data.

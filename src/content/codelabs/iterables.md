@@ -3,7 +3,7 @@
 title: 可迭代集合
 # description: An interactive guide to using Iterable objects such as lists and sets.
 description: 可迭代对象（例如列表和集合）的交互式指南
-js: [{url: 'https://dartpad.cn/inject_embed.dart.js', defer: true}]
+js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 <?code-excerpt plaster="none"?>

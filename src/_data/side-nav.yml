@@ -337,6 +337,8 @@
         permalink: /tools/non-promotion-reasons
       - title: Linter 规则
         permalink: /tools/linter-rules
+      - title: 诊断信息
+        permalink: /tools/diagnostic-messages
   - title: 测试和优化
     children:
       - title: 测试
