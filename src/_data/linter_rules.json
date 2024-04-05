@@ -123,7 +123,7 @@
     "sets": [],
     "fixStatus": "noFix",
     "details": "This rule has been removed.\n",
-    "sinceDartSdk": "3.3.0-wip"
+    "sinceDartSdk": "3.3.0"
   },
   {
     "name": "avoid_web_libraries_in_flutter",
@@ -329,6 +329,17 @@
     "sinceDartSdk": "2.0.0"
   },
   {
+    "name": "missing_code_block_language_in_doc_comment",
+    "description": "A code block is missing a specified language.",
+    "group": "errors",
+    "state": "stable",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "needsEvaluation",
+    "details": "**DO** specify the language used in the code block of a doc comment.\n\nTo enable proper syntax highlighting of Markdown code blocks,\n[`dart doc`](https://dart.dev/tools/dart-doc) strongly recommends code blocks to\nspecify the language used after the initial code fence.\n\nSee [highlight.js](https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md)\nfor the list of languages supported by `dart doc`.\n\n**BAD:**\n```dart\n/// ```\n/// void main() {}\n/// ```\nclass A {}\n```\n\n**GOOD:**\n```dart\n/// ```dart\n/// void main() {}\n/// ```\nclass A {}\n```\n\n",
+    "sinceDartSdk": "3.4.0-wip"
+  },
+  {
     "name": "no_adjacent_strings_in_list",
     "description": "Don't use adjacent strings in list.",
     "group": "errors",
@@ -384,7 +395,11 @@
     "group": "errors",
     "state": "stable",
     "incompatible": [],
-    "sets": [],
+    "sets": [
+      "core",
+      "recommended",
+      "flutter"
+    ],
     "fixStatus": "needsEvaluation",
     "details": "**DON'T** use wildcard parameters or variables.\n\nWildcard parameters and local variables\n(e.g. underscore-only names like `_`, `__`, `___`, etc.) will\nbecome non-binding in a future version of the Dart language.\nAny existing code that uses wildcard parameters or variables will\nbreak. In anticipation of this change, and to make adoption easier,\nthis lint disallows wildcard and variable parameter uses.\n\n\n**BAD:**\n```dart\nvar _ = 1;\nprint(_); // LINT\n```\n\n```dart\nvoid f(int __) {\n  print(__); // LINT multiple underscores too\n}\n```\n\n**GOOD:**\n```dart\nfor (var _ in [1, 2, 3]) count++;\n```\n\n```dart\nvar [a, _, b, _] = [1, 2, 3, 4];\n```\n",
     "sinceDartSdk": "3.1.0"
@@ -434,6 +449,17 @@
     "fixStatus": "noFix",
     "details": "**AVOID** throwing exceptions in finally blocks.\n\nThrowing exceptions in finally blocks will inevitably cause unexpected behavior\nthat is hard to debug.\n\n**BAD:**\n```dart\nclass BadThrow {\n  double nonCompliantMethod() {\n    try {\n      print('hello world! ${1 / 0}');\n    } catch (e) {\n      print(e);\n    } finally {\n      throw 'Find the hidden error :P'; // LINT\n    }\n  }\n}\n```\n\n**GOOD:**\n```dart\nclass Ok {\n  double compliantMethod() {\n    var i = 5;\n    try {\n      i = 1 / 0;\n    } catch (e) {\n      print(e); // OK\n    }\n    return i;\n  }\n}\n```\n\n",
     "sinceDartSdk": "2.0.0"
+  },
+  {
+    "name": "unintended_html_in_doc_comment",
+    "description": "Use of angle brackets in a doc comment is treated as HTML by Markdown.",
+    "group": "errors",
+    "state": "stable",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "needsEvaluation",
+    "details": "**DO** reference only in-scope identifiers in doc comments.\n\nWhen a developer writes a reference with angle brackets within a doc comment,\nthe angle brackets are interpreted as HTML. The text within pairs of opening and\nclosing angle brackets generally get swallowed by the browser, and will not be\ndisplayed.\n\nWrap text with angle brackets within a code block or within a code span, unless\nthey are delimiters for a Markdown autolink. You can also replace `<` with\n`&lt;` and `>` with `&gt;`.\n\n**BAD:**\n```dart\n/// Text List<int>.\n/// Text [List<int>].\n/// <assignment> -> <variable> = <expression>\n```\n\n**GOOD:**\n```dart\n/// Text `List<int>`.\n/// `<assignment> -> <variable> = <expression>`\n/// <http://foo.bar.baz>\n```\n\n",
+    "sinceDartSdk": "3.4.0-wip"
   },
   {
     "name": "unnecessary_statements",
@@ -623,7 +649,7 @@
     ],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "From the [style guide for the flutter repo](https://flutter.dev/style-guide/):\n\n**DO** specify type annotations.\n\nAvoid `var` when specifying that a type is unknown and short-hands that elide\ntype annotations.  Use `dynamic` if you are being explicit that the type is\nunknown.  Use `Object` if you are being explicit that you want an object that\nimplements `==` and `hashCode`.\n\n**BAD:**\n```dart\nvar foo = 10;\nfinal bar = Bar();\nconst quux = 20;\n```\n\n**GOOD:**\n```dart\nint foo = 10;\nfinal Bar bar = Bar();\nString baz = 'hello';\nconst int quux = 20;\n```\n\nNOTE: Using the the `@optionalTypeArgs` annotation in the `meta` package, API\nauthors can special-case type variables whose type needs to by dynamic but whose\ndeclaration should be treated as optional.  For example, suppose you have a\n`Key` object whose type parameter you'd like to treat as optional.  Using the\n`@optionalTypeArgs` would look like this:\n\n```dart\nimport 'package:meta/meta.dart';\n\n@optionalTypeArgs\nclass Key<T> {\n ...\n}\n\nmain() {\n  Key s = Key(); // OK!\n}\n```\n\n",
+    "details": "From the [style guide for the flutter repo](https://flutter.dev/style-guide/):\n\n**DO** specify type annotations.\n\nAvoid `var` when specifying that a type is unknown and short-hands that elide\ntype annotations.  Use `dynamic` if you are being explicit that the type is\nunknown.  Use `Object` if you are being explicit that you want an object that\nimplements `==` and `hashCode`.\n\n**BAD:**\n```dart\nvar foo = 10;\nfinal bar = Bar();\nconst quux = 20;\n```\n\n**GOOD:**\n```dart\nint foo = 10;\nfinal Bar bar = Bar();\nString baz = 'hello';\nconst int quux = 20;\n```\n\nNOTE: Using the the `@optionalTypeArgs` annotation in the `meta` package, API\nauthors can special-case type variables whose type needs to be dynamic but whose\ndeclaration should be treated as optional.  For example, suppose you have a\n`Key` object whose type parameter you'd like to treat as optional.  Using the\n`@optionalTypeArgs` would look like this:\n\n```dart\nimport 'package:meta/meta.dart';\n\n@optionalTypeArgs\nclass Key<T> {\n ...\n}\n\nmain() {\n  Key s = Key(); // OK!\n}\n```\n\n",
     "sinceDartSdk": "2.0.0"
   },
   {
@@ -1348,7 +1374,11 @@
     "group": "style",
     "state": "stable",
     "incompatible": [],
-    "sets": [],
+    "sets": [
+      "core",
+      "recommended",
+      "flutter"
+    ],
     "fixStatus": "hasFix",
     "details": "Attach library annotations to library directives, rather than\nsome other library-level element.\n\n**BAD:**\n```dart\n@TestOn('browser')\n\nimport 'package:test/test.dart';\n\nvoid main() {}\n```\n\n**GOOD:**\n```dart\n@TestOn('browser')\nlibrary;\n\nimport 'package:test/test.dart';\n\nvoid main() {}\n```\n\n**NOTE:** An unnamed library, like `library;` above, is only supported in Dart\n2.19 and later. Code which might run in earlier versions of Dart will need to\nprovide a name in the `library` directive.\n",
     "sinceDartSdk": "2.19.0"
@@ -1610,11 +1640,7 @@
     "group": "style",
     "state": "stable",
     "incompatible": [],
-    "sets": [
-      "core",
-      "recommended",
-      "flutter"
-    ],
+    "sets": [],
     "fixStatus": "noFix",
     "details": "**DO** prefix library names with the package name and a dot-separated path.\n\nThis guideline helps avoid the warnings you get when two libraries have the same\nname.  Here are the rules we recommend:\n\n* Prefix all library names with the package name.\n* Make the entry library have the same name as the package.\n* For all other libraries in a package, after the package name add the\ndot-separated path to the library's Dart file.\n* For libraries under `lib`, omit the top directory name.\n\nFor example, say the package name is `my_package`.  Here are the library names\nfor various files in the package:\n\n**GOOD:**\n```dart\n// In lib/my_package.dart\nlibrary my_package;\n\n// In lib/other.dart\nlibrary my_package.other;\n\n// In lib/foo/bar.dart\nlibrary my_package.foo.bar;\n\n// In example/foo/bar.dart\nlibrary my_package.example.foo.bar;\n\n// In lib/src/private.dart\nlibrary my_package.src.private;\n```\n\n",
     "sinceDartSdk": "2.0.0"
@@ -1792,7 +1818,7 @@
     ],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "**DO** use double quotes where they wouldn't require additional escapes.\n\nThat means strings with a double quote may use apostrophes so that the double\nquote isn't escaped (note: we don't lint the other way around, ie, a double\nquoted string with an escaped double quote is not flagged).\n\nIt's also rare, but possible, to have strings within string interpolations.  In\nthis case, its much more readable to use a single quote somewhere.  So single\nquotes are allowed either within, or containing, an interpolated string literal.\nArguably strings within string interpolations should be its own type of lint.\n\n**BAD:**\n```dart\nuseStrings(\n    'should be double quote',\n    r'should be double quote',\n    r'''should be double quotes''')\n```\n\n**GOOD:**\n```dart\nuseStrings(\n    \"should be double quote\",\n    r\"should be double quote\",\n    r\"\"\"should be double quotes\"\"\",\n    'ok with \" inside',\n    'nested ${a ? \"strings\" : \"can\"} be wrapped by a double quote',\n    \"and nested ${a ? 'strings' : 'can be double quoted themselves'}\");\n```\n\n",
+    "details": "**DO** use double quotes where they wouldn't require additional escapes.\n\nThat means strings with a double quote may use apostrophes so that the double\nquote isn't escaped (note: we don't lint the other way around, ie, a double\nquoted string with an escaped double quote is not flagged).\n\nIt's also rare, but possible, to have strings within string interpolations.  In\nthis case, it's much more readable to use a single quote somewhere.  So single\nquotes are allowed either within, or containing, an interpolated string literal.\nArguably strings within string interpolations should be its own type of lint.\n\n**BAD:**\n```dart\nuseStrings(\n    'should be double quote',\n    r'should be double quote',\n    r'''should be double quotes''')\n```\n\n**GOOD:**\n```dart\nuseStrings(\n    \"should be double quote\",\n    r\"should be double quote\",\n    r\"\"\"should be double quotes\"\"\",\n    'ok with \" inside',\n    'nested ${a ? \"strings\" : \"can\"} be wrapped by a double quote',\n    \"and nested ${a ? 'strings' : 'can be double quoted themselves'}\");\n```\n\n",
     "sinceDartSdk": "2.4.0"
   },
   {
@@ -2106,7 +2132,7 @@
     ],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "**DO** use single quotes where they wouldn't require additional escapes.\n\nThat means strings with an apostrophe may use double quotes so that the\napostrophe isn't escaped (note: we don't lint the other way around, ie, a single\nquoted string with an escaped apostrophe is not flagged).\n\nIt's also rare, but possible, to have strings within string interpolations.  In\nthis case, its much more readable to use a double quote somewhere.  So double\nquotes are allowed either within, or containing, an interpolated string literal.\nArguably strings within string interpolations should be its own type of lint.\n\n**BAD:**\n```dart\nuseStrings(\n    \"should be single quote\",\n    r\"should be single quote\",\n    r\"\"\"should be single quotes\"\"\")\n```\n\n**GOOD:**\n```dart\nuseStrings(\n    'should be single quote',\n    r'should be single quote',\n    r'''should be single quotes''',\n    \"here's ok\",\n    \"nested ${a ? 'strings' : 'can'} be wrapped by a double quote\",\n    'and nested ${a ? \"strings\" : \"can be double quoted themselves\"}');\n```\n\n",
+    "details": "**DO** use single quotes where they wouldn't require additional escapes.\n\nThat means strings with an apostrophe may use double quotes so that the\napostrophe isn't escaped (note: we don't lint the other way around, ie, a single\nquoted string with an escaped apostrophe is not flagged).\n\nIt's also rare, but possible, to have strings within string interpolations.  In\nthis case, it's much more readable to use a double quote somewhere.  So double\nquotes are allowed either within, or containing, an interpolated string literal.\nArguably strings within string interpolations should be its own type of lint.\n\n**BAD:**\n```dart\nuseStrings(\n    \"should be single quote\",\n    r\"should be single quote\",\n    r\"\"\"should be single quotes\"\"\")\n```\n\n**GOOD:**\n```dart\nuseStrings(\n    'should be single quote',\n    r'should be single quote',\n    r'''should be single quotes''',\n    \"here's ok\",\n    \"nested ${a ? 'strings' : 'can'} be wrapped by a double quote\",\n    'and nested ${a ? \"strings\" : \"can be double quoted themselves\"}');\n```\n\n",
     "sinceDartSdk": "2.0.0"
   },
   {
@@ -2180,13 +2206,13 @@
   },
   {
     "name": "require_trailing_commas",
-    "description": "Use trailing commas for all function calls and declarations.",
+    "description": "Use trailing commas for all parameter lists and argument lists.",
     "group": "style",
     "state": "stable",
     "incompatible": [],
     "sets": [],
     "fixStatus": "hasFix",
-    "details": "**DO** use trailing commas for all function calls and declarations unless the\nfunction call or definition, from the start of the function name up to the\nclosing parenthesis, fits in a single line.\n\n**BAD:**\n```dart\nvoid run() {\n  method('does not fit on one line',\n      'test test test test test test test test test test test');\n}\n```\n\n**GOOD:**\n```dart\nvoid run() {\n  method(\n    'does not fit on one line',\n    'test test test test test test test test test test test',\n  );\n}\n```\n\n**EXCEPTION:** If the final parameter/argument is positional (vs named) and is\neither a function literal implemented using curly braces, a literal map, a\nliteral set or a literal array. This exception only applies if the final\nparameter does not fit entirely on one line.\n\n**NOTE:** This lint rule assumes `dart format` has been run over the code and\nmay produce false positives until that has happened.\n\n",
+    "details": "**DO** use trailing commas for all multi-line parameter lists and argument\nlists. A parameter list or argument list that fits on one line, including the\nopening parenthesis and closing parenthesis, does not require a trailing comma.\n\n**BAD:**\n```dart\nvoid run() {\n  method('does not fit on one line',\n      'test test test test test test test test test test test');\n}\n```\n\n**GOOD:**\n```dart\nvoid run() {\n  method(\n    'does not fit on one line',\n    'test test test test test test test test test test test',\n  );\n}\n```\n\n**EXCEPTION:** If the final argument in an argument list is positional (vs\nnamed) and is either a function literal with curly braces, a map literal, a set\nliteral, or a list literal, then a trailing comma is not required.\nThis exception only applies if the final argument does not fit entirely on one\nline.\n\n**NOTE:** This lint rule assumes that code has been formatted with `dart format`\nand may produce false positives on unformatted code.\n\n",
     "sinceDartSdk": "2.14.0"
   },
   {
@@ -2462,6 +2488,17 @@
     "fixStatus": "hasFix",
     "details": "**DO** use library directives if you want to document a library and/or annotate \na library.\n\n**BAD:**\n```dart\nlibrary;\n```\n\n**GOOD:**\n```dart\n/// This library does important things\nlibrary;\n```\n\n```dart\n@TestOn('js')\nlibrary;\n```\n\nNOTE: Due to limitations with this lint, libraries with parts will not be\nflagged for unnecessary library directives.\n",
     "sinceDartSdk": "2.19.0"
+  },
+  {
+    "name": "unnecessary_library_name",
+    "description": "Don't have a library name in a `library` declaration.",
+    "group": "style",
+    "state": "stable",
+    "incompatible": [],
+    "sets": [],
+    "fixStatus": "hasFix",
+    "details": "**DON'T** have a library name in a `library` declaration.\n\nLibrary names are not necessary.\n\nA library does not need a library declaration, but one can be added to attach\nlibrary documentation and library metadata to. A declaration of `library;` is\nsufficient for those uses.\n\nThe only *use* of a library name is for a `part` file to refer back to its\nowning library, but part files should prefer to use a string URI to refer back\nto the library file, not a library name.\n\nIf a library name is added to a library declaration, it introduces the risk of\nname *conflicts*. It's a compile-time error if two libraries in the same program\nhave the same library name. To avoid that, library names tend to be long,\nincluding the package name and path, just to avoid accidental name clashes. That\nmakes such library names hard to read, and not even useful as documentation.\n\n**BAD:**\n```dart\n/// This library has a long name.\nlibrary magnificator.src.helper.bananas;\n```\n\n```dart\nlibrary utils; // Not as verbose, but risks conflicts.\n```\n\n**GOOD:**\n```dart\n/// This library is awesome.\nlibrary;\n\npart \"apart.dart\"; // contains: `part of \"good_library.dart\";`\n```\n",
+    "sinceDartSdk": "3.4.0-wip"
   },
   {
     "name": "unnecessary_new",
