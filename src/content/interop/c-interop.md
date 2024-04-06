@@ -77,6 +77,7 @@ hello_world 示例包含了以下文件：
 | [hello_library/hello.def]({{hw}}/hello_library/hello.def)           | 包含 DLL 构建信息的模块定义。                                                                      |
 | [hello_library/CMakeLists.txt]({{hw}}/hello_library/CMakeLists.txt) | A CMake build file for compiling the C code into a dynamic library.                              |
 | [hello_library/CMakeLists.txt]({{hw}}/hello_library/CMakeLists.txt) | 将 C 文件代码编译为动态库的 CMake 文件。                                                            |
+
 {:.table .table-striped }
 
 {% comment %}
