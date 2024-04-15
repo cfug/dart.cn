@@ -4,6 +4,17 @@ description: The terms of use for dart.dev.
 toc: false
 ---
 
+https://dart.cn is a community-owned and hosted website
+and contains a translation of the content on https://dart.dev.
+https://dart.cn is not owned, operated, or endorsed by Google LLC.
+
+https://dart.cn 是社区拥有并部署的网站，其主要包含对 https://dart.dev 内容的翻译。
+https://dart.cn 不由 Google LLC 拥有、运作或认可。
+
+Below are the original terms of use of the Dart website (https://dart.dev):
+
+下述内容为 Dart 网站 (https://dart.dev) 原始使用条款：
+
 The Dart website (the "Website") is hosted by Google.
 By using and/or visiting the Website,
 you consent to be bound by Google's general [Terms of Service][]
