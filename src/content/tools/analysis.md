@@ -216,7 +216,7 @@ and `my_other_other_package`, and file #2 to analyze the code in
 
 ## Enabling stricter type checks {:#enabling-additional-type-checks}
 
-## 启用更严格的类型检查 {:#启用更严格的类型检查}
+## 启用更严格的类型检查
 
 If you want stricter static checks than
 the [Dart type system][type-system] requires,
@@ -360,7 +360,7 @@ warning - The generic type 'List<dynamic>' should have explicit type arguments b
 
 ## Enabling and disabling linter rules {:#enabling-linter-rules}
 
-## 启用和停用 linter 规则 {:#启用和停用 linter 规则}
+## 启用和停用 linter 规则
 
 The analyzer package also provides a code linter. A wide variety of
 [linter rules][] are available. Linters tend to be
@@ -376,7 +376,7 @@ analyzer 包同样提供一个代码 linter，并包含一份广泛多样的 [li
 
 ### Enabling Dart team recommended linter rules {:#lints}
 
-### 启用 Dart 团队推荐的 linter 规则 {:#启用 Dart 团队推荐的 linter 规则}
+### 启用 Dart 团队推荐的 linter 规则
 
 The Dart team provides two sets of recommended linter rules
 in the [lints package][]:
@@ -466,7 +466,7 @@ or [disable individual rules][].
 
 ### Enabling individual rules {:#individual-rules}
 
-### 启用单条规则 {:#启用单条规则}
+### 启用单条规则
 
 To enable a single linter rule, add `linter:` to the analysis options file
 as a top-level key,

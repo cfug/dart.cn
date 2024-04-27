@@ -79,7 +79,7 @@ try running some samples and creating a simple command-line app.
 
 ### Open DartPad and run a sample {:#step-1-open-and-run}
 
-### 打开 DartPad 并运行一些示例 {:#打开 DartPad 并运行一些示例}
+### 打开 DartPad 并运行一些示例
 
 1. Go to [DartPad][]{:target="_blank" rel="noopener"}.
 
@@ -104,7 +104,7 @@ try running some samples and creating a simple command-line app.
 
 ### Create a command-line app {:#step-2-server}
 
-### 创建一个命令行应用 {:#创建一个命令行应用}
+### 创建一个命令行应用
 
 To create a simple command-line app,
 start by creating a new snippet:
@@ -180,7 +180,7 @@ DartPad 支持的语言功能和 API 取决于 DartPad 使用的 **Dart SDK** �
 
 ## Embedding DartPad in web pages {:#embedding}
 
-## 网页中嵌入 DartPad {:#网页中嵌入 DartPad}
+## 网页中嵌入 DartPad
 
 You can embed DartPad inside of web pages,
 customizing it to suit your use case.

@@ -160,7 +160,7 @@ Pub 在 `pub.dev/packages/<your_package>` 里，
 
 ### Advantages of using a verified publisher {:#verified-publisher}
 
-### 使用已验证发布者的优点 {:#使用已验证发布者的优点}
+### 使用已验证发布者的优点
 
 You can publish packages using either a verified publisher (recommended)
 or an independent Google Account.
@@ -189,7 +189,7 @@ Using a verified publisher has the following advantages:
 
 ### Creating a verified publisher {:#create-verified-publisher}
 
-### 创建一个已验证发布者 {:#创建一个已验证发布者}
+### 创建一个已验证发布者
 
 To create a verified publisher, follow these steps:
 
@@ -645,7 +645,7 @@ then you can ignore the following warning from `dart pub publish`:
 
 ## Retracting a package version {:#retract}
 
-## 撤回 package 的某个版本 {:#撤回 package 的某个版本}
+## 撤回 package 的某个版本
 
 To prevent new package consumers from adopting a recently
 published version of your package, you can retract that package version
@@ -784,7 +784,7 @@ pub.dev，该账号需要是该 package 的上传者或
 
 ## Marking packages as discontinued {:#discontinue}
 
-## 把 package 标记为终止 {:#把 package 标记为终止}
+## 把 package 标记为终止
 
 Although packages always remain published, it can be useful to signal to
 developers that a package is no longer being actively maintained.

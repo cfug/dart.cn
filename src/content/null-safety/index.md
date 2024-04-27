@@ -186,7 +186,7 @@ listed by the analyzer.
 
 ## Dart 2.x and null safety {:#enable-null-safety}
 
-## 启用和禁用空安全 {:#启用和禁用空安全}
+## 启用和禁用空安全
 
 From Dart 2.12 to 2.19, you need to enable null safety.
 You cannot use null safety in SDK versions earlier than Dart 2.12.
@@ -214,7 +214,7 @@ environment:
 
 ## Migrating existing code {:#migrate}
 
-## 迁移现有的 package 或应用 {:#迁移现有的 package 或应用}
+## 迁移现有的 package 或应用
 
 :::warning
 

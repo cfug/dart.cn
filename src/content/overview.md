@@ -44,7 +44,7 @@ Dart 作为 Flutter 应用程序的编程语言，为驱动应用运行提供了
 
 ## Dart: The language {:#language}
 
-## Dart 语言 {:#Dart-1}
+## Dart 语言
 
 The Dart language is type safe;
 it uses static type checking to ensure that
@@ -156,7 +156,7 @@ target="_blank" rel="noopener">在此示例自己的窗口中打开它</a>。
 
 ## Dart: The libraries {:#libraries}
 
-## Dart 库 {:#Dart-2}
+## Dart 库
 
 Dart has [a rich set of core libraries](/libraries),
 providing essentials for many everyday programming tasks:
@@ -291,7 +291,7 @@ To find additional APIs, see the
 
 ## Dart: The platforms {:#platform}
 
-## Dart 平台 {:#Dart-3}
+## Dart 平台
 
 Dart's compiler technology lets you run code in different ways:
 
@@ -327,7 +327,7 @@ on iOS, Android, macOS, Windows, Linux, and the web.
 
 #### Dart Native (machine code JIT and AOT) {:#native-platform}
 
-#### 原生平台的 Dart (JIT 和 AOT 机器码) {:#Dart-4}
+#### 原生平台的 Dart (JIT 和 AOT 机器码)
 
 During development, a fast developer cycle is critical for iteration.
 The Dart VM offers a just-in-time compiler (JIT) with
@@ -380,7 +380,7 @@ More information:
 
 #### Dart Web (JavaScript dev & prod) {:#web-platform}
 
-#### Web 平台的 Dart (使用 JavaScript 开发和部署) {:#Dart-5}
+#### Web 平台的 Dart (使用 JavaScript 开发和部署)
 
 Dart Web enables running Dart code on web platforms powered by
 JavaScript. With Dart Web, you compile Dart code to JavaScript code, which in
@@ -425,7 +425,7 @@ More information:
 
 #### The Dart runtime {:#runtime}
 
-#### Dart 运行时环境 {:#Dart-6}
+#### Dart 运行时环境
 
 Regardless of which platform you use or how you compile your code,
 executing the code requires a Dart runtime.
@@ -473,7 +473,7 @@ the [`dart run`](/tools/dart-run) command.
 
 ## Learning Dart {:#learning-dart}
 
-## 学习 Dart {:#学习 Dart}
+## 学习 Dart
 
 You have many choices for learning Dart. Here are a few that we recommend:
 

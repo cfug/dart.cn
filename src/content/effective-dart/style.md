@@ -132,7 +132,7 @@ extension SmartIterable<T> on Iterable<T> { ... }
 <a id="do-name-libraries-and-source-files-using-lowercase_with_underscores"></a>
 ### DO name packages, directories, and source files using `lowercase_with_underscores` {:#do-name-packages-and-file-system-entities-using-lowercase-with-underscores}
 
-### **要** 在`库`，`package`，`文件夹`，`源文件` 中使用 `lowercase_with_underscores` 方式命名 {:#要在库，package，文件夹，源文件中使用 lowercase_with_underscores 方式命名}
+### **要** 在`库`，`package`，`文件夹`，`源文件` 中使用 `lowercase_with_underscores` 方式命名
 
 {% include 'linter-rule-mention.md', rules:'file_names, package_names' %}
 
