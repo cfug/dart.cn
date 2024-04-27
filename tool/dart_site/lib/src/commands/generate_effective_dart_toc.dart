@@ -206,7 +206,9 @@ String _generateAnchorHash(String text) => text
     .toLowerCase()
     .trim()
     .replaceAll(RegExp(r'[:.]'), '-')
-    .replaceAll(RegExp(r'[^a-z0-9\s_-]'), '')
+    // .replaceAll(RegExp(r'[^a-z0-9\s_-]'), '')
+    // dart.cn - Avoid Chinese text removal
+    .replaceAll(RegExp(r'[^\u4e00-\u9fa5a-z0-9\s_-]'), '')
     .replaceAll(RegExp(r'[\s-]+'), '-')
     .replaceAll(RegExp(r'^-+|-+$'), '');
 

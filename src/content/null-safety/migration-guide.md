@@ -91,7 +91,7 @@ watch this video:
 
 ## 1. Wait to migrate {:#step1-wait}
 
-## 1. 等待迁移 {:#step1-等待迁移}
+## 1. 等待迁移
 
 We strongly recommend migrating code in order, 
 with the leaves of the dependency graph being migrated first.
@@ -245,7 +245,7 @@ update its dependencies to null-safe versions:
 
 ## 2. Migrate {:#step2-migrate}
 
-## 2. 迁移 {:#step2-迁移}
+## 2. 迁移
 
 Most of the changes that your code needs to be null safe
 are easily predictable.
@@ -291,7 +291,7 @@ For additional help while migrating code, check the
 
 ### Using the migration tool {:#migration-tool}
 
-### 使用迁移工具 {:#使用迁移工具}
+### 使用迁移工具
 
 The migration tool takes a package of null-unsafe Dart code
 and converts it to null safety.
@@ -403,7 +403,7 @@ you can improve the migration result.
 
 #### Improving migration results {:#hint-markers}
 
-#### 改进迁移的结果 {:#改进迁移的结果}
+#### 改进迁移的结果
 
 When analysis infers the wrong nullability,
 you can override its proposed edits by inserting temporary hint markers:
@@ -658,7 +658,7 @@ for more help on migrating code by hand.
 
 ## 3. Analyze {:#step3-analyze}
 
-## 3. 分析 {:#step3-分析}
+## 3. 分析
 
 Update your packages
 (using `dart pub get` in your IDE or on the command line).
@@ -678,7 +678,7 @@ $ dart analyze     # or `flutter analyze`
 
 ## 4. Test {:#step4-test}
 
-## 4. 测试 {:#step4-测试}
+## 4. 测试
 
 If your code passes analysis, run tests:
 
@@ -701,7 +701,7 @@ If so, revert your code changes before using the migration tool again.
 
 ## 5. Publish {:#step5-publish}
 
-## 5. 发布 {:#step5-发布}
+## 5. 发布
 
 We encourage you to publish packages—possibly as prereleases—as 
 soon as you migrate:
@@ -728,7 +728,7 @@ soon as you migrate:
 
 ### Update the package version {:#package-version}
 
-### 更新 package 的版本 {:#更新 package 的版本}
+### 更新 package 的版本
 
 Update the version of the package
 to indicate a breaking change:

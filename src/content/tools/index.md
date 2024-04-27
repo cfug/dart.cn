@@ -123,7 +123,7 @@ A [Language Server Protocol implementation][LSP] is also available for
 
 ### Command-line tools {:#cli}
 
-### 命令行工具 {:#命令行工具}
+### 命令行工具
 
 The Dart SDK includes the following general-purpose `dart` tool:
 
@@ -151,7 +151,7 @@ Dart SDK 中包含下面的 `dart` 工具：
 
 ## Tool for developing web apps {:#web}
 
-## 开发 Web 应用的工具 {:#开发 Web 应用的工具}
+## 开发 Web 应用的工具
 
 The following tool supports developing web apps:
 
@@ -165,7 +165,7 @@ The following tool supports developing web apps:
 
 ## Tools for developing command-line apps and servers {:#server}
 
-## 开发命令行应用和服务器的工具 {:#开发命令行应用和服务器的工具}
+## 开发命令行应用和服务器的工具
 
 The following tools support developing or running
 command-line apps and servers:

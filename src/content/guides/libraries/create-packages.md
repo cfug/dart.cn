@@ -430,7 +430,7 @@ For the how-and-why of documenting libraries, see
 
 ## Distributing an open source library {:#distributing-a-library}
 
-## 分发开源 Library {:#分发开源 Library}
+## 分发开源 Library
 
 If your library is open source,
 we recommend sharing it on the [pub.dev site.]({{site.pub}})

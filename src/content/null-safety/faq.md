@@ -496,7 +496,7 @@ The fix is to explicitly create such lists as `List<dynamic>`.
 
 ## Why does the migration tool add comments to my code? {:#migration-comments}
 
-## 为什么迁移工具在我的代码中添加了注释 {:#为什么迁移工具在我的代码中添加了注释}
+## 为什么迁移工具在我的代码中添加了注释
 
 The migration tool adds `/* == false */` or `/* == true */` comments when it
 sees conditions that will always be false or true while running in sound mode.
