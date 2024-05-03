@@ -241,7 +241,7 @@ To create a [verified publisher][create-verified-publisher], follow these steps:
    This opens the [Google Search Console][google-search].
 
    如果出现提示，
-   请在打开的 [Google Search Console](google-search) 中完成验证流程。
+   请在打开的 [Google Search Console][google-search] 中完成验证流程。
 
    * When adding DNS records,
      a few hours might pass before the Search Console reflects the changes.

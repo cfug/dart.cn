@@ -19,7 +19,6 @@
   },
   "packageManager": "pnpm@8.15.8",
   "dependencies": {
-    "@npmcli/config": "^8.2.0",
     "bootstrap-scss": "^4.6.2"
   },
   "devDependencies": {
