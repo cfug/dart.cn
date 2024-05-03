@@ -46,6 +46,12 @@ export async function configureHighlighting(markdown) {
     const token = tokens[index];
 
     const splitTokenInfo = token.info.match(/(\S+)\s?(.*?)$/m);
+
+    if (!splitTokenInfo) {
+      throw new Error('Each Markdown code block should specify a language ' +
+          'after the opening backticks like: ```dart.');
+    }
+
     const language = splitTokenInfo.length > 1 ? splitTokenInfo[1] : '';
     const attributes = splitTokenInfo.length > 2 ? splitTokenInfo[2] : '';
 
@@ -128,11 +134,7 @@ function _highlight(
 
           const bodyChildren = [preElement];
 
-          if (
-            language !== 'plaintext' &&
-            language !== 'console' &&
-            language !== 'ps'
-          ) {
+          if (!['plaintext', 'console', 'ps', 'diff'].includes(language)) {
             const languageText = _createSpanWithText(language, {
               class: 'code-block-language',
               title: `Language ${language}`,

@@ -57,7 +57,7 @@ we made the following changes to this site:
 * Added content on [creating][] and [ignoring][] security advisories in a pubspec file.
 * Documented [how to migrate away from a retracted package version][retract].
 
-[run on 11ty]: {{site.repo.dart.org}}/site-www/pull/5483
+[run on 11ty]: {{site.repo.this}}/pull/5483
 [Extension types]: /language/extension-types
 [JavaScript interop]: /interop/js-interop
 [Usage]: /interop/js-interop/usage
@@ -73,7 +73,7 @@ we made the following changes to this site:
 [Glossary]: /resources/glossary#function
 [Library tour]: /libraries
 [Breaking changes]: /resources/breaking-changes#3-3-0
-[FAQ]: {{site.repo.dart.org}}/site-www/pull/5479
+[FAQ]: {{site.repo.this}}/pull/5479
 [`dart doc`]: /tools/dart-doc
 [supported platforms]: /get-dart
 [`dart format`]: /tools/dart-format
@@ -126,7 +126,7 @@ we made the following changes to this site:
 * Reorganized and simplified site infrastructure across the board, in preparation
   to [move away from using Jekyll][].
 
-[type promotion]: /effective-dart/usage#consider-assigning-a-nullable-field-to-a-local-variable-to-enable-type-promotion
+[type promotion]: /effective-dart/usage#consider-type-promotion-or-null-check-patterns-for-using-nullable-types
 [Understanding Null Safety]: /null-safety/understanding-null-safety
 [C interop]: /interop/c-interop#native-assets
 [Breaking changes]: /resources/breaking-changes
@@ -140,7 +140,7 @@ we made the following changes to this site:
 [Extension methods]: /language/extension-methods
 [Objective-C]: /interop/objective-c-interop#callbacks-and-multithreading-limitations
 [Metadata]: /language/metadata
-[move away from using Jekyll]: {{site.repo.dart.org}}/site-www/issues/5177
+[move away from using Jekyll]: {{site.repo.this}}/issues/5177
 
 ## August 16, 2023: 3.1 release
 
@@ -616,7 +616,7 @@ we made the following changes to this site:
   [PREFER using interpolation to compose strings and values][]
   Effective Dart guideline.
 
-[updated the website infrastructure]: {{site.repo.dart.org}}/site-www/pull/3765
+[updated the website infrastructure]: {{site.repo.this}}/pull/3765
 [easier contributions]: {{site.repo.this}}#getting-started
 [`dart doc`]: /tools/dart-doc
 [`platform` entry]: /tools/pub/pubspec#platforms

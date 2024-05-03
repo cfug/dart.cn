@@ -5,7 +5,7 @@ title: DartPad 线上工具
 description: 在浏览器里体验 Dart 编程语言的工具。
 ---
 
-DartPad is an [open source tool](https://github.com/dart-lang/dart-pad)
+DartPad is an [open source tool]({{site.repo.dart.org}}/dart-pad)
 that lets you play with the Dart language in any modern browser.
 Many pages in this site—especially [codelabs](/codelabs)—have
 [embedded DartPads](#embedding).
@@ -65,7 +65,7 @@ DartPad 尚不支持 [延迟加载][deferred loading]，
 DartPad 尚不支持使用其他在 pub.dev 上的 package。
 
 [multi-platform]: /libraries#multi-platform-libraries
-[currently supported packages]: https://github.com/dart-lang/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
+[currently supported packages]: {{site.repo.dart.org}}/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
 
 ## Getting started
 
@@ -198,6 +198,6 @@ For technical details on embedding DartPads, see the
 有关嵌入式 DartPads 的具体技术细节，参见 [DartPad 嵌入指南。][DartPad embedding guide.]
 
 [DartPad]: {{site.dartpad}}
-[DartPad embedding guide.]: https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide
+[DartPad embedding guide.]: {{site.repo.dart.org}}/dart-pad/wiki/Embedding-Guide
 [deferred loading]: /language/libraries#lazily-loading-a-library
 [futures codelab]: /codelabs/async-await

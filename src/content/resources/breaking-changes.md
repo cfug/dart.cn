@@ -101,7 +101,7 @@ accounting for them before the 3.4.0 release.
   Usages should be migrated to `dart:js_interop` and `dart:js_interop_unsafe`.
   To learn more, check out [`/go/next-gen-js-interop`][].
 
-[`/go/next-gen-js-interop`]: https://dart.dev/go/next-gen-js-interop
+[`/go/next-gen-js-interop`]: {{site.redirect.go}}/next-gen-js-interop
 
 #### `dart:js_util`
 
@@ -109,7 +109,7 @@ accounting for them before the 3.4.0 release.
   Usages should be migrated to `dart:js_interop` and `dart:js_interop_unsafe`.
   To learn more, check out [`/go/next-gen-js-interop`][].
 
-[`/go/next-gen-js-interop`]: https://dart.dev/go/next-gen-js-interop
+[`/go/next-gen-js-interop`]: {{site.redirect.go}}/next-gen-js-interop
 
 #### `dart:typed_data`
 
@@ -458,21 +458,21 @@ on all the changes in this section.
   introduced in vm_service:11.0.0
 
 [dart3]: /resources/dart-3-migration/
-[switch cases]: https://dart.dev/language/branches#switch
-[mixin class]: https://dart.dev/language/mixins#class-mixin-or-mixin-class
-[label]: https://dart.dev/language/branches#switch
+[switch cases]: /language/branches#switch
+[mixin class]: /language/mixins#class-mixin-or-mixin-class
+[label]: /language/branches#switch
 [50902]: {{site.repo.dart.sdk}}/issues/50902
 [collection]: /resources/dart-3-migration#dart-collection
 [49529]: {{site.repo.dart.sdk}}/issues/49529
-[`DeferredLibrary`]: https://api.dart.dev/stable/2.18.4/dart-async/DeferredLibrary-class.html
-[`deferred as`]: https://dart.dev/guides/language/language-tour#lazily-loading-a-library
-[`MAX_USER_TAGS`]: https://api.dart.dev/stable/dart-developer/UserTag/MAX_USER_TAGS-constant.html
-[`maxUserTags`]: https://api.dart.dev/beta/2.19.0-255.2.beta/dart-developer/UserTag/maxUserTags-constant.html
+[`DeferredLibrary`]: {{site.dart-api}}/stable/2.18.4/dart-async/DeferredLibrary-class.html
+[`deferred as`]: /guides/language/language-tour#lazily-loading-a-library
+[`MAX_USER_TAGS`]: {{site.dart-api}}/stable/dart-developer/UserTag/MAX_USER_TAGS-constant.html
+[`maxUserTags`]: {{site.dart-api}}/beta/2.19.0-255.2.beta/dart-developer/UserTag/maxUserTags-constant.html
 [50231]: {{site.repo.dart.sdk}}/issues/50231
-[`Metrics`]: https://api.dart.dev/stable/2.18.2/dart-developer/Metrics-class.html
-[`Metric`]: https://api.dart.dev/stable/2.18.2/dart-developer/Metric-class.html
-[`Counter`]: https://api.dart.dev/stable/2.18.2/dart-developer/Counter-class.html
-[`Gauge`]: https://api.dart.dev/stable/2.18.2/dart-developer/Gauge-class.html
+[`Metrics`]: {{site.dart-api}}/stable/2.18.2/dart-developer/Metrics-class.html
+[`Metric`]: {{site.dart-api}}/stable/2.18.2/dart-developer/Metric-class.html
+[`Counter`]: {{site.dart-api}}/stable/2.18.2/dart-developer/Counter-class.html
+[`Gauge`]: {{site.dart-api}}/stable/2.18.2/dart-developer/Gauge-class.html
 [49536]: {{site.repo.dart.sdk}}/issues/49536
 [51035]: {{site.repo.dart.sdk}}/issues/51035
 
@@ -542,12 +542,12 @@ on all the changes in this section.
 [49687]: {{site.repo.dart.sdk}}/issues/49687
 [50383]: {{site.repo.dart.sdk}}/issues/50383
 [34233]: {{site.repo.dart.sdk}}/issues/34233
-[`ServiceExtensionResponse`]: https://api.dart.dev/stable/2.17.6/dart-developer/ServiceExtensionResponse-class.html#constants
+[`ServiceExtensionResponse`]: {{site.dart-api}}/stable/2.17.6/dart-developer/ServiceExtensionResponse-class.html#constants
 [49935]: {{site.repo.dart.sdk}}/issues/49935
 [49305]: {{site.repo.dart.sdk}}/issues/49305
 [49647]: {{site.repo.dart.sdk}}/issues/49647
 [49878]: {{site.repo.dart.sdk}}/issues/49878
-[`SendPort.send`]: https://api.dart.dev/stable/dart-isolate/SendPort/send.html
+[`SendPort.send`]: {{site.dart-api}}/stable/dart-isolate/SendPort/send.html
 [34233]: {{site.repo.dart.sdk}}/issues/34233
 [49473]: {{site.repo.dart.sdk}}/issues/49473
 [48730]: {{site.repo.dart.sdk}}/issues/48730
@@ -761,7 +761,7 @@ on all the changes in this section.
 
 * [The Dart SDK constraint is now **required** in `pubspec.yaml`][44072].
 
-[Null safety]: https://dart.dev/null-safety/understanding-null-safety
+[Null safety]: /null-safety/understanding-null-safety
 [44660]: {{site.repo.dart.sdk}}/issues/44660
 [44621]: {{site.repo.dart.sdk}}/issues/44621
 [42312]: {{site.repo.dart.sdk}}/issues/42312
@@ -963,7 +963,7 @@ other.
 
 #### Pub
 
-* Packages published to [pub.dev](https://pub.dev) [can no longer contain git
+* Packages published to [pub.dev]({{site.pub}}) [can no longer contain git
   dependencies][36765].
 
 [36900]: {{site.repo.dart.sdk}}/issues/36900

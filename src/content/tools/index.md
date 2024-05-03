@@ -75,7 +75,7 @@ Dart plugins exist for these commonly used IDEs.
 
 这些常用的 IDE 都带有 Dart 插件。
 
-<ul class="col2">
+<ul class="cols2">
 <li>
 <img src="/assets/img/tools/android_studio.svg" width="48" alt="Android Studio logo">
 <a href="/tools/jetbrains-plugin"><b>Android Studio</b></a>
@@ -97,7 +97,7 @@ thanks to the Dart community.
 
 下面的 Dart 插件也是可用的，感谢 Dart 社区。
 
-<ul class="col2">
+<ul class="cols2">
 <li>
 <img src="/assets/img/tools/emacs.png" alt="Emacs logo">
 <a href="https://github.com/nex3/dart-mode"><b>Emacs</b></a>

@@ -102,12 +102,12 @@ Learn how to
 [contribute to the core SDK.]({{site.repo.dart.sdk}}/blob/main/CONTRIBUTING.md)
 
 Dart 是开源项目。了解如何
-[为核心 SDK 做贡献]({{site.repo.dart.sdk}}/blob/master/CONTRIBUTING.md)。
+[为核心 SDK 做贡献]({{site.repo.dart.sdk}}/blob/main/CONTRIBUTING.md)。
 
-[Dart GitHub repositories](https://github.com/dart-lang/)
+[Dart GitHub repositories]({{site.repo.dart.org}}/)
 <br> Track new changes and contribute to various Dart projects.
 
-[Dart GitHub 仓库](https://github.com/dart-lang/)
+[Dart GitHub 仓库]({{site.repo.dart.org}}/)
 <br> 跟踪改动并为 Dart 的各类项目作出贡献。
 
   * [Core SDK]({{site.repo.dart.sdk}}/)
@@ -122,11 +122,11 @@ Dart 是开源项目。了解如何
   * [Dart 语言]({{site.repo.dart.lang}})
     （[跟踪 issue]({{site.repo.dart.lang}}/issues)）
 
-  * [This site](https://github.com/dart-lang/site-www/)
-    ([issue tracker](https://github.com/dart-lang/site-www/issues/))
+  * [This site]({{site.repo.this}}/)
+    ([issue tracker]({{site.repo.this}}/issues/))
 
-    [该仓库](https://github.com/dart-lang/site-www/)
-    （[跟踪 issue](https://github.com/dart-lang/site-www/issues/)）
+    [当前网站仓库]({{site.repo.this}}/)
+    （[跟踪 issue]({{site.repo.this}}/issues/)）
 
 [Dart reviews]({{group}}/d/forum/reviews)
 <br> High-traffic list of all core SDK code reviews.

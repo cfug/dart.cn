@@ -16,16 +16,17 @@ yaml_variable_scanner:
 
   # Ignore YAML Key
   #
-  # e.g. "^a.bb$"
+  # e.g. "^a\.bb$"
   #
   # (RegExp Syntax)
   ignoreYamlKey:
-    - ^site.title$
-    - ^site.description$
-    - ^site.branch$
-    - ^site.show_banner$
-    - ^site.og_image_vers$
-    - ^site.sdkInfo
+    - ^site\.title$
+    - ^site\.description$
+    - ^site\.url$
+    - ^site\.branch$
+    - ^site\.show_banner$
+    - ^site\.og_image_vers$
+    - ^site\.sdkInfo\.
   
   # File path for check file contents
   #
@@ -41,6 +42,7 @@ yaml_variable_scanner:
     - "src/content/tools/dartpad/index.md"
     - "src/content/tools/dartpad/troubleshoot.md"
     - "src/content/community/index.md"
+    - "src/content/tools/diagnostic-messages.md"
 
   # Ignore text that doesn't need to match
   #
@@ -51,6 +53,9 @@ yaml_variable_scanner:
   #
   # (RegExp Syntax)
   ignoreCheckText:
+    # <!-- ignore-variable-check --> xxx <!-- end-ignore-variable-check -->
+    - ^\s*<!---?\s*ignore-variable-check\s*-?-->([\s\S]*?)<!---?\s*end-ignore-variable-check\s*-?-->$
+
     # --- xxx ---
     - ^\s*---([\s\S]*?)---$
 
@@ -62,3 +67,6 @@ yaml_variable_scanner:
 
     # ``` xxx ```
     - ^\s*```([\s\S]*?)```$
+
+    # ` xxx `
+    - '`([^`]*)`'

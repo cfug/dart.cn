@@ -71,7 +71,7 @@ check out [dart.dev/go/dartdoc-options-file][dartdoc-options].
 TODO: Document the long-term supported options here.
 {% endcomment -%}
 
-[dartdoc-options]: https://dart.dev/go/dartdoc-options-file
+[dartdoc-options]: {{site.repo.dart.org}}/dartdoc#dartdoc_optionsyaml
 
 ## View generated docs {:#view}
 
@@ -98,7 +98,7 @@ $ dart pub global run dhttpd --path doc/api
 To then read the generated docs in your browser,
 open the link that `dhttpd` outputs, usually `http://localhost:8080`.
 
-[`package:dhttpd`]: https://pub.dev/packages/dhttpd
+[`package:dhttpd`]: {{site.pub-pkg}}/dhttpd
 
 ### View hosted docs {:#view-hosted}
 
