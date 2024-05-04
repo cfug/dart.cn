@@ -1071,7 +1071,7 @@ Dart 有两种传参方法：位置参数和命名参数。位置参数你可能
 int sumUp(int a, int b, int c) {
   return a + b + c;
 }
-// ···
+  // ···
   int total = sumUp(1, 2, 3);
 ```
 
@@ -1089,7 +1089,7 @@ int sumUpToFive(int a, [int? b, int? c, int? d, int? e]) {
   if (e != null) sum += e;
   return sum;
 }
-// ···
+  // ···
   int total = sumUpToFive(1, 2);
   int otherTotal = sumUpToFive(1, 2, 3, 4, 5);
 ```
@@ -1101,14 +1101,16 @@ Their default value is null unless you provide another default value:
 可选位置参数永远放在方法参数列表的最后。
 除非你给它们提供一个默认值，否则默认为 null:
 
-<?code-excerpt "misc/lib/cheatsheet/optional_positional_args2.dart"?>
+<?code-excerpt "misc/lib/cheatsheet/optional_positional_args2.dart (sum-no-impl)"?>
 ```dart
 int sumUpToFive(int a, [int b = 2, int c = 3, int d = 4, int e = 5]) {
-// ···
+  // ···
 }
-// ···
+
+void main() {
   int newTotal = sumUpToFive(1);
   print(newTotal); // <-- prints 15
+}
 ```
 
 ### Code example {:.no_toc}
@@ -1231,11 +1233,13 @@ unless they're explicitly marked as `required`.
 void printName(String firstName, String lastName, {String? middleName}) {
   print('$firstName ${middleName ?? ''} $lastName');
 }
-// ···
+
+void main() {
   printName('Dash', 'Dartisan');
   printName('John', 'Smith', middleName: 'Who');
   // Named arguments can be placed anywhere in the argument list
   printName('John', middleName: 'Who', 'Smith');
+}
 ```
 
 As you might expect,

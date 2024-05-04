@@ -9,6 +9,8 @@ nextpage:
   title: Extend a class
 ---
 
+<?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
+
 Methods are functions that provide behavior for an object.
 
 ## Instance methods
@@ -39,23 +41,22 @@ class Point {
 
 ## Operators
 
-Operators are instance methods with special names.
+Most operators are instance methods with special names.
 Dart allows you to define operators with the following names:
 
-|      |      |      |       |
-|------|------|------|-------|
-| `<`  | `+`  | `\|` | `>>>` |
-| `>`  | `/`  | `^`  | `[]`  |
-| `<=` | `~/` | `&`  | `[]=` |
-| `>=` | `*`  | `<<` | `~`   |
-| `-`  | `%`  | `>>` | `==`  |
+|       |      |      |      |       |      |
+|-------|------|------|------|-------|------|
+| `<`   | `>`  | `<=` | `>=` | `==`  | `~`  |
+| `-`   | `+`  | `/`  | `~/` | `*`   | `%`  |
+| `\|`  | `ˆ`  | `&`  | `<<` | `>>>` | `>>` |
+| `[]=` | `[]` |      |      |       |      |
 
 {:.table}
 
 :::note
 You may have noticed that some [operators][], like `!=`, aren't in
-the list of names. That's because they're just syntactic sugar. For example,
-the expression `e1 != e2` is syntactic sugar for `!(e1 == e2)`.
+the list of names. These operators aren't instance methods.
+Their behavior is built in to Dart.
 :::
 
 {%- comment %}
@@ -64,9 +65,10 @@ the expression `e1 != e2` is syntactic sugar for `!(e1 == e2)`.
   - `!` is probably excluded for historical reasons
 {% endcomment %}
 
-An operator declaration is identified using the built-in identifier `operator`.
-The following example defines vector 
-addition (`+`), subtraction (`-`), and equality (`==`):
+To declare an operator, use the built-in identifier
+`operator` then the operator you are defining.
+The following example defines vector addition (`+`), subtraction (`-`),
+and equality (`==`):
 
 <?code-excerpt "misc/lib/language_tour/classes/vector.dart"?>
 ```dart

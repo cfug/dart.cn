@@ -58,7 +58,7 @@ including optional parameters for command-line arguments.
 
 ## 变量
 
-Even in [type-safe](https://dart.dev/language/type-system) Dart code,
+Even in [type-safe](/language/type-system) Dart code,
 you can declare most variables without explicitly specifying their type using `var`. 
 Thanks to type inference, these variables' types are determined by their initial values:
 
