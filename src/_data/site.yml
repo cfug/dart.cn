@@ -17,7 +17,7 @@ repo:
 branch: main
 
 flutter: https://flutter.cn
-flutter-docs: https://flutter.cn/docs
+flutter-docs: https://docs.flutter.cn
 dart-api: https://api.dart.cn
 flutter-api: https://api.flutter-io.cn
 pub: https://pub-web.flutter-io.cn
