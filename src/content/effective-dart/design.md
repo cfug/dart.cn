@@ -496,7 +496,7 @@ previous guidelines state, either:
 
 ### **推荐** 使用 `to___()` 来命名把对象的状态转换到一个新的对象的函数。
 
-{% include 'linter-rule-mention.md', rules:'use_to_and_as_if_applicable' %}
+{% render 'linter-rule-mention.md', rules:'use_to_and_as_if_applicable' %}
 
 A *conversion* method is one that returns a new object containing a copy of
 almost all of the state of the receiver but usually in some different form or
@@ -522,7 +522,7 @@ dateTime.toLocal();
 
 ### **推荐** 使用 `as___()` 来命名把原来对象转换为另外一种表现形式的函数。
 
-{% include 'linter-rule-mention.md', rules:'use_to_and_as_if_applicable' %}
+{% render 'linter-rule-mention.md', rules:'use_to_and_as_if_applicable' %}
 
 Conversion methods are "snapshots". The resulting object has its own copy of the
 original object's state. There are other conversion-like methods that return
@@ -757,7 +757,7 @@ Dart是一种 “纯粹的” 面向对象语言，因为所有对象都是类�
 
 ### **避免** 避免为了使用一个简单的函数而去定义一个单一成员的抽象类
 
-{% include 'linter-rule-mention.md', rules:'one_member_abstracts' %}
+{% render 'linter-rule-mention.md', rules:'one_member_abstracts' %}
 
 Unlike Java, Dart has first-class functions, closures, and a nice light syntax
 for using them. If all you need is something like a callback, just use a
@@ -786,7 +786,7 @@ abstract class Predicate<E> {
 
 ### **避免** 定义仅包含静态成员的类。
 
-{% include 'linter-rule-mention.md', rules:'avoid_classes_with_only_static_members' %}
+{% render 'linter-rule-mention.md', rules:'avoid_classes_with_only_static_members' %}
 
 In Java and C#, every definition *must* be inside a class, so it's common to see
 "classes" that exist only as a place to stuff static members. Other classes are
@@ -954,7 +954,7 @@ comment.
 
 ### **推荐** 定义存粹的 `mixin` 或存粹的 `class`，而不是 `mixin class`
 
-{% include 'linter-rule-mention.md', rules:'prefer_mixin' %}
+{% render 'linter-rule-mention.md', rules:'prefer_mixin' %}
 
 Dart previously (language version [2.12](/guides/language/evolution#dart-2-12)
 to [2.19](/guides/language/evolution#dart-2-19)) allowed any class that
@@ -1029,7 +1029,7 @@ A member belongs to an object and can be either methods or instance variables.
 
 ### **推荐** 指定字段或顶级变量为 `final` 。
 
-{% include 'linter-rule-mention.md', rules:'prefer_final_fields' %}
+{% render 'linter-rule-mention.md', rules:'prefer_final_fields' %}
 
 State that is not *mutable*—that does not change over time—is
 easier for programmers to reason about. Classes and libraries that minimize the
@@ -1204,7 +1204,7 @@ dataSet.minimumValue;
 
 ### **要** 对概念上是修改的属性使用 setter 方法。
 
-{% include 'linter-rule-mention.md', rules:'use_setters_to_change_properties' %}
+{% render 'linter-rule-mention.md', rules:'use_setters_to_change_properties' %}
 
 Deciding between a setter versus a method is similar to deciding between a
 getter versus a method. In both cases, the operation should be "field-like".
@@ -1245,7 +1245,7 @@ button.visible = false;
 
 ### **不要** 在没有对应的 getter 的情况下定义 setter。
 
-{% include 'linter-rule-mention.md', rules:'avoid_setters_without_getters' %}
+{% render 'linter-rule-mention.md', rules:'avoid_setters_without_getters' %}
 
 Users think of getters and setters as visible properties of an object. A
 "dropbox" property that can be written to but not seen is confusing and
@@ -1333,7 +1333,7 @@ empty container, it might make sense to use a nullable type.
 
 ### **避免** 为了书写流畅，而从方法中返回 `this` 。
 
-{% include 'linter-rule-mention.md', rules:'avoid_returning_this' %}
+{% render 'linter-rule-mention.md', rules:'avoid_returning_this' %}
 
 Method cascades are a better solution for chaining method calls.
 
@@ -1495,7 +1495,7 @@ various cases, but the rough summary is:
 
 ### DO type annotate variables without initializers
 
-{% include 'linter-rule-mention.md', rules:'prefer_typing_uninitialized_variables' %}
+{% render 'linter-rule-mention.md', rules:'prefer_typing_uninitialized_variables' %}
 
 The type of a variable—top-level, local, static field, or instance
 field—can often be inferred from its initializer. However, if there is no
@@ -1528,7 +1528,7 @@ if (node is Constructor) {
 
 ### **推荐** 为类型不明显的公共字段和公共顶级变量指定类型注解。
 
-{% include 'linter-rule-mention.md', rules:'type_annotate_public_apis' %}
+{% render 'linter-rule-mention.md', rules:'type_annotate_public_apis' %}
 
 Type annotations are important documentation for how a library should be used.
 They form boundaries between regions of a program to isolate the source of a
@@ -1615,7 +1615,7 @@ annotations on APIs help *users* of your code, types on private members help
 
 ### **避免** 为初始化的局部变量添加冗余地类型注解。
 
-{% include 'linter-rule-mention.md', rules:'omit_local_variable_types' %}
+{% render 'linter-rule-mention.md', rules:'omit_local_variable_types' %}
 
 Local variables, especially in modern code where functions tend to be small,
 have very little scope. Omitting the type focuses the reader's attention on the
@@ -1733,7 +1733,7 @@ different type annotation conventions, as described in the next two guidelines.
 
 ### **避免** 在函数表达式上注解推断的参数类型。
 
-{% include 'linter-rule-mention.md', rules:'avoid_types_on_closure_parameters' %}
+{% render 'linter-rule-mention.md', rules:'avoid_types_on_closure_parameters' %}
 
 Anonymous functions are almost always immediately passed to a method taking a
 callback of some type.
@@ -1772,7 +1772,7 @@ function's parameters. In those cases, you may need to annotate.
 
 ### DON'T type annotate initializing formals
 
-{% include 'linter-rule-mention.md', rules:'type_init_formals' %}
+{% render 'linter-rule-mention.md', rules:'type_init_formals' %}
 
 If a constructor parameter is using `this.` to initialize a field, 
 or `super.` to forward a super parameter, 
@@ -2042,7 +2042,7 @@ void handleError([!void Function()!] operation, [!Function!] errorHandler) {
 
 ### **不要** 为 setter 方法指定返回类型。
 
-{% include 'linter-rule-mention.md', rules:'avoid_return_types_on_setters' %}
+{% render 'linter-rule-mention.md', rules:'avoid_return_types_on_setters' %}
 
 Setters always return `void` in Dart. Writing the word is pointless.
 
@@ -2063,7 +2063,7 @@ set foo(Foo value) { ... }
 
 ### **不要** 使用弃用的 typedef 语法。
 
-{% include 'linter-rule-mention.md', rules:'prefer_generic_function_type_aliases' %}
+{% render 'linter-rule-mention.md', rules:'prefer_generic_function_type_aliases' %}
 
 Dart has two notations for defining a named typedef for a function type. The
 original syntax looks like:
@@ -2148,7 +2148,7 @@ it's deprecated.
 
 ### **推荐** 优先使用内联函数类型，而后是 typedef。
 
-{% include 'linter-rule-mention.md', rules:'avoid_private_typedef_functions' %}
+{% render 'linter-rule-mention.md', rules:'avoid_private_typedef_functions' %}
 
 In Dart, if you want to use a function type for a field, variable, or
 generic type argument, you can define a typedef for the function type.
@@ -2195,7 +2195,7 @@ that clarity.
 
 ### **考虑** 在参数上使用函数类型语法。
 
-{% include 'linter-rule-mention.md', rules:'use_function_type_syntax_for_parameters' %}
+{% render 'linter-rule-mention.md', rules:'use_function_type_syntax_for_parameters' %}
 
 Dart has a special syntax when defining a parameter whose type is a function.
 Sort of like in C, you surround the parameter's name with the function's return
@@ -2388,7 +2388,7 @@ In Dart, optional parameters can be either positional or named, but not both.
 
 ### **避免** 布尔类型的位置参数。
 
-{% include 'linter-rule-mention.md', rules:'avoid_positional_boolean_parameters' %}
+{% render 'linter-rule-mention.md', rules:'avoid_positional_boolean_parameters' %}
 
 Unlike other types, booleans are usually used in literal form. Values like
 numbers are usually wrapped in named constants, but we typically pass around
@@ -2537,7 +2537,7 @@ elements to follow.
 
 ### **要** 对重写 `==` 操作符的类，重写 `hashCode` 方法。
 
-{% include 'linter-rule-mention.md', rules:'hash_and_equals' %}
+{% render 'linter-rule-mention.md', rules:'hash_and_equals' %}
 
 The default hash code implementation provides an *identity* hash—two
 objects generally only have the same hash code if they are the exact same
@@ -2584,7 +2584,7 @@ you're trying to express.
 
 ### **避免** 为可变类自定义相等。
 
-{% include 'linter-rule-mention.md', rules:'avoid_equals_and_hash_code_on_mutable_classes' %}
+{% render 'linter-rule-mention.md', rules:'avoid_equals_and_hash_code_on_mutable_classes' %}
 
 When you define `==`, you also have to define `hashCode`. Both of those should
 take into account the object's fields. If those fields *change* then that
@@ -2605,7 +2605,7 @@ true.
 
 ### **不要** 使用 `==` 操作符与可空值比较。
 
-{% include 'linter-rule-mention.md', rules:'avoid_null_checks_in_equality_operators' %}
+{% render 'linter-rule-mention.md', rules:'avoid_null_checks_in_equality_operators' %}
 
 The language specifies that `null` is equal only to itself, and that the `==`
 method is called only if the right-hand side is not `null`.

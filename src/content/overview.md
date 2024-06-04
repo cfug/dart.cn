@@ -93,7 +93,7 @@ check out the [Dart language tour](/language).
 请参阅 [Dart 简介](/language)。
 
 <?code-excerpt "misc/lib/overview_pi.dart"?>
-```dart:run-dartpad:ga_id-overview
+```dartpad
 import 'dart:math' show Random;
 
 void main() async {
@@ -283,11 +283,11 @@ publish thousands of packages, with support for features like these:
 
 To see a series of working examples featuring the Dart core libraries,
 read the [core library documentation](/libraries).
-To find additional APIs, see the
-[commonly used packages page](/guides/libraries/useful-libraries).
+To find additional APIs, check out the
+[commonly used packages page](/resources/useful-packages).
 
 你可以访问 [核心库文档](/libraries)，查看关于 Dart 核心库的一系列示例。
-如果你想要查找其他 API，请参见 [常用软件包页面](/guides/libraries/useful-libraries)。
+如果你想要查找其他 API，请参见 [常用的 package 页面](/resources/useful-packages)。
 
 ## Dart: The platforms {:#platform}
 
@@ -305,11 +305,11 @@ Dart 的编译器技术可让你以不同的方式运行代码：
   Dart 拥有具有实时 (JIT) 编译功能的 Dart VM 和用于生成机器代码的提前 (AOT) 编译器。
 
 * **Web platform**: For apps targeting the web, Dart can compile for
-  development or production purposes. Its web compiler translates Dart
-  into JavaScript.
+  development or production purposes. Its web compilers translate Dart
+  into JavaScript or WebAssembly.
 
   **Web 平台**：Dart 可用于编译开发和生产阶段的面向 Web 的应用，
-  它的 Web 编译器可以将 Dart 转换为 JavaScript。
+  它的 Web 编译器可以将 Dart 转换为 JavaScript 或 WebAssembly。
 
 <img 
   src="/assets/img/Dart-platforms.svg" 
@@ -378,33 +378,43 @@ More information:
 
   [编写 HTTP 服务器](/tutorials/server/httpserver)
 
-#### Dart Web (JavaScript dev & prod) {:#web-platform}
+#### Dart Web (JavaScript dev & prod and WebAssembly) {:#web-platform}
 
-#### Web 平台的 Dart (使用 JavaScript 开发和部署)
+#### Web 平台的 Dart（JavaScript 的开发与部署以及 WebAssembly）
 
 Dart Web enables running Dart code on web platforms powered by
 JavaScript. With Dart Web, you compile Dart code to JavaScript code, which in
 turn runs in a browser—for example, [V8](https://v8.dev/) inside
 [Chrome](https://www.google.com/chrome/).
+Alternatively, Dart code can be compiled to WebAssembly.
 
 Dart 的 Web 支持让你可以在 JavaScript 驱动的网页平台上运行 Dart 代码。
 使用 Web 环境下的 Dart 时，你可以将 Dart 编译为在浏览器中运行的 JavaScript 代码，
 例如: [Chrome](https://www.google.cn/chrome/) 中的 [V8](https://v8.dev/)。
+或者，也可以将 Dart 代码编译成 WebAssembly。
 
-Dart web contains two compiliation modes:
+Dart web contains three compilation modes:
 
-Dart Web 包含两种编译模式:
+Dart Web 包含三种编译模式：
 
-* An incremental development compiler enabling a fast developer cycle
+* An incremental JavaScript development compiler enabling a fast developer 
+  cycle.
 
-  一个为快速开发提供帮助的增量编译器。
+  一种为快速开发提供帮助的增量 JavaScript 编译器。
 
-* An optimizing production compiler which compiles Dart code to fast,
-  compact, deployable JavaScript. These efficiencies come from
-  techniques such as dead-code elimination.
+* An optimizing JavaScript production compiler which compiles Dart code to fast,
+  compact, deployable JavaScript. These efficiencies come from techniques such
+  as dead-code elimination.
 
-  一个为生产环境优化的编译器，可以将 Dart 代码编译成快速、紧凑、可部署的 JavaScript。
+  一种为生产环境优化的 JavaScript 编译器，
+  可以将 Dart 代码编译成快速、紧凑、可部署的 JavaScript。
   它的高效之处在于使用了类似消除无用代码的优化。
+
+* An optimizing WebAssembly (WasmGC) production compiler which compiles Dart
+  code to super-fast, deployable WebAssembly GC code.
+
+  一种为生产环境优化的 WebAssembly (WasmGC) 编译器，
+  可以将 Dart 代码编译成超快、可部署的 WebAssembly GC 代码。
 
 More information:
 
@@ -420,6 +430,7 @@ More information:
   [`webdev` 工具](/tools/webdev)
 
 * [Web deployment tips](/web/deployment)
+* [WebAssembly compilation](/web/wasm)
 
   [网页部署提示](/web/deployment)
 

@@ -384,7 +384,7 @@ the preexisting executable will not be replaced.
 默认情况下，如果执行的两个全局 Package 名字冲突了，那么会优先执行最先执行过的那个。
 但是如果你指定该标识，那么新执行的 Package 则会覆盖之前执行的那些。
 
-{% include 'pub-problems.md' %}
+{% render 'pub-problems.md' %}
 
 [system cache]: /tools/pub/glossary#system-cache
 [webdev]: /tools/webdev

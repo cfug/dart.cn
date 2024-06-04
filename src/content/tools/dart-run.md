@@ -32,7 +32,7 @@ $ cd myapp
 $ dart run
 ```
 
-{% include 'tools/dart-tool-note.md' %}
+{% render 'tools/dart-tool-note.md' %}
 
 ## Running a Dart file
 

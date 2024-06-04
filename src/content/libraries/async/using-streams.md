@@ -103,12 +103,11 @@ This page uses embedded DartPads to display runnable examples.
 
 本页面内嵌了一些 DartPads 做例子展示，
 
-{% include 'dartpads-embedded-troubleshooting.md' %}
-  
+{% render 'dartpads-embedded-troubleshooting.md' %}
 :::
 
 <?code-excerpt "misc/lib/tutorial/sum_stream.dart"?>
-```dart:run-dartpad
+```dartpad
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
   await for (final value in stream) {
@@ -184,7 +183,7 @@ error when the loop iterator equals 4:
 下面的示例会在循环迭代到参数值等于 4 时抛出一个错误：
 
 <?code-excerpt "misc/lib/tutorial/sum_stream_with_catch.dart"?>
-```dart:run-dartpad
+```dartpad
 Future<int> sumStream(Stream<int> stream) async {
   var sum = 0;
   try {
@@ -570,15 +569,15 @@ and asynchronous programming in Dart.
 
 可以阅读下面的文档获取更多关于在 Dart 中使用 Stream 和异步编程的信息：
 
-* [Creating Streams in Dart](/articles/libraries/creating-streams),
+* [Creating Streams in Dart](/libraries/async/creating-streams),
   an article about creating your own streams
 
-  [在 Dart 中创建 Stream](/articles/libraries/creating-streams), 该文将向你介绍如何创建 Stream。
+  [在 Dart 中创建 Stream](/libraries/async/creating-streams), 该文将向你介绍如何创建 Stream。
 
-* [Futures and Error Handling](/guides/libraries/futures-error-handling),
+* [Futures and Error Handling](/libraries/async/futures-error-handling),
   an article that explains how to handle errors using the Future API
 
-  [Futures 以及错误处理](/guides/libraries/futures-error-handling), 该文将向你介绍如何在使用 Future API 时处理相关错误。
+  [Futures 以及错误处理](/libraries/async/futures-error-handling), 该文将向你介绍如何在使用 Future API 时处理相关错误。
 
 * [Asynchrony support](/language/async),
   a section in the [language tour](/language)

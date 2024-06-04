@@ -60,4 +60,14 @@ either don't use `--force`, or use `--dry-run` first.
 若你想确保你的 Package 在上传前没有警告，
 请确保不要使用 `--force` 和 `--dry-run` 选项。
 
-{% include 'pub-problems.md' %}
+### `--skip-validation`
+
+Publishes without going through the client-side validation process or resolving dependencies.
+This is useful for advanced users who knows why the validation fails and wishes to side step a particularly issues.
+
+**Example:** When publishing to pub.dev it may take a few minutes for a newly published package to become available.
+Hence, if you are publishing two dependent packages, where the second depends on the first.
+You can either wait a few minutes in between publishing the first and the second, or use `--skip-validation`
+to publish the second package immediately, by side-stepping client-side valiation.
+
+{% render 'pub-problems.md' %}

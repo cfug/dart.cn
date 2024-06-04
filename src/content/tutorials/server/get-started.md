@@ -46,13 +46,11 @@ greeting to use another language.
 你可以尝试更改源代码，比如更改问候语或者其它的一些语句。
 
 :::note
-
-{% include 'dartpad-embedded-troubleshooting.md' %}
-
+{% render 'dartpad-embedded-troubleshooting.md' %}
 :::
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
-```dart:run-dartpad:ga_id-hello_world
+```dartpad
 void main() {
   print('Hello, World!');
 }

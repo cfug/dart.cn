@@ -181,7 +181,7 @@ For options that apply to all pub commands, see
 
 ### `--[no-]offline`
 
-{% include 'tools/pub-option-no-offline.md' %}
+{% render 'tools/pub-option-no-offline.md' %}
 
 ### `--dry-run` or `-n`
 
@@ -202,31 +202,6 @@ To prevent precompilation, use `--no-precompile`.
 
 默认情况下，pub 会预编译直接依赖的 package 的可执行文件 (`precompile`)。
 若你不需要预编译，请使用 `--no-precompile`。
-
-### `--null-safety`
-
-Gets the packages that
-[`dart pub outdated --mode=null-safety`][`dart pub outdated`]
-lists as _resolvable_,
-ignoring any upper-bound constraint in the `pubspec.yaml` file.
-Also updates `pubspec.yaml` with the new constraints.
-This command is similar to `--major-versions`.
-
-获取 [`dart pub outdated --mode=null-safety`][`dart pub outdated`]
-列表中标记为 **resolvable** 的依赖，
-忽略 `pubspec.yaml` 文件中的任何上限。
-同时 `pubspec.yaml` 文件中的限制也会更新。
-该命令与 `--major-versions` 类似。
-
-:::tip
-
-Commit the `pubspec.yaml` file before running this command,
-so that you can undo the changes if necessary.
-
-在运星这个命令之前先提交 `pubspec.yaml` 文件，
-这样就可以在需要的时候撤销这些改动。
-
-:::
 
 ### `--major-versions`
 
@@ -266,4 +241,4 @@ Can be applied to [specific dependencies](#upgrading-specific-dependencies).
 可用于 [指定的依赖](#upgrading-specific-dependencies)。
 
 
-{% include 'pub-problems.md' %}
+{% render 'pub-problems.md' %}

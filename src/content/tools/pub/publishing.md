@@ -145,13 +145,13 @@ Pub 在 `pub.dev/packages/<your_package>` 里，
   your package's web page.
   The file's contents should be marked up using [Markdown][].
   To learn how to write a great README, see
-  [Writing package pages](/guides/libraries/writing-package-pages).
+  [Writing package pages](/tools/pub/writing-package-pages).
 
 **`README.md`**
 <br/> 该文件是你的 package 页面主要的组成部分。
   文件内容请使用 [Markdown][] 标记语言进行编写。
   要了解如何编写出色的 README，
-  请查阅 [编写 package 页面](/guides/libraries/writing-package-pages)。
+  请查阅 [编写 package 页面](/tools/pub/writing-package-pages)。
 
 **`CHANGELOG.md`**
 <br/> If found, this file populates its own tab on your package's web page.
@@ -196,7 +196,7 @@ Using a verified publisher has the following advantages:
   你可以避免让 pub.dev 展示你的个人邮箱，pub.dev 将展示发布者域名和联系地址作为代替。
 
 * The pub.dev site displays a verified publisher badge
-  <img src="/assets/img/verified-publisher.svg" width="20" height="20" alt="pub.dev verified publisher logo">
+  <img src="/assets/img/verified-publisher.svg" class="text-icon" alt="pub.dev verified publisher logo">
   next to your package name on search pages and individual package pages.
 
   一个已验证发布者徽章
@@ -466,10 +466,10 @@ To learn more about automated publishing, consult
 ### 以预发行的方式发布
 
 As you work on a package, consider publishing it as a prerelease.
-Prereleases can be useful when _any_ of the following are true:
+Prereleases can be useful when:
 
 如果你正专注于开发一个 package，考虑将它以预发行的方式发布。
-预发行将在以下 **任意情况下** 下变得实用：
+预发行在以下情况很实用：
 
 * You're actively developing the next major version of the package.
 
@@ -499,19 +499,25 @@ Later, when you release version `2.0.0`, it takes precedence over all
 
 As pub prefers stable releases when available, users of a prerelease package
 might need to change their dependency constraints.
-For example, if a user wants to test prereleases of version 2.1, then
+For example, if a user wants to test prereleases of version `2.1.0`, then
 instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
 
 pub 更优先选择使用稳定版本，所以使用预发布的用户可能需要手动改变它们的依赖约束。
-例如，如果一个用户想要测试 2.1 版本的预发布，
+例如，如果一个用户想要测试 `2.1.0` 的预发布版本，
 那么他可能需要指明是 `^2.1.0-dev.1` 版本，而不是 `^2.0.0` 或者 `^2.1.0` 版本。
 
 :::note
 
-If a stable package in the dependency graph depends on a prerelease,
-then pub chooses that prerelease instead of a stable release.
+While `pub` prefers stable releases the same way it prefers newer versions,
+the version solver does not attempt all solutions and may pick a prerelease,
+even when a resolution that doesn't use prereleases exists.
+Though this rarely happens in practice.
 
-如果一个稳定版的 package 在依赖关系中依赖于一个预发布，那么 pub 将选择预发布而非稳定发布。
+虽然 `pub` 会更优先使用稳定版本（就像更优先使用新版本一样），
+但版本解析器不会尝试所有语义解析方案，
+即使没有使用预发布版本的语义解析方案，
+它也有可能会选择使用预发布版本。
+当然，这样的情况在实际使用中很少发生。
 
 :::
 

@@ -251,7 +251,7 @@ and screenshots if appropriate.
 错误报告包括预期行为、实际行为的细节。
 如果合适的话，建议提供合适的屏幕截图。
 
-[JetBrains issue tracker for Dart.]: https://youtrack.jetbrains.com/issues/WEB?q=Subsystem:%20Dart
+[JetBrains issue tracker for Dart.]: https://youtrack.jetbrains.com/issues?q=Subsystem:%20%7BLang.%20Dart%7D%20
 
 ## More information
 

@@ -58,7 +58,7 @@ Identifiers come in three flavors in Dart.
 
 ### **要** 使用 `UpperCamelCase` 风格命名类型。
 
-{% include 'linter-rule-mention.md', rules:'camel_case_types' %}
+{% render 'linter-rule-mention.md', rules:'camel_case_types' %}
 
 Classes, enum types, typedefs, and type parameters should capitalize the first
 letter of each word (including the first word), and use no separators.
@@ -111,7 +111,7 @@ class C { ... }
 
 ### **要** 使用 `UpperCamelCase` 风格类型作为扩展名
 
-{% include 'linter-rule-mention.md', rules:'camel_case_extensions' %}
+{% render 'linter-rule-mention.md', rules:'camel_case_extensions' %}
 
 Like types, [extensions][] should capitalize the first letter of each word
 (including the first word),
@@ -134,7 +134,7 @@ extension SmartIterable<T> on Iterable<T> { ... }
 
 ### **要** 在`库`，`package`，`文件夹`，`源文件` 中使用 `lowercase_with_underscores` 方式命名
 
-{% include 'linter-rule-mention.md', rules:'file_names, package_names' %}
+{% render 'linter-rule-mention.md', rules:'file_names, package_names' %}
 
 Some file systems are not case-sensitive, so many projects require filenames to
 be all lowercase. Using a separating character allows names to still be readable
@@ -169,7 +169,7 @@ mypackage
 
 ### **要** 用 `lowercase_with_underscores` 风格命名库和源文件名。
 
-{% include 'linter-rule-mention.md', rules:'library_prefixes' %}
+{% render 'linter-rule-mention.md', rules:'library_prefixes' %}
 
 <?code-excerpt "style_lib_good.dart (import-as)" replace="/(package):examples\/effective_dart\/foo.dart[^']*/$1:angular_components\/angular_components.dart/g; /(package):examples\/effective_dart\/bar.dart[^']*/$1:js\/js.dart/g"?>
 ```dart tag=good
@@ -190,7 +190,7 @@ import 'package:js/js.dart' as JS;
 
 ### **要** 使用 `lowerCamelCase` 风格来命名其他的标识符。
 
-{% include 'linter-rule-mention.md', rules:'non_constant_identifier_names' %}
+{% render 'linter-rule-mention.md', rules:'non_constant_identifier_names' %}
 
 Class members, top-level definitions, variables, parameters, and named
 parameters should capitalize the first letter of each word *except* the first
@@ -215,7 +215,7 @@ void align(bool clearItems) {
 
 ### **推荐** 使用 `lowerCamelCase` 来命名常量。
 
-{% include 'linter-rule-mention.md', rules:'constant_identifier_names' %}
+{% render 'linter-rule-mention.md', rules:'constant_identifier_names' %}
 
 In new code, use `lowerCamelCase` for constant variables, including enum values.
 
@@ -437,7 +437,7 @@ A single linter rule handles all the ordering guidelines:
 
 ### **要** 把 "dart:" 导入语句放到其他导入语句之前。
 
-{% include 'linter-rule-mention.md', rules:'directives_ordering' %}
+{% render 'linter-rule-mention.md', rules:'directives_ordering' %}
 
 <?code-excerpt "style_lib_good.dart (dart-import-first)" replace="/\w+\/effective_dart\///g"?>
 ```dart tag=good
@@ -453,7 +453,7 @@ import 'package:foo/foo.dart';
 
 ### **要** 把 "package:" 导入语句放到项目相关导入语句之前。
 
-{% include 'linter-rule-mention.md', rules:'directives_ordering' %}
+{% render 'linter-rule-mention.md', rules:'directives_ordering' %}
 
 <?code-excerpt "style_lib_good.dart (pkg-import-before-local)" replace="/\w+\/effective_dart\///g;/'foo/'util/g"?>
 ```dart tag=good
@@ -468,7 +468,7 @@ import 'util.dart';
 
 ### **要** 把导出 (export) 语句作为一个单独的部分放到所有导入语句之后。
 
-{% include 'linter-rule-mention.md', rules:'directives_ordering' %}
+{% render 'linter-rule-mention.md', rules:'directives_ordering' %}
 
 <?code-excerpt "style_lib_good.dart (export)"?>
 ```dart tag=good
@@ -490,7 +490,7 @@ import 'src/foo_bar.dart';
 
 ### **要** 按照字母顺序来排序每个部分中的语句。
 
-{% include 'linter-rule-mention.md', rules:'directives_ordering' %}
+{% render 'linter-rule-mention.md', rules:'directives_ordering' %}
 
 <?code-excerpt "style_lib_good.dart (sorted)" replace="/\w+\/effective_dart\///g"?>
 ```dart tag=good
@@ -578,7 +578,7 @@ to produce beautiful code.
 
 ### **避免** 单行超过 80 个字符。
 
-{% include 'linter-rule-mention.md', rules:'lines_longer_than_80_chars' %}
+{% render 'linter-rule-mention.md', rules:'lines_longer_than_80_chars' %}
 
 Readability studies show that long lines of text are harder to read because your
 eye has to travel farther when moving to the beginning of the next line. This is
@@ -626,7 +626,7 @@ shorter ones can alter the program.
 
 ### **要** 对所有流控制结构使用花括号。
 
-{% include 'linter-rule-mention.md', rules:'curly_braces_in_flow_control_structures' %}
+{% render 'linter-rule-mention.md', rules:'curly_braces_in_flow_control_structures' %}
 
 Doing so avoids the [dangling else][] problem.
 

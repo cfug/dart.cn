@@ -113,4 +113,4 @@ If `--version` is omitted, pub installs the best of all known versions.
 
 如果省略掉 `--version`，Pub 会从已知的版本中挑选一个最适合的进行安装。
 
-{% include 'pub-problems.md' %}
+{% render 'pub-problems.md' %}
