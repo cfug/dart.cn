@@ -171,7 +171,7 @@ Dart 分析器提供了一个 Linter 工具，
 来帮助你遵循某个指南准则，那么这些指南的链接也会有显示。
 比如下面的示例：
 
-{% include 'linter-rule-mention.md', rules:'unnecessary_getters_setters' %}
+{% render 'linter-rule-mention.md', rules:'unnecessary_getters_setters' %}
 
 To learn how to use the linter,
 see [Enabling linter rules][]

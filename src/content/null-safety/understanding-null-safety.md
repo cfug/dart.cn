@@ -1,7 +1,8 @@
 ---
 # title: Understanding null safety
 title: 深入理解空安全
-# description: A deep dive into Dart language and library changes related to null safety.
+# description: >-
+#     A deep dive into Dart language and library changes related to null safety.
 description: 深入了解 Dart 语言及其依赖在空安全方面的改动。
 ---
 
@@ -29,7 +30,7 @@ problem.][billion] Here is an example:
 // Without null safety:
 bool isEmpty(String string) => string.length == 0;
 
-main() {
+void main() {
   isEmpty(null);
 }
 ```
@@ -115,7 +116,7 @@ pros and cons. These principles guided the choices we made:
     换句话说，我们并不是在你每次出海前给你一件救生衣，提醒你记得穿戴。
     相反，我们提供给你一艘不会沉的小船，只要你不跳下水里，就无事发生。
 
-*   **Null safe code should be easy to write.** Most existing Dart code is
+*   **Null-safe code should be easy to write.** Most existing Dart code is
     dynamically correct and does not throw null reference errors. You like your
     Dart program the way it looks now, and we want you to be able to keep
     writing code that way. Safety shouldn't require sacrificing usability,
@@ -129,7 +130,7 @@ pros and cons. These principles guided the choices we made:
     安全性不应该要求易用性作出妥协、不应花更多时间耗费在类型检查器上，
     也不应使你显著改变你的思维方式。
 
-*   **The resulting null safe code should be fully sound.** "Soundness" in the
+*   **The resulting null-safe code should be fully sound.** "Soundness" in the
     context of static checking means different things to different people. For
     us, in the context of null safety, that means that if an expression has a
     static type that does not permit `null`, then no possible execution of that
@@ -164,7 +165,7 @@ pros and cons. These principles guided the choices we made:
     并且在对其调用方法前，不需要再校验是否其为空调用。
 
     One caveat: We only guarantee soundness in Dart programs that are fully null
-    safe. Dart supports programs that contain a mixture of newer null safe code
+    safe. Dart supports programs that contain a mixture of newer null-safe code
     and older legacy code. In these mixed-version programs, null reference errors
     may still occur. In a mixed-version program, you get all of the *static* safety
     benefits in the portions that are null safe, but you don't get full runtime
@@ -261,7 +262,7 @@ we've fixed all null reference errors.
 
 If we didn't think `null` was useful at all, we could stop here. But `null` is
 useful, so we still need a way to handle it. Optional parameters are a good
-illustrative case. Consider this null safe Dart code:
+illustrative case. Consider this null-safe Dart code:
 
 如果 `null` 对我们来说没有什么意义的话，那大可不必再研究下去了。
 但实际上 `null` 十分有用，所以我们仍然需要合理地处理它。
@@ -269,7 +270,7 @@ illustrative case. Consider this null safe Dart code:
 
 ```dart
 // Using null safety:
-makeCoffee(String coffee, [String? dairy]) {
+void makeCoffee(String coffee, [String? dairy]) {
   if (dairy != null) {
     print('$coffee with $dairy');
   } else {
@@ -307,11 +308,11 @@ is `null`:
 
 ```dart
 // Hypothetical unsound null safety:
-bad(String? maybeString) {
+void bad(String? maybeString) {
   print(maybeString.length);
 }
 
-main() {
+void main() {
   bad(null);
 }
 ```
@@ -353,11 +354,11 @@ flow in and that could fail:
 
 ```dart
 // Hypothetical unsound null safety:
-requireStringNotNull(String definitelyString) {
+void requireStringNotNull(String definitelyString) {
   print(definitelyString.length);
 }
 
-main() {
+void main() {
   String? maybeString = null; // Or not!
   requireStringNotNull(maybeString);
 }
@@ -374,11 +375,11 @@ type `Object` to a function expecting a `String`, the type checker allows it:
 
 ```dart
 // Without null safety:
-requireStringNotObject(String definitelyString) {
+void requireStringNotObject(String definitelyString) {
   print(definitelyString.length);
 }
 
-main() {
+void main() {
   Object maybeString = 'it is';
   requireStringNotObject(maybeString);
 }
@@ -412,11 +413,11 @@ explicit downcast yourself:
 
 ```dart
 // Using null safety:
-requireStringNotObject(String definitelyString) {
+void requireStringNotObject(String definitelyString) {
   print(definitelyString.length);
 }
 
-main() {
+void main() {
   Object maybeString = 'it is';
   requireStringNotObject(maybeString as String);
 }
@@ -1131,7 +1132,7 @@ String checkList(List<Object> list) {
 ```
 
 Dart had no way of knowing if that null-aware `?.` operator is useful or not.
-For all it knows, you could pass `null` to the function. But in null safe Dart,
+For all it knows, you could pass `null` to the function. But in null-safe Dart,
 if you have annotated that function with the now non-nullable `List` type, then
 it knows `list` will never be `null`. That implies the `?.` will never do
 anything useful and you can and should just use `.`.
@@ -1306,7 +1307,7 @@ can and should write:
 
 ```dart
 // Using null safety:
-showGizmo(Thing? thing) {
+void showGizmo(Thing? thing) {
   print(thing?.doohickey.gizmo);
 }
 ```
@@ -1319,7 +1320,7 @@ don't. If you see code like:
 
 ```dart
 // Using null safety:
-showGizmo(Thing? thing) {
+void showGizmo(Thing? thing) {
   print(thing?.doohickey?.gizmo);
 }
 ```
@@ -1487,7 +1488,7 @@ class Coffee {
   String serve() => _temperature + ' coffee';
 }
 
-main() {
+void main() {
   var coffee = Coffee();
   coffee.heat();
   coffee.serve();
@@ -1946,7 +1947,7 @@ class Box<T> {
   Box(this.object);
 }
 
-main() {
+void main() {
   Box<String>('a string');
   Box<int?>(null);
 }
@@ -2032,7 +2033,7 @@ valid value for `T`:
 
 ```dart
 // Using null safety:
-main() {
+void main() {
   var box = Box<int?>.full(null);
   print(box.unbox());
 }
@@ -2237,7 +2238,7 @@ accessed an element.
 如果你创建了一个非空类型的列表，接着访问了其中一个元素，这将会是巨大的漏洞。
 
 To avoid that, we have removed the constructor entirely. It is an error to call
-`List()` in null safe code, even with a nullable type. That sounds scary, but
+`List()` in null-safe code, even with a nullable type. That sounds scary, but
 in practice most code creates lists using list literals, `List.filled()`,
 `List.generate()`, or as a result of transforming some other collection. For
 the edge case where you want to create an empty list of some type, we added a

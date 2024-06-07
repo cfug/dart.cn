@@ -60,7 +60,7 @@ and gives tips to help you implement your stream correctly.
 这些提示可以帮助你正确创建 Stream。
 
 For help on using streams, see
-[Asynchronous Programming: Streams](/tutorials/language/streams).
+[Asynchronous Programming: Streams](/libraries/async/using-streams).
 
 可以查阅　[异步编程：使用 Stream](/tutorials/language/streams) 
 获取更多关于 Stream 的信息。

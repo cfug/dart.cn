@@ -116,4 +116,4 @@ Generates output in JSON format.
 
 以 JSON 格式输出。
 
-{% include 'pub-problems.md' %}
+{% render 'pub-problems.md' %}

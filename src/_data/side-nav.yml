@@ -139,11 +139,11 @@
       permalink: /libraries/dart-html
     - divider
     - title: 使用 stream
-      permalink: /tutorials/language/streams
+      permalink: /libraries/async/using-streams
     - title: 创建 stream
-      permalink: /articles/libraries/creating-streams
+      permalink: /libraries/async/creating-streams
     - title: Future 和错误处理
-      permalink: /guides/libraries/futures-error-handling
+      permalink: /libraries/async/futures-error-handling
 
 - title: 高效指南 (Effective Dart)
   expanded: false
@@ -167,13 +167,13 @@
     - title: 如何使用 package
       permalink: /guides/packages
     - title: 常用 package 介绍
-      permalink: /guides/libraries/useful-libraries
+      permalink: /resources/useful-packages
     - title: 创建 package
       permalink: /guides/libraries/create-packages
     - title: 发布 package
       permalink: /tools/pub/publishing
     - title: 设置 package 介绍页
-      permalink: /guides/libraries/writing-package-pages
+      permalink: /tools/pub/writing-package-pages
     - title: Package 参考资料
       expanded: false
       children:
@@ -206,7 +206,7 @@
     - title: Dart 中的数字
       permalink: /guides/language/numbers
     - title: Google APIs
-      permalink: /guides/google-apis
+      permalink: /resources/google-apis
     - title: 跨平台应用
       permalink: /multiplatform-apps
     - title: 命令行和服务端应用
@@ -237,6 +237,8 @@
           permalink: /web/deployment
         - title: 常用 Web 库和 package
           permalink: /web/libraries
+        - title: 编译为 Wasm
+          permalink: /web/wasm
     - title: 环境变量声明
       permalink: /guides/environment-declarations
 
@@ -365,9 +367,9 @@
       expanded: false
       children:
         - title: 从 JavaScript 到 Dart
-          permalink: /guides/language/coming-from/js-to-dart
+          permalink: /resources/coming-from/js-to-dart
         - title: 从 Swift 到 Dart
-          permalink: /guides/language/coming-from/swift-to-dart
+          permalink: /resources/coming-from/swift-to-dart
     - divider
     - title: 常见问题
       permalink: /resources/faq

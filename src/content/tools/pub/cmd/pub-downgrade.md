@@ -144,7 +144,7 @@ For options that apply to all pub commands, see
 
 ### `--[no-]offline`
 
-{% include 'tools/pub-option-no-offline.md' %}
+{% render 'tools/pub-option-no-offline.md' %}
 
 ### `--dry-run` or `-n`
 
@@ -152,4 +152,14 @@ Reports what dependencies would change but doesn't change any.
 
 报告将要改变的依赖项，但不会真的改变它。
 
-{% include 'pub-problems.md' %}
+### `--tighten`
+
+:::version-note
+Support for the `--tighten` option is set to be added in Dart 3.5.
+:::
+
+Updates the lower bounds of dependencies in `pubspec.yaml` to match the
+resolved versions, and returns a list of the changed constraints. 
+Can be applied to [specific dependencies](#downgrading-specific-dependencies).
+
+{% render 'pub-problems.md' %}

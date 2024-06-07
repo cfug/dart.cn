@@ -30,7 +30,7 @@ Estimated time to complete this codelab: 40-60 minutes.
 
 :::note
 This page uses embedded DartPads to display examples and exercises.
-{% include 'dartpads-embedded-troubleshooting.md' %}
+{% render 'dartpads-embedded-troubleshooting.md' %}
 :::
 
 The exercises in this codelab have partially completed code snippets.
@@ -72,7 +72,7 @@ Before running this example, try to spot the issue --
 what do you think the output will be?
 
 <?code-excerpt "async_await/bin/get_order_sync_bad.dart" remove="Fetching"?>
-```dart:run-dartpad:height-380px:ga_id-incorrect_usage
+```dartpad
 // This example shows how *not* to write asynchronous Dart code.
 
 String createOrderMessage() {
@@ -172,7 +172,7 @@ try to predict which will print first:
 "Large Latte" or "Fetching user order...".
 
 <?code-excerpt "async_await/bin/futures_intro.dart (no-error)"?>
-```dart:run-dartpad:height-300px:ga_id-introducting_futures
+```dartpad
 Future<void> fetchUserOrder() {
   // Imagine that this function is fetching user info from another service or database.
   return Future.delayed(const Duration(seconds: 2), () => print('Large Latte'));
@@ -196,7 +196,7 @@ Run the following example to see how a future completes with an error.
 A bit later you'll learn how to handle the error.
 
 <?code-excerpt "async_await/bin/futures_intro.dart (error)" replace="/Error//g"?>
-```dart:run-dartpad:height-300px:ga_id-completing_with_error
+```dartpad
 Future<void> fetchUserOrder() {
   // Imagine that this function is fetching user info but encounters a bug.
   return Future.delayed(
@@ -377,7 +377,7 @@ within an `async` function body.
 What do you think the output will be?
 
 <?code-excerpt "async_await/bin/async_example.dart" remove="/\/\/ print/"?>
-```dart:run-dartpad:height-530px:ga_id-execution_within_async_function
+```dartpad
 Future<void> printOrderMessage() async {
   print('Awaiting user order...');
   var order = await fetchUserOrder();
@@ -459,7 +459,7 @@ Implement an `async` function `reportLogins()` so that it does the following:
   * Example return value from `reportLogins()`: `"Total number of logins: 57"`
 * Gets the number of logins by calling the provided function `fetchLoginAmount()`.
 
-```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_using
+```dartpad theme="dark"
 // Part 1
 // Call the provided async function fetchRole()
 // to return the user role.
@@ -468,7 +468,7 @@ Future<String> reportUserRole() async {
 }
 
 // Part 2
-// TODO: Implement the reportUserRole function here.
+// TODO: Implement the reportLogins function here.
 // Call the provided async function fetchLoginAmount()
 // to return the number of times that the user has logged in.
 reportLogins() {}
@@ -642,7 +642,7 @@ from an asynchronous function.
 What do you think the output will be?
 
 <?code-excerpt "async_await/bin/try_catch.dart"?>
-```dart:run-dartpad:height-530px:ga_id-try_catch
+```dartpad
 Future<void> printOrderMessage() async {
   try {
     print('Awaiting user order...');
@@ -695,7 +695,7 @@ that does the following:
     and
     [Errors.]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Error-class.html)
 
-```dart:run-dartpad:theme-dark:height-380px:ga_id-practice_errors
+```dartpad theme="dark"
 // TODO: Implement changeUsername here.
 changeUsername() {}
 
@@ -863,7 +863,7 @@ Write the following:
   `'<result> Thanks, see you next time'`, where `<result>` is
   the string value returned by calling `logoutUser()`.
 
-```dart:run-dartpad:theme-dark:height-380px:ga_id-putting_it_all_together
+```dartpad theme="dark"
 // Part 1
 addHello(String user) {}
 

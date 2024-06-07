@@ -107,7 +107,7 @@ and uses the special `///` syntax that `dart doc` looks for.
 
 ### **要** 使用 `///` 文档注释来注释成员和类型。
 
-{% include 'linter-rule-mention.md', rules:'slash_for_doc_comments' %}
+{% render 'linter-rule-mention.md', rules:'slash_for_doc_comments' %}
 
 Using a doc comment instead of a regular comment enables 
 [`dart doc`][] to find it
@@ -147,7 +147,7 @@ up.
 
 ### **推荐** 为公开发布的 API 编写文档注释。
 
-{% include 'linter-rule-mention.md', rules:'package_api_docs, public_member_api_docs' %}
+{% render 'linter-rule-mention.md', rules:'package_api_docs, public_member_api_docs' %}
 
 You don't have to document every single library, top-level variable, type, and
 member, but you should document most of them.
@@ -471,7 +471,7 @@ makes an API easier to learn.
 
 ### **要** 使用方括号在文档注释中引用作用域内的标识符
 
-{% include 'linter-rule-mention.md', rules:'comment_references' %}
+{% render 'linter-rule-mention.md', rules:'comment_references' %}
 
 If you surround things like variable, method, or type names in square brackets,
 then `dart doc` looks up the name and links to the relevant API docs.
