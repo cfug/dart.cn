@@ -208,6 +208,7 @@ Use the `dart compile` tool to AOT compile the program to machine code:
 ```console
 $ dart compile exe bin/cli.dart
 ```
+
 Notice how the compiled program starts instantly, completing quickly:
 
 看看编译后的程序启动有多快：
@@ -229,17 +230,9 @@ Check out these resources:
 
 检索这些资源：
 
-* Additional tutorials and codelabs for Dart
+* Dart [tutorials](/tutorials)
 
-  其它额外的一些 Dart 教程和指引
-
-  * [Tutorials](/tutorials)
-
-    [教程](/tutorials)
-
-  * [Codelabs](/codelabs)
-
-    [指引](/codelabs)
+  Dart [教程](/tutorials)
 
 * Dart language, libraries, and conventions
 
