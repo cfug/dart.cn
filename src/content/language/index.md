@@ -23,11 +23,11 @@ listed under **Language** in the left side menu.
 
 For coverage of Dart's core libraries,
 check out the [core library documentation](/libraries).
-You can also try the [Dart cheatsheet codelab](/codelabs/dart-cheatsheet),
-for a more hands-on introduction.
+You can also check out the [Dart cheatsheet](/resources/dart-cheatsheet),
+for a more interactive introduction.
 
 想要了解 Dart 的核心库，访问 [核心库文档](/libraries)。
-你也可以查看 [Dart 语言的速查表 CodeLab](/codelabs/dart-cheatsheet)，
+你也可以查看 [Dart 语言的速查表](/resources/dart-cheatsheet)，
 来获得一些快速上手的指导。
 
 ## Hello World

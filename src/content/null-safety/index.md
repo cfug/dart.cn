@@ -85,10 +85,10 @@ int? aNullableInt = null;
 
 - To try some interactive examples,
   try out some of the null-safety orientated examples in the
-  [Dart cheatsheet](/codelabs/dart-cheatsheet).
+  [Dart cheatsheet](/resources/dart-cheatsheet).
 
   要尝试一些交互示例，
-  请查看 [Dart 语言的速查表 CodeLab](/codelabs/dart-cheatsheet) 中
+  请查看 [Dart 语言的速查表](/resources/dart-cheatsheet) 中
   一些面向空安全的示例。
 
 - To learn more about null safety, check out

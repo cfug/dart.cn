@@ -1,6 +1,6 @@
 ---
-# title: Privacy notice
-title: 隐私权声明
+# title: DartPad Privacy Notice
+title: DartPad 隐私权声明
 # description: How Google uses the source code that you enter into DartPad.
 description: Google 将如何使用你输入到 DartPad 里的代码。
 toc: false
@@ -8,7 +8,7 @@ toc: false
 
 DartPad is a free, open source service to help developers learn about the Dart
 language and libraries. Source code entered into DartPad may be sent to servers
-running in Google Cloud Platform to be analyzed for errors/warnings, compiled to
+running in Google Cloud to be analyzed for errors/warnings, compiled to
 JavaScript, and returned to the browser.
 
 Source code entered into DartPad may be stored, processed, and aggregated in
@@ -19,6 +19,6 @@ suggestions. The raw source code is deleted after no more than 60 days.
 DartPad uses Google Analytics to report feature usage statistics.
 This data is used to help improve Dart and Flutter tools over time.
 
-Learn more about Google's [privacy
-policy.](https://policies.google.com/privacy) We look forward to your
-[feedback.]({{site.repo.dart.org}}/dart-pad/issues)
+Learn more about Google's [privacy policy](https://policies.google.com/privacy).
+If you have any questions about this Privacy Policy, you can
+[contact us](https://support.google.com/policies?p=privpol_privts).

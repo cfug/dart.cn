@@ -16,11 +16,11 @@ jobs:
             github.repository == 'cfug/dart.cn' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
         with:
           submodules: recursive
           token: ${{ secrets.CFUG_DEV_TOKEN }}
-      - uses: dart-lang/setup-dart@f0ead981b4d9a35b37f30d36160575d60931ec30
+      - uses: dart-lang/setup-dart@0a8a0fc875eb934c15d08629302413c671d3f672
       - name: Build Dart archives downloading JS
         run: >
           bash tool/get-dart/archive/compile.sh

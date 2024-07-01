@@ -7,14 +7,14 @@ description: 在浏览器里体验 Dart 编程语言的工具。
 
 DartPad is an [open source tool]({{site.repo.dart.org}}/dart-pad)
 that lets you play with the Dart language in any modern browser.
-Many pages in this site—especially [codelabs](/codelabs)—have
+Many pages in this site—especially [tutorials](/tutorials), have
 [embedded DartPads](#embedding).
 To open DartPad as a standalone web page, visit 
 the [DartPad site (dartpad.dev)][DartPad]{:target="_blank" rel="noopener"}.
 
 DartPad 是一个可以让你在任何现代化的浏览器中体验 Dart 编程语言线上工具，
-它是 [开源](https://github.com/dart-lang/dart-pad) 的。
-本网页里一些页面，尤其是 [codelabs](/codelabs) 页面，
+它是 [开源]({{site.repo.dart.org}}/dart-pad) 的。
+本网页里一些页面，尤其是 [Dart 语言教程文档](/tutorials) 页面，
 包含了很多[内嵌的 DartPads](#embedding)。
 你可以在浏览器里输入下面的网址打开一个 DartPad 页面。
 <a href="{{site.dartpad}}"
@@ -184,12 +184,12 @@ DartPad 支持的语言功能和 API 取决于 DartPad 使用的 **Dart SDK** �
 
 You can embed DartPad inside of web pages,
 customizing it to suit your use case.
-For example, the [futures codelab][]
+For example, the [futures tutorial][]
 contains multiple embedded DartPads
 labeled as _examples_ and _exercises_.
 
 你可以将 DartPad 嵌入到网页中，根据你的用途对其进行自定义。
-例如 [futures codelab][] 包含了多个嵌入的 DartPads
+例如 [futures tutorial][] 包含了多个嵌入的 DartPad
 并把它们用作 _examples_ 和 _exercises_。
 
 For technical details on embedding DartPads, see the
@@ -200,4 +200,4 @@ For technical details on embedding DartPads, see the
 [DartPad]: {{site.dartpad}}
 [DartPad embedding guide.]: {{site.repo.dart.org}}/dart-pad/wiki/Embedding-Guide
 [deferred loading]: /language/libraries#lazily-loading-a-library
-[futures codelab]: /codelabs/async-await
+[futures tutorial]: /libraries/async/async-await

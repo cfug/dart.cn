@@ -49,7 +49,7 @@ The <code>=> <em>expr</em></code> syntax is a shorthand for
 is sometimes referred to as _arrow_ syntax.
 
 :::note
-Only _expressions_ can appear between the arrow (`=\>`) and the semicolon (`;`).
+Only _expressions_ can appear between the arrow (`=>`) and the semicolon (`;`).
 Expressions evaluate to values.
 This means that you can't write a statement where Dart expects a value.
 For example,
@@ -204,8 +204,9 @@ String say(String from, String msg, [String device = 'carrier pigeon']) {
 assert(say('Bob', 'Howdy') == 'Bob says Howdy with a carrier pigeon');
 ```
 
+<a id="the-main-function" aria-hidden="true"></a>
 
-## The main() function
+## The main() function {:#main}
 
 Every app must have a top-level `main()` function, which serves as the
 entrypoint to the app. The `main()` function returns `void` and has an
