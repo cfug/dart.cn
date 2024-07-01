@@ -13,8 +13,8 @@ To open DartPad as a standalone web page, visit
 the [DartPad site (dartpad.dev)][DartPad]{:target="_blank" rel="noopener"}.
 
 DartPad 是一个可以让你在任何现代化的浏览器中体验 Dart 编程语言线上工具，
-它是 [开源](https://github.com/dart-lang/dart-pad) 的。
-本网页里一些页面，尤其是 [codelabs](/codelabs) 页面，
+它是 [开源]({{site.repo.dart.org}}/dart-pad) 的。
+本网页里一些页面，尤其是 [Dart 语言教程文档](/tutorials) 页面，
 包含了很多[内嵌的 DartPads](#embedding)。
 你可以在浏览器里输入下面的网址打开一个 DartPad 页面。
 <a href="{{site.dartpad}}"
@@ -189,7 +189,7 @@ contains multiple embedded DartPads
 labeled as _examples_ and _exercises_.
 
 你可以将 DartPad 嵌入到网页中，根据你的用途对其进行自定义。
-例如 [futures codelab][] 包含了多个嵌入的 DartPads
+例如 [futures tutorial][] 包含了多个嵌入的 DartPad
 并把它们用作 _examples_ 和 _exercises_。
 
 For technical details on embedding DartPads, see the
