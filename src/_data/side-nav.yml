@@ -1,22 +1,3 @@
-- title: 样例和教程
-  expanded: false
-  children:
-    - title: 语言概览
-      match-page-url-exactly: true
-      permalink: /tutorials
-    - title: Codelabs
-      expanded: true
-      children:
-        - title: Codelabs 列表
-          match-page-url-exactly: true
-          permalink: /codelabs
-        - title: Dart 速查表
-          permalink: /codelabs/dart-cheatsheet
-        - title: 可迭代集合
-          permalink: /codelabs/iterables
-        - title: Dart 异步编程
-          permalink: /codelabs/async-await
-
 - title: Dart 开发语言
   expanded: false
   children:
@@ -57,6 +38,8 @@
           permalink: /language/patterns
         - title: 模式匹配类型
           permalink: /language/pattern-types
+        - title: 实用教程
+          permalink: https://codelabs.developers.google.cn/codelabs/dart-patterns-records?hl=zh-cn#0
     - title: 函数方法
       permalink: /language/functions
     - title: 控制流
@@ -138,12 +121,18 @@
     - title: dart:html
       permalink: /libraries/dart-html
     - divider
-    - title: 使用 stream
-      permalink: /libraries/async/using-streams
-    - title: 创建 stream
-      permalink: /libraries/async/creating-streams
-    - title: Future 和错误处理
-      permalink: /libraries/async/futures-error-handling
+    - title: 可迭代集合
+      permalink: /libraries/collections/iterables
+    - title: 异步编程
+      children:
+        - title: 教程
+          permalink: /libraries/async/async-await
+        - title: Future 和错误处理
+          permalink: /libraries/async/futures-error-handling
+        - title: 使用 stream
+          permalink: /libraries/async/using-streams
+        - title: 创建 stream
+          permalink: /libraries/async/creating-streams
 
 - title: 高效指南 (Effective Dart)
   expanded: false
@@ -199,8 +188,6 @@
 - title: 开发文档
   expanded: false
   children:
-    - title: Futures、async 和 await
-      permalink: /codelabs/async-await
     - title: JSON
       permalink: /guides/json
     - title: Dart 中的数字
@@ -355,6 +342,8 @@
 - title: 资源
   expanded: false
   children:
+    - title: 语言速查表
+      permalink: /resources/dart-cheatsheet
     - title: 破坏性改动
       permalink: /resources/breaking-changes
     - title: 版本演变
@@ -379,6 +368,9 @@
       permalink: /resources/books
     - title: 视频资源
       permalink: /resources/videos
+    - title: 教程
+      match-page-url-exactly: true
+      permalink: /tutorials
 
 - title: 相关站点
   expanded: true
@@ -398,6 +390,6 @@
   expanded: false
   children:
     - title: 关于本站
-      permalink: https://flutter.cn/about/docs-cn
+      permalink: https://docs.flutter.cn/about
     - title: 免责条款 (Disclaimer)
-      permalink: https://flutter.cn/disclaimer
+      permalink: https://docs.flutter.cn/disclaimer

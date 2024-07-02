@@ -36,23 +36,21 @@ Identifiers come in three flavors in Dart.
 
 在 Dart 中标识符有三种类型。
 
-*   `UpperCamelCase` names capitalize the first letter of each word, including
-    the first.
+* `UpperCamelCase` names capitalize the first letter of each word, including
+  the first.
 
-    `UpperCamelCase` 每个单词的首字母都大写，包含第一个单词。
+  `UpperCamelCase` 每个单词的首字母都大写，包含第一个单词。
 
-*   `lowerCamelCase` names capitalize the first letter of each word, *except*
-    the first which is always lowercase, even if it's an acronym.
+* `lowerCamelCase` names capitalize the first letter of each word, *except*
+  the first which is always lowercase, even if it's an acronym.
 
-    `lowerCamelCase` 除了第一个字母始终是小写（即使是缩略词），每个单词的首字母都大写。
+  `lowerCamelCase` 除了第一个字母始终是小写（即使是缩略词），每个单词的首字母都大写。
 
-*   `lowercase_with_underscores` names use only lowercase letters,
-    even for acronyms,
-    and separate words with `_`.
+* `lowercase_with_underscores` names use only lowercase letters,
+  even for acronyms, and separate words with `_`.
 
-    `lowercase_with_underscores` 只使用小写字母单词，即使是缩略词，
-    并且单词之间使用 `_` 连接。
-
+  `lowercase_with_underscores` 只使用小写字母单词，即使是缩略词，
+  并且单词之间使用 `_` 连接。
 
 ### DO name types using `UpperCamelCase`
 
@@ -265,20 +263,19 @@ changed for a few reasons:
 我们一开始使用 Java `SCREAMING_CAPS` 风格来命名常量。
 我们之所以不再使用，是因为：
 
-*   `SCREAMING_CAPS` looks bad for many cases, particularly enum values for
-    things like CSS colors.
+* `SCREAMING_CAPS` looks bad for many cases,
+  particularly enum values for things like CSS colors.
 
-    `SCREAMING_CAPS` 很多情况下看起来比较糟糕，尤其类似于 CSS 颜色这类的枚举值。
+  `SCREAMING_CAPS` 很多情况下看起来比较糟糕，尤其类似于 CSS 颜色这类的枚举值。
 
-*   Constants are often changed to final non-const variables, which would
-    necessitate a name change.
+* Constants are often changed to final non-const variables,
+  which would necessitate a name change.
 
-    常量常常被修改为 final 类型的非常量变量，这种情况你还需要修改变量的名字为小写字母形式。
+  常量经常被修改为 final 类型的非常量变量，这种情况你还需要修改变量命名为小写字母形式。
 
-*   The `values` property automatically defined on an enum type is const and
-    lowercase.
+* The `values` property defined on an enum type is const and lowercase.
 
-    在枚举类型中自动定义的 `values` 属性为常量并且是小写字母形式的。
+  在枚举类型中定义的 `values` 属性为常量并且是小写字母形式的。
 
 :::
 
@@ -288,54 +285,79 @@ changed for a few reasons:
 
 ### DO capitalize acronyms and abbreviations longer than two letters like words
 
-### 把超过两个字母的首字母大写缩略词和缩写词当做一般单词来对待。
+### 把超过两个字母的首字母大写缩略词和缩写词当做一般单词来对待
 
-Capitalized acronyms can be hard to read, and
-multiple adjacent acronyms can lead to ambiguous names.
-For example, given a name that starts with `HTTPSFTP`, there's no way
-to tell if it's referring to HTTPS FTP or HTTP SFTP.
+Capitalized acronyms can be hard to read,
+and multiple adjacent acronyms can lead to ambiguous names.
+For example, given an identifier `HTTPSFTP`,
+the reader can't tell if it refers to `HTTPS` `FTP` or `HTTP` `SFTP`.
+To avoid this,
+capitalize most acronyms and abbreviations like regular words.
+This identifier would be `HttpsFtp` if referring to the former
+or `HttpSftp` for the latter.
 
 首字母大写缩略词比较难阅读，
-特别是多个缩略词连载一起的时候会引起歧义。
-例如，一个以 `HTTPSFTP` 开头的名字，
-没有办法判断它是指 HTTPS FTP 还是 HTTP SFTP。
+特别是多个缩略词连在一起的时候会引起歧义。
+例如，一个名为 `HTTPSFTP` 的标识符，
+没有办法分辨它是指 `HTTPS` `FTP` 还是 `HTTP` `SFTP`。
+为避免出现这种情况，
+大多数缩略词和缩写词都要像普通单词一样大写。
+如果是前者，则应为 `HttpsFtp`，
+如果是后者，则应为 `HttpSftp`。
 
-To avoid this, acronyms and abbreviations are capitalized like regular words.
+Two-letter abbreviations and acronyms are the exception.
+If both letters are capitalized in English,
+then they should both stay capitalized when used in an identifer.
+Otherwise, capitalize it like a word.
 
-为了避免上面的情况，缩略词和缩写词要像普通单词一样首字母大写。
-
-**Exception:** Two-letter *acronyms* like IO (input/output) are fully
-capitalized: `IO`. On the other hand, two-letter *abbreviations* like
-ID (identification) are still capitalized like regular words: `Id`.
-
-**例外情况** 两个字母情况下，类似 IO (input/output) 这样的 **缩略词** 要全大写。
-另外，两个字母的 **缩写词** 比如 ID (identification) 与其他常规单词一样，
-首字母大写即可: `Id`。
+双字母缩写词和首字母缩略词是个例外的情况。
+如果两个字母在英语中都是大写，
+那么在标识符中使用时也应该保持大写。
+否则，应该像单词一样首字母大写。
 
 ```dart tag=good
-class HttpConnection {}
-class DBIOPort {}
-class TVVcr {}
-class MrRogers {}
+// Longer than two letters, so always like a word:
+Http // "hypertext transfer protocol"
+Nasa // "national aeronautics and space administration"
+Uri // "uniform resource locator"
+Esq // "esquire"
+Ave // "avenue"
 
-var httpRequest = ...
-var uiHandler = ...
-var userId = ...
-Id id;
+// Two letters, capitalized in English, so capitalized in an identifier:
+ID // "identifier"
+TV // "television"
+UI // "user interface"
+
+// Two letters, not capitalized in English, so like a word in an identifier:
+Mr // "mister"
+St // "street"
+Rd // "road"
 ```
 
 ```dart tag=bad
-class HTTPConnection {}
-class DbIoPort {}
-class TvVcr {}
-class MRRogers {}
+HTTP // "hypertext transfer protocol"
+NASA // "national aeronautics and space administration"
+URI // "uniform resource locator"
+esq // "esquire"
+Ave // "avenue"
 
-var hTTPRequest = ...
-var uIHandler = ...
-var userID = ...
-ID iD;
+Id // "identifier"
+Tv // "television"
+Ui // "user interface"
+
+MR // "mister"
+ST // "street"
+RD // "road"
 ```
 
+When any form of abbreviation comes at the beginning
+of a lowerCamelCase identifier, lowercase the identifer:
+
+```dart
+var httpConnection = connect();
+var tvSet = Television();
+var mrRogers = 'hello, neighbor';
+```
 
 ### PREFER using `_`, `__`, etc. for unused callback parameters
 
