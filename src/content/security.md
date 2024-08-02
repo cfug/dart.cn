@@ -5,6 +5,7 @@ title: 安全
 #   An overview of the Dart team's philosophy and processes for security.
 description: >-
   Dart 团队的安全理念和流程的概述
+skipFreshness: true
 ---
 
 The Dart team takes the security of Dart and the applications

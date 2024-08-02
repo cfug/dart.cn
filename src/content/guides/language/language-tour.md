@@ -8,6 +8,7 @@ js: [{url: '/assets/js/language-tour-redirector.js'}]
 sitemap: false
 canonical: https://dart.cn/language
 noindex: true
+skipFreshness: true
 ---
 
 :::warning

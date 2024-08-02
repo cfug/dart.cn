@@ -73,7 +73,7 @@ try more of the available tutorials!
     <p>快速体验 Dart 独特的语言特性。</p>
   </div>
   <div class="card">
-    <h3><a href="https://codelabs.developers.google.cn/codelabs/dart-patterns-records?hl=zh-cn#0"><t>记录 (Record) 和模式匹配 (Pattern)</t><t></t></a></h3>
+    <h3><a href="https://codelabs.developers.google.cn/codelabs/dart-patterns-records?hl=zh-cn#0"><t>Records and Patterns</t><t>记录 (Record) 和模式匹配 (Pattern)</t></a></h3>
     <p>Discover Dart's support for records and patterns.</p>
     <p>探索 Dart 对记录 (Record) 和模式匹配 (Pattern) 的支持。</p>
   </div>
