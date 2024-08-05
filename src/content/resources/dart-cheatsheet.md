@@ -14,9 +14,7 @@ This tutorial walks you through
 the most important of these language features.
 
 Dart 语言旨在让从其他编程语言转来的开发者们能够轻松学习，但也有它的独特之处。
-本篇将基于谷歌工程师编写的
-[Dart 语言速查表](/guides/language/cheatsheet)
-为你介绍一些最重要的语言特性。
+本篇将为你介绍一些最重要的语言特性。
 
 The embedded editors in this tutorial have partially completed code snippets.
 You can use these editors to test your knowledge by completing the code and
@@ -1401,7 +1399,7 @@ Dart 代码可以抛出和捕获异常。
 Dart provides `Exception` and `Error` types, but you're
 allowed to throw any non-null object:
 
-虽然 Dart 提供了 Exception 和 Error 类型，但是你可以抛出任何非空对象：
+虽然 Dart 提供了 `Exception` 和 `Error` 类型，但是你可以抛出任何非空对象：
 
 <?code-excerpt "misc/test/cheatsheet/exceptions_test.dart (simple-throws)"?>
 ```dart

@@ -5,6 +5,7 @@ title: Dart 品牌指南
 #   The guidelines governing the usage of the Dart trademarks and assets.
 description: >-
   关于使用 Dart 品牌和资产的指导原则。
+skipFreshness: true
 ---
 
 The "Dart" name and logo are trademarks owned by Google.

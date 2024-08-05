@@ -3,6 +3,7 @@
 title: 行为准则
 description: Be excellent to each other.
 toc: false
+skipFreshness: true
 ---
 
 We expect Dart community members to act professionally and respectfully, and

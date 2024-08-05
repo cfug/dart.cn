@@ -19,7 +19,7 @@ To learn more about the Dart language,
 visit the in-depth, individual topic pages
 listed under **Language** in the left side menu.
 
-想要深度学习 Dart 语言，请访问左侧栏 **语言** 的具体内容。
+想要深度学习 Dart 语言，请访问左侧栏 **Dart 开发语言** 的具体内容。
 
 For coverage of Dart's core libraries,
 check out the [core library documentation](/libraries).

@@ -184,6 +184,8 @@
           permalink: /tools/pub/security-advisories
         - title: 版本管理
           permalink: /tools/pub/versioning
+    - title: 不应提交的内容
+      permalink: /guides/libraries/private-files
 
 - title: 开发文档
   expanded: false
@@ -334,9 +336,6 @@
         permalink: /guides/testing
       - title: 调试 Web 应用
         permalink: /web/debugging
-  - title: 不应提交的内容
-    permalink: /guides/libraries/private-files
-
 
 - divider
 - title: 资源

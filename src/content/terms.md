@@ -2,6 +2,7 @@
 title: Terms of use
 description: The terms of use for dart.dev.
 toc: false
+skipFreshness: true
 ---
 
 https://dart.cn is a community-owned and hosted website

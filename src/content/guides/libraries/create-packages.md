@@ -15,7 +15,6 @@ This page tells you how to create a standard shared
 本章将通过最常见的 [Package](/tools/pub/glossary#package)
 来介绍如何创建一个 Package。
 
-
 ## Creating a new package
 
 ## 创建一个新的 package
@@ -31,10 +30,6 @@ and the `package` template:
 ```console
 $ dart create -t package <PACKAGE_NAME>
 ```
-
-{% comment %}
-TODO: Add coverage of packages that contain tools.
-{% endcomment %}
 
 ## What makes a package
 
@@ -101,12 +96,17 @@ you have a situation where two classes are tightly coupled.
 
 :::note
 
-You may have heard of the `part` directive, which allows
-you to split a library into multiple Dart files. We recommend
-that you avoid using `part` and create mini libraries instead.
+You might know about the `part` directive.
+This directive allows you to split a library into multiple Dart files.
+Though part files can incorporate generated code into a library,
+the Dart team doesn't recommend using them.
+Instead, create small libraries.
 
-在文件的头部使用 `part` 命令，能够将一个 Library 分割成多个 Dart 文件。
-这里，我们建议应该创建 Mini Library ，而避免使用 `part` 命令。
+你也许知道 `part` 指令。
+该指令允许你将一个 library 分割成多个 Dart 文件。
+虽然 part 文件可以将生成的代码整合到 library 中，
+但 Dart 团队并不推荐使用它们。
+取而代之更推荐创建 Mini Library。
 
 :::
 
