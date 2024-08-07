@@ -20,10 +20,10 @@ If watching videos helps you learn,
 check out this overview of extension methods.
 
 <iframe
-  {{bili.std-size}}
+  {{site.bili.std-size}}
   title="Learn about extension methods in Dart"
-  src="{{bili.embed}}?aid=547449672&bvid=BV1Hq4y1M7zi&cid=391150414&page=1&autoplay=false"
-  {{bili.set}}>
+  src="{{site.bili.embed}}?aid=547449672&bvid=BV1Hq4y1M7zi&cid=391150414&page=1&autoplay=false"
+  {{site.bili.set}}>
 </iframe>
 
 ## Overview
