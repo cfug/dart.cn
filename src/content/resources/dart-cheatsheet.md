@@ -48,16 +48,12 @@ Here are some examples of using string interpolation:
 
 下面是一些使用字符串插值的例子：
 
-<div class="table-wrapper" markdown="1">
-
 | <t>String</t><t>字符串</t>   | <t>Result</t><t>结果</t>           |
 |-----------------------------|------------------------------------|
 | `'${3 + 2}'`                | `'5'`                              |
 | `'${"word".toUpperCase()}'` | `'WORD'`                           |
 | `'$myObject'`               | The value of `myObject.toString()` |
 | `'$myObject'`               | `myObject.toString()` 的值         |
-
-</div>
 
 ### Code example {:.no_toc}
 
