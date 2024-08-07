@@ -2,15 +2,8 @@
 // It configures the core 11ty behavior and registers
 // plugins and customization that live in `/src/_11ty`.
 
-import {
-  activeNavEntryIndexArray,
-  arrayToSentenceString,
-  breadcrumbsForPage,
-  generateToc,
-  regexReplace,
-  toISOString,
-  underscoreBreaker,
-} from './src/_11ty/filters.js';
+import { registerFilters } from './src/_11ty/filters.js';
+import { registerShortcodes } from './src/_11ty/shortcodes.js';
 import { markdown } from './src/_11ty/plugins/markdown.js';
 import { configureHighlighting } from './src/_11ty/plugins/highlight.js';
 
@@ -19,7 +12,6 @@ import yaml from 'js-yaml';
 
 import * as path from 'node:path';
 import * as sass from 'sass';
-import {eleventyImageTransformPlugin} from '@11ty/eleventy-img';
 
 // noinspection JSUnusedGlobalSymbols
 /**
@@ -47,20 +39,10 @@ export default function (eleventyConfig) {
     strictFilters: true,
     lenientIf: true,
   });
+  eleventyConfig.setLiquidParameterParsing('builtin');
 
-  eleventyConfig.addFilter('regex_replace', regexReplace);
-  eleventyConfig.addFilter('toISOString', toISOString);
-  eleventyConfig.addFilter(
-    'active_nav_entry_index_array',
-    activeNavEntryIndexArray,
-  );
-  eleventyConfig.addFilter('array_to_sentence_string', arrayToSentenceString);
-  eleventyConfig.addFilter('underscore_breaker', underscoreBreaker);
-  eleventyConfig.addFilter('throw_error', function (error) {
-    throw new Error(error);
-  });
-  eleventyConfig.addFilter('generate_toc', generateToc);
-  eleventyConfig.addFilter('breadcrumbsForPage', breadcrumbsForPage);
+  registerFilters(eleventyConfig);
+  registerShortcodes(eleventyConfig);
 
   eleventyConfig.addTemplateFormats('scss');
   eleventyConfig.addWatchTarget('src/_sass');
@@ -120,43 +102,6 @@ export default function (eleventyConfig) {
       }
 
       return content;
-    });
-
-    // Optimize all images, generate an avif, webp, and png version,
-    // and indicate they should be lazily loaded.
-    // Save in `_site/assets/img` and update links to there.
-    eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
-      extensions: 'html',
-      formats: ['webp', 'png', 'svg'],
-      svgShortCircuit: true,
-      widths: ['auto'],
-      defaultAttributes: {
-        loading: 'lazy',
-        decoding: 'async',
-      },
-      urlPath: '/assets/img/',
-      outputDir: '_site/assets/img/',
-      sharpOptions: {
-        animated: true,
-      },
-    });
-  } else {
-    // To be more consistent with the production build,
-    // don't optimize images but still indicate they should be lazily loaded.
-    // Then save in `_site/assets/img` and update links to there.
-    eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
-      extensions: 'html',
-      formats: ['auto'],
-      widths: ['auto'],
-      defaultAttributes: {
-        loading: 'lazy',
-        decoding: 'async',
-      },
-      urlPath: '/assets/img/',
-      outputDir: '_site/assets/img/',
-      sharpOptions: {
-        animated: true,
-      },
     });
   }
 

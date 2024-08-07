@@ -9,8 +9,7 @@ When you're ready to create an app, get the SDK and tools for your app
 type. If you aren't sure which tools you need, **get the Flutter SDK.**
 
 当你准备好创建一个应用时，请根据你要创建的应用类型获取相应的 SDK 和工具。
-
-<div class="table-wrapper">
+如果你不确定要创建哪一类的 app，**请使用 Flutter SDK**。
 
 | <t>App type</t><t>应用类型</t> | <t>Get started instructions</t><t>入门说明</t> | <t>Tool information</t><t>工具信息</t> |
 |-------------------------------|------------------------------------------------|---------------------------------------|
@@ -22,7 +21,6 @@ type. If you aren't sure which tools you need, **get the Flutter SDK.**
 | 服务器或命令行应用 | [安装 Dart SDK](/tools/sdk) | [通用工具][General-purpose tools] 和 [专业工具](#server) |
 
 {:.table .table-striped}
-</div>
 
 [General-purpose tools]: #general-purpose-tools
 
