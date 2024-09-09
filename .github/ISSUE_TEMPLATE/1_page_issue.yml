@@ -6,7 +6,11 @@ body:
   - type: markdown
     attributes:
       value: |
-          > 发现了错误的拼写或内容？你可以点击页面上的小瓢虫图标查看页面源代码，也可以完整填写这个 issue。
+          发现了错误的拼写或内容？
+          你可以滚动到每个页面的末尾，
+          然后点击“查看文档源码”，
+          修复错误后，提交你的更改。
+          也可以完整填写这个 issue。
   - type: input
     id: page-url
     attributes:
