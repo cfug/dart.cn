@@ -387,7 +387,7 @@ like for `baz` above. For details, see [DON'T use const redundantly][].
 You can change the value of a non-final, non-const variable,
 even if it used to have a `const` value:
 
-如果一个变量没被声明为 `final` 或者 `const` ，
+如果一个变量没被声明为 `final` 或者 `const`，
 那么，即使它的值是 `const`，
 你仍然可以修改这个变量：
 
