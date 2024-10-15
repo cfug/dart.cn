@@ -3,7 +3,7 @@
 title: 起步教程：编写命令行和服务端应用
 # description: Get Dart, run and compile a small app.
 description: 获取 Dart SDK，运行和编译一个小应用。
-js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
+js: [{ url: "/assets/js/inject_dartpad.js", defer: true }]
 prevpage:
   url: /tutorials/server
   # title: Dart command-line and server tutorials
@@ -50,6 +50,7 @@ greeting to use another language.
 :::
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
+
 ```dartpad
 void main() {
   print('Hello, World!');
@@ -60,15 +61,15 @@ More information:
 
 更多信息：
 
-* [DartPad documentation][]
+- [DartPad documentation][]
 
   [DartPad 文档][DartPad documentation]
 
-* [Dart language tour][]
+- [Dart language tour][]
 
   [Dart 语言概览][Dart language tour]
 
-* [Dart core library documentation][]
+- [Dart core library documentation][]
 
   [Dart 核心库文档][Dart core library documentation]
 
@@ -96,19 +97,19 @@ This command creates a small Dart app that has the following:
 
 该命令会创建一个包含下述信息的 Dart 应用：
 
-* A main Dart source file, `bin/cli.dart`, that contains a top-level
+- A main Dart source file, `bin/cli.dart`, that contains a top-level
   `main()` function. This is the entrypoint for your app.
 
   一个主要的 Dart 源文件，`bin/cli.dart`，该文件包含一个顶层 `main()` 函数。
   该函数是你应用的入口。
 
-* An additional Dart file, `lib/cli.dart`, that contains the functionality of
+- An additional Dart file, `lib/cli.dart`, that contains the functionality of
   the app and is imported by the `cli.dart` file.
 
   一个额外的 Dart 文件，`lib/cli.dart`，包含一些功能性的函数方法，
   这些函数方法将会导入到 `cli.dart` 文件中。
 
-* A pubspec file, `pubspec.yaml`, that contains the app's metadata, including
+- A pubspec file, `pubspec.yaml`, that contains the app's metadata, including
   information about which [packages](/guides/packages) the app depends on
   and which versions of those packages are required.
 
@@ -155,26 +156,27 @@ If you want to run the app with debugging support, see
 
 Let's customize the app you just created.
 
- 现在我们来自定义刚才你所创建的应用。
+现在我们来自定义刚才你所创建的应用。
 
- 1. Edit `lib/cli.dart` to calculate a different result. For example, divide the
+1.  Edit `lib/cli.dart` to calculate a different result. For example, divide the
     previous value by two (for details about `~/`, see [Arithmetic operators][]):
 
-    编辑 `lib/cli.dart` 以返回一个不同的结果。例如，将先前的值除以2。
+    编辑 `lib/cli.dart` 以返回一个不同的结果。例如，将先前的值除以 2。
     （关于 `~/` 的详情请查看 [Arithmetic operators][]）：
 
     <?code-excerpt "misc/test/tutorial/get_started.dart (calculate)" replace="/~\/ 2/[!$&!]/g"?>
+
     ```dart
     int calculate() {
       return 6 * 7 [!~/ 2!];
     }
     ```
 
- 1. Save your changes.
+1.  Save your changes.
 
     保存你刚才所做的改变。
 
- 1. Rerun the main entrypoint of your app:
+1.  Rerun the main entrypoint of your app:
 
     重新运行你应用的入口 main 函数：
 
@@ -230,45 +232,46 @@ Check out these resources:
 
 检索这些资源：
 
-* Dart [tutorials](/tutorials)
+- Dart [tutorials](/tutorials)
 
   Dart [教程](/tutorials)
 
-* Dart language, libraries, and conventions
+- Dart language, libraries, and conventions
 
   Dart 语言、库以及习惯用法
 
-  * [Sample code](/samples)
+  - [Sample code](/samples)
 
     [示例代码](/samples)
 
-  * [Language tour](/language)
+  - [Language tour](/language)
 
     [语言概览](/language)
 
-  * [Dart core library documentation](/libraries)
+  - [Dart core library documentation](/libraries)
 
     [Dart 核心库文档](/libraries)
 
-  * [Effective Dart](/effective-dart)
+  - [Effective Dart](/effective-dart)
 
     [高效 Dart 编程](/effective-dart)
 
-* Tools and libraries
+- Tools and libraries
 
   工具和库
 
-  * [Dart SDK](/tools/sdk)
-  * [Dart tools](/tools)
+  - [Dart SDK](/tools/sdk)
+  - [Dart tools](/tools)
 
     [Dart 工具](/tools)
 
-  * [IDEs](/tools#editors)
-* Other examples of natively compiled apps
+  - [IDEs](/tools#editors)
+
+- Other examples of natively compiled apps
 
   原生编译应用的其他示例
 
-  * [native_app]({{site.repo.dart.org}}/samples/tree/main/native_app)
+  - [native_app]({{site.repo.dart.org}}/samples/tree/main/native_app)
 
 If you get stuck, find help at [Community and support.](/community)
 
