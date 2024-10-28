@@ -157,7 +157,7 @@ jobs:
       - name: Install node dependencies
         run: pnpm install
       - name: Build site
-        run: dart run dart_site build
+        run: dart run dart_site build --release
       - name: Translated (dart.cn)
         run: bash tool/translator/build.sh
         shell: bash
