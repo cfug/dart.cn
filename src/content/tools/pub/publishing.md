@@ -55,13 +55,13 @@ disallows unpublishing packages except for very few cases.
 You can always upload new versions of your package,
 but old ones remain available for users that can't upgrade yet.
 
-你可以一直上传 package 的新版本，
+你可以随时上传 package 的新版本，
 但是旧版本对于那些尚未准备好升级的用户仍然可用。
 
-For published packages that have lost relevance or lack maintainance,
+For published packages that have lost relevance or lack maintenance,
 [mark them as discontinued](#discontinue).
 
-对于那些已经发布，但不再相关或不再维护的 package，
+对于那些已经发布，但不再有意义或不再维护的 package，
 你可以 [把他们标记为终止](#discontinue)。
 
 ## Prepare your package for publication
