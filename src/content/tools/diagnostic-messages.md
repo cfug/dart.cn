@@ -431,6 +431,9 @@ export 'b.dart' hide C;
 
 ### ambiguous_extension_member_access
 
+_A member named '{0}' is defined in '{1}' and '{2}', and neither is more
+specific._
+
 _A member named '{0}' is defined in {1}, and none are more specific._
 
 #### Description
@@ -2615,20 +2618,20 @@ class C extends A<String> implements B {}
 
 ### conflicting_type_variable_and_container
 
-_'{0}' can't be used to name both a type variable and the class in which the
-type variable is defined._
+_'{0}' can't be used to name both a type parameter and the class in which the
+type parameter is defined._
 
-_'{0}' can't be used to name both a type variable and the enum in which the type
-variable is defined._
+_'{0}' can't be used to name both a type parameter and the enum in which the
+type parameter is defined._
 
-_'{0}' can't be used to name both a type variable and the extension in which the
-type variable is defined._
+_'{0}' can't be used to name both a type parameter and the extension in which
+the type parameter is defined._
 
-_'{0}' can't be used to name both a type variable and the extension type in
-which the type variable is defined._
+_'{0}' can't be used to name both a type parameter and the extension type in
+which the type parameter is defined._
 
-_'{0}' can't be used to name both a type variable and the mixin in which the
-type variable is defined._
+_'{0}' can't be used to name both a type parameter and the mixin in which the
+type parameter is defined._
 
 #### Description
 
@@ -2655,17 +2658,17 @@ class C<T> {}
 
 ### conflicting_type_variable_and_member
 
-_'{0}' can't be used to name both a type variable and a member in this class._
+_'{0}' can't be used to name both a type parameter and a member in this class._
 
-_'{0}' can't be used to name both a type variable and a member in this enum._
+_'{0}' can't be used to name both a type parameter and a member in this enum._
 
-_'{0}' can't be used to name both a type variable and a member in this extension
-type._
+_'{0}' can't be used to name both a type parameter and a member in this
+extension type._
 
-_'{0}' can't be used to name both a type variable and a member in this
+_'{0}' can't be used to name both a type parameter and a member in this
 extension._
 
-_'{0}' can't be used to name both a type variable and a member in this mixin._
+_'{0}' can't be used to name both a type parameter and a member in this mixin._
 
 #### Description
 
@@ -4888,15 +4891,13 @@ multiple part directives.
 Given a file `part.dart` containing
 
 ```dart
-part of lib;
+part of 'test.dart';
 ```
 
 The following code produces this diagnostic because the file `part.dart` is
 included multiple times:
 
 ```dart
-library lib;
-
 part 'part.dart';
 part [!'part.dart'!];
 ```
@@ -4906,8 +4907,6 @@ part [!'part.dart'!];
 Remove all except the first of the duplicated part directives:
 
 ```dart
-library lib;
-
 part 'part.dart';
 ```
 
@@ -10282,7 +10281,8 @@ The analyzer produces this diagnostic when all of the following are true:
   method.
 
 The concrete implementation can be invalid because of incompatibilities in
-either the return type, the types of parameters, or the type variables.
+either the return type, the types of the method's parameters, or the type
+parameters.
 
 #### Example
 
@@ -11375,18 +11375,18 @@ class D extends A {
 
 ### invalid_type_argument_in_const_literal
 
-_Constant list literals can't include a type parameter as a type argument, such
-as '{0}'._
+_Constant list literals can't use a type parameter in a type argument, such as
+'{0}'._
 
-_Constant map literals can't include a type parameter as a type argument, such
-as '{0}'._
+_Constant map literals can't use a type parameter in a type argument, such as
+'{0}'._
 
-_Constant set literals can't include a type parameter as a type argument, such
-as '{0}'._
+_Constant set literals can't use a type parameter in a type argument, such as
+'{0}'._
 
 #### Description
 
-The analyzer produces this diagnostic when a type parameter is used as a
+The analyzer produces this diagnostic when a type parameter is used in a
 type argument in a list, map, or set literal that is prefixed by `const`.
 This isn't allowed because the value of the type parameter (the actual type
 that will be used at runtime) can't be known at compile time.
@@ -25965,6 +25965,77 @@ void f() {
 }
 ```
 
+### invalid_runtime_check_with_js_interop_types
+
+_Cast from '{0}' to '{1}' casts a Dart value to a JS interop type, which might
+not be platform-consistent._
+
+_Cast from '{0}' to '{1}' casts a JS interop value to a Dart type, which might
+not be platform-consistent._
+
+_Cast from '{0}' to '{1}' casts a JS interop value to an incompatible JS interop
+type, which might not be platform-consistent._
+
+_Runtime check between '{0}' and '{1}' checks whether a Dart value is a JS
+interop type, which might not be platform-consistent._
+
+_Runtime check between '{0}' and '{1}' checks whether a JS interop value is a
+Dart type, which might not be platform-consistent._
+
+_Runtime check between '{0}' and '{1}' involves a non-trivial runtime check
+between two JS interop types that might not be platform-consistent._
+
+_Runtime check between '{0}' and '{1}' involves a runtime check between a JS
+interop value and an unrelated JS interop type that will always be true and won't check the underlying type._
+
+#### Description
+
+The analyzer produces this diagnostic when an `is` test has either
+- a JS interop type on the right-hand side, whether directly or as a type
+  argument to another type, or
+- a JS interop value on the left-hand side.
+
+#### Examples
+
+The following code produces this diagnostic because the JS interop type
+`JSBoolean` is on the right-hand side of an `is` test:
+
+```dart
+import 'dart:js_interop';
+
+bool f(Object b) => [!b is JSBoolean!];
+```
+
+The following code produces this diagnostic because the JS interop type
+`JSString` is used as a type argument on the right-hand side of an `is`
+test:
+
+```dart
+import 'dart:js_interop';
+
+bool f(List<Object> l) => [!l is List<JSString>!];
+```
+
+The following code produces this diagnostic because the JS interop value
+`a` is on the left-hand side of an `is` test:
+
+```dart
+import 'dart:js_interop';
+
+bool f(JSAny a) => [!a is String!];
+```
+
+#### Common fixes
+
+Use a JS interop helper, such as `isA`, to check the underlying type of
+JS interop values:
+
+```dart
+import 'dart:js_interop';
+
+void f(Object b) => b.jsify()?.isA<JSBoolean>();
+```
+
 ### invalid_use_of_do_not_submit_member
 
 _Uses of '{0}' should not be submitted to source control._
@@ -26016,6 +26087,43 @@ void emulateCrashWithOtherFunctionality() {
   emulateCrash();
   // do other things.
 }
+```
+
+### library_annotations
+
+_This annotation should be attached to a library directive._
+
+#### Description
+
+The analyzer produces this diagnostic when an annotation that applies to
+a whole library isn't associated with a `library` directive.
+
+#### Example
+
+The following code produces this diagnostic because the `TestOn`
+annotation, which applies to the whole library, is associated with an
+`import` directive rather than a `library` directive:
+
+```dart
+[!@TestOn('browser')!]
+
+import 'package:test/test.dart';
+
+void main() {}
+```
+
+#### Common fixes
+
+Associate the annotation with a `library` directive, adding one if
+necessary:
+
+```dart
+@TestOn('browser')
+library;
+
+import 'package:test/test.dart';
+
+void main() {}
 ```
 
 ### library_names
@@ -26405,6 +26513,7 @@ The following code produces this diagnostic because the name of the
 parameter consists of two underscores:
 
 ```dart
+// @dart = 3.6
 void f(int __) {
   print([!__!]);
 }
@@ -26414,6 +26523,7 @@ The following code produces this diagnostic because the name of the
 local variable consists of a single underscore:
 
 ```dart
+// @dart = 3.6
 void f() {
   int _ = 0;
   print([!_!]);
@@ -27273,12 +27383,12 @@ interpolation would achieve the same result.
 
 #### Example
 
-The following code produces this diagnostic because the elements of the
-list `l` are being concatenated with other strings using the `+` operator:
+The following code produces this diagnostic because the String `s` is
+concatenated with other strings using the `+` operator:
 
 ```dart
-String f(List<String> l) {
-  return [!'(' + l[0] + ', ' + l[1] + ')'!];
+String f(String s) {
+  return [!'(' + s!] + ')';
 }
 ```
 
@@ -28221,6 +28331,59 @@ Future<void> f() async {
 Future<int> g() => Future.value(0);
 ```
 
+### unintended_html_in_doc_comment
+
+_Angle brackets will be interpreted as HTML._
+
+#### Description
+
+The analyzer produces this diagnostic when a documentation comment
+contains angle bracketed text (`<...>`) that isn't one of the allowed
+exceptions.
+
+Such text is interpreted by markdown to be an HTML tag, which is rarely
+what was intended.
+
+See the [lint rule description](https://dart.dev/tools/linter-rules/unintended_html_in_doc_comment)
+for the list of allowed exceptions.
+
+#### Example
+
+The following code produces this diagnostic because the documentation
+comment contains the text `<int>`, which isn't one of the allowed
+exceptions:
+
+```dart
+/// Converts a List[!<int>!] to a comma-separated String.
+String f(List<int> l) => '';
+```
+
+#### Common fixes
+
+If the text was intended to be part of a code span, then add backticks
+around the code:
+
+```dart
+/// Converts a `List<int>` to a comma-separated String.
+String f(List<int> l) => '';
+```
+
+If the text was intended to be part of a link, then add square brackets
+around the code:
+
+```dart
+/// Converts a [List<int>] to a comma-separated String.
+String f(List<int> l) => '';
+```
+
+If the text was intended to be printed as-is, including the angle
+brackets, then add backslash escapes before the angle brackets:
+
+```dart
+/// Converts a List\<int\> to a comma-separated String.
+String f(List<int> l) => '';
+```
+
 ### unnecessary_brace_in_string_interps
 
 _Unnecessary braces in a string interpolation._
@@ -28450,6 +28613,39 @@ class C {
   static String c = '';
 }
 ```
+
+### unnecessary_library_name
+
+_Library names are not necessary._
+
+#### Description
+
+The analyzer produces this diagnostic when a `library` directive specifies
+a name.
+
+#### Example
+
+The following code produces this diagnostic because the `library`
+directive includes a name:
+
+```dart
+library [!some.name!];
+
+class C {}
+```
+
+#### Common fixes
+
+Remove the name from the `library` directive:
+
+```dart
+library;
+
+class C {}
+```
+
+If the library has any parts, then any `part of` declarations that use
+the library name should be updated to use the URI of the library instead.
 
 ### unnecessary_new
 
@@ -29490,6 +29686,35 @@ class A {
 class B extends A {
   B({super.x, super.y});
 }
+```
+
+### use_truncating_division
+
+_Use truncating division._
+
+#### Description
+
+The analyzer produces this diagnostic when the result of dividing two
+numbers is converted to an integer using `toInt`.
+
+Dart has a built-in integer division operator that is both more efficient
+and more concise.
+
+#### Example
+
+The following code produces this diagnostic because the result of dividing
+`x` and `y` is converted to an integer using `toInt`:
+
+```dart
+int divide(int x, int y) => [!(x / y).toInt()!];
+```
+
+#### Common fixes
+
+Use the integer division operator (`~/`):
+
+```dart
+int divide(int x, int y) => x ~/ y;
 ```
 
 ### valid_regexps
