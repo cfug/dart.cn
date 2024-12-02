@@ -241,10 +241,26 @@ To prevent precompilation, use `--no-precompile`.
 
 ### `--enforce-lockfile`
 
-Refuses to resolve dependencies with an error message
-if the `pubspec.lock` file deviates or is missing.
+Enforce the resolution of the current `pubspec.lock`.
 
-如果 `pubspec.lock` 文件偏离或丢失，
-则拒绝通过错误消息解决依赖关系。
+强制解析当前的 `pubspec.lock`。
+
+Fail the `pub get` with an error message if the `pubspec.lock` does not exactly
+specify a valid resolution of `pubspec.yaml` or if any content hash of a hosted
+package has changed.
+
+如果 `pubspec.lock` 没有准确指定 `pubspec.yaml` 的有效解析结果，
+或者任何托管 package 的内容哈希值发生变化，
+则会在执行 `pub get` 时失败并抛出错误信息。
+
+Useful for CI or deploying to production.
+
+适用于 CI 或部署到生产环境中。
+
+Read [Get dependencies for production](/tools/pub/packages#get-dependencies-for-production)
+for more details.
+
+请查阅 [获取生产所需的依赖项](/tools/pub/packages#get-dependencies-for-production)
+了解更多详情信息。
 
 {% render 'pub-problems.md' %}

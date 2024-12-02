@@ -5,7 +5,7 @@ title: dart pub 工具
 description: Pub 的命令行工具，是 Dart 的 package 管理工具。
 ---
 
-The [pub package manager](/guides/packages) has a command-line interface
+The [pub package manager](/tools/pub/packages) has a command-line interface
 that works with either the
 [`flutter` tool][flutter-cli] or the [`dart` tool][dart-cli].
 With either tool, add the `pub` command followed by

@@ -1694,10 +1694,10 @@ makeGreeting(String who) {
 }
 ```
 
-Note that this guideline only applies to *named* function declarations:
-top-level functions, methods, and local functions. Anonymous function
-expressions infer a return type from their body. In fact, the syntax doesn't
-even allow a return type annotation.
+Note that this guideline only applies to *non-local* function declarations:
+top-level, static, and instance methods and getters. Local functions and
+anonymous function expressions infer a return type from their body. In fact, the
+anonymous function syntax doesn't even allow a return type annotation.
 
 
 ### DO annotate parameter types on function declarations
@@ -1996,7 +1996,7 @@ function.
 专门的 [Function][] 类型说明。使用 `Function` 类型要稍微比使用 `dynamic` 更好些。
 如果要使用 `Function` 来进行类型注解，注解类型应该包含函数的所有参数及返回值类型。
 
-[Function]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Function-class.html
+[Function]: {{site.dart-api}}/dart-core/Function-class.html
 
 <?code-excerpt "design_good.dart (avoid-function)" replace="/bool Function(\(.*?\))?/[!$&!]/g"?>
 ```dart tag=good

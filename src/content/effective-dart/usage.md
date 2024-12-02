@@ -640,7 +640,7 @@ collection contains *anything* can be painfully slow.
 [Iterable][] 合约并不要求集合知道其长度，也没要求在遍历的时候其长度不能改变。
 通过调用 `.length`  来判断集合是否包含内容是非常低效的。
 
-[iterable]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable-class.html
+[iterable]: {{site.dart-api}}/dart-core/Iterable-class.html
 
 Instead, there are faster and more readable getters: `.isEmpty` and
 `.isNotEmpty`. Use the one that doesn't require you to negate the result.
@@ -807,7 +807,7 @@ the [`whereType()`][where-type] method for this exact use case:
 代码冗长，并导致创建了两个包装器，获取元素对象要间接通过两层，并进行两次多余的运行时检查。
 幸运的是，对于这个用例，核心库提供了 [`whereType()`][where-type] 方法：
 
-[where-type]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable/whereType.html
+[where-type]: {{site.dart-api}}/dart-core/Iterable/whereType.html
 
 <?code-excerpt "../../test/effective_dart_test.dart (where-type)"?>
 ```dart tag=good
@@ -844,7 +844,7 @@ If you're already calling `toList()`, replace that with a call to
 如果你已经使用了 `toList()` ，那么请使用 [`List<T>.from()`][list-from] 替换，
 这里的 `T` 是你想要的返回值的类型。
 
-[list-from]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List/List.from.html
+[list-from]: {{site.dart-api}}/dart-core/List/List.from.html
 
 <?code-excerpt "usage_good.dart (cast-list)"?>
 ```dart tag=good
@@ -2081,7 +2081,7 @@ Completer 是用于两种底层代码的：
 大部分的代码都应该使用 async/await 或者 [`Future.then()`][then]，
 这样代码更加清晰并且异常处理更加容易。
 
-[then]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future/then.html
+[then]: {{site.dart-api}}/dart-async/Future/then.html
 
 <?code-excerpt "usage_good.dart (avoid-completer)"?>
 ```dart tag=good
@@ -2164,9 +2164,9 @@ like a bare, synchronous value.
 它会错误地将其视为一个空的同步对象值。
 
 [pokemon]: https://blog.codinghorror.com/new-programming-jargon/
-[Error]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Error-class.html
-[StackOverflowError]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/StackOverflowError-class.html
-[OutOfMemoryError]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/OutOfMemoryError-class.html
-[ArgumentError]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/ArgumentError-class.html
-[AssertionError]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/AssertionError-class.html
-[Exception]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Exception-class.html
+[Error]: {{site.dart-api}}/dart-core/Error-class.html
+[StackOverflowError]: {{site.dart-api}}/dart-core/StackOverflowError-class.html
+[OutOfMemoryError]: {{site.dart-api}}/dart-core/OutOfMemoryError-class.html
+[ArgumentError]: {{site.dart-api}}/dart-core/ArgumentError-class.html
+[AssertionError]: {{site.dart-api}}/dart-core/AssertionError-class.html
+[Exception]: {{site.dart-api}}/dart-core/Exception-class.html

@@ -5,12 +5,12 @@ title: 创建 package
 description: 学习如何在 Dart 里创建可复用的库。
 ---
 
-The Dart ecosystem uses [packages](/guides/packages)
+The Dart ecosystem uses [packages](/tools/pub/packages)
 to share software such as libraries and tools.
 This page tells you how to create a standard shared 
 [package](/tools/pub/glossary#package).
 
-在 Dart 生态系统中使用 [packages](/guides/packages) 实现共享软件，
+在 Dart 生态系统中使用 [packages](/tools/pub/packages) 实现共享软件，
 比如一些库和工具。
 本章将通过最常见的 [Package](/tools/pub/glossary#package)
 来介绍如何创建一个 Package。
@@ -290,12 +290,19 @@ but change `export` to `import`.
 
 :::note
 
-The conditional import or export checks only whether the library is
-_available for use_ on the current platform,
-not whether it's actually imported or used.
+Conditional imports or exports only work with keys in the compilation
+environment. Any sequence of dot-separated identifiers is valid syntax.
+Currently, only keys of the form  `dart.library.name` are provided.
+`dart.library.name` is set to `"true"` in the compilation 
+environment if the library `dart:name` is _available for use_ on
+the current platform, not whether it's actually imported or used.
 
-条件导入或条件导出仅检查该库在当前平台上_是否可用_，
-而不管是实际导入还是使用。
+条件导入或条件导出仅在编译环境中存在对应的键时才有效。
+任何以点分割的标识符序列都是有效的语法。
+目前，只提供 `dart.library.name` 形式的键。
+在编译环境中，如果 `dart:name` 库在当前平台上 _可用_，
+不论该库是否实际导入或使用，
+`dart.library.name` 都会被设置为 `"true"`。
 
 :::
 
@@ -497,10 +504,10 @@ Use the following resources to learn more about packages:
 
   在 [库及可见性](/language/libraries) 中涵盖了库文件使用的内容。
 
-* The [package](/guides/packages) documentation is useful, particularly the
+* The [package](/tools/pub/packages) documentation is useful, particularly the
   [package layout conventions](/tools/pub/package-layout).
 
-  [Package](/guides/packages) 文档非常有用，尤其是 
+  [Package](/tools/pub/packages) 文档非常有用，尤其是 
   [Package 结构约定](/tools/pub/package-layout).
 
 * [What not to commit](private-files)

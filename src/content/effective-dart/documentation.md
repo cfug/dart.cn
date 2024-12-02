@@ -101,7 +101,7 @@ and uses the special `///` syntax that `dart doc` looks for.
 文档注释包括所有出现在声明之前并使用 `///` 语法的注释，这些注释使用使用 dartdoc 检索。
 
 [`dart doc`]: /tools/dart-doc
-[docs]: {{site.dart-api}}/{{site.sdkInfo.channel}}
+[docs]: {{site.dart-api}}
 
 ### DO use `///` doc comments to document members and types
 

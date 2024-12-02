@@ -290,10 +290,10 @@ with sound null safety, `arg` might be set to `null`.
 `arg` 仍然可能为 `null`。
 
 The simplest way to preserve behavior is change the check into
-[`ArgumentError.checkNotNull`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/ArgumentError/checkNotNull.html).
+[`ArgumentError.checkNotNull`]({{site.dart-api}}/dart-core/ArgumentError/checkNotNull.html).
 
 保留这项行为的最简单的方法是将判断改为
-[`ArgumentError.checkNotNull`]({{site.dart-api}}/stable/dart-core/ArgumentError/checkNotNull.html)。
+[`ArgumentError.checkNotNull`]({{site.dart-api}}/dart-core/ArgumentError/checkNotNull.html)。
 
 The same applies to some runtime type checks. If `arg`
 has static type `String`, then `if (arg is! String)` is actually checking
@@ -351,12 +351,12 @@ In such cases, you have two options:
 ## 我需要怎样标记映射的返回值为非空类型？
 
 The
-[lookup operator]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Map/operator_get.html)
+[lookup operator]({{site.dart-api}}/dart-core/Map/operator_get.html)
 on Map (`[]`) by default returns a nullable type. There's no way to signal to
 the language that the value is guaranteed to be there.
 
 映射类型的
-[查询操作符]({{site.dart-api}}/stable/dart-core/Map/operator_get.html)
+[查询操作符]({{site.dart-api}}/dart-core/Map/operator_get.html)
 (`[]`) 返回的值默认是可空类型。
 此处没有办法告诉 Dart ，返回的值一定是非空的。
 
@@ -399,11 +399,11 @@ initializing the list with length and filling it in via a loop.
 
 If you are simply initializing the list with the same value, you should instead
 use the 
-[`filled`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List/List.filled.html) 
+[`filled`]({{site.dart-api}}/dart-core/List/List.filled.html) 
 constructor.
 
 如果你仅仅想要以相同的值初始化列表，你应该使用
-[`filled`]({{site.dart-api}}/stable/dart-core/List/List.filled.html)
+[`filled`]({{site.dart-api}}/dart-core/List/List.filled.html)
 构造。
 
 ```dart tag=bad
@@ -449,7 +449,7 @@ with the `growable` parameter set to `false`:
 _jellyPoints = List.generate(jellyMax, (_) => Vec2D(), growable: false);
 ```
 
-[`List.generate`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List/List.generate.html
+[`List.generate`]: {{site.dart-api}}/dart-core/List/List.generate.html
 
 {% comment %}
   Would preferably suggest a language syntax here,

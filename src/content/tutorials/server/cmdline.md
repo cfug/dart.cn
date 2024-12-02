@@ -13,9 +13,8 @@ prevpage:
   title: 起步教程：编写命令行和服务端应用
 ---
 
-{% assign _api = site.dart-api | append: '/' | append: site.sdkInfo.channel -%}
 {% assign argsAPI = site.pub-api | append: '/args/latest/args' -%}
-{% assign ioAPI = _api | append: '/dart-io' -%}
+{% assign ioAPI = site.dart-api | append: '/dart-io' -%}
 
 <?code-excerpt replace="/ ?\/\/!tip.*//g"?>
 
@@ -31,8 +30,8 @@ prevpage:
 
 :::note
 This tutorial uses the `async` and `await` language features, which rely on
-the [`Future`]({{_api}}/dart-async/Future-class.html) and
-[`Stream`]({{_api}}/dart-async/Stream-class.html)
+the [`Future`]({{site.dart-api}}/dart-async/Future-class.html) and
+[`Stream`]({{site.dart-api}}/dart-async/Stream-class.html)
 classes for asynchronous support.
 To learn more about these features, see the
 [asynchronous programming tutorial](/libraries/async/async-await) and the
@@ -146,7 +145,7 @@ Future<void> _handleError(String path) async {
 
 You might notice that dcat depends on a package named **args**.
 To get the args package, use the
-[pub package manager](/guides/packages).
+[pub package manager](/tools/pub/packages).
 
 A real app has tests, license files, dependency files, examples, and so on.
 For the first app though, we can easily create only what is necessary
@@ -177,7 +176,7 @@ with the [`dart create`](/tools/dart-create) command.
 
 :::note
 To learn more about using packages and organizing your code, check out
-[How to use packages](/guides/packages) and
+[How to use packages](/tools/pub/packages) and
 [Package layout conventions](/tools/pub/package-layout).
 :::
 
@@ -195,7 +194,7 @@ $ dart run bin/dcat.dart -n pubspec.yaml
 4 # repository: https://github.com/my_org/my_repo
 5 
 6 environment:
-7   sdk: ^3.5.3
+7   sdk: ^3.5.4
 8 
 9 # Add regular dependencies here.
 10 dependencies:
@@ -635,7 +634,7 @@ that help with parsing and using command-line arguments:
 For more classes, functions, and properties,
 consult the API docs for
 [`dart:io`]({{ioAPI}}/dart-io-library.html),
-[`dart:convert`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-convert/dart-convert-library.html),
+[`dart:convert`]({{site.dart-api}}/dart-convert/dart-convert-library.html),
 and [`package:args`]({{argsAPI}}/args-library.html).
 
 For another example of a command line app, 
