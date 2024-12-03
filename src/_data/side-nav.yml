@@ -184,6 +184,8 @@
           permalink: /tools/pub/security-advisories
         - title: 版本管理
           permalink: /tools/pub/versioning
+        - title: 自定义 package 仓库
+          permalink: /tools/pub/custom-package-repositories
     - title: 不应提交的内容
       permalink: /guides/libraries/private-files
 

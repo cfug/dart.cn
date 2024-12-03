@@ -65,10 +65,9 @@ directly to the library file.
 If you have some library, `my_library.dart`, that contains:
 
 推荐的现代语法是使用 URI 字符串直接指向库文件。
-首选的现代语法是使用直接指向库文件的URI字符串，URI 的使用和其他指令中一样。
 如果你有一些库，`my_library.dart`，其中包含：
 
-<?code-excerpt "my_library.dart"?>
+<?code-excerpt "my_library.dart" remove="ignore_for_file"?>
 ```dart title="my_library.dart"
 library my_library;
 
