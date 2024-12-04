@@ -551,22 +551,23 @@ way the compiler does.
 Formatting is tedious work and is particularly time-consuming during
 refactoring. Fortunately, you don't have to worry about it. We provide a
 sophisticated automated code formatter called [`dart format`][] that does it for
-you. We have [some documentation][dart format docs] on the rules it applies, but the
-official whitespace-handling rules for Dart are *whatever `dart format` produces*.
+you. The official whitespace-handling rules for Dart are
+*whatever `dart format` produces*. The [formatter FAQ][] can provide more insight
+into the style choices it enforces.
 
 格式化是一项繁琐的工作，尤其在重构过程中特别耗时。
 庆幸的是，你不必担心。
 我们提供了一个名为 [`dart format`][] 的优秀的自动代码格式化程序，它可以为你完成格式化工作。
-我们有一些关于它适用的规则的 [文档][dart format docs] ，
 Dart 中任何官方的空格处理规则由 *`dart format` 生成*。
+你可以参考 [格式化程序常见问题][formatter FAQ] 了解更多关于它强制执行的样式风格。
 
-The remaining formatting guidelines are for the few things `dart format` cannot fix
-for you.
+The remaining formatting guidelines are for the few things `dart format` cannot
+fix for you.  
 
 其余格式指南用于 `dart format` 无法修复的一些规则。
 
 [`dart format`]: /tools/dart-format
-[dart format docs]: {{site.repo.dart.org}}/dart_style/wiki/Formatting-Rules
+[formatter FAQ]: {{site.repo.dart.org}}/dart_style/wiki/FAQ
 
 ### CONSIDER changing your code to make it more formatter-friendly
 

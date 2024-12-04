@@ -7,7 +7,7 @@ title: Package 的文件结构
 description: 学习一下 package 和 pub 命令的文件结构。
 ---
 
-When you build a [pub package](/guides/packages),
+When you build a [pub package](/tools/pub/packages),
 we encourage you to follow the conventions that this page describes.
 They describe how you organize the files and directories within your
 package, and how to name things.

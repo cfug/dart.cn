@@ -87,7 +87,7 @@ and is also where you'll find `abs()`,` ceil()`,
 and `floor()`, among other methods.
 (Bitwise operators, such as \>\>, are defined in the `int` class.)
 If num and its subtypes don't have what you're looking for, the
-[dart:math][] library might.
+[`dart:math`][] library might.
 
 Integers are numbers without a decimal point. Here are some examples of
 defining integer literals:
@@ -159,7 +159,7 @@ assert((3 & 4) == 0); // 0011 & 0100 == 0000
 For more examples, see the
 [bitwise and shift operator][] section.
 
-Literal numbers are compile-time constants.
+Number literals are compile-time constants.
 Many arithmetic expressions are also compile-time constants,
 as long as their operands are
 compile-time constants that evaluate to numbers.
@@ -173,6 +173,26 @@ const msUntilRetry = secondsUntilRetry * msPerSecond;
 
 For more information, see [Numbers in Dart][dart-numbers].
 
+You can use one or more underscores (`_`) as digit separators
+to make long number literals more readable.
+Multiple digit separators allow for higher level grouping.
+
+{% comment %}
+Attach code excerpt misc/lib/language_tour/built_in_types.dart (digit-separators)
+when feature is stable:
+{% endcomment %}
+
+```dart
+var n1 = 1_000_000;
+var n2 = 0.000_000_000_01;
+var n3 = 0x00_14_22_01_23_45;  // MAC address
+var n4 = 555_123_4567;  // US Phone number
+var n5 = 100__000_000__000_000;  // one hundred million million!
+```
+
+:::version-note
+Using digit separators requires a [language version][] of at least 3.6.0.
+:::
 
 ## Strings
 
@@ -254,7 +274,7 @@ var s = r'In a raw string, not even \n gets special treatment.';
 See [Runes and grapheme clusters](#runes-and-grapheme-clusters) for details on how
 to express Unicode characters in a string.
 
-Literal strings are compile-time constants,
+String literals are compile-time constants,
 as long as any interpolated expression is a compile-time constant
 that evaluates to null or a numeric, string, or boolean value.
 
@@ -402,16 +422,17 @@ Symbol literals are compile-time constants.
 [iteration]: /libraries/dart-core#iteration
 [generator functions]: /language/functions#generators
 [Understanding null safety]: /null-safety/understanding-null-safety#top-and-bottom
-[`int`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/int-class.html
-[`double`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/double-class.html
-[`num`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num-class.html
-[dart:math]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-math
+[`int`]: {{site.dart-api}}/dart-core/int-class.html
+[`double`]: {{site.dart-api}}/dart-core/double-class.html
+[`num`]: {{site.dart-api}}/dart-core/num-class.html
+[`dart:math`]: {{site.dart-api}}/dart-math/dart-math-library.html
 [bitwise and shift operator]: /language/operators#bitwise-and-shift-operators
 [dart-numbers]: /guides/language/numbers
-[runes]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Runes-class.html
+[runes]: {{site.dart-api}}/dart-core/Runes-class.html
 [characters package]: {{site.pub-pkg}}/characters
 [grapheme clusters]: https://unicode.org/reports/tr29/#Grapheme_Cluster_Boundaries
 [`Characters`]: {{site.pub-api}}/characters/latest/characters/Characters-class.html
 [characters API]: {{site.pub-api}}/characters
 [characters example]: {{site.pub-pkg}}/characters/example
-[`Symbol`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Symbol-class.html
+[`Symbol`]: {{site.dart-api}}/dart-core/Symbol-class.html
+[language version]: /guides/language/evolution#language-versioning

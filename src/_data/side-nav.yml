@@ -44,12 +44,12 @@
       permalink: /language/functions
     - title: 控制流
       children:
-        - title: 循环
-          permalink: /language/loops
-        - title: 分支
-          permalink: /language/branches
-    - title: 错误处理
-      permalink: /language/error-handling
+      - title: 循环
+        permalink: /language/loops
+      - title: 分支
+        permalink: /language/branches
+      - title: 错误处理
+        permalink: /language/error-handling
     - title: 类 & 对象
       children:
         - title: 类
@@ -154,7 +154,7 @@
   expanded: false
   children:
     - title: 如何使用 package
-      permalink: /guides/packages
+      permalink: /tools/pub/packages
     - title: 常用 package 介绍
       permalink: /resources/useful-packages
     - title: 创建 package

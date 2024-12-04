@@ -89,17 +89,31 @@ $ dart pub upgrade test args
 Dependencies upgraded!
 ```
 
-Upgrading a dependency upgrades its transitive dependencies to their latest
-versions as well. Usually, no other dependencies are updated; they stay at the
+Usually, no other dependencies are upgraded; they stay at the
 versions that are locked in the lockfile. However, if the requested upgrades
 cause incompatibilities with these locked versions, they are selectively
 unlocked until a compatible set of versions is found.
 
-更新一个依赖项也会将这个依赖项所依赖的其它依赖项更新到最新版本。
 通常而言，与这个依赖项无关的其它依赖项不会被更新；
 它们会保持处于 lockfile 文件中的版本不变。
 但是，如果该依赖的升级会导致这些锁定的版本不兼容的话，
 则不兼容的依赖会被解锁，直到找到一个兼容的版本后再重新锁定。
+
+This means that upgrading a specific dependency does not by default upgrade its
+transitive dependencies.
+
+这意味着，默认情况下，
+升级某个特定依赖项并不会升级它自身所依赖的其他依赖项。
+
+To upgrade a specific dependency and all its transitive dependencies to their
+latest versions use the `--unlock-transitive` flag.
+
+如果要将特定依赖及它自身所依赖的所有其他依赖项升级到最新版本，
+你可以使用 `--unlock-transitive` 参数标志。
+
+```console
+$ dart pub upgrade --unlock-transitive test args
+```
 
 ## Getting a new dependency
 
@@ -240,5 +254,10 @@ Can be applied to [specific dependencies](#upgrading-specific-dependencies).
 并与已解析的版本相匹配后，返回已改变约束的依赖列表。
 可用于 [指定的依赖](#upgrading-specific-dependencies)。
 
+### `--unlock-transitive`
+
+When used with a list of packages to unlock, first the transitive closure of
+those packages' dependencies (in the current resolution) is computed,
+and then all those packages are unlocked.
 
 {% render 'pub-problems.md' %}

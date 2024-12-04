@@ -71,6 +71,12 @@ Get answers and connect with Dart developers.
 [非 Dart 官方的 Discord 社区频道](https://discord.gg/Qt6DgfAWWx)
 <br> 与其他 Dart 开发者交流及寻求帮助。
 
+[It's All Widgets Flutter Forum](https://forum.itsallwidgets.com/)
+<br> Asynchronously discuss anything Flutter or Dart related.
+
+[It's All Widgets Flutter 论坛](https://forum.itsallwidgets.com/)
+<br> 讨论任何与 Flutter 或 Dart 相关的内容。
+
 [Flutter communities]({{site.flutter}}/community#community-grid)
 <br> Discuss and get help with Flutter.
 

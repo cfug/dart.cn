@@ -129,11 +129,11 @@ Dart SDK 中包含下面的 `dart` 工具：
 [`dart`](/tools/dart-tool)
 <br> A command-line interface (CLI) for creating, formatting, analyzing,
   testing, documenting, compiling, and running Dart code,
-  as well as working with the [pub package manager](/guides/packages).
+  as well as working with the [pub package manager](/tools/pub/packages).
 
 [`dart`](/tools/dart-tool)
 <br> 用于创建、格式化、分析、测试、编译和运行 Dart 代码的命令行工具 (CLI)，
-  同时包含 [pub package 管理器](/guides/packages)。
+  同时包含 [pub package 管理器](/tools/pub/packages)。
 
 
 ### Debugging

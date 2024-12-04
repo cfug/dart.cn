@@ -41,7 +41,7 @@ which are fundamental to most Dart programs.
     <p>使用 stream 数据流管理数据序列。</p>
   </div>
   <div class="card">
-    <h3><a href="/guides/packages"><t>How to use packages</t><t>如何使用 package</t></a></h3>
+    <h3><a href="/tools/pub/packages"><t>How to use packages</t><t>如何使用 package</t></a></h3>
     <p>Organize and share code at the
        <a href="{{site.pub}}">pub.dev site.</a></p>
     <p>在 <a href="{{site.pub}}">pub.dev 网站</a> 上组织和共享代码。</p>

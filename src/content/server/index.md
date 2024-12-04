@@ -121,10 +121,10 @@ You might find the following tutorials helpful.
 
 ## 更多资源
 
-[Dart API]({{site.dart-api}}/{{site.sdkInfo.channel}})
+[Dart API]({{site.dart-api}})
 <br> API reference for dart:* libraries.
 
-[Dart API]({{site.dart-api}}/{{site.sdkInfo.channel}})：
+[Dart API]({{site.dart-api}})：
 <br> dart:* 库的 API 参考。
 
 [dart:io documentation](/libraries/dart-io)
