@@ -696,15 +696,11 @@ and the [Dart API reference]({{site.dart-api}}).
 This site's code follows the conventions in the
 [Dart style guide](/effective-dart/style).
 
-<<<<<<< HEAD
 [核心库文档](/libraries/dart-core) 中会有更多的文档和代码示例。
 你也可以查阅 [Dart API 文档]({{site.dart-api}})，里面也常常会有示例代码。
 本网站的代码风格遵循 [Dart 代码风格指南](/effective-dart/style)。
 
-[Dart language specification]: /guides/language/spec
-=======
 [Dart language specification]: /resources/language/spec
->>>>>>> 11cb77b0b52170ff9ddcdc645b2da7b8a7a13b53
 [Comments]: /language/comments
 [built-in types]: /language/built-in-types
 [Strings]: /language/built-in-types#strings

@@ -723,16 +723,12 @@ and [Use sound parameter types when overriding methods](#use-proper-param-types)
 
 The following resources have further information on sound Dart:
 
-<<<<<<< HEAD
 以下是更多关于 Dart 类型安全的相关资源：
 
-* [Fixing common type problems](/guides/language/sound-problems) - 
-=======
 * [Fixing common type problems](/deprecated/sound-problems) - 
->>>>>>> 11cb77b0b52170ff9ddcdc645b2da7b8a7a13b53
   Errors you may encounter when writing sound Dart code, and how to fix them.
 
-  [修复常见类型问题](/guides/language/sound-problems) -
+  [修复常见类型问题](/deprecated/sound-problems) -
   编写类型安全的 Dart 代码时可能遇到的错误，
   以及解决错误的方法。
   
