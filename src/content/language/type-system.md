@@ -271,11 +271,12 @@ subtype of the original parameter.
 :::note
 
 If you have a valid reason to use a subtype, you can use the
-[`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
+[`covariant` keyword][].
 
 **提示：** 如果有合理的理由使用子类型，
-可以使用 [`covariant` 关键字](/guides/language/sound-problems#the-covariant-keyword)。
+可以使用 [`covariant` 关键字][`covariant` keyword]。
 
+[`covariant` keyword](/deprecated/sound-problems#the-covariant-keyword).
 :::
 
 Consider the `chase(Animal)` method for the `Animal` class:
@@ -722,9 +723,13 @@ and [Use sound parameter types when overriding methods](#use-proper-param-types)
 
 The following resources have further information on sound Dart:
 
+<<<<<<< HEAD
 以下是更多关于 Dart 类型安全的相关资源：
 
 * [Fixing common type problems](/guides/language/sound-problems) - 
+=======
+* [Fixing common type problems](/deprecated/sound-problems) - 
+>>>>>>> 11cb77b0b52170ff9ddcdc645b2da7b8a7a13b53
   Errors you may encounter when writing sound Dart code, and how to fix them.
 
   [修复常见类型问题](/guides/language/sound-problems) -
@@ -752,5 +757,5 @@ The following resources have further information on sound Dart:
 
 
 [analysis]: /tools/analysis
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 [null safety]: /null-safety

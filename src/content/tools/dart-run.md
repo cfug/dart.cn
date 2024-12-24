@@ -55,7 +55,7 @@ you're executing the `dart run` command
 from the directory that's at the top of a Dart package
 (the _current package_).
 For information on the directory structure of Dart packages, see
-[package layout conventions](/guides/libraries/create-packages).
+[package layout conventions](/tools/pub/create-packages).
 
 本节说明的前提是你在 package 的根目录执行 `dart run` 命令。
 更多关于 package 目录结构的介绍，请查阅

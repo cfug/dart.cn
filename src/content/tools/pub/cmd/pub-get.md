@@ -98,13 +98,12 @@ in the `.dart_tool/` directory that maps from package names to location URIs.
 
 Don't check the generated `.dart_tool/` directory into your repo;
 add it to your repo's `.gitignore` file.
-For more information, 
-see [What not to commit](/guides/libraries/private-files).
+For more information,
+see [What not to commit](/tools/pub/private-files).
 
 不要将仓库中由 pub 自动生成的 `.dart_tool` 目录添加至版本管理中；
 请将它添加至 Git 仓库的 `.gitignore` 文件中。
-更多信息请查阅 [你不应该提交哪些文件](/guides/libraries/private-files)。
-
+更多信息请查阅 [你不应该提交哪些文件](/tools/pub/private-files)。
 :::
 
 

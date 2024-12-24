@@ -36,7 +36,7 @@ that null safety can bring.
 未迁移至空安全的使用者也可以享受新的问题修复和其他改进。
 然而，混合模式的程序无法拥有空安全带来的所有优势。
 
-[language versions]: /guides/language/evolution#language-versioning
+[language versions]: /resources/language/evolution#language-versioning
 
 This page describes the differences between sound and unsound null safety,
 with the goal of helping you decide when to migrate to null safety.
@@ -316,4 +316,4 @@ when you've finished the incremental migration of your libraries.
 但这样做意味着你并未在完全启用空安全的情况下测试你的代码。
 当你完成增量迁移后，也请记得将测试代码 **重新** 迁移至空安全。
 
-[language version comment]: /guides/language/evolution#per-library-language-version-selection
+[language version comment]: /resources/language/evolution#per-library-language-version-selection

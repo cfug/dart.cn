@@ -63,7 +63,7 @@ either don't use `--force`, or use `--dry-run` first.
 ### `--skip-validation`
 
 Publishes without going through the client-side validation process or resolving dependencies.
-This is useful for advanced users who know why the validation fails and wish to side step a particularly issues.
+This is useful for advanced users who know why the validation fails and wish to side step a particular issues.
 
 **Example:** When publishing to pub.dev it may take a few minutes for a newly published package to become available.
 Hence, if you are publishing two dependent packages, where the second depends on the first.
@@ -71,3 +71,8 @@ You can either wait a few minutes in between publishing the first and the second
 to publish the second package immediately, by side-stepping client-side validation.
 
 {% render 'pub-problems.md' %}
+
+## In a workspace
+
+In a [Pub workspace](/tools/pub/workspaces) `dart pub publish` publishes
+the package in the current directory.
