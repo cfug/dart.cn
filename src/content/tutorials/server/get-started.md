@@ -238,10 +238,6 @@ Check out these resources:
 
   Dart 语言、库以及习惯用法
 
-  * [Sample code](/samples)
-
-    [示例代码](/samples)
-
   * [Language tour](/language)
 
     [语言概览](/language)
