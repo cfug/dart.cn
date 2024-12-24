@@ -271,12 +271,10 @@ subtype of the original parameter.
 :::note
 
 If you have a valid reason to use a subtype, you can use the
-[covariant keyword][].
+[`covariant` keyword](/deprecated/sound-problems#the-covariant-keyword).
 
 **提示：** 如果有合理的理由使用子类型，
-可以使用 [`covariant` 关键字][covariant keyword]。
-
-[covariant keyword](/deprecated/sound-problems#the-covariant-keyword).
+可以使用 [`covariant` 关键字](/deprecated/sound-problems#the-covariant-keyword)。
 :::
 
 Consider the `chase(Animal)` method for the `Animal` class:
