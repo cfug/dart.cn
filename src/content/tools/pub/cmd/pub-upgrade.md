@@ -182,7 +182,7 @@ run `dart pub upgrade` again to upgrade to a later version.
 
 ## Options
 
-## 选项
+## 命令行选项
 
 The `dart pub upgrade` command supports the
 [`dart pub get` options](/tools/pub/cmd/pub-get#options), and more.
@@ -259,5 +259,14 @@ Can be applied to [specific dependencies](#upgrading-specific-dependencies).
 When used with a list of packages to unlock, first the transitive closure of
 those packages' dependencies (in the current resolution) is computed,
 and then all those packages are unlocked.
+
+## In a workspace
+
+In a [Pub workspace](/tools/pub/workspaces) `dart pub upgrade` will
+upgrade all dependencies in the shared resolution from across all workspace
+packages.
+
+`dart pub upgrade --major-versions` and `dart pub upgrade --tighten` will update
+constraints in all workspace `pubspec.yaml` files.
 
 {% render 'pub-problems.md' %}

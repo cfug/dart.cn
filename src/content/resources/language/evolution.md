@@ -42,6 +42,19 @@ on the Dart language GitHub repo.
 
 ## Changes in each release
 
+### Dart 3.6
+_Released 11 December 2024_
+| [Dart 3.6 announcement](https://medium.com/dartlang/announcing-dart-3-6-778dd7a80983)
+
+Dart 3.6 added support for [digit separator][] underscores (`_`) to the language.
+Digit separators improve readability of long number literals.
+
+```dart
+var m = 1__000_000__000_000__000_000;
+```
+
+[digit separator]: /language/built-in-types#digit-separators
+
 ### Dart 3.5
 _Released 6 August 2024_
 | [Dart 3.5 announcement](https://medium.com/dartlang/dart-3-5-6ca36259fa2f)
@@ -616,12 +629,12 @@ check out the [language versioning specification][].
 [calling native C code]: /interop/c-interop
 [collection for]: /language/collections#control-flow-operators
 [collection if]: /language/collections#control-flow-operators
-[Dart library]: /guides/libraries/create-packages#organizing-a-package
+[Dart library]: /tools/pub/create-packages#organizing-a-package
 [Dart FFI]: /interop/c-interop
 [extension methods]: /language/extension-methods
 [Extension types]: /language/extension-types
 [language funnel]: {{site.repo.dart.lang}}/projects/1
-[language specification]: /guides/language/spec
+[language specification]: /resources/language/spec
 [language documentation]: /language
 [language versioning specification]: {{site.repo.dart.lang}}/blob/main/accepted/2.8/language-versioning/feature-specification.md#dart-language-versioning
 [null safety]: /null-safety

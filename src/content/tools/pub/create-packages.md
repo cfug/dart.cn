@@ -510,10 +510,11 @@ Use the following resources to learn more about packages:
   [Package](/tools/pub/packages) 文档非常有用，尤其是 
   [Package 结构约定](/tools/pub/package-layout).
 
-* [What not to commit](private-files)
-  covers what should not be checked into a source code repository.
+* [What not to commit](/tools/pub/private-files)
+  covers what shouldn't be checked into a source code repository
 
-  [什么不应该被提交](private-files)包含了关于什么文件不应该被提交到源码仓库的介绍。
+  [什么不应该被提交](/tools/pub/private-files)
+  包含了关于什么文件不应该被提交到源码仓库的介绍。
 
 * The newer packages under the
   [dart-lang]({{site.repo.dart.org}}) organization tend

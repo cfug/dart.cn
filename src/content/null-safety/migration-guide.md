@@ -537,7 +537,7 @@ are compatible with Dart 3.
 
 请注意，从 Dart 3 开始，只支持完全迁移到空安全的应用和 package。
 
-[version comment]: /guides/language/evolution#per-library-language-version-selection
+[version comment]: /resources/language/evolution#per-library-language-version-selection
 
 
 #### Applying changes

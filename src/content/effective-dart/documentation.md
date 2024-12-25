@@ -147,7 +147,7 @@ up.
 
 ### **推荐** 为公开发布的 API 编写文档注释。
 
-{% render 'linter-rule-mention.md', rules:'package_api_docs, public_member_api_docs' %}
+{% render 'linter-rule-mention.md', rules:'public_member_api_docs' %}
 
 You don't have to document every single library, top-level variable, type, and
 member, but you should document most of them.

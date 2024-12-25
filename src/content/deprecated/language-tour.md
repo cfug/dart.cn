@@ -3,12 +3,13 @@
 title: Dart 开发语言概览
 # description: A tour of all the major Dart language features.
 description: Dart 开发语言的主要特性概览。
-short-title: Language tour
+short-title: 语言概览
 js: [{url: '/assets/js/language-tour-redirector.js'}]
 sitemap: false
 canonical: https://dart.cn/language
 noindex: true
 skipFreshness: true
+show_breadcrumbs: false
 ---
 
 :::warning

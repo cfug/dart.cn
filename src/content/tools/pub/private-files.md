@@ -6,7 +6,7 @@ description: 开发工具会生成很多文件，在发布的时候，并非其�
 ---
 
 When you put Dart source code in a repository—using the
-[pub tool](/tools/pub/cmd), [GitHub,](https://github.com/)
+[pub tool](/tools/pub/cmd), [GitHub](https://github.com/),
 or another source code management system—don't include most of the files
 that your IDE or code editor, the pub tool, and other tools generate.
 

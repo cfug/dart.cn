@@ -158,11 +158,13 @@
     - title: 常用 package 介绍
       permalink: /resources/useful-packages
     - title: 创建 package
-      permalink: /guides/libraries/create-packages
-    - title: 发布 package
+      permalink: /tools/pub/create-packages
+    - title: 创建 package
       permalink: /tools/pub/publishing
     - title: 设置 package 介绍页
       permalink: /tools/pub/writing-package-pages
+    - title: 工作空间 (支持 monorepo)
+      permalink: /tools/pub/workspaces
     - title: Package 参考资料
       expanded: false
       children:
@@ -187,15 +189,15 @@
         - title: 自定义 package 仓库
           permalink: /tools/pub/custom-package-repositories
     - title: 不应提交的内容
-      permalink: /guides/libraries/private-files
+      permalink: /tools/pub/private-files
 
 - title: 开发文档
   expanded: false
   children:
     - title: JSON
       permalink: /guides/json
-    - title: Dart 中的数字
-      permalink: /guides/language/numbers
+    - title: Dart 中的数字表示
+      permalink: /resources/language/number-representation
     - title: Google APIs
       permalink: /resources/google-apis
     - title: 跨平台应用
@@ -325,7 +327,7 @@
       - title: 自定义静态分析
         permalink: /tools/analysis
       - title: 修复常见的类型问题
-        permalink: /guides/language/sound-problems
+        permalink: /deprecated/sound-problems
       - title: 修复类型提升失败
         permalink: /tools/non-promotion-reasons
       - title: Linter 规则
@@ -348,9 +350,9 @@
     - title: 破坏性改动
       permalink: /resources/breaking-changes
     - title: 版本演变
-      permalink: /guides/language/evolution
+      permalink: /resources/language/evolution
     - title: 语言规范
-      permalink: /guides/language/spec
+      permalink: /resources/language/spec
     - title: Dart 3 迁移指南
       permalink: /resources/dart-3-migration
     - title: 从其他平台转向 Dart

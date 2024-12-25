@@ -700,14 +700,14 @@ This site's code follows the conventions in the
 你也可以查阅 [Dart API 文档]({{site.dart-api}})，里面也常常会有示例代码。
 本网站的代码风格遵循 [Dart 代码风格指南](/effective-dart/style)。
 
-[Dart language specification]: /guides/language/spec
+[Dart language specification]: /resources/language/spec
 [Comments]: /language/comments
 [built-in types]: /language/built-in-types
 [Strings]: /language/built-in-types#strings
 [The main() function]: /language/functions#the-main-function
 [ns]: /null-safety
 [`Object`]: {{site.dart-api}}/dart-core/Object-class.html
-[language version]: /guides/language/evolution#language-versioning
+[language version]: /resources/language/evolution#language-versioning
 [ObjectVsDynamic]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 [Libraries and imports]: /language/libraries
 [conditional expression]: /language/operators#conditional-expressions

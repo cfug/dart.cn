@@ -35,7 +35,7 @@
   link: /language/loops#break-and-continue
   type: reserved
 - term: 'covariant'
-  link: /guides/language/sound-problems#the-covariant-keyword
+  link: /deprecated/sound-problems#the-covariant-keyword
   type: bit
 - term: 'default'
   link: /language/branches#switch
@@ -56,7 +56,7 @@
   link: /language/enums
   type: reserved
 - term: 'export'
-  link: /guides/libraries/create-packages
+  link: /tools/pub/create-packages
   type: bit
 - term: 'extends'
   link: /language/extend
@@ -128,7 +128,7 @@
   link: /language/variables#default-value
   type: reserved
 - term: 'of'
-  link: /guides/libraries/create-packages#organizing-a-package
+  link: /tools/pub/create-packages#organizing-a-package
   type: unrestricted
 - term: 'on'
   link: /language/error-handling#catch
@@ -137,7 +137,7 @@
   link: /language/methods#operators
   type: bit
 - term: 'part'
-  link: /guides/libraries/create-packages#organizing-a-package
+  link: /tools/pub/create-packages#organizing-a-package
   type: bit
 - term: 'required'
   link: /language/functions#named-parameters

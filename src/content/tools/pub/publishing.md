@@ -359,7 +359,7 @@ With this command, `dart pub` performs the following tasks:
 
    展示所有准备发布的文件。
 
-The following example shows the publishing a package named `transmogrify`:
+The following example shows test publishing a package named `transmogrify`:
 
 以下示例展示了将要发布的名为 `transmogrify` 的 package：
 
@@ -397,6 +397,9 @@ With this command, `dart pub` performs the following tasks:
 1. Verifies that your package follows the [pubspec format][pubspec] and
    [package layout conventions][pkg-layout].
 
+1. Validates that `git status` is clean. Warns if
+   files that are tracked in git have uncommitted changes.
+
 1. Shows all of the files it intends to publish.
 
 1. Uploads your package to [pub.dev]({{site.pub}}).
@@ -418,7 +421,7 @@ you can update the package using `dart pub publish`.
 
 :::
 
-After your package succeeded in uploading to pub.dev, any pub user can
+After your package succeeds in uploading to pub.dev, any pub user can
 download it or depend on it in their projects.
 
 在你的 package 成功上传至 pub.dev 之后，任何用户都能够下载或在项目中依赖它。

@@ -17,11 +17,11 @@ Wherever your packages come from, pub manages version dependencies,
 helping you get package versions that work with each other and
 with your SDK version.
 
-Dart 生态系统使用 _包_ 来管理**共享软件**，比如：库和工具。
-我们使用 **Pub 包管理工具** 来获取 Dart 包。
-在 [**Pub**]({{site.pub}}) 上，可以找到公开可用的包。
-或者从本地文件系统或其他的位置，比如 Git 仓库，加载可用的包。
-无论包是从什么途径加载的， Pub 都会进行版本依赖管理，
+Dart 生态系统使用 _package_ 来管理**共享软件**，比如：库和工具。
+我们使用 **Pub package 管理工具** 来获取 Dart package。
+在 [**Pub**]({{site.pub}}) 上，可以找到公开可用的 package。
+或者从本地文件系统或其他的位置，比如 Git 仓库，加载可用的 package。
+无论 package 是从什么途径加载的，Pub 都会进行版本依赖管理，
 从而帮助我们获得版本兼容的软件包以及 SDK 。
 
 Most [Dart-savvy IDEs][] offer support for using pub that
@@ -30,7 +30,7 @@ Or you can use [`dart pub` on the command line](/tools/pub/cmd).
 
 大多数 [Dart-savvy IDEs][] 都支持 Pub 的使用，包括包的创建，下载，更新和发布。
 同样上述功能也可以在命令行上通过 [`dart pub`](/tools/pub/cmd) 来操作。
-或者可以在命令行上使用pub。
+或者可以在命令行上使用 pub。
 
 At a minimum,
 a Dart package is a directory containing a [pubspec file](/tools/pub/pubspec).
@@ -79,17 +79,17 @@ name: my_app
 ```
 
 Here is an example of a pubspec that declares dependencies on
-two packages (`js` and `intl`) that are hosted on the pub.dev site:
+two packages (`intl` and `path`) that are hosted on the pub.dev site:
 
 下面是一个 pubspec 的示例，示例中声明依赖了在
-Pub 站点上托管的两个 package（`js` 和 `intl`）：
+Pub 站点上托管的两个 package（`intl` 和 `path`）：
 
 ```yaml
 name: my_app
 
 dependencies:
-  js: ^0.6.0
-  intl: ^0.17.0
+  intl: ^0.20.0
+  path: ^1.9.1
 ```
 
 To update the `pubspec.yaml` file, without manual editing, 
@@ -112,11 +112,11 @@ see the [pubspec documentation](/tools/pub/pubspec)
 and the documentation for the packages that you want to use.
 
 有关创建 pubspec 的详细内容，请参阅 [pubspec 文档](/tools/pub/pubspec)
-以及使用包的相关文档。
+以及使用 package 的相关文档。
 
 ## Getting packages
 
-## 获取包
+## 获取 package
 
 Once you have a pubspec, you can run [`dart pub get`][get] from the top 
 directory of your application:
@@ -227,7 +227,7 @@ Pub 会在 pubspec 旁创建并存储一个名为 `pubspec.lock` 文件。
 
 If your package is an [application package](/tools/pub/glossary#application-package)
 you should check this file into
-[source control](/guides/libraries/private-files).
+[source control](/tools/pub/private-files).
 That way, everyone working on your app uses the same versions
 of all of its dependencies.
 Checking in the lockfile also ensures that your deployed app
@@ -365,20 +365,23 @@ To update `pubspec.lock` run `dart pub get` without `--enforce-lockfile`.
 The following pages have more information about packages and
 the pub package manager.
 
-以下链接的页面是关于包及 Pub 包管理的更多内容。
-
+以下链接的页面是关于包及 pub package 管理的更多内容。
 
 ### How to
 
 ### 如何使用
 
-* [Creating packages](/guides/libraries/create-packages)
+* [Creating packages](/tools/pub/create-packages)
 
-  [创建包](/guides/libraries/create-packages)
+  [创建 package](/tools/pub/create-packages)
 
 * [Publishing packages](/tools/pub/publishing)
 
-  [发布包](/tools/pub/publishing)
+  [发布 package](/tools/pub/publishing)
+
+* [Pub workspaces (monorepo support)](/tools/pub/workspaces)
+
+  [Pub 工作区（支持 monorepo）](/tools/pub/workspaces)
 
 ### Reference
 
