@@ -156,7 +156,7 @@
       { "source": "/eclipse{,/**}", "destination": "/tools#editors", "type": 301 },
       { "source": "/editor{,/**}", "destination": "/tools#editors", "type": 301 },
       { "source": "/events/2015{,/**}", "destination": "https://www.youtube.com/watch?list=PLOU2XLYxmsIIQorIS8gagUiMau9S84vZV&v=FiXiI2Atexc", "type": 301 },
-      { "source": "/events{,/**}", "destination": "https://flutter.dev/events", "type": 301 },
+      { "source": "/events{,/**}", "destination": "https://flutter.cn/events", "type": 301 },
       { "source": "/faq", "destination": "/resources/faq", "type": 301 },
       { "source": "/flutter", "destination": "https://flutter.cn", "type": 301 },
       { "source": "/glossary", "destination": "/resources/glossary", "type": 301 },

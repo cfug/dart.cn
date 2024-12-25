@@ -82,7 +82,7 @@ Here is an example of a pubspec that declares dependencies on
 two packages (`intl` and `path`) that are hosted on the pub.dev site:
 
 下面是一个 pubspec 的示例，示例中声明依赖了在
-Pub 站点上托管的两个 package（`js` 和 `intl`）：
+Pub 站点上托管的两个 package（`intl` 和 `path`）：
 
 ```yaml
 name: my_app
@@ -381,7 +381,7 @@ the pub package manager.
 
 * [Pub workspaces (monorepo support)](/tools/pub/workspaces)
 
-  [发布工作区 (支持 monorepo)](/tools/pub/workspaces)
+  [Pub 工作区（支持 monorepo）](/tools/pub/workspaces)
 
 ### Reference
 
