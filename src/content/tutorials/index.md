@@ -41,7 +41,7 @@ which are fundamental to most Dart programs.
   {% card "如何使用 package", "/tools/pub/packages" %}
     Organize and share code on the pub.dev site.
 
-    在 <a href="{{site.pub}}">pub.dev 网站</a> 上组织和共享代码。
+    在 pub.dev 网站上组织和共享代码。
   {% endcard %}
 </div>
 

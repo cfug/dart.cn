@@ -135,9 +135,7 @@ jobs:
     if: ${{ github.event_name == 'push' &&
             github.ref == 'refs/heads/main' &&
             github.repository == 'cfug/dart.cn' }}
-    # dart.cn | 2024/12/24 临时通过 test 检查，下次同步时改回来
-    # [test, excerpts, linkcheck, site-variable-scanner, firebase-validate]
-    needs: [excerpts, linkcheck, site-variable-scanner, firebase-validate]
+    needs: [test, excerpts, linkcheck, site-variable-scanner, firebase-validate]
     runs-on: ubuntu-latest
     env:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
