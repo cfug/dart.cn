@@ -79,7 +79,7 @@ try more of the available tutorials!
 
     学习分析和处理存储在数据集中的数据。
   {% endcard %}
-  {% card "Flutter codelabs 和教程", "{{site.flutter-docs}}/codelabs" %}
+  {% card "Flutter codelabs 和教程", "https://docs.flutter.cn/codelabs" %}
     Expand your Dart skills by building Flutter apps.
 
     通过构建 Flutter 应用来拓展你的 Dart 技能。
