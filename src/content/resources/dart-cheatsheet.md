@@ -757,10 +757,10 @@ to read properties of `button` if it isn't `null`:
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-without-cascades)"?>
 ```dart
-var button = querySelector('#confirm');
-button?.text = 'Confirm';
-button?.classes.add('important');
-button?.onClick.listen((e) => window.alert('Confirmed!'));
+final button = web.document.querySelector('#confirm');
+button?.textContent = 'Confirm';
+button?.classList.add('important');
+button?.onClick.listen((e) => web.window.alert('Confirmed!'));
 button?.scrollIntoView();
 ```
 
@@ -777,10 +777,10 @@ and makes the `button` variable unnecessary:
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-with-cascades)"?>
 ```dart
-querySelector('#confirm')
-  ?..text = 'Confirm'
-  ..classes.add('important')
-  ..onClick.listen((e) => window.alert('Confirmed!'))
+web.document.querySelector('#confirm')
+  ?..textContent = 'Confirm'
+  ..classList.add('important')
+  ..onClick.listen((e) => web.window.alert('Confirmed!'))
   ..scrollIntoView();
 ```
 
@@ -1507,13 +1507,7 @@ abstract class Logger {
 void tryFunction(VoidFunction untrustworthy, Logger logger) {
   try {
     untrustworthy();
-  } on ExceptionWithMessage catch (e) {
-    logger.logException(e.runtimeType, e.message); 
-  } on Exception catch (e) {
-    logger.logException(e.runtimeType);
-  } finally {
-    logger.doneLogging();
-  }
+  } // Write your logic here
 }
 
 // Tests your solution (Don't edit!):

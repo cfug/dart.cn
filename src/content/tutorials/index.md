@@ -33,19 +33,16 @@ which are fundamental to most Dart programs.
 它们是众多 Dart 程序的基础。
 
 <div class="card-grid no_toc_section">
-  <div class="card">
-    <h3><a href="/libraries/async/using-streams">
-      <t>Asynchronous programming: streams</t><t>异步编程：stream</t>
-    </a></h3>
-    <p>Use streams to manage sequences of data.</p>
-    <p>使用 stream 数据流管理数据序列。</p>
-  </div>
-  <div class="card">
-    <h3><a href="/tools/pub/packages"><t>How to use packages</t><t>如何使用 package</t></a></h3>
-    <p>Organize and share code at the
-       <a href="{{site.pub}}">pub.dev site.</a></p>
-    <p>在 <a href="{{site.pub}}">pub.dev 网站</a> 上组织和共享代码。</p>
-  </div>
+  {% card "异步编程：stream", "/libraries/async/using-streams" %}
+    Use streams to manage sequences of data.
+
+    使用 stream 数据流管理数据序列。
+  {% endcard %}
+  {% card "如何使用 package", "/tools/pub/packages" %}
+    Organize and share code on the pub.dev site.
+
+    在 <a href="{{site.pub}}">pub.dev 网站</a> 上组织和共享代码。
+  {% endcard %}
 </div>
 
 
@@ -67,24 +64,24 @@ try more of the available tutorials!
 尝试更多教程，来学习更多使用 Dart 开发的经验！
 
 <div class="card-grid no_toc_section">
-  <div class="card">
-    <h3><a href="/resources/dart-cheatsheet"><t>Dart cheatsheet</t><t>Dart 速查表</t></a></h3>
-    <p>Quickly try out some of Dart's unique language features.</p>
-    <p>快速体验 Dart 独特的语言特性。</p>
-  </div>
-  <div class="card">
-    <h3><a href="https://codelabs.developers.google.cn/codelabs/dart-patterns-records?hl=zh-cn#0"><t>Records and Patterns</t><t>记录 (Record) 和模式匹配 (Pattern)</t></a></h3>
-    <p>Discover Dart's support for records and patterns.</p>
-    <p>探索 Dart 对记录 (Record) 和模式匹配 (Pattern) 的支持。</p>
-  </div>
-  <div class="card">
-    <h3><a href="{{site.flutter-docs}}/codelabs"><t>Iterable collections</t><t>可迭代集合</t></a></h3>
-    <p>Learn to analyze and manipulate data stored in collections.</p>
-    <p>学习分析和处理存储在数据集中的数据。</p>
-  </div>
-  <div class="card">
-    <h3><a href="{{site.flutter-docs}}/codelabs"><t>Flutter codelabs and tutorials</t><t>Flutter codelabs 和教程</t></a></h3>
-    <p>Expand your Dart skills by building Flutter apps.</p>
-    <p>通过构建 Flutter 应用来拓展你的 Dart 技能。</p>
-  </div>
+  {% card "Dart 速查表", "/resources/dart-cheatsheet" %}
+    Quickly try out some of Dart's unique language features.
+
+    快速体验 Dart 独特的语言特性。
+  {% endcard %}
+  {% card "记录 (Record) 和模式匹配 (Pattern)", "https://codelabs.developers.google.cn/codelabs/dart-patterns-records" %}
+    Discover Dart's support for records and patterns.
+
+    探索 Dart 对记录 (Record) 和模式匹配 (Pattern) 的支持。
+  {% endcard %}
+  {% card "可迭代集合", "/libraries/collections/iterables" %}
+    Learn to analyze and manipulate data stored in collections.
+
+    学习分析和处理存储在数据集中的数据。
+  {% endcard %}
+  {% card "Flutter codelabs 和教程", "{{site.flutter-docs}}/codelabs" %}
+    Expand your Dart skills by building Flutter apps.
+
+    通过构建 Flutter 应用来拓展你的 Dart 技能。
+  {% endcard %}
 </div>

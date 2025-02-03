@@ -1,15 +1,20 @@
+// Must be imported first to ensure that
+// the reset is applied before any other styles are applied.
+@use 'core/reset';
+
 @use 'core/variables' as *;
-@use 'core/colors';
 @use 'core/mixins' as *;
 
-@use 'core/bootstrap';
 @use 'core/base';
+@use 'core/utils';
 
 @use 'components/banner';
+@use 'components/card';
 @use 'components/code';
 @use 'components/cookie-notice';
 @use 'components/form';
 @use 'components/header';
+@use 'components/linter-rules';
 @use 'components/search';
 @use 'components/sidebar';
 @use 'components/tags';
@@ -18,13 +23,11 @@
 @use 'dartvm';
 @use 'books';
 @use 'os-tabs';
-@use 'overwrites';
 @use 'dash';
 
-// Extra variables (defined in terms of bootstrap and other defaults)
-$font-color: bootstrap.$body-color;
-$font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight-bold) * 0.5;
-
+// Must be imported last to ensure that
+// the print overrides take priority over earlier defined styles.
+@use 'core/print';
 
 /* -----------------------------------------
   DOM
@@ -35,37 +38,51 @@ $font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight
 }
 
 #page-content {
-  min-height: calc(100vh);
+  min-height: calc(100vh - $site-header-height);
+  min-width: 0;
+  width: 100%;
 
-  body.homepage & {
-    padding: 0 0 60px;
+  &:not(.focused) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
 
   body.obsolete & {
-    border: 10px solid $alert-warning-bg;
+    border: 0.5rem solid $alert-warning-bg;
     border-top: none;
   }
 
   > article {
+    min-width: 8rem;
+
     > .content {
-      max-width: 960px;
+      max-width: 58rem;
       margin-left: auto;
       margin-right: auto;
-      padding-top: $top-content-padding;
-    }
-
-    @media(min-width: 1024px) {
-      margin-left: 226px;
-    }
-
-    @media(min-width: 1200px) {
-      margin-right: 226px;
+      padding-top: $site-content-top-padding;
     }
   }
 }
 
+#site-below-header {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - $site-header-height);
+  overflow-y: auto;
+}
+
+#site-main-row {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
 #site-content-title {
-  margin-bottom: bootstrap.bs-spacer(6);
+  margin-bottom: 1.5rem;
+  scroll-margin: 2rem;
 }
 
 #page-footer {
@@ -81,6 +98,10 @@ $font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight
 
   .brand {
     width: 176px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.125rem;
   }
 
   .footer-section {
@@ -116,14 +137,21 @@ $font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight
   }
 
   .footer-social-links {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
     a {
-      &:not(:first-child) {
-        margin-left: 16px;
-      }
+      display: inline-flex;
+      text-align: center;
+      padding: 0.25rem;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
 
       svg {
-        height: 32px;
-        width: 32px;
+        height: 2rem;
+        width: 2rem;
       }
     }
 
@@ -165,13 +193,14 @@ $font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight
 #menu-toggle {
   display: none;
   align-items: center;
-  line-height: 50px;
+  line-height: $site-header-height;
   margin-left: 20px;
   padding-right: 10px;
   cursor: pointer;
   z-index: 100;
+  user-select: none;
 
-  i {
+  span {
     font-size: 32px;
   }
 }
@@ -180,10 +209,10 @@ $font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight
   background-color: $site-color-header;
   color: $site-color-header-text;
   display: flex;
-  $mainnav-entry-spacing: 12px;
+  align-items: center;
 
   ul {
-    margin: auto 0 auto auto;
+    margin: 0 0 0 auto;
     padding: 0;
     list-style: none;
 
@@ -193,7 +222,7 @@ $font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight
     align-items: center;
 
     li {
-      padding: 0 $mainnav-entry-spacing;
+      padding: 0 0.75rem;
 
       a {
         color: $site-color-header-text;
@@ -210,19 +239,21 @@ $font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight
 
       &.searchfield {
         position: relative;
+
+        form {
+          display: flex;
+          align-items: center;
+        }
       }
     }
   }
 
   .brand {
-    display: block;
-    float: left;
-    width: 85px;
-    margin: 0 20px;
+    display: flex;
+    width: 5.5rem;
     overflow: hidden;
-    line-height: 50px;
-    position: relative;
-    top: -1px;
+    margin-left: 1.25rem;
+    align-items: center;
   }
 }
 
@@ -270,7 +301,7 @@ main .content {
   h6 {
     // Push # link targets clear of page header.
     &[id] {
-      scroll-margin: 60px;
+      scroll-margin: 1.5rem;
     }
 
     // Let the wrapper set the bottom margin.
@@ -279,16 +310,17 @@ main .content {
 
   // Push # link targets clear of page header.
   a[id] {
-    scroll-margin: 60px;
+    scroll-margin: 1.5rem;
   }
 
   .header-wrapper {
     display: flex;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
+    margin-block-start: 1.5rem;
+    margin-block-end: 0.75rem;
     align-items: center;
 
     .heading-link {
+      border-radius: 0.125rem;
       margin-left: 0.4rem;
       font-size: 1.3rem;
       line-height: 1;
@@ -296,13 +328,14 @@ main .content {
       overflow: hidden;
       color: #4a4a4a;
       opacity: 0;
+      text-decoration: none;
 
       &:hover {
         color: $brand-primary;
       }
 
       &:focus {
-        opacity: 1
+        opacity: 1;
       }
 
       &:active {
@@ -325,7 +358,7 @@ main .content {
 
 .content {
   position: relative;
-  padding: $content-padding;
+  padding: 2rem;
 }
 
 .button {
@@ -348,6 +381,37 @@ main .content {
   }
 }
 
+.logo-link-grids {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1rem;
+  margin-left: 1rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    span {
+      font-weight: 500;
+    }
+  }
+
+  img {
+    width: 3rem;
+    margin: 0.25rem;
+  }
+}
+
+// Callouts for related lints in Effective Dart guidelines.
+.linter-rule {
+  margin-block-start: -0.375rem;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
 .list-image {
   width: 48px;
   margin: 0.25rem;
@@ -357,86 +421,6 @@ main .content {
   margin: 0 0.25rem;
   width: 20px;
   height: 20px;
-}
-
-.cols3 {
-  list-style: none;
-  column-count: 3;
-  column-gap: 0;
-
-  li {
-    page-break-inside: avoid;
-  }
-}
-
-.card-grid {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  margin-left: -15px;
-  margin-right: -15px;
-}
-
-.card {
-  display: block;
-  position: relative;
-  width: 300px;
-  height: auto;
-  min-height: 100px;
-  padding: 20px;
-  margin: 15px;
-  overflow: hidden;
-  box-sizing: border-box;
-  background-color: #294058;
-  border-radius: 0;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.21);
-  color: $site-color-card-text;
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: $site-font-family-gsans;
-    margin-top: 0;
-
-    a {
-      color: $site-color-card-text;
-      font-family: $site-font-family-gsans;
-    }
-  }
-
-  h3 {
-    font-size: bootstrap.$h2-font-size;
-  }
-
-  a {
-    color: $site-color-card-link;
-  }
-
-  &.narrow {
-    width: 250px;
-  }
-}
-
-// Support for .card-grid formatted as a markdown unordered list
-ul.card-grid {
-  padding-left: 0;
-}
-
-// Platform logos
-li.card {
-  color: inherit;
-  background-color: transparent;
-  box-shadow: none;
-
-  .logo {
-    display: block;
-    padding-bottom: $font-size-base;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    a {
-      color: inherit;
-    }
-  }
 }
 
 .muted {
@@ -465,24 +449,40 @@ li.card {
   }
 }
 
-/* -----------------------------------------
-  Bootstrap Overwrites
- ----------------------------------------- */
-
 .container {
   position: relative;
   max-width: 100%;
-  width: $live-content-width;
+  width: 1280px;
   margin: 0 auto;
 }
 
 .table {
   width: 100%;
-  @extend .table-striped;
+  border-spacing: 0;
 
-  // override .table-striped macro, remove top border
-  td {
-    border-top: none;
+  thead {
+    vertical-align: bottom;
+
+    th {
+      border-top: 1px solid $site-color-light-grey;
+      border-bottom: 2px solid $site-color-light-grey;
+      text-align: start;
+    }
+  }
+
+  tbody {
+    tr {
+      vertical-align: top;
+
+      &:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+
+  td, th {
+    border: none;
+    padding: .75rem;
   }
 }
 
@@ -494,6 +494,8 @@ thead:has(th:empty) {
 
 .table-wrapper {
   overflow-x: auto;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
 }
 
 .alert {
@@ -502,11 +504,6 @@ thead:has(th:empty) {
   color: $site-color-body;
   margin-top: 1rem;
   padding: 1.5rem;
-
-  i.material-icons {
-    font-size: 1.25em;
-    user-select: none;
-  }
 
   .alert-header {
     display: flex;
@@ -521,21 +518,19 @@ thead:has(th:empty) {
     margin-top: 0.5rem;
   }
 
-  i.material-symbols {
+  span.material-symbols {
     font-size: 1.25em;
     user-select: none;
-  }
-
-  code {
-    background-color: transparent;
   }
 
   pre {
     background-color: #00000010;
   }
 
-  p:last-child, li:last-child, ul:last-child, ol:last-child {
-    margin-bottom: 0;
+  p, li, ul, ol {
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &.alert-success {
@@ -601,7 +596,8 @@ thead:has(th:empty) {
 
 nav.breadcrumbs {
   align-items: center;
-  margin-bottom: 1rem;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
 }
 
 ol.breadcrumb-list {
@@ -676,16 +672,6 @@ ul.nav-list {
 body.homepage {
   #sidenav {
     display: none;
-  }
-
-  section {
-    padding: 0;
-  }
-
-  .card-grid {
-    justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
   }
 }
 
@@ -783,23 +769,12 @@ body.obsolete {
   }
 
   #sidenav {
-    top: 0 !important;
-    max-height: 100vh !important;
-    bottom: 0;
-    min-width: 300px;
-    max-width: calc(100vw - 60px);
+    width: 100%;
     background: #fff;
     z-index: 100;
-    box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
-    transform: translateX(-100%);
-    transition: transform 0.4s ease-in-out;
 
     .site-header__search {
       display: flex;
-    }
-
-    .nav-link {
-      white-space: nowrap;
     }
   }
 
@@ -814,16 +789,19 @@ body.obsolete {
       right: 0;
       height: 100%;
       z-index: 5;
-      background-color: rgba($gray-base, 0.5);
+      background-color: rgba($gray-base, 0.4);
       cursor: pointer;
       pointer-events: none;
       @include transition(0.5s);
     }
 
+    // Hide the body content and only show the sidenav.
+    #page-content {
+      display: none;
+    }
+
     #sidenav {
       display: block;
-      left: 0 !important;
-      transform: translateX(0);
     }
   }
 }

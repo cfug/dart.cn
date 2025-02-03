@@ -20,17 +20,20 @@ our [code of conduct](/community/code-of-conduct).
 ## 请持续关注下列消息源
 
 [Dart announce]({{group}}/d/forum/announce)
-<br> Low traffic announcements of new releases, breaking changes,
-     and other important news. Recommended!
+<br> Low-traffic announcements of new releases, breaking changes,
+  and other important news. Recommended!
 
 [Dart 公告群组]({{group}}/d/forum/announce)
 <br> 第一时间公布新的发行版本、重大变化以及其他重要新闻。推荐！
 
-[@dart_lang](https://twitter.com/dart_lang)
-<br> The official X (Twitter) account.
+[@dart.dev](https://bsky.app/profile/dart.dev)
+: Dart's official Bluesky account.
 
 [@dart_lang](https://twitter.com/dart_lang)
-<br> Twitter 官方账号。
+<br> Dart's official X (Twitter) account.
+
+[@dart_lang](https://twitter.com/dart_lang)
+<br> Dart 官方的 X (Twitter) 账号。
 
 [Dart blog](https://medium.com/dartlang)
 <br> The latest news and insights from a diverse group of Dart users.
