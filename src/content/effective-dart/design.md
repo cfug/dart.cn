@@ -925,7 +925,7 @@ to implement, then changing those classes becomes very difficult. That
 difficulty in turn means the libraries you rely on are slower to grow and adapt
 to new needs.
 
-库的维护人员需要能够在不破坏用户代码的情况下迭代现有的累。如果把每个类都看待成是暴露给用户
+库的维护人员需要能够在不破坏用户代码的情况下迭代现有的类。如果把每个类都看待成是暴露给用户
 的接口，用户可以自由的实现，这时修改这些类将变得非常困难。反过来，这个困难将导致你的库
 迭代缓慢，从而无法适应新的需求。
 
