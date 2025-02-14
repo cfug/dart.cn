@@ -80,8 +80,8 @@ jobs:
           sdk: stable
       - name: Fetch Dart packages
         run: dart pub get
-      - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2
-      - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af
+      - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda
+      - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
@@ -135,9 +135,7 @@ jobs:
     if: ${{ github.event_name == 'push' &&
             github.ref == 'refs/heads/main' &&
             github.repository == 'cfug/dart.cn' }}
-    # dart.cn | 2024/12/24 临时通过 test 检查，下次同步时改回来
-    # [test, excerpts, linkcheck, site-variable-scanner, firebase-validate]
-    needs: [excerpts, linkcheck, site-variable-scanner, firebase-validate]
+    needs: [test, excerpts, linkcheck, site-variable-scanner, firebase-validate]
     runs-on: ubuntu-latest
     env:
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
@@ -153,8 +151,8 @@ jobs:
           sdk: stable
       - name: Fetch Dart packages
         run: dart pub get
-      - uses: pnpm/action-setup@fe02b34f77f8bc703788d5817da081398fad5dd2
-      - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af
+      - uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda
+      - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'

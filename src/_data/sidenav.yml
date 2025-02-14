@@ -2,7 +2,6 @@
   expanded: false
   children:
     - title: 介绍
-      match-page-url-exactly: true
       permalink: /language
     - title: 基础表达式
       children:
@@ -73,7 +72,6 @@
     - title: 类型修饰符
       children:
         - title: 概览 & 用法
-          match-page-url-exactly: true
           permalink: /language/class-modifiers
         - title: API 维护者应该用的类型修饰符
           permalink: /language/class-modifiers-for-apis
@@ -91,7 +89,6 @@
       expanded: false
       children:
         - title: 健全的空安全
-          match-page-url-exactly: true
           permalink: /null-safety
         - title: 迁移到空安全
           permalink: /null-safety/migration-guide
@@ -106,7 +103,6 @@
   expanded: false
   children:
     - title: 概览
-      match-page-url-exactly: true
       permalink: /libraries
     - title: dart:core
       permalink: /libraries/dart-core
@@ -118,8 +114,9 @@
       permalink: /libraries/dart-convert
     - title: dart:io
       permalink: /libraries/dart-io
-    - title: dart:html
-      permalink: /libraries/dart-html
+    - title: dart:js_interop
+      permalink: /interop/js-interop
+      match-page-url-exactly: true
     - divider
     - title: 可迭代集合
       permalink: /libraries/collections/iterables
@@ -139,7 +136,6 @@
   permalink: /effective-dart
   children:
     - title: 概述
-      match-page-url-exactly: true
       permalink: /effective-dart
     - title: 代码风格
       permalink: /effective-dart/style
@@ -194,8 +190,8 @@
 - title: 开发文档
   expanded: false
   children:
-    - title: JSON
-      permalink: /guides/json
+    - title: JSON 序列化
+      permalink: /libraries/serialization/json
     - title: Dart 中的数字表示
       permalink: /resources/language/number-representation
     - title: Google APIs
@@ -205,7 +201,6 @@
     - title: 命令行和服务端应用
       children:
         - title: 概览
-          match-page-url-exactly: true
           permalink: /server
         - title: 起步教程
           permalink: /tutorials/server/get-started
@@ -222,7 +217,6 @@
     - title: 网页端 (Web) 应用
       children:
         - title: 概览
-          match-page-url-exactly: true
           permalink: /web
         - title: 开始使用
           permalink: /web/get-started
@@ -233,7 +227,7 @@
         - title: 编译为 Wasm
           permalink: /web/wasm
     - title: 环境变量声明
-      permalink: /guides/environment-declarations
+      permalink: /libraries/core/environment-declarations
 
 - title: 与其他语言进行交互调用
   expanded: false
@@ -248,7 +242,6 @@
     children:
       - title: 概览
         permalink: /interop/js-interop
-        match-page-url-exactly: true
       - title: 使用
         permalink: /interop/js-interop/usage
       - title: JS 类型
@@ -265,7 +258,6 @@
   expanded: false
   children:
   - title: 概览
-    match-page-url-exactly: true
     permalink: /tools
   - title: 编辑器和调试工具
     children:
@@ -278,7 +270,6 @@
       - title: 在线运行 Dart 代码
         children:
           - title: 概览
-            match-page-url-exactly: true
             permalink: /tools/dartpad
           - title: DartPad 疑难解答
             permalink: /tools/dartpad/troubleshoot
@@ -337,7 +328,7 @@
   - title: 测试和优化
     children:
       - title: 测试
-        permalink: /guides/testing
+        permalink: /tools/testing
       - title: 调试 Web 应用
         permalink: /web/debugging
 
@@ -372,7 +363,6 @@
     - title: 视频资源
       permalink: /resources/videos
     - title: 教程
-      match-page-url-exactly: true
       permalink: /tutorials
 
 - title: 相关站点

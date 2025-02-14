@@ -33,12 +33,11 @@ provide a list of paths to the desired files or directories.
 ### 指定一个路径
 
 Provide the path to one file or directory.
-If you specify a directory, `dart format` affects only the files in the
-immediate directory; it doesn't recurse through subdirectories.
+If you pass a directory path,
+`dart format` recurses into its subdirectories as well.
 
 提供一个文件或目录的路径。
-如果指定一个目录，`dart format` 只影响当前目录中的文件，
-而不会遍历子目录。
+如果指定一个目录，`dart format` 也会遍历其子目录。
 
 **Example:** To format all the Dart files in or under the current directory:
 
@@ -119,39 +118,47 @@ so they can trigger another action in response to the exit code.
 $ dart format -o none --set-exit-if-changed bin/my_app.dart
 ```
 
-## Use trailing commas
+## What changes?
 
-## 在结尾使用逗号
+`dart format` makes the following formatting changes:
 
-Use optional trailing commas for better automatic formatting.
-Add a trailing comma at the end of parameter lists in functions, methods,
-and constructors.
-This helps the formatter insert the appropriate amount of line breaks for
-Dart-style code.
+* Removes whitespace.
+* Wraps every line to 80 characters long or shorter.
+* Adds trailing commas to any argument or parameter list
+that splits across multiple lines, and removes them from ones that don't.
+* Might move comments before or after a comma.
 
-为了更好地自动格式化，你可以在结尾使用逗号（可选）。
-在函数、方法以及构造函数的参数列表末尾添加逗号。
-这有助于格式化工具为 Dart 风格代码插入适当数量的换行符。
-
-## Affects whitespace only
-
-## 只对留白产生影响
-
-To avoid making changes that might be unsafe,
-`dart format` only affects whitespace.
-
-为了避免发生不妥当的更改，
-`dart format` 只会影响留白的部分。
-
-There's a lot more to writing readable and
-consistent code than just whitespace, though.
 To learn more about best practices for writing and styling Dart code,
 check out the [Dart style guide][].
 
-要想编写易读且一致的代码，
-除了留白之外，还有许多其他的方法。
-想要了解更多关于编写 Dart 风格代码的最佳实践，
-请查阅 [Dart 语言风格指南][Dart style guide]
+### Configuring formatter page width
+
+When you run `dart format`, the formatter defaults to
+80 character line length or shorter. 
+If you'd like to configure the line length for your project,
+you can add a top-level `formatter` section to the
+[`analysis_options.yaml`][] file, like so:
+
+```yaml title="analysis_options.yaml"
+formatter:
+  page_width: 123
+```
+
+With the analysis options file typically at the root,
+the configured line length will apply to everything in the package.
+
+You can also configure individual files' line length,
+overriding the analysis options file,
+with a marker comment at the top of the file before any other code:
+
+```dart
+// dart format width=123
+```
+
+:::version-note
+Configurable page width requires
+a [language version][] of at least 3.7.
+:::
 
 ## Learn more
 
@@ -169,6 +176,13 @@ use the `dart help` command or see the documentation for the
 $ dart help format
 ```
 
+Check out the [formatter FAQ][] for more context behind formatting decisions.
+
+如果想要了解格式化决策背后的更多信息，请查看 [格式化常见问题][formatter FAQ]。
+
 [Dart style guide]: /effective-dart/style
 [dart_style]: {{site.pub-pkg}}/dart_style
 [dart-guidelines]: /effective-dart/style#formatting
+[`analysis_options.yaml`]: /tools/analysis
+[language version]: /resources/language/evolution#language-versioning
+[formatter FAQ]: {{site.repo.dart.org}}/dart_style/wiki/FAQ

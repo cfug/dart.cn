@@ -428,11 +428,7 @@ Dart 内置了对 list、map 以及 set 的支持。
 ```dart
 final aListOfStrings = ['one', 'two', 'three'];
 final aSetOfStrings = {'one', 'two', 'three'};
-final aMapOfStringsToInts = {
-  'one': 1,
-  'two': 2,
-  'three': 3,
-};
+final aMapOfStringsToInts = {'one': 1, 'two': 2, 'three': 3};
 ```
 
 Dart's type inference can assign types to these variables for you.
@@ -757,10 +753,10 @@ to read properties of `button` if it isn't `null`:
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-without-cascades)"?>
 ```dart
-var button = querySelector('#confirm');
-button?.text = 'Confirm';
-button?.classes.add('important');
-button?.onClick.listen((e) => window.alert('Confirmed!'));
+final button = web.document.querySelector('#confirm');
+button?.textContent = 'Confirm';
+button?.classList.add('important');
+button?.onClick.listen((e) => web.window.alert('Confirmed!'));
 button?.scrollIntoView();
 ```
 
@@ -777,10 +773,10 @@ and makes the `button` variable unnecessary:
 
 <?code-excerpt "misc/bin/cheatsheet/cascades.dart (query-with-cascades)"?>
 ```dart
-querySelector('#confirm')
-  ?..text = 'Confirm'
-  ..classes.add('important')
-  ..onClick.listen((e) => window.alert('Confirmed!'))
+web.document.querySelector('#confirm')
+  ?..textContent = 'Confirm'
+  ..classList.add('important')
+  ..onClick.listen((e) => web.window.alert('Confirmed!'))
   ..scrollIntoView();
 ```
 
@@ -1507,13 +1503,7 @@ abstract class Logger {
 void tryFunction(VoidFunction untrustworthy, Logger logger) {
   try {
     untrustworthy();
-  } on ExceptionWithMessage catch (e) {
-    logger.logException(e.runtimeType, e.message); 
-  } on Exception catch (e) {
-    logger.logException(e.runtimeType);
-  } finally {
-    logger.doneLogging();
-  }
+  } // Write your logic here
 }
 
 // Tests your solution (Don't edit!):
@@ -1793,9 +1783,7 @@ which goes between the constructor's signature and its body:
 
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-no-comment)"?>
 ```dart
-Point.fromJson(Map<String, double> json)
-    : x = json['x']!,
-      y = json['y']! {
+Point.fromJson(Map<String, double> json) : x = json['x']!, y = json['y']! {
   print('In Point.fromJson(): ($x, $y)');
 }
 ```
@@ -1807,9 +1795,7 @@ which run only during development:
 
 <?code-excerpt "misc/lib/cheatsheet/initializer_lists.dart (assert)"?>
 ```dart
-NonNegativePoint(this.x, this.y)
-    : assert(x >= 0),
-      assert(y >= 0) {
+NonNegativePoint(this.x, this.y) : assert(x >= 0), assert(y >= 0) {
   print('I just made a NonNegativePoint: ($x, $y)');
 }
 ```
@@ -1931,9 +1917,7 @@ class Point {
 
   Point(this.x, this.y);
 
-  Point.origin()
-      : x = 0,
-        y = 0;
+  Point.origin() : x = 0, y = 0;
 }
 ```
 

@@ -123,8 +123,8 @@ Examples:
 示例：
 
 ```plaintext
-https://storage.flutter-io.cn/dart-archive/channels/stable/release/2.7.2/sdk/dartsdk-windows-ia32-release.zip
-https://storage.flutter-io.cn/dart-archive/channels/stable/release/2.1.1/sdk/dartsdk-macos-x64-release.zip
+https://storage.flutter-io.cn/dart-archive/channels/stable/release/3.6.2/sdk/dartsdk-windows-x64-release.zip
+https://storage.flutter-io.cn/dart-archive/channels/stable/release/3.0.7/sdk/dartsdk-macos-arm64-release.zip
 https://storage.flutter-io.cn/dart-archive/channels/beta/release/2.8.0-20.11.beta/sdk/dartsdk-linux-x64-release.zip
 https://storage.flutter-io.cn/dart-archive/channels/dev/release/2.9.0-1.0.dev/sdk/dartsdk-linux-x64-release.zip
 ```

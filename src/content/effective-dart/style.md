@@ -67,9 +67,13 @@ Classes（类名）、 enums（枚举类型）、 typedefs（类型定义）、
 
 <?code-excerpt "style_good.dart (type-names)"?>
 ```dart tag=good
-class SliderMenu { ... }
+class SliderMenu {
+   ...
+}
 
-class HttpRequest { ... }
+class HttpRequest {
+   ...
+}
 
 typedef Predicate<T> = bool Function(T value);
 ```
@@ -85,10 +89,14 @@ class Foo {
 }
 
 @Foo(anArg)
-class A { ... }
+class A {
+   ...
+}
 
 @Foo()
-class B { ... }
+class B {
+   ...
+}
 ```
 
 If the annotation class's constructor takes no parameters, you might want to
@@ -102,7 +110,9 @@ create a separate `lowerCamelCase` constant for it.
 const foo = Foo();
 
 @foo
-class C { ... }
+class C {
+   ...
+}
 ```
 
 ### DO name extensions using `UpperCamelCase`
@@ -120,9 +130,13 @@ and use no separators.
 
 <?code-excerpt "style_good.dart (extension-names)"?>
 ```dart tag=good
-extension MyFancyList<T> on List<T> { ... }
+extension MyFancyList<T> on List<T> {
+   ...
+}
 
-extension SmartIterable<T> on Iterable<T> { ... }
+extension SmartIterable<T> on Iterable<T> {
+   ...
+}
 ```
 
 [extensions]: /language/extension-methods
@@ -464,7 +478,7 @@ A single linter rule handles all the ordering guidelines:
 <?code-excerpt "style_lib_good.dart (dart-import-first)" replace="/\w+\/effective_dart\///g"?>
 ```dart tag=good
 import 'dart:async';
-import 'dart:html';
+import 'dart:collection';
 
 import 'package:bar/bar.dart';
 import 'package:foo/foo.dart';
@@ -596,10 +610,10 @@ to produce beautiful code.
 在工作中应该把 `dart format` 看做一个合作伙伴，
 在代码的编写和迭代过程中互相协作输出优质的代码。
 
+<a id="avoid-lines-longer-than-80-characters"></a>
+### PREFER lines 80 characters or fewer
 
-### AVOID lines longer than 80 characters
-
-### **避免** 单行超过 80 个字符。
+### **推荐** 单行少于 80 个字符。
 
 {% render 'linter-rule-mention.md', rules:'lines_longer_than_80_chars' %}
 
@@ -624,11 +638,12 @@ prevent a name collision?" If not, consider omitting it.
 当遇到这种情况时，请自问一下：“那个类型名称中的每个单词都会告诉我一些关键的内容或阻止名称冲突吗？”，
 如果不是，考虑删除它。
 
-Note that `dart format` does 99% of this for you, but the last 1% is you. 
+Note that `dart format` defaults to 80 characters or fewer, though you can
+[configure][] the default. 
 It does not split long string literals to fit in 80 columns, 
 so you have to do that manually.
 
-注意，`dart format` 能自动处理 99% 的情况，但是剩下的 1% 需要你自己处理。
+注意，`dart format` 默认为 80 个（或更少）字符，你可以自行 [配置][configure] 默认值。
 `dart format` 不会把很长的字符串字面量分割为 80 个字符的列，
 所以这种情况你**需要**自己手工确保每行不超过 80 个字符。
 
@@ -643,6 +658,8 @@ an import or export), it may remain whole even if it causes the line to go over
 **Exception:** Multi-line strings can contain lines longer than 80 characters
 because newlines are significant inside the string and splitting the lines into
 shorter ones can alter the program.
+
+[configure]: /tools/dart-format#configuring-formatter-page-width
 
 <a id="do-use-curly-braces-for-all-flow-control-structures"></a>
 ### DO use curly braces for all flow control statements

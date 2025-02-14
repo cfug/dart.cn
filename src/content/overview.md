@@ -230,11 +230,11 @@ Dart 拥有 [丰富的核心库](/libraries)，为许多日常编程任务提供
 
 * HTML elements and other resources for web-based applications that need to
   interact with the browser and the Document Object Model (DOM)
-  (`dart:html`)
+  (`dart:js_interop` and `package:web`)
 
   基于 Web 的应用程序中需要与浏览器和文档对象模型
   (DOM) 交互的 HTML 元素和其他资源
-  (`dart:html`)
+  (`dart:js_interop` and `package:web`)
 
 Beyond the core libraries, many APIs are provided through
 a comprehensive set of packages.

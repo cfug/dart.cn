@@ -20,9 +20,13 @@ yaml_variable_scanner:
     - ^site\.description$
     - ^site\.url$
     - ^site\.branch$
-    - ^site\.show_banner$
+    - ^site\.showBanner$
     - ^site\.sdkVersion$
     - ^site\.og_image_vers$
+    # dart.cn
+    - ^site\.bili\.set$
+    - ^site\.bili\.set-short$
+    - ^site\.bili\.std-size$
 
   # File path for check file contents
   #
@@ -66,3 +70,6 @@ yaml_variable_scanner:
 
     # ` xxx `
     - '`([^`]*)`'
+
+    # {% card %}
+    - ^\s*{% card.*$

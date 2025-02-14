@@ -13,8 +13,8 @@ that can help you develop command-line and server apps.
 
 本文向你展示可以帮助你开发命令行式和服务器应用的相关工具和文档。
 
-<p class="text-center">
-  <a href="/tutorials/server/get-started" class="btn btn-primary btn-lg">开始使用</a>
+<p class="centered-rows">
+  <a href="/tutorials/server/get-started" class="filled-button">开始使用</a>
 </p>
 
 

@@ -62,11 +62,13 @@ callback and demonstrates `catchError()`'s versatility as an error handler:
 
 <?code-excerpt "futures/lib/simple.dart (comprehensive-errors)" replace="/ellipsis\(\);/.../g;"?>
 ```dart
-myFunc().then((value) {
-  doSomethingWith(value);
-  ...
-  throw Exception('Some arbitrary error');
-}).catchError(handleError);
+myFunc()
+    .then((value) {
+      doSomethingWith(value);
+      ...
+      throw Exception('Some arbitrary error');
+    })
+    .catchError(handleError);
 ```
 
 If `myFunc()`'s Future completes with a value, `then()`'s callback fires. If
@@ -97,10 +99,15 @@ between an error forwarded _to_ `then()`, and an error generated _within_
 
 <?code-excerpt "futures/lib/simple.dart (throws-then-catch)"?>
 ```dart
-asyncErrorFunction().then(successCallback, onError: (e) {
-  handleError(e); // Original error.
-  anotherAsyncErrorFunction(); // Oops, new error.
-}).catchError(handleError); // Error from within then() handled.
+asyncErrorFunction()
+    .then(
+      successCallback,
+      onError: (e) {
+        handleError(e); // Original error.
+        anotherAsyncErrorFunction(); // Oops, new error.
+      },
+    )
+    .catchError(handleError); // Error from within then() handled.
 ```
 
 In the example above, `asyncErrorFunction()`'s Future's error is handled with the
@@ -130,11 +137,12 @@ void main() {
       .then((_) => four()) // Future completes with two()'s error.
       .then((value) => value.length) // Future completes with two()'s error.
       .catchError((e) {
-    print('Got error: $e'); // Finally, callback fires.
-    return 42; // Future completes with 42.
-  }).then((value) {
-    print('The value is $value');
-  });
+        print('Got error: $e'); // Finally, callback fires.
+        return 42; // Future completes with 42.
+      })
+      .then((value) {
+        print('The value is $value');
+      });
 }
 
 // Output of this program:
@@ -174,8 +182,10 @@ void main() {
   handleAuthResponse(const {'username': 'dash', 'age': 3})
       .then((_) => ...)
       .catchError(handleFormatException, test: (e) => e is FormatException)
-      .catchError(handleAuthorizationException,
-          test: (e) => e is AuthorizationException);
+      .catchError(
+        handleAuthorizationException,
+        test: (e) => e is AuthorizationException,
+      );
 }
 ```
 
@@ -235,10 +245,11 @@ void main() {
       // Future completes with an error:
       .then((_) => ...)
       .catchError((e) {
-    handleError(e);
-    printErrorMessage();
-    return someObject; // Future completes with someObject
-  }).whenComplete(() => print('Done!')); // Future completes with someObject
+        handleError(e);
+        printErrorMessage();
+        return someObject; // Future completes with someObject
+      })
+      .whenComplete(() => print('Done!')); // Future completes with someObject
 }
 ```
 

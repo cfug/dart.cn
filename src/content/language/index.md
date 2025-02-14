@@ -75,7 +75,7 @@ var antennaDiameter = 3.7;
 var flybyObjects = ['Jupiter', 'Saturn', 'Uranus', 'Neptune'];
 var image = {
   'tags': ['saturn'],
-  'url': '//path/to/saturn.jpg'
+  'url': '//path/to/saturn.jpg',
 };
 ```
 
@@ -335,8 +335,11 @@ enum Planet {
   neptune(planetType: PlanetType.ice, moons: 14, hasRings: true);
 
   /// A constant generating constructor
-  const Planet(
-      {required this.planetType, required this.moons, required this.hasRings});
+  const Planet({
+    required this.planetType,
+    required this.moons,
+    required this.hasRings,
+  });
 
   /// All instance variables are final
   final PlanetType planetType;
@@ -530,7 +533,8 @@ Future<void> createDescriptions(Iterable<String> objects) async {
       if (await file.exists()) {
         var modified = await file.lastModified();
         print(
-            'File for $object already exists. It was modified on $modified.');
+          'File for $object already exists. It was modified on $modified.',
+        );
         continue;
       }
       await file.create();
@@ -601,7 +605,7 @@ Future<void> describeFlybyObjects(List<String> flybyObjects) async {
 ```
 
 Note that the code above is asynchronous;
-`try` works for both synchronous code and code in an `async` function.
+`try` works for both synchronous and asynchronous code in an `async` function.
 
 注意上述代码是异步的；同步代码以及异步函数中得代码都可以使用 `try` 捕获异常。
 
