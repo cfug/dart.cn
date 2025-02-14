@@ -85,11 +85,8 @@ String createOrderMessage() {
 }
 
 Future<String> fetchUserOrder() =>
-    // Imagine that this function is more complex and slow.
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => 'Large Latte',
-    );
+// Imagine that this function is more complex and slow.
+Future.delayed(const Duration(seconds: 2), () => 'Large Latte');
 
 void main() {
   print(createOrderMessage());
@@ -293,12 +290,9 @@ String createOrderMessage() {
 }
 
 Future<String> fetchUserOrder() =>
-    // Imagine that this function is
-    // more complex and slow.
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => 'Large Latte',
-    );
+// Imagine that this function is
+// more complex and slow.
+Future.delayed(const Duration(seconds: 2), () => 'Large Latte');
 
 void main() {
   print('Fetching user order...');
@@ -324,12 +318,9 @@ it operates like synchronous code.
 }
 
 Future<String> fetchUserOrder() =>
-    // Imagine that this function is
-    // more complex and slow.
-    Future.delayed(
-      const Duration(seconds: 2),
-      () => 'Large Latte',
-    );
+// Imagine that this function is
+// more complex and slow.
+Future.delayed(const Duration(seconds: 2), () => 'Large Latte');
 
 [!Future<void>!] main() [!async!] {
   print('Fetching user order...');
@@ -644,8 +635,9 @@ Future<void> printOrderMessage() async {
 Future<String> fetchUserOrder() {
   // Imagine that this function is more complex.
   var str = Future.delayed(
-      const Duration(seconds: 4),
-      () => throw 'Cannot locate user order');
+    const Duration(seconds: 4),
+    () => throw 'Cannot locate user order',
+  );
   return str;
 }
 

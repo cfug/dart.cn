@@ -466,7 +466,7 @@ can declare a wildcard:
   }
   ```
 
-* For loop variable declartaion.
+* For loop variable declaration.
   ```dart
   for (var _ in list) {}
   ```

@@ -220,7 +220,9 @@ Consider the getter method in the `Animal` class:
 <?code-excerpt "lib/animal.dart (Animal)" replace="/Animal get.*/[!$&!]/g"?>
 ```dart
 class Animal {
-  void chase(Animal a) { ... }
+  void chase(Animal a) {
+     ...
+  }
   [!Animal get parent => ...!]
 }
 ```
@@ -237,7 +239,9 @@ you can replace the getter's return type with `HoneyBadger`
 ```dart tag=passes-sa
 class HoneyBadger extends Animal {
   @override
-  void chase(Animal a) { ... }
+  void chase(Animal a) {
+     ...
+  }
 
   @override
   [!HoneyBadger!] get parent => ...
@@ -248,7 +252,9 @@ class HoneyBadger extends Animal {
 ```dart tag=fails-sa
 class HoneyBadger extends Animal {
   @override
-  void chase(Animal a) { ... }
+  void chase(Animal a) {
+     ...
+  }
 
   @override
   [!Root!] get parent => ...
@@ -285,7 +291,9 @@ Consider the `chase(Animal)` method for the `Animal` class:
 <?code-excerpt "lib/animal.dart (Animal)" replace="/void chase.*/[!$&!]/g"?>
 ```dart
 class Animal {
-  [!void chase(Animal a) { ... }!]
+  [!void chase(Animal a) {!]
+     ...
+  }
   Animal get parent => ...
 }
 ```
@@ -300,7 +308,9 @@ It's OK to override the `chase()` method to take anything (`Object`).
 ```dart tag=passes-sa
 class HoneyBadger extends Animal {
   @override
-  void chase([!Object!] a) { ... }
+  void chase([!Object!] a) {
+     ...
+  }
 
   @override
   Animal get parent => ...
@@ -315,11 +325,15 @@ Mouse 是 Animal 的子类，下面的代码将 `chase()`
 
 <?code-excerpt "lib/incorrect_animal.dart (chase-mouse)" replace="/Mouse/[!$&!]/g"?>
 ```dart tag=fails-sa
-class [!Mouse!] extends Animal { ... }
+class [!Mouse!] extends Animal {
+   ...
+}
 
 class Cat extends Animal {
   @override
-  void chase([!Mouse!] a) { ... }
+  void chase([!Mouse!] a) {
+     ...
+  }
 }
 ```
 
@@ -730,14 +744,20 @@ The following shows how you might use `covariant`:
 <?code-excerpt "lib/covariant.dart" replace="/covariant/[!$&!]/g"?>
 ```dart tag=passes-sa
 class Animal {
-  void chase(Animal x) { ... }
+  void chase(Animal x) {
+     ...
+  }
 }
 
-class Mouse extends Animal { ... }
+class Mouse extends Animal {
+   ...
+}
 
 class Cat extends Animal {
   @override
-  void chase([!covariant!] Mouse x) { ... }
+  void chase([!covariant!] Mouse x) {
+     ...
+  }
 }
 ```
 
