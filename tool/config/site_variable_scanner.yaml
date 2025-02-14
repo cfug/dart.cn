@@ -23,6 +23,10 @@ yaml_variable_scanner:
     - ^site\.showBanner$
     - ^site\.sdkVersion$
     - ^site\.og_image_vers$
+    # dart.cn
+    - ^site\.bili\.set$
+    - ^site\.bili\.set-short$
+    - ^site\.bili\.std-size$
 
   # File path for check file contents
   #
