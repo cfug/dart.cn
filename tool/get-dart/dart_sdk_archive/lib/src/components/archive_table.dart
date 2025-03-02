@@ -42,7 +42,7 @@ class ArchivesTable extends StatelessComponent {
 
         yield form(classes: 'form-inline', [
           div(classes: 'form-group select', [
-            label(htmlFor: '$channel-versions', [text('Version:')]),
+            label(htmlFor: '$channel-versions', [text('版本：')]), // Version:
             select(
               id: '$channel-versions',
               value: selector.selectedVersion,
@@ -64,7 +64,7 @@ class ArchivesTable extends StatelessComponent {
             ),
           ]),
           div(classes: 'form-group select', [
-            label(htmlFor: '$channel-os', [text('OS:')]),
+            label(htmlFor: '$channel-os', [text('操作系统：')]), // OS:
             select(
               id: '$channel-os',
               value: selector.selectedOs,
@@ -73,7 +73,7 @@ class ArchivesTable extends StatelessComponent {
               },
               [
                 option(value: 'all', selected: selector.selectedOs == 'all', [
-                  text('All'),
+                  text('所有'), // All
                 ]),
                 option(
                   value: 'macos',
@@ -104,11 +104,11 @@ class ArchivesTable extends StatelessComponent {
         yield table(id: channel, classes: 'table', [
           thead([
             tr([
-              th([text('Version')]),
-              th([text('OS')]),
-              th([text('Architecture')]),
-              th([text('Release date')]),
-              th([text('Downloads')]),
+              th([text('版本')]), // Version
+              th([text('系统')]), // OS
+              th([text('支持的架构')]), // Architecture
+              th([text('发布日期')]), // Release date
+              th([text('下载链接')]), // Downloads
             ]),
           ]),
           tbody([

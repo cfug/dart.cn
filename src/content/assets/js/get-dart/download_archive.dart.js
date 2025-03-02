@@ -7696,7 +7696,7 @@ a0=b.c
 a1=a0.a
 a2=a1+"-versions"
 a3=t.W
-a4=A.ph(A.QI([new A.kJ("Version:",null)],a3),a2)
+a4=A.ph(A.QI([new A.kJ("\u7248\u672c\uff1a",null)],a3),a2)
 a5=a0.c
 a6=A.QI([],a3)
 a7=a0.f
@@ -7710,9 +7710,9 @@ for(;m<a7.length;a7.length===n||(0,A.q)(a7),++m){l=a7[m]
 k=a0.c
 a6.push(A.mW(A.QI([new A.kJ(l,null)],a3),null,null,l===k,l))}a2=A.ov(A.QI([a4,A.XG(a6,a2,new A.Ow(b),a5)],a3),"form-group select")
 a4=a1+"-os"
-a5=A.ph(A.QI([new A.kJ("OS:",null)],a3),a4)
+a5=A.ph(A.QI([new A.kJ("\u64cd\u4f5c\u7cfb\u7edf\uff1a",null)],a3),a4)
 a6=a0.d
-a7=A.mW(A.QI([new A.kJ("All",null)],a3),null,null,a6==="all","all")
+a7=A.mW(A.QI([new A.kJ("\u6240\u6709",null)],a3),null,null,a6==="all","all")
 n=a0.d
 n=A.mW(A.QI([new A.kJ("macOS",null)],a3),"macos-option",a1+"-macos",n==="macos","macos")
 k=a0.d
@@ -7723,7 +7723,7 @@ b=t.N
 a2=A.qC(A.Fl(b,b),b,b)
 q=2
 return a8.b=new A.cp("form",null,"form-inline",null,a2,null,null,a6,null),1
-case 2:a2=A.QI([A.nj(A.QI([A.Qi(A.QI([new A.kJ("Version",null)],a3)),A.Qi(A.QI([new A.kJ("OS",null)],a3)),A.Qi(A.QI([new A.kJ("Architecture",null)],a3)),A.Qi(A.QI([new A.kJ("Release date",null)],a3)),A.Qi(A.QI([new A.kJ("Downloads",null)],a3))],a3),null,null)],a3)
+case 2:a2=A.QI([A.nj(A.QI([A.Qi(A.QI([new A.kJ("\u7248\u672c",null)],a3)),A.Qi(A.QI([new A.kJ("\u7cfb\u7edf",null)],a3)),A.Qi(A.QI([new A.kJ("\u652f\u6301\u7684\u67b6\u6784",null)],a3)),A.Qi(A.QI([new A.kJ("\u53d1\u5e03\u65e5\u671f",null)],a3)),A.Qi(A.QI([new A.kJ("\u4e0b\u8f7d\u94fe\u63a5",null)],a3))],a3),null,null)],a3)
 a4=A.QI([],a3)
 for(a5=J.I(a0.gFU());a5.G();){l=a5.gl()
 a6=a0.Je(l)?null:"hidden"
