@@ -34,6 +34,8 @@ final class TestDartCommand extends Command<int> {
 int _testDart({bool verboseLogging = false}) {
   final directoriesToTest = [
     path.join('tool', 'dart_site'),
+    // dart.cn - API 不同，暂时屏蔽测试（目前 dart_sdk_archive 只替换了镜像 API，没有其他改动）
+    // path.join('tool', 'get-dart', 'dart_sdk_archive'),
     ...dartProjectExampleDirectories,
   ];
 
