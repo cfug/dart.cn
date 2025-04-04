@@ -401,6 +401,43 @@ void main() {
 }
 ```
 
+### Implicit downcasts from `dynamic`
+
+Expressions with a static type of `dynamic` can be
+implicitly cast to a more specific type.
+If the actual type doesn't match, the cast throws an error at run time.
+Consider the following `assumeString` method:
+
+<?code-excerpt "lib/strong_analysis.dart (downcast-check)" replace="/string = object/[!$&!]/g"?>
+```dart tag=passes-sa
+int assumeString(dynamic object) {
+  String [!string = object!]; // Check at run time that `object` is a `String`.
+  return string.length;
+}
+```
+
+In this example, if `object` is a `String`, the cast succeeds.
+If it's not a subtype of `String`, such as `int`,
+a `TypeError` is thrown:
+
+<?code-excerpt "lib/strong_analysis.dart (fail-downcast-check)" replace="/1/[!$&!]/g"?>
+```dart tag=runtime-fail
+final length = assumeString([!1!]);
+```
+
+:::tip
+To prevent implicit downcasts from `dynamic` and avoid this issue,
+consider enabling the analyzer's _strict casts_ mode.
+
+```yaml title="analysis_options.yaml" highlightLines=3
+analyzer:
+  language:
+    strict-casts: true
+```
+
+To learn more about customizing the analyzer's behavior,
+check out [Customizing static analysis](/tools/analysis).
+:::
 
 ## Type inference
 
@@ -425,9 +462,9 @@ If you explicitly type the variable, you might write this:
 
 如果显式键入变量，则可以这样写：
 
-<?code-excerpt "lib/strong_analysis.dart (type-inference-1-orig)" replace="/Map<String, dynamic\x3E/[!$&!]/g"?>
+<?code-excerpt "lib/strong_analysis.dart (type-inference-1-orig)" replace="/Map<String, Object\?\x3E/[!$&!]/g"?>
 ```dart
-[!Map<String, dynamic>!] arguments = {'argA': 'hello', 'argB': 42};
+[!Map<String, Object?>!] arguments = {'argA': 'hello', 'argB': 42};
 ```
 
 Alternatively, you can use `var` or `final` and let Dart infer the type:
@@ -599,10 +636,10 @@ without losing type safety or specific type information.
 (X, Y) f<X extends Iterable<Y>, Y>(X x) => (x, x.first);
 
 void main() {
-  var (myList, myInt) = f1();
+  var (myList, myInt) = f([1]);
   myInt.whatever; // Compile-time error, `myInt` has type `int`.
 
-  var (mySet, myString) = f1({'Hello!'});
+  var (mySet, myString) = f({'Hello!'});
   mySet.union({}); // Works, `mySet` has type `Set<String>`.
 }
 ```
@@ -856,13 +893,6 @@ also supported on setters and fields.
 The following resources have further information on sound Dart:
 
 以下是更多关于 Dart 类型安全的相关资源：
-
-* [Fixing common type problems](/deprecated/sound-problems) - 
-  Errors you may encounter when writing sound Dart code, and how to fix them.
-
-  [修复常见类型问题](/deprecated/sound-problems) -
-  编写类型安全的 Dart 代码时可能遇到的错误，
-  以及解决错误的方法。
   
 * [Fixing type promotion failures](/tools/non-promotion-reasons) - 
   Understand and learn how to fix type promotion errors.

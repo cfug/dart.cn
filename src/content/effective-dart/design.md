@@ -890,18 +890,21 @@ Otherwise, later changes to it may break your code.
 提供一个显示命名，如 `IterableBase`。如果该类的作者不这样做，最好假设你*不*能够继承这个类。
 否则，后续对它的修改可能会破坏你的代码。
 
+<a id="do-document-if-your-class-supports-being-extended" aria-hidden="true"></a>
 
-### DO document if your class supports being extended
+### DO use class modifiers to control if your class can be extended
 
-### **要** 把能够继承的说明添加到文档中，如果这个类可以继承。
+### **要** 使用类修饰符来控制类是否可以扩展
 
-This is the corollary to the above rule. If you want to allow subclasses of your
-class, state that. Suffix the class name with `Base`, or mention it in the
-class's doc comment.
+Class modifiers like `final`, `interface`, or `sealed`
+restrict how a class can be extended.
+For example, use `final class A {}` or `interface class B {}` to prevent 
+extension outside the current library.
+Use these modifiers to communicate your intent, rather than relying on documentation.
 
-该规则是上条规则的结果。如果允许你的类被子类化，请在文档中说明情况。使用 `Base` 作为类名的后缀，
-或者在类的注释文档中注明。
-
+类修饰符，如 `final`、`interface` 或 `sealed` 限制了类的扩展方式。
+例如，可以使用 `final class A {}` 或 `interface class B {}` 防止在当前库之外进行扩展。
+使用这些修饰符来传达你的意图，而不是依赖文档。
 
 ### AVOID implementing a class that isn't intended to be an interface
 
@@ -943,18 +946,27 @@ intend, and they may break your code without realizing it.
 为了给你的类的开发人员提供更多的余地，避免实现隐式接口，除非那些类明确需要实现。否则，
 你可能会引入开发者没有预料到的耦合情况，这样可能会在没有意识到的情况下破坏你的代码。
 
-### DO document if your class supports being used as an interface
+<a id="do-document-if-your-class-supports-being-used-as-an-interface" aria-hidden="true"></a>
 
-### **要** 对支持接口的类在文档注明
+### DO use class modifiers to control if your class can be an interface
 
-If your class can be used as an interface, mention that in the class's doc
-comment.
+### **要** 使用类修饰符来控制你的类是否可以成为接口
 
-如果你的类可以被用作接口，那么将这个情况注明到类的文档中。
+When designing a library, use class modifiers like `final`, `base`, or `sealed` to enforce intended
+usage. For example, use `final class C {}` or `base class D{}` to prevent
+implementation outside the current library.
+While it's ideal for all libraries to use these modifiers to enforce design intent,
+developers may still encounter cases where they aren't applied. In such cases, be mindful of
+unintended implementation issues.
 
+在设计库时，使用类修饰符（如 `final`、`base` 或 `sealed`）来达到预期的用途。
+例如，使用 `final class C {}` 或 `base class D{}` 来防止在当前库之外进行实现。
+虽然理想的情况是所有库都使用这些修饰符来达到设计意图，
+但开发者仍可能遇到未遵循使用这些修饰符的情况。
+在这种情况下，请注意意外的实现问题。
 
-<a id="do-use-mixin-to-define-a-mixin-type"></a>
-<a id="avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin"></a>
+<a id="do-use-mixin-to-define-a-mixin-type" aria-hidden="true"></a>
+<a id="avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin" aria-hidden="true"></a>
 
 ### PREFER defining a pure `mixin` or pure `class` to a `mixin class`
 
