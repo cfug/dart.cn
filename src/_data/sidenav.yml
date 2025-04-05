@@ -317,8 +317,6 @@
     children:
       - title: 自定义静态分析
         permalink: /tools/analysis
-      - title: 修复常见的类型问题
-        permalink: /deprecated/sound-problems
       - title: 修复类型提升失败
         permalink: /tools/non-promotion-reasons
       - title: Linter 规则
