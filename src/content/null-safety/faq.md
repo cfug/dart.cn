@@ -360,10 +360,10 @@ the language that the value is guaranteed to be there.
 (`[]`) 返回的值默认是可空类型。
 此处没有办法告诉 Dart ，返回的值一定是非空的。
 
-In this case, you should use the bang operator (`!`) to cast the value back to
-V:
+In this case, you should use the not-null assertion operator (`!`) to
+cast the value back to `V`:
 
-在这种情况下，你应该使用强制非空操作符 (`!`) 将可空的类型转为非空 (V)。
+在这种情况下，你应该使用非空断言操作符 (`!`) 将值转换回 `V`：
 
 ```dart
 return blockTypes[key]!;
@@ -539,20 +539,21 @@ A few notes that are worth highlighting:
 
 依然有几点值得注意：
 
-* The production JavaScript compiler generates `!` null assertions. You might
-  not notice them when comparing the output of the compiler before and
-  after adding null assertions. That's because the compiler already
+* The production JavaScript compiler generates `!` not-null assertions.
+  You might not notice them when comparing the output of the compiler
+  before and after adding not-null assertions.
+  That's because the compiler already
   generated null checks in programs that weren't null safe.
 
-  生产环境下的 JavaScript 编译器会生成 `!` 空断言，
-  在比较输出的时候你可能不会注意到它。
+  生产环境下的 JavaScript 编译器会生成 `!` 非空断言。
+  在比较输出的时候你可能不会注意到它们。
   这是因为编译器已支持了对空值进行检查。
 
-* The compiler generates these null assertions regardless of the
+* The compiler generates these not-null assertions regardless of the
   soundness of null safety or optimization level. In fact, the compiler
   doesn't remove `!` when using `-O3` or `--omit-implicit-checks`.
 
-  无论是健全或非健全的安全，又或是不同的优化等级，编译器都会生成这些空断言，
+  无论是健全或非健全的安全，又或是不同的优化等级，编译器都会生成这些非空断言，
   实际上在使用 `-O3` 或 `--omit-implicit-checks` 时编译器都不会移除 `!`。
 
 * The production JavaScript compiler might remove unnecessary null checks.

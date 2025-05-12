@@ -104,25 +104,33 @@ Dart supports null safety using the following two core design principles:
 
 Dart 的空安全支持基于以下两条核心原则：
 
-* **Non-nullable by default**. Unless you explicitly tell Dart that a variable
-   can be null, it's considered non-nullable. This default was chosen
-   after research found that non-null was by far the most common choice in APIs.
+**Non-nullable by default**
+<br> Unless you explicitly tell Dart that a variable can be null,
+  it's considered non-nullable.
+  This default was chosen after research found that
+  non-null was by far the most common choice in APIs.
 
-   **默认不可空**。除非你将变量显式声明为可空，否则它一定是非空的类型。
-   我们在研究后发现，非空是目前的 API 中最常见的选择，所以选择了非空作为默认值。
+**默认不可空**
+<br> 除非你将变量显式声明为可空，否则它一定是非空的类型。
+  我们在研究后发现，非空是目前的 API 中最常见的选择，所以选择了非空作为默认值。
 
-* **Fully sound**. Dart's null safety is sound, which enables compiler optimizations.
-  If the type system determines that something isn't null, then that thing can _never_ be
-  null. Once you migrate your whole project
-  and its dependencies to null safety, 
-  you reap the full benefits of soundness—not only 
-  fewer bugs, but smaller binaries and faster execution.
+**Fully sound**
+<br> Dart's null safety is sound.
+  If the type system determines that
+  a variable or expression has a non-nullable type,
+  it's guaranteed that it can never evaluate to `null` at runtime.
 
-  **完全可靠**。Dart 的空安全是非常可靠的，意味着编译期间包含了很多优化。
-  如果类型系统推断出某个变量不为空，那么它 **永远** 不为空。
-  当你将整个项目和其依赖完全迁移至空安全后，
-  你会享有健全性带来的所有优势&mdash;&mdash;
-  更少的 BUG、更小的二进制文件以及更快的执行速度。
+**完全可靠**
+<br> Dart 的空安全是非常可靠的。
+如果类型系统推断出某个变量或表达式具有不可空的类型，
+那么可以保证它在运行时永远不会为 `null`。
+
+Program-wide sound null safety lets Dart
+leverage these principles for
+fewer bugs, smaller binaries, and faster execution.
+
+Dart 凭借全程序健全的空安全机制，
+得以充分运用这些原则，减少错误、精简体积并提升运行速度。
 
 ## Dart 3 and null safety
 
@@ -189,7 +197,7 @@ listed by the analyzer.
 ## 启用和禁用空安全
 
 From Dart 2.12 to 2.19, you need to enable null safety.
-You cannot use null safety in SDK versions earlier than Dart 2.12.
+You can't use null safety in SDK versions earlier than Dart 2.12.
 
 在 Dart 2.12 到 2.19 中，你需要手动启用空安全。
 Dart 2.12 之前的 SDK 版本不提供空安全。

@@ -27,7 +27,10 @@ our [code of conduct](/community/code-of-conduct).
 <br> 第一时间公布新的发行版本、重大变化以及其他重要新闻。推荐！
 
 [@dart.dev](https://bsky.app/profile/dart.dev)
-: Dart's official Bluesky account.
+<br> Dart's official Bluesky account.
+
+[@dart.dev](https://bsky.app/profile/dart.dev)
+<br> Dart 官方的 Bluesky 账号.
 
 [@dart_lang](https://twitter.com/dart_lang)
 <br> Dart's official X (Twitter) account.

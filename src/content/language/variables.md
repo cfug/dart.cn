@@ -5,10 +5,12 @@ title: 变量
 description: 了解 Dart 中的变量。
 prevpage:
   url: /language
-  title: Basics
+# title: Introduction
+  title: Dart 简介
 nextpage:
   url: /language/operators
-  title: Operators
+# title: Operators
+  title: 操作符
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
@@ -384,7 +386,7 @@ like for `baz` above. For details, see [DON'T use const redundantly][].
 你可以省略以 `const` 声明中的值的 `const` 修饰，就像上面的 `baz` 一样。
 更多详细信息请参考 [不要重复使用常量][DON'T use const redundantly]。
 
-You can change the value of a non-final, non-const variable,
+You can change the reference of a non-final, non-const variable,
 even if it used to have a `const` value:
 
 如果一个变量没被声明为 `final` 或者 `const`，

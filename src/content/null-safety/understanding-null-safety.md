@@ -915,30 +915,35 @@ You might use it like so:
 ```dart
 // Using null safety:
 class Point {
-  final double x, y;
+  final int x, y;
 
-  bool operator ==(Object other) {
-    if (other is! Point) wrongType('Point', other);
-    return x == other.x && y == other.y;
+  Point(this.x, this.y);
+
+  Point operator +(Object other) {
+    if (other is int) return Point(x + other, y + other);
+    if (other is! Point) wrongType('int | Point', other);
+
+    print('Adding two Point instances together: $this + $other');
+    return Point(x + other.x, y + other.y);
   }
 
-  // Constructor and hashCode...
+  // toString, hashCode, and other implementations...
 }
 ```
 
-This program analyzes without error. Notice that the last line of the `==`
+This program analyzes without error. Notice that the last line of the `+`
 method accesses `.x` and `.y` on `other`. It has been promoted to `Point` even
 though the function doesn't have any `return` or `throw`. The control flow
 analysis knows that the declared type of `wrongType()` is `Never` which means
-the then branch of the `if` statement *must* abort somehow. Since the second
+the then branch of the `if` statement *must* abort somehow. Since the final
 statement can only be reached when `other` is a `Point`, Dart promotes it.
 
 这段代码不会分析出错误。
-请注意 `==` 方法的最后一行，在 `other` 上调用 `.x` 和 `.y`。
+请注意 `+` 方法的最后一行，在 `other` 上调用 `.x` 和 `.y`。
 尽管在第一行并没有包含 `return` 或 `throw`，它的类型仍然提升为了 `Point`。
 控制流程分析意识到 `wrongType()` 声明的类型是 `Never`，
 代表着 `if` 语句的 then 分支 **一定会** 由于某些原因被中断。
-由于下一句的代码仅能在 `other` 是 `Point` 时运行，所以 Dart 提升了它的类型。
+由于最终的代码仅能在 `other` 是 `Point` 时运行，所以 Dart 提升了它的类型。
 
 In other words, using `Never` in your own APIs lets you extend Dart's
 reachability analysis.
@@ -1086,14 +1091,14 @@ String makeCommand(String executable, [List<String>? arguments]) {
 The language is also smarter about what kinds of expressions cause promotion. An
 explicit `== null` or `!= null` of course works. But explicit casts using `as`,
 or assignments, or the postfix `!` operator
-(which we'll cover [later on](#non-null-assertion-operator)) also cause
+(which we'll cover [later on](#not-null-assertion-operator)) also cause
 promotion. The general goal is that if the code is dynamically correct and it's
 reasonable to figure that out statically, the analysis should be clever enough
 to do so.
 
 Dart 语言也对什么表达式需要提升变量判断地更智能了。
 除了显式的 `== null` 和 `!= null` 以外，显式使用 `as` 或赋值，
-以及后置操作符 `!` （我们 [稍后会介绍](#null-assertion-operator)）也会进行类型提升。
+以及后置操作符 `!` （我们 [稍后会介绍](#not-null-assertion-operator)）也会进行类型提升。
 总体来说的目标是：如果代码是动态正确的，而静态分析时又是合理的，
 那么分析结果也足够聪明，会对其进行类型提升。
 
@@ -1357,8 +1362,10 @@ There isn't a null-aware function call operator, but you can write:
 function?.call(arg1, arg2);
 ```
 
-<a id="null-assertion-operator"></a>
-### Non-null assertion operator
+<a id="null-assertion-operator" aria-hidden="true"></a>
+<a id="non-null-assertion-operator" aria-hidden="true"></a>
+
+### Not-null assertion operator
 
 ### 空值断言操作符
 
@@ -1515,10 +1522,10 @@ instance fields). So Dart reports a compile error on this class.
 即不可空的字段必须在声明时初始化（或是在构造函数的初始化字段列表中）。
 所以在这里，Dart 会在这个类上提示一个编译错误。
 
-You can fix the error by making the field nullable and then using null assertion
-operators on the uses:
+You can fix the error by making the field nullable and then
+using not-null assertion operators on the uses:
 
-为了解决这个问题，你可以将它声明为可空，接着使用空断言操作符：
+为了解决这个问题，你可以将它声明为可空，接着使用非空断言操作符：
 
 ```dart
 // Using null safety:
@@ -1559,11 +1566,13 @@ class Coffee {
 }
 ```
 
-Note that the `_temperature` field has a non-nullable type, but is not
-initialized. Also, there's no explicit null assertion when it's used. There are
-a few models you can apply to the semantics of `late`, but I think of it like
-this: The `late` modifier means "enforce this variable's constraints at runtime
-instead of at compile time". It's almost like the word "late" describes *when*
+Note that the `_temperature` field has a non-nullable type,
+but is not initialized.
+Also, there's no explicit not-null assertion when it's used.
+There are a few models you can apply to the semantics of `late`,
+but I think of it like this: The `late` modifier means
+"enforce this variable's constraints at runtime instead of at compile time".
+It's almost like the word "late" describes *when*
 it enforces the variable's guarantees.
 
 此处我们注意到，`_temperature` 字段是一个非空的类型，但是并没有进行初始化。
@@ -2366,12 +2375,12 @@ The core points to take away are:
 
 *   Method chains after null-aware operators short circuit if the receiver is
     `null`. There are new null-aware cascade (`?..`) and index (`?[]`)
-    operators. The postfix null assertion "bang" operator (`!`) casts its
+    operators. The postfix not-null assertion "bang" operator (`!`) casts its
     nullable operand to the underlying non-nullable type.
 
     如果接收者为 `null`，那么在其避空运算符之后的链式方法调用都会被截断。
     我们引入了新的空判断级联操作符 (`?..`) 及索引操作符 (`?[]`)。
-    后缀空断言“重点”操作符 (`!`) 可以将可空的操作对象转换为对应的非空类型。
+    后缀非空断言“重点”操作符 (`!`) 可以将可空的操作对象转换为对应的非空类型。
 
 *   Flow analysis lets you safely turn nullable local variables and parameters
     (and private final fields, as of Dart 3.2)

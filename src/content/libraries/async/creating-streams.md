@@ -185,11 +185,10 @@ Dart 平台库为许多常见的任务需求提供了 Stream 转换器。
 <?code-excerpt "misc/lib/articles/creating-streams/stream_controller.dart (use-transform)"?>
 ```dart
 Stream<List<int>> content = File('someFile.txt').openRead();
-List<String> lines =
-    await content
-        .transform(utf8.decoder)
-        .transform(const LineSplitter())
-        .toList();
+List<String> lines = await content
+    .transform(utf8.decoder)
+    .transform(const LineSplitter())
+    .toList();
 ```
 
 

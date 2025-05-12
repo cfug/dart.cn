@@ -114,7 +114,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion cast-map
     var stuff = <dynamic>[1, 2];
-    var reciprocals = stuff.map<double>((n) => 1 / (n as int));
+    var reciprocals = stuff.map<double>((n) => (n as int) * 2);
     // #enddocregion cast-map
   }
 
@@ -319,6 +319,8 @@ class Player {
   bool get isActive => false;
 }
 
+class DownloadException implements Exception {}
+
 class Team {
   Future<List<Player>> get roster => Future.value([]);
   Future<Team?> downloadTeam(String name) => Future.value(Team());
@@ -332,7 +334,7 @@ class Team {
 
       var players = await team.roster;
       return players.where((player) => player.isActive).length;
-    } catch (e) {
+    } on DownloadException catch (e, _) {
       log.error(e);
       return 0;
     }
@@ -573,7 +575,10 @@ class Text {
 // #docregion no-new
 Widget build(BuildContext context) {
   return Row(
-    children: [RaisedButton(child: Text('Increment')), Text('Click!')],
+    children: [
+      RaisedButton(child: Text('Increment')),
+      Text('Click!'),
+    ],
   );
 }
 

@@ -42,7 +42,7 @@ yaml_variable_scanner:
     - "src/content/tools/dartpad/index.md"
     - "src/content/tools/dartpad/troubleshoot.md"
     - "src/content/community/index.md"
-    - "src/content/tools/diagnostic-messages.md"
+    - "src/content/tools/diagnostics/**"
 
   # Ignore text that doesn't need to match
   #

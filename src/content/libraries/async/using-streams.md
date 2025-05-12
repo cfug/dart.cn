@@ -377,12 +377,12 @@ but mainly for historical reasons.)
 
 ## 修改 Stream 的方法
 
-The following methods on Stream return a new stream based
+The following methods on `Stream` return a new stream based
 on the original stream.
-Each one waits until someone listens on the new stream before
+Each one waits until something listens on the new stream before
 listening on the original.
 
-下面的方法可以对原始的 Stream 进行处理并返回新的 Stream。
+下面关于 `Stream` 的方法可以对原始的 Stream 进行处理并返回新的 Stream。
 当调用了这些方法后，设置在原始 Stream 上的监听器
 会先监听被转换后的新 Stream，
 待新的 Stream 处理完成后才会转而回去监听原始的 Stream。
@@ -399,7 +399,7 @@ Stream<T> takeWhile(bool Function(T element) test);
 Stream<T> where(bool Function(T event) test);
 ```
 
-The preceding methods correspond to similar methods on [Iterable][]
+The preceding methods correspond to similar methods on [Iterable][],
 which transform an iterable into another iterable.
 All of these can be written easily using an `async` function
 with an **await for** loop.
@@ -436,27 +436,64 @@ Stream<T> timeout(
 Stream<S> transform<S>(StreamTransformer<T, S> streamTransformer);
 ```
 
-The final three functions are more special.
-They involve error handling which an **await for** loop
-can't do—the first error reaching the loops will end
-the loop and its subscription on the stream.
-There is no recovering from that.
-The following code shows how to use `handleError()` to remove errors
-from a stream before using it in an **await for** loop.
+The final three functions are more specialized.
+They involve error handling that an **await for** loop
+cannot directly manage; the first error encountered will
+terminate the loop and its stream subscription, with no
+built-in mechanism for recovery.
 
-最后这三个方法比较特殊。它们用于处理 **await for** 循环不能处理的错误：
+最后这三个方法比较特殊。
+它们用于处理 **await for** 循环不能处理的错误：
 当循环执行过程中出现错误时，该循环会结束同时取消 Stream 上的订阅且不能恢复。
-你可以使用 `handleError()` 方法在 **await for** 循环中
-使用 Stream 前将相关错误移除。
 
-<?code-excerpt "misc/lib/tutorial/misc.dart (map-log-errors)"?>
-```dart
+The following code demonstrates how to use `handleError()`
+to filter out errors from a stream before it's consumed by
+an **await for** loop.
+
+以下代码演示了如何在 **await for** 循环处理 stream 之前，
+使用 `handleError()` 过滤掉 Stream 中的错误。
+
+<?code-excerpt "misc/lib/tutorial/misc.dart (map-log-errors)" plaster="none"?>
+```dart highlightLines=5
 Stream<S> mapLogErrors<S, T>(
   Stream<T> stream,
   S Function(T event) convert,
 ) async* {
   var streamWithoutErrors = stream.handleError((e) => log(e));
+
   await for (final event in streamWithoutErrors) {
+    yield convert(event);
+  }
+}
+```
+
+In the previous example, an **await for** loop is never
+returned to if no events are emitted by the stream.
+To avoid this, use the `timeout()` function to create
+a new stream. `timeout()` enables you to set a
+time limit and continue emitting events on the returned
+stream.
+
+The following code modifies the previous example. 
+It adds a two-second timeout and produces a
+relevant error if no events occur for two or more seconds.
+
+<?code-excerpt "misc/lib/tutorial/misc.dart (stream-timeout)"?>
+```dart highlightLines=6-12
+Stream<S> mapLogErrors<S, T>(
+  Stream<T> stream,
+  S Function(T event) convert,
+) async* {
+  var streamWithoutErrors = stream.handleError((e) => log(e));
+  var streamWithTimeout = streamWithoutErrors.timeout(
+    const Duration(seconds: 2),
+    onTimeout: (eventSink) {
+      eventSink.addError('Timed out after 2 seconds');
+      eventSink.close();
+    },
+  );
+
+  await for (final event in streamWithTimeout) {
     yield convert(event);
   }
 }
@@ -587,10 +624,10 @@ and asynchronous programming in Dart.
 
   [Futures 以及错误处理](/libraries/async/futures-error-handling), 该文将向你介绍如何在使用 Future API 时处理相关错误。
 
-* [Asynchrony support](/language/async),
-  a section in the [language tour](/language)
+* [Asynchronous programming](/language/async),
+  which goes in-depth into Dart's language support for asynchrony
 
-  [Dart 开发语言概览](/language) 中的 [异步支持](/language/async) 部分。
+  [异步编程](/language/async)，深入介绍了 Dart 语言对异步的支持。
 
 * [Stream API reference]({{site.dart-api}}/dart-async/Stream-class.html)
 
