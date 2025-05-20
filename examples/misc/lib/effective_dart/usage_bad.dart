@@ -132,7 +132,7 @@ void miscDeclAnalyzedButNotTested() {
   {
     // #docregion cast-map
     var stuff = <dynamic>[1, 2];
-    var reciprocals = stuff.map((n) => 1 / (n as int)).cast<double>();
+    var reciprocals = stuff.map((n) => n * 2).cast<double>();
     // #enddocregion cast-map
   }
 
@@ -277,10 +277,9 @@ void miscDeclAnalyzedButNotTested() {
 
   (Map<Chest, Treasure> _opened) {
     // #docregion arrow-long
-    Treasure? openChest(Chest chest, Point where) =>
-        _opened.containsKey(chest)
-            ? null
-            : _opened[chest] = (Treasure(where)..addAll(chest.contents));
+    Treasure? openChest(Chest chest, Point where) => _opened.containsKey(chest)
+        ? null
+        : _opened[chest] = (Treasure(where)..addAll(chest.contents));
     // #enddocregion arrow-long
   };
 }
@@ -315,7 +314,7 @@ class BadTeam extends Team {
             return players.where((player) => player.isActive).length;
           });
         })
-        .catchError((e) {
+        .onError<DownloadException>((e, _) {
           log.error(e);
           return 0;
         });

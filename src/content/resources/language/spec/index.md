@@ -16,10 +16,12 @@ For a gentler introduction to Dart, see the
 
 ## Dart 3
 
-The Dart 3 language specification is in progress.
+The Dart 3 language specification is in progress and
+not yet up to date for the current release and language features.
 You can find the in-progress specification in PDF format:
 
-Dart 3 的语言规范仍然在制定中。
+Dart 3 的语言规范仍然在制定中，
+尚未更新当前版本和语言特性。
 你可以查阅正在制定中的规范 PDF 文件：
 
 * [Latest, in-progress specification][latest draft]
@@ -42,6 +44,11 @@ informal language feature specifications in the [dart-lang/language][] repo:
 * [Drafts of potential features][]
 
   [潜在的功能草案][Drafts of potential features]
+
+Over time, these feature specifications will be incorporated into
+the official specification.
+
+随着时间的推移，这些功能规范将被纳入正式规范中。
 
 [dart-lang/language]: {{site.repo.dart.lang}}
 [Accepted informal proposals]: {{site.repo.dart.lang}}/tree/main/accepted
@@ -68,8 +75,8 @@ The Dart 2 language specification is available in PDF format:
 
 [2-10 formal spec]: /resources/language/spec/versions/DartLangSpec-v2.10.pdf
 
-For information on Dart versions 2.12 and later, 
-which have support for [null safety](/null-safety), 
+For information on Dart versions 2.12 and later,
+which have support for [null safety](/null-safety),
 check out the in-progress [Dart 3 specification](#dart-3).
 
 对于 Dart 2.12 及之后支持了 [空安全](/null-safety) 的版本，

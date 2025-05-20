@@ -3,20 +3,13 @@
   children:
     - title: 介绍
       permalink: /language
-    - title: 基础表达式
-      children:
-        - title: 变量
-          permalink: /language/variables
-        - title: 操作符
-          permalink: /language/operators
-        - title: 注释
-          permalink: /language/comments
-        - title: 注解
-          permalink: /language/metadata
-        - title: 库 & 导库
-          permalink: /language/libraries
-        - title: 关键字
-          permalink: /language/keywords
+    - title: 变量
+      permalink: /language/variables
+    - title: 操作符
+      permalink: /language/operators
+    - title: 注释
+      permalink: /language/comments
+    - divider
     - title: 类型
       children:
         - title: 基本类型
@@ -39,8 +32,6 @@
           permalink: /language/pattern-types
         - title: 实用教程
           permalink: https://codelabs.developers.google.cn/codelabs/dart-patterns-records?hl=zh-cn#0
-    - title: 函数方法
-      permalink: /language/functions
     - title: 控制流
       children:
       - title: 循环
@@ -49,6 +40,12 @@
         permalink: /language/branches
       - title: 错误处理
         permalink: /language/error-handling
+    - title: 函数方法
+      permalink: /language/functions
+    - title: 注解
+      permalink: /language/metadata
+    - title: 库 & 导库
+      permalink: /language/libraries
     - title: 类 & 对象
       children:
         - title: 类
@@ -81,11 +78,12 @@
       children:
         - title: 概览
           permalink: /language/concurrency
-        - title: 异步支持
+        - title: 异步编程
           permalink: /language/async
         - title: Isolates
           permalink: /language/isolates
-    - title: Null safety
+    - divider
+    - title: 空安全 (Null safety)
       expanded: false
       children:
         - title: 健全的空安全
@@ -98,6 +96,8 @@
           permalink: /null-safety/unsound-null-safety
         - title: 空安全常见问题和解答
           permalink: /null-safety/faq
+    - title: 关键字
+      permalink: /language/keywords
 
 - title: 核心库
   expanded: false
@@ -146,7 +146,7 @@
     - title: API 设计
       permalink: /effective-dart/design
 
-- title: Packages
+- title: Package
   expanded: false
   children:
     - title: 如何使用 package
@@ -322,7 +322,7 @@
       - title: Linter 规则
         permalink: /tools/linter-rules
       - title: 诊断信息
-        permalink: /tools/diagnostic-messages
+        permalink: /tools/diagnostics
   - title: 测试和优化
     children:
       - title: 测试

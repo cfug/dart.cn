@@ -19,7 +19,7 @@ Dart 语言旨在让从其他编程语言转来的开发者们能够轻松学习
 The embedded editors in this tutorial have partially completed code snippets.
 You can use these editors to test your knowledge by completing the code and
 clicking the **Run** button. The editors also contain thorough test code;
-**don't edit the test code**, but feel free to study it to learn about testing. 
+**don't edit the test code**, but feel free to study it to learn about testing.
 
 这篇教程中的嵌入式编辑器已经完成了部分代码片段。
 你可以在这些编辑器上将代码补充完整，然后点击 **Run (运行)** 按钮进行测试。
@@ -55,9 +55,9 @@ Here are some examples of using string interpolation:
 | `'$myObject'`               | The value of `myObject.toString()` |
 | `'$myObject'`               | `myObject.toString()` 的值         |
 
-### Code example {:.no_toc}
+### Exercise {:.no_toc}
 
-### 代码样例 {:.no_toc}
+### 练习 {:.no_toc}
 
 The following function takes two integers as parameters.
 Make it return a string containing both integers separated by a space.
@@ -73,7 +73,7 @@ String stringify(int x, int y) {
 }
 
 
-// Tests your solution (Don't edit!): 
+// Tests your solution (Don't edit!):
 void main() {
   assert(stringify(2, 3) == '2 3',
       "Your stringify method returned '${stringify(2, 3)}' instead of '2 3'");
@@ -150,9 +150,9 @@ read the [sound null safety guide](/null-safety).
 想了解更多有关 Dart 的空安全的内容，
 请阅读 [健全的空安全](/null-safety)。
 
-### Code example {:.no_toc}
+### Exercise {:.no_toc}
 
-### 代码样例 {:.no_toc}
+### 练习 {:.no_toc}
 
 Declare two variables in this DartPad:
 
@@ -174,11 +174,11 @@ Ignore all initial errors in the DartPad.
 // TODO: Declare the two variables here
 
 
-// Tests your solution (Don't edit!): 
+// Tests your solution (Don't edit!):
 void main() {
   try {
     if (name == 'Jane' && address == null) {
-      // verify that "name" is nullable
+      // Verify that "name" is nullable.
       name = null;
       print('Success!');
     } else {
@@ -243,9 +243,9 @@ print(1 ?? 3); // <-- Prints 1.
 print(null ?? 12); // <-- Prints 12.
 ```
 
-### Code example {:.no_toc}
+### Exercise {:.no_toc}
 
-### 代码样例 {:.no_toc}
+### 练习 {:.no_toc}
 
 Try substituting in the `??=` and `??` operators
 to implement the described behavior in the following snippet.
@@ -273,7 +273,7 @@ void updateSomeVars() {
 void main() {
   try {
     updateSomeVars();
-    
+
     if (foo != 'a string') {
       print('Looks like foo somehow ended up with the wrong value.');
     } else if (bar != 'a string') {
@@ -286,7 +286,6 @@ void main() {
   } catch (e) {
     print('Exception: ${e.runtimeType}.');
   }
-  
 }
 ```
 
@@ -301,7 +300,7 @@ void main() {
   ```dart
   // Substitute an operator that makes 'a string' be assigned to baz.
   String? baz = foo ?? bar;
-  
+
   void updateSomeVars() {
     // Substitute an operator that makes 'a string' be assigned to bar.
     bar ??= 'a string';
@@ -344,16 +343,15 @@ myObject?.someProperty?.someMethod()
 ```
 
 The preceding code returns null (and never calls `someMethod()`) if either
-`myObject` or `myObject.someProperty` is
-null.
+`myObject` or `myObject.someProperty` is null.
 
 如果 `myObject` 或 `myObject.someProperty` 为空，则前面的代码返回 null（并不再调用 `someMethod`）。
 
-### Code example {:.no_toc}
+### Exercise {:.no_toc}
 
-### 代码样例 {:.no_toc}
+### 练习 {:.no_toc}
 
-The following function takes a nullable string as a parameter. 
+The following function takes a nullable string as a parameter.
 Try using conditional property access to make it
 return the uppercase version of `str`, or `null` if `str` is `null`.
 
@@ -379,7 +377,7 @@ void main() {
   } catch (e) {
     print('Tried calling upperCaseIt(null) and got an exception: \n ${e.runtimeType}.');
   }
-  
+
   try {
     String? two = upperCaseIt('a string');
     if (two == null) {
@@ -458,9 +456,9 @@ but still want the list to be `List<BaseType>`:
 final aListOfBaseType = <BaseType>[SubType(), SubType()];
 ```
 
-### Code example {:.no_toc}
+### Exercise {:.no_toc}
 
-### 代码样例 {:.no_toc}
+### 练习 {:.no_toc}
 
 Try setting the following variables to the indicated values. Replace the existing null values.
 
@@ -489,7 +487,7 @@ final anEmptyMapOfDoublesToInts = null;
 // Tests your solution (Don't edit!):
 void main() {
   final errs = <String>[];
-  
+
   if (aListOfStrings is! List<String>) {
     errs.add('aListOfStrings should have the type List<String>.');
   } else if (aListOfStrings.length != 3) {
@@ -543,11 +541,11 @@ void main() {
 <details>
   <summary>集合字面量 (Collection literals) 样例的解决方案</summary>
 
-  Add a list, set, or map literal after each equals sign.
+  Add a list, set, or map literal after each equal sign (`=`).
   Remember to specify the types for the empty declarations,
   since they can't be inferred.
 
-  在每个等号后添加一个 list、set 或 map literal。
+  在每个等号 (`=`) 后添加一个 list、set 或 map literal。
   切记要指定空声明的类型，
   因为它们是无法推断的。
 
@@ -605,9 +603,9 @@ Here's a simpler way to write that code:
 bool hasEmpty = aListOfStrings.any((s) => s.isEmpty);
 ```
 
-### Code example {:.no_toc}
+### Exercise {:.no_toc}
 
-### 代码样例 {:.no_toc}
+### 练习 {:.no_toc}
 
 Try finishing the following statements, which use arrow syntax.
 
@@ -618,15 +616,15 @@ class MyClass {
   int value1 = 2;
   int value2 = 3;
   int value3 = 5;
-  
+
   // Returns the product of the above values:
   int get product => TODO();
-  
+
   // Adds 1 to value1:
   void incrementValue1() => TODO();
-  
+
   // Returns a string containing each item in the
-  // list, separated by commas (e.g. 'a,b,c'): 
+  // list, separated by commas (e.g. 'a,b,c'):
   String joinWithCommas(List<String> strings) => TODO();
 }
 
@@ -635,13 +633,13 @@ class MyClass {
 void main() {
   final obj = MyClass();
   final errs = <String>[];
-  
+
   try {
     final product = obj.product;
-    
+
     if (product != 30) {
-      errs.add('The product property returned $product \n instead of the expected value (30).'); 
-    } 
+      errs.add('The product property returned $product \n instead of the expected value (30).');
+    }
   } catch (e) {
     print('Tried to use MyClass.product, but encountered an exception: \n ${e.runtimeType}.');
     return;
@@ -649,10 +647,10 @@ void main() {
 
   try {
     obj.incrementValue1();
-    
+
     if (obj.value1 != 3) {
-      errs.add('After calling incrementValue, value1 was ${obj.value1} \n instead of the expected value (3).'); 
-    } 
+      errs.add('After calling incrementValue, value1 was ${obj.value1} \n instead of the expected value (3).');
+    }
   } catch (e) {
     print('Tried to use MyClass.incrementValue1, but encountered an exception: \n ${e.runtimeType}.');
     return;
@@ -660,10 +658,10 @@ void main() {
 
   try {
     final joined = obj.joinWithCommas(['one', 'two', 'three']);
-    
+
     if (joined != 'one,two,three') {
-      errs.add('Tried calling joinWithCommas([\'one\', \'two\', \'three\']) \n and received $joined instead of the expected value (\'one,two,three\').'); 
-    } 
+      errs.add('Tried calling joinWithCommas([\'one\', \'two\', \'three\']) \n and received $joined instead of the expected value (\'one,two,three\').');
+    }
   } catch (e) {
     print('Tried to use MyClass.joinWithCommas, but encountered an exception: \n ${e.runtimeType}.');
     return;
@@ -696,12 +694,12 @@ void main() {
 
     // Returns the product of the above values:
     int get product => value1 * value2 * value3;
-    
+
     // Adds 1 to value1:
-    void incrementValue1() => value1++; 
-    
+    void incrementValue1() => value1++;
+
     // Returns a string containing each item in the
-    // list, separated by commas (e.g. 'a,b,c'): 
+    // list, separated by commas (e.g. 'a,b,c'):
     String joinWithCommas(List<String> strings) => strings.join(',');
   }
   ```
@@ -760,8 +758,8 @@ button?.onClick.listen((e) => web.window.alert('Confirmed!'));
 button?.scrollIntoView();
 ```
 
-To instead use cascades, 
-you can start with the _null-shorting_ cascade (`?..`), 
+To instead use cascades,
+you can start with the _null-shorting_ cascade (`?..`),
 which guarantees that none of the cascade operations
 are attempted on a `null` object.
 Using cascades shortens the code
@@ -780,9 +778,9 @@ web.document.querySelector('#confirm')
   ..scrollIntoView();
 ```
 
-### Code example {:.no_toc}
+### Exercise {:.no_toc}
 
-### 代码样例 {:.no_toc}
+### 练习 {:.no_toc}
 
 Use cascades to create a single statement that
 sets the `anInt`, `aString`, and `aList` properties of a `BigObject`
@@ -800,7 +798,7 @@ class BigObject {
   String aString = '';
   List<double> aList = [];
   bool _done = false;
-  
+
   void allDone() {
     _done = true;
   }
@@ -844,7 +842,7 @@ void main() {
           'The value found in aList was ${obj.aList[0]} \n rather than the expected (3.0).');
     }
   }
-  
+
   if (!obj._done) {
     errs.add('It looks like allDone() wasn\'t called.');
   }
@@ -924,12 +922,12 @@ class MyClass {
 }
 ```
 
-### Code example {:.no_toc}
+### Exercise {:.no_toc}
 
-### 代码样例 {:.no_toc}
+### 练习 {:.no_toc}
 
-Imagine you have a shopping cart class that keeps a private `List<double>`
-of prices.
+Imagine you have a shopping cart class that keeps a
+private `List<double>` of prices.
 Add the following:
 
 想象你有一个购物车类，其中有一个私有的 `List<double>` 类型的 prices 属性。添加以下内容：
@@ -955,7 +953,7 @@ class InvalidPriceException {}
 
 class ShoppingCart {
   List<double> _prices = [];
-  
+
   // TODO: Add a "total" getter here:
 
   // TODO: Add a "prices" setter here:
@@ -965,7 +963,7 @@ class ShoppingCart {
 // Tests your solution (Don't edit!):
 void main() {
   var foundException = false;
-  
+
   try {
     final cart = ShoppingCart();
     cart.prices = [12.0, 12.0, -23.0];
@@ -975,21 +973,21 @@ void main() {
     print('Tried setting a negative price and received a ${e.runtimeType} \n instead of an InvalidPriceException.');
     return;
   }
-  
+
   if (!foundException) {
     print('Tried setting a negative price \n and didn\'t get an InvalidPriceException.');
     return;
   }
-  
+
   final secondCart = ShoppingCart();
-  
+
   try {
     secondCart.prices = [1.0, 2.0, 3.0];
   } catch(e) {
     print('Tried setting prices with a valid list, \n but received an exception: ${e.runtimeType}.');
     return;
   }
-  
+
   if (secondCart._prices.length != 3) {
     print('Tried setting prices with a list of three values, \n but _prices ended up having length ${secondCart._prices.length}.');
     return;
@@ -1000,21 +998,21 @@ void main() {
     print('Tried setting prices with a list of three values (1, 2, 3), \n but incorrect ones ended up in the price list ($vals) .');
     return;
   }
-  
+
   var sum = 0.0;
-  
+
   try {
     sum = secondCart.total;
   } catch (e) {
     print('Tried to get total, but received an exception: ${e.runtimeType}.');
     return;
   }
-  
+
   if (sum != 6.0) {
     print('After setting prices to (1, 2, 3), total returned $sum instead of 6.');
     return;
   }
-  
+
   print('Success!');
 }
 ```
@@ -1022,23 +1020,23 @@ void main() {
 <details>
   <summary>Solution for getters and setters example</summary>
 
-  Two functions are handy for this exercise. 
+  Two functions are handy for this exercise.
   One is `fold`, which can reduce a list to a single value
   (use it to calculate the total).
   The other is `any`, which can check each item in a list
   with a function you give it
-  (use it to check if there are any negative prices in the prices setter).
+  (use it to check if there are any negative prices in the `prices` setter).
 
   ```dart
-  // Add a "total" getter here:
+  /// The total price of the shopping cart.
   double get total => _prices.fold(0, (e, t) => e + t);
 
-  // Add a "prices" setter here:
+  /// Set [prices] to the [value] list of item prices.
   set prices(List<double> value) {
     if (value.any((p) => p < 0)) {
       throw InvalidPriceException();
     }
-    
+
     _prices = value;
   }
   ```
@@ -1050,7 +1048,7 @@ void main() {
 
 ## 可选位置参数
 
-Dart has two kinds of function parameters: positional and named. 
+Dart has two kinds of function parameters: positional and named.
 Positional parameters are the kind you're likely familiar with:
 
 Dart 有两种传参方法：位置参数和命名参数。位置参数你可能会比较熟悉：
@@ -1102,9 +1100,9 @@ void main() {
 }
 ```
 
-### Code example {:.no_toc}
+### Exercise {:.no_toc}
 
-### 代码样例 {:.no_toc}
+### 练习 {:.no_toc}
 
 Implement a function called `joinWithCommas()` that accepts one to
 five integers, then returns a string of those numbers separated by commas.
@@ -1131,13 +1129,13 @@ String joinWithCommas(int a, [int? b, int? c, int? d, int? e]) {
 // Tests your solution (Don't edit!):
 void main() {
   final errs = <String>[];
-  
+
   try {
     final value = joinWithCommas(1);
-    
+
     if (value != '1') {
-      errs.add('Tried calling joinWithCommas(1) \n and got $value instead of the expected (\'1\').'); 
-    } 
+      errs.add('Tried calling joinWithCommas(1) \n and got $value instead of the expected (\'1\').');
+    }
   } on UnimplementedError {
     print('Tried to call joinWithCommas but failed. \n Did you implement the method?');
     return;
@@ -1148,10 +1146,10 @@ void main() {
 
   try {
     final value = joinWithCommas(1, 2, 3);
-    
+
     if (value != '1,2,3') {
-      errs.add('Tried calling joinWithCommas(1, 2, 3) \n and got $value instead of the expected (\'1,2,3\').'); 
-    } 
+      errs.add('Tried calling joinWithCommas(1, 2, 3) \n and got $value instead of the expected (\'1,2,3\').');
+    }
   } on UnimplementedError {
     print('Tried to call joinWithCommas but failed. \n Did you implement the method?');
     return;
@@ -1162,10 +1160,10 @@ void main() {
 
   try {
     final value = joinWithCommas(1, 2, 3, 4, 5);
-    
+
     if (value != '1,2,3,4,5') {
-      errs.add('Tried calling joinWithCommas(1, 2, 3, 4, 5) \n and got $value instead of the expected (\'1,2,3,4,5\').'); 
-    } 
+      errs.add('Tried calling joinWithCommas(1, 2, 3, 4, 5) \n and got $value instead of the expected (\'1,2,3,4,5\').');
+    }
   } on UnimplementedError {
     print('Tried to call joinWithCommas but failed. \n Did you implement the method?');
     return;
@@ -1226,7 +1224,7 @@ void printName(String firstName, String lastName, {String? middleName}) {
 void main() {
   printName('Dash', 'Dartisan');
   printName('John', 'Smith', middleName: 'Who');
-  // Named arguments can be placed anywhere in the argument list
+  // Named arguments can be placed anywhere in the argument list.
   printName('John', middleName: 'Who', 'Smith');
 }
 ```
@@ -1258,9 +1256,9 @@ A function can't have both optional positional and named parameters.
 
 一个方法不能同时使用可选位置参数和可选命名参数。
 
-### Code example {:.no_toc}
+### Exercise {:.no_toc}
 
-### 代码样例 {:.no_toc}
+### 练习 {:.no_toc}
 
 Add a `copyWith()` instance method to the `MyDataObject`
 class. It should take three named, nullable parameters:
@@ -1307,43 +1305,66 @@ class MyDataObject {
 void main() {
   final source = MyDataObject();
   final errs = <String>[];
-  
+
   try {
     final copy = source.copyWith(newInt: 12, newString: 'New!', newDouble: 3.0);
-    
+
     if (copy.anInt != 12) {
       errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), \n and the new object\'s anInt was ${copy.anInt} rather than the expected value (12).');
     }
-    
+
     if (copy.aString != 'New!') {
       errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), \n and the new object\'s aString was ${copy.aString} rather than the expected value (\'New!\').');
     }
-    
+
     if (copy.aDouble != 3) {
       errs.add('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0), \n and the new object\'s aDouble was ${copy.aDouble} rather than the expected value (3).');
     }
   } catch (e) {
     print('Called copyWith(newInt: 12, newString: \'New!\', newDouble: 3.0) \n and got an exception: ${e.runtimeType}');
   }
-  
+
   try {
     final copy = source.copyWith();
-    
+
     if (copy.anInt != 1) {
       errs.add('Called copyWith(), and the new object\'s anInt was ${copy.anInt} \n rather than the expected value (1).');
     }
-    
+
     if (copy.aString != 'Old!') {
       errs.add('Called copyWith(), and the new object\'s aString was ${copy.aString} \n rather than the expected value (\'Old!\').');
     }
-    
+
     if (copy.aDouble != 2) {
       errs.add('Called copyWith(), and the new object\'s aDouble was ${copy.aDouble} \n rather than the expected value (2).');
     }
   } catch (e) {
     print('Called copyWith() and got an exception: ${e.runtimeType}');
   }
-  
+
+  try {
+    final sourceWithoutDefaults = MyDataObject(
+      anInt: 520,
+      aString: 'Custom!',
+      aDouble: 20.25,
+    );
+    final copy = sourceWithoutDefaults.copyWith();
+
+    if (copy.anInt == 1) {
+      errs.add('Called `copyWith()` on an object with a non-default `anInt` value (${sourceWithoutDefaults.anInt}), but the new object\'s `anInt` was the default value of ${copy.anInt}.');
+    }
+
+    if (copy.aString == 'Old!') {
+      errs.add('Called `copyWith()` on an object with a non-default `aString` value (\'${sourceWithoutDefaults.aString}\'), but the new object\'s `aString` was the default value of \'${copy.aString}\'.');
+    }
+
+    if (copy.aDouble == 2.0) {
+      errs.add('Called copyWith() on an object with a non-default `aDouble` value (${sourceWithoutDefaults.aDouble}), but the new object\'s `aDouble` was the default value of ${copy.aDouble}.');
+    }
+  } catch (e) {
+    print('Called copyWith() and got an exception: ${e.runtimeType}');
+  }
+
   if (errs.isEmpty) {
     print('Success!');
   } else {
@@ -1364,13 +1385,13 @@ void main() {
   This is a chance to get more practice with the `??` operator!
 
   ```dart
-    MyDataObject copyWith({int? newInt, String? newString, double? newDouble}) {
-      return MyDataObject(
-        anInt: newInt ?? this.anInt,
-        aString: newString ?? this.aString,
-        aDouble: newDouble ?? this.aDouble,
-      );
-    }
+  MyDataObject copyWith({int? newInt, String? newString, double? newDouble}) {
+    return MyDataObject(
+      anInt: newInt ?? this.anInt,
+      aString: newString ?? this.aString,
+      aDouble: newDouble ?? this.aDouble,
+    );
+  }
   ```
 </details>
 
@@ -1455,9 +1476,9 @@ try {
 }
 ```
 
-### Code example {:.no_toc}
+### Exercise {:.no_toc}
 
-### 代码样例 {:.no_toc}
+### 练习 {:.no_toc}
 
 Implement `tryFunction()` below. It should execute an untrustworthy method and
 then do the following:
@@ -1511,57 +1532,57 @@ class MyLogger extends Logger {
   Type? lastType;
   String lastMessage = '';
   bool done = false;
-  
+
   void logException(Type t, [String? message]) {
     lastType = t;
     lastMessage = message ?? lastMessage;
   }
-  
-  void doneLogging() => done = true;  
+
+  void doneLogging() => done = true;
 }
 
 void main() {
   final errs = <String>[];
   var logger = MyLogger();
-  
+
   try {
     tryFunction(() => throw Exception(), logger);
-  
+
     if ('${logger.lastType}' != 'Exception' && '${logger.lastType}' != '_Exception') {
       errs.add('Untrustworthy threw an Exception, but a different type was logged: \n ${logger.lastType}.');
     }
-    
+
     if (logger.lastMessage != '') {
       errs.add('Untrustworthy threw an Exception with no message, but a message \n was logged anyway: \'${logger.lastMessage}\'.');
     }
-    
+
     if (!logger.done) {
       errs.add('Untrustworthy threw an Exception, \n and doneLogging() wasn\'t called afterward.');
     }
   } catch (e) {
     print('Untrustworthy threw an exception, and an exception of type \n ${e.runtimeType} was unhandled by tryFunction.');
   }
-  
+
   logger = MyLogger();
-  
+
   try {
     tryFunction(() => throw ExceptionWithMessage('Hey!'), logger);
-  
+
     if (logger.lastType != ExceptionWithMessage) {
       errs.add('Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), but a \n different type was logged: ${logger.lastType}.');
     }
-    
+
     if (logger.lastMessage != 'Hey!') {
       errs.add('Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), but a \n different message was logged: \'${logger.lastMessage}\'.');
     }
-    
+
     if (!logger.done) {
       errs.add('Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), \n and doneLogging() wasn\'t called afterward.');
     }
   } catch (e) {
     print('Untrustworthy threw an ExceptionWithMessage(\'Hey!\'), \n and an exception of type ${e.runtimeType} was unhandled by tryFunction.');
   }
-  
+
   logger = MyLogger();
   bool caughtStringException = false;
 
@@ -1574,27 +1595,27 @@ void main() {
   if (!caughtStringException) {
     errs.add('Untrustworthy threw a string, and it was incorrectly handled inside tryFunction().');
   }
-  
+
   logger = MyLogger();
-  
+
   try {
     tryFunction(() {}, logger);
-  
+
     if (logger.lastType != null) {
       errs.add('Untrustworthy didn\'t throw an Exception, \n but one was logged anyway: ${logger.lastType}.');
     }
-    
+
     if (logger.lastMessage != '') {
       errs.add('Untrustworthy didn\'t throw an Exception with no message, \n but a message was logged anyway: \'${logger.lastMessage}\'.');
     }
-    
+
     if (!logger.done) {
       errs.add('Untrustworthy didn\'t throw an Exception, \n but doneLogging() wasn\'t called afterward.');
     }
   } catch (e) {
     print('Untrustworthy didn\'t throw an exception, \n but an exception of type ${e.runtimeType} was unhandled by tryFunction anyway.');
   }
-  
+
   if (errs.isEmpty) {
     print('Success!');
   } else {
@@ -1658,10 +1679,10 @@ Property names become the names of the parameters:
 
 此技巧同样也适用于命名参数。属性名为参数的名称：
 
-<?code-excerpt "misc/lib/cheatsheet/this_constructor.dart (required-named)" replace="/int.*;/.../g; /olorRN/olor/g;"?>
+<?code-excerpt "misc/lib/cheatsheet/this_constructor.dart (required-named)" replace="/int.*;/\/\/ .../g; /olorRN/olor/g;"?>
 ```dart
 class MyColor {
-  ...
+  // ...
 
   MyColor({required this.red, required this.green, required this.blue});
 }
@@ -1686,9 +1707,9 @@ MyColor([this.red = 0, this.green = 0, this.blue = 0]);
 MyColor({this.red = 0, this.green = 0, this.blue = 0});
 ```
 
-### Code example {:.no_toc}
+### Exercise {:.no_toc}
 
-### 代码样例 {:.no_toc}
+### 练习 {:.no_toc}
 
 Add a one-line constructor to `MyClass` that uses
 `this.` syntax to receive and assign values for
@@ -1706,7 +1727,7 @@ class MyClass {
   final int anInt;
   final String aString;
   final double aDouble;
-  
+
   // TODO: Create the constructor here.
 }
 
@@ -1714,10 +1735,10 @@ class MyClass {
 // Tests your solution (Don't edit!):
 void main() {
   final errs = <String>[];
-  
+
   try {
     final obj = MyClass(1, 'two', 3);
-    
+
     if (obj.anInt != 1) {
       errs.add('Called MyClass(1, \'two\', 3) and got an object with anInt of ${obj.anInt} \n instead of the expected value (1).');
     }
@@ -1732,7 +1753,7 @@ void main() {
   } catch (e) {
     print('Called MyClass(1, \'two\', 3) and got an exception \n of type ${e.runtimeType}.');
   }
-  
+
   if (errs.isEmpty) {
     print('Success!');
   } else {
@@ -1749,26 +1770,15 @@ void main() {
   `this.anInt`, `this.aString`, and `this.aDouble`
   as its parameters in that order.
 
-  ```dart    
+  ```dart
   MyClass(this.anInt, this.aString, this.aDouble);
   ```
 
 </details>
 
-{% comment %}
-This one seems super easy compared to previous ones.
-We've already seen it in the Exceptions example,
-and I'd already used it in a previous example.
-Move it up higher? Or make it more challenging, somehow?
-Maybe require both positional and optional named parameters (with defaults)?
-
-这样相比之前要简单很多。我们已经在 Exception 的样例中见过它了。并且我已经在之前的样例中使用了。
-把它变得更高级？或者以某种方式让它更具挑战性？
-也许需要位置和可选的命名参数（具有默认值）？
-
-{% endcomment %}
-
 ## Initializer lists
+
+## 初始化列表
 
 Sometimes when you implement a constructor,
 you need to do some setup before the constructor body executes.
@@ -1800,9 +1810,9 @@ NonNegativePoint(this.x, this.y) : assert(x >= 0), assert(y >= 0) {
 }
 ```
 
-### Code example {:.no_toc}
+### Exercise {:.no_toc}
 
-### 代码样例 {:.no_toc}
+### 练习 {:.no_toc}
 
 Complete the `FirstTwoLetters` constructor below.
 Use an initializer list to assign the first two characters in `word` to
@@ -1814,21 +1824,6 @@ For extra credit, add an `assert` to catch words of less than two characters.
 Ignore all initial errors in the DartPad.
 
 可以忽略以下代码一开始在 DartPad 中的错误。
-
-{% comment %}
-
-Is the assert even executed? I can't see any effect on the test,
-which makes me think asserts are ignored.
-Also, the test just checks for the presence of any exception, not for
-an AssertionError.
-
-Also, my print() wasn't visible in the Output until I fixed my code and/or
-the test. That was unexpected.
-It'd be cool if Output appeared only if you want it, like Solution does.
-
-FINALLY: Suggest using https://pub.dev/packages/characters
-if this is a user-entered string.
-{% endcomment %}
 
 ```dartpad
 class FirstTwoLetters {
@@ -1847,7 +1842,7 @@ void main() {
 
   try {
     final result = FirstTwoLetters('My String');
-    
+
     if (result.letterOne != 'M') {
       errs.add('Called FirstTwoLetters(\'My String\') and got an object with \n letterOne equal to \'${result.letterOne}\' instead of the expected value (\'M\').');
     }
@@ -1860,17 +1855,17 @@ void main() {
   }
 
   bool caughtException = false;
-  
+
   try {
     FirstTwoLetters('');
   } catch (e) {
     caughtException = true;
   }
-  
+
   if (!caughtException) {
     errs.add('Called FirstTwoLetters(\'\') and didn\'t get an exception \n from the failed assertion.');
   }
-  
+
   if (errs.isEmpty) {
     print('Success!');
   } else {
@@ -1886,7 +1881,7 @@ void main() {
   `letterOne` should be assigned `word[0]`,
   and `letterTwo` should be assigned `word[1]`.
 
-  ```dart    
+  ```dart
     FirstTwoLetters(String word)
         : assert(word.length >= 2),
           letterOne = word[0],
@@ -1898,12 +1893,6 @@ void main() {
 
 ## 命名构造方法
 
-{% comment %}
-Much like JavaScript, Dart doesn't support method overloads
-(two methods with the same name but different signatures).
-[ISSUE: methods & constructors aren't the same thing,
-so I deleted that. We can add it back if we can word it better.]
-{% endcomment %}
 To allow classes to have multiple constructors,
 Dart supports named constructors:
 
@@ -1930,9 +1919,9 @@ To use a named constructor, invoke it using its full name:
 final myPoint = Point.origin();
 ```
 
-### Code example {:.no_toc}
+### Exercise {:.no_toc}
 
-### 代码样例 {:.no_toc}
+### 练习 {:.no_toc}
 
 Give the `Color` class a constructor named `Color.black`
 that sets all three properties to zero.
@@ -1949,11 +1938,10 @@ class Color {
   int red;
   int green;
   int blue;
-  
+
   Color(this.red, this.green, this.blue);
 
   // TODO: Create a named constructor called "Color.black" here:
-
 }
 
 
@@ -1963,7 +1951,7 @@ void main() {
 
   try {
     final result = Color.black();
-    
+
     if (result.red != 0) {
       errs.add('Called Color.black() and got a Color with red equal to \n ${result.red} instead of the expected value (0).');
     }
@@ -1991,14 +1979,12 @@ void main() {
 <details>
   <summary>Solution for named constructors example</summary>
 
-  The declaration for your constructor should begin with `Color.black(): `.
-  In the initializer list (after the colon), set `red`, `green`, and `blue` to `0`.
+  The declaration for your constructor should begin with `Color.black():`.
+  In the initializer list (after the colon),
+  set `red`, `green`, and `blue` to `0`.
 
-  ```dart    
-    Color.black()
-        : red = 0,
-          green = 0,
-          blue = 0;
+  ```dart
+  Color.black() : red = 0, green = 0, blue = 0;
   ```
 
 </details>
@@ -2032,7 +2018,9 @@ class Shape {
 }
 ```
 
-### Code example {:.no_toc}
+### Exercise {:.no_toc}
+
+### 练习 {:.no_toc}
 
 Replace the line `TODO();` in the factory constructor
 named `IntegerHolder.fromList` to return the following:
@@ -2066,7 +2054,7 @@ If you succeed, the console should display `Success!`.
 ```dartpad
 class IntegerHolder {
   IntegerHolder();
-  
+
   // Implement this factory constructor.
   factory IntegerHolder.fromList(List<int> list) {
     TODO();
@@ -2098,7 +2086,7 @@ class IntegerTriple extends IntegerHolder {
 void main() {
   final errs = <String>[];
 
-  // Run 5 tests to see which values have valid integer holders
+  // Run 5 tests to see which values have valid integer holders.
   for (var tests = 0; tests < 5; tests++) {
     if (!testNumberOfArgs(errs, tests)) return;
   }
@@ -2107,7 +2095,7 @@ void main() {
   // but have errors with values 0 and 4.
   // The testNumberOfArgs method adds to the errs array if
   // the values 1 to 3 have an error and
-  // the values 0 and 4 don't have an error
+  // the values 0 and 4 don't have an error.
   if (errs.isEmpty) {
     print('Success!');
   } else {
@@ -2161,13 +2149,12 @@ void testValues(List<String> errs, List<int> expectedValues, IntegerHolder obj,
 
     if (found != expectedValues[i]) {
       errs.add(
-          "Called $callText and got a ${obj.runtimeType} " + 
+          "Called $callText and got a ${obj.runtimeType} " +
           "with a property at index $i value of $found " +
           "instead of the expected (${expectedValues[i]}).");
     }
   }
 }
-
 ```
 
 <details>
@@ -2224,9 +2211,9 @@ class Automobile {
 }
 ```
 
-### Code example {:.no_toc}
+### Exercise {:.no_toc}
 
-### 代码样例 {:.no_toc}
+### 练习 {:.no_toc}
 
 Remember the `Color` class from above? Create a named constructor called
 `black`, but rather than manually assigning the properties, redirect it to the
@@ -2245,7 +2232,7 @@ class Color {
   int red;
   int green;
   int blue;
-  
+
   Color(this.red, this.green, this.blue);
 
   // TODO: Create a named constructor called "black" here
@@ -2259,7 +2246,7 @@ void main() {
 
   try {
     final result = Color.black();
-    
+
     if (result.red != 0) {
       errs.add('Called Color.black() and got a Color with red equal to \n ${result.red} instead of the expected value (0).');
     }
@@ -2290,7 +2277,7 @@ void main() {
   Your constructor should redirect to `this(0, 0, 0)`.
 
   ```dart
-    Color.black() : this(0, 0, 0);
+  Color.black() : this(0, 0, 0);
   ```
 
 </details>
@@ -2299,9 +2286,10 @@ void main() {
 
 ## Const 构造方法
 
-If your class produces objects that never change, you can make these objects compile-time constants. To
-do this, define a `const` constructor and make sure that all instance variables
-are final.
+If your class produces objects that never change,
+you can make these objects compile-time constants.
+To do this, define a `const` constructor and
+make sure that all instance variables are final.
 
 如果你的类生成的对象永远都不会更改，
 则可以让这些对象成为编译时常量。
@@ -2319,9 +2307,9 @@ class ImmutablePoint {
 }
 ```
 
-### Code example {:.no_toc}
+### Exercise {:.no_toc}
 
-### 代码样例 {:.no_toc}
+### 练习 {:.no_toc}
 
 Modify the `Recipe` class so its instances can be constants,
 and create a constant constructor that does the following:
@@ -2354,7 +2342,7 @@ class Recipe {
   int calories;
   double milligramsOfSodium;
 
-  // TODO: Create a const constructor here"
+  // TODO: Create a const constructor here.
 
 }
 
@@ -2365,17 +2353,25 @@ void main() {
 
   try {
     const obj = Recipe(['1 egg', 'Pat of butter', 'Pinch salt'], 120, 200);
-    
+
     if (obj.ingredients.length != 3) {
       errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) \n and got an object with ingredient list of length ${obj.ingredients.length} rather than the expected length (3).');
     }
-    
+
     if (obj.calories != 120) {
       errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) \n and got an object with a calorie value of ${obj.calories} rather than the expected value (120).');
     }
-    
+
     if (obj.milligramsOfSodium != 200) {
       errs.add('Called Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) \n and got an object with a milligramsOfSodium value of ${obj.milligramsOfSodium} rather than the expected value (200).');
+    }
+
+    try {
+      obj.ingredients.add('Sugar to taste');
+      errs.add('Tried adding an item to the \'ingredients\' list of a const Recipe and didn\'t get an error due to it being unmodifiable.');
+    } on UnsupportedError catch (_) {
+      // We expect an `UnsupportedError` due to
+      // `ingredients` being a const, unmodifiable list.
     }
   } catch (e) {
     print('Tried calling Recipe([\'1 egg\', \'Pat of butter\', \'Pinch salt\'], 120, 200) \n and received a null.');

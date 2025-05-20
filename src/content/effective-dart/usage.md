@@ -479,7 +479,7 @@ class UploadException {
 [final]: /effective-dart/design#prefer-making-fields-and-top-level-variables-final
 [null-check pattern]: /language/pattern-types#null-check
 [`final`]: /effective-dart/usage#do-follow-a-consistent-rule-for-var-and-final-on-local-variables
-[use `!`]: /null-safety/understanding-null-safety#non-null-assertion-operator
+[use `!`]: /null-safety/understanding-null-safety#not-null-assertion-operator
 
 ## Strings
 
@@ -893,13 +893,13 @@ to be explicit.
 <?code-excerpt "usage_good.dart (cast-map)" replace="/\(n as int\)/n/g"?>
 ```dart tag=good
 var stuff = <dynamic>[1, 2];
-var reciprocals = stuff.map<double>((n) => 1 / n);
+var reciprocals = stuff.map<double>((n) => n * 2);
 ```
 
 <?code-excerpt "usage_bad.dart (cast-map)" replace="/\(n as int\)/n/g"?>
 ```dart tag=bad
 var stuff = <dynamic>[1, 2];
-var reciprocals = stuff.map((n) => 1 / n).cast<double>();
+var reciprocals = stuff.map((n) => n * 2).cast<double>();
 ```
 
 
@@ -1409,10 +1409,9 @@ Treasure? openChest(Chest chest, Point where) {
 
 <?code-excerpt "usage_bad.dart (arrow-long)"?>
 ```dart tag=bad
-Treasure? openChest(Chest chest, Point where) =>
-    _opened.containsKey(chest)
-        ? null
-        : _opened[chest] = (Treasure(where)..addAll(chest.contents));
+Treasure? openChest(Chest chest, Point where) => _opened.containsKey(chest)
+    ? null
+    : _opened[chest] = (Treasure(where)..addAll(chest.contents));
 ```
 
 You can also use `=>` on members that don't return a value. This is idiomatic
@@ -1715,7 +1714,10 @@ Dart 语言仍然允许使用 `new` 关键字，
 ```dart tag=good
 Widget build(BuildContext context) {
   return Row(
-    children: [RaisedButton(child: Text('Increment')), Text('Click!')],
+    children: [
+      RaisedButton(child: Text('Increment')),
+      Text('Click!'),
+    ],
   );
 }
 ```
@@ -1969,7 +1971,7 @@ Future<int> countActivePlayers(String teamName) [!async!] {
 
     var players = [!await!] team.roster;
     return players.where((player) => player.isActive).length;
-  } catch (e) {
+  } on DownloadException catch (e, _) {
     log.error(e);
     return 0;
   }
@@ -1987,7 +1989,7 @@ Future<int> countActivePlayers(String teamName) {
           return players.where((player) => player.isActive).length;
         });
       })
-      .catchError((e) {
+      .onError<DownloadException>((e, _) {
         log.error(e);
         return 0;
       });

@@ -307,8 +307,9 @@ spelled out in the doc comment. Instead, focus on explaining what the reader
 <?code-excerpt "docs_good.dart (redundant)"?>
 ```dart tag=good
 class RadioButtonWidget extends Widget {
-  /// Sets the tooltip to [lines], which should have been word wrapped using
-  /// the current font.
+  /// Sets the tooltip to [lines].
+  ///
+  /// The lines should be word wrapped using the current font.
   void tooltip(List<String> lines) {
     ...
   }
@@ -332,10 +333,11 @@ then omit the doc comment.
 It's better to say nothing
 than waste a reader's time telling them something they already know.
 
+<a id="prefer-starting-function-or-method-comments-with-third-person-verbs" aria-hidden="true"></a>
 
-### PREFER starting function or method comments with third-person verbs
+### PREFER starting comments of a function or method with third-person verbs if its main purpose is a side effect
 
-### **推荐** 用第三人称来开始函数或者方法的文档注释。
+### **推荐** 用第三人称来开始函数或者方法的文档注释（如果主要目的是副作用）。
 
 The doc comment should focus on what the code *does*.
 
@@ -343,13 +345,11 @@ The doc comment should focus on what the code *does*.
 
 <?code-excerpt "docs_good.dart (third-person)"?>
 ```dart tag=good
-/// Returns `true` if every element satisfies the [predicate].
-bool all(bool predicate(T element)) => ...
+/// Connects to the server and fetches the query results.
+Stream<QueryResult> fetchResults(Query query) => ...
 
 /// Starts the stopwatch if not already running.
-void start() {
-  ...
-}
+void start() => ...
 ```
 
 ### PREFER starting a non-boolean variable or property comment with a noun phrase
@@ -374,8 +374,8 @@ int get checkedCount => ...
 
 ### PREFER starting a boolean variable or property comment with "Whether" followed by a noun or gerund phrase
 
-The doc comment should clarify the states this variable represents. 
-This is true even for getters which may do calculation or other work. 
+The doc comment should clarify the states this variable represents.
+This is true even for getters which may do calculation or other work.
 What the caller cares about is the *result* of that work, not the work itself.
 
 <?code-excerpt "docs_good.dart (noun-phrases-for-boolean-var-etc)"?>
@@ -396,7 +396,41 @@ cases, usage of "or not" with "whether" is superfluous and can be omitted,
 especially when used in this context.
 :::
 
+### PREFER a noun phrase or non-imperative verb phrase for a function or method if returning a value is its primary purpose
+
+If a method is *syntactically* a method, but *conceptually* it is a property,
+and is therefore [named with a noun phrase or non-imperative verb phrase][parameterized_property_name],
+it should also be documented as such.
+Use a noun-phrase for such non-boolean functions, and
+a phrase starting with "Whether" for such boolean functions,
+just as for a syntactic property or variable.
+
+<?code-excerpt "docs_good.dart (noun-for-func-returning-value)"?>
+```dart tag=good
+/// The [index]th element of this iterable in iteration order.
+E elementAt(int index);
+
+/// Whether this iterable contains an element equal to [element].
+bool contains(Object? element);
+```
+
+:::note
+This guideline should be applied based on whether the declaration is
+conceptually seen as a property.
+
+Sometimes a method has no side effects, and might
+conceptually be seen as a property, but is still
+simpler to name with a verb phrase like `list.take()`.
+Then a noun phrase should still be used to document it.
+_For example `Iterable.take` can be described as
+"The first \[count\] elements of ..."._
+:::
+
+[parameterized_property_name]: design#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose
+
 ### DON'T write documentation for both the getter and setter of a property
+
+### **不要** 同时为属性的 getter 和 setter 编写文档
 
 If a property has both a getter and a setter, then create a doc comment for
 only one of them. `dart doc` treats the getter and setter like a single field,
@@ -439,6 +473,10 @@ extra effort here can make all of the other members simpler to document.
 提供类成员使用的上下文信息。为类提供一些注释可以让
 其他类成员的注释更易于理解和编写。
 
+The documentation should describe an *instance* of the type.
+
+该文档注释应当描述该类型的 *实例*。
+
 <?code-excerpt "docs_good.dart (noun-phrases-for-type-or-lib)"?>
 ```dart tag=good
 /// A chunk of non-breaking output text terminated by a hard or soft newline.
@@ -455,7 +493,7 @@ class Chunk {
 
 <?code-excerpt "docs_good.dart (code-sample)"?>
 ````dart tag=good
-/// Returns the lesser of two numbers.
+/// The lesser of two numbers.
 ///
 /// ```dart
 /// min(5, 3) == 3
@@ -477,16 +515,20 @@ makes an API easier to learn.
 
 If you surround things like variable, method, or type names in square brackets,
 then `dart doc` looks up the name and links to the relevant API docs.
-Parentheses are optional, 
-but can make it clearer when you're referring to a method or constructor.
+Parentheses are optional but can
+clarify you're referring to a function or constructor.
+The following partial doc comments illustrate a few cases
+where these comment references can be helpful:
 
 如果给变量，方法，或类型等名称加上方括号，则 dartdoc 会查找名称并链接到相关的 API 文档。
 括号是可选的，但是当你在引用一个方法或者构造函数时，可以让注释更清晰。
+下面的文档注释说明了这些注释引用可能有帮助的几种情况：
 
 <?code-excerpt "docs_good.dart (identifiers)"?>
 ```dart tag=good
 /// Throws a [StateError] if ...
-/// similar to [anotherMethod()], but ...
+///
+/// Similar to [anotherMethod()], but ...
 ```
 
 To link to a member of a specific class, use the class name and member name,
@@ -510,6 +552,12 @@ constructor, use `.new` after the class name:
 /// To create a point, call [Point.new] or use [Point.polar] to ...
 ```
 
+To learn more about the references that
+the analyzer and `dart doc` support in doc comments,
+check out [Documentation comment references][].
+
+[Documentation comment references]: /tools/doc-comments/references
+
 ### DO use prose to explain parameters, return values, and exceptions
 
 ### **要** 使用平白简单的语句来描述参数、返回值以及异常信息。
@@ -528,7 +576,7 @@ and returns of a method are.
 /// @returns The new flag.
 /// @throws ArgumentError If there is already an option with
 ///     the given name or abbreviation.
-Flag addFlag(String name, String abbr) => ...
+Flag addFlag(String name, String abbreviation) => ...
 ```
 
 The convention in Dart is to integrate that into the description of the method
@@ -536,13 +584,28 @@ and highlight parameters using square brackets.
 
 Dart 的惯例是将其整合到方法的描述中，使用方括号高亮并标记参数。
 
+Consider having sections starting with "The \[parameter\]" to describe
+parameters, with "Returns" for the returned value and "Throws" for exceptions.
+Errors can be documented the same way as exceptions,
+or just as requirements that must be satisfied, without documenting the
+precise error which will be thrown.
+
+可以考虑以“The \[参数\]”开头来分块描述参数，
+使用 "Returns" 说明返回值，并用 "Throws" 描述异常信息。
+对于错误 (Errors)，可以采用与异常 (exceptions) 相同的文档方式，
+也可以仅将其作为必须满足的条件进行说明，而无需具体记录将会抛出的精确错误类型。
+
 <?code-excerpt "docs_good.dart (no-annotations)"?>
 ```dart tag=good
-/// Defines a flag.
+/// Defines a flag with the given [name] and [abbreviation].
 ///
-/// Throws an [ArgumentError] if there is already an option named [name] or
-/// there is already an option using abbreviation [abbr]. Returns the new flag.
-Flag addFlag(String name, String abbr) => ...
+/// The [name] and [abbreviation] strings must not be empty.
+///
+/// Returns a new flag.
+///
+/// Throws a [DuplicateFlagException] if there is already an option named
+/// [name] or there is already an option using the [abbreviation].
+Flag addFlag(String name, String abbreviation) => ...
 ```
 
 ### DO put doc comments before metadata annotations
@@ -562,7 +625,6 @@ class ToggleComponent {}
 /// A button that can be flipped on and off.
 class ToggleComponent {}
 ```
-
 
 ## Markdown
 
@@ -736,17 +798,19 @@ think.
 
 When documenting a member for a class, you often need to refer back to the
 object the member is being called on. Using "the" can be ambiguous.
+Prefer having some qualifier after "this", a sole "this" can be ambiguous too.
 
 注释中提及到类的成员，通常是指被调用的对象实例的成员。
 使用 "the" 可能会导致混淆。
+最好在 "this" 后面加上一些限定词，单独的 "this" 也会产生歧义。
 
 <?code-excerpt "docs_good.dart (this)"?>
 ```dart
 class Box {
-  /// The value this wraps.
+  /// The value this box wraps.
   Object? _value;
 
-  /// True if this box contains a value.
+  /// Whether this box contains a value.
   bool get hasValue => _value != null;
 }
 ```

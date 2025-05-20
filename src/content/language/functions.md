@@ -3,11 +3,11 @@ title: Functions
 description: Everything about functions in Dart.
 js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 prevpage:
-  url: /language/pattern-types
-  title: Pattern types
+  url: /language/error-handling
+  title: Error handling
 nextpage:
-  url: /language/loops
-  title: Loops
+  url: /language/metadata
+  title: Metadata
 ---
 
 Dart is a true object-oriented language, so even functions are objects
@@ -332,10 +332,9 @@ prints each converted string with its length.
 ```dart
 const list = ['apples', 'bananas', 'oranges'];
 
-var uppercaseList =
-    list.map((item) {
-      return item.toUpperCase();
-    }).toList();
+var uppercaseList = list.map((item) {
+  return item.toUpperCase();
+}).toList();
 // Convert to list after mapping
 
 for (var item in uppercaseList) {
@@ -350,10 +349,9 @@ Click **Run** to execute the code.
 void main() {
   const list = ['apples', 'bananas', 'oranges'];
 
-  var uppercaseList =
-      list.map((item) {
-        return item.toUpperCase();
-      }).toList();
+  var uppercaseList = list.map((item) {
+    return item.toUpperCase();
+  }).toList();
   // Convert to list after mapping
 
   for (var item in uppercaseList) {

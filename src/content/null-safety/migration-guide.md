@@ -93,7 +93,7 @@ watch this video:
 
 ## 1. 等待迁移
 
-We strongly recommend migrating code in order, 
+We strongly recommend migrating code in order,
 with the leaves of the dependency graph being migrated first.
 For example, if package C depends on package B, which depends on package A,
 then A should be migrated to null safety first, then B, then C.
@@ -146,7 +146,7 @@ so that you can easily undo any changes.
 
 ### 切换至 Dart 2.19.6 版本
 
-Switch to the **2.19.6 release** of the Dart SDK. 
+Switch to the **2.19.6 release** of the Dart SDK.
 This is included in the Flutter 3.7.12 SDK.
 
 切换到 Dart SDK 的 **2.19.6 稳定版**，
@@ -250,7 +250,7 @@ update its dependencies to null-safe versions:
 Most of the changes that your code needs to be null safe
 are easily predictable.
 For example, if a variable can be `null`,
-[its type needs a `?` suffix][nullable type]. 
+[its type needs a `?` suffix][nullable type].
 If a named parameter shouldn't be nullable,
 mark it [`required`][required]
 or give it a [default value][].
@@ -532,7 +532,7 @@ For more information about incremental migration, see
 
 更多有关渐进迁移空安全的内容，请阅读 [非健全的空安全][Unsound null safety]。
 
-Note that only fully migrated apps and packages 
+Note that only fully migrated apps and packages
 are compatible with Dart 3.
 
 请注意，从 Dart 3 开始，只支持完全迁移到空安全的应用和 package。
@@ -574,7 +574,7 @@ you can migrate manually.
 
 如果你不想使用迁移工具，你也可以手动进行迁移。
 
-We recommend that you **first migrate leaf libraries**—libraries 
+We recommend that you **first migrate leaf libraries**—libraries
 that don't import other files from the package.
 Then migrate libraries that directly depend on the leaf libraries.
 End by migrating the libraries that have the most
@@ -703,7 +703,7 @@ If so, revert your code changes before using the migration tool again.
 
 ## 5. 发布
 
-We encourage you to publish packages—possibly as prereleases—as 
+We encourage you to publish packages—possibly as prereleases—as
 soon as you migrate:
 
 我们希望你完成迁移后尽快将其发布，可以作为预览版：
@@ -717,8 +717,9 @@ soon as you migrate:
   [更新 SDK 的限制和依赖的 package 的版本。](#check-your-pubspec)
 
 * [Publish the package](/tools/pub/publishing).
-  If you don't consider this version to be a stable release, 
+  If you don't consider this version to be a stable release,
   then [publish the package as a prerelease][].
+* [Update examples and documentation](#update-examples-and-docs)
 
   [发布 package](/tools/pub/publishing)。
   如果你不想发布稳定版本，你可以
@@ -769,6 +770,26 @@ we strongly recommend following these pubspec rules:
 * Use stable versions of all direct dependencies.
 
   所有的直接依赖都使用稳定版本。
+
+### Update examples and docs
+
+### 更新示例和文档
+
+If you haven't yet, update all [examples][] and samples
+of your package to use a migrated version of your package
+and to opt in to null safety.
+
+如果你没有更新，请更新 package 的所有 [示例][examples]和样例代码，
+以便使用迁移至空安全版本并启用空安全的 package。
+
+If you've published any separate documentation or tutorials
+for your package, also make sure that they're up to date for
+the null-safe release.
+
+如果你为 package 发布了任何单独的文档或教程，
+也请确保其内容同步更新至空安全版本。
+
+[examples]: /tools/pub/package-layout#examples
 
 ## Welcome to null safety
 
