@@ -149,7 +149,7 @@ To learn how to call a C function using the `dart:ffi` library,
 review the [`hello.dart` file]({{hw}}/hello.dart).
 This section explains the contents of this file.
 
-要学习如果使用 `dart:ffi` 库调用 C 函数，
+要学习如何使用 `dart:ffi` 库调用 C 函数，
 请查看 [`hello.dart` 文件]({{hw}}/hello.dart)。
 本节将分析该文件的内容。
 
