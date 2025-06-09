@@ -1,4 +1,4 @@
-{% assign cache_bust = '?v=3' %}
+{% assign cache_bust = '?v=4' %}
 
 <head>
   <meta charset="utf-8">
@@ -7,11 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Google Tag Manager -->
-<!--  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':-->
-<!--  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],-->
-<!--  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=-->
-<!--  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);-->
-<!--  })(window,document,'script','dataLayer','GTM-5VSZM5J');</script>-->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+  </script>
+  <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5VSZM5J');</script> -->
   <!-- End Google Tag Manager -->
   {% assign desc = description | default: site.description | strip_html | strip_newlines | truncate: 160 -%}
   {% unless desc and desc != '' -%}
@@ -82,7 +85,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.cn">
   <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin>
   <link href="https://fonts.googleapis.cn/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.cn/css2?family=Google+Sans+Display:wght@400&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.cn/css2?family=Google+Sans+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.cn/css2?family=Google+Sans+Text:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.cn/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" rel="stylesheet" />
@@ -98,7 +100,7 @@
   <script>window.location.replace('{{redirectTo}}');</script>
   {% endif -%}
 
-  <script src="{{ '/assets/js/os-tabs.js' | append: cache_bust }}"></script>
+  <script src="{{ '/assets/js/tabs.js' | append: cache_bust }}"></script>
   <script src="{{ '/assets/js/main.js' | append: cache_bust }}"></script>
 
   {% if js -%}
@@ -106,6 +108,8 @@
     <script {% if jsFile.defer %}defer{% endif %} src="{{jsFile.url | default: jsFile}}"></script>
   {% endfor -%}
   {% endif -%}
+
+  <script type="module" src="https://files.flutter-io.cn/static/deps/lite-youtube/1.8.1/lite-youtube.js" integrity="sha256-dSKwIYLvKdlkLGLp9ZRLJilBuGFSM5beizYOSvK1LeQ=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   {% render 'analytics.html' -%}
  </head>

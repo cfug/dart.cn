@@ -9,8 +9,8 @@ description: 学习如何编写 package 介绍页面
   .screenshot, .screenshot-narrow {
     border-style: solid;
     border-width: 1px;
-    border-color: lightgray;
-    margin: 0px 20px;
+    border-color: var(--site-outline);
+    margin: 0 20px;
     padding: 10px;
     width: 90%;
   }
@@ -29,7 +29,7 @@ in the following screenshot:
 <img 
   src="/assets/img/libraries/package-page-sections.png"
   alt="package page contains sections like package layout, flutter favorite, package scoring, verified publishers, pubspec file" 
-  class="screenshot">
+  class="screenshot diagram-wrap">
 
 For details about other parts of the package page,
 follow these links:

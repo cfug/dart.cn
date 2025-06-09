@@ -202,8 +202,9 @@ Consider the following directory structure for a large project:
 
 对于如下所示的一个大型项目的目录结构而言：
 
-<img 
+<img
   src="/assets/img/guides/analysis-options-directory-structure.png"
+  class="diagram-wrap"
   alt="project root contains analysis_options.yaml (#1) and 3 packages, one of which (my_package) contains an analysis_options.yaml file (#2).">
 
 The analyzer uses file #1 to analyze the code in `my_other_package`

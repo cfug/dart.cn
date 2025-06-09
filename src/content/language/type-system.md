@@ -203,7 +203,7 @@ type hierarchy:
 
 让我们通过下面示例的类型结构，来更深入的了解这些规则：
 
-<img src="/assets/img/language/type-hierarchy.png" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
+<img src="/assets/img/language/type-hierarchy.png" class="diagram-wrap" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
 
 <a name="use-proper-return-types"></a>
 ### Use sound return types when overriding methods
@@ -706,7 +706,7 @@ Consider the following type hierarchy:
 
 分析以下类型层次结构：
 
-<img src="/assets/img/language/type-hierarchy.png" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
+<img src="/assets/img/language/type-hierarchy.png" class="diagram-wrap" alt="a hierarchy of animals where the supertype is Animal and the subtypes are Alligator, Cat, and HoneyBadger. Cat has the subtypes of Lion and MaineCoon">
 
 Consider the following simple assignment where `Cat c` is a _consumer_
 and `Cat()` is a _producer_:
@@ -768,7 +768,7 @@ of lists of animals—a `List` of `Cat` is a subtype of a `List` of
 考虑动物列表的层次结构&mdash; Cat 类型的 List 是 Animal 类型 List 的子类型，
 是 MaineCoon 类型 List 的父类型。
 
-<img src="/assets/img/language/type-hierarchy-generics.png" alt="List<Animal> -> List<Cat> -> List<MaineCoon>">
+<img src="/assets/img/language/type-hierarchy-generics.png" class="diagram-wrap" alt="List<Animal> -> List<Cat> -> List<MaineCoon>">
 
 In the following example, 
 you can assign a `MaineCoon` list to `myCats`
@@ -828,7 +828,7 @@ For example:
 
 在重写方法中，生产者和消费者规则仍然适用。例如：
 
-<img src="/assets/img/language/consumer-producer-methods.png" alt="Animal class showing the chase method as the consumer and the parent getter as the producer">
+<img src="/assets/img/language/consumer-producer-methods.png" class="diagram-wrap" alt="Animal class showing the chase method as the consumer and the parent getter as the producer">
 
 For a consumer (such as the `chase(Animal)` method), you can replace
 the parameter type with a supertype. For a producer (such as
