@@ -294,6 +294,7 @@ external call._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/address_position" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="address_position" title="Copy address_position to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -312,6 +313,7 @@ _The receiver of '.address' must be a concrete 'TypedData', a concrete
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/address_receiver" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="address_receiver" title="Copy address_receiver to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -2217,23 +2219,6 @@ _Methods can't be invoked in constant expressions._
 </div>
 <div class="trailing">
   <button class="copy-button filled-button hidden" data-copy="const_eval_method_invocation" title="Copy const_eval_method_invocation to your clipboard.">Copy name</button>
-</div>
-</div>
-</div>
-<div class="card outlined-card" id="const_eval_null_aware_access">
-<div class="card-header">
-<header class="card-title" id="const_eval_null_aware_access">{{"const_eval_null_aware_access" | underscoreBreaker}}</header>
-</div>
-<div class="card-content">
-
-_Null-aware property access can't be used in a constant expression._
-
-</div>
-<div class="card-actions">
-<div class="leading">
-</div>
-<div class="trailing">
-  <button class="copy-button filled-button hidden" data-copy="const_eval_null_aware_access" title="Copy const_eval_null_aware_access to your clipboard.">Copy name</button>
 </div>
 </div>
 </div>
@@ -5796,6 +5781,7 @@ _Only classes extending NativeFieldWrapperClass1 can be passed as Pointer._
 <div class="leading">
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer" title="Copy ffi_native_only_classes_extending_nativefieldwrapperclass1_can_be_pointer to your clipboard.">Copy name</button>
 </div>
 </div>
@@ -16990,6 +16976,8 @@ were given._
 
 _The constructor '{0}.{1}' doesn't have type parameters._
 
+_The constructor '{0}.{1}` doesn't have type parameters._
+
 </div>
 <div class="card-actions">
 <div class="leading">
@@ -20649,6 +20637,25 @@ _Missing type annotation._
 </div>
 </div>
 </div>
+<div class="card outlined-card" id="switch_on_type">
+<div class="card-header">
+<header class="card-title" id="switch_on_type">{{"switch_on_type" | underscoreBreaker}}</header>
+</div>
+<div class="card-content">
+
+_Avoid switch statements on a 'Type'._
+
+</div>
+<div class="card-actions">
+<div class="leading">
+<span class="material-symbols" title="Diagnostic is from lint rule" aria-label="Diagnostic is from lint rule">toggle_on</span>
+</div>
+<div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/switch_on_type" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
+  <button class="copy-button filled-button hidden" data-copy="switch_on_type" title="Copy switch_on_type to your clipboard.">Copy name</button>
+</div>
+</div>
+</div>
 <div class="card outlined-card" id="test_types_in_equals">
 <div class="card-header">
 <header class="card-title" id="test_types_in_equals">{{"test_types_in_equals" | underscoreBreaker}}</header>
@@ -21326,8 +21333,10 @@ _Unnecessary use of 'unawaited'._
 </div>
 <div class="card-actions">
 <div class="leading">
+<span class="material-symbols" title="Diagnostic is from lint rule" aria-label="Diagnostic is from lint rule">toggle_on</span>
 </div>
 <div class="trailing">
+  <a class="outlined-button" href="/tools/diagnostics/unnecessary_unawaited" title="Learn more about this diagnostic and how to resolve it.">Learn more</a>
   <button class="copy-button filled-button hidden" data-copy="unnecessary_unawaited" title="Copy unnecessary_unawaited to your clipboard.">Copy name</button>
 </div>
 </div>

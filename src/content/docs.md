@@ -10,11 +10,14 @@ Welcome to the Dart documentation!
 For a list of changes to this site—new pages, new guidelines, and more—see
 the [What's new][] page.
 
+欢迎来到 Dart 语言开发文档页面！
+关于网站的变更内容，新页面、新指南等等，
+请查阅 [What's new][]
+
 [What's new]: /resources/whats-new
 
 Here are some of this site's most visited pages:
 
-欢迎来到 Dart 语言开发文档页面！
 如下是大家最经常访问的页面：
 
 {% comment %}

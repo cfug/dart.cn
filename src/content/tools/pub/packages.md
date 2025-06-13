@@ -88,7 +88,7 @@ Pub 站点上托管的两个 package（`intl` 和 `path`）：
 name: my_app
 
 dependencies:
-  intl: ^0.20.0
+  intl: ^0.20.2
   path: ^1.9.1
 ```
 

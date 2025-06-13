@@ -67,7 +67,7 @@ For example, `stringify(2, 3)` should return `'2 3'`.
 然后让它返回一个包含以空格分隔的整数的字符串。
 例如，`stringify(2, 3)` 应该返回 `'2 3'`。
 
-```dartpad
+```dartpad theme="dark"
 String stringify(int x, int y) {
   TODO('Return a formatted string here');
 }
@@ -170,7 +170,7 @@ Ignore all initial errors in the DartPad.
 
 可以忽略以下代码一开始在 DartPad 中的错误。
 
-```dartpad
+```dartpad theme="dark"
 // TODO: Declare the two variables here
 
 
@@ -256,7 +256,7 @@ Ignore all initial errors in the DartPad.
 
 可以忽略以下代码一开始在 DartPad 中的错误。
 
-```dartpad
+```dartpad theme="dark"
 String? foo = 'a string';
 String? bar; // = null
 
@@ -359,7 +359,7 @@ return the uppercase version of `str`, or `null` if `str` is `null`.
 请尝试使用条件属性访问来让它返回 `str` 的大写形式，
 如果 `str` 为 `null` 则返回 `null`。
 
-```dartpad
+```dartpad theme="dark"
 String? upperCaseIt(String? str) {
   // TODO: Try conditionally accessing the `toUpperCase` method here.
 }
@@ -464,7 +464,7 @@ Try setting the following variables to the indicated values. Replace the existin
 
 尝试将以下变量设定为指定的值。替换当前的 null 值。
 
-```dartpad
+```dartpad theme="dark"
 // Assign this a list containing 'a', 'b', and 'c' in that order:
 final aListOfStrings = null;
 
@@ -611,7 +611,7 @@ Try finishing the following statements, which use arrow syntax.
 
 尝试使用箭头语法完成下面语句：
 
-```dartpad
+```dartpad theme="dark"
 class MyClass {
   int value1 = 2;
   int value2 = 3;
@@ -792,7 +792,7 @@ and then calls `allDone()`.
 属性设为 `String!`、`aList` 属性设置为
 `[3.0]` 然后调用 `allDone()`。
 
-```dartpad
+```dartpad theme="dark"
 class BigObject {
   int anInt = 0;
   String aString = '';
@@ -948,7 +948,7 @@ Ignore all initial errors in the DartPad.
 
 可以忽略以下代码一开始在 DartPad 中的错误。
 
-```dartpad
+```dartpad theme="dark"
 class InvalidPriceException {}
 
 class ShoppingCart {
@@ -1120,7 +1120,7 @@ Here are some examples of function calls and returned values:
 
 <br>
 
-```dartpad
+```dartpad theme="dark"
 String joinWithCommas(int a, [int? b, int? c, int? d, int? e]) {
   return TODO();
 }
@@ -1285,7 +1285,7 @@ Ignore all initial errors in the DartPad.
 
 可以忽略以下代码一开始在 DartPad 中的错误。
 
-```dartpad
+```dartpad theme="dark"
 class MyDataObject {
   final int anInt;
   final String aString;
@@ -1507,7 +1507,7 @@ then do the following:
   捕获并处理完所有内容后，
   调用 `logger.doneLogging`（尝试使用 `finally`）。
 
-```dartpad
+```dartpad theme="dark"
 typedef VoidFunction = void Function();
 
 class ExceptionWithMessage {
@@ -1722,7 +1722,7 @@ Ignore all initial errors in the DartPad.
 
 可以忽略以下代码一开始在 DartPad 中的错误。
 
-```dartpad
+```dartpad theme="dark"
 class MyClass {
   final int anInt;
   final String aString;
@@ -1825,7 +1825,7 @@ Ignore all initial errors in the DartPad.
 
 可以忽略以下代码一开始在 DartPad 中的错误。
 
-```dartpad
+```dartpad theme="dark"
 class FirstTwoLetters {
   final String letterOne;
   final String letterTwo;
@@ -1933,7 +1933,7 @@ Ignore all initial errors in the DartPad.
 
 可以忽略以下代码一开始在 DartPad 中的错误。
 
-```dartpad
+```dartpad theme="dark"
 class Color {
   int red;
   int green;
@@ -2051,7 +2051,7 @@ If you succeed, the console should display `Success!`.
 
 如果成功，控制台应显示 `Success!`。
 
-```dartpad
+```dartpad theme="dark"
 class IntegerHolder {
   IntegerHolder();
 
@@ -2227,7 +2227,7 @@ Ignore all initial errors in the DartPad.
 
 可以忽略以下代码一开始在 DartPad 中的错误。
 
-```dartpad
+```dartpad theme="dark"
 class Color {
   int red;
   int green;
@@ -2336,7 +2336,7 @@ Ignore all initial errors in the DartPad.
 
 可以忽略以下代码一开始在 DartPad 中的错误。
 
-```dartpad
+```dartpad theme="dark"
 class Recipe {
   List<String> ingredients;
   int calories;
