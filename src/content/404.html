@@ -13,10 +13,11 @@ skipFreshness: true
 
   <div class="text-center">
     <form action="/search" id="in-content-search">
-      <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+      <input type="hidden" name="cx" value="017471510655331970984:x0bd16320-u">
       <input type="hidden" name="ie" value="UTF-8">
-      <input type="hidden" name="hl" value="en">
-      <input class="search-field" type="search" name="q" id="search-main" autocomplete="off" placeholder="Enter keywords">
+      <input type="hidden" name="hl" value="zh">
+      <input class="search-field" type="search" name="q" id="search-main" autocomplete="off"
+        placeholder="Enter keywords">
     </form>
   </div>
 
@@ -37,3 +38,23 @@ skipFreshness: true
 </div>
 
 <script src="/assets/js/host-redirect.min.js" async></script>
+<script>
+  // 临时处理 - 当前链接添加 .html 后可访问页面的情况
+  (function () {
+    const u = new URL(window.location.href);
+    const p = u.pathname;
+
+    const noExt = !p.includes('.');
+    const noSlash = !p.endsWith('/');
+    if (noExt && noSlash) {
+      const tryHtml = p + '.html';
+      // 先探测 .html 是否存在
+      fetch(tryHtml, { method: 'HEAD', mode: 'no-cors' })
+        .then(function (res) {
+          if (res.status == 200) {
+            window.location.replace(tryHtml + u.search + u.hash);
+          }
+        });
+    }
+  })();
+</script>
