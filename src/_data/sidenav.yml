@@ -259,6 +259,10 @@
   children:
   - title: 概览
     permalink: /tools
+  - title: AI
+    children:
+        - title: Dart MCP Server
+          permalink: /tools/mcp-server
   - title: 编辑器和调试工具
     children:
       - title: 使用 IntelliJ 和 Android Studio

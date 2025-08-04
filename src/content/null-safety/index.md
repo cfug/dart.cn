@@ -282,7 +282,7 @@ To learn more about null safety, check out the following resources:
 
   [空安全示例代码][calculate_lix]
 
-[calculate_lix]: {{site.repo.dart.org}}/samples/tree/main/null_safety/calculate_lix
+[calculate_lix]: {{site.repo.dart.samples}}/tree/main/null_safety/calculate_lix
 [migration guide]: /null-safety/migration-guide
 [Null safety FAQ]: /null-safety/faq
 [Understanding null safety]: /null-safety/understanding-null-safety

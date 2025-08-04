@@ -66,7 +66,7 @@ Refer to the [native_app][] sample for a simple example of using `dart compile`
 to compile a native app, 
 followed by examples of running the app.
 
-[native_app]: {{site.repo.dart.org}}/samples/tree/main/native_app
+[native_app]: {{site.repo.dart.samples}}/tree/main/native_app
 [dart-run]: /tools/dart-run
 
 ## Subcommands
@@ -174,22 +174,38 @@ $ ./tmp/myapp
 #### Cross-compilation {: #cross-compilation-exe }
 
 :::version-note
-Support for cross-compilation was introduced in Dart 3.8.
+Support for Linux ARM64 and x64 cross-compilation was introduced in Dart 3.8.
+
+Support for Linux ARM and RISCV64 was introduced in Dart 3.9.
 :::
 
-Cross-compilation to Linux x64 and ARM64 is supported on the
-following 64-bit host operating systems: macOS, Windows, and Linux.
+The following table shows which 64-bit host operating systems support
+cross-compilation to which targets:
+
+{% assign y = '<span class="material-symbols system-support" title="Supported" aria-label="Supported">done</span>' %}
+
+| 64-bit host OS | Linux ARM | Linux ARM64 | Linux RISCV64 | Linux x64 |
+|----------------|-----------|-------------|---------------|-----------|
+| Linux          |   {{y}}   |    {{y}}    |    {{y}}      |    {{y}}  |
+| macOS          |   {{y}}   |    {{y}}    |    {{y}}      |    {{y}}  |
+| Windows        |   {{y}}   |    {{y}}    |    {{y}}      |    {{y}}  |
+
+{:.table .table-striped .nowrap}
 
 To use cross-compilation, include the following flags:
 
 `--target-os=linux`
 : The target operating system for the compiled executable.
-  The Linux operating system is supported at this time.
+  Only the Linux operating system is supported at this time.
 
 `--target-arch=value`
 : The target architecture for the compiled executable.
-  The value for this flag can be `arm64` (64-bit ARM processor)
-  or `x64` (x86-64 processor).
+  The value for this flag can be:
+
+  - `arm`: 32-bit ARM processor
+  - `arm64`: 64-bit ARM processor
+  - `riscv64`: 64-bit RISC-V (RV64GC) processor
+  - `x64`: x86-64 processor
 
 The following command demonstrates how to cross-compile a
 standalone executable for a 64-bit Linux system:

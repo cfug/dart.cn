@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "**/download_archive.dart.js"
+      - "**/download_archive.*"
 
 permissions:
   contents: write
@@ -24,18 +24,19 @@ jobs:
       - name: Build Dart archives downloading JS
         run: >
           bash tool/get-dart/archive/compile.sh
-          git add src/content/assets/js/get-dart/download_archive.dart.js
-      - name: Import GPG key
-        uses: crazy-max/ghaction-import-gpg@v5
+        shell: bash
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
         with:
-          gpg_private_key: ${{ secrets.CFUG_DEV_PGP }}
-          passphrase: ${{ secrets.CFUG_DEV_PGP_PASSPHRASE }}
-          git_user_signingkey: true
-          git_commit_gpgsign: true
-      - name: Commit files
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "[sync] Update download_archive.dart.js"
-          commit_author: "CFUG Dev Team <47591151+cfug-dev@users.noreply.github.com>"
-          commit_user_name: "cfug-dev"
-          commit_user_email: "47591151+cfug-dev@users.noreply.github.com"
+          token: ${{ secrets.CFUG_DEV_TOKEN }}
+          base: main
+          branch: bot/update-download-archive-dart-js
+          add-paths: |
+            ./src/content/assets/js/get-dart/download_archive.*
+          title: '[🤖bot] Update: download_archive'
+          body: 'GitHub Action: [.github/workflows/compile_archive_js.yml](https://github.com/cfug/dart.cn/blob/main/.github/workflows/compile_archive_js.yml)'
+          committer: 'cfug-dev <cfug-dev@googlegroups.com>'
+          commit-message: '[🤖bot] Update: download_archive'
+          branch-suffix: timestamp
+          labels: |
+            auto.PR

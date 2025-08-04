@@ -29,7 +29,7 @@ Dart 3 的语言规范仍然在制定中，
 
   [最新的制定中的规范][latest draft]（由 [LaTeX 文件][LaTeX file] 导出）
 
-[latest draft]: https://spec.dart.dev/DartLangSpecDraft.pdf
+[latest draft]: {{site.url}}/to/spec-draft
 [LaTeX file]: {{site.repo.dart.lang}}/blob/main/specification/dartLangSpec.tex
 
 New language features are typically described using

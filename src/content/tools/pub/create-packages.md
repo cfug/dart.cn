@@ -20,16 +20,25 @@ This page tells you how to create a standard shared
 ## 创建一个新的 package
 
 To create the initial directory and structure for a package,
-use the [`dart create`](/tools/dart-create) command
+use the [`dart create`][] command
 and the `package` template:
 
 若要为 package 创建一个初始化的目录和结构，
-使用 [`dart create`](/tools/dart-create) 命令，
+使用 [`dart create`][] 命令，
 并加入 `package` 作为命令参数来创建：
 
 ```console
 $ dart create -t package <PACKAGE_NAME>
 ```
+
+To learn more about available templates and how to use the `-t` flag, 
+see the [`dart create` documentation][].
+
+想要进一步了解更多可用模板以及如何使用 `-t` 参数标志，
+请查阅 [`dart create` 文档][`dart create` documentation]。
+
+[`dart create`]: /tools/dart-create
+[`dart create` documentation]: /tools/dart-create#available-templates
 
 ## What makes a package
 
