@@ -21,8 +21,10 @@
       {
         "source": "**",
         "headers": [
+          { "key": "Content-Security-Policy-Report-Only", "value": "script-src 'self'"},
           { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
           { "key": "X-Content-Type-Options", "value": "nosniff"},
+          { "key": "X-Frame-Options", "value": "DENY"},
           { "key": "X-XSS-Protection", "value": "1;mode=block"}
         ]
       }
@@ -361,7 +363,7 @@
       { "source": "/resources/dartpad-best-practices", "destination": "https://doi.org/10.1145/3397537.3397558", "type": 301 },
       { "source": "/resources/dartpad-tutorials.pdf", "destination": "https://doi.org/10.1145/3397537.3397558", "type": 301 },
       { "source": "/resources/language/spec/versions", "destination": "/resources/language/spec", "type": 301 },
-      { "source": "/resources/language/spec/versions/DartLangSpecDraft.pdf", "destination": "https://spec.dart.dev/DartLangSpecDraft.pdf", "type": 301 },
+      { "source": "/resources/language/spec/versions/DartLangSpecDraft.pdf", "destination": "https://storage.googleapis.com/dart-specification/DartLangSpecDraft.pdf", "type": 301 },
       { "source": "/resources/language/spec/versions/DartLangSpec-v2.2.pdf", "destination": "https://github.com/dart-lang/site-www/blob/a7f170389e210adc2aef810cc9a6fdbfa78059a5/src/guides/language/specifications/DartLangSpec-v2.2.pdf", "type": 301 },
       { "source": "/samples{,/**}", "destination": "/language", "type": 301 },
       { "source": "/sdk-changelog-2.4.0", "destination": "https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#240---2019-06-27", "type": 301 },
@@ -382,6 +384,7 @@
       { "source": "/to/language-version", "destination": "/resources/language/evolution#language-versioning", "type": 301 },
       { "source": "/to/language-version-override", "destination": "/resources/language/evolution#per-library-language-version-selection", "type": 301 },
       { "source": "/to/main-function", "destination": "/language/functions#main", "type": 301 },
+      { "source": "/to/mcp-server", "destination": "/tools/mcp-server", "type": 301 },
       { "source": "/to/package-discontinue", "destination": "/tools/pub/publishing#discontinue", "type": 301 },
       { "source": "/to/package-retraction", "destination": "/tools/pub/publishing#retract", "type": 301 },
       { "source": "/to/pub-cache", "destination": "/tools/pub/cmd/pub-cache", "type": 301 },
@@ -395,11 +398,13 @@
       { "source": "/to/pubspec-overrides", "destination": "/tools/pub/dependencies#pubspec-overrides", "type": 301 },
       { "source": "/to/sdk-support-policy", "destination": "/tools/sdk#support-policy", "type": 301 },
       { "source": "/to/sdk-constraint", "destination": "/tools/pub/pubspec#sdk-constraints", "type": 301 },
+      { "source": "/to/spec-draft", "destination": "https://storage.googleapis.com/dart-specification/DartLangSpecDraft.pdf", "type": 301 },
       { "source": "/to/sdk-version-pinning", "destination": "https://github.com/dart-lang/sdk/blob/main/docs/Flutter-Pinned-Packages.md", "type": 301 },
       { "source": "/to/web-debug-extension", "destination": "https://chromewebstore.google.com/detail/dart-debug-extension/eljbmlghnomdjgdjmbdekegdkbabckhm", "type": 301 },
 
       { "source": "/tools/**/download{,.html,/**}", "destination": "/get-dart", "type": 301 },
       { "source": "/tools/analyzer", "destination": "/tools/dart-analyze", "type": 301 },
+      { "source": "/tools/dart-mcp-server", "destination": "/tools/mcp-server", "type": 301 },
       { "source": "/tools/dart-pub", "destination": "/tools/pub/cmd", "type": 301 },
       { "source": "/tools/dart-vm", "destination": "/tools/dart-run", "type": 301 },
       { "source": "/tools/dart2aot", "destination": "/tools/dart-compile", "type": 301 },
