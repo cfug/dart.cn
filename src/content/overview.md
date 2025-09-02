@@ -2,7 +2,8 @@
 # title: Dart overview
 title: Dart 概览
 # description: A short introduction to Dart.
-description: Dart 的简单介绍
+description: Dart 入门指南
+showBreadcrumbs: false
 js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 ---
 

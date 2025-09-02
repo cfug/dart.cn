@@ -1,8 +1,12 @@
 ---
 # title: Package dependencies
 title: Package 依赖
-# description: Add other packages to your app. Specify package locations, version constraints, and more.
-description: 向你的 app 里添加 package，指定 package 的位置，版本等。
+# breadcrumb: Dependencies
+breadcrumb: 依赖项
+# description: >-
+#   Add other packages to your app.
+#   Specify package locations, version constraints, and more.
+description: 向你的 app 里添加 package，指定 package 的位置、版本等。
 ---
 
 Dependencies are one of the core concepts of the [pub package manager][].
@@ -10,7 +14,7 @@ A _dependency_ is another package that your package needs to work.
 Dependencies are specified in your [pubspec](/tools/pub/pubspec).
 You list only _immediate dependencies_: the
 software that your package uses directly. Pub handles
-[transitive dependencies](/tools/pub/glossary#transitive-dependency) for you.
+[transitive dependencies](/resources/glossary#transitive-dependency) for you.
 
 This page has detailed information on how to specify dependencies.
 At the end is a list of
@@ -23,7 +27,7 @@ and the _range of versions_ of that package that you allow.
 You can also specify the [_source_][].
 The source tells pub how to locate the package.
 
-[_source_]: /tools/pub/glossary#source
+[_source_]: /resources/glossary#dependency-source
 
 As an example, you specify a dependency in the following format:
 
@@ -601,8 +605,9 @@ this flag only resolves new dependencies if:
 * The packages' [content hashes][] match
 
 [enforce-lock]: /tools/pub/cmd/pub-get#enforce-lockfile
-[lockfile]: /tools/pub/glossary#lockfile
-[content hashes]: /tools/pub/glossary#content-hashes
+[lockfile]: /resources/glossary#lockfile
+[content hashes]: /resources/glossary#pub-content-hash
+
 ---
 
 <aside id="fn:semver" class="footnote">

@@ -17,11 +17,11 @@ $ dart pub get [options]
 This command gets all the dependencies listed in the
 [`pubspec.yaml`](/tools/pub/pubspec) file in the current working
 directory, as well as their
-[transitive dependencies](/tools/pub/glossary#transitive-dependency).
+[transitive dependencies](/resources/glossary#transitive-dependency).
 For example:
 
 该命令获取所有在当前工作目录下的 [`pubspec.yaml`](/tools/pub/pubspec)
-文件中列出的依赖项，以及这些依赖项的 [间接依赖项](/tools/pub/glossary#transitive-dependency)。
+文件中列出的依赖项，以及这些依赖项的 [间接依赖项](/resources/glossary#transitive-dependency)。
 例如：
 
 ```console
@@ -30,7 +30,7 @@ Resolving dependencies...
 Got dependencies!
 ```
 
-If the [system cache](/tools/pub/glossary#system-cache)
+If the [system cache](/resources/glossary#pub-system-cache)
 doesn't already contain the dependencies, `dart pub get`
 updates the cache,
 downloading dependencies if necessary.
@@ -38,7 +38,7 @@ To map packages back to the system cache,
 this command creates a `package_config.json` file
 in the `.dart_tool/` directory.
 
-如果 [Pub 的系统缓存](/tools/pub/glossary#system-cache) 中还没有该依赖项，
+如果 [Pub 的系统缓存](/resources/glossary#pub-system-cache) 中还没有该依赖项，
 则 `dart pub get` 命令会在必要时下载该依赖项并更新缓存。
 该命令会在 `.dart_tool/` 文件夹下创建一个
 `package_config.json` 文件并将之映射到 Pub 的系统缓存中。
@@ -54,7 +54,7 @@ import 'package:test/test.dart';
 ```
 
 When `dart pub get` gets new dependencies, it writes a
-[lockfile](/tools/pub/glossary#lockfile) to ensure that future
+[lockfile](/resources/glossary#lockfile) to ensure that future
 gets will use the same versions of those dependencies.
 [Application packages][] should check in the lockfile to source control;
 this ensures the application will use the exact same versions
@@ -62,7 +62,7 @@ of all dependencies for all developers and when deployed to production.
 Regular packages should not check in the lockfile, though, since they're
 expected to work with a range of dependency versions.
 
-`dart pub get` 命令获取新依赖项后会写入一个 [lockfile](/tools/pub/glossary#lockfile) 文件
+`dart pub get` 命令获取新依赖项后会写入一个 [lockfile](/resources/glossary#lockfile) 文件
 以确保下次执行该命令时会使用相同的依赖项版本。
 [应用型的 package][Application packages] 应该总是签入该 lockfile 文件以控制来源；
 从而确保在将 package 部署到生产环境时所有的依赖项对于所有开发者而言都是相同的版本。
@@ -71,18 +71,18 @@ expected to work with a range of dependency versions.
 If a lockfile already exists, `dart pub get` uses the versions of dependencies
 locked in it if possible. If a dependency isn't locked, pub gets the
 latest version of that dependency that satisfies all the [version
-constraints](/tools/pub/glossary#version-constraint).
+constraints](/resources/glossary#version-constraint).
 This is the primary difference between `dart pub get` and
 [`dart pub upgrade`](/tools/pub/cmd/pub-upgrade), which always tries to
 get the latest versions of all dependencies.
 
 如果 lockfile 已经存在，`dart pub get` 命令会尽可能地使用锁定的依赖项版本。
 如果某个依赖项没有被锁定，则 pub 会获取所有
-[限定的版本](/tools/pub/glossary#version-constraint) 中最新的那个依赖项版本。
+[限定的版本](/resources/glossary#version-constraint) 中最新的那个依赖项版本。
 这是 `dart pub get` 命令与 [`dart pub upgrade`](/tools/pub/cmd/pub-upgrade) 命令最大的不同点，
 后者总是会去尝试使用依赖项的最新版本。
 
-[Application packages]: /tools/pub/glossary#application-package
+[Application packages]: /resources/glossary#application-package
 
 ## Package resolution
 
@@ -143,13 +143,13 @@ already-acquired dependencies.
 
 Dependencies downloaded over the internet, such as those from Git and the
 [pub.dev site]({{site.pub}}), are stored in a
-[system-wide cache](/tools/pub/glossary#system-cache).
+[system-wide cache](/resources/glossary#pub-system-cache).
 This means that if multiple packages use the same version of the
 same dependency, it only needs to be
 downloaded and stored locally once.
 
 依赖项通过网络从类似 Git 仓库和 [Pub 网站]({{site.pub}}) 下载并存储在一个
-[系统级的缓存](/tools/pub/glossary#system-cache) 中。
+[系统级的缓存](/resources/glossary#pub-system-cache) 中。
 这意味着如果多个 Package 使用了相同依赖项的相同版本，
 它就不再需要通过网络下载，而仅仅只需从本地缓存获取即可。
 

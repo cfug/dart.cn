@@ -15,7 +15,7 @@ $ dart pub upgrade [options] [dependencies]
 Like [`dart pub get`](/tools/pub/cmd/pub-get),
 `dart pub upgrade` gets dependencies.
 The difference is that `dart pub upgrade` ignores any existing
-[lockfile](/tools/pub/glossary#lockfile),
+[lockfile](/resources/glossary#lockfile),
 so that pub can get the latest versions of all dependencies.
 A related command is [`dart pub outdated`](/tools/pub/cmd/pub-outdated),
 which you can run to find out-of-date dependencies.
@@ -23,19 +23,19 @@ which you can run to find out-of-date dependencies.
 `dart pub upgrade` 命令与 [`dart pub get`](/tools/pub/cmd/pub-get)
 命令一样，都是用于获取依赖项的。
 不同的是 `dart pub upgrade` 命令会忽略掉任何已存在的
-[lockfile](/tools/pub/glossary#lockfile) 文件，
+[lockfile](/resources/glossary#lockfile) 文件，
 因此 Pub 可以获取所有依赖项的最新版本。
 
 Without any additional arguments, `dart pub upgrade` gets the latest
 versions of all the dependencies listed in the
 [`pubspec.yaml`](/tools/pub/pubspec) file in the current working
 directory, as well as their [transitive
-dependencies](/tools/pub/glossary#transitive-dependency).
+dependencies](/resources/glossary#transitive-dependency).
 For example:
 
 在没有指定其它参数的情况下，`dart pub upgrade` 命令会获取当前工作目录下
 [`pubspec.yaml`](/tools/pub/pubspec) 文件中所列出的所有依赖项的最新版本，
-包括 [这些依赖项中内部依赖的其它依赖项](/tools/pub/glossary#transitive-dependency)。
+包括 [这些依赖项中内部依赖的其它依赖项](/resources/glossary#transitive-dependency)。
 例如：
 
 ```console
@@ -71,7 +71,7 @@ on package resolution and the system package cache.
 你可以查阅 [`dart pub get` 命令文档](/tools/pub/cmd/pub-get)
 获取更多关于 Package 解析以及系统 Package 缓存的信息。
 
-[application packages]: /tools/pub/glossary#application-package
+[application packages]: /resources/glossary#application-package
 
 ## Upgrading specific dependencies
 

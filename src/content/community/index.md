@@ -1,7 +1,10 @@
 ---
 # title: Community and support
 title: 社区和支持
-description: Communities, mailing lists, and bug databases for the Dart project.
+# breadcrumb: Community
+breadcrumb: 社区
+# description: Communities, mailing lists, and bug databases for the Dart project.
+description: Dart 项目的社区、邮件列表和 Bug 跟踪。
 group: https://groups.google.com/a/dartlang.org
 ---
 
@@ -63,7 +66,7 @@ Get answers and connect with Dart developers.
 <br> 提问题的最佳场所。
 
 [The dart_community Discord](https://discord.gg/Qt6DgfAWWx)
-: Chat with and get help from other Dart developers.
+<br> Chat with and get help from other Dart developers.
 
 [Dart on Reddit](https://www.reddit.com/r/dartlang)
 <br> The subreddit for all things related to Dart.

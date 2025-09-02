@@ -14,16 +14,16 @@ $ dart pub deps [--style=<style>] [--[no-]dev] [--executables]
 
 This command prints the dependency graph for a package.
 The graph includes both the
-[immediate dependencies](/tools/pub/glossary#immediate-dependency)
+[immediate dependencies](/resources/glossary#immediate-dependency)
 that the package uses (as specified in the pubspec), as well as the
-[transitive dependencies](/tools/pub/glossary#transitive-dependency)
+[transitive dependencies](/resources/glossary#transitive-dependency)
 pulled in by the immediate dependencies.
 
 该命令可以将 Package 的依赖图示打印输出到控制台。
 该图示中包括 Package 声明在 pubspec 文件中的 
-[直接依赖](/tools/pub/glossary#immediate-dependency) 
+[直接依赖](/resources/glossary#immediate-dependency) 
 以及这些直接依赖所依赖的
-[间接依赖](/tools/pub/glossary#transitive-dependency)。
+[间接依赖](/resources/glossary#transitive-dependency)。
 
 The dependency information is printed as a tree by default.
 

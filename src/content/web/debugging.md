@@ -1,6 +1,10 @@
 ---
 # title: Debugging Dart web apps
 title: 调试 Dart Web 应用
+# short-title: Debugging web apps
+short-title: 调试 Web 应用
+# breadcrumb: Debugging
+breadcrumb: 调试
 # description: Learn how to debug your Dart web app.
 description: 调试你的 Web 应用。
 ---

@@ -4,8 +4,7 @@ description: >-
   Details about the native_field_invalid_type
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _'{0}' is an unsupported type for native fields. Native fields only support

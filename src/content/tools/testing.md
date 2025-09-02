@@ -1,6 +1,8 @@
 ---
 # title: Dart testing
 title: Dart 里的测试
+# short-title: Testing
+short-title: 测试
 # description: How to test Flutter, web, and VM applications.
 description: 如何测试 Flutter、Web 和 Dart 应用。
 ---

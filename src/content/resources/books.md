@@ -1,6 +1,8 @@
 ---
 # title: Books about Dart
 title: 与 Dart 相关的书籍
+# short-title: Books
+short-title: 书籍
 # description: Read all about it! Here's a collection of books about Dart.
 description: 这里列举与 Dart 相关的书籍。
 toc: false

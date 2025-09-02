@@ -1,8 +1,10 @@
 ---
 # title: "Asynchronous programming: Streams"
-title: 异步编程：使用 stream
+title: 异步编程：使用 Stream
+# breadcrumb: Using streams
+breadcrumb: 使用 Stream
 # description: Learn how to consume single-subscriber and broadcast streams.
-description: 了解如何使用 single-subscriber 和 broadcast streams。
+description: 了解如何使用 single-subscriber 和 broadcast stream。
 js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
 ---
 

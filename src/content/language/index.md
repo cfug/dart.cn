@@ -1,13 +1,16 @@
 ---
 # title: Introduction to Dart
 title: Dart 简介
-# description: A brief introduction to Dart programs and important concepts.
-description: 对于 Dart 程序及其重要概念的简单介绍。
 # short-title: Dart basics
 short-title: Dart 基础
+# breadcrumb: Language
+breadcrumb: Dart 语言
+# description: A brief introduction to Dart programs and important concepts.
+description: 对于 Dart 程序及其重要概念的简要介绍。
 nextpage:
   url: /language/variables
-  title: Variables
+#  title: Variables
+  title: 变量
 ---
 
 This page provides a brief introduction to the Dart language

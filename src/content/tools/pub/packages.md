@@ -1,7 +1,10 @@
 ---
 # title: How to use packages
 title: 如何使用 package
-short-title: Packages
+# short-title: Packages
+short-title: Package
+# breadcrumb: Overview
+breadcrumb: 概览
 # description: Learn more about pub, Dart's tool for managing packages.
 description: 关于 pub 命令的更多介绍，这是 Dart 里用于管理 package 的工具。
 ---
@@ -135,7 +138,7 @@ This process is called _getting the dependencies_.
 
 The `dart pub get` command
 determines which packages your app depends on,
-and puts them in a central [system cache](/tools/pub/glossary#system-cache).
+and puts them in a central [system cache](/resources/glossary#pub-system-cache).
 If your app depends on a published package, pub downloads that package from the
 [pub.dev site.]({{site.pub}})
 For a [Git dependency](/tools/pub/dependencies#git-packages),
@@ -145,7 +148,7 @@ For example, if the `js` package depends on the `test` package, `pub`
 grabs both the `js` package and the `test` package.
 
 `dart pub get` 命令确定当前应用所依赖的包，
-并将它们保存到中央 [系统缓存](/tools/pub/glossary#system-cache)
+并将它们保存到中央 [系统缓存](/resources/glossary#pub-system-cache)
 (central system cache) 中。
 如果当前应用依赖了一个公开包， Pub 会从 [Pub 站点]({{site.pub}}) 获取该包。
 对于一个 [Git 依赖](/tools/pub/dependencies#git-packages)，
@@ -225,7 +228,7 @@ that your package uses.
 Pub 会在 pubspec 旁创建并存储一个名为 `pubspec.lock` 文件。
 它列出了使用的每个依赖包的指定版本（当前包或传递包的版本）。
 
-If your package is an [application package](/tools/pub/glossary#application-package)
+If your package is an [application package](/resources/glossary#application-package)
 you should check this file into
 [source control](/tools/pub/private-files).
 That way, everyone working on your app uses the same versions
@@ -233,8 +236,8 @@ of all of its dependencies.
 Checking in the lockfile also ensures that your deployed app
 uses the same versions of code.
 
-如果包是一个 [应用程序包](/tools/pub/glossary#application-package)，
-那么应该将此文件加入到 [源文件管理](/guides/libraries/private-files)。
+如果包是一个 [应用程序包](/resources/glossary#application-package)，
+那么应该将此文件加入到 [源文件管理](/tools/pub/private-files)。
 这样，在应用上开发的每个人都能够使用所有相同版本的包。
 同样加入到 lockfile 可以保证部署的应用使用的是同一版本的代码。
 
@@ -356,7 +359,7 @@ Unable to satisfy `pubspec.yaml` using `pubspec.lock`.
 To update `pubspec.lock` run `dart pub get` without `--enforce-lockfile`.
 ```
 
-[content hash]: /tools/pub/glossary#content-hashes
+[content hash]: /resources/glossary#pub-content-hash
 
 ## More information
 
@@ -395,10 +398,6 @@ the pub package manager.
 
   [Pub 环境变量](/tools/pub/environment-variables)
 
-* [Pub glossary](/tools/pub/glossary)
-
-  [Pub 术语](/tools/pub/glossary)
-
 * [Pub package layout conventions](/tools/pub/package-layout)
 
   [Pub 包的布局约定](/tools/pub/package-layout)
@@ -408,6 +407,7 @@ the pub package manager.
   [Pub 版本哲学](/tools/pub/versioning)
 
 * [Pubspec format](/tools/pub/pubspec)
+* [Glossary with pub terms](/resources/glossary)
 
   [Pubspec 格式](/tools/pub/pubspec)
 

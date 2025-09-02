@@ -1,6 +1,8 @@
 ---
 # title: Publishing packages
 title: 发布 package
+# breadcrumb: Publishing
+breadcrumb: 发布
 # description: Learn how to publish a Dart package to pub.dev.
 description: 学习如何将 Dart package 发布到 pub.dev 网站。
 ---

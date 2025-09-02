@@ -4,12 +4,11 @@ description: >-
   Details about the const_set_element_not_primitive_equality
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 canonical: https://dart.dev/tools/diagnostics/const_set_element_not_primitive_equality
 redirectTo: /tools/diagnostics/const_set_element_not_primitive_equality
 sitemap: false
 noindex: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _(Previously known as `const_set_element_type_implements_equals`)_

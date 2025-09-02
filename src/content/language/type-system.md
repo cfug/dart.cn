@@ -1,6 +1,8 @@
 ---
 # title: The Dart type system
 title: Dart 语言里的类型体系
+# short-title: Type system
+short-title: 类型体系
 # description: Why and how to write sound Dart code.
 description: 如何写出优雅的 Dart 代码。
 prevpage:
