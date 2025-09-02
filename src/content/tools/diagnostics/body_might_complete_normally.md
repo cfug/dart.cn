@@ -4,8 +4,7 @@ description: >-
   Details about the body_might_complete_normally
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The body might complete normally, causing 'null' to be returned, but the return

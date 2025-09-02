@@ -4,8 +4,7 @@ description: >-
   Details about the missing_field_type_in_struct
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Fields in struct classes must have an explicitly declared type of 'int',

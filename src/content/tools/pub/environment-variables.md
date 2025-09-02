@@ -3,7 +3,8 @@
 title: 为 pub 命令配置环境变量
 # short-title: Pub environment variables
 short-title: pub 的环境变量
-# description: How to configure your environment for Dart's package management tool, pub.
+# description: >-
+#   How to configure your environment for Dart's package management tool, pub.
 description: 如何在你的开发环境里为 Dart 的 package 管理工具 pub 配置环境变量。
 toc: false
 ---

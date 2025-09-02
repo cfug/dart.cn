@@ -161,13 +161,13 @@
       permalink: /tools/pub/writing-package-pages
     - title: 工作空间 (支持 monorepo)
       permalink: /tools/pub/workspaces
+    - title: Hooks
+      permalink: /tools/hooks
     - title: Package 参考资料
       expanded: false
       children:
         - title: 依赖
           permalink: /tools/pub/dependencies
-        - title: 术语表
-          permalink: /tools/pub/glossary
         - title: Package 文件结构
           permalink: /tools/pub/package-layout
         - title: 设置环境变量
@@ -261,7 +261,7 @@
     permalink: /tools
   - title: AI
     children:
-        - title: Dart MCP Server
+        - title: Dart 和 Flutter 的 MCP Server
           permalink: /tools/mcp-server
   - title: 编辑器和调试工具
     children:
@@ -335,30 +335,37 @@
         permalink: /web/debugging
 
 - divider
+- title: 最新动态
+  expanded: false
+  children:
+    - title: Dart 团队官方博客
+      permalink: https://medium.com/dartlang
+    - title: Dart SDK 更新日志
+      permalink: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
+    - title: 破坏性改动
+      permalink: /resources/breaking-changes
+    - title: 版本演变
+      permalink: /resources/language/evolution
+    - title: 最近更新
+      permalink: /resources/whats-new
+
 - title: 资源
   expanded: false
   children:
     - title: 语言速查表
       permalink: /resources/dart-cheatsheet
-    - title: 破坏性改动
-      permalink: /resources/breaking-changes
-    - title: 版本演变
-      permalink: /resources/language/evolution
     - title: 语言规范
       permalink: /resources/language/spec
     - title: Dart 3 迁移指南
       permalink: /resources/dart-3-migration
-    - title: 从其他平台转向 Dart
-      expanded: false
-      children:
-        - title: 从 JavaScript 到 Dart
-          permalink: /resources/coming-from/js-to-dart
-        - title: 从 Swift 到 Dart
-          permalink: /resources/coming-from/swift-to-dart
+    - title: 从 JavaScript 到 Dart
+      permalink: /resources/coming-from/js-to-dart
+    - title: 从 Swift 到 Dart
+      permalink: /resources/coming-from/swift-to-dart
     - divider
     - title: 常见问题
       permalink: /resources/faq
-    - title: 词汇表
+    - title: 术语表
       permalink: /resources/glossary
     - title: 书籍资源
       permalink: /resources/books
@@ -372,8 +379,6 @@
   children:
     - title: API 文档
       permalink: https://api.dart.cn
-    - title: Dart 团队官方博客
-      permalink: https://medium.com/dartlang
     - title: DartPad (在线编辑器)
       permalink: https://dartpad.cn
     - title: Flutter

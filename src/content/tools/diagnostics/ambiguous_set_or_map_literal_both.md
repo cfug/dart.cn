@@ -4,8 +4,7 @@ description: >-
   Details about the ambiguous_set_or_map_literal_both
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The literal can't be either a map or a set because it contains at least one

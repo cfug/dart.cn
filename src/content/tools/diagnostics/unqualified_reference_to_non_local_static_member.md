@@ -4,8 +4,7 @@ description: >-
   Details about the unqualified_reference_to_non_local_static_member
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Static members from supertypes must be qualified by the name of the defining

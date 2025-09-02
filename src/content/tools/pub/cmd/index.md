@@ -1,7 +1,8 @@
 ---
 # title: dart pub
 title: dart pub 工具
-# description: The command-line interface for pub, a package management tool for Dart.
+# description: >-
+#   The command-line interface for pub, a package management tool for Dart.
 description: Pub 的命令行工具，是 Dart 的 package 管理工具。
 ---
 

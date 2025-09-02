@@ -1,6 +1,8 @@
 ---
 # title: Dart cheatsheet
 title: Dart 速查表
+# breadcrumb: Cheatsheet
+breadcrumb: 速查表
 # description: Interactively learn (or relearn) some of Dart's unique features.
 description: 用交互的形式学习（或回顾）Dart 的独特之处。
 js: [{url: '/assets/js/inject_dartpad.js', defer: true}]

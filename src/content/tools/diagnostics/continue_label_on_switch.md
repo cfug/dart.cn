@@ -4,12 +4,11 @@ description: >-
   Details about the continue_label_invalid
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
 canonical: https://dart.dev/tools/diagnostics/continue_label_invalid
 redirectTo: /tools/diagnostics/continue_label_invalid
 sitemap: false
 noindex: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _(Previously known as `continue_label_on_switch`)_

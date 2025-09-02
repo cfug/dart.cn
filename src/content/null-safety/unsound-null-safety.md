@@ -1,8 +1,10 @@
 ---
 # title: Unsound null safety
 title: 非健全的空安全
-# description: Mixing language versions lets you migrate to null safety at your own pace, with some of the benefits of null safety.
-description: 非健全的空安全让你可以以自己的步调迁移到空安全，同时可以享受一些空安全的好处。
+# description: >-
+#   Mixing language versions lets you migrate to null safety at your own pace,
+#   with some of the benefits of null safety.
+description: 非健全的空安全可以让你以自己的步调迁移到空安全，同时可以享受一些空安全的好处。
 ---
 
 :::version-note

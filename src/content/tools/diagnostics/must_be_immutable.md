@@ -4,8 +4,7 @@ description: >-
   Details about the must_be_immutable
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _This class (or a class that this class inherits from) is marked as

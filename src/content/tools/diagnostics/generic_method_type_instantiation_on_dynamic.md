@@ -4,8 +4,7 @@ description: >-
   Details about the generic_method_type_instantiation_on_dynamic
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _A method tear-off on a receiver whose type is 'dynamic' can't have type
