@@ -155,7 +155,7 @@
       permalink: /resources/useful-packages
     - title: 创建 package
       permalink: /tools/pub/create-packages
-    - title: 创建 package
+    - title: 发布 package
       permalink: /tools/pub/publishing
     - title: 设置 package 介绍页
       permalink: /tools/pub/writing-package-pages

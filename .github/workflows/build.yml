@@ -8,9 +8,9 @@ on:
   pull_request:
     branches:
       - main
-  schedule:
-    # Run build check every day at 3 AM PST.
-    - cron: "0 11 * * 0"
+  # schedule:
+  #   # Run build check every day at 3 AM PST.
+  #   - cron: "0 11 * * 0"
 
 # Declare default permissions as read only.
 permissions: read-all
