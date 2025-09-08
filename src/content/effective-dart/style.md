@@ -1,7 +1,10 @@
 ---
 # title: "Effective Dart: Style"
 title: 高效 Dart 语言指南：代码风格
-description: Formatting and naming rules for consistent, readable code.
+# breadcrumb: Style
+breadcrumb: 代码风格
+# description: Formatting and naming rules for consistent, readable code.
+description: 通过格式化与命名规则来确保代码的统一性和可读性。
 nextpage:
   url: /effective-dart/documentation
   # title: Documentation

@@ -4,8 +4,7 @@ description: >-
   Details about the non_native_function_type_argument_to_pointer
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _Can't invoke 'asFunction' because the function signature '{0}' for the pointer

@@ -1,10 +1,12 @@
 ---
 # title: Customizing static analysis
 title: 自定义静态分析
+# short-title: Static analysis
+short-title: 静态分析
 # description: >-
 #   Use an analysis options file and code comments to customize static analysis.
 description: 通过对分析文件和代码注释来自定义静态分析的内容。
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>

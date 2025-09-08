@@ -8,11 +8,11 @@ description: 学习如何在 Dart 里创建可复用的库。
 The Dart ecosystem uses [packages](/tools/pub/packages)
 to share software such as libraries and tools.
 This page tells you how to create a standard shared 
-[package](/tools/pub/glossary#package).
+[package](/resources/glossary#package).
 
 在 Dart 生态系统中使用 [packages](/tools/pub/packages) 实现共享软件，
 比如一些库和工具。
-本章将通过最常见的 [Package](/tools/pub/glossary#package)
+本章将通过最常见的 [Package](/resources/glossary#package)
 来介绍如何创建一个 Package。
 
 ## Creating a new package
@@ -88,7 +88,7 @@ lib 目录
   通过导出 lib/src 目录的文件到一个 lib 目录的文件，实现
   对 lib/src 目录中 API 的公开。
 
-[application package]: /tools/pub/glossary#application-package
+[application package]: /resources/glossary#application-package
 
 ## Organizing a package
 

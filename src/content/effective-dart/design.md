@@ -1,6 +1,8 @@
 ---
 # title: "Effective Dart: Design"
 title: 高效 Dart 语言指南：API 设计
+# breadcrumb: Design
+breadcrumb: API 设计
 # description: Design consistent, usable libraries.
 description: 库的 API 设计。
 prevpage:

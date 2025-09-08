@@ -4,8 +4,7 @@ description: >-
   Details about the invalid_non_virtual_annotation
   diagnostic produced by the Dart analyzer.
 underscore_breaker_titles: true
-show_breadcrumbs: true
-body_class: highlight-diagnostics
+bodyClass: highlight-diagnostics
 ---
 
 _The annotation '@nonVirtual' can only be applied to a concrete instance

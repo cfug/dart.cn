@@ -16,13 +16,13 @@ $ dart pub downgrade [--[no-]offline] [-n|--dry-run] [dependencies...]
 Without any additional arguments, `dart pub downgrade` gets the lowest versions of
 all the dependencies listed in the [`pubspec.yaml`](/tools/pub/pubspec) file
 in the current working directory, as well as their [transitive
-dependencies](/tools/pub/glossary#transitive-dependency).
+dependencies](/resources/glossary#transitive-dependency).
 For example:
 
 在没有其它额外参数的情况下，
 `dart pub downgrade` 命令会获取
 当前工作目录下 [`pubspec.yaml`](/tools/pub/pubspec) 文件中列出的所有依赖项
-以及它们 [间接依赖项](/tools/pub/glossary#transitive-dependency) 的最低版本。
+以及它们 [间接依赖项](/resources/glossary#transitive-dependency) 的最低版本。
 例如：
 
 ```console
