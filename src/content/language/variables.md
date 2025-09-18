@@ -445,9 +445,13 @@ For more information on using `const` to create constant values, see
 
 ## Wildcard variables
 
+## 通配符变量
+
 :::version-note
 Wildcard variables require
 a [language version][] of at least 3.7.
+
+Wildcard variables 需要至少 3.7 的 [语言版本][language version]。
 :::
 
 A wildcard variable with the name `_` declares a local variable or parameter
@@ -455,12 +459,21 @@ that is non-binding; essentially, a placeholder.
 The initializer, if there is one, is still executed, but the value isn't accessible.
 Multiple declarations named `_` can exist in the same namespace without a collision error.
 
+名为 `_` 的通配符变量声明了一个非绑定的局部变量或参数，本质上是一个占位符。
+如果有初始化器，它仍会被执行，但该值不可访问。
+同一命名空间中可以有多个名为 `_` 的声明，而不会引发冲突错误。
+
 Top-level declarations or members where library privacy might be affected are
 not valid uses for wildcard variables.
 Declarations local to a block scope, such as the following examples,
 can declare a wildcard:
 
+私有库可能受到影响的顶层声明或成员不能使用通配符变量。
+以下示例等块作用域内的局部声明可以声明通配符：
+
 * Local variable declaration.
+
+  局部变量声明
   ```dart
   main() {
     var _ = 1;
@@ -469,11 +482,15 @@ can declare a wildcard:
   ```
 
 * For loop variable declaration.
+
+  For 循环变量声明
   ```dart
   for (var _ in list) {}
   ```
 
 * Catch clause parameters.
+
+  Catch 子句参数
   ```dart
   try {
     throw '!';
@@ -483,6 +500,8 @@ can declare a wildcard:
   ```
 
 * Generic type and function type parameters.
+
+  泛型类型和函数类型参数
   ```dart
   class T<_> {}
   void genericFunction<_>() {}
@@ -491,6 +510,8 @@ can declare a wildcard:
   ```
 
 * Function parameters.
+
+  函数参数
   ```dart
   Foo(_, this._, super._, void _()) {}
 
@@ -505,6 +526,10 @@ can declare a wildcard:
 Enable the lint [`unnecessary_underscores`][] to identify where a single
 non-binding wildcard variable `_` can replace the previous convention of using
 multiple binding underscores (`__`,`___`, etc.) to avoid name collisions.
+
+启用 lint [`unnecessary_underscores`][] 来识别在哪些情况下可以用
+单个非绑定通配符变量 `_` 替代之前使用
+多个绑定下划线（`__`、`___` 等）以避免命名冲突的惯例。
 :::
 
 [Assert]: /language/error-handling#assert
