@@ -128,5 +128,7 @@ For an example of generated documentation, see the
 For advice on how to structure your comments, see
 [Effective Dart: Documentation.](/effective-dart/documentation)
 
-
-要解析 Dart 代码并生成 HTML 文档，你可以使用 Dart 的文档生成工具  [`dart doc`](/tools/dart-doc)。有关生成文档的示例，请参阅 [Dart API documentation。]({{site.dart-api}}) 有关如何组织注释的建议，请参阅 [Effective Dart: Documentation。](/effective-dart/documentation)。
+如果你需要解析 Dart 代码并生成 HTML 文档，
+你可以使用 Dart 的文档生成工具 [`dart doc`](/tools/dart-doc)。
+关于生成的文档示例，请参阅 [Dart API 文档]({{site.dart-api}})。
+关于代码注释规范的建议，请参阅 [高效 Dart 语言指南：文档](/effective-dart/documentation)。
