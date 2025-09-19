@@ -469,7 +469,7 @@ Declarations local to a block scope, such as the following examples,
 can declare a wildcard:
 
 私有库可能受到影响的顶层声明或成员不能使用通配符变量。
-以下示例等块作用域内的局部声明可以声明通配符：
+方法块这样的局部作用域内可以声明通配符变量，如下面的例子：
 
 * Local variable declaration.
 
