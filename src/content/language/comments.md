@@ -77,7 +77,9 @@ classes, methods, fields, top-level variables, functions, and
 parameters. The names in brackets are resolved in the lexical scope of
 the documented program element.
 
-在文档注释中，分析器会忽略所有未被方括号括起来的文本。通过使用方括号，你可以引用类、方法、字段、顶层变量、函数和参数。方括号中的名称会在被注释程序元素的词法作用域内解析。
+在文档注释中，分析器会处理被方括号括起来的文本内容。
+通过使用方括号，你可以引用类、方法、字段、顶层变量、函数和参数。
+方括号中的名称将根据注释对象的词法作用域 (Lexical Scope) 进行解析。
 
 Here is an example of documentation comments with references to other
 classes and arguments:
