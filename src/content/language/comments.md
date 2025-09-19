@@ -117,7 +117,9 @@ In the class's generated documentation, `[feed]` becomes a link
 to the docs for the `feed` method,
 and `[Food]` becomes a link to the docs for the `Food` class.
 
-在生成的类文档中，`[feed]` 会变成指向 `feed` 方法文档的链接，而 `[Food]` 则会变成指向 `Food` 类文档的链接。
+在生成的类文档中，
+`[feed]` 会转换为指向 `feed` 方法文档的链接，
+而 `[Food]` 则会转换为指向 `Food` 类文档的链接。
 
 To parse Dart code and generate HTML documentation, you can use Dart's
 documentation generation tool, [`dart doc`](/tools/dart-doc).
