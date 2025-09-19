@@ -451,7 +451,7 @@ For more information on using `const` to create constant values, see
 Wildcard variables require
 a [language version][] of at least 3.7.
 
-Wildcard variables 需要至少 3.7 的 [语言版本][language version]。
+通配符变量（Wildcard variables） 需要至少 3.7 的 [语言版本][language version]。
 :::
 
 A wildcard variable with the name `_` declares a local variable or parameter
@@ -468,7 +468,7 @@ not valid uses for wildcard variables.
 Declarations local to a block scope, such as the following examples,
 can declare a wildcard:
 
-私有库可能受到影响的顶层声明或成员不能使用通配符变量。
+在库的可见性可能受到影响的情况下，顶层声明或成员中不允许使用通配符变量。
 方法块这样的局部作用域内可以声明通配符变量，如下面的例子：
 
 * Local variable declaration.
