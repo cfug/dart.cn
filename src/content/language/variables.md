@@ -528,11 +528,6 @@ Enable the lint [`unnecessary_underscores`][] to identify where a single
 non-binding wildcard variable `_` can replace the previous convention of using
 multiple binding underscores (`__`,`___`, etc.) to avoid name collisions.
 
-启用 lint 规则 [`unnecessary_underscores`][]
-来帮助你识别哪些情况下可以用
-单个非绑定通配符变量 `_` 替代之前使用
-多个绑定下划线（`__`、`___` 等）来避免命名冲突的用法。
-
 启用 lint 规则 [`unnecessary_underscores`][]，可以检查出哪些地方
 原本用多个下划线（`__`、`___` 等）来避免命名冲突时，
 其实可以直接用一个不绑定的通配符变量 `_` 来替代。
