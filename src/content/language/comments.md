@@ -1,12 +1,16 @@
 ---
+# title: Comments
 title: 注释
-description:  Dart 中不同类型的注释.
+# description: The different comment types in Dart.
+description: Dart 中不同类型的注释。
 prevpage:
   url: /language/operators
+  # title: Operators
   title: 操作符
 nextpage:
   url: /language/built-in-types
-  title: 基本数据类型
+  # title: Built-in types
+  title: 基本类型
 ---
 
 Dart supports single-line comments, multi-line comments, and
