@@ -68,7 +68,8 @@ Documentation comments are multi-line or single-line comments that begin
 with `///` or `/**`. Using `///` on consecutive lines has the same
 effect as a multi-line doc comment.
 
-文档注释是多行或单行注释，以 `///` 或 `/**` 开头。在连续行上使用 `///` 的效果与多行文档注释相同。
+文档注释是以 `///` 或 `/**` 开头的多行或单行注释。
+连续多行使用 `///` 的注释效果与多行文档注释等效。
 
 Inside a documentation comment, the analyzer ignores all text
 unless it is enclosed in brackets. Using brackets, you can refer to
