@@ -531,7 +531,7 @@ multiple binding underscores (`__`,`___`, etc.) to avoid name collisions.
 启用 lint 规则 [`unnecessary_underscores`][]
 来帮助你识别哪些情况下可以用
 单个非绑定通配符变量 `_` 替代之前使用
-多个绑定下划线（`__`、`___` 等）以避免命名冲突的惯例。
+多个绑定下划线（`__`、`___` 等）来避免命名冲突的用法。
 :::
 
 [Assert]: /language/error-handling#assert
