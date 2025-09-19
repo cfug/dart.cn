@@ -41,7 +41,10 @@ between `/*` and `*/` is ignored by the Dart compiler (unless the
 comment is a documentation comment; see the next section). Multi-line
 comments can nest.
 
-多行注释以 `/*` 开始，以 `*/` 结束。Dart 编译器会忽略 `/*` 和 `*/` 之间的所有内容（除非该注释是文档注释；请参阅下一节）。多行注释可以嵌套。
+多行注释以 `/*` 开头，以 `*/` 结尾。
+Dart 编译器会忽略 `/*` 和 `*/` 之间的所有内容
+（除非该注释是文档注释；请参阅下一节）。
+多行注释可以嵌套。
 
 <?code-excerpt "misc/lib/language_tour/comments.dart (multi-line-comments)"?>
 ```dart
