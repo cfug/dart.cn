@@ -459,7 +459,7 @@ that is non-binding; essentially, a placeholder.
 The initializer, if there is one, is still executed, but the value isn't accessible.
 Multiple declarations named `_` can exist in the same namespace without a collision error.
 
-名为 `_` 的通配符变量声明了一个非绑定的局部变量或参数，本质上是一个占位符。
+通配符变量 `_` 声明了一个不作为可用变量的局部变量或参数，本质上它是一个占位符。
 如果有声明初始化的方法，方法仍会被执行，但通配符变量的值不可访问。
 同一命名空间中可以有多个名为 `_` 的声明，而不会引发冲突错误。
 
