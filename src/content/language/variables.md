@@ -468,7 +468,7 @@ not valid uses for wildcard variables.
 Declarations local to a block scope, such as the following examples,
 can declare a wildcard:
 
-在库的可见性可能受到影响的情况下，顶层声明或成员中不允许使用通配符变量。
+由于 library 的可见性（外部可访问 library），顶层声明或类的成员中不允许使用通配符变量。
 方法块这样的局部作用域内可以声明通配符变量，如下面的例子：
 
 * Local variable declaration.
