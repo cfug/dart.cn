@@ -451,7 +451,7 @@ For more information on using `const` to create constant values, see
 Wildcard variables require
 a [language version][] of at least 3.7.
 
-通配符变量（Wildcard variables） 需要至少 3.7 的 [语言版本][language version]。
+通配符变量（Wildcard variables）需要至少 3.7 的 [语言版本][language version]。
 :::
 
 A wildcard variable with the name `_` declares a local variable or parameter
