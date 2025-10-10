@@ -5,6 +5,7 @@
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
+import 'package:path/path.dart' as path;
 
 import '../utils.dart';
 
@@ -35,8 +36,20 @@ int analyzeDart({bool verboseLogging = false}) {
     print('Analyzing code...');
   }
 
-  final dartAnalyzeOutput = Process.runSync(Platform.executable, const [
+  final directoriesToAnalyze = [
+    /// dart.cn 只检查 tool/dash_site
+    'tool/dash_site',
+    'site',
+    ...Directory('examples')
+        .listSync()
+        .whereType<Directory>()
+        .map((e) => e.path)
+        .where((e) => !path.basename(e).startsWith('.')),
+  ];
+
+  final dartAnalyzeOutput = Process.runSync(Platform.executable, [
     'analyze',
+    ...directoriesToAnalyze,
   ]);
 
   if (dartAnalyzeOutput.exitCode != 0) {
