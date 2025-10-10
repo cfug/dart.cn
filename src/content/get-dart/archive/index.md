@@ -1,13 +1,13 @@
 ---
 # title: Dart SDK archive
 title: Dart SDK 归档
-# short-title: Archive
-short-title: 归档
-# description: Download specific stable, beta, dev, and main channel versions of the Dart SDK and the Dart API documentation.
+# shortTitle: Archive
+shortTitle: 归档
+# description: >-
+#   Download specific stable, beta, dev, and main channel versions of
+#   the Dart SDK and the Dart API documentation.
 description: 下载特定的稳定版、测试版、开发版和主分支开发版的 Dart SDK 和 Dart API 文档。
 js:
-- url: /assets/js/get-dart/download_archive.dart.js
-  defer: true
 - url: /assets/js/get-dart/install.js
   defer: true
 ---
@@ -25,7 +25,7 @@ Want to install Dart with your OS's package manager?
 希望通过系统的包管理安装 Dart？请查看如何 [获取 Dart SDK](/get-dart)。
 
 :::warning Notice
-{% include './_sdk-terms.md' %}
+{% render 'install/sdk-terms.md' %}
 :::
 
 ## Stable channel
@@ -36,7 +36,7 @@ Stable channel builds are tested and approved for production use.
 
 **稳定版渠道的构建是经过测试且可用于生产环境的。**
 
-{% include './_archives_table.html', channel:'stable' %}
+<ArchiveTable channel="stable" />
 
 ## Beta channel
 
@@ -51,7 +51,7 @@ Beta channel builds are not suitable for production use.
 包括新特性和对未来发布内容的兼容性，但不要用于发布。
 **测试版渠道的构建不适合在生产环境使用。**
 
-{% include './_archives_table.html', channel:'beta' %}
+<ArchiveTable channel="beta" />
 
 ## Dev channel
 
@@ -64,7 +64,7 @@ Dev channel builds are not suitable for production use.
 开发版渠道的构建提供了早期的新特性预览，但它们可能包含一些 BUG。
 **开发版渠道的构建不适合在生产环境使用。**
 
-{% include './_archives_table.html', channel:'dev' %}
+<ArchiveTable channel="dev" />
 
 ## Main channel
 

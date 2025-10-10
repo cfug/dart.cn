@@ -70,6 +70,3 @@ yaml_variable_scanner:
 
     # ` xxx `
     - '`([^`]*)`'
-
-    # {% card %}
-    - ^\s*{% card.*$

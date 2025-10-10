@@ -33,16 +33,12 @@ which are fundamental to most Dart programs.
 它们是众多 Dart 程序的基础。
 
 <div class="card-grid no_toc_section">
-  {% card "异步编程：stream", "/libraries/async/using-streams" %}
-    Use streams to manage sequences of data.
-
+  <Card title="异步编程：stream" link="/libraries/async/using-streams">
     使用 stream 数据流管理数据序列。
-  {% endcard %}
-  {% card "如何使用 package", "/tools/pub/packages" %}
-    Organize and share code on the pub.dev site.
-
+  </Card>
+  <Card title="如何使用 package" link="/tools/pub/packages">
     在 pub.dev 网站上组织和共享代码。
-  {% endcard %}
+  </Card>
 </div>
 
 
@@ -51,7 +47,7 @@ which are fundamental to most Dart programs.
 
 ## Dart 服务端教程
 
-{% include 'server-tutorials.md' %}
+{% render 'server-tutorials.md' %}
 
 <a id="more-tutorials" aria-hidden="true"></a>
 ## Keep learning
@@ -64,24 +60,16 @@ try more of the available tutorials!
 尝试更多教程，来学习更多使用 Dart 开发的经验！
 
 <div class="card-grid no_toc_section">
-  {% card "Dart 速查表", "/resources/dart-cheatsheet" %}
-    Quickly try out some of Dart's unique language features.
-
+  <Card title="Dart 速查表" link="/resources/dart-cheatsheet">
     快速体验 Dart 独特的语言特性。
-  {% endcard %}
-  {% card "记录 (Record) 和模式匹配 (Pattern)", "https://codelabs.developers.google.cn/codelabs/dart-patterns-records" %}
-    Discover Dart's support for records and patterns.
-
+  </Card>
+  <Card title="记录 (Record) 和模式匹配 (Pattern)" link="https://codelabs.developers.google.cn/codelabs/dart-patterns-records">
     探索 Dart 对记录 (Record) 和模式匹配 (Pattern) 的支持。
-  {% endcard %}
-  {% card "可迭代集合", "/libraries/collections/iterables" %}
-    Learn to analyze and manipulate data stored in collections.
-
+  </Card>
+  <Card title="可迭代集合" link="/libraries/collections/iterables">
     学习分析和处理存储在数据集中的数据。
-  {% endcard %}
-  {% card "Flutter codelabs 和教程", "https://docs.flutter.cn/codelabs" %}
-    Expand your Dart skills by building Flutter apps.
-
+  </Card>
+  <Card title="Flutter codelab 和教程" link="https://docs.flutter.cn/codelabs">
     通过构建 Flutter 应用来拓展你的 Dart 技能。
-  {% endcard %}
+  </Card>
 </div>

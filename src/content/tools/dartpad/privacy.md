@@ -3,7 +3,7 @@
 title: DartPad 隐私权声明
 # description: How Google uses the source code that you enter into DartPad.
 description: Google 将如何使用你输入到 DartPad 里的代码。
-toc: false
+showToc: false
 ---
 
 DartPad is a free, open source service to help developers learn about the Dart

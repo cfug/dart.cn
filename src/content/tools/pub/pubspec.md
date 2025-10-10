@@ -1,8 +1,8 @@
 ---
 # title: The pubspec file
 title: Pubspec 文件
-# short-title: Pubspec file
-short-title: Pubspec 文件
+# shortTitle: Pubspec file
+shortTitle: Pubspec 文件
 # description: Reference guide for the fields in pubspec.yaml.
 description: 对于 pubspec.yaml 文件中字段引用的教程
 ---

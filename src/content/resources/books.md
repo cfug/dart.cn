@@ -1,11 +1,11 @@
 ---
 # title: Books about Dart
 title: 与 Dart 相关的书籍
-# short-title: Books
-short-title: 书籍
+# shortTitle: Books
+shortTitle: 书籍
 # description: Read all about it! Here's a collection of books about Dart.
 description: 这里列举与 Dart 相关的书籍。
-toc: false
+showToc: false
 ---
 
 This page covers a collection of books about the Dart language.
@@ -27,12 +27,13 @@ and new developer tools.
 
 <div class="book-img-with-details">
 <a href="{{book.link}}" title="{{book.title}}">
-  <img src="/assets/img/cover/{{book.cover}}" alt="{{book.title}}">
+  <img src="/assets/img/cover/{{book.cover}}" alt="{{book.title}}" />
 </a>
 <div class="details">
 
-### [{{book.title}}]({{book.link}})
-{:.title}
+<h3 class="title" id="{{book.title | slugify}}">
+<a href="{{book.link}}">{{book.title}}</a>
+</h3>
 
 by {{book.authors | arrayToSentenceString}}
 {:.authors}

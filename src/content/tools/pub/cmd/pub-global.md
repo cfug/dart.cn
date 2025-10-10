@@ -66,6 +66,14 @@ constraint.  See the [constraint](#options) flag for usage examples.
 
 你可以在激活 Package 时指定一个可选的版本限制参数。关于其使用示例请查阅 [版本限制参数](#options)。
 
+:::note
+
+[`dart install`][] is a newer alternative to `dart pub global activate`.
+
+[`dart install`][] 是 `dart pub global activate` 新的替代方案。
+
+:::
+
 ### Activating a package on the pub.dev site
 
 ### 激活 pub.dev 网站上的 Package
@@ -386,5 +394,6 @@ the preexisting executable will not be replaced.
 
 {% render 'pub-problems.md' %}
 
+[`dart install`]: /tools/dart-install
 [system cache]: /resources/glossary#pub-system-cache
 [webdev]: /tools/webdev

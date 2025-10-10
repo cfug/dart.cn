@@ -1,9 +1,11 @@
 ---
 # title: "Overview: The Dart language"
 title: Dart 开发语言概述
-short-title: Dart language
-toc: false
-description: Discover resources for learning the Dart programming language.
+# shortTitle: Dart language
+shortTitle: Dart 语言
+# description: Discover resources for learning the Dart programming language.
+description: 探索学习 Dart 编程语言
+showToc: false
 ---
 
 These two resources are popular with both beginning Dart developers and experts.

@@ -1,8 +1,11 @@
 ---
 title: Your first Dart program
-short-title: Your first app
+shortTitle: Your first app
 description: >-
   Create, run, and make your first change to a Dart command-line program.
+sitemap: false
+noindex: true
+showToc: false
 prevpage:
   url: /get-started
   title: Get started
@@ -11,7 +14,7 @@ nextpage:
   title: Add interactivity to your app
 ---
 
-{% include 'fwe-wip-warning.md' %}
+{% render 'fwe-wip-warning.md', site: site %}
 
 Welcome to Dart!
 In this chapter, you'll ensure your setup is complete, and
@@ -55,7 +58,7 @@ First, make sure Dart is ready to go on your system by following these steps.
     (the version numbers might be different):
 
     ```bash
-    Dart SDK version: 3.8.1 (stable) (None) on "linux_x64"
+    Dart SDK version: 3.9.2 (stable) (Wed Aug 27 03:49:40 2025 -0700) on "linux_x64"
     ```
 
     If you see an error like "command not found," refer to the
@@ -102,8 +105,6 @@ Now, create your first Dart command-line application.
       Resolving dependencies...
       Downloading packages...
       Changed 49 dependencies!
-      1 package has newer versions incompatible with dependency constraints.
-      Try `dart pub outdated` for more information.
 
     Created project cli in cli! In order to get started, run the following commands:
 
@@ -155,7 +156,7 @@ Next, modify the code that generated `Hello world: 42!`.
     `cli.dart` is the entry point of your application.
 
     Inside, you'll see the `main` function.
-    Every Dart program starts executing from its `main` function.
+    Every Dart program [starts executing from its `main` function](/language#hello-world).
 
 1.  Check to make sure that your `bin/cli.dart` looks like this:
 
@@ -168,8 +169,8 @@ Next, modify the code that generated `Hello world: 42!`.
     ```
 
 1.  Simplify the output for now.
-    Comment out the first line (you don't need this import statement), and
-    change the `print` statement to display a simple greeting:
+    Delete the first line (you don't need this import statement), and change the
+    `print` statement to display a simple greeting: 
 
     ```dart title="bin/cli.dart" highlightLines=1,4
     import 'package:cli/cli.dart' as cli; // Delete this entire line

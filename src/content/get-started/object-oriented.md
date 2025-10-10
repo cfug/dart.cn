@@ -1,10 +1,13 @@
 ---
 title: Object-oriented Dart programming
-short-title: Object oriented Dart
+shortTitle: Object oriented Dart
 description: >-
   Learn about object-oriented programming in Dart, including
   abstract classes, inheritance, overrides, and enums.
   Build a framework for well-architected CLI apps.
+sitemap: false
+noindex: true
+showToc: false
 prevpage:
   url: /get-started/packages-libs
   title: Packages and libraries
@@ -13,7 +16,7 @@ nextpage:
   title: Error handling
 ---
 
-{% include 'fwe-wip-warning.md' %}
+{% render 'fwe-wip-warning.md', site: site %}
 
 In this chapter, you'll explore the power of object-oriented programming (OOP)
 in Dart. You'll learn how to create classes and define relationships between

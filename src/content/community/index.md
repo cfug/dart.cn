@@ -22,11 +22,11 @@ our [code of conduct](/community/code-of-conduct).
 
 ## 请持续关注下列消息源
 
-[Dart announce]({{group}}/d/forum/announce)
+[Dart announce]({{page.group}}/d/forum/announce)
 <br> Low-traffic announcements of new releases, breaking changes,
   and other important news. Recommended!
 
-[Dart 公告群组]({{group}}/d/forum/announce)
+[Dart 公告群组]({{page.group}}/d/forum/announce)
 <br> 第一时间公布新的发行版本、重大变化以及其他重要新闻。推荐！
 
 [@dart.dev](https://bsky.app/profile/dart.dev)
@@ -41,10 +41,10 @@ our [code of conduct](/community/code-of-conduct).
 [@dart_lang](https://twitter.com/dart_lang)
 <br> Dart 官方的 X (Twitter) 账号。
 
-[Dart blog](https://medium.com/dartlang)
+[Dart blog](https://blog.dart.dev)
 <br> The latest news and insights from a diverse group of Dart users.
 
-[Dart 博客](https://medium.com/dartlang)
+[Dart 博客](https://blog.dart.dev)
 <br> 来自不同 Dart 用户群体的最新消息和观点。
 
 ## Join the conversation
@@ -96,16 +96,16 @@ Get answers and connect with Dart developers.
 
 #### Google 团队讨论组
 
-[General discussions]({{group}}/d/forum/misc)
+[General discussions]({{page.group}}/d/forum/misc)
 <br> Discuss miscellaneous Dart topics.
 
-[通用讨论区]({{group}}/d/forum/misc)
+[通用讨论区]({{page.group}}/d/forum/misc)
 <br> 讨论 Dart 的各种话题。
 
-[Dart analyzer]({{group}}/d/forum/analyzer-discuss)
+[Dart analyzer]({{page.group}}/d/forum/analyzer-discuss)
 <br> Get help understanding the [Dart analyzer](/tools/dart-analyze).
 
-[Dart analyzer]({{group}}/d/forum/analyzer-discuss)
+[Dart analyzer]({{page.group}}/d/forum/analyzer-discuss)
 <br> 讨论 [Dart analyzer](/tools/dart-analyze) 的深入理解。
 
 ## Contribute
@@ -143,10 +143,10 @@ Dart 是开源项目。了解如何
     [当前网站仓库]({{site.repo.this}}/)
     （[跟踪 issue]({{site.repo.this}}/issues/)）
 
-[Dart reviews]({{group}}/d/forum/reviews)
+[Dart reviews]({{page.group}}/d/forum/reviews)
 <br> High-traffic list of all core SDK code reviews.
 
-[Dart reviews]({{group}}/d/forum/reviews)
+[Dart reviews]({{page.group}}/d/forum/reviews)
 <br> 所有核心 SDK 的高频率 code review 列表。
 
 ## Additional community resources

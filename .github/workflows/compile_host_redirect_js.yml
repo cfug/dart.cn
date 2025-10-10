@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 env:
-  NODE_VERSION: 20
+  NODE_VERSION: 22
 
 jobs:
   compile_host_redirect_js:
@@ -23,8 +23,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-        with:
-          submodules: recursive
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
@@ -38,7 +36,7 @@ jobs:
           base: main
           branch: bot/update-host-redirect-min-js
           add-paths: |
-            ./src/content/assets/js/host-redirect.min.js
+            ./site/assets/js/host-redirect.min.js
           title: '[🤖bot] Update: host-redirect.min.js'
           body: 'GitHub Action: [.github/workflows/compile_host_redirect_js.yml](https://github.com/cfug/dart.cn/blob/main/.github/workflows/compile_host_redirect_js.yml)'
           committer: 'cfug-dev <cfug-dev@googlegroups.com>'

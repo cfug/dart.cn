@@ -1,8 +1,8 @@
 ---
 # title: "C interop using dart:ffi"
 title: "使用 dart:ffi 与 C 进行交互"
-# short-title: C interop
-short-title: 与 C 进行交互
+# shortTitle: C interop
+shortTitle: 与 C 进行交互
 # description: >-
 #   To use C code in your Dart program, use the dart:ffi library.
 description: 在你的 Dart 程序中使用 dart:ffi 库调用 C 语言的代码。

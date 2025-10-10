@@ -1,8 +1,8 @@
 ---
 # title: Introduction to Dart
 title: Dart 简介
-# short-title: Dart basics
-short-title: Dart 基础
+# shortTitle: Dart basics
+shortTitle: Dart 基础
 # breadcrumb: Language
 breadcrumb: Dart 语言
 # description: A brief introduction to Dart programs and important concepts.

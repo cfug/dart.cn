@@ -79,15 +79,10 @@ watch this video:
 
 如果你想预览迁移工具的体验，可以查看以下视频：
 
-<iframe
-  {{yt.std-size}}
-  title="Learn about the null-safety migration tool"
-  src="{{yt.embed}}/eBr5tlumwlg"
-  {{yt.set}}>
-</iframe>
+<YouTubeEmbed id="eBr5tlumwlg" title="How to migrate Dart packages to null safety"></YouTubeEmbed>
 
 [null safety]: /null-safety
-[Gradual null safety migration for large Dart projects]: https://medium.com/dartlang/gradual-null-safety-migration-for-large-dart-projects-85acb10b64a9
+[Gradual null safety migration for large Dart projects]: https://blog.dart.dev/gradual-null-safety-migration-for-large-dart-projects-85acb10b64a9
 
 **可交互的迁移工具让你可以简化迁移至空安全的过程。**
 

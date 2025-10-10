@@ -2,7 +2,7 @@
 title: dart pub cache
 # description: Use dart pub cache to manage your system cache.
 description: 使用 dart pub cache 命令管理你系统中的缓存。
-toc: false
+showToc: false
 ---
 
 _Cache_ is one of the commands of the [pub tool](/tools/pub/cmd).

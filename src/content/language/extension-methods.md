@@ -21,7 +21,7 @@ check out this overview of extension methods.
 
 <iframe
   {{site.bili.std-size}}
-  title="Learn about extension methods in Dart"
+  title="Dart extension methods"
   src="{{site.bili.embed}}?aid=547449672&bvid=BV1Hq4y1M7zi&cid=391150414&page=1&autoplay=false"
   {{site.bili.set}}>
 </iframe>
@@ -290,5 +290,5 @@ For more information about extension methods, see the following:
 * [Extension methods sample][sample]
 
 [specification]: {{site.repo.dart.lang}}/blob/main/accepted/2.7/static-extension-methods/feature-specification.md#dart-static-extension-methods-design
-[article]: https://medium.com/dartlang/extension-methods-2d466cd8b308
+[article]: https://blog.dart.dev/extension-methods-2d466cd8b308
 [sample]: {{site.repo.dart.samples}}/tree/main/extension_methods

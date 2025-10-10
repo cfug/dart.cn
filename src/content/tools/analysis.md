@@ -1,8 +1,8 @@
 ---
 # title: Customizing static analysis
 title: 自定义静态分析
-# short-title: Static analysis
-short-title: 静态分析
+# shortTitle: Static analysis
+shortTitle: 静态分析
 # description: >-
 #   Use an analysis options file and code comments to customize static analysis.
 description: 通过对分析文件和代码注释来自定义静态分析的内容。
@@ -26,8 +26,7 @@ made its way into an `if` statement:
 在分析器的帮助下，你可以发现简单的拼写错误。
 例如，可能在 `if` 语句中不小心多打了一个分号：
 
-<blockquote class="ml-3">
-
+:::secondary
 <?code-excerpt "analysis/lib/lint.dart (empty_statements)" replace="/(if .*?)(;)/$1[!$2!]/g"?>
 ```dart showLineNumbers=8
 void increment() {
@@ -45,8 +44,7 @@ produces the following warning:
 ```plaintext
 info - example.dart:9:19 - Unnecessary empty statement. Try removing the empty statement or restructuring the code. - empty_statements
 ```
-
-</blockquote>
+:::
 
 The analyzer can also help you find more subtle problems.
 For example, perhaps you've forgotten to close a sink method:
@@ -54,8 +52,7 @@ For example, perhaps you've forgotten to close a sink method:
 分析器也能帮你找出更多细节问题。
 例如，也许你忘记关闭一个 sink 了：
 
-<blockquote class="ml-3">
-
+:::secondary
 <?code-excerpt "analysis/lib/lint.dart (close_sinks)" replace="/(contr.*?)(;)/[!$1!]$2/g"?>
 ```dart
 var [!controller = StreamController<String>()!];
@@ -65,8 +62,7 @@ var [!controller = StreamController<String>()!];
 ```plaintext
 info - Unclosed instance of 'Sink'. Try invoking 'close' in the function in which the 'Sink' was created. - close_sinks
 ```
-
-</blockquote>
+:::
 
 In the Dart ecosystem,
 the Dart Analysis Server and other tools use the
