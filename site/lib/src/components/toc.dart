@@ -95,7 +95,7 @@ final class _TocContents extends StatelessComponent {
   List<Component> _buildEntries(List<OnThisPageEntry> entries, int depth) {
     final nextDepth = depth + 1;
 
-    return [
+    final result = [
       for (final entry in entries)
         li([
           span(classes: 'sidenav-item', [
@@ -108,5 +108,8 @@ final class _TocContents extends StatelessComponent {
             ul(_buildEntries(entry.children, nextDepth)),
         ]),
     ];
+
+    // dart.cn | 在最终输出时添加换行，帮助 translator/tool/gulpfile.js 处理
+    return result.expand((item) => [item, text('\n')]).toList();
   }
 }
