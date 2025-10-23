@@ -40,9 +40,9 @@ to cover `import` and `export` directives. The guidelines apply equally to both.
 
 ### DO use strings in `part of` directives
 
-{% render 'linter-rule-mention.md', rules:'use_string_in_part_of_directives' %}
-
 ### **要** 在 `part of` 中使用字符串
+
+{% render 'linter-rule-mention.md', rules:'use_string_in_part_of_directives' %}
 
 Many Dart developers avoid using `part` entirely. They find it easier to reason
 about their code when each library is a single file. If you do choose to use
