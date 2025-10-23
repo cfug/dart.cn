@@ -1,9 +1,12 @@
 ---
 title: Make your CLI program interactive
-short-title: Add commands
+shortTitle: Add commands
 description: >-
   Add simple commands to your cli application. Learn the fundamentals of Dart
   syntax including control flow, collections, variables, functions, and more.
+sitemap: false
+noindex: true
+showToc: false
 prevpage:
   url: /get-started/hello-world
   title: Build your first app
@@ -11,6 +14,8 @@ nextpage:
   url: /get-started/async
   title: Intro to async and HTTP
 ---
+
+{% render 'fwe-wip-warning.md', site: site %}
 
 In this chapter, you'll get hands-on practice with Dart syntax. You'll learn how
 to read user input, print usage information, and create a basic command-line

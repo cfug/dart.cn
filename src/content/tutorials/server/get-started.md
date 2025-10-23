@@ -3,7 +3,7 @@
 title: 起步教程：编写命令行和服务端应用
 # description: Get Dart, run and compile a small app.
 description: 获取 Dart SDK，运行和编译一个小应用。
-js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
+js: [{url: '/assets/js/inject_dartpad.dart.js', defer: true}]
 prevpage:
   url: /tutorials/server
   # title: Dart command-line and server tutorials
@@ -76,7 +76,19 @@ More information:
 
 ## 2. 安装 Dart
 
-{% include 'get-sdk.md' %}
+To develop Dart apps, you need the Dart SDK.
+To continue with this guide,
+either [download the Dart SDK][dart-download] or
+[install Flutter][flutter-download],
+which includes the full Dart SDK.
+
+如果你需要 Dart SDK 来开发 Dart 应用。
+请 [下载 Dart SDK][dart-download] 或 
+[安装 Flutter][flutter-download]（包含完整的 Dart SDK），
+来继续本指南的流程。
+
+[dart-download]: /get-dart
+[flutter-download]: {{site.flutter-docs}}/get-started/install
 
 ## 3. Create a small app
 

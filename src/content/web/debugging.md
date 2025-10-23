@@ -1,8 +1,8 @@
 ---
 # title: Debugging Dart web apps
 title: 调试 Dart Web 应用
-# short-title: Debugging web apps
-short-title: 调试 Web 应用
+# shortTitle: Debugging web apps
+shortTitle: 调试 Web 应用
 # breadcrumb: Debugging
 breadcrumb: 调试
 # description: Learn how to debug your Dart web app.
@@ -194,7 +194,7 @@ update the tools by activating them again:
 $ dart pub global activate webdev     # update webdev
 ```
 
-{% include 'tools/debug-prod-js-code.md' %}
+{% render 'tools/debug-prod-js-code.md', site: site %}
 
 ## Resources
 

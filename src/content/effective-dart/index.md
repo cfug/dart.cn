@@ -227,4 +227,4 @@ Dart constructs.
 
 ## 所有准则摘要
 
-{% include './_toc.md' %}
+{% render 'effective-dart-toc.md' %}

@@ -31,12 +31,7 @@ Watch the following video for an overview of building and publishing packages.
 
 观看下面的视频以了解构建和发布 package 的基本流程。
 
-<iframe
-  {{yt.std-size}}
-  src="{{yt.embed}}/8V_TLiWszK0"
-  title="Learn how to build and publish Dart packages"
-  {{yt.set}}>
-</iframe>
+<YouTubeEmbed id="8V_TLiWszK0" title="How to build a package in Dart"></YouTubeEmbed>
 
 ## Remember: Publishing is forever
 
@@ -581,7 +576,7 @@ It lists the stable version as `1.6.0` and the preview version as `2.0.0`.
 当这个 package 发布到 pub.dev 上时，会被标记为预览版，如下图所示，
 `1.6.0` 是正式版而 `2.0.0` 是预览版。
 
-![Illustration of a preview version](/assets/img/tools/pub/preview-version.png){:width="600px"}<br>
+![Illustration of a preview version](/assets/img/tools/pub/preview-version.png){:width="600px"}
 
 When Dart releases the stable version of `3.0.0`,
 pub.dev updates the package listing to display

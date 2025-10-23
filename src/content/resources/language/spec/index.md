@@ -1,8 +1,8 @@
 ---
 # title: Dart language specification
 title: Dart 编程语言规范
-# short-title: Language specification
-short-title: 语言规范
+# shortTitle: Language specification
+shortTitle: 语言规范
 # breadcrumb: Specification
 breadcrumb: 规范
 # description: The formal specification for the Dart language.

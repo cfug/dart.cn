@@ -3,7 +3,7 @@
 title: Dart 语言开发文档
 # description: Learn to use the Dart language and libraries.
 description: 学习 Dart 语言。
-toc: false
+showToc: false
 showBreadcrumbs: false
 ---
 
@@ -27,9 +27,11 @@ To update these cards, edit src/_data/docs_cards.yml.
 
 <div class="card-grid">
 {% for card in docs_cards -%}
-  {% card card.name, card.url %}
-    {{card.description}}
-  {% endcard %}
+  <Card title="{{card.name}}" link="{{card.url}}">
+
+  {{card.description}}
+
+  </Card>
 {% endfor -%}
 </div>
 

@@ -5,7 +5,7 @@ title: 异步编程：使用 Stream
 breadcrumb: 使用 Stream
 # description: Learn how to consume single-subscriber and broadcast streams.
 description: 了解如何使用 single-subscriber 和 broadcast stream。
-js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
+js: [{url: '/assets/js/inject_dartpad.dart.js', defer: true}]
 ---
 
 :::secondary 本章的重点

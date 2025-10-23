@@ -160,7 +160,9 @@ consider migrating those libraries together.
 如果有一些循环引用的库（例如 A 引用了 B，B 引用了 C，C 引用了 A），
 建议同时对它们进行迁移。
 
-### Using the migration tool
+<a id="using-the-migration-tool" aria-hidden="true"></a>
+
+### Using the migration tool {: #migration-tool}
 
 ### 使用迁移工具
 

@@ -4,7 +4,7 @@ title: Dart 概览
 # description: A short introduction to Dart.
 description: Dart 入门指南
 showBreadcrumbs: false
-js: [{url: '/assets/js/inject_dartpad.js', defer: true}]
+js: [{url: '/assets/js/inject_dartpad.dart.js', defer: true}]
 ---
 
 <img
@@ -124,8 +124,10 @@ Stream<double> computePi({int batch = 100000}) async* {
     final ratio = count / total;
 
     // Area of a circle is A = π⋅r², therefore π = A/r².
-    // So, when given random points with x ∈ <0,1>,
-    // y ∈ <0,1>, the ratio of those inside a unit circle
+    // We consider only non-negative x and y (that is, the
+    // first quadrant), which doesn't change the ratio.
+    // So, when given random points with x ∈ [0, 1],
+    // y ∈ [0, 1], the ratio of those inside the unit circle
     // should approach π / 4. Therefore, the value of π
     // should be:
     yield ratio * 4;
@@ -406,9 +408,10 @@ Dart web contains three compilation modes:
 Dart Web 包含三种编译模式：
 
 * An incremental JavaScript development compiler enabling a fast developer 
-  cycle.
+  cycle with incremental recompilation (enabling hot reload).
 
-  一种为快速开发提供帮助的增量 JavaScript 编译器。
+  一种增量式的 JavaScript 编译器，
+  通过增量并重新编译实现快速开发（热重载）。
 
 * An optimizing JavaScript production compiler which compiles Dart code to fast,
   compact, deployable JavaScript. These efficiencies come from techniques such

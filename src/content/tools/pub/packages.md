@@ -1,8 +1,8 @@
 ---
 # title: How to use packages
 title: 如何使用 package
-# short-title: Packages
-short-title: Package
+# shortTitle: Packages
+shortTitle: Package
 # breadcrumb: Overview
 breadcrumb: 概览
 # description: Learn more about pub, Dart's tool for managing packages.

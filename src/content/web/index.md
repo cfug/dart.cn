@@ -1,10 +1,10 @@
 ---
 # title: Web platform
 title: Web 平台
-short-title: Web
+shortTitle: Web
 # description: Resources for developing Dart web apps.
 description: 开发 Dart Web 应用时候需要的资源列表。
-toc: false
+showToc: false
 ---
 
 Dart supports the web as one of its core [platforms](/overview#platform).

@@ -46,9 +46,9 @@ your app's `pubspec.yaml` file:
 ```yaml
   dev_dependencies:
     # ···
-    build_runner: ^2.4.15
-    build_test: ^2.2.3
-    build_web_compilers: ^4.1.5
+    build_runner: ^2.8.0
+    build_test: ^3.4.0
+    build_web_compilers: ^4.2.3
 ```
 
 As usual after `pubspec.yaml` changes, run `dart pub get` or 

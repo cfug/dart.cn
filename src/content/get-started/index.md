@@ -1,15 +1,18 @@
 ---
 title: Learn Dart
-short-title: Learn
+shortTitle: Learn
 breadcrumb: Tutorial
 description: >-
   Begin your Dart learning journey by building an interactive CLI app.
+sitemap: false
+noindex: true
+showToc: false
 nextpage:
   url: /get-started/hello-world
   title: Build your first app
 ---
 
-{% include 'fwe-wip-warning.md' %}
+{% render 'fwe-wip-warning.md', site: site %}
 
 ## Set up Dart {: #set-up }
 
@@ -33,3 +36,4 @@ follow the instructions on how to [Get the Dart SDK][].
 9. [Data and JSON](/get-started/data-and-json)
 10. [Testing](/get-started/testing)
 11. [Http](/get-started/http)
+12. [Logging](/get-started/logging)

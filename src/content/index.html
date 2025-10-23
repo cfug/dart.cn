@@ -1,5 +1,4 @@
 ---
-layout: homepage
 <!-- title: Dart programming language -->
 title: Dart 编程语言主页 | Dart 中文文档
 <!-- description: >-
@@ -8,29 +7,15 @@ title: Dart 编程语言主页 | Dart 中文文档
 description: >-
   Dart 是一个易用、可移植且高效的语言，
   适用于在全平台开发高质量的应用程序。
+layout: homepage
+bodyClass: homepage no-toc
+focusedLayout: true
 showBreadcrumbs: false
 ---
-<!-- Hero animation -->
-<section class="dash-header">
-    <video autoplay loop muted playsinline>
-        <source src="assets/dash/video/hotreload.webm"
-                type='video/webm;codecs="vp8, vorbis"' />
-        <source src="assets/dash/video/hotreload.mp4"
-                type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-        <img src="assets/dash/2x/paint-your-ui.png" alt="Paint your UI" />
-    </video>
-    <img src="assets/dash/2x/paint-your-ui.png" alt="Paint your UI to life"/>
-</section>
-
 <!-- Dart tag-line -->
-<section class="dash-header-callout">
+<section id="site-content-title" class="dash-header-callout">
     <div class="callout-title">
         Dart 是一个易用、可移植且高效的语言，适用于在全平台开发高质量的应用程序。
-    </div>
-    <div class="callout-button">
-        <a href="https://www.youtube.com/watch?v=5F-6n_2XWR8" target="_blank">
-            <span class="material-symbols">play_circle</span><span>Watch video</span>
-        </a>
     </div>
 
     <img class="made-by" src="assets/dash/2x/supported-by-google.png" alt="Supported by Google"/>
@@ -54,17 +39,16 @@ showBreadcrumbs: false
         </div>
     </div>
     <div class="feature">
+        <div class="feature-icon"><img src="assets/dash/2x/productive-dev-light-op1.png" alt="Productive development"/></div>
+        <div class="feature-title">在全平台<br/>极速运行</div>
+        <div class="feature-desc">可编译为移动端、桌面端及后端的 ARM、x64、RISC-V 的二进制文件，
+        或是为 Web 平台编译 Javascript & WebAssembly。</div>
+    </div>
+    <div class="feature">
         <div class="feature-icon"><img src="assets/dash/2x/client-optimized-light-op1.png" alt="Client optimised"/></div>
         <div class="feature-title">研发生产力<br/>提高</div>
         <div class="feature-desc">反复地修改: 在正在运行的应用中
         使用热重载立刻看到你的修改。
-        </div>
-    </div>
-    <div class="feature">
-        <div class="feature-icon"><img src="assets/dash/2x/productive-dev-light-op1.png" alt="Productive development"/></div>
-        <div class="feature-title">在全平台<br/>极速运行</div>
-        <div class="feature-desc">可编译为移动端、桌面端及后端的 ARM、x64、RISC-V 的二进制文件，
-        或是为 Web 平台编译 Javascript & WebAssembly。
         </div>
     </div>
 </section>
@@ -120,6 +104,50 @@ showBreadcrumbs: false
 
     <section class="dash-row">
         <div class="content-image">
+            <img class="galleryThree" src="assets/dash/svg/3-1-aot-compile.svg" alt="Compiling dart file"/>
+        </div>
+        <div class="content-info">
+            <div class="content-container">
+                <div class="content-icon"><img src="assets/dash/2x/productive-dev-light-op1.png" alt="Multiplatform performance"/></div>
+                <div class="content-feature">在全平台极速运行</div>
+                <div class="content-desc" id="galleryThree">
+                    <ul class="selector">
+                        <li class="highlight" tabindex="0" data-banner="assets/dash/svg/3-1-aot-compile.svg">
+                                <div class="bullet-container" aria-hidden="true">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    使用 <a href="/overview#native-platform">AOT 编译</a>为机器码，
+                                    <a href="https://github.com/timsneath/time">极速启动</a> 你的应用。
+                                </div>
+                        </li>
+                        <li tabindex="0" data-banner="assets/dash/svg/3-2-target-web.svg">
+                                <div class="bullet-container" aria-hidden="true">
+                                    <div class="animated-bullet"></div>
+                                </div>
+                                <div class="bullet-text">
+                                    使用完整、成熟且快速的
+                                    <a href="/overview#web-platform">JavaScript & WebAssembly 编译器</a>
+                                    为 Web 平台编译应用。
+                                </div>
+                        </li>
+                        <li tabindex="0" data-banner="assets/dash/svg/3-3-backend-code.svg">
+                            <div class="bullet-container" aria-hidden="true">
+                                <div class="animated-bullet"></div>
+                            </div>
+                            <div class="bullet-text">
+                                仅用一种语言即可编写应用的
+                                <a href="/tutorials/server/httpserver">后端代码</a>。
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dash-row">
+        <div class="content-image">
             <img class="galleryTwo" src="assets/dash/svg/2-1-hot-reload-iterative-changes.svg" alt="Hot reload your changes"/>
         </div>
         <div class="content-info">
@@ -164,49 +192,6 @@ showBreadcrumbs: false
         </div>
     </section>
 
-    <section class="dash-row">
-        <div class="content-image">
-            <img class="galleryThree" src="assets/dash/svg/3-1-aot-compile.svg" alt="Compiling dart file"/>
-        </div>
-        <div class="content-info">
-            <div class="content-container">
-                <div class="content-icon"><img src="assets/dash/2x/productive-dev-light-op1.png" alt="Multiplatform performance"/></div>
-                <div class="content-feature">在全平台极速运行</div>
-                <div class="content-desc" id="galleryThree">
-                    <ul class="selector">
-                        <li class="highlight" tabindex="0" data-banner="assets/dash/svg/3-1-aot-compile.svg">
-                            <div class="bullet-container" aria-hidden="true">
-                                <div class="animated-bullet"></div>
-                            </div>
-                            <div class="bullet-text">
-                                使用 <a href="/overview#native-platform">AOT 编译</a>为机器码，
-                                <a href="https://github.com/timsneath/time">极速启动</a> 你的应用。
-                            </div>
-                        </li>
-                        <li tabindex="0" data-banner="assets/dash/svg/3-2-target-web.svg">
-                            <div class="bullet-container" aria-hidden="true">
-                                <div class="animated-bullet"></div>
-                            </div>
-                            <div class="bullet-text">
-                                使用完整、成熟且快速的
-                                <a href="/overview#web-platform">JavaScript & WebAssembly 编译器</a>
-                                为 Web 平台编译应用。
-                            </div>
-                        </li>
-                        <li tabindex="0" data-banner="assets/dash/svg/3-3-backend-code.svg">
-                            <div class="bullet-container" aria-hidden="true">
-                                <div class="animated-bullet"></div>
-                            </div>
-                            <div class="bullet-text">
-                                仅用一种语言即可编写应用的
-                                <a href="/tutorials/server/httpserver">后端代码</a>。
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="dash-dartpad-row">
         <div class="dash-dartpad">
             <a id="try-dart" class="frontanchor" aria-hidden="true"></a>

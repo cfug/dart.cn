@@ -1,9 +1,9 @@
 ---
 title: Native interop with Dart
-short-title: Interop
+shortTitle: Interop
 description: >-
   Learn to interact with native code and other programming languages from Dart.
-toc: false
+showToc: false
 sitemap: false
 noindex: true
 ---

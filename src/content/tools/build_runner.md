@@ -69,8 +69,8 @@ to your app's pubspec:
 ```yaml
 dev_dependencies:
   # ···
-  build_runner: ^2.4.15
-  build_test: ^2.2.3
+  build_runner: ^2.8.0
+  build_test: ^3.4.0
 ```
 
 Depending on **build_test** is optional; do it if you'll be testing your code.
@@ -136,44 +136,29 @@ build_runner 中包含下述几个命令：
 
 ## 更多信息
 
-If you're working on web-specific code,
-see the [webdev page.][webdev]
+* [webdev][] guide (use if you're working on web-specific code)
 
-如果你编写的代码针对的是 Web 应用，请查阅 [webdev 页面][webdev]。
+  [webdev][] 指南（适用于开发 Web 特定的代码）
 
-For details on using build_runner, see the following:
+* [build_runner][] guide
 
-你也可以通过下述链接查阅更多有关如何使用 build_runner 相关命令的信息：
+  [build_runner][] 指南
 
-- Documentation for packages that require you to use build_runner.
-  These packages generally have a dependency
-  [on build][] or [on build_runner.][]
+* [packages with the `build_runner` dependency][]
 
-  如果某个 Package 需要使用 build_runner，请认真阅读该 Package 的文档。
-  这些 Package 通常都需要依赖
-  [build][on build] 或 [build_runner][on build_runner.]。
+  [包含 `build_runner` 依赖项的 package][packages with the `build_runner` dependency]
 
-- Build_runner documentation:
+* [packages with the `build` dependency][]
 
-  build_runner 的相关文档：
-
-  - [Getting started with build_runner][]
-
-    [开始使用 build_runner][Getting started with build_runner]
-
-  - [Build FAQ][]
-
-    [构建常见问题][Build FAQ]
+  [包含 `build` 依赖项的 package][packages with the `build` dependency]
 
 [build]: {{site.repo.dart.org}}/build
-[Build FAQ]: {{site.repo.dart.org}}/build/blob/master/docs/faq.md
 [build_runner]: {{site.pub-pkg}}/build_runner
 [built_value_generator]: {{site.pub-pkg}}/built_value_generator
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
-[Getting started with build_runner]: {{site.repo.dart.org}}/build/blob/master/docs/getting_started.md
 [json_serializable]: {{site.pub-pkg}}/json_serializable
-[on build]: {{site.pub-pkg}}?q=dependency%3Abuild
-[on build_runner.]: {{site.pub-pkg}}?q=dependency%3Abuild_runner
+[packages with the `build` dependency]: {{site.pub-pkg}}?q=dependency%3Abuild
+[packages with the `build_runner` dependency]: {{site.pub-pkg}}?q=dependency%3Abuild_runner
 [sass_builder]: {{site.pub-pkg}}/sass_builder
 [tests]: /tools/testing
 [webdev]: /tools/webdev

@@ -3,7 +3,7 @@
 title: 使用 Visual Studio Code 开发 Dart 应用
 # description: You can use VS Code to develop Dart apps.
 description: 你可以使用 VS Code 开发 Dart 应用。
-toc: false
+showToc: false
 ---
 
 To develop Dart apps,
