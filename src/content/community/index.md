@@ -77,7 +77,7 @@ Get answers and connect with Dart developers.
 
 ### Communities
 
-## 社区
+### 社区
 
 <div class="card-grid">
   <Card title="StackOverflow" link="https://stackoverflow.com/tags/dart">
