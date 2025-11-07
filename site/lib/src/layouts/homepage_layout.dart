@@ -11,4 +11,7 @@ class HomepageLayout extends DashLayout {
 
   @override
   String get name => 'homepage';
+
+  @override
+  List<String> get defaultBodyClasses => ['sidenav-hidden', 'no-toc'];
 }

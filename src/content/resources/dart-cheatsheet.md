@@ -6,7 +6,6 @@ breadcrumb: 速查表
 # description: Interactively learn (or relearn) some of Dart's unique features.
 description: 用交互的形式学习（或回顾）Dart 的独特之处。
 maxTocDepth: 2
-js: [{url: '/assets/js/inject_dartpad.dart.js', defer: true}]
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 

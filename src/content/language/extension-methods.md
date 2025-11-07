@@ -4,8 +4,8 @@ title: Extension 方法
 # description: Learn how to add to existing APIs.
 description: 了解如何添加现有 API。
 prevpage:
-  url: /language/enums
-  title: Enums
+  url: /language/dot-shorthands
+  title: Dot shorthands
 nextpage:
   url: /language/extension-types
   title: Extension types

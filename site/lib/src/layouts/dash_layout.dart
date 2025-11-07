@@ -2,15 +2,18 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'dart:convert';
+
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
 import '../client/global_scripts.dart';
-// import '../components/cookie_notice.dart';
-import '../components/footer.dart';
-import '../components/header.dart';
-import '../components/sidenav.dart';
+// import '../components/common/client/cookie_notice.dart';
+import '../components/layout/footer.dart';
+import '../components/layout/header.dart';
+import '../components/layout/sidenav.dart';
 import '../models/sidenav_model.dart';
+import '../style_hash.dart';
 import '../util.dart';
 
 /// The base Jaspr Content layout for wrapping site content.
@@ -19,6 +22,8 @@ abstract class DashLayout extends PageLayoutBase {
 
   @override
   String get name;
+
+  List<String> get defaultBodyClasses => [];
 
   @override
   @mustCallSuper
@@ -113,9 +118,13 @@ abstract class DashLayout extends PageLayoutBase {
         href:
             'https://fonts.googleapis.cn/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0',
       ),
-      link(rel: 'stylesheet', href: '/assets/css/main.css?v=3'),
+      link(
+        rel: 'stylesheet',
+        href:
+            '/assets/css/main.css?'
+            'hash=${htmlEscape.convert(generatedStylesHash)}',
+      ),
 
-      script(src: '/assets/js/main.js?v=4'),
       if (pageData['js'] case final List<Object?> jsList)
         for (final js in jsList)
           if (js case {'url': final String jsUrl, 'defer': final Object? defer})
@@ -135,27 +144,7 @@ abstract class DashLayout extends PageLayoutBase {
       ),
 
       // Set up tag manager and analytics.
-      //       raw('''
-      // <script>
-      //   window.dataLayer = window.dataLayer || [];
-      // </script>
-      // <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      // new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      // j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      // 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      // })(window,document,'script','dataLayer','GTM-5VSZM5J');</script>
-      // '''),
-      //       raw('''
-      // <script>
-      // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      // })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      // ga('create', 'UA-26406144-4', 'auto');
-      // ga('send', 'pageview');
-      // </script>
-      // '''),
+      // ...
 
       // dart.cn - Global site tag (gtag.js) - Google Analytics
       raw('''
@@ -194,7 +183,17 @@ abstract class DashLayout extends PageLayoutBase {
 
     return Component.fragment(
       [
-        if (bodyClass != null) Document.body(attributes: {'class': bodyClass}),
+        const Document.html(
+          attributes: {
+            'lang': 'zh-cmn-Hans',
+            'dir': 'ltr',
+          },
+        ),
+        Document.body(
+          attributes: {
+            'class': [?bodyClass, ...defaultBodyClasses].toClasses,
+          },
+        ),
         //         raw('''
         // <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         // '''),

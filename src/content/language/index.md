@@ -368,12 +368,38 @@ if (!yourPlanet.isGiant) {
 }
 ```
 
+When the compiler can infer the enum type from the context, 
+you can use the more concise dot-shorthand syntax to access enum values. 
+Instead of writing the full `EnumName.value`, 
+you can just write `.value`. This can make your code cleaner 
+and easier to read.
+
+
+For example, when declaring a variable with an explicit type of `Planet`, 
+you can omit the enum name because 
+the type of `Planet` is already established:
+
+
+```dart
+// Instead of the full, explicit syntax:
+Planet myPlanet = Planet.venus;
+
+// You can use a dot shorthand:
+Planet myPlanet = .venus;
+```
+
+Dot shorthands aren't limited to variable declarations. 
+They can also be used in contexts like function arguments 
+and switch cases where the enum type is clear to the compiler.
+
 [Read more](/language/enums) about enums in Dart,
 including enhanced enum requirements, automatically introduced properties,
 accessing enumerated value names, switch statement support, and much more.
+[Read more](/language/dot-shorthands) about dot shorthand syntax. 
 
 你可以 [阅读更多](/language/enums) Dart 中有关枚举的内容，
 包括增强型枚举的限制条件、枚举默认包含的属性、如何获取枚举值的名称以及在 `switch` 语句中使用枚举等等。
+你还可以 [阅读更多](/language/dot-shorthands) 关于点的简写语法。
 
 ## Inheritance
 

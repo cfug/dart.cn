@@ -1,12 +1,12 @@
 ---
 title: Logging
-shortTitle: Logging
+short-title: Logging
 description: >-
   Learn how to add logging to your Dart application to help with debugging and
   monitoring.
 sitemap: false
 noindex: true
-showToc: false
+layout: learn
 prevpage:
   url: /get-started/http
   title: Http
