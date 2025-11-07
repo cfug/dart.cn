@@ -46,7 +46,7 @@ we made the following changes to docs on this site:
 
 [JNIGen documentation]: /interop/java-interop
 [`dart compile` documentation]: /tools/dart-compile
-[Dart MCP Server guide]: /tools/mcp-server
+[Dart MCP Server guide]: {{site.flutter-docs}}/ai/mcp-server
 [`dart create` page]: /tools/dart-create
 [metadata and annotations documentation]: /language/metadata
 ["external resource type"]: {{site.repo.this}}/pull/6762
@@ -713,7 +713,7 @@ we made the following changes to this site:
 
 * Introduced the [Fetch data from the internet][] tutorial about using `package:http`.
 * Added a page on [Automated publishing of packages to pub.dev][].
-* Included links to two new site translations in our [community resources section][]:
+* Included links to two new site translations in our [community resources][] section:
   * [Korean version of this site (한국어)](https://dart-ko.dev/)
   * [Traditional Chinese version of this site (正體中文版)](https://dart.tw.gh.miniasp.com/)
 * Updated null safety content in preparation of Dart 3:
@@ -747,7 +747,7 @@ we made the following changes to this site:
  
 [Fetch data from the internet]: /tutorials/server/fetch-data
 [Automated publishing of packages to pub.dev]: /tools/pub/automated-publishing
-[community resources section]: /community#additional-community-resources
+[community resources]: /community
 [migration guide]: /null-safety/migration-guide
 [unsound null safety]: /null-safety/unsound-null-safety
 [Learning Dart as a Swift developer]: /resources/coming-from/swift-to-dart

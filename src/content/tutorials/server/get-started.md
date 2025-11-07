@@ -3,7 +3,6 @@
 title: 起步教程：编写命令行和服务端应用
 # description: Get Dart, run and compile a small app.
 description: 获取 Dart SDK，运行和编译一个小应用。
-js: [{url: '/assets/js/inject_dartpad.dart.js', defer: true}]
 prevpage:
   url: /tutorials/server
   # title: Dart command-line and server tutorials

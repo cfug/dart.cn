@@ -60,6 +60,8 @@
           permalink: /language/mixins
         - title: 枚举
           permalink: /language/enums
+        - title: 点的简写
+          permalink: /language/dot-shorthands
         - title: 扩展方法
           permalink: /language/extension-methods
         - title: 扩展类型
@@ -262,7 +264,7 @@
   - title: AI
     children:
         - title: Dart 和 Flutter 的 MCP Server
-          permalink: /tools/mcp-server
+          permalink: https://docs.flutter.cn/ai/mcp-server
   - title: 编辑器和调试工具
     children:
       - title: 使用 IntelliJ 和 Android Studio
@@ -288,6 +290,8 @@
           permalink: /tools/dart-tool
         - title: dart analyze 命令
           permalink: /tools/dart-analyze
+        - title: dart build 命令
+          permalink: /tools/dart-build
         - title: dart compile 命令
           permalink: /tools/dart-compile
         - title: dart create 命令

@@ -6,11 +6,8 @@ breadcrumb: 社区
 # description: Communities, mailing lists, and bug databases for the Dart project.
 description: Dart 项目的社区、邮件列表和 Bug 跟踪。
 group: https://groups.google.com/a/dartlang.org
+showBreadcrumbs: false
 ---
-
-Track the Dart project, get help, and talk with other Dart developers.
-
-请持续关注 Dart 项目的进展，你可以在 Dart 社区获取到帮助以及与其他 Dart 开发者交流。
 
 We pledge to maintain an open and welcoming environment.
 To learn more about our community standards, check out
@@ -20,93 +17,22 @@ our [code of conduct](/community/code-of-conduct).
 
 ## Stay informed
 
-## 请持续关注下列消息源
+## 最新动态
 
-[Dart announce]({{page.group}}/d/forum/announce)
-<br> Low-traffic announcements of new releases, breaking changes,
-  and other important news. Recommended!
-
-[Dart 公告群组]({{page.group}}/d/forum/announce)
-<br> 第一时间公布新的发行版本、重大变化以及其他重要新闻。推荐！
-
-[@dart.dev](https://bsky.app/profile/dart.dev)
-<br> Dart's official Bluesky account.
-
-[@dart.dev](https://bsky.app/profile/dart.dev)
-<br> Dart 官方的 Bluesky 账号.
-
-[@dart_lang](https://twitter.com/dart_lang)
-<br> Dart's official X (Twitter) account.
-
-[@dart_lang](https://twitter.com/dart_lang)
-<br> Dart 官方的 X (Twitter) 账号。
-
-[Dart blog](https://blog.dart.dev)
-<br> The latest news and insights from a diverse group of Dart users.
-
-[Dart 博客](https://blog.dart.dev)
-<br> 来自不同 Dart 用户群体的最新消息和观点。
-
-## Join the conversation
-
-## 加入讨论
-
-Get answers and connect with Dart developers.
-
-提问以及寻求答案，同时与其他 Dart 开发者交流。
-
-#### Communities
-
-#### 社区
-
-[StackOverflow](https://stackoverflow.com/tags/dart)
-<br> The best place for how-to questions.
-
-[StackOverflow](https://stackoverflow.com/tags/dart)
-<br> 提问题的最佳场所。
-
-[The dart_community Discord](https://discord.gg/Qt6DgfAWWx)
-<br> Chat with and get help from other Dart developers.
-
-[Dart on Reddit](https://www.reddit.com/r/dartlang)
-<br> The subreddit for all things related to Dart.
-
-[Dart on Reddit](https://www.reddit.com/r/dartlang)
-<br> Reddit 上的 Dart 内容子区。
-
-[The Unofficial Dart Community Discord](https://discord.gg/Qt6DgfAWWx)
-<br> Chat with and get help from other Dart developers.
-
-[非 Dart 官方的 Discord 社区频道](https://discord.gg/Qt6DgfAWWx)
-<br> 与其他 Dart 开发者交流及寻求帮助。
-
-[It's All Widgets Flutter Forum](https://forum.itsallwidgets.com/)
-<br> Asynchronously discuss anything Flutter or Dart related.
-
-[It's All Widgets Flutter 论坛](https://forum.itsallwidgets.com/)
-<br> 讨论任何与 Flutter 或 Dart 相关的内容。
-
-[Flutter communities]({{site.flutter}}/community#community-grid)
-<br> Discuss and get help with Flutter.
-
-[Flutter 社区]({{site.flutter}}/community#community-grid)
-<br> 讨论 Flutter 或寻求帮助.
-
-#### Google Groups
-
-#### Google 团队讨论组
-
-[General discussions]({{page.group}}/d/forum/misc)
-<br> Discuss miscellaneous Dart topics.
-
-[通用讨论区]({{page.group}}/d/forum/misc)
-<br> 讨论 Dart 的各种话题。
-
-[Dart analyzer]({{page.group}}/d/forum/analyzer-discuss)
-<br> Get help understanding the [Dart analyzer](/tools/dart-analyze).
-
-[Dart analyzer]({{page.group}}/d/forum/analyzer-discuss)
-<br> 讨论 [Dart analyzer](/tools/dart-analyze) 的深入理解。
+<div class="card-grid">
+  <Card title="Dart 公告群组" link="{{page.group}}/d/forum/announce">
+    第一时间公布新的发行版本、重大变化以及其他重要新闻。推荐！
+  </Card>
+  <Card title="Dart blog" link="https://blog.dart.dev">
+    来自不同 Dart 用户群体的最新消息和观点。
+  </Card>
+  <Card title="@dart_lang" link="https://twitter.com/dart_lang">
+     Dart 官方的 X (Twitter) 账号。
+  </Card>
+  <Card title="@dart.dev" link="https://bsky.app/profile/dart.dev">
+    Dart 官方的 Bluesky 账号.
+  </Card>
+</div>
 
 ## Contribute
 
@@ -119,44 +45,67 @@ Learn how to
 Dart 是开源项目。了解如何
 [为核心 SDK 做贡献]({{site.repo.dart.sdk}}/blob/main/CONTRIBUTING.md)。
 
-[Dart GitHub repositories]({{site.repo.dart.org}}/)
-<br> Track new changes and contribute to various Dart projects.
+<div class="card-grid">
+  <Card title="Dart GitHub 仓库" link="{{site.repo.dart.org}}/">
+    跟踪改动并为 Dart 的各类项目作出贡献。
+  </Card>
+  <Card title="Dart code reviews" link="{{page.group}}/d/forum/reviews">
+    所有核心 SDK 的高频率 code review 列表。
+  </Card>
+  <Card title="Dart SDK 仓库" link="{{site.repo.dart.sdk}}">
+    Dart SDK，包含 VM、JS 和 Wasm 编译器、分析工具、核心库等。
+  </Card>
+  <Card title="Dart 语言仓库" link="{{site.repo.dart.lang}}">
+    Dart 语言的设计
+  </Card>
+  <Card title="Dart 文档网站仓库" link="{{site.repo.this}}/">
+    Dart 文档网站的源代码，使用 Jaspr 构建。
+  </Card>
+  <Card title="DartPad" link="{{site.dartpad}}/">
+    在线 Dart 编辑器：支持控制台、网页和 Flutter 应用
+  </Card>
+</div>
 
-[Dart GitHub 仓库]({{site.repo.dart.org}}/)
-<br> 跟踪改动并为 Dart 的各类项目作出贡献。
 
-  * [Core SDK]({{site.repo.dart.sdk}}/)
-    ([issue tracker]({{site.repo.dart.sdk}}/issues/))
+## Join the conversation
 
-    [核心 SDK]({{site.repo.dart.sdk}}/)
-    （[跟踪 issue]({{site.repo.dart.sdk}}/issues/)）
+## 加入讨论
 
-  * [The Dart Language]({{site.repo.dart.lang}})
-    ([issue tracker]({{site.repo.dart.lang}}/issues))
+Get answers and connect with Dart developers.
 
-  * [Dart 语言]({{site.repo.dart.lang}})
-    （[跟踪 issue]({{site.repo.dart.lang}}/issues)）
+提问以及寻求答案，同时与其他 Dart 开发者交流。
 
-  * [This site]({{site.repo.this}}/)
-    ([issue tracker]({{site.repo.this}}/issues/))
+### Communities
 
-    [当前网站仓库]({{site.repo.this}}/)
-    （[跟踪 issue]({{site.repo.this}}/issues/)）
+## 社区
 
-[Dart reviews]({{page.group}}/d/forum/reviews)
-<br> High-traffic list of all core SDK code reviews.
+<div class="card-grid">
+  <Card title="StackOverflow" link="https://stackoverflow.com/tags/dart">
+    提问题的最佳场所。
+  </Card>
+  <Card title="dart_community Discord" link="https://discord.gg/Qt6DgfAWWx">
+    与其他 Dart 开发者交流及寻求帮助。
+  </Card>
+  <Card title="Reddit 上的 Dart" link="https://www.reddit.com/r/dartlang">
+    Reddit 上的 Dart 内容子区。
+  </Card>
+  <Card title="It's All Widgets Flutter 论坛" link="https://forum.itsallwidgets.com/">
+    讨论任何与 Flutter 或 Dart 相关的内容。
+  </Card>
+  <Card title="Flutter 社区" link="{{site.flutter}}/community#community-grid">
+    讨论 Flutter 或寻求帮助.
+  </Card>
+</div>
 
-[Dart reviews]({{page.group}}/d/forum/reviews)
-<br> 所有核心 SDK 的高频率 code review 列表。
+### Google Groups
 
-## Additional community resources
+### Google 团队讨论组
 
-## 其他社区资源
-
-Our wonderful community has provided these resources:
-
-我们丰富的社区还提供了这些资源。
-
-* [Korean version of this site (한국어)](https://dart-ko.dev/)
-* [Simplified Chinese version of this site (简体中文版)](https://dart.cn)
-* [Traditional Chinese version of this site (正體中文版)](https://dart.tw.gh.miniasp.com/)
+<div class="card-grid">
+  <Card title="通用讨论区" link="{{page.group}}/d/forum/misc">
+    讨论 Dart 的各种话题。
+  </Card>
+  <Card title="Dart analyzer" link="{{page.group}}/d/forum/analyzer-discuss>">
+    获取有关 Dart analyzer 的帮助。
+  </Card>
+</div>

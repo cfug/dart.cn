@@ -43,11 +43,11 @@ final class AlertBlockSyntax extends md.BlockSyntax {
     final match = pattern.firstMatch(parser.current.content);
     if (match == null) return null;
 
-    final alertType = match.group(1)!.toLowerCase();
+    final alertType = _AlertType.fromTypeId(match.group(1)!.toLowerCase());
     var title = match.group(2)?.trim();
 
     if (title == null || title.isEmpty) {
-      title = _defaultTitleForType(alertType);
+      title = alertType.defaultTitle;
     }
 
     // Advance past the opening line.
@@ -79,12 +79,12 @@ final class AlertBlockSyntax extends md.BlockSyntax {
     if (title != null && title.isNotEmpty) {
       final headerChildren = <md.Node>[];
 
-      // If the type is any but 'secondary', add an icon.
-      if (alertType != 'secondary') {
-        final iconElement =
-            md.Element('span', [md.Text(_iconIdForType(alertType))])
-              ..attributes['class'] = 'material-symbols'
-              ..attributes['aria-hidden'] = 'true';
+      // If the type has a corresponding icon, add it to the header.
+      if (alertType.iconId case final iconId?) {
+        final iconElement = md.Element('span', [md.Text(iconId)])
+          ..attributes['class'] = 'material-symbols'
+          ..attributes['translate'] = 'no'
+          ..attributes['aria-hidden'] = 'true';
         headerChildren.add(iconElement);
       }
 
@@ -102,44 +102,98 @@ final class AlertBlockSyntax extends md.BlockSyntax {
     alertChildren.add(contentElement);
 
     final alertElement = md.Element('aside', alertChildren)
-      ..attributes['class'] = 'alert ${_cssClassForType(alertType)}';
+      ..attributes['class'] = 'alert ${alertType.cssClass}';
 
     return alertElement;
   }
+}
 
-  /// Returns the default title for the given [alertType].
-  String? _defaultTitleForType(String alertType) => switch (alertType) {
-    'note' => '提示',
-    'flutter-note' => 'Flutter 提示',
-    'version-note' => '版本提示',
-    'tip' => '小提示',
-    'recommend' => '推荐',
-    'important' => '重点提醒',
-    'warning' => '请注意',
-    'caution' => '小心',
-    'secondary' || _ => null,
-  };
+/// The supported types of alerts, otherwise known as asides or callouts.
+enum _AlertType {
+  experimental(
+    cssClass: 'alert-warning',
+    iconId: 'construction',
+    defaultTitle: '实验性',
+  ),
+  note(
+    cssClass: 'alert-info',
+    iconId: 'info',
+    defaultTitle: '提示',
+  ),
+  flutterNote(
+    cssClass: 'alert-info',
+    iconId: 'flutter',
+    defaultTitle: 'Flutter 提示',
+  ),
+  versionNote(
+    cssClass: 'alert-info',
+    iconId: 'merge_type',
+    defaultTitle: '版本提示',
+  ),
+  tip(
+    cssClass: 'alert-success',
+    iconId: 'lightbulb',
+    defaultTitle: '小提示',
+  ),
+  recommend(
+    cssClass: 'alert-success',
+    iconId: 'bolt',
+    defaultTitle: '推荐',
+  ),
+  important(
+    cssClass: 'alert-important',
+    iconId: 'feedback',
+    defaultTitle: '重点提醒',
+  ),
+  warning(
+    cssClass: 'alert-warning',
+    iconId: 'warning',
+    defaultTitle: '请注意',
+  ),
+  caution(
+    cssClass: 'alert-error',
+    iconId: 'error',
+    defaultTitle: '小心',
+  ),
+  secondary(
+    cssClass: 'alert-secondary',
+  );
 
-  /// Returns the appropriate CSS class for the given [alertType].
-  String _cssClassForType(String alertType) => switch (alertType) {
-    'note' || 'version-note' || 'flutter-note' => 'alert-info',
-    'tip' || 'recommend' => 'alert-success',
-    'important' => 'alert-important',
-    'warning' => 'alert-warning',
-    'caution' => 'alert-danger',
-    _ => 'alert-secondary',
-  };
+  /// The CSS class to add to `aside` element
+  final String cssClass;
 
-  /// Returns the appropriate icon name for the given [alertType].
-  String _iconIdForType(String alertType) => switch (alertType) {
-    'note' => 'info',
-    'flutter-note' => 'flutter',
-    'version_note' => 'merge_type',
-    'tip' => 'lightbulb',
-    'recommend' => 'bolt',
-    'important' => 'feedback',
-    'warning' => 'warning',
-    'caution' => 'error',
-    _ => 'info',
+  /// The Material Symbols icon ID to display in the alert header.
+  ///
+  /// If `null`, no icon is displayed.
+  final String? iconId;
+
+  /// The default title to display in the alert header if
+  /// no title is explicitly provided in the Markdown.
+  ///
+  /// If `null`, no title will be displayed if one wasn't explicitly provided.
+  final String? defaultTitle;
+
+  const _AlertType({
+    required this.cssClass,
+    this.iconId,
+    this.defaultTitle,
+  });
+
+  /// Returns the [_AlertType] corresponding to the given [typeId].
+  ///
+  /// If the [typeId] does not match any known type,
+  /// an [ArgumentError] is thrown.
+  static _AlertType fromTypeId(String typeId) => switch (typeId) {
+    'experimental' => _AlertType.experimental,
+    'note' => _AlertType.note,
+    'flutter-note' => _AlertType.flutterNote,
+    'version-note' => _AlertType.versionNote,
+    'tip' => _AlertType.tip,
+    'recommend' => _AlertType.recommend,
+    'important' => _AlertType.important,
+    'warning' => _AlertType.warning,
+    'caution' => _AlertType.caution,
+    'secondary' => _AlertType.secondary,
+    _ => throw ArgumentError('Unknown alert type: $typeId'),
   };
 }

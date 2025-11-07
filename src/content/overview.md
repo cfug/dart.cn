@@ -4,7 +4,6 @@ title: Dart 概览
 # description: A short introduction to Dart.
 description: Dart 入门指南
 showBreadcrumbs: false
-js: [{url: '/assets/js/inject_dartpad.dart.js', defer: true}]
 ---
 
 <img
