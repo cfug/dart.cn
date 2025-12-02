@@ -368,16 +368,23 @@ if (!yourPlanet.isGiant) {
 }
 ```
 
-When the compiler can infer the enum type from the context, 
-you can use the more concise dot-shorthand syntax to access enum values. 
-Instead of writing the full `EnumName.value`, 
-you can just write `.value`. This can make your code cleaner 
+When the compiler can infer the enum type from the context,
+you can use the more concise dot-shorthand syntax to access enum values.
+Instead of writing the full `EnumName.value`,
+you can just write `.value`. This can make your code cleaner
 and easier to read.
 
+当编译器可以从上下文推断出枚举类型时，
+你可以使用更简洁的点简写语法来访问枚举值。
+不必写完整的 `EnumName.value`，
+你只需要写 `.value` 即可。这可以使你的代码更简洁、更易读。
 
-For example, when declaring a variable with an explicit type of `Planet`, 
-you can omit the enum name because 
+For example, when declaring a variable with an explicit type of `Planet`,
+you can omit the enum name because
 the type of `Planet` is already established:
+
+例如，当声明一个显式类型为 `Planet` 的变量时，
+你可以省略枚举名称，因为 `Planet` 类型已经被确定了：
 
 
 ```dart
@@ -388,9 +395,12 @@ Planet myPlanet = Planet.venus;
 Planet myPlanet = .venus;
 ```
 
-Dot shorthands aren't limited to variable declarations. 
-They can also be used in contexts like function arguments 
+Dot shorthands aren't limited to variable declarations.
+They can also be used in contexts like function arguments
 and switch cases where the enum type is clear to the compiler.
+
+点简写不仅限于变量声明。
+它还可以在函数参数和 switch case 等编译器可以明确枚举类型的上下文中使用。
 
 [Read more](/language/enums) about enums in Dart,
 including enhanced enum requirements, automatically introduced properties,
@@ -647,8 +657,12 @@ and the difference between `Error` and `Exception`.
 
 ## Important concepts
 
-As you continue to learn about the Dart language, 
+## 重要概念
+
+As you continue to learn about the Dart language,
 keep these facts and concepts in mind:
+
+当你继续学习 Dart 语言时，请牢记以下事实和概念：
 
 -   Everything you can place in a variable is an *object*, and every
     object is an instance of a *class*. Even numbers, functions, and
@@ -656,14 +670,25 @@ keep these facts and concepts in mind:
     With the exception of `null` (if you enable [sound null safety][ns]),
     all objects inherit from the [`Object`][] class.
 
+    你可以放在变量中的所有内容都是**对象**，每个对象都是一个**类**的实例。
+    数字、函数和 `null` 都是对象。
+    除了 `null`（如果你启用了 [健全的空安全][ns]），
+    所有对象都继承自 [`Object`][] 类。
+
     :::version-note
     [Null safety][ns] was introduced in Dart 2.12.
     Using null safety requires a [language version][] of at least 2.12.
+
+    [空安全][ns] 是在 Dart 2.12 中引入的。
+    使用空安全需要至少 2.12 版本的 [语言版本][language version]。
     :::
 
 -   Although Dart is strongly typed, type annotations are optional
     because Dart can infer types. In `var number = 101`, `number`
     is inferred to be of type `int`.
+
+    虽然 Dart 是强类型语言，但由于 Dart 可以推断类型，所以类型注解是可选的。
+    在 `var number = 101` 中，`number` 被推断为 `int` 类型。
 
 -   If you enable [null safety][ns],
     variables can't contain `null` unless you say they can.
@@ -677,31 +702,57 @@ keep these facts and concepts in mind:
     (and to throw an exception if it is).
     An example: `int x = nullableButNotNullInt!`
 
+    如果你启用了 [空安全][ns]，变量不能包含 `null`，除非你声明它可以。
+    你可以在类型末尾加上问号（`?`）来使变量可为空。
+    例如，`int?` 类型的变量可能是整数，也可能是 `null`。
+    如果你**知道**一个表达式永远不会计算为 `null`，但 Dart 不这么认为，
+    你可以添加 `!` 来断言它不为空（如果为空则抛出异常）。
+    例如：`int x = nullableButNotNullInt!`
+
 -   When you want to explicitly say
     that any type is allowed, use the type `Object?`
     (if you've enabled null safety), `Object`,
     or—if you must defer type checking until runtime—the
     [special type `dynamic`][ObjectVsDynamic].
 
+    当你想显式声明允许任何类型时，使用 `Object?` 类型（如果你启用了空安全）、
+    `Object`，或者——如果你必须将类型检查延迟到运行时——
+    使用 [特殊类型 `dynamic`][ObjectVsDynamic]。
+
 -   Dart supports generic types, like `List<int>` (a list of integers)
     or `List<Object>` (a list of objects of any type).
+
+    Dart 支持泛型，如 `List<int>`（整数列表）或 `List<Object>`（任何类型的对象列表）。
 
 -   Dart supports top-level functions (such as `main()`), as well as
     functions tied to a class or object (*static* and *instance
     methods*, respectively). You can also create functions within
     functions (*nested* or *local functions*).
 
+    Dart 支持顶层函数（如 `main()`），以及绑定到类或对象的函数
+    （分别是**静态**方法和**实例**方法）。
+    你还可以在函数内部创建函数（**嵌套**或**局部**函数）。
+
 -   Similarly, Dart supports top-level *variables*, as well as variables
     tied to a class or object (static and instance variables). Instance
     variables are sometimes known as *fields* or *properties*.
+
+    类似地，Dart 支持顶层**变量**，以及绑定到类或对象的变量（静态变量和实例变量）。
+    实例变量有时被称为**字段**或**属性**。
 
 -   Unlike Java, Dart doesn't have the keywords `public`, `protected`,
     and `private`. If an identifier starts with an underscore (`_`), it's
     private to its library. For details, see
     [Libraries and imports][].
 
+    与 Java 不同，Dart 没有关键字 `public`、`protected` 和 `private`。
+    如果标识符以下划线（`_`）开头，则它对其库是私有的。
+    有关详细信息，请参阅 [库和导入][Libraries and imports]。
+
 -   *Identifiers* can start with a letter or underscore (`_`), followed by any
     combination of those characters plus digits.
+
+    **标识符**可以以字母或下划线（`_`）开头，后跟这些字符和数字的任意组合。
 
 -   Dart has both *expressions* (which have runtime values) and
     *statements* (which don't).
@@ -711,12 +762,24 @@ keep these facts and concepts in mind:
     A statement often contains one or more expressions,
     but an expression can't directly contain a statement.
 
+    Dart 有**表达式**（具有运行时值）和**语句**（没有运行时值）。
+    例如，[条件表达式][conditional expression]
+    `condition ? expr1 : expr2` 的值为 `expr1` 或 `expr2`。
+    相比之下，[if-else 语句][if-else statement] 没有值。
+    一条语句通常包含一个或多个表达式，但表达式不能直接包含语句。
+
 -   Dart tools can report two kinds of problems: _warnings_ and _errors_.
     Warnings are just indications that your code might not work, but
     they don't prevent your program from executing. Errors can be either
     compile-time or run-time. A compile-time error prevents the code
     from executing at all; a run-time error results in an
     [exception][] being raised while the code executes.
+
+    Dart 工具可以报告两种问题：**警告**和**错误**。
+    警告只是表明你的代码可能无法正常工作，但不会阻止你的程序执行。
+    错误可以是编译时错误或运行时错误。
+    编译时错误会完全阻止代码执行；
+    运行时错误会导致代码执行时引发 [异常][exception]。
 
 
 ## Additional resources
