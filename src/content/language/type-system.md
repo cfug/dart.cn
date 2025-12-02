@@ -405,10 +405,16 @@ void main() {
 
 ### Implicit downcasts from `dynamic`
 
+### 从 `dynamic` 进行隐式向下转型
+
 Expressions with a static type of `dynamic` can be
 implicitly cast to a more specific type.
 If the actual type doesn't match, the cast throws an error at run time.
 Consider the following `assumeString` method:
+
+静态类型为 `dynamic` 的表达式可以隐式转换为更具体的类型。
+如果实际类型不匹配，转换将在运行时抛出错误。
+请考虑以下 `assumeString` 方法：
 
 <?code-excerpt "lib/strong_analysis.dart (downcast-check)" replace="/string = object/[!$&!]/g"?>
 ```dart tag=passes-sa
@@ -422,6 +428,9 @@ In this example, if `object` is a `String`, the cast succeeds.
 If it's not a subtype of `String`, such as `int`,
 a `TypeError` is thrown:
 
+在此示例中，如果 `object` 是 `String`，转换成功。
+如果它不是 `String` 的子类型，例如 `int`，则会抛出 `TypeError`：
+
 <?code-excerpt "lib/strong_analysis.dart (fail-downcast-check)" replace="/1/[!$&!]/g"?>
 ```dart tag=runtime-fail
 final length = assumeString([!1!]);
@@ -431,6 +440,9 @@ final length = assumeString([!1!]);
 To prevent implicit downcasts from `dynamic` and avoid this issue,
 consider enabling the analyzer's _strict casts_ mode.
 
+为了防止从 `dynamic` 进行隐式向下转型并避免此问题，
+请考虑启用分析器的 _strict casts_ 模式。
+
 ```yaml title="analysis_options.yaml" highlightLines=3
 analyzer:
   language:
@@ -439,6 +451,9 @@ analyzer:
 
 To learn more about customizing the analyzer's behavior,
 check out [Customizing static analysis](/tools/analysis).
+
+要了解有关自定义分析器行为的更多信息，
+请查看[自定义静态分析](/tools/analysis)。
 :::
 
 ## Type inference
@@ -580,8 +595,12 @@ method's type argument: `<int>`.
 
 #### Inference using bounds
 
+#### 使用边界进行推断
+
 :::version-note
 Inference using bounds requires a [language version][] of at least 3.7.0.
+
+使用边界进行推断需要至少 3.7.0 的[语言版本][language version]。
 :::
 
 With the inference using bounds feature,
@@ -589,10 +608,18 @@ Dart's type inference algorithm generates constraints by
 combining existing constraints with the declared type bounds,
 not just best-effort approximations.
 
+通过使用边界进行推断功能，Dart 的类型推断算法通过
+将现有约束与声明的类型边界组合来生成约束，
+而不仅仅是尽力而为的近似。
+
 This is especially important for [F-bounded][] types,
 where inference using bounds correctly infers that, in the example below,
 `X` can be bound to `B`.
 Without the feature, the type argument must be specified explicitly: `f<B>(C())`:
+
+这对于 [F-界限][F-bounded] 类型尤其重要，
+在下面的示例中，使用边界进行推断可以正确推断出 `X` 可以绑定到 `B`。
+如果没有此功能，必须显式指定类型参数：`f<B>(C())`：
 
 <?code-excerpt "lib/strong_analysis.dart (inference-using-bounds)"?>
 ```dart
@@ -617,6 +644,8 @@ void main() {
 
 Here's a more realistic example using everyday types in Dart like `int` or `num`:
 
+以下是使用 Dart 中常见类型（如 `int` 或 `num`）的更实际示例：
+
 <?code-excerpt "lib/bounded/instantiate_to_bound.dart (inference-using-bounds-2)"?>
 ```dart
 X max<X extends Comparable<X>>(X x1, X x2) => x1.compareTo(x2) > 0 ? x1 : x2;
@@ -631,8 +660,14 @@ With inference using bounds, Dart can *deconstruct* type arguments,
 extracting type information from a generic type parameter's bound.
 This allows functions like `f` in the following example to preserve both the
 specific iterable type (`List` or `Set`) *and* the element type.
-Before inference using bounds, this wasn't possible 
+Before inference using bounds, this wasn't possible
 without losing type safety or specific type information.
+
+通过使用边界进行推断，Dart 可以*解构*类型参数，
+从泛型类型参数的边界中提取类型信息。
+这使得下面示例中的函数 `f` 能够同时保留
+特定的可迭代类型（`List` 或 `Set`）*和*元素类型。
+在使用边界进行推断之前，如果不丢失类型安全或特定类型信息，这是不可能的。
 
 ```dart
 (X, Y) f<X extends Iterable<Y>, Y>(X x) => (x, x.first);
@@ -653,8 +688,16 @@ Conversely, `mySet.union({})` would be a compile-time error
 without inference using bounds, because the previous algorithm couldn't
 preserve the information that `mySet` is a `Set`.
 
+如果没有使用边界进行推断，`myInt` 的类型将是 `dynamic`。
+之前的推断算法不会在编译时捕获错误的表达式 `myInt.whatever`，
+而是在运行时抛出异常。
+相反，如果没有使用边界进行推断，`mySet.union({})` 会是编译时错误，
+因为之前的算法无法保留 `mySet` 是 `Set` 的信息。
+
 For more information on the inference using bounds algorithm,
-read the [design document][]. 
+read the [design document][].
+
+有关使用边界进行推断算法的更多信息，请阅读[设计文档][design document]。 
 
 
 [F-bounded]: /language/generics/#f-bounds
@@ -852,6 +895,8 @@ and [Use sound parameter types when overriding methods](#use-proper-param-types)
 <a id="covariant-keyword" aria-hidden="true"></a>
 #### Covariant parameters
 
+#### 协变参数
+
 Some (rarely used) coding patterns rely on tightening a type
 by overriding a parameter's type with a subtype, which is invalid.
 In this case, you can use the `covariant` keyword to
@@ -859,7 +904,14 @@ tell the analyzer that you're doing this intentionally.
 This removes the static error and instead checks for an invalid
 argument type at runtime.
 
+一些（很少使用的）编码模式依赖于通过使用子类型重写参数类型来收紧类型，
+这是无效的。在这种情况下，你可以使用 `covariant` 关键字
+告诉分析器你是故意这样做的。
+这会移除静态错误，转而在运行时检查无效的参数类型。
+
 The following shows how you might use `covariant`:
+
+下面展示了如何使用 `covariant`：
 
 <?code-excerpt "lib/covariant.dart" replace="/covariant/[!$&!]/g"?>
 ```dart tag=passes-sa
@@ -887,6 +939,12 @@ or the subclass method.
 Usually the superclass method is the best place to put it.
 The `covariant` keyword applies to a single parameter and is
 also supported on setters and fields.
+
+虽然此示例显示在子类型中使用 `covariant`，
+但 `covariant` 关键字可以放在父类或子类方法中。
+通常父类方法是放置它的最佳位置。
+`covariant` 关键字适用于单个参数，
+并且在 setter 和字段上也受支持。
 
 ## Other resources
 
