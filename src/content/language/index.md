@@ -647,8 +647,12 @@ and the difference between `Error` and `Exception`.
 
 ## Important concepts
 
+## 一些重要的概念
+
 As you continue to learn about the Dart language, 
 keep these facts and concepts in mind:
+
+在学习 Dart 语言的过程中，请务必牢记以下要点：
 
 -   Everything you can place in a variable is an *object*, and every
     object is an instance of a *class*. Even numbers, functions, and
@@ -656,14 +660,23 @@ keep these facts and concepts in mind:
     With the exception of `null` (if you enable [sound null safety][ns]),
     all objects inherit from the [`Object`][] class.
 
+    你使用的任何一个 *变量* 都是一个 *对象*，而每个对象都是某个 *类* 的实例。
+    即使是数字、函数甚至是 `null` 也都是对象。  
+    除了 `null`（如果你启用了[健全的空安全][ns]），所有对象都继承自[`Object`][]类。
+
     :::version-note
     [Null safety][ns] was introduced in Dart 2.12.
     Using null safety requires a [language version][] of at least 2.12.
+   
+    [空安全][ns] 于 Dart 2.12 被引入，使用 空安全 你至少需要使用 2.12 版本的 Dart。
     :::
 
 -   Although Dart is strongly typed, type annotations are optional
     because Dart can infer types. In `var number = 101`, `number`
     is inferred to be of type `int`.
+
+    尽管作为强类型语言，你依旧可以使用 类型注解（type annotation），因为 Dart 可以自动推断类型。
+    在 `var number = 101`中，`number`会被推断为`int`类型。
 
 -   If you enable [null safety][ns],
     variables can't contain `null` unless you say they can.
@@ -677,31 +690,57 @@ keep these facts and concepts in mind:
     (and to throw an exception if it is).
     An example: `int x = nullableButNotNullInt!`
 
+    如果你启用了[空安全][ns]功能，除非显式声明允许，
+    变量将默认不能包含`null`值。
+    通过在类型末尾添加问号(`?`)，可以将变量声明为可空类型。
+    例如，`int?`类型的变量可能存储一个整数值，
+    也可能是`null`。
+    当你确定某个表达式永远不会为`null`，
+    但 Dart 静态分析不认可时，
+    可以使用`!`操作符来断言非空
+    (若实际为 null 则会抛出异常)。
+    示例：`int x = nullableButNotNullInt!`
+
 -   When you want to explicitly say
     that any type is allowed, use the type `Object?`
     (if you've enabled null safety), `Object`,
     or—if you must defer type checking until runtime—the
     [special type `dynamic`][ObjectVsDynamic].
 
+    当你想明确表示允许任何类型时，请使用 `Object?` 类型（如果启用了空安全）。
+    `Object` 类型，或者——如果必须将类型检查推迟到运行时——使用[特殊类型 `dynamic`][ObjectVsDynamic]。
+
 -   Dart supports generic types, like `List<int>` (a list of integers)
     or `List<Object>` (a list of objects of any type).
+
+    Dart 支持泛型类型，例如`List<int>`（整数列表）或`List<Object>`（任意类型对象的列表）。
 
 -   Dart supports top-level functions (such as `main()`), as well as
     functions tied to a class or object (*static* and *instance
     methods*, respectively). You can also create functions within
     functions (*nested* or *local functions*).
 
+    Dart支持顶层函数（如`main()`），以及与类或对象绑定的函数（分别为*静态方法*和*实例方法*）。
+    您还可以在函数内部创建函数（称为*嵌套函数*或*局部函数*）。
+
 -   Similarly, Dart supports top-level *variables*, as well as variables
     tied to a class or object (static and instance variables). Instance
     variables are sometimes known as *fields* or *properties*.
+
+    同样，Dart 支持顶层*变量*，以及与类或对象绑定的变量（静态变量和实例变量）。实例变量有时也被称为*字段*或*属性*。
 
 -   Unlike Java, Dart doesn't have the keywords `public`, `protected`,
     and `private`. If an identifier starts with an underscore (`_`), it's
     private to its library. For details, see
     [Libraries and imports][].
 
+    与 Java 不同，Dart 没有`public`、`protected`和`private`这些关键字。
+    如果一个标识符以下划线(`_`)开头，那么它对所在的库是私有的。详情请参阅[库和导入][]。
+
 -   *Identifiers* can start with a letter or underscore (`_`), followed by any
     combination of those characters plus digits.
+
+    *标识符*可以以字母或下划线（`_`）开头，后面可以是这些字符与数字的任意组合。
 
 -   Dart has both *expressions* (which have runtime values) and
     *statements* (which don't).
@@ -711,12 +750,23 @@ keep these facts and concepts in mind:
     A statement often contains one or more expressions,
     but an expression can't directly contain a statement.
 
+    Dart 既有*表达式*（具有运行时值），也有*语句*（不具有值）。
+    例如，[条件表达式][] `condition ? expr1 : expr2` 的值为 `expr1` 或 `expr2`。
+    与之相比，[if-else 语句][]则没有值。
+    一个语句通常包含一个或多个表达式，但表达式不能直接包含语句。
+
 -   Dart tools can report two kinds of problems: _warnings_ and _errors_.
     Warnings are just indications that your code might not work, but
     they don't prevent your program from executing. Errors can be either
     compile-time or run-time. A compile-time error prevents the code
     from executing at all; a run-time error results in an
     [exception][] being raised while the code executes.
+
+    Dart工具可以报告两类问题：_警告（warnings）_ 和 _错误(errors)_。
+    警告只是表明你的代码可能无法正常工作，
+    但它们不会阻止程序执行。错误可以是编译时或运行时。
+    编译时错误会完全阻止代码执行；运行时错误会导致
+    代码执行期间引发[异常][]。
 
 
 ## Additional resources
@@ -743,6 +793,10 @@ This site's code follows the conventions in the
 [language version]: /resources/language/evolution#language-versioning
 [ObjectVsDynamic]: /effective-dart/design#avoid-using-dynamic-unless-you-want-to-disable-static-checking
 [Libraries and imports]: /language/libraries
+[库和导入]: /language/libraries
 [conditional expression]: /language/operators#conditional-expressions
+[条件表达式]: /language/operators#conditional-expressions
 [if-else statement]: /language/branches#if
+[if-else 语句]: /language/branches#if
 [exception]: /language/error-handling#exceptions
+[异常]: /language/error-handling#exceptions
