@@ -1,20 +1,20 @@
 ---
 # title: Extend a class
-title: 扩展一个类
+title: Extend a class
 # description: Learn how to create subclasses from a superclass.
-description: 了解如何从超类创建子类。
+description: Learn how to create subclasses from a superclass.
 prevpage:
   url: /language/methods
-  # title: Methods
-  title: 方法
+  title: Methods
 nextpage:
   url: /language/mixins
-  # title: Mixins
-  title: Mixin
+  title: Mixins
 ---
 
 Use `extends` to create a subclass, and `super` to refer to the
 superclass:
+
+
 
 使用 `extends` 来创建子类，使用 `super` 来引用超类：
 
@@ -39,24 +39,34 @@ class SmartTelevision [!extends!] Television {
 }
 ```
 
-For another usage of `extends`, see the discussion of
-[parameterized types][] on the Generics page.
+
 
 关于 `extends` 的另一种用法，请参阅泛型页面中
 [参数化类型][parameterized types]的讨论。
 
-## Overriding members
+For another usage of `extends`, see the discussion of
+[parameterized types][] on the Generics page.
+
+
 
 ## 重写成员
+
+## Overriding members
+
+
+
+子类可以重写实例方法（包括[运算符][operators]）、
+getter 和 setter。
+你可以使用 `@override` 注解来表明你是有意重写一个成员：
 
 Subclasses can override instance methods (including [operators][]),
 getters, and setters.
 You can use the `@override` annotation to indicate that you are
 intentionally overriding a member:
 
-子类可以重写实例方法（包括[运算符][operators]）、
-getter 和 setter。
-你可以使用 `@override` 注解来表明你是有意重写一个成员：
+
+
+重写方法的声明必须在以下几个方面与其重写的方法（或多个方法）匹配：
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (override)" replace="/@override/[!$&!]/g"?>
 ```dart
@@ -76,10 +86,31 @@ class SmartTelevision extends Television {
 }
 ```
 
+
+
+* 返回类型必须与被重写方法的返回类型相同（或是其子类型）。
+* 参数类型必须与被重写方法的参数类型相同（或是其超类型）。
+  在前面的示例中，`SmartTelevision` 的 `contrast` setter
+  将参数类型从 `int` 更改为其超类型 `num`。
+* 如果被重写的方法接受 _n_ 个位置参数，
+  那么重写方法也必须接受 _n_ 个位置参数。
+* [泛型方法][generic method]不能重写非泛型方法，
+  非泛型方法也不能重写泛型方法。
+
 An overriding method declaration must match
 the method (or methods) that it overrides in several ways:
 
-重写方法的声明必须在以下几个方面与其重写的方法（或多个方法）匹配：
+
+
+有时你可能想缩小方法参数或实例变量的类型范围。
+这违反了正常规则，
+类似于向下转型，可能在运行时导致类型错误。
+不过，如果代码能保证不会发生类型错误，
+缩小类型范围仍然是可行的。
+在这种情况下，你可以在参数声明中使用
+[`covariant` 关键字](/language/type-system#covariant-keyword)。
+有关详细信息，请参阅
+[Dart 语言规范][Dart language specification]。
 
 * The return type must be the same type as (or a subtype of)
   the overridden method's return type.
@@ -92,14 +123,12 @@ the method (or methods) that it overrides in several ways:
 * A [generic method][] can't override a non-generic one,
   and a non-generic method can't override a generic one.
 
-* 返回类型必须与被重写方法的返回类型相同（或是其子类型）。
-* 参数类型必须与被重写方法的参数类型相同（或是其超类型）。
-  在前面的示例中，`SmartTelevision` 的 `contrast` setter
-  将参数类型从 `int` 更改为其超类型 `num`。
-* 如果被重写的方法接受 _n_ 个位置参数，
-  那么重写方法也必须接受 _n_ 个位置参数。
-* [泛型方法][generic method]不能重写非泛型方法，
-  非泛型方法也不能重写泛型方法。
+
+
+如果你重写了 `==`，你也应该重写 Object 的 `hashCode` getter。
+有关重写 `==` 和 `hashCode` 的示例，请查看
+[实现 map 键](/libraries/dart-core#implementing-map-keys)。
+:::
 
 Sometimes you might want to narrow the type of
 a method parameter or an instance variable.
@@ -113,33 +142,29 @@ in a parameter declaration.
 For details, see the
 [Dart language specification][].
 
-有时你可能想缩小方法参数或实例变量的类型范围。
-这违反了正常规则，
-类似于向下转型，可能在运行时导致类型错误。
-不过，如果代码能保证不会发生类型错误，
-缩小类型范围仍然是可行的。
-在这种情况下，你可以在参数声明中使用
-[`covariant` 关键字](/language/type-system#covariant-keyword)。
-有关详细信息，请参阅
-[Dart 语言规范][Dart language specification]。
+
+
+要在代码尝试使用不存在的方法或实例变量时进行检测或做出反应，
+你可以重写 `noSuchMethod()`：
 
 :::warning
 If you override `==`, you should also override Object's `hashCode` getter.
 For an example of overriding `==` and `hashCode`, check out
 [Implementing map keys](/libraries/dart-core#implementing-map-keys).
-
-如果你重写了 `==`，你也应该重写 Object 的 `hashCode` getter。
-有关重写 `==` 和 `hashCode` 的示例，请查看
-[实现 map 键](/libraries/dart-core#implementing-map-keys)。
 :::
 
 ## noSuchMethod()
 
+
+
+除非满足以下条件**之一**，否则你**无法调用**未实现的方法：
+
 To detect or react whenever code attempts to use a non-existent method or
 instance variable, you can override `noSuchMethod()`:
 
-要在代码尝试使用不存在的方法或实例变量时进行检测或做出反应，
-你可以重写 `noSuchMethod()`：
+
+
+* 接收者的静态类型为 `dynamic`。
 
 <?code-excerpt "misc/lib/language_tour/classes/no_such_method.dart (no-such-method-impl)" replace="/noSuchMethod(?!,)/[!$&!]/g"?>
 ```dart
@@ -159,26 +184,26 @@ class A {
 You **can't invoke** an unimplemented method unless
 **one** of the following is true:
 
-除非满足以下条件**之一**，否则你**无法调用**未实现的方法：
+
+
+* 接收者的静态类型定义了该未实现的方法（抽象方法也可以），
+并且接收者的动态类型有一个与 `Object` 类中不同的
+`noSuchMethod()` 实现。
 
 * The receiver has the static type `dynamic`.
 
-* 接收者的静态类型为 `dynamic`。
+
+
+有关更多信息，请参阅非正式的
+[noSuchMethod 转发规范]({{site.repo.dart.lang}}/blob/main/archive/feature-specifications/nosuchmethod-forwarding.md)。
 
 * The receiver has a static type that
 defines the unimplemented method (abstract is OK),
 and the dynamic type of the receiver has an implementation of `noSuchMethod()`
 that's different from the one in class `Object`.
 
-* 接收者的静态类型定义了该未实现的方法（抽象方法也可以），
-并且接收者的动态类型有一个与 `Object` 类中不同的
-`noSuchMethod()` 实现。
-
 For more information, see the informal
 [noSuchMethod forwarding specification.]({{site.repo.dart.lang}}/blob/main/archive/feature-specifications/nosuchmethod-forwarding.md)
-
-有关更多信息，请参阅非正式的
-[noSuchMethod 转发规范]({{site.repo.dart.lang}}/blob/main/archive/feature-specifications/nosuchmethod-forwarding.md)。
 
 [parameterized types]: /language/generics#restricting-the-parameterized-type
 [operators]: /language/methods#operators

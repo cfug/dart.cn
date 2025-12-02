@@ -1,23 +1,23 @@
 ---
 # title: Enumerated types
-title: 枚举类型
+title: Enumerated types
 # description: Learn about the enum type in Dart.
-description: 了解 Dart 中的枚举类型。
+description: Learn about the enum type in Dart.
 # shortTitle: Enums
-shortTitle: 枚举
+shortTitle: Enums
 prevpage:
   url: /language/mixins
-  # title: Mixins
-  title: Mixin
+  title: Mixins
 nextpage:
   url: /language/dot-shorthands
-  # title: Dot shorthands
-  title: 点简写
+  title: Dot shorthands
 ---
 
 Enumerated types, often called _enumerations_ or _enums_,
 are a special kind of class used to represent
 a fixed number of constant values.
+
+
 
 枚举类型，通常称为 _enumerations_ 或 _enums_，
 是一种特殊的类，用于表示固定数量的常量值。
@@ -28,30 +28,34 @@ They are also sealed,
 meaning they cannot be subclassed, implemented, mixed in,
 or otherwise explicitly instantiated.
 
+Abstract classes and mixins can explicitly implement or extend `Enum`,
+but unless they are then implemented by or mixed into an enum declaration,
+no objects can actually implement the type of that class or mixin.
+:::
+
+
+
 所有枚举都自动扩展 [`Enum`][] 类。
 它们也是密封的，
 这意味着它们不能被子类化、实现、混入，
 或以其他方式显式实例化。
 
-Abstract classes and mixins can explicitly implement or extend `Enum`,
-but unless they are then implemented by or mixed into an enum declaration,
-no objects can actually implement the type of that class or mixin.
+## Declaring simple enums
+
+
 
 抽象类和 mixin 可以显式实现或扩展 `Enum`，
 但除非它们随后被枚举声明实现或混入，
 否则没有对象可以真正实现该类或 mixin 的类型。
 :::
 
-## Declaring simple enums
-
-## 声明简单枚举
-
 To declare a simple enumerated type,
 use the `enum` keyword and
 list the values you want to be enumerated:
 
-要声明一个简单的枚举类型，
-使用 `enum` 关键字并列出你想要枚举的值：
+
+
+## 声明简单枚举
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (enum)"?>
 ```dart
@@ -61,29 +65,32 @@ enum Color { red, green, blue }
 :::tip
 You can also use [trailing commas][] when declaring an enumerated type
 to help prevent copy-paste errors.
-
-在声明枚举类型时，你也可以使用[尾随逗号][trailing commas]
-来帮助防止复制粘贴错误。
 :::
 
 ## Declaring enhanced enums
 
-## 声明增强枚举
+
+
+要声明一个简单的枚举类型，
+使用 `enum` 关键字并列出你想要枚举的值：
 
 Dart also allows enum declarations to declare classes
 with fields, methods, and const constructors
 which are limited to a fixed number of known constant instances.
 
-Dart 还允许枚举声明来声明具有字段、方法和 const 构造函数的类，
-这些类被限制为固定数量的已知常量实例。
+
+
+在声明枚举类型时，你也可以使用[尾随逗号][trailing commas]
+来帮助防止复制粘贴错误。
+:::
 
 To declare an enhanced enum,
 follow a syntax similar to normal [classes][],
 but with a few extra requirements:
 
-要声明一个增强枚举，
-遵循与普通[类][classes]类似的语法，
-但有一些额外的要求：
+
+
+## 声明增强枚举
 
 * Instance variables must be `final`,
   including those added by [mixins][].
@@ -98,6 +105,26 @@ but with a few extra requirements:
   in the beginning of the declaration,
   and there must be at least one instance declared.
 
+
+
+Dart 还允许枚举声明来声明具有字段、方法和 const 构造函数的类，
+这些类被限制为固定数量的已知常量实例。
+
+Instance methods in an enhanced enum can use `this` to
+reference the current enum value.
+
+
+
+要声明一个增强枚举，
+遵循与普通[类][classes]类似的语法，
+但有一些额外的要求：
+
+Here is an example that declares an enhanced enum
+with multiple instances, instance variables,
+getters, and an implemented interface:
+
+
+
 * 实例变量必须是 `final` 的，
   包括由 [mixin][mixins] 添加的变量。
 * 所有[生成式构造函数][generative constructors]必须是常量。
@@ -110,18 +137,6 @@ but with a few extra requirements:
 * 枚举的所有实例必须在声明的开头声明，
   并且必须至少声明一个实例。
 
-Instance methods in an enhanced enum can use `this` to
-reference the current enum value.
-
-增强枚举中的实例方法可以使用 `this` 来引用当前的枚举值。
-
-Here is an example that declares an enhanced enum
-with multiple instances, instance variables,
-getters, and an implemented interface:
-
-下面是一个声明增强枚举的示例，
-包含多个实例、实例变量、getter 和实现的接口：
-
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (enhanced)"?>
 ```dart
 enum Vehicle implements Comparable<Vehicle> {
@@ -129,39 +144,65 @@ enum Vehicle implements Comparable<Vehicle> {
   bus(tires: 6, passengers: 50, carbonPerKilometer: 800),
   bicycle(tires: 2, passengers: 1, carbonPerKilometer: 0);
 
-  const Vehicle({
+const Vehicle({
     required this.tires,
     required this.passengers,
     required this.carbonPerKilometer,
   });
 
-  final int tires;
+
+
+增强枚举中的实例方法可以使用 `this` 来引用当前的枚举值。
+
+final int tires;
   final int passengers;
   final int carbonPerKilometer;
 
-  int get carbonFootprint => (carbonPerKilometer / passengers).round();
 
-  bool get isTwoWheeled => this == Vehicle.bicycle;
 
-  @override
-  int compareTo(Vehicle other) => carbonFootprint - other.carbonFootprint;
-}
-```
+下面是一个声明增强枚举的示例，
+包含多个实例、实例变量、getter 和实现的接口：
 
-:::version-note
-Enhanced enums require a [language version][] of at least 2.17.
+int get carbonFootprint => (carbonPerKilometer / passengers).round();
+
+
 
 增强枚举需要至少 2.17 的[语言版本][language version]。
 :::
 
-## Using enums
+bool get isTwoWheeled => this == Vehicle.bicycle;
+
+
 
 ## 使用枚举
+
+@override
+  int compareTo(Vehicle other) => carbonFootprint - other.carbonFootprint;
+}
+```
+
+
+
+像访问任何其他[静态变量][static variable]一样访问枚举值：
+
+:::version-note
+Enhanced enums require a [language version][] of at least 2.17.
+:::
+
+## Using enums
+
+
+
+枚举中的每个值都有一个 `index` getter，
+它返回该值在枚举声明中从零开始的位置。
+例如，第一个值的索引是 0，第二个值的索引是 1。
 
 Access the enumerated values like
 any other [static variable][]:
 
-像访问任何其他[静态变量][static variable]一样访问枚举值：
+
+
+要获取所有枚举值的列表，请使用枚举的 `values` 常量。
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (access)"?>
 ```dart
@@ -176,9 +217,10 @@ which returns the zero-based position of the value in the enum declaration.
 For example, the first value has index 0,
 and the second value has index 1.
 
-枚举中的每个值都有一个 `index` getter，
-它返回该值在枚举声明中从零开始的位置。
-例如，第一个值的索引是 0，第二个值的索引是 1。
+
+
+你可以在 [switch 语句][switch statements]中使用枚举，
+如果你没有处理所有枚举值，你会收到警告：
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (index)"?>
 ```dart
@@ -190,7 +232,11 @@ assert(Color.blue.index == 2);
 To get a list of all the enumerated values,
 use the enum's `values` constant.
 
-要获取所有枚举值的列表，请使用枚举的 `values` 常量。
+
+
+如果你需要访问枚举值的名称，
+例如从 `Color.blue` 获取 `'blue'`，
+请使用 `.name` 属性：
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (values)"?>
 ```dart
@@ -201,8 +247,9 @@ assert(colors[2] == Color.blue);
 You can use enums in [switch statements][], and
 you'll get a warning if you don't handle all of the enum's values:
 
-你可以在 [switch 语句][switch statements]中使用枚举，
-如果你没有处理所有枚举值，你会收到警告：
+
+
+你可以像访问普通对象一样访问枚举值的成员：
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (switch)"?>
 ```dart
@@ -222,10 +269,6 @@ If you need to access the name of an enumerated value,
 such as `'blue'` from `Color.blue`,
 use the `.name` property:
 
-如果你需要访问枚举值的名称，
-例如从 `Color.blue` 获取 `'blue'`，
-请使用 `.name` 属性：
-
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (name)"?>
 ```dart
 print(Color.blue.name); // 'blue'
@@ -233,8 +276,6 @@ print(Color.blue.name); // 'blue'
 
 You can access a member of an enum value
 like you would on a normal object:
-
-你可以像访问普通对象一样访问枚举值的成员：
 
 <?code-excerpt "misc/lib/language_tour/classes/enum.dart (method-call)"?>
 ```dart

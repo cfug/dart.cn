@@ -1,30 +1,34 @@
 ---
 # title: Class modifiers reference
-title: 类修饰符参考
+title: Class modifiers reference
 # description: >-
 #   The allowed and disallowed combinations of class modifiers.
 description: >-
-  类修饰符的允许和禁止组合。
+  The allowed and disallowed combinations of class modifiers.
 prevpage:
   url: /language/class-modifiers
-  # title: Class modifiers
-  title: 类修饰符
+  title: Class modifiers
 nextpage:
   url: /language/concurrency
-  # title: Concurrency in Dart
-  title: Dart 中的并发
+  title: Concurrency in Dart
 ---
 
 This page contains reference information for
 [class modifiers](/language/class-modifiers).
 
+
+
 本页面包含[类修饰符](/language/class-modifiers)的参考信息。
 
 ## Valid combinations
 
+
+
 ## 有效组合
 
 The valid combinations of class modifiers and their resulting capabilities are:
+
+
 
 类修饰符的有效组合及其产生的功能如下：
 
@@ -48,6 +52,10 @@ The valid combinations of class modifiers and their resulting capabilities are:
 
 {: .table .table-striped .nowrap}
 
+
+
+## 无效组合
+
 [Construct]: /language/classes#using-constructors
 [Extend]: /language/extend
 [Implement]: /language/classes#implicit-interfaces
@@ -56,21 +64,13 @@ The valid combinations of class modifiers and their resulting capabilities are:
 
 ## Invalid combinations
 
-## 无效组合
 
-Certain [combinations][] of modifiers aren't allowed:
 
 某些修饰符[组合][combinations]是不允许的：
 
-| Combination                                   | Reasoning                                                                                                                                       |
-|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| `base`, `interface`, and `final`              | All control the same two capabilities (`extend` and `implement`), so are mutually exclusive.                                                    |
-| `sealed` and `abstract`                       | Neither can be constructed, so are redundant together.                                                                                          |
-| `sealed` with `base`, `interface`, or `final` | `sealed` types already cannot be mixed in, extended or implemented from another library, so are redundant to combine with the listed modifiers. |
-| `mixin` and `abstract`                        | Neither can be constructed, so are redundant together.                                                                                          |
-| `mixin` and `interface`, `final`, or `sealed` | A `mixin` or `mixin class` declaration is intended to be mixed in, which the listed modifiers prevent.                                          |
-| `enum` and any modifiers                      | `enum` declarations can't be extended, implemented, mixed in, and can always be instantiated, so no modifiers apply to `enum` declarations.     |
-| `extension type` and any modifiers            | `extension type` declarations can't be extended or mixed in, and can only be implemented by other `extension type` declarations.                |
+Certain [combinations][] of modifiers aren't allowed:
+
+
 
 | 组合                                           | 原因                                                                                                                                       |
 |-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -81,6 +81,16 @@ Certain [combinations][] of modifiers aren't allowed:
 | `mixin` 与 `interface`、`final` 或 `sealed`    | `mixin` 或 `mixin class` 声明旨在被混入，而列出的修饰符会阻止这一点。                                          |
 | `enum` 和任何修饰符                             | `enum` 声明不能被扩展、实现或混入，且总是可以被实例化，因此没有修饰符适用于 `enum` 声明。     |
 | `extension type` 和任何修饰符                   | `extension type` 声明不能被扩展或混入，且只能被其他 `extension type` 声明实现。                |
+
+| Combination                                   | Reasoning                                                                                                                                       |
+|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| `base`, `interface`, and `final`              | All control the same two capabilities (`extend` and `implement`), so are mutually exclusive.                                                    |
+| `sealed` and `abstract`                       | Neither can be constructed, so are redundant together.                                                                                          |
+| `sealed` with `base`, `interface`, or `final` | `sealed` types already cannot be mixed in, extended or implemented from another library, so are redundant to combine with the listed modifiers. |
+| `mixin` and `abstract`                        | Neither can be constructed, so are redundant together.                                                                                          |
+| `mixin` and `interface`, `final`, or `sealed` | A `mixin` or `mixin class` declaration is intended to be mixed in, which the listed modifiers prevent.                                          |
+| `enum` and any modifiers                      | `enum` declarations can't be extended, implemented, mixed in, and can always be instantiated, so no modifiers apply to `enum` declarations.     |
+| `extension type` and any modifiers            | `extension type` declarations can't be extended or mixed in, and can only be implemented by other `extension type` declarations.                |
 
 {: .table .table-striped .nowrap}
 
