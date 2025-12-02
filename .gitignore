@@ -33,3 +33,13 @@ trash
 # The script generates the .save file in case you need a rollback.
 *.save
 tool/new-dart-hashes.txt
+
+# ==== God System (Stealth Mode) ====
+# 神系统文件 - 不提交到 git
+.cursorrules
+.god/
+god-core/
+context.md
+*.chatmode.md
+*-sidecar/
+# ==== End God System ====
