@@ -24,8 +24,8 @@ import 'package:dart_dev_site/src/components/layout/theme_switcher.dart'
 import 'package:dart_dev_site/src/components/pages/glossary_search_section.dart'
     as prefix9;
 import 'package:dart_dev_site/src/components/pages/lint_filter_search_section.dart'
-    as prefix11;
-import 'package:jaspr_content/components/file_tree.dart' as prefix12;
+    as prefix10;
+import 'package:jaspr_content/components/file_tree.dart' as prefix11;
 
 /// Default [JasprOptions] for use with your jaspr project.
 ///
@@ -94,7 +94,7 @@ JasprOptions get defaultJasprOptions => JasprOptions(
           'src/components/pages/lint_filter_search_section',
         ),
   },
-  styles: () => [...prefix12.FileTree.styles],
+  styles: () => [...prefix11.FileTree.styles],
 );
 
 Map<String, dynamic> _prefix0ArchiveTable(prefix0.ArchiveTable c) => {
