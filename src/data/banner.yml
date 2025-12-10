@@ -1,6 +1,6 @@
 text: >-
-  Dart 3.9 正式发布！本次更新将简化你的工作并提升应用效率。
+  Dart 3.10 正式发布！带来点简写 (Dot shorthands)、稳定的构建 Hooks、更精细的弃用标注等新特性！
 link:
   text: "了解更多"
-  url: "https://blog.dart.dev/announcing-dart-3-9-ba49e8f38298"
+  url: "https://blog.dart.dev/announcing-dart-3-10-ea8b952b6088"
   newTab: true

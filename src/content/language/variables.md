@@ -86,14 +86,13 @@ Dart 编译器可以在空安全的基础上在编译期检测到这些潜在的
 
 For example, say you want to find the absolute value of an `int` variable `i`.
 If `i` is `null`, calling `i.abs()` causes a null dereference error.
-In other languages, trying this could lead to a runtime error,
-but Dart's compiler prohibits these actions.
-Therefore, Dart apps can't cause runtime errors.
+In other languages, trying this could lead to a runtime error.
+Dart's compiler prevents this error by prohibiting these actions.
 
 例如，假设你想要查找 `int` 变量 `i` 的绝对值。
 如果 `i` 是 `null` ，调用 `i.abs()` 会导致空解引用错误。
-在其他语言中，尝试这样做可能会导致运行时错误，但是 Dart 的编译器禁止这些操作。
-所以 Dart 应用程序不会引发运行时错误。
+在其他语言中，尝试这样做可能会导致运行时错误，
+但是 Dart 的编译器通过禁止这些操作来防止此类错误发生。
 
 Null safety introduces three key changes:
 

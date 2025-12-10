@@ -278,7 +278,7 @@ comparison if you make `arg` non-nullable.
 如果 `arg` 为非空时，编译器会在运行时将显式空安全判断标记为非必要。
 
 ```dart
-if (arg == null) throw ArgumentError(...)`
+if (arg == null) throw ArgumentError(...)
 ```
 
 You must include this check if the program is a mixed-version one.

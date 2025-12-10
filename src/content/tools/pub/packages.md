@@ -190,15 +190,17 @@ Let's say that the `transmogrify` package is laid out as follows:
 你也可以使用此方式从自己的 package 中导入库。
 比方说 `transmogrify` 这个 package 的结构如下：
 
-```plaintext
-transmogrify/
-  lib/
-    transmogrify.dart
-    parser.dart
-  test/
-    parser/
-      parser_test.dart
-```
+<FileTree>
+
+- transmogrify/
+  - lib/
+    - transmogrify.dart
+    - parser.dart
+  - test/
+    - parser/
+      - parser_test.dart
+
+</FileTree>
 
 The `parser_test.dart` file can import `parser.dart` like this:
 
