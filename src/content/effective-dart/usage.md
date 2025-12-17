@@ -135,13 +135,15 @@ Doing either leads to confusing errors and broken programs.
 
 For example, say your directory structure looks like this:
 
-```plaintext
-my_package
-└─ lib
-   └─ api.dart
-   test
-   └─ api_test.dart
-```
+<FileTree>
+
+- my_package/
+  - lib/
+    - api.dart
+  - test/
+    - api_test.dart
+
+</FileTree>
 
 And say `api_test.dart` imports `api.dart` in two ways:
 
@@ -178,19 +180,19 @@ When an import does *not* reach across `lib`, prefer using relative imports.
 They're shorter.
 For example, say your directory structure looks like this:
 
-比如，下面是你的 package 目录结构：
+<FileTree>
 
-```plaintext
-my_package
-└─ lib
-   ├─ src
-   │  └─ stuff.dart
-   │  └─ utils.dart
-   └─ api.dart
-   test
-   │─ api_test.dart
-   └─ test_utils.dart
-```
+- my_package/
+  - lib/
+    - src/
+      - stuff.dart
+      - utils.dart
+    - api.dart
+  - test/
+    - api_test.dart
+    - test_utils.dart
+
+</FileTree>
 
 Here is how the various libraries should import each other:
 
