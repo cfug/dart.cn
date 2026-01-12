@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:universal_web/web.dart' as web;
 
@@ -11,7 +12,9 @@ import '../button.dart';
 /// The cookie banner to show on a user's first time visiting the site.
 @client
 final class CookieNotice extends StatefulComponent {
-  const CookieNotice({super.key});
+  const CookieNotice({super.key, this.alwaysDarkMode = false});
+
+  final bool alwaysDarkMode;
 
   @override
   State<CookieNotice> createState() => _CookieNoticeState();
@@ -49,12 +52,15 @@ final class _CookieNoticeState extends State<CookieNotice> {
   Component build(BuildContext context) {
     return section(
       id: 'cookie-notice',
-      classes: [if (showNotice) 'show'].toClasses,
+      classes: [
+        if (showNotice) 'show',
+        if (component.alwaysDarkMode) 'always-dark-mode',
+      ].toClasses,
       attributes: {'data-nosnippet': 'true'},
       [
         div(classes: 'container', [
-          p([
-            text(
+          const p([
+            .text(
               'dart.dev uses cookies from Google to deliver and '
               'enhance the quality of its services and to analyze traffic.',
             ),

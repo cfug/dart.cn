@@ -98,13 +98,18 @@ Beyond these conventions, you must follow these requirements:
 
   对于你所上传的 package 任意部分，你必须拥有重新分发的合法权利。
 
-* Keep package size to less than 100 MB after gzip compression.
-  If it's too large, consider splitting it into multiple packages,
-  using a `.pubignore` file to remove unnecessary content,
-  or cutting down on the number of included resources or examples.
+* Keep package size within limits. We recommend less than
+  100 MB after gzip compression and less than 256 MB uncompressed.
 
-  通过 gzip 压缩后，你的 package 必须小于 100 MB。
-  如果它所占空间过大，请考虑将它分割为多个小的 package，
+  请将 package 大小控制在限制范围内。
+  我们建议经过 gzip 压缩后小于 100 MB，
+  未压缩时小于 256 MB。
+
+  If your package is too large, consider splitting it into multiple packages,
+  using a `.pubignore` file to remove unnecessary content, or reducing the
+  number of included resources or examples.
+
+  如果你的 package 体积过大，请考虑将它拆分为多个 package，
   使用 `.pubignore` 移除不需要的文件，或者减少包含的资源或示例的数量。
 
 * Have your package depend only on hosted dependencies

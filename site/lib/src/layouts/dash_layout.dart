@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
-import '../client/global_scripts.dart';
 // import '../components/common/client/cookie_notice.dart';
 import '../components/layout/banner.dart';
 import '../components/layout/footer.dart';
@@ -41,39 +41,39 @@ abstract class DashLayout extends PageLayoutBase {
       meta(httpEquiv: 'Content-Language', content: 'zh-cmn-Hans'),
       if (pageData['noindex'] case final noIndex?
           when noIndex == true || noIndex == 'true')
-        meta(name: 'robots', content: 'noindex'),
+        const meta(name: 'robots', content: 'noindex'),
       if (pageData['canonical'] case final String canonicalUrl
           when canonicalUrl.isNotEmpty)
         link(rel: 'canonical', href: canonicalUrl),
       if (pageData['redirectTo'] case final String redirectTo
           when redirectTo.isNotEmpty)
-        raw('<script>window.location.replace("$redirectTo");</script>'),
-      link(
+        RawText('<script>window.location.replace("$redirectTo");</script>'),
+      const link(
         rel: 'icon',
         href: '/assets/img/logo/dart-64.png',
         attributes: {'sizes': '64x64'},
       ),
-      link(
+      const link(
         rel: 'apple-touch-icon',
         href: '/assets/img/touch-icon-iphone.png',
       ),
-      link(
+      const link(
         rel: 'apple-touch-icon',
         href: '/assets/img/touch-icon-ipad.png',
         attributes: {'sizes': '152x152'},
       ),
-      link(
+      const link(
         rel: 'apple-touch-icon',
         href: '/assets/img/touch-icon-iphone-retina.png',
         attributes: {'sizes': '180x180'},
       ),
-      link(
+      const link(
         rel: 'apple-touch-icon',
         href: '/assets/img/touch-icon-ipad-retina.png',
         attributes: {'sizes': '167x167'},
       ),
-      meta(name: 'twitter:card', content: 'summary'),
-      meta(name: 'twitter:site', content: '@dart_lang'),
+      const meta(name: 'twitter:card', content: 'summary'),
+      const meta(name: 'twitter:site', content: '@dart_lang'),
       meta(name: 'twitter:title', content: pageTitle),
       meta(
         name: 'twitter:description',
@@ -88,35 +88,35 @@ abstract class DashLayout extends PageLayoutBase {
         },
       ),
       meta(attributes: {'property': 'og:url', 'content': page.path}),
-      meta(
+      const meta(
         attributes: {
           'property': 'og:image',
           'content': '/assets/img/logo/dart-logo-for-shares.png',
         },
       ),
 
-      link(rel: 'preconnect', href: 'https://fonts.googleapis.cn'),
-      link(
+      const link(rel: 'preconnect', href: 'https://fonts.googleapis.cn'),
+      const link(
         rel: 'preconnect',
         href: 'https://fonts.gstatic.cn',
         attributes: {'crossorigin': ''},
       ),
-      link(
+      const link(
         rel: 'stylesheet',
         href:
             'https://fonts.googleapis.cn/css2?family=Google+Sans:wght@400;500;700&display=swap',
       ),
-      link(
+      const link(
         rel: 'stylesheet',
         href:
             'https://fonts.googleapis.cn/css2?family=Google+Sans+Mono:wght@400;500;700&display=swap',
       ),
-      link(
+      const link(
         rel: 'stylesheet',
         href:
             'https://fonts.googleapis.cn/css2?family=Google+Sans+Text:wght@400;500;700&display=swap',
       ),
-      link(
+      const link(
         rel: 'stylesheet',
         href:
             'https://fonts.googleapis.cn/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0',
@@ -135,7 +135,7 @@ abstract class DashLayout extends PageLayoutBase {
               src: jsUrl,
               attributes: {if (defer == 'true' || defer == true) 'defer': ''},
             ),
-      script(
+      const script(
         src:
             'https://files.flutter-io.cn/static/deps/lite-youtube/1.8.1/lite-youtube.js',
         attributes: {
@@ -150,7 +150,7 @@ abstract class DashLayout extends PageLayoutBase {
       // ...
 
       // dart.cn - Global site tag (gtag.js) - Google Analytics
-      raw('''
+      const RawText('''
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-28P0PYCRZ9"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -159,7 +159,7 @@ abstract class DashLayout extends PageLayoutBase {
   gtag('config', 'G-28P0PYCRZ9');
 </script>
 '''),
-      raw('''
+      const RawText('''
 <script>
   var _hmt = _hmt || [];
   (function() {
@@ -205,7 +205,7 @@ abstract class DashLayout extends PageLayoutBase {
         ),
         // The theme setting logic should remain before other scripts to
         // avoid a flash of the initial theme on load.
-        raw('''
+        const RawText('''
 <script>
 const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
 
@@ -220,17 +220,17 @@ if (storedTheme === 'auto-mode') {
 }
 </script>
       '''),
-        //         raw('''
+        //         const RawText('''
         // <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         // '''),
-        a(
+        const a(
           id: 'skip-to-main',
           classes: 'filled-button',
           href: '#site-content-title',
           attributes: {'tabindex': '1'},
-          [text('跳转至正文')],
+          [.text('跳转至正文')],
         ),
-        // const CookieNotice(),
+        // CookieNotice(alwaysDarkMode: name == 'homepage'),
         const DashHeader(),
         div(id: 'site-below-header', [
           div(id: 'site-main-row', [
@@ -247,15 +247,14 @@ if (storedTheme === 'auto-mode') {
               [child],
             ),
             if (obsolete)
-              div(id: 'obsolete-banner', [
+              const div(id: 'obsolete-banner', [
                 div(classes: 'text-center', [
-                  text('本页面的部分内容可能已经过时。'),
+                  .text('本页面的部分内容可能已经过时。'),
                 ]),
               ]),
           ]),
           const DashFooter(),
         ]),
-        GlobalScripts(),
       ],
     );
   }
