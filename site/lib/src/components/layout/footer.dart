@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 /// The site-wide footer.
@@ -10,7 +11,7 @@ final class DashFooter extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    return footer(
+    return const footer(
       id: 'page-footer',
       attributes: {'data-nosnippet': 'true'},
       [
@@ -37,7 +38,7 @@ final class DashFooter extends StatelessComponent {
               },
               [
                 svg([
-                  const Component.element(
+                  Component.element(
                     tag: 'use',
                     attributes: {
                       'href': '/assets/img/social/medium.svg#medium',
@@ -55,7 +56,7 @@ final class DashFooter extends StatelessComponent {
               },
               [
                 svg([
-                  const Component.element(
+                  Component.element(
                     tag: 'use',
                     attributes: {
                       'href': '/assets/img/social/github.svg#github',
@@ -73,7 +74,7 @@ final class DashFooter extends StatelessComponent {
               },
               [
                 svg([
-                  const Component.element(
+                  Component.element(
                     tag: 'use',
                     attributes: {
                       'href': '/assets/img/social/bluesky.svg#bluesky',
@@ -91,7 +92,7 @@ final class DashFooter extends StatelessComponent {
               },
               [
                 svg([
-                  const Component.element(
+                  Component.element(
                     tag: 'use',
                     attributes: {'href': '/assets/img/social/x.svg#x'},
                   ),
@@ -102,14 +103,14 @@ final class DashFooter extends StatelessComponent {
         ]),
         div(classes: 'footer-section footer-tray', [
           div(classes: 'footer-licenses', [
-            text('引用中文内容需注明本站及链接作为出处，英文内容和示例代码均遵从源站授权协议。'),
-            // text('Except as otherwise noted, this site is licensed under a '),
+            .text('引用中文内容需注明本站及链接作为出处，英文内容和示例代码均遵从源站授权协议。'),
+            // .text('Except as otherwise noted, this site is licensed under a '),
             // a(href: 'https://creativecommons.org/licenses/by/4.0/', [
-            //   text('Creative Commons Attribution 4.0 International License,'),
+            //   .text('Creative Commons Attribution 4.0 International License,'),
             // ]),
-            // text(' and code samples are licensed under the '),
+            // .text(' and code samples are licensed under the '),
             // a(href: 'https://opensource.org/licenses/BSD-3-Clause', [
-            //   text('3-Clause BSD License.'),
+            //   .text('3-Clause BSD License.'),
             // ]),
           ]),
           div(classes: 'footer-utility-links', [
@@ -118,7 +119,7 @@ final class DashFooter extends StatelessComponent {
                 a(
                   href: '/terms',
                   attributes: {'title': '使用条款'},
-                  [text('使用条款')],
+                  [.text('使用条款')],
                 ),
               ]),
               li([
@@ -126,14 +127,14 @@ final class DashFooter extends StatelessComponent {
                   href: 'https://policies.google.cn/privacy',
                   target: Target.blank,
                   attributes: {'rel': 'noopener', 'title': '隐私政策'},
-                  [text('隐私政策')],
+                  [.text('隐私政策')],
                 ),
               ]),
               li([
                 a(
                   href: '/security',
                   attributes: {'title': 'Dart 代码安全说明'},
-                  [text('Dart 代码安全说明')],
+                  [.text('Dart 代码安全说明')],
                 ),
               ]),
             ]),
@@ -141,14 +142,14 @@ final class DashFooter extends StatelessComponent {
               a(
                 href: 'http://beian.miit.gov.cn/',
                 target: Target.blank,
-                [text('京ICP备13029451号-6')],
+                [.text('京ICP备13029451号-6')],
               ),
-              text(' | '),
+              .text(' | '),
               a(
                 href:
                     'http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802029624',
                 target: Target.blank,
-                [text('京公网安备11010802029624号')],
+                [.text('京公网安备11010802029624号')],
               ),
             ]),
             div(classes: 'footer-technology', [
@@ -161,8 +162,8 @@ final class DashFooter extends StatelessComponent {
                   'title': '本网站使用 Dart 语言开发的 Jaspr web 框架构建。',
                 },
                 [
-                  span([const JasprBadge.light()]),
-                  span([const JasprBadge.lightTwoTone()]),
+                  span([JasprBadge.light()]),
+                  span([JasprBadge.lightTwoTone()]),
                 ],
               ),
             ]),

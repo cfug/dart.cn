@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 import 'version_selector.dart'
@@ -63,7 +64,9 @@ final class ArchiveTable extends StatelessComponent {
             [
               form(classes: 'form-inline', [
                 div(classes: 'form-group select', [
-                  label(htmlFor: '$channel-versions', [text('版本：')]),
+                  label(htmlFor: '$channel-versions', [
+                    const .text('版本：'),
+                  ]),
                   select(
                     id: '$channel-versions',
                     value: selector.selectedVersion,
@@ -79,13 +82,13 @@ final class ArchiveTable extends StatelessComponent {
                         option(
                           value: version,
                           selected: version == selector.selectedVersion,
-                          [text(version)],
+                          [.text(version)],
                         ),
                     ],
                   ),
                 ]),
                 div(classes: 'form-group select', [
-                  label(htmlFor: '$channel-os', [text('操作系统：')]),
+                  label(htmlFor: '$channel-os', [const .text('操作系统：')]),
                   select(
                     id: '$channel-os',
                     value: selector.selectedOs,
@@ -97,7 +100,7 @@ final class ArchiveTable extends StatelessComponent {
                         value: 'all',
                         selected: selector.selectedOs == 'all',
                         [
-                          text('所有'),
+                          const .text('所有'),
                         ],
                       ),
                       option(
@@ -105,21 +108,21 @@ final class ArchiveTable extends StatelessComponent {
                         id: '$channel-macos',
                         classes: 'macos-option',
                         selected: selector.selectedOs == 'macos',
-                        [text('macOS')],
+                        [const .text('macOS')],
                       ),
                       option(
                         value: 'linux',
                         id: '$channel-linux',
                         classes: 'linux-option',
                         selected: selector.selectedOs == 'linux',
-                        [text('Linux')],
+                        [const .text('Linux')],
                       ),
                       option(
                         value: 'windows',
                         id: '$channel-windows',
                         classes: 'windows-option',
                         selected: selector.selectedOs == 'windows',
-                        [text('Windows')],
+                        [const .text('Windows')],
                       ),
                     ],
                   ),
@@ -128,13 +131,13 @@ final class ArchiveTable extends StatelessComponent {
 
               div(classes: 'table-wrapper', [
                 table(id: channel, classes: 'table', [
-                  thead([
+                  const thead([
                     tr([
-                      th([text('版本')]),
-                      th([text('系统')]),
-                      th([text('支持的架构')]),
-                      th([text('发布日期')]),
-                      th([text('下载链接')]),
+                      th([.text('版本')]),
+                      th([.text('系统')]),
+                      th([.text('支持的架构')]),
+                      th([.text('发布日期')]),
+                      th([.text('下载链接')]),
                     ]),
                   ]),
                   tbody([
@@ -149,22 +152,22 @@ final class ArchiveTable extends StatelessComponent {
                         },
                         [
                           td([
-                            text(version.version),
+                            .text(version.version),
                             if (version.ref != null) //
                               span(classes: 'muted', [
-                                text(' (${version.ref})'),
+                                .text(' (${version.ref})'),
                               ]),
                           ]),
-                          td([text(version.os)]),
-                          td([text(version.arch)]),
-                          td([text(version.date)]),
+                          td([.text(version.os)]),
+                          td([.text(version.arch)]),
+                          td([.text(version.date)]),
                           td(classes: 'archives', [
                             for (final archive in version.archives) ...[
-                              if (archive != version.archives.first) br(),
-                              a(href: archive.url, [text(archive.label)]),
+                              if (archive != version.archives.first) const br(),
+                              a(href: archive.url, [.text(archive.label)]),
                               if (archive.hasSha256)
                                 a(href: '${archive.url}.sha256sum', [
-                                  text(' (SHA-256)'),
+                                  const .text(' (SHA-256)'),
                                 ]),
                             ],
                           ]),
