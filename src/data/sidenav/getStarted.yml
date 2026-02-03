@@ -1,48 +1,48 @@
-- header: Get started
+- header: 开始使用
 
-- title: Dart overview
+- title: Dart 概览
   permalink: /overview
-- title: Set up Dart
+- title: 获取 Dart SDK
   permalink: /get-dart
   hiddenChildren: true
   children:
-    - title: Install Dart
+    - title: 安装 Dart SDK
       permalink: /get-dart
-    - title: SDK archive
+    - title: Dart SDK 归档
       permalink: /get-dart/archive
-- title: Learn Dart
+- title: 学习 Dart
   permalink: /learn
-- title: Get support
+- title: 获取支持
   permalink: /community
 
 - divider
-- header: Dart tutorial
+- header: Dart 教程
 
-- title: Start learning
+- title: 开始学习
   permalink: /learn/tutorial
-- title: Build your first app
+- title: 创建你的首个应用
   permalink: /learn/tutorial/first-app
-- title: Add interactivity to your app
+- title: 为你的应用添加交互功能
   permalink: /learn/tutorial/interactivity
-- title: Write asynchronous code
+- title: 编写异步代码
   permalink: /learn/tutorial/async
-- title: Organize code with packages and libraries
+- title: 使用 package 和库来组织代码
   permalink: /learn/tutorial/packages-libs
-- title: Define relationships with classes
+- title: 通过类定义关系
   permalink: /learn/tutorial/object-oriented
-- title: Handle errors gracefully
+- title: 优雅地处理错误
   permalink: /learn/tutorial/error-handling
-- title: Extend your app with enums and extensions
+- title: 使用枚举 (enum) 和扩展 (extension)
   permalink: /learn/tutorial/advanced-oop
-- title: Polish your CLI app
+- title: 完善你的 CLI 应用
   permalink: /learn/tutorial/cli-polish
-- title: Work with JSON data
+- title: 处理 JSON 数据
   permalink: /learn/tutorial/data-and-json
-- title: Test your app & code
+- title: 测试你的应用 & 代码
   permalink: /learn/tutorial/testing
-- title: Fetch data from the internet
+- title: 从网络上获取数据
   permalink: /learn/tutorial/fetch-data
-- title: Add logging for debugging and monitoring
+- title: 添加用于调试和监控的日志
   permalink: /learn/tutorial/logging
 
 - divider

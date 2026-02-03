@@ -25,19 +25,19 @@ that can help you develop command-line and server apps.
 <br> 不管是对新手还是专家来说都易于使用的工具，
   DartPad 可以让你尝试语言相关功能和 dart:* 的 API。
 
-  :::note
+:::note
 
-  DartPad does **not** support using VM libraries, such as `dart:io`,
-  or importing libraries from packages
-  besides the [currently supported packages][].
+DartPad does **not** support using VM libraries, such as `dart:io`,
+or importing libraries from packages
+besides the [currently supported packages][].
 
-  DartPad 尚且 **不支持** 使用 VM 库，比如 `dart:io`，
-  也不支持从导入其他 package，除了
-  目前已经支持了导入 `bloc`、`characters`、`collection` 等 package，
-  除了 [列举出的这些支持的 package][currently supported packages] 之外，
-  DartPad 尚且 **不支持** 导入其他 package。
+DartPad 尚且 **不支持** 使用 VM 库，比如 `dart:io`，
+也不支持从导入其他 package，除了
+目前已经支持了导入 `bloc`、`characters`、`collection` 等 package，
+除了 [列举出的这些支持的 package][currently supported packages] 之外，
+DartPad 尚且 **不支持** 导入其他 package。
     
-  :::
+:::
 
 [currently supported packages]: {{site.repo.dart.org}}/dart-pad/wiki/Package-and-plugin-support#currently-supported-packages
 
@@ -78,7 +78,7 @@ More tools
 
 For additional options, see [#server packages on pub.dev][server-pkgs].
 
-关于其他方案，请浏览 [#server packages on pub.dev](server-pkgs).
+关于其他方案，请浏览 [#server packages on pub.dev][server-pkgs].
 
 [server-pkgs]: {{site.pub-pkg}}?q=topic%3Aserver
 
@@ -87,26 +87,37 @@ For additional options, see [#server packages on pub.dev][server-pkgs].
 ## 样例
 
 [A simple Dart HTTP server][simple-sample]
-<br> * Uses the [`shelf`][] package.
-  * Also uses the [`shelf_router`][] and [`shelf_static`][] packages.
-  * Is deployable on Cloud Run.
 
 [一个基础的 Dart HTTP 服务器][simple-sample]
-<br> * 使用 [`shelf`][] package。
-  * 还使用了 [`shelf_router`][] 和 [`shelf_static`][] package。
-  * 可在 Cloud Run 上部署。
 
+  * Uses the [`shelf`][] package.
 
-[A Dart HTTP server that uses Cloud Firestore][cloud-sample]
-<br> * Uses the Cloud Firestore features in the [`googleapis`][] package.
-  * Also uses the [`googleapis_auth`][], [`shelf`][], and
-    [`shelf_router`][] packages.
+    使用 [`shelf`][] package。
+
+  * Also uses the [`shelf_router`][] and [`shelf_static`][] packages.
+
+    还使用了 [`shelf_router`][] 和 [`shelf_static`][] package。
+
   * Is deployable on Cloud Run.
 
+    可在 Cloud Run 上部署。
+
+[A Dart HTTP server that uses Cloud Firestore][cloud-sample]
+
 [一个基于 Cloud Firestore 的 Dart HTTP 服务器][cloud-sample]
-<br> * 使用 [`googleapis`][] package 中的 Cloud Firestore 功能。
-  * 还使用了 [`googleapis_auth`][]、[`shelf`][] 和 [`shelf_router`][] package。
-  * 可在 Cloud Run 上部署。
+
+  * Uses the Cloud Firestore features in the [`googleapis`][] package.
+
+    使用 [`googleapis`][] package 中的 Cloud Firestore 功能。
+
+  * Also uses the [`googleapis_auth`][], [`shelf`][], and
+    [`shelf_router`][] packages.
+
+    还使用了 [`googleapis_auth`][]、[`shelf`][] 和 [`shelf_router`][] package。
+
+  * Is deployable on Cloud Run.
+
+    可在 Cloud Run 上部署。
 
 [simple-sample]: {{site.repo.dart.samples}}/tree/main/server/simple
 [cloud-sample]: {{site.repo.dart.samples}}/tree/main/server/google_apis
@@ -140,13 +151,13 @@ For additional options, see [#server packages on pub.dev][server-pkgs].
 <br> Guides and documentation on Google Cloud products
   that Dart servers can use, such as Cloud Run.
 
-[使用 Google Cloud][]
+[使用 Google Cloud][Using Google Cloud]
 <br> Dart 服务器可使用的 Google Cloud 产品的指南和文档，例如 Cloud Run。
 
 [Using Google APIs][]
 <br> Resources to help you use Firebase and Google client APIs from a Dart app.
 
-[使用 Google API][]
+[使用 Google API][Using Google APIs]
 <br> 帮助你在 Dart 应用中使用 Firebase 和 Google 客户端 API 的资源。
 
 [Using Google Cloud]: /server/google-cloud
