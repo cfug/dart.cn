@@ -1616,14 +1616,18 @@ annotating helps make the code clearer, then add one.
 那么可以省略它的注解。但是如果你认为注解有助于使代码更清晰，
 那么你应该加上这个注解。
 
-When in doubt, add a type annotation. Even when a type is obvious, you may still
-wish to explicitly annotate. If the inferred type relies on values or
-declarations from other libraries, you may want to type annotate *your*
+When in doubt, add a type annotation.
+You can also explicitly annotate obvious types.
+If the inferred type relies on values or declarations from other libraries,
+you might want to type annotate *your*
 declaration so that a change to that other library doesn't silently change the
 type of your own API without you realizing.
 
-如有疑问，请添加类型注解。即使类型很明显，但可能任然希望明确的注解。如果推断类型依赖于其他库中的值
-或声明，可能需要添加注解的声明。这样自己的API就不会因为其他库的修改而被悄无声息的改变了类型。
+如有疑问，请添加类型注解。
+对于显而易见的类型，也可以进行显式注解。
+如果推断类型依赖于其他库中的值或声明，
+建议你为 **自身** 的声明添加类型注解，
+这样自己的 API 就不会因为其他库的修改而被悄无声息地改变了类型。
 
 This rule applies to both public and private declarations. Just as type
 annotations on APIs help *users* of your code, types on private members help

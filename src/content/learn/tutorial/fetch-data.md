@@ -4,18 +4,8 @@ shortTitle: HTTP requests
 description: >-
   Refactor your application to use a robust, production-ready
   API client for the Wikipedia CLI.
-sitemap: false
-noindex: true
 layout: learn
-prevpage:
-  url: /learn/tutorial/testing
-  title: Test your app & code
-nextpage:
-  url: /learn/tutorial/logging
-  title: Add logging for debugging and monitoring
 ---
-
-{% render 'fwe-wip-warning.md', site: site %}
 
 In Chapter 3, you used the `http` package to make a simple request.
 Now, you'll revisit HTTP to

@@ -6,18 +6,8 @@ description: >-
   advanced features like enhanced enums and extensions.
   Improve your application's output formatting and color,
   making it more user-friendly.
-sitemap: false
-noindex: true
 layout: learn
-prevpage:
-  url: /learn/tutorial/error-handling
-  title: Handle errors gracefully
-nextpage:
-  url: /learn/tutorial/cli-polish
-  title: Polish your CLI app
 ---
-
-{% render 'fwe-wip-warning.md', site: site %}
 
 In this chapter, you'll explore advanced Dart features that
 improve the user experience of your command-line application.
@@ -252,7 +242,7 @@ This example creates a command that makes console output colorful.
 
     import 'package:command_runner/command_runner.dart';
 
-    class PrettyEcho extends Command<String> {
+    class PrettyEcho extends Command {
       PrettyEcho() {
         addFlag(
           'blue-only',
@@ -305,7 +295,7 @@ This example creates a command that makes console output colorful.
     }
 
     void main(List<String> arguments) {
-      final runner = CommandRunner<String>()..addCommand(PrettyEcho());
+      final runner = CommandRunner()..addCommand(PrettyEcho());
 
       runner.run(arguments);
     }

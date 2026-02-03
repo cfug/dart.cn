@@ -9,6 +9,8 @@
       permalink: /language/operators
     - title: 注释
       permalink: /language/comments
+    - title: 版本控制
+      permalink: /language/versions
     - divider
     - title: 类型
       children:
@@ -204,14 +206,8 @@
       children:
         - title: 概览
           permalink: /server
-        - title: 起步教程
-          permalink: /tutorials/server/get-started
-        - title: 命令行应用
-          permalink: /tutorials/server/cmdline
         - title: 从网络上获取数据
-          permalink: /tutorials/server/fetch-data
-        - title: 编写 HTTP 服务端应用
-          permalink: /tutorials/server/httpserver
+          permalink: /server/fetch-data
         - title: 库和 package
           permalink: /server/libraries
         - title: Google Cloud
@@ -345,17 +341,21 @@
         permalink: /web/debugging
 
 - divider
+
+- title: 学习 Dart
+  children:
+    - title: 概览
+      permalink: /learn
+    - title: 教程
+      permalink: /learn/tutorial
+
 - title: 最新动态
   expanded: false
   children:
     - title: Dart 团队官方博客
       permalink: https://blog.dart.dev
     - title: Dart SDK 更新日志
-      permalink: https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md
-    - title: 破坏性改动
-      permalink: /resources/breaking-changes
-    - title: 版本演变
-      permalink: /resources/language/evolution
+      permalink: /changelog
     - title: 最近更新
       permalink: /resources/whats-new
 
@@ -381,8 +381,6 @@
       permalink: /resources/books
     - title: 视频资源
       permalink: /resources/videos
-    - title: 教程
-      permalink: /tutorials
 
 - title: 相关站点
   expanded: true

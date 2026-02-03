@@ -4,19 +4,8 @@ short-title: Logging
 description: >-
   Learn how to add logging to your Dart application to
   help with debugging and monitoring.
-sitemap: false
-noindex: true
 layout: learn
-prevpage:
-  url: /learn/tutorial/fetch-data
-  title: Fetch data from the internet
-nextpage:
-  # TODO: Create a conclusion page or section with next steps.
-  url: /learn
-  title: Keep learning!
 ---
-
-{% render 'fwe-wip-warning.md', site: site %}
 
 In this chapter, you'll learn how to add logging to your Dart application.
 Logging is a critical tool for debugging, monitoring, and
@@ -213,7 +202,7 @@ create a logger instance and log messages to a file.
     void main(List<String> arguments) async {
       final errorLogger = initFileLogger('errors');
       final app =
-          CommandRunner<String>(
+          CommandRunner(
               onOutput: (String output) async {
                 await write(output);
               },
@@ -633,5 +622,8 @@ items:
 
 Congratulations! You've now completed all the
 core chapters of the Dart Getting Started tutorial.
-As a bonus, you can learn how to make your application into a
-server using `package:shelf` in the next chapter.
+Want to continue learning?
+Check out the next step in the
+[Dart and Flutter learning pathway][] on the Flutter site.
+
+[Dart and Flutter learning pathway]: {{site.flutter-docs}}/learn/pathway

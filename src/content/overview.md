@@ -366,26 +366,6 @@ manages memory using fast object allocation and a
 并使用快速对象分配和
 [分代垃圾收集器](https://medium.com/flutter-io/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30) 来管理内存。
 
-More information:
-
-更多相关信息：
-
-* [Get started: Command-line and server apps](/tutorials/server/get-started)
-
-  [快速上手：命令行与服务器应用](/tutorials/server/get-started)
-
-* [`dart` tool for running with JIT or AOT compiling to machine code](/tools/dart-tool)
-
-  [用于 JIT 运行或 AOT 编译为机器码的 `dart` 工具](/tools/dart-tool)
-
-* [Write command-line apps](/tutorials/server/cmdline)
-
-  [编写命令行应用应用程序](/tutorials/server/cmdline)
-
-* [Write HTTP servers](/tutorials/server/httpserver)
-
-  [编写 HTTP 服务器](/tutorials/server/httpserver)
-
 #### Dart Web (JavaScript dev & prod and WebAssembly) {:#web-platform}
 
 #### Web 平台的 Dart（JavaScript 的开发与部署以及 WebAssembly）
@@ -504,16 +484,16 @@ You have many choices for learning Dart. Here are a few that we recommend:
 
   [在浏览器中探索 Dart]({{site.dartpad}}/) - DartPad 是一个基于网页的 Dart 代码执行环境。
 
+* [Complete the Dart tutorial](/learn/tutorial) that
+  covers the basics of using Dart to build for the command line.
+
+  [完成 Dart 教程](/learn/tutorial) 它涵盖了通过命令行构建使用 Dart 的基础知识。
+
 * [Take a tour of the Dart language](/language),
   which shows you how to use each major Dart feature.
 
   [Dart 开发语言概览](/language)，
   它展示了如何使用 Dart 的主要特性。
-
-* [Complete a Dart tutorial](/tutorials/server/cmdline) that 
-  covers the basics of using Dart to build for the command line.
-
-  [完成 Dart 教程](/tutorials/server/cmdline) 它涵盖了通过命令行构建使用 Dart 的基础知识。
 
 * [Work through extensive online training][udemy]
   from Dart experts.

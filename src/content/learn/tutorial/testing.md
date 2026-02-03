@@ -4,18 +4,8 @@ shortTitle: Testing
 description: >-
   Learn how to write tests for your Dart code
   using the `package:test` library.
-sitemap: false
-noindex: true
 layout: learn
-prevpage:
-  url: /learn/tutorial/data-and-json
-  title: Work with JSON data
-nextpage:
-  url: /learn/tutorial/fetch-data
-  title: Fetch data from the internet
 ---
-
-{% render 'fwe-wip-warning.md', site: site %}
 
 In this chapter, you'll learn how to write tests for your Dart code.
 Testing is crucial for ensuring that your application behaves

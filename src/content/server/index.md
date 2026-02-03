@@ -13,11 +13,6 @@ that can help you develop command-line and server apps.
 
 本文向你展示可以帮助你开发命令行式和服务器应用的相关工具和文档。
 
-<p class="centered-rows">
-  <a href="/tutorials/server/get-started" class="filled-button large-button">开始使用</a>
-</p>
-
-
 ## Tools
 
 ## 工具
@@ -81,41 +76,45 @@ More tools
 更多工具：
 <br> [工具](/tools) 界面链接了一些有用的工具，比如你喜欢的 IDE 或编辑器的 Dart 插件。
 
-For additional options, see [#server packages on pub.dev]({{site.pub-pkg}}?q=topic%3Aserver).
+For additional options, see [#server packages on pub.dev][server-pkgs].
 
-关于其他方案，请浏览 [#server packages on pub.dev]({{site.pub-pkg}}?q=topic%3Aserver).
+关于其他方案，请浏览 [#server packages on pub.dev](server-pkgs).
 
-## Tutorials
+[server-pkgs]: {{site.pub-pkg}}?q=topic%3Aserver
 
-## 教程
+## Samples
 
-You might find the following tutorials helpful.
+## 样例
 
-你可能会发现以下的教程会比较有用。
+[A simple Dart HTTP server][simple-sample]
+<br> * Uses the [`shelf`][] package.
+  * Also uses the [`shelf_router`][] and [`shelf_static`][] packages.
+  * Is deployable on Cloud Run.
 
-[Get started](/tutorials/server/get-started)
-<br> Learn how to use the Dart SDK to develop command-line and server apps.
+[一个基础的 Dart HTTP 服务器][simple-sample]
+<br> * 使用 [`shelf`][] package。
+  * 还使用了 [`shelf_router`][] 和 [`shelf_static`][] package。
+  * 可在 Cloud Run 上部署。
 
-[开始](/tutorials/server/get-started)：
-<br> 学习如何使用 Dart SDK 开发命令行或服务器应用。
 
-[gRPC Quickstart](https://grpc.io/docs/languages/dart/quickstart/)
-<br> Walks you through running and modifying a client-server example that uses the gRPC framework.
+[A Dart HTTP server that uses Cloud Firestore][cloud-sample]
+<br> * Uses the Cloud Firestore features in the [`googleapis`][] package.
+  * Also uses the [`googleapis_auth`][], [`shelf`][], and
+    [`shelf_router`][] packages.
+  * Is deployable on Cloud Run.
 
-[gRPC 快速上手](https://grpc.io/docs/quickstart/dart.html)：
-<br> 手把手教你使用 gRPC 框架运行和修改一个客户端-服务器示例。
+[一个基于 Cloud Firestore 的 Dart HTTP 服务器][cloud-sample]
+<br> * 使用 [`googleapis`][] package 中的 Cloud Firestore 功能。
+  * 还使用了 [`googleapis_auth`][]、[`shelf`][] 和 [`shelf_router`][] package。
+  * 可在 Cloud Run 上部署。
 
-[Write command-line apps](/tutorials/server/cmdline)
-<br> Introduces dart:io and the args package.
-
-[开发 command-line 应用](/tutorials/server/cmdline)：
-<br> dart:io 和 args package 的介绍。
-
-[Write HTTP servers](/tutorials/server/httpserver)
-<br> Features dart:io and the http_server package.
-
-[开发 HTTP 客户端和服务端](/tutorials/server/httpserver)：
-<br> dart:io 和 http_server 包的相关功能。
+[simple-sample]: {{site.repo.dart.samples}}/tree/main/server/simple
+[cloud-sample]: {{site.repo.dart.samples}}/tree/main/server/google_apis
+[`googleapis`]: {{site.pub-pkg}}/googleapis
+[`googleapis_auth`]: {{site.pub-pkg}}/googleapis_auth
+[`shelf`]: {{site.pub-pkg}}/shelf
+[`shelf_router`]: {{site.pub-pkg}}/shelf_router
+[`shelf_static`]: {{site.pub-pkg}}/shelf_static
 
 ## More resources
 
@@ -127,12 +126,28 @@ You might find the following tutorials helpful.
 [Dart API]({{site.dart-api}})：
 <br> dart:* 库的 API 参考。
 
-[dart:io documentation](/libraries/dart-io)
+[`dart:io` documentation](/libraries/dart-io)
 <br> Shows how to use the major features of the dart:io library.
   You can use the dart:io library in command-line scripts, servers, and
   non-web [Flutter apps.]({{site.flutter}})
 
-[dart:io 文档](/libraries/dart-io)：
+[`dart:io` 文档](/libraries/dart-io)：
 <br> 向你展示如何使用 dart:io 库的主要功能。
 你可以在命令行脚本、服务器应用以及不包含 Web 平台的
 [Flutter 移动应用]({{site.flutter}}) 中使用 dart:io 库。
+
+[Using Google Cloud][]
+<br> Guides and documentation on Google Cloud products
+  that Dart servers can use, such as Cloud Run.
+
+[使用 Google Cloud][]
+<br> Dart 服务器可使用的 Google Cloud 产品的指南和文档，例如 Cloud Run。
+
+[Using Google APIs][]
+<br> Resources to help you use Firebase and Google client APIs from a Dart app.
+
+[使用 Google API][]
+<br> 帮助你在 Dart 应用中使用 Firebase 和 Google 客户端 API 的资源。
+
+[Using Google Cloud]: /server/google-cloud
+[Using Google APIs]: /resources/google-apis

@@ -60,23 +60,8 @@ The following libraries and packages are useful across Dart platforms:
 
 ## 相关的 Web 应用资源
 
-[Fetch data from the internet](/tutorials/server/fetch-data)
+[Fetch data from the internet](/server/fetch-data)
 <br> Demonstrates how to use `package:http` to retrieve data with a web server.
 
-[从互联网获取数据](/tutorials/server/fetch-data)
+[从互联网获取数据](/server/fetch-data)
 <br> 向你演示如何使用 `package:http` 通过 web 服务器检索数据。
-
-{% comment %}
-## VM resources
-
-## 相关的 VM 资源
-
-[Write HTTP servers](/tutorials/server/httpserver)
-<br> Walks through how to implement command-line clients and servers
-  that exchange JSON data.
-
-[开发 HTTP 服务端](/tutorials/server/httpserver)
-<br> 手把手教你如何实现一个命令行式的客户端和服务端并使用 JSON 交换数据。
-
-## Other tools and resources
-{% endcomment %}

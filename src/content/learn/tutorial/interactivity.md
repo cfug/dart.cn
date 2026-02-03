@@ -5,18 +5,8 @@ description: >-
   Add simple commands to your cli application.
   Learn the fundamentals of Dart syntax including
   control flow, collections, variables, functions, and more.
-sitemap: false
-noindex: true
 layout: learn
-prevpage:
-  url: /learn/tutorial/first-app
-  title: Build your first app
-nextpage:
-  url: /learn/tutorial/async
-  title: Write asynchronous code
 ---
-
-{% render 'fwe-wip-warning.md', site: site %}
 
 In this chapter, you'll get hands-on practice with Dart syntax.
 You'll learn how to read user input, print usage information, and
