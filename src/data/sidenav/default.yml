@@ -368,13 +368,7 @@
       permalink: /resources/language/spec
     - title: Dart 3 迁移指南
       permalink: /resources/dart-3-migration
-    - title: 从 JavaScript 到 Dart
-      permalink: /resources/coming-from/js-to-dart
-    - title: 从 Swift 到 Dart
-      permalink: /resources/coming-from/swift-to-dart
     - divider
-    - title: 常见问题
-      permalink: /resources/faq
     - title: 术语表
       permalink: /resources/glossary
     - title: 书籍资源
