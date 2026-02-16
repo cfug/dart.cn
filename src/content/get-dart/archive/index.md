@@ -21,8 +21,12 @@ Want to install Dart with your OS's package manager?
 
 希望通过系统的包管理安装 Dart？请查看如何 [获取 Dart SDK](/get-dart)。
 
-:::warning Notice
+:::warning 公告
+
+<!-- Notice -->
+
 {% render 'install/sdk-terms.md' %}
+
 :::
 
 ## Stable channel

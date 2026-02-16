@@ -90,14 +90,23 @@ class DashHeader extends StatelessComponent {
             ),
           ]),
           li([
-            if (activeEntry == ActiveNavEntry.learn)
-              const a(href: '/learn', classes: 'nav-link active', [
-                .text('学习'),
-              ])
-            else
-              const a(href: '/#try-dart', classes: 'nav-link', [
+            a(
+              href: '/learn',
+              classes: [
+                'nav-link',
+                if (activeEntry == ActiveNavEntry.learn) 'active',
+              ].toClasses,
+              [const .text('学习')],
+            ),
+          ]),
+          const li([
+            a(
+              href: '/#try-dart',
+              classes: 'nav-link',
+              [
                 .text('尝试 Dart'),
-              ]),
+              ],
+            ),
           ]),
           li([
             a(

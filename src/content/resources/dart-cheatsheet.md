@@ -2417,10 +2417,6 @@ What you can try next includes:
 
 接下来你可以尝试：
 
-* Try [other Dart tutorials](/tutorials).
-
-  尝试其他 Dart 教程。
-
 * Read the [Dart language tour](/language).
 
   阅读 [Dart 语言之旅](/language)。

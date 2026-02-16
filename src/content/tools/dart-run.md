@@ -229,7 +229,7 @@ To learn more about other debugging options, run `dart run --help`.
 运行 `dart run --help` 获取更多信息。
 
 [assert]: /language/error-handling#assert
-[Using DevTools with a command-line app]: /tools/dart-devtools#using-devtools-with-a-command-line-app
+[Using DevTools with a command-line app]: /tools/dart-devtools#command-line-apps
 
 ## Enabling experimental features
 

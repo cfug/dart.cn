@@ -3,18 +3,10 @@ title: Organize Dart code with packages and libraries
 shortTitle: Packages and libraries
 description: >-
   Learn how to organize your Dart code into reusable libraries and packages.
-sitemap: false
-noindex: true
 layout: learn
-prevpage:
-  url: /learn/tutorial/async
-  title: Write asynchronous code
-nextpage:
-  url: /learn/tutorial/object-oriented
-  title: Define relationships with classes
 ---
 
-{% render 'fwe-wip-warning.md', site: site %}
+<YoutubeEmbed id="En5lVTdmZIY" title="The Dart platform" fullWidth="true"></YoutubeEmbed>
 
 In this chapter, you'll level up from basic Dart syntax to
 building command-line applications "the Dart way," embracing best practices.

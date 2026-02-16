@@ -4,18 +4,8 @@ shortTitle: CLI polish
 description: >-
   Improve the HelpCommand to provide more detailed information and
   add an onOutput argument for flexible output handling.
-sitemap: false
-noindex: true
 layout: learn
-prevpage:
-  url: /learn/tutorial/advanced-oop
-  title: Extend your app with enums and extensions
-nextpage:
-  url: /learn/tutorial/data-and-json
-  title: Work with JSON data
 ---
-
-{% render 'fwe-wip-warning.md', site: site %}
 
 In this chapter, you'll
 put the finishing touches on the `command_runner` package.
@@ -206,12 +196,11 @@ Finally, update your main application to use the new `onOutput` feature.
 
     ```dart
     import 'package:command_runner/command_runner.dart';
-    import 'package:command_runner/src/console.dart';
 
     const version = '0.0.1';
 
     void main(List<String> arguments) {
-      var commandRunner = CommandRunner<String>(
+      var commandRunner = CommandRunner(
         onOutput: (String output) async {
           await write(output);
         },

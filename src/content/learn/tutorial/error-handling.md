@@ -4,18 +4,8 @@ shortTitle: Error handling
 description: >-
   Improve app robustness by handling errors.
   Learn about exceptions, errors, `try/catch`, `throw`, and `rethrow`.
-sitemap: false
-noindex: true
 layout: learn
-prevpage:
-  url: /learn/tutorial/object-oriented
-  title: Define relationships with classes
-nextpage:
-  url: /learn/tutorial/advanced-oop
-  title: Extend your app with enums and extensions
 ---
-
-{% render 'fwe-wip-warning.md', site: site %}
 
 In this chapter, you'll learn how to
 make your application more robust by handling errors gracefully.
@@ -77,6 +67,11 @@ represent errors related to command-line arguments.
         super.source,
         super.offset,
       ]);
+
+      @override
+      String toString() {
+        return 'ArgumentException: $message';
+      }
     }
     ```
 
