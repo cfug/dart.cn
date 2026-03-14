@@ -9,8 +9,6 @@
       permalink: /language/operators
     - title: 注释
       permalink: /language/comments
-    - title: 版本控制
-      permalink: /language/versions
     - divider
     - title: 类型
       children:
@@ -92,16 +90,12 @@
       children:
         - title: 健全的空安全
           permalink: /null-safety
-        - title: 迁移到空安全
-          permalink: /null-safety/migration-guide
         - title: 深入理解空安全
           permalink: /null-safety/understanding-null-safety
-        - title: 非健全的空安全
-          permalink: /null-safety/unsound-null-safety
-        - title: 空安全常见问题和解答
-          permalink: /null-safety/faq
     - title: 关键字
       permalink: /language/keywords
+    - title: 版本控制
+      permalink: /language/versioning
 
 - title: 核心库
   expanded: false
@@ -252,15 +246,12 @@
       - title: 与 Web 互调
         permalink: /interop/js-interop/package-web
 
+
 - title: 开发工具和使用技巧
   expanded: false
   children:
   - title: 概览
     permalink: /tools
-  - title: AI
-    children:
-        - title: Dart 和 Flutter 的 MCP Server
-          permalink: https://docs.flutter.cn/ai/mcp-server
   - title: 编辑器和调试工具
     children:
       - title: 使用 IntelliJ 和 Android Studio
@@ -348,6 +339,14 @@
       permalink: /learn
     - title: 教程
       permalink: /learn/tutorial
+
+- title: AI
+  expanded: false
+  children:
+    - title: Dart 和 Flutter 的 MCP Server
+      permalink: https://docs.flutter.cn/ai/mcp-server
+    - title: Genkit (Dart)
+      permalink: https://genkit.dev/docs/dart/get-started/
 
 - title: 最新动态
   expanded: false
