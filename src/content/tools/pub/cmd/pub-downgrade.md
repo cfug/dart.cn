@@ -158,6 +158,17 @@ Reports what dependencies would change but doesn't change any.
 
 报告将要改变的依赖项，但不会真的改变它。
 
+### `--[no-]example`
+
+By default, pub also downgrades the dependencies of the
+[`example/` directory][example-dir] of the package (`--example`).
+To skip downgrading example dependencies, use `--no-example`.
+
+默认情况下，pub 还会降低 [`example/` 目录][example-dir] 的依赖项版本 (`--example`)。
+若要跳过降低 example 的依赖项版本，请使用 `--no-example`。
+
+[example-dir]: /tools/pub/package-layout#examples
+
 ### `--tighten`
 
 :::version-note

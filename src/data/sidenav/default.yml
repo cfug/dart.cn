@@ -149,8 +149,6 @@
   children:
     - title: 如何使用 package
       permalink: /tools/pub/packages
-    - title: 常用 package 介绍
-      permalink: /resources/useful-packages
     - title: 创建 package
       permalink: /tools/pub/create-packages
     - title: 发布 package
@@ -182,8 +180,14 @@
           permalink: /tools/pub/versioning
         - title: 自定义 package 仓库
           permalink: /tools/pub/custom-package-repositories
-    - title: 不应提交的内容
-      permalink: /tools/pub/private-files
+        - title: 不应提交的内容
+          permalink: /tools/pub/private-files
+    - divider
+    - title: 常用 package 介绍
+      permalink: /resources/useful-packages
+    - title: Dart team package
+      permalink: /resources/dart-team-packages
+
 
 - title: 开发文档
   expanded: false

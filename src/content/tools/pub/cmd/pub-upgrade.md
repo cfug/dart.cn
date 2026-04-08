@@ -217,6 +217,17 @@ To prevent precompilation, use `--no-precompile`.
 默认情况下，pub 会预编译直接依赖的 package 的可执行文件 (`precompile`)。
 若你不需要预编译，请使用 `--no-precompile`。
 
+### `--[no-]example`
+
+By default, pub also upgrades the dependencies of the
+[`example/` directory][example-dir] of the package (`--example`).
+To skip upgrading example dependencies, use `--no-example`.
+
+默认情况下，pub 还会升级 [`example/` 目录][example-dir] 的依赖项 (`--example`)。
+若要跳过升级 example 的依赖项，请使用 `--no-example`。
+
+[example-dir]: /tools/pub/package-layout#examples
+
 ### `--major-versions`
 
 Gets the packages that [`dart pub outdated`][] lists as _resolvable_,
