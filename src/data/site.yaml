@@ -9,7 +9,6 @@ redirect:
   go: https://dart.cn/go
 repo:
   this: https://github.com/cfug/dart.cn
-  shared: https://github.com/dart-lang/site-shared
   dart:
     org: https://github.com/dart-lang
     sdk: https://github.com/dart-lang/sdk
