@@ -23,7 +23,7 @@ our [code of conduct](/community/code-of-conduct).
   <Card title="Dart 公告群组" link="{{page.group}}/d/forum/announce">
     第一时间公布新的发行版本、重大变化以及其他重要新闻。推荐！
   </Card>
-  <Card title="Dart blog" link="https://blog.dart.dev">
+  <Card title="Dart blog" link="/blog">
     来自不同 Dart 用户群体的最新消息和观点。
   </Card>
   <Card title="@dart_lang" link="https://twitter.com/dart_lang">

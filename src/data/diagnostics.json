@@ -154,7 +154,8 @@
   {
     "id": "always_specify_types",
     "description": "_Missing type annotation._",
-    "hasDocumentation": false,
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when\nan explicit type annotation is missing.\n\nThis includes in the following cases:\n\n- A variable declaration that uses `var`, `final`, or `const`\n  without a specific type.\n- A function parameter lacks a type annotation.\n- A collection literal lacks explicit type arguments.\n- A reference to a generic class, mixin, or enum lacks type arguments.\n\nTypes annotated with `@optionalTypeArgs` from `package:meta` are\nexempt from requiring type arguments.\n\n## Examples\n\nThe following code produces this diagnostic because\nthe top-level variable uses `var` without an explicit type:\n\n```dart\n[!var!] x = 1;\n```\n\nThe following code produces this diagnostic because\nthe parameter `p` lacks a type annotation:\n\n```dart\nvoid f([!p!]) {}\n```\n\nThe following code produces this diagnostic because\nthe set literal lacks an explicit type argument:\n\n```dart\nSet<int> items = [!{!]1, 2};\n```\n\nThe following code produces this diagnostic because\nthe generic type `C` is used without specifying its type argument:\n\n```dart\nclass C<T> {}\n\n[!C!] c = C<int>();\n```\n\n## Common fixes\n\nAdd an explicit type annotation to variable declarations:\n\n```dart\nint x = 1;\n```\n\nAdd a type annotation to parameters:\n\n```dart\nvoid f(int p) {}\n```\n\nAdd explicit type arguments to collection literals:\n\n```dart\nSet<int> items = <int>{1, 2};\n```\n\nAdd type arguments to generic type references:\n\n```dart\nclass C<T> {}\n\nC<int> c = C<int>();\n```\n\nIf a type argument is meant to be optional,\nannotate the declaration with `@optionalTypeArgs` from\n`package:meta` to exempt it from this lint:\n\n```dart\nimport 'package:meta/meta.dart';\n\n@optionalTypeArgs\nclass C<T> {}\n\nC c = C();\n```\n",
+    "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
   },
@@ -185,7 +186,7 @@
   {
     "id": "ambiguous_import",
     "description": "_The name '{0}' is defined in the libraries {1}._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a name is referenced that is\ndeclared in two or more imported libraries.\n\n## Example\n\nGiven a library (`a.dart`) that defines a class (`C` in this example):\n\n```dart\nclass A {}\nclass C {}\n```\n\nAnd a library (`b.dart`) that defines a different class with the same name:\n\n```dart\nclass B {}\nclass C {}\n```\n\nThe following code produces this diagnostic:\n\n```dart\nimport 'a.dart';\nimport 'b.dart';\n\nvoid f([!C!] c1, [!C!] c2) {}\n```\n\n## Common fixes\n\nIf any of the libraries aren't needed, then remove the import directives\nfor them:\n\n```dart\nimport 'a.dart';\n\nvoid f(C c1, C c2) {}\n```\n\nIf the name is still defined by more than one library, then add a `hide`\nclause to the import directives for all except one library:\n\n```dart\nimport 'a.dart' hide C;\nimport 'b.dart';\n\nvoid f(C c1, C c2) {}\n```\n\nIf you must be able to reference more than one of these types, then add a\nprefix to each of the import directives, and qualify the references with\nthe appropriate prefix:\n\n```dart\nimport 'a.dart' as a;\nimport 'b.dart' as b;\n\nvoid f(a.C c1, b.C c2) {}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a name is referenced that is\ndeclared in two or more imported libraries.\n\n## Example\n\nGiven a library (`a.dart`) that defines a class (`C` in this example):\n\n```dart\nclass A {}\nclass C {}\n```\n\nAnd a library (`b.dart`) that defines a different class with the same name:\n\n```dart\nclass B {}\nclass C {}\n```\n\nThe following code produces this diagnostic:\n\n```dart\nimport 'a.dart';\nimport 'b.dart';\n\nvoid f(A a, [!C!] c1, [!C!] c2) {}\n```\n\n## Common fixes\n\nIf any of the libraries aren't needed, then remove the import directives\nfor them:\n\n```dart\nimport 'a.dart';\n\nvoid f(A a, C c1, C c2) {}\n```\n\nIf the name is still defined by more than one library, then add a `hide`\nclause to the import directives for all except one library:\n\n```dart\nimport 'a.dart' hide C;\nimport 'b.dart';\n\nvoid f(A a, C c1, C c2) {}\n```\n\nIf you must be able to reference more than one of these types, then add a\nprefix to each of the import directives, and qualify the references with\nthe appropriate prefix:\n\n```dart\nimport 'a.dart' as a;\nimport 'b.dart' as b;\n\nvoid f(a.A a, a.C c1, b.C c2) {}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -281,7 +282,8 @@
   {
     "id": "annotate_redeclares",
     "description": "_The member '{0}' is redeclaring but isn't annotated with '@redeclare'._",
-    "hasDocumentation": false,
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an extension type member redeclares\na member from an implemented interface without the `@redeclare` annotation.\n\n## Example\n\nThe following code produces this diagnostic because the `f` method in the\nextension type E redeclares the `f` method from `C` without the `@redeclare` annotation:\n\n```dart\nclass C {\n  void f() { }\n}\n\nextension type E(C c) implements C {\n  void [!f!]() { }\n}\n```\n\n## Common fixes\n\nAdd the `@redeclare` annotation to make the redeclaration explicit:\n\n```dart\nimport 'package:meta/meta.dart';\n\nclass C {\n  void f() { }\n}\n\nextension type E(C c) implements C {\n  @redeclare\n  void f() { }\n}\n```\n",
+    "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
   },
@@ -309,7 +311,7 @@
   },
   {
     "id": "anonymous_method_wrong_parameter_type",
-    "description": "_The receiver type '{0}' must be assignable to the formal parameter type '{1}' of an anonymous method._",
+    "description": "_The receiver type '{0}' must be assignable to the formal parameter type '{1}' in an anonymous method._",
     "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
@@ -525,6 +527,13 @@
     "previousNames": []
   },
   {
+    "id": "augmentation_of_mixin_application_class",
+    "description": "_Mixin application classes can't be augmented._",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "augmentation_type_parameter_bound",
     "description": "_The augmentation type parameter must have the same bound as the corresponding type parameter of the declaration._",
     "hasDocumentation": false,
@@ -576,7 +585,8 @@
   {
     "id": "avoid_annotating_with_dynamic",
     "description": "_Unnecessary 'dynamic' type annotation._",
-    "hasDocumentation": false,
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a parameter has an explicit\n`dynamic` type annotation. Because `dynamic` is the default type for\nparameters without a type annotation, the annotation is unnecessary.\n\n## Example\n\nThe following code produces this diagnostic because the parameter `p`\nis explicitly annotated with `dynamic`:\n\n```dart\nvoid f([!dynamic p!]) {}\n```\n\n## Common fixes\n\nRemove the `dynamic` type annotation:\n\n```dart\nvoid f(p) {}\n```\n",
+    "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
   },
@@ -590,14 +600,16 @@
   {
     "id": "avoid_bool_literals_in_conditional_expressions",
     "description": "_Conditional expressions with a 'bool' literal can be simplified._",
-    "hasDocumentation": false,
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a conditional expression uses a\nboolean literal, and both branches are booleans. You can simplify these\nexpressions using `&&` or `||`.\n\n## Examples\n\nThe following code produces this diagnostic because the then expression\nis the `bool` literal `true`:\n\n```dart\nbool f(bool a, bool b) => [!a ? true : b!];\n```\n\nThe following code produces this diagnostic because the else expression\nis the `bool` literal `false`:\n\n```dart\nbool f(bool a, bool b) => [!a ? b : false!];\n```\n\n## Common fixes\n\nReplace the conditional expression with the equivalent logical expression.\nIf the then expression is a boolean literal, replace it with one of the following:\n\n```dart\nbool f(bool a, bool b) => a || b;  // replaces: a ? true : b\nbool g(bool a, bool b) => !a && b; // replaces: a ? false : b\n```\n\nIf the else expression is a boolean literal, replace it with one of the following:\n\n```dart\nbool f(bool a, bool b) => !a || b; // replaces: a ? b : true\nbool g(bool a, bool b) => a && b;  // replaces: a ? b : false\n```\n",
+    "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
   },
   {
     "id": "avoid_catches_without_on_clauses",
     "description": "_Catch clause should use 'on' to specify the type of exception being caught._",
-    "hasDocumentation": false,
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a `catch` clause lacks an\n`on` clause to specify the exception type. Catching all exceptions\ncan mask unexpected errors and make debugging more difficult.\n\n## Example\n\nThe following code produces this diagnostic because the `catch` clause\nhas no `on` clause to specify the exception type:\n\n```dart\nvoid f() {\n  try {\n    int.parse('?');\n  } [!catch!] (e) {\n    print(e);\n  }\n}\n```\n\n## Common fixes\n\nAdd an `on` clause to specify the type of exception to catch:\n\n```dart\nvoid f() {\n  try {\n    int.parse('?');\n  } on FormatException catch (e) {\n    print(e);\n  }\n}\n```\n",
+    "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
   },
@@ -618,7 +630,8 @@
   {
     "id": "avoid_double_and_int_checks",
     "description": "_Explicit check for double or int._",
-    "hasDocumentation": false,
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an `if` statement\ntests the type of a variable with `is double` and the\nfollowing `else if` tests the same variable with `is int`.\n\nWhen compiled to JavaScript, both `int` and `double` values\nare represented as JavaScript `Number` values.\nBecause every `int` value also satisfies the `is double` check,\nthe `is int` branch is unreachable.\n\nTo learn more about how Dart represents numbers on different platforms,\nincluding when compiled to JavaScript, check out\n[Numbers in Dart](https://dart.dev/resources/language/number-representation).\n\n## Example\n\nThe following code produces this diagnostic because\n`x` is type tested with `is double` and then `is int`,\nwhich makes the `is int` branch unreachable when compiled to JavaScript:\n\n```dart\nvoid f(Object x) {\n  if (x is double) {\n    print('double');\n  } else if ([!x is int!]) {\n    print('int');\n  }\n}\n```\n\n## Common fixes\n\nIf the distinction between `int` and `double` isn't meaningful,\nthen check if the type is `num` instead:\n\n```dart\nvoid f(Object x) {\n  if (x is num) {\n    print('num');\n  }\n}\n```\n\nIf both branches are needed and it's ok for\ninteger `double` values (such as `3.0`) to take the `is int` branch,\nthen check `is int` first. This ensures that\ninteger values take the `is int` branch on all platforms:\n\n```dart\nvoid f(Object x) {\n  if (x is int) {\n    print('int');\n  } else if (x is double) {\n    print('double');\n  }\n}\n```\n",
+    "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
   },
@@ -662,7 +675,7 @@
   {
     "id": "avoid_final_parameters",
     "description": "_Parameters should not be marked as 'final'._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a parameter declaration is\nmarked with the `final` keyword.\n\n## Examples\n\nThe following code produces this diagnostic because the\nparameter `a` is marked as `final`:\n\n```dart\nvoid f([!final!] String a) {\n  print(a);\n}\n```\n\nThe following code produces this diagnostic because the\nclosure parameter `a` is marked as `final`:\n\n```dart\nvar f = ([!final!] int a) => print(a);\n```\n\n## Common fixes\n\nRemove the `final` keyword from the parameter declaration:\n\n```dart\nvoid f(String a) {\n  print(a);\n}\n```\n\n```dart\nvar f = (int a) => print(a);\n```\n",
+    "documentation": "NOTE: This rule is removed in Dart 3.13.0; it is no longer functional.\n\n## Description\n\nThe analyzer produces this diagnostic when a parameter declaration is\nmarked with the `final` keyword.\n\n## Examples\n\nThe following code produces this diagnostic because the\nparameter `a` is marked as `final`:\n\n```dart\n// @dart=3.12\nvoid f([!final!] String a) {\n  print(a);\n}\n```\n\nThe following code produces this diagnostic because the\nclosure parameter `a` is marked as `final`:\n\n```dart\n// @dart=3.12\nvar f = ([!final!] int a) => print(a);\n```\n\n## Common fixes\n\nRemove the `final` keyword from the parameter declaration:\n\n```dart\nvoid f(String a) {\n  print(a);\n}\n```\n\n```dart\nvar f = (int a) => print(a);\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
@@ -701,7 +714,8 @@
   {
     "id": "avoid_js_rounded_ints",
     "description": "_Integer literal can't be represented exactly when compiled to JavaScript._",
-    "hasDocumentation": false,
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an `int` literal's value\ncan't be represented exactly as a JavaScript `Number`.\n\nWhen Dart code is compiled to JavaScript,\nintegers whose values fall outside the range `-(2^53 - 1)` to `2^53 - 1`\nmight be rounded to the nearest representable value.\nThis silently changes the literal's value on the web.\n\nTo learn more about how Dart represents numbers on different platforms,\nincluding when compiled to JavaScript, check out\n[Numbers in Dart](https://dart.dev/resources/language/number-representation).\n\n## Example\n\nThe following code produces this diagnostic because\nthe literal `9007199254740993` (2^53 + 1) can't be\nrepresented exactly as a JavaScript `Number` is rounded to\n`9007199254740992` at run time when compiled to JavaScript:\n\n```dart\nfinal i = [!9007199254740993!];\n```\n\n## Common fixes\n\nIf the value needs to be exact on all platforms,\nincluding when compiled to JavaScript,\nthen use a `BigInt` to represent it:\n\n```dart\nfinal i = BigInt.parse('9007199254740993');\n```\n",
+    "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
   },
@@ -983,7 +997,7 @@
   {
     "id": "built_in_identifier_as_type",
     "description": "_The built-in identifier '{0}' can't be used as a type._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a built-in identifier is used\nwhere a type name is expected.\n\n## Example\n\nThe following code produces this diagnostic because `import` can't be used\nas a type because it's a built-in identifier:\n\n```dart\n[!import!]<int> x;\n```\n\n## Common fixes\n\nReplace the built-in identifier with the name of a valid type:\n\n```dart\nList<int> x;\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a built-in identifier is used\nwhere a type name is expected.\n\n## Example\n\nThe following code produces this diagnostic because `import` can't be used\nas a type because it's a built-in identifier:\n\n```dart\n[!import!]<int> x = [];\n```\n\n## Common fixes\n\nReplace the built-in identifier with the name of a valid type:\n\n```dart\nList<int> x = [];\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -1121,6 +1135,14 @@
     "id": "class_used_as_mixin",
     "description": "_The class '{0}' can't be used as a mixin because it's neither a mixin class nor a mixin._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when a class that is neither a\n`mixin class` nor a `mixin` is used in a `with` clause.\n\n## Example\n\nThe following code produces this diagnostic because the class `M` is being\nused as a mixin, but it isn't defined as a `mixin class`:\n\n```dart\nclass M {}\nclass C with [!M!] {}\n```\n\n## Common fixes\n\nIf the class can be a pure mixin, then change `class` to `mixin`:\n\n```dart\nmixin M {}\nclass C with M {}\n```\n\nIf the class needs to be both a class and a mixin, then add `mixin`:\n\n```dart\nmixin class M {}\nclass C with M {}\n```\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "class_used_as_mixin_declares_generative_constructor",
+    "description": "_The class '{0}' can't be used as a mixin because it declares a generative constructor._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a class is used as a mixin and\nthe mixed-in class defines a generative constructor.\n\n## Example\n\nThe following code produces the diagnostic because class `A`\ndefines a generative constructor and is used as a mixin:\n\n```dart\n//@dart=2.19\nclass A {\n  A();\n}\n\nclass B with [!A!] {}\n```\n\n## Common fixes\n\nIf it's possible to convert the class to a mixin, then do so:\n\n```dart\nmixin A {\n}\n\nclass B with A {}\n```\n\nIf the class can't be a mixin and it's possible to remove the constructor,\nthen do so:\n\n```dart\n//@dart=2.19\nclass A {\n}\n\nclass B with A {}\n```\n\nIf the class can't be a mixin and you can't remove the constructor, then\ntry extending or implementing the class rather than mixing it in:\n\n```dart\nclass A {\n  A();\n}\n\nclass B extends A {}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -1352,7 +1374,7 @@
   {
     "id": "const_deferred_class",
     "description": "_Deferred classes can't be created with 'const'._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a class from a library that is\nimported using a deferred import is used to create a `const` object.\nConstants are evaluated at compile time, and classes from deferred\nlibraries aren't available at compile time.\n\nFor more information, check out\n[Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).\n\n## Example\n\nThe following code produces this diagnostic because it attempts to create a\n`const` instance of a class from a deferred library:\n\n```dart\nimport 'dart:convert' deferred as convert;\n\nconst json2 = [!convert.JsonCodec()!];\n```\n\n## Common fixes\n\nIf the object isn't required to be a constant, then change the code so that\na non-constant instance is created:\n\n```dart\nimport 'dart:convert' deferred as convert;\n\nfinal json2 = convert.JsonCodec();\n```\n\nIf the object must be a constant, then remove `deferred` from the import\ndirective:\n\n```dart\nimport 'dart:convert' as convert;\n\nconst json2 = convert.JsonCodec();\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a class from a library that is\nimported using a deferred import is used to create a `const` object.\nConstants are evaluated at compile time, and classes from deferred\nlibraries aren't available at compile time.\n\nFor more information, check out\n[Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).\n\n## Example\n\nThe following code produces this diagnostic because it attempts to create a\n`const` instance of a class from a deferred library:\n\n```dart\nimport 'dart:convert' deferred as convert;\n\nconst json2 = [!convert.JsonCodec!]();\n```\n\n## Common fixes\n\nIf the object isn't required to be a constant, then change the code so that\na non-constant instance is created:\n\n```dart\nimport 'dart:convert' deferred as convert;\n\nfinal json2 = convert.JsonCodec();\n```\n\nIf the object must be a constant, then remove `deferred` from the import\ndirective:\n\n```dart\nimport 'dart:convert' as convert;\n\nconst json2 = convert.JsonCodec();\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -1538,6 +1560,13 @@
     "previousNames": []
   },
   {
+    "id": "const_primary_constructor_with_body",
+    "description": "_The body part of a constant primary constructor can't have a block body._\n\n_The body part of a constant primary constructor can't have an expression body._",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "const_set_element_not_primitive_equality",
     "description": "_An element in a constant set can't override the '==' operator, or 'hashCode', but the type '{0}' does._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when the class of object used as an\nelement in a constant set literal implements either the `==` operator, the\ngetter `hashCode`, or both. The implementation of constant sets uses both\nthe `==` operator and the `hashCode` getter, so any implementation other\nthan the ones inherited from `Object` requires executing arbitrary code at\ncompile time, which isn't supported.\n\n## Example\n\nThe following code produces this diagnostic because the constant set\ncontains an element whose type is `C`, and the class `C` overrides the\nimplementation of `==`:\n\n```dart\nclass C {\n  const C();\n\n  bool operator ==(Object other) => true;\n}\n\nconst set = {[!C()!]};\n```\n\nThe following code produces this diagnostic because the constant set\ncontains an element whose type is `C`, and the class `C` overrides the\nimplementation of `hashCode`:\n\n```dart\nclass C {\n  const C();\n\n  int get hashCode => 3;\n}\n\nconst map = {[!C()!]};\n```\n\n## Common fixes\n\nIf you can remove the implementation of `==` and `hashCode` from the\nclass, then do so:\n\n```dart\nclass C {\n  const C();\n}\n\nconst set = {C()};\n```\n\nIf you can't remove the implementation of `==` and `hashCode` from the\nclass, then make the set non-constant:\n\n```dart\nclass C {\n  const C();\n\n  bool operator ==(Object other) => true;\n}\n\nfinal set = {C()};\n```\n",
@@ -1694,7 +1723,7 @@
   {
     "id": "control_flow_in_finally",
     "description": "_Use of '{0}' in a 'finally' clause._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a `finally` clause contains a\n`return`, `break`, or `continue` statement.\n\n## Example\n\nThe following code produces this diagnostic because there is a `return`\nstatement inside a `finally` block:\n\n```dart\nint f() {\n  try {\n    return 1;\n  } catch (e) {\n    print(e);\n  } finally {\n    [!return 0;!]\n  }\n}\n```\n\n## Common fixes\n\nIf the statement isn't needed, then remove the statement, and remove the\n`finally` clause if the block is empty:\n\n```dart\nint f() {\n  try {\n    return 1;\n  } catch (e) {\n    print(e);\n  }\n}\n```\n\nIf the statement is needed, then move the statement outside the `finally`\nblock:\n\n```dart\nint f() {\n  try {\n    return 1;\n  } catch (e) {\n    print(e);\n  }\n  return 0;\n}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a `finally` clause contains a\n`return`, `break`, or `continue` statement.\n\n## Example\n\nThe following code produces this diagnostic because there is a `return`\nstatement inside a `finally` block:\n\n```dart\nvoid f(void Function() g) {\n  try {\n    g();\n  } catch (e) {\n    print(e);\n  } finally {\n    [!return;!]\n  }\n}\n```\n\n## Common fixes\n\nIf the statement isn't needed, then remove the statement, and remove the\n`finally` clause if the block is empty:\n\n```dart\nvoid f(void Function() g) {\n  try {\n    g();\n  } catch (e) {\n    print(e);\n  }\n}\n```\n\nIf the statement is needed, then move the statement outside the `finally`\nblock:\n\n```dart\nvoid f(void Function() g) {\n  try {\n    g();\n  } catch (e) {\n    print(e);\n  }\n  return;\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
@@ -1839,7 +1868,7 @@
   },
   {
     "id": "deferred_import_of_extension",
-    "description": "_Imports of deferred libraries must hide all extensions._",
+    "description": "_Deferred library imports must hide all extension declarations._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when a library that is imported using\na deferred import declares an extension that is visible in the importing\nlibrary. Extension methods are resolved at compile time, and extensions\nfrom deferred libraries aren't available at compile time.\n\nFor more information, check out\n[Lazily loading a library](https://dart.dev/language/libraries#lazily-loading-a-library).\n\n## Example\n\nGiven a file `a.dart` that defines a named extension:\n\n```dart\nclass C {}\n\nextension E on String {\n  int get size => length;\n}\n```\n\nThe following code produces this diagnostic because the named extension is\nvisible to the library:\n\n```dart\nimport [!'a.dart'!] deferred as a;\n\nvoid f() {\n  a.C();\n}\n```\n\n## Common fixes\n\nIf the library must be imported as `deferred`, then either add a `show`\nclause listing the names being referenced or add a `hide` clause listing\nall of the named extensions. Adding a `show` clause would look like this:\n\n```dart\nimport 'a.dart' deferred as a show C;\n\nvoid f() {\n  a.C();\n}\n```\n\nAdding a `hide` clause would look like this:\n\n```dart\nimport 'a.dart' deferred as a hide E;\n\nvoid f() {\n  a.C();\n}\n```\n\nWith the first fix, the benefit is that if new extensions are added to the\nimported library, then the extensions won't cause a diagnostic to be\ngenerated.\n\nIf the library doesn't need to be imported as `deferred`, or if you need to\nmake use of the extension method declared in it, then remove the keyword\n`deferred`:\n\n```dart\nimport 'a.dart' as a;\n\nvoid f() {\n  a.C();\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
@@ -1856,7 +1885,7 @@
   {
     "id": "depend_on_referenced_packages",
     "description": "_The imported package '{0}' isn't a dependency of the importing package._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a package import refers to a\npackage that is not specified in the `pubspec.yaml` file.\n\nDepending explicitly on packages that you reference ensures they will\nalways exist and allows you to put a dependency constraint on them to\nguard against breaking changes.\n\n## Example\n\nGiven a `pubspec.yaml` file containing the following:\n\n```yaml\ndependencies:\n  meta: ^3.0.0\n```\n\nThe following code produces this diagnostic because there is no dependency\non the package `a`:\n\n```dart\nimport 'package:a/a.dart';\n```\n\n## Common fixes\n\nWhether the dependency should be a regular dependency or dev dependency\ndepends on whether the package is referenced from a public library (one\nunder either `lib` or `bin`), or only private libraries, (such as one\nunder `test`).\n\nIf the package is referenced from at least one public library, then add a\nregular dependency on the package to the `pubspec.yaml` file under the\n`dependencies` field:\n\n```yaml\ndependencies:\n  a: ^1.0.0\n  meta: ^3.0.0\n```\n\nIf the package is referenced only from private libraries, then add a\ndev dependency on the package to the `pubspec.yaml` file under the\n`dev_dependencies` field:\n\n```yaml\ndependencies:\n  meta: ^3.0.0\ndev_dependencies:\n  a: ^1.0.0\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a package import refers to a\npackage that is not specified in the `pubspec.yaml` file.\n\nDepending explicitly on packages that you reference ensures they will\nalways exist and allows you to put a dependency constraint on them to\nguard against breaking changes.\n\n## Example\n\nGiven a `pubspec.yaml` file containing the following:\n\n```yaml\ndependencies:\n  meta: ^3.0.0\n```\n\nThe following code produces this diagnostic because there is no dependency\non the package `a`:\n\n```dart\nimport [!'package:a/a.dart'!];\n```\n\n## Common fixes\n\nWhether the dependency should be a regular dependency or dev dependency\ndepends on whether the package is referenced from a public library (one\nunder either `lib` or `bin`), or only private libraries, (such as one\nunder `test`).\n\nIf the package is referenced from at least one public library, then add a\nregular dependency on the package to the `pubspec.yaml` file under the\n`dependencies` field:\n\n```yaml\ndependencies:\n  a: ^1.0.0\n  meta: ^3.0.0\n```\n\nIf the package is referenced only from private libraries, then add a\ndev dependency on the package to the `pubspec.yaml` file under the\n`dev_dependencies` field:\n\n```yaml\ndependencies:\n  meta: ^3.0.0\ndev_dependencies:\n  a: ^1.0.0\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
@@ -2716,7 +2745,7 @@
   {
     "id": "export_internal_library",
     "description": "_The library '{0}' is internal and can't be exported._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when it finds an export whose `dart:`\nURI references an internal library.\n\n## Example\n\nThe following code produces this diagnostic because `_interceptors` is an\ninternal library:\n\n```dart\nexport [!'dart:_interceptors'!];\n```\n\n## Common fixes\n\nRemove the export directive.\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when it finds an export whose `dart:`\nURI references an internal library.\n\n## Example\n\nThe following code produces this diagnostic because `_interceptors` is an\ninternal library:\n\n```dart\n[!export 'dart:_interceptors';!]\n```\n\n## Common fixes\n\nRemove the export directive.\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -2795,7 +2824,7 @@
   {
     "id": "extension_declares_instance_field",
     "description": "_Extensions can't declare instance fields._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an instance field declaration is\nfound in an extension. It isn't valid to define an instance field because\nextensions can only add behavior, not state.\n\n## Example\n\nThe following code produces this diagnostic because `s` is an instance\nfield:\n\n```dart\nextension E on String {\n  String [!s!];\n}\n```\n\n## Common fixes\n\nIf the value can be computed without storing it in a field, then try\nusing a getter or a method:\n\n```dart\nextension E on String {\n  String get s => '';\n\n  void s(String value) => print(s);\n}\n```\n\nIf the value must be stored, but is the same for every instance,\ntry using a static field:\n\n```dart\nextension E on String {\n  static String s = '';\n}\n```\n\nIf each instance needs to have its own value stored, then try\nusing a getter and setter pair backed by a static `Expando`:\n\n```dart\nextension E on SomeType {\n  static final _s = Expando<String>();\n\n  String get s => _s[this] ?? '';\n  set s(String value) => _s[this] = value;\n}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an instance field declaration is\nfound in an extension. It isn't valid to define an instance field because\nextensions can only add behavior, not state.\n\n## Example\n\nThe following code produces this diagnostic because `s` is an instance\nfield:\n\n```dart\nextension E on String {\n  String [!s!] = '';\n}\n```\n\n## Common fixes\n\nIf the value can be computed without storing it in a field, then try\nusing a getter or a method:\n\n```dart\nextension E on String {\n  String get s => '';\n}\n```\n\nIf the value must be stored, but is the same for every instance,\ntry using a static field:\n\n```dart\nextension E on String {\n  static String s = '';\n}\n```\n\nIf each instance needs to have its own value stored, then try\nusing a getter and setter pair backed by a static `Expando`:\n\n```dart\nextension E on String {\n  static final _s = Expando<String>();\n\n  String get s => _s[this] ?? '';\n  set s(String value) => _s[this] = value;\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -2837,6 +2866,13 @@
     "description": "_An extension override can only be used to access instance members._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when an extension override is found\nthat isn't being used to access one of the members of the extension. The\nextension override syntax doesn't have any runtime semantics; it only\ncontrols which member is selected at compile time.\n\n## Example\n\nThe following code produces this diagnostic because `E(i)` isn't an\nexpression:\n\n```dart\nextension E on int {\n  int get a => 0;\n}\n\nvoid f(int i) {\n  print([!E(i)!]);\n}\n```\n\n## Common fixes\n\nIf you want to invoke one of the members of the extension, then add the\ninvocation:\n\n```dart\nextension E on int {\n  int get a => 0;\n}\n\nvoid f(int i) {\n  print(E(i).a);\n}\n```\n\nIf you don't want to invoke a member, then unwrap the argument:\n\n```dart\nextension E on int {\n  int get a => 0;\n}\n\nvoid f(int i) {\n  print(i);\n}\n```\n",
     "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "extension_primary_constructor",
+    "description": "_Extensions can't have primary constructors._",
+    "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
   },
@@ -3259,7 +3295,7 @@
   {
     "id": "field_initializer_outside_constructor",
     "description": "_Field formal parameters can only be used in a constructor._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an initializing formal\nparameter is used in the parameter list for anything other than a\nconstructor.\n\n## Example\n\nThe following code produces this diagnostic because the initializing\nformal parameter `this.x` is being used in the method `m`:\n\n```dart\nclass A {\n  int x = 0;\n\n  m([[!this.x!] = 0]) {}\n}\n```\n\n## Common fixes\n\nReplace the initializing formal parameter with a normal parameter and\nassign the field within the body of the method:\n\n```dart\nclass A {\n  int x = 0;\n\n  m([int x = 0]) {\n    this.x = x;\n  }\n}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when an initializing formal\nparameter is used in the parameter list for anything other than a\nconstructor.\n\n## Example\n\nThe following code produces this diagnostic because the initializing\nformal parameter `this.x` is being used in the method `m`:\n\n```dart\nclass A {\n  int x = 0;\n\n  m([[!this!].x = 0]) {}\n}\n```\n\n## Common fixes\n\nReplace the initializing formal parameter with a normal parameter and\nassign the field within the body of the method:\n\n```dart\nclass A {\n  int x = 0;\n\n  m([int x = 0]) {\n    this.x = x;\n  }\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -3483,7 +3519,7 @@
   {
     "id": "getter_not_subtype_setter_types",
     "description": "_The return type of getter '{0}' is '{1}' which isn't a subtype of the type '{2}' of its setter '{3}'._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when the return type of a getter\nisn't a subtype of the type of the parameter of a setter with the same\nname.\n\nThe subtype relationship is a requirement whether the getter and setter are\nin the same class or whether one of them is in a superclass of the other.\n\n## Example\n\nThe following code produces this diagnostic because the return type of the\ngetter `x` is `num`, the parameter type of the setter `x` is `int`, and\n`num` isn't a subtype of `int`:\n\n```dart\nclass C {\n  num get [!x!] => 0;\n\n  set x(int y) {}\n}\n```\n\n## Common fixes\n\nIf the type of the getter is correct, then change the type of the setter:\n\n```dart\nclass C {\n  num get x => 0;\n\n  set x(num y) {}\n}\n```\n\nIf the type of the setter is correct, then change the type of the getter:\n\n```dart\nclass C {\n  int get x => 0;\n\n  set x(int y) {}\n}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when the return type of a getter\nisn't a subtype of the type of the parameter of a setter with the same\nname.\n\nThe subtype relationship is a requirement whether the getter and setter are\nin the same class or whether one of them is in a superclass of the other.\n\n## Example\n\nThe following code produces this diagnostic because the return type of the\ngetter `x` is `num`, the parameter type of the setter `x` is `int`, and\n`num` isn't a subtype of `int`:\n\n```dart\n// @dart = 3.8\nclass C {\n  num get [!x!] => 0;\n\n  set x(int y) {}\n}\n```\n\n## Common fixes\n\nIf the type of the getter is correct, then change the type of the setter:\n\n```dart\nclass C {\n  num get x => 0;\n\n  set x(num y) {}\n}\n```\n\nIf the type of the setter is correct, then change the type of the getter:\n\n```dart\nclass C {\n  int get x => 0;\n\n  set x(int y) {}\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -3871,7 +3907,7 @@
   {
     "id": "initializer_for_static_field",
     "description": "_'{0}' is a static field in the enclosing class. Fields initialized in a constructor can't be static._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a static field is initialized\nin a constructor using either an initializing formal parameter or an\nassignment in the initializer list.\n\n## Example\n\nThe following code produces this diagnostic because the static field `a`\nis being initialized by the initializing formal parameter `this.a`:\n\n```dart\nclass C {\n  static int? a;\n  C([!this.a!]);\n}\n```\n\n## Common fixes\n\nIf the field should be an instance field, then remove the keyword `static`:\n\n```dart\nclass C {\n  int? a;\n  C(this.a);\n}\n```\n\nIf you intended to initialize an instance field and typed the wrong name,\nthen correct the name of the field being initialized:\n\n```dart\nclass C {\n  static int? a;\n  int? b;\n  C(this.b);\n}\n```\n\nIf you really want to initialize the static field, then move the\ninitialization into the constructor body:\n\n```dart\nclass C {\n  static int? a;\n  C(int? c) {\n    a = c;\n  }\n}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a static field is initialized\nin a constructor using either an initializing formal parameter or an\nassignment in the initializer list.\n\n## Example\n\nThe following code produces this diagnostic because the static field `a`\nis being initialized by the initializing formal parameter `this.a`:\n\n```dart\nclass C {\n  static int? a;\n  C([!this!].a);\n}\n```\n\n## Common fixes\n\nIf the field should be an instance field, then remove the keyword `static`:\n\n```dart\nclass C {\n  int? a;\n  C(this.a);\n}\n```\n\nIf you intended to initialize an instance field and typed the wrong name,\nthen correct the name of the field being initialized:\n\n```dart\nclass C {\n  static int? a;\n  int? b;\n  C(this.b);\n}\n```\n\nIf you really want to initialize the static field, then move the\ninitialization into the constructor body:\n\n```dart\nclass C {\n  static int? a;\n  C(int? c) {\n    a = c;\n  }\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -4524,6 +4560,13 @@
     "description": "_A value of type '{0}' can't be returned by the 'onError' handler because it must be assignable to '{1}'._\n\n_The return type '{0}' isn't assignable to '{1}', as required by 'Future.catchError'._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when an invocation of\n`Future.catchError` has an argument whose return type isn't compatible with\nthe type returned by the instance of `Future`. At runtime, the method\n`catchError` attempts to return the value from the callback as the result\nof the future, which results in another exception being thrown.\n\n## Examples\n\nThe following code produces this diagnostic because `future` is declared to\nreturn an `int` while `callback` is declared to return a `String`, and\n`String` isn't a subtype of `int`:\n\n```dart\nvoid f(Future<int> future, String Function(dynamic, StackTrace) callback) {\n  future.catchError([!callback!]);\n}\n```\n\nThe following code produces this diagnostic because the closure being\npassed to `catchError` returns an `int` while `future` is declared to\nreturn a `String`:\n\n```dart\nvoid f(Future<String> future) {\n  future.catchError((error, stackTrace) => [!3!]);\n}\n```\n\n## Common fixes\n\nIf the instance of `Future` is declared correctly, then change the callback\nto match:\n\n```dart\nvoid f(Future<int> future, int Function(dynamic, StackTrace) callback) {\n  future.catchError(callback);\n}\n```\n\nIf the declaration of the instance of `Future` is wrong, then change it to\nmatch the callback:\n\n```dart\nvoid f(Future<String> future, String Function(dynamic, StackTrace) callback) {\n  future.catchError(callback);\n}\n```\n",
     "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "invalid_return_type_for_then",
+    "description": "_A value of type '{0}' can't be returned by the 'onError' handler because it must be assignable to '{1}', as required by 'Future.then'._\n\n_The return type '{0}' isn't assignable to '{1}', as required by 'Future.then'._",
+    "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
   },
@@ -5485,9 +5528,25 @@
     "previousNames": []
   },
   {
+    "id": "mixin_class_declaration_with_clause",
+    "description": "_The class '{0}' can't be declared a mixin because it has a 'with' clause._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a class with the `mixin`\nmodifier has a `with` clause. A mixin class declaration cannot have a\n`with` clause because that implies it extends a class other than `Object`.\n\n## Example\n\nThe following code produces this diagnostic because the `mixin class` `B`\nhas a `with` clause:\n\n```dart\nmixin M {}\n\nmixin class B [!with M!] {}\n```\n\n## Common fixes\n\nIf you want to use the class as a mixin, remove the `with` clause:\n\n```dart\nmixin M {}\n\nmixin class B {}\n```\n\nIf you need the class to have a `with` clause, then remove the `mixin`\nmodifier:\n\n```dart\nmixin M {}\n\nclass B with M {}\n```\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "mixin_class_declares_constructor",
     "description": "_The class '{0}' can't be used as a mixin because it declares a constructor._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when a class is used as a mixin and\nthe mixed-in class defines a constructor.\n\n## Example\n\nThe following code produces this diagnostic because the class `A`, which\ndefines a constructor, is being used as a mixin:\n\n```dart\n//@dart=2.19\nclass A {\n  A();\n}\n\nclass B with [!A!] {}\n```\n\n## Common fixes\n\nIf it's possible to convert the class to a mixin, then do so:\n\n```dart\nmixin A {\n}\n\nclass B with A {}\n```\n\nIf the class can't be a mixin and it's possible to remove the constructor,\nthen do so:\n\n```dart\n//@dart=2.19\nclass A {\n}\n\nclass B with A {}\n```\n\nIf the class can't be a mixin and you can't remove the constructor, then\ntry extending or implementing the class rather than mixing it in:\n\n```dart\nclass A {\n  A();\n}\n\nclass B extends A {}\n```\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "mixin_class_declares_non_trivial_generative_constructor",
+    "description": "_The mixin class '{0}' can't declare a non-trivial generative constructor._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a mixin class declares a non-trivial\ngenerative constructor. Trivial constructors are allowed, but non-trivial ones\n(those with parameters, bodies, or initializers) aren't.\n\n## Example\n\nThe following code produces this diagnostic because the `mixin class` `A`\ndefines a generative constructor with a body:\n\n```dart\nmixin class A {\n  [!A!]() {}\n}\n```\n\n## Common fixes\n\nIf you can remove the body or parameters of the constructor to make it trivial,\nthen do so:\n\n```dart\nmixin class A {\n  A(); // Trivial constructor\n}\n```\n\nIf the constructor can't be made trivial, then convert the `mixin class` to a\nregular `class` and extend or implement it, or separate the mixin capability:\n\n```dart\nclass A {\n  A() {}\n}\n\nmixin class AM { // A separate mixin for mixing in behavior\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -5516,6 +5575,14 @@
     "previousNames": []
   },
   {
+    "id": "mixin_modifier_mixin_application_class_with_multiple_mixins",
+    "description": "_The mixin application class '{0}' can only have a single mixin._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a mixin application class\nwith the `mixin` modifier has more than one mixin. A mixin class\napplication can only have a single mixin.\n\n## Example\n\nThe following code produces this diagnostic because the `mixin class C`\nhas multiple mixins:\n\n```dart\nmixin M1 {}\nmixin M2 {}\n\nmixin class C = Object [!with M1, M2!];\n```\n\n## Common fixes\n\nIf you need to use multiple mixins, remove the `mixin` modifier from the\nmixin application class:\n\n```dart\nmixin M1 {}\nmixin M2 {}\n\nclass C = Object with M1, M2;\n```\n\nIf you need the class to be a `mixin class`, then only use a single mixin:\n\n```dart\nmixin M1 {}\n\nmixin class C = Object with M1;\n```\n",
+    "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
     "id": "mixin_of_non_class",
     "description": "_Classes can only mix in mixins and classes._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when a name in a `with` clause is\ndefined to be something other than a mixin or a class.\n\n## Example\n\nThe following code produces this diagnostic because `F` is defined to be a\nfunction type:\n\n```dart\ntypedef F = int Function(String);\n\nclass C with [!F!] {}\n```\n\n## Common fixes\n\nRemove the invalid name from the list, possibly replacing it with the name\nof the intended mixin or class:\n\n```dart\ntypedef F = int Function(String);\n\nclass C {}\n```\n",
@@ -5528,6 +5595,13 @@
     "description": "_The class '{0}' shouldn't be used as a mixin constraint because it is sealed, and any class mixing in this mixin must have '{0}' as a superclass._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when the superclass constraint of a\nmixin is a class from a different package that was marked as\n[`sealed`][meta-sealed]. Classes that are sealed can't be extended,\nimplemented, mixed in, or used as a superclass constraint.\n\n## Example\n\nIf the package `p` defines a sealed class:\n\n```dart\nimport 'package:meta/meta.dart';\n\n@sealed\nclass C {}\n```\n\nThen, the following code, when in a package other than `p`, produces this\ndiagnostic:\n\n```dart\nimport 'package:p/p.dart';\n\n[!mixin M on C {}!]\n```\n\n## Common fixes\n\nIf the classes that use the mixin don't need to be subclasses of the sealed\nclass, then consider adding a field and delegating to the wrapped instance\nof the sealed class.\n\n[meta-sealed]: https://pub.dev/documentation/meta/latest/meta/sealed-constant.html\n",
     "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "mixin_primary_constructor",
+    "description": "_Mixins can't have primary constructors._",
+    "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
   },
@@ -6485,7 +6559,7 @@
   },
   {
     "id": "nullable_type_in_extends_clause",
-    "description": "_A class can't extend a nullable type._",
+    "description": "_Nullable types can't be extended._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when a class declaration uses an\n`extends` clause to specify a superclass, and the superclass is followed by\na `?`.\n\nIt isn't valid to specify a nullable superclass because doing so would have\nno meaning; it wouldn't change either the interface or implementation being\ninherited by the class containing the `extends` clause.\n\nNote, however, that it _is_ valid to use a nullable type as a type argument\nto the superclass, such as `class A extends B<C?> {}`.\n\n## Example\n\nThe following code produces this diagnostic because `A?` is a nullable\ntype, and nullable types can't be used in an `extends` clause:\n\n```dart\nclass A {}\nclass B extends [!A?!] {}\n```\n\n## Common fixes\n\nRemove the question mark from the type:\n\n```dart\nclass A {}\nclass B extends A {}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
@@ -6493,15 +6567,15 @@
   },
   {
     "id": "nullable_type_in_implements_clause",
-    "description": "_A class, mixin, or extension type can't implement a nullable type._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a class, mixin, or\nextension type declaration has an `implements` clause, and an\ninterface is followed by a `?`.\n\nIt isn't valid to specify a nullable interface because doing so would have\nno meaning; it wouldn't change the interface being inherited by the class\ncontaining the `implements` clause.\n\nNote, however, that it _is_ valid to use a nullable type as a type argument\nto the interface, such as `class A implements B<C?> {}`.\n\n\n## Example\n\nThe following code produces this diagnostic because `A?` is a nullable\ntype, and nullable types can't be used in an `implements` clause:\n\n```dart\nclass A {}\nclass B implements [!A?!] {}\n```\n\n## Common fixes\n\nRemove the question mark from the type:\n\n```dart\nclass A {}\nclass B implements A {}\n```\n",
+    "description": "_Nullable types can't be implemented._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a class, enum, mixin, or\nextension type declaration has an `implements` clause, and an\ninterface is followed by a `?`.\n\nIt isn't valid to specify a nullable interface because doing so would have\nno meaning; it wouldn't change the interface being inherited by the class\ncontaining the `implements` clause.\n\nNote, however, that it _is_ valid to use a nullable type as a type argument\nto the interface, such as `class A implements B<C?> {}`.\n\n\n## Example\n\nThe following code produces this diagnostic because `A?` is a nullable\ntype, and nullable types can't be used in an `implements` clause:\n\n```dart\nclass A {}\nclass B implements [!A?!] {}\n```\n\n## Common fixes\n\nRemove the question mark from the type:\n\n```dart\nclass A {}\nclass B implements A {}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
   },
   {
     "id": "nullable_type_in_on_clause",
-    "description": "_A mixin can't have a nullable type as a superclass constraint._",
+    "description": "_Nullable types can't be used as a superclass constraint._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when a mixin declaration uses an `on`\nclause to specify a superclass constraint, and the class that's specified\nis followed by a `?`.\n\nIt isn't valid to specify a nullable superclass constraint because doing so\nwould have no meaning; it wouldn't change the interface being depended on\nby the mixin containing the `on` clause.\n\nNote, however, that it _is_ valid to use a nullable type as a type argument\nto the superclass constraint, such as `mixin A on B<C?> {}`.\n\n\n## Example\n\nThe following code produces this diagnostic because `A?` is a nullable type\nand nullable types can't be used in an `on` clause:\n\n```dart\nclass C {}\nmixin M on [!C?!] {}\n```\n\n## Common fixes\n\nRemove the question mark from the type:\n\n```dart\nclass C {}\nmixin M on C {}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
@@ -6509,7 +6583,7 @@
   },
   {
     "id": "nullable_type_in_with_clause",
-    "description": "_A class or mixin can't mix in a nullable type._",
+    "description": "_Nullable types can't be mixed in._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when a class or mixin declaration has\na `with` clause, and a mixin is followed by a `?`.\n\nIt isn't valid to specify a nullable mixin because doing so would have no\nmeaning; it wouldn't change either the interface or implementation being\ninherited by the class containing the `with` clause.\n\nNote, however, that it _is_ valid to use a nullable type as a type argument\nto the mixin, such as `class A with B<C?> {}`.\n\n## Example\n\nThe following code produces this diagnostic because `A?` is a nullable\ntype, and nullable types can't be used in a `with` clause:\n\n```dart\nmixin M {}\nclass C with [!M?!] {}\n```\n\n## Common fixes\n\nRemove the question mark from the type:\n\n```dart\nmixin M {}\nclass C with M {}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
@@ -6988,7 +7062,7 @@
   {
     "id": "prefer_final_parameters",
     "description": "_The parameter '{0}' should be final._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a parameter of a constructor,\nmethod, function, or closure isn't marked as being `final`.\n\n## Example\n\nThe following code produces this diagnostic because the parameter `s`\nisn't a `final` parameter:\n\n```dart\nString f([!String s!]) => s;\n```\n\n## Common fixes\n\nAdd the modifier `final` to the parameter:\n\n```dart\nString f(final String s) => s;\n```\n",
+    "documentation": "NOTE: This rule is removed in Dart 3.13.0; it is no longer functional.\n\n## Description\n\nThe analyzer produces this diagnostic when a parameter of a constructor,\nmethod, function, or closure isn't marked as being `final`.\n\n## Example\n\nThe following code produces this diagnostic because the parameter `s`\nisn't a `final` parameter:\n\n```dart\n// @dart=3.12\nString f([!String s!]) => s;\n```\n\n## Common fixes\n\nAdd the modifier `final` to the parameter:\n\n```dart\n// @dart=3.12\nString f(final String s) => s;\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
@@ -7059,7 +7133,8 @@
   {
     "id": "prefer_int_literals",
     "description": "_Unnecessary use of a 'double' literal._",
-    "hasDocumentation": false,
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a `double` literal's value\nhas a fractional part of 0 (such as `8.0`)\nand is used where the context type is `double`.\n\nIn these cases, you can use an `int` literal instead,\nbecause it would evaluate to the same `double` value.\n\n## Examples\n\nThe following code produces this diagnostic because the literal `8.0`\nis used to initialize a variable of type `double`,\nbut its value has a fractional part of `0`:\n\n```dart\ndouble d = [!8.0!];\n```\n\nThe following code produces this diagnostic because the literal `7.1e2`\nevaluates to `710.0`, which has a fractional part of `0`,\nand is used to initialize a variable of type `double`:\n\n```dart\ndouble d = [!7.1e2!];\n```\n\n## Common fixes\n\nReplace the `double` literal with an equivalent `int` literal:\n\n```dart\ndouble d = 8;\n```\n\n```dart\ndouble d = 710;\n```\n",
+    "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
   },
@@ -7174,7 +7249,7 @@
   {
     "id": "prefix_collides_with_top_level_member",
     "description": "_The name '{0}' is already used as an import prefix and can't be used to name a top-level element._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a name is used as both an import\nprefix and the name of a top-level declaration in the same library.\n\n## Example\n\nThe following code produces this diagnostic because `f` is used as both an\nimport prefix and the name of a function:\n\n```dart\nimport 'dart:math' as f;\n\nint [!f!]() => f.min(0, 1);\n```\n\n## Common fixes\n\nIf you want to use the name for the import prefix, then rename the\ntop-level declaration:\n\n```dart\nimport 'dart:math' as f;\n\nint g() => f.min(0, 1);\n```\n\nIf you want to use the name for the top-level declaration, then rename the\nimport prefix:\n\n```dart\nimport 'dart:math' as math;\n\nint f() => math.min(0, 1);\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a name is used as both an import\nprefix and the name of a top-level declaration in the same library.\n\n## Example\n\nThe following code produces this diagnostic because `f` is used as both an\nimport prefix and the name of a function:\n\n```dart\nimport 'dart:math' as [!f!];\n\nint f() => f.min(0, 1);\n```\n\n## Common fixes\n\nIf you want to use the name for the import prefix, then rename the\ntop-level declaration:\n\n```dart\nimport 'dart:math' as f;\n\nint g() => f.min(0, 1);\n```\n\nIf you want to use the name for the top-level declaration, then rename the\nimport prefix:\n\n```dart\nimport 'dart:math' as math;\n\nint f() => math.min(0, 1);\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -7192,6 +7267,20 @@
     "description": "_The prefix '{0}' can't be used here because it's shadowed by a local declaration._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when an import prefix is used in a\ncontext where it isn't visible because it was shadowed by a local\ndeclaration.\n\n## Example\n\nThe following code produces this diagnostic because the prefix `a` is\nbeing used to access the class `Future`, but isn't visible because it's\nshadowed by the parameter `a`:\n\n```dart\nimport 'dart:async' as a;\n\na.Future? f(int a) {\n  [!a!].Future? x;\n  return x;\n}\n```\n\n## Common fixes\n\nRename either the prefix:\n\n```dart\nimport 'dart:async' as p;\n\np.Future? f(int a) {\n  p.Future? x;\n  return x;\n}\n```\n\nOr rename the local variable:\n\n```dart\nimport 'dart:async' as a;\n\na.Future? f(int p) {\n  a.Future? x;\n  return x;\n}\n```\n",
     "hasDocumentation": true,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "primary_constructor_body_with_expression_body",
+    "description": "_A primary constructor body can't use '=>'._",
+    "hasDocumentation": false,
+    "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "primary_constructor_body_with_modifier",
+    "description": "_A primary constructor body can't have the modifier '{0}'._",
+    "hasDocumentation": false,
     "fromLint": false,
     "previousNames": []
   },
@@ -7246,7 +7335,7 @@
   {
     "id": "private_optional_parameter",
     "description": "_Named parameters can't start with an underscore._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when the name of a named parameter\nstarts with an underscore.\n\n## Example\n\nThe following code produces this diagnostic because the named parameter\n`_x` starts with an underscore:\n\n```dart\nclass C {\n  void m({int [!_x!] = 0}) {}\n}\n```\n\n## Common fixes\n\nRename the parameter so that it doesn't start with an underscore:\n\n```dart\nclass C {\n  void m({int x = 0}) {}\n}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when the name of a named parameter\nstarts with an underscore.\n\n## Example\n\nThe following code produces this diagnostic because the named parameter\n`_x` starts with an underscore:\n\n```dart\n// @dart=3.11\nclass C {\n  void m({int [!_x!] = 0}) {}\n}\n```\n\n## Common fixes\n\nRename the parameter so that it doesn't start with an underscore:\n\n```dart\nclass C {\n  void m({int x = 0}) {}\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
@@ -7799,7 +7888,7 @@
     "description": "_Use simple directive paths._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when a directive uses a path that is\nnot simple (for example, a path containing redundant `./` or backtracking\n`../` segments).\n\n## Example\n\nGiven a file named `bar.dart` in the `lib/src` directory:\n\n```dart\nclass Bar {}\n```\n\nThe following code produces this diagnostic because it uses an\nunnecessarily complex relative URI:\n\n```dart\nimport [!'./src/bar.dart'!];\n\nvoid f(Bar b) {}\n```\n\n## Common fixes\n\nUse a minimal relative URI:\n\n```dart\nimport 'src/bar.dart';\n\nvoid f(Bar b) {}\n```\n",
     "hasDocumentation": true,
-    "fromLint": false,
+    "fromLint": true,
     "previousNames": []
   },
   {
@@ -8647,7 +8736,8 @@
   {
     "id": "unnecessary_async",
     "description": "_Don't make a function 'async' if it doesn't use 'await'._",
-    "hasDocumentation": false,
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a function, method, or\nclosure is marked `async` but doesn't contain any `await` expressions\nor `await for` statements. The `async` modifier is unnecessary in these\ncases and can be removed without changing the behavior of the code.\n\n## Example\n\nThe following code produces this diagnostic because the function `f` is\nmarked `async` but doesn't use `await`:\n\n```dart\nvoid f() [!async!] {\n  print('done');\n}\n```\n\n## Common fixes\n\nRemove the `async` modifier:\n\n```dart\nvoid f() {\n  print('done');\n}\n```\n",
+    "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
   },
@@ -8669,7 +8759,8 @@
   {
     "id": "unnecessary_breaks",
     "description": "_Unnecessary 'break' statement._",
-    "hasDocumentation": false,
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a `break` statement appears\nat the end of a non-empty switch case or default clause. In Dart 3.0\nand later, switch cases don't fall through to the next case, so a\n`break` at the end of a non-empty case body is redundant.\n\n## Example\n\nThe following code produces this diagnostic because the `break` is at\nthe end of a non-empty `case` body:\n\n```dart\nvoid f(int x) {\n  switch (x) {\n    case 1:\n      print('one');\n      [!break;!]\n    case 2:\n      print('two');\n  }\n}\n```\n\n## Common fixes\n\nRemove the `break` statement:\n\n```dart\nvoid f(int x) {\n  switch (x) {\n    case 1:\n      print('one');\n    case 2:\n      print('two');\n  }\n}\n```\n",
+    "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
   },
@@ -8693,6 +8784,14 @@
     "id": "unnecessary_const",
     "description": "_Unnecessary 'const' keyword._",
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when the keyword `const` is used in\na [constant context][]. The keyword isn't required because it's implied.\n\n## Example\n\nThe following code produces this diagnostic because the keyword `const` in\nthe list literal isn't needed:\n\n```dart\nconst l = [!const!] <int>[];\n```\n\nThe list is implicitly `const` because of the keyword `const` on the\nvariable declaration.\n\n## Common fixes\n\nRemove the unnecessary keyword:\n\n```dart\nconst l = <int>[];\n```\n\n[constant context]: /resources/glossary#constant-context\n",
+    "hasDocumentation": true,
+    "fromLint": true,
+    "previousNames": []
+  },
+  {
+    "id": "unnecessary_const_in_enum_constructor",
+    "description": "_Unnecessary 'const' keyword in an enum constructor._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when the keyword `const` is used in\na generative enum constructor. Generative enum constructors are implicitly\n`const`.\n\n## Examples\n\nThe following code produces this diagnostic because the keyword `const` in\nthe enum's primary constructor isn't needed:\n\n```dart\nenum [!const!] E(final int i) {\n  a(1), b(2);\n}\n```\n\nThe following code produces this diagnostic because the keyword `const` in\nthe enum's secondary constructor isn't needed:\n\n```dart\nenum E {\n  a(1), b(2);\n\n  [!const!] E(this.i);\n\n  final int i;\n}\n```\n\n## Common fixes\n\nRemove the unnecessary keyword:\n\n```dart\nenum E(final int i) {\n  a(1), b(2);\n}\n```\n\n```dart\nenum E {\n  a(1), b(2);\n\n  E(this.i);\n\n  final int i;\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
@@ -8959,6 +9058,14 @@
     "documentation": "## Description\n\nThe analyzer produces this diagnostic when the value of a type check (using\neither `is` or `is!`) is known at compile time.\n\n## Example\n\nThe following code produces this diagnostic because the test `a is Object?`\nis always `true`:\n\n```dart\nbool f<T>(T a) => [!a is Object?!];\n```\n\n## Common fixes\n\nIf the type check doesn't check what you intended to check, then change the\ntest:\n\n```dart\nbool f<T>(T a) => a is Object;\n```\n\nIf the type check does check what you intended to check, then replace the\ntype check with its known value or completely remove it:\n\n```dart\nbool f<T>(T a) => true;\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
+    "previousNames": []
+  },
+  {
+    "id": "unnecessary_type_name_in_constructor",
+    "description": "_Unnecessary type name in a constructor._",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a secondary constructor\ndeclaration includes a type name.\n\n## Examples\n\nThe following code produces this diagnostic because the generative\nconstructor declaration includes the type name:\n\n```dart\nclass C {\n  [!C!]();\n}\n```\n\nThe following code produces this diagnostic because the factory\nconstructor declaration includes the type name:\n\n```dart\nclass C {\n  factory [!C!]() => C._();\n\n  new _() {}\n}\n```\n\n## Common fixes\n\nRemove the type name from the constructor. If the constructor is named,\nalso remove the period before the name:\n\n```dart\nclass C {\n  new ();\n}\n```\n\nor\n\n```dart\nclass C {\n  factory () => C._();\n\n  new _() {}\n}\n```\n",
+    "hasDocumentation": true,
+    "fromLint": true,
     "previousNames": []
   },
   {
@@ -9481,7 +9588,7 @@
   {
     "id": "var_with_no_type_annotation",
     "description": "_Avoid declaring parameters with `var` and no type annotation._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a parameter is\ndeclared using the keyword `var` without a type annotation.\n\nThis pattern should be avoided as it likely will\nbe a compile-time error in a future version of Dart.\nBeyond this, using `var` without an explicit type results in\nthe parameter having a type of `dynamic`,\ndisabling static type checking for that parameter.\n\n## Examples\n\nThe following code produces this diagnostic because the\nparameter `x` is declared with `var`:\n\n```dart\nvoid f([!var!] x) {\n  print(x);\n}\n```\n\nThe following code produces this diagnostic because the\ninitializing formal parameter `x` is declared with `var`:\n\n```dart\nclass C {\n  int x;\n\n  C([!var!] this.x);\n}\n```\n\n## Common fixes\n\nIf you know the desired type of the parameter,\nthen replace `var` with a type annotation:\n\n```dart\nvoid f(String x) {\n  print(x);\n}\n```\n\nIf you don't know or don't want any specific type for the parameter,\nthen replace `var` with a type of `Object?` or `dynamic` to\nmake the lack of any more specific type explicit:\n\n```dart\nvoid f(Object? x) {\n  print(x);\n}\n```\n",
+    "documentation": "NOTE: This rule is removed in Dart 3.13.0; it is no longer functional.\n\n## Description\n\nThe analyzer produces this diagnostic when a parameter is\ndeclared using the keyword `var` without a type annotation.\n\nThis pattern should be avoided as it likely will\nbe a compile-time error in a future version of Dart.\nBeyond this, using `var` without an explicit type results in\nthe parameter having a type of `dynamic`,\ndisabling static type checking for that parameter.\n\n## Examples\n\nThe following code produces this diagnostic because the\nparameter `x` is declared with `var`:\n\n```dart\n// @dart=3.12\nvoid f([!var!] x) {\n  print(x);\n}\n```\n\nThe following code produces this diagnostic because the\ninitializing formal parameter `x` is declared with `var`:\n\n```dart\n// @dart=3.12\nclass C {\n  int x;\n\n  C([!var!] this.x);\n}\n```\n\n## Common fixes\n\nIf you know the desired type of the parameter,\nthen replace `var` with a type annotation:\n\n```dart\nvoid f(String x) {\n  print(x);\n}\n```\n\nIf you don't know or don't want any specific type for the parameter,\nthen replace `var` with a type of `Object?` or `dynamic` to\nmake the lack of any more specific type explicit:\n\n```dart\nvoid f(Object? x) {\n  print(x);\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": true,
     "previousNames": []
@@ -9678,7 +9785,7 @@
   {
     "id": "yield_in_non_generator",
     "description": "_Yield statements must be in a generator function (one marked with either 'async*' or 'sync*')._\n\n_Yield-each statements must be in a generator function (one marked with either 'async*' or 'sync*')._",
-    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a `yield` or `yield*` statement\nappears in a function whose body isn't marked with one of the `async*` or\n`sync*` modifiers.\n\n## Examples\n\nThe following code produces this diagnostic because `yield` is being used\nin a function whose body doesn't have a modifier:\n\n```dart\nIterable<int> get digits {\n  yield* [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];\n}\n```\n\nThe following code produces this diagnostic because `yield*` is being used\nin a function whose body has the `async` modifier rather than the `async*`\nmodifier:\n\n```dart\nStream<int> get digits async {\n  yield* [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];\n}\n```\n\n## Common fixes\n\nAdd a modifier, or change the existing modifier to be either `async*` or\n`sync*`:\n\n```dart\nIterable<int> get digits sync* {\n  yield* [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];\n}\n```\n",
+    "documentation": "## Description\n\nThe analyzer produces this diagnostic when a `yield` or `yield*` statement\nappears in a function whose body isn't marked with one of the `async*` or\n`sync*` modifiers.\n\n## Examples\n\nThe following code produces this diagnostic because `yield` is being used\nin a function whose body doesn't have a modifier:\n\n```dart\nIterable<int> get digits {\n  yield* [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];\n}\n```\n\nThe following code produces this diagnostic because `yield*` is being used\nin a function whose body has the `async` modifier rather than the `async*`\nmodifier:\n\n```dart\nStream<int> get digits async {\n  [!yield* [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];!]\n}\n```\n\n## Common fixes\n\nAdd a modifier, or change the existing modifier to be either `async*` or\n`sync*`:\n\n```dart\nIterable<int> get digits sync* {\n  yield* [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];\n}\n```\n",
     "hasDocumentation": true,
     "fromLint": false,
     "previousNames": []
