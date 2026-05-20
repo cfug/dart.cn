@@ -524,7 +524,7 @@ type of that variable).
 
 Local variable types are inferred from their initializer, if any.
 Subsequent assignments are not taken into account.
-This may mean that too precise a type may be inferred.
+This might mean that too precise a type is inferred.
 If so, you can add a type annotation.
 
 在不考虑连续赋值的情况下，局部变量如果有初始化值的情况下，其类型是从初始化值推断出来的。
@@ -734,9 +734,9 @@ a supertype of `Cat`.
 Animal c = Cat();
 ```
 
-But replacing `Cat c` with `MaineCoon c` breaks type safety, because the
-superclass may provide a type of Cat with different behaviors, such
-as `Lion`:
+But replacing `Cat c` with `MaineCoon c` breaks type safety,
+because the superclass might provide a type of `Cat` with different behaviors,
+such as `Lion`:
 
 但是使用 `MaineCoon c` 替换 `Cat c` 会打破类型的安全性，
 因为父类可能会提供一种具有不同行为的 Cat ，例如 Lion ：
@@ -917,5 +917,5 @@ The following resources have further information on sound Dart:
 
 
 [analysis]: /tools/analysis
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [null safety]: /null-safety

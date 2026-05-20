@@ -243,7 +243,7 @@ For more information, see [Package dependencies](/tools/pub/dependencies).
 
 ### Executables
 
-A package may expose one or more of its scripts as executables that
+A package might expose one or more of its scripts as executables that
 can be run directly from the command line. To make a script publicly
 available, list it under the `executables` field.
 Entries are listed as key/value pairs:
@@ -509,7 +509,7 @@ the version when the feature was introduced.
 For details, check out [Language versioning][].
 :::
 
-[Language versioning]: /resources/language/evolution#language-versioning
+[Language versioning]: /language/versioning
 
 For example, the following constraint says that this package
 works with any Dart SDK that's version 3.0.0 or higher:

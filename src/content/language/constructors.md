@@ -5,8 +5,8 @@ prevpage:
   url: /language/classes
   title: Classes
 nextpage:
-  url: /language/methods
-  title: Methods
+  url: /language/primary-constructors
+  title: Primary constructors
 ---
 
 Constructors are special functions that create instances of classes.
@@ -151,7 +151,7 @@ use the `factory` keyword:
   * a new instance of a subtype
 
 * You need to perform non-trivial work prior to constructing an instance.
-  This could include checking arguments or doing any other processing
+  This can include checking arguments or doing any other processing
   that can't be handled in the initializer list.
 
 :::tip
@@ -215,10 +215,10 @@ class to use whenever someone makes a call to the redirecting constructor.
 factory Listenable.merge(List<Listenable> listenables) = _MergingListenable
 ```
 
-It might appear that ordinary factory constructors
-could create and return instances of other classes.
-This would make redirecting factories unnecessary.
-Redirecting factories have several advantages:
+Since ordinary factory constructors can create
+and return instances of other classes as well,
+redirecting factories seem unnecessary.
+However, redirecting factories have several advantages:
 
 * An abstract class might provide a constant constructor
   that uses the constant constructor of another class.
@@ -262,6 +262,46 @@ var buffers = charCodes.map((code) => StringBuffer(code));
 For more discussion, watch this Decoding Flutter video on tear-offs.
 
 <YouTubeEmbed id="OmCaloD7sis" title="Dart Tear-offs | Decoding Flutter"></YouTubeEmbed>
+
+## Concise constructor syntax
+
+In Dart 3.13 and later, you can omit the class name
+when declaring a generative or factory constructor inside the class body
+by using the modifier `new` or `factory` directly:
+
+-   `new` or `new named`
+-   `factory` or `factory named`
+
+Unlike traditional named constructors (such as `Point.origin()`),
+concise named constructors do not use a dot
+between the keyword (modifier) and the name.
+
+<?code-excerpt "concise_syntax.dart (concise-syntax)"?>
+```dart
+class Point {
+  double x, y;
+
+  // Concise unnamed generative constructor.
+  new(this.x, this.y);
+
+  // Concise named generative constructor.
+  new origin() : x = 0, y = 0;
+
+  // Equivalent to `factory Point.clone(Point other)`.
+  factory clone(Point other) => Point(other.x, other.y);
+}
+```
+
+This syntax reduces verbosity and makes refactoring class names easier.
+
+:::note
+With this syntax, a method named `factory` with no return type
+(like `factory () {}`) is interpreted as an unnamed factory constructor.
+:::
+
+For an even more concise syntax
+where you define fields and constructors in a single line,
+see [Primary constructors](/language/primary-constructors).
 
 ## Instance variable initialization
 
@@ -360,7 +400,7 @@ create a [factory constructor](#factory-constructors)
 or [static method][] with that logic.
 You can then pass the computed values to a normal constructor.
 
-The constructor parameters could be set as nullable and not be initialized.
+You can set constructor parameters as nullable to avoid initializing them.
 
 <?code-excerpt "point_alt.dart (initialize-null)" plaster="none"?>
 ```dart
@@ -382,7 +422,7 @@ class PointD {
 
 :::version-note
 Using private named parameters as initializing formals
-requires a language version of at least 3.12.
+requires a [language version][] of at least 3.12.
 :::
 
 In Dart, fields starting with an underscore are private to their library.
@@ -704,7 +744,7 @@ class Vector3d extends Vector2d {
 }
 ```
 
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [using constructors]: /language/classes#using-constructors
 [late-final-ivar]: /effective-dart/design#avoid-public-late-final-fields-without-initializers
 [static method]: /language/classes#static-methods

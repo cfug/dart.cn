@@ -212,7 +212,7 @@ locate the file for your platform and add it.
 {:.table .table-striped}
 
 <sup><strong>*</strong></sup> The exact location of the system cache
-may vary for different versions of Windows.
+might vary for different versions of Windows.
 
 <sup><strong>*</strong></sup> 对于不同版本的 Windows 系统，Pub 系统缓存的确切位置可能有所不同。
 
@@ -226,7 +226,7 @@ $ [!webdev serve!]
 ```
 
 If the script still fails to run from the command line, the
-package may not be [configured](#configuring-package-executables) for
+package might not be [configured](#configuring-package-executables) for
 this feature. You can still run the script using `dart pub global run`.
 
 如果此时从命令行运行脚本依然失败，则 Package 可能没有针对此功能进行 [配置](#configuring-package-executables)。但你仍然可以使用 `dart pub global run` 命令运行它。

@@ -3,13 +3,13 @@ title: "Announcing Dart 2.13"
 description: "New type aliases language feature, improved Dart FFI"
 publishDate: 2021-05-19
 author: mit-mit
-image: images/1qMQKtkRNuvBjORjoJrN2bQ.png
+image: images/1qMQKtkRNuvBjORjoJrN2bQ.webp
 category: releases
 layout: blog
 ---
 
 
-<DashImage src="images/1qMQKtkRNuvBjORjoJrN2bQ.png" />
+<DashImage src="images/1qMQKtkRNuvBjORjoJrN2bQ.webp" alt="Dart 2.13 release banner highlighting type aliases, faster FFI, null safety, and Docker support." />
 
 
 *By Kevin Moore & Michael Thomsen*
@@ -138,7 +138,7 @@ environment:
 ```
 
 
-This feature is backward compatible, thanks to [language versioning](https://dart.dev/guides/language/evolution#language-versioning). Packages with lower SDK constraints under 2.13 can safely refer to type aliases defined in 2.13 packages, even though pre-2.13 packages can’t define their own type aliases.
+This feature is backward compatible, thanks to [language versioning](https://dart.dev/language/versioning). Packages with lower SDK constraints under 2.13 can safely refer to type aliases defined in 2.13 packages, even though pre-2.13 packages can’t define their own type aliases.
 
 ## Dart 2.13 FFI changes
 

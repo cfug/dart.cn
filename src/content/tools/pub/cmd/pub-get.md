@@ -43,7 +43,7 @@ in the `.dart_tool/` directory.
 该命令会在 `.dart_tool/` 文件夹下创建一个
 `package_config.json` 文件并将之映射到 Pub 的系统缓存中。
 
-Once the dependencies are acquired, they may be referenced in Dart code.
+Once the dependencies are acquired, they might be referenced in Dart code.
 For example, if a package depends on `test`:
 
 一旦依赖获取完毕，就可以在 Dart 代码中引用。

@@ -95,8 +95,8 @@ recordAB = recordXY; // OK.
 ```
 
 This is similar to how positional parameters
-in a [function declaration or function typedef][function-type]
-can have names but those names don't affect the signature of the function.
+in a [function declaration or function typedef][function-type] can have names,
+but those names don't affect the signature of the function.
 
 For more information and examples, check out 
 [Record types](#record-types) and [Record equality](#record-equality).
@@ -301,7 +301,7 @@ class ButtonItem {
   final Icon icon;
   final void Function()? onPressed;
   ButtonItem({required this.label, required this.icon, this.onPressed});
-  bool get hasOnpressed => onPressed != null;
+  bool get hasOnPressed => onPressed != null;
 }
 ```
 
@@ -314,7 +314,7 @@ extension type ButtonItem._(({String label, Icon icon, void Function()? onPresse
   void Function()? get onPressed => _.onPressed;
   ButtonItem({required String label, required Icon icon, void Function()? onPressed})
       : this._((label: label, icon: icon, onPressed: onPressed));
-  bool get hasOnpressed => _.onPressed != null;
+  bool get hasOnPressed => _.onPressed != null;
 }
 ```
 
@@ -343,7 +343,7 @@ for the code using it as a reference, that the value being aliased is a record.
 Extension types, also, offer little protection.
 Only a class can provide full abstraction and encapsulation.
 
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [collection types]: /language/collections
 [pattern]: /language/patterns#destructuring-multiple-returns
 [`dart:async` documentation]: /libraries/dart-async#handling-errors-for-multiple-futures
