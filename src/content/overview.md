@@ -30,7 +30,7 @@ Dart 是一种针对客户端优化的语言，可在任何平台上开发快速
 Languages are defined by their _technical envelope_—the 
 choices made during development that
 shape the capabilities and strengths of a language.
-Dart is designed for a technical envelope that is
+Dart is designed for a technical envelope that's
 particularly suited to client development,
 prioritizing both development (sub-second stateful hot reload) and
 high-quality production experiences across

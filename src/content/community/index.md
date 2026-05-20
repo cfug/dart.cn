@@ -105,7 +105,7 @@ Get answers and connect with Dart developers.
   <Card title="通用讨论区" link="{{page.group}}/d/forum/misc">
     讨论 Dart 的各种话题。
   </Card>
-  <Card title="Dart analyzer" link="{{page.group}}/d/forum/analyzer-discuss>">
+  <Card title="Dart analyzer" link="{{page.group}}/d/forum/analyzer-discuss">
     获取有关 Dart analyzer 的帮助。
   </Card>
 </div>

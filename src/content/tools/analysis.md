@@ -398,7 +398,7 @@ Core rules
 
 Recommended rules
 <br> Help identify additional issues
-  that may lead to problems when running or consuming Dart code,
+  that might lead to problems when running or consuming Dart code,
   and enforce a single, idiomatic style and format.
   We recommend that all Dart code use these rules,
   which are a superset of the core rules.
@@ -961,7 +961,7 @@ Use the following resources to learn more about static analysis in Dart:
 [change the severity of rules]: #changing-the-severity-of-rules
 [diagnostics]: /tools/diagnostic-messages
 [invalid_assignment]: /tools/diagnostic-messages#invalid_assignment
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning
 [linter rules]: /tools/linter-rules
 [type-system]: /language/type-system
 [dead_code]: /tools/diagnostic-messages#dead_code

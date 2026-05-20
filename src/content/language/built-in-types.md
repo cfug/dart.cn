@@ -311,8 +311,8 @@ objects have type bool: the boolean literals `true` and `false`,
 which are both compile-time constants.
 
 Dart's type safety means that you can't use code like
-<code>if (<em>nonbooleanValue</em>)</code> or
-<code>assert (<em>nonbooleanValue</em>)</code>.
+<code>if (<em>nonBooleanValue</em>)</code> or
+<code>assert (<em>nonBooleanValue</em>)</code>.
 Instead, explicitly check for values, like this:
 
 <?code-excerpt "misc/test/language_tour/built_in_types_test.dart (no-truthy)"?>
@@ -440,4 +440,4 @@ Symbol literals are compile-time constants.
 [characters API]: {{site.pub-api}}/characters
 [characters example]: {{site.pub-pkg}}/characters/example
 [`Symbol`]: {{site.dart-api}}/dart-core/Symbol-class.html
-[language version]: /resources/language/evolution#language-versioning
+[language version]: /language/versioning

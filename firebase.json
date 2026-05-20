@@ -392,7 +392,7 @@
       { "source": "/server/tools{,/**}", "destination": "/tools", "type": 301 },
       { "source": "/stable{,/**}", "destination": "https://api.dart.dev", "type": 301 },
       { "source": "/support{,/**}", "destination": "/community", "type": 301 },
-
+      { "source": "/to/changelog", "destination": "/changelog", "type": 301 },
       { "source": "/to/cross-compilation", "destination": "/tools/dart-compile#cross-compilation", "type": 301 },
       { "source": "/to/doc-comment-references", "destination": "/tools/doc-comments/references", "type": 301 },
       { "source": "/to/dot-shorthands", "destination": "/language/dot-shorthands", "type": 301 },
@@ -405,6 +405,7 @@
       { "source": "/to/null-aware-elements", "destination": "/language/collections#null-aware-element", "type": 301 },
       { "source": "/to/package-discontinue", "destination": "/tools/pub/publishing#discontinue", "type": 301 },
       { "source": "/to/package-retraction", "destination": "/tools/pub/publishing#retract", "type": 301 },
+      { "source": "/to/private-named-parameters", "destination": "/language/constructors#private-named-parameters", "type": 301 },
       { "source": "/to/pub-cache", "destination": "/tools/pub/cmd/pub-cache", "type": 301 },
       { "source": "/to/pub-content-hashes", "destination": "/resources/glossary#pub-content-hashes", "type": 301 },
       { "source": "/to/pub-false-secrets", "destination": "/tools/pub/pubspec#false_secrets", "type": 301 },

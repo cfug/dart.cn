@@ -752,7 +752,7 @@ we made the following changes:
 [sound null safety]: /null-safety
 [Dart 3 migration guide]: /resources/dart-3-migration
 [language evolution]: /resources/language/evolution
-[language versioning]: /resources/language/evolution#language-versioning
+[language versioning]: /language/versioning
 [compilation environment declarations]: /libraries/core/environment-declarations
 [Java interop]: /interop/java-interop
 [unnamed extensions]: /language/extension-methods#unnamed-extensions
@@ -957,7 +957,7 @@ we made the following changes to this site:
 * Updated the documentation for updating and installing Dart:
   * Documented how to switch between Dart versions
     with Homebrew within the macOS [install instructions][get-dart-install].
-  * Updated the linux [installation instructions][get-dart-install]
+  * Updated the Linux [installation instructions][get-dart-install]
     to use [SecureApt][] and follow the latest best practices.
   * Added support for downloading experimental, Linux RISC-V (RV64GC) builds
     from the [Dart SDK archive][].

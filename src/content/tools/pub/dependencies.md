@@ -131,7 +131,7 @@ dependencies:
 ```
 :::
 
-[SDK version]: /resources/language/evolution#language-versioning
+[SDK version]: /language/versioning
 
 ### Git packages
 
@@ -266,7 +266,7 @@ Instead, the typical workflow is:
 ### SDK packages
 
 The SDK source is used for any SDKs that are shipped along with packages,
-which may themselves be dependencies.
+which might themselves be dependencies.
 Currently, Flutter is the only SDK that is supported.
 
 The syntax looks like this:
@@ -538,7 +538,7 @@ Using a dependency override involves some risk. For example,
 using an override to specify a version outside the range that the
 package claims to support, or using an override to specify
 a local copy of a package that has unexpected behaviors,
-may break your application.
+might break your application.
 :::
 
 Only the dependency overrides in a **package's own pubspec**
@@ -581,7 +581,7 @@ Be proactive in managing your dependencies.
 Ensure that your packages depend on the freshest versions of packages
 when possible.
 If your package depends on a stale package,
-that stale package may depend on other stale packages in its dependency tree.
+that stale package might depend on other stale packages in its dependency tree.
 Stale versions of packages can have a negative impact on
 the stability, performance, and quality of your app.
 
@@ -615,9 +615,9 @@ resemble the following:
 
 ```yaml
 dev_dependencies:
-  build_runner: ^2.10.4
-  lints: ^6.0.0
-  test: ^1.26.3
+  build_runner: ^2.14.1
+  lints: ^6.1.0
+  test: ^1.31.1
 ```
 
 This YAML sets the `dev_dependencies` to the latest patch versions.

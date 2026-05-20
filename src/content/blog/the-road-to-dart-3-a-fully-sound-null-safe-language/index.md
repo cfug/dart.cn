@@ -3,7 +3,7 @@ title: "The road to Dart 3: A fully sound, null safe language"
 description: "Preparing for the next major release, where Dart only supports sound null safety"
 publishDate: 2022-12-08
 author: mit-mit
-image: images/05XfWLgEBx4iJvuqA.png
+image: images/05XfWLgEBx4iJvuqA.webp
 category: other
 layout: blog
 ---
@@ -11,7 +11,7 @@ layout: blog
 
 Over the last four years, we’ve evolved Dart into a fast, portable, and modern language. Our next release, Dart 3, completes the journey to a **fully sound null safe language**. As the last step of that journey, we’re removing several historical Dart language and SDK artifacts, including **removing support for running without sound null safety**. This makes Dart easier to learn, and enables us to evolve the Dart SDK to support new features with greater speed. To learn about the main changes in Dart 3 and how to best prepare your apps and packages, keep reading!
 
-<DashImage src="images/05XfWLgEBx4iJvuqA.png" alt="The road to Dart 3. *(Photo by[ Niklas Ohlrogge](https://unsplash.com/@ohlrogge?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on[ Unsplash](https://unsplash.com/s/photos/road-denmark?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText))*" caption="The road to Dart 3. *(Photo by[ Niklas Ohlrogge](https://unsplash.com/@ohlrogge?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on[ Unsplash](https://unsplash.com/s/photos/road-denmark?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText))*" />
+<DashImage src="images/05XfWLgEBx4iJvuqA.webp" alt="A winding road representing the road to Dart 3." caption="The road to Dart 3. *(Photo by [Niklas Ohlrogge](https://unsplash.com/@ohlrogge?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/road-denmark?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText))*" />
 
 
 ## Why sound null safety?
@@ -28,7 +28,7 @@ For Dart, we chose the path of sound null safety. This involved a tradeoff. In a
 
 It’s been three years since we introduced null safety to the Dart language in [Dart 2.12](https://dart.dev/guides/language/evolution#dart-212). As mentioned in the previous section, we recognize the impact needed to migrate existing Dart packages and apps. To help migration, Dart has supported running your app code in three ways. It can run without null safety, in a mixed mode with partial null safety, or with full sound null safety. Full sound null safety occurs when 100% of the code, including all dependencies, has been migrated. This gave Dart developers time to migrate existing code one step at a time. However, having support for several modes added overhead and complexity.
 
-First, Dart developers need to be aware of all three modes. Whenever you read a piece of Dart code, you must check the language version to see if types are non-null by default, nullable by default, or some combination thereof.
+First, Dart developers need to be aware of all three modes. Whenever you read a piece of Dart code, you must check the [language version](https://dart.dev/language/versioning) to see if types are non-null by default, nullable by default, or some combination thereof.
 
 Second, supporting all three modes in our compilers and runtimes slows down evolving the Dart SDK. This support increases the cost and complexity of adding new features.
 
