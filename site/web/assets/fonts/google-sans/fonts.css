@@ -1,0 +1,38 @@
+/* google-sans-400 - armenian_bengali_canadian-aboriginal_cyrillic_cyrillic-ext_devanagari_ethiopic_georgian_greek_greek-ext_gujarati_gurmukhi_hebrew_khmer_lao_latin_latin-ext_malayalam_oriya_sinhala_symbols_tamil_telugu_thai_vietnamese */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('google-sans-v69-400.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    url('google-sans-v69-400.ttf') format('truetype');
+  /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+
+/* google-sans-500 - armenian_bengali_canadian-aboriginal_cyrillic_cyrillic-ext_devanagari_ethiopic_georgian_greek_greek-ext_gujarati_gurmukhi_hebrew_khmer_lao_latin_latin-ext_malayalam_oriya_sinhala_symbols_tamil_telugu_thai_vietnamese */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url('google-sans-v69-500.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    url('google-sans-v69-500.ttf') format('truetype');
+  /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+
+/* google-sans-700 - armenian_bengali_canadian-aboriginal_cyrillic_cyrillic-ext_devanagari_ethiopic_georgian_greek_greek-ext_gujarati_gurmukhi_hebrew_khmer_lao_latin_latin-ext_malayalam_oriya_sinhala_symbols_tamil_telugu_thai_vietnamese */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('google-sans-v69-700.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    url('google-sans-v69-700.ttf') format('truetype');
+  /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}

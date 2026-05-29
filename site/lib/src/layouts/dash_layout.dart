@@ -127,30 +127,40 @@ abstract class DashLayout extends PageLayoutBase {
         href: 'https://fonts.gstatic.cn',
         attributes: {'crossorigin': ''},
       ),
+
+      /// docs.flutter.cn
+      /// https://fonts.googleapis.cn/css2?family=Google+Sans:wght@400;500;700&display=swap
       const link(
         rel: 'stylesheet',
-        href:
-            'https://fonts.googleapis.cn/css2?family=Google+Sans:wght@400;500;700&display=swap',
+        href: '/assets/fonts/google-sans/fonts.css',
       ),
+
+      /// docs.flutter.cn
+      /// https://fonts.googleapis.cn/css2?family=Google+Sans+Mono:wght@400;500;700&display=swap
       const link(
         rel: 'stylesheet',
-        href:
-            'https://fonts.googleapis.cn/css2?family=Google+Sans+Mono:wght@400;500;700&display=swap',
+        href: '/assets/fonts/google-sans-code/fonts.css',
       ),
+
+      /// docs.flutter.cn
+      /// https://fonts.googleapis.cn/css2?family=Google+Sans+Text:wght@400;500;700&display=swap
       const link(
         rel: 'stylesheet',
-        href:
-            'https://fonts.googleapis.cn/css2?family=Google+Sans+Text:wght@400;500;700&display=swap',
+        href: '/assets/fonts/google-sans/fonts-text.css',
       ),
+
+      /// docs.flutter.cn
+      /// https://fonts.googleapis.cn/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0
       const link(
         rel: 'stylesheet',
-        href:
-            'https://fonts.googleapis.cn/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0',
+        href: '/assets/fonts/material-symbols-outlined/fonts.css',
       ),
+
+      /// docs.flutter.cn
+      /// https://fonts.googleapis.cn/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap
       const link(
         rel: 'stylesheet',
-        href:
-            'https://fonts.googleapis.cn/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap',
+        href: '/assets/fonts/noto-serifse/fonts.css',
       ),
       link(
         rel: 'stylesheet',
