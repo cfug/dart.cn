@@ -52,7 +52,7 @@
           permalink: /language/classes
         - title: 构造方法
           permalink: /language/constructors
-        - title: 主构造函数
+        - title: 主构造方法
           permalink: /language/primary-constructors
         - title: 成员方法
           permalink: /language/methods
