@@ -1,6 +1,4 @@
 text: >-
-  Dart 和 Flutter 将于 5 月 19 日至 20 日重返 Google I/O 大会！
-link:
-  text: "立即注册"
-  url: "https://io.google/2026/?utm_source=dart&utm_medium=embedded_marketing&utm_campaign=flutter"
-  newTab: true
+  Dart 3.12 正式发布！<br>
+  观看 [What's new in Flutter](https://www.youtube.com/live/3TfGKugPlpE){:target="_blank"}
+  以及阅读 [博客文章](/blog/announcing-dart-3-12){:target="_blank"}.
