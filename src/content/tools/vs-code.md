@@ -53,9 +53,9 @@ VS Code 的 Dart 扩展支持 Dart 特有的开发功能。
 
    启动 **VS Code**。
 
-1. Click **Extensions** in the **Activity Bar**.  
+1. Click **Extensions** in the **Activity Bar**.
    You can also press
-   <kbd>Control</kbd> / <kbd>Command</kbd> +
+   <kbd class="special-key">Cmd/Ctrl</kbd> +
    <kbd>Shift</kbd> + <kbd>X</kbd>.
 
    点击 **活动栏（默认在左侧）** 中的 **扩展**。

@@ -460,16 +460,18 @@ do it.
 并且性能和健壮性是随时间经常改变的。
 大多数情况下，根据成员为调用者做了“什么”来命名，而不是“如何”做。
 
+<a id="avoid-starting-a-method-name-with-get" aria-hidden="true"></a>
 
-### AVOID starting a method name with `get`
+### AVOID starting a function or method name with `get`
 
-### **避免** 在方法命名中使用 `get` 开头。
+### **避免** 在函数或方法命名中使用 `get` 开头。
 
-In most cases, the method should be a getter with `get` removed from the name.
-For example, instead of a method named `getBreakfastOrder()`, define a getter
-named `breakfastOrder`.
+In most cases, the method or function should be
+a getter with `get` removed from the name.
+For example, instead of a method named `getBreakfastOrder()`,
+define a getter named `breakfastOrder`.
 
-在大多数情况下，getter 方法名称中应该移除 `get` 。
+在大多数情况下，getter 方法或函数名称中应该移除 `get` 。
 例如，定义一个名为 `breakfastOrder` 的 getter 方法，
 来替代名为 `getBreakfastOrder()` 的方法。
 

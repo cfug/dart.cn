@@ -48,6 +48,32 @@ Dart 也是 [Flutter]({{site.flutter}}) 的基础。
 Dart 作为 Flutter 应用程序的编程语言，为驱动应用运行提供了环境，
 同时 Dart 还支持许多核心的开发任务，例如格式化，分析和代码测试。
 
+:::tip 刚开始学习编程吗？
+<!-- New to programming? -->
+
+If you are new to programming,
++some concepts on this page can be advanced.
++Consider starting with a foundational introduction:
+
+如果你刚开始学习编程，
++本页上的某些概念可能有些深入。
++建议先从基础入门教程开始：
+
+* Check out the
+  [Codelabs Dart tutorials](https://codelabs.developers.google.com/?cat=Dart)
+  for step-by-step guided basics.
+
+  请查看 [Codelab Dart 教程](https://codelabs.developers.google.cn/?cat=Dart)，
+  这将逐步指导你学习基础知识。
+
+* Take a look at the introductory [Language Tour](/language)
+  to learn fundamental syntax at your own pace.
+
+  还可以看看入门指南 [Dart 简介](/language)，
+  按照自己的节奏学习基础语法。
+
+:::
+
 ## Dart: The language {:#language}
 
 ## Dart 语言
