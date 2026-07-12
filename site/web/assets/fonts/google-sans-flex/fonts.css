@@ -1,0 +1,25 @@
+/* google-sans-flex-regular - canadian-aboriginal_cherokee_latin_latin-ext_math_nushu_symbols_syriac_tifinagh_vietnamese */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Google Sans Flex';
+  font-style: normal;
+  font-weight: 400;
+  src: url('google-sans-flex-v21-regular.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    url('google-sans-flex-v21-regular.ttf') format('truetype');
+  /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+
+/* google-sans-flex-700 - canadian-aboriginal_cherokee_latin_latin-ext_math_nushu_symbols_syriac_tifinagh_vietnamese */
+@font-face {
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Google Sans Flex';
+  font-style: normal;
+  font-weight: 700;
+  src: url('google-sans-flex-v21-700.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    url('google-sans-flex-v21-700.ttf') format('truetype');
+  /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
