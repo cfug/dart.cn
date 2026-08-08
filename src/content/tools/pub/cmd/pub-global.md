@@ -5,6 +5,34 @@ title: dart pub global 命令
 description: 使用 dart pub global 命令从命令行运行 Pub.dev 网站上托管的 Dart 脚本。
 ---
 
+:::version-note
+**Legacy command:** Support for `dart pub global` is legacy.
+[`dart install`][] is the recommended, AOT-compiled alternative
+that produces self-contained binaries,
+supports native build hooks (`hook/build.dart`),
+and launches faster.
+Note that `dart install` requires **Dart 3.10 or later**.
+
+**旧版命令：** `dart pub global` 已属于旧版命令。
+[`dart install`][] 是现在推荐的，采用 AOT 编译的替代方案，
+它能生成自带的二进制文件，
+支持原生构建 hooks (`hook/build.dart`)，
+且启动速度更快。
+请注意，`dart install` 需要 **Dart 3.10 或更高版本**。
+
+**Migration note:** `dart install` places binaries
+in `$DART_DATA_HOME/install/bin/` (instead of `~/.pub-cache/bin/`).
+Ensure your `PATH` is updated appropriately.
+Additionally, because `dart install` creates native executables,
+you can no longer pass Dart VM options at runtime.
+
+**迁移说明：** `dart install` 会将二进制文件放置在 
+`$DART_DATA_HOME/install/bin/`（而非 `~/.pub-cache/bin/`）中。
+请确保已更新你的 `PATH` 环境变量。
+还需要注意，`dart install` 会生成原生可执行文件，
+因此你无法在运行时传递 Dart VM 选项。
+:::
+
 _Global_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
 _Global_ 命令是 [Pub 工具](/tools/pub/cmd) 中的一个命令。

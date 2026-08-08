@@ -153,6 +153,8 @@
       permalink: /tools/pub/packages
     - title: 创建 package
       permalink: /tools/pub/create-packages
+    - title: 分发 CLI 工具
+      permalink: /tools/cli-distribution
     - title: 发布 package
       permalink: /tools/pub/publishing
     - title: 设置 package 介绍页
@@ -358,7 +360,7 @@
   expanded: false
   children:
     - title: Dart 团队官方博客
-      permalink: https://blog.dart.dev
+      permalink: /blog
     - title: Dart SDK 更新日志
       permalink: /changelog
     - title: 最近更新

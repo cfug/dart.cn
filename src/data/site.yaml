@@ -16,6 +16,7 @@ repo:
     samples: https://github.com/dart-lang/samples
 branch: main
 
+flutter-blog: https://flutter.cn/blog
 flutter: https://flutter.cn
 flutter-docs: https://docs.flutter.cn
 dart-api: https://api.dart.cn
@@ -26,7 +27,7 @@ pub-pkg: https://pub-web.flutter-io.cn/packages
 dartpad: https://dartpad.cn
 news: https://news.dartlang.org
 announce: https://groups.google.com/a/dartlang.org/g/announce
-android-dev: https://developer.android.com
+android-dev: https://developer.android.google.cn
 apple-dev: https://developer.apple.com
 jaspr: https://jaspr.site/
 
