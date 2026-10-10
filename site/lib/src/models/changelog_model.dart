@@ -8,6 +8,7 @@ import 'package:universal_web/web.dart' as web;
 
 final class ChangelogEntry {
   ChangelogEntry({
+    this.id,
     required this.description,
     required this.version,
     this.releaseDate,
@@ -18,22 +19,31 @@ final class ChangelogEntry {
   });
 
   factory ChangelogEntry.fromMap(Map<String, Object?> map) {
+    final id = (map['id'] as String?)?.trim();
     final description = map['description'] as String;
     final link = map['link'] as String?;
+    final versionStr = map['version'].toString().trim();
+
+    final rawTags = (map['tags'] as List<Object?>?)?.cast<String>() ?? const [];
+    final tags = <ChangelogTag>{};
+    for (final rawTag in rawTags) {
+      final tag = ChangelogTag.fromId(rawTag);
+      if (tag == ChangelogTag.none) {
+        throw ArgumentError(
+          'Unknown changelog tag "$rawTag" in entry for version $versionStr.',
+        );
+      }
+      tags.add(tag);
+    }
 
     return ChangelogEntry(
+      id: (id != null && id.isNotEmpty) ? id : null,
       description: description,
-      version: _parseVersion(map['version'].toString().trim()),
+      version: _parseVersion(versionStr),
       releaseDate: map['releaseDate']?.toString(),
       area: map['area'] as String,
       subArea: map['subArea'] as String?,
-      tags:
-          (map['tags'] as List<Object?>?)
-              ?.cast<String>()
-              .map(ChangelogTag.fromId)
-              .where((tag) => tag != ChangelogTag.none)
-              .toSet() ??
-          {},
+      tags: tags,
       link: link,
     );
   }
@@ -43,8 +53,10 @@ final class ChangelogEntry {
     // Use textContent for description to avoid data-description bloat.
     final contentElement = element.querySelector('.card-content') ?? element;
     final description = contentElement.textContent ?? '';
+    final elementId = element.id.trim();
 
     return ChangelogEntry(
+      id: elementId.isNotEmpty ? elementId : null,
       description: description,
       version: _parseVersion(
         (element.getAttribute('data-version') ?? '').trim(),
@@ -65,6 +77,7 @@ final class ChangelogEntry {
     );
   }
 
+  final String? id;
   final String description;
   final Version version;
   final String? releaseDate;
@@ -84,6 +97,7 @@ final class ChangelogEntry {
 
   Map<String, Object?> toMap() {
     return {
+      'id': id,
       'description': description,
       'version': version,
       'releaseDate': releaseDate,
