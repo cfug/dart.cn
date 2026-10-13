@@ -11,7 +11,7 @@ import 'package:http/http.dart' as http;
 import 'version_info.dart';
 
 /// The host for SDK archive API requests and download links.
-const String storageHost = 'storage.flutter-io.cn';
+const String storageHost = 'storage.gapis.dev';
 
 /// The Cloud Storage bucket containing published Dart SDK releases.
 const String _archiveBucket = 'dart-archive';
