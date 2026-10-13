@@ -157,7 +157,9 @@
       permalink: /tools/cli-distribution
     - title: 发布 package
       permalink: /tools/pub/publishing
-    - title: 设置 package 介绍页
+    - title: 数据驱动代码修复
+      permalink: /tools/pub/data-driven-fixes
+    - title: 编写 package 介绍页
       permalink: /tools/pub/writing-package-pages
     - title: 工作空间 (支持 monorepo)
       permalink: /tools/pub/workspaces
@@ -391,7 +393,7 @@
     - title: 书籍资源
       permalink: /resources/books
     - title: 视频资源
-      permalink: /resources/videos
+      permalink: https://www.youtube.com/@flutterdev
 
 - title: 相关站点
   expanded: true

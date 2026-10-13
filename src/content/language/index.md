@@ -515,6 +515,26 @@ about abstract classes and methods.
 
 你可以 [阅读更多](/language/class-modifiers#abstract) 关于抽象类和抽象方法的内容。
 
+To define a pure interface,
+combine the `abstract` and `interface` modifiers.
+Like other abstract classes, an abstract interface class can't be instantiated.
+Other libraries can implement it, but can't extend it.
+
+<?code-excerpt "misc/lib/samples/spacecraft.dart (abstract-interface)" replace="/abstract interface/[!$&!]/g"?>
+```dart
+[!abstract interface!] class Launchable {
+  void launch();
+}
+
+class Rocket implements Launchable {
+  @override
+  void launch() => print('Liftoff!');
+}
+```
+
+[Read more](/language/class-modifiers#abstract-interface)
+about abstract interface classes.
+
 ## Async
 
 ## 异步

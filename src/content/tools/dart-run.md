@@ -5,18 +5,15 @@ title: dart run 命令
 description: 运行Dart程序的命令行工具。
 ---
 
-The `dart run` command supports running 
-a Dart program—located in a file, in the current package, 
+The `dart run` command supports running
+a Dart program—located in a file, in the current package,
 or in one of the dependencies of the current package—from the command line.
 This command provides functionality that was previously in `pub run`
 and the Dart VM tool.
-To run a program from an arbitrary location,
-use the [pub global](/tools/pub/cmd/pub-global) command.
 
 `dart run` 命令支持运行文件、当前 package
 或者当前 package 的依赖中运行Dart程序。
 该命令提供了以前在 `pub run` 和 Dart VM 工具里提供的功能。
-如果想从任意位置运行程序，可以使用 [pub global](/tools/pub/cmd/pub-global) 命令。
 
 ```plaintext
 dart run [options] [<DART_FILE> | <PACKAGE_TARGET>] [args]
@@ -31,6 +28,36 @@ $ dart create myapp
 $ cd myapp
 $ dart run
 ```
+
+## Run an executable from a remote package
+
+:::version-note
+Support for running remote package executables was introduced in Dart 3.12.
+:::
+
+To run an executable from a remote package without adding it as a dependency
+or installing it, specify the package name followed by an `@` symbol.
+
+For example:
+
+```console
+$ dart run dhttpd@
+```
+
+Dart resolves the package from pub.dev, downloads it if necessary,
+and compiles and runs its default executable.
+
+Use this form for one-off tools and temporary utilities.
+
+The complete syntax is:
+
+```plaintext
+dart run <PACKAGE>[:<EXECUTABLE>]@[<DESCRIPTOR>] [args]
+```
+
+The `:<EXECUTABLE>` part specifies the executable to run.
+The `@[<DESCRIPTOR>]` part specifies the package version or version constraint.
+Both parts are optional.
 
 {% render 'tools/dart-tool-note.md' %}
 
@@ -190,7 +217,7 @@ $ dart run foo arg1 arg2
 
 ## 调试
 
-To enable debugging, 
+To enable debugging,
 add one or more of these common debugging options
 to your `dart run` command:
 
@@ -217,7 +244,7 @@ to your `dart run` command:
   ```console
   $ dart run --observe tool/debug.dart
   ```
-  
+
   To learn more about debugging with Dart DevTools,
   see [Using DevTools with a command-line app][].
 

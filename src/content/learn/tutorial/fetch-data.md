@@ -29,7 +29,7 @@ items:
 
 Before you begin this chapter, ensure you:
 
--   Have completed Chapter 10 and have a
+-   Have completed Chapter 11 and have a
     working Dart development environment with the `dartpedia` project.
 -   Understand basic networking concepts (like APIs and HTTP requests).
 -   Understand basic data serialization formats such as JSON.
@@ -53,7 +53,7 @@ add the `http` package as a dependency to the `wikipedia` package.
 
 1.  Add `http: ^1.3.0` (or the latest stable version) under `dependencies`.
 
-    ```yaml
+    ```yaml title="wikipedia/pubspec.yaml"
     dependencies:
       http: ^1.3.0
     ```
@@ -80,7 +80,7 @@ You'll create three files:
 
 1.  Add the following code to `wikipedia/lib/src/api/summary.dart`:
 
-    ```dart
+    ```dart title="wikipedia/lib/src/api/summary.dart"
     import 'dart:convert';
     import 'dart:io';
 
@@ -152,7 +152,7 @@ You'll create three files:
 
 1.  Add the following code to `wikipedia/lib/src/api/search.dart`:
 
-    ```dart
+    ```dart title="wikipedia/lib/src/api/search.dart"
 
     import 'dart:convert';
     import 'dart:io';
@@ -202,7 +202,7 @@ You'll create three files:
 
 1.  Add the following code to `wikipedia/lib/src/api/get_article.dart`:
 
-    ```dart
+    ```dart title="wikipedia/lib/src/api/get_article.dart"
     import 'dart:convert';
     import 'dart:io';
 
@@ -263,7 +263,7 @@ You'll also export the existing models.
 
 1.  Add the following `export` statements to the file:
 
-    ```dart
+    ```dart title="wikipedia/lib/wikipedia.dart"
     export 'src/api/get_article.dart';
     export 'src/api/search.dart';
     export 'src/api/summary.dart';
@@ -337,6 +337,7 @@ items:
 
 ## Next lesson
 
-In the next lesson, you'll complete the CLI by
-integrating the `wikipedia` package with the `cli` package.
-You'll implement the command logic and display the results to the user.
+In the next lesson, you'll complete your CLI application by
+integrating the `wikipedia` package commands with the `cli` package
+and adding logging for debugging and error monitoring.
+
