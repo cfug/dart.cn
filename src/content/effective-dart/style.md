@@ -5,6 +5,7 @@ title: 高效 Dart 语言指南：代码风格
 breadcrumb: 代码风格
 # description: Formatting and naming rules for consistent, readable code.
 description: 通过格式化与命名规则来确保代码的统一性和可读性。
+ai-translated: true
 nextpage:
   url: /effective-dart/documentation
   # title: Documentation
@@ -372,6 +373,9 @@ RD // "road"
 When any form of abbreviation comes at the beginning
 of a `lowerCamelCase` identifier, the abbreviation should be all lowercase:
 
+当任何形式的缩写出现在 `lowerCamelCase` 标识符的开头时，
+缩写应该全部小写：
+
 ```dart
 var httpConnection = connect();
 var tvSet = Television();
@@ -382,10 +386,17 @@ var mrRogers = 'hello, neighbor';
 
 ### PREFER using wildcards for unused callback parameters
 
+### **推荐** 对未使用的回调参数使用通配符
+
 Sometimes the type signature of a callback function requires a parameter,
 but the callback implementation doesn't _use_ the parameter.
 In this case, it's idiomatic to name the unused parameter `_`,
 which declares a [wildcard variable][wildcards] that is non-binding.
+
+有时回调函数的类型签名要求有一个参数，
+但回调的实现并不_使用_这个参数。
+这种情况下，惯用的做法是把未使用的参数命名为 `_`，
+这会声明一个不绑定值的[通配符变量][wildcards]。
 
 <?code-excerpt "style_good.dart (unused-callback-param)"?>
 ```dart tag=good
@@ -396,6 +407,9 @@ futureOfVoid.then((_) {
 
 Because wildcard variables are non-binding,
 you can name multiple unused parameters `_`.
+
+由于通配符变量不绑定值，
+你可以把多个未使用的参数都命名为 `_`。
 
 <?code-excerpt "style_good.dart (unused-callback-params-multiple)"?>
 ```dart tag=good
@@ -411,17 +425,35 @@ In contrast, top-level functions and method declarations don't have that context
 so their parameters must be named so that it's clear what each parameter is for,
 even if it isn't used.
 
+这条准则只针对*既是匿名又是局部*的函数。
+这些函数通常会立即用在某个上下文中，
+未使用的参数代表什么在上下文中是清楚的。
+相比之下，顶级函数和方法声明没有这样的上下文，
+所以它们的参数必须命名清楚，让人明白每个参数的用途，
+即使参数没有被使用。
+
 :::version-note
 Declaring non-binding [wildcard variables][wildcards] requires
 a [language version][] of at least 3.7.
+
+声明不绑定值的[通配符变量][wildcards]需要
+至少 3.7 的[语言版本][language version]。
 
 In earlier language versions, use additional underscores to
 work around name collisions, such as `__` and `___`.
 To enforce not using them and simplify the migration to wildcards later on,
 enable the [`no_wildcard_variable_uses`][] lint.
 
+在较早的语言版本中，使用额外的下划线来避免命名冲突，
+例如 `__` 和 `___`。
+要强制不使用这些变量并简化日后向通配符的迁移，
+请启用 [`no_wildcard_variable_uses`][] lint 规则。
+
 To help migrate from this convention to wildcard variables,
 enable the [`unnecessary_underscores`][] lint.
+
+要帮助从这种约定迁移到通配符变量，
+请启用 [`unnecessary_underscores`][] lint 规则。
 :::
 
 [wildcards]: /language/variables#wildcard-variables
@@ -431,14 +463,24 @@ enable the [`unnecessary_underscores`][] lint.
 
 ### DON'T use a leading underscore for identifiers that aren't private
 
+### **不要** 对非私有的标识符使用前导下划线
+
 Dart uses a leading underscore in an identifier to mark members and top-level
 declarations as private. This trains users to associate a leading underscore
 with one of those kinds of declarations. They see "_" and think "private".
+
+Dart 用标识符的前导下划线把成员和顶级声明标记为私有。
+这让用户习惯于把前导下划线与这类声明联系起来。
+他们看到 "_" 就会想到“私有”。
 
 There is no concept of "private" for local variables, parameters, local
 functions, or library prefixes. When one of those has a name that starts with an
 underscore, it sends a confusing signal to the reader. To avoid that, don't use
 leading underscores in those names.
+
+局部变量、参数、局部函数和库前缀没有“私有”的概念。
+当这些名字以下划线开头时，会向读者传递令人困惑的信号。
+为避免这种情况，不要在这些名字中使用前导下划线。
 
 
 ### DON'T use prefix letters
@@ -467,14 +509,25 @@ kDefaultTimeout
 
 ### DON'T explicitly name libraries
 
+### **不要** 显式地命名库
+
 Appending a name to the `library` directive is technically possible,
 but is a legacy feature and discouraged. 
+
+在 `library` 指令后面附加名称在技术上是可行的，
+但这是一个遗留特性，不鼓励使用。
 
 Dart generates a unique tag for each library
 based on its path and filename.
 Naming libraries overrides this generated URI.
 Without the URI, it can be harder for tools to find
 the main library file in question. 
+
+Dart 会根据库的路径和文件名
+为每个库生成一个唯一的标记。
+命名库会覆盖这个生成的 URI。
+没有这个 URI，工具可能更难找到
+对应的主库文件。
 
 <?code-excerpt "usage_bad.dart (library-dir)"?>
 ```dart tag=bad
@@ -500,6 +553,9 @@ directives should appear in. Each "section" should be separated by a blank line.
 
 A single linter rule handles all the ordering guidelines:
 [directives_ordering.](/tools/linter-rules/directives_ordering)
+
+一条 lint 规则涵盖了所有的排序准则：
+[directives_ordering](/tools/linter-rules/directives_ordering)。
 
 
 ### DO place `dart:` imports before other imports
@@ -691,6 +747,10 @@ an import or export), it may remain whole even if it causes the line to go over
 **Exception:** Multi-line strings can contain lines longer than 80 characters
 because newlines are significant inside the string and splitting the lines into
 shorter ones can alter the program.
+
+**例外：** 多行字符串可以包含超过 80 个字符的行，
+因为换行符在字符串内部是有意义的，
+把行拆短可能会改变程序的行为。
 
 [configure]: /tools/dart-format#page-width
 

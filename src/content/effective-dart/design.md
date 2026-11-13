@@ -5,6 +5,7 @@ title: 高效 Dart 语言指南：API 设计
 breadcrumb: API 设计
 # description: Design consistent, usable libraries.
 description: 库的 API 设计。
+ai-translated: true
 prevpage:
   url: /effective-dart/usage
   # title: Usage
@@ -986,9 +987,18 @@ to be mixed into other classes.
 This was confusing because the author of the class
 might not have intended it to be mixed in.
 
+Dart 之前（在 [语言版本](/language/versioning)
+[2.12](/resources/language/evolution#dart-2-12) 到
+[2.19](/resources/language/evolution#dart-2-19) 中）允许任何满足特定限制的类
+（没有非默认构造函数、没有父类等）被混入到其他类中。
+这容易引起混淆，因为类的作者可能并不希望它被混入。
+
 Dart 3.0.0 now requires that any type intended to be mixed into other classes,
 as well as treated as a normal class, must be explicitly declared as such with
 the `mixin class` declaration.
+
+Dart 3.0.0 现在要求：任何既要混入其他类、又要当作普通类使用的类型，
+都必须使用 `mixin class` 声明显式地声明出来。
 
 Types that need to be both a mixin and a class should be a rare case, however.
 The `mixin class` declaration is mostly meant to help migrate pre-3.0.0 classes
@@ -996,8 +1006,16 @@ being used as mixins to a more explicit declaration. New code should clearly
 define the behavior and intention of its declarations by using only pure `mixin`
 or pure `class` declarations, and avoid the ambiguity of mixin classes.
 
+不过，既需要是 mixin 又需要是类的类型应该属于罕见情况。
+`mixin class` 声明主要用于帮助把 3.0.0 之前被当作 mixin 使用的类
+迁移到更显式的声明。新代码应该只使用纯 `mixin` 或纯 `class` 声明，
+清晰地定义声明的行为和意图，避免 mixin class 带来的歧义。
+
 Read [Migrating classes as mixins](/language/class-modifiers-for-apis#migrating-classes-as-mixins)
 for more guidance on `mixin` and `mixin class` declarations.
+
+阅读 [将类迁移为 mixin](/language/class-modifiers-for-apis#migrating-classes-as-mixins)，
+获取关于 `mixin` 和 `mixin class` 声明的更多指导。
 
 ## Constructors
 
@@ -1290,6 +1308,8 @@ exposed in the same way, use a method instead.
 
 ### AVOID using runtime type tests to fake overloading
 
+### **避免** 使用运行时类型检查来模拟重载
+
 It's common for an API to support similar operations
 on different types of parameters.
 To emphasize the similarity, some languages support *overloading*,
@@ -1297,6 +1317,11 @@ which lets you define multiple methods
 that have the same name but different parameter lists.
 At compile time, the compiler looks at the actual argument types to determine
 which method to call.
+
+一个 API 对不同类型的参数支持相似的操作是很常见的。
+为了强调这种相似性，一些语言支持*重载*，
+允许你定义多个名称相同但参数列表不同的方法。
+在编译时，编译器会查看实参的类型来决定调用哪个方法。
 
 Dart doesn't have overloading.
 You can define an API that looks like overloading
@@ -1306,6 +1331,13 @@ appropriate behavior.
 However, faking overloading this way turns a *compile time* method selection
 into a choice that happens at *runtime*.
 
+Dart 没有重载。
+你可以定义一个看起来像重载的 API：
+只定义一个方法，然后在方法体内使用 `is` 类型检查
+来查看参数的运行时类型，并执行相应的行为。
+然而，这种模拟重载的方式把*编译时*的方法选择
+变成了发生在*运行时*的选择。
+
 If callers usually know which type they have
 and which specific operation they want,
 it's better to define separate methods with different names
@@ -1313,13 +1345,25 @@ to let callers select the right operation.
 This gives better static type checking and faster performance
 since it avoids any runtime type tests.
 
+如果调用者通常知道自己持有的是哪种类型、想要哪个具体的操作，
+那么最好定义名称不同的多个方法，让调用者自行选择正确的操作。
+这样能带来更好的静态类型检查和更快的性能，
+因为它避免了任何运行时类型检查。
+
 However, if users might have an object of an unknown type
 and *want* the API to internally use `is` to pick the right operation,
 then a single method where the parameter is a supertype
 of all of the supported types might be reasonable.
 
+不过，如果用户可能持有一个未知类型的对象，
+并且*希望* API 在内部使用 `is` 来挑选正确的操作，
+那么使用单个方法、让参数类型是所有受支持类型的父类型，
+可能是合理的。
+
 
 ### AVOID public `late final` fields without initializers
+
+### **避免** 没有初始值设定项的公共 `late final` 字段
 
 Unlike other `final` fields, a `late final` field without an initializer *does*
 define a setter. If that field is public, then the setter is public. This is
@@ -1327,28 +1371,56 @@ rarely what you want. Fields are usually marked `late` so that they can be
 initialized *internally* at some point in the instance's lifetime, often inside
 the constructor body.
 
+与其他 `final` 字段不同，没有初始值设定项的 `late final` 字段*会*
+定义一个 setter。如果该字段是公共的，那么这个 setter 也是公共的。
+这很少是你想要的。字段通常被标记为 `late`，是为了能在实例生命周期中的
+某个时刻在*内部*完成初始化，往往是在构造函数体内。
+
 Unless you *do* want users to call the setter, it's better to pick one of the
 following solutions:
 
+除非你*确实*希望用户调用这个 setter，否则最好选择以下方案之一：
+
 * Don't use `late`.
+
+  不要使用 `late`。
 * Use a factory constructor to compute the `final` field values.
+
+  使用工厂构造函数来计算 `final` 字段的值。
 * Use `late`, but initialize the `late` field at its declaration.
+
+  使用 `late`，但在声明处就初始化这个 `late` 字段。
 * Use `late`, but make the `late` field private and define a public getter for it.
+
+  使用 `late`，但把这个 `late` 字段设为私有，并为它定义一个公共 getter。
 
 
 ### AVOID returning nullable `Future`, `Stream`, and collection types
+
+### **避免** 返回可空的 `Future`、`Stream` 和集合类型
 
 When an API returns a container type, it has two ways to indicate the absence of
 data: It can return an empty container or it can return `null`. Users generally
 assume and prefer that you use an empty container to indicate "no data". That
 way, they have a real object that they can call methods on like `isEmpty`.
 
+当 API 返回容器类型时，有两种方式表示没有数据：
+返回一个空容器，或者返回 `null`。用户通常假定并倾向于你用空容器
+来表示“没有数据”。这样，他们拿到的是一个真实的对象，
+可以调用诸如 `isEmpty` 之类的方法。
+
 To indicate that your API has no data to provide, prefer returning an empty
 collection, a non-nullable future of a nullable type, or a stream that doesn't
 emit any values.
 
+要表示你的 API 没有数据可提供，推荐返回空集合、
+可空类型的非空 future，或者不发出任何值的 stream。
+
 **Exception:** If returning `null` *means something different* from yielding an
 empty container, it might make sense to use a nullable type.
+
+**例外：** 如果返回 `null` 与返回空容器*含义不同*，
+那么使用可空类型可能是合理的。
 
 如果确实有成员可能返回 `null` 的类型，请在文档中注明，以及在什么情况下回返回 `null`。 
 
@@ -1450,6 +1522,8 @@ generic invocation as opposed to a type annotation.
 
 #### Type inference
 
+#### 类型推断
+
 Type annotations are optional in Dart.
 If you omit one, Dart tries to infer a type
 based on the nearby context. Sometimes it doesn't have enough information to
@@ -1458,6 +1532,13 @@ usually silently fills in any missing parts with `dynamic`. The implicit
 `dynamic` leads to code that *looks* inferred and safe, but actually disables
 type checking completely. The rules below avoid that by requiring types when
 inference fails.
+
+在 Dart 中类型注解是可选的。
+如果你省略了注解，Dart 会尝试根据附近的上下文推断类型。
+有时它没有足够的信息来推断出完整的类型。这时，Dart 有时会报错，
+但通常会悄悄地把缺失的部分填充为 `dynamic`。这种隐式的 `dynamic`
+让代码*看起来*像是推断出来的、安全的，实际上却完全禁用了类型检查。
+下面的规则通过在推断失败时要求写出类型来避免这种情况。
 
 The fact that Dart has both type inference and a `dynamic` type leads to some
 confusion about what it means to say code is "untyped". Does that mean the code
@@ -1499,32 +1580,57 @@ robust, maintainable code. They define the static shape of an API and create
 boundaries to document and enforce what kinds of values are allowed to reach
 different parts of the program.
 
+推断是一个强大的工具，让你省去编写和阅读那些显而易见或无关紧要的
+类型的功夫。它让读者的注意力集中在代码本身的行为上。显式类型也是
+健壮、可维护代码的关键部分。它们定义了 API 的静态形态，并建立起边界，
+记录并强制约束哪些种类的值可以到达程序的各个部分。
+
 Of course, inference isn't magic. Sometimes inference succeeds and selects a
 type, but it's not the type you want. The common case is inferring an overly
 precise type from a variable's initializer when you intend to assign values of
 other types to the variable later. In those cases, you have to write the type
 explicitly.
 
+当然，推断不是魔法。有时推断成功了、选定了一个类型，
+但那不是你想要的类型。常见的情况是：你打算稍后给变量赋其他类型的值，
+却从变量的初始值设定项推断出了过于精确的类型。
+在这些情况下，你必须显式写出类型。
+
 The guidelines here strike the best balance we've found between brevity and
 control, flexibility and safety. There are specific guidelines to cover all the
 various cases, but the rough summary is:
 
+这里的准则在简洁与控制、灵活与安全之间取得了我们所能找到的最佳平衡。
+针对各种情况都有具体的准则，但大致总结如下：
+
 *   Do annotate when inference doesn't have enough context, even when `dynamic`
     is the type you want.
 
+    当推断没有足够的上下文时要写注解，即使你想要的类型就是 `dynamic`。
+
 *   Don't annotate locals and generic invocations unless you need to.
+
+    除非有必要，否则不要为局部变量和泛型调用写注解。
 
 *   Prefer annotating top-level variables and fields unless the initializer
     makes the type obvious.
 
+    推荐为顶级变量和字段写注解，除非初始值设定项已经让类型显而易见。
+
 
 ### DO type annotate variables without initializers
+
+### **要** 为没有初始值设定项的变量添加类型注解
 
 {% render 'linter-rule-mention.md', rules:'prefer_typing_uninitialized_variables' %}
 
 The type of a variable—top-level, local, static field, or instance
 field—can often be inferred from its initializer. However, if there is no
 initializer, inference fails.
+
+变量的类型——无论是顶级变量、局部变量、静态字段还是实例字段——
+通常可以从它的初始值设定项推断出来。但是，如果没有初始值设定项，
+推断就会失败。
 
 <?code-excerpt "design_good.dart (uninitialized-local)"?>
 ```dart tag=good
@@ -1685,6 +1791,10 @@ Sometimes the inferred type is not the type you want the variable to have. For
 example, you may intend to assign values of other types later. In that case,
 annotate the variable with the type you want.
 
+有时推断出的类型并不是你希望变量拥有的类型。
+例如，你可能打算稍后赋其他类型的值。这种情况下，
+请用你想要的类型为变量添加注解。
+
 <?code-excerpt "design_good.dart (upcast-local)" replace="/Widget result/[!Widget!] result/g"?>
 ```dart tag=good
 Widget build(BuildContext context) {
@@ -1728,13 +1838,24 @@ top-level, static, and instance methods and getters. Local functions and
 anonymous function expressions infer a return type from their body. In fact, the
 anonymous function syntax doesn't even allow a return type annotation.
 
+注意，这条准则只适用于*非局部*的函数声明：
+顶级函数、静态方法和实例方法以及 getter。局部函数和匿名函数表达式
+会从函数体推断返回类型。事实上，匿名函数的语法甚至不允许写返回类型注解。
+
 
 ### DO annotate parameter types on function declarations
+
+### **要** 在函数声明上注解参数类型
 
 A function's parameter list determines its boundary to the outside world.
 Annotating parameter types makes that boundary well defined.
 Note that even though default parameter values look like variable initializers,
 Dart doesn't infer an optional parameter's type from its default value.
+
+函数的参数列表决定了它与外部世界的边界。
+为参数类型添加注解可以让这个边界清晰明确。
+注意，尽管默认参数值看起来像变量的初始值设定项，
+Dart 并不会根据默认值推断可选参数的类型。
 
 <?code-excerpt "design_good.dart (annotate-parameters)"?>
 ```dart tag=good
@@ -1756,6 +1877,9 @@ void sayRepeatedly(message, {count = 2}) {
 
 **Exception:** Function expressions and initializing formals have
 different type annotation conventions, as described in the next two guidelines.
+
+**例外：** 函数表达式和初始化形式参数有不同的类型注解约定，
+见接下来的两条准则。
 
 
 ### DON'T annotate inferred parameter types on function expressions
@@ -1797,9 +1921,17 @@ function's parameters. In those cases, you may need to annotate.
 (If the function isn't used immediately, it's usually better to
 [make it a named declaration][named local].)
 
+如果语言能够为函数表达式中的参数推断出你想要的类型，就不要写注解。
+在少数情况下，周围的上下文不够精确，无法为函数的一个或多个参数
+提供类型。这时，你可能需要写注解。
+（如果函数不是立即被使用，通常更好的做法是
+[把它写成具名声明][named local]。）
+
 [named local]: usage#do-use-a-function-declaration-to-bind-a-function-to-a-name
 
 ### DON'T type annotate initializing formals
+
+### **不要** 为初始化形式参数添加类型注解
 
 {% render 'linter-rule-mention.md', rules:'type_init_formals' %}
 
@@ -1808,6 +1940,11 @@ or `super.` to forward a super parameter,
 then the type of the parameter
 is inferred to have the same type as 
 the field or super-constructor parameter respectively.
+
+如果构造函数参数使用 `this.` 来初始化字段，
+或者使用 `super.` 来转发 super 参数，
+那么参数的类型会被推断为
+分别与字段或 super 构造函数参数相同的类型。
 
 <?code-excerpt "design_good.dart (dont-type-init-formals)"?>
 ```dart tag=good
@@ -1862,6 +1999,10 @@ Sometimes the invocation occurs as the initializer to a variable declaration. If
 the variable is *not* local, then instead of writing the type argument list on the
 invocation itself, you may put a type annotation on the declaration:
 
+有时泛型调用出现在变量声明的初始值设定项中。如果变量*不是*局部变量，
+那么除了在调用本身上写类型参数列表之外，
+你也可以在声明上写类型注解：
+
 <?code-excerpt "design_good.dart (inferred-type-args)"?>
 ```dart tag=good
 class Downloader {
@@ -1884,9 +2025,14 @@ arguments *are* inferred.
 
 ### DON'T write type arguments on generic invocations that are inferred
 
+### **不要** 在类型可推断的泛型调用上写类型参数
+
 This is the converse of the previous rule. If an invocation's type argument list
 *is* correctly inferred with the types you want, then omit the types and let
 Dart do the work for you.
+
+这是上一条规则的反面。如果调用的类型参数列表*确实*被正确推断为
+你想要的类型，那么就省略这些类型，让 Dart 替你完成工作。
 
 <?code-excerpt "design_good.dart (redundant)"?>
 ```dart tag=good
@@ -1905,6 +2051,9 @@ class Downloader {
 Here, the type annotation on the field provides a surrounding context to infer
 the type argument of constructor call in the initializer.
 
+这里，字段上的类型注解提供了周围的上下文，
+用于推断初始值设定项中构造函数调用的类型参数。
+
 <?code-excerpt "design_good.dart (explicit)"?>
 ```dart tag=good
 var items = Future.value([1, 2, 3]);
@@ -1918,13 +2067,22 @@ var items = Future<List<int>>.value(<int>[1, 2, 3]);
 Here, the types of the collection and instance can be inferred bottom-up from
 their elements and arguments.
 
+这里，集合和实例的类型可以根据它们的元素和实参自底向上推断出来。
+
 
 ### AVOID writing incomplete generic types
+
+### **避免** 书写不完整的泛型类型
 
 The goal of writing a type annotation or type argument is to pin down a complete
 type. However, if you write the name of a generic type but omit its type
 arguments, you haven't fully specified the type. In Java, these are called "raw
 types". For example:
+
+写类型注解或类型参数的目的是确定一个完整的类型。
+但是，如果你写了泛型类型的名字却省略了它的类型参数，
+你就没有完全指定这个类型。在 Java 中，这被称为“原始类型”（raw types）。
+例如：
 
 <?code-excerpt "design_bad.dart (incomplete-generic)" replace="/List|Map/[!$&!]/g"?>
 ```dart tag=bad
@@ -1939,8 +2097,17 @@ rest of the type for you using the surrounding context. Instead, it silently
 fills in any missing type arguments with `dynamic` (or the bound if the
 class has one). That's rarely what you want.
 
+这里，`numbers` 有类型注解，但注解没有为泛型 `List` 提供类型参数。
+同样，`Completer` 的 `Map` 类型参数也没有完全指定。在这种情况下，
+Dart *不会*尝试利用周围的上下文替你“补齐”类型的其余部分。
+相反，它会悄悄地把缺失的类型参数填充为 `dynamic`
+（如果类有类型上限，则填充为上限）。这很少是你想要的。
+
 Instead, if you're writing a generic type either in a type annotation or as a type
 argument inside some invocation, make sure to write a complete type:
+
+因此，无论是在类型注解中，还是在某个调用的类型参数中书写泛型类型，
+都请确保写出完整的类型：
 
 <?code-excerpt "design_good.dart (incomplete-generic)"?>
 ```dart tag=good
@@ -1960,8 +2127,16 @@ sees that an annotation is missing has no way of knowing if you intended it to b
 `dynamic`, expected inference to fill in some other type, or simply forgot to
 write the annotation.
 
+当推断没有填充类型时，通常默认为 `dynamic`。如果 `dynamic` 正是
+你想要的类型，从技术上讲这是得到它的最简短方式。但这不是最*清晰*
+的方式。随手阅读你代码的人看到缺少注解时，无从知道你是有意让它为
+`dynamic`，还是期望推断填充出其他类型，或者只是忘了写注解。
+
 When `dynamic` is the type you want, write that explicitly to make your intent
 clear and highlight that this code has less static safety.
+
+当 `dynamic` 是你想要的类型时，请显式写出来，
+让你的意图清晰可见，并突出这段代码的静态安全性较低。
 
 <?code-excerpt "design_good.dart (prefer-dynamic)"?>
 ```dart tag=good
@@ -1974,6 +2149,8 @@ mergeJson(original, changes) => ...
 ```
 
 Note that it's OK to omit the type when Dart *successfully* infers `dynamic`.
+
+注意，当 Dart *成功*推断出 `dynamic` 时，省略类型是可以的。
 
 <?code-excerpt "design_good.dart (infer-dynamic)"?>
 ```dart tag=good
@@ -1993,6 +2170,12 @@ distinction is a little subtle. It's OK to allow inference to *propagate*
 you don't want it to inject a `dynamic` type annotation in a place where your
 code did not specify one.
 
+这里，Dart 为 `json` 推断出 `Map<String, dynamic>`，
+再由此为 `users` 推断出 `dynamic`。让 `users` 不带类型注解是没问题的。
+这个区别有点微妙：允许推断把别处 `dynamic` 类型注解中的 `dynamic`
+*传播*到你的代码中是可以的，但你不希望它在代码没有指定注解的地方
+注入一个 `dynamic` 类型注解。
+
 :::note
 
 With Dart's strong type system and type inference, 
@@ -2010,6 +2193,8 @@ safety and performance of static types.
 :::
 
 **Exception**: Type annotations on unused parameters (`_`) can be omitted.
+
+**例外**：未使用的参数（`_`）上的类型注解可以省略。
 
 ### PREFER signatures in function type annotations
 
@@ -2093,6 +2278,9 @@ set foo(Foo value) {
 
 The `[]=` operator behaves like a setter for return types,
 so this guideline applies to it as well:
+
+在返回类型方面，`[]=` 运算符的行为类似于 setter，
+因此这条准则同样适用于它：
 
 <?code-excerpt "design_bad.dart (avoid_return_types_on_setters_bracket)"?>
 ```dart tag=bad
@@ -2634,6 +2822,10 @@ An equivalence relation should be:
 Users and code that uses `==` expect all of these laws to be followed. If your
 class can't obey these rules, then `==` isn't the right name for the operation
 you're trying to express.
+
+用户以及使用 `==` 的代码都期望遵守所有这些法则。
+如果你的类无法遵守这些规则，那么 `==` 就不是表达
+你试图表达的操作的正确名字。
 
 ### AVOID defining custom equality for mutable classes
 

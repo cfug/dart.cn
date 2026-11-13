@@ -5,6 +5,7 @@ title: 高效 Dart 语言指南：用法示例
 breadcrumb: 用法示例
 # description: Guidelines for using language features to write maintainable code.
 description: 指导你利用语言特性写出便于维护的代码。
+ai-translated: true
 nextpage:
   url: /effective-dart/design
   # title: Design
@@ -120,6 +121,8 @@ theoretically non-breaking point release of that package could break your code.
 
 ### DON'T allow an import path to reach into or out of `lib`
 
+### **不要** 让导入路径伸入或伸出 `lib` 目录
+
 {% render 'linter-rule-mention.md', rules:'avoid_relative_lib_imports' %}
 
 A `package:` import lets you access
@@ -133,7 +136,19 @@ and a library outside of `lib` can't use a relative path
 to reach into the `lib` directory.
 Doing either leads to confusing errors and broken programs.
 
+`package:` 导入让你访问 package 的 `lib` 目录中的库，
+而无需关心这个 package 存放在计算机上的什么位置。
+要做到这一点，导入不能要求 `lib`
+位于磁盘上相对于其他文件的某个特定位置。
+换句话说，`lib` 内文件中的相对导入路径
+不能伸出去访问 `lib` 目录之外的文件，
+`lib` 之外的库也不能使用相对路径
+伸进 `lib` 目录。
+这两种做法都会导致令人困惑的错误和无法运行的程序。
+
 For example, say your directory structure looks like this:
+
+例如，假设你的目录结构是这样的：
 
 <FileTree>
 
@@ -147,6 +162,8 @@ For example, say your directory structure looks like this:
 
 And say `api_test.dart` imports `api.dart` in two ways:
 
+再假设 `api_test.dart` 用两种方式导入 `api.dart`：
+
 ```dart title="api_test.dart" tag=bad
 import 'package:my_package/api.dart';
 import '../lib/api.dart';
@@ -155,13 +172,25 @@ import '../lib/api.dart';
 Dart thinks those are imports of two completely unrelated libraries.
 To avoid confusing Dart and yourself, follow these two rules:
 
+Dart 会认为这是导入了两个完全不相关的库。
+为了避免让 Dart 和你自己困惑，请遵循以下两条规则：
+
 * Don't use `/lib/` in import paths.
+
+  不要在导入路径中使用 `/lib/`。
 * Don't use `../` to escape the `lib` directory.
+
+  不要使用 `../` 逃出 `lib` 目录。
 
 Instead, when you need to reach into a package's `lib` directory
 (even from the same package's `test` directory
 or any other top-level directory),
 use a `package:` import.
+
+相反，当你需要访问 package 的 `lib` 目录时
+（即使是从同一个 package 的 `test` 目录
+或其他任何顶级目录），
+请使用 `package:` 导入。
 
 ```dart title="api_test.dart" tag=good
 import 'package:my_package/api.dart';
@@ -170,8 +199,13 @@ import 'package:my_package/api.dart';
 A package should never reach *out* of its `lib` directory and
 import libraries from other places in the package.
 
+package 永远不应该从它的 `lib` 目录*向外*伸出，
+去导入 package 中其他位置的库。
+
 
 ### PREFER relative import paths
+
+### **推荐** 使用相对导入路径
 
 {% render 'linter-rule-mention.md', rules:'prefer_relative_imports' %}
 
@@ -179,6 +213,11 @@ Whenever the previous rule doesn't come into play, follow this one.
 When an import does *not* reach across `lib`, prefer using relative imports.
 They're shorter.
 For example, say your directory structure looks like this:
+
+只要上一条规则不适用，就遵循这一条。
+当导入*没有*跨越 `lib` 目录时，推荐使用相对导入。
+它们更简短。
+例如，假设你的目录结构是这样的：
 
 <FileTree>
 
@@ -195,6 +234,8 @@ For example, say your directory structure looks like this:
 </FileTree>
 
 Here is how the various libraries should import each other:
+
+下面是各个库之间应该如何相互导入：
 
 **lib/api.dart:**
 
@@ -219,8 +260,12 @@ import 'test_utils.dart'; // Relative within 'test' is fine.
 
 ## Null
 
+## 空值
+
 
 ### DON'T explicitly initialize variables to `null`
+
+### **不要** 显式地把变量初始化为 `null`
 
 {% render 'linter-rule-mention.md', rules:'avoid_init_to_null' %}
 
@@ -229,6 +274,11 @@ to use it before it has been definitely initialized. If the variable is
 nullable, then it is implicitly initialized to `null` for you. There's no
 concept of "uninitialized memory" in Dart and no need to explicitly initialize a
 variable to `null` to be "safe".
+
+如果变量是非空类型，在你确定初始化之前就使用它，Dart 会报告编译错误。
+如果变量是可空类型，它会被隐式地初始化为 `null`。
+Dart 中没有“未初始化内存”的概念，
+也不需要为了“安全”而显式地把变量初始化为 `null`。
 
 <?code-excerpt "usage_good.dart (no-null-init)"?>
 ```dart tag=good
@@ -263,10 +313,15 @@ Item? bestDeal(List<Item> cart) {
 
 ### DON'T use an explicit default value of `null`
 
+### **不要** 显式地使用 `null` 作为默认值
+
 {% render 'linter-rule-mention.md', rules:'avoid_init_to_null' %}
 
 If you make a nullable parameter optional but don't give it a default value, the
 language implicitly uses `null` as the default, so there's no need to write it.
+
+如果你把一个可空参数设为可选但没有给它默认值，
+语言会隐式地使用 `null` 作为默认值，所以没必要写出来。
 
 <?code-excerpt "usage_good.dart (default-value-null)"?>
 ```dart tag=good
@@ -285,10 +340,16 @@ void error([String? message = null]) {
 <a id="prefer-using--to-convert-null-to-a-boolean-value"></a>
 ### DON'T use `true` or `false` in equality operations
 
+### **不要** 在相等运算中使用 `true` 或 `false`
+
 Using the equality operator to evaluate a *non-nullable* boolean expression 
 against a boolean literal is redundant. 
 It's always simpler to eliminate the equality operator, 
 and use the unary negation operator `!` if necessary:
+
+用相等运算符把一个*非空*布尔表达式与布尔字面量进行比较是多余的。
+去掉相等运算符总是更简单，
+必要时使用一元取反运算符 `!` 即可：
 
 <?code-excerpt "usage_good.dart (non-null-boolean-expression)"?>
 ```dart tag=good
@@ -314,6 +375,9 @@ if (nonNullableBool == false) {
 
 To evaluate a boolean expression that *is nullable*, you should use `??`
 or an explicit `!= null` check.
+
+要对*可空*的布尔表达式求值，你应该使用 `??`
+或者显式的 `!= null` 检查。
 
 <?code-excerpt "usage_good.dart (nullable-boolean-expression)"?>
 ```dart tag=good
@@ -345,7 +409,12 @@ if (nullableBool == true) {
 `nullableBool == true` is a viable expression, 
 but shouldn't be used for several reasons:
 
+`nullableBool == true` 是一个可行的表达式，
+但不应该使用，原因有以下几点：
+
 * It doesn't indicate the code has anything to do with `null`.
+
+  它没有表明这段代码与 `null` 有任何关系。
 
 * Because it's not evidently `null` related, 
   it can easily be mistaken for the non-nullable case,
@@ -353,20 +422,41 @@ but shouldn't be used for several reasons:
   That's only true when the boolean expression on the left
   has no chance of producing null, but not when it can.
 
+  由于它没有明显体现出与 `null` 相关，
+  很容易被误认为是非空的情况——
+  在那种情况下相等运算符是多余的，可以移除。
+  但只有当左边的布尔表达式不可能产生 null 时这才成立，
+  可能产生 null 时则不然。
+
 * The boolean logic is confusing. If `nullableBool` is null, 
   then `nullableBool == true` means the condition evaluates to `false`.
+
+  布尔逻辑令人困惑。如果 `nullableBool` 是 null，
+  那么 `nullableBool == true` 意味着条件求值为 `false`。
 
 The `??` operator makes it clear that something to do with null is happening,
 so it won't be mistaken for a redundant operation. 
 The logic is much clearer too; 
 the result of the expression being `null` is the same as the boolean literal.
 
+`??` 运算符清楚地表明这里发生了与 null 相关的处理，
+所以不会被误认为是多余的操作。
+逻辑也清晰得多；
+表达式结果为 `null` 时，与布尔字面量的效果相同。
+
 Using a null-aware operator such as `??` on a variable inside a condition
 doesn't promote the variable to a non-nullable type. 
 If you want the variable to be promoted inside the body of the `if` statement,
 it's better to use an explicit `!= null` check instead of `??`. 
 
+在条件中对变量使用 `??` 这样的空感知运算符，
+不会把变量提升为非空类型。
+如果你希望变量在 `if` 语句体内被提升，
+最好使用显式的 `!= null` 检查而不是 `??`。
+
 ### AVOID `late` variables if you need to check whether they are initialized
+
+### **避免** 在需要检查是否已初始化时使用 `late` 变量
 
 Dart offers no way to tell if a `late` variable
 has been initialized or assigned to.
@@ -375,6 +465,13 @@ If you access it, it either immediately runs the initializer
 Sometimes you have some state that's lazily initialized
 where `late` might be a good fit,
 but you also need to be able to *tell* if the initialization has happened yet.
+
+Dart 没有提供判断 `late` 变量
+是否已被初始化或赋值的方法。
+如果你访问它，它要么立即执行初始值设定项（如果有的话），
+要么抛出异常。
+有时你有一些延迟初始化的状态，`late` 可能很合适，
+但你同时还需要能够*判断*初始化是否已经发生。
 
 Although you could detect initialization by storing the state in a `late` variable
 and having a separate boolean field
@@ -385,27 +482,55 @@ Instead, it's usually clearer to make the variable non-`late` and nullable.
 Then you can see if the variable has been initialized
 by checking for `null`.
 
+虽然你可以把状态存到 `late` 变量中，
+再用一个单独的布尔字段来跟踪变量是否已被赋值，
+从而检测初始化，但这是多余的，
+因为 Dart *内部*已经维护了 `late` 变量的初始化状态。
+通常更清晰的做法是把变量声明为非 `late` 的可空变量。
+然后你就可以通过检查是否为 `null`
+来判断变量是否已被初始化。
+
 Of course, if `null` is a valid initialized value for the variable,
 then it probably does make sense to have a separate boolean field.
 
+当然，如果 `null` 是该变量一个合法的已初始化值，
+那么使用一个单独的布尔字段可能确实是合理的。
+
 
 ### CONSIDER type promotion or null-check patterns for using nullable types
+
+### **考虑** 使用类型提升或空值检查模式来处理可空类型
 
 Checking that a nullable variable is not equal to `null` promotes the variable
 to a non-nullable type. That lets you access members on the variable and pass it
 to functions expecting a non-nullable type.
 
+检查一个可空变量不等于 `null`，会把它提升为非空类型。
+这让你可以访问该变量的成员，
+并把它传给期望非空类型的函数。
+
 Type promotion is only supported, however, for local variables, parameters, and
 private final fields. Values that are open to manipulation
 [can't be type promoted][].
 
+不过，类型提升只支持局部变量、参数和私有的 final 字段。
+可能被外部修改的值
+[无法被类型提升][can't be type promoted]。
+
 Declaring members [private][] and [final][], as we generally recommend, is often
 enough to bypass these limitations. But, that's not always an option.
+
+按照我们通常的建议，把成员声明为[私有][private]且 [final][final]，
+往往足以绕过这些限制。但这并不总是可行。
 
 One pattern to work around type promotion limitations is to use a
 [null-check pattern][]. This simultaneously confirms the member's value
 is not null, and binds that value to a new non-nullable variable of
 the same base type.
+
+绕过类型限制的一种做法是使用
+[空值检查模式][null-check pattern]。它在确认成员的值不为 null 的同时，
+把该值绑定到一个具有相同基础类型的新的非空变量上。
 
 <?code-excerpt "usage_good.dart (null-check-promo)"?>
 ```dart tag=good
@@ -428,6 +553,10 @@ class UploadException {
 Another work around is to assign the field's value
 to a local variable. Null checks on that variable will promote,
 so you can safely treat it as non-nullable.
+
+另一种变通方法是把字段的值赋给一个局部变量。
+对该变量的 null 检查会触发提升，
+这样你就可以安全地把它当作非空值使用。
 
 <?code-excerpt "usage_good.dart (shadow-nullable-field)"?>
 ```dart tag=good
@@ -454,10 +583,21 @@ local variable [`final`][] can prevent such mistakes.) Also, if the field might
 change while the local is still in scope, then the local might have a stale
 value. 
 
+使用局部变量时要小心。如果你需要写回字段，
+请确保没有错误地写回到局部变量。
+（把局部变量声明为 [`final`][] 可以防止这类错误。）
+另外，如果字段在局部变量仍在作用域内时可能发生变化，
+那么局部变量持有的可能是过时的值。
+
 Sometimes it's best to simply [use `!`][] on the field. 
 In some cases, though, using either a local variable or a null-check pattern 
 can be cleaner and safer than using `!` every time you need to treat the value
 as non-null:
+
+有时最好的做法就是直接对字段[使用 `!`][use `!`]。
+不过在某些情况下，比起每次需要把值当作非空时使用 `!`，
+使用局部变量或空值检查模式
+会更清晰、更安全：
 
 <?code-excerpt "usage_bad.dart (shadow-nullable-field)" replace="/!\./[!!!]./g"?>
 ```dart tag=bad
@@ -551,6 +691,9 @@ it's almost always cleaner and shorter to use interpolation:
 Note that this guideline applies to combining *multiple* literals and values.
 It's fine to use `.toString()` when converting only a single object to a string.
 
+注意，这条准则适用于组合*多个*字面量和值的情况。
+只把单个对象转换为字符串时，使用 `.toString()` 是可以的。
+
 ### AVOID using curly braces in interpolation when not needed
 
 ### **避免** 在字符串插值中使用不必要的大括号
@@ -615,11 +758,21 @@ classes. `List.from()`, `Map.fromIterable()`, and friends all have their uses.
 (The List class also has an unnamed constructor, but it is prohibited in null
 safe Dart.)
 
+注意，这条准则不适用于这些类的*命名*构造函数。
+`List.from()`、`Map.fromIterable()` 及其同类都有各自的用途。
+（List 类也有一个未命名构造函数，但在空安全的 Dart 中被禁止使用。）
+
 Collection literals are particularly powerful in Dart
 because they give you access to the [spread operator][spread]
 for including the contents of other collections,
 and [`if` and `for`][control] for performing control flow while
 building the contents:
+
+集合字面量在 Dart 中特别强大，
+因为它们让你可以使用[展开操作符][spread]
+来包含其他集合的内容，
+还可以使用 [`if` 和 `for`][control]
+在构建内容的同时执行控制流：
 
 [spread]: /language/collections#spread-operators
 [control]: /language/collections#control-flow-operators
@@ -1146,22 +1299,40 @@ var buffers = charCodes.map((code) => StringBuffer(code));
 
 The following best practices describe how to best use variables in Dart.
 
+下面的最佳实践介绍如何在 Dart 中更好地使用变量。
+
 ### DO follow a consistent rule for `var` and `final` on local variables
+
+### **要** 对局部变量的 `var` 和 `final` 遵循一致的规则
 
 Most local variables shouldn't have type annotations and should be declared
 using just `var` or `final`. There are two rules in wide use for when to use one
 or the other:
 
+大多数局部变量不应该带类型注解，
+应该只用 `var` 或 `final` 声明。关于何时使用哪一个，
+有两条被广泛采用的规则：
+
 *   Use `final` for local variables that are not reassigned and `var` for those
     that are.
+
+    对不会被重新赋值的局部变量使用 `final`，会被重新赋值的使用 `var`。
 
 *   Use `var` for all local variables, even ones that aren't reassigned. Never use
     `final` for locals. (Using `final` for fields and top-level variables is
     still encouraged, of course.)
 
+    所有局部变量都使用 `var`，即使不会被重新赋值。
+    永远不要对局部变量使用 `final`。
+    （当然，对字段和顶级变量使用 `final` 仍然是值得鼓励的。）
+
 Either rule is acceptable, but pick *one* and apply it consistently throughout
 your code. That way when a reader sees `var`, they know whether it means that
 the variable is assigned later in the function.
+
+两条规则都可以接受，但要*选定一条*，并在整个代码中一致地执行。
+这样当读者看到 `var` 时，就知道它是否意味着
+该变量会在函数后面被赋值。
 
 
 ### AVOID storing what you can calculate
@@ -1542,6 +1713,9 @@ If a field doesn't depend on any constructor parameters, it can and should be
 initialized at its declaration. It takes less code and avoids duplication when
 the class has multiple constructors.
 
+如果字段不依赖任何构造函数参数，它可以而且应该在声明处初始化。
+这样代码更少，而且在类有多个构造函数时避免了重复。
+
 <?code-excerpt "usage_bad.dart (field-init-at-decl)"?>
 ```dart tag=bad
 class ProfileMark {
@@ -1567,6 +1741,10 @@ class ProfileMark {
 Some fields can't be initialized at their declarations because they need to reference
 `this`—to use other fields or call methods, for example. However, if the
 field is marked `late`, then the initializer *can* access `this`.
+
+有些字段无法在声明处初始化，因为它们需要引用 `this`——
+例如使用其他字段或调用方法。不过，如果字段被标记为 `late`，
+那么初始值设定项就*可以*访问 `this`。
 
 Of course, if a field depends on constructor parameters, or is initialized
 differently by different constructors, then this guideline does not apply.
@@ -1619,8 +1797,15 @@ formal". You can't always take advantage of it. Sometimes you want to have a
 named parameter whose name doesn't match the name of the field you are
 initializing. But when you *can* use initializing formals, you *should*.
 
+构造函数参数前面的这种 `this.` 语法被称为“初始化形式参数”。
+你并不总能利用它。有时你希望命名参数的名字
+与要初始化的字段的名字不一致。
+但当*能*使用初始化形式参数时，你就*应该*使用。
+
 
 ### DON'T use `late` when a constructor initializer list will do
+
+### **不要** 在构造函数初始化列表可以胜任时使用 `late`
 
 Dart requires you to initialize non-nullable fields before they can be read.
 Since fields can be read inside the constructor body, 
@@ -1665,6 +1850,10 @@ initialize fields before they can be read. So, if it's possible to use an initia
 that's better than making the field `late` and losing some static safety and
 performance.
 
+初始化列表让你可以访问构造函数参数，并在字段被读取之前初始化它们。
+所以，如果可以使用初始化列表，那比把字段声明为 `late`
+并损失一些静态安全性和性能要好。
+
 
 ### DO use `;` instead of `{}` for empty constructor bodies
 
@@ -1696,6 +1885,8 @@ class Point {
 
 ### PREFER using concise constructor syntax
 
+### **推荐** 使用简洁构造函数语法
+
 {% render 'linter-rule-mention.md', rules:'unnecessary_type_name_in_constructor' %}
 
 When declaring constructors inside the class body,
@@ -1703,8 +1894,16 @@ use the concise constructor syntax instead of repeating the class name.
 Use `factory` for factory constructors
 and `new` for all other constructors.
 
+在类体内声明构造函数时，
+请使用简洁构造函数语法，而不是重复类名。
+工厂构造函数使用 `factory`，
+其他所有构造函数使用 `new`。
+
 For a complete reference of the concise syntax forms,
 see the [concise constructor syntax table][].
+
+有关简洁语法形式的完整参考，
+请参阅[简洁构造函数语法表][concise constructor syntax table]。
 
 [concise constructor syntax table]: /language/constructors#concise-constructor-syntax
 
@@ -1712,6 +1911,9 @@ see the [concise constructor syntax table][].
 This guideline only applies to libraries with a
 [language version][] of at least 3.13,
 where the concise constructor syntax is available.
+
+这条准则只适用于[语言版本][language version]至少为 3.13 的库，
+简洁构造函数语法从该版本开始可用。
 :::
 
 [language version]: /language/versioning
@@ -1749,10 +1951,19 @@ and makes refactoring harder if the class is renamed.
 Using `new` and `factory` keeps constructor declarations concise
 and consistent.
 
+重复类名是多余的，
+而且当类被重命名时会让重构更困难。
+使用 `new` 和 `factory` 能让构造函数声明保持简洁
+和一致。
+
 :::note
 This guideline applies only to constructor *declarations*.
 For constructor *invocations*,
 see the [DON'T use `new`](#dont-use-new) guideline.
+
+这条准则只适用于构造函数的*声明*。
+对于构造函数的*调用*，
+请参阅 [**不要**使用 `new`](#dont-use-new) 准则。
 :::
 
 
@@ -1911,6 +2122,12 @@ framework or low-level code that tries to insulate arbitrary application code
 from causing problems. Even here, it is usually better to catch [Exception][]
 than to catch all types. Exception is the base class for all *runtime* errors
 and excludes errors that indicate *programmatic* bugs in the code.
+
+在极少数情况下，你可能希望捕获任何运行时错误。这通常出现在
+试图隔离任意应用代码、防止其引发问题的框架或底层代码中。
+即使在这里，通常也最好捕获 [Exception][] 而不是捕获所有类型。
+Exception 是所有*运行时*错误的基类，
+不包括那些表明代码中存在*编程* bug 的错误。
 
 
 ### DON'T discard errors from catches without `on` clauses
@@ -2125,6 +2342,9 @@ Future<String> asyncValue() async => 'value';
 This parallels the above suggestion on iterables. Streams support many of the
 same methods and also handle things like transmitting errors, closing, etc.
 correctly.
+
+这与上面关于可迭代对象的建议相呼应。Stream 支持许多相同的方法，
+而且还能正确处理错误传递、关闭等事项。
 
 ### AVOID using Completer directly
 
