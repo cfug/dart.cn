@@ -25,7 +25,7 @@ layout: blog
 
 Responses ranged from mild astonishment to friendly teasing to outright negativity. I don’t blame them: to many people, Dart is a strange animal. You can find plenty of smart developers on the internet who strongly believe Dart won’t be successful or that it has already failed.
 
-反应从轻度惊讶到友好调侃，再到 outright 的负面都有。
+反应从轻度惊讶到友好调侃，再到彻底的负面都有。
 我不怪他们：对很多人来说，Dart 是个奇怪的物种。
 网上有大量聪明的开发者坚信 Dart 不会成功，
 或者认为它已经失败了。
