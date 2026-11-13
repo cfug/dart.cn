@@ -1,16 +1,23 @@
 ---
-title: Extend a class
-description: Learn how to create subclasses from a superclass.
+# title: Extend a class
+title: 扩展类
+# description: Learn how to create subclasses from a superclass.
+description: 了解如何从超类创建子类。
 prevpage:
   url: /language/methods
-  title: Methods
+  # title: Methods
+  title: 成员方法
 nextpage:
   url: /language/mixins
-  title: Mixins
+  # title: Mixins
+  title: 混入 (Mixin)
+ai-translated: true
 ---
 
 Use `extends` to create a subclass, and `super` to refer to the
 superclass:
+
+用 `extends` 创建子类，用 `super` 引用超类：
 
 <?code-excerpt "misc/lib/language_tour/classes/extends.dart (smart-tv)" replace="/extends|super/[!$&!]/g"?>
 ```dart
@@ -36,12 +43,22 @@ class SmartTelevision [!extends!] Television {
 For another usage of `extends`, see the discussion of
 [parameterized types][] on the Generics page.
 
+关于 `extends` 的另一种用法，请参阅泛型页面上
+对 [参数化类型][parameterized types] 的讨论。
+
 ## Overriding members
+
+## 重写成员
 
 Subclasses can override instance methods (including [operators][]),
 getters, and setters.
 You can use the `@override` annotation to indicate that you are
 intentionally overriding a member:
+
+子类可以重写实例方法（包括 [操作符][operators]）、
+getter 和 setter。
+可以用 `@override` 注解表明你是
+有意重写某个成员：
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (override)" replace="/@override/[!$&!]/g"?>
 ```dart
@@ -64,16 +81,34 @@ class SmartTelevision extends Television {
 An overriding method declaration must match
 the method (or methods) that it overrides in several ways:
 
+重写方法的声明必须在以下几个方面
+与它所重写的方法相匹配：
+
 * The return type must be the same type as (or a subtype of)
   the overridden method's return type.
+
+  返回类型必须与被重写方法的返回类型相同（或是其子类型）。
+
 * Parameter types must be the same type as (or a supertype of)
   the overridden method's parameter types.
   In the preceding example, the `contrast` setter of `SmartTelevision`
   changes the parameter type from `int` to a supertype, `num`.
+
+  参数类型必须与被重写方法的参数类型相同（或是其超类型）。
+  在前面的例子中，`SmartTelevision` 的 `contrast` setter
+  把参数类型从 `int` 改成了超类型 `num`。
+
 * If the overridden method accepts _n_ positional parameters,
   then the overriding method must also accept _n_ positional parameters.
+
+  如果被重写的方法接受 **n** 个位置参数，
+  那么重写方法也必须接受 **n** 个位置参数。
+
 * A [generic method][] can't override a non-generic one,
   and a non-generic method can't override a generic one.
+
+  [泛型方法][generic method] 不能重写非泛型方法，
+  非泛型方法也不能重写泛型方法。
 
 Sometimes you might want to narrow the type of
 a method parameter or an instance variable.
@@ -87,16 +122,36 @@ in a parameter declaration.
 For details, see the
 [Dart language specification][].
 
+有时你可能想收窄方法参数或实例变量的类型。
+这违反了通常的规则，
+而且它和向下转型类似，可能在运行时造成类型错误。
+不过，如果代码能够保证不会发生类型错误，
+收窄类型仍然是可以的。
+这时可以在参数声明中使用
+[`covariant` 关键字](/language/type-system#covariant-keyword)。
+详情请参阅
+[Dart 语言规范][Dart language specification]。
+
 :::warning
 If you override `==`, you should also override Object's `hashCode` getter.
 For an example of overriding `==` and `hashCode`, check out
 [Implementing map keys](/libraries/dart-core#implementing-map-keys).
+
+如果重写了 `==`，也应该重写 Object 的 `hashCode` getter。
+重写 `==` 和 `hashCode` 的例子，请参阅
+[实现 map 的键](/libraries/dart-core#implementing-map-keys)。
+
 :::
 
 ## noSuchMethod()
 
+## `noSuchMethod()` 方法
+
 To detect or react whenever code attempts to use a non-existent method or
 instance variable, you can override `noSuchMethod()`:
+
+要在代码试图使用不存在的方法或实例变量时发现或做出响应，
+可以重写 `noSuchMethod()`：
 
 <?code-excerpt "misc/lib/language_tour/classes/no_such_method.dart (no-such-method-impl)" replace="/noSuchMethod(?!,)/[!$&!]/g"?>
 ```dart
@@ -116,15 +171,26 @@ class A {
 You **can't invoke** an unimplemented method unless
 **one** of the following is true:
 
+你 **不能调用** 未实现的方法，除非下面的条件有 **一个** 成立：
+
 * The receiver has the static type `dynamic`.
+
+  接收者的静态类型是 `dynamic`。
 
 * The receiver has a static type that
 defines the unimplemented method (abstract is OK),
 and the dynamic type of the receiver has an implementation of `noSuchMethod()`
 that's different from the one in class `Object`.
 
+  接收者的静态类型定义了这个未实现的方法（抽象的也可以），
+  并且接收者的动态类型有一个 `noSuchMethod()` 实现，
+  与 `Object` 类中的实现不同。
+
 For more information, see the informal
 [noSuchMethod forwarding specification.]({{site.repo.dart.lang}}/blob/main/archive/feature-specifications/nosuchmethod-forwarding.md)
+
+更多信息请参阅这份非正式的
+[noSuchMethod 转发规范]({{site.repo.dart.lang}}/blob/main/archive/feature-specifications/nosuchmethod-forwarding.md)。
 
 [parameterized types]: /language/generics#restricting-the-parameterized-type
 [operators]: /language/methods#operators

@@ -11,6 +11,7 @@ nextpage:
   url: /language/variables
 #  title: Variables
   title: 变量
+ai-translated: true
 ---
 
 This page provides a brief introduction to the Dart language
@@ -374,10 +375,20 @@ Instead of writing the full `EnumName.value`,
 you can just write `.value`. This can make your code cleaner 
 and easier to read.
 
+当编译器能从上下文推断出枚举类型时，
+你可以使用更简洁的点简写（dot shorthand）语法来访问枚举值。
+不必写出完整的 `EnumName.value`，
+只需写 `.value` 即可。这能让你的代码更简洁、
+更易阅读。
+
 
 For example, when declaring a variable with an explicit type of `Planet`, 
 you can omit the enum name because 
 the type of `Planet` is already established:
+
+例如，当声明一个显式类型为 `Planet` 的变量时，
+你可以省略枚举名，
+因为 `Planet` 类型已经确定：
 
 
 ```dart
@@ -391,6 +402,10 @@ Planet myPlanet = .venus;
 Dot shorthands aren't limited to variable declarations. 
 They can also be used in contexts like function arguments 
 and switch cases where the enum type is clear to the compiler.
+
+点简写并不限于变量声明。
+在函数实参、switch 分支等
+编译器能明确枚举类型的上下文中，也可以使用点简写。
 
 [Read more](/language/enums) about enums in Dart,
 including enhanced enum requirements, automatically introduced properties,
@@ -650,20 +665,36 @@ and the difference between `Error` and `Exception`.
 As you continue to learn about the Dart language, 
 keep these facts and concepts in mind:
 
+在继续学习 Dart 语言的过程中，
+请牢记以下事实和概念：
+
 -   Everything you can place in a variable is an *object*, and every
     object is an instance of a *class*. Even numbers, functions, and
     `null` are objects.
     With the exception of `null` (if you enable [sound null safety][ns]),
     all objects inherit from the [`Object`][] class.
 
+  -   所有可以放入变量的东西都是*对象*（object），
+      每个对象都是某个*类*（class）的实例。
+      即使是数字、函数和 `null` 也是对象。
+      除了 `null`（在启用[健全的空安全][ns]时），
+      所有对象都继承自 [`Object`][] 类。
+
     :::version-note
     [Null safety][ns] was introduced in Dart 2.12.
     Using null safety requires a [language version][] of at least 2.12.
+
+    空安全（Null safety）在 Dart 2.12 中引入。
+    使用空安全需要至少 2.12 的[语言版本][language version]。
     :::
 
 -   Although Dart is strongly typed, type annotations are optional
     because Dart can infer types. In `var number = 101`, `number`
     is inferred to be of type `int`.
+
+  -   虽然 Dart 是强类型的，但类型注解是可选的，
+      因为 Dart 可以推断类型。在 `var number = 101` 中，
+      `number` 会被推断为 `int` 类型。
 
 -   Variables can't contain `null` unless you say they can.
     You can make a variable nullable by
@@ -676,31 +707,67 @@ keep these facts and concepts in mind:
     (and to throw an exception if it is).
     An example: `int x = nullableButNotNullInt!`
 
+  -   除非你明确允许，变量不能包含 `null`。
+      在类型末尾加上问号（`?`），就可以让变量可空。
+      例如，`int?` 类型的变量可能是一个整数，
+      也可能是 `null`。
+      如果你_确定_某个表达式的求值结果永远不会是 `null`，
+      但 Dart 不这么认为，
+      你可以加上 `!` 来断言它非空
+      （如果它为空则抛出异常）。
+      例如：`int x = nullableButNotNullInt!`
+
 -   When you want to explicitly say
     that any type is allowed, use the type `Object?`
     (if you've enabled null safety), `Object`,
     or—if you must defer type checking until runtime—the
     [special type `dynamic`][ObjectVsDynamic].
 
+  -   当你想明确表示允许任意类型时，
+      可以使用 `Object?` 类型（如果启用了空安全）、`Object` 类型，
+      或者——如果你必须把类型检查推迟到运行时——
+      使用[特殊类型 `dynamic`][ObjectVsDynamic]。
+
 -   Dart supports generic types, like `List<int>` (a list of integers)
     or `List<Object>` (a list of objects of any type).
+
+  -   Dart 支持泛型（generic）类型，比如 `List<int>`（整数列表）
+      或 `List<Object>`（任意类型对象的列表）。
 
 -   Dart supports top-level functions (such as `main()`), as well as
     functions tied to a class or object (*static* and *instance
     methods*, respectively). You can also create functions within
     functions (*nested* or *local functions*).
 
+  -   Dart 支持顶层函数（比如 `main()`），
+      也支持与类或对象绑定的函数
+      （分别称为*静态方法*和*实例方法*）。
+      你还可以在函数内部创建函数
+      （*嵌套函数*或*局部函数*）。
+
 -   Similarly, Dart supports top-level *variables*, as well as variables
     tied to a class or object (static and instance variables). Instance
     variables are sometimes known as *fields* or *properties*.
+
+  -   类似地，Dart 支持顶层*变量*，
+      也支持与类或对象绑定的变量（静态变量和实例变量）。
+      实例变量有时也被称为*字段*（field）或*属性*（property）。
 
 -   Unlike Java, Dart doesn't have the keywords `public`, `protected`,
     and `private`. If an identifier starts with an underscore (`_`), it's
     private to its library. For details, see
     [Libraries and imports][].
 
+  -   与 Java 不同，Dart 没有 `public`、`protected`
+      和 `private` 关键字。如果一个标识符以下划线（`_`）开头，
+      它就是其所在库的私有成员。详情参见
+      [库和导入][Libraries and imports]。
+
 -   *Identifiers* can start with a letter or underscore (`_`), followed by any
     combination of those characters plus digits.
+
+  -   *标识符*（identifier）可以以字母或下划线（`_`）开头，
+      后面可以跟这些字符与数字的任意组合。
 
 -   Dart has both *expressions* (which have runtime values) and
     *statements* (which don't).
@@ -710,12 +777,26 @@ keep these facts and concepts in mind:
     A statement often contains one or more expressions,
     but an expression can't directly contain a statement.
 
+  -   Dart 既有*表达式*（expression，有运行时的值），
+      也有*语句*（statement，没有值）。
+      例如，[条件表达式][conditional expression]
+      `condition ? expr1 : expr2` 的值是 `expr1` 或 `expr2`。
+      相比之下，[if-else 语句][if-else statement]没有值。
+      语句通常包含一个或多个表达式，
+      但表达式不能直接包含语句。
+
 -   Dart tools can report two kinds of problems: _warnings_ and _errors_.
     Warnings are just indications that your code might not work, but
     they don't prevent your program from executing. Errors can be either
     compile-time or run-time. A compile-time error prevents the code
     from executing at all; a run-time error results in an
     [exception][] being raised while the code executes.
+
+  -   Dart 工具可以报告两类问题：_警告_（warning）和_错误_（error）。
+      警告只是提示你的代码可能无法正常工作，
+      但不会阻止程序执行。错误分为编译时错误和运行时错误。
+      编译时错误会让代码完全无法执行；
+      运行时错误则会在代码执行期间抛出[异常][exception]。
 
 
 ## Additional resources

@@ -1,7 +1,9 @@
 ---
-title: dart pub upgrade
+# title: dart pub upgrade
+title: "dart pub upgrade 命令"
 # description: Use dart pub upgrade to get the latest versions of all dependencies used by your Dart app.
 description: 使用 dart pub upgrade 命令来更新 Dart 应用的所有依赖项到最新版本。
+ai-translated: true
 ---
 
 _Upgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
@@ -257,6 +259,8 @@ you can use `dart pub upgrade --major-versions --dry-run`.
 
 ### `--tighten`
 
+### `--tighten` 选项
+
 Updates the lower bounds of dependencies in `pubspec.yaml` to match the
 resolved versions, and returns a list of the changed constraints. 
 Can be applied to [specific dependencies](#upgrading-specific-dependencies).  
@@ -267,17 +271,31 @@ Can be applied to [specific dependencies](#upgrading-specific-dependencies).
 
 ### `--unlock-transitive`
 
+### `--unlock-transitive` 选项
+
 When used with a list of packages to unlock, first the transitive closure of
 those packages' dependencies (in the current resolution) is computed,
 and then all those packages are unlocked.
 
+与要解锁的 package 列表一起使用时，
+会先计算这些 package 的依赖（在当前解析结果中）的传递闭包，
+然后解锁所有这些 package。
+
 ## In a workspace
+
+## 在工作区中
 
 In a [Pub workspace](/tools/pub/workspaces) `dart pub upgrade` will
 upgrade all dependencies in the shared resolution from across all workspace
 packages.
 
+在 [Pub 工作区](/tools/pub/workspaces)中，`dart pub upgrade`
+会升级所有工作区 package 共享解析结果中的全部依赖。
+
 `dart pub upgrade --major-versions` and `dart pub upgrade --tighten` will update
 constraints in all workspace `pubspec.yaml` files.
+
+`dart pub upgrade --major-versions` 和 `dart pub upgrade --tighten`
+会更新所有工作区 `pubspec.yaml` 文件中的约束。
 
 {% render 'pub-problems.md' %}

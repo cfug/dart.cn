@@ -5,6 +5,7 @@ title: 高效 Dart 语言指南：文档
 breadcrumb: 文档
 # description: Clear, helpful comments and documentation.
 description: 简洁实用的注释以及文档。
+ai-translated: true
 nextpage:
   url: /effective-dart/usage
   # title: Usage
@@ -332,6 +333,9 @@ class RadioButtonWidget extends Widget {
 Only add doc comments when providing context, caveats, or usage details
 not immediately obvious from the surrounding context.
 
+只有在提供上下文、注意事项或使用细节，
+而且这些内容无法从周围上下文中一目了然时，才添加文档注释。
+
 <a id="prefer-starting-function-or-method-comments-with-third-person-verbs" aria-hidden="true"></a>
 
 ### PREFER starting comments of a function or method with third-person verbs if its main purpose is a side effect
@@ -373,9 +377,15 @@ int get checkedCount => ...
 
 ### PREFER starting a boolean variable or property comment with "Whether" followed by a noun or gerund phrase
 
+### **推荐** 布尔变量或属性的注释以 "Whether" 开头，后接名词或动名词短语
+
 The doc comment should clarify the states this variable represents.
 This is true even for getters which may do calculation or other work.
 What the caller cares about is the *result* of that work, not the work itself.
+
+文档注释应该阐明这个变量所代表的状态。
+即使对于可能进行计算或其他工作的 getter 也是如此。
+调用者关心的是这些工作的*结果*，而不是工作本身。
 
 <?code-excerpt "docs_good.dart (noun-phrases-for-boolean-var-etc)"?>
 ```dart tag=good
@@ -393,9 +403,15 @@ bool get canResize => ...
 This guideline intentionally doesn't include using "Whether or not". In many
 cases, usage of "or not" with "whether" is superfluous and can be omitted,
 especially when used in this context.
+
+这条准则有意不包括使用 "Whether or not"。在许多情况下，
+"whether" 后面的 "or not" 是多余的，可以省略，
+尤其是在这种上下文中使用时。
 :::
 
 ### PREFER a noun phrase or non-imperative verb phrase for a function or method if returning a value is its primary purpose
+
+### **推荐** 如果函数或方法的主要目的是返回值，使用名词短语或非命令式动词短语
 
 If a method is *syntactically* a method, but *conceptually* it is a property,
 and is therefore [named with a noun phrase or non-imperative verb phrase][parameterized_property_name],
@@ -403,6 +419,13 @@ it should also be documented as such.
 Use a noun-phrase for such non-boolean functions, and
 a phrase starting with "Whether" for such boolean functions,
 just as for a syntactic property or variable.
+
+如果一个方法在*语法上*是方法，但在*概念上*是属性，
+因此[用名词短语或非命令式动词短语命名][parameterized_property_name]，
+那么它的文档也应该按属性来写。
+对于这类非布尔函数，使用名词短语；
+对于这类布尔函数，使用以 "Whether" 开头的短语，
+就像对待语法上的属性或变量一样。
 
 <?code-excerpt "docs_good.dart (noun-for-func-returning-value)"?>
 ```dart tag=good
@@ -417,12 +440,20 @@ bool contains(Object? element);
 This guideline should be applied based on whether the declaration is
 conceptually seen as a property.
 
+是否应用这条准则，取决于该声明在概念上是否被视为属性。
+
 Sometimes a method has no side effects, and might
 conceptually be seen as a property, but is still
 simpler to name with a verb phrase like `list.take()`.
 Then a noun phrase should still be used to document it.
 _For example `Iterable.take` can be described as
 "The first \[count\] elements of ..."._
+
+有时一个方法没有副作用，在概念上可能被视为属性，
+但用 `list.take()` 这样的动词短语命名仍然更简单。
+这时仍然应该用名词短语来编写它的文档。
+_例如，`Iterable.take` 可以描述为
+“……的前 \[count\] 个元素”。_
 :::
 
 [parameterized_property_name]: design#prefer-a-noun-phrase-or-non-imperative-verb-phrase-for-a-function-or-method-if-returning-a-value-is-its-primary-purpose
@@ -554,6 +585,9 @@ constructor, use `.new` after the class name:
 To learn more about the references that
 the analyzer and `dart doc` support in doc comments,
 check out [Documentation comment references][].
+
+要进一步了解分析器和 `dart doc` 在文档注释中支持的引用，
+请参阅[文档注释引用][Documentation comment references]。
 
 [Documentation comment references]: /tools/doc-comments/references
 
@@ -771,6 +805,10 @@ worth putting effort into improving your proficiency.
 This section lists a few guidelines for our docs. You can learn more about
 best practices for technical writing, in general, from articles such as
 [Technical writing style](https://en.wikiversity.org/wiki/Technical_writing_style).
+
+本节列出了几条编写文档的准则。你可以从
+[Technical writing style](https://en.wikiversity.org/wiki/Technical_writing_style)
+等文章中了解更多关于技术写作最佳实践的通用知识。
 
 ### PREFER brevity
 

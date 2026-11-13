@@ -3,6 +3,7 @@
 title: dart pub downgrade 命令
 # description: Use dart pub downgrade to get the lowest versions of all dependencies used by your Dart application.
 description: 使用 dart pub downgrade 命令可以获取你 Dart 应用所使用的所有依赖项的最低版本。
+ai-translated: true
 ---
 
 _Downgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
@@ -150,15 +151,21 @@ For options that apply to all pub commands, see
 
 ### `--[no-]offline`
 
+### `--[no-]offline` 选项
+
 {% render 'tools/pub-option-no-offline.md' %}
 
 ### `--dry-run` or `-n`
+
+### `--dry-run` 或 `-n`
 
 Reports what dependencies would change but doesn't change any.
 
 报告将要改变的依赖项，但不会真的改变它。
 
 ### `--[no-]example`
+
+### `--[no-]example` 选项
 
 By default, pub also downgrades the dependencies of the
 [`example/` directory][example-dir] of the package (`--example`).
@@ -171,17 +178,30 @@ To skip downgrading example dependencies, use `--no-example`.
 
 ### `--tighten`
 
+### `--tighten` 选项
+
 :::version-note
 Support for the `--tighten` option was added in Dart 3.5.
+
+对 `--tighten` 选项的支持在 Dart 3.5 中加入。
 :::
 
 Updates the lower bounds of dependencies in `pubspec.yaml` to match the
 resolved versions, and returns a list of the changed constraints. 
 Can be applied to [specific dependencies](#downgrading-specific-dependencies).
 
+更新 `pubspec.yaml` 中依赖的下限，使其与已解析的版本一致，
+并返回发生变化的约束列表。
+可以应用于[指定的依赖项](#downgrading-specific-dependencies)。
+
 {% render 'pub-problems.md' %}
 
 ## In a workspace
 
+## 在工作区中
+
 In a [Pub workspace](/tools/pub/workspaces) `dart pub downgrade` will
 downgrade all dependencies across the workspace.
+
+在 [Pub 工作区](/tools/pub/workspaces)中，`dart pub downgrade`
+会降级整个工作区中的所有依赖。

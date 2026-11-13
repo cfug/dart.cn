@@ -6,6 +6,7 @@ breadcrumb: 速查表
 # description: Interactively learn (or relearn) some of Dart's unique features.
 description: 用交互的形式学习（或回顾）Dart 的独特之处。
 maxTocDepth: 2
+ai-translated: true
 ---
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g"?>
 
@@ -91,6 +92,11 @@ void main() {
   converting them to string representations.
   All you need to do is use the `$` operator to
   reference them inside single quotes, with a space in between:
+
+  `x` 和 `y` 都是简单的值，
+  Dart 的字符串插值会自动把它们转换为字符串表示。
+  你只需使用 `$` 运算符在单引号内引用它们，
+  中间用一个空格隔开：
 
   ```dart
   String stringify(int x, int y) {
@@ -298,6 +304,11 @@ void main() {
   replace the `TODO` comments with either `??` or `??=`.
   Read the text above to make sure you understand both,
   and then give it a try:
+
+  在这个练习中，你只需把 `TODO` 注释
+  替换为 `??` 或 `??=`。
+  先阅读上面的文字，确保你理解了这两个运算符，
+  然后动手试一试：
 
   ```dart
   // Substitute an operator that makes 'a string' be assigned to baz.
@@ -739,6 +750,9 @@ myObject..someMethod()
 Although it still invokes `someMethod()` on `myObject`, the result
 of the expression **isn't** the return value—it's a reference to `myObject`!
 
+虽然它仍然在 `myObject` 上调用 `someMethod()`，
+但表达式的结果**不是**返回值——而是对 `myObject` 的引用！
+
 Using cascades, you can chain together operations that
 would otherwise require separate statements.
 For example, consider the following code,
@@ -864,6 +878,11 @@ void main() {
   has four assignment operations chained together.
   Start with `return obj..anInt = 1`,
   then add another cascade (`..`) and start the next assignment.
+
+  这个练习的最佳解法以 `obj..` 开头，
+  并把四个赋值操作串联在一起。
+  先写 `return obj..anInt = 1`，
+  然后再加上一个级联（`..`）并开始下一个赋值。
 
   ```dart
   BigObject fillBigObject(BigObject obj) {
@@ -1029,6 +1048,13 @@ void main() {
   with a function you give it
   (use it to check if there are any negative prices in the `prices` setter).
 
+  有两个函数对这个练习很有用。
+  一个是 `fold`，它可以把列表归约为单个值
+  （用它来计算总价）。
+  另一个是 `any`，它可以用你提供的函数
+  检查列表中的每一项
+  （在 `prices` setter 中用它检查是否存在负数价格）。
+
   ```dart
   /// The total price of the shopping cart.
   double get total => _prices.fold(0, (e, t) => e + t);
@@ -1188,6 +1214,10 @@ void main() {
   The `b`, `c`, `d`, and `e` parameters are null if they aren't provided by the
   caller. The important thing, then, is to check whether those arguments are `null`
   before you add them to the final string.
+
+  如果调用者没有提供 `b`、`c`、`d`、`e` 参数，它们就是 null。
+  因此关键是在把它们加入最终字符串之前，
+  先检查这些参数是否为 `null`。
 
   ```dart
   String joinWithCommas(int a, [int? b, int? c, int? d, int? e]) {
@@ -1386,6 +1416,14 @@ void main() {
   (or the data from the current instance if the parameters are null).
   This is a chance to get more practice with the `??` operator!
 
+  `copyWith` 方法出现在很多类和库中。
+  你的实现需要做到几件事：
+  使用可选命名参数，
+  创建一个新的 `MyDataObject` 实例，
+  并用参数中的数据填充它
+  （如果参数为 null，则使用当前实例的数据）。
+  这正是练习 `??` 运算符的好机会！
+
   ```dart
   MyDataObject copyWith({int? newInt, String? newString, double? newDouble}) {
     return MyDataObject(
@@ -1445,6 +1483,10 @@ try {
 The `try` keyword works as it does in most other languages.
 Use the `on` keyword to filter for specific exceptions by type,
 and the `catch` keyword to get a reference to the exception object.
+
+`try` 关键字的用法与大多数其他语言相同。
+使用 `on` 关键字按类型过滤特定的异常，
+使用 `catch` 关键字获取对异常对象的引用。
 
 If you can't completely handle the exception, use the `rethrow` keyword
 to propagate the exception:
@@ -1634,6 +1676,11 @@ void main() {
   then use `on`, `catch`, and `finally` to catch exceptions and
   call methods on the logger.
 
+  这个练习看起来棘手，但其实就是一个大的 `try` 语句。
+  在 `try` 中调用 `untrustworthy`，
+  然后使用 `on`、`catch` 和 `finally` 捕获异常，
+  并调用 logger 上的方法。
+
   ```dart
   void tryFunction(VoidFunction untrustworthy, Logger logger) {
     try {
@@ -1772,6 +1819,11 @@ void main() {
   `this.anInt`, `this.aString`, and `this.aDouble`
   as its parameters in that order.
 
+  这个练习一行代码就能解决。
+  声明构造方法时，按顺序使用
+  `this.anInt`、`this.aString` 和 `this.aDouble`
+  作为参数。
+
   ```dart
   MyClass(this.anInt, this.aString, this.aDouble);
   ```
@@ -1883,6 +1935,10 @@ void main() {
   `letterOne` should be assigned `word[0]`,
   and `letterTwo` should be assigned `word[1]`.
 
+  需要完成两次赋值：
+  `letterOne` 应赋值为 `word[0]`，
+  `letterTwo` 应赋值为 `word[1]`。
+
   ```dart
     FirstTwoLetters(String word)
         : assert(word.length >= 2),
@@ -1984,6 +2040,10 @@ void main() {
   The declaration for your constructor should begin with `Color.black():`.
   In the initializer list (after the colon),
   set `red`, `green`, and `blue` to `0`.
+
+  你的构造方法声明应以 `Color.black():` 开头。
+  在初始化列表中（冒号之后），
+  把 `red`、`green` 和 `blue` 都设为 `0`。
 
   ```dart
   Color.black() : red = 0, green = 0, blue = 0;
@@ -2166,7 +2226,13 @@ void testValues(List<String> errs, List<int> expectedValues, IntegerHolder obj,
   check the length of the list, then create and return an
   `IntegerSingle`, `IntegerDouble`, or `IntegerTriple` as appropriate.
 
+  在工厂构造方法内部，
+  检查列表的长度，然后视情况创建并返回
+  `IntegerSingle`、`IntegerDouble` 或 `IntegerTriple`。
+
   Replace `TODO();` with the following code block.
+
+  把 `TODO();` 替换为下面的代码块。
 
   ```dart
     switch (list.length) {
@@ -2277,6 +2343,8 @@ void main() {
   <summary>Solution for redirecting constructors example</summary>
 
   Your constructor should redirect to `this(0, 0, 0)`.
+
+  你的构造方法应重定向到 `this(0, 0, 0)`。
 
   ```dart
   Color.black() : this(0, 0, 0);
@@ -2391,6 +2459,8 @@ void main() {
   <summary>Solution for const constructors example</summary>
 
   To make the constructor const, you'll need to make all the properties final.
+
+  要让构造方法成为 const，你需要把所有属性都设为 final。
 
   ```dart
   class Recipe {
