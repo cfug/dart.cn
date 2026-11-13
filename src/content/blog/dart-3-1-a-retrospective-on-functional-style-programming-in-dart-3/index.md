@@ -429,10 +429,10 @@ If a new subtype was ever added that extends `FileSystemEvent`, perhaps `FileSys
 
 ```bash
 The type 'FileSystemEvent' is not exhaustively matched by the switch cases since it doesn't match 'FileSystemSyncEvent'
+```
 
 类型 'FileSystemEvent' 未被 switch 的各个 case 穷尽匹配，
 因为没有匹配 'FileSystemSyncEvent'
-```
 
 
 Combining sealed classes and switches over object patterns enables a complete, object-oriented algebraic data type style of program architecture in Dart.

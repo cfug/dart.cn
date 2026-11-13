@@ -233,10 +233,10 @@ This returns the following error, alerting us that we missed handling the last p
 ```
 line 6 • The type 'Animal' is not exhaustively matched by the switch cases
 since it doesn't match 'Pig()'.
+```
 
 （第 6 行 • 类型 'Animal' 未被 switch 的各个 case 穷尽匹配，
 因为没有匹配 'Pig()'。）
-```
 
 
 Finally, `if` statements can use patterns too. In the next example, we’re using *if-case* matching against a map-pattern to destructure the JSON map. Inside that, we’re matching against constant values (strings like `'name'` and `'Michael'`) and a type test pattern `int h` to read out a JSON value. If the pattern matches fail, Dart executes the `else` statement.
