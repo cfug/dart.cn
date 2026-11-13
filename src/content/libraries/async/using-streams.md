@@ -5,6 +5,7 @@ title: 异步编程：使用 Stream
 breadcrumb: 使用 Stream
 # description: Learn how to consume single-subscriber and broadcast streams.
 description: 了解如何使用 single-subscriber 和 broadcast stream。
+ai-translated: true
 ---
 
 :::secondary 本章的重点
@@ -475,9 +476,19 @@ a new stream. `timeout()` enables you to set a
 time limit and continue emitting events on the returned
 stream.
 
+在上面的示例中，如果 Stream 没有发出任何事件，
+**await for** 循环就永远不会返回。
+为了避免这种情况，可以使用 `timeout()` 函数创建一个
+新的 Stream。`timeout()` 让你能够设置一个
+时间限制，并在返回的 Stream 上继续发出事件。
+
 The following code modifies the previous example. 
 It adds a two-second timeout and produces a
 relevant error if no events occur for two or more seconds.
+
+下面的代码修改了上面的示例。
+它添加了一个两秒的超时，
+如果两秒或更长时间内没有事件发生，就会产生一个相关的错误。
 
 <?code-excerpt "misc/lib/tutorial/misc.dart (stream-timeout)"?>
 ```dart highlightLines=6-12
