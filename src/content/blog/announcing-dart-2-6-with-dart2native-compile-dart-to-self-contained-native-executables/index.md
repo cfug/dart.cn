@@ -58,6 +58,7 @@ We’ve heard many customers ask for AOT compilation for desktop operating syste
 我们听到许多客户要求为桌面操作系统提供 AOT 编译——这是我们 issue
 跟踪器中[评分第六高的 issue](https://github.com/dart-lang/sdk/issues/36915)——
 所以我们很高兴能够提供这个特性。
+
 > If you used dart2aot before, then as of 2.6 you’ll use dart2native. It provides a superset of dart2aot’s functionality.
 
 > 如果你以前用过 dart2aot，那么从 2.6 开始你将改用 dart2native。它提供了 dart2aot 功能的超集。
