@@ -120,7 +120,7 @@ class C {
 
 ### DO name extensions using `UpperCamelCase`
 
-### **要** 使用 `UpperCamelCase` 风格类型作为扩展名
+### **要** 使用 `UpperCamelCase` 命名扩展
 
 {% render 'linter-rule-mention.md', rules:'camel_case_extensions' %}
 

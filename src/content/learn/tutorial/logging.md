@@ -1,52 +1,87 @@
 ---
-title: Add logging for debugging and monitoring
-short-title: Logging
-description: >-
-  Learn how to add logging to your Dart application to
-  help with debugging and monitoring.
+# title: Add logging for debugging and monitoring
+title: 添加日志以便调试和监控
+# short-title: Logging
+short-title: 日志
+# description: >-
+#   Learn how to add logging to your Dart application to
+#   help with debugging and monitoring.
+description: 学习如何为 Dart 应用添加日志，以便调试和监控。
 layout: learn
+ai-translated: true
 ---
 
 In this chapter, you'll learn how to add logging to your Dart application.
 Logging is a critical tool for debugging, monitoring, and
 understanding the behavior of your application in different environments.
 
+在本章中，你将学习如何为 Dart 应用添加日志。
+日志是调试、监控以及
+理解应用在不同环境中行为的关键工具。
+
 <SummaryCard>
-title: What you'll accomplish
+title: 你将完成的内容
 items:
-  - title: Add and learn about the logging package
+  - title: 添加并了解 logging package
     icon: note_stack
-  - title: Configure log levels and file output
+  - title: 配置日志级别和文件输出
     icon: tune
-  - title: Integrate logging into your CLI commands
+  - title: 把日志接入 CLI 命令
     icon: terminal
 </SummaryCard>
 
 ## Prerequisites
 
+## 准备工作
+
 Before you begin this chapter, ensure you:
+
+开始本章之前，请确认你已经：
 
 - Have completed Chapter 11 and have a
   working Dart development environment with the `dartpedia` project.
+
+  完成了第 11 章，并且有可用的 Dart 开发环境，
+  项目为 `dartpedia`。
 - Understand the basics of debugging and why it's
   important to track errors and events in your application.
 
+  理解调试的基础知识，以及为什么
+  跟踪应用中的错误和事件很重要。
+
 ## Tasks
+
+## 任务
 
 In this chapter, you'll add logging to the `dartpedia` CLI application to
 help track errors and monitor its behavior.
 This will involve adding the `logging` package,
 creating a `Logger` instance, and writing log messages to a file.
 
+在本章中，你将为 `dartpedia` CLI 应用添加日志，
+帮助跟踪错误并监控它的行为。
+这包括添加 `logging` package、
+创建 `Logger` 实例，以及把日志消息写入文件。
+
 ### Task 1: Add the `logging` package
+
+### 任务 1：添加 `logging` package
 
 First, add the `logging` package to your project's dependencies.
 
+首先，把 `logging` package 添加到项目依赖中。
+
 1.  Open the `cli/pubspec.yaml` file.
+
+    打开 `cli/pubspec.yaml` 文件。
 
 1.  Locate the `dependencies` section.
 
+    找到 `dependencies` 部分。
+
 1.  Add the `logging` package to your dependencies:
+
+    把 `logging` package 添加到依赖中：
 
     ```yaml
     dependencies:
@@ -61,15 +96,27 @@ First, add the `logging` package to your project's dependencies.
 
 1.  Run `dart pub get` in the `cli` directory to fetch the new dependency.
 
+    在 `cli` 目录中运行 `dart pub get`，获取新的依赖。
+
 ### Task 2: Create a logger
+
+### 任务 2：创建 logger
 
 Next, create a `Logger` instance and configure it to
 write log messages to a file. This involves
 creating a new file for the logger and setting up the necessary imports.
 
+接下来，创建 `Logger` 实例，并把它配置为
+把日志消息写入文件。这包括
+为 logger 创建新文件，并设置必要的 import。
+
 1.  Create a new file called `cli/lib/src/logger.dart`.
 
+    创建名为 `cli/lib/src/logger.dart` 的新文件。
+
 1.  Add the necessary imports and define the `initFileLogger` function.
+
+    添加必要的 import，并定义 `initFileLogger` 函数。
 
     ```dart title="cli/lib/src/logger.dart"
     import 'dart:io';
@@ -93,6 +140,10 @@ creating a new file for the logger and setting up the necessary imports.
 1.  Add the code to find the project's root directory,
     create a `logs` directory if one doesn't exist, and
     create a unique log file.
+
+    添加代码来找到项目根目录，
+    如果 `logs` 目录不存在就创建它，
+    并创建一个唯一的日志文件。
 
     ```dart
     Logger initFileLogger(String name) {
@@ -123,6 +174,9 @@ creating a new file for the logger and setting up the necessary imports.
 
 1.  Configure the logger's level and set up a listener to
     write log messages to the file.
+
+    配置 logger 的级别，并设置监听器，
+    把日志消息写入文件。
 
     ```dart
     Logger initFileLogger(String name) {
@@ -156,21 +210,44 @@ creating a new file for the logger and setting up the necessary imports.
 
     This code does the following:
 
+    这段代码会做以下事情：
+
     -   It enables hierarchical logging using
         `hierarchicalLoggingEnabled = true`.
+
+        它用 `hierarchicalLoggingEnabled = true` 启用分层日志。
     -   It creates a `Logger` instance with the given name.
+
+        它用给定的名称创建一个 `Logger` 实例。
     -   It gets the project directory from the `Platform.script.path`.
+
+        它从 `Platform.script.path` 取得项目目录。
     -   It creates a `logs` directory if it doesn't exist.
+
+        如果 `logs` 目录不存在，它会创建该目录。
     -   It creates a log file with the current date and the logger name.
+
+        它用当前日期和 logger 名称创建一个日志文件。
     -   It sets the logger level to `Level.ALL`,
         meaning it will log all messages.
         This is useful for development and debugging, but
         you'll likely want to use a more restrictive level like
         `Level.INFO` or `Level.WARNING` in production.
+
+        它把 logger 级别设为 `Level.ALL`，
+        也就是会记录所有消息。
+        这对开发和调试很有用，
+        但在生产环境中，你多半会想用更严格的级别，
+        例如 `Level.INFO` 或 `Level.WARNING`。
     -   It listens for log records and writes them to the log file.
+
+        它监听日志记录，并把它们写入日志文件。
 
 1. Create a new file called `cli/lib/cli.dart` and export `logger.dart`.
    This makes the `initFileLogger` available to other parts of your app.
+
+   创建名为 `cli/lib/cli.dart` 的新文件，并导出 `logger.dart`。
+   这样应用的其他部分就可以使用 `initFileLogger`。
 
    ```dart title="cli/lib/cli.dart"
     export 'src/commands/get_article.dart';
@@ -180,12 +257,21 @@ creating a new file for the logger and setting up the necessary imports.
 
 ### Task 3: Use the logger in `cli.dart`
 
+### 任务 3：在 `cli.dart` 中使用 logger
+
 Now, use the `initFileLogger` function in `cli/bin/cli.dart` to
 create a logger instance and log messages to a file.
 
+现在，在 `cli/bin/cli.dart` 中使用 `initFileLogger` 函数，
+创建 logger 实例，并把日志消息写入文件。
+
 1.  Open the `cli/bin/cli.dart` file.
 
+    打开 `cli/bin/cli.dart` 文件。
+
 1.  Add the import for the logger:
+
+    添加 logger 的 import：
 
     ```dart title="cli/bin/cli.dart"
     import 'package:cli/cli.dart';
@@ -194,6 +280,9 @@ create a logger instance and log messages to a file.
 
 1.  Modify the `main` function to initialize the logger and
     pass it to the commands:
+
+    修改 `main` 函数，初始化 logger，
+    并把它传给各个命令：
 
     ```dart title="cli/bin/cli.dart"
     import 'package:cli/cli.dart';
@@ -229,17 +318,32 @@ create a logger instance and log messages to a file.
 
     This code does the following:
 
+    这段代码会做以下事情：
+
     -   It initializes a `Logger` instance using `initFileLogger('errors')`.
+
+        它用 `initFileLogger('errors')` 初始化一个 `Logger` 实例。
     -   It passes the `logger` instance to `CommandRunner` and
         individual commands.
 
+        它把 `logger` 实例传给 `CommandRunner`
+        和各个命令。
+
 ### Task 4: Create the SearchCommand command
+
+### 任务 4：创建 SearchCommand 命令
 
 The core functionality of the CLI lives in its commands.
 Create the `SearchCommand` and `GetArticleCommand` files and
 add the necessary code, including the logging and error handling.
 
+CLI 的核心功能就在它的命令里。
+创建 `SearchCommand` 和 `GetArticleCommand` 文件，
+并添加必要的代码，包括日志和错误处理。
+
 1.  Create a new file named `/cli/lib/src/commands/search.dart`.
+
+    创建名为 `/cli/lib/src/commands/search.dart` 的新文件。
 
 1.  Add the imports and a basic class structure.
     This `SearchCommand` class extends `Command`, and
@@ -248,6 +352,12 @@ add the necessary code, including the logging and error handling.
     common pattern called dependency injection,
     which allows the command to log events without
     needing to create its own logger.
+
+    添加 import 和基本的类结构。
+    这个 `SearchCommand` 类扩展了 `Command`，
+    它的构造函数接受一个 `Logger` 实例。
+    在构造函数中接收 logger 是一种常见模式，叫做依赖注入。
+    这样命令就可以记录事件，而不必自己创建 logger。
 
     ```dart
     import 'dart:async';
@@ -290,6 +400,11 @@ add the necessary code, including the logging and error handling.
     This code checks for a valid argument,
     calls the `search()` function from the `wikipedia` package,
     formats the results, and returns the results as a string.
+
+    现在，把核心逻辑添加到 `run` 方法。
+    这段代码检查参数是否有效，
+    调用 `wikipedia` package 中的 `search()` 函数，
+    格式化结果，并把结果作为字符串返回。
 
     ```dart
     import 'dart:async';
@@ -342,6 +457,11 @@ add the necessary code, including the logging and error handling.
     adding a flag to the constructor. Then, in the `run` method,
     add the logic to check if the flag is set and, if so,
     get the summary of the top search result.
+
+    接下来，为构造函数添加一个标志，
+    实现「I'm feeling lucky」（手气不错）功能。
+    然后在 `run` 方法中加入逻辑：如果设置了这个标志，
+    就获取排名第一的搜索结果的摘要。
 
     ```dart
     import 'dart:async';
@@ -413,6 +533,11 @@ add the necessary code, including the logging and error handling.
     This allows you to handle potential exceptions that
     could arise from network issues or data formatting problems.
     You'll use the injected `logger` to record these errors to the log file.
+
+    最后，把主要逻辑包进 `try/catch` 块。
+    这样你就可以处理网络问题或数据格式问题
+    可能引发的异常。
+    你将使用注入的 `logger` 把这些错误记录到日志文件。
 
     ```dart
     import 'dart:async';
@@ -496,13 +621,23 @@ add the necessary code, including the logging and error handling.
 
 ### Task 5: Create the GetArticleCommand command
 
+### 任务 5：创建 GetArticleCommand 命令
+
 Now, create the `GetArticleCommand` file and add the necessary code.
 The code is similar to the previous `SearchCommand`, as it also
 uses a `try/catch` block to handle potential network or data errors.
 
+现在，创建 `GetArticleCommand` 文件并添加必要的代码。
+这段代码与前面的 `SearchCommand` 类似，
+同样用 `try/catch` 块处理可能的网络或数据错误。
+
 1.  Create a new file named cli/lib/src/commands/get_article.dart.
 
+    创建名为 cli/lib/src/commands/get_article.dart 的新文件。
+
 1.  Add the following code to `get_article.dart`.
+
+    把下面的代码添加到 `get_article.dart`。
 
     ```dart
     import 'dart:async';
@@ -562,27 +697,53 @@ uses a `try/catch` block to handle potential network or data errors.
     Review the code you've just added.
     The `SearchCommand` and `GetArticleCommand` now:
 
+    回顾一下你刚添加的代码。
+    `SearchCommand` 和 `GetArticleCommand` 现在会：
+
     - Import the necessary packages like `command_runner`, `logging`, and
       `wikipedia` to use their classes and functions.
+
+      导入 `command_runner`、`logging` 和
+      `wikipedia` 等必要的 package，以使用它们的类和函数。
     - Accept a `Logger` instance through their constructor.
       This is a common pattern called dependency injection,
       which allows the command to log events without
       needing to create its own logger.
+
+      通过构造函数接受 `Logger` 实例。
+      这是一种叫做依赖注入的常见模式。
+      这样命令就可以记录事件，而不必自己创建 logger。
     - Implement a `run` method that defines the command's logic.
       This method calls the appropriate wikipedia API and formats the output.
+
+      实现定义命令逻辑的 `run` 方法。
+      这个方法调用相应的 Wikipedia API，并格式化输出。
     - Include `try/catch` blocks to gracefully
       handle network errors (`HttpException`) and
       data parsing errors (`FormatException`), logging them for debugging.
 
+      包含 `try/catch` 块，妥善处理
+      网络错误（`HttpException`）和
+      数据解析错误（`FormatException`），并把它们记入日志以便调试。
+
 
 ### Task 6: Run the application and check the logs
+
+### 任务 6：运行应用并检查日志
 
 Now that you've added logging to your application,
 run it and check the log file to see the results.
 
+现在你已经为应用添加了日志，
+运行它并检查日志文件，看看结果。
+
 1.  Run the application with a command that might produce an error.
     For example, try searching for an article that
     doesn't exist or that causes a `FormatException`.
+
+    用一条可能会产生错误的命令运行应用。
+    例如，试着搜索一篇不存在的文章，
+    或者会引发 `FormatException` 的文章。
 
     ```bash
     dart run bin/cli.dart search blahblahblahblah
@@ -591,7 +752,12 @@ run it and check the log file to see the results.
 1.  Check the `logs` directory in your project.
     You should see a file with the current date and the name `errors.txt`.
 
+    检查项目中的 `logs` 目录。
+    你应该会看到一个以当前日期命名、名为 `errors.txt` 的文件。
+
 1.  Open the log file and verify that the error message is logged.
+
+    打开日志文件，确认错误消息已被记录。
 
     ```text
     [2025-02-20 16:23:45.678 - errors] WARNING: HttpException: HttpException: , uri = https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=blahblahblahblah
@@ -600,43 +766,55 @@ run it and check the log file to see the results.
 
 ## Review
 
+## 回顾
+
 <SummaryCard>
-title: What you accomplished
-subtitle: Here's a summary of what you built and learned in this lesson.
+title: 你完成的内容
+subtitle: 以下是你在本课中构建并学到的内容摘要。
 completed: true
 items:
-  - title: Added and learned about the logging package
+  - title: 添加并了解了 logging package
     icon: note_stack
     details: >-
-      You added `logging` to your dependencies and imported it into your CLI.
-      The package provides `Logger`, `Level`, and `LogRecord` classes for
-      structured logging with configurable severity levels.
-  - title: Configured log levels and file output
+      你把 `logging` 添加到依赖中，并导入到 CLI。
+      这个 package 提供 `Logger`、`Level` 和 `LogRecord` 类，
+      用于带有可配置严重级别的结构化日志。
+  - title: 配置了日志级别和文件输出
     icon: tune
     details: >-
-      You created `initFileLogger()` to set up hierarchical logging
-      to timestamped files in the `logs/` directory.
-      This enables you to review application behavior after the fact.
-  - title: Integrated logging into your CLI commands
+      你创建了 `initFileLogger()`，把分层日志
+      写到 `logs/` 目录中带时间戳的文件里。
+      这样你就可以在事后回顾应用的行为。
+  - title: 把日志接入了 CLI 命令
     icon: terminal
     details: >-
-      You passed the logger to commands using dependency injection,
-      then used `logger.warning()`, `logger.severe()`, and `logger.info()` to
-      record errors of different levels alongside relevant context.
-      This setup helps you more easily debug and filter issues
-      in both development and production.
+      你通过依赖注入把 logger 传给命令，
+      然后用 `logger.warning()`、`logger.severe()` 和 `logger.info()`
+      记录不同级别的错误以及相关上下文。
+      这样在开发和生产环境中都更容易调试和筛选问题。
 </SummaryCard>
 
 ## Quiz
 
-<Quiz title="Check your understanding" id="logging" />
+## 测验
+
+<!-- title: Check your understanding -->
+<Quiz title="检查你的理解" id="logging" />
 
 ## Next lesson
+
+## 下一课
 
 Congratulations! You've now completed all the
 core chapters of the Dart Getting Started tutorial.
 Want to continue learning?
 Check out the next step in the
 [Dart and Flutter learning pathway][] on the Flutter site.
+
+恭喜！你已经完成了
+Dart 入门教程的全部核心章节。
+还想继续学习吗？
+请查看 Flutter 网站上
+[Dart 与 Flutter 学习路径][Dart and Flutter learning pathway] 的下一步。
 
 [Dart and Flutter learning pathway]: {{site.flutter-docs}}/learn/pathway

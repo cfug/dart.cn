@@ -1,12 +1,18 @@
 ---
-title: Extend your app with enums and extensions
-shortTitle: Advanced OOP features
+# title: Extend your app with enums and extensions
+title: 用枚举和扩展增强应用
+# shortTitle: Advanced OOP features
+shortTitle: 进阶 OOP 特性
+# description: >-
+#   Enhance your Dart skills by exploring
+#   advanced features like enhanced enums and extensions.
+#   Improve your application's output formatting and color,
+#   making it more user-friendly.
 description: >-
-  Enhance your Dart skills by exploring
-  advanced features like enhanced enums and extensions.
-  Improve your application's output formatting and color,
-  making it more user-friendly.
+  通过增强型枚举和扩展等进阶特性提升你的 Dart 能力。
+  改进应用的输出格式和颜色，让它更好用。
 layout: learn
+ai-translated: true
 ---
 
 In this chapter, you'll explore advanced Dart features that
@@ -15,43 +21,76 @@ You'll learn how to use enhanced enums to manage console colors and
 extensions to add new functionality to existing types,
 making your application more interactive and visually appealing.
 
+在本章中，你将探索能改善命令行应用使用体验的 Dart 进阶特性。
+你将学习如何用增强型枚举管理控制台颜色，
+并用扩展为现有类型添加新功能，
+让应用更具交互性，视觉上也更清楚。
+
 <SummaryCard>
-title: What you'll accomplish
+title: 你将完成的内容
 items:
-  - title: Use enhanced enums with fields and methods
+  - title: 使用带字段和方法的增强型枚举
     icon: format_list_bulleted
-  - title: Extend existing types with extensions
+  - title: 用扩展为现有类型添加功能
     icon: extension
-  - title: Add colorful console output
+  - title: 添加彩色的控制台输出
     icon: palette
 </SummaryCard>
 
 ## Prerequisites
 
+## 准备工作
+
 Before you begin this chapter, ensure you:
+
+开始本章之前，请确认你已经：
 
 -   Have completed Chapter 6 and have a
     working Dart development environment with the `dartpedia` project.
+
+    已完成第 6 章，并且有可用的 Dart 开发环境，
+    项目为 `dartpedia`。
 -   Are familiar with basic programming concepts like
     variables, functions, and control flow.
+
+    熟悉变量、函数、控制流等基本编程概念。
 -   Understand the concepts of packages and libraries in Dart.
+
+    理解 Dart 中 package 和库的概念。
 -   Have a basic understanding of
     object-oriented programming concepts like classes and enums.
 
+    对类、枚举等面向对象编程概念有基本了解。
+
 ## Tasks
+
+## 任务
 
 You will improve the user experience of your Dartpedia CLI application by
 adding color to the output and improving text formatting.
 
+你将为输出加上颜色并改进文本格式，
+从而改善 Dartpedia CLI 应用的使用体验。
+
 ### Task 1: Enhance the console color enum
+
+### 任务 1：增强控制台颜色枚举
 
 First, add color to the console output.
 The `ConsoleColor` enum will include RGB values and
 methods for applying colors to text.
 
+首先，为控制台输出加上颜色。
+`ConsoleColor` 枚举将包含 RGB 值，
+以及把颜色应用到文本上的方法。
+
 1.  Create the `command_runner/lib/src/console.dart` file.
 
+    创建 `command_runner/lib/src/console.dart` 文件。
+
 1.  Add the following code to define the `ConsoleColor` enum:
+
+    添加下面的代码来定义 `ConsoleColor` 枚举：
 
     ```dart title="command_runner/lib/src/console.dart"
     import 'dart:io';
@@ -111,7 +150,12 @@ methods for applying colors to text.
     their corresponding RGB values.
     Each color is a constant instance of the `ConsoleColor` enum.
 
+    这个枚举定义了一组控制台颜色及其对应的 RGB 值。
+    每种颜色都是 `ConsoleColor` 枚举的一个常量实例。
+
 1.  Add methods to the `ConsoleColor` enum for applying colors to text:
+
+    为 `ConsoleColor` 枚举添加把颜色应用到文本上的方法：
 
     ```dart title="command_runner/lib/src/console.dart"
     enum ConsoleColor {
@@ -159,14 +203,26 @@ methods for applying colors to text.
     The `applyForeground` and `applyBackground` methods return
     a string with the ANSI escape codes applied.
 
+    这些方法使用 [ANSI 转义码][ANSI escape codes]
+    为文本设置前景色和背景色。
+    `applyForeground` 和 `applyBackground` 方法返回
+    已经加上 ANSI 转义码的字符串。
+
 [ANSI escape codes]: https://en.wikipedia.org/wiki/ANSI_escape_code
 
 ### Task 2: Create a String extension
 
+### 任务 2：创建 String 扩展
+
 Next, create an extension on the `String` class to
 add utility methods for applying console colors and formatting text.
 
+接下来，在 `String` 类上创建一个扩展，
+添加用于应用控制台颜色和格式化文本的实用方法。
+
 1.  Add the following code to the `command_runner/lib/src/console.dart` file:
+
+    把下面的代码添加到 `command_runner/lib/src/console.dart` 文件：
 
     ```dart title="command_runner/lib/src/console.dart"
     // Add this code to the bottom of the file
@@ -209,11 +265,24 @@ add utility methods for applying console colors and formatting text.
     It also adds a method for splitting a string into
     lines of a specified length called `splitLinesByLength`.
 
+    这段代码在 `String` 类上定义了名为
+    `TextRenderUtils` 的扩展。
+    它添加了三个用于应用控制台颜色的 getter：
+    `errorText`、`instructionText` 和 `titleText`。
+    它还添加了 `splitLinesByLength` 方法，
+    用来把字符串按指定长度拆成多行。
+
 ### Task 3: Update command_runner package
+
+### 任务 3：更新 command_runner package
 
 Update the `command_runner` package to export `console.dart`.
 
+更新 `command_runner` package，导出 `console.dart`。
+
 1.  Open `command_runner/lib/command_runner.dart` and add the following line:
+
+    打开 `command_runner/lib/command_runner.dart`，并添加下面这一行：
 
     ```dart title="command_runner/lib/command_runner.dart"
     library;
@@ -229,13 +298,23 @@ Update the `command_runner` package to export `console.dart`.
 
 ### Task 4: Implement colorful echo command
 
+### 任务 4：实现彩色的 echo 命令
+
 Finally, implement an example command to test the print.
 It's good practice to implement example usage of a package in Dart for
 developers that will use your package.
 This example creates a command that makes console output colorful.
 
+最后，实现一个示例命令来测试打印效果。
+在 Dart 中为将要使用你的 package 的开发者提供示例用法，是个好习惯。
+这个示例创建一条让控制台输出带上颜色的命令。
+
 1.  Open the `example/command_runner_example.dart` file.
+
+    打开 `example/command_runner_example.dart` 文件。
 1.  Replace the contents of the file with the following code:
+
+    用下面的代码替换文件内容：
 
     ```dart title="command_runner/example/command_runner_example.dart"
     import 'dart:async';
@@ -310,7 +389,16 @@ This example creates a command that makes console output colorful.
     `titleText`, `instructionText`, and `errorText` getter methods from
     the `TextRenderUtils` extension to apply the colors.
 
+    这段代码定义了扩展 `Command` 类的 `PrettyEcho` 命令。
+    它接收一个字符串参数，
+    并根据每个单词在字符串中的位置涂上不同颜色。
+    `run` 方法使用 `TextRenderUtils` 扩展中的
+    `titleText`、`instructionText` 和 `errorText` getter
+    来应用这些颜色。
+
 1.  Navigate to `/dartpedia/command_runner` and run the following command:
+
+    进入 `/dartpedia/command_runner`，并运行以下命令：
 
     ```bash
     dart run example/command_runner_example.dart echo "hello world goodbye"
@@ -320,48 +408,63 @@ This example creates a command that makes console output colorful.
     with the first word appearing in light blue,
     the second in yellow, and the third in red.
 
+    你应该会看到下面的文本打印到控制台，
+    第一个单词是浅蓝色，
+    第二个是黄色，第三个是红色。
+
     ```bash
     hello world goodbye
     ```
 
 ## Review
 
+## 回顾
+
 <SummaryCard>
-title: What you accomplished
-subtitle: Here's a summary of what you built and learned in this lesson.
+title: 你完成的内容
+subtitle: 以下是你在本课中构建并学到的内容摘要。
 completed: true
 items:
-  - title: Used enhanced enums with fields and methods
+  - title: 使用了带字段和方法的增强型枚举
     icon: format_list_bulleted
     details: >-
-      You created `ConsoleColor` as an enhanced enum with
-      `r`, `g`, `b` fields and methods like `applyForeground()`.
-      Enhanced enums can have constructors, properties, and methods,
-      combining the benefits of enums and normal classes.
-  - title: Extended existing types with extensions
+      你把 `ConsoleColor` 创建为增强型枚举，
+      它带有 `r`、`g`、`b` 字段以及 `applyForeground()` 等方法。
+      增强型枚举可以有构造函数、属性和方法，
+      兼具枚举和普通类的优点。
+  - title: 用扩展为现有类型添加了功能
     icon: extension
     details: >-
-      You created a `TextRenderUtils` extension on the `String` class to
-      add getters like `errorText` and `titleText` to all strings.
-      Extensions let you add functionality to any type without
-      needing to modify or subclass it, which is particularly useful in
-      cases like strings which can't be subclassed.
-  - title: Added colorful console output
+      你在 `String` 类上创建了 `TextRenderUtils` 扩展，
+      为所有字符串添加 `errorText`、`titleText` 等 getter。
+      扩展让你可以为任何类型添加功能，
+      而不必修改它或创建子类。
+      这对无法派生子类的字符串之类的类型尤其有用。
+  - title: 添加了彩色的控制台输出
     icon: palette
     details: >-
-      To improve the readability and user experience of your CLI,
-      you used ANSI escape codes to style terminal output with colors.
-      In particular, you used `ConsoleColor` and updated your CLI to
-      display errors in red, titles in blue, and instructions in yellow.
+      为了提高 CLI 的可读性和使用体验，
+      你使用 ANSI 转义码为终端输出加上颜色。
+      具体来说，你使用了 `ConsoleColor`，
+      并让 CLI 用红色显示错误、用蓝色显示标题、用黄色显示说明。
 </SummaryCard>
 
 ## Quiz
 
-<Quiz title="Check your understanding" id="advanced-oop" />
+## 测验
+
+<!-- title: Check your understanding -->
+<Quiz title="检查你的理解" id="advanced-oop" />
 
 ## Next lesson
+
+## 下一课
 
 In the next lesson, you'll learn how to
 further improve the `command_runner` package by
 polishing the `HelpCommand`, completing the `CommandRunner` class,
 adding the `onOutput` argument, and providing a complete example.
+
+在下一课中，你将进一步改进 `command_runner` package：
+打磨 `HelpCommand`、完成 `CommandRunner` 类、
+添加 `onOutput` 参数，并提供一个完整示例。

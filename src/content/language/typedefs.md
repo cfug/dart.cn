@@ -1,13 +1,18 @@
 ---
-title: Typedefs
-description: Learn about type aliases in Dart.
+# title: Typedefs
+title: 类型别名
+# description: Learn about type aliases in Dart.
+description: 了解 Dart 中的类型别名。
 showToc: false
 prevpage:
   url: /language/generics
-  title: Generics
+  # title: Generics
+  title: 泛型
 nextpage:
   url: /language/type-system
-  title: Type system
+  # title: Type system
+  title: 类型系统
+ai-translated: true
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore:[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore:[^\n]+\n/$1\n/g; / *\/\/\s+ignore:[^\n]+//g; /([A-Z]\w*)\d\b/$1/g"?>
@@ -17,6 +22,11 @@ it's declared with the keyword `typedef`—is
 a concise way to refer to a type.
 Here's an example of declaring and using a type alias named `IntList`:
 
+类型别名（常称为 **typedef**，
+因为它用关键字 `typedef` 声明）
+是引用一个类型的简洁方式。
+下面的例子声明并使用了名为 `IntList` 的类型别名：
+
 <?code-excerpt "misc/lib/language_tour/typedefs/misc.dart (int-list)"?>
 ```dart
 typedef IntList = List<int>;
@@ -24,6 +34,8 @@ IntList il = [1, 2, 3];
 ```
 
 A type alias can have type parameters:
+
+类型别名可以带有类型参数：
 
 <?code-excerpt "misc/lib/language_tour/typedefs/misc.dart (list-mapper)"?>
 ```dart
@@ -35,11 +47,19 @@ ListMapper<String> m2 = {}; // Same thing but shorter and clearer.
 :::version-note
 Before 2.13, typedefs were restricted to function types.
 Using the new typedefs requires a [language version][] of at least 2.13.
+
+在 2.13 之前，类型别名仅限于函数类型。
+使用新的类型别名要求 [语言版本][language version] 至少为 2.13。
+
 :::
 
 We recommend using [inline function types][] instead of typedefs for functions,
 in most situations.
 However, function typedefs can still be useful:
+
+在大多数情况下，我们建议函数使用 [内联函数类型][inline function types]，
+而不是 typedef。
+不过，函数 typedef 在有些时候仍然有用：
 
 <?code-excerpt "misc/lib/language_tour/typedefs/misc.dart (compare)"?>
 ```dart

@@ -1,7 +1,11 @@
 ---
-title: Automated publishing of packages to pub.dev
-shortTitle: Automated publishing
-description: Publish Dart packages to pub.dev directly from GitHub Actions.
+# title: Automated publishing of packages to pub.dev
+title: 自动把 package 发布到 pub.dev
+# shortTitle: Automated publishing
+shortTitle: 自动发布
+# description: Publish Dart packages to pub.dev directly from GitHub Actions.
+description: 直接从 GitHub Actions 把 Dart package 发布到 pub.dev。
+ai-translated: true
 ---
 
 You can automate publishing from:
@@ -9,38 +13,75 @@ You can automate publishing from:
 * [Google Cloud Build][9] or,
 * Anywhere else using a [GCP service account][2].
 
+你可以从这些地方自动发布：
+
+* [GitHub Actions](https://github.com/features/actions)，
+* [Google Cloud Build][9]，或者
+* 使用 [GCP 服务账号][2] 的任何其他地方。
+
 The following sections explain how automated publishing is configured, and
 how you can customize publishing flows in line with your preferences.
+
+下面各节说明如何配置自动发布，以及如何按你的偏好定制发布流程。
 
 When configuring automated publishing you don't need to create a long-lived
 secret that is copied into your automated deployment environment.
 Instead, authentication relies on temporary OpenID-Connect tokens signed by
 either GitHub Actions (See [OIDC for GitHub Actions][1]) or Google Cloud IAM.
 
+配置自动发布时，你不需要创建一份复制到自动部署环境中的长期密钥。
+身份验证依赖由 GitHub Actions（参见 [适用于 GitHub Actions 的 OIDC][1]）
+或 Google Cloud IAM 签名的临时 OpenID-Connect 令牌。
+
 You can use _exported service account keys_ for deployment
 environments where an identity service isn't present.
 Such exported service account keys are long-lived secrets, they might be easier
 to use in some environments, but also pose a larger risk if accidentally leaked.
 
+在没有身份服务的部署环境中，你可以使用 **导出的服务账号密钥**。
+这类导出的服务账号密钥是长期密钥，在某些环境中可能更好用，
+但一旦意外泄漏，风险也更大。
+
 :::note
 Today, you can only automate publishing of existing packages.
 To create a new package, you must publish the first version using
 `dart pub publish`.
+
+目前，你只能自动发布已有的 package。
+要创建新 package，必须用 `dart pub publish` 发布第一个版本。
 :::
 
 ## Publishing packages using GitHub Actions
 
+## 使用 GitHub Actions 发布 package
+
 You can configure automated publishing using GitHub Actions. This involves:
+
+你可以用 GitHub Actions 配置自动发布。这包括：
 
 * Enabling automated publishing on pub.dev, specifying:
 
+  在 pub.dev 上启用自动发布，并指定：
+
   * The GitHub repository and,
+
+    GitHub 仓库，以及
+
   * A _tag-pattern_ that must match to allow publishing.
 
+    一个必须匹配才允许发布的 **标签模式**。
+
 * Creating a GitHub Actions _workflow_ for publishing to pub.dev.
+
+  创建用于发布到 pub.dev 的 GitHub Actions **工作流**。
+
 * Pushing a _git tag_ for the version to be published.
 
+  为要发布的版本推送一个 **git 标签**。
+
 The following sections outline how to complete these steps.
+
+下面各节概述如何完成这些步骤。
 
 :::note
 Pub.dev only allows automated publishing from GitHub Actions when the
@@ -48,33 +89,69 @@ _workflow_ is triggered by pushing a git tag to GitHub.
 Pub.dev rejects publishing from GitHub Actions triggered without a tag.
 This ensures that new versions cannot be published by events that should
 never trigger publishing.
+
+只有当 **工作流** 是由向 GitHub 推送 git 标签触发时，
+pub.dev 才允许从 GitHub Actions 自动发布。
+pub.dev 会拒绝没有标签触发的 GitHub Actions 发布。
+这样可以确保本不该触发发布的事件无法发布新版本。
 :::
 
 ### Configuring automated publishing from GitHub Actions on pub.dev
 
+### 在 pub.dev 上配置从 GitHub Actions 自动发布
+
 To enable automated publication from GitHub Actions to `pub.dev`, you must be:
 
+要从 GitHub Actions 向 `pub.dev` 启用自动发布，你必须是：
+
 * An _uploader_ on the package, or,
+
+  该 package 的 **上传者**，或者
+
 * An _admin_ of the publisher (if the package is owned by a publisher).
+
+  发布者的 **管理员**（如果 package 归某个发布者所有）。
 
 If you have sufficient permission, you can enable automated publishing by:
 
+如果权限足够，可以按下面的步骤启用自动发布：
+
 1. Navigating to the **Admin** tab (`pub.dev/packages/<package>/admin`).
+
+   打开 **Admin** 标签页（`pub.dev/packages/<package>/admin`）。
+
 1. Find the **Automated publishing** section.
+
+   找到 **Automated publishing** 部分。
+
 1. Click **Enable publishing from GitHub Actions**, this prompts you to
    specify:
 
+   点击 **Enable publishing from GitHub Actions**，系统会提示你指定：
+
    * A repository (`<organization>/<repository>`, example: `dart-lang/pana`),
+
+     一个仓库（`<organization>/<repository>`，例如 `dart-lang/pana`），
+
    * A _tag-pattern_ (a string containing `{% raw %}{{version}}{% endraw %}`).
+
+     一个 **标签模式**（包含 `{% raw %}{{version}}{% endraw %}` 的字符串）。
 
 The _repository_ is the `<organization>/<repository>` on GitHub.
 For example, if your repository is
 `{{site.repo.dart.org}}/pana` you must specify `dart-lang/pana` in the
 repository field.
 
+**仓库** 是 GitHub 上的 `<organization>/<repository>`。
+例如，如果你的仓库是 `{{site.repo.dart.org}}/pana`，
+必须在仓库字段中填写 `dart-lang/pana`。
+
 The _tag pattern_ is a string that must contain `{% raw %}{{version}}{% endraw %}`.
 Only GitHub Actions triggered by a push of a tag that matches this
 _tag pattern_ will be allowed to publish your package.
+
+**标签模式** 是一个必须包含 `{% raw %}{{version}}{% endraw %}` 的字符串。
+只有由推送与该 **标签模式** 匹配的标签所触发的 GitHub Actions，才被允许发布你的 package。
 
 ![Configuration of publishing from GitHub Actions on pub.dev](/assets/img/tools/pub/pub-dev-gh-setup.png)
 
@@ -83,16 +160,31 @@ GitHub Actions (triggered by `git tag v1.2.3 && git push v1.2.3`) to publish
 version `1.2.3` of your package. Thus, it's also important that the `version` key in
 `pubspec.yaml` matches this version number.
 
+**示例：** 像 `v{% raw %}{{version}}{% endraw %}` 这样的 **标签模式**，
+允许 GitHub Actions（由 `git tag v1.2.3 && git push v1.2.3` 触发）
+发布你的 package 的 `1.2.3` 版本。
+因此，`pubspec.yaml` 中的 `version` 键与这个版本号一致也很重要。
+
 If your repository contains multiple packages, give each a separate
 _tag-pattern_. Consider using a _tag-pattern_ like
 `my_package_name-v{% raw %}{{version}}{% endraw %}` for a package
 named `my_package_name`.
 
+如果仓库包含多个 package，请为每个 package 单独设置 **标签模式**。
+对于名为 `my_package_name` 的 package，可以考虑使用
+`my_package_name-v{% raw %}{{version}}{% endraw %}` 这样的 **标签模式**。
+
 ### Configuring a GitHub Action workflow for publishing to pub.dev
+
+### 配置用于发布到 pub.dev 的 GitHub Action 工作流
 
 When automated publishing from GitHub Actions is enabled on pub.dev,
 you can create a GitHub Actions workflow for publishing. This is done by
 creating a `.github/workflows/publish.yml` file as follows:
+
+在 pub.dev 上启用从 GitHub Actions 自动发布之后，
+你可以创建用于发布的 GitHub Actions 工作流。
+做法是按下面这样创建 `.github/workflows/publish.yml` 文件：
 
 ```yaml
 # .github/workflows/publish.yml
@@ -126,11 +218,22 @@ use a per-package _tag pattern_ like
 `my_package_name-v{% raw %}{{version}}{% endraw %}` and
 create a separate workflow file for each package.
 
+请确保 `on.push.tags` 中的模式与 pub.dev 上指定的 **标签模式** 一致。
+否则 GitHub Action 工作流不会工作。
+如果从同一个仓库发布多个 package，请为每个 package 使用单独的 **标签模式**，
+例如 `my_package_name-v{% raw %}{{version}}{% endraw %}`，
+并为每个 package 创建单独的工作流文件。
+
 The workflow file above uses
 `dart-lang/setup-dart/.github/workflows/publish.yml` to publish the package.
 This is a [reusable workflow][3] that allows the Dart team to maintain
 the publishing logic and enables pub.dev to know how the package was published.
 Using this _reusable workflow_ is strongly encouraged.
+
+上面的工作流文件使用 `dart-lang/setup-dart/.github/workflows/publish.yml`
+来发布 package。这是一个 [可复用工作流][3]，
+让 Dart 团队可以维护发布逻辑，也让 pub.dev 知道 package 是如何发布的。
+强烈建议使用这个 **可复用工作流**。
 
 If you need generated code in your package, then it is preferable to check this
 generated code into your repository.
@@ -138,6 +241,10 @@ This simplifies verifying that the files published on pub.dev match
 the files from your repository. If checking generated or built artifact into
 your repository is not reasonable, you can create a custom workflow along
 the lines of:
+
+如果你的 package 需要生成的代码，最好把这些生成的代码签入仓库。
+这样更容易验证发布到 pub.dev 的文件与仓库中的文件一致。
+如果把生成或构建产物签入仓库并不合理，你可以按类似下面的方式创建自定义工作流：
 
 ```yaml
 # .github/workflows/publish.yml
@@ -170,10 +277,18 @@ The workflow authenticates to `pub.dev` using a temporary
 `dart-lang/setup-dart` step.
 To publish to pub.dev, subsequent steps can run `dart pub publish --force`.
 
+工作流使用临时的 [GitHub 签名的 OIDC 令牌][1] 向 `pub.dev` 进行身份验证，
+该令牌在 `dart-lang/setup-dart` 步骤中创建并配置。
+要发布到 pub.dev，后续步骤可以运行 `dart pub publish --force`。
+
 :::note
 At this point, anyone with push access to your repository can publish new versions
 of the package. Consider using [tag protection rules][sec-gh-tag-protection] or
 [GitHub deployment Environments][sec-gh-environment] to limit who can publish.
+
+到这一步，任何对你的仓库有推送权限的人都可以发布 package 的新版本。
+可以考虑使用 [标签保护规则][sec-gh-tag-protection] 或
+[GitHub 部署环境][sec-gh-environment] 来限制谁可以发布。
 :::
 
 [sec-gh-tag-protection]: #hardening-security-with-tag-protection-rules-on-github
@@ -181,9 +296,15 @@ of the package. Consider using [tag protection rules][sec-gh-tag-protection] or
 
 ### Triggering automated publishing from GitHub Actions
 
+### 从 GitHub Actions 触发自动发布
+
 After you've configured automated publishing on `pub.dev` and created a
 GitHub Actions workflow, you can publish a new version of your package.
 To publish, push a _git tag_ matching the configured _tag pattern_.
+
+在 `pub.dev` 上配置好自动发布并创建 GitHub Actions 工作流之后，
+你就可以发布 package 的新版本。
+要发布，请推送一个与所配置的 **标签模式** 匹配的 **git 标签**。
 
 ```console
 $ cat pubspec.yaml
@@ -204,14 +325,24 @@ $ git push origin v1.2.3  # triggers the action that publishes my package.
 Once pushed, review the workflow logs at
 `https://github.com/<organization>/<repository>/actions`.
 
+推送之后，请在 `https://github.com/<organization>/<repository>/actions`
+查看工作流日志。
+
 If the Action didn't trigger, check that the pattern configured in
 `.github/workflows/publish.yml` matches the pushed _git tag_.
 If the Action failed, the logs might contain clues as to why it failed.
+
+如果 Action 没有触发，请检查 `.github/workflows/publish.yml` 中配置的模式
+是否与推送的 **git 标签** 匹配。
+如果 Action 失败了，日志里可能有失败原因的线索。
 
 Once published, you can see the publication event in the `audit-log` on
 `pub.dev`.
 The `audit-log` entry should contain a link to the GitHub Action run that
 published the package version.
+
+发布之后，你可以在 `pub.dev` 的 `audit-log` 中看到这次发布事件。
+`audit-log` 条目应包含发布该 package 版本的 GitHub Action 运行的链接。
 
 ![Audit log after publishing from GitHub Actions](/assets/img/tools/pub/audit-log-pub-gh.png)
 
@@ -219,40 +350,82 @@ If you don't like using the `git` CLI to create tags, you can create _releases_
 on GitHub from `https://github.com/<organization>/<repository>/releases/new`.
 To learn more, check out [managing releases in a repository][4] from GitHub.
 
+如果你不想用 `git` CLI 创建标签，可以在
+`https://github.com/<organization>/<repository>/releases/new`
+上创建 GitHub **发布**。
+要了解更多，请参阅 GitHub 的 [管理仓库中的发布][4]。
+
 ### Hardening security with tag protection rules on GitHub
+
+### 用 GitHub 上的标签保护规则加强安全
 
 Configuring automated publishing from GitHub Actions allows anyone who can push
 a tag to your repository to trigger publishing to pub.dev.
 You can restrict who can push tags to your repository using
 [tag protection rules][5] on GitHub.
 
+配置从 GitHub Actions 自动发布之后，任何能向你的仓库推送标签的人
+都可以触发向 pub.dev 的发布。
+你可以用 GitHub 上的 [标签保护规则][5] 限制谁可以向仓库推送标签。
+
 By limiting who can create tags matching your _tag pattern_, you can limit who
 can publish the package.
+
+通过限制谁能创建与你的 **标签模式** 匹配的标签，你就可以限制谁能发布该 package。
 
 At this time, the [tag protection rules][5] lack flexibility. You might want to
 restrict who can trigger publishing using GitHub Deployment Environments,
 as outlined in the next section.
 
+目前，[标签保护规则][5] 还不够灵活。你可能想用 GitHub 部署环境来限制谁能触发发布，
+如下一节所述。
+
 ### Hardening security with GitHub Deployment Environments
+
+### 用 GitHub 部署环境加强安全
 
 When configuring automated publishing from GitHub Actions on pub.dev, you can 
 require a [GitHub Actions environment][6].
 To require a _GitHub Actions environment_ for publishing you must:
 
+在 pub.dev 上配置从 GitHub Actions 自动发布时，你可以要求使用
+[GitHub Actions 环境][6]。
+要让发布必须使用 **GitHub Actions 环境**，你必须：
+
 1. Navigate to the **Admin** tab (`pub.dev/packages/<package>/admin`).
+
+   打开 **Admin** 标签页（`pub.dev/packages/<package>/admin`）。
+
 1. Find the **Automated publishing** section.
+
+   找到 **Automated publishing** 部分。
+
 1. Click **Require GitHub Actions environment**.
+
+   点击 **Require GitHub Actions environment**。
+
 1. Specify an **Environment** name, (`pub.dev` is typically a good name)
+
+   指定一个 **Environment** 名称（`pub.dev` 通常是个好名字）
 
 ![Configure pub.dev to require a GitHub deployment environment](/assets/img/tools/pub/pub-dev-gh-env-setup.png)
 
 When an environment is required on pub.dev, GitHub Actions won't be able to
 publish unless they have `environment: pub.dev`. Thus, you must:
 
+当 pub.dev 要求某个环境时，GitHub Actions 除非带有 `environment: pub.dev`，
+否则无法发布。因此你必须：
+
 1. [Create an _environment_][8] with the same name on GitHub
    (typically `pub.dev`)
+
+   在 GitHub 上 [创建一个 **环境**][8]，使用相同的名称（通常是 `pub.dev`）
+
 1. Alter your `.github/workflows/publish.yml` workflow file to specify
    `environment: pub.dev`, as follows:
+
+   修改 `.github/workflows/publish.yml` 工作流文件，按下面这样指定
+   `environment: pub.dev`：
 
 ```yaml
 # .github/workflows/publish.yml
@@ -279,30 +452,62 @@ used for authentication with pub.dev. Thus, a user with permission to push to
 your repository cannot circumvent [environment protection rules][7] by modifying
 the workflow file.
 
+**环境** 会反映在用于向 pub.dev 进行身份验证的临时 [GitHub 签名的 OIDC 令牌][1] 中。
+因此，有权向你的仓库推送的用户无法通过修改工作流文件来绕过 [环境保护规则][7]。
+
 In GitHub repository settings, you can use [environment protection rules][7] to
 configure _required reviewers_. If you configure this option, GitHub prevents
 actions with the environment from running until one of the
 _required reviewers_ have approved the run.
 
+在 GitHub 仓库设置中，你可以用 [环境保护规则][7] 配置 **必需的审核者**。
+如果配置了这个选项，GitHub 会阻止带有该环境的 action 运行，
+直到其中一位 **必需的审核者** 批准这次运行。
+
 ![GitHub Action waiting for deployment review](/assets/img/tools/pub/gh-pending-review.png)
 
 ## Publishing from Google Cloud Build
 
+## 从 Google Cloud Build 发布
+
 You can configure automated publishing from [Google Cloud Build][9]. This
 involves:
 
+你可以从 [Google Cloud Build][9] 配置自动发布。这包括：
+
 * Register a Google Cloud Project (or using an existing project),
+
+  注册一个 Google Cloud 项目（或使用已有项目），
+
 * Create a [service account][10] for publishing to pub.dev,
+
+  创建一个用于发布到 pub.dev 的 [服务账号][10]，
+
 * Enable automated publishing in the admin tab for the package on pub.dev,
   specifying the email of the service account created for publishing.
+
+  在 pub.dev 上该 package 的管理标签页中启用自动发布，
+  并指定为发布创建的服务账号邮箱。
+
 * Grant the default Cloud Build service account permission to impersonate the
   service account created for publishing.
+
+  授予默认的 Cloud Build 服务账号权限，让它可以模拟为发布创建的服务账号。
+
 * Create a `cloudbuild.yaml` file that obtains a temporary OIDC `id_token`
   and uses it for publishing to pub.dev
+
+  创建 `cloudbuild.yaml` 文件，获取临时的 OIDC `id_token`，并用它发布到 pub.dev
+
 * Configure a Cloud Build trigger, for running the steps in `cloudbuild.yaml`
   in your project on Google Cloud Build.
 
+  配置一个 Cloud Build 触发器，以便在 Google Cloud Build 上的项目中
+  运行 `cloudbuild.yaml` 里的步骤。
+
 The following sections outline how to complete these steps.
+
+下面各节概述如何完成这些步骤。
 
 :::note
 When you enable automated publishing from a _service account_ you must carefully
@@ -310,16 +515,30 @@ review who has the ability to impersonate this service account, either by
 calling through APIs, exporting service account keys, or through changing
 IAM permission in the cloud project.
 To learn more, check out [managing service account impersonation][11].
+
+启用从 **服务账号** 自动发布时，必须仔细审查谁能够模拟这个服务账号，
+无论是通过 API 调用、导出服务账号密钥，还是通过更改云项目中的 IAM 权限。
+要了解更多，请参阅 [管理服务账号模拟][11]。
 :::
 
 ### Creating a service account for publishing
+
+### 创建用于发布的服务账号
 
 For publishing to pub.dev you are going to create a _service account_ that is
 granted permission to publish your package on pub.dev. You are then going to
 grant Cloud Build permission to impersonate this service account.
 
+为了发布到 pub.dev，你将创建一个 **服务账号**，并授予它在 pub.dev 上发布你的 package 的权限。
+然后你将授予 Cloud Build 权限来模拟这个服务账号。
+
 1. [Create a cloud project][12], if you don't have an existing project.
+
+   如果还没有项目，请 [创建一个云项目][12]。
+
 1. Create a _service account_ as follows:
+
+   按下面的方式创建一个 **服务账号**：
 
     ```console
     $ gcloud iam service-accounts create pub-dev \
@@ -330,15 +549,32 @@ grant Cloud Build permission to impersonate this service account.
     This creates a service account named
     `pub-dev@$PROJECT_ID.iam.gserviceaccount.com`.
 
+    这会创建一个名为 `pub-dev@$PROJECT_ID.iam.gserviceaccount.com` 的服务账号。
+
 1. Grant the service account permission to publish your package.
+
+   授予该服务账号发布你的 package 的权限。
 
    To complete this step, you must have _uploader_ permission on the package or
    be an _admin_ of the publisher that owns the package.
 
+   要完成这一步，你必须拥有该 package 的 **上传者** 权限，
+   或者是拥有该 package 的发布者的 **管理员**。
+
    a. Navigate to the **Admin** tab (`pub.dev/packages/<package>/admin`).
+
+      打开 **Admin** 标签页（`pub.dev/packages/<package>/admin`）。
+
    a. Click **Enable publishing with Google Cloud Service account**.
+
+      点击 **Enable publishing with Google Cloud Service account**。
+
    a. Type the email of the service account into the **Service account email** field.
       You created this account in the previous step:
+      `pub-dev@$PROJECT_ID.iam.gserviceaccount.com`
+
+      把服务账号的邮箱填入 **Service account email** 字段。
+      你在上一步创建了这个账号：
       `pub-dev@$PROJECT_ID.iam.gserviceaccount.com`
 
 ![Configuration that allows service account to publish on pub.dev](/assets/img/tools/pub/pub-dev-gcb-config.png)
