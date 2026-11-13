@@ -6,6 +6,7 @@ shortTitle: 命令行和服务端应用
 # description: All things relating to command-line and server apps.
 description: 与命令行和服务端应用有关的内容。
 showToc: false
+ai-translated: true
 ---
 
 This page points to tools and documentation
@@ -84,20 +85,38 @@ For additional options, see [#server packages on pub.dev][server-pkgs].
 
 ## Cloud Functions for Firebase
 
+## 用于 Firebase 的 Cloud Functions
+
 Write Cloud Functions for Firebase using Dart to enable full-stack development,
 reuse code between your client and backend, and respond to Firebase triggers.
 To get started, see the
 [Cloud Functions for Firebase documentation][firebase-docs].
 
+使用 Dart 编写用于 Firebase 的 Cloud Functions，
+实现全栈开发，在客户端和后端之间复用代码，
+并响应 Firebase 触发器。
+入门请参阅
+[Cloud Functions for Firebase 文档][firebase-docs]。
+
 [Firebase Functions package]({{site.pub-pkg}}/firebase_functions)
 : The core package to write backend functions and APIs in Dart.
+
+[Firebase Functions package]({{site.pub-pkg}}/firebase_functions)：
+  用 Dart 编写后端函数和 API 的核心 package。
 
 [Firebase Admin SDK package]({{site.pub-pkg}}/firebase_admin_sdk)
 : Access Firebase services securely from backend servers or Cloud Functions.
   Use it to manage data, send notifications, or verify auth tokens.
 
+[Firebase Admin SDK package]({{site.pub-pkg}}/firebase_admin_sdk)：
+  从后端服务器或 Cloud Functions 安全地访问 Firebase 服务。
+  可以用它管理数据、发送通知或验证身份认证令牌。
+
 [Firebase Functions for Dart repository][firebase-repo]
 : GitHub repository with quickstart guides, examples, and source code.
+
+[Firebase Functions for Dart repository][firebase-repo]：
+  包含快速入门指南、示例和源代码的 GitHub 仓库。
 
 [firebase-docs]: https://firebase.google.com/docs/functions/start-dart
 [firebase-repo]: https://github.com/firebase/firebase-functions-dart

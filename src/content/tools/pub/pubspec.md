@@ -512,6 +512,8 @@ platforms:
 Flutter plugins platform support is by default derived from the
 [plugin declarations][].
 
+Flutter 插件的平台支持默认来自[插件声明][plugin declarations]。
+
 If there is a discrepancy between the plugin declaration and the actual platform
 support, a top-level `platforms` declaration can still be used and takes
 precedence over the Flutter plugin declaration when deciding platform support.
@@ -597,6 +599,11 @@ you can tell pub not to search for leaks in certain files,
 by creating an allowlist
 using [`gitignore` patterns][] under
 `false_secrets` in the pubspec.
+
+泄漏检测并不完美。
+为了避免误报，你可以在 pubspec 的 `false_secrets` 下，
+用 [`gitignore` 模式][`gitignore` patterns]创建一份允许列表，
+告诉 pub 不要在某些文件中搜索泄漏。
 
 [`gitignore` patterns]: https://git-scm.com/docs/gitignore#_pattern_format
 

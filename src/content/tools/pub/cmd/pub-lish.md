@@ -1,7 +1,9 @@
 ---
-title: dart pub publish
+# title: dart pub publish
+title: "dart pub publish 命令"
 # description: Use dart pub publish to publish your Dart package to the pub.dev site.
 description: 使用 dart pub publish 命令将你的 Dart Package 发布到 pub.dev 网站。
+ai-translated: true
 ---
 
 _Publish_ is one of the commands of the [pub tool](/tools/pub/cmd).
@@ -62,10 +64,16 @@ either don't use `--force`, or use `--dry-run` first.
 
 ### `--skip-validation`
 
+### `--skip-validation` 选项
+
 Publishes without going through
 the client-side validation process or resolving dependencies.
 This is useful for advanced users who know why the validation fails and
 wish to side step a particular issue.
+
+发布时跳过客户端校验流程，也不解析依赖。
+对于知道校验为何失败、
+又想绕过某个特定问题的高级用户来说，这很有用。
 
 **Example:** When publishing to pub.dev it might take a few minutes for
 a newly published package to become available.
@@ -76,9 +84,22 @@ publishing the first and the second, or
 use `--skip-validation` to publish the second package immediately,
 by side-stepping client-side validation.
 
+**示例：**发布到 pub.dev 后，
+新发布的 package 可能需要几分钟才能可用。
+因此，如果你要发布两个相互依赖的 package，
+其中第二个依赖第一个，
+你可以在发布第一个和第二个之间等待几分钟，
+或者使用 `--skip-validation` 绕过客户端校验，
+立即发布第二个 package。
+
 {% render 'pub-problems.md' %}
 
 ## In a workspace
 
+## 在工作区中
+
 In a [Pub workspace](/tools/pub/workspaces) `dart pub publish` publishes
 the package in the current directory.
+
+在 [Pub 工作区](/tools/pub/workspaces)中，`dart pub publish`
+发布的是当前目录下的 package。

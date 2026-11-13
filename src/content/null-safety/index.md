@@ -5,26 +5,43 @@ title: 健全的空安全
 breadcrumb: 空安全
 # description: An introduction to null safety in Dart.
 description: Dart 空安全简介
+ai-translated: true
 ---
 
 The Dart language enforces sound null safety,
 making it impossible to unintentionally access a member on a `null` value.
 
+Dart 语言强制执行健全的空安全（null safety），
+让你不可能在无意间访问 `null` 值上的成员。
+
 In Dart, types are non-nullable by default.
 Variables of non-nullable types must be initialized
 and can only be assigned non-null values.
+
+在 Dart 中，类型默认是不可空（non-nullable）的。
+不可空类型的变量必须初始化，
+并且只能被赋予非空的值。
 
 The Dart analyzer and compilers catch unsafe usage
 of potentially `null` values at edit time,
 turning what would be **runtime errors** in other languages
 into **analysis errors** you can fix before deploying.
 
+Dart 分析器和编译器会在编辑阶段捕获
+对可能为 `null` 的值的不安全使用，
+把其他语言中的**运行时错误**
+变成你可以在部署前修复的**分析错误**。
+
 <a id="creating-variables" aria-hidden="true"></a>
 <a id="introduction-through-examples" aria-hidden="true"></a>
 
 ## Examples
 
+## 示例
+
 None of the variables in the following code can be `null`:
+
+下面代码中的变量都不可能为 `null`：
 
 ```dart
 // None of these can ever be null.
@@ -36,6 +53,9 @@ final b = Foo();
 To indicate that a variable can have the value `null`,
 add `?` to its type declaration:
 
+要表示一个变量可以取值 `null`，
+在它的类型声明后加上 `?`：
+
 <a id="creating-variables"></a>
 
 ```dart
@@ -44,6 +64,10 @@ int? aNullableInt = null;
 
 - For interactive examples, try the [Dart cheatsheet][].
 - To learn more about null safety, check out
+
+  - 想试试交互式示例，请查看 [Dart 速查表][Dart cheatsheet]。
+  - 想深入了解空安全，请阅读
+    [理解空安全][Understanding null safety]。
   [Understanding null safety][].
 
 [Dart cheatsheet]: /resources/dart-cheatsheet

@@ -6,6 +6,7 @@ shortTitle: 与 C 进行交互
 # description: >-
 #   To use C code in your Dart program, use the dart:ffi library.
 description: 在你的 Dart 程序中使用 dart:ffi 库调用 C 语言的代码。
+ai-translated: true
 ---
 
 Dart mobile, command-line, and server apps
@@ -313,12 +314,21 @@ The `dart:ffi` library provides multiple types that implement [`NativeType`][]
 and represent native types in C. You can instantiate some native types.
 Some other native types can be used only as markers in type signatures.
 
+`dart:ffi` 库提供了多个实现 [`NativeType`][] 的类型，
+用来表示 C 中的原生类型。其中一些原生类型可以被实例化，
+另一些则只能用作类型签名中的标记（marker）。
+
 [`NativeType`]: {{site.dart-api}}/dart-ffi/NativeType-class.html
 
 ### Can instantiate these type signature markers
 
+### 可实例化的类型签名标记
+
 The following native types can be used as markers in type signatures.
 They or their subtypes _can_ be instantiated in Dart code.
+
+以下原生类型可以用作类型签名中的标记。
+它们或它们的子类型_可以_在 Dart 代码中实例化。
 
 | **Dart type** | **Description**                                                  |
 | ------------- | ---------------------------------------------------------------- |
@@ -336,9 +346,15 @@ They or their subtypes _can_ be instantiated in Dart code.
 
 ### Serve as type signature markers only
 
+### 仅用作类型签名标记
+
 The following list shows which platform-agnostic native types
 that serve as markers in type signatures.
 They _can't_ be instantiated in Dart code.
+
+下面的列表展示了哪些与平台无关的原生类型
+用作类型签名中的标记。
+它们_不能_在 Dart 代码中实例化。
 
 | **Dart type**      | **Description**                                   |
 | ------------------ | ------------------------------------------------- |
@@ -363,6 +379,11 @@ There are also many [ABI][] specific marker native types
 that extend [AbiSpecificInteger][].
 To learn how these types map on specific platforms,
 consult the API documentation linked in the following table.
+
+还有许多特定于 [ABI][] 的标记原生类型，
+它们继承自 [AbiSpecificInteger][]。
+想了解这些类型在具体平台上如何映射，
+请查阅下表中链接的 API 文档。
 
 | **Dart type**          | **Description**                                  |
 | ---------------------- | ------------------------------------------------ |
@@ -445,9 +466,16 @@ and [`DefaultAsset`][].
 
 ## Build and bundle native code {: #build-hooks }
 
+## 构建并打包原生代码
+
 Dart _build hooks_ (formerly known as _native assets_)
 enable packages to contain native code assets that are
 transparently built, bundled, and made available at runtime.
 For more information, see [Hooks][].
+
+Dart 的_构建钩子_（build hooks，旧称_原生资源_ native assets）
+让 package 可以包含原生代码资源，
+这些资源会被透明地构建、打包，并在运行时可用。
+更多信息请参见[钩子][Hooks]。
 
 [Hooks]: /tools/hooks
