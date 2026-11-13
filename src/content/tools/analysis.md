@@ -7,6 +7,7 @@ shortTitle: 静态分析
 #   Use an analysis options file and code comments to customize static analysis.
 description: 通过对分析文件和代码注释来自定义静态分析的内容。
 bodyClass: highlight-diagnostics
+ai-translated: true
 ---
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
@@ -484,6 +485,9 @@ check out the [Including shared options](#including-shared-options) section.
 ### 启用单条规则
 
 To enable a single linter rule, add `linter:` to the analysis options file
+
+要了解更多关于引用选项文件的信息，
+请参阅 [引用共享选项](#including-shared-options) 一节。
 as a top-level key,
 followed by `rules:` as a second-level key.
 On subsequent lines, specify the rules that you want to apply,
@@ -563,9 +567,15 @@ You can use the other syntax for rules in an included file.
 
 ## Including shared options
 
+## 引用共享选项
+
 An analysis options file can include options which are specified in
 another options file, or even a list of other options files.
 You can specify such files using the top-level `include:` field:
+
+分析选项文件可以引用另一个选项文件中指定的选项，
+甚至可以引用一组其他选项文件。
+你可以使用顶层的 `include:` 字段来指定这些文件：
 
 ```yaml title="analysis_options.yaml"
 include: package:flutter_lints/recommended.yaml
@@ -574,6 +584,9 @@ include: package:flutter_lints/recommended.yaml
 An included options file can be specified with a
 `package:` URI or a relative path.
 To include multiple analysis options files, use a list:
+
+被引用的选项文件可以用 `package:` URI 或相对路径来指定。
+要引用多个分析选项文件，请使用列表：
 
 ```yaml title="analysis_options.yaml"
 include:
@@ -584,12 +597,19 @@ include:
 When including multiple files,
 the analyzer merges options in list order:
 
+引用多个文件时，分析器会按列表顺序合并选项：
+
 1. The first included file is evaluated,
    including any files it recursively includes.
 1. Each subsequent included file is applied in order,
    adding new options or overriding conflicting ones.
 1. Finally, options defined directly in the current
    `analysis_options.yaml` file override any included options.
+
+   首先计算第一个被引用的文件，包括它递归引用的任何文件。
+   然后按顺序应用后续每个被引用的文件，添加新选项或覆盖冲突的选项。
+   最后，直接在当前 `analysis_options.yaml` 文件中定义的选项
+   会覆盖任何被引用的选项。
 
 When merging options,
 the analyzer combines compatible settings rather than
@@ -598,7 +618,14 @@ For example, enabling an individual linter rule in a later file
 adds to or overrides rules from earlier files
 without discarding the rest of the included ruleset.
 
+合并选项时，分析器会组合兼容的设置，而不是替换整个部分。
+例如，在后面的文件中启用某条 linter 规则，
+会添加或覆盖前面文件中的规则，
+而不会丢弃被引用规则集的其余部分。
+
 For example, given the following options files:
+
+例如，给定以下选项文件：
 
 ```yaml title="three.yaml"
 include: two.yaml
@@ -606,6 +633,8 @@ include: two.yaml
 ```
 
 And a final options file that includes these:
+
+以及一个引用了这些文件的最终选项文件：
 
 ```yaml title="analysis_options.yaml"
 include:
@@ -617,8 +646,13 @@ include:
 Then the analyzer applies options from `one.yaml`, then `two.yaml`,
 then `three.yaml`, and finally `analysis_options.yaml`.
 
+那么分析器会先应用 `one.yaml` 的选项，再应用 `two.yaml`，
+然后是 `three.yaml`，最后是 `analysis_options.yaml`。
+
 
 ## Enabling analyzer plugins (experimental) {:#plugins}
+
+## 启用分析器插件（实验性）
 
 :::note
 This is for the legacy plugin system, which will be 
@@ -633,25 +667,48 @@ You can enable only one plugin per `analysis_options.yaml` file.
 Enabling a legacy analyzer plugin increases how much memory 
 the analyzer uses.
 
+分析器对旧版插件提供实验性支持。
+这些插件与分析器集成，以添加新的诊断、快速修复和自定义代码补全等功能。
+每个 `analysis_options.yaml` 文件只能启用一个插件。
+启用旧版分析器插件会增加分析器的内存占用。
+
+
+这是针对旧版插件系统的，它将在未来的版本中弃用。
+新的开发请使用新的 [分析器插件][analyzer plugin] 系统。
 Don't use legacy analyzer plugins if your situation meets
 either of the following conditions:
+
+如果你的情况满足以下任一条件，请不要使用旧版分析器插件：
 
 * You use a development machine with less than 16 GB of memory.
 * You use a mono-repo with more than 10 `pubspec.yaml` and
   `analysis_options.yaml` files.
+
+  你的开发机内存小于 16 GB。
+  你使用的 monorepo 中有超过 10 个 `pubspec.yaml` 和
+  `analysis_options.yaml` 文件。
   
 You can find a few legacy analyzer plugins on
 [pub.dev]({{site.pub-pkg}}?q=dependency%3Aanalyzer_plugin).
 
+你可以在 [pub.dev]({{site.pub-pkg}}?q=dependency%3Aanalyzer_plugin)
+上找到一些旧版分析器插件。
+
 To enable a legacy plugin:
 
+要启用旧版插件：
+
  1. Add the package containing the plugin as a dev dependency.
+
+   把包含插件的 package 添加为开发依赖。
 
     ```console
     $ dart pub add --dev <your_favorite_analyzer_plugin_package>
     ```
 
  2. Edit your `analysis_options.yaml` file to enable the plugin.
+
+   编辑你的 `analysis_options.yaml` 文件以启用插件。
 
     ```yaml
     analyzer:
@@ -661,6 +718,9 @@ To enable a legacy plugin:
 
     To indicate specific plugin functionality to enable,
     such as new diagnostics, additional setup might be required.
+
+    要指明需启用的具体插件功能（例如新的诊断），
+    可能还需要额外的设置。
 
 [analyzer plugin]: /tools/analyzer-plugins
 
@@ -816,11 +876,19 @@ int x = ''; // ignore: invalid_assignment
 
 ### Suppressing diagnostics in a pubspec file
 
+### 在 pubspec 文件中忽略诊断
+
 If you need to suppress a non-error diagnostic from the analyzer
 in a `pubspec.yaml` file, add an `ignore` comment above the affected line.
 
+如果你需要在 `pubspec.yaml` 文件中忽略分析器的非错误诊断，
+请在受影响的行上方添加一条 `ignore` 注释。
+
 The following example ignores the [`sort_pub_dependencies`][] lint
 as it wants to put the `flutter` dependency first:
+
+下面的例子忽略了 [`sort_pub_dependencies`][] lint，
+因为它想把 `flutter` 依赖放在最前面：
 
 ```yaml title="pubspec.yaml".
 dependencies:
@@ -844,6 +912,10 @@ the ignored diagnostic will still be triggered.
 ## 自定义 analysis 规则
 
 Each [analyzer diagnostic][analyzer diagnostics] and
+
+在 `pubspec.yaml` 文件中支持 ignore 注释是从 Dart 3.3 开始的。
+如果你使用的是 Dart 3.2 或更早版本，
+被忽略的诊断仍会触发。
 [linter rule][linter rules] has a default severity.
 You can use the analysis options file to change
 the severity of individual rules, or to always ignore some rules.
@@ -931,32 +1003,60 @@ analyzer:
 
 ## Configuring `dart format`
 
+## 配置 `dart format`
+
 You can configure the behavior of [`dart format`][] by adding a
 `formatter` section to the analysis options file.
 
+你可以通过在分析选项文件中添加 `formatter` 部分，
+来配置 [`dart format`][] 的行为。
+
 ### Configurable options
 
+### 可配置的选项
+
 #### `page_width`
+
+#### `page_width` 选项
 
 You can specify your preferred `page_width` (line length).
 The default is 80 characters.
 
+你可以指定首选的 `page_width`（行长度）。
+默认值是 80 个字符。
+
 For more information, read [Configuring formatter page width][].
 
+更多信息请阅读 [配置格式化器页面宽度][Configuring formatter page width]。
+
 #### `trailing_commas`
+
+#### `trailing_commas` 选项
 
 You can configure how the formatter handles trailing commas
 in argument and parameter lists
 using the `trailing_commas` option.
 It accepts one of two values:
 
+你可以使用 `trailing_commas` 选项，
+配置格式化器如何处理实参和形参列表中的尾随逗号。
+它接受两个值之一：
+
 `automate` (default)
 : The formatter adds and removes trailing commas based on
   its decision to split the surrounding construct.
 
+`automate`（默认）
+: 格式化器会根据它对周围结构是否拆分的判断，
+  来添加或移除尾随逗号。
+
 `preserve`
 : A trailing comma forces the surrounding construct to split.
   The formatter adds a trailing comma when it splits a construct but does not remove one.
+
+`preserve`
+: 尾随逗号会强制拆分周围的结构。
+  格式化器在拆分结构时会添加尾随逗号，但不会移除它。
 
 ```yaml title="analysis_options.yaml"
 formatter:
@@ -976,6 +1076,11 @@ Use the following resources to learn more about static analysis in Dart:
 * [Dart linter rules][linter rules]
 * [analyzer package]({{site.pub-pkg}}/analyzer)
 * [Troubleshoot analyzer performance][]
+
+  [Dart 类型系统][type-system]
+  [Dart linter 规则][linter rules]
+  [analyzer 包]({{site.pub-pkg}}/analyzer)
+  [排查分析器性能问题][Troubleshoot analyzer performance]
 
 [invalid_null_aware_operator]: /tools/diagnostic-messages#invalid_null_aware_operator
 [analyzer diagnostics]: /tools/diagnostic-messages

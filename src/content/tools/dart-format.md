@@ -3,6 +3,7 @@
 title: dart format 命令（用于格式化 Dart 代码的命令）
 # description: Command-line tool for formatting Dart source code.
 description: 用于格式化 Dart 源代码的命令行工具。
+ai-translated: true
 ---
 
 To update your code to follow the
@@ -120,13 +121,22 @@ $ dart format -o none --set-exit-if-changed bin/my_app.dart
 
 ## Format on save
 
+## 保存时格式化
+
 Many editors with Dart support can automatically 
 format your code when you save a file.
 
+许多支持 Dart 的编辑器可以在你保存文件时自动格式化代码。
+
 ### VS Code
+
+### VS Code 编辑器
 
 To enable formatting on save in [VS Code](/tools/vs-code),
 add the following entry to your `settings.json` file:
+
+要在 [VS Code](/tools/vs-code) 中启用保存时格式化，
+请在你的 `settings.json` 文件中添加以下条目：
 
 ```json
 {
@@ -138,16 +148,26 @@ add the following entry to your `settings.json` file:
 
 ### IntelliJ and Android Studio
 
+### IntelliJ 和 Android Studio
+
 To enable formatting on save in [JetBrains IDEs](/tools/jetbrains-plugin),
 including IntelliJ IDEA and Android Studio,
 follow their instructions on how to
 [Automatically reformat code on save][ij-on-save].
 
+要在 [JetBrains IDE](/tools/jetbrains-plugin)（包括 IntelliJ IDEA 和
+Android Studio）中启用保存时格式化，
+请按照它们的说明操作：[保存时自动重新格式化代码][ij-on-save]。
+
 [ij-on-save]: https://www.jetbrains.com/help/idea/reformat-and-rearrange-code.html#reformat-on-save
 
 ## What changes?
 
+## 会有哪些改变？
+
 `dart format` makes the following formatting changes:
+
+`dart format` 会做出以下格式化更改：
 
 * Removes whitespace.
 * Wraps every line to 80 characters long or shorter.
@@ -155,19 +175,38 @@ follow their instructions on how to
 that splits across multiple lines, and removes them from ones that don't.
 * Might move comments before or after a comma.
 
+  移除空白字符。
+  把每一行换行到 80 个字符或更短。
+  为跨多行拆分的实参或形参列表添加尾随逗号，
+  并从不跨行的列表中移除尾随逗号。
+  可能把注释移到逗号之前或之后。
+
 To learn more about best practices for writing and styling Dart code,
 check out the [Dart style guide][].
 
+要了解更多关于编写和设置 Dart 代码风格的最佳实践，
+请参阅 [Dart 风格指南][Dart style guide]。
+
 ### Configure the formatter
+
+### 配置格式化器
 
 When you run `dart format`, the formatter defaults to
 80 character line length or shorter. 
 Configure the formatter's behavior by adding a top-level
 `formatter` section to the [`analysis_options.yaml`][] file.
 
+运行 `dart format` 时，格式化器默认使用 80 个字符或更短的行长度。
+你可以通过在 [`analysis_options.yaml`][] 文件中添加顶层的 `formatter` 部分，
+来配置格式化器的行为。
+
 #### Page width
 
+#### 页面宽度
+
 Configure the line length for your project:
+
+为你的项目配置行长度：
 
 ```yaml title="analysis_options.yaml"
 formatter:
@@ -177,12 +216,22 @@ formatter:
 With the analysis options file typically at the root,
 the configured line length will apply to everything in the package.
 
+分析选项文件通常位于根目录，
+配置的行长度会应用于 package 中的所有内容。
+
 #### Preserve trailing commas
+
+#### 保留尾随逗号
 
 By default, `dart format` adds or removes trailing commas
 based on whether the construct splits across multiple lines.
 To force a construct to split even when it fits on one line,
 configure the formatter to preserve trailing commas:
+
+默认情况下，`dart format` 会根据结构是否跨多行拆分，
+来添加或移除尾随逗号。
+要强制某个结构拆分（即使它能放在一行内），
+请把格式化器配置为保留尾随逗号：
 
 ```yaml title="analysis_options.yaml"
 formatter:
@@ -195,9 +244,16 @@ it across multiple lines, even if it fits on one line. This provides
 manual control over line breaks for specific constructs.
 This gives you manual control over line breaks for specific constructs.
 
+启用后，在实参列表、形参列表或其他结构中添加尾随逗号，
+会强制格式化器把它拆分成多行，即使它能放在一行内。
+这让你能手动控制特定结构的换行。
+
 Configure an individual file's line length,
 overriding the analysis options, by adding 
 a marker comment at the top of the file, before any other code:
+
+要为单个文件配置行长度（覆盖分析选项），
+请在文件顶部、任何其他代码之前添加一条标记注释：
 
 ```dart
 // dart format width=123
@@ -207,6 +263,9 @@ a marker comment at the top of the file, before any other code:
 Configurable formatter options require
 a [language version][] of at least 3.7.
 The `trailing_commas` option requires at least 3.8.
+
+可配置的格式化器选项需要至少 3.7 的 [语言版本][language version]。
+`trailing_commas` 选项需要至少 3.8。
 :::
 
 ## Learn more

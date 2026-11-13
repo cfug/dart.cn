@@ -10,14 +10,18 @@ ai-translated: true
 
 You can automate publishing from:
 * [GitHub Actions](https://github.com/features/actions),
+
+  [GitHub Actions](https://github.com/features/actions)，
+
 * [Google Cloud Build][9] or,
+
+  [Google Cloud Build][9]，或者
+
 * Anywhere else using a [GCP service account][2].
 
-你可以从这些地方自动发布：
+  使用 [GCP 服务账号][2] 的任何其他地方。
 
-* [GitHub Actions](https://github.com/features/actions)，
-* [Google Cloud Build][9]，或者
-* 使用 [GCP 服务账号][2] 的任何其他地方。
+你可以从这些地方自动发布：
 
 The following sections explain how automated publishing is configured, and
 how you can customize publishing flows in line with your preferences.
@@ -584,20 +588,35 @@ publish new versions of the package. Make sure to review who has permissions to
 impersonate the service account and change permissions in the cloud project as
 needed.
 
+完成这个流程后，任何能模拟该服务账号的人都可以发布 package 的新版本。
+请务必审查谁有权限模拟该服务账号，并按需更改云项目中的权限。
+
 :::note
 The _service account_ must be created in the same cloud project where you
 intend to run Cloud Build. If you need to impersonate across cloud projects,
 refer to [enabling service account impersonation across projects][27].
+
+**服务账号** 必须创建在你打算运行 Cloud Build 的同一个云项目中。
+如果需要跨云项目模拟，请参阅 [启用跨项目的服务账号模拟][27]。
 :::
 
 ### Granting Cloud Build permission to publish
+
+### 授予 Cloud Build 发布权限
 
 To publish from Cloud Build you must give the
 [default Cloud Build service account][13] permission to impersonate 
 the service account created for publishing in the previous section.
 
+要从 Cloud Build 发布，你必须授予
+[默认的 Cloud Build 服务账号][13] 权限，
+让它可以模拟上一节中为发布创建的服务账号。
+
 1. Enable the [IAM Service Account Credentials API][14] in the cloud project.
    Attempts to impersonate a service account will fail without this API.
+
+   在云项目中启用 [IAM Service Account Credentials API][14]。
+   没有这个 API，模拟服务账号的尝试会失败。
 
    ```console
    # Enable IAM Service Account Credentials API
@@ -606,12 +625,16 @@ the service account created for publishing in the previous section.
 
 1. Find the project number.
 
+   找到项目编号。
+
    ```console
    # The PROJECT_NUMBER can be obtained as follows:
    $ gcloud projects describe $PROJECT_ID --format='value(projectNumber)'
    ```
 
 1. Grant the permission to impersonate the publishing service account.
+
+   授予模拟发布服务账号的权限。
 
    ```console
    # Grant default cloud
@@ -623,17 +646,30 @@ the service account created for publishing in the previous section.
 
 ### Writing a Cloud Build configuration file
 
+### 编写 Cloud Build 配置文件
+
 To publish from Cloud Build, you must specify steps for Cloud Build to:
+
+要从 Cloud Build 发布，你必须为 Cloud Build 指定以下步骤：
 
 * Impersonate the service account to obtain a temporary OIDC token.
 * Provide the temporary OIDC token to `dart pub` for use when publishing.
 * Calling `dart pub publish` to publish the package.
 
+  模拟服务账号以获取临时的 OIDC 令牌。
+  把临时的 OIDC 令牌提供给 `dart pub`，供发布时使用。
+  调用 `dart pub publish` 发布 package。
+
 Steps for Google Cloud Build are provided in a `cloudbuild.yaml` file, see
 [build configuration file schema][15] for full documentation of the format.
 
+Google Cloud Build 的步骤写在 `cloudbuild.yaml` 文件中，
+该格式的完整文档参见 [构建配置文件 schema][15]。
+
 For publishing to pub.dev from Google Cloud Build, a `cloudbuild.yaml` file as
 follows will do:
+
+要从 Google Cloud Build 发布到 pub.dev，像下面这样的 `cloudbuild.yaml` 文件就可以了：
 
 ```yaml
 # cloudbuild.yaml
@@ -666,6 +702,11 @@ signature that expires within 1 hour. The _audiences_ parameter lets pub.dev
 know that it is the intended recipient of the token. The `--include-email`
 option is necessary for pub.dev to recognize the service account.
 
+`gcloud auth print-identity-token` 会模拟指定的服务账号，创建一个 OIDC `id_token`。
+这个 `id_token` 由 Google 签名，签名在 1 小时内过期。
+_audiences_ 参数让 pub.dev 知道它是该令牌的预期接收者。
+`--include-email` 选项是 pub.dev 识别服务账号所必需的。
+
 Once the `id_token` is created, it's written to a file that resides in a
 _volume_; this mechanism is used to [pass data between steps][16].
 Don't store the token in `/workspace`. Since `/workspace` is where the
@@ -673,7 +714,14 @@ repository from which you wish to publish is checked out.
 Not using `/workspace` for storing the token reduces the risk that you
 accidentally include it in your package when publishing.
 
+`id_token` 创建后，会写入位于 **卷（volume）** 中的一个文件；
+这个机制用于 [在步骤之间传递数据][16]。
+不要把令牌存放在 `/workspace` 中，因为 `/workspace` 是检出你要发布的仓库的地方。
+不用 `/workspace` 存放令牌，可以降低发布时意外把它包含进 package 的风险。
+
 ### Creating a Cloud Build trigger
+
+### 创建 Cloud Build 触发器
 
 With service accounts configured and a `cloudbuild.yaml` file in the repository
 you can create a _Cloud Build Trigger_ using the [console.cloud.google.com][28]
@@ -684,11 +732,22 @@ and specify which events should trigger a build. You can use [GitHub][18],
 To learn how to configure a _Cloud Build Trigger_, check out
 [creating and managing build triggers][21].
 
+配置好服务账号并在仓库中放入 `cloudbuild.yaml` 文件后，
+你就可以使用 [console.cloud.google.com][28] 控制台创建一个 **Cloud Build 触发器**。
+要创建构建触发器，你需要连接一个 **源代码仓库**，并指定哪些事件应触发构建。
+你可以使用 [GitHub][18]、[Cloud Source Repository][19] 或 [其他选项][20] 之一。
+要了解如何配置 **Cloud Build 触发器**，请参阅 [创建和管理构建触发器][21]。
+
 To use the `cloudbuild.yaml` from the previous step, configure the
 _Cloud Build Trigger_ type as "Cloud Build Configuration" located in the
 repository in the `/cloudbuild.yaml` file.
 Do **not** specify a _service account_ for the build to be triggered with.
 Instead you'll want to use the default service account for Cloud Build.
+
+要使用上一步的 `cloudbuild.yaml`，请把 **Cloud Build 触发器** 的类型配置为
+"Cloud Build Configuration"，即位于仓库中 `/cloudbuild.yaml` 文件里的配置。
+**不要** 为触发的构建指定 **服务账号**，
+而应使用 Cloud Build 的默认服务账号。
 
 ![Configuration for trigger](/assets/img/tools/pub/gcb-trigger-configuration.png)
 
@@ -699,6 +758,11 @@ account for this purpose. Allow this service account to impersonate
 the `pub-dev@$PROJECT_ID.iam.gserviceaccount.com` account, which can
 publish to pub.dev.
 
+你可以把 Cloud Build 触发器配置为在自定义 **服务账号** 下运行。
+如果想这样做，请为此创建一个新的服务账号，
+并允许这个服务账号模拟可以发布到 pub.dev 的
+`pub-dev@$PROJECT_ID.iam.gserviceaccount.com` 账号。
+
 The configuration of the `pub-dev@$PROJECT_ID.iam.gserviceaccount.com`
 _service account_ allowed the default Cloud Build service account,
 `$PROJECT_NUMBER@cloudbuild.gserviceaccount.com`, to impersonate the 
@@ -706,8 +770,16 @@ _service account_ allowed the default Cloud Build service account,
 If using a custom service account for the Cloud Build, you'll need to change
 this.
 
+`pub-dev@$PROJECT_ID.iam.gserviceaccount.com` **服务账号** 的配置，
+允许默认的 Cloud Build 服务账号 `$PROJECT_NUMBER@cloudbuild.gserviceaccount.com`
+模拟 `pub-dev@$PROJECT_ID.iam.gserviceaccount.com` 服务账号。
+如果为 Cloud Build 使用自定义服务账号，你需要更改这一配置。
+
 To learn more about custom service accounts for running Cloud Builds,
 check out [Configuring user-specified service accounts][22].
+
+要了解更多关于运行 Cloud Build 的自定义服务账号，
+请参阅 [配置用户指定的服务账号][22]。
 :::
 
 When configuring your Cloud Build trigger, consider who can trigger the
@@ -715,7 +787,14 @@ build. _Because triggering a build might publish a new version of your package_.
 Consider only allowing manual builds or use
 [Cloud Build approvals][17] to gate builds as outlined in next section.
 
+配置 Cloud Build 触发器时，请考虑谁可以触发构建，
+_因为触发构建可能会发布你的 package 的新版本_。
+可以考虑只允许手动构建，或使用 [Cloud Build 审批][17] 来把关构建，
+如下一节所述。
+
 ### Hardening security with Cloud Build Approvals
+
+### 用 Cloud Build 审批加强安全
 
 When configuring a Cloud Build trigger, you can select
 **require approval before build executes**. If a Cloud Build trigger
@@ -723,41 +802,72 @@ requires approval, it won't run when triggered. Instead, it'll wait for
 approval.
 This can be used to limit who can publish new versions of your package.
 
+配置 Cloud Build 触发器时，你可以选择 **构建执行前需要审批**。
+如果 Cloud Build 触发器需要审批，它在被触发时不会运行，而是等待审批。
+这可以用来限制谁能发布你的 package 的新版本。
+
 ![Enabling approvals in configuration of the Cloud Build trigger](/assets/img/tools/pub/gcb-approval-checkbox.png)
 
 Only a user with the **Cloud Build Approver** role can give approval.
 When giving a approval, the approver can specify a URL and comment.
+
+只有拥有 **Cloud Build Approver** 角色的用户才能给予审批。
+审批时，审批者可以指定一个 URL 和评论。
 
 ![Cloud Build run waiting for approval to run](/assets/img/tools/pub/gcp-waiting-for-approval.png)
 
 You can also configure notifications for pending approvals.
 To learn more, check out [gate build on approval][17].
 
+你还可以为待审批配置通知。
+要了解更多，请参阅 [通过审批把关构建][17]。
+
 ## Publish from anywhere using a Service Account
+
+## 使用服务账号从任何地方发布
 
 To allow automated publishing outside of GitHub Actions, you might
 authenticate using service accounts in way similar to _Cloud Build_.
 
+要在 GitHub Actions 之外进行自动发布，
+你可以用类似 **Cloud Build** 的方式，通过服务账号进行身份验证。
+
 This usually involves:
+
+这通常包括：
 
 * [Create a service account for publishing][create-svc],
 * Impersonate the publishing service account in one of two ways:
   * Workload Identity Federation
   * Exported Service Account Keys
 
+  [创建一个用于发布的服务账号][create-svc]，
+  用以下两种方式之一模拟发布服务账号：
+    工作负载身份联合（Workload Identity Federation）
+    导出的服务账号密钥（Exported Service Account Keys）
+
 The section for _Cloud Build_ outlined how to
 [create a service account for publishing][create-svc].
 This should provide a service account, such as
 `pub-dev@$PROJECT_ID.iam.gserviceaccount.com`.
 
+**Cloud Build** 一节概述了如何 [创建用于发布的服务账号][create-svc]。
+这应该会提供一个服务账号，例如 `pub-dev@$PROJECT_ID.iam.gserviceaccount.com`。
+
 [create-svc]: #creating-a-service-account-for-publishing
 
 ### Publish using Workload Identity Federation
+
+### 使用工作负载身份联合发布
 
 When running on a cloud service that supports OIDC or SAML,
 you can impersonate a GCP service account using
 [Workload Identity Federation][23]. This enables you to
 leverage your cloud provider's identity services.
+
+在支持 OIDC 或 SAML 的云服务上运行时，
+你可以使用 [工作负载身份联合（Workload Identity Federation）][23] 来模拟 GCP 服务账号。
+这样就能利用你的云服务提供商的身份服务。
 
 For example, if deploying on EC2, you can
 [configure workload identity federation with AWS][24], allowing
@@ -766,7 +876,13 @@ service account.
 To learn how to configure these flows, check out
 [workload identity federation][25].
 
+例如，如果部署在 EC2 上，你可以 [配置与 AWS 的工作负载身份联合][24]，
+让来自 EC2 元数据服务的临时 AWS 令牌能够模拟服务账号。
+要了解如何配置这些流程，请参阅 [工作负载身份联合][25]。
+
 ### Publish using Exported Service Account Keys
+
+### 使用导出的服务账号密钥发布
 
 When running on a custom system without identity services, you
 can export service account keys. Exported service account keys allows you to
@@ -774,9 +890,17 @@ authenticate as said _service account_.
 To learn more, check out how to
 [create and manage service account keys][26].
 
+在没有身份服务的自定义系统上运行时，你可以导出服务账号密钥。
+导出的服务账号密钥让你能够以该 **服务账号** 的身份进行认证。
+要了解更多，请参阅如何 [创建和管理服务账号密钥][26]。
+
 #### Export service account keys
 
+#### 导出服务账号密钥
+
 1. Create exported service account keys for an existing service account.
+
+   为已有的服务账号创建导出的服务账号密钥。
 
     ```console
     $ gcloud iam service-accounts keys create key-file.json \
@@ -785,17 +909,28 @@ To learn more, check out how to
 
 1. Save the `key-file.json` file for later use.
 
+   保存 `key-file.json` 文件以备后用。
+
 :::warning
 Treat the `key-file.json` like a password.
 Anyone who gains access to it can authenticate as the service account
 and publish your package.
+
+请像对待密码一样对待 `key-file.json`。
+任何获得它的人都能以该服务账号的身份认证并发布你的 package。
 :::
 
 #### Publish packages using exported service account keys
 
+#### 使用导出的服务账号密钥发布 package
+
 To publish a package using exported service account keys:
 
+要使用导出的服务账号密钥发布 package：
+
 1. Setup gcloud to authenticate using `key-file.json` (created in the previous step)
+
+   设置 gcloud，使用 `key-file.json`（上一步创建的）进行身份验证
 
     ```console
     $ gcloud auth activate-service-account --key-file=key-file.json
@@ -805,6 +940,9 @@ To publish a package using exported service account keys:
    `dart pub token add https://pub.dev`.
    To impersonate service account, include the `--include-email` option.
 
+   为 pub.dev 创建一个临时令牌，并把它传给 `dart pub token add https://pub.dev`。
+   要模拟服务账号，请加上 `--include-email` 选项。
+
     ```console
     $ gcloud auth print-identity-token \
       --audiences=https://pub.dev \
@@ -813,6 +951,9 @@ To publish a package using exported service account keys:
 
 1. Publish using the temporary token.
    Add the `--force` option to skip the `yes/no` prompt.
+
+   使用临时令牌发布。
+   加上 `--force` 选项可以跳过 `yes/no` 提示。
 
     ```console
     $ dart pub publish --force
@@ -824,6 +965,10 @@ avoids long-lived secrets. Relying on Workload Identity Federation
 allows you to use short-lived secrets that your cloud provider signs.
 Short-lived secrets greatly reduces the security risks if accidentally leaked
 in logs or similar ways.
+
+如果可能，请考虑使用 [工作负载身份联合][23]。这样可以避免长期密钥。
+依赖工作负载身份联合，你可以使用由云服务提供商签名的短期密钥。
+短期密钥即使意外泄漏到日志或类似地方，也能大大降低安全风险。
 :::
 
 [1]: https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect

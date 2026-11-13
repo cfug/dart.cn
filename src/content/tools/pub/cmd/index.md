@@ -4,6 +4,7 @@ title: dart pub 工具
 # description: >-
 #   The command-line interface for pub, a package management tool for Dart.
 description: Pub 的命令行工具，是 Dart 的 package 管理工具。
+ai-translated: true
 ---
 
 The [pub package manager](/tools/pub/packages) has a command-line interface
@@ -11,6 +12,10 @@ that works with either the
 [`flutter` tool][flutter-cli] or the [`dart` tool][dart-cli].
 With either tool, add the `pub` command followed by
 a subcommand such as `get`:
+
+[pub package 管理器](/tools/pub/packages) 提供了一个命令行界面，
+可以配合 [`flutter` 工具][flutter-cli] 或 [`dart` 工具][dart-cli] 使用。
+无论使用哪个工具，都在 `pub` 命令后加上一个子命令，例如 `get`：
 
 ```console
 $ dart pub get    # Gets dependencies for a non-Flutter package
@@ -25,6 +30,12 @@ For more information, see
 [Using packages]({{site.flutter-docs}}/development/packages-and-plugins/using-packages)
 on the [Flutter website]({{site.flutter}}).
 
+本站的示例使用 `dart pub <subcommand>`，
+但如果你的当前目录包含 Flutter 应用或其他 Flutter 专属代码，
+请改用 `flutter pub <subcommand>`。
+更多信息请参阅 [Flutter 网站]({{site.flutter}}) 上的
+[使用 packages]({{site.flutter-docs}}/development/packages-and-plugins/using-packages)。
+
 [flutter-cli]: {{site.flutter-docs}}/reference/flutter-cli
 [dart-cli]: /tools/dart-tool
 
@@ -34,19 +45,33 @@ Although you might still find examples of
 using the standalone `pub` command instead of
 `dart pub` or `flutter pub`,
 the standalone `pub` command has been removed.
+
+`dart pub` 命令在 Dart 2.10 中首次引入。
+虽然你可能仍会看到使用独立 `pub` 命令
+（而非 `dart pub` 或 `flutter pub`）的示例，
+但独立的 `pub` 命令已被移除。
 :::
 
 If you encounter problems using the pub tool,
 see [Troubleshooting Pub](/tools/pub/troubleshoot).
 
+如果你在使用 pub 工具时遇到问题，
+请参阅 [Pub 故障排除](/tools/pub/troubleshoot)。
+
 
 ## List of subcommands
 
+## 子命令列表
+
 Detailed documentation exists for each of the following pub subcommands:
+
+以下每个 pub 子命令都有详细的文档：
 
 {% render 'pub-subcommands.md' %}
 
 ## Overview of subcommands
+
+## 子命令概览
 
 Pub's subcommands fall into the following categories:
 
@@ -160,6 +185,11 @@ so you can run scripts from that package's `bin` directory.
 To run globally available scripts, you must
 [add the system cache `bin` directory to your path][add-path].
 
+[`global`](/tools/pub/cmd/pub-global) 子命令可以让你把一个 package
+设为全局可用，这样你就能运行该 package `bin` 目录中的脚本。
+要运行全局可用的脚本，你必须
+[把系统缓存的 `bin` 目录添加到你的路径中][add-path]。
+
 [add-path]: /tools/pub/cmd/pub-global#running-a-script-from-your-path
 
 ### Deploying packages and apps
@@ -223,6 +253,8 @@ Prints usage information.
 
 ### `--trace`
 
+### `--trace` 选项
+
 Prints debugging information when an error occurs.
 
 当出现错误时输出调试信息。
@@ -244,6 +276,8 @@ Runs the command in the specified directory.
 在指定的目录下运行命令。
 
 ### `--[no-]color`
+
+### `--[no-]color` 选项
 
 Adds color to the output for emphasis (`--color`).
 The default depends on whether you're using this command at a terminal.

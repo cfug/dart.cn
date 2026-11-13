@@ -7,6 +7,7 @@ shortTitle: Package
 breadcrumb: 概览
 # description: Learn more about pub, Dart's tool for managing packages.
 description: 关于 pub 命令的更多介绍，这是 Dart 里用于管理 package 的工具。
+ai-translated: true
 ---
 
 The Dart ecosystem uses _packages_ to manage shared software
@@ -282,23 +283,41 @@ use [`dart pub outdated`][outdated].
 
 ## Get dependencies for production
 
+## 获取用于生产的依赖
+
 In some situations, `dart pub get` does not retrieve
 the exact package versions locked in the `pubspec.lock` file:
+
+在某些情况下，`dart pub get` 不会获取
+`pubspec.lock` 文件中锁定的确切 package 版本：
 
 * If new dependencies are added to or removed from `pubspec.yaml` after
   the `pubspec.lock` file was last updated.
 * If the locked version no longer exists in the package repository.
 * If you changed to a different version of the Dart SDK,
   and some packages are no longer compatible with that new version.
+
+  在 `pubspec.lock` 文件上次更新之后，
+  `pubspec.yaml` 中添加或移除了依赖。
+  锁定的版本在 package 仓库中已不存在。
+  你切换到了不同版本的 Dart SDK，
+  而某些 package 不再兼容这个新版本。
   
 In these cases `dart pub get` will:
+
+在这些情况下，`dart pub get` 会：
 
 * Unlock enough of the locked dependency versions that
   a resolution becomes possible.
 * Notify you about any dependency changes relative to
   the existing `pubspec.lock`.
 
+  解锁足够多的已锁定依赖版本，使版本解析成为可能。
+  通知你相对于现有 `pubspec.lock` 的任何依赖变化。
+
 For example, after adding `retry: ^3.0.0` to your dependencies:
+
+例如，在依赖中添加 `retry: ^3.0.0` 之后：
 
 ```console
 $ dart pub get
@@ -311,7 +330,13 @@ Also, if the [content hash][] of a published package version
 differs from the hash in the `pubspec.lock` file, pub will
 warn you and update the lockfile to reflect the published version.
 
+另外，如果已发布 package 版本的 [内容哈希][content hash]
+与 `pubspec.lock` 文件中的哈希不一致，pub 会警告你，
+并更新锁文件以反映已发布的版本。
+
 For example, if you manually change the hash of `retry` in `pubspec.lock`:
+
+例如，如果你手动修改了 `pubspec.lock` 中 `retry` 的哈希：
 
 ```console
 $ dart pub get
@@ -335,11 +360,19 @@ Changed 1 dependency!
 When deploying your project to production,
 use `dart pub get --enforce-lockfile` to retrieve dependencies.
 
+把项目部署到生产环境时，
+请使用 `dart pub get --enforce-lockfile` 来获取依赖。
+
 If your project's dependency constraints can't be
 satisfied with the exact versions and content hashes in `pubspec.lock`,
 package retrieval and the command will fail.
 This helps avoid deploying untested
 dependencies and dependency versions to production.
+
+如果 `pubspec.lock` 中的确切版本和内容哈希
+无法满足你项目的依赖约束，
+package 获取和该命令都会失败。
+这有助于避免把未经测试的依赖和依赖版本部署到生产环境。
 
 ```console
 $ dart pub get --enforce-lockfile
@@ -418,6 +451,8 @@ the pub package manager.
 ### Pub 子命令
 
 The `dart pub` tool provides the following subcommands:
+
+`dart pub` 工具提供以下子命令：
 
 {% render 'pub-subcommands.md' %}
 

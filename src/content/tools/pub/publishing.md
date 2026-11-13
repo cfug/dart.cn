@@ -5,6 +5,7 @@ title: 发布 package
 breadcrumb: 发布
 # description: Learn how to publish a Dart package to pub.dev.
 description: 学习如何将 Dart package 发布到 pub.dev 网站。
+ai-translated: true
 ---
 
 [The pub package manager][pub] isn't just for using other people's packages.
@@ -260,6 +261,9 @@ We strongly recommend you invite other members of your
 organization to be members of the verified publisher.
 This helps ensure that your organization retains access to
 the publisher when you are not available.
+
+我们强烈建议你邀请组织中的其他成员成为已验证发布者的成员。
+这有助于确保在你无法处理时，你的组织仍能保有对该发布者的访问权限。
 :::
 
 ## Publish your package
@@ -396,15 +400,27 @@ $ dart pub publish
 
 With this command, `dart pub` performs the following tasks:
 
+执行这个命令时，`dart pub` 会完成以下任务：
+
 1. Verifies that your package follows the [pubspec format][pubspec] and
    [package layout conventions][pkg-layout].
+
+   验证你的 package 遵循 [pubspec 格式][pubspec] 和
+   [package 文件结构约定][pkg-layout]。
 
 1. Validates that `git status` is clean. Warns if
    files that are tracked in git have uncommitted changes.
 
+   验证 `git status` 是干净的。如果 git 跟踪的文件有未提交的更改，
+   会给出警告。
+
 1. Shows all of the files it intends to publish.
 
+   显示它打算发布的所有文件。
+
 1. Uploads your package to [pub.dev]({{site.pub}}).
+
+   把你的 package 上传到 [pub.dev]({{site.pub}})。
 
 :::note
 
@@ -460,11 +476,18 @@ To change the generated list of supported platforms,
 
 ### Automate publishing
 
+### 自动发布
+
 Once you have published the first version of a package,
 you can configure automated publishing
 through GitHub Actions or Google Cloud service accounts.
 To learn more about automated publishing, consult
 [Automated publishing of packages to pub.dev](/tools/pub/automated-publishing).
+
+发布 package 的第一个版本后，你就可以通过 GitHub Actions
+或 Google Cloud 服务账号配置自动发布。
+要了解更多关于自动发布的内容，请参阅
+[自动把 package 发布到 pub.dev](/tools/pub/automated-publishing)。
 
 ### Publish prerelease versions {:#publishing-prereleases}
 
@@ -600,6 +623,10 @@ ignore the following warning from `dart pub publish`:
    version 3.0.0-0, consider publishing the package as a pre-release
    instead."_
 
+   _“SDK 约束指向 Dart SDK 预发布版本的 package，
+   本身也应以预发布版本发布。如果这个 package 需要 Dart 3.0.0-0 版本，
+   请考虑改为以预发布版本发布该 package。”_
+
 ## Manage publishing permissions
 
 ## 管理发布权限
@@ -651,6 +678,9 @@ To allow or disallow other people to upload versions, either:
 :::tip
 Invite other members of your team to become uploaders of the package.
 This ensures that your team can access to the package when you aren't available.
+
+邀请团队中的其他成员成为该 package 的上传者。
+这能确保在你无法处理时，你的团队仍能访问该 package。
 :::
 
 ### Transfer a package to a verified publisher {:#transferring-a-package-to-a-verified-publisher}
@@ -783,48 +813,87 @@ the dependent package must pin the version in the
 
 #### How to migrate away from a retracted package version
 
+#### 如何迁移离开已撤回的 package 版本
+
 When a package depends on a retracted package version,
 you have choices in how you migrate away from this version depending
 on other available versions.
 
+当一个 package 依赖了某个已撤回的 package 版本时，
+你可以根据其他可用版本，选择不同的方式来迁移离开这个版本。
+
 #### Upgrade to a newer version
+
+#### 升级到更新的版本
 
 In most cases a newer version has been published to
 replace the retracted version.
 In this case run `dart pub upgrade <package>`.
 
+大多数情况下，已经发布了更新的版本来替代被撤回的版本。
+这时请运行 `dart pub upgrade <package>`。
+
 #### Downgrade to the newest non-retracted version
+
+#### 降级到最新的未撤回版本
 
 If no newer version is available, consider downgrading
 to the newest non-retracted version.
 You can do this in one of two ways.
 
+如果没有更新的版本可用，请考虑降级到最新的未撤回版本。
+你可以用以下两种方式之一来完成。
+
 1. Use [pub tool](/tools/pub/cmd) commands:
+
+   使用 [pub 工具](/tools/pub/cmd) 命令：
 
    1. Run `dart pub downgrade <package>` to
       get the lowest version  of the specified package that
       matches the constraints in the `pubspec.yaml` file.
 
+      运行 `dart pub downgrade <package>`，
+      获取指定 package 中符合 `pubspec.yaml` 文件约束的最低版本。
+
    1. Run `dart pub upgrade <package>` to get the
       newest compatible and non-retracted version available.
 
+      运行 `dart pub upgrade <package>`，
+      获取可用的最新兼容且未撤回的版本。
+
 1. Edit the `pubspec.lock` file in your preferred IDE:
+
+   在你喜欢的 IDE 中编辑 `pubspec.lock` 文件：
 
    1. Delete the entire package entry for the package
       with the retracted version.
 
+      删除被撤回版本所属 package 的整个条目。
+
    1. Run `dart pub get` to get the
       newest compatible and non-retracted version available.
+
+      运行 `dart pub get`，
+      获取可用的最新兼容且未撤回的版本。
 
 Though you could delete the `pubspec.lock` file and run `dart pub get`,
 this is not recommended.
 It might result in version changes for other dependencies.
 
+虽然你可以删除 `pubspec.lock` 文件再运行 `dart pub get`，
+但并不推荐这样做。
+这可能导致其他依赖的版本发生变化。
+
 #### Upgrade or downgrade to a version outside the specified version constraint
+
+#### 升级或降级到指定版本约束之外的版本
 
 If there is no alternative version available that satisfies the
 current version constraint, edit the version constraint
 in the `pubspec.yaml` file and run `dart pub upgrade`.
+
+如果没有满足当前版本约束的替代版本可用，
+请编辑 `pubspec.yaml` 文件中的版本约束，然后运行 `dart pub upgrade`。
 
 #### How to retract or restore a package version
 
@@ -849,30 +918,59 @@ Although packages remain published, you can signal to
 developers that a package receives no active maintenance.
 This requires you to mark the package as **discontinued**.
 
+虽然 package 会保持已发布状态，但你可以向开发者表明
+某个 package 不再接受积极维护。
+这需要你把该 package 标记为 **已终止（discontinued）**。
+
 Once you discontinue a package, the package will:
+
+一旦你把 package 标记为终止，该 package 将会：
 
 * Remain published on pub.dev.
 * Remain viewable on pub.dev.
 * Display a clear **DISCONTINUED** badge.
 * Not appear in pub.dev search results.
 
+  继续发布在 pub.dev 上。
+  继续在 pub.dev 上可见。
+  显示醒目的 **DISCONTINUED** 徽章。
+  不再出现在 pub.dev 的搜索结果中。
+
 To mark a package as discontinued:
+
+要把 package 标记为终止：
 
 1. Sign in to pub.dev using a Google Account with uploader or
    [verified publisher][] permissions for the package.
 
+   使用对该 package 拥有上传者或 [已验证发布者][verified publisher]
+   权限的 Google 账号登录 pub.dev。
+
 1. Navigate to the package's **Admin** tab.
+
+   进入该 package 的 **Admin** 标签页。
 
 1. To discontinue a package, select **Mark "discontinued"**.
 
+   要终止一个 package，请选择 **Mark "discontinued"**。
+
 You can also recommend a replacement package.
+
+你还可以推荐一个替代的 package。
 
 1. In the field under **Suggested replacement**,
    type the name of another package.
 
+   在 **Suggested replacement** 下方的字段中，
+   输入另一个 package 的名称。
+
 1. Click **Update "Suggested Replacement"**.
 
+   点击 **Update "Suggested Replacement"**。
+
 If you change your mind, you can remove the discontinued mark at any time.
+
+如果你改变主意，可以随时移除终止标记。
 
 [create-verified-publisher]: {{site.pub}}/create-publisher
 [BSD 3-clause license]: https://opensource.org/licenses/BSD-3-Clause
