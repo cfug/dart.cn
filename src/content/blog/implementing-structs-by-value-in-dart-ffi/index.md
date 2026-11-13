@@ -1,6 +1,9 @@
 ---
-title: "Implementing structs by value in Dart FFI"
-description: "A deep dive into API design and native calling conventions."
+# title: "Implementing structs by value in Dart FFI"
+title: "在 Dart FFI 中实现结构体按值传递"
+# description: "A deep dive into API design and native calling conventions."
+description: "深入探究 API 设计与原生调用约定。"
+ai-translated: true
 publishDate: 2021-06-08
 author: dcharkes
 image: images/0SfIpbC1E-Ysaewzs.webp
@@ -11,13 +14,35 @@ layout: blog
 
 ### A deep dive into API design and native calling conventions
 
+### 深入探究 API 设计与原生调用约定
+
 In the [Dart 2.12](/blog/announcing-dart-2-12) release, we extended our [C-interop feature, Dart FFI,](https://dart.dev/guides/libraries/c-interop) with the ability to [pass structs by value](https://github.com/dart-lang/sdk/issues/36730). This article talks about what it took to add this feature to the Dart SDK. If you’re interested in low-level language implementation details or in platform conventions for passing structs by value, keep reading.
+
+在 [Dart 2.12](/blog/announcing-dart-2-12) 版本中，
+我们为 [C 互操作特性 Dart FFI](https://dart.dev/guides/libraries/c-interop)
+（外部函数接口）扩展了
+[按值传递结构体](https://github.com/dart-lang/sdk/issues/36730)
+（struct，按值传递即 by value）的能力。
+本文讲述把这个特性加入 Dart SDK 需要付出什么。
+如果你对底层语言实现细节，
+或各平台按值传递结构体的约定感兴趣，请继续读下去。
 
 This article talks about both developing the API and figuring out the ABI (Application Binary Interface) for the struct-by-value feature. During the two years we worked on this feature (and other Dart FFI features), we discovered many constraints that required changing the API. The ABI journey was equally interesting, illustrating that you can take multiple approaches to nailing down the details of a hard problem.
 
+本文既讲述 API 的开发过程，也讲述如何弄清结构体按值传递特性的
+ABI（Application Binary Interface，应用二进制接口）。
+在开发这个特性（以及其他 Dart FFI 特性）的两年里，
+我们发现了许多迫使 API 修改的约束。
+ABI 之旅同样有趣，它说明你可以用多种方法来敲定一个难题的细节。
+
 ## Pass by value and pass by reference in C/C++
 
+## C/C++ 中的按值传递与按引用传递
+
 Here’s a quick refresher if you don’t write code in C every day. Suppose that we have the following struct and functions in C:
+
+如果你不是每天都写 C 代码，这里快速复习一下。
+假设我们在 C 中有下面的结构体（struct）和函数：
 
 ```c++
 struct Coord {
@@ -40,12 +65,17 @@ void TranslateByPointer(Coord* coord) {
 
 Then, we can use these functions in some simple C code. Let’s say we have a local variable `c1`:
 
+然后，我们可以在一些简单的 C 代码中使用这些函数。假设有一个局部变量 `c1`：
+
 ```
 Coord c1 = {10.0, 10.0, nullptr};
 ```
 
 
 If we pass `c1` to `TranslateByValue`, then the argument is passed by value, which makes the callee effectively operate on a copy of the struct:
+
+如果把 `c1` 传给 `TranslateByValue`，参数就是按值传递（by value）的，
+这让被调用方实际上操作的是结构体的一份副本：
 
 ```
 Coord c2 = TranslateByValue(c1);
@@ -54,7 +84,12 @@ Coord c2 = TranslateByValue(c1);
 
 This means that `c1` stays unchanged.
 
+这意味着 `c1` 保持不变。
+
 However, if we pass `c1` by reference with a pointer to the memory containing `c1`, then `c1` gets mutated in place:
+
+但如果我们通过指向 `c1` 所在内存的指针，
+把 `c1` 按引用传递（by reference），那么 `c1` 就会被就地修改：
 
 ```
 TranslateByPointer(&c1);
@@ -63,13 +98,28 @@ TranslateByPointer(&c1);
 
 `c1.x` now contains `20.0`.
 
+`c1.x` 现在等于 `20.0`。
+
 ## The API design journey
+
+## API 设计之旅
 
 The original Dart FFI [prototype](https://dart-review.googlesource.com/c/sdk/+/80124) already had support for passing pointers to structs. However, we redesigned the API multiple times to accommodate various use cases and constraints.
 
+最初的 Dart FFI
+[原型](https://dart-review.googlesource.com/c/sdk/+/80124)
+已经支持传递结构体指针。不过，为了适应各种用例和约束，
+我们多次重新设计了 API。
+
 ### Initial design
 
+### 最初的设计
+
 Our initial design enabled allocating structs in memory, passing those pointers to C, and modifying the fields of the structs. With that approach, the `Struct` class extended the `Pointer` class:
+
+我们最初的设计支持在内存中分配结构体、把这些指针传给 C，
+并修改结构体的字段。在那种方案下，
+`Struct` 类继承自 `Pointer` 类：
 
 ```dart
 @struct
@@ -101,11 +151,25 @@ final c = Coordinate.allocate()
 
 Dart FFI users wrote the preceding snippet, and Dart FFI internals generated an implementation of `sizeOf` and getter and setter implementations for `x`, `y`, and `next`.
 
+Dart FFI 用户编写上面的代码片段，Dart FFI 内部则生成 `sizeOf`
+的实现，以及 `x`、`y` 和 `next` 的 getter 和 setter 实现。
+
 However, two years ago we realized that [this design had an issue](https://github.com/dart-lang/sdk/issues/35840). By having the `Coordinate` extend `Pointer`, we could not distinguish between `Coordinate` and `Coordinate*`.
+
+然而，两年前我们意识到
+[这个设计有个问题](https://github.com/dart-lang/sdk/issues/35840)。
+让 `Coordinate` 继承 `Pointer`，
+我们就无法区分 `Coordinate` 和 `Coordinate*`。
 
 ### Distinguishing between Coordinate and Coordinate*
 
+### 区分 Coordinate 与 Coordinate*
+
 We [introduced](https://dart-review.googlesource.com/c/sdk/+/101291) `Struct` to Dart FFI and made structs extend this class:
+
+我们在 Dart FFI 中
+[引入](https://dart-review.googlesource.com/c/sdk/+/101291)了
+`Struct`，并让结构体继承这个类：
 
 ```dart
 abstract class Struct<S extends NativeType> extends NativeType {
@@ -116,7 +180,14 @@ abstract class Struct<S extends NativeType> extends NativeType {
 
 Now a `Pointer&lt;Coordinate&gt;` in Dart represents a `Coordinate*` in C, and a `Coordinate` in Dart represents a `Coordinate` in C.
 
+现在 Dart 中的 `Pointer&lt;Coordinate&gt;` 表示 C 中的
+`Coordinate*`，而 Dart 中的 `Coordinate` 表示 C 中的 `Coordinate`。
+
 This meant that the `next` field had the type `Pointer&lt;Coordinate&gt;`, which made the `@Pointer` annotation redundant. So, we [got rid of Pointer annotations](https://dart-review.googlesource.com/c/sdk/+/108415).
+
+这意味着 `next` 字段的类型是 `Pointer&lt;Coordinate&gt;`，
+`@Pointer` 注解就变得多余了。于是，我们
+[去掉了 Pointer 注解](https://dart-review.googlesource.com/c/sdk/+/108415)。
 
 ```dart
 class Coordinate extends Struct<Coordinate> {
@@ -133,12 +204,20 @@ class Coordinate extends Struct<Coordinate> {
 
 Because we now represented pointers to structs as `Pointer` objects, we started using the `allocate` factory on `Pointer`:
 
+由于现在用 `Pointer` 对象表示结构体指针，
+我们开始使用 `Pointer` 上的 `allocate` 工厂方法：
+
 ```
 final c = Pointer<Coordinate>.allocate();
 ```
 
 
 To get access to the fields of a `Pointer&lt;Coordinate&gt;`, we need an object of type `Coordinate`, because that object has the fields `x`, `y`, and `next`. For this, we had the `load` method on `Pointer` already.
+
+要访问 `Pointer&lt;Coordinate&gt;` 的字段，
+我们需要一个 `Coordinate` 类型的对象，
+因为该对象上才有 `x`、`y` 和 `next` 字段。
+为此，`Pointer` 上已经有 `load` 方法。
 
 ```
 c.load<Coordinate>().x = 10.0;
@@ -147,9 +226,22 @@ c.load<Coordinate>().x = 10.0;
 
 Of course, having to write `&lt;Coordinate&gt;` on calling `load` is verbose. (Having to write a type argument was the same for loading a Dart `int` out of a `Pointer&lt;Uint8&gt;`.) The reason we need this type argument on `load` is to specify to the Dart type system the return type of this method.
 
+当然，调用 `load` 时必须写 `&lt;Coordinate&gt;` 很啰嗦。
+（从 `Pointer&lt;Uint8&gt;` 中读取 Dart `int` 时也要写类型参数，
+情况相同。）`load` 需要这个类型参数的原因，
+是向 Dart 类型系统指明该方法的返回类型。
+
 ### Extension methods to the rescue
 
+### 扩展方法前来救场
+
 Dart 2.7 [introduced](/blog/announcing-dart-2-7-a-safer-more-expressive-dart) extension methods. With extension methods, we could [pattern match](https://dart-review.googlesource.com/c/sdk/+/118992/14/sdk/lib/ffi/ffi.dart) on the type argument `T` in `Pointer&lt;T&gt;`:
+
+Dart 2.7
+[引入](/blog/announcing-dart-2-7-a-safer-more-expressive-dart)了
+扩展方法（extension method）。借助扩展方法，我们可以对
+`Pointer&lt;T&gt;` 中的类型参数 `T` 进行
+[模式匹配](https://dart-review.googlesource.com/c/sdk/+/118992/14/sdk/lib/ffi/ffi.dart)：
 
 ```dart
 extension StructPointer<T extends Struct> on Pointer<T> {
@@ -160,12 +252,19 @@ extension StructPointer<T extends Struct> on Pointer<T> {
 
 Pattern matching on the type argument enabled us to [get rid of the verbosity](https://dart-review.googlesource.com/c/sdk/+/118993/16/tests/ffi/structs_test.dart) on call sites:
 
+对类型参数做模式匹配，让我们得以
+[去掉调用点的啰嗦写法](https://dart-review.googlesource.com/c/sdk/+/118993/16/tests/ffi/structs_test.dart)：
+
 ```
 c.ref.y = 10.0; // ref is pattern matched to be of type Coordinate.
 ```
 
 
 We could also use the extension method pattern matching to make the type argument of `Struct&lt;S&gt;` redundant, changing the definition of user structs to:
+
+我们还可以利用扩展方法的模式匹配，
+让 `Struct&lt;S&gt;` 的类型参数变得多余，
+把用户结构体的定义改成：
 
 ```dart
 class Coordinate extends Struct {
@@ -182,6 +281,10 @@ class Coordinate extends Struct {
 
 Before, the type argument `&lt;S&gt;` constrained the `Struct` field `Pointer&lt;S&gt;` `addressOf`. Instead, we changed the field to an extension getter:
 
+之前，类型参数 `&lt;S&gt;` 约束着 `Struct` 的
+`Pointer&lt;S&gt;` 字段 `addressOf`。
+我们把这个字段改成了扩展 getter：
+
 ```dart
 extension StructPointer<T extends Struct> on Pointer<T> {
   external Pointer<T> get addressOf;
@@ -190,15 +293,35 @@ extension StructPointer<T extends Struct> on Pointer<T> {
 
 ### Stop leaking backing storage
 
+### 不再泄漏底层存储
+
 When returning a struct by value from C to Dart, we don’t want to `malloc` C memory to save the struct, because that would be slow *and* burden the user with freeing it. So, instead, the struct is copied to a `TypedData`, and the `Coordinate` can have either a `Pointer` or a `TypedData` as backing storage.
+
+当结构体从 C 按值返回给 Dart 时，
+我们不想用 `malloc` 分配 C 内存来保存结构体，
+因为那样既慢，*又*会给用户增加释放内存的负担。
+所以，我们改为把结构体复制到 `TypedData` 中，
+`Coordinate` 的底层存储（backing storage）
+既可以是 `Pointer`，也可以是 `TypedData`。
 
 However, `addressOf`, which was introduced in the first redesign, had type `Pointer`. This type conveyed that it was always backed by C memory, but this was no longer true.
 
+然而，第一次重新设计时引入的 `addressOf` 类型是 `Pointer`。
+这个类型传达出“它总是由 C 内存支撑”的含义，但这已不再成立。
+
 So, we [deprecated](https://github.com/dart-lang/sdk/issues/40667) `addressOf`.
+
+于是，我们[弃用](https://github.com/dart-lang/sdk/issues/40667)了 `addressOf`。
 
 ### For optimizations
 
+### 为了优化
+
 The last step is to require invocations of various Dart FFI methods, including the ones related to structs, to have [compile-time constant type arguments](https://github.com/dart-lang/sdk/issues/44621):
+
+最后一步是要求各种 Dart FFI 方法（包括与结构体相关的方法）
+的调用必须使用
+[编译期常量类型参数](https://github.com/dart-lang/sdk/issues/44621)：
 
 ```dart
 extension StructPointer<T extends Struct> on Pointer<T> {
@@ -210,49 +333,118 @@ extension StructPointer<T extends Struct> on Pointer<T> {
 
 The invocation of methods allows us to better optimize the code and is more aligned with C semantics.
 
+限定这些方法的调用方式让我们能更好地优化代码，也更贴合 C 的语义。
+
 Note that this last change triggers deprecation notices in Dart 2.12, and the change is enforced in Dart 2.13.
+
+注意，这最后一项变更在 Dart 2.12 中触发弃用提示，
+并在 Dart 2.13 中强制执行。
 
 ## The ABI discovery journey
 
+## ABI 探索之旅
+
 Now that the API is in place, the next question is: *Where does C expect these structs when passed or returned by value?* This is known as the Application Binary Interface (ABI).
+
+API 就位之后，下一个问题是：
+*按值传递或返回这些结构体时，C 期望它们放在哪里？*
+这就是所谓的应用二进制接口（ABI）。
 
 ### Documentation
 
+### 文档
+
 The natural thing is to look for documentation. ARM provides [Procedure Call Standard for the Arm Architecture — ABI 2019Q1 ](https://developer.arm.com/documentation/ihi0042/h)and [Procedure Call Standard for the ARM 64-bit Architecture (AArch64)](https://developer.arm.com/documentation/ihi0055/c/). However, the x86 and x64 official documentation [fell off the internet](https://stackoverflow.com/questions/18133812/where-is-the-x86-64-system-v-abi-documented), resulting in people searching for this information and resorting to unofficial mirrors or [reverse engineering](https://www.agner.org/optimize/calling_conventions.pdf).
+
+自然而然的做法是查文档。ARM 提供了
+[Procedure Call Standard for the Arm Architecture — ABI 2019Q1](https://developer.arm.com/documentation/ihi0042/h)
+和
+[Procedure Call Standard for the ARM 64-bit Architecture (AArch64)](https://developer.arm.com/documentation/ihi0055/c/)。
+然而，x86 和 x64 的官方文档
+[从互联网上消失了](https://stackoverflow.com/questions/18133812/where-is-the-x86-64-system-v-abi-documented)，
+导致人们四处搜寻这些信息，
+求助于非官方镜像或
+[逆向工程](https://www.agner.org/optimize/calling_conventions.pdf)。
 
 A quick glance at the documentation shows a variety of locations for passing structs by value:
 
+快速浏览文档就会发现，按值传递结构体的位置多种多样：
+
 * In multiple CPU and FPU registers.
+
+  放在多个 CPU 和 FPU 寄存器中。
 
 * On the stack.
 
+  放在栈上。
+
 * A pointer to a copy. (The copy is on the caller’s stack frame.)
+
+  传递指向副本的指针。（副本位于调用方的栈帧上。）
 
 * Partially in CPU registers and partially on the stack.
 
+  一部分放在 CPU 寄存器中，一部分放在栈上。
+
 When passed on the stack, there are some further questions about what the required alignment is and whether all unused CPU and FPU registers are blocked off or backfilled.
+
+在栈上传递时，还有一些进一步的问题：
+要求的对齐（alignment）是多少？
+未使用的 CPU 和 FPU 寄存器是被跳过不用，还是会被回填？
 
 When returning a struct by value, the struct can be passed back in two locations:
 
+按值返回结构体时，结构体可以通过两种位置传回：
+
 * In multiple CPU and FPU registers.
+
+  放在多个 CPU 和 FPU 寄存器中。
 
 * Written to a memory location by the callee, in which case the caller passes in a pointer to that memory location. (This reserved memory is also on the caller’s stack frame.)
 
+  由被调用方写入某个内存位置，此时调用方传入指向该内存位置的指针。
+  （这块预留内存同样位于调用方的栈帧上。）
+
 When a pointer to the result location is passed in, a further question is whether this conflicts with a normal CPU argument register.
+
+当传入指向结果位置的指针时，
+还有一个问题：它会不会与普通的 CPU 参数寄存器冲突。
 
 ### Refactor Dart FFI compilation
 
+### 重构 Dart FFI 编译
+
 This initial investigation was enough to realize that we had to reengineer a part of the Dart FFI compiler pipeline. We used to reuse the `Location` type, which was originally intended for compiling Dart code to assembly.
+
+这些初步调查足以让我们意识到，
+必须重新设计 Dart FFI 编译流水线的一部分。
+我们过去复用 `Location` 类型，
+它原本是为把 Dart 代码编译成汇编而设计的。
 
 However, in the Dart ABI, we never use non-word-aligned stack locations or more than two registers at the same time. An experiment trying to extend the `Location` type to support these extra locations ended in a huge complicated diff because `Location` is used a lot in the Dart virtual machine.
 
+然而在 Dart ABI 中，我们从不使用未按字对齐的栈位置，
+也不会同时使用超过两个寄存器。
+一次尝试扩展 `Location` 类型以支持这些额外位置的实验，
+最终产生了一个巨大而复杂的 diff，
+因为 `Location` 在 Dart 虚拟机中被大量使用。
+
 So, instead, we [replaced the compilation pipeline](https://dart-review.googlesource.com/c/sdk/+/129081) for Dart FFI.
+
+所以，我们转而
+[替换了 Dart FFI 的编译流水线](https://dart-review.googlesource.com/c/sdk/+/129081)。
 
 ### Explore the native ABIs
 
+### 探索原生 ABI
+
 Let’s explore the ABIs a bit.
 
+我们来稍微探索一下这些 ABI。
+
 Suppose that we have the following struct and C function signature:
+
+假设我们有下面的结构体和 C 函数签名：
 
 ```c
 struct Struct3Bytes {
@@ -269,7 +461,15 @@ Struct3Bytes MyFunction(Struct3Bytes, Struct3Bytes, Struct3Bytes,
 
 How do various ABIs pass these structs in `MyFunction`?
 
+各种 ABI 在 `MyFunction` 中如何传递这些结构体？
+
 In Linux on x64, there are 6 CPU argument registers. The struct is small enough to fit in a single register, so the first 6 arguments go into the 6 CPU argument registers, and the last 2 go on the stack. The stack arguments are aligned to 8 bytes. And, the return value also fits in a CPU register ([larger example](https://github.com/dart-lang/sdk/blob/9d5846b86eed777933b6c7a2a15e41f2b779c650/runtime/vm/compiler/ffi/unit_tests/struct3bytesx10/x64_linux.expect)).
+
+在 x64 的 Linux 上，有 6 个 CPU 参数寄存器。
+这个结构体足够小，能装进单个寄存器，
+所以前 6 个参数进入 6 个 CPU 参数寄存器，最后 2 个放在栈上。
+栈参数按 8 字节对齐。返回值也能装进一个 CPU 寄存器
+（[更大的示例](https://github.com/dart-lang/sdk/blob/9d5846b86eed777933b6c7a2a15e41f2b779c650/runtime/vm/compiler/ffi/unit_tests/struct3bytesx10/x64_linux.expect)）。
 
 ```text
 rdi int64 Compound(size: 3)
@@ -287,7 +487,14 @@ rax int64 Compound(size: 3)
 
 So, what happens on Windows?
 
+那么 Windows 上会怎样？
+
 It’s [completely different](https://github.com/dart-lang/sdk/blob/9d5846b86eed777933b6c7a2a15e41f2b779c650/runtime/vm/compiler/ffi/unit_tests/struct3bytesx10/x64_win.expect). Windows has only 4 argument registers. However, the first register is used to pass the pointer to the memory location to write the return value to. And, all arguments are passed by pointer to a copy, because the size of the struct is 3 bytes, which is not a power of 2.
+
+[完全不同](https://github.com/dart-lang/sdk/blob/9d5846b86eed777933b6c7a2a15e41f2b779c650/runtime/vm/compiler/ffi/unit_tests/struct3bytesx10/x64_win.expect)。
+Windows 只有 4 个参数寄存器。而且第一个寄存器被用来传递
+指向返回值写入位置的内存指针。此外，所有参数都以指向副本的
+指针传递，因为结构体的大小是 3 字节，不是 2 的幂。
 
 ```text
 Locations on Windows
@@ -306,6 +513,9 @@ Pointer(rcx int64, ret:rax int64) Compound(size: 3)
 
 Let’s look at another example: ARM32 on Linux and Android. Suppose that we have the following struct and C function signature:
 
+再看另一个例子：Linux 和 Android 上的 ARM32。
+假设我们有下面的结构体和 C 函数签名：
+
 ```c
 struct Struct16Bytes {
   float a0;
@@ -319,6 +529,11 @@ Struct16Bytes MyFunction2(Struct16Bytes, float, Struct16Bytes);
 
 These specific types of structs are called homogeneous composites, because they only contain identical elements. And, homogenous floats with up to 4 members are treated differently from normal structs. In this case, [Linux uses floating point registers](https://github.com/dart-lang/sdk/blob/9d5846b86eed777933b6c7a2a15e41f2b779c650/runtime/vm/compiler/ffi/unit_tests/struct16bytesHomogenousx10/arm_linux.expect) for the individual floating points in the struct.
 
+这类特殊的结构体被称为同质复合体（homogeneous composite），
+因为它们只包含相同的元素。成员不超过 4 个的同质浮点结构体，
+处理方式与普通结构体不同。在这里，
+[Linux 为结构体中的每个浮点数使用浮点寄存器](https://github.com/dart-lang/sdk/blob/9d5846b86eed777933b6c7a2a15e41f2b779c650/runtime/vm/compiler/ffi/unit_tests/struct16bytesHomogenousx10/arm_linux.expect)。
+
 ```text
 Multiple(s0 float, s1 float, s2 float, s3 float) Compound(size: 16)
 s4 float
@@ -329,6 +544,12 @@ Multiple(s0 float, s1 float, s2 float, s3 float) Compound(size: 16)
 ```
 
 On Android, SoftFP is used instead of HardFP. This means that floats are passed in integer registers rather than floating point registers. Moreover, we’re passing in a `Pointer` for the result. This results in a [curious situation](https://github.com/dart-lang/sdk/blob/9d5846b86eed777933b6c7a2a15e41f2b779c650/runtime/vm/compiler/ffi/unit_tests/struct16bytesHomogenousx10/arm_android.expect) in which the first argument is partially passed in integer registers and partially passed on the stack.
+
+在 Android 上，使用的是 SoftFP 而不是 HardFP。
+这意味着浮点数通过整数寄存器而不是浮点寄存器传递。
+此外，结果是通过传入一个 `Pointer` 返回的。这造成了一种
+[奇特的情况](https://github.com/dart-lang/sdk/blob/9d5846b86eed777933b6c7a2a15e41f2b779c650/runtime/vm/compiler/ffi/unit_tests/struct16bytesHomogenousx10/arm_android.expect)：
+第一个参数一部分通过整数寄存器传递，一部分放在栈上。
 
 ```text
 M(r1 int32, r2 int32, r3 int32, S+0 int32) Compound(size: 16)
@@ -341,16 +562,33 @@ P(r0 uint32) Compound(size: 16)
 
 Getting any of this wrong will likely lead to segmentation faults at runtime. So, it’s paramount to get all the corner cases of the ABI on every hardware and OS combination correct.
 
+这些细节任何一处弄错，都很可能在运行时导致段错误
+（segmentation fault）。所以，把每一种硬件与操作系统组合上
+ABI 的所有边界情况都弄对，至关重要。
+
 ### Explore through godbolt.org
 
+### 通过 godbolt.org 探索
+
 Because the documentation is very terse, we figured out many corner cases through the compiler explorer [godbolt.org](https://godbolt.org). The compiler explorer shows C code and compiled assembly [side by side](https://godbolt.org/z/17jzjv):
+
+由于文档非常简略，我们通过编译器探索工具
+[godbolt.org](https://godbolt.org) 弄清了许多边界情况。
+这个工具把 C 代码和编译出的汇编
+[并排展示](https://godbolt.org/z/17jzjv)：
 
 <DashImage src="images/0SfIpbC1E-Ysaewzs.webp" alt="Compiler Explorer showing C code and compiled assembly side by side." />
 
 
 The preceding screenshot shows that on Windows x86 `sizeof(Struct3Bytes)` is 3 bytes, because 3 is moved into the return register `eax`.
 
+上面的截图显示，在 Windows x86 上 `sizeof(Struct3Bytes)`
+是 3 字节，因为被移入返回寄存器 `eax` 的是 3。
+
 When we [change](https://godbolt.org/z/r1rG6s) the struct slightly, we can inspect whether the size is still 3:
+
+当我们稍微[修改](https://godbolt.org/z/r1rG6s)一下结构体，
+就可以检查大小是否仍是 3：
 
 ```c
 typedef struct {
@@ -362,13 +600,35 @@ typedef struct {
 
 The size is not 3: `mov eax, 4`. Because the `int16` must be 2-byte aligned, the struct must be 2-byte aligned. That means that when allocating an array of these structs there is a 1-byte padding after every struct to ensure that the next struct is 2-byte aligned. Hence, this struct is 4 bytes in the native ABI.
 
+大小不是 3：`mov eax, 4`。因为 `int16` 必须按 2 字节对齐，
+结构体也必须按 2 字节对齐。这意味着在分配这种结构体的数组时，
+每个结构体后面都有 1 字节的填充（padding），
+以确保下一个结构体按 2 字节对齐。
+因此，这个结构体在原生 ABI 中是 4 字节。
+
 ### Explore through generated tests
+
+### 通过生成的测试探索
 
 Unfortunately, the compiler explorer doesn’t support MacOS and iOS. So, to make exploring manually more efficient (and to have a nice and huge test suite for this feature), we wrote a test generator.
 
+遗憾的是，编译器探索工具不支持 MacOS 和 iOS。
+所以，为了让手动探索更高效
+（也为这个特性准备一套漂亮而庞大的测试套件），
+我们写了一个测试生成器。
+
 The main idea is to generate tests in such a way that if they crash it’s possible to use [GDB](https://www.gnu.org/software/gdb/) to see what’s wrong.
 
+主要思路是：以这样一种方式生成测试——
+如果测试崩溃，可以用 [GDB](https://www.gnu.org/software/gdb/)
+看出问题所在。
+
 One way to make it easier to see what is going wrong when hitting a segmentation fault is to make all arguments have predictable and easy-to-recognize values. For example, the following test uses consecutive integers, so that these integer values can be easily spotted in registers and on the stack:
+
+让段错误发生时更容易看清问题的一种办法，
+是让所有参数都具有可预测、易辨认的值。
+例如，下面的测试使用连续整数，
+这样就能在寄存器和栈上轻松认出这些整数值：
 
 ```dart
 void testPassStruct3BytesHomogeneousUint8x10() {
@@ -396,6 +656,10 @@ void testPassStruct3BytesHomogeneousUint8x10() {
 
 Another way to make finding problems easier is to add prints everywhere. For example, if we don’t hit a segmentation fault during the transition from Dart to C, but we manage to garble all the arguments, then printing the arguments helps:
 
+另一种让问题更容易找到的办法是到处加打印。
+例如，如果从 Dart 过渡到 C 的过程中没有触发段错误，
+但所有参数都被弄乱了，那么打印参数就很有帮助：
+
 ```c
 int64_t
 PassStruct3BytesHomogeneousUint8x10(Struct3BytesHomogeneousUint8 a0,
@@ -422,10 +686,37 @@ PassStruct3BytesHomogeneousUint8x10(Struct3BytesHomogeneousUint8 a0,
 
 Adding a test is as easy as adding a function type in the [configuration file](https://dart-review.googlesource.com/c/sdk/+/168829/6/tests/ffi/generator/structs_by_value_tests_confguration.dart). The ability to add tests quickly has resulted in a [huge test suite](https://dart-review.googlesource.com/c/sdk/+/168829).
 
+添加一个测试就像在
+[配置文件](https://dart-review.googlesource.com/c/sdk/+/168829/6/tests/ffi/generator/structs_by_value_tests_confguration.dart)
+中添加一个函数类型一样简单。快速添加测试的能力造就了一套
+[庞大的测试套件](https://dart-review.googlesource.com/c/sdk/+/168829)。
+
 Sure enough, this test suite caught another curious case in a native ABI — this time on iOS-ARM64. Non-struct arguments on the stack on iOS on ARM64 aren’t aligned to word size but to their own size. Structs are aligned to word size, except that if the struct is a homogeneous struct with only floats, then [it is aligned to the size of the float](https://github.com/dart-lang/sdk/blob/b6b82dd3ac756b39e7fe9cab21f060fae74e358d/runtime/vm/compiler/ffi/native_type.cc#L180-L182).
+
+果然，这套测试套件又抓到了原生 ABI 中的一个奇特情况——
+这次是在 iOS-ARM64 上。ARM64 的 iOS 上，
+栈上的非结构体参数不按字大小对齐，而是按自身大小对齐。
+结构体按字大小对齐，但如果结构体是只含浮点数的同质结构体，
+则[按浮点数的大小对齐](https://github.com/dart-lang/sdk/blob/b6b82dd3ac756b39e7fe9cab21f060fae74e358d/runtime/vm/compiler/ffi/native_type.cc#L180-L182)。
 
 ## Summary
 
+## 总结
+
 This concludes our journey through the API design and ABI discovery. With a good test suite and thorough code reviews, we [landed support](https://dart-review.googlesource.com/c/sdk/+/140290) for passing structs by value in Dart FFI in December 2020 on the master branch, and it is available in Dart 2.12! If you’re interested in using Dart FFI, you can get started with the [C interop documentation on dart.dev](https://dart.dev/guides/libraries/c-interop). If you have any questions or comments on the API design and ABI discovery, feel free to leave a comment below. We’d love to hear from you!
 
+我们的 API 设计与 ABI 探索之旅到此结束。
+凭借完善的测试套件和严格的代码评审，
+我们于 2020 年 12 月在 master 分支
+[合入](https://dart-review.googlesource.com/c/sdk/+/140290)了
+Dart FFI 按值传递结构体的支持，并随 Dart 2.12 发布！
+如果你有兴趣使用 Dart FFI，可以从
+[dart.dev 上的 C 互操作文档](https://dart.dev/guides/libraries/c-interop)
+开始上手。对 API 设计和 ABI 探索有任何问题或意见，
+欢迎在下面留言。我们很期待听到你的声音！
+
 *Thanks to the Dart language team and the (rest of the) Dart virtual machine team for their contributions to this Dart FFI feature, and thanks to Kathy Walrath and Michael Thomsen for shaping this blog post!*
+
+*感谢 Dart 语言团队和 Dart 虚拟机团队（的其他成员）
+为这个 Dart FFI 特性做出的贡献，
+也感谢 Kathy Walrath 和 Michael Thomsen 帮助打磨这篇博客！*
