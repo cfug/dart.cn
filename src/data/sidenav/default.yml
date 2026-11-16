@@ -309,6 +309,8 @@
           permalink: /tools/dart-info
         - title: dart install 命令
           permalink: /tools/dart-install
+        - title: dart migrate 命令
+          permalink: /tools/dart-migrate
         - title: dart pub 命令
           permalink: /tools/pub/cmd
         - title: dart run 命令
