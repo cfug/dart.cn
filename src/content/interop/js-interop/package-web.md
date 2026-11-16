@@ -16,7 +16,7 @@ import 'package:web/web.dart';
 
 void main() {
   final div = document.querySelector('div')!;
-  div.text = 'Text set at ${DateTime.now()}';
+  div.textContent = 'Text set at ${DateTime.now()}';
 }
 ```
 
@@ -220,15 +220,14 @@ element.insertAdjacentHTML('beforeend', html.toJS); // Add
 var checkbox = CheckboxInputElement(); // Remove
 var checkbox = HTMLInputElement()..type='checkbox'; // Add
 
+element.text = 'Hello'; // Remove
+element.textContent = 'Hello'; // Add
+
 element.querySelectorAll('a').classes.add('link'); // Remove
 for (final a in JSImmutableListWrapper(element.querySelectorAll('a'))) {
   a.classList.add('a');
 } // Add
 ```
-
-{% comment %}
-TODO: add more examples
-{% endcomment -%}
 
 ### Type tests
 
@@ -241,8 +240,7 @@ runtime type test will result in different behavior between `dart:html` and
 
 To be able to perform type tests, migrate any `dart:html` code
 using `is` type tests to use [interop methods][] like `instanceOfString`
-or the more convenient and typed [`isA`][] helper
-(available from Dart 3.4 onward).
+or the more convenient and typed [`isA`][] helper.
 The [Compatibility, type checks, and casts][]
 section of the JS types page covers alternatives in detail.
 
@@ -254,6 +252,11 @@ element is InputElement; // Remove
 element.isA<HTMLInputElement>(); // Add
 ```
 
+To catch invalid type checks and casts with JS interop types,
+enable the [`invalid_runtime_check_with_js_interop_types`][] lint rule.
+Starting in [`package:lints`][] 7.0.0,
+`package:lints/core.yaml` includes this rule.
+
 ### Type signatures
 
 Many APIs in `dart:html` support various Dart types in their type signatures.
@@ -263,15 +266,45 @@ calling the member.
 Learn how to use interop conversion methods from the [Conversions][]
 section of the JS types page.
 
+For example, when passing callbacks to `addEventListener`,
+convert the Dart function into a `JSFunction` using `.toJS`:
+
 ```dart
 window.addEventListener('click', callback); // Remove
 window.addEventListener('click', callback.toJS); // Add
+// where callback's first parameter accepts Event.
 ```
 
-{% comment %}
-TODO: Think of a better example. People will likely use the stream helpers
-instead of `addEventListener`.
-{% endcomment -%}
+:::note
+Calling `.toJS` creates a new `JSFunction` each time.
+To later remove the listener with `removeEventListener`,
+store the converted `JSFunction` in a variable and pass
+that same instance to both methods:
+
+```dart
+final jsCallback = callback.toJS;
+window.addEventListener('click', jsCallback);
+// ...
+window.removeEventListener('click', jsCallback);
+```
+:::
+
+If you prefer subscribing to DOM events using Dart `Stream`s
+rather than `addEventListener`, you can use the stream helper extensions
+from `package:web`:
+
+```dart
+// Using the stream helper extension (same API shape as dart:html):
+button.onClick.listen((event) {
+  // event is already typed as MouseEvent without needing a cast:
+  print('Clicked at (${event.clientX}, ${event.clientY})');
+});
+
+// Or using EventStreamProviders directly:
+EventStreamProviders.clickEvent.forTarget(button).listen((event) {
+  print('Clicked at (${event.clientX}, ${event.clientY})');
+});
+```
 
 Generally, you can spot which methods need a conversion because they'll be
 flagged with some variation of the exception:
@@ -301,6 +334,16 @@ export 'src/hw_none.dart' // Stub implementation
     if (dart.library.io) 'src/hw_io.dart' // dart:io implementation
     if (dart.library.js_interop) 'src/hw_web.dart'; // package:web implementation
 ```
+
+:::version-note
+Starting in Dart 3.14, you can pass the `--no-deprecated-js-interop` flag
+when compiling to JavaScript.
+This flag causes `dart.library.html` and the other legacy web library
+conditions to evaluate to `false`
+and disallows importing deprecated web libraries.
+For details, refer to
+[Disallow deprecated JS interop libraries][disallow-legacy].
+:::
 
 ### Virtual dispatch and mocking
 
@@ -423,8 +466,11 @@ Do we have any other package migrations to show off here?
 [stream helpers]: {{site.repo.dart.org}}/web/blob/main/web/lib/src/helpers/events/streams.dart
 [not possible]: /language/extension-types
 [`JSObject`]: {{site.dart-api}}/dart-js_interop/JSObject-extension-type.html
-[`isA`]: {{site.dart-api}}/dart-js_interop/JSAnyUtilityExtension/isA.html
+[`isA`]: {{site.dart-api}}/dart-js_interop/NullableObjectUtilExtension/isA.html
 [restricts]: /interop/js-interop/js-types#requirements-on-external-declarations-and-function-tojs
 [#54507]: {{site.repo.dart.sdk}}/issues/54507
 [mocking tutorial]: /interop/js-interop/mock
 [Element MDN documentation]: https://developer.mozilla.org/en-US/docs/Web/API/Element
+[`invalid_runtime_check_with_js_interop_types`]: /tools/linter-rules/invalid_runtime_check_with_js_interop_types
+[`package:lints`]: {{site.pub-pkg}}/lints
+[disallow-legacy]: /interop/js-interop/past-js-interop#disallow-deprecated-js-interop

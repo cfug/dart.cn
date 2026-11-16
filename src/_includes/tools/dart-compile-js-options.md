@@ -51,7 +51,12 @@ Common options include:
     :::
 
 `--no-source-maps`
-: Do not generate a source map file.
+: Don't generate a source map file.
+  By default, `dart compile js` automatically outputs a `.js.map`
+  source map file alongside the generated JavaScript code.
+  Use this flag to disable source map generation.
+  For security and privacy considerations when deploying source maps,
+  see [Web deployment][manage-source-maps].
 
 `-h` or `--help`
 : Displays help. To get information about all options, use `-hv`.
@@ -83,6 +88,7 @@ Some other handy options include:
 [`bool.fromEnvironment`]: {{site.dart-api}}/dart-core/bool/bool.fromEnvironment.html
 [`bool.hasEnvironment`]: {{site.dart-api}}/dart-core/bool/bool.hasEnvironment.html
 [Configuring apps with compilation environment declarations]: /libraries/core/environment-declarations
+[manage-source-maps]: /web/deployment#manage-source-maps-and-unneeded-build-files
 
 ###### Display options
 
@@ -125,3 +131,21 @@ The following options control the analysis performed on Dart code.
   that contains information about the generated code.
   You can inspect the generated file with tools in
   [dart2js_info](/go/dart2js-info).
+
+`--[no-]deprecated-js-interop`
+: Enables or disables support for the deprecated `dart:*` JS interop
+  and web libraries (`dart:html`, `dart:indexed_db`,
+  `dart:js`, `dart:js_util`, `dart:svg`, `dart:web_audio`, and
+  `dart:web_gl`), as well as packages that import them
+  (such as `package:js`).
+  Enabled by default (`--deprecated-js-interop`).
+  When you pass the `--no-deprecated-js-interop` flag,
+  importing any of these libraries results in a compile-time error
+  that reports the shortest import paths to the deprecated libraries.
+  In addition, their `dart.library.*` environment conditions
+  (such as `dart.library.html` and `dart.library.js_util`)
+  evaluate to `false` in conditional imports and [`bool.fromEnvironment`][].
+  For details, refer to
+  [Disallow deprecated JS interop libraries][disallow-legacy].
+
+[disallow-legacy]: /interop/js-interop/past-js-interop#disallow-deprecated-js-interop

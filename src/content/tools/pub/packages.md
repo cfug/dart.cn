@@ -25,13 +25,13 @@ Dart 生态系统使用 _package_ 来管理**共享软件**，比如：库和工
 在 [**Pub**]({{site.pub}}) 上，可以找到公开可用的 package。
 或者从本地文件系统或其他的位置，比如 Git 仓库，加载可用的 package。
 无论 package 是从什么途径加载的，Pub 都会进行版本依赖管理，
-从而帮助我们获得版本兼容的软件包以及 SDK 。
+从而帮助我们获得版本兼容的 package 以及 SDK 。
 
 Most [Dart-savvy IDEs][] offer support for using pub that
 includes creating, downloading, updating, and publishing packages.
 Or you can use [`dart pub` on the command line](/tools/pub/cmd).
 
-大多数 [Dart-savvy IDEs][] 都支持 Pub 的使用，包括包的创建，下载，更新和发布。
+大多数 [Dart-savvy IDEs][] 都支持 Pub 的使用，包括 package 的创建，下载，更新和发布。
 同样上述功能也可以在命令行上通过 [`dart pub`](/tools/pub/cmd) 来操作。
 或者可以在命令行上使用 pub。
 
@@ -41,29 +41,29 @@ The pubspec contains some metadata about the package.
 Additionally, a package can contain dependencies (listed in the pubspec),
 Dart libraries, apps, resources, tests, images, and examples.
 
-Dart 包目录中至少包含一个 [pubspec 文件](/tools/pub/pubspec)。
-pubspec 文件记录一些关于包的元数据。
-此外，包还包含其他依赖项（在 pubspec 中列出），
+Dart package 目录中至少包含一个 [pubspec 文件](/tools/pub/pubspec)。
+pubspec 文件记录一些关于 package 的元数据。
+此外，package 还包含其他依赖项（在 pubspec 中列出），
 Dart 库，应用，资源，测试，图片，以及示例。
 
 To use a package, do the following:
 
-通过以下步骤，引用使用包：
+通过以下步骤，引用使用 package：
 
 * Create a pubspec (a file named `pubspec.yaml` that
   lists package dependencies and includes
   other metadata, such as a version number).
 
   创建一个 pubspec （一个名为 `pubspec.yaml` 文件，
-  文件列出依赖的包以及包含的其他元数据，比如当前包的版本）。
+  文件列出依赖的 package 以及包含的其他元数据，比如当前 package 的版本）。
 
 * Use [`dart pub get`][get] to retrieve your package's dependencies.
 
-  使用 [`dart pub get`][get] 获取当前所依赖的包。
+  使用 [`dart pub get`][get] 获取当前所依赖的 package。
 
 * If your Dart code depends on a library in the package, import the library.
 
-  如果当前 Dart 代码依赖包中的某个库，导入 (import) 该库。
+  如果当前 Dart 代码依赖 package 中的某个库，导入 (import) 该库。
 
 ## Creating a pubspec
 
@@ -75,7 +75,7 @@ The simplest possible pubspec lists only the package name:
 
 pubspec 是一个名为 `pubspec.yaml` 的文件，
 文件位于应用的根路径。
-最简单的 pubspec 只需要列出包名：
+最简单的 pubspec 只需要列出 package 名：
 
 ```yaml
 name: my_app
@@ -144,16 +144,16 @@ If your app depends on a published package, pub downloads that package from the
 For a [Git dependency](/tools/pub/dependencies#git-packages),
 pub clones the Git repository.
 Transitive dependencies are included, too.
-For example, if the `js` package depends on the `test` package, `pub`
-grabs both the `js` package and the `test` package.
+For example, if the `web` package depends on the `test` package, `pub`
+grabs both the `web` package and the `test` package.
 
-`dart pub get` 命令确定当前应用所依赖的包，
+`dart pub get` 命令确定当前应用所依赖的 package，
 并将它们保存到中央 [系统缓存](/resources/glossary#pub-system-cache)
 (central system cache) 中。
-如果当前应用依赖了一个公开包， Pub 会从 [Pub 站点]({{site.pub}}) 获取该包。
+如果当前应用依赖了一个公开 package， Pub 会从 [Pub 站点]({{site.pub}}) 获取该 package。
 对于一个 [Git 依赖](/tools/pub/dependencies#git-packages)，
-Pub 会 Clone 该 Git 仓库。同样包括包的相关依赖也会被下载。
-例如，如果 `js` 包依赖 `test` 包，`pub` 会同时获取 `js` 包和 `test` 包。
+Pub 会 Clone 该 Git 仓库。同样包括 package 的相关依赖也会被下载。
+例如，如果 `web` package 依赖 `test` package，`pub` 会同时获取 `web` package 和 `test` package。
 
 Pub creates a
 `package_config.json` file (under the `.dart_tool/` directory)
@@ -161,19 +161,19 @@ that maps each package name that your app depends on
 to the corresponding package in the system cache.
 
 Pub 会创建一个 `package_config.json` 文件（位于 `.dart_tool/` 目录下），
-该文件将应用程序所依赖的每个包名相应的映射到系统缓存中的包。
+该文件将应用程序所依赖的每个 package 名相应的映射到系统缓存中的 package。
 
 ## Importing libraries from packages
 
-## 从包中导入库
+## 从 package 中导入库
 
-To import libraries found in packages, 
+To import libraries found in packages,
 use the `package:` prefix:
 
-使用 `package:` 前缀，导入包中的库：
+使用 `package:` 前缀，导入 package 中的库：
 
 ```dart
-import 'package:js/js.dart' as js;
+import 'package:web/web.dart' as web;
 import 'package:intl/intl.dart';
 ```
 
@@ -228,7 +228,7 @@ that your package uses.
 第一次获取依赖时，Pub 会下载依赖及其兼容的最新版本。
 然后通过创建 **lockfile** 锁定依赖，以始终使用这个版本。
 Pub 会在 pubspec 旁创建并存储一个名为 `pubspec.lock` 文件。
-它列出了使用的每个依赖包的指定版本（当前包或传递包的版本）。
+它列出了使用的每个依赖 package 的指定版本（当前 package 或传递 package 的版本）。
 
 If your package is an [application package](/resources/glossary#application-package)
 you should check this file into
@@ -238,9 +238,9 @@ of all of its dependencies.
 Checking in the lockfile also ensures that your deployed app
 uses the same versions of code.
 
-如果包是一个 [应用程序包](/resources/glossary#application-package)，
+如果 package 是一个 [应用程序 package](/resources/glossary#application-package)，
 那么应该将此文件加入到 [源文件管理](/tools/pub/private-files)。
-这样，在应用上开发的每个人都能够使用所有相同版本的包。
+这样，在应用上开发的每个人都能够使用所有相同版本的 package。
 同样加入到 lockfile 可以保证部署的应用使用的是同一版本的代码。
 
 When you're ready to upgrade your dependencies to the latest versions,
@@ -257,8 +257,8 @@ using the newest available versions of your package's dependencies.
 If you want to upgrade only one dependency,
 you can specify the package to upgrade:
 
-`dart pub upgrade` 命令用于重新生成 lockfile 文件，并使用最新可用版本的依赖包。
-如果仅升级某个依赖，可以在命令中指定需要升级的包：
+`dart pub upgrade` 命令用于重新生成 lockfile 文件，并使用最新可用版本的依赖 package。
+如果仅升级某个依赖，可以在命令中指定需要升级的 package：
 
 ```console
 $ dart pub upgrade transmogrify
@@ -267,7 +267,7 @@ $ dart pub upgrade transmogrify
 That command upgrades `transmogrify` to the latest version
 but leaves everything else the same.
 
-上面的命令升级 `transmogrify` 到最新版本，但维持其它包不变。
+上面的命令升级 `transmogrify` 到最新版本，但维持其它 package 不变。
 
 The `dart pub upgrade` command can't always upgrade every package
 to its latest version,
@@ -370,7 +370,7 @@ To update `pubspec.lock` run `dart pub get` without `--enforce-lockfile`.
 The following pages have more information about packages and
 the pub package manager.
 
-以下链接的页面是关于包及 pub package 管理的更多内容。
+以下链接的页面是关于 package 及 pub package 管理的更多内容。
 
 ### How to
 
@@ -402,7 +402,7 @@ the pub package manager.
 
 * [Pub package layout conventions](/tools/pub/package-layout)
 
-  [Pub 包的布局约定](/tools/pub/package-layout)
+  [Pub package 的文件结构约定](/tools/pub/package-layout)
 
 * [Pub versioning philosophy](/tools/pub/versioning)
   

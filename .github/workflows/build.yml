@@ -31,11 +31,21 @@ jobs:
           persist-credentials: false
       - uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d
         with:
-          sdk: beta
+          sdk: 3.14.0-315.3.beta
       - name: Fetch Dart packages
         run: dart pub get
       - name: Install firebase-tools
-        run: curl -sL https://firebase.tools | bash
+        # Pinned because the hosting emulator fails to start with
+        # firebase-tools 15.31.0 (ERR_REQUIRE_ESM from stream-chain).
+        # Unpin once https://github.com/firebase/firebase-tools/issues/11168
+        # is fixed in a release.
+        env:
+          FIREBASE_TOOLS_VERSION: 15.30.2
+        run: |
+          sudo curl -sSfLo /usr/local/bin/firebase \
+            "https://firebase.tools/bin/linux/v${FIREBASE_TOOLS_VERSION}"
+          sudo chmod +rx /usr/local/bin/firebase
+          firebase --version
       - name: Build site
         run: dart run dash_site build
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
@@ -71,7 +81,7 @@ jobs:
           fetch-depth: 0
       - uses: dart-lang/setup-dart@6afc89df92d6eb3834022f73cd65adc8cdfcb92d
         with:
-          sdk: beta
+          sdk: 3.14.0-315.3.beta
       - name: Fetch Dart packages
         run: dart pub get
       - name: Build site

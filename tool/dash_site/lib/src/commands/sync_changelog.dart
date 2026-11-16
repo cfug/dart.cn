@@ -38,6 +38,14 @@ final class SyncChangelog extends Command<int> {
         help: 'The Dart SDK version to sync (such as "3.9.0").',
         mandatory: true,
       )
+      ..addOption(
+        'release-date',
+        abbr: 'r',
+        help:
+            'The release date to record, in YYYY-MM-DD format. '
+            'Defaults to the "Released on" date in the SDK changelog.',
+        valueHelp: 'YYYY-MM-DD',
+      )
       ..addFlag(
         'dry-run',
         abbr: 'd',
@@ -51,6 +59,7 @@ final class SyncChangelog extends Command<int> {
     final results = argResults!;
     final versionString = results.getOrThrow<String>('version');
     final dryRun = results.getOrThrow<bool>('dry-run');
+    final releaseDate = results['release-date'] as String?;
 
     final Version version;
     try {
@@ -65,6 +74,13 @@ final class SyncChangelog extends Command<int> {
       return 1;
     }
 
+    if (releaseDate != null && !_releaseDateRegExp.hasMatch(releaseDate)) {
+      stderr.writeln(
+        'Invalid release date: "$releaseDate". Use YYYY-MM-DD format.',
+      );
+      return 1;
+    }
+
     stdout.writeln('Syncing changelog for version $version...');
 
     try {
@@ -76,12 +92,31 @@ final class SyncChangelog extends Command<int> {
         return 1;
       }
 
-      final patches = _parseChangelog(response.body, version.toString());
+      final patches = _parseChangelog(
+        response.body,
+        version.toString(),
+        releaseDate: releaseDate,
+      );
       if (patches.isEmpty) {
         stdout.writeln(
           'No entries found for version $version in SDK changelog.',
         );
         return 0;
+      }
+
+      final resolvedReleaseDate = patches.first.releaseDate;
+      if (resolvedReleaseDate == unknownReleaseDate) {
+        stderr.writeln(
+          'WARNING: No "Released on" date found for $version in the SDK '
+          'changelog, so entries were written with '
+          '"releaseDate: $unknownReleaseDate".\n'
+          'The site shows this date in the version header, and the '
+          'changelog data test will fail until it is replaced.\n'
+          'Re-run with --release-date=YYYY-MM-DD or edit '
+          'src/data/changelog.yml before committing.',
+        );
+      } else {
+        stdout.writeln('Using release date $resolvedReleaseDate.');
       }
 
       final changelogPath = p.join(
@@ -122,62 +157,133 @@ final class SyncChangelog extends Command<int> {
     }
   }
 
+  /// Parses [markdown] for [targetVersion] and returns generated YAML.
+  ///
+  /// If [releaseDate] is provided it's used for every entry; otherwise the
+  /// date is read from the section's `**Released on:**` line, falling back to
+  /// [unknownReleaseDate] if that's absent (such as before a release ships).
+  static String parseAndGenerateYaml(
+    String markdown,
+    String targetVersion, {
+    String? releaseDate,
+  }) => _generateYamlString(
+    _parseChangelog(markdown, targetVersion, releaseDate: releaseDate),
+  );
+
+  /// Placeholder written when no release date could be determined.
+  ///
+  /// The site renders this verbatim in the version header, and the
+  /// `changelog_data_test` rejects it, so it must be replaced before merging.
+  static const unknownReleaseDate = 'TBD';
+
+  static final _releaseDateRegExp = RegExp(r'^\d{4}-\d{2}-\d{2}$');
+  static final _releasedOnRegExp = RegExp(
+    r'^\s*\*\*Released on:\*\*\s*(\d{4}-\d{2}-\d{2})',
+  );
+
   /// Parses the SDK CHANGELOG.md [markdown] and
   /// extracts entries for the specified [targetVersion].
   static List<_ChangelogEntry> _parseChangelog(
     String markdown,
-    String targetVersion,
-  ) {
+    String targetVersion, {
+    String? releaseDate,
+  }) {
     // TODO: Use a proper Markdown parser instead of
     //  relying on regular expressions.
     final entries = <_ChangelogEntry>[];
     final lines = markdown.split('\n');
     final versionRegExp = RegExp(r'^##\s+(\d+\.\d+\.\d+)');
     final inlineLinkRegExp = RegExp(r'\[.*?\]\((.*?)\)');
-    final referenceLinkRegExp = RegExp(r'\[.*?\]:\s+(https?://\S+)');
+    final refDefRegExp = RegExp(r'^\s*\[([^\]]+)\]:\s*(\S+)');
+    final refUsageRegExp = RegExp(r'\[([^\]]+)\]\[([^\]]*)\]');
+
+    // Pre-collect reference link definitions in targetVersion, and pick up
+    // the `**Released on:** YYYY-MM-DD` line the SDK changelog includes
+    // once a version has shipped.
+    final refLinks = <String, String>{};
+    var parsedReleaseDate = releaseDate;
+    var inTargetForRefs = false;
+    for (final line in lines) {
+      if (versionRegExp.firstMatch(line) case final match?) {
+        if (match.group(1) == targetVersion) {
+          inTargetForRefs = true;
+          continue;
+        } else if (inTargetForRefs) {
+          break;
+        }
+      }
+      if (!inTargetForRefs) continue;
+      if (refDefRegExp.firstMatch(line) case final m?) {
+        refLinks[m.group(1)!.toLowerCase()] = m.group(2)!;
+      }
+      if (parsedReleaseDate == null) {
+        if (_releasedOnRegExp.firstMatch(line) case final m?) {
+          parsedReleaseDate = m.group(1);
+        }
+      }
+    }
+    final resolvedReleaseDate = parsedReleaseDate ?? unknownReleaseDate;
+
+    String resolveRefs(String text) =>
+        text.replaceAllMapped(refUsageRegExp, (m) {
+          final label = m.group(1)!;
+          final key = (m.group(2)!.isEmpty ? label : m.group(2)!).toLowerCase();
+          final url = refLinks[key];
+          return url != null ? '[$label]($url)' : m.group(0)!;
+        });
 
     // Extracts the first markdown link URL from [text], or returns null.
     String? extractLink(String text) {
-      final match =
-          inlineLinkRegExp.firstMatch(text) ??
-          referenceLinkRegExp.firstMatch(text);
-      return match?.group(1);
+      return inlineLinkRegExp.firstMatch(text)?.group(1);
     }
 
     String? currentArea;
     String? currentSubArea;
     var inTargetVersion = false;
+    var subAreaHasBullets = false;
     final bulletBuffer = StringBuffer();
-    String? pendingLink;
+    final proseBuffer = StringBuffer();
+
+    void addEntry(String rawDescription) {
+      if (rawDescription.isEmpty) return;
+      final description = resolveRefs(rawDescription);
+      var link = extractLink(description);
+      if (link == null) {
+        // If no specific link was found, default to the SDK CHANGELOG
+        // section anchor. The anchor for version "3.11.0" is "#3110".
+        final anchor = targetVersion.replaceAll('.', '');
+        link =
+            'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#$anchor';
+      }
+
+      entries.add(
+        _ChangelogEntry(
+          version: targetVersion,
+          releaseDate: resolvedReleaseDate,
+          area: _resolveArea(currentArea, currentSubArea),
+          subArea: currentSubArea,
+          description: description,
+          tags: _inferTags(description),
+          link: link,
+        ),
+      );
+    }
 
     void flushBullet() {
       if (bulletBuffer.isEmpty) return;
-
-      final description = bulletBuffer.toString().trim();
-      if (description.isNotEmpty) {
-        var link = pendingLink;
-        if (link == null) {
-          // If no specific link was found, default to the SDK CHANGELOG
-          // section anchor. The anchor for version "3.11.0" is "#3110".
-          final anchor = targetVersion.replaceAll('.', '');
-          link =
-              'https://github.com/dart-lang/sdk/blob/main/CHANGELOG.md#$anchor';
-        }
-
-        entries.add(
-          _ChangelogEntry(
-            version: targetVersion,
-            releaseDate: 'TBD',
-            area: currentArea ?? 'SDK',
-            subArea: currentSubArea,
-            description: description,
-            tags: _inferTags(description),
-            link: link,
-          ),
-        );
-      }
+      addEntry(bulletBuffer.toString().trim());
       bulletBuffer.clear();
-      pendingLink = null;
+    }
+
+    void flushSection() {
+      flushBullet();
+      if (!subAreaHasBullets &&
+          currentSubArea != null &&
+          proseBuffer.isNotEmpty) {
+        addEntry(proseBuffer.toString().trim());
+      }
+      proseBuffer.clear();
+      subAreaHasBullets = false;
     }
 
     for (final line in lines) {
@@ -192,7 +298,7 @@ final class SyncChangelog extends Command<int> {
           currentSubArea = null;
           continue;
         } else if (inTargetVersion) {
-          flushBullet();
+          flushSection();
           break;
         }
       }
@@ -201,41 +307,95 @@ final class SyncChangelog extends Command<int> {
 
       // Detect area ("### ") and sub-area ("#### ") headers.
       if (line.startsWith('### ')) {
-        flushBullet();
+        flushSection();
         currentArea = line.substring(4).trim();
         currentSubArea = null;
         continue;
       }
 
       if (line.startsWith('#### ')) {
-        flushBullet();
+        flushSection();
         currentSubArea = line.substring(5).trim();
         continue;
       }
 
       final trimmedLine = line.trim();
+      if (trimmedLine.startsWith('**Released on:**')) {
+        continue;
+      }
+      if (refDefRegExp.hasMatch(trimmedLine)) {
+        continue;
+      }
+
       if (trimmedLine.isEmpty) {
-        // Preserve blank lines within multi-line bullet points.
+        // Preserve blank lines within multi-line bullet points or prose blocks.
         if (bulletBuffer.isNotEmpty) {
           bulletBuffer.writeln();
+        } else if (!subAreaHasBullets &&
+            currentSubArea != null &&
+            proseBuffer.isNotEmpty) {
+          proseBuffer.writeln();
         }
         continue;
       }
 
-      // Check for list items starting with "- ".
-      if (trimmedLine.startsWith('- ')) {
+      // Check for top-level list items starting with "- " when not already
+      // inside a prose-first sub-area section.
+      if (trimmedLine.startsWith('- ') &&
+          (subAreaHasBullets || proseBuffer.isEmpty)) {
         flushBullet();
+        subAreaHasBullets = true;
         final content = trimmedLine.substring(2);
         bulletBuffer.write(content);
-        pendingLink ??= extractLink(content);
       } else if (bulletBuffer.isNotEmpty) {
         bulletBuffer.write('\n$trimmedLine');
-        pendingLink ??= extractLink(trimmedLine);
+      } else if (!subAreaHasBullets && currentSubArea != null) {
+        if (proseBuffer.isNotEmpty) {
+          proseBuffer.writeln();
+        }
+        proseBuffer.write(line);
       }
     }
 
-    flushBullet();
+    flushSection();
     return entries;
+  }
+
+  /// Resolves the changelog area, inferring from [subArea] when an `### <Area>`
+  /// header was omitted in `CHANGELOG.md` (e.g. orphan `#### Pub` headers).
+  static String _resolveArea(String? area, String? subArea) {
+    if (area != null && area.isNotEmpty) return area;
+    if (subArea != null) {
+      final normalized = subArea.toLowerCase();
+      if (normalized.startsWith('`dart:') ||
+          normalized.startsWith('dart:') ||
+          normalized.startsWith('`package:') ||
+          normalized.startsWith('package:')) {
+        return 'Libraries';
+      }
+      if (normalized.contains('analyzer') ||
+          normalized.contains('linter') ||
+          normalized.contains('pub') ||
+          normalized.contains('formatter') ||
+          normalized.contains('format') ||
+          normalized.contains('devtools') ||
+          normalized.contains('compiler') ||
+          normalized.contains('ddc') ||
+          normalized.contains('dart2js') ||
+          normalized.contains('dart2wasm') ||
+          normalized.contains('cli')) {
+        return 'Tools';
+      }
+      if (normalized.contains('vm') ||
+          normalized.contains('wasm') ||
+          normalized.contains('runtime') ||
+          normalized.contains('c api') ||
+          normalized.contains('embedder') ||
+          normalized == 'build') {
+        return 'Dart Runtime';
+      }
+    }
+    return 'SDK';
   }
 
   /// Inserts [newYaml] after the first separator line in [content].
